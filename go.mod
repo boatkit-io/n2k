@@ -1,4 +1,4 @@
-module boatkit-io/n2k
+module github.com/boatkit-io/n2k
 
 go 1.18
 
