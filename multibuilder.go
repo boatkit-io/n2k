@@ -1,9 +1,8 @@
 package n2k
 
-import (
-	"fmt"
-	"time"
-)
+// Manages the list of sequences used to combine multipacket PGNs
+// Instantiated by PGNBuilder
+// Uses sequence to do the work
 
 // Calculated with math, but reference:
 // https://copperhilltech.com/blog/what-is-the-difference-between-sae-j1939-and-nmea-2000/
@@ -12,16 +11,10 @@ const (
 	MaxFrameNum          = 31
 )
 
-type sequence struct {
-	started  time.Time
-	main     *Packet // packet 0 of sequence
-	expected uint8
-	received uint8
-	contents [MaxFrameNum][]uint8 // need arrays since packets can be received out of order
-}
 type MultiBuilder struct {
-	// sequences map[sourceid]map[pgn]map[seqId]sequence
+	// sequences map[sourceid]map[pgn]map[seqId]Sequence
 	sequences map[uint8]map[uint32]map[uint8]*sequence
+	current   *Packet
 }
 
 func NewMultiBuilder() *MultiBuilder {
@@ -32,6 +25,15 @@ func NewMultiBuilder() *MultiBuilder {
 }
 
 func (m *MultiBuilder) Add(p *Packet) {
+	m.current = p
+	seq := m.seqFor(p)
+	seq.add(p)
+	if seq.complete(p) {
+		delete(m.sequences[p.Info.SourceId][p.Info.PGN], p.SeqId)
+	}
+}
+
+func (m *MultiBuilder) seqFor(p *Packet) *sequence {
 	if _, t := m.sequences[p.Info.SourceId]; !t {
 		m.sequences[p.Info.SourceId] = make(map[uint32]map[uint8]*sequence)
 	}
@@ -39,36 +41,24 @@ func (m *MultiBuilder) Add(p *Packet) {
 		m.sequences[p.Info.SourceId][p.Info.PGN] = make(map[uint8]*sequence)
 	}
 	seq := m.sequences[p.Info.SourceId][p.Info.PGN][p.SeqId]
-	if p.FrameNum == 0 {
-		seq.main = p
-		seq.expected = p.Data[1]
-		seq.contents[p.FrameNum] = p.Data[2:]
-		seq.received += 6
-	} else {
-		seq.contents[p.FrameNum] = p.Data[1:]
-		seq.received += 7
+	if seq == nil {
+		seq = &sequence{}
+		m.sequences[p.Info.SourceId][p.Info.PGN][p.SeqId] = seq
 	}
-	if seq.main != nil {
-		if seq.received >= seq.expected {
-			//  consolidate data
-			results := make([]uint8, 0)
-			for i, d := range seq.contents {
-				if d == nil { // don't allow sparse nodes
-					p.ParseErrors = append(p.ParseErrors, fmt.Errorf("sparse data in multi"))
-					delete(m.sequences[p.Info.SourceId][p.Info.PGN], p.SeqId)
-					return
-				} else {
-					results = append(results, seq.contents[i]...)
-					if len(results) >= int(seq.expected) {
-						break
-					}
+	return seq
+}
+
+/*
+func (m *MultiBuilder) awaiting(p *Packet) bool {
+	if source, exists := m.sequences[p.Info.SourceId]; exists {
+		if pgn, exists := source[p.Info.PGN]; exists {
+			if seq, exists := pgn[p.SeqId]; exists {
+				if seq.contents[p.FrameNum] == nil {
+					return true
 				}
 			}
-			results = results[:seq.expected]
-			seq.main.Data = results
-			p = seq.main // sets b.current to complete packet
-			p.Complete = true
-			delete(m.sequences[p.Info.SourceId][p.Info.PGN], p.SeqId)
 		}
 	}
+	return false
 }
+*/
