@@ -66,29 +66,8 @@ func TestFilterFast(t *testing.T) {
 	assert.Equal(t, 23, len(p.Decoders))
 }
 
-/*func TestSlowFramePass(t *testing.T) {
-	f := newFrame(can.Frame{ID: canIdFromData(130824, 7, 1), Length: 8, Data: [8]uint8{(381 & 0xFF), (381 >> 8) | (4 << 5), 3, 4, 5, 0xFF, 0xFF, 0xFF}})
-	assert.Equal(t, uint32(130824), f.Info.PGN)
-	assert.Equal(t, uint8(7), f.Info.SourceId)
-	assert.Equal(t, uint8(1), f.Info.Priority)
-	assert.Equal(t, 0, len(f.ParseErrors))
-	r := decodeFrame(f)
-	assert.IsType(t, BGWindData{}, r)
-	assert.Equal(t, false, f.Fast)
-}
-
-func TestFastFrame(t *testing.T) {
-	f := newFrame(can.Frame{ID: canIdFromData(130824, 7, 1), Length: 8, Data: [8]uint8{160, 9, (137 & 0xFF), (137 >> 8) | (4 << 5), 1, 2, 3, 4}})
-	assert.Equal(t, uint32(130824), f.Info.PGN)
-	assert.Equal(t, uint8(7), f.Info.SourceId)
-	assert.Equal(t, uint8(1), f.Info.Priority)
-	//	assert.Equal(t, 1, len(f.ParseErrors)) change in parsing matches this fast packet without error
-	assert.Equal(t, true, f.Fast)
-}
-
 func TestBroadcast(t *testing.T) {
-	f := newFrame(can.Frame{ID: canIdFromData(0x1efff, 7, 1), Length: 8, Data: [8]uint8{160, 9, (137 & 0xFF), (137 >> 8) | (4 << 5), 1, 2, 3, 4}})
-	assert.Equal(t, uint32(0x1ef00), f.Info.PGN)
-	assert.Equal(t, uint8(255), f.Info.TargetId)
+	p := NewPacket(can.Frame{ID: canIdFromData(0x1efff, 7, 1), Length: 8, Data: [8]uint8{160, 9, (137 & 0xFF), (137 >> 8) | (4 << 5), 1, 2, 3, 4}})
+	assert.Equal(t, uint32(0x1ef00), p.Info.PGN)
+	assert.Equal(t, uint8(255), p.Info.TargetId)
 }
-*/

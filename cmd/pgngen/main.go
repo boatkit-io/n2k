@@ -357,7 +357,7 @@ func constSize(max int) string {
 	case max < 4294967296:
 		return "uinit32"
 	default:
-		return "unit64"
+		return "uint64"
 
 	}
 }
