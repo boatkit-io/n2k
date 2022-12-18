@@ -44,8 +44,8 @@ func (s *sequence) complete(p *Packet) bool {
 			}
 			results = results[:s.expected]
 			p.Data = results
-			p.Decoders = s.zero.Decoders // sets b.current to complete packet
 			p.Complete = true
+			p.getManCode()
 			return true
 		}
 	}

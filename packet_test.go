@@ -23,10 +23,9 @@ func TestValid(t *testing.T) {
 }
 
 func TestGetManCode(t *testing.T) {
-	s := NewPgnDataStream([]uint8{(381 & 0xFF), (381 >> 8) | (4 << 5), 3, 4, 5, 0xFF, 0xFF, 0xFF})
-	m, err := getManCode(s)
-	assert.Equal(t, ManufacturerCodeConst(381), m)
-	assert.Equal(t, nil, err)
+	p := NewPacket(can.Frame{ID: canIdFromData(130824, 7, 1), Length: 8, Data: [8]uint8{(381 & 0xFF), (381 >> 8) | (4 << 5), 3, 4, 5, 0xFF, 0xFF, 0xFF}})
+	p.getManCode()
+	assert.Equal(t, ManufacturerCodeConst(381), p.Manufacturer)
 }
 
 func TestGetSeqFrame(t *testing.T) {
@@ -45,23 +44,29 @@ func TestNewPacket(t *testing.T) {
 	assert.Equal(t, uint8(1), p.Info.Priority)
 	assert.Equal(t, 0, len(p.ParseErrors))
 	assert.Equal(t, 2, len(p.Candidates))
+	assert.False(t, p.Fast)
+	p.getManCode()
+	assert.Equal(t, ManufacturerCodeConst(381), p.Manufacturer)
 }
 
 func TestFilterSlow(t *testing.T) {
 	p := NewPacket(can.Frame{ID: canIdFromData(130824, 7, 1), Length: 8, Data: [8]uint8{(381 & 0xFF), (381 >> 8) | (4 << 5), 3, 4, 5, 0xFF, 0xFF, 0xFF}})
-	p.FilterOnManufacturer()
+	p.addDecoders()
 	assert.Equal(t, 0, len(p.ParseErrors))
 	assert.Equal(t, 1, len(p.Decoders))
 
 	p = NewPacket(can.Frame{ID: canIdFromData(130824, 10, 1), Length: 8, Data: [8]uint8{(380 & 0xFF), (380 >> 8) | (4 << 5), 3, 4, 5, 0xFF, 0xFF, 0xFF}})
-	p.FilterOnManufacturer()
-	assert.Equal(t, 1, len(p.ParseErrors))
+	p.addDecoders()
+	// assert.Equal(t, 1, len(p.ParseErrors)) p.decode() now handles the no decoders error
 	assert.Equal(t, 0, len(p.Decoders))
 }
 
 func TestFilterFast(t *testing.T) {
-	p := NewPacket(can.Frame{ID: canIdFromData(130820, 10, 1), Length: 8, Data: [8]uint8{160, 5, 163, 153, 32, 128, 1, 255}})
-	p.FilterOnManufacturer()
+	p := NewPacket(can.Frame{ID: canIdFromData(130820, 10, 1), Length: 8, Data: [8]uint8{160, 5, (419 & 0xFF), (419 >> 8) | (4 << 5), 32, 128, 1, 255}})
+	p.Data = p.Data[2:] // normally happens in sequence.complete()
+	p.Complete = true   // normally these 2 calls would happen by invoking b.process()
+	p.getManCode()
+	p.addDecoders()
 	assert.Equal(t, 0, len(p.ParseErrors))
 	assert.Equal(t, 23, len(p.Decoders))
 }

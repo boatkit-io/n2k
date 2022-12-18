@@ -13,3 +13,9 @@ func TestProprietary(t *testing.T) {
 	assert.Equal(t, BAndG, u.ManufacturerCode)
 	//	assert.Equal(t, uint8(4), p.IndustryCode) Not set--not used for matches, so really don't care
 }
+
+func TestEmpty(t *testing.T) {
+	p := NewPacket(can.Frame{ID: 0, Length: 0})
+	u := p.unknownPGN()
+	assert.NotEqual(t, 0, len(u.Reason.Error()))
+}
