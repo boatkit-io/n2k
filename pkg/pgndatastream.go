@@ -6,32 +6,32 @@ import (
 	"strings"
 )
 
-type PGNDataStream struct {
+type pGNDataStream struct {
 	data []uint8
 
 	byteOffset uint16
 	bitOffset  uint8
 }
 
-func NewPgnDataStream(data []uint8) *PGNDataStream {
-	return &PGNDataStream{
+func newPgnDataStream(data []uint8) *pGNDataStream {
+	return &pGNDataStream{
 		data:       data,
 		byteOffset: 0,
 		bitOffset:  0,
 	}
 }
 
-func (s *PGNDataStream) ResetToStart() {
+func (s *pGNDataStream) resetToStart() {
 	s.byteOffset = 0
 	s.bitOffset = 0
 }
 
-func (s *PGNDataStream) IsEOF() bool {
+func (s *pGNDataStream) isEOF() bool {
 	// For now, only call an exact EOF -- not sure if we need to be more loosy-goosy or not
 	return s.byteOffset == uint16(len(s.data)) && s.bitOffset == 0
 }
 
-func (s *PGNDataStream) SkipBits(bitLength uint16) error {
+func (s *pGNDataStream) skipBits(bitLength uint16) error {
 	s.byteOffset += bitLength >> 3
 	bitLength &= 7
 	s.bitOffset += uint8(bitLength)
@@ -47,11 +47,11 @@ func (s *PGNDataStream) SkipBits(bitLength uint16) error {
 	return nil
 }
 
-func (s *PGNDataStream) GetBitOffset() uint32 {
+func (s *pGNDataStream) getBitOffset() uint32 {
 	return uint32(s.byteOffset)*8 + uint32(s.bitOffset)
 }
 
-func (s *PGNDataStream) ReadLookupField(bitLength uint16) (uint64, error) {
+func (s *pGNDataStream) readLookupField(bitLength uint16) (uint64, error) {
 	if bitLength > 64 {
 		return 0, fmt.Errorf("requested %d bitLength in ReadLookupField", bitLength)
 	}
@@ -63,7 +63,7 @@ func (s *PGNDataStream) ReadLookupField(bitLength uint16) (uint64, error) {
 	return v, nil
 }
 
-func (s *PGNDataStream) ReadSignedResolution(bitLength uint16, multiplyBy float32) (*float32, error) {
+func (s *pGNDataStream) readSignedResolution(bitLength uint16, multiplyBy float32) (*float32, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadSignedResolution", bitLength)
 	}
@@ -79,7 +79,7 @@ func (s *PGNDataStream) ReadSignedResolution(bitLength uint16, multiplyBy float3
 	return &vo, nil
 }
 
-func (s *PGNDataStream) ReadUnsignedResolution(bitLength uint16, multiplyBy float32) (*float32, error) {
+func (s *pGNDataStream) readUnsignedResolution(bitLength uint16, multiplyBy float32) (*float32, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUnsignedResolution", bitLength)
 	}
@@ -95,7 +95,7 @@ func (s *PGNDataStream) ReadUnsignedResolution(bitLength uint16, multiplyBy floa
 	return &vo, nil
 }
 
-func (s *PGNDataStream) ReadUInt64(bitLength uint16) (*uint64, error) {
+func (s *pGNDataStream) readUInt64(bitLength uint16) (*uint64, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt64", bitLength)
 	}
@@ -110,7 +110,7 @@ func (s *PGNDataStream) ReadUInt64(bitLength uint16) (*uint64, error) {
 	return v, nil
 }
 
-func (s *PGNDataStream) ReadUInt32(bitLength uint16) (*uint32, error) {
+func (s *pGNDataStream) readUInt32(bitLength uint16) (*uint32, error) {
 	if bitLength > 32 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt32", bitLength)
 	}
@@ -126,7 +126,7 @@ func (s *PGNDataStream) ReadUInt32(bitLength uint16) (*uint32, error) {
 	return &vo, nil
 }
 
-func (s *PGNDataStream) ReadUInt16(bitLength uint16) (*uint16, error) {
+func (s *pGNDataStream) readUInt16(bitLength uint16) (*uint16, error) {
 	if bitLength > 16 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt16", bitLength)
 	}
@@ -142,7 +142,7 @@ func (s *PGNDataStream) ReadUInt16(bitLength uint16) (*uint16, error) {
 	return &vo, nil
 }
 
-func (s *PGNDataStream) ReadUInt8(bitLength uint16) (*uint8, error) {
+func (s *pGNDataStream) readUInt8(bitLength uint16) (*uint8, error) {
 	if bitLength > 8 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt8", bitLength)
 	}
@@ -158,7 +158,7 @@ func (s *PGNDataStream) ReadUInt8(bitLength uint16) (*uint8, error) {
 	return &vo, nil
 }
 
-func (s *PGNDataStream) ReadInt64(bitLength uint16) (*int64, error) {
+func (s *pGNDataStream) readInt64(bitLength uint16) (*int64, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt64", bitLength)
 	}
@@ -174,7 +174,7 @@ func (s *PGNDataStream) ReadInt64(bitLength uint16) (*int64, error) {
 	return &vo, nil
 }
 
-func (s *PGNDataStream) ReadInt32(bitLength uint16) (*int32, error) {
+func (s *pGNDataStream) readInt32(bitLength uint16) (*int32, error) {
 	if bitLength > 32 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt32", bitLength)
 	}
@@ -190,7 +190,7 @@ func (s *PGNDataStream) ReadInt32(bitLength uint16) (*int32, error) {
 	return &vo, nil
 }
 
-func (s *PGNDataStream) ReadInt16(bitLength uint16) (*int16, error) {
+func (s *pGNDataStream) readInt16(bitLength uint16) (*int16, error) {
 	if bitLength > 16 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt16", bitLength)
 	}
@@ -206,7 +206,7 @@ func (s *PGNDataStream) ReadInt16(bitLength uint16) (*int16, error) {
 	return &vo, nil
 }
 
-func (s *PGNDataStream) ReadInt8(bitLength uint16) (*int8, error) {
+func (s *pGNDataStream) readInt8(bitLength uint16) (*int8, error) {
 	if bitLength > 8 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt8", bitLength)
 	}
@@ -222,8 +222,8 @@ func (s *PGNDataStream) ReadInt8(bitLength uint16) (*int8, error) {
 	return &vo, nil
 }
 
-func (s *PGNDataStream) ReadFloat32() (*float32, error) {
-	v, err := s.ReadUInt32(32)
+func (s *pGNDataStream) readFloat32() (*float32, error) {
+	v, err := s.readUInt32(32)
 	if err != nil {
 		return nil, err
 	}
@@ -234,7 +234,7 @@ func (s *PGNDataStream) ReadFloat32() (*float32, error) {
 	return &vo, nil
 }
 
-func (s *PGNDataStream) ReadBinaryData(bitLength uint16) ([]uint8, error) {
+func (s *pGNDataStream) readBinaryData(bitLength uint16) ([]uint8, error) {
 	// For now, reuse getNumberRaw, 64 bits at a time
 	numBytes := uint16(math.Ceil(float64(bitLength) / 8))
 	arr := make([]uint8, numBytes)
@@ -259,7 +259,7 @@ func (s *PGNDataStream) ReadBinaryData(bitLength uint16) ([]uint8, error) {
 }
 
 // Reference: https://github.com/canboat/canboatjs/blob/b857a503323291b92dd0fe8c41ad6fa0d6bda088/lib/fromPgn.js#L752
-func (s *PGNDataStream) ReadStringStartStopByte() (string, error) {
+func (s *pGNDataStream) readStringStartStopByte() (string, error) {
 	// guaranteed to be aligned on byte boundary
 	startByte, err := s.getNumberRaw(8)
 	if err != nil {
@@ -286,8 +286,8 @@ func (s *PGNDataStream) ReadStringStartStopByte() (string, error) {
 
 // Canboat format "STRING_LAU"
 // NOTE: String has a terminating zero
-func (s *PGNDataStream) ReadStringWithLengthAndControl() (string, error) {
-	lc, err := s.ReadBinaryData(16)
+func (s *pGNDataStream) readStringWithLengthAndControl() (string, error) {
+	lc, err := s.readBinaryData(16)
 	if err != nil {
 		return "", err
 	}
@@ -300,7 +300,7 @@ func (s *PGNDataStream) ReadStringWithLengthAndControl() (string, error) {
 	// Conflicts with this comment:
 	// Control 0 = ASCII, nonzero = UTF8 -- TBD how to address this in the future
 	// control := lc[1]
-	arr, err := s.ReadBinaryData(len)
+	arr, err := s.readBinaryData(len)
 	if err != nil {
 		return "", err
 	}
@@ -309,24 +309,24 @@ func (s *PGNDataStream) ReadStringWithLengthAndControl() (string, error) {
 
 // Canboat format "STRING_LZ"
 // NOTE: string has a terminating zero
-func (s *PGNDataStream) ReadStringWithLength() (string, error) {
+func (s *pGNDataStream) readStringWithLength() (string, error) {
 	// Note -- length does not seem to include length byte here
-	len, err := s.ReadUInt8(8)
+	len, err := s.readUInt8(8)
 	if err != nil {
 		return "", err
 	}
 	if len == nil {
 		return "", fmt.Errorf("null length in ReadStringWithLength")
 	}
-	arr, err := s.ReadBinaryData(uint16(*len * 8))
+	arr, err := s.readBinaryData(uint16(*len * 8))
 	if err != nil {
 		return "", err
 	}
 	return string(arr), nil
 }
 
-func (s *PGNDataStream) ReadFixedString(bitLength uint16) (string, error) {
-	arr, err := s.ReadBinaryData(bitLength)
+func (s *pGNDataStream) readFixedString(bitLength uint16) (string, error) {
+	arr, err := s.readBinaryData(bitLength)
 	if err != nil {
 		return "", err
 	}
@@ -353,7 +353,7 @@ func (s *PGNDataStream) ReadFixedString(bitLength uint16) (string, error) {
 // https://github.com/canboat/canboat/blob/732371ada8b0c6f33652c3ab61f0856abfd9e076/analyzer/pgn.c#L253
 // Except that a bunch of it seems wrong... their examples reference MSB ordering of things but it appears
 // to really be LSB, the way that would make sense...
-func (s *PGNDataStream) getNumberRaw(bitLength uint16) (uint64, error) {
+func (s *pGNDataStream) getNumberRaw(bitLength uint16) (uint64, error) {
 	var ret uint64
 
 	outBitOffset := 0
@@ -387,7 +387,7 @@ func (s *PGNDataStream) getNumberRaw(bitLength uint16) (uint64, error) {
 	return ret, nil
 }
 
-func (s *PGNDataStream) getNullableNumberRaw(bitLength uint16, signed bool) (*uint64, error) {
+func (s *pGNDataStream) getNullableNumberRaw(bitLength uint16, signed bool) (*uint64, error) {
 	v, err := s.getNumberRaw(bitLength)
 	if err != nil {
 		return nil, err
@@ -406,11 +406,11 @@ func (s *PGNDataStream) getNullableNumberRaw(bitLength uint16, signed bool) (*ui
 	return &v, nil
 }
 
-func (s *PGNDataStream) getUnsignedNullableNumber(bitLength uint16) (*uint64, error) {
+func (s *pGNDataStream) getUnsignedNullableNumber(bitLength uint16) (*uint64, error) {
 	return s.getNullableNumberRaw(bitLength, false)
 }
 
-func (s *PGNDataStream) getSignedNullableNumber(bitLength uint16) (*int64, error) {
+func (s *pGNDataStream) getSignedNullableNumber(bitLength uint16) (*int64, error) {
 	v, err := s.getNullableNumberRaw(bitLength, true)
 	if err != nil {
 		return nil, err
@@ -430,73 +430,73 @@ func (s *PGNDataStream) getSignedNullableNumber(bitLength uint16) (*int64, error
 	return &vi, nil
 }
 
-func (s *PGNDataStream) ReadVariableData(pgn uint32, fieldIndex uint8) (interface{}, error) {
+func (s *pGNDataStream) readVariableData(pgn uint32, fieldIndex uint8) (interface{}, error) {
 	if pi, piKnown := pgnInfoLookup[pgn]; !piKnown {
 		p := pi[0].FieldInfo[int(fieldIndex)]
 		switch p.FieldType {
 		case "LOOKUP":
 			if p.BitLength > 32 {
-				return nil, fmt.Errorf("Read for Lookup > 32 bits")
+				return nil, fmt.Errorf("read for lookup > 32 bits")
 			}
-			return s.ReadLookupField(p.BitLength)
+			return s.readLookupField(p.BitLength)
 		case "BITLOOKUP":
 			if p.BitLength > 32 {
-				return nil, fmt.Errorf("Read for BitLookup > 32 bits")
+				return nil, fmt.Errorf("read for bitlookup > 32 bits")
 			}
-			return s.ReadLookupField(p.BitLength)
+			return s.readLookupField(p.BitLength)
 		case "INDIRECT_LOOKUP":
 			if p.BitLength > 32 {
-				return nil, fmt.Errorf("Read for BitLookup > 32 bits")
+				return nil, fmt.Errorf("read for bitlookup > 32 bits")
 			}
-			return s.ReadLookupField(p.BitLength)
+			return s.readLookupField(p.BitLength)
 		case "NUMBER", "TIME", "DATE", "MMSI":
 			if p.Signed {
 				switch {
 				case p.Resolution != 1.0:
-					return s.ReadSignedResolution(p.BitLength, p.Resolution)
+					return s.readSignedResolution(p.BitLength, p.Resolution)
 				case p.BitLength > 32:
-					return s.ReadInt64(p.BitLength)
+					return s.readInt64(p.BitLength)
 				case p.BitLength > 16:
-					return s.ReadInt32(p.BitLength)
+					return s.readInt32(p.BitLength)
 				case p.BitLength > 8:
-					return s.ReadInt16(p.BitLength)
+					return s.readInt16(p.BitLength)
 				default:
-					return s.ReadInt8(p.BitLength)
+					return s.readInt8(p.BitLength)
 				}
 			} else {
 				switch {
 				case p.Resolution != 1.0:
-					return s.ReadUnsignedResolution(p.BitLength, p.Resolution)
+					return s.readUnsignedResolution(p.BitLength, p.Resolution)
 				case p.BitLength > 32:
-					return s.ReadUInt64(p.BitLength)
+					return s.readUInt64(p.BitLength)
 				case p.BitLength > 16:
-					return s.ReadUInt32(p.BitLength)
+					return s.readUInt32(p.BitLength)
 				case p.BitLength > 8:
-					return s.ReadUInt16(p.BitLength)
+					return s.readUInt16(p.BitLength)
 				default:
-					return s.ReadUInt8(p.BitLength)
+					return s.readUInt8(p.BitLength)
 				}
 			}
 		case "FLOAT":
 			if p.BitLength != 32 {
-				return nil, fmt.Errorf("No deserializer for IEEE Float with bitlength non-32")
+				return nil, fmt.Errorf("no deserializer for ieee float with bitlength !=32")
 			}
-			return s.ReadFloat32()
+			return s.readFloat32()
 		case "DECIMAL":
-			return s.ReadBinaryData(p.BitLength)
+			return s.readBinaryData(p.BitLength)
 		case "STRING_VAR":
-			return s.ReadStringStartStopByte()
+			return s.readStringStartStopByte()
 		case "STRING_LAU":
-			return s.ReadStringWithLengthAndControl()
+			return s.readStringWithLengthAndControl()
 		case "STRING_FIX":
-			return s.ReadFixedString(p.BitLength)
+			return s.readFixedString(p.BitLength)
 		case "STRING_LZ":
-			return s.ReadStringWithLength()
+			return s.readStringWithLength()
 		case "BINARY":
 			if p.BitLength > 0 {
-				return s.ReadBinaryData(p.BitLength)
+				return s.readBinaryData(p.BitLength)
 			} else {
-				return nil, fmt.Errorf("Can't support dynamically sized binary data in this context")
+				return nil, fmt.Errorf("can't support dynamically sized binary data in this context")
 			}
 		case "VARIABLE":
 			return nil, fmt.Errorf("can't display recursive variable field ")

@@ -6202,7 +6202,7 @@ func (e WindlassMonitoringConst) String() string {
 	}
 }
 		
-var pgnList = []pgnInfo{
+var pgnList = []PgnInfo{
 	{
 		PGN: 59392,
 		Description: "ISO Acknowledgement",
@@ -6261,7 +6261,7 @@ var pgnList = []pgnInfo{
 			},
 		2: { 56,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -6423,7 +6423,7 @@ var pgnList = []pgnInfo{
 			},
 		2: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -7422,7 +7422,7 @@ var pgnList = []pgnInfo{
 		FieldInfo: map[int]FieldDescriptor{
 		1: { 21,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -7775,7 +7775,7 @@ var pgnList = []pgnInfo{
 			},
 		4: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -7799,7 +7799,7 @@ var pgnList = []pgnInfo{
 			},
 		8: { 16,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -8026,7 +8026,7 @@ var pgnList = []pgnInfo{
 			},
 		4: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -8067,7 +8067,7 @@ var pgnList = []pgnInfo{
 			},
 		4: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -8242,19 +8242,19 @@ var pgnList = []pgnInfo{
 			},
 		4: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
 		5: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
 		6: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -8768,7 +8768,7 @@ var pgnList = []pgnInfo{
 			},
 		6: { 24,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -8786,13 +8786,13 @@ var pgnList = []pgnInfo{
 			},
 		9: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
 		10: { 80,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -9154,7 +9154,7 @@ var pgnList = []pgnInfo{
 			},
 		9: { 112,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -12275,7 +12275,7 @@ var pgnList = []pgnInfo{
 		FieldInfo: map[int]FieldDescriptor{
 		1: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -12327,7 +12327,7 @@ var pgnList = []pgnInfo{
 		FieldInfo: map[int]FieldDescriptor{
 		1: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -12762,7 +12762,7 @@ var pgnList = []pgnInfo{
 		
 		7: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -13240,7 +13240,7 @@ var pgnList = []pgnInfo{
 			},
 		11: { 19,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -13354,7 +13354,7 @@ var pgnList = []pgnInfo{
 			},
 		11: { 19,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -13669,7 +13669,7 @@ var pgnList = []pgnInfo{
 		
 		20: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -14279,7 +14279,7 @@ var pgnList = []pgnInfo{
 			},
 		3: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -14903,7 +14903,7 @@ var pgnList = []pgnInfo{
 			},
 		12: { 0,
 			true,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -14967,7 +14967,7 @@ var pgnList = []pgnInfo{
 			},
 		10: { 19,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -15177,7 +15177,7 @@ var pgnList = []pgnInfo{
 			},
 		12: { 0,
 			true,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -15224,14 +15224,14 @@ var pgnList = []pgnInfo{
 			},
 		8: { 2,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
 		
 		10: { 2,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -15278,7 +15278,7 @@ var pgnList = []pgnInfo{
 			},
 		8: { 0,
 			true,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -15353,7 +15353,7 @@ var pgnList = []pgnInfo{
 			},
 		11: { 19,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -15371,7 +15371,7 @@ var pgnList = []pgnInfo{
 			},
 		14: { 8,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -16544,7 +16544,7 @@ var pgnList = []pgnInfo{
 		
 		4: { 12,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -18639,7 +18639,7 @@ var pgnList = []pgnInfo{
 			},
 		5: { 48,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -19861,7 +19861,7 @@ var pgnList = []pgnInfo{
 			},
 		6: { 1736,
 			false,
-			"[]uint8",
+			"interface{}",
 			1,
 			false,
 			},
@@ -22974,34 +22974,34 @@ type IsoAcknowledgement struct {
 	GroupFunction *uint8
 	Pgn *uint32
 }
-func DecodeIsoAcknowledgement(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoAcknowledgement(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val IsoAcknowledgement
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAcknowledgement-Control: %w", err)
 	} else {
 		val.Control = IsoControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAcknowledgement-GroupFunction: %w", err)
 	} else {
 		val.GroupFunction = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(24)
-	if stream.IsEOF() {
+	stream.skipBits(24)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAcknowledgement-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23011,14 +23011,14 @@ type IsoRequest struct {
 	Info PacketInfo
 	Pgn *uint32
 }
-func DecodeIsoRequest(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoRequest(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val IsoRequest
-	val.Info = info
-	if v, err := stream.ReadUInt32(24); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoRequest-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23027,24 +23027,24 @@ func DecodeIsoRequest(info PacketInfo, stream *PGNDataStream) (interface{}, erro
 type IsoTransportProtocolDataTransfer struct {
 	Info PacketInfo
 	Sid *uint8
-	Data []uint8
+	Data interface{}
 }
-func DecodeIsoTransportProtocolDataTransfer(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolDataTransfer(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val IsoTransportProtocolDataTransfer
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolDataTransfer-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(56); err != nil {
+	if v, err := stream.readBinaryData(56); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolDataTransfer-Data: %w", err)
 	} else {
 		val.Data = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23058,49 +23058,49 @@ type IsoTransportProtocolConnectionManagementRequestToSend struct {
 	PacketsReply *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementRequestToSend(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolConnectionManagementRequestToSend(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val IsoTransportProtocolConnectionManagementRequestToSend
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-GroupFunctionCode: %w", err)
 	} else {
 		if v != 16 {
 			return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementRequestToSend-GroupFunctionCode: Expected %d != %d", 16, v)
 		}
 		val.GroupFunctionCode = IsoCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-MessageSize: %w", err)
 	} else {
 		val.MessageSize = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-Packets: %w", err)
 	} else {
 		val.Packets = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-PacketsReply: %w", err)
 	} else {
 		val.PacketsReply = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23113,45 +23113,45 @@ type IsoTransportProtocolConnectionManagementClearToSend struct {
 	NextSid *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementClearToSend(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolConnectionManagementClearToSend(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val IsoTransportProtocolConnectionManagementClearToSend
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-GroupFunctionCode: %w", err)
 	} else {
 		if v != 17 {
 			return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementClearToSend-GroupFunctionCode: Expected %d != %d", 17, v)
 		}
 		val.GroupFunctionCode = IsoCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-MaxPackets: %w", err)
 	} else {
 		val.MaxPackets = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-NextSid: %w", err)
 	} else {
 		val.NextSid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(16)
-	if stream.IsEOF() {
+	stream.skipBits(16)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23164,45 +23164,45 @@ type IsoTransportProtocolConnectionManagementEndOfMessage struct {
 	TotalNumberOfFramesReceived *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementEndOfMessage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolConnectionManagementEndOfMessage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val IsoTransportProtocolConnectionManagementEndOfMessage
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-GroupFunctionCode: %w", err)
 	} else {
 		if v != 19 {
 			return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementEndOfMessage-GroupFunctionCode: Expected %d != %d", 19, v)
 		}
 		val.GroupFunctionCode = IsoCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-TotalMessageSize: %w", err)
 	} else {
 		val.TotalMessageSize = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-TotalNumberOfFramesReceived: %w", err)
 	} else {
 		val.TotalNumberOfFramesReceived = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23215,45 +23215,45 @@ type IsoTransportProtocolConnectionManagementBroadcastAnnounce struct {
 	Packets *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val IsoTransportProtocolConnectionManagementBroadcastAnnounce
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-GroupFunctionCode: %w", err)
 	} else {
 		if v != 32 {
 			return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-GroupFunctionCode: Expected %d != %d", 32, v)
 		}
 		val.GroupFunctionCode = IsoCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-MessageSize: %w", err)
 	} else {
 		val.MessageSize = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-Packets: %w", err)
 	} else {
 		val.Packets = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23262,40 +23262,40 @@ func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(info Packet
 type IsoTransportProtocolConnectionManagementAbort struct {
 	Info PacketInfo
 	GroupFunctionCode IsoCommandConst
-	Reason []uint8
+	Reason interface{}
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementAbort(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolConnectionManagementAbort(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val IsoTransportProtocolConnectionManagementAbort
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementAbort-GroupFunctionCode: %w", err)
 	} else {
 		if v != 255 {
 			return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementAbort-GroupFunctionCode: Expected %d != %d", 255, v)
 		}
 		val.GroupFunctionCode = IsoCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementAbort-Reason: %w", err)
 	} else {
 		val.Reason = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(16)
-	if stream.IsEOF() {
+	stream.skipBits(16)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementAbort-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23312,79 +23312,79 @@ type IsoAddressClaim struct {
 	SystemInstance *uint8
 	IndustryGroup IndustryCodeConst
 }
-func DecodeIsoAddressClaim(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoAddressClaim(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val IsoAddressClaim
-	val.Info = info
-	if v, err := stream.ReadUInt32(21); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt32(21); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAddressClaim-UniqueNumber: %w", err)
 	} else {
 		val.UniqueNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(11); err != nil {
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAddressClaim-ManufacturerCode: %w", err)
 	} else {
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(3); err != nil {
+	if v, err := stream.readUInt8(3); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAddressClaim-DeviceInstanceLower: %w", err)
 	} else {
 		val.DeviceInstanceLower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(5); err != nil {
+	if v, err := stream.readUInt8(5); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAddressClaim-DeviceInstanceUpper: %w", err)
 	} else {
 		val.DeviceInstanceUpper = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAddressClaim-DeviceFunction: %w", err)
 	} else {
 		val.DeviceFunction = DeviceFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(7); err != nil {
+	if v, err := stream.readLookupField(7); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAddressClaim-DeviceClass: %w", err)
 	} else {
 		val.DeviceClass = DeviceClassConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAddressClaim-SystemInstance: %w", err)
 	} else {
 		val.SystemInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoAddressClaim-IndustryGroup: %w", err)
 	} else {
 		val.IndustryGroup = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -23398,67 +23398,67 @@ type SeatalkWirelessKeypadLightControl struct {
 	WirelessSetting *uint8
 	WiredSetting *uint8
 }
-func DecodeSeatalkWirelessKeypadLightControl(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkWirelessKeypadLightControl(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkWirelessKeypadLightControl
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadLightControl-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkWirelessKeypadLightControl-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadLightControl-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkWirelessKeypadLightControl-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadLightControl-ProprietaryId: %w", err)
 	} else {
 		if v != nil && *v != 1 {
 			return nil, fmt.Errorf("match failed for SeatalkWirelessKeypadLightControl-ProprietaryId: Expected %d != %d", 1, *v)
 		}
 		val.ProprietaryId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadLightControl-Variant: %w", err)
 	} else {
 		val.Variant = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadLightControl-WirelessSetting: %w", err)
 	} else {
 		val.WirelessSetting = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadLightControl-WiredSetting: %w", err)
 	} else {
 		val.WiredSetting = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23472,56 +23472,56 @@ type SeatalkWirelessKeypadControl struct {
 	Variant *uint8
 	BeepControl *uint8
 }
-func DecodeSeatalkWirelessKeypadControl(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkWirelessKeypadControl(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkWirelessKeypadControl
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadControl-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkWirelessKeypadControl-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadControl-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkWirelessKeypadControl-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadControl-Pid: %w", err)
 	} else {
 		val.Pid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadControl-Variant: %w", err)
 	} else {
 		val.Variant = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkWirelessKeypadControl-BeepControl: %w", err)
 	} else {
 		val.BeepControl = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23534,48 +23534,48 @@ type VictronBatteryRegister struct {
 	RegisterId *uint16
 	Payload *uint32
 }
-func DecodeVictronBatteryRegister(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeVictronBatteryRegister(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val VictronBatteryRegister
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for VictronBatteryRegister-ManufacturerCode: %w", err)
 	} else {
 		if v != 358 {
 			return nil, fmt.Errorf("match failed for VictronBatteryRegister-ManufacturerCode: Expected %d != %d", 358, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for VictronBatteryRegister-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for VictronBatteryRegister-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for VictronBatteryRegister-RegisterId: %w", err)
 	} else {
 		val.RegisterId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for VictronBatteryRegister-Payload: %w", err)
 	} else {
 		val.Payload = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23587,30 +23587,30 @@ type Bus1PhaseCBasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1PhaseCBasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBus1PhaseCBasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Bus1PhaseCBasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseCBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseCBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseCBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23622,30 +23622,30 @@ type Bus1PhaseBBasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1PhaseBBasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBus1PhaseBBasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Bus1PhaseBBasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseBBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseBBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseBBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23657,30 +23657,30 @@ type Bus1PhaseABasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1PhaseABasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBus1PhaseABasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Bus1PhaseABasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseABasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseABasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseABasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23692,30 +23692,30 @@ type Bus1AverageBasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1AverageBasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBus1AverageBasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Bus1AverageBasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1AverageBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1AverageBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1AverageBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23726,22 +23726,22 @@ type UtilityTotalAcEnergy struct {
 	TotalEnergyExport *uint32
 	TotalEnergyImport *uint32
 }
-func DecodeUtilityTotalAcEnergy(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityTotalAcEnergy(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityTotalAcEnergy
-	val.Info = info
-	if v, err := stream.ReadUInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcEnergy-TotalEnergyExport: %w", err)
 	} else {
 		val.TotalEnergyExport = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcEnergy-TotalEnergyImport: %w", err)
 	} else {
 		val.TotalEnergyImport = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23753,30 +23753,30 @@ type UtilityPhaseCAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityPhaseCAcReactivePower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseCAcReactivePower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityPhaseCAcReactivePower
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCAcReactivePower-PowerFactorLagging: %w", err)
 	} else {
 		val.PowerFactorLagging = PowerFactorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23787,22 +23787,22 @@ type UtilityPhaseCAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeUtilityPhaseCAcPower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseCAcPower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityPhaseCAcPower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23815,38 +23815,38 @@ type UtilityPhaseCBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityPhaseCBasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseCBasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityPhaseCBasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23858,30 +23858,30 @@ type UtilityPhaseBAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityPhaseBAcReactivePower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseBAcReactivePower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityPhaseBAcReactivePower
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBAcReactivePower-PowerFactorLagging: %w", err)
 	} else {
 		val.PowerFactorLagging = PowerFactorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23892,22 +23892,22 @@ type UtilityPhaseBAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeUtilityPhaseBAcPower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseBAcPower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityPhaseBAcPower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23920,38 +23920,38 @@ type UtilityPhaseBBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityPhaseBBasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseBBasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityPhaseBBasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23963,30 +23963,30 @@ type UtilityPhaseAAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityPhaseAAcReactivePower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseAAcReactivePower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityPhaseAAcReactivePower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseAAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseAAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseAAcReactivePower-PowerFactorLagging: %w", err)
 	} else {
 		val.PowerFactorLagging = PowerFactorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -23997,22 +23997,22 @@ type UtilityPhaseAAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeUtilityPhaseAAcPower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseAAcPower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityPhaseAAcPower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseAAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseAAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24025,38 +24025,38 @@ type UtilityPhaseABasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityPhaseABasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseABasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityPhaseABasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24068,30 +24068,30 @@ type UtilityTotalAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityTotalAcReactivePower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityTotalAcReactivePower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityTotalAcReactivePower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcReactivePower-PowerFactorLagging: %w", err)
 	} else {
 		val.PowerFactorLagging = PowerFactorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24102,22 +24102,22 @@ type UtilityTotalAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeUtilityTotalAcPower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityTotalAcPower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityTotalAcPower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24130,38 +24130,38 @@ type UtilityAverageBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityAverageBasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityAverageBasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UtilityAverageBasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24172,22 +24172,22 @@ type GeneratorTotalAcEnergy struct {
 	TotalEnergyExport *uint32
 	TotalEnergyImport *uint32
 }
-func DecodeGeneratorTotalAcEnergy(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorTotalAcEnergy(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorTotalAcEnergy
-	val.Info = info
-	if v, err := stream.ReadUInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcEnergy-TotalEnergyExport: %w", err)
 	} else {
 		val.TotalEnergyExport = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcEnergy-TotalEnergyImport: %w", err)
 	} else {
 		val.TotalEnergyImport = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24199,30 +24199,30 @@ type GeneratorPhaseCAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorPhaseCAcReactivePower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseCAcReactivePower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorPhaseCAcReactivePower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcReactivePower-PowerFactorLagging: %w", err)
 	} else {
 		val.PowerFactorLagging = PowerFactorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24233,22 +24233,22 @@ type GeneratorPhaseCAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeGeneratorPhaseCAcPower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseCAcPower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorPhaseCAcPower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24261,38 +24261,38 @@ type GeneratorPhaseCBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorPhaseCBasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseCBasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorPhaseCBasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24304,30 +24304,30 @@ type GeneratorPhaseBAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorPhaseBAcReactivePower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseBAcReactivePower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorPhaseBAcReactivePower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcReactivePower-PowerFactorLagging: %w", err)
 	} else {
 		val.PowerFactorLagging = PowerFactorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24338,22 +24338,22 @@ type GeneratorPhaseBAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeGeneratorPhaseBAcPower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseBAcPower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorPhaseBAcPower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24366,38 +24366,38 @@ type GeneratorPhaseBBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorPhaseBBasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseBBasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorPhaseBBasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24409,30 +24409,30 @@ type GeneratorPhaseAAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorPhaseAAcReactivePower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseAAcReactivePower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorPhaseAAcReactivePower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcReactivePower-PowerFactorLagging: %w", err)
 	} else {
 		val.PowerFactorLagging = PowerFactorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24443,22 +24443,22 @@ type GeneratorPhaseAAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeGeneratorPhaseAAcPower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseAAcPower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorPhaseAAcPower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24471,38 +24471,38 @@ type GeneratorPhaseABasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorPhaseABasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseABasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorPhaseABasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24514,30 +24514,30 @@ type GeneratorTotalAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorTotalAcReactivePower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorTotalAcReactivePower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorTotalAcReactivePower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcReactivePower-PowerFactorLagging: %w", err)
 	} else {
 		val.PowerFactorLagging = PowerFactorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24548,22 +24548,22 @@ type GeneratorTotalAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeGeneratorTotalAcPower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorTotalAcPower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorTotalAcPower
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24576,38 +24576,38 @@ type GeneratorAverageBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorAverageBasicAcQuantities(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorAverageBasicAcQuantities(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GeneratorAverageBasicAcQuantities
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
 	} else {
 		val.LineLineAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
 	} else {
 		val.LineNeutralAcRmsVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24615,7 +24615,7 @@ func DecodeGeneratorAverageBasicAcQuantities(info PacketInfo, stream *PGNDataStr
 }
 type IsoCommandedAddress struct {
 	Info PacketInfo
-	UniqueNumber []uint8
+	UniqueNumber interface{}
 	ManufacturerCode ManufacturerCodeConst
 	DeviceInstanceLower *uint8
 	DeviceInstanceUpper *uint8
@@ -24625,86 +24625,86 @@ type IsoCommandedAddress struct {
 	IndustryCode IndustryCodeConst
 	NewSourceAddress *uint8
 }
-func DecodeIsoCommandedAddress(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoCommandedAddress(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val IsoCommandedAddress
-	val.Info = info
-	if v, err := stream.ReadBinaryData(21); err != nil {
+	val.Info = Info
+	if v, err := stream.readBinaryData(21); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoCommandedAddress-UniqueNumber: %w", err)
 	} else {
 		val.UniqueNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(11); err != nil {
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoCommandedAddress-ManufacturerCode: %w", err)
 	} else {
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(3); err != nil {
+	if v, err := stream.readUInt8(3); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoCommandedAddress-DeviceInstanceLower: %w", err)
 	} else {
 		val.DeviceInstanceLower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(5); err != nil {
+	if v, err := stream.readUInt8(5); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoCommandedAddress-DeviceInstanceUpper: %w", err)
 	} else {
 		val.DeviceInstanceUpper = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoCommandedAddress-DeviceFunction: %w", err)
 	} else {
 		val.DeviceFunction = DeviceFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(7); err != nil {
+	if v, err := stream.readLookupField(7); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoCommandedAddress-DeviceClass: %w", err)
 	} else {
 		val.DeviceClass = DeviceClassConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoCommandedAddress-SystemInstance: %w", err)
 	} else {
 		val.SystemInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoCommandedAddress-IndustryCode: %w", err)
 	} else {
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for IsoCommandedAddress-NewSourceAddress: %w", err)
 	} else {
 		val.NewSourceAddress = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24716,45 +24716,45 @@ type FurunoHeave struct {
 	IndustryCode IndustryCodeConst
 	Heave *float32
 }
-func DecodeFurunoHeave(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoHeave(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FurunoHeave
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeave-ManufacturerCode: %w", err)
 	} else {
 		if v != 1855 {
 			return nil, fmt.Errorf("match failed for FurunoHeave-ManufacturerCode: Expected %d != %d", 1855, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeave-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FurunoHeave-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeave-Heave: %w", err)
 	} else {
 		val.Heave = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(16)
-	if stream.IsEOF() {
+	stream.skipBits(16)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -24767,61 +24767,61 @@ type MaretronProprietaryDcBreakerCurrent struct {
 	IndicatorNumber *uint8
 	BreakerCurrent *float32
 }
-func DecodeMaretronProprietaryDcBreakerCurrent(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronProprietaryDcBreakerCurrent(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val MaretronProprietaryDcBreakerCurrent
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-ManufacturerCode: %w", err)
 	} else {
 		if v != 137 {
 			return nil, fmt.Errorf("match failed for MaretronProprietaryDcBreakerCurrent-ManufacturerCode: Expected %d != %d", 137, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for MaretronProprietaryDcBreakerCurrent-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-BankInstance: %w", err)
 	} else {
 		val.BankInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-IndicatorNumber: %w", err)
 	} else {
 		val.IndicatorNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-BreakerCurrent: %w", err)
 	} else {
 		val.BreakerCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(16)
-	if stream.IsEOF() {
+	stream.skipBits(16)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -24832,40 +24832,40 @@ type AirmarBootStateAcknowledgment struct {
 	IndustryCode IndustryCodeConst
 	BootState BootStateConst
 }
-func DecodeAirmarBootStateAcknowledgment(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarBootStateAcknowledgment(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarBootStateAcknowledgment
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarBootStateAcknowledgment-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarBootStateAcknowledgment-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarBootStateAcknowledgment-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarBootStateAcknowledgment-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarBootStateAcknowledgment-BootState: %w", err)
 	} else {
 		val.BootState = BootStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24878,48 +24878,48 @@ type LowranceTemperature struct {
 	TemperatureSource TemperatureSourceConst
 	ActualTemperature *float32
 }
-func DecodeLowranceTemperature(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLowranceTemperature(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LowranceTemperature
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceTemperature-ManufacturerCode: %w", err)
 	} else {
 		if v != 140 {
 			return nil, fmt.Errorf("match failed for LowranceTemperature-ManufacturerCode: Expected %d != %d", 140, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceTemperature-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for LowranceTemperature-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceTemperature-TemperatureSource: %w", err)
 	} else {
 		val.TemperatureSource = TemperatureSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceTemperature-ActualTemperature: %w", err)
 	} else {
 		val.ActualTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -24936,80 +24936,80 @@ type ChetcoDimmer struct {
 	Dimmer4 *uint8
 	Control *uint8
 }
-func DecodeChetcoDimmer(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeChetcoDimmer(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ChetcoDimmer
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for ChetcoDimmer-ManufacturerCode: %w", err)
 	} else {
 		if v != 409 {
 			return nil, fmt.Errorf("match failed for ChetcoDimmer-ManufacturerCode: Expected %d != %d", 409, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for ChetcoDimmer-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for ChetcoDimmer-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChetcoDimmer-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChetcoDimmer-Dimmer1: %w", err)
 	} else {
 		val.Dimmer1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChetcoDimmer-Dimmer2: %w", err)
 	} else {
 		val.Dimmer2 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChetcoDimmer-Dimmer3: %w", err)
 	} else {
 		val.Dimmer3 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChetcoDimmer-Dimmer4: %w", err)
 	} else {
 		val.Dimmer4 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChetcoDimmer-Control: %w", err)
 	} else {
 		val.Control = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25020,32 +25020,32 @@ type AirmarBootStateRequest struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeAirmarBootStateRequest(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarBootStateRequest(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarBootStateRequest
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarBootStateRequest-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarBootStateRequest-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarBootStateRequest-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarBootStateRequest-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25059,60 +25059,60 @@ type AirmarAccessLevel struct {
 	AccessLevel AccessLevelConst
 	AccessSeedKey *uint32
 }
-func DecodeAirmarAccessLevel(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarAccessLevel(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarAccessLevel
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAccessLevel-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarAccessLevel-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAccessLevel-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarAccessLevel-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(3); err != nil {
+	if v, err := stream.readUInt8(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAccessLevel-FormatCode: %w", err)
 	} else {
 		val.FormatCode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAccessLevel-AccessLevel: %w", err)
 	} else {
 		val.AccessLevel = AccessLevelConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAccessLevel-AccessSeedKey: %w", err)
 	} else {
 		val.AccessSeedKey = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25123,32 +25123,32 @@ type SimnetConfigureTemperatureSensor struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetConfigureTemperatureSensor(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetConfigureTemperatureSensor(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetConfigureTemperatureSensor
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetConfigureTemperatureSensor-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetConfigureTemperatureSensor-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetConfigureTemperatureSensor-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetConfigureTemperatureSensor-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25158,78 +25158,78 @@ type SeatalkAlarm struct {
 	Info PacketInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Sid []uint8
+	Sid interface{}
 	AlarmStatus SeatalkAlarmStatusConst
 	AlarmId SeatalkAlarmIdConst
 	AlarmGroup SeatalkAlarmGroupConst
-	AlarmPriority []uint8
+	AlarmPriority interface{}
 }
-func DecodeSeatalkAlarm(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkAlarm(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkAlarm
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkAlarm-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkAlarm-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkAlarm-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkAlarm-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkAlarm-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkAlarm-AlarmStatus: %w", err)
 	} else {
 		val.AlarmStatus = SeatalkAlarmStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkAlarm-AlarmId: %w", err)
 	} else {
 		val.AlarmId = SeatalkAlarmIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkAlarm-AlarmGroup: %w", err)
 	} else {
 		val.AlarmGroup = SeatalkAlarmGroupConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(16); err != nil {
+	if v, err := stream.readBinaryData(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkAlarm-AlarmPriority: %w", err)
 	} else {
 		val.AlarmPriority = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25240,32 +25240,32 @@ type SimnetTrimTabSensorCalibration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetTrimTabSensorCalibration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetTrimTabSensorCalibration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetTrimTabSensorCalibration
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetTrimTabSensorCalibration-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetTrimTabSensorCalibration-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetTrimTabSensorCalibration-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetTrimTabSensorCalibration-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25276,32 +25276,32 @@ type SimnetPaddleWheelSpeedConfiguration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetPaddleWheelSpeedConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetPaddleWheelSpeedConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetPaddleWheelSpeedConfiguration
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetPaddleWheelSpeedConfiguration-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetPaddleWheelSpeedConfiguration-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetPaddleWheelSpeedConfiguration-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetPaddleWheelSpeedConfiguration-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25312,32 +25312,32 @@ type SimnetClearFluidLevelWarnings struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetClearFluidLevelWarnings(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetClearFluidLevelWarnings(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetClearFluidLevelWarnings
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetClearFluidLevelWarnings-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetClearFluidLevelWarnings-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetClearFluidLevelWarnings-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetClearFluidLevelWarnings-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25348,32 +25348,32 @@ type SimnetLgc2000Configuration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetLgc2000Configuration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetLgc2000Configuration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetLgc2000Configuration
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetLgc2000Configuration-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetLgc2000Configuration-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetLgc2000Configuration-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetLgc2000Configuration-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25387,61 +25387,61 @@ type NavicoWirelessBatteryStatus struct {
 	BatteryStatus *uint8
 	BatteryChargeStatus *uint8
 }
-func DecodeNavicoWirelessBatteryStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavicoWirelessBatteryStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NavicoWirelessBatteryStatus
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoWirelessBatteryStatus-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for NavicoWirelessBatteryStatus-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoWirelessBatteryStatus-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for NavicoWirelessBatteryStatus-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoWirelessBatteryStatus-Status: %w", err)
 	} else {
 		val.Status = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoWirelessBatteryStatus-BatteryStatus: %w", err)
 	} else {
 		val.BatteryStatus = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoWirelessBatteryStatus-BatteryChargeStatus: %w", err)
 	} else {
 		val.BatteryChargeStatus = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(24)
-	if stream.IsEOF() {
+	stream.skipBits(24)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -25453,53 +25453,53 @@ type NavicoWirelessSignalStatus struct {
 	Unknown *uint8
 	SignalStrength *uint8
 }
-func DecodeNavicoWirelessSignalStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavicoWirelessSignalStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NavicoWirelessSignalStatus
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoWirelessSignalStatus-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for NavicoWirelessSignalStatus-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoWirelessSignalStatus-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for NavicoWirelessSignalStatus-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoWirelessSignalStatus-Unknown: %w", err)
 	} else {
 		val.Unknown = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoWirelessSignalStatus-SignalStrength: %w", err)
 	} else {
 		val.SignalStrength = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(24)
-	if stream.IsEOF() {
+	stream.skipBits(24)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -25511,53 +25511,53 @@ type SeatalkPilotWindDatum struct {
 	WindDatum *float32
 	RollingAverageWindAngle *float32
 }
-func DecodeSeatalkPilotWindDatum(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkPilotWindDatum(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkPilotWindDatum
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotWindDatum-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkPilotWindDatum-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotWindDatum-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkPilotWindDatum-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotWindDatum-WindDatum: %w", err)
 	} else {
 		val.WindDatum = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotWindDatum-RollingAverageWindAngle: %w", err)
 	} else {
 		val.RollingAverageWindAngle = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(16)
-	if stream.IsEOF() {
+	stream.skipBits(16)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -25566,65 +25566,65 @@ type SeatalkPilotHeading struct {
 	Info PacketInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Sid []uint8
+	Sid interface{}
 	HeadingTrue *float32
 	HeadingMagnetic *float32
 }
-func DecodeSeatalkPilotHeading(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkPilotHeading(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkPilotHeading
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotHeading-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkPilotHeading-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotHeading-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkPilotHeading-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotHeading-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotHeading-HeadingTrue: %w", err)
 	} else {
 		val.HeadingTrue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotHeading-HeadingMagnetic: %w", err)
 	} else {
 		val.HeadingMagnetic = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -25633,65 +25633,65 @@ type SeatalkPilotLockedHeading struct {
 	Info PacketInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Sid []uint8
+	Sid interface{}
 	TargetHeadingTrue *float32
 	TargetHeadingMagnetic *float32
 }
-func DecodeSeatalkPilotLockedHeading(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkPilotLockedHeading(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkPilotLockedHeading
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkPilotLockedHeading-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkPilotLockedHeading-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-TargetHeadingTrue: %w", err)
 	} else {
 		val.TargetHeadingTrue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-TargetHeadingMagnetic: %w", err)
 	} else {
 		val.TargetHeadingMagnetic = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -25703,53 +25703,53 @@ type SeatalkSilenceAlarm struct {
 	AlarmId SeatalkAlarmIdConst
 	AlarmGroup SeatalkAlarmGroupConst
 }
-func DecodeSeatalkSilenceAlarm(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkSilenceAlarm(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkSilenceAlarm
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkSilenceAlarm-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkSilenceAlarm-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkSilenceAlarm-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkSilenceAlarm-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkSilenceAlarm-AlarmId: %w", err)
 	} else {
 		val.AlarmId = SeatalkAlarmIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkSilenceAlarm-AlarmGroup: %w", err)
 	} else {
 		val.AlarmGroup = SeatalkAlarmGroupConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(32)
-	if stream.IsEOF() {
+	stream.skipBits(32)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -25765,84 +25765,84 @@ type SeatalkKeypadMessage struct {
 	SecondKeyState *uint8
 	EncoderPosition *uint8
 }
-func DecodeSeatalkKeypadMessage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkKeypadMessage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkKeypadMessage
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadMessage-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkKeypadMessage-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadMessage-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkKeypadMessage-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadMessage-ProprietaryId: %w", err)
 	} else {
 		val.ProprietaryId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadMessage-FirstKey: %w", err)
 	} else {
 		val.FirstKey = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadMessage-SecondKey: %w", err)
 	} else {
 		val.SecondKey = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadMessage-FirstKeyState: %w", err)
 	} else {
 		val.FirstKeyState = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadMessage-SecondKeyState: %w", err)
 	} else {
 		val.SecondKeyState = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadMessage-EncoderPosition: %w", err)
 	} else {
 		val.EncoderPosition = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25856,56 +25856,56 @@ type SeatalkKeypadHeartbeat struct {
 	Variant *uint8
 	Status *uint8
 }
-func DecodeSeatalkKeypadHeartbeat(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkKeypadHeartbeat(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkKeypadHeartbeat
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadHeartbeat-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkKeypadHeartbeat-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadHeartbeat-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkKeypadHeartbeat-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadHeartbeat-ProprietaryId: %w", err)
 	} else {
 		val.ProprietaryId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadHeartbeat-Variant: %w", err)
 	} else {
 		val.Variant = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkKeypadHeartbeat-Status: %w", err)
 	} else {
 		val.Status = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -25915,65 +25915,65 @@ type SeatalkPilotMode struct {
 	Info PacketInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	PilotMode []uint8
-	SubMode []uint8
-	PilotModeData []uint8
+	PilotMode interface{}
+	SubMode interface{}
+	PilotModeData interface{}
 }
-func DecodeSeatalkPilotMode(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkPilotMode(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkPilotMode
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotMode-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkPilotMode-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotMode-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkPilotMode-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotMode-PilotMode: %w", err)
 	} else {
 		val.PilotMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotMode-SubMode: %w", err)
 	} else {
 		val.SubMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotMode-PilotModeData: %w", err)
 	} else {
 		val.PilotModeData = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(24)
-	if stream.IsEOF() {
+	stream.skipBits(24)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -25985,48 +25985,48 @@ type AirmarDepthQualityFactor struct {
 	Sid *uint8
 	DepthQualityFactor AirmarDepthQualityFactorConst
 }
-func DecodeAirmarDepthQualityFactor(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarDepthQualityFactor(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarDepthQualityFactor
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDepthQualityFactor-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarDepthQualityFactor-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDepthQualityFactor-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarDepthQualityFactor-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDepthQualityFactor-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDepthQualityFactor-DepthQualityFactor: %w", err)
 	} else {
 		val.DepthQualityFactor = AirmarDepthQualityFactorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -26040,61 +26040,61 @@ type AirmarSpeedPulseCount struct {
 	DurationOfInterval *float32
 	NumberOfPulsesReceived *uint16
 }
-func DecodeAirmarSpeedPulseCount(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarSpeedPulseCount(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarSpeedPulseCount
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarSpeedPulseCount-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarSpeedPulseCount-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-DurationOfInterval: %w", err)
 	} else {
 		val.DurationOfInterval = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-NumberOfPulsesReceived: %w", err)
 	} else {
 		val.NumberOfPulsesReceived = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -26107,61 +26107,61 @@ type AirmarDeviceInformation struct {
 	InternalDeviceTemperature *float32
 	SupplyVoltage *float32
 }
-func DecodeAirmarDeviceInformation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarDeviceInformation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarDeviceInformation
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDeviceInformation-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarDeviceInformation-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDeviceInformation-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarDeviceInformation-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDeviceInformation-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDeviceInformation-InternalDeviceTemperature: %w", err)
 	} else {
 		val.InternalDeviceTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDeviceInformation-SupplyVoltage: %w", err)
 	} else {
 		val.SupplyVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -26171,32 +26171,32 @@ type SimnetAutopilotMode struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetAutopilotMode(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetAutopilotMode(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetAutopilotMode
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAutopilotMode-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetAutopilotMode-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAutopilotMode-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetAutopilotMode-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -26213,55 +26213,55 @@ type NmeaRequestGroupFunction struct {
 }
 type NmeaRequestGroupFunctionRepeating1 struct {
 	Parameter *uint8
-	Value []uint8
+	Value interface{}
 }
-func DecodeNmeaRequestGroupFunction(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaRequestGroupFunction(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NmeaRequestGroupFunction
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-FunctionCode: %w", err)
 	} else {
 		if v != 0 {
 			return nil, fmt.Errorf("match failed for NmeaRequestGroupFunction-FunctionCode: Expected %d != %d", 0, v)
 		}
 		val.FunctionCode = GroupFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-TransmissionInterval: %w", err)
 	} else {
 		val.TransmissionInterval = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-TransmissionIntervalOffset: %w", err)
 	} else {
 		val.TransmissionIntervalOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -26272,19 +26272,19 @@ func DecodeNmeaRequestGroupFunction(info PacketInfo, stream *PGNDataStream) (int
 	i := 0 
 	for {
 		var rep NmeaRequestGroupFunctionRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
 		}
-		if v, err := stream.ReadBinaryData(0); err != nil {
-			return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-Value: %w", err)
-		} else {
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else  if v != nil {
 			rep.Value = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -26306,51 +26306,51 @@ type NmeaCommandGroupFunction struct {
 }
 type NmeaCommandGroupFunctionRepeating1 struct {
 	Parameter *uint8
-	Value []uint8
+	Value interface{}
 }
-func DecodeNmeaCommandGroupFunction(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaCommandGroupFunction(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NmeaCommandGroupFunction
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-FunctionCode: %w", err)
 	} else {
 		if v != 1 {
 			return nil, fmt.Errorf("match failed for NmeaCommandGroupFunction-FunctionCode: Expected %d != %d", 1, v)
 		}
 		val.FunctionCode = GroupFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Priority: %w", err)
 	} else {
 		val.Priority = PriorityConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -26361,19 +26361,19 @@ func DecodeNmeaCommandGroupFunction(info PacketInfo, stream *PGNDataStream) (int
 	i := 0 
 	for {
 		var rep NmeaCommandGroupFunctionRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
 		}
-		if v, err := stream.ReadBinaryData(0); err != nil {
-			return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Value: %w", err)
-		} else {
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else  if v != nil {
 			rep.Value = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -26397,53 +26397,53 @@ type NmeaAcknowledgeGroupFunction struct {
 type NmeaAcknowledgeGroupFunctionRepeating1 struct {
 	Parameter ParameterFieldConst
 }
-func DecodeNmeaAcknowledgeGroupFunction(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaAcknowledgeGroupFunction(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NmeaAcknowledgeGroupFunction
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-FunctionCode: %w", err)
 	} else {
 		if v != 2 {
 			return nil, fmt.Errorf("match failed for NmeaAcknowledgeGroupFunction-FunctionCode: Expected %d != %d", 2, v)
 		}
 		val.FunctionCode = GroupFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-PgnErrorCode: %w", err)
 	} else {
 		val.PgnErrorCode = PgnErrorCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-TransmissionIntervalPriorityErrorCode: %w", err)
 	} else {
 		val.TransmissionIntervalPriorityErrorCode = TransmissionIntervalConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -26454,14 +26454,14 @@ func DecodeNmeaAcknowledgeGroupFunction(info PacketInfo, stream *PGNDataStream) 
 	i := 0 
 	for {
 		var rep NmeaAcknowledgeGroupFunctionRepeating1
-		if v, err := stream.ReadLookupField(4); err != nil {
+		if v, err := stream.readLookupField(4); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = ParameterFieldConst(v)
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -26487,84 +26487,84 @@ type NmeaReadFieldsGroupFunction struct {
 }
 type NmeaReadFieldsGroupFunctionRepeating1 struct {
 	Parameter *uint8
-	SelectionValue []uint8
+	SelectionValue interface{}
 }
 type NmeaReadFieldsGroupFunctionRepeating2 struct {
 	Parameter *uint8
 }
-func DecodeNmeaReadFieldsGroupFunction(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaReadFieldsGroupFunction(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NmeaReadFieldsGroupFunction
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
 		var repeat2Count uint16
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-FunctionCode: %w", err)
 	} else {
 		if v != 3 {
 			return nil, fmt.Errorf("match failed for NmeaReadFieldsGroupFunction-FunctionCode: Expected %d != %d", 3, v)
 		}
 		val.FunctionCode = GroupFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if IsProprietaryPGN( *val.Pgn) {
-	if v, err := stream.ReadLookupField(11); err != nil {
+	if isProprietaryPGN( *val.Pgn) {
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-ManufacturerCode: %w", err)
 	} else {
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-IndustryCode: %w", err)
 	} else {
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-UniqueId: %w", err)
 	} else {
 		val.UniqueId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-NumberOfSelectionPairs: %w", err)
 	} else {
 		val.NumberOfSelectionPairs = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
 		if v != nil {
 			repeat2Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -26575,19 +26575,19 @@ func DecodeNmeaReadFieldsGroupFunction(info PacketInfo, stream *PGNDataStream) (
 	i := 0 
 	for {
 		var rep NmeaReadFieldsGroupFunctionRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
 		}
-		if v, err := stream.ReadBinaryData(0); err != nil {
-			return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-SelectionValue: %w", err)
-		} else {
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else  if v != nil {
 			rep.SelectionValue = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -26604,14 +26604,14 @@ func DecodeNmeaReadFieldsGroupFunction(info PacketInfo, stream *PGNDataStream) (
 	i = 0
 	for {
 		var rep NmeaReadFieldsGroupFunctionRepeating2
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
 		}
 		val.Repeating2 = append(val.Repeating2, rep)
 		if int(repeat2Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			}  
 		} else {
@@ -26637,85 +26637,85 @@ type NmeaReadFieldsReplyGroupFunction struct {
 }
 type NmeaReadFieldsReplyGroupFunctionRepeating1 struct {
 	Parameter *uint8
-	Value []uint8
+	Value interface{}
 }
 type NmeaReadFieldsReplyGroupFunctionRepeating2 struct {
 	Parameter *uint8
-	Value []uint8
+	Value interface{}
 }
-func DecodeNmeaReadFieldsReplyGroupFunction(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaReadFieldsReplyGroupFunction(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NmeaReadFieldsReplyGroupFunction
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
 		var repeat2Count uint16
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-FunctionCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for NmeaReadFieldsReplyGroupFunction-FunctionCode: Expected %d != %d", 4, v)
 		}
 		val.FunctionCode = GroupFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if IsProprietaryPGN( *val.Pgn) {
-	if v, err := stream.ReadLookupField(11); err != nil {
+	if isProprietaryPGN( *val.Pgn) {
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-ManufacturerCode: %w", err)
 	} else {
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-IndustryCode: %w", err)
 	} else {
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-UniqueId: %w", err)
 	} else {
 		val.UniqueId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-NumberOfSelectionPairs: %w", err)
 	} else {
 		val.NumberOfSelectionPairs = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
 		if v != nil {
 			repeat2Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -26726,19 +26726,19 @@ func DecodeNmeaReadFieldsReplyGroupFunction(info PacketInfo, stream *PGNDataStre
 	i := 0 
 	for {
 		var rep NmeaReadFieldsReplyGroupFunctionRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
 		}
-		if v, err := stream.ReadBinaryData(0); err != nil {
-			return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-Value: %w", err)
-		} else {
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else  if v != nil {
 			rep.Value = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -26755,19 +26755,19 @@ func DecodeNmeaReadFieldsReplyGroupFunction(info PacketInfo, stream *PGNDataStre
 	i = 0
 	for {
 		var rep NmeaReadFieldsReplyGroupFunctionRepeating2
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
 		}
-		if v, err := stream.ReadBinaryData(0); err != nil {
-			return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-Value: %w", err)
-		} else {
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else if v != nil {
 			rep.Value = v
 		}
 		val.Repeating2 = append(val.Repeating2, rep)
 		if int(repeat2Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			}  
 		} else {
@@ -26793,85 +26793,85 @@ type NmeaWriteFieldsGroupFunction struct {
 }
 type NmeaWriteFieldsGroupFunctionRepeating1 struct {
 	Parameter *uint8
-	Value []uint8
+	Value interface{}
 }
 type NmeaWriteFieldsGroupFunctionRepeating2 struct {
 	Parameter *uint8
-	Value []uint8
+	Value interface{}
 }
-func DecodeNmeaWriteFieldsGroupFunction(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaWriteFieldsGroupFunction(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NmeaWriteFieldsGroupFunction
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
 		var repeat2Count uint16
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-FunctionCode: %w", err)
 	} else {
 		if v != 5 {
 			return nil, fmt.Errorf("match failed for NmeaWriteFieldsGroupFunction-FunctionCode: Expected %d != %d", 5, v)
 		}
 		val.FunctionCode = GroupFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if IsProprietaryPGN( *val.Pgn) {
-	if v, err := stream.ReadLookupField(11); err != nil {
+	if isProprietaryPGN( *val.Pgn) {
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-ManufacturerCode: %w", err)
 	} else {
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-IndustryCode: %w", err)
 	} else {
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-UniqueId: %w", err)
 	} else {
 		val.UniqueId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-NumberOfSelectionPairs: %w", err)
 	} else {
 		val.NumberOfSelectionPairs = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
 		if v != nil {
 			repeat2Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -26882,19 +26882,19 @@ func DecodeNmeaWriteFieldsGroupFunction(info PacketInfo, stream *PGNDataStream) 
 	i := 0 
 	for {
 		var rep NmeaWriteFieldsGroupFunctionRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
 		}
-		if v, err := stream.ReadBinaryData(0); err != nil {
-			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-Value: %w", err)
-		} else {
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else  if v != nil {
 			rep.Value = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -26911,19 +26911,19 @@ func DecodeNmeaWriteFieldsGroupFunction(info PacketInfo, stream *PGNDataStream) 
 	i = 0
 	for {
 		var rep NmeaWriteFieldsGroupFunctionRepeating2
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
 		}
-		if v, err := stream.ReadBinaryData(0); err != nil {
-			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-Value: %w", err)
-		} else {
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else if v != nil {
 			rep.Value = v
 		}
 		val.Repeating2 = append(val.Repeating2, rep)
 		if int(repeat2Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			}  
 		} else {
@@ -26949,85 +26949,85 @@ type NmeaWriteFieldsReplyGroupFunction struct {
 }
 type NmeaWriteFieldsReplyGroupFunctionRepeating1 struct {
 	Parameter *uint8
-	Value []uint8
+	Value interface{}
 }
 type NmeaWriteFieldsReplyGroupFunctionRepeating2 struct {
 	Parameter *uint8
-	Value []uint8
+	Value interface{}
 }
-func DecodeNmeaWriteFieldsReplyGroupFunction(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaWriteFieldsReplyGroupFunction(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NmeaWriteFieldsReplyGroupFunction
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
 		var repeat2Count uint16
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-FunctionCode: %w", err)
 	} else {
 		if v != 6 {
 			return nil, fmt.Errorf("match failed for NmeaWriteFieldsReplyGroupFunction-FunctionCode: Expected %d != %d", 6, v)
 		}
 		val.FunctionCode = GroupFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if IsProprietaryPGN( *val.Pgn) {
-	if v, err := stream.ReadLookupField(11); err != nil {
+	if isProprietaryPGN( *val.Pgn) {
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-ManufacturerCode: %w", err)
 	} else {
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-IndustryCode: %w", err)
 	} else {
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-UniqueId: %w", err)
 	} else {
 		val.UniqueId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-NumberOfSelectionPairs: %w", err)
 	} else {
 		val.NumberOfSelectionPairs = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
 		if v != nil {
 			repeat2Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -27038,19 +27038,19 @@ func DecodeNmeaWriteFieldsReplyGroupFunction(info PacketInfo, stream *PGNDataStr
 	i := 0 
 	for {
 		var rep NmeaWriteFieldsReplyGroupFunctionRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
 		}
-		if v, err := stream.ReadBinaryData(0); err != nil {
-			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-Value: %w", err)
-		} else {
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else  if v != nil {
 			rep.Value = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -27067,19 +27067,19 @@ func DecodeNmeaWriteFieldsReplyGroupFunction(info PacketInfo, stream *PGNDataStr
 	i = 0
 	for {
 		var rep NmeaWriteFieldsReplyGroupFunctionRepeating2
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
 		}
-		if v, err := stream.ReadBinaryData(0); err != nil {
-			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-Value: %w", err)
-		} else {
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else if v != nil {
 			rep.Value = v
 		}
 		val.Repeating2 = append(val.Repeating2, rep)
 		if int(repeat2Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			}  
 		} else {
@@ -27099,15 +27099,15 @@ type PgnListTransmitAndReceive struct {
 type PgnListTransmitAndReceiveRepeating1 struct {
 	Pgn *uint32
 }
-func DecodePgnListTransmitAndReceive(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodePgnListTransmitAndReceive(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val PgnListTransmitAndReceive
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for PgnListTransmitAndReceive-FunctionCode: %w", err)
 	} else {
 		val.FunctionCode = PgnListFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -27115,14 +27115,14 @@ func DecodePgnListTransmitAndReceive(info PacketInfo, stream *PGNDataStream) (in
 	i := 0 
 	for {
 		var rep PgnListTransmitAndReceiveRepeating1
-		if v, err := stream.ReadUInt32(24); err != nil {
+		if v, err := stream.readUInt32(24); err != nil {
 			return nil, fmt.Errorf("parse failed for PgnListTransmitAndReceive-Pgn: %w", err)
 		} else {
 			rep.Pgn = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -27140,100 +27140,100 @@ type Seatalk1PilotMode struct {
 	IndustryCode IndustryCodeConst
 	ProprietaryId *uint16
 	Command *uint8
-	Unknown1 []uint8
+	Unknown1 interface{}
 	PilotMode SeatalkPilotModeConst
 	SubMode *uint8
-	PilotModeData []uint8
-	Unknown2 []uint8
+	PilotModeData interface{}
+	Unknown2 interface{}
 }
-func DecodeSeatalk1PilotMode(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalk1PilotMode(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Seatalk1PilotMode
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1PilotMode-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for Seatalk1PilotMode-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1PilotMode-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for Seatalk1PilotMode-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1PilotMode-ProprietaryId: %w", err)
 	} else {
 		if v != nil && *v != 33264 {
 			return nil, fmt.Errorf("match failed for Seatalk1PilotMode-ProprietaryId: Expected %d != %d", 33264, *v)
 		}
 		val.ProprietaryId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1PilotMode-Command: %w", err)
 	} else {
 		if v != nil && *v != 132 {
 			return nil, fmt.Errorf("match failed for Seatalk1PilotMode-Command: Expected %d != %d", 132, *v)
 		}
 		val.Command = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(24); err != nil {
+	if v, err := stream.readBinaryData(24); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1PilotMode-Unknown1: %w", err)
 	} else {
 		val.Unknown1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1PilotMode-PilotMode: %w", err)
 	} else {
 		val.PilotMode = SeatalkPilotModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1PilotMode-SubMode: %w", err)
 	} else {
 		val.SubMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1PilotMode-PilotModeData: %w", err)
 	} else {
 		val.PilotModeData = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(80); err != nil {
+	if v, err := stream.readBinaryData(80); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1PilotMode-Unknown2: %w", err)
 	} else {
 		val.Unknown2 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27248,67 +27248,67 @@ type FusionMediaControl struct {
 	SourceId *uint8
 	Command FusionCommandConst
 }
-func DecodeFusionMediaControl(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionMediaControl(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionMediaControl
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMediaControl-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionMediaControl-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMediaControl-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionMediaControl-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMediaControl-ProprietaryId: %w", err)
 	} else {
 		if v != nil && *v != 3 {
 			return nil, fmt.Errorf("match failed for FusionMediaControl-ProprietaryId: Expected %d != %d", 3, *v)
 		}
 		val.ProprietaryId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMediaControl-Unknown: %w", err)
 	} else {
 		val.Unknown = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMediaControl-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMediaControl-Command: %w", err)
 	} else {
 		val.Command = FusionCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27323,67 +27323,67 @@ type FusionSiriusControl struct {
 	SourceId *uint8
 	Command FusionSiriusCommandConst
 }
-func DecodeFusionSiriusControl(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSiriusControl(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSiriusControl
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusControl-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSiriusControl-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusControl-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSiriusControl-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusControl-ProprietaryId: %w", err)
 	} else {
 		if v != nil && *v != 30 {
 			return nil, fmt.Errorf("match failed for FusionSiriusControl-ProprietaryId: Expected %d != %d", 30, *v)
 		}
 		val.ProprietaryId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusControl-Unknown: %w", err)
 	} else {
 		val.Unknown = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusControl-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusControl-Command: %w", err)
 	} else {
 		val.Command = FusionSiriusCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27396,51 +27396,51 @@ type FusionRequestStatus struct {
 	ProprietaryId FusionMessageIdConst
 	Unknown *uint8
 }
-func DecodeFusionRequestStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionRequestStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionRequestStatus
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionRequestStatus-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionRequestStatus-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionRequestStatus-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionRequestStatus-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionRequestStatus-ProprietaryId: %w", err)
 	} else {
 		if v != 1 {
 			return nil, fmt.Errorf("match failed for FusionRequestStatus-ProprietaryId: Expected %d != %d", 1, v)
 		}
 		val.ProprietaryId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionRequestStatus-Unknown: %w", err)
 	} else {
 		val.Unknown = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27454,59 +27454,59 @@ type FusionSetSource struct {
 	Unknown *uint8
 	SourceId *uint8
 }
-func DecodeFusionSetSource(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSetSource(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSetSource
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetSource-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSetSource-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetSource-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSetSource-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetSource-ProprietaryId: %w", err)
 	} else {
 		if v != 2 {
 			return nil, fmt.Errorf("match failed for FusionSetSource-ProprietaryId: Expected %d != %d", 2, v)
 		}
 		val.ProprietaryId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetSource-Unknown: %w", err)
 	} else {
 		val.Unknown = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetSource-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27519,51 +27519,51 @@ type FusionSetMute struct {
 	ProprietaryId FusionMessageIdConst
 	Command FusionMuteCommandConst
 }
-func DecodeFusionSetMute(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSetMute(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSetMute
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetMute-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSetMute-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetMute-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSetMute-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetMute-ProprietaryId: %w", err)
 	} else {
 		if v != 23 {
 			return nil, fmt.Errorf("match failed for FusionSetMute-ProprietaryId: Expected %d != %d", 23, v)
 		}
 		val.ProprietaryId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetMute-Command: %w", err)
 	} else {
 		val.Command = FusionMuteCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27578,67 +27578,67 @@ type FusionSetZoneVolume struct {
 	Zone *uint8
 	Volume *uint8
 }
-func DecodeFusionSetZoneVolume(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSetZoneVolume(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSetZoneVolume
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSetZoneVolume-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSetZoneVolume-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-ProprietaryId: %w", err)
 	} else {
 		if v != 24 {
 			return nil, fmt.Errorf("match failed for FusionSetZoneVolume-ProprietaryId: Expected %d != %d", 24, v)
 		}
 		val.ProprietaryId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-Unknown: %w", err)
 	} else {
 		val.Unknown = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-Zone: %w", err)
 	} else {
 		val.Zone = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-Volume: %w", err)
 	} else {
 		val.Volume = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27655,83 +27655,83 @@ type FusionSetAllVolumes struct {
 	Zone3 *uint8
 	Zone4 *uint8
 }
-func DecodeFusionSetAllVolumes(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSetAllVolumes(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSetAllVolumes
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSetAllVolumes-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSetAllVolumes-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-ProprietaryId: %w", err)
 	} else {
 		if v != 25 {
 			return nil, fmt.Errorf("match failed for FusionSetAllVolumes-ProprietaryId: Expected %d != %d", 25, v)
 		}
 		val.ProprietaryId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Unknown: %w", err)
 	} else {
 		val.Unknown = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone1: %w", err)
 	} else {
 		val.Zone1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone2: %w", err)
 	} else {
 		val.Zone2 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone3: %w", err)
 	} else {
 		val.Zone3 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone4: %w", err)
 	} else {
 		val.Zone4 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27746,88 +27746,88 @@ type Seatalk1Keystroke struct {
 	Device *uint8
 	Key SeatalkKeystrokeConst
 	Keyinverted *uint8
-	UnknownData []uint8
+	UnknownData interface{}
 }
-func DecodeSeatalk1Keystroke(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalk1Keystroke(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Seatalk1Keystroke
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1Keystroke-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for Seatalk1Keystroke-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1Keystroke-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for Seatalk1Keystroke-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1Keystroke-ProprietaryId: %w", err)
 	} else {
 		if v != nil && *v != 33264 {
 			return nil, fmt.Errorf("match failed for Seatalk1Keystroke-ProprietaryId: Expected %d != %d", 33264, *v)
 		}
 		val.ProprietaryId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1Keystroke-Command: %w", err)
 	} else {
 		if v != nil && *v != 134 {
 			return nil, fmt.Errorf("match failed for Seatalk1Keystroke-Command: Expected %d != %d", 134, *v)
 		}
 		val.Command = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1Keystroke-Device: %w", err)
 	} else {
 		val.Device = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1Keystroke-Key: %w", err)
 	} else {
 		val.Key = SeatalkKeystrokeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1Keystroke-Keyinverted: %w", err)
 	} else {
 		val.Keyinverted = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(112); err != nil {
+	if v, err := stream.readBinaryData(112); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1Keystroke-UnknownData: %w", err)
 	} else {
 		val.UnknownData = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27841,66 +27841,66 @@ type Seatalk1DeviceIdentification struct {
 	Command *uint8
 	Device SeatalkDeviceIdConst
 }
-func DecodeSeatalk1DeviceIdentification(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalk1DeviceIdentification(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Seatalk1DeviceIdentification
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1DeviceIdentification-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for Seatalk1DeviceIdentification-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1DeviceIdentification-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for Seatalk1DeviceIdentification-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1DeviceIdentification-ProprietaryId: %w", err)
 	} else {
 		if v != nil && *v != 33264 {
 			return nil, fmt.Errorf("match failed for Seatalk1DeviceIdentification-ProprietaryId: Expected %d != %d", 33264, *v)
 		}
 		val.ProprietaryId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1DeviceIdentification-Command: %w", err)
 	} else {
 		if v != nil && *v != 144 {
 			return nil, fmt.Errorf("match failed for Seatalk1DeviceIdentification-Command: Expected %d != %d", 144, *v)
 		}
 		val.Command = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Seatalk1DeviceIdentification-Device: %w", err)
 	} else {
 		val.Device = SeatalkDeviceIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27915,67 +27915,67 @@ type AirmarAttitudeOffset struct {
 	PitchOffset *float32
 	RollOffset *float32
 }
-func DecodeAirmarAttitudeOffset(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarAttitudeOffset(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarAttitudeOffset
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarAttitudeOffset-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarAttitudeOffset-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-ProprietaryId: %w", err)
 	} else {
 		if v != 32 {
 			return nil, fmt.Errorf("match failed for AirmarAttitudeOffset-ProprietaryId: Expected %d != %d", 32, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-AzimuthOffset: %w", err)
 	} else {
 		val.AzimuthOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-PitchOffset: %w", err)
 	} else {
 		val.PitchOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-RollOffset: %w", err)
 	} else {
 		val.RollOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -27999,139 +27999,139 @@ type AirmarCalibrateCompass struct {
 	PitchAndRollDamping *float32
 	CompassRateGyroDamping *float32
 }
-func DecodeAirmarCalibrateCompass(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarCalibrateCompass(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarCalibrateCompass
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateCompass-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateCompass-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-ProprietaryId: %w", err)
 	} else {
 		if v != 33 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateCompass-ProprietaryId: Expected %d != %d", 33, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-CalibrateFunction: %w", err)
 	} else {
 		val.CalibrateFunction = AirmarCalibrateFunctionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-CalibrationStatus: %w", err)
 	} else {
 		val.CalibrationStatus = AirmarCalibrateStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-VerifyScore: %w", err)
 	} else {
 		val.VerifyScore = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-XAxisGainValue: %w", err)
 	} else {
 		val.XAxisGainValue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-YAxisGainValue: %w", err)
 	} else {
 		val.YAxisGainValue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-ZAxisGainValue: %w", err)
 	} else {
 		val.ZAxisGainValue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-XAxisLinearOffset: %w", err)
 	} else {
 		val.XAxisLinearOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-YAxisLinearOffset: %w", err)
 	} else {
 		val.YAxisLinearOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-ZAxisLinearOffset: %w", err)
 	} else {
 		val.ZAxisLinearOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-XAxisAngularOffset: %w", err)
 	} else {
 		val.XAxisAngularOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.05); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.05); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-PitchAndRollDamping: %w", err)
 	} else {
 		val.PitchAndRollDamping = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.05); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.05); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-CompassRateGyroDamping: %w", err)
 	} else {
 		val.CompassRateGyroDamping = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -28155,139 +28155,139 @@ type AirmarTrueWindOptions struct {
 	PitchAndRollDamping *float32
 	CompassRateGyroDamping *float32
 }
-func DecodeAirmarTrueWindOptions(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarTrueWindOptions(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarTrueWindOptions
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarTrueWindOptions-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarTrueWindOptions-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-ProprietaryId: %w", err)
 	} else {
 		if v != 34 {
 			return nil, fmt.Errorf("match failed for AirmarTrueWindOptions-ProprietaryId: Expected %d != %d", 34, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-CogSubstitutionForHdg: %w", err)
 	} else {
 		val.CogSubstitutionForHdg = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-CalibrationStatus: %w", err)
 	} else {
 		val.CalibrationStatus = AirmarCalibrateStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-VerifyScore: %w", err)
 	} else {
 		val.VerifyScore = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-XAxisGainValue: %w", err)
 	} else {
 		val.XAxisGainValue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-YAxisGainValue: %w", err)
 	} else {
 		val.YAxisGainValue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-ZAxisGainValue: %w", err)
 	} else {
 		val.ZAxisGainValue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-XAxisLinearOffset: %w", err)
 	} else {
 		val.XAxisLinearOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-YAxisLinearOffset: %w", err)
 	} else {
 		val.YAxisLinearOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-ZAxisLinearOffset: %w", err)
 	} else {
 		val.ZAxisLinearOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-XAxisAngularOffset: %w", err)
 	} else {
 		val.XAxisAngularOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.05); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.05); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-PitchAndRollDamping: %w", err)
 	} else {
 		val.PitchAndRollDamping = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.05); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.05); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-CompassRateGyroDamping: %w", err)
 	} else {
 		val.CompassRateGyroDamping = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -28300,56 +28300,56 @@ type AirmarSimulateMode struct {
 	ProprietaryId AirmarCommandConst
 	SimulateMode OffOnConst
 }
-func DecodeAirmarSimulateMode(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarSimulateMode(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarSimulateMode
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSimulateMode-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarSimulateMode-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSimulateMode-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarSimulateMode-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSimulateMode-ProprietaryId: %w", err)
 	} else {
 		if v != 35 {
 			return nil, fmt.Errorf("match failed for AirmarSimulateMode-ProprietaryId: Expected %d != %d", 35, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSimulateMode-SimulateMode: %w", err)
 	} else {
 		val.SimulateMode = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(22)
-	if stream.IsEOF() {
+	stream.skipBits(22)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -28361,56 +28361,56 @@ type AirmarCalibrateDepth struct {
 	ProprietaryId AirmarCommandConst
 	SpeedOfSoundMode *float32
 }
-func DecodeAirmarCalibrateDepth(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarCalibrateDepth(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarCalibrateDepth
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateDepth-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateDepth-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-ProprietaryId: %w", err)
 	} else {
 		if v != 40 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateDepth-ProprietaryId: Expected %d != %d", 40, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-SpeedOfSoundMode: %w", err)
 	} else {
 		val.SpeedOfSoundMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -28427,55 +28427,55 @@ type AirmarCalibrateSpeedRepeating1 struct {
 	InputFrequency *float32
 	OutputSpeed *float32
 }
-func DecodeAirmarCalibrateSpeed(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarCalibrateSpeed(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarCalibrateSpeed
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(11); err != nil {
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateSpeed-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateSpeed-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-ProprietaryId: %w", err)
 	} else {
 		if v != 41 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateSpeed-ProprietaryId: Expected %d != %d", 41, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-NumberOfPairsOfDataPoints: %w", err)
 	} else {
 		val.NumberOfPairsOfDataPoints = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -28486,19 +28486,19 @@ func DecodeAirmarCalibrateSpeed(info PacketInfo, stream *PGNDataStream) (interfa
 	i := 0 
 	for {
 		var rep AirmarCalibrateSpeedRepeating1
-		if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 			return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-InputFrequency: %w", err)
 		} else {
 			rep.InputFrequency = v
 		}
-		if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 			return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-OutputSpeed: %w", err)
 		} else {
 			rep.OutputSpeed = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -28518,63 +28518,63 @@ type AirmarCalibrateTemperature struct {
 	TemperatureInstance AirmarTemperatureInstanceConst
 	TemperatureOffset *float32
 }
-func DecodeAirmarCalibrateTemperature(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarCalibrateTemperature(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarCalibrateTemperature
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateTemperature-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateTemperature-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-ProprietaryId: %w", err)
 	} else {
 		if v != 42 {
 			return nil, fmt.Errorf("match failed for AirmarCalibrateTemperature-ProprietaryId: Expected %d != %d", 42, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-TemperatureInstance: %w", err)
 	} else {
 		val.TemperatureInstance = AirmarTemperatureInstanceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-TemperatureOffset: %w", err)
 	} else {
 		val.TemperatureOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -28588,66 +28588,66 @@ type AirmarSpeedFilterNone struct {
 	FilterType *uint8
 	SampleInterval *float32
 }
-func DecodeAirmarSpeedFilterNone(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarSpeedFilterNone(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarSpeedFilterNone
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarSpeedFilterNone-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarSpeedFilterNone-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-ProprietaryId: %w", err)
 	} else {
 		if v != 43 {
 			return nil, fmt.Errorf("match failed for AirmarSpeedFilterNone-ProprietaryId: Expected %d != %d", 43, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-FilterType: %w", err)
 	} else {
 		if v != nil && *v != 0 {
 			return nil, fmt.Errorf("match failed for AirmarSpeedFilterNone-FilterType: Expected %d != %d", 0, *v)
 		}
 		val.FilterType = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-SampleInterval: %w", err)
 	} else {
 		val.SampleInterval = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -28662,74 +28662,74 @@ type AirmarSpeedFilterIir struct {
 	SampleInterval *float32
 	FilterDuration *float32
 }
-func DecodeAirmarSpeedFilterIir(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarSpeedFilterIir(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarSpeedFilterIir
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarSpeedFilterIir-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarSpeedFilterIir-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-ProprietaryId: %w", err)
 	} else {
 		if v != 43 {
 			return nil, fmt.Errorf("match failed for AirmarSpeedFilterIir-ProprietaryId: Expected %d != %d", 43, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-FilterType: %w", err)
 	} else {
 		if v != nil && *v != 1 {
 			return nil, fmt.Errorf("match failed for AirmarSpeedFilterIir-FilterType: Expected %d != %d", 1, *v)
 		}
 		val.FilterType = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-SampleInterval: %w", err)
 	} else {
 		val.SampleInterval = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-FilterDuration: %w", err)
 	} else {
 		val.FilterDuration = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -28743,66 +28743,66 @@ type AirmarTemperatureFilterNone struct {
 	FilterType *uint8
 	SampleInterval *float32
 }
-func DecodeAirmarTemperatureFilterNone(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarTemperatureFilterNone(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarTemperatureFilterNone
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarTemperatureFilterNone-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarTemperatureFilterNone-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-ProprietaryId: %w", err)
 	} else {
 		if v != 44 {
 			return nil, fmt.Errorf("match failed for AirmarTemperatureFilterNone-ProprietaryId: Expected %d != %d", 44, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-FilterType: %w", err)
 	} else {
 		if v != nil && *v != 0 {
 			return nil, fmt.Errorf("match failed for AirmarTemperatureFilterNone-FilterType: Expected %d != %d", 0, *v)
 		}
 		val.FilterType = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-SampleInterval: %w", err)
 	} else {
 		val.SampleInterval = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -28817,74 +28817,74 @@ type AirmarTemperatureFilterIir struct {
 	SampleInterval *float32
 	FilterDuration *float32
 }
-func DecodeAirmarTemperatureFilterIir(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarTemperatureFilterIir(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarTemperatureFilterIir
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarTemperatureFilterIir-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarTemperatureFilterIir-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-ProprietaryId: %w", err)
 	} else {
 		if v != 44 {
 			return nil, fmt.Errorf("match failed for AirmarTemperatureFilterIir-ProprietaryId: Expected %d != %d", 44, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-FilterType: %w", err)
 	} else {
 		if v != nil && *v != 1 {
 			return nil, fmt.Errorf("match failed for AirmarTemperatureFilterIir-FilterType: Expected %d != %d", 1, *v)
 		}
 		val.FilterType = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-SampleInterval: %w", err)
 	} else {
 		val.SampleInterval = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-FilterDuration: %w", err)
 	} else {
 		val.FilterDuration = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -28897,56 +28897,56 @@ type AirmarNmea2000Options struct {
 	ProprietaryId AirmarCommandConst
 	TransmissionInterval AirmarTransmissionIntervalConst
 }
-func DecodeAirmarNmea2000Options(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarNmea2000Options(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarNmea2000Options
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarNmea2000Options-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarNmea2000Options-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarNmea2000Options-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarNmea2000Options-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarNmea2000Options-ProprietaryId: %w", err)
 	} else {
 		if v != 46 {
 			return nil, fmt.Errorf("match failed for AirmarNmea2000Options-ProprietaryId: Expected %d != %d", 46, v)
 		}
 		val.ProprietaryId = AirmarCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarNmea2000Options-TransmissionInterval: %w", err)
 	} else {
 		val.TransmissionInterval = AirmarTransmissionIntervalConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(22)
-	if stream.IsEOF() {
+	stream.skipBits(22)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -28957,40 +28957,40 @@ type AirmarAddressableMultiFrame struct {
 	IndustryCode IndustryCodeConst
 	ProprietaryId *uint8
 }
-func DecodeAirmarAddressableMultiFrame(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarAddressableMultiFrame(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarAddressableMultiFrame
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAddressableMultiFrame-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarAddressableMultiFrame-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAddressableMultiFrame-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarAddressableMultiFrame-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAddressableMultiFrame-ProprietaryId: %w", err)
 	} else {
 		val.ProprietaryId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -29005,64 +29005,64 @@ type MaretronSlaveResponse struct {
 	Command *uint8
 	Status *uint8
 }
-func DecodeMaretronSlaveResponse(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronSlaveResponse(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val MaretronSlaveResponse
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-ManufacturerCode: %w", err)
 	} else {
 		if v != 137 {
 			return nil, fmt.Errorf("match failed for MaretronSlaveResponse-ManufacturerCode: Expected %d != %d", 137, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for MaretronSlaveResponse-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-ProductCode: %w", err)
 	} else {
 		val.ProductCode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-SoftwareCode: %w", err)
 	} else {
 		val.SoftwareCode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-Command: %w", err)
 	} else {
 		val.Command = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-Status: %w", err)
 	} else {
 		val.Status = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -29091,170 +29091,170 @@ type Alert struct {
 	AlertPriority *uint8
 	AlertState AlertStateConst
 }
-func DecodeAlert(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlert(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Alert
-	val.Info = info
-	if v, err := stream.ReadLookupField(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AlertType: %w", err)
 	} else {
 		val.AlertType = AlertTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AlertCategory: %w", err)
 	} else {
 		val.AlertCategory = AlertCategoryConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AlertSystem: %w", err)
 	} else {
 		val.AlertSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AlertSubSystem: %w", err)
 	} else {
 		val.AlertSubSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AlertId: %w", err)
 	} else {
 		val.AlertId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(64); err != nil {
+	if v, err := stream.readUInt64(64); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-DataSourceNetworkIdName: %w", err)
 	} else {
 		val.DataSourceNetworkIdName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-DataSourceInstance: %w", err)
 	} else {
 		val.DataSourceInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-DataSourceIndexSource: %w", err)
 	} else {
 		val.DataSourceIndexSource = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AlertOccurrenceNumber: %w", err)
 	} else {
 		val.AlertOccurrenceNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-TemporarySilenceStatus: %w", err)
 	} else {
 		val.TemporarySilenceStatus = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AcknowledgeStatus: %w", err)
 	} else {
 		val.AcknowledgeStatus = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-EscalationStatus: %w", err)
 	} else {
 		val.EscalationStatus = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-TemporarySilenceSupport: %w", err)
 	} else {
 		val.TemporarySilenceSupport = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AcknowledgeSupport: %w", err)
 	} else {
 		val.AcknowledgeSupport = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-EscalationSupport: %w", err)
 	} else {
 		val.EscalationSupport = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt64(64); err != nil {
+	if v, err := stream.readUInt64(64); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AcknowledgeSourceNetworkIdName: %w", err)
 	} else {
 		val.AcknowledgeSourceNetworkIdName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-TriggerCondition: %w", err)
 	} else {
 		val.TriggerCondition = AlertTriggerConditionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-ThresholdStatus: %w", err)
 	} else {
 		val.ThresholdStatus = AlertThresholdStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AlertPriority: %w", err)
 	} else {
 		val.AlertPriority = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Alert-AlertState: %w", err)
 	} else {
 		val.AlertState = AlertStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -29274,99 +29274,99 @@ type AlertResponse struct {
 	AcknowledgeSourceNetworkIdName *uint64
 	ResponseCommand AlertResponseCommandConst
 }
-func DecodeAlertResponse(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlertResponse(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AlertResponse
-	val.Info = info
-	if v, err := stream.ReadLookupField(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-AlertType: %w", err)
 	} else {
 		val.AlertType = AlertTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-AlertCategory: %w", err)
 	} else {
 		val.AlertCategory = AlertCategoryConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-AlertSystem: %w", err)
 	} else {
 		val.AlertSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-AlertSubSystem: %w", err)
 	} else {
 		val.AlertSubSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-AlertId: %w", err)
 	} else {
 		val.AlertId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(64); err != nil {
+	if v, err := stream.readUInt64(64); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-DataSourceNetworkIdName: %w", err)
 	} else {
 		val.DataSourceNetworkIdName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-DataSourceInstance: %w", err)
 	} else {
 		val.DataSourceInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-DataSourceIndexSource: %w", err)
 	} else {
 		val.DataSourceIndexSource = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-AlertOccurrenceNumber: %w", err)
 	} else {
 		val.AlertOccurrenceNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(64); err != nil {
+	if v, err := stream.readUInt64(64); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-AcknowledgeSourceNetworkIdName: %w", err)
 	} else {
 		val.AcknowledgeSourceNetworkIdName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertResponse-ResponseCommand: %w", err)
 	} else {
 		val.ResponseCommand = AlertResponseCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -29386,102 +29386,102 @@ type AlertText struct {
 	AlertTextDescription string
 	AlertLocationTextDescription string
 }
-func DecodeAlertText(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlertText(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AlertText
-	val.Info = info
-	if v, err := stream.ReadLookupField(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-AlertType: %w", err)
 	} else {
 		val.AlertType = AlertTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-AlertCategory: %w", err)
 	} else {
 		val.AlertCategory = AlertCategoryConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-AlertSystem: %w", err)
 	} else {
 		val.AlertSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-AlertSubSystem: %w", err)
 	} else {
 		val.AlertSubSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-AlertId: %w", err)
 	} else {
 		val.AlertId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(64); err != nil {
+	if v, err := stream.readUInt64(64); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-DataSourceNetworkIdName: %w", err)
 	} else {
 		val.DataSourceNetworkIdName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-DataSourceInstance: %w", err)
 	} else {
 		val.DataSourceInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-DataSourceIndexSource: %w", err)
 	} else {
 		val.DataSourceIndexSource = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-AlertOccurrenceNumber: %w", err)
 	} else {
 		val.AlertOccurrenceNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-LanguageId: %w", err)
 	} else {
 		val.LanguageId = AlertLanguageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-AlertTextDescription: %w", err)
 	} else {
 		val.AlertTextDescription = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertText-AlertLocationTextDescription: %w", err)
 	} else {
 		val.AlertLocationTextDescription = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -29504,122 +29504,122 @@ type AlertConfiguration struct {
 	TemporarySilencePeriod *uint8
 	EscalationPeriod *uint8
 }
-func DecodeAlertConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlertConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AlertConfiguration
-	val.Info = info
-	if v, err := stream.ReadLookupField(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-AlertType: %w", err)
 	} else {
 		val.AlertType = AlertTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-AlertCategory: %w", err)
 	} else {
 		val.AlertCategory = AlertCategoryConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-AlertSystem: %w", err)
 	} else {
 		val.AlertSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-AlertSubSystem: %w", err)
 	} else {
 		val.AlertSubSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-AlertId: %w", err)
 	} else {
 		val.AlertId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(64); err != nil {
+	if v, err := stream.readUInt64(64); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-DataSourceNetworkIdName: %w", err)
 	} else {
 		val.DataSourceNetworkIdName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-DataSourceInstance: %w", err)
 	} else {
 		val.DataSourceInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-DataSourceIndexSource: %w", err)
 	} else {
 		val.DataSourceIndexSource = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-AlertOccurrenceNumber: %w", err)
 	} else {
 		val.AlertOccurrenceNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-AlertControl: %w", err)
 	} else {
 		val.AlertControl = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-UserDefinedAlertAssignment: %w", err)
 	} else {
 		val.UserDefinedAlertAssignment = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-ReactivationPeriod: %w", err)
 	} else {
 		val.ReactivationPeriod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-TemporarySilencePeriod: %w", err)
 	} else {
 		val.TemporarySilencePeriod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertConfiguration-EscalationPeriod: %w", err)
 	} else {
 		val.EscalationPeriod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -29645,90 +29645,90 @@ type AlertThresholdRepeating1 struct {
 	ThresholdDataFormat *uint8
 	ThresholdLevel *uint64
 }
-func DecodeAlertThreshold(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlertThreshold(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AlertThreshold
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertThreshold-AlertType: %w", err)
 	} else {
 		val.AlertType = AlertTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertThreshold-AlertCategory: %w", err)
 	} else {
 		val.AlertCategory = AlertCategoryConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertThreshold-AlertSystem: %w", err)
 	} else {
 		val.AlertSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertThreshold-AlertSubSystem: %w", err)
 	} else {
 		val.AlertSubSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertThreshold-AlertId: %w", err)
 	} else {
 		val.AlertId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(64); err != nil {
+	if v, err := stream.readUInt64(64); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertThreshold-DataSourceNetworkIdName: %w", err)
 	} else {
 		val.DataSourceNetworkIdName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertThreshold-DataSourceInstance: %w", err)
 	} else {
 		val.DataSourceInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertThreshold-DataSourceIndexSource: %w", err)
 	} else {
 		val.DataSourceIndexSource = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertThreshold-AlertOccurrenceNumber: %w", err)
 	} else {
 		val.AlertOccurrenceNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertThreshold-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -29739,29 +29739,29 @@ func DecodeAlertThreshold(info PacketInfo, stream *PGNDataStream) (interface{}, 
 	i := 0 
 	for {
 		var rep AlertThresholdRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for AlertThreshold-ParameterNumber: %w", err)
 		} else {
 			rep.ParameterNumber = v
 		}
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for AlertThreshold-TriggerMethod: %w", err)
 		} else {
 			rep.TriggerMethod = v
 		}
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for AlertThreshold-ThresholdDataFormat: %w", err)
 		} else {
 			rep.ThresholdDataFormat = v
 		}
-		if v, err := stream.ReadUInt64(64); err != nil {
+		if v, err := stream.readUInt64(64); err != nil {
 			return nil, fmt.Errorf("parse failed for AlertThreshold-ThresholdLevel: %w", err)
 		} else {
 			rep.ThresholdLevel = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -29792,90 +29792,90 @@ type AlertValueRepeating1 struct {
 	ValueDataFormat *uint8
 	ValueData *uint64
 }
-func DecodeAlertValue(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlertValue(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AlertValue
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertValue-AlertType: %w", err)
 	} else {
 		val.AlertType = AlertTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertValue-AlertCategory: %w", err)
 	} else {
 		val.AlertCategory = AlertCategoryConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertValue-AlertSystem: %w", err)
 	} else {
 		val.AlertSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertValue-AlertSubSystem: %w", err)
 	} else {
 		val.AlertSubSystem = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertValue-AlertId: %w", err)
 	} else {
 		val.AlertId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(64); err != nil {
+	if v, err := stream.readUInt64(64); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertValue-DataSourceNetworkIdName: %w", err)
 	} else {
 		val.DataSourceNetworkIdName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertValue-DataSourceInstance: %w", err)
 	} else {
 		val.DataSourceInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertValue-DataSourceIndexSource: %w", err)
 	} else {
 		val.DataSourceIndexSource = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertValue-AlertOccurrenceNumber: %w", err)
 	} else {
 		val.AlertOccurrenceNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AlertValue-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -29886,24 +29886,24 @@ func DecodeAlertValue(info PacketInfo, stream *PGNDataStream) (interface{}, erro
 	i := 0 
 	for {
 		var rep AlertValueRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for AlertValue-ValueParameterNumber: %w", err)
 		} else {
 			rep.ValueParameterNumber = v
 		}
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for AlertValue-ValueDataFormat: %w", err)
 		} else {
 			rep.ValueDataFormat = v
 		}
-		if v, err := stream.ReadUInt64(64); err != nil {
+		if v, err := stream.readUInt64(64); err != nil {
 			return nil, fmt.Errorf("parse failed for AlertValue-ValueData: %w", err)
 		} else {
 			rep.ValueData = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -29922,42 +29922,42 @@ type SystemTime struct {
 	Date *uint16
 	Time *float32
 }
-func DecodeSystemTime(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSystemTime(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SystemTime
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemTime-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemTime-Source: %w", err)
 	} else {
 		val.Source = SystemTimeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemTime-Date: %w", err)
 	} else {
 		val.Date = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemTime-Time: %w", err)
 	} else {
 		val.Time = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -29971,51 +29971,51 @@ type Heartbeat struct {
 	Controller2State ControllerStateConst
 	EquipmentStatus EquipmentStatusConst
 }
-func DecodeHeartbeat(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeHeartbeat(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Heartbeat
-	val.Info = info
-	if v, err := stream.ReadUnsignedResolution(16, 0.001); err != nil {
+	val.Info = Info
+	if v, err := stream.readUnsignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for Heartbeat-DataTransmitOffset: %w", err)
 	} else {
 		val.DataTransmitOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Heartbeat-SequenceCounter: %w", err)
 	} else {
 		val.SequenceCounter = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for Heartbeat-Controller1State: %w", err)
 	} else {
 		val.Controller1State = ControllerStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for Heartbeat-Controller2State: %w", err)
 	} else {
 		val.Controller2State = ControllerStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for Heartbeat-EquipmentStatus: %w", err)
 	} else {
 		val.EquipmentStatus = EquipmentStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(34)
-	if stream.IsEOF() {
+	stream.skipBits(34)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -30031,70 +30031,70 @@ type ProductInformation struct {
 	CertificationLevel *uint8
 	LoadEquivalency *uint8
 }
-func DecodeProductInformation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeProductInformation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ProductInformation
-	val.Info = info
-	if v, err := stream.ReadUnsignedResolution(16, 0.001); err != nil {
+	val.Info = Info
+	if v, err := stream.readUnsignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for ProductInformation-Nmea2000Version: %w", err)
 	} else {
 		val.Nmea2000Version = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for ProductInformation-ProductCode: %w", err)
 	} else {
 		val.ProductCode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for ProductInformation-ModelId: %w", err)
 	} else {
 		val.ModelId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for ProductInformation-SoftwareVersionCode: %w", err)
 	} else {
 		val.SoftwareVersionCode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for ProductInformation-ModelVersion: %w", err)
 	} else {
 		val.ModelVersion = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for ProductInformation-ModelSerialCode: %w", err)
 	} else {
 		val.ModelSerialCode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ProductInformation-CertificationLevel: %w", err)
 	} else {
 		val.CertificationLevel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ProductInformation-LoadEquivalency: %w", err)
 	} else {
 		val.LoadEquivalency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -30106,30 +30106,30 @@ type ConfigurationInformation struct {
 	InstallationDescription2 string
 	ManufacturerInformation string
 }
-func DecodeConfigurationInformation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeConfigurationInformation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ConfigurationInformation
-	val.Info = info
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	val.Info = Info
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for ConfigurationInformation-InstallationDescription1: %w", err)
 	} else {
 		val.InstallationDescription1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for ConfigurationInformation-InstallationDescription2: %w", err)
 	} else {
 		val.InstallationDescription2 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for ConfigurationInformation-ManufacturerInformation: %w", err)
 	} else {
 		val.ManufacturerInformation = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -30152,135 +30152,135 @@ type ManOverboardNotification struct {
 	MmsiOfVesselOfOrigin *uint32
 	MobEmitterBatteryLowStatus LowBatteryConst
 }
-func DecodeManOverboardNotification(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeManOverboardNotification(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ManOverboardNotification
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-MobEmitterId: %w", err)
 	} else {
 		val.MobEmitterId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-ManOverboardStatus: %w", err)
 	} else {
 		val.ManOverboardStatus = MobStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(5)
-	if stream.IsEOF() {
+	stream.skipBits(5)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-ActivationTime: %w", err)
 	} else {
 		val.ActivationTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-PositionSource: %w", err)
 	} else {
 		val.PositionSource = MobPositionSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(5)
-	if stream.IsEOF() {
+	stream.skipBits(5)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-PositionDate: %w", err)
 	} else {
 		val.PositionDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-PositionTime: %w", err)
 	} else {
 		val.PositionTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-Latitude: %w", err)
 	} else {
 		val.Latitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-Longitude: %w", err)
 	} else {
 		val.Longitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-CogReference: %w", err)
 	} else {
 		val.CogReference = DirectionReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-Cog: %w", err)
 	} else {
 		val.Cog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-Sog: %w", err)
 	} else {
 		val.Sog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-MmsiOfVesselOfOrigin: %w", err)
 	} else {
 		val.MmsiOfVesselOfOrigin = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-MobEmitterBatteryLowStatus: %w", err)
 	} else {
 		val.MobEmitterBatteryLowStatus = LowBatteryConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(5)
-	if stream.IsEOF() {
+	stream.skipBits(5)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -30305,146 +30305,146 @@ type HeadingTrackControl struct {
 	OffTrackLimit *int16
 	VesselHeading *float32
 }
-func DecodeHeadingTrackControl(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeHeadingTrackControl(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val HeadingTrackControl
-	val.Info = info
-	if v, err := stream.ReadLookupField(2); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-RudderLimitExceeded: %w", err)
 	} else {
 		val.RudderLimitExceeded = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffHeadingLimitExceeded: %w", err)
 	} else {
 		val.OffHeadingLimitExceeded = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffTrackLimitExceeded: %w", err)
 	} else {
 		val.OffTrackLimitExceeded = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-Override: %w", err)
 	} else {
 		val.Override = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-SteeringMode: %w", err)
 	} else {
 		val.SteeringMode = SteeringModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-TurnMode: %w", err)
 	} else {
 		val.TurnMode = TurnModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-HeadingReference: %w", err)
 	} else {
 		val.HeadingReference = DirectionReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(5)
-	if stream.IsEOF() {
+	stream.skipBits(5)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-CommandedRudderDirection: %w", err)
 	} else {
 		val.CommandedRudderDirection = DirectionRudderConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-CommandedRudderAngle: %w", err)
 	} else {
 		val.CommandedRudderAngle = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-HeadingToSteerCourse: %w", err)
 	} else {
 		val.HeadingToSteerCourse = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-Track: %w", err)
 	} else {
 		val.Track = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-RudderLimit: %w", err)
 	} else {
 		val.RudderLimit = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffHeadingLimit: %w", err)
 	} else {
 		val.OffHeadingLimit = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-RadiusOfTurnOrder: %w", err)
 	} else {
 		val.RadiusOfTurnOrder = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 3.125e-05); err != nil {
+	if v, err := stream.readSignedResolution(16, 3.125e-05); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-RateOfTurnOrder: %w", err)
 	} else {
 		val.RateOfTurnOrder = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt16(16); err != nil {
+	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffTrackLimit: %w", err)
 	} else {
 		val.OffTrackLimit = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-VesselHeading: %w", err)
 	} else {
 		val.VesselHeading = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -30457,47 +30457,47 @@ type Rudder struct {
 	AngleOrder *float32
 	Position *float32
 }
-func DecodeRudder(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRudder(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Rudder
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Rudder-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for Rudder-DirectionOrder: %w", err)
 	} else {
 		val.DirectionOrder = DirectionRudderConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(5)
-	if stream.IsEOF() {
+	stream.skipBits(5)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for Rudder-AngleOrder: %w", err)
 	} else {
 		val.AngleOrder = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for Rudder-Position: %w", err)
 	} else {
 		val.Position = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(16)
-	if stream.IsEOF() {
+	stream.skipBits(16)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -30510,51 +30510,51 @@ type VesselHeading struct {
 	Variation *float32
 	Reference DirectionReferenceConst
 }
-func DecodeVesselHeading(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeVesselHeading(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val VesselHeading
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselHeading-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselHeading-Heading: %w", err)
 	} else {
 		val.Heading = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselHeading-Deviation: %w", err)
 	} else {
 		val.Deviation = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselHeading-Variation: %w", err)
 	} else {
 		val.Variation = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselHeading-Reference: %w", err)
 	} else {
 		val.Reference = DirectionReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -30564,27 +30564,27 @@ type RateOfTurn struct {
 	Sid *uint8
 	Rate *float32
 }
-func DecodeRateOfTurn(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRateOfTurn(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RateOfTurn
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RateOfTurn-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 3.125e-08); err != nil {
+	if v, err := stream.readSignedResolution(32, 3.125e-08); err != nil {
 		return nil, fmt.Errorf("parse failed for RateOfTurn-Rate: %w", err)
 	} else {
 		val.Rate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(24)
-	if stream.IsEOF() {
+	stream.skipBits(24)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -30594,27 +30594,27 @@ type Heave struct {
 	Sid *uint8
 	Heave *float32
 }
-func DecodeHeave(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeHeave(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Heave
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Heave-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Heave-Heave: %w", err)
 	} else {
 		val.Heave = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(40)
-	if stream.IsEOF() {
+	stream.skipBits(40)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -30626,38 +30626,38 @@ type Attitude struct {
 	Pitch *float32
 	Roll *float32
 }
-func DecodeAttitude(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAttitude(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Attitude
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Attitude-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for Attitude-Yaw: %w", err)
 	} else {
 		val.Yaw = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for Attitude-Pitch: %w", err)
 	} else {
 		val.Pitch = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for Attitude-Roll: %w", err)
 	} else {
 		val.Roll = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -30670,42 +30670,42 @@ type MagneticVariation struct {
 	AgeOfService *uint16
 	Variation *float32
 }
-func DecodeMagneticVariation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMagneticVariation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val MagneticVariation
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MagneticVariation-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for MagneticVariation-Source: %w", err)
 	} else {
 		val.Source = MagneticVariationConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MagneticVariation-AgeOfService: %w", err)
 	} else {
 		val.AgeOfService = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for MagneticVariation-Variation: %w", err)
 	} else {
 		val.Variation = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -30718,43 +30718,43 @@ type EngineParametersRapidUpdate struct {
 	BoostPressure *float32
 	TiltTrim *int8
 }
-func DecodeEngineParametersRapidUpdate(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeEngineParametersRapidUpdate(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val EngineParametersRapidUpdate
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-Instance: %w", err)
 	} else {
 		val.Instance = EngineInstanceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.25); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.25); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-Speed: %w", err)
 	} else {
 		val.Speed = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-BoostPressure: %w", err)
 	} else {
 		val.BoostPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-TiltTrim: %w", err)
 	} else {
 		val.TiltTrim = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(16)
-	if stream.IsEOF() {
+	stream.skipBits(16)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -30775,114 +30775,114 @@ type EngineParametersDynamic struct {
 	EngineLoad *int8
 	EngineTorque *int8
 }
-func DecodeEngineParametersDynamic(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeEngineParametersDynamic(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val EngineParametersDynamic
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-Instance: %w", err)
 	} else {
 		val.Instance = EngineInstanceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-OilPressure: %w", err)
 	} else {
 		val.OilPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-OilTemperature: %w", err)
 	} else {
 		val.OilTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-Temperature: %w", err)
 	} else {
 		val.Temperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-AlternatorPotential: %w", err)
 	} else {
 		val.AlternatorPotential = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelRate: %w", err)
 	} else {
 		val.FuelRate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-TotalEngineHours: %w", err)
 	} else {
 		val.TotalEngineHours = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-CoolantPressure: %w", err)
 	} else {
 		val.CoolantPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 1000); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 1000); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelPressure: %w", err)
 	} else {
 		val.FuelPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(16); err != nil {
+	if v, err := stream.readLookupField(16); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-DiscreteStatus1: %w", err)
 	} else {
 		val.DiscreteStatus1 = EngineStatus1Const(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(16); err != nil {
+	if v, err := stream.readLookupField(16); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-DiscreteStatus2: %w", err)
 	} else {
 		val.DiscreteStatus2 = EngineStatus2Const(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-EngineLoad: %w", err)
 	} else {
 		val.EngineLoad = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-EngineTorque: %w", err)
 	} else {
 		val.EngineTorque = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -30896,55 +30896,55 @@ type TransmissionParametersDynamic struct {
 	OilTemperature *float32
 	DiscreteStatus1 *uint8
 }
-func DecodeTransmissionParametersDynamic(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTransmissionParametersDynamic(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val TransmissionParametersDynamic
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-Instance: %w", err)
 	} else {
 		val.Instance = EngineInstanceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-TransmissionGear: %w", err)
 	} else {
 		val.TransmissionGear = GearStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-OilPressure: %w", err)
 	} else {
 		val.OilPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-OilTemperature: %w", err)
 	} else {
 		val.OilTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-DiscreteStatus1: %w", err)
 	} else {
 		val.DiscreteStatus1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -30956,38 +30956,38 @@ type TripParametersVessel struct {
 	EstimatedFuelRemaining *uint16
 	TripRunTime *float32
 }
-func DecodeTripParametersVessel(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTripParametersVessel(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val TripParametersVessel
-	val.Info = info
-	if v, err := stream.ReadUnsignedResolution(32, 0.001); err != nil {
+	val.Info = Info
+	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersVessel-TimeToEmpty: %w", err)
 	} else {
 		val.TimeToEmpty = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersVessel-DistanceToEmpty: %w", err)
 	} else {
 		val.DistanceToEmpty = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersVessel-EstimatedFuelRemaining: %w", err)
 	} else {
 		val.EstimatedFuelRemaining = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersVessel-TripRunTime: %w", err)
 	} else {
 		val.TripRunTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -31001,46 +31001,46 @@ type TripParametersEngine struct {
 	FuelRateEconomy *float32
 	InstantaneousFuelEconomy *float32
 }
-func DecodeTripParametersEngine(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTripParametersEngine(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val TripParametersEngine
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-Instance: %w", err)
 	} else {
 		val.Instance = EngineInstanceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-TripFuelUsed: %w", err)
 	} else {
 		val.TripFuelUsed = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateAverage: %w", err)
 	} else {
 		val.FuelRateAverage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateEconomy: %w", err)
 	} else {
 		val.FuelRateEconomy = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-InstantaneousFuelEconomy: %w", err)
 	} else {
 		val.InstantaneousFuelEconomy = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -31053,38 +31053,38 @@ type EngineParametersStatic struct {
 	Vin string
 	SoftwareId string
 }
-func DecodeEngineParametersStatic(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeEngineParametersStatic(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val EngineParametersStatic
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersStatic-Instance: %w", err)
 	} else {
 		val.Instance = EngineInstanceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.25); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.25); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersStatic-RatedEngineSpeed: %w", err)
 	} else {
 		val.RatedEngineSpeed = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(136); err != nil {
+	if v, err := stream.readFixedString(136); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersStatic-Vin: %w", err)
 	} else {
 		val.Vin = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersStatic-SoftwareId: %w", err)
 	} else {
 		val.SoftwareId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -31101,70 +31101,70 @@ type LoadControllerConnectionStateControl struct {
 	Timeon *uint16
 	Timeoff *uint16
 }
-func DecodeLoadControllerConnectionStateControl(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLoadControllerConnectionStateControl(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LoadControllerConnectionStateControl
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-SequenceId: %w", err)
 	} else {
 		val.SequenceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-ConnectionId: %w", err)
 	} else {
 		val.ConnectionId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-State: %w", err)
 	} else {
 		val.State = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Status: %w", err)
 	} else {
 		val.Status = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-OperationalStatusControl: %w", err)
 	} else {
 		val.OperationalStatusControl = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-PwmDutyCycle: %w", err)
 	} else {
 		val.PwmDutyCycle = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Timeon: %w", err)
 	} else {
 		val.Timeon = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Timeoff: %w", err)
 	} else {
 		val.Timeoff = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -31202,238 +31202,238 @@ type BinarySwitchBankStatus struct {
 	Indicator27 OffOnConst
 	Indicator28 OffOnConst
 }
-func DecodeBinarySwitchBankStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBinarySwitchBankStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val BinarySwitchBankStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator1: %w", err)
 	} else {
 		val.Indicator1 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator2: %w", err)
 	} else {
 		val.Indicator2 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator3: %w", err)
 	} else {
 		val.Indicator3 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator4: %w", err)
 	} else {
 		val.Indicator4 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator5: %w", err)
 	} else {
 		val.Indicator5 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator6: %w", err)
 	} else {
 		val.Indicator6 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator7: %w", err)
 	} else {
 		val.Indicator7 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator8: %w", err)
 	} else {
 		val.Indicator8 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator9: %w", err)
 	} else {
 		val.Indicator9 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator10: %w", err)
 	} else {
 		val.Indicator10 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator11: %w", err)
 	} else {
 		val.Indicator11 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator12: %w", err)
 	} else {
 		val.Indicator12 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator13: %w", err)
 	} else {
 		val.Indicator13 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator14: %w", err)
 	} else {
 		val.Indicator14 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator15: %w", err)
 	} else {
 		val.Indicator15 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator16: %w", err)
 	} else {
 		val.Indicator16 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator17: %w", err)
 	} else {
 		val.Indicator17 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator18: %w", err)
 	} else {
 		val.Indicator18 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator19: %w", err)
 	} else {
 		val.Indicator19 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator20: %w", err)
 	} else {
 		val.Indicator20 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator21: %w", err)
 	} else {
 		val.Indicator21 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator22: %w", err)
 	} else {
 		val.Indicator22 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator23: %w", err)
 	} else {
 		val.Indicator23 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator24: %w", err)
 	} else {
 		val.Indicator24 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator25: %w", err)
 	} else {
 		val.Indicator25 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator26: %w", err)
 	} else {
 		val.Indicator26 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator27: %w", err)
 	} else {
 		val.Indicator27 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator28: %w", err)
 	} else {
 		val.Indicator28 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -31471,238 +31471,238 @@ type SwitchBankControl struct {
 	Switch27 OffOnConst
 	Switch28 OffOnConst
 }
-func DecodeSwitchBankControl(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSwitchBankControl(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SwitchBankControl
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch1: %w", err)
 	} else {
 		val.Switch1 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch2: %w", err)
 	} else {
 		val.Switch2 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch3: %w", err)
 	} else {
 		val.Switch3 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch4: %w", err)
 	} else {
 		val.Switch4 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch5: %w", err)
 	} else {
 		val.Switch5 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch6: %w", err)
 	} else {
 		val.Switch6 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch7: %w", err)
 	} else {
 		val.Switch7 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch8: %w", err)
 	} else {
 		val.Switch8 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch9: %w", err)
 	} else {
 		val.Switch9 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch10: %w", err)
 	} else {
 		val.Switch10 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch11: %w", err)
 	} else {
 		val.Switch11 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch12: %w", err)
 	} else {
 		val.Switch12 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch13: %w", err)
 	} else {
 		val.Switch13 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch14: %w", err)
 	} else {
 		val.Switch14 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch15: %w", err)
 	} else {
 		val.Switch15 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch16: %w", err)
 	} else {
 		val.Switch16 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch17: %w", err)
 	} else {
 		val.Switch17 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch18: %w", err)
 	} else {
 		val.Switch18 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch19: %w", err)
 	} else {
 		val.Switch19 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch20: %w", err)
 	} else {
 		val.Switch20 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch21: %w", err)
 	} else {
 		val.Switch21 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch22: %w", err)
 	} else {
 		val.Switch22 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch23: %w", err)
 	} else {
 		val.Switch23 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch24: %w", err)
 	} else {
 		val.Switch24 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch25: %w", err)
 	} else {
 		val.Switch25 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch26: %w", err)
 	} else {
 		val.Switch26 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch27: %w", err)
 	} else {
 		val.Switch27 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch28: %w", err)
 	} else {
 		val.Switch28 = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -31725,26 +31725,26 @@ type AcInputStatusRepeating1 struct {
 	ReactivePower *uint32
 	PowerFactor *float32
 }
-func DecodeAcInputStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAcInputStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AcInputStatus
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AcInputStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AcInputStatus-NumberOfLines: %w", err)
 	} else {
 		val.NumberOfLines = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -31755,55 +31755,55 @@ func DecodeAcInputStatus(info PacketInfo, stream *PGNDataStream) (interface{}, e
 	i := 0 
 	for {
 		var rep AcInputStatusRepeating1
-		if v, err := stream.ReadUInt8(2); err != nil {
+		if v, err := stream.readUInt8(2); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-Line: %w", err)
 		} else {
 			rep.Line = v
 		}
-		if v, err := stream.ReadLookupField(2); err != nil {
+		if v, err := stream.readLookupField(2); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-Acceptability: %w", err)
 		} else {
 			rep.Acceptability = AcceptabilityConst(v)
 		}
-		stream.SkipBits(4)
-		if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+		stream.skipBits(4)
+		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-Voltage: %w", err)
 		} else {
 			rep.Voltage = v
 		}
-		if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-Current: %w", err)
 		} else {
 			rep.Current = v
 		}
-		if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-Frequency: %w", err)
 		} else {
 			rep.Frequency = v
 		}
-		if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-BreakerSize: %w", err)
 		} else {
 			rep.BreakerSize = v
 		}
-		if v, err := stream.ReadUInt32(32); err != nil {
+		if v, err := stream.readUInt32(32); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-RealPower: %w", err)
 		} else {
 			rep.RealPower = v
 		}
-		if v, err := stream.ReadUInt32(32); err != nil {
+		if v, err := stream.readUInt32(32); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-ReactivePower: %w", err)
 		} else {
 			rep.ReactivePower = v
 		}
-		if v, err := stream.ReadUnsignedResolution(8, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(8, 0.01); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-PowerFactor: %w", err)
 		} else {
 			rep.PowerFactor = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -31832,26 +31832,26 @@ type AcOutputStatusRepeating1 struct {
 	ReactivePower *uint32
 	PowerFactor *float32
 }
-func DecodeAcOutputStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAcOutputStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AcOutputStatus
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AcOutputStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AcOutputStatus-NumberOfLines: %w", err)
 	} else {
 		val.NumberOfLines = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -31862,55 +31862,55 @@ func DecodeAcOutputStatus(info PacketInfo, stream *PGNDataStream) (interface{}, 
 	i := 0 
 	for {
 		var rep AcOutputStatusRepeating1
-		if v, err := stream.ReadLookupField(2); err != nil {
+		if v, err := stream.readLookupField(2); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-Line: %w", err)
 		} else {
 			rep.Line = LineConst(v)
 		}
-		if v, err := stream.ReadLookupField(3); err != nil {
+		if v, err := stream.readLookupField(3); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-Waveform: %w", err)
 		} else {
 			rep.Waveform = WaveformConst(v)
 		}
-		stream.SkipBits(3)
-		if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+		stream.skipBits(3)
+		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-Voltage: %w", err)
 		} else {
 			rep.Voltage = v
 		}
-		if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-Current: %w", err)
 		} else {
 			rep.Current = v
 		}
-		if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-Frequency: %w", err)
 		} else {
 			rep.Frequency = v
 		}
-		if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-BreakerSize: %w", err)
 		} else {
 			rep.BreakerSize = v
 		}
-		if v, err := stream.ReadUInt32(32); err != nil {
+		if v, err := stream.readUInt32(32); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-RealPower: %w", err)
 		} else {
 			rep.RealPower = v
 		}
-		if v, err := stream.ReadUInt32(32); err != nil {
+		if v, err := stream.readUInt32(32); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-ReactivePower: %w", err)
 		} else {
 			rep.ReactivePower = v
 		}
-		if v, err := stream.ReadUnsignedResolution(8, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(8, 0.01); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-PowerFactor: %w", err)
 		} else {
 			rep.PowerFactor = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -31929,43 +31929,43 @@ type FluidLevel struct {
 	Level *float32
 	Capacity *float32
 }
-func DecodeFluidLevel(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFluidLevel(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FluidLevel
-	val.Info = info
-	if v, err := stream.ReadUInt8(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for FluidLevel-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for FluidLevel-Type: %w", err)
 	} else {
 		val.Type = TankTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.004); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.004); err != nil {
 		return nil, fmt.Errorf("parse failed for FluidLevel-Level: %w", err)
 	} else {
 		val.Level = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for FluidLevel-Capacity: %w", err)
 	} else {
 		val.Capacity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -31981,70 +31981,70 @@ type DcDetailedStatus struct {
 	RippleVoltage *float32
 	RemainingCapacity *uint16
 }
-func DecodeDcDetailedStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDcDetailedStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val DcDetailedStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DcDetailedStatus-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DcDetailedStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DcDetailedStatus-DcType: %w", err)
 	} else {
 		val.DcType = DcSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DcDetailedStatus-StateOfCharge: %w", err)
 	} else {
 		val.StateOfCharge = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DcDetailedStatus-StateOfHealth: %w", err)
 	} else {
 		val.StateOfHealth = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 60); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 60); err != nil {
 		return nil, fmt.Errorf("parse failed for DcDetailedStatus-TimeRemaining: %w", err)
 	} else {
 		val.TimeRemaining = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for DcDetailedStatus-RippleVoltage: %w", err)
 	} else {
 		val.RippleVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for DcDetailedStatus-RemainingCapacity: %w", err)
 	} else {
 		val.RemainingCapacity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32060,66 +32060,66 @@ type ChargerStatus struct {
 	EqualizationPending OffOnConst
 	EqualizationTimeRemaining *float32
 }
-func DecodeChargerStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeChargerStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ChargerStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerStatus-BatteryInstance: %w", err)
 	} else {
 		val.BatteryInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerStatus-OperatingState: %w", err)
 	} else {
 		val.OperatingState = ChargerStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerStatus-ChargeMode: %w", err)
 	} else {
 		val.ChargeMode = ChargerModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerStatus-Enabled: %w", err)
 	} else {
 		val.Enabled = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerStatus-EqualizationPending: %w", err)
 	} else {
 		val.EqualizationPending = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 60); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 60); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerStatus-EqualizationTimeRemaining: %w", err)
 	} else {
 		val.EqualizationTimeRemaining = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32133,46 +32133,46 @@ type BatteryStatus struct {
 	Temperature *float32
 	Sid *uint8
 }
-func DecodeBatteryStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBatteryStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val BatteryStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryStatus-Voltage: %w", err)
 	} else {
 		val.Voltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryStatus-Current: %w", err)
 	} else {
 		val.Current = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryStatus-Temperature: %w", err)
 	} else {
 		val.Temperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryStatus-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32186,51 +32186,51 @@ type InverterStatus struct {
 	OperatingState InverterStateConst
 	InverterEnable OffOnConst
 }
-func DecodeInverterStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeInverterStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val InverterStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterStatus-AcInstance: %w", err)
 	} else {
 		val.AcInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterStatus-DcInstance: %w", err)
 	} else {
 		val.DcInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterStatus-OperatingState: %w", err)
 	} else {
 		val.OperatingState = InverterStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterStatus-InverterEnable: %w", err)
 	} else {
 		val.InverterEnable = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -32248,90 +32248,90 @@ type ChargerConfigurationStatus struct {
 	OverChargeEnableDisable OffOnConst
 	EqualizeTime *float32
 }
-func DecodeChargerConfigurationStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeChargerConfigurationStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ChargerConfigurationStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-BatteryInstance: %w", err)
 	} else {
 		val.BatteryInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-ChargerEnableDisable: %w", err)
 	} else {
 		val.ChargerEnableDisable = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-ChargeCurrentLimit: %w", err)
 	} else {
 		val.ChargeCurrentLimit = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-ChargingAlgorithm: %w", err)
 	} else {
 		val.ChargingAlgorithm = ChargingAlgorithmConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-ChargerMode: %w", err)
 	} else {
 		val.ChargerMode = ChargerModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-EstimatedTemperature: %w", err)
 	} else {
 		val.EstimatedTemperature = DeviceTempStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-EqualizeOneTimeEnableDisable: %w", err)
 	} else {
 		val.EqualizeOneTimeEnableDisable = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-OverChargeEnableDisable: %w", err)
 	} else {
 		val.OverChargeEnableDisable = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 60); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 60); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-EqualizeTime: %w", err)
 	} else {
 		val.EqualizeTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32348,70 +32348,70 @@ type InverterConfigurationStatus struct {
 	LoadSensePowerThreshold *uint8
 	LoadSenseInterval *uint8
 }
-func DecodeInverterConfigurationStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeInverterConfigurationStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val InverterConfigurationStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-AcInstance: %w", err)
 	} else {
 		val.AcInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-DcInstance: %w", err)
 	} else {
 		val.DcInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-InverterEnableDisable: %w", err)
 	} else {
 		val.InverterEnableDisable = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-InverterMode: %w", err)
 	} else {
 		val.InverterMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-LoadSenseEnableDisable: %w", err)
 	} else {
 		val.LoadSenseEnableDisable = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-LoadSensePowerThreshold: %w", err)
 	} else {
 		val.LoadSensePowerThreshold = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-LoadSenseInterval: %w", err)
 	} else {
 		val.LoadSenseInterval = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32423,30 +32423,30 @@ type AgsConfigurationStatus struct {
 	GeneratorInstance *uint8
 	AgsMode *uint8
 }
-func DecodeAgsConfigurationStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAgsConfigurationStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AgsConfigurationStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AgsConfigurationStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AgsConfigurationStatus-GeneratorInstance: %w", err)
 	} else {
 		val.GeneratorInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AgsConfigurationStatus-AgsMode: %w", err)
 	} else {
 		val.AgsMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32464,82 +32464,82 @@ type BatteryConfigurationStatus struct {
 	PeukertExponent *float32
 	ChargeEfficiencyFactor *int8
 }
-func DecodeBatteryConfigurationStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBatteryConfigurationStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val BatteryConfigurationStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-BatteryType: %w", err)
 	} else {
 		val.BatteryType = BatteryTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-SupportsEqualization: %w", err)
 	} else {
 		val.SupportsEqualization = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-NominalVoltage: %w", err)
 	} else {
 		val.NominalVoltage = BatteryVoltageConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-Chemistry: %w", err)
 	} else {
 		val.Chemistry = BatteryChemistryConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-Capacity: %w", err)
 	} else {
 		val.Capacity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-TemperatureCoefficient: %w", err)
 	} else {
 		val.TemperatureCoefficient = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(8, 0.002); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 0.002); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-PeukertExponent: %w", err)
 	} else {
 		val.PeukertExponent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-ChargeEfficiencyFactor: %w", err)
 	} else {
 		val.ChargeEfficiencyFactor = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32554,54 +32554,54 @@ type AgsStatus struct {
 	GeneratorOnReason *uint8
 	GeneratorOffReason *uint8
 }
-func DecodeAgsStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAgsStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AgsStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AgsStatus-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AgsStatus-GeneratorInstance: %w", err)
 	} else {
 		val.GeneratorInstance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AgsStatus-AgsOperatingState: %w", err)
 	} else {
 		val.AgsOperatingState = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AgsStatus-GeneratorState: %w", err)
 	} else {
 		val.GeneratorState = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AgsStatus-GeneratorOnReason: %w", err)
 	} else {
 		val.GeneratorOnReason = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AgsStatus-GeneratorOffReason: %w", err)
 	} else {
 		val.GeneratorOffReason = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32614,38 +32614,38 @@ type AcPowerCurrentPhaseA struct {
 	AcRmsCurrent *float32
 	Power *int32
 }
-func DecodeAcPowerCurrentPhaseA(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAcPowerCurrentPhaseA(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AcPowerCurrentPhaseA
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-ConnectionNumber: %w", err)
 	} else {
 		val.ConnectionNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-Power: %w", err)
 	} else {
 		val.Power = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32658,38 +32658,38 @@ type AcPowerCurrentPhaseB struct {
 	AcRmsCurrent *float32
 	Power *int32
 }
-func DecodeAcPowerCurrentPhaseB(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAcPowerCurrentPhaseB(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AcPowerCurrentPhaseB
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-ConnectionNumber: %w", err)
 	} else {
 		val.ConnectionNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-Power: %w", err)
 	} else {
 		val.Power = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32702,38 +32702,38 @@ type AcPowerCurrentPhaseC struct {
 	AcRmsCurrent *float32
 	Power *int32
 }
-func DecodeAcPowerCurrentPhaseC(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAcPowerCurrentPhaseC(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AcPowerCurrentPhaseC
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-ConnectionNumber: %w", err)
 	} else {
 		val.ConnectionNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-Power: %w", err)
 	} else {
 		val.Power = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32741,7 +32741,7 @@ func DecodeAcPowerCurrentPhaseC(info PacketInfo, stream *PGNDataStream) (interfa
 }
 type ConverterStatus struct {
 	Info PacketInfo
-	Sid []uint8
+	Sid interface{}
 	ConnectionNumber *uint8
 	OperatingState ConverterStateConst
 	TemperatureState GoodWarningErrorConst
@@ -32749,115 +32749,115 @@ type ConverterStatus struct {
 	LowDcVoltageState GoodWarningErrorConst
 	RippleState GoodWarningErrorConst
 }
-func DecodeConverterStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeConverterStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ConverterStatus
-	val.Info = info
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ConverterStatus-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ConverterStatus-ConnectionNumber: %w", err)
 	} else {
 		val.ConnectionNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ConverterStatus-OperatingState: %w", err)
 	} else {
 		val.OperatingState = ConverterStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ConverterStatus-TemperatureState: %w", err)
 	} else {
 		val.TemperatureState = GoodWarningErrorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ConverterStatus-OverloadState: %w", err)
 	} else {
 		val.OverloadState = GoodWarningErrorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ConverterStatus-LowDcVoltageState: %w", err)
 	} else {
 		val.LowDcVoltageState = GoodWarningErrorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ConverterStatus-RippleState: %w", err)
 	} else {
 		val.RippleState = GoodWarningErrorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(32)
-	if stream.IsEOF() {
+	stream.skipBits(32)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
 }
 type DcVoltageCurrent struct {
 	Info PacketInfo
-	Sid []uint8
+	Sid interface{}
 	ConnectionNumber *uint8
 	DcVoltage *float32
 	DcCurrent *float32
 }
-func DecodeDcVoltageCurrent(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDcVoltageCurrent(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val DcVoltageCurrent
-	val.Info = info
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DcVoltageCurrent-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DcVoltageCurrent-ConnectionNumber: %w", err)
 	} else {
 		val.ConnectionNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for DcVoltageCurrent-DcVoltage: %w", err)
 	} else {
 		val.DcVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(24, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(24, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for DcVoltageCurrent-DcCurrent: %w", err)
 	} else {
 		val.DcCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -32867,27 +32867,27 @@ type LeewayAngle struct {
 	Sid *uint8
 	LeewayAngle *float32
 }
-func DecodeLeewayAngle(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLeewayAngle(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LeewayAngle
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LeewayAngle-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for LeewayAngle-LeewayAngle: %w", err)
 	} else {
 		val.LeewayAngle = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(40)
-	if stream.IsEOF() {
+	stream.skipBits(40)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -32904,78 +32904,78 @@ type ThrusterControlStatus struct {
 	CommandTimeout *float32
 	AzimuthControl *float32
 }
-func DecodeThrusterControlStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeThrusterControlStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ThrusterControlStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-Identifier: %w", err)
 	} else {
 		val.Identifier = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-DirectionControl: %w", err)
 	} else {
 		val.DirectionControl = ThrusterDirectionControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-PowerEnabled: %w", err)
 	} else {
 		val.PowerEnabled = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-RetractControl: %w", err)
 	} else {
 		val.RetractControl = ThrusterRetractControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-SpeedControl: %w", err)
 	} else {
 		val.SpeedControl = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-ControlEvents: %w", err)
 	} else {
 		val.ControlEvents = ThrusterControlEventsConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(8, 0.005); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 0.005); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-CommandTimeout: %w", err)
 	} else {
 		val.CommandTimeout = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-AzimuthControl: %w", err)
 	} else {
 		val.AzimuthControl = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -32989,50 +32989,50 @@ type ThrusterInformation struct {
 	MaximumTemperatureRating *float32
 	MaximumRotationalSpeed *float32
 }
-func DecodeThrusterInformation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeThrusterInformation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ThrusterInformation
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterInformation-Identifier: %w", err)
 	} else {
 		val.Identifier = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterInformation-MotorType: %w", err)
 	} else {
 		val.MotorType = ThrusterMotorTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterInformation-PowerRating: %w", err)
 	} else {
 		val.PowerRating = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterInformation-MaximumTemperatureRating: %w", err)
 	} else {
 		val.MaximumTemperatureRating = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.25); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.25); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterInformation-MaximumRotationalSpeed: %w", err)
 	} else {
 		val.MaximumRotationalSpeed = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -33047,54 +33047,54 @@ type ThrusterMotorStatus struct {
 	Temperature *float32
 	OperatingTime *float32
 }
-func DecodeThrusterMotorStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeThrusterMotorStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ThrusterMotorStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Identifier: %w", err)
 	} else {
 		val.Identifier = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-MotorEvents: %w", err)
 	} else {
 		val.MotorEvents = ThrusterMotorEventsConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Current: %w", err)
 	} else {
 		val.Current = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Temperature: %w", err)
 	} else {
 		val.Temperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 60); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 60); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-OperatingTime: %w", err)
 	} else {
 		val.OperatingTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -33108,51 +33108,51 @@ type Speed struct {
 	SpeedWaterReferencedType WaterReferenceConst
 	SpeedDirection *uint8
 }
-func DecodeSpeed(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSpeed(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Speed
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Speed-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Speed-SpeedWaterReferenced: %w", err)
 	} else {
 		val.SpeedWaterReferenced = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Speed-SpeedGroundReferenced: %w", err)
 	} else {
 		val.SpeedGroundReferenced = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Speed-SpeedWaterReferencedType: %w", err)
 	} else {
 		val.SpeedWaterReferencedType = WaterReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for Speed-SpeedDirection: %w", err)
 	} else {
 		val.SpeedDirection = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(12)
-	if stream.IsEOF() {
+	stream.skipBits(12)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -33164,38 +33164,38 @@ type WaterDepth struct {
 	Offset *float32
 	Range *float32
 }
-func DecodeWaterDepth(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeWaterDepth(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val WaterDepth
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for WaterDepth-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for WaterDepth-Depth: %w", err)
 	} else {
 		val.Depth = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for WaterDepth-Offset: %w", err)
 	} else {
 		val.Offset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(8, 10); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 10); err != nil {
 		return nil, fmt.Errorf("parse failed for WaterDepth-Range: %w", err)
 	} else {
 		val.Range = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -33208,38 +33208,38 @@ type DistanceLog struct {
 	Log *uint32
 	TripLog *uint32
 }
-func DecodeDistanceLog(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDistanceLog(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val DistanceLog
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for DistanceLog-Date: %w", err)
 	} else {
 		val.Date = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for DistanceLog-Time: %w", err)
 	} else {
 		val.Time = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for DistanceLog-Log: %w", err)
 	} else {
 		val.Log = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for DistanceLog-TripLog: %w", err)
 	} else {
 		val.TripLog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -33262,122 +33262,122 @@ type TrackedTargetData struct {
 	UtcOfFix *float32
 	Name string
 }
-func DecodeTrackedTargetData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTrackedTargetData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val TrackedTargetData
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-TargetId: %w", err)
 	} else {
 		val.TargetId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-TrackStatus: %w", err)
 	} else {
 		val.TrackStatus = TrackingConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-ReportedTarget: %w", err)
 	} else {
 		val.ReportedTarget = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-TargetAcquisition: %w", err)
 	} else {
 		val.TargetAcquisition = TargetAcquisitionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-BearingReference: %w", err)
 	} else {
 		val.BearingReference = DirectionReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Bearing: %w", err)
 	} else {
 		val.Bearing = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Distance: %w", err)
 	} else {
 		val.Distance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Course: %w", err)
 	} else {
 		val.Course = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Speed: %w", err)
 	} else {
 		val.Speed = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Cpa: %w", err)
 	} else {
 		val.Cpa = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Tcpa: %w", err)
 	} else {
 		val.Tcpa = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-UtcOfFix: %w", err)
 	} else {
 		val.UtcOfFix = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(1784); err != nil {
+	if v, err := stream.readFixedString(1784); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Name: %w", err)
 	} else {
 		val.Name = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -33390,7 +33390,7 @@ type WindlassControlStatus struct {
 	WindlassDirectionControl WindlassDirectionConst
 	AnchorDockingControl OffOnConst
 	SpeedControlType SpeedTypeConst
-	SpeedControl []uint8
+	SpeedControl interface{}
 	PowerEnable OffOnConst
 	MechanicalLock OffOnConst
 	DeckAndAnchorWash OffOnConst
@@ -33398,111 +33398,111 @@ type WindlassControlStatus struct {
 	CommandTimeout *float32
 	WindlassControlEvents WindlassControlConst
 }
-func DecodeWindlassControlStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeWindlassControlStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val WindlassControlStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-WindlassId: %w", err)
 	} else {
 		val.WindlassId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-WindlassDirectionControl: %w", err)
 	} else {
 		val.WindlassDirectionControl = WindlassDirectionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-AnchorDockingControl: %w", err)
 	} else {
 		val.AnchorDockingControl = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-SpeedControlType: %w", err)
 	} else {
 		val.SpeedControlType = SpeedTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-SpeedControl: %w", err)
 	} else {
 		val.SpeedControl = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-PowerEnable: %w", err)
 	} else {
 		val.PowerEnable = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-MechanicalLock: %w", err)
 	} else {
 		val.MechanicalLock = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-DeckAndAnchorWash: %w", err)
 	} else {
 		val.DeckAndAnchorWash = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-AnchorLight: %w", err)
 	} else {
 		val.AnchorLight = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(8, 0.005); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 0.005); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-CommandTimeout: %w", err)
 	} else {
 		val.CommandTimeout = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-WindlassControlEvents: %w", err)
 	} else {
 		val.WindlassControlEvents = WindlassControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -33519,82 +33519,82 @@ type AnchorWindlassOperatingStatus struct {
 	AnchorDockingStatus DockingStatusConst
 	WindlassOperatingEvents WindlassOperationConst
 }
-func DecodeAnchorWindlassOperatingStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAnchorWindlassOperatingStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AnchorWindlassOperatingStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassId: %w", err)
 	} else {
 		val.WindlassId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassDirectionControl: %w", err)
 	} else {
 		val.WindlassDirectionControl = WindlassDirectionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassMotionStatus: %w", err)
 	} else {
 		val.WindlassMotionStatus = WindlassMotionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-RodeTypeStatus: %w", err)
 	} else {
 		val.RodeTypeStatus = RodeTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-RodeCounterValue: %w", err)
 	} else {
 		val.RodeCounterValue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassLineSpeed: %w", err)
 	} else {
 		val.WindlassLineSpeed = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-AnchorDockingStatus: %w", err)
 	} else {
 		val.AnchorDockingStatus = DockingStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassOperatingEvents: %w", err)
 	} else {
 		val.WindlassOperatingEvents = WindlassOperationConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -33609,59 +33609,59 @@ type AnchorWindlassMonitoringStatus struct {
 	MotorCurrent *uint8
 	TotalMotorTime *float32
 }
-func DecodeAnchorWindlassMonitoringStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAnchorWindlassMonitoringStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AnchorWindlassMonitoringStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-WindlassId: %w", err)
 	} else {
 		val.WindlassId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-WindlassMonitoringEvents: %w", err)
 	} else {
 		val.WindlassMonitoringEvents = WindlassMonitoringConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.2); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.2); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-ControllerVoltage: %w", err)
 	} else {
 		val.ControllerVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-MotorCurrent: %w", err)
 	} else {
 		val.MotorCurrent = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 60); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 60); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-TotalMotorTime: %w", err)
 	} else {
 		val.TotalMotorTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -33671,22 +33671,22 @@ type PositionRapidUpdate struct {
 	Latitude *float32
 	Longitude *float32
 }
-func DecodePositionRapidUpdate(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodePositionRapidUpdate(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val PositionRapidUpdate
-	val.Info = info
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	val.Info = Info
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for PositionRapidUpdate-Latitude: %w", err)
 	} else {
 		val.Latitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for PositionRapidUpdate-Longitude: %w", err)
 	} else {
 		val.Longitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -33699,47 +33699,47 @@ type CogSogRapidUpdate struct {
 	Cog *float32
 	Sog *float32
 }
-func DecodeCogSogRapidUpdate(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeCogSogRapidUpdate(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val CogSogRapidUpdate
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-CogReference: %w", err)
 	} else {
 		val.CogReference = DirectionReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Cog: %w", err)
 	} else {
 		val.Cog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Sog: %w", err)
 	} else {
 		val.Sog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(16)
-	if stream.IsEOF() {
+	stream.skipBits(16)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -33751,38 +33751,38 @@ type PositionDeltaRapidUpdate struct {
 	LatitudeDelta *int16
 	LongitudeDelta *int16
 }
-func DecodePositionDeltaRapidUpdate(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodePositionDeltaRapidUpdate(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val PositionDeltaRapidUpdate
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for PositionDeltaRapidUpdate-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for PositionDeltaRapidUpdate-TimeDelta: %w", err)
 	} else {
 		val.TimeDelta = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt16(16); err != nil {
+	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for PositionDeltaRapidUpdate-LatitudeDelta: %w", err)
 	} else {
 		val.LatitudeDelta = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt16(16); err != nil {
+	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for PositionDeltaRapidUpdate-LongitudeDelta: %w", err)
 	} else {
 		val.LongitudeDelta = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -33797,58 +33797,58 @@ type AltitudeDeltaRapidUpdate struct {
 	Cog *float32
 	AltitudeDelta *int16
 }
-func DecodeAltitudeDeltaRapidUpdate(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAltitudeDeltaRapidUpdate(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AltitudeDeltaRapidUpdate
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AltitudeDeltaRapidUpdate-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt16(16); err != nil {
+	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AltitudeDeltaRapidUpdate-TimeDelta: %w", err)
 	} else {
 		val.TimeDelta = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AltitudeDeltaRapidUpdate-GnssQuality: %w", err)
 	} else {
 		val.GnssQuality = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AltitudeDeltaRapidUpdate-Direction: %w", err)
 	} else {
 		val.Direction = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AltitudeDeltaRapidUpdate-Cog: %w", err)
 	} else {
 		val.Cog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt16(16); err != nil {
+	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AltitudeDeltaRapidUpdate-AltitudeDelta: %w", err)
 	} else {
 		val.AltitudeDelta = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -33877,126 +33877,126 @@ type GnssPositionDataRepeating1 struct {
 	ReferenceStationId *uint16
 	AgeOfDgnssCorrections *float32
 }
-func DecodeGnssPositionData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssPositionData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GnssPositionData
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Date: %w", err)
 	} else {
 		val.Date = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Time: %w", err)
 	} else {
 		val.Time = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(64, 1e-16); err != nil {
+	if v, err := stream.readSignedResolution(64, 1e-16); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Latitude: %w", err)
 	} else {
 		val.Latitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(64, 1e-16); err != nil {
+	if v, err := stream.readSignedResolution(64, 1e-16); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Longitude: %w", err)
 	} else {
 		val.Longitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(64, 1e-06); err != nil {
+	if v, err := stream.readSignedResolution(64, 1e-06); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Altitude: %w", err)
 	} else {
 		val.Altitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-GnssType: %w", err)
 	} else {
 		val.GnssType = GnsConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Method: %w", err)
 	} else {
 		val.Method = GnsMethodConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Integrity: %w", err)
 	} else {
 		val.Integrity = GnsIntegrityConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-NumberOfSvs: %w", err)
 	} else {
 		val.NumberOfSvs = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Hdop: %w", err)
 	} else {
 		val.Hdop = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Pdop: %w", err)
 	} else {
 		val.Pdop = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-GeoidalSeparation: %w", err)
 	} else {
 		val.GeoidalSeparation = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-ReferenceStations: %w", err)
 	} else {
 		val.ReferenceStations = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -34007,24 +34007,24 @@ func DecodeGnssPositionData(info PacketInfo, stream *PGNDataStream) (interface{}
 	i := 0 
 	for {
 		var rep GnssPositionDataRepeating1
-		if v, err := stream.ReadLookupField(4); err != nil {
+		if v, err := stream.readLookupField(4); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssPositionData-ReferenceStationType: %w", err)
 		} else {
 			rep.ReferenceStationType = GnsConst(v)
 		}
-		if v, err := stream.ReadUInt16(12); err != nil {
+		if v, err := stream.readUInt16(12); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssPositionData-ReferenceStationId: %w", err)
 		} else {
 			rep.ReferenceStationId = v
 		}
-		if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssPositionData-AgeOfDgnssCorrections: %w", err)
 		} else {
 			rep.AgeOfDgnssCorrections = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -34042,30 +34042,30 @@ type TimeDate struct {
 	Time *float32
 	LocalOffset *float32
 }
-func DecodeTimeDate(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTimeDate(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val TimeDate
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for TimeDate-Date: %w", err)
 	} else {
 		val.Date = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for TimeDate-Time: %w", err)
 	} else {
 		val.Time = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 60); err != nil {
+	if v, err := stream.readSignedResolution(16, 60); err != nil {
 		return nil, fmt.Errorf("parse failed for TimeDate-LocalOffset: %w", err)
 	} else {
 		val.LocalOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -34083,7 +34083,7 @@ type AisClassAPositionReport struct {
 	TimeStamp TimeStampConst
 	Cog *float32
 	Sog *float32
-	CommunicationState []uint8
+	CommunicationState interface{}
 	AisTransceiverInformation AisTransceiverConst
 	Heading *float32
 	RateOfTurn *float32
@@ -34091,154 +34091,154 @@ type AisClassAPositionReport struct {
 	SpecialManeuverIndicator AisSpecialManeuverConst
 	SequenceId *uint8
 }
-func DecodeAisClassAPositionReport(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassAPositionReport(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisClassAPositionReport
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-PositionAccuracy: %w", err)
 	} else {
 		val.PositionAccuracy = PositionAccuracyConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Raim: %w", err)
 	} else {
 		val.Raim = RaimFlagConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-TimeStamp: %w", err)
 	} else {
 		val.TimeStamp = TimeStampConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Cog: %w", err)
 	} else {
 		val.Cog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Sog: %w", err)
 	} else {
 		val.Sog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(19); err != nil {
+	if v, err := stream.readBinaryData(19); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-CommunicationState: %w", err)
 	} else {
 		val.CommunicationState = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Heading: %w", err)
 	} else {
 		val.Heading = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 3.125e-05); err != nil {
+	if v, err := stream.readSignedResolution(16, 3.125e-05); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-RateOfTurn: %w", err)
 	} else {
 		val.RateOfTurn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-NavStatus: %w", err)
 	} else {
 		val.NavStatus = NavStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-SpecialManeuverIndicator: %w", err)
 	} else {
 		val.SpecialManeuverIndicator = AisSpecialManeuverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
-	stream.SkipBits(5)
-	if stream.IsEOF() {
+	stream.skipBits(5)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-SequenceId: %w", err)
 	} else {
 		val.SequenceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -34256,7 +34256,7 @@ type AisClassBPositionReport struct {
 	TimeStamp TimeStampConst
 	Cog *float32
 	Sog *float32
-	CommunicationState []uint8
+	CommunicationState interface{}
 	AisTransceiverInformation AisTransceiverConst
 	Heading *float32
 	UnitType AisTypeConst
@@ -34267,174 +34267,174 @@ type AisClassBPositionReport struct {
 	AisMode AisModeConst
 	AisCommunicationState AisCommunicationStateConst
 }
-func DecodeAisClassBPositionReport(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassBPositionReport(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisClassBPositionReport
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-PositionAccuracy: %w", err)
 	} else {
 		val.PositionAccuracy = PositionAccuracyConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Raim: %w", err)
 	} else {
 		val.Raim = RaimFlagConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-TimeStamp: %w", err)
 	} else {
 		val.TimeStamp = TimeStampConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Cog: %w", err)
 	} else {
 		val.Cog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Sog: %w", err)
 	} else {
 		val.Sog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(19); err != nil {
+	if v, err := stream.readBinaryData(19); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-CommunicationState: %w", err)
 	} else {
 		val.CommunicationState = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Heading: %w", err)
 	} else {
 		val.Heading = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-UnitType: %w", err)
 	} else {
 		val.UnitType = AisTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-IntegratedDisplay: %w", err)
 	} else {
 		val.IntegratedDisplay = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Dsc: %w", err)
 	} else {
 		val.Dsc = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Band: %w", err)
 	} else {
 		val.Band = AisBandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-CanHandleMsg22: %w", err)
 	} else {
 		val.CanHandleMsg22 = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-AisMode: %w", err)
 	} else {
 		val.AisMode = AisModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-AisCommunicationState: %w", err)
 	} else {
 		val.AisCommunicationState = AisCommunicationStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -34464,194 +34464,194 @@ type AisClassBExtendedPositionReport struct {
 	AisMode AisModeConst
 	AisTransceiverInformation AisTransceiverConst
 }
-func DecodeAisClassBExtendedPositionReport(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassBExtendedPositionReport(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisClassBExtendedPositionReport
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-PositionAccuracy: %w", err)
 	} else {
 		val.PositionAccuracy = PositionAccuracyConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Raim: %w", err)
 	} else {
 		val.Raim = RaimFlagConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-TimeStamp: %w", err)
 	} else {
 		val.TimeStamp = TimeStampConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Cog: %w", err)
 	} else {
 		val.Cog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Sog: %w", err)
 	} else {
 		val.Sog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-TypeOfShip: %w", err)
 	} else {
 		val.TypeOfShip = ShipTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-TrueHeading: %w", err)
 	} else {
 		val.TrueHeading = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-GnssType: %w", err)
 	} else {
 		val.GnssType = PositionFixDeviceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Length: %w", err)
 	} else {
 		val.Length = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Beam: %w", err)
 	} else {
 		val.Beam = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-PositionReferenceFromStarboard: %w", err)
 	} else {
 		val.PositionReferenceFromStarboard = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-PositionReferenceFromBow: %w", err)
 	} else {
 		val.PositionReferenceFromBow = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(160); err != nil {
+	if v, err := stream.readFixedString(160); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Name: %w", err)
 	} else {
 		val.Name = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Dte: %w", err)
 	} else {
 		val.Dte = AvailableConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-AisMode: %w", err)
 	} else {
 		val.AisMode = AisModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -34676,182 +34676,182 @@ type AisAidsToNavigationAtonReport struct {
 	VirtualAtonFlag YesNoConst
 	AssignedModeFlag AisAssignedModeConst
 	PositionFixingDeviceType PositionFixDeviceConst
-	AtonStatus []uint8
+	AtonStatus interface{}
 	AisTransceiverInformation AisTransceiverConst
 	AtonName string
 }
-func DecodeAisAidsToNavigationAtonReport(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisAidsToNavigationAtonReport(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisAidsToNavigationAtonReport
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionAccuracy: %w", err)
 	} else {
 		val.PositionAccuracy = PositionAccuracyConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-Raim: %w", err)
 	} else {
 		val.Raim = RaimFlagConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-TimeStamp: %w", err)
 	} else {
 		val.TimeStamp = TimeStampConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-LengthDiameter: %w", err)
 	} else {
 		val.LengthDiameter = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-BeamDiameter: %w", err)
 	} else {
 		val.BeamDiameter = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionReferenceFromStarboardEdge: %w", err)
 	} else {
 		val.PositionReferenceFromStarboardEdge = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionReferenceFromTrueNorthFacingEdge: %w", err)
 	} else {
 		val.PositionReferenceFromTrueNorthFacingEdge = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-AtonType: %w", err)
 	} else {
 		val.AtonType = AtonTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-OffPositionIndicator: %w", err)
 	} else {
 		val.OffPositionIndicator = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-VirtualAtonFlag: %w", err)
 	} else {
 		val.VirtualAtonFlag = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-AssignedModeFlag: %w", err)
 	} else {
 		val.AssignedModeFlag = AisAssignedModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionFixingDeviceType: %w", err)
 	} else {
 		val.PositionFixingDeviceType = PositionFixDeviceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-AtonStatus: %w", err)
 	} else {
 		val.AtonStatus = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-AtonName: %w", err)
 	} else {
 		val.AtonName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -34865,46 +34865,46 @@ type Datum struct {
 	DeltaAltitude *float32
 	ReferenceDatum string
 }
-func DecodeDatum(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDatum(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Datum
-	val.Info = info
-	if v, err := stream.ReadFixedString(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readFixedString(32); err != nil {
 		return nil, fmt.Errorf("parse failed for Datum-LocalDatum: %w", err)
 	} else {
 		val.LocalDatum = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for Datum-DeltaLatitude: %w", err)
 	} else {
 		val.DeltaLatitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for Datum-DeltaLongitude: %w", err)
 	} else {
 		val.DeltaLongitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Datum-DeltaAltitude: %w", err)
 	} else {
 		val.DeltaAltitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(32); err != nil {
+	if v, err := stream.readFixedString(32); err != nil {
 		return nil, fmt.Errorf("parse failed for Datum-ReferenceDatum: %w", err)
 	} else {
 		val.ReferenceDatum = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -34923,86 +34923,86 @@ type UserDatum struct {
 	EllipsoidFlatteningInverse *float32
 	DatumName string
 }
-func DecodeUserDatum(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUserDatum(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val UserDatum
-	val.Info = info
-	if v, err := stream.ReadSignedResolution(32, 0.01); err != nil {
+	val.Info = Info
+	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-DeltaX: %w", err)
 	} else {
 		val.DeltaX = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-DeltaY: %w", err)
 	} else {
 		val.DeltaY = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-DeltaZ: %w", err)
 	} else {
 		val.DeltaZ = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFloat32(); err != nil {
+	if v, err := stream.readFloat32(); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-RotationInX: %w", err)
 	} else {
 		val.RotationInX = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFloat32(); err != nil {
+	if v, err := stream.readFloat32(); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-RotationInY: %w", err)
 	} else {
 		val.RotationInY = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFloat32(); err != nil {
+	if v, err := stream.readFloat32(); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-RotationInZ: %w", err)
 	} else {
 		val.RotationInZ = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFloat32(); err != nil {
+	if v, err := stream.readFloat32(); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-Scale: %w", err)
 	} else {
 		val.Scale = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-EllipsoidSemiMajorAxis: %w", err)
 	} else {
 		val.EllipsoidSemiMajorAxis = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFloat32(); err != nil {
+	if v, err := stream.readFloat32(); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-EllipsoidFlatteningInverse: %w", err)
 	} else {
 		val.EllipsoidFlatteningInverse = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(32); err != nil {
+	if v, err := stream.readFixedString(32); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-DatumName: %w", err)
 	} else {
 		val.DatumName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -35015,47 +35015,47 @@ type CrossTrackError struct {
 	NavigationTerminated YesNoConst
 	Xte *float32
 }
-func DecodeCrossTrackError(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeCrossTrackError(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val CrossTrackError
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CrossTrackError-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for CrossTrackError-XteMode: %w", err)
 	} else {
 		val.XteMode = ResidualModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for CrossTrackError-NavigationTerminated: %w", err)
 	} else {
 		val.NavigationTerminated = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for CrossTrackError-Xte: %w", err)
 	} else {
 		val.Xte = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(16)
-	if stream.IsEOF() {
+	stream.skipBits(16)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -35078,126 +35078,126 @@ type NavigationData struct {
 	DestinationLongitude *float32
 	WaypointClosingVelocity *float32
 }
-func DecodeNavigationData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavigationData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NavigationData
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-DistanceToWaypoint: %w", err)
 	} else {
 		val.DistanceToWaypoint = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-CourseBearingReference: %w", err)
 	} else {
 		val.CourseBearingReference = DirectionReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-PerpendicularCrossed: %w", err)
 	} else {
 		val.PerpendicularCrossed = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-ArrivalCircleEntered: %w", err)
 	} else {
 		val.ArrivalCircleEntered = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-CalculationType: %w", err)
 	} else {
 		val.CalculationType = BearingModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-EtaTime: %w", err)
 	} else {
 		val.EtaTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-EtaDate: %w", err)
 	} else {
 		val.EtaDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-BearingOriginToDestinationWaypoint: %w", err)
 	} else {
 		val.BearingOriginToDestinationWaypoint = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-BearingPositionToDestinationWaypoint: %w", err)
 	} else {
 		val.BearingPositionToDestinationWaypoint = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-OriginWaypointNumber: %w", err)
 	} else {
 		val.OriginWaypointNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-DestinationWaypointNumber: %w", err)
 	} else {
 		val.DestinationWaypointNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-DestinationLatitude: %w", err)
 	} else {
 		val.DestinationLatitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-DestinationLongitude: %w", err)
 	} else {
 		val.DestinationLongitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-WaypointClosingVelocity: %w", err)
 	} else {
 		val.WaypointClosingVelocity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -35220,75 +35220,75 @@ type NavigationRouteWpInformationRepeating1 struct {
 	WpLatitude *float32
 	WpLongitude *float32
 }
-func DecodeNavigationRouteWpInformation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavigationRouteWpInformation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NavigationRouteWpInformation
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-StartRps: %w", err)
 	} else {
 		val.StartRps = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-DatabaseId: %w", err)
 	} else {
 		val.DatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-RouteId: %w", err)
 	} else {
 		val.RouteId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-NavigationDirectionInRoute: %w", err)
 	} else {
 		val.NavigationDirectionInRoute = DirectionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-SupplementaryRouteWpDataAvailable: %w", err)
 	} else {
 		val.SupplementaryRouteWpDataAvailable = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-RouteName: %w", err)
 	} else {
 		val.RouteName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
 		if repeat1Count == 0 {
@@ -35298,29 +35298,29 @@ func DecodeNavigationRouteWpInformation(info PacketInfo, stream *PGNDataStream) 
 	i := 0 
 	for {
 		var rep NavigationRouteWpInformationRepeating1
-		if v, err := stream.ReadUInt16(16); err != nil {
+		if v, err := stream.readUInt16(16); err != nil {
 			return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpId: %w", err)
 		} else {
 			rep.WpId = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpName: %w", err)
 		} else {
 			rep.WpName = v
 		}
-		if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+		if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 			return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpLatitude: %w", err)
 		} else {
 			rep.WpLatitude = v
 		}
-		if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+		if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 			return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpLongitude: %w", err)
 		} else {
 			rep.WpLongitude = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -35339,42 +35339,42 @@ type SetDriftRapidUpdate struct {
 	Set *float32
 	Drift *float32
 }
-func DecodeSetDriftRapidUpdate(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSetDriftRapidUpdate(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SetDriftRapidUpdate
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-SetReference: %w", err)
 	} else {
 		val.SetReference = DirectionReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-Set: %w", err)
 	} else {
 		val.Set = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-Drift: %w", err)
 	} else {
 		val.Drift = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -35387,42 +35387,42 @@ type NavigationRouteTimeToFromMark struct {
 	MarkType MarkTypeConst
 	MarkId *uint32
 }
-func DecodeNavigationRouteTimeToFromMark(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavigationRouteTimeToFromMark(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NavigationRouteTimeToFromMark
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteTimeToFromMark-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteTimeToFromMark-TimeToMark: %w", err)
 	} else {
 		val.TimeToMark = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteTimeToFromMark-MarkType: %w", err)
 	} else {
 		val.MarkType = MarkTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteTimeToFromMark-MarkId: %w", err)
 	} else {
 		val.MarkId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -35440,82 +35440,82 @@ type BearingAndDistanceBetweenTwoMarks struct {
 	OriginMarkId *uint32
 	DestinationMarkId *uint32
 }
-func DecodeBearingAndDistanceBetweenTwoMarks(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBearingAndDistanceBetweenTwoMarks(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val BearingAndDistanceBetweenTwoMarks
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for BearingAndDistanceBetweenTwoMarks-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BearingAndDistanceBetweenTwoMarks-BearingReference: %w", err)
 	} else {
 		val.BearingReference = DirectionReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BearingAndDistanceBetweenTwoMarks-CalculationType: %w", err)
 	} else {
 		val.CalculationType = BearingModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for BearingAndDistanceBetweenTwoMarks-BearingOriginToDestination: %w", err)
 	} else {
 		val.BearingOriginToDestination = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for BearingAndDistanceBetweenTwoMarks-Distance: %w", err)
 	} else {
 		val.Distance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for BearingAndDistanceBetweenTwoMarks-OriginMarkType: %w", err)
 	} else {
 		val.OriginMarkType = MarkTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for BearingAndDistanceBetweenTwoMarks-DestinationMarkType: %w", err)
 	} else {
 		val.DestinationMarkType = MarkTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for BearingAndDistanceBetweenTwoMarks-OriginMarkId: %w", err)
 	} else {
 		val.OriginMarkId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for BearingAndDistanceBetweenTwoMarks-DestinationMarkId: %w", err)
 	} else {
 		val.DestinationMarkId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -35534,86 +35534,86 @@ type GnssControlStatus struct {
 	AntennaAltitudeFor2dMode *float32
 	UseAntennaAltitudeFor2dMode YesNoConst
 }
-func DecodeGnssControlStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssControlStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GnssControlStatus
-	val.Info = info
-	if v, err := stream.ReadUInt16(16); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssControlStatus-SvElevationMask: %w", err)
 	} else {
 		val.SvElevationMask = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssControlStatus-PdopMask: %w", err)
 	} else {
 		val.PdopMask = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssControlStatus-PdopSwitch: %w", err)
 	} else {
 		val.PdopSwitch = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssControlStatus-SnrMask: %w", err)
 	} else {
 		val.SnrMask = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssControlStatus-GnssModeDesired: %w", err)
 	} else {
 		val.GnssModeDesired = GnssModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssControlStatus-DgnssModeDesired: %w", err)
 	} else {
 		val.DgnssModeDesired = DgnssModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssControlStatus-PositionVelocityFilter: %w", err)
 	} else {
 		val.PositionVelocityFilter = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssControlStatus-MaxCorrectionAge: %w", err)
 	} else {
 		val.MaxCorrectionAge = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssControlStatus-AntennaAltitudeFor2dMode: %w", err)
 	} else {
 		val.AntennaAltitudeFor2dMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssControlStatus-UseAntennaAltitudeFor2dMode: %w", err)
 	} else {
 		val.UseAntennaAltitudeFor2dMode = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -35628,58 +35628,58 @@ type GnssDops struct {
 	Vdop *float32
 	Tdop *float32
 }
-func DecodeGnssDops(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssDops(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GnssDops
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDops-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDops-DesiredMode: %w", err)
 	} else {
 		val.DesiredMode = GnssModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDops-ActualMode: %w", err)
 	} else {
 		val.ActualMode = GnssModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDops-Hdop: %w", err)
 	} else {
 		val.Hdop = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDops-Vdop: %w", err)
 	} else {
 		val.Vdop = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDops-Tdop: %w", err)
 	} else {
 		val.Tdop = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -35700,38 +35700,38 @@ type GnssSatsInViewRepeating1 struct {
 	RangeResiduals *int32
 	Status SatelliteStatusConst
 }
-func DecodeGnssSatsInView(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssSatsInView(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GnssSatsInView
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssSatsInView-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssSatsInView-RangeResidualMode: %w", err)
 	} else {
 		val.RangeResidualMode = RangeResidualModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssSatsInView-SatsInView: %w", err)
 	} else {
 		val.SatsInView = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -35742,40 +35742,40 @@ func DecodeGnssSatsInView(info PacketInfo, stream *PGNDataStream) (interface{}, 
 	i := 0 
 	for {
 		var rep GnssSatsInViewRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssSatsInView-Prn: %w", err)
 		} else {
 			rep.Prn = v
 		}
-		if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+		if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssSatsInView-Elevation: %w", err)
 		} else {
 			rep.Elevation = v
 		}
-		if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssSatsInView-Azimuth: %w", err)
 		} else {
 			rep.Azimuth = v
 		}
-		if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssSatsInView-Snr: %w", err)
 		} else {
 			rep.Snr = v
 		}
-		if v, err := stream.ReadInt32(32); err != nil {
+		if v, err := stream.readInt32(32); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssSatsInView-RangeResiduals: %w", err)
 		} else {
 			rep.RangeResiduals = v
 		}
-		if v, err := stream.ReadLookupField(4); err != nil {
+		if v, err := stream.readLookupField(4); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssSatsInView-Status: %w", err)
 		} else {
 			rep.Status = SatelliteStatusConst(v)
 		}
-		stream.SkipBits(4)
+		stream.skipBits(4)
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -35791,7 +35791,7 @@ type GpsAlmanacData struct {
 	Info PacketInfo
 	Prn *uint8
 	GpsWeekNumber *uint16
-	SvHealthBits []uint8
+	SvHealthBits interface{}
 	Eccentricity *float32
 	AlmanacReferenceTime *float32
 	InclinationAngle *float32
@@ -35803,115 +35803,115 @@ type GpsAlmanacData struct {
 	ClockParameter1 *float32
 	ClockParameter2 *float32
 }
-func DecodeGpsAlmanacData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGpsAlmanacData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GpsAlmanacData
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-Prn: %w", err)
 	} else {
 		val.Prn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-GpsWeekNumber: %w", err)
 	} else {
 		val.GpsWeekNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-SvHealthBits: %w", err)
 	} else {
 		val.SvHealthBits = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 4.76837e-07); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 4.76837e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-Eccentricity: %w", err)
 	} else {
 		val.Eccentricity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(8, 4096); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 4096); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-AlmanacReferenceTime: %w", err)
 	} else {
 		val.AlmanacReferenceTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 1.90735e-06); err != nil {
+	if v, err := stream.readSignedResolution(16, 1.90735e-06); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-InclinationAngle: %w", err)
 	} else {
 		val.InclinationAngle = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 3.63798e-12); err != nil {
+	if v, err := stream.readSignedResolution(16, 3.63798e-12); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-RateOfRightAscension: %w", err)
 	} else {
 		val.RateOfRightAscension = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(24, 0.000488281); err != nil {
+	if v, err := stream.readUnsignedResolution(24, 0.000488281); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-RootOfSemiMajorAxis: %w", err)
 	} else {
 		val.RootOfSemiMajorAxis = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(24, 1.19209e-07); err != nil {
+	if v, err := stream.readSignedResolution(24, 1.19209e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-ArgumentOfPerigee: %w", err)
 	} else {
 		val.ArgumentOfPerigee = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(24, 1.19209e-07); err != nil {
+	if v, err := stream.readSignedResolution(24, 1.19209e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-LongitudeOfAscensionNode: %w", err)
 	} else {
 		val.LongitudeOfAscensionNode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(24, 1.19209e-07); err != nil {
+	if v, err := stream.readSignedResolution(24, 1.19209e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-MeanAnomaly: %w", err)
 	} else {
 		val.MeanAnomaly = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(11, 9.53674e-07); err != nil {
+	if v, err := stream.readSignedResolution(11, 9.53674e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-ClockParameter1: %w", err)
 	} else {
 		val.ClockParameter1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(11, 3.63798e-12); err != nil {
+	if v, err := stream.readSignedResolution(11, 3.63798e-12); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-ClockParameter2: %w", err)
 	} else {
 		val.ClockParameter2 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -35927,70 +35927,70 @@ type GnssPseudorangeNoiseStatistics struct {
 	StdOfLonError *uint8
 	StdOfAltError *uint8
 }
-func DecodeGnssPseudorangeNoiseStatistics(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssPseudorangeNoiseStatistics(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GnssPseudorangeNoiseStatistics
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeNoiseStatistics-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeNoiseStatistics-RmsOfPositionUncertainty: %w", err)
 	} else {
 		val.RmsOfPositionUncertainty = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeNoiseStatistics-StdOfMajorAxis: %w", err)
 	} else {
 		val.StdOfMajorAxis = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeNoiseStatistics-StdOfMinorAxis: %w", err)
 	} else {
 		val.StdOfMinorAxis = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeNoiseStatistics-OrientationOfMajorAxis: %w", err)
 	} else {
 		val.OrientationOfMajorAxis = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeNoiseStatistics-StdOfLatError: %w", err)
 	} else {
 		val.StdOfLatError = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeNoiseStatistics-StdOfLonError: %w", err)
 	} else {
 		val.StdOfLonError = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeNoiseStatistics-StdOfAltError: %w", err)
 	} else {
 		val.StdOfAltError = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -36008,82 +36008,82 @@ type GnssRaimOutput struct {
 	EstimateOfPseudorangeBias *uint8
 	StdDeviationOfBias *uint8
 }
-func DecodeGnssRaimOutput(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssRaimOutput(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GnssRaimOutput
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimOutput-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimOutput-IntegrityFlag: %w", err)
 	} else {
 		val.IntegrityFlag = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimOutput-LatitudeExpectedError: %w", err)
 	} else {
 		val.LatitudeExpectedError = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimOutput-LongitudeExpectedError: %w", err)
 	} else {
 		val.LongitudeExpectedError = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimOutput-AltitudeExpectedError: %w", err)
 	} else {
 		val.AltitudeExpectedError = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimOutput-SvIdOfMostLikelyFailedSat: %w", err)
 	} else {
 		val.SvIdOfMostLikelyFailedSat = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimOutput-ProbabilityOfMissedDetection: %w", err)
 	} else {
 		val.ProbabilityOfMissedDetection = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimOutput-EstimateOfPseudorangeBias: %w", err)
 	} else {
 		val.EstimateOfPseudorangeBias = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimOutput-StdDeviationOfBias: %w", err)
 	} else {
 		val.StdDeviationOfBias = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -36096,38 +36096,38 @@ type GnssRaimSettings struct {
 	ProbabilityOfMissedDetection *uint8
 	PseudorangeResidualFilteringTimeConstant *uint8
 }
-func DecodeGnssRaimSettings(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssRaimSettings(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GnssRaimSettings
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimSettings-RadialPositionErrorMaximumThreshold: %w", err)
 	} else {
 		val.RadialPositionErrorMaximumThreshold = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimSettings-ProbabilityOfFalseAlarm: %w", err)
 	} else {
 		val.ProbabilityOfFalseAlarm = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimSettings-ProbabilityOfMissedDetection: %w", err)
 	} else {
 		val.ProbabilityOfMissedDetection = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssRaimSettings-PseudorangeResidualFilteringTimeConstant: %w", err)
 	} else {
 		val.PseudorangeResidualFilteringTimeConstant = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -36144,70 +36144,70 @@ type GnssPseudorangeErrorStatistics struct {
 	StdDevLonError *uint8
 	StdDevAltError *uint8
 }
-func DecodeGnssPseudorangeErrorStatistics(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssPseudorangeErrorStatistics(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GnssPseudorangeErrorStatistics
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-RmsStdDevOfRangeInputs: %w", err)
 	} else {
 		val.RmsStdDevOfRangeInputs = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevOfMajorErrorEllipse: %w", err)
 	} else {
 		val.StdDevOfMajorErrorEllipse = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevOfMinorErrorEllipse: %w", err)
 	} else {
 		val.StdDevOfMinorErrorEllipse = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-OrientationOfErrorEllipse: %w", err)
 	} else {
 		val.OrientationOfErrorEllipse = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevLatError: %w", err)
 	} else {
 		val.StdDevLatError = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevLonError: %w", err)
 	} else {
 		val.StdDevLonError = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevAltError: %w", err)
 	} else {
 		val.StdDevAltError = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -36226,90 +36226,90 @@ type DgnssCorrections struct {
 	Udre *uint8
 	Iod *uint8
 }
-func DecodeDgnssCorrections(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDgnssCorrections(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val DgnssCorrections
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DgnssCorrections-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for DgnssCorrections-ReferenceStationId: %w", err)
 	} else {
 		val.ReferenceStationId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for DgnssCorrections-ReferenceStationType: %w", err)
 	} else {
 		val.ReferenceStationType = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DgnssCorrections-TimeOfCorrections: %w", err)
 	} else {
 		val.TimeOfCorrections = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DgnssCorrections-StationHealth: %w", err)
 	} else {
 		val.StationHealth = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DgnssCorrections-SatelliteId: %w", err)
 	} else {
 		val.SatelliteId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DgnssCorrections-Prc: %w", err)
 	} else {
 		val.Prc = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DgnssCorrections-Rrc: %w", err)
 	} else {
 		val.Rrc = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DgnssCorrections-Udre: %w", err)
 	} else {
 		val.Udre = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DgnssCorrections-Iod: %w", err)
 	} else {
 		val.Iod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -36324,54 +36324,54 @@ type GnssDifferentialCorrectionReceiverInterface struct {
 	DifferentialSource *uint8
 	DifferentialOperationMode *uint8
 }
-func DecodeGnssDifferentialCorrectionReceiverInterface(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssDifferentialCorrectionReceiverInterface(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GnssDifferentialCorrectionReceiverInterface
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-Channel: %w", err)
 	} else {
 		val.Channel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-Frequency: %w", err)
 	} else {
 		val.Frequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-SerialInterfaceBitRate: %w", err)
 	} else {
 		val.SerialInterfaceBitRate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-SerialInterfaceDetectionMode: %w", err)
 	} else {
 		val.SerialInterfaceDetectionMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-DifferentialSource: %w", err)
 	} else {
 		val.DifferentialSource = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-DifferentialOperationMode: %w", err)
 	} else {
 		val.DifferentialOperationMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -36393,114 +36393,114 @@ type GnssDifferentialCorrectionReceiverSignal struct {
 	TimeSinceLastSatDifferentialSync *uint8
 	SatelliteServiceIdNo *uint8
 }
-func DecodeGnssDifferentialCorrectionReceiverSignal(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssDifferentialCorrectionReceiverSignal(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GnssDifferentialCorrectionReceiverSignal
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-Channel: %w", err)
 	} else {
 		val.Channel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-SignalStrength: %w", err)
 	} else {
 		val.SignalStrength = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-SignalSnr: %w", err)
 	} else {
 		val.SignalSnr = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-Frequency: %w", err)
 	} else {
 		val.Frequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-StationType: %w", err)
 	} else {
 		val.StationType = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-StationId: %w", err)
 	} else {
 		val.StationId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-DifferentialSignalBitRate: %w", err)
 	} else {
 		val.DifferentialSignalBitRate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-DifferentialSignalDetectionMode: %w", err)
 	} else {
 		val.DifferentialSignalDetectionMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-UsedAsCorrectionSource: %w", err)
 	} else {
 		val.UsedAsCorrectionSource = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-DifferentialSource: %w", err)
 	} else {
 		val.DifferentialSource = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-TimeSinceLastSatDifferentialSync: %w", err)
 	} else {
 		val.TimeSinceLastSatDifferentialSync = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-SatelliteServiceIdNo: %w", err)
 	} else {
 		val.SatelliteServiceIdNo = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -36522,114 +36522,114 @@ type GlonassAlmanacData struct {
 	TauCa *uint32
 	TauNa *uint16
 }
-func DecodeGlonassAlmanacData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGlonassAlmanacData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val GlonassAlmanacData
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Prn: %w", err)
 	} else {
 		val.Prn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Na: %w", err)
 	} else {
 		val.Na = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(1); err != nil {
+	if v, err := stream.readUInt8(1); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Cna: %w", err)
 	} else {
 		val.Cna = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(5); err != nil {
+	if v, err := stream.readUInt8(5); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Hna: %w", err)
 	} else {
 		val.Hna = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-EpsilonNa: %w", err)
 	} else {
 		val.EpsilonNa = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-DeltatnaDot: %w", err)
 	} else {
 		val.DeltatnaDot = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-OmegaNa: %w", err)
 	} else {
 		val.OmegaNa = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-DeltaTna: %w", err)
 	} else {
 		val.DeltaTna = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Tna: %w", err)
 	} else {
 		val.Tna = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-LambdaNa: %w", err)
 	} else {
 		val.LambdaNa = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-DeltaIna: %w", err)
 	} else {
 		val.DeltaIna = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(28); err != nil {
+	if v, err := stream.readUInt32(28); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-TauCa: %w", err)
 	} else {
 		val.TauCa = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(12); err != nil {
+	if v, err := stream.readUInt16(12); err != nil {
 		return nil, fmt.Errorf("parse failed for GlonassAlmanacData-TauNa: %w", err)
 	} else {
 		val.TauNa = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -36644,92 +36644,92 @@ type AisDgnssBroadcastBinaryMessage struct {
 	Longitude *float32
 	Latitude *float32
 	NumberOfBitsInBinaryDataField *uint16
-	BinaryData []uint8
+	BinaryData interface{}
 }
-func DecodeAisDgnssBroadcastBinaryMessage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisDgnssBroadcastBinaryMessage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisDgnssBroadcastBinaryMessage
-	val.Info = info
+	val.Info = Info
 		var binaryLength uint16 = 0
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDgnssBroadcastBinaryMessage-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDgnssBroadcastBinaryMessage-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDgnssBroadcastBinaryMessage-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDgnssBroadcastBinaryMessage-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDgnssBroadcastBinaryMessage-Longitude: %w", err)
 	} else {
 		val.Longitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDgnssBroadcastBinaryMessage-Latitude: %w", err)
 	} else {
 		val.Latitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
-	stream.SkipBits(5)
-	if stream.IsEOF() {
+	stream.skipBits(5)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDgnssBroadcastBinaryMessage-NumberOfBitsInBinaryDataField: %w", err)
 	} else {
 		val.NumberOfBitsInBinaryDataField = v
 		if v != nil {
 			binaryLength = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(binaryLength); err != nil {
+	if v, err := stream.readBinaryData(binaryLength); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDgnssBroadcastBinaryMessage-BinaryData: %w", err)
 	} else {
 		val.BinaryData = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -36745,120 +36745,120 @@ type AisUtcAndDateReport struct {
 	PositionAccuracy PositionAccuracyConst
 	Raim RaimFlagConst
 	PositionTime *float32
-	CommunicationState []uint8
+	CommunicationState interface{}
 	AisTransceiverInformation AisTransceiverConst
 	PositionDate *uint16
 	GnssType PositionFixDeviceConst
 }
-func DecodeAisUtcAndDateReport(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisUtcAndDateReport(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisUtcAndDateReport
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-PositionAccuracy: %w", err)
 	} else {
 		val.PositionAccuracy = PositionAccuracyConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-Raim: %w", err)
 	} else {
 		val.Raim = RaimFlagConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-PositionTime: %w", err)
 	} else {
 		val.PositionTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(19); err != nil {
+	if v, err := stream.readBinaryData(19); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-CommunicationState: %w", err)
 	} else {
 		val.CommunicationState = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-PositionDate: %w", err)
 	} else {
 		val.PositionDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-GnssType: %w", err)
 	} else {
 		val.GnssType = PositionFixDeviceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -36885,162 +36885,162 @@ type AisClassAStaticAndVoyageRelatedData struct {
 	Dte AvailableConst
 	AisTransceiverInformation AisTransceiverConst
 }
-func DecodeAisClassAStaticAndVoyageRelatedData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassAStaticAndVoyageRelatedData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisClassAStaticAndVoyageRelatedData
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-ImoNumber: %w", err)
 	} else {
 		val.ImoNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(56); err != nil {
+	if v, err := stream.readFixedString(56); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Callsign: %w", err)
 	} else {
 		val.Callsign = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(160); err != nil {
+	if v, err := stream.readFixedString(160); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Name: %w", err)
 	} else {
 		val.Name = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-TypeOfShip: %w", err)
 	} else {
 		val.TypeOfShip = ShipTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Length: %w", err)
 	} else {
 		val.Length = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Beam: %w", err)
 	} else {
 		val.Beam = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-PositionReferenceFromStarboard: %w", err)
 	} else {
 		val.PositionReferenceFromStarboard = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-PositionReferenceFromBow: %w", err)
 	} else {
 		val.PositionReferenceFromBow = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-EtaDate: %w", err)
 	} else {
 		val.EtaDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-EtaTime: %w", err)
 	} else {
 		val.EtaTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Draft: %w", err)
 	} else {
 		val.Draft = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(160); err != nil {
+	if v, err := stream.readFixedString(160); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Destination: %w", err)
 	} else {
 		val.Destination = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-AisVersionIndicator: %w", err)
 	} else {
 		val.AisVersionIndicator = AisVersionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-GnssType: %w", err)
 	} else {
 		val.GnssType = PositionFixDeviceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Dte: %w", err)
 	} else {
 		val.Dte = AvailableConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -37056,96 +37056,96 @@ type AisAddressedBinaryMessage struct {
 	DestinationId *uint32
 	RetransmitFlag *uint8
 	NumberOfBitsInBinaryDataField *uint16
-	BinaryData []uint8
+	BinaryData interface{}
 }
-func DecodeAisAddressedBinaryMessage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisAddressedBinaryMessage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisAddressedBinaryMessage
-	val.Info = info
+	val.Info = Info
 		var binaryLength uint16 = 0
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-SequenceNumber: %w", err)
 	} else {
 		val.SequenceNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-DestinationId: %w", err)
 	} else {
 		val.DestinationId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(1); err != nil {
+	if v, err := stream.readUInt8(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-RetransmitFlag: %w", err)
 	} else {
 		val.RetransmitFlag = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-NumberOfBitsInBinaryDataField: %w", err)
 	} else {
 		val.NumberOfBitsInBinaryDataField = v
 		if v != nil {
 			binaryLength = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(binaryLength); err != nil {
+	if v, err := stream.readBinaryData(binaryLength); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-BinaryData: %w", err)
 	} else {
 		val.BinaryData = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -37158,77 +37158,77 @@ type AisAcknowledge struct {
 	SourceId *uint32
 	AisTransceiverInformation AisTransceiverConst
 	DestinationId1 *uint32
-	SequenceNumberForId1 []uint8
-	SequenceNumberForIdN []uint8
+	SequenceNumberForId1 interface{}
+	SequenceNumberForIdN interface{}
 }
-func DecodeAisAcknowledge(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisAcknowledge(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisAcknowledge
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAcknowledge-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAcknowledge-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAcknowledge-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAcknowledge-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAcknowledge-DestinationId1: %w", err)
 	} else {
 		val.DestinationId1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(2); err != nil {
+	if v, err := stream.readBinaryData(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAcknowledge-SequenceNumberForId1: %w", err)
 	} else {
 		val.SequenceNumberForId1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadBinaryData(2); err != nil {
+	if v, err := stream.readBinaryData(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAcknowledge-SequenceNumberForIdN: %w", err)
 	} else {
 		val.SequenceNumberForIdN = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -37241,68 +37241,68 @@ type AisBinaryBroadcastMessage struct {
 	SourceId *uint32
 	AisTransceiverInformation AisTransceiverConst
 	NumberOfBitsInBinaryDataField *uint16
-	BinaryData []uint8
+	BinaryData interface{}
 }
-func DecodeAisBinaryBroadcastMessage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisBinaryBroadcastMessage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisBinaryBroadcastMessage
-	val.Info = info
+	val.Info = Info
 		var binaryLength uint16 = 0
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-NumberOfBitsInBinaryDataField: %w", err)
 	} else {
 		val.NumberOfBitsInBinaryDataField = v
 		if v != nil {
 			binaryLength = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(binaryLength); err != nil {
+	if v, err := stream.readBinaryData(binaryLength); err != nil {
 		return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-BinaryData: %w", err)
 	} else {
 		val.BinaryData = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -37320,137 +37320,137 @@ type AisSarAircraftPositionReport struct {
 	TimeStamp TimeStampConst
 	Cog *float32
 	Sog *float32
-	CommunicationState []uint8
+	CommunicationState interface{}
 	AisTransceiverInformation AisTransceiverConst
 	Altitude *float32
-	ReservedForRegionalApplications []uint8
+	ReservedForRegionalApplications interface{}
 	Dte AvailableConst
 }
-func DecodeAisSarAircraftPositionReport(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisSarAircraftPositionReport(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisSarAircraftPositionReport
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-PositionAccuracy: %w", err)
 	} else {
 		val.PositionAccuracy = PositionAccuracyConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-Raim: %w", err)
 	} else {
 		val.Raim = RaimFlagConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-TimeStamp: %w", err)
 	} else {
 		val.TimeStamp = TimeStampConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-Cog: %w", err)
 	} else {
 		val.Cog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-Sog: %w", err)
 	} else {
 		val.Sog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(19); err != nil {
+	if v, err := stream.readBinaryData(19); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-CommunicationState: %w", err)
 	} else {
 		val.CommunicationState = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(64, 1e-06); err != nil {
+	if v, err := stream.readSignedResolution(64, 1e-06); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-Altitude: %w", err)
 	} else {
 		val.Altitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-ReservedForRegionalApplications: %w", err)
 	} else {
 		val.ReservedForRegionalApplications = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-Dte: %w", err)
 	} else {
 		val.Dte = AvailableConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(7)
-	if stream.IsEOF() {
+	stream.skipBits(7)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -37464,54 +37464,54 @@ type RadioFrequencyModePower struct {
 	Mode *uint8
 	ChannelBandwidth *uint8
 }
-func DecodeRadioFrequencyModePower(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRadioFrequencyModePower(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RadioFrequencyModePower
-	val.Info = info
-	if v, err := stream.ReadUnsignedResolution(32, 10); err != nil {
+	val.Info = Info
+	if v, err := stream.readUnsignedResolution(32, 10); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-RxFrequency: %w", err)
 	} else {
 		val.RxFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 10); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 10); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-TxFrequency: %w", err)
 	} else {
 		val.TxFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-RadioChannel: %w", err)
 	} else {
 		val.RadioChannel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-TxPower: %w", err)
 	} else {
 		val.TxPower = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-Mode: %w", err)
 	} else {
 		val.Mode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-ChannelBandwidth: %w", err)
 	} else {
 		val.ChannelBandwidth = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -37525,50 +37525,50 @@ type AisUtcDateInquiry struct {
 	AisTransceiverInformation AisTransceiverConst
 	DestinationId *uint32
 }
-func DecodeAisUtcDateInquiry(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisUtcDateInquiry(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisUtcDateInquiry
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcDateInquiry-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcDateInquiry-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcDateInquiry-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcDateInquiry-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcDateInquiry-DestinationId: %w", err)
 	} else {
 		val.DestinationId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -37585,78 +37585,78 @@ type AisAddressedSafetyRelatedMessage struct {
 	RetransmitFlag *uint8
 	SafetyRelatedText string
 }
-func DecodeAisAddressedSafetyRelatedMessage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisAddressedSafetyRelatedMessage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisAddressedSafetyRelatedMessage
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedSafetyRelatedMessage-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedSafetyRelatedMessage-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedSafetyRelatedMessage-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedSafetyRelatedMessage-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedSafetyRelatedMessage-SequenceNumber: %w", err)
 	} else {
 		val.SequenceNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedSafetyRelatedMessage-DestinationId: %w", err)
 	} else {
 		val.DestinationId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(1); err != nil {
+	if v, err := stream.readUInt8(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedSafetyRelatedMessage-RetransmitFlag: %w", err)
 	} else {
 		val.RetransmitFlag = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(7)
-	if stream.IsEOF() {
+	stream.skipBits(7)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadFixedString(936); err != nil {
+	if v, err := stream.readFixedString(936); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAddressedSafetyRelatedMessage-SafetyRelatedText: %w", err)
 	} else {
 		val.SafetyRelatedText = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -37670,50 +37670,50 @@ type AisSafetyRelatedBroadcastMessage struct {
 	AisTransceiverInformation AisTransceiverConst
 	SafetyRelatedText string
 }
-func DecodeAisSafetyRelatedBroadcastMessage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisSafetyRelatedBroadcastMessage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisSafetyRelatedBroadcastMessage
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSafetyRelatedBroadcastMessage-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSafetyRelatedBroadcastMessage-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSafetyRelatedBroadcastMessage-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSafetyRelatedBroadcastMessage-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadFixedString(1296); err != nil {
+	if v, err := stream.readFixedString(1296); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSafetyRelatedBroadcastMessage-SafetyRelatedText: %w", err)
 	} else {
 		val.SafetyRelatedText = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -37732,73 +37732,73 @@ type AisInterrogationRepeating1 struct {
 	MessageIdA AisMessageIdConst
 	SlotOffsetA *uint16
 }
-func DecodeAisInterrogation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisInterrogation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisInterrogation
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisInterrogation-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisInterrogation-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisInterrogation-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(1)
-	if stream.IsEOF() {
+	stream.skipBits(1)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisInterrogation-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
 	val.Repeating1 = make([]AisInterrogationRepeating1, 0)
 	i := 0 
 	for {
 		var rep AisInterrogationRepeating1
-		if v, err := stream.ReadUInt32(32); err != nil {
+		if v, err := stream.readUInt32(32); err != nil {
 			return nil, fmt.Errorf("parse failed for AisInterrogation-DestinationId: %w", err)
 		} else {
 			rep.DestinationId = v
 		}
-		stream.SkipBits(2)
-		if v, err := stream.ReadLookupField(6); err != nil {
+		stream.skipBits(2)
+		if v, err := stream.readLookupField(6); err != nil {
 			return nil, fmt.Errorf("parse failed for AisInterrogation-MessageIdA: %w", err)
 		} else {
 			rep.MessageIdA = AisMessageIdConst(v)
 		}
-		if v, err := stream.ReadUInt16(16); err != nil {
+		if v, err := stream.readUInt16(16); err != nil {
 			return nil, fmt.Errorf("parse failed for AisInterrogation-SlotOffsetA: %w", err)
 		} else {
 			rep.SlotOffsetA = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -37823,90 +37823,90 @@ type AisAssignmentModeCommand struct {
 	OffsetB *uint16
 	IncrementB *uint16
 }
-func DecodeAisAssignmentModeCommand(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisAssignmentModeCommand(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisAssignmentModeCommand
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAssignmentModeCommand-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAssignmentModeCommand-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAssignmentModeCommand-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAssignmentModeCommand-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAssignmentModeCommand-DestinationIdA: %w", err)
 	} else {
 		val.DestinationIdA = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAssignmentModeCommand-OffsetA: %w", err)
 	} else {
 		val.OffsetA = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAssignmentModeCommand-IncrementA: %w", err)
 	} else {
 		val.IncrementA = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAssignmentModeCommand-DestinationIdB: %w", err)
 	} else {
 		val.DestinationIdB = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAssignmentModeCommand-OffsetB: %w", err)
 	} else {
 		val.OffsetB = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAssignmentModeCommand-IncrementB: %w", err)
 	} else {
 		val.IncrementB = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -37926,73 +37926,73 @@ type AisDataLinkManagementMessageRepeating1 struct {
 	Timeout *uint8
 	Increment *uint16
 }
-func DecodeAisDataLinkManagementMessage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisDataLinkManagementMessage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisDataLinkManagementMessage
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDataLinkManagementMessage-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDataLinkManagementMessage-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDataLinkManagementMessage-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisDataLinkManagementMessage-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
 	val.Repeating1 = make([]AisDataLinkManagementMessageRepeating1, 0)
 	i := 0 
 	for {
 		var rep AisDataLinkManagementMessageRepeating1
-		if v, err := stream.ReadUInt16(16); err != nil {
+		if v, err := stream.readUInt16(16); err != nil {
 			return nil, fmt.Errorf("parse failed for AisDataLinkManagementMessage-Offset: %w", err)
 		} else {
 			rep.Offset = v
 		}
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for AisDataLinkManagementMessage-NumberOfSlots: %w", err)
 		} else {
 			rep.NumberOfSlots = v
 		}
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for AisDataLinkManagementMessage-Timeout: %w", err)
 		} else {
 			rep.Timeout = v
 		}
-		if v, err := stream.ReadUInt16(16); err != nil {
+		if v, err := stream.readUInt16(16); err != nil {
 			return nil, fmt.Errorf("parse failed for AisDataLinkManagementMessage-Increment: %w", err)
 		} else {
 			rep.Increment = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -38023,150 +38023,150 @@ type AisChannelManagement struct {
 	ChannelBBandwidth *uint8
 	TransitionalZoneSize *uint8
 }
-func DecodeAisChannelManagement(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisChannelManagement(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisChannelManagement
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(7); err != nil {
+	if v, err := stream.readUInt8(7); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-ChannelA: %w", err)
 	} else {
 		val.ChannelA = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(7); err != nil {
+	if v, err := stream.readUInt8(7); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-ChannelB: %w", err)
 	} else {
 		val.ChannelB = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-Power: %w", err)
 	} else {
 		val.Power = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-TxRxMode: %w", err)
 	} else {
 		val.TxRxMode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-NorthEastLongitudeCorner1: %w", err)
 	} else {
 		val.NorthEastLongitudeCorner1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-NorthEastLatitudeCorner1: %w", err)
 	} else {
 		val.NorthEastLatitudeCorner1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-SouthWestLongitudeCorner1: %w", err)
 	} else {
 		val.SouthWestLongitudeCorner1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-SouthWestLatitudeCorner2: %w", err)
 	} else {
 		val.SouthWestLatitudeCorner2 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-AddressedOrBroadcastMessageIndicator: %w", err)
 	} else {
 		val.AddressedOrBroadcastMessageIndicator = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(7); err != nil {
+	if v, err := stream.readUInt8(7); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-ChannelABandwidth: %w", err)
 	} else {
 		val.ChannelABandwidth = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(7); err != nil {
+	if v, err := stream.readUInt8(7); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-ChannelBBandwidth: %w", err)
 	} else {
 		val.ChannelBBandwidth = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-TransitionalZoneSize: %w", err)
 	} else {
 		val.TransitionalZoneSize = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -38187,122 +38187,122 @@ type AisClassBGroupAssignment struct {
 	ReportingInterval ReportingIntervalConst
 	QuietTime *uint8
 }
-func DecodeAisClassBGroupAssignment(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassBGroupAssignment(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisClassBGroupAssignment
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-TxRxMode: %w", err)
 	} else {
 		val.TxRxMode = TxRxModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-NorthEastLongitudeCorner1: %w", err)
 	} else {
 		val.NorthEastLongitudeCorner1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-NorthEastLatitudeCorner1: %w", err)
 	} else {
 		val.NorthEastLatitudeCorner1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-SouthWestLongitudeCorner1: %w", err)
 	} else {
 		val.SouthWestLongitudeCorner1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-SouthWestLatitudeCorner2: %w", err)
 	} else {
 		val.SouthWestLatitudeCorner2 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-StationType: %w", err)
 	} else {
 		val.StationType = StationTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-ShipAndCargoFilter: %w", err)
 	} else {
 		val.ShipAndCargoFilter = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(22)
-	if stream.IsEOF() {
+	stream.skipBits(22)
+	if stream.isEOF() {
 		return val, nil
 		}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-ReportingInterval: %w", err)
 	} else {
 		val.ReportingInterval = ReportingIntervalConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBGroupAssignment-QuietTime: %w", err)
 	} else {
 		val.QuietTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -38335,166 +38335,166 @@ type DscDistressCallInformationRepeating1 struct {
 	DscExpansionFieldSymbol DscExpansionDataConst
 	DscExpansionFieldData string
 }
-func DecodeDscDistressCallInformation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDscDistressCallInformation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val DscDistressCallInformation
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-DscFormat: %w", err)
 	} else {
 		val.DscFormat = DscFormatConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-DscCategory: %w", err)
 	} else {
 		if v != nil && *v != 112 {
 			return nil, fmt.Errorf("match failed for DscDistressCallInformation-DscCategory: Expected %d != %d", 112, *v)
 		}
 		val.DscCategory = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(40); err != nil {
+	if v, err := stream.readBinaryData(40); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-DscMessageAddress: %w", err)
 	} else {
 		val.DscMessageAddress = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-NatureOfDistress: %w", err)
 	} else {
 		val.NatureOfDistress = DscNatureConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-SubsequentCommunicationModeOr2ndTelecommand: %w", err)
 	} else {
 		val.SubsequentCommunicationModeOr2ndTelecommand = DscSecondTelecommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(48); err != nil {
+	if v, err := stream.readFixedString(48); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-ProposedRxFrequencyChannel: %w", err)
 	} else {
 		val.ProposedRxFrequencyChannel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(48); err != nil {
+	if v, err := stream.readFixedString(48); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-ProposedTxFrequencyChannel: %w", err)
 	} else {
 		val.ProposedTxFrequencyChannel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-TelephoneNumber: %w", err)
 	} else {
 		val.TelephoneNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-LatitudeOfVesselReported: %w", err)
 	} else {
 		val.LatitudeOfVesselReported = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-LongitudeOfVesselReported: %w", err)
 	} else {
 		val.LongitudeOfVesselReported = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-TimeOfPosition: %w", err)
 	} else {
 		val.TimeOfPosition = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(40); err != nil {
+	if v, err := stream.readBinaryData(40); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-MmsiOfShipInDistress: %w", err)
 	} else {
 		val.MmsiOfShipInDistress = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-DscEosSymbol: %w", err)
 	} else {
 		val.DscEosSymbol = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-ExpansionEnabled: %w", err)
 	} else {
 		val.ExpansionEnabled = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadFixedString(48); err != nil {
+	if v, err := stream.readFixedString(48); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-CallingRxFrequencyChannel: %w", err)
 	} else {
 		val.CallingRxFrequencyChannel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(48); err != nil {
+	if v, err := stream.readFixedString(48); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-CallingTxFrequencyChannel: %w", err)
 	} else {
 		val.CallingTxFrequencyChannel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-TimeOfReceipt: %w", err)
 	} else {
 		val.TimeOfReceipt = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-DateOfReceipt: %w", err)
 	} else {
 		val.DateOfReceipt = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for DscDistressCallInformation-DscEquipmentAssignedMessageId: %w", err)
 	} else {
 		val.DscEquipmentAssignedMessageId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -38502,19 +38502,19 @@ func DecodeDscDistressCallInformation(info PacketInfo, stream *PGNDataStream) (i
 	i := 0 
 	for {
 		var rep DscDistressCallInformationRepeating1
-		if v, err := stream.ReadLookupField(8); err != nil {
+		if v, err := stream.readLookupField(8); err != nil {
 			return nil, fmt.Errorf("parse failed for DscDistressCallInformation-DscExpansionFieldSymbol: %w", err)
 		} else {
 			rep.DscExpansionFieldSymbol = DscExpansionDataConst(v)
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for DscDistressCallInformation-DscExpansionFieldData: %w", err)
 		} else {
 			rep.DscExpansionFieldData = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -38553,163 +38553,163 @@ type DscCallInformationRepeating1 struct {
 	DscExpansionFieldSymbol DscExpansionDataConst
 	DscExpansionFieldData string
 }
-func DecodeDscCallInformation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDscCallInformation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val DscCallInformation
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-DscFormatSymbol: %w", err)
 	} else {
 		val.DscFormatSymbol = DscFormatConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-DscCategorySymbol: %w", err)
 	} else {
 		val.DscCategorySymbol = DscCategoryConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(40); err != nil {
+	if v, err := stream.readBinaryData(40); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-DscMessageAddress: %w", err)
 	} else {
 		val.DscMessageAddress = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-FirstTelecommand: %w", err)
 	} else {
 		val.FirstTelecommand = DscFirstTelecommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-SubsequentCommunicationModeOr2ndTelecommand: %w", err)
 	} else {
 		val.SubsequentCommunicationModeOr2ndTelecommand = DscSecondTelecommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(48); err != nil {
+	if v, err := stream.readFixedString(48); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-ProposedRxFrequencyChannel: %w", err)
 	} else {
 		val.ProposedRxFrequencyChannel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(48); err != nil {
+	if v, err := stream.readFixedString(48); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-ProposedTxFrequencyChannel: %w", err)
 	} else {
 		val.ProposedTxFrequencyChannel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-TelephoneNumber: %w", err)
 	} else {
 		val.TelephoneNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-LatitudeOfVesselReported: %w", err)
 	} else {
 		val.LatitudeOfVesselReported = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-LongitudeOfVesselReported: %w", err)
 	} else {
 		val.LongitudeOfVesselReported = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-TimeOfPosition: %w", err)
 	} else {
 		val.TimeOfPosition = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(40); err != nil {
+	if v, err := stream.readBinaryData(40); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-MmsiOfShipInDistress: %w", err)
 	} else {
 		val.MmsiOfShipInDistress = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-DscEosSymbol: %w", err)
 	} else {
 		val.DscEosSymbol = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-ExpansionEnabled: %w", err)
 	} else {
 		val.ExpansionEnabled = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadFixedString(48); err != nil {
+	if v, err := stream.readFixedString(48); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-CallingRxFrequencyChannel: %w", err)
 	} else {
 		val.CallingRxFrequencyChannel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(48); err != nil {
+	if v, err := stream.readFixedString(48); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-CallingTxFrequencyChannel: %w", err)
 	} else {
 		val.CallingTxFrequencyChannel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-TimeOfReceipt: %w", err)
 	} else {
 		val.TimeOfReceipt = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-DateOfReceipt: %w", err)
 	} else {
 		val.DateOfReceipt = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for DscCallInformation-DscEquipmentAssignedMessageId: %w", err)
 	} else {
 		val.DscEquipmentAssignedMessageId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -38717,19 +38717,19 @@ func DecodeDscCallInformation(info PacketInfo, stream *PGNDataStream) (interface
 	i := 0 
 	for {
 		var rep DscCallInformationRepeating1
-		if v, err := stream.ReadLookupField(8); err != nil {
+		if v, err := stream.readLookupField(8); err != nil {
 			return nil, fmt.Errorf("parse failed for DscCallInformation-DscExpansionFieldSymbol: %w", err)
 		} else {
 			rep.DscExpansionFieldSymbol = DscExpansionDataConst(v)
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for DscCallInformation-DscExpansionFieldData: %w", err)
 		} else {
 			rep.DscExpansionFieldData = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -38750,58 +38750,58 @@ type AisClassBStaticDataMsg24PartA struct {
 	AisTransceiverInformation AisTransceiverConst
 	SequenceId *uint8
 }
-func DecodeAisClassBStaticDataMsg24PartA(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassBStaticDataMsg24PartA(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisClassBStaticDataMsg24PartA
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(160); err != nil {
+	if v, err := stream.readFixedString(160); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-Name: %w", err)
 	} else {
 		val.Name = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-SequenceId: %w", err)
 	} else {
 		val.SequenceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -38823,122 +38823,122 @@ type AisClassBStaticDataMsg24PartB struct {
 	AisTransceiverInformation AisTransceiverConst
 	SequenceId *uint8
 }
-func DecodeAisClassBStaticDataMsg24PartB(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassBStaticDataMsg24PartB(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AisClassBStaticDataMsg24PartB
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-MessageId: %w", err)
 	} else {
 		val.MessageId = AisMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-TypeOfShip: %w", err)
 	} else {
 		val.TypeOfShip = ShipTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(56); err != nil {
+	if v, err := stream.readFixedString(56); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-VendorId: %w", err)
 	} else {
 		val.VendorId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(56); err != nil {
+	if v, err := stream.readFixedString(56); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Callsign: %w", err)
 	} else {
 		val.Callsign = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Length: %w", err)
 	} else {
 		val.Length = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Beam: %w", err)
 	} else {
 		val.Beam = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-PositionReferenceFromStarboard: %w", err)
 	} else {
 		val.PositionReferenceFromStarboard = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-PositionReferenceFromBow: %w", err)
 	} else {
 		val.PositionReferenceFromBow = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-MothershipUserId: %w", err)
 	} else {
 		val.MothershipUserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(5); err != nil {
+	if v, err := stream.readLookupField(5); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-AisTransceiverInformation: %w", err)
 	} else {
 		val.AisTransceiverInformation = AisTransceiverConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(3)
-	if stream.IsEOF() {
+	stream.skipBits(3)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-SequenceId: %w", err)
 	} else {
 		val.SequenceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -38961,123 +38961,123 @@ type LoranCTdData struct {
 	StationStatusZ StationStatusConst
 	Mode ResidualModeConst
 }
-func DecodeLoranCTdData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLoranCTdData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LoranCTdData
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-GroupRepetitionIntervalGri: %w", err)
 	} else {
 		val.GroupRepetitionIntervalGri = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-MasterRange: %w", err)
 	} else {
 		val.MasterRange = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-VSecondaryTd: %w", err)
 	} else {
 		val.VSecondaryTd = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-WSecondaryTd: %w", err)
 	} else {
 		val.WSecondaryTd = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-XSecondaryTd: %w", err)
 	} else {
 		val.XSecondaryTd = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-YSecondaryTd: %w", err)
 	} else {
 		val.YSecondaryTd = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-ZSecondaryTd: %w", err)
 	} else {
 		val.ZSecondaryTd = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-StationStatusMaster: %w", err)
 	} else {
 		val.StationStatusMaster = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-StationStatusV: %w", err)
 	} else {
 		val.StationStatusV = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-StationStatusW: %w", err)
 	} else {
 		val.StationStatusW = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-StationStatusX: %w", err)
 	} else {
 		val.StationStatusX = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-StationStatusY: %w", err)
 	} else {
 		val.StationStatusY = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-StationStatusZ: %w", err)
 	} else {
 		val.StationStatusZ = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCTdData-Mode: %w", err)
 	} else {
 		val.Mode = ResidualModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -39099,123 +39099,123 @@ type LoranCRangeData struct {
 	StationStatusZ StationStatusConst
 	Mode ResidualModeConst
 }
-func DecodeLoranCRangeData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLoranCRangeData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LoranCRangeData
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-GroupRepetitionIntervalGri: %w", err)
 	} else {
 		val.GroupRepetitionIntervalGri = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-MasterRange: %w", err)
 	} else {
 		val.MasterRange = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-VSecondaryRange: %w", err)
 	} else {
 		val.VSecondaryRange = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-WSecondaryRange: %w", err)
 	} else {
 		val.WSecondaryRange = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-XSecondaryRange: %w", err)
 	} else {
 		val.XSecondaryRange = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-YSecondaryRange: %w", err)
 	} else {
 		val.YSecondaryRange = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-ZSecondaryRange: %w", err)
 	} else {
 		val.ZSecondaryRange = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-StationStatusMaster: %w", err)
 	} else {
 		val.StationStatusMaster = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-StationStatusV: %w", err)
 	} else {
 		val.StationStatusV = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-StationStatusW: %w", err)
 	} else {
 		val.StationStatusW = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-StationStatusX: %w", err)
 	} else {
 		val.StationStatusX = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-StationStatusY: %w", err)
 	} else {
 		val.StationStatusY = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-StationStatusZ: %w", err)
 	} else {
 		val.StationStatusZ = StationStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCRangeData-Mode: %w", err)
 	} else {
 		val.Mode = ResidualModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -39228,46 +39228,46 @@ type LoranCSignalData struct {
 	StationEcd *int32
 	StationAsf *int32
 }
-func DecodeLoranCSignalData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLoranCSignalData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LoranCSignalData
-	val.Info = info
-	if v, err := stream.ReadInt32(32); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCSignalData-GroupRepetitionIntervalGri: %w", err)
 	} else {
 		val.GroupRepetitionIntervalGri = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(8); err != nil {
+	if v, err := stream.readFixedString(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCSignalData-StationIdentifier: %w", err)
 	} else {
 		val.StationIdentifier = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCSignalData-StationSnr: %w", err)
 	} else {
 		val.StationSnr = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCSignalData-StationEcd: %w", err)
 	} else {
 		val.StationEcd = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LoranCSignalData-StationAsf: %w", err)
 	} else {
 		val.StationAsf = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -39276,16 +39276,16 @@ func DecodeLoranCSignalData(info PacketInfo, stream *PGNDataStream) (interface{}
 type Label struct {
 	Info PacketInfo
 }
-func DecodeLabel(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLabel(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Label
-	val.Info = info	
+	val.Info = Info	
 	return val, nil
 }
 type ChannelSourceConfiguration struct {
 	Info PacketInfo
 	DataSourceChannelId *uint8
 	SourceSelectionStatus *uint8
-	NameSelectionCriteriaMask []uint8
+	NameSelectionCriteriaMask interface{}
 	SourceName *uint64
 	Pgn *uint32
 	DataSourceInstanceFieldNumber *uint8
@@ -39294,90 +39294,90 @@ type ChannelSourceConfiguration struct {
 	SecondaryEnumerationFieldValue *uint8
 	ParameterFieldNumber *uint8
 }
-func DecodeChannelSourceConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeChannelSourceConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ChannelSourceConfiguration
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChannelSourceConfiguration-DataSourceChannelId: %w", err)
 	} else {
 		val.DataSourceChannelId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ChannelSourceConfiguration-SourceSelectionStatus: %w", err)
 	} else {
 		val.SourceSelectionStatus = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadBinaryData(12); err != nil {
+	if v, err := stream.readBinaryData(12); err != nil {
 		return nil, fmt.Errorf("parse failed for ChannelSourceConfiguration-NameSelectionCriteriaMask: %w", err)
 	} else {
 		val.NameSelectionCriteriaMask = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(64); err != nil {
+	if v, err := stream.readUInt64(64); err != nil {
 		return nil, fmt.Errorf("parse failed for ChannelSourceConfiguration-SourceName: %w", err)
 	} else {
 		val.SourceName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for ChannelSourceConfiguration-Pgn: %w", err)
 	} else {
 		val.Pgn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChannelSourceConfiguration-DataSourceInstanceFieldNumber: %w", err)
 	} else {
 		val.DataSourceInstanceFieldNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChannelSourceConfiguration-DataSourceInstanceValue: %w", err)
 	} else {
 		val.DataSourceInstanceValue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChannelSourceConfiguration-SecondaryEnumerationFieldNumber: %w", err)
 	} else {
 		val.SecondaryEnumerationFieldNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChannelSourceConfiguration-SecondaryEnumerationFieldValue: %w", err)
 	} else {
 		val.SecondaryEnumerationFieldValue = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ChannelSourceConfiguration-ParameterFieldNumber: %w", err)
 	} else {
 		val.ParameterFieldNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -39400,34 +39400,34 @@ type RouteAndWpServiceDatabaseListRepeating1 struct {
 	NumberOfWpsInDatabase *uint16
 	NumberOfBytesInDatabase *uint16
 }
-func DecodeRouteAndWpServiceDatabaseList(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceDatabaseList(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceDatabaseList
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-StartDatabaseId: %w", err)
 	} else {
 		val.StartDatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfDatabasesAvailable: %w", err)
 	} else {
 		val.NumberOfDatabasesAvailable = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -39438,50 +39438,50 @@ func DecodeRouteAndWpServiceDatabaseList(info PacketInfo, stream *PGNDataStream)
 	i := 0 
 	for {
 		var rep RouteAndWpServiceDatabaseListRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-DatabaseId: %w", err)
 		} else {
 			rep.DatabaseId = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-DatabaseName: %w", err)
 		} else {
 			rep.DatabaseName = v
 		}
-		if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+		if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-DatabaseTimestamp: %w", err)
 		} else {
 			rep.DatabaseTimestamp = v
 		}
-		if v, err := stream.ReadUInt16(16); err != nil {
+		if v, err := stream.readUInt16(16); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-DatabaseDatestamp: %w", err)
 		} else {
 			rep.DatabaseDatestamp = v
 		}
-		if v, err := stream.ReadUInt8(6); err != nil {
+		if v, err := stream.readUInt8(6); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-WpPositionResolution: %w", err)
 		} else {
 			rep.WpPositionResolution = v
 		}
-		stream.SkipBits(2)
-		if v, err := stream.ReadUInt16(16); err != nil {
+		stream.skipBits(2)
+		if v, err := stream.readUInt16(16); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfRoutesInDatabase: %w", err)
 		} else {
 			rep.NumberOfRoutesInDatabase = v
 		}
-		if v, err := stream.ReadUInt16(16); err != nil {
+		if v, err := stream.readUInt16(16); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfWpsInDatabase: %w", err)
 		} else {
 			rep.NumberOfWpsInDatabase = v
 		}
-		if v, err := stream.ReadUInt16(16); err != nil {
+		if v, err := stream.readUInt16(16); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfBytesInDatabase: %w", err)
 		} else {
 			rep.NumberOfBytesInDatabase = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -39507,42 +39507,42 @@ type RouteAndWpServiceRouteListRepeating1 struct {
 	WpIdentificationMethod *uint8
 	RouteStatus *uint8
 }
-func DecodeRouteAndWpServiceRouteList(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceRouteList(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceRouteList
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-StartRouteId: %w", err)
 	} else {
 		val.StartRouteId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-NumberOfRoutesInDatabase: %w", err)
 	} else {
 		val.NumberOfRoutesInDatabase = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-DatabaseId: %w", err)
 	} else {
 		val.DatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -39553,30 +39553,30 @@ func DecodeRouteAndWpServiceRouteList(info PacketInfo, stream *PGNDataStream) (i
 	i := 0 
 	for {
 		var rep RouteAndWpServiceRouteListRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-RouteId: %w", err)
 		} else {
 			rep.RouteId = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-RouteName: %w", err)
 		} else {
 			rep.RouteName = v
 		}
-		stream.SkipBits(4)
-		if v, err := stream.ReadUInt8(2); err != nil {
+		stream.skipBits(4)
+		if v, err := stream.readUInt8(2); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-WpIdentificationMethod: %w", err)
 		} else {
 			rep.WpIdentificationMethod = v
 		}
-		if v, err := stream.ReadUInt8(2); err != nil {
+		if v, err := stream.readUInt8(2); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-RouteStatus: %w", err)
 		} else {
 			rep.RouteStatus = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -39603,102 +39603,102 @@ type RouteAndWpServiceRouteWpListAttributes struct {
 	RouteStatus *uint8
 	XteLimitForTheRoute *uint16
 }
-func DecodeRouteAndWpServiceRouteWpListAttributes(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceRouteWpListAttributes(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceRouteWpListAttributes
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-DatabaseId: %w", err)
 	} else {
 		val.DatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteId: %w", err)
 	} else {
 		val.RouteId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteWpListName: %w", err)
 	} else {
 		val.RouteWpListName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteWpListTimestamp: %w", err)
 	} else {
 		val.RouteWpListTimestamp = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteWpListDatestamp: %w", err)
 	} else {
 		val.RouteWpListDatestamp = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-ChangeAtLastTimestamp: %w", err)
 	} else {
 		val.ChangeAtLastTimestamp = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-NumberOfWpsInTheRouteWpList: %w", err)
 	} else {
 		val.NumberOfWpsInTheRouteWpList = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-CriticalSupplementaryParameters: %w", err)
 	} else {
 		val.CriticalSupplementaryParameters = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-NavigationMethod: %w", err)
 	} else {
 		val.NavigationMethod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-WpIdentificationMethod: %w", err)
 	} else {
 		val.WpIdentificationMethod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteStatus: %w", err)
 	} else {
 		val.RouteStatus = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-XteLimitForTheRoute: %w", err)
 	} else {
 		val.XteLimitForTheRoute = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -39719,50 +39719,50 @@ type RouteAndWpServiceRouteWpNamePositionRepeating1 struct {
 	WpLatitude *float32
 	WpLongitude *float32
 }
-func DecodeRouteAndWpServiceRouteWpNamePosition(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceRouteWpNamePosition(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceRouteWpNamePosition
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-StartRps: %w", err)
 	} else {
 		val.StartRps = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-NumberOfWpsInTheRouteWpList: %w", err)
 	} else {
 		val.NumberOfWpsInTheRouteWpList = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-DatabaseId: %w", err)
 	} else {
 		val.DatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-RouteId: %w", err)
 	} else {
 		val.RouteId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -39773,29 +39773,29 @@ func DecodeRouteAndWpServiceRouteWpNamePosition(info PacketInfo, stream *PGNData
 	i := 0 
 	for {
 		var rep RouteAndWpServiceRouteWpNamePositionRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-WpId: %w", err)
 		} else {
 			rep.WpId = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-WpName: %w", err)
 		} else {
 			rep.WpName = v
 		}
-		if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+		if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-WpLatitude: %w", err)
 		} else {
 			rep.WpLatitude = v
 		}
-		if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+		if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-WpLongitude: %w", err)
 		} else {
 			rep.WpLongitude = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -39820,50 +39820,50 @@ type RouteAndWpServiceRouteWpNameRepeating1 struct {
 	WpId *uint8
 	WpName string
 }
-func DecodeRouteAndWpServiceRouteWpName(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceRouteWpName(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceRouteWpName
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-StartRps: %w", err)
 	} else {
 		val.StartRps = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-NumberOfWpsInTheRouteWpList: %w", err)
 	} else {
 		val.NumberOfWpsInTheRouteWpList = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-DatabaseId: %w", err)
 	} else {
 		val.DatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-RouteId: %w", err)
 	} else {
 		val.RouteId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -39874,19 +39874,19 @@ func DecodeRouteAndWpServiceRouteWpName(info PacketInfo, stream *PGNDataStream) 
 	i := 0 
 	for {
 		var rep RouteAndWpServiceRouteWpNameRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-WpId: %w", err)
 		} else {
 			rep.WpId = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-WpName: %w", err)
 		} else {
 			rep.WpName = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -39912,34 +39912,34 @@ type RouteAndWpServiceXteLimitNavigationMethodRepeating1 struct {
 	XteLimitInTheLegAfterWp *uint16
 	NavMethodInTheLegAfterWp *uint8
 }
-func DecodeRouteAndWpServiceXteLimitNavigationMethod(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceXteLimitNavigationMethod(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceXteLimitNavigationMethod
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-StartRps: %w", err)
 	} else {
 		val.StartRps = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-NumberOfWpsWithASpecificXteLimitOrNavMethod: %w", err)
 	} else {
 		val.NumberOfWpsWithASpecificXteLimitOrNavMethod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -39950,35 +39950,35 @@ func DecodeRouteAndWpServiceXteLimitNavigationMethod(info PacketInfo, stream *PG
 	i := 0 
 	for {
 		var rep RouteAndWpServiceXteLimitNavigationMethodRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-DatabaseId: %w", err)
 		} else {
 			rep.DatabaseId = v
 		}
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-RouteId: %w", err)
 		} else {
 			rep.RouteId = v
 		}
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-Rps: %w", err)
 		} else {
 			rep.Rps = v
 		}
-		if v, err := stream.ReadUInt16(16); err != nil {
+		if v, err := stream.readUInt16(16); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-XteLimitInTheLegAfterWp: %w", err)
 		} else {
 			rep.XteLimitInTheLegAfterWp = v
 		}
-		if v, err := stream.ReadUInt8(4); err != nil {
+		if v, err := stream.readUInt8(4); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-NavMethodInTheLegAfterWp: %w", err)
 		} else {
 			rep.NavMethodInTheLegAfterWp = v
 		}
-		stream.SkipBits(4)
+		stream.skipBits(4)
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -40003,50 +40003,50 @@ type RouteAndWpServiceWpCommentRepeating1 struct {
 	WpIdRps *uint8
 	Comment string
 }
-func DecodeRouteAndWpServiceWpComment(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceWpComment(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceWpComment
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-StartId: %w", err)
 	} else {
 		val.StartId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-NumberOfWpsWithComments: %w", err)
 	} else {
 		val.NumberOfWpsWithComments = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-DatabaseId: %w", err)
 	} else {
 		val.DatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-RouteId: %w", err)
 	} else {
 		val.RouteId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -40057,19 +40057,19 @@ func DecodeRouteAndWpServiceWpComment(info PacketInfo, stream *PGNDataStream) (i
 	i := 0 
 	for {
 		var rep RouteAndWpServiceWpCommentRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-WpIdRps: %w", err)
 		} else {
 			rep.WpIdRps = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-Comment: %w", err)
 		} else {
 			rep.Comment = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -40093,42 +40093,42 @@ type RouteAndWpServiceRouteCommentRepeating1 struct {
 	RouteId *uint8
 	Comment string
 }
-func DecodeRouteAndWpServiceRouteComment(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceRouteComment(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceRouteComment
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-StartRouteId: %w", err)
 	} else {
 		val.StartRouteId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-NumberOfRoutesWithComments: %w", err)
 	} else {
 		val.NumberOfRoutesWithComments = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-DatabaseId: %w", err)
 	} else {
 		val.DatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -40139,19 +40139,19 @@ func DecodeRouteAndWpServiceRouteComment(info PacketInfo, stream *PGNDataStream)
 	i := 0 
 	for {
 		var rep RouteAndWpServiceRouteCommentRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-RouteId: %w", err)
 		} else {
 			rep.RouteId = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-Comment: %w", err)
 		} else {
 			rep.Comment = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -40174,34 +40174,34 @@ type RouteAndWpServiceDatabaseCommentRepeating1 struct {
 	DatabaseId *uint8
 	Comment string
 }
-func DecodeRouteAndWpServiceDatabaseComment(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceDatabaseComment(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceDatabaseComment
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-StartDatabaseId: %w", err)
 	} else {
 		val.StartDatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-NumberOfDatabasesWithComments: %w", err)
 	} else {
 		val.NumberOfDatabasesWithComments = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -40212,19 +40212,19 @@ func DecodeRouteAndWpServiceDatabaseComment(info PacketInfo, stream *PGNDataStre
 	i := 0 
 	for {
 		var rep RouteAndWpServiceDatabaseCommentRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-DatabaseId: %w", err)
 		} else {
 			rep.DatabaseId = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-Comment: %w", err)
 		} else {
 			rep.Comment = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -40249,50 +40249,50 @@ type RouteAndWpServiceRadiusOfTurnRepeating1 struct {
 	Rps *uint8
 	RadiusOfTurn *uint16
 }
-func DecodeRouteAndWpServiceRadiusOfTurn(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceRadiusOfTurn(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceRadiusOfTurn
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-StartRps: %w", err)
 	} else {
 		val.StartRps = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-NumberOfWpsWithASpecificRadiusOfTurn: %w", err)
 	} else {
 		val.NumberOfWpsWithASpecificRadiusOfTurn = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-DatabaseId: %w", err)
 	} else {
 		val.DatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-RouteId: %w", err)
 	} else {
 		val.RouteId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -40303,19 +40303,19 @@ func DecodeRouteAndWpServiceRadiusOfTurn(info PacketInfo, stream *PGNDataStream)
 	i := 0 
 	for {
 		var rep RouteAndWpServiceRadiusOfTurnRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-Rps: %w", err)
 		} else {
 			rep.Rps = v
 		}
-		if v, err := stream.ReadUInt16(16); err != nil {
+		if v, err := stream.readUInt16(16); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-RadiusOfTurn: %w", err)
 		} else {
 			rep.RadiusOfTurn = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -40341,47 +40341,47 @@ type RouteAndWpServiceWpListWpNamePositionRepeating1 struct {
 	WpLatitude *float32
 	WpLongitude *float32
 }
-func DecodeRouteAndWpServiceWpListWpNamePosition(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRouteAndWpServiceWpListWpNamePosition(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val RouteAndWpServiceWpListWpNamePosition
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-StartWpId: %w", err)
 	} else {
 		val.StartWpId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-Nitems: %w", err)
 	} else {
 		val.Nitems = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-NumberOfValidWpsInTheWpList: %w", err)
 	} else {
 		val.NumberOfValidWpsInTheWpList = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-DatabaseId: %w", err)
 	} else {
 		val.DatabaseId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
 		if repeat1Count == 0 {
@@ -40391,29 +40391,29 @@ func DecodeRouteAndWpServiceWpListWpNamePosition(info PacketInfo, stream *PGNDat
 	i := 0 
 	for {
 		var rep RouteAndWpServiceWpListWpNamePositionRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-WpId: %w", err)
 		} else {
 			rep.WpId = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-WpName: %w", err)
 		} else {
 			rep.WpName = v
 		}
-		if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+		if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-WpLatitude: %w", err)
 		} else {
 			rep.WpLatitude = v
 		}
-		if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+		if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 			return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-WpLongitude: %w", err)
 		} else {
 			rep.WpLongitude = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -40432,43 +40432,43 @@ type WindData struct {
 	WindAngle *float32
 	Reference WindReferenceConst
 }
-func DecodeWindData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeWindData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val WindData
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for WindData-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for WindData-WindSpeed: %w", err)
 	} else {
 		val.WindSpeed = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for WindData-WindAngle: %w", err)
 	} else {
 		val.WindAngle = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for WindData-Reference: %w", err)
 	} else {
 		val.Reference = WindReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(21)
-	if stream.IsEOF() {
+	stream.skipBits(21)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -40480,43 +40480,43 @@ type EnvironmentalParametersObsolete struct {
 	OutsideAmbientAirTemperature *float32
 	AtmosphericPressure *float32
 }
-func DecodeEnvironmentalParametersObsolete(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeEnvironmentalParametersObsolete(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val EnvironmentalParametersObsolete
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-WaterTemperature: %w", err)
 	} else {
 		val.WaterTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-OutsideAmbientAirTemperature: %w", err)
 	} else {
 		val.OutsideAmbientAirTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-AtmosphericPressure: %w", err)
 	} else {
 		val.AtmosphericPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -40530,54 +40530,54 @@ type EnvironmentalParameters struct {
 	Humidity *float32
 	AtmosphericPressure *float32
 }
-func DecodeEnvironmentalParameters(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeEnvironmentalParameters(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val EnvironmentalParameters
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(6); err != nil {
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-TemperatureSource: %w", err)
 	} else {
 		val.TemperatureSource = TemperatureSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-HumiditySource: %w", err)
 	} else {
 		val.HumiditySource = HumiditySourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Temperature: %w", err)
 	} else {
 		val.Temperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.004); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.004); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Humidity: %w", err)
 	} else {
 		val.Humidity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-AtmosphericPressure: %w", err)
 	} else {
 		val.AtmosphericPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -40591,46 +40591,46 @@ type Temperature struct {
 	ActualTemperature *float32
 	SetTemperature *float32
 }
-func DecodeTemperature(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTemperature(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Temperature
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Temperature-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Temperature-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Temperature-Source: %w", err)
 	} else {
 		val.Source = TemperatureSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Temperature-ActualTemperature: %w", err)
 	} else {
 		val.ActualTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Temperature-SetTemperature: %w", err)
 	} else {
 		val.SetTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -40644,51 +40644,51 @@ type Humidity struct {
 	ActualHumidity *float32
 	SetHumidity *float32
 }
-func DecodeHumidity(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeHumidity(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val Humidity
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Humidity-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Humidity-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for Humidity-Source: %w", err)
 	} else {
 		val.Source = HumiditySourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.004); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.004); err != nil {
 		return nil, fmt.Errorf("parse failed for Humidity-ActualHumidity: %w", err)
 	} else {
 		val.ActualHumidity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.004); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.004); err != nil {
 		return nil, fmt.Errorf("parse failed for Humidity-SetHumidity: %w", err)
 	} else {
 		val.SetHumidity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -40700,38 +40700,38 @@ type ActualPressure struct {
 	Source PressureSourceConst
 	Pressure *float32
 }
-func DecodeActualPressure(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeActualPressure(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ActualPressure
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ActualPressure-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ActualPressure-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ActualPressure-Source: %w", err)
 	} else {
 		val.Source = PressureSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for ActualPressure-Pressure: %w", err)
 	} else {
 		val.Pressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -40744,38 +40744,38 @@ type SetPressure struct {
 	Source PressureSourceConst
 	Pressure *float32
 }
-func DecodeSetPressure(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSetPressure(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SetPressure
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SetPressure-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SetPressure-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SetPressure-Source: %w", err)
 	} else {
 		val.Source = PressureSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SetPressure-Pressure: %w", err)
 	} else {
 		val.Pressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -40789,46 +40789,46 @@ type TemperatureExtendedRange struct {
 	Temperature *float32
 	SetTemperature *float32
 }
-func DecodeTemperatureExtendedRange(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTemperatureExtendedRange(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val TemperatureExtendedRange
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Source: %w", err)
 	} else {
 		val.Source = TemperatureSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(24, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(24, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Temperature: %w", err)
 	} else {
 		val.Temperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-SetTemperature: %w", err)
 	} else {
 		val.SetTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -40847,90 +40847,90 @@ type TideStationData struct {
 	StationId string
 	StationName string
 }
-func DecodeTideStationData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTideStationData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val TideStationData
-	val.Info = info
-	if v, err := stream.ReadLookupField(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-Mode: %w", err)
 	} else {
 		val.Mode = ResidualModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-TideTendency: %w", err)
 	} else {
 		val.TideTendency = TideConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-MeasurementDate: %w", err)
 	} else {
 		val.MeasurementDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-MeasurementTime: %w", err)
 	} else {
 		val.MeasurementTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-StationLatitude: %w", err)
 	} else {
 		val.StationLatitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-StationLongitude: %w", err)
 	} else {
 		val.StationLongitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-TideLevel: %w", err)
 	} else {
 		val.TideLevel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-TideLevelStandardDeviation: %w", err)
 	} else {
 		val.TideLevelStandardDeviation = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-StationId: %w", err)
 	} else {
 		val.StationId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-StationName: %w", err)
 	} else {
 		val.StationName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -40948,82 +40948,82 @@ type SalinityStationData struct {
 	StationId string
 	StationName string
 }
-func DecodeSalinityStationData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSalinityStationData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SalinityStationData
-	val.Info = info
-	if v, err := stream.ReadLookupField(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-Mode: %w", err)
 	} else {
 		val.Mode = ResidualModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-MeasurementDate: %w", err)
 	} else {
 		val.MeasurementDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-MeasurementTime: %w", err)
 	} else {
 		val.MeasurementTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-StationLatitude: %w", err)
 	} else {
 		val.StationLatitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-StationLongitude: %w", err)
 	} else {
 		val.StationLongitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFloat32(); err != nil {
+	if v, err := stream.readFloat32(); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-Salinity: %w", err)
 	} else {
 		val.Salinity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-WaterTemperature: %w", err)
 	} else {
 		val.WaterTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-StationId: %w", err)
 	} else {
 		val.StationId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-StationName: %w", err)
 	} else {
 		val.StationName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -41043,98 +41043,98 @@ type CurrentStationData struct {
 	StationId string
 	StationName string
 }
-func DecodeCurrentStationData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeCurrentStationData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val CurrentStationData
-	val.Info = info
-	if v, err := stream.ReadUInt8(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-Mode: %w", err)
 	} else {
 		val.Mode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-MeasurementDate: %w", err)
 	} else {
 		val.MeasurementDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-MeasurementTime: %w", err)
 	} else {
 		val.MeasurementTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-StationLatitude: %w", err)
 	} else {
 		val.StationLatitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-StationLongitude: %w", err)
 	} else {
 		val.StationLongitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-MeasurementDepth: %w", err)
 	} else {
 		val.MeasurementDepth = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-CurrentSpeed: %w", err)
 	} else {
 		val.CurrentSpeed = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-CurrentFlowDirection: %w", err)
 	} else {
 		val.CurrentFlowDirection = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-WaterTemperature: %w", err)
 	} else {
 		val.WaterTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-StationId: %w", err)
 	} else {
 		val.StationId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStationData-StationName: %w", err)
 	} else {
 		val.StationName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -41156,118 +41156,118 @@ type MeteorologicalStationData struct {
 	StationId string
 	StationName string
 }
-func DecodeMeteorologicalStationData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMeteorologicalStationData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val MeteorologicalStationData
-	val.Info = info
-	if v, err := stream.ReadUInt8(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-Mode: %w", err)
 	} else {
 		val.Mode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-MeasurementDate: %w", err)
 	} else {
 		val.MeasurementDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-MeasurementTime: %w", err)
 	} else {
 		val.MeasurementTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-StationLatitude: %w", err)
 	} else {
 		val.StationLatitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-StationLongitude: %w", err)
 	} else {
 		val.StationLongitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-WindSpeed: %w", err)
 	} else {
 		val.WindSpeed = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-WindDirection: %w", err)
 	} else {
 		val.WindDirection = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-WindReference: %w", err)
 	} else {
 		val.WindReference = WindReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(5)
-	if stream.IsEOF() {
+	stream.skipBits(5)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-WindGusts: %w", err)
 	} else {
 		val.WindGusts = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-AtmosphericPressure: %w", err)
 	} else {
 		val.AtmosphericPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-AmbientTemperature: %w", err)
 	} else {
 		val.AmbientTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-StationId: %w", err)
 	} else {
 		val.StationId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for MeteorologicalStationData-StationName: %w", err)
 	} else {
 		val.StationName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -41292,142 +41292,142 @@ type MooredBuoyStationData struct {
 	WaterTemperature *float32
 	StationId string
 }
-func DecodeMooredBuoyStationData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMooredBuoyStationData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val MooredBuoyStationData
-	val.Info = info
-	if v, err := stream.ReadUInt8(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-Mode: %w", err)
 	} else {
 		val.Mode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-MeasurementDate: %w", err)
 	} else {
 		val.MeasurementDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-MeasurementTime: %w", err)
 	} else {
 		val.MeasurementTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-StationLatitude: %w", err)
 	} else {
 		val.StationLatitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-StationLongitude: %w", err)
 	} else {
 		val.StationLongitude = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-WindSpeed: %w", err)
 	} else {
 		val.WindSpeed = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-WindDirection: %w", err)
 	} else {
 		val.WindDirection = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-WindReference: %w", err)
 	} else {
 		val.WindReference = WindReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(5)
-	if stream.IsEOF() {
+	stream.skipBits(5)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-WindGusts: %w", err)
 	} else {
 		val.WindGusts = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-WaveHeight: %w", err)
 	} else {
 		val.WaveHeight = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-DominantWavePeriod: %w", err)
 	} else {
 		val.DominantWavePeriod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-AtmosphericPressure: %w", err)
 	} else {
 		val.AtmosphericPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt16(16); err != nil {
+	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-PressureTendencyRate: %w", err)
 	} else {
 		val.PressureTendencyRate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-AirTemperature: %w", err)
 	} else {
 		val.AirTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-WaterTemperature: %w", err)
 	} else {
 		val.WaterTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(64); err != nil {
+	if v, err := stream.readFixedString(64); err != nil {
 		return nil, fmt.Errorf("parse failed for MooredBuoyStationData-StationId: %w", err)
 	} else {
 		val.StationId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -41440,47 +41440,47 @@ type PayloadMass struct {
 	MeasurementId *uint8
 	PayloadMass *uint32
 }
-func DecodePayloadMass(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodePayloadMass(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val PayloadMass
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for PayloadMass-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(3); err != nil {
+	if v, err := stream.readUInt8(3); err != nil {
 		return nil, fmt.Errorf("parse failed for PayloadMass-MeasurementStatus: %w", err)
 	} else {
 		val.MeasurementStatus = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(5)
-	if stream.IsEOF() {
+	stream.skipBits(5)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for PayloadMass-MeasurementId: %w", err)
 	} else {
 		val.MeasurementId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for PayloadMass-PayloadMass: %w", err)
 	} else {
 		val.PayloadMass = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -41510,186 +41510,186 @@ type WatermakerInputSettingAndStatus struct {
 	BrineWaterFlow *float32
 	RunTime *uint32
 }
-func DecodeWatermakerInputSettingAndStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeWatermakerInputSettingAndStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val WatermakerInputSettingAndStatus
-	val.Info = info
-	if v, err := stream.ReadLookupField(6); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-WatermakerOperatingState: %w", err)
 	} else {
 		val.WatermakerOperatingState = WatermakerStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductionStartStop: %w", err)
 	} else {
 		val.ProductionStartStop = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-RinseStartStop: %w", err)
 	} else {
 		val.RinseStartStop = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-LowPressurePumpStatus: %w", err)
 	} else {
 		val.LowPressurePumpStatus = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-HighPressurePumpStatus: %w", err)
 	} else {
 		val.HighPressurePumpStatus = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-EmergencyStop: %w", err)
 	} else {
 		val.EmergencyStop = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductSolenoidValveStatus: %w", err)
 	} else {
 		val.ProductSolenoidValveStatus = OkWarningConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-FlushModeStatus: %w", err)
 	} else {
 		val.FlushModeStatus = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SalinityStatus: %w", err)
 	} else {
 		val.SalinityStatus = OkWarningConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SensorStatus: %w", err)
 	} else {
 		val.SensorStatus = OkWarningConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-OilChangeIndicatorStatus: %w", err)
 	} else {
 		val.OilChangeIndicatorStatus = OkWarningConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-FilterStatus: %w", err)
 	} else {
 		val.FilterStatus = OkWarningConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SystemStatus: %w", err)
 	} else {
 		val.SystemStatus = OkWarningConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-Salinity: %w", err)
 	} else {
 		val.Salinity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterTemperature: %w", err)
 	} else {
 		val.ProductWaterTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-PreFilterPressure: %w", err)
 	} else {
 		val.PreFilterPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-PostFilterPressure: %w", err)
 	} else {
 		val.PostFilterPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 1000); err != nil {
+	if v, err := stream.readSignedResolution(16, 1000); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-FeedPressure: %w", err)
 	} else {
 		val.FeedPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 1000); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 1000); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SystemHighPressure: %w", err)
 	} else {
 		val.SystemHighPressure = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterFlow: %w", err)
 	} else {
 		val.ProductWaterFlow = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-BrineWaterFlow: %w", err)
 	} else {
 		val.BrineWaterFlow = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-RunTime: %w", err)
 	} else {
 		val.RunTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -41715,142 +41715,142 @@ type CurrentStatusAndFile struct {
 	DeleteFavoriteNumber *uint8
 	TotalNumberOfTracks *uint16
 }
-func DecodeCurrentStatusAndFile(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeCurrentStatusAndFile(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val CurrentStatusAndFile
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-Zone: %w", err)
 	} else {
 		val.Zone = EntertainmentZoneConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-Source: %w", err)
 	} else {
 		val.Source = EntertainmentSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-Number: %w", err)
 	} else {
 		val.Number = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-Id: %w", err)
 	} else {
 		val.Id = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-PlayStatus: %w", err)
 	} else {
 		val.PlayStatus = EntertainmentPlayStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-ElapsedTrackTime: %w", err)
 	} else {
 		val.ElapsedTrackTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-TrackTime: %w", err)
 	} else {
 		val.TrackTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-RepeatStatus: %w", err)
 	} else {
 		val.RepeatStatus = EntertainmentRepeatStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-ShuffleStatus: %w", err)
 	} else {
 		val.ShuffleStatus = EntertainmentShuffleStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-SaveFavoriteNumber: %w", err)
 	} else {
 		val.SaveFavoriteNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-PlayFavoriteNumber: %w", err)
 	} else {
 		val.PlayFavoriteNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-ThumbsUpDown: %w", err)
 	} else {
 		val.ThumbsUpDown = EntertainmentLikeStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-SignalStrength: %w", err)
 	} else {
 		val.SignalStrength = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 10); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 10); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-RadioFrequency: %w", err)
 	} else {
 		val.RadioFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-HdFrequencyMulticast: %w", err)
 	} else {
 		val.HdFrequencyMulticast = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-DeleteFavoriteNumber: %w", err)
 	} else {
 		val.DeleteFavoriteNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for CurrentStatusAndFile-TotalNumberOfTracks: %w", err)
 	} else {
 		val.TotalNumberOfTracks = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -41875,138 +41875,138 @@ type LibraryDataFile struct {
 	AlbumName string
 	StationName string
 }
-func DecodeLibraryDataFile(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLibraryDataFile(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LibraryDataFile
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-Source: %w", err)
 	} else {
 		val.Source = EntertainmentSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-Number: %w", err)
 	} else {
 		val.Number = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-Id: %w", err)
 	} else {
 		val.Id = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-Type: %w", err)
 	} else {
 		val.Type = EntertainmentTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-Name: %w", err)
 	} else {
 		val.Name = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-Track: %w", err)
 	} else {
 		val.Track = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-Station: %w", err)
 	} else {
 		val.Station = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-Favorite: %w", err)
 	} else {
 		val.Favorite = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 10); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 10); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-RadioFrequency: %w", err)
 	} else {
 		val.RadioFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-HdFrequency: %w", err)
 	} else {
 		val.HdFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-Zone: %w", err)
 	} else {
 		val.Zone = EntertainmentZoneConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-InPlayQueue: %w", err)
 	} else {
 		val.InPlayQueue = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-Locked: %w", err)
 	} else {
 		val.Locked = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-ArtistName: %w", err)
 	} else {
 		val.ArtistName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-AlbumName: %w", err)
 	} else {
 		val.AlbumName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataFile-StationName: %w", err)
 	} else {
 		val.StationName = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -42028,74 +42028,74 @@ type LibraryDataGroupRepeating1 struct {
 	Id *uint32
 	Name string
 }
-func DecodeLibraryDataGroup(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLibraryDataGroup(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LibraryDataGroup
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataGroup-Source: %w", err)
 	} else {
 		val.Source = EntertainmentSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataGroup-Number: %w", err)
 	} else {
 		val.Number = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataGroup-Zone: %w", err)
 	} else {
 		val.Zone = EntertainmentZoneConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataGroup-GroupId: %w", err)
 	} else {
 		val.GroupId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataGroup-IdOffset: %w", err)
 	} else {
 		val.IdOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataGroup-IdCount: %w", err)
 	} else {
 		val.IdCount = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataGroup-TotalIdCount: %w", err)
 	} else {
 		val.TotalIdCount = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataGroup-IdType: %w", err)
 	} else {
 		val.IdType = EntertainmentIdTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -42106,19 +42106,19 @@ func DecodeLibraryDataGroup(info PacketInfo, stream *PGNDataStream) (interface{}
 	i := 0 
 	for {
 		var rep LibraryDataGroupRepeating1
-		if v, err := stream.ReadUInt32(32); err != nil {
+		if v, err := stream.readUInt32(32); err != nil {
 			return nil, fmt.Errorf("parse failed for LibraryDataGroup-Id: %w", err)
 		} else {
 			rep.Id = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for LibraryDataGroup-Name: %w", err)
 		} else {
 			rep.Name = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -42142,78 +42142,78 @@ type LibraryDataSearch struct {
 	GroupType3 EntertainmentGroupConst
 	GroupName3 string
 }
-func DecodeLibraryDataSearch(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLibraryDataSearch(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LibraryDataSearch
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataSearch-Source: %w", err)
 	} else {
 		val.Source = EntertainmentSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataSearch-Number: %w", err)
 	} else {
 		val.Number = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataSearch-GroupId: %w", err)
 	} else {
 		val.GroupId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataSearch-GroupType1: %w", err)
 	} else {
 		val.GroupType1 = EntertainmentGroupConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataSearch-GroupName1: %w", err)
 	} else {
 		val.GroupName1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataSearch-GroupType2: %w", err)
 	} else {
 		val.GroupType2 = EntertainmentGroupConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataSearch-GroupName2: %w", err)
 	} else {
 		val.GroupName2 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataSearch-GroupType3: %w", err)
 	} else {
 		val.GroupType3 = EntertainmentGroupConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
 		return nil, fmt.Errorf("parse failed for LibraryDataSearch-GroupName3: %w", err)
 	} else {
 		val.GroupName3 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -42238,34 +42238,34 @@ type SupportedSourceDataRepeating1 struct {
 	RepeatSupport EntertainmentRepeatBitfieldConst
 	ShuffleSupport EntertainmentShuffleBitfieldConst
 }
-func DecodeSupportedSourceData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSupportedSourceData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SupportedSourceData
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SupportedSourceData-IdOffset: %w", err)
 	} else {
 		val.IdOffset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SupportedSourceData-IdCount: %w", err)
 	} else {
 		val.IdCount = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SupportedSourceData-TotalIdCount: %w", err)
 	} else {
 		val.TotalIdCount = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -42276,59 +42276,59 @@ func DecodeSupportedSourceData(info PacketInfo, stream *PGNDataStream) (interfac
 	i := 0 
 	for {
 		var rep SupportedSourceDataRepeating1
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedSourceData-Id: %w", err)
 		} else {
 			rep.Id = v
 		}
-		if v, err := stream.ReadLookupField(8); err != nil {
+		if v, err := stream.readLookupField(8); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedSourceData-Source: %w", err)
 		} else {
 			rep.Source = EntertainmentSourceConst(v)
 		}
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedSourceData-Number: %w", err)
 		} else {
 			rep.Number = v
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedSourceData-Name: %w", err)
 		} else {
 			rep.Name = v
 		}
-		if v, err := stream.ReadLookupField(32); err != nil {
+		if v, err := stream.readLookupField(32); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedSourceData-PlaySupport: %w", err)
 		} else {
 			rep.PlaySupport = EntertainmentPlayStatusBitfieldConst(v)
 		}
-		if v, err := stream.ReadLookupField(16); err != nil {
+		if v, err := stream.readLookupField(16); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedSourceData-BrowseSupport: %w", err)
 		} else {
 			rep.BrowseSupport = EntertainmentGroupBitfieldConst(v)
 		}
-		if v, err := stream.ReadLookupField(2); err != nil {
+		if v, err := stream.readLookupField(2); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedSourceData-ThumbsSupport: %w", err)
 		} else {
 			rep.ThumbsSupport = YesNoConst(v)
 		}
-		if v, err := stream.ReadLookupField(2); err != nil {
+		if v, err := stream.readLookupField(2); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedSourceData-Connected: %w", err)
 		} else {
 			rep.Connected = YesNoConst(v)
 		}
-		if v, err := stream.ReadLookupField(2); err != nil {
+		if v, err := stream.readLookupField(2); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedSourceData-RepeatSupport: %w", err)
 		} else {
 			rep.RepeatSupport = EntertainmentRepeatBitfieldConst(v)
 		}
-		if v, err := stream.ReadLookupField(2); err != nil {
+		if v, err := stream.readLookupField(2); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedSourceData-ShuffleSupport: %w", err)
 		} else {
 			rep.ShuffleSupport = EntertainmentShuffleBitfieldConst(v)
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -42351,34 +42351,34 @@ type SupportedZoneDataRepeating1 struct {
 	ZoneId EntertainmentZoneConst
 	Name string
 }
-func DecodeSupportedZoneData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSupportedZoneData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SupportedZoneData
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SupportedZoneData-FirstZoneId: %w", err)
 	} else {
 		val.FirstZoneId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SupportedZoneData-ZoneCount: %w", err)
 	} else {
 		val.ZoneCount = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SupportedZoneData-TotalZoneCount: %w", err)
 	} else {
 		val.TotalZoneCount = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -42389,19 +42389,19 @@ func DecodeSupportedZoneData(info PacketInfo, stream *PGNDataStream) (interface{
 	i := 0 
 	for {
 		var rep SupportedZoneDataRepeating1
-		if v, err := stream.ReadLookupField(8); err != nil {
+		if v, err := stream.readLookupField(8); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedZoneData-ZoneId: %w", err)
 		} else {
 			rep.ZoneId = EntertainmentZoneConst(v)
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for SupportedZoneData-Name: %w", err)
 		} else {
 			rep.Name = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -42418,27 +42418,27 @@ type SmallCraftStatus struct {
 	PortTrimTab *int8
 	StarboardTrimTab *int8
 }
-func DecodeSmallCraftStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSmallCraftStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SmallCraftStatus
-	val.Info = info
-	if v, err := stream.ReadInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SmallCraftStatus-PortTrimTab: %w", err)
 	} else {
 		val.PortTrimTab = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SmallCraftStatus-StarboardTrimTab: %w", err)
 	} else {
 		val.StarboardTrimTab = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(48)
-	if stream.IsEOF() {
+	stream.skipBits(48)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -42455,82 +42455,82 @@ type DirectionData struct {
 	Set *float32
 	Drift *float32
 }
-func DecodeDirectionData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDirectionData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val DirectionData
-	val.Info = info
-	if v, err := stream.ReadLookupField(4); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for DirectionData-DataMode: %w", err)
 	} else {
 		val.DataMode = ResidualModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for DirectionData-CogReference: %w", err)
 	} else {
 		val.CogReference = DirectionReferenceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for DirectionData-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for DirectionData-Cog: %w", err)
 	} else {
 		val.Cog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for DirectionData-Sog: %w", err)
 	} else {
 		val.Sog = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for DirectionData-Heading: %w", err)
 	} else {
 		val.Heading = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for DirectionData-SpeedThroughWater: %w", err)
 	} else {
 		val.SpeedThroughWater = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for DirectionData-Set: %w", err)
 	} else {
 		val.Set = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for DirectionData-Drift: %w", err)
 	} else {
 		val.Drift = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -42545,54 +42545,54 @@ type VesselSpeedComponents struct {
 	SternSpeedWaterReferenced *float32
 	SternSpeedGroundReferenced *float32
 }
-func DecodeVesselSpeedComponents(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeVesselSpeedComponents(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val VesselSpeedComponents
-	val.Info = info
-	if v, err := stream.ReadSignedResolution(16, 0.001); err != nil {
+	val.Info = Info
+	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-LongitudinalSpeedWaterReferenced: %w", err)
 	} else {
 		val.LongitudinalSpeedWaterReferenced = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-TransverseSpeedWaterReferenced: %w", err)
 	} else {
 		val.TransverseSpeedWaterReferenced = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-LongitudinalSpeedGroundReferenced: %w", err)
 	} else {
 		val.LongitudinalSpeedGroundReferenced = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-TransverseSpeedGroundReferenced: %w", err)
 	} else {
 		val.TransverseSpeedGroundReferenced = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-SternSpeedWaterReferenced: %w", err)
 	} else {
 		val.SternSpeedWaterReferenced = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-SternSpeedGroundReferenced: %w", err)
 	} else {
 		val.SternSpeedGroundReferenced = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -42606,51 +42606,51 @@ type SystemConfiguration struct {
 	MaxFavorites *uint8
 	VideoProtocols VideoProtocolsConst
 }
-func DecodeSystemConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSystemConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SystemConfiguration
-	val.Info = info
-	if v, err := stream.ReadLookupField(2); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemConfiguration-Power: %w", err)
 	} else {
 		val.Power = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemConfiguration-DefaultSettings: %w", err)
 	} else {
 		val.DefaultSettings = EntertainmentDefaultSettingsConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemConfiguration-TunerRegions: %w", err)
 	} else {
 		val.TunerRegions = EntertainmentRegionsConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemConfiguration-MaxFavorites: %w", err)
 	} else {
 		val.MaxFavorites = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemConfiguration-VideoProtocols: %w", err)
 	} else {
 		val.VideoProtocols = VideoProtocolsConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(44)
-	if stream.IsEOF() {
+	stream.skipBits(44)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -42662,38 +42662,38 @@ type SystemConfigurationDeprecated struct {
 	TunerRegions EntertainmentRegionsConst
 	MaxFavorites *uint8
 }
-func DecodeSystemConfigurationDeprecated(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSystemConfigurationDeprecated(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SystemConfigurationDeprecated
-	val.Info = info
-	if v, err := stream.ReadLookupField(2); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemConfigurationDeprecated-Power: %w", err)
 	} else {
 		val.Power = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemConfigurationDeprecated-DefaultSettings: %w", err)
 	} else {
 		val.DefaultSettings = EntertainmentDefaultSettingsConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemConfigurationDeprecated-TunerRegions: %w", err)
 	} else {
 		val.TunerRegions = EntertainmentRegionsConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemConfigurationDeprecated-MaxFavorites: %w", err)
 	} else {
 		val.MaxFavorites = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -42710,34 +42710,34 @@ type ZoneConfigurationDeprecatedRepeating1 struct {
 	ZoneId EntertainmentZoneConst
 	ZoneName string
 }
-func DecodeZoneConfigurationDeprecated(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeZoneConfigurationDeprecated(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ZoneConfigurationDeprecated
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfigurationDeprecated-FirstZoneId: %w", err)
 	} else {
 		val.FirstZoneId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfigurationDeprecated-ZoneCount: %w", err)
 	} else {
 		val.ZoneCount = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfigurationDeprecated-TotalZoneCount: %w", err)
 	} else {
 		val.TotalZoneCount = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -42748,19 +42748,19 @@ func DecodeZoneConfigurationDeprecated(info PacketInfo, stream *PGNDataStream) (
 	i := 0 
 	for {
 		var rep ZoneConfigurationDeprecatedRepeating1
-		if v, err := stream.ReadLookupField(8); err != nil {
+		if v, err := stream.readLookupField(8); err != nil {
 			return nil, fmt.Errorf("parse failed for ZoneConfigurationDeprecated-ZoneId: %w", err)
 		} else {
 			rep.ZoneId = EntertainmentZoneConst(v)
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for ZoneConfigurationDeprecated-ZoneName: %w", err)
 		} else {
 			rep.ZoneName = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -42780,50 +42780,50 @@ type ZoneVolume struct {
 	Mute YesNoConst
 	Channel EntertainmentChannelConst
 }
-func DecodeZoneVolume(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeZoneVolume(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ZoneVolume
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneVolume-ZoneId: %w", err)
 	} else {
 		val.ZoneId = EntertainmentZoneConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneVolume-Volume: %w", err)
 	} else {
 		val.Volume = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneVolume-VolumeChange: %w", err)
 	} else {
 		val.VolumeChange = EntertainmentVolumeControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneVolume-Mute: %w", err)
 	} else {
 		val.Mute = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(4)
-	if stream.IsEOF() {
+	stream.skipBits(4)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneVolume-Channel: %w", err)
 	} else {
 		val.Channel = EntertainmentChannelConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -42840,34 +42840,34 @@ type AvailableAudioEqPresetsRepeating1 struct {
 	PresetType EntertainmentEqConst
 	PresetName string
 }
-func DecodeAvailableAudioEqPresets(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAvailableAudioEqPresets(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AvailableAudioEqPresets
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AvailableAudioEqPresets-FirstPreset: %w", err)
 	} else {
 		val.FirstPreset = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AvailableAudioEqPresets-PresetCount: %w", err)
 	} else {
 		val.PresetCount = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AvailableAudioEqPresets-TotalPresetCount: %w", err)
 	} else {
 		val.TotalPresetCount = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -42878,19 +42878,19 @@ func DecodeAvailableAudioEqPresets(info PacketInfo, stream *PGNDataStream) (inte
 	i := 0 
 	for {
 		var rep AvailableAudioEqPresetsRepeating1
-		if v, err := stream.ReadLookupField(8); err != nil {
+		if v, err := stream.readLookupField(8); err != nil {
 			return nil, fmt.Errorf("parse failed for AvailableAudioEqPresets-PresetType: %w", err)
 		} else {
 			rep.PresetType = EntertainmentEqConst(v)
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for AvailableAudioEqPresets-PresetName: %w", err)
 		} else {
 			rep.PresetName = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -42910,39 +42910,39 @@ type AvailableBluetoothAddresses struct {
 	Repeating1 []AvailableBluetoothAddressesRepeating1
 }
 type AvailableBluetoothAddressesRepeating1 struct {
-	BluetoothAddress []uint8
+	BluetoothAddress interface{}
 	Status BluetoothStatusConst
 	DeviceName string
 	SignalStrength *uint8
 }
-func DecodeAvailableBluetoothAddresses(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAvailableBluetoothAddresses(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AvailableBluetoothAddresses
-	val.Info = info
+	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-FirstAddress: %w", err)
 	} else {
 		val.FirstAddress = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-AddressCount: %w", err)
 	} else {
 		val.AddressCount = v
 		if v != nil {
 			repeat1Count = uint16(*v)
 		}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-TotalAddressCount: %w", err)
 	} else {
 		val.TotalAddressCount = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
@@ -42953,29 +42953,29 @@ func DecodeAvailableBluetoothAddresses(info PacketInfo, stream *PGNDataStream) (
 	i := 0 
 	for {
 		var rep AvailableBluetoothAddressesRepeating1
-		if v, err := stream.ReadBinaryData(48); err != nil {
+		if v, err := stream.readBinaryData(48); err != nil {
 			return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-BluetoothAddress: %w", err)
 		} else {
 			rep.BluetoothAddress = v
 		}
-		if v, err := stream.ReadLookupField(8); err != nil {
+		if v, err := stream.readLookupField(8); err != nil {
 			return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-Status: %w", err)
 		} else {
 			rep.Status = BluetoothStatusConst(v)
 		}
-		if v, err := stream.ReadStringWithLengthAndControl(); err != nil {
+		if v, err := stream.readStringWithLengthAndControl(); err != nil {
 			return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-DeviceName: %w", err)
 		} else {
 			rep.DeviceName = v
 		}
-		if v, err := stream.ReadUInt8(8); err != nil {
+		if v, err := stream.readUInt8(8); err != nil {
 			return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-SignalStrength: %w", err)
 		} else {
 			rep.SignalStrength = v
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -42993,48 +42993,48 @@ type BluetoothSourceStatus struct {
 	Status BluetoothSourceStatusConst
 	ForgetDevice YesNoConst
 	Discovering YesNoConst
-	BluetoothAddress []uint8
+	BluetoothAddress interface{}
 }
-func DecodeBluetoothSourceStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBluetoothSourceStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val BluetoothSourceStatus
-	val.Info = info
-	if v, err := stream.ReadUInt8(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for BluetoothSourceStatus-SourceNumber: %w", err)
 	} else {
 		val.SourceNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for BluetoothSourceStatus-Status: %w", err)
 	} else {
 		val.Status = BluetoothSourceStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BluetoothSourceStatus-ForgetDevice: %w", err)
 	} else {
 		val.ForgetDevice = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for BluetoothSourceStatus-Discovering: %w", err)
 	} else {
 		val.Discovering = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(48); err != nil {
+	if v, err := stream.readBinaryData(48); err != nil {
 		return nil, fmt.Errorf("parse failed for BluetoothSourceStatus-BluetoothAddress: %w", err)
 	} else {
 		val.BluetoothAddress = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43056,110 +43056,110 @@ type ZoneConfiguration struct {
 	LowPassFilterFrequency *uint16
 	Channel EntertainmentChannelConst
 }
-func DecodeZoneConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeZoneConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val ZoneConfiguration
-	val.Info = info
-	if v, err := stream.ReadLookupField(8); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-ZoneId: %w", err)
 	} else {
 		val.ZoneId = EntertainmentZoneConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-VolumeLimit: %w", err)
 	} else {
 		val.VolumeLimit = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-Fade: %w", err)
 	} else {
 		val.Fade = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-Balance: %w", err)
 	} else {
 		val.Balance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-SubVolume: %w", err)
 	} else {
 		val.SubVolume = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-EqTreble: %w", err)
 	} else {
 		val.EqTreble = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-EqMidRange: %w", err)
 	} else {
 		val.EqMidRange = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-EqBass: %w", err)
 	} else {
 		val.EqBass = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-PresetType: %w", err)
 	} else {
 		val.PresetType = EntertainmentEqConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-AudioFilter: %w", err)
 	} else {
 		val.AudioFilter = EntertainmentFilterConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-HighPassFilterFrequency: %w", err)
 	} else {
 		val.HighPassFilterFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-LowPassFilterFrequency: %w", err)
 	} else {
 		val.LowPassFilterFrequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for ZoneConfiguration-Channel: %w", err)
 	} else {
 		val.Channel = EntertainmentChannelConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43174,71 +43174,71 @@ type SonichubInit2 struct {
 	A *uint16
 	B *uint16
 }
-func DecodeSonichubInit2(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubInit2(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubInit2
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit2-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubInit2-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit2-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubInit2-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit2-ProprietaryId: %w", err)
 	} else {
 		if v != 1 {
 			return nil, fmt.Errorf("match failed for SonichubInit2-ProprietaryId: Expected %d != %d", 1, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit2-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit2-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit2-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43256,99 +43256,99 @@ type SonichubAmRadio struct {
 	SignalLevel *uint8
 	Text string
 }
-func DecodeSonichubAmRadio(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubAmRadio(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubAmRadio
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAmRadio-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubAmRadio-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAmRadio-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubAmRadio-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAmRadio-ProprietaryId: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubAmRadio-ProprietaryId: Expected %d != %d", 4, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAmRadio-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAmRadio-Item: %w", err)
 	} else {
 		val.Item = SonichubTuningConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAmRadio-Frequency: %w", err)
 	} else {
 		val.Frequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAmRadio-NoiseLevel: %w", err)
 	} else {
 		val.NoiseLevel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAmRadio-SignalLevel: %w", err)
 	} else {
 		val.SignalLevel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAmRadio-Text: %w", err)
 	} else {
 		val.Text = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43362,63 +43362,63 @@ type SonichubZoneInfo struct {
 	Control SonichubControlConst
 	Zone *uint8
 }
-func DecodeSonichubZoneInfo(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubZoneInfo(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubZoneInfo
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubZoneInfo-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubZoneInfo-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubZoneInfo-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubZoneInfo-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubZoneInfo-ProprietaryId: %w", err)
 	} else {
 		if v != 5 {
 			return nil, fmt.Errorf("match failed for SonichubZoneInfo-ProprietaryId: Expected %d != %d", 5, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubZoneInfo-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubZoneInfo-Zone: %w", err)
 	} else {
 		val.Zone = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43432,63 +43432,63 @@ type SonichubSource struct {
 	Control SonichubControlConst
 	Source SonichubSourceConst
 }
-func DecodeSonichubSource(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubSource(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubSource
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSource-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubSource-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSource-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubSource-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSource-ProprietaryId: %w", err)
 	} else {
 		if v != 6 {
 			return nil, fmt.Errorf("match failed for SonichubSource-ProprietaryId: Expected %d != %d", 6, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSource-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSource-Source: %w", err)
 	} else {
 		val.Source = SonichubSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43504,79 +43504,79 @@ type SonichubSourceList struct {
 	A *uint8
 	Text string
 }
-func DecodeSonichubSourceList(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubSourceList(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubSourceList
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSourceList-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubSourceList-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSourceList-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubSourceList-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSourceList-ProprietaryId: %w", err)
 	} else {
 		if v != 8 {
 			return nil, fmt.Errorf("match failed for SonichubSourceList-ProprietaryId: Expected %d != %d", 8, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSourceList-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSourceList-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSourceList-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSourceList-Text: %w", err)
 	} else {
 		val.Text = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43590,63 +43590,63 @@ type SonichubControl struct {
 	Control SonichubControlConst
 	Item FusionMuteCommandConst
 }
-func DecodeSonichubControl(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubControl(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubControl
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubControl-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubControl-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubControl-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubControl-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubControl-ProprietaryId: %w", err)
 	} else {
 		if v != 9 {
 			return nil, fmt.Errorf("match failed for SonichubControl-ProprietaryId: Expected %d != %d", 9, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubControl-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubControl-Item: %w", err)
 	} else {
 		val.Item = FusionMuteCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43664,99 +43664,99 @@ type SonichubFmRadio struct {
 	SignalLevel *uint8
 	Text string
 }
-func DecodeSonichubFmRadio(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubFmRadio(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubFmRadio
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubFmRadio-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubFmRadio-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubFmRadio-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubFmRadio-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubFmRadio-ProprietaryId: %w", err)
 	} else {
 		if v != 12 {
 			return nil, fmt.Errorf("match failed for SonichubFmRadio-ProprietaryId: Expected %d != %d", 12, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubFmRadio-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubFmRadio-Item: %w", err)
 	} else {
 		val.Item = SonichubTuningConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubFmRadio-Frequency: %w", err)
 	} else {
 		val.Frequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(2); err != nil {
+	if v, err := stream.readUInt8(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubFmRadio-NoiseLevel: %w", err)
 	} else {
 		val.NoiseLevel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubFmRadio-SignalLevel: %w", err)
 	} else {
 		val.SignalLevel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubFmRadio-Text: %w", err)
 	} else {
 		val.Text = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43775,103 +43775,103 @@ type SonichubPlaylist struct {
 	Length *float32
 	PositionInTrack *float32
 }
-func DecodeSonichubPlaylist(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubPlaylist(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubPlaylist
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubPlaylist-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubPlaylist-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-ProprietaryId: %w", err)
 	} else {
 		if v != 13 {
 			return nil, fmt.Errorf("match failed for SonichubPlaylist-ProprietaryId: Expected %d != %d", 13, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-Item: %w", err)
 	} else {
 		val.Item = SonichubPlaylistConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-CurrentTrack: %w", err)
 	} else {
 		val.CurrentTrack = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-Tracks: %w", err)
 	} else {
 		val.Tracks = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-Length: %w", err)
 	} else {
 		val.Length = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-PositionInTrack: %w", err)
 	} else {
 		val.PositionInTrack = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43886,71 +43886,71 @@ type SonichubTrack struct {
 	Item *uint32
 	Text string
 }
-func DecodeSonichubTrack(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubTrack(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubTrack
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubTrack-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubTrack-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubTrack-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubTrack-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubTrack-ProprietaryId: %w", err)
 	} else {
 		if v != 14 {
 			return nil, fmt.Errorf("match failed for SonichubTrack-ProprietaryId: Expected %d != %d", 14, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubTrack-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubTrack-Item: %w", err)
 	} else {
 		val.Item = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubTrack-Text: %w", err)
 	} else {
 		val.Text = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -43965,71 +43965,71 @@ type SonichubArtist struct {
 	Item *uint32
 	Text string
 }
-func DecodeSonichubArtist(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubArtist(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubArtist
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubArtist-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubArtist-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubArtist-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubArtist-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubArtist-ProprietaryId: %w", err)
 	} else {
 		if v != 15 {
 			return nil, fmt.Errorf("match failed for SonichubArtist-ProprietaryId: Expected %d != %d", 15, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubArtist-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubArtist-Item: %w", err)
 	} else {
 		val.Item = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubArtist-Text: %w", err)
 	} else {
 		val.Text = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44044,71 +44044,71 @@ type SonichubAlbum struct {
 	Item *uint32
 	Text string
 }
-func DecodeSonichubAlbum(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubAlbum(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubAlbum
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAlbum-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubAlbum-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAlbum-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubAlbum-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAlbum-ProprietaryId: %w", err)
 	} else {
 		if v != 16 {
 			return nil, fmt.Errorf("match failed for SonichubAlbum-ProprietaryId: Expected %d != %d", 16, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAlbum-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAlbum-Item: %w", err)
 	} else {
 		val.Item = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAlbum-Text: %w", err)
 	} else {
 		val.Text = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44126,95 +44126,95 @@ type SonichubMenuItem struct {
 	E *uint8
 	Text string
 }
-func DecodeSonichubMenuItem(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubMenuItem(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubMenuItem
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMenuItem-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubMenuItem-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMenuItem-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubMenuItem-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMenuItem-ProprietaryId: %w", err)
 	} else {
 		if v != 19 {
 			return nil, fmt.Errorf("match failed for SonichubMenuItem-ProprietaryId: Expected %d != %d", 19, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMenuItem-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMenuItem-Item: %w", err)
 	} else {
 		val.Item = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMenuItem-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMenuItem-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMenuItem-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMenuItem-Text: %w", err)
 	} else {
 		val.Text = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44228,63 +44228,63 @@ type SonichubZones struct {
 	Control SonichubControlConst
 	Zones *uint8
 }
-func DecodeSonichubZones(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubZones(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubZones
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubZones-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubZones-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubZones-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubZones-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubZones-ProprietaryId: %w", err)
 	} else {
 		if v != 20 {
 			return nil, fmt.Errorf("match failed for SonichubZones-ProprietaryId: Expected %d != %d", 20, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubZones-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubZones-Zones: %w", err)
 	} else {
 		val.Zones = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44299,71 +44299,71 @@ type SonichubMaxVolume struct {
 	Zone *uint8
 	Level *uint8
 }
-func DecodeSonichubMaxVolume(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubMaxVolume(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubMaxVolume
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMaxVolume-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubMaxVolume-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMaxVolume-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubMaxVolume-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMaxVolume-ProprietaryId: %w", err)
 	} else {
 		if v != 23 {
 			return nil, fmt.Errorf("match failed for SonichubMaxVolume-ProprietaryId: Expected %d != %d", 23, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMaxVolume-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMaxVolume-Zone: %w", err)
 	} else {
 		val.Zone = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMaxVolume-Level: %w", err)
 	} else {
 		val.Level = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44378,71 +44378,71 @@ type SonichubVolume struct {
 	Zone *uint8
 	Level *uint8
 }
-func DecodeSonichubVolume(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubVolume(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubVolume
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubVolume-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubVolume-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubVolume-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubVolume-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubVolume-ProprietaryId: %w", err)
 	} else {
 		if v != 24 {
 			return nil, fmt.Errorf("match failed for SonichubVolume-ProprietaryId: Expected %d != %d", 24, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubVolume-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubVolume-Zone: %w", err)
 	} else {
 		val.Zone = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubVolume-Level: %w", err)
 	} else {
 		val.Level = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44455,55 +44455,55 @@ type SonichubInit1 struct {
 	ProprietaryId SonichubCommandConst
 	Control SonichubControlConst
 }
-func DecodeSonichubInit1(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubInit1(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubInit1
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit1-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubInit1-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit1-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubInit1-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit1-ProprietaryId: %w", err)
 	} else {
 		if v != 25 {
 			return nil, fmt.Errorf("match failed for SonichubInit1-ProprietaryId: Expected %d != %d", 25, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit1-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44517,63 +44517,63 @@ type SonichubPosition struct {
 	Control SonichubControlConst
 	Position *float32
 }
-func DecodeSonichubPosition(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubPosition(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubPosition
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPosition-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubPosition-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPosition-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubPosition-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPosition-ProprietaryId: %w", err)
 	} else {
 		if v != 48 {
 			return nil, fmt.Errorf("match failed for SonichubPosition-ProprietaryId: Expected %d != %d", 48, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPosition-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPosition-Position: %w", err)
 	} else {
 		val.Position = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44588,71 +44588,71 @@ type SonichubInit3 struct {
 	A *uint8
 	B *uint8
 }
-func DecodeSonichubInit3(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubInit3(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SonichubInit3
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit3-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for SonichubInit3-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit3-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SonichubInit3-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit3-ProprietaryId: %w", err)
 	} else {
 		if v != 50 {
 			return nil, fmt.Errorf("match failed for SonichubInit3-ProprietaryId: Expected %d != %d", 50, v)
 		}
 		val.ProprietaryId = SonichubCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit3-Control: %w", err)
 	} else {
 		val.Control = SonichubControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit3-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubInit3-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44670,95 +44670,95 @@ type SimradTextMessage struct {
 	Prio *uint8
 	Text string
 }
-func DecodeSimradTextMessage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimradTextMessage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimradTextMessage
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimradTextMessage-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimradTextMessage-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimradTextMessage-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimradTextMessage-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimradTextMessage-ProprietaryId: %w", err)
 	} else {
 		if v != 50 {
 			return nil, fmt.Errorf("match failed for SimradTextMessage-ProprietaryId: Expected %d != %d", 50, v)
 		}
 		val.ProprietaryId = SimradCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimradTextMessage-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimradTextMessage-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimradTextMessage-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimradTextMessage-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimradTextMessage-Prio: %w", err)
 	} else {
 		val.Prio = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for SimradTextMessage-Text: %w", err)
 	} else {
 		val.Text = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44777,96 +44777,96 @@ type NavicoProductInformation struct {
 	FirmwareDate string
 	FirmwareTime string
 }
-func DecodeNavicoProductInformation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavicoProductInformation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val NavicoProductInformation
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoProductInformation-ManufacturerCode: %w", err)
 	} else {
 		if v != 275 {
 			return nil, fmt.Errorf("match failed for NavicoProductInformation-ManufacturerCode: Expected %d != %d", 275, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoProductInformation-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for NavicoProductInformation-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoProductInformation-ProductCode: %w", err)
 	} else {
 		val.ProductCode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoProductInformation-Model: %w", err)
 	} else {
 		val.Model = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoProductInformation-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoProductInformation-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoProductInformation-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(80); err != nil {
+	if v, err := stream.readFixedString(80); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoProductInformation-FirmwareVersion: %w", err)
 	} else {
 		val.FirmwareVersion = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoProductInformation-FirmwareDate: %w", err)
 	} else {
 		val.FirmwareDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for NavicoProductInformation-FirmwareTime: %w", err)
 	} else {
 		val.FirmwareTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44885,96 +44885,96 @@ type LowranceProductInformation struct {
 	FirmwareDate string
 	FirmwareTime string
 }
-func DecodeLowranceProductInformation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLowranceProductInformation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LowranceProductInformation
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceProductInformation-ManufacturerCode: %w", err)
 	} else {
 		if v != 140 {
 			return nil, fmt.Errorf("match failed for LowranceProductInformation-ManufacturerCode: Expected %d != %d", 140, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceProductInformation-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for LowranceProductInformation-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceProductInformation-ProductCode: %w", err)
 	} else {
 		val.ProductCode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceProductInformation-Model: %w", err)
 	} else {
 		val.Model = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceProductInformation-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceProductInformation-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceProductInformation-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(80); err != nil {
+	if v, err := stream.readFixedString(80); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceProductInformation-FirmwareVersion: %w", err)
 	} else {
 		val.FirmwareVersion = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceProductInformation-FirmwareDate: %w", err)
 	} else {
 		val.FirmwareDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(256); err != nil {
+	if v, err := stream.readFixedString(256); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceProductInformation-FirmwareTime: %w", err)
 	} else {
 		val.FirmwareTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -44986,58 +44986,58 @@ type SimnetReprogramData struct {
 	IndustryCode IndustryCodeConst
 	Version *uint16
 	Sequence *uint16
-	Data []uint8
+	Data interface{}
 }
-func DecodeSimnetReprogramData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetReprogramData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetReprogramData
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetReprogramData-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetReprogramData-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetReprogramData-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetReprogramData-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetReprogramData-Version: %w", err)
 	} else {
 		val.Version = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetReprogramData-Sequence: %w", err)
 	} else {
 		val.Sequence = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadBinaryData(1736); err != nil {
+	if v, err := stream.readBinaryData(1736); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetReprogramData-Data: %w", err)
 	} else {
 		val.Data = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45048,32 +45048,32 @@ type SimnetRequestReprogram struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetRequestReprogram(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetRequestReprogram(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetRequestReprogram
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetRequestReprogram-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetRequestReprogram-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetRequestReprogram-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetRequestReprogram-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45085,49 +45085,49 @@ type SimnetReprogramStatus struct {
 	IndustryCode IndustryCodeConst
 	Status *uint8
 }
-func DecodeSimnetReprogramStatus(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetReprogramStatus(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetReprogramStatus
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetReprogramStatus-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetReprogramStatus-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetReprogramStatus-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetReprogramStatus-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(8)
-	if stream.IsEOF() {
+	stream.skipBits(8)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetReprogramStatus-Status: %w", err)
 	} else {
 		val.Status = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(24)
-	if stream.IsEOF() {
+	stream.skipBits(24)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -45142,72 +45142,72 @@ type FurunoUnknown130820 struct {
 	D *uint8
 	E *uint8
 }
-func DecodeFurunoUnknown130820(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoUnknown130820(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FurunoUnknown130820
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130820-ManufacturerCode: %w", err)
 	} else {
 		if v != 1855 {
 			return nil, fmt.Errorf("match failed for FurunoUnknown130820-ManufacturerCode: Expected %d != %d", 1855, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130820-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FurunoUnknown130820-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130820-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130820-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130820-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130820-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130820-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45225,91 +45225,91 @@ type FusionSourceName struct {
 	E *uint8
 	Source string
 }
-func DecodeFusionSourceName(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSourceName(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSourceName
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSourceName-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSourceName-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSourceName-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSourceName-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSourceName-MessageId: %w", err)
 	} else {
 		if v != 2 {
 			return nil, fmt.Errorf("match failed for FusionSourceName-MessageId: Expected %d != %d", 2, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSourceName-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSourceName-SourceId: %w", err)
 	} else {
 		val.SourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSourceName-CurrentSourceId: %w", err)
 	} else {
 		val.CurrentSourceId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSourceName-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSourceName-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSourceName-Source: %w", err)
 	} else {
 		val.Source = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45332,131 +45332,131 @@ type FusionTrackInfo struct {
 	PositionInTrack *float32
 	H *uint16
 }
-func DecodeFusionTrackInfo(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionTrackInfo(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionTrackInfo
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionTrackInfo-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionTrackInfo-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-MessageId: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionTrackInfo-MessageId: Expected %d != %d", 4, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-Transport: %w", err)
 	} else {
 		val.Transport = EntertainmentPlayStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-X: %w", err)
 	} else {
 		val.X = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-Track: %w", err)
 	} else {
 		val.Track = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-TrackCount: %w", err)
 	} else {
 		val.TrackCount = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(24, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(24, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-Length: %w", err)
 	} else {
 		val.Length = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(24, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(24, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-PositionInTrack: %w", err)
 	} else {
 		val.PositionInTrack = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-H: %w", err)
 	} else {
 		val.H = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45471,67 +45471,67 @@ type FusionTrack struct {
 	B *uint64
 	Track string
 }
-func DecodeFusionTrack(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionTrack(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionTrack
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrack-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionTrack-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrack-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionTrack-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrack-MessageId: %w", err)
 	} else {
 		if v != 5 {
 			return nil, fmt.Errorf("match failed for FusionTrack-MessageId: Expected %d != %d", 5, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrack-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(40); err != nil {
+	if v, err := stream.readUInt64(40); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrack-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrack-Track: %w", err)
 	} else {
 		val.Track = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45546,67 +45546,67 @@ type FusionArtist struct {
 	B *uint64
 	Artist string
 }
-func DecodeFusionArtist(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionArtist(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionArtist
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionArtist-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionArtist-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionArtist-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionArtist-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionArtist-MessageId: %w", err)
 	} else {
 		if v != 6 {
 			return nil, fmt.Errorf("match failed for FusionArtist-MessageId: Expected %d != %d", 6, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionArtist-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(40); err != nil {
+	if v, err := stream.readUInt64(40); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionArtist-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionArtist-Artist: %w", err)
 	} else {
 		val.Artist = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45621,67 +45621,67 @@ type FusionAlbum struct {
 	B *uint64
 	Album string
 }
-func DecodeFusionAlbum(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionAlbum(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionAlbum
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAlbum-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionAlbum-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAlbum-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionAlbum-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAlbum-MessageId: %w", err)
 	} else {
 		if v != 7 {
 			return nil, fmt.Errorf("match failed for FusionAlbum-MessageId: Expected %d != %d", 7, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAlbum-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt64(40); err != nil {
+	if v, err := stream.readUInt64(40); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAlbum-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAlbum-Album: %w", err)
 	} else {
 		val.Album = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45695,59 +45695,59 @@ type FusionUnitName struct {
 	A *uint8
 	Name string
 }
-func DecodeFusionUnitName(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionUnitName(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionUnitName
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionUnitName-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionUnitName-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionUnitName-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionUnitName-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionUnitName-MessageId: %w", err)
 	} else {
 		if v != 33 {
 			return nil, fmt.Errorf("match failed for FusionUnitName-MessageId: Expected %d != %d", 33, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionUnitName-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionUnitName-Name: %w", err)
 	} else {
 		val.Name = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45762,67 +45762,67 @@ type FusionZoneName struct {
 	Number *uint8
 	Name string
 }
-func DecodeFusionZoneName(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionZoneName(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionZoneName
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionZoneName-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionZoneName-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionZoneName-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionZoneName-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionZoneName-MessageId: %w", err)
 	} else {
 		if v != 45 {
 			return nil, fmt.Errorf("match failed for FusionZoneName-MessageId: Expected %d != %d", 45, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionZoneName-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionZoneName-Number: %w", err)
 	} else {
 		val.Number = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionZoneName-Name: %w", err)
 	} else {
 		val.Name = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45837,67 +45837,67 @@ type FusionPlayProgress struct {
 	B *uint8
 	Progress *float32
 }
-func DecodeFusionPlayProgress(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionPlayProgress(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionPlayProgress
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPlayProgress-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionPlayProgress-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPlayProgress-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionPlayProgress-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPlayProgress-MessageId: %w", err)
 	} else {
 		if v != 9 {
 			return nil, fmt.Errorf("match failed for FusionPlayProgress-MessageId: Expected %d != %d", 9, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPlayProgress-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPlayProgress-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(24, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(24, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPlayProgress-Progress: %w", err)
 	} else {
 		val.Progress = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -45915,91 +45915,91 @@ type FusionAmFmStation struct {
 	C *uint8
 	Track string
 }
-func DecodeFusionAmFmStation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionAmFmStation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionAmFmStation
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAmFmStation-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionAmFmStation-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAmFmStation-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionAmFmStation-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAmFmStation-MessageId: %w", err)
 	} else {
 		if v != 11 {
 			return nil, fmt.Errorf("match failed for FusionAmFmStation-MessageId: Expected %d != %d", 11, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAmFmStation-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAmFmStation-AmFm: %w", err)
 	} else {
 		val.AmFm = FusionRadioSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAmFmStation-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAmFmStation-Frequency: %w", err)
 	} else {
 		val.Frequency = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAmFmStation-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAmFmStation-Track: %w", err)
 	} else {
 		val.Track = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46015,75 +46015,75 @@ type FusionVhf struct {
 	Channel *uint8
 	D *uint32
 }
-func DecodeFusionVhf(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionVhf(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionVhf
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVhf-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionVhf-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVhf-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionVhf-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVhf-MessageId: %w", err)
 	} else {
 		if v != 12 {
 			return nil, fmt.Errorf("match failed for FusionVhf-MessageId: Expected %d != %d", 12, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVhf-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVhf-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVhf-Channel: %w", err)
 	} else {
 		val.Channel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVhf-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46098,67 +46098,67 @@ type FusionSquelch struct {
 	B *uint8
 	Squelch *uint8
 }
-func DecodeFusionSquelch(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSquelch(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSquelch
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSquelch-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSquelch-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSquelch-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSquelch-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSquelch-MessageId: %w", err)
 	} else {
 		if v != 13 {
 			return nil, fmt.Errorf("match failed for FusionSquelch-MessageId: Expected %d != %d", 13, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSquelch-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSquelch-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSquelch-Squelch: %w", err)
 	} else {
 		val.Squelch = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46174,75 +46174,75 @@ type FusionScan struct {
 	Scan YesNoConst
 	C *uint8
 }
-func DecodeFusionScan(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionScan(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionScan
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionScan-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionScan-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionScan-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionScan-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionScan-MessageId: %w", err)
 	} else {
 		if v != 14 {
 			return nil, fmt.Errorf("match failed for FusionScan-MessageId: Expected %d != %d", 14, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionScan-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionScan-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionScan-Scan: %w", err)
 	} else {
 		val.Scan = YesNoConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(6); err != nil {
+	if v, err := stream.readUInt8(6); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionScan-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46263,115 +46263,115 @@ type FusionMenuItem struct {
 	I *uint8
 	Text string
 }
-func DecodeFusionMenuItem(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionMenuItem(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionMenuItem
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionMenuItem-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionMenuItem-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-MessageId: %w", err)
 	} else {
 		if v != 17 {
 			return nil, fmt.Errorf("match failed for FusionMenuItem-MessageId: Expected %d != %d", 17, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-Line: %w", err)
 	} else {
 		val.Line = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-F: %w", err)
 	} else {
 		val.F = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-G: %w", err)
 	} else {
 		val.G = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-H: %w", err)
 	} else {
 		val.H = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-I: %w", err)
 	} else {
 		val.I = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-Text: %w", err)
 	} else {
 		val.Text = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46392,115 +46392,115 @@ type FusionReplay struct {
 	I *uint8
 	J *uint8
 }
-func DecodeFusionReplay(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionReplay(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionReplay
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionReplay-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionReplay-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-MessageId: %w", err)
 	} else {
 		if v != 20 {
 			return nil, fmt.Errorf("match failed for FusionReplay-MessageId: Expected %d != %d", 20, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-Mode: %w", err)
 	} else {
 		val.Mode = FusionReplayModeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-Status: %w", err)
 	} else {
 		val.Status = FusionReplayStatusConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-H: %w", err)
 	} else {
 		val.H = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-I: %w", err)
 	} else {
 		val.I = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionReplay-J: %w", err)
 	} else {
 		val.J = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46514,59 +46514,59 @@ type FusionMute struct {
 	A *uint8
 	Mute FusionMuteCommandConst
 }
-func DecodeFusionMute(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionMute(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionMute
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMute-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionMute-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMute-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionMute-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMute-MessageId: %w", err)
 	} else {
 		if v != 23 {
 			return nil, fmt.Errorf("match failed for FusionMute-MessageId: Expected %d != %d", 23, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMute-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMute-Mute: %w", err)
 	} else {
 		val.Mute = FusionMuteCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46583,83 +46583,83 @@ type FusionSubVolume struct {
 	Zone3 *uint8
 	Zone4 *uint8
 }
-func DecodeFusionSubVolume(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSubVolume(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSubVolume
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSubVolume-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSubVolume-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSubVolume-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSubVolume-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSubVolume-MessageId: %w", err)
 	} else {
 		if v != 26 {
 			return nil, fmt.Errorf("match failed for FusionSubVolume-MessageId: Expected %d != %d", 26, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSubVolume-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSubVolume-Zone1: %w", err)
 	} else {
 		val.Zone1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSubVolume-Zone2: %w", err)
 	} else {
 		val.Zone2 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSubVolume-Zone3: %w", err)
 	} else {
 		val.Zone3 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSubVolume-Zone4: %w", err)
 	} else {
 		val.Zone4 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46676,83 +46676,83 @@ type FusionTone struct {
 	Mid *int8
 	Treble *int8
 }
-func DecodeFusionTone(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionTone(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionTone
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTone-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionTone-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTone-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionTone-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTone-MessageId: %w", err)
 	} else {
 		if v != 27 {
 			return nil, fmt.Errorf("match failed for FusionTone-MessageId: Expected %d != %d", 27, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTone-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTone-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTone-Bass: %w", err)
 	} else {
 		val.Bass = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTone-Mid: %w", err)
 	} else {
 		val.Mid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTone-Treble: %w", err)
 	} else {
 		val.Treble = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46769,83 +46769,83 @@ type FusionVolume struct {
 	Zone3 *uint8
 	Zone4 *uint8
 }
-func DecodeFusionVolume(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionVolume(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionVolume
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVolume-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionVolume-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVolume-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionVolume-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVolume-MessageId: %w", err)
 	} else {
 		if v != 29 {
 			return nil, fmt.Errorf("match failed for FusionVolume-MessageId: Expected %d != %d", 29, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVolume-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVolume-Zone1: %w", err)
 	} else {
 		val.Zone1 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVolume-Zone2: %w", err)
 	} else {
 		val.Zone2 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVolume-Zone3: %w", err)
 	} else {
 		val.Zone3 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionVolume-Zone4: %w", err)
 	} else {
 		val.Zone4 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46859,59 +46859,59 @@ type FusionPowerState struct {
 	A *uint8
 	State FusionPowerStateConst
 }
-func DecodeFusionPowerState(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionPowerState(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionPowerState
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPowerState-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionPowerState-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPowerState-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionPowerState-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPowerState-MessageId: %w", err)
 	} else {
 		if v != 32 {
 			return nil, fmt.Errorf("match failed for FusionPowerState-MessageId: Expected %d != %d", 32, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPowerState-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPowerState-State: %w", err)
 	} else {
 		val.State = FusionPowerStateConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46925,59 +46925,59 @@ type FusionSiriusxmChannel struct {
 	A *uint32
 	Channel string
 }
-func DecodeFusionSiriusxmChannel(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSiriusxmChannel(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSiriusxmChannel
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmChannel-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmChannel-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-MessageId: %w", err)
 	} else {
 		if v != 36 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmChannel-MessageId: Expected %d != %d", 36, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-Channel: %w", err)
 	} else {
 		val.Channel = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -46991,59 +46991,59 @@ type FusionSiriusxmTitle struct {
 	A *uint32
 	Title string
 }
-func DecodeFusionSiriusxmTitle(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSiriusxmTitle(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSiriusxmTitle
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmTitle-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmTitle-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-MessageId: %w", err)
 	} else {
 		if v != 37 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmTitle-MessageId: Expected %d != %d", 37, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-Title: %w", err)
 	} else {
 		val.Title = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47057,59 +47057,59 @@ type FusionSiriusxmArtist struct {
 	A *uint32
 	Artist string
 }
-func DecodeFusionSiriusxmArtist(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSiriusxmArtist(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSiriusxmArtist
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmArtist-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmArtist-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-MessageId: %w", err)
 	} else {
 		if v != 38 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmArtist-MessageId: Expected %d != %d", 38, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-Artist: %w", err)
 	} else {
 		val.Artist = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47123,59 +47123,59 @@ type FusionSiriusxmGenre struct {
 	A *uint32
 	Genre string
 }
-func DecodeFusionSiriusxmGenre(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSiriusxmGenre(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FusionSiriusxmGenre
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmGenre-ManufacturerCode: %w", err)
 	} else {
 		if v != 419 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmGenre-ManufacturerCode: Expected %d != %d", 419, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmGenre-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmGenre-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmGenre-MessageId: %w", err)
 	} else {
 		if v != 40 {
 			return nil, fmt.Errorf("match failed for FusionSiriusxmGenre-MessageId: Expected %d != %d", 40, v)
 		}
 		val.MessageId = FusionMessageIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmGenre-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSiriusxmGenre-Genre: %w", err)
 	} else {
 		val.Genre = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47196,112 +47196,112 @@ type FurunoUnknown130821 struct {
 	H *uint8
 	I *uint8
 }
-func DecodeFurunoUnknown130821(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoUnknown130821(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FurunoUnknown130821
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-ManufacturerCode: %w", err)
 	} else {
 		if v != 1855 {
 			return nil, fmt.Errorf("match failed for FurunoUnknown130821-ManufacturerCode: Expected %d != %d", 1855, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FurunoUnknown130821-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-F: %w", err)
 	} else {
 		val.F = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-G: %w", err)
 	} else {
 		val.G = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-H: %w", err)
 	} else {
 		val.H = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoUnknown130821-I: %w", err)
 	} else {
 		val.I = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47317,72 +47317,72 @@ type MaretronProprietaryTemperatureHighRange struct {
 	ActualTemperature *float32
 	SetTemperature *float32
 }
-func DecodeMaretronProprietaryTemperatureHighRange(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronProprietaryTemperatureHighRange(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val MaretronProprietaryTemperatureHighRange
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-ManufacturerCode: %w", err)
 	} else {
 		if v != 137 {
 			return nil, fmt.Errorf("match failed for MaretronProprietaryTemperatureHighRange-ManufacturerCode: Expected %d != %d", 137, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for MaretronProprietaryTemperatureHighRange-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-Sid: %w", err)
 	} else {
 		val.Sid = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-Source: %w", err)
 	} else {
 		val.Source = TemperatureSourceConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-ActualTemperature: %w", err)
 	} else {
 		val.ActualTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-SetTemperature: %w", err)
 	} else {
 		val.SetTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47396,56 +47396,56 @@ type BGWindData struct {
 	Field5 *uint8
 	Timestamp *uint32
 }
-func DecodeBGWindData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBGWindData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val BGWindData
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for BGWindData-ManufacturerCode: %w", err)
 	} else {
 		if v != 381 {
 			return nil, fmt.Errorf("match failed for BGWindData-ManufacturerCode: Expected %d != %d", 381, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for BGWindData-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for BGWindData-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for BGWindData-Field4: %w", err)
 	} else {
 		val.Field4 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for BGWindData-Field5: %w", err)
 	} else {
 		val.Field5 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for BGWindData-Timestamp: %w", err)
 	} else {
 		val.Timestamp = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47461,72 +47461,72 @@ type MaretronAnnunciator struct {
 	Field7 *uint8
 	Field8 *uint16
 }
-func DecodeMaretronAnnunciator(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronAnnunciator(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val MaretronAnnunciator
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronAnnunciator-ManufacturerCode: %w", err)
 	} else {
 		if v != 137 {
 			return nil, fmt.Errorf("match failed for MaretronAnnunciator-ManufacturerCode: Expected %d != %d", 137, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronAnnunciator-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for MaretronAnnunciator-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Field4: %w", err)
 	} else {
 		val.Field4 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Field5: %w", err)
 	} else {
 		val.Field5 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Field6: %w", err)
 	} else {
 		val.Field6 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Field7: %w", err)
 	} else {
 		val.Field7 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Field8: %w", err)
 	} else {
 		val.Field8 = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47543,80 +47543,80 @@ type LowranceUnknown struct {
 	E *uint16
 	F *uint16
 }
-func DecodeLowranceUnknown(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLowranceUnknown(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val LowranceUnknown
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceUnknown-ManufacturerCode: %w", err)
 	} else {
 		if v != 140 {
 			return nil, fmt.Errorf("match failed for LowranceUnknown-ManufacturerCode: Expected %d != %d", 140, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceUnknown-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for LowranceUnknown-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceUnknown-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceUnknown-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceUnknown-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceUnknown-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceUnknown-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceUnknown-F: %w", err)
 	} else {
 		val.F = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47627,32 +47627,32 @@ type SimnetSetSerialNumber struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetSetSerialNumber(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetSetSerialNumber(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetSetSerialNumber
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetSetSerialNumber-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetSetSerialNumber-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetSetSerialNumber-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetSetSerialNumber-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47663,32 +47663,32 @@ type SuzukiEngineAndStorageDeviceConfig struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSuzukiEngineAndStorageDeviceConfig(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSuzukiEngineAndStorageDeviceConfig(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SuzukiEngineAndStorageDeviceConfig
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SuzukiEngineAndStorageDeviceConfig-ManufacturerCode: %w", err)
 	} else {
 		if v != 586 {
 			return nil, fmt.Errorf("match failed for SuzukiEngineAndStorageDeviceConfig-ManufacturerCode: Expected %d != %d", 586, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SuzukiEngineAndStorageDeviceConfig-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SuzukiEngineAndStorageDeviceConfig-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47699,32 +47699,32 @@ type SimnetFuelUsedHighResolution struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetFuelUsedHighResolution(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetFuelUsedHighResolution(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetFuelUsedHighResolution
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFuelUsedHighResolution-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetFuelUsedHighResolution-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFuelUsedHighResolution-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetFuelUsedHighResolution-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47735,32 +47735,32 @@ type SimnetEngineAndTankConfiguration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetEngineAndTankConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetEngineAndTankConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetEngineAndTankConfiguration
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEngineAndTankConfiguration-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetEngineAndTankConfiguration-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEngineAndTankConfiguration-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetEngineAndTankConfiguration-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47771,32 +47771,32 @@ type SimnetSetEngineAndTankConfiguration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetSetEngineAndTankConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetSetEngineAndTankConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetSetEngineAndTankConfiguration
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetSetEngineAndTankConfiguration-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetSetEngineAndTankConfiguration-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetSetEngineAndTankConfiguration-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetSetEngineAndTankConfiguration-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47816,104 +47816,104 @@ type SimnetFluidLevelSensorConfiguration struct {
 	H *int16
 	I *int8
 }
-func DecodeSimnetFluidLevelSensorConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetFluidLevelSensorConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetFluidLevelSensorConfiguration
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetFluidLevelSensorConfiguration-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetFluidLevelSensorConfiguration-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-Device: %w", err)
 	} else {
 		val.Device = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(4); err != nil {
+	if v, err := stream.readUInt8(4); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-F: %w", err)
 	} else {
 		val.F = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(4); err != nil {
+	if v, err := stream.readLookupField(4); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-TankType: %w", err)
 	} else {
 		val.TankType = TankTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-Capacity: %w", err)
 	} else {
 		val.Capacity = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-G: %w", err)
 	} else {
 		val.G = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt16(16); err != nil {
+	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-H: %w", err)
 	} else {
 		val.H = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-I: %w", err)
 	} else {
 		val.I = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -47932,101 +47932,101 @@ type MaretronSwitchStatusCounter struct {
 	ErrorCounter *uint8
 	SwitchStatus OffOnConst
 }
-func DecodeMaretronSwitchStatusCounter(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronSwitchStatusCounter(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val MaretronSwitchStatusCounter
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-ManufacturerCode: %w", err)
 	} else {
 		if v != 137 {
 			return nil, fmt.Errorf("match failed for MaretronSwitchStatusCounter-ManufacturerCode: Expected %d != %d", 137, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for MaretronSwitchStatusCounter-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-IndicatorNumber: %w", err)
 	} else {
 		val.IndicatorNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-StartDate: %w", err)
 	} else {
 		val.StartDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-StartTime: %w", err)
 	} else {
 		val.StartTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-OffCounter: %w", err)
 	} else {
 		val.OffCounter = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-OnCounter: %w", err)
 	} else {
 		val.OnCounter = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-ErrorCounter: %w", err)
 	} else {
 		val.ErrorCounter = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-SwitchStatus: %w", err)
 	} else {
 		val.SwitchStatus = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(16)
-	if stream.IsEOF() {
+	stream.skipBits(16)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -48036,32 +48036,32 @@ type SimnetFuelFlowTurbineConfiguration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetFuelFlowTurbineConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetFuelFlowTurbineConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetFuelFlowTurbineConfiguration
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFuelFlowTurbineConfiguration-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetFuelFlowTurbineConfiguration-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFuelFlowTurbineConfiguration-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetFuelFlowTurbineConfiguration-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -48080,101 +48080,101 @@ type MaretronSwitchStatusTimer struct {
 	AccumulatedErrorPeriod *uint32
 	SwitchStatus OffOnConst
 }
-func DecodeMaretronSwitchStatusTimer(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronSwitchStatusTimer(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val MaretronSwitchStatusTimer
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-ManufacturerCode: %w", err)
 	} else {
 		if v != 137 {
 			return nil, fmt.Errorf("match failed for MaretronSwitchStatusTimer-ManufacturerCode: Expected %d != %d", 137, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for MaretronSwitchStatusTimer-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-Instance: %w", err)
 	} else {
 		val.Instance = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-IndicatorNumber: %w", err)
 	} else {
 		val.IndicatorNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-StartDate: %w", err)
 	} else {
 		val.StartDate = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-StartTime: %w", err)
 	} else {
 		val.StartTime = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-AccumulatedOffPeriod: %w", err)
 	} else {
 		val.AccumulatedOffPeriod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-AccumulatedOnPeriod: %w", err)
 	} else {
 		val.AccumulatedOnPeriod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-AccumulatedErrorPeriod: %w", err)
 	} else {
 		val.AccumulatedErrorPeriod = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-SwitchStatus: %w", err)
 	} else {
 		val.SwitchStatus = OffOnConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -48184,32 +48184,32 @@ type SimnetFluidLevelWarning struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetFluidLevelWarning(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetFluidLevelWarning(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetFluidLevelWarning
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelWarning-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetFluidLevelWarning-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelWarning-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetFluidLevelWarning-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -48220,32 +48220,32 @@ type SimnetPressureSensorConfiguration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetPressureSensorConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetPressureSensorConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetPressureSensorConfiguration
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetPressureSensorConfiguration-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetPressureSensorConfiguration-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetPressureSensorConfiguration-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetPressureSensorConfiguration-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -48256,32 +48256,32 @@ type SimnetDataUserGroupConfiguration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetDataUserGroupConfiguration(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetDataUserGroupConfiguration(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetDataUserGroupConfiguration
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetDataUserGroupConfiguration-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetDataUserGroupConfiguration-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetDataUserGroupConfiguration-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetDataUserGroupConfiguration-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -48298,83 +48298,83 @@ type SimnetAisClassBStaticDataMsg24PartA struct {
 	UserId *uint32
 	Name string
 }
-func DecodeSimnetAisClassBStaticDataMsg24PartA(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetAisClassBStaticDataMsg24PartA(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetAisClassBStaticDataMsg24PartA
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartA-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetAisClassBStaticDataMsg24PartA-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartA-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetAisClassBStaticDataMsg24PartA-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(6); err != nil {
+	if v, err := stream.readUInt8(6); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartA-MessageId: %w", err)
 	} else {
 		if v != nil && *v != 0 {
 			return nil, fmt.Errorf("match failed for SimnetAisClassBStaticDataMsg24PartA-MessageId: Expected %d != %d", 0, *v)
 		}
 		val.MessageId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartA-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartA-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartA-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartA-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(160); err != nil {
+	if v, err := stream.readFixedString(160); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartA-Name: %w", err)
 	} else {
 		val.Name = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -48394,104 +48394,104 @@ type FurunoSixDegreesOfFreedomMovement struct {
 	H *int16
 	I *int16
 }
-func DecodeFurunoSixDegreesOfFreedomMovement(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoSixDegreesOfFreedomMovement(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FurunoSixDegreesOfFreedomMovement
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-ManufacturerCode: %w", err)
 	} else {
 		if v != 1855 {
 			return nil, fmt.Errorf("match failed for FurunoSixDegreesOfFreedomMovement-ManufacturerCode: Expected %d != %d", 1855, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FurunoSixDegreesOfFreedomMovement-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt8(8); err != nil {
+	if v, err := stream.readInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt32(32); err != nil {
+	if v, err := stream.readInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-F: %w", err)
 	} else {
 		val.F = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt16(16); err != nil {
+	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-G: %w", err)
 	} else {
 		val.G = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt16(16); err != nil {
+	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-H: %w", err)
 	} else {
 		val.H = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadInt16(16); err != nil {
+	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-I: %w", err)
 	} else {
 		val.I = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -48515,148 +48515,148 @@ type SimnetAisClassBStaticDataMsg24PartB struct {
 	PositionReferenceFromBow *float32
 	MothershipUserId *uint32
 }
-func DecodeSimnetAisClassBStaticDataMsg24PartB(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetAisClassBStaticDataMsg24PartB(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetAisClassBStaticDataMsg24PartB
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetAisClassBStaticDataMsg24PartB-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetAisClassBStaticDataMsg24PartB-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(6); err != nil {
+	if v, err := stream.readUInt8(6); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-MessageId: %w", err)
 	} else {
 		if v != nil && *v != 1 {
 			return nil, fmt.Errorf("match failed for SimnetAisClassBStaticDataMsg24PartB-MessageId: Expected %d != %d", 1, *v)
 		}
 		val.MessageId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-E: %w", err)
 	} else {
 		val.E = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-UserId: %w", err)
 	} else {
 		val.UserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-TypeOfShip: %w", err)
 	} else {
 		val.TypeOfShip = ShipTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(56); err != nil {
+	if v, err := stream.readFixedString(56); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-VendorId: %w", err)
 	} else {
 		val.VendorId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(56); err != nil {
+	if v, err := stream.readFixedString(56); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-Callsign: %w", err)
 	} else {
 		val.Callsign = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-Length: %w", err)
 	} else {
 		val.Length = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-Beam: %w", err)
 	} else {
 		val.Beam = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-PositionReferenceFromStarboard: %w", err)
 	} else {
 		val.PositionReferenceFromStarboard = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-PositionReferenceFromBow: %w", err)
 	} else {
 		val.PositionReferenceFromBow = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(32); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-MothershipUserId: %w", err)
 	} else {
 		val.MothershipUserId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(6)
-	if stream.IsEOF() {
+	stream.skipBits(6)
+	if stream.isEOF() {
 		return val, nil
 		}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}	
 	return val, nil
@@ -48671,72 +48671,72 @@ type FurunoHeelAngleRollInformation struct {
 	Pitch *float32
 	Roll *float32
 }
-func DecodeFurunoHeelAngleRollInformation(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoHeelAngleRollInformation(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FurunoHeelAngleRollInformation
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeelAngleRollInformation-ManufacturerCode: %w", err)
 	} else {
 		if v != 1855 {
 			return nil, fmt.Errorf("match failed for FurunoHeelAngleRollInformation-ManufacturerCode: Expected %d != %d", 1855, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeelAngleRollInformation-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FurunoHeelAngleRollInformation-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeelAngleRollInformation-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeelAngleRollInformation-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeelAngleRollInformation-Yaw: %w", err)
 	} else {
 		val.Yaw = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeelAngleRollInformation-Pitch: %w", err)
 	} else {
 		val.Pitch = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeelAngleRollInformation-Roll: %w", err)
 	} else {
 		val.Roll = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -48747,32 +48747,32 @@ type SimnetSonarStatusFrequencyAndDspVoltage struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetSonarStatusFrequencyAndDspVoltage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetSonarStatusFrequencyAndDspVoltage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetSonarStatusFrequencyAndDspVoltage
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetSonarStatusFrequencyAndDspVoltage-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetSonarStatusFrequencyAndDspVoltage-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetSonarStatusFrequencyAndDspVoltage-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetSonarStatusFrequencyAndDspVoltage-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -48790,91 +48790,91 @@ type SimnetCompassHeadingOffset struct {
 	Angle *float32
 	UnusedC *uint16
 }
-func DecodeSimnetCompassHeadingOffset(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetCompassHeadingOffset(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetCompassHeadingOffset
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassHeadingOffset-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetCompassHeadingOffset-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassHeadingOffset-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetCompassHeadingOffset-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(6); err != nil {
+	if v, err := stream.readUInt8(6); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassHeadingOffset-MessageId: %w", err)
 	} else {
 		val.MessageId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassHeadingOffset-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassHeadingOffset-Unused: %w", err)
 	} else {
 		val.Unused = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(16); err != nil {
+	if v, err := stream.readLookupField(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassHeadingOffset-Type: %w", err)
 	} else {
 		if v != 0 {
 			return nil, fmt.Errorf("match failed for SimnetCompassHeadingOffset-Type: Expected %d != %d", 0, v)
 		}
 		val.Type = SimradTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassHeadingOffset-UnusedB: %w", err)
 	} else {
 		val.UnusedB = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassHeadingOffset-Angle: %w", err)
 	} else {
 		val.Angle = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassHeadingOffset-UnusedC: %w", err)
 	} else {
 		val.UnusedC = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -48885,32 +48885,32 @@ type FurunoMultiSatsInViewExtended struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeFurunoMultiSatsInViewExtended(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoMultiSatsInViewExtended(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FurunoMultiSatsInViewExtended
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-ManufacturerCode: %w", err)
 	} else {
 		if v != 1855 {
 			return nil, fmt.Errorf("match failed for FurunoMultiSatsInViewExtended-ManufacturerCode: Expected %d != %d", 1855, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FurunoMultiSatsInViewExtended-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -48928,91 +48928,91 @@ type SimnetCompassLocalField struct {
 	LocalField *float32
 	UnusedC *uint16
 }
-func DecodeSimnetCompassLocalField(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetCompassLocalField(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetCompassLocalField
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassLocalField-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetCompassLocalField-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassLocalField-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetCompassLocalField-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(6); err != nil {
+	if v, err := stream.readUInt8(6); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassLocalField-MessageId: %w", err)
 	} else {
 		val.MessageId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassLocalField-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassLocalField-Unused: %w", err)
 	} else {
 		val.Unused = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(16); err != nil {
+	if v, err := stream.readLookupField(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassLocalField-Type: %w", err)
 	} else {
 		if v != 768 {
 			return nil, fmt.Errorf("match failed for SimnetCompassLocalField-Type: Expected %d != %d", 768, v)
 		}
 		val.Type = SimradTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassLocalField-UnusedB: %w", err)
 	} else {
 		val.UnusedB = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.004); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.004); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassLocalField-LocalField: %w", err)
 	} else {
 		val.LocalField = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassLocalField-UnusedC: %w", err)
 	} else {
 		val.UnusedC = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49030,91 +49030,91 @@ type SimnetCompassFieldAngle struct {
 	FieldAngle *float32
 	UnusedC *uint16
 }
-func DecodeSimnetCompassFieldAngle(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetCompassFieldAngle(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetCompassFieldAngle
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassFieldAngle-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetCompassFieldAngle-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassFieldAngle-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetCompassFieldAngle-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(6); err != nil {
+	if v, err := stream.readUInt8(6); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassFieldAngle-MessageId: %w", err)
 	} else {
 		val.MessageId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassFieldAngle-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt32(24); err != nil {
+	if v, err := stream.readUInt32(24); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassFieldAngle-Unused: %w", err)
 	} else {
 		val.Unused = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(16); err != nil {
+	if v, err := stream.readLookupField(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassFieldAngle-Type: %w", err)
 	} else {
 		if v != 1024 {
 			return nil, fmt.Errorf("match failed for SimnetCompassFieldAngle-Type: Expected %d != %d", 1024, v)
 		}
 		val.Type = SimradTypeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassFieldAngle-UnusedB: %w", err)
 	} else {
 		val.UnusedB = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassFieldAngle-FieldAngle: %w", err)
 	} else {
 		val.FieldAngle = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetCompassFieldAngle-UnusedC: %w", err)
 	} else {
 		val.UnusedC = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49136,120 +49136,120 @@ type SimnetParameterHandle struct {
 	Backlight SimnetBacklightLevelConst
 	L *uint16
 }
-func DecodeSimnetParameterHandle(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetParameterHandle(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetParameterHandle
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetParameterHandle-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetParameterHandle-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(6); err != nil {
+	if v, err := stream.readUInt8(6); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-MessageId: %w", err)
 	} else {
 		val.MessageId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(2); err != nil {
+	if v, err := stream.readLookupField(2); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-RepeatIndicator: %w", err)
 	} else {
 		val.RepeatIndicator = RepeatIndicatorConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-D: %w", err)
 	} else {
 		val.D = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-Group: %w", err)
 	} else {
 		val.Group = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-F: %w", err)
 	} else {
 		val.F = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-G: %w", err)
 	} else {
 		val.G = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-H: %w", err)
 	} else {
 		val.H = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-I: %w", err)
 	} else {
 		val.I = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-J: %w", err)
 	} else {
 		val.J = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-Backlight: %w", err)
 	} else {
 		val.Backlight = SimnetBacklightLevelConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetParameterHandle-L: %w", err)
 	} else {
 		val.L = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49260,32 +49260,32 @@ type FurunoMotionSensorStatusExtended struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeFurunoMotionSensorStatusExtended(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoMotionSensorStatusExtended(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val FurunoMotionSensorStatusExtended
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoMotionSensorStatusExtended-ManufacturerCode: %w", err)
 	} else {
 		if v != 1855 {
 			return nil, fmt.Errorf("match failed for FurunoMotionSensorStatusExtended-ManufacturerCode: Expected %d != %d", 1855, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoMotionSensorStatusExtended-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for FurunoMotionSensorStatusExtended-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49301,72 +49301,72 @@ type SeatalkNodeStatistics struct {
 	DeviceNumber *uint16
 	NodeVoltage *float32
 }
-func DecodeSeatalkNodeStatistics(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkNodeStatistics(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SeatalkNodeStatistics
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkNodeStatistics-ManufacturerCode: %w", err)
 	} else {
 		if v != 1851 {
 			return nil, fmt.Errorf("match failed for SeatalkNodeStatistics-ManufacturerCode: Expected %d != %d", 1851, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkNodeStatistics-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SeatalkNodeStatistics-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkNodeStatistics-ProductCode: %w", err)
 	} else {
 		val.ProductCode = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkNodeStatistics-Year: %w", err)
 	} else {
 		val.Year = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkNodeStatistics-Month: %w", err)
 	} else {
 		val.Month = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkNodeStatistics-DeviceNumber: %w", err)
 	} else {
 		val.DeviceNumber = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkNodeStatistics-NodeVoltage: %w", err)
 	} else {
 		val.NodeVoltage = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49385,99 +49385,99 @@ type SimnetEventCommandApCommand struct {
 	Angle *float32
 	UnusedC *uint8
 }
-func DecodeSimnetEventCommandApCommand(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetEventCommandApCommand(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetEventCommandApCommand
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetEventCommandApCommand-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetEventCommandApCommand-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-ProprietaryId: %w", err)
 	} else {
 		if v != 2 {
 			return nil, fmt.Errorf("match failed for SimnetEventCommandApCommand-ProprietaryId: Expected %d != %d", 2, v)
 		}
 		val.ProprietaryId = SimradEventCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-UnusedA: %w", err)
 	} else {
 		val.UnusedA = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-ControllingDevice: %w", err)
 	} else {
 		val.ControllingDevice = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-Event: %w", err)
 	} else {
 		val.Event = SimnetApEventsConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-UnusedB: %w", err)
 	} else {
 		val.UnusedB = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-Direction: %w", err)
 	} else {
 		val.Direction = SimnetDirectionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-Angle: %w", err)
 	} else {
 		val.Angle = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-UnusedC: %w", err)
 	} else {
 		val.UnusedC = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49495,91 +49495,91 @@ type SimnetEventCommandAlarm struct {
 	F *uint8
 	G *uint8
 }
-func DecodeSimnetEventCommandAlarm(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetEventCommandAlarm(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetEventCommandAlarm
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandAlarm-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetEventCommandAlarm-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandAlarm-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetEventCommandAlarm-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandAlarm-A: %w", err)
 	} else {
 		val.A = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandAlarm-ProprietaryId: %w", err)
 	} else {
 		if v != 1 {
 			return nil, fmt.Errorf("match failed for SimnetEventCommandAlarm-ProprietaryId: Expected %d != %d", 1, v)
 		}
 		val.ProprietaryId = SimradEventCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandAlarm-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandAlarm-Alarm: %w", err)
 	} else {
 		val.Alarm = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandAlarm-MessageId: %w", err)
 	} else {
 		val.MessageId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandAlarm-F: %w", err)
 	} else {
 		val.F = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandAlarm-G: %w", err)
 	} else {
 		val.G = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49598,99 +49598,99 @@ type SimnetEventReplyApCommand struct {
 	Angle *float32
 	G *uint8
 }
-func DecodeSimnetEventReplyApCommand(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetEventReplyApCommand(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetEventReplyApCommand
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetEventReplyApCommand-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetEventReplyApCommand-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-ProprietaryId: %w", err)
 	} else {
 		if v != 2 {
 			return nil, fmt.Errorf("match failed for SimnetEventReplyApCommand-ProprietaryId: Expected %d != %d", 2, v)
 		}
 		val.ProprietaryId = SimradEventCommandConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-ControllingDevice: %w", err)
 	} else {
 		val.ControllingDevice = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-Event: %w", err)
 	} else {
 		val.Event = SimnetApEventsConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-Direction: %w", err)
 	} else {
 		val.Direction = SimnetDirectionConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-Angle: %w", err)
 	} else {
 		val.Angle = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-G: %w", err)
 	} else {
 		val.G = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49705,64 +49705,64 @@ type SimnetAlarmMessage struct {
 	C *uint8
 	Text string
 }
-func DecodeSimnetAlarmMessage(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetAlarmMessage(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val SimnetAlarmMessage
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAlarmMessage-ManufacturerCode: %w", err)
 	} else {
 		if v != 1857 {
 			return nil, fmt.Errorf("match failed for SimnetAlarmMessage-ManufacturerCode: Expected %d != %d", 1857, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAlarmMessage-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for SimnetAlarmMessage-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt16(16); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAlarmMessage-MessageId: %w", err)
 	} else {
 		val.MessageId = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAlarmMessage-B: %w", err)
 	} else {
 		val.B = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAlarmMessage-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadFixedString(1784); err != nil {
+	if v, err := stream.readFixedString(1784); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAlarmMessage-Text: %w", err)
 	} else {
 		val.Text = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49777,64 +49777,64 @@ type AirmarAdditionalWeatherData struct {
 	TrueWindchillTemperature *float32
 	Dewpoint *float32
 }
-func DecodeAirmarAdditionalWeatherData(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarAdditionalWeatherData(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarAdditionalWeatherData
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAdditionalWeatherData-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarAdditionalWeatherData-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAdditionalWeatherData-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarAdditionalWeatherData-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAdditionalWeatherData-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAdditionalWeatherData-ApparentWindchillTemperature: %w", err)
 	} else {
 		val.ApparentWindchillTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAdditionalWeatherData-TrueWindchillTemperature: %w", err)
 	} else {
 		val.TrueWindchillTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAdditionalWeatherData-Dewpoint: %w", err)
 	} else {
 		val.Dewpoint = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49849,64 +49849,64 @@ type AirmarHeaterControl struct {
 	AirTemperature *float32
 	Dewpoint *float32
 }
-func DecodeAirmarHeaterControl(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarHeaterControl(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarHeaterControl
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarHeaterControl-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarHeaterControl-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarHeaterControl-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarHeaterControl-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarHeaterControl-C: %w", err)
 	} else {
 		val.C = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarHeaterControl-PlateTemperature: %w", err)
 	} else {
 		val.PlateTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarHeaterControl-AirTemperature: %w", err)
 	} else {
 		val.AirTemperature = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarHeaterControl-Dewpoint: %w", err)
 	} else {
 		val.Dewpoint = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	
@@ -49921,68 +49921,68 @@ type AirmarPost struct {
 	TestId AirmarPostIdConst
 	TestResult *uint8
 }
-func DecodeAirmarPost(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarPost(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val AirmarPost
-	val.Info = info
-	if v, err := stream.ReadLookupField(11); err != nil {
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarPost-ManufacturerCode: %w", err)
 	} else {
 		if v != 135 {
 			return nil, fmt.Errorf("match failed for AirmarPost-ManufacturerCode: Expected %d != %d", 135, v)
 		}
 		val.ManufacturerCode = ManufacturerCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(2)
-	if stream.IsEOF() {
+	stream.skipBits(2)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadLookupField(3); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarPost-IndustryCode: %w", err)
 	} else {
 		if v != 4 {
 			return nil, fmt.Errorf("match failed for AirmarPost-IndustryCode: Expected %d != %d", 4, v)
 		}
 		val.IndustryCode = IndustryCodeConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(1); err != nil {
+	if v, err := stream.readLookupField(1); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarPost-Control: %w", err)
 	} else {
 		val.Control = AirmarPostControlConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.SkipBits(7)
-	if stream.IsEOF() {
+	stream.skipBits(7)
+	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarPost-NumberOfIdTestResultPairsToFollow: %w", err)
 	} else {
 		val.NumberOfIdTestResultPairsToFollow = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadLookupField(8); err != nil {
+	if v, err := stream.readLookupField(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarPost-TestId: %w", err)
 	} else {
 		val.TestId = AirmarPostIdConst(v)
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.ReadUInt8(8); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarPost-TestResult: %w", err)
 	} else {
 		val.TestResult = v
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	}	

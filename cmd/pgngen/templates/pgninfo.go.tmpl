@@ -66,7 +66,7 @@ func (e {{ $name }}) String() string {
 }
 {{- end }}
 		
-var pgnList = []pgnInfo{
+var pgnList = []PgnInfo{
 {{- range .PGNDoc.PGNs }}
 	{
 		PGN: {{ .PGN }},
@@ -129,9 +129,9 @@ type {{ .Id }}Repeating2 struct {
 }
 {{- end }}
 {{- $funcName := concat "Decode" .Id }}
-func {{ $funcName }}(info PacketInfo, stream *PGNDataStream) (interface{}, error) {
+func {{ $funcName }}(Info PacketInfo, stream *pGNDataStream) (interface{}, error) {
 	var val {{ .Id }}
-	val.Info = info
+	val.Info = Info
 	{{- $binaryLengthField :=  $pgn.BitLengthField }}
 	{{- if  $binaryLengthField }}
 		var binaryLength uint16 = 0
@@ -146,13 +146,13 @@ func {{ $funcName }}(info PacketInfo, stream *PGNDataStream) (interface{}, error
 	{{- end }}
 	{{- range $idx, $field := $pgn.Fields }}
 	{{- if or (eq $field.FieldType "RESERVED") (eq $field.FieldType "SPARE") }}
-	stream.SkipBits({{ $field.BitLength }})
-	if stream.IsEOF() {
+	stream.skipBits({{ $field.BitLength }})
+	if stream.isEOF() {
 		return val, nil
 		}
 	{{- else }}	
 	{{- if and $repeat2 (eq $idx 2) }}
-	if IsProprietaryPGN( *val.Pgn) {
+	if isProprietaryPGN( *val.Pgn) {
 	{{- end }}
 	{{- if and $repeat2  (eq $idx 5) }}
 	} 
@@ -188,7 +188,7 @@ func {{ $funcName }}(info PacketInfo, stream *PGNDataStream) (interface{}, error
 			binaryLength = uint16(*v)
 		}
 	{{- end }}
-		if stream.IsEOF() {
+		if stream.isEOF() {
 			return val, nil
 		} 
 	} 
@@ -206,7 +206,13 @@ func {{ $funcName }}(info PacketInfo, stream *PGNDataStream) (interface{}, error
 		var rep {{ $pgn.Id }}Repeating1
 		{{- range $pgn.FieldsRepeating1 }}
 		{{- if eq .FieldType "RESERVED" }}
-		stream.SkipBits({{ .BitLength }})
+		stream.skipBits({{ .BitLength }})
+		{{- else if eq .FieldType "VARIABLE"}}
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else  if v != nil {
+			rep.{{- .Id }} = v
+		}
 		{{- else }}
 		{{- $funcs := getFieldDeserializer $pgn . }}
 		if v, err := {{ index $funcs 0 }}; err != nil {
@@ -218,7 +224,7 @@ func {{ $funcName }}(info PacketInfo, stream *PGNDataStream) (interface{}, error
 		{{- end }}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			} 
 		} else {
@@ -241,7 +247,13 @@ func {{ $funcName }}(info PacketInfo, stream *PGNDataStream) (interface{}, error
 		var rep {{ $pgn.Id }}Repeating2
 		{{- range $pgn.FieldsRepeating2 }}
 		{{- if eq .FieldType "RESERVED" }}
-		stream.SkipBits({{ .BitLength }})
+		stream.skipBits({{ .BitLength }})
+		{{- else if eq .FieldType "VARIABLE" }}
+		if v, err := stream.readVariableData(*val.Pgn, *rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for variable read, %d, %d",*val.Pgn, *rep.Parameter)
+		} else if v != nil {
+			rep.{{- .Id }} = v
+		}
 		{{- else }}
 		{{- $funcs := getFieldDeserializer $pgn . }}
 		if v, err := {{ index $funcs 0 }}; err != nil {
@@ -253,7 +265,7 @@ func {{ $funcName }}(info PacketInfo, stream *PGNDataStream) (interface{}, error
 		{{- end }}
 		val.Repeating2 = append(val.Repeating2, rep)
 		if int(repeat2Count) == 0 {
-			if stream.IsEOF() {
+			if stream.isEOF() {
 				return val, nil
 			}  
 		} else {

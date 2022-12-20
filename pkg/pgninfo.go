@@ -1,11 +1,11 @@
 package n2k
 
-type pgnInfo struct {
+type PgnInfo struct {
 	PGN         uint32
 	Description string
 	Fast        bool
 	ManId       ManufacturerCodeConst
-	Decoder     func(PacketInfo, *PGNDataStream) (interface{}, error)
+	Decoder     func(PacketInfo, *pGNDataStream) (interface{}, error)
 	FieldInfo   map[int]FieldDescriptor
 }
 
@@ -17,16 +17,16 @@ type FieldDescriptor struct {
 	Signed            bool
 }
 
-var pgnInfoLookup map[uint32][]*pgnInfo
+var pgnInfoLookup map[uint32][]*PgnInfo
 
 func init() {
-	pgnInfoLookup = make(map[uint32][]*pgnInfo)
+	pgnInfoLookup = make(map[uint32][]*PgnInfo)
 
 	for i := range pgnList {
 		pi := &pgnList[i]
 		val := pgnInfoLookup[pi.PGN]
 		if val == nil {
-			val = make([]*pgnInfo, 1)
+			val = make([]*PgnInfo, 1)
 			val[0] = pi
 		} else {
 			val = append(val, pi)
@@ -35,7 +35,7 @@ func init() {
 	}
 }
 
-func IsProprietaryPGN(pgn uint32) bool {
+func isProprietaryPGN(pgn uint32) bool {
 	if pgn >= 0x0EF00 && pgn <= 0x0EFFF {
 		// proprietary PDU1 (addressed) single-frame range 0EF00 to 0xEFFF (61184 - 61439) messages.
 		// Addressed means that you send it to specific node on the bus. This you can easily use for responding,

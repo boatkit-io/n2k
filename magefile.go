@@ -6,8 +6,7 @@ package main
 import (
 	"fmt"
 	"os"
-	//	"os/exec"
-	//	"path/filepath"
+	"path/filepath"
 
 	"github.com/magefile/mage/mg" // mg contains helpful utility functions, like Deps
 	"github.com/magefile/mage/sh"
@@ -15,7 +14,7 @@ import (
 
 var Default = Build
 
-var pgnGeneratedCodePath = "pgninfo_generated.go"
+var pgnGeneratedCodePath = filepath.Join("pkg", "pgninfo_generated.go")
 
 // Build builds the code
 func Build() error {
@@ -40,7 +39,7 @@ func Dep() error {
 }
 
 func CodeGen() error {
-	return sh.RunV("go", "run", "./cmd/pgngen/main.go")
+	return sh.RunV("go", "run", "./cmd/pgngen/main.go", "./cmd/pgngen/deduper.go")
 }
 
 // Test runs the tests on this repository

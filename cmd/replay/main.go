@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/boatkit-io/n2k"
+	"github.com/boatkit-io/pkg/n2k"
 
 	"github.com/boatkit-io/tugboat/pkg/service"
 	"github.com/sirupsen/logrus"

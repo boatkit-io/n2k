@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"path/filepath"
 	"strconv"
 
 	//	"math"
@@ -31,7 +32,7 @@ var pgninfoTemplate string
 // Transforms a json file from canboat to generate a source file for the n2k package
 func main() {
 	fmt.Println("Entered Main")
-	builder := NewPGNBuilder()
+	builder := newCanboatConverter()
 	builder.fixup()
 	builder.write()
 
@@ -39,7 +40,7 @@ func main() {
 
 // We suck the json into this structure, massage the result, and use a template to
 // generate the output source file
-type PGNBuilder struct {
+type canboatConverter struct {
 	Comment       string
 	CreatorCode   string
 	License       string
@@ -130,33 +131,33 @@ type PGNField struct {
 	IndirectLookupFieldOrder uint8  `json:"LookupIndirectEnumerationFieldOrder"`
 }
 
-func NewPGNBuilder() *PGNBuilder {
-	b := new(PGNBuilder)
-	b.init()
-	return b
+func newCanboatConverter() *canboatConverter {
+	c := new(canboatConverter)
+	c.init()
+	return c
 }
 
-func (self *PGNBuilder) init() {
+func (conv *canboatConverter) init() {
 	raw, _ := loadCachedWebContent("canboatjson", "https://github.com/canboat/canboat/raw/master/docs/canboat.json")
-	err := json.Unmarshal(raw, self)
+	err := json.Unmarshal(raw, conv)
 	if err != nil {
 		log.Info(err)
 	}
-	log.Infof("\nInitially Parsed Bitfield enums: %d", len(self.BitEnums))
-	log.Infof("Initially Parsed Lookup enums: %d", len(self.Enums))
-	log.Infof("Initially Parsed IndirectLookup enums: %d", len(self.IndirectEnums))
-	log.Infof("Parsed pgns: %d", len(self.PGNs))
+	log.Infof("\nInitially Parsed Bitfield enums: %d", len(conv.BitEnums))
+	log.Infof("Initially Parsed Lookup enums: %d", len(conv.Enums))
+	log.Infof("Initially Parsed IndirectLookup enums: %d", len(conv.IndirectEnums))
+	log.Infof("Parsed pgns: %d", len(conv.PGNs))
 }
 
-func (self *PGNBuilder) fixup() {
-	self.fixIDs()
-	self.fixEnumDefs()
-	self.fixRepeating()
-	self.validate()
+func (conv *canboatConverter) fixup() {
+	conv.fixIDs()
+	conv.fixEnumDefs()
+	conv.fixRepeating()
+	conv.validate()
 }
 
-func (self *PGNBuilder) write() {
-	if f, err := os.Create("pgninfo_generated.go"); err != nil {
+func (conv *canboatConverter) write() {
+	if f, err := os.Create(filepath.Join("pkg", "pgninfo_generated.go")); err != nil {
 		panic(err)
 	} else {
 		t := template.Must(template.New("pgninfo").Funcs(sprig.TxtFuncMap()).Funcs(template.FuncMap{
@@ -178,7 +179,7 @@ func (self *PGNBuilder) write() {
 		templateData := struct {
 			PGNDoc interface{}
 		}{
-			PGNDoc: self,
+			PGNDoc: conv,
 		}
 
 		if err := t.Execute(f, templateData); err != nil {
@@ -190,19 +191,19 @@ func (self *PGNBuilder) write() {
 
 // capitalize initial letter for each ID
 // dedup field names within a pgn (latest canboat assures field names unique, so we'll just verify)
-func (self *PGNBuilder) fixIDs() {
+func (conv *canboatConverter) fixIDs() {
 	pgnDeDuper := NewDeDuper()
-	for i := range self.PGNs {
+	for i := range conv.PGNs {
 		fieldDeDuper := NewDeDuper()
 		// Capitalize first letter of the Ids (currently lowercase)
-		self.PGNs[i].Id = capitalizeFirstChar(self.PGNs[i].Id)
-		if !pgnDeDuper.isUnique(self.PGNs[i].Id) {
-			panic("PGN ID not unique: " + self.PGNs[i].Id)
+		conv.PGNs[i].Id = capitalizeFirstChar(conv.PGNs[i].Id)
+		if !pgnDeDuper.isUnique(conv.PGNs[i].Id) {
+			panic("PGN ID not unique: " + conv.PGNs[i].Id)
 		}
-		for j := range self.PGNs[i].Fields {
-			fixupField(&self.PGNs[i].Fields[j], *fieldDeDuper)
-			if self.PGNs[i].Fields[j].BitLengthField != 0 {
-				self.PGNs[i].BitLengthField = self.PGNs[i].Fields[j].BitLengthField
+		for j := range conv.PGNs[i].Fields {
+			fixupField(&conv.PGNs[i].Fields[j], *fieldDeDuper)
+			if conv.PGNs[i].Fields[j].BitLengthField != 0 {
+				conv.PGNs[i].BitLengthField = conv.PGNs[i].Fields[j].BitLengthField
 			}
 		}
 	}
@@ -227,9 +228,9 @@ func fixupField(field *PGNField, dedup DeDuper) {
 	}
 }
 
-func (self *PGNBuilder) fixRepeating() {
-	for i := range self.PGNs {
-		pgn := &self.PGNs[i]
+func (builder *canboatConverter) fixRepeating() {
+	for i := range builder.PGNs {
+		pgn := &builder.PGNs[i]
 		if pgn.RepeatingFieldSet2Size > 0 { // work back from the end
 			pgn.FieldsRepeating2 = pgn.Fields[pgn.RepeatingFieldSet2StartField-1 : pgn.RepeatingFieldSet2StartField-1+pgn.RepeatingFieldSet2Size]
 			pgn.Fields = pgn.Fields[0 : pgn.RepeatingFieldSet2StartField-1]
@@ -245,49 +246,49 @@ func (self *PGNBuilder) fixRepeating() {
 			pgn.FieldsRepeating1 = []PGNField{}
 		}
 
-		self.PGNs[i].AllFields = append(pgn.Fields, pgn.FieldsRepeating1...)
-		self.PGNs[i].AllFields = append(pgn.Fields, pgn.FieldsRepeating2...)
+		builder.PGNs[i].AllFields = append(pgn.Fields, pgn.FieldsRepeating1...)
+		builder.PGNs[i].AllFields = append(pgn.Fields, pgn.FieldsRepeating2...)
 	}
 }
 
-func (self *PGNBuilder) fixEnumDefs() {
+func (builder *canboatConverter) fixEnumDefs() {
 	constDeDuper := NewDeDuper()
-	for i := range self.Enums {
-		convertToConst(&self.Enums[i].Name)
-		if !constDeDuper.isUnique(self.Enums[i].Name) {
-			panic("Enum name not unique: " + self.Enums[i].Name)
+	for i := range builder.Enums {
+		convertToConst(&builder.Enums[i].Name)
+		if !constDeDuper.isUnique(builder.Enums[i].Name) {
+			panic("Enum name not unique: " + builder.Enums[i].Name)
 		}
-		for j := range self.Enums[i].Values {
-			forceFirstLetter(&self.Enums[i].Values[j].Text)
-		}
-	}
-	for i := range self.IndirectEnums {
-		convertToConst(&self.IndirectEnums[i].Name)
-		if !constDeDuper.isUnique(self.IndirectEnums[i].Name) {
-			panic("IndirectEnum name not unique: " + self.IndirectEnums[i].Name)
-		}
-		for j := range self.IndirectEnums[i].Values { // not strictly necessary since we aren't creating identifiers from them
-			forceFirstLetter(&self.IndirectEnums[i].Values[j].Text)
+		for j := range builder.Enums[i].Values {
+			forceFirstLetter(&builder.Enums[i].Values[j].Text)
 		}
 	}
-	for i := range self.BitEnums {
-		convertToConst(&self.BitEnums[i].Name)
-		if self.BitEnums[i].Name != constDeDuper.unique(self.BitEnums[i].Name) {
-			panic("BitEnum name not unique: " + self.BitEnums[i].Name)
+	for i := range builder.IndirectEnums {
+		convertToConst(&builder.IndirectEnums[i].Name)
+		if !constDeDuper.isUnique(builder.IndirectEnums[i].Name) {
+			panic("IndirectEnum name not unique: " + builder.IndirectEnums[i].Name)
 		}
-		for j := range self.BitEnums[i].EnumBitValues {
-			forceFirstLetter(&self.BitEnums[i].EnumBitValues[j].Label)
+		for j := range builder.IndirectEnums[i].Values { // not strictly necessary since we aren't creating identifiers from them
+			forceFirstLetter(&builder.IndirectEnums[i].Values[j].Text)
+		}
+	}
+	for i := range builder.BitEnums {
+		convertToConst(&builder.BitEnums[i].Name)
+		if builder.BitEnums[i].Name != constDeDuper.unique(builder.BitEnums[i].Name) {
+			panic("BitEnum name not unique: " + builder.BitEnums[i].Name)
+		}
+		for j := range builder.BitEnums[i].EnumBitValues {
+			forceFirstLetter(&builder.BitEnums[i].EnumBitValues[j].Label)
 		}
 	}
 }
 
-func (self *PGNBuilder) validate() {
+func (builder *canboatConverter) validate() {
 	pgns := make(map[uint32][]*PGN)
-	for i := range self.PGNs {
-		if pgns[self.PGNs[i].PGN] == nil {
-			pgns[self.PGNs[i].PGN] = make([](*PGN), 0)
+	for i := range builder.PGNs {
+		if pgns[builder.PGNs[i].PGN] == nil {
+			pgns[builder.PGNs[i].PGN] = make([](*PGN), 0)
 		}
-		pgns[self.PGNs[i].PGN] = append(pgns[self.PGNs[i].PGN], &self.PGNs[i])
+		pgns[builder.PGNs[i].PGN] = append(pgns[builder.PGNs[i].PGN], &builder.PGNs[i])
 	}
 	for _, pi := range pgns {
 		var fast, single int
@@ -412,7 +413,7 @@ func convertFieldType(field PGNField) string {
 	case "DECIMAL":
 		return "[]uint8"
 	case "VARIABLE", "BINARY":
-		return "[]uint8"
+		return "interface{}"
 	case "STRING_FIX", "STRING_VAR", "STRING_LZ", "STRING_LAU":
 		return "string"
 	default:
@@ -426,44 +427,44 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 		if field.BitLength > 32 {
 			panic("No deserializer for LOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.ReadLookupField(%d)", field.BitLength), field.LookupName}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.LookupName}
 	case "BITLOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for BITLOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.ReadLookupField(%d)", field.BitLength), field.BitLookupName}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.BitLookupName}
 	case "INDIRECT_LOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for INDIRECT_LOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.ReadLookupField(%d)", field.BitLength), field.IndirectLookupName}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.IndirectLookupName}
 	case "NUMBER", "TIME", "DATE", "MMSI":
 		var outerVal string
 		if field.Signed {
 			switch {
 			case field.Resolution != nil && *field.Resolution != 1.0:
-				outerVal = fmt.Sprintf("stream.ReadSignedResolution(%d, %g)", field.BitLength, *field.Resolution)
+				outerVal = fmt.Sprintf("stream.readSignedResolution(%d, %g)", field.BitLength, *field.Resolution)
 			case field.BitLength > 32:
-				outerVal = fmt.Sprintf("stream.ReadInt64(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt64(%d)", field.BitLength)
 			case field.BitLength > 16:
-				outerVal = fmt.Sprintf("stream.ReadInt32(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt32(%d)", field.BitLength)
 			case field.BitLength > 8:
-				outerVal = fmt.Sprintf("stream.ReadInt16(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt16(%d)", field.BitLength)
 			default:
-				outerVal = fmt.Sprintf("stream.ReadInt8(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt8(%d)", field.BitLength)
 			}
 		} else {
 			switch {
 			case field.Resolution != nil && *field.Resolution != 1.0:
-				outerVal = fmt.Sprintf("stream.ReadUnsignedResolution(%d, %g)", field.BitLength, *field.Resolution)
+				outerVal = fmt.Sprintf("stream.readUnsignedResolution(%d, %g)", field.BitLength, *field.Resolution)
 			case field.BitLength > 32:
-				outerVal = fmt.Sprintf("stream.ReadUInt64(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt64(%d)", field.BitLength)
 			case field.BitLength > 16:
-				outerVal = fmt.Sprintf("stream.ReadUInt32(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt32(%d)", field.BitLength)
 			case field.BitLength > 8:
-				outerVal = fmt.Sprintf("stream.ReadUInt16(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt16(%d)", field.BitLength)
 			default:
-				outerVal = fmt.Sprintf("stream.ReadUInt8(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt8(%d)", field.BitLength)
 			}
 		}
 		return [2]string{outerVal, ""}
@@ -471,25 +472,25 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 		if field.BitLength != 32 {
 			panic("No deserializer for IEEE Float with bitlength non-32")
 		}
-		return [2]string{"stream.ReadFloat32()", ""}
+		return [2]string{"stream.readFloat32()", ""}
 	case "DECIMAL":
-		return [2]string{fmt.Sprintf("stream.ReadBinaryData(%d)", field.BitLength), ""}
+		return [2]string{fmt.Sprintf("stream.readBinaryData(%d)", field.BitLength), ""}
 	case "STRING_VAR":
-		return [2]string{"stream.ReadStringStartStopByte()", ""}
+		return [2]string{"stream.readStringStartStopByte()", ""}
 	case "STRING_LAU":
-		return [2]string{"stream.ReadStringWithLengthAndControl()", ""}
+		return [2]string{"stream.readStringWithLengthAndControl()", ""}
 	case "STRING_FIX":
-		return [2]string{fmt.Sprintf("stream.ReadFixedString(%d)", field.BitLength), ""}
+		return [2]string{fmt.Sprintf("stream.readFixedString(%d)", field.BitLength), ""}
 	case "STRING_LZ":
-		return [2]string{"stream.ReadStringWithLength()", ""}
+		return [2]string{"stream.readStringWithLength()", ""}
 	case "BINARY":
 		if field.BitLength > 0 {
-			return [2]string{fmt.Sprintf("stream.ReadBinaryData(%d)", field.BitLength), ""}
+			return [2]string{fmt.Sprintf("stream.readBinaryData(%d)", field.BitLength), ""}
 		}
-		return [2]string{"stream.ReadBinaryData(binaryLength)", ""}
+		return [2]string{"stream.readBinaryData(binaryLength)", ""}
 	case "VARIABLE":
-		//		return [2]string{"stream.ReadVariableData(pgn, fieldIndex)", ""}
-		return [2]string{"stream.ReadBinaryData(0)", ""}
+		return [2]string{"stream.readVariableData(pgn, fieldIndex)", ""}
+	//	return [2]string{"stream.readBinaryData(0)", ""}
 	default:
 		panic("No deserializer for type: " + field.FieldType)
 	}
@@ -610,7 +611,7 @@ func convertToConst(name *string) {
 	*name = s + "Const"
 }
 
-// duplicated from n2k/PgnInfo.go. Could export it there and use it here, but
+// duplicated from n2k/pgninfo.go. Could export it there and use it here, but
 // we're generating a source file for that package, so a bootstrapping problem...
 func isProprietaryPGN(pgn uint32) bool {
 	if pgn >= 0x0EF00 && pgn <= 0x0EFFF {
@@ -633,29 +634,4 @@ func isProprietaryPGN(pgn uint32) bool {
 	}
 
 	return false
-}
-
-type DeDuper struct {
-	used map[string]int
-}
-
-func NewDeDuper() *DeDuper {
-	return &DeDuper{
-		used: make(map[string]int),
-	}
-}
-
-func (self DeDuper) isUnique(name string) bool {
-	_, exists := self.used[name]
-	return !exists
-}
-
-func (self DeDuper) unique(name string) string {
-	count := self.used[name]
-	count++
-	self.used[name] = count
-	if count > 1 {
-		name += strconv.FormatInt(int64(count), 10)
-	}
-	return name
 }

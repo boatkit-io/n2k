@@ -13,25 +13,25 @@ type UnknownPGN struct {
 	Reason           error
 }
 
-func BuildUnknownPGN(p *Packet) UnknownPGN {
+func buildUnknownPGN(p *packet) UnknownPGN {
 	pkt := UnknownPGN{
-		Info:   p.Info,
-		Data:   p.Data,
-		Reason: fmt.Errorf("%s", mergeErrorStrings(p.ParseErrors)),
+		Info:   p.info,
+		Data:   p.data,
+		Reason: fmt.Errorf("%s", mergeErrorStrings(p.parseErrors)),
 	}
 
-	if IsProprietaryPGN(pkt.Info.PGN) {
-		if p.Manufacturer != 0 {
-			pkt.ManufacturerCode = p.Manufacturer
+	if isProprietaryPGN(pkt.Info.PGN) {
+		if p.manufacturer != 0 {
+			pkt.ManufacturerCode = p.manufacturer
 		} else {
 			// Proprietary-range PGNS all are required to have the manufacturer code/industry code for the first
 			// 2 bytes of the packet, so pull those out for info display and later debugging.
-			stream := NewPgnDataStream(p.Data)
-			if v, err := stream.ReadLookupField(11); err == nil {
+			stream := newPgnDataStream(p.data)
+			if v, err := stream.readLookupField(11); err == nil {
 				pkt.ManufacturerCode = ManufacturerCodeConst(v)
 			}
-			_ = stream.SkipBits(2)
-			if v, err := stream.ReadLookupField(3); err == nil {
+			_ = stream.skipBits(2)
+			if v, err := stream.readLookupField(3); err == nil {
 				pkt.IndustryCode = uint8(v)
 			}
 		}

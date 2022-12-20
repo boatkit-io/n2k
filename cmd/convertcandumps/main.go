@@ -88,7 +88,7 @@ func main() {
 	flag.StringVar(&canDumpUrl, "canDumpUrl", "", "url of can messages to convert")
 	flag.StringVar(&filePathIn, "filePathIn", "", "path of local file to convert")
 	flag.StringVar(&filePathOut, "filePathOut", "", "output path")
-	flag.StringVar(&fileTypeIn, "fileTypeIn", "", "Format of input file (raw, CAN)")
+	flag.StringVar(&fileTypeIn, "fileTypeIn", "", "Format of input file (n2k, raw, CAN)")
 	flag.StringVar(&fileTypeOut, "fileTypeOut", "", "Format of output file (raw, n2k)")
 	flag.BoolVar(&groupPGNs, "groupPGNs", false, "Group messages by PGN (raw output only")
 	flag.Parse()
