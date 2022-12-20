@@ -41,7 +41,7 @@ func newPacket(message can.Frame) *packet {
 	p.info = newPacketInfo(message)
 	if p.valid() {
 		p.getSeqFrame()
-		p.proprietary = isProprietaryPGN(p.info.PGN)
+		p.proprietary = IsProprietaryPGN(p.info.PGN)
 		p.candidates = pgnInfoLookup[p.info.PGN]
 		if len(p.candidates) == 0 {
 			// not found, an unknown PGN

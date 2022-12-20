@@ -20,7 +20,7 @@ func buildUnknownPGN(p *packet) UnknownPGN {
 		Reason: fmt.Errorf("%s", mergeErrorStrings(p.parseErrors)),
 	}
 
-	if isProprietaryPGN(pkt.Info.PGN) {
+	if IsProprietaryPGN(pkt.Info.PGN) {
 		if p.manufacturer != 0 {
 			pkt.ManufacturerCode = p.manufacturer
 		} else {

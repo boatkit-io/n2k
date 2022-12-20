@@ -35,7 +35,7 @@ func init() {
 	}
 }
 
-func isProprietaryPGN(pgn uint32) bool {
+func IsProprietaryPGN(pgn uint32) bool {
 	if pgn >= 0x0EF00 && pgn <= 0x0EFFF {
 		// proprietary PDU1 (addressed) single-frame range 0EF00 to 0xEFFF (61184 - 61439) messages.
 		// Addressed means that you send it to specific node on the bus. This you can easily use for responding,

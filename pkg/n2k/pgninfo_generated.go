@@ -26516,7 +26516,7 @@ func DecodeNmeaReadFieldsGroupFunction(Info PacketInfo, stream *pGNDataStream) (
 			return val, nil
 		} 
 	}
-	if isProprietaryPGN( *val.Pgn) {
+	if IsProprietaryPGN( *val.Pgn) {
 	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-ManufacturerCode: %w", err)
 	} else {
@@ -26667,7 +26667,7 @@ func DecodeNmeaReadFieldsReplyGroupFunction(Info PacketInfo, stream *pGNDataStre
 			return val, nil
 		} 
 	}
-	if isProprietaryPGN( *val.Pgn) {
+	if IsProprietaryPGN( *val.Pgn) {
 	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-ManufacturerCode: %w", err)
 	} else {
@@ -26823,7 +26823,7 @@ func DecodeNmeaWriteFieldsGroupFunction(Info PacketInfo, stream *pGNDataStream) 
 			return val, nil
 		} 
 	}
-	if isProprietaryPGN( *val.Pgn) {
+	if IsProprietaryPGN( *val.Pgn) {
 	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-ManufacturerCode: %w", err)
 	} else {
@@ -26979,7 +26979,7 @@ func DecodeNmeaWriteFieldsReplyGroupFunction(Info PacketInfo, stream *pGNDataStr
 			return val, nil
 		} 
 	}
-	if isProprietaryPGN( *val.Pgn) {
+	if IsProprietaryPGN( *val.Pgn) {
 	if v, err := stream.readLookupField(11); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-ManufacturerCode: %w", err)
 	} else {
