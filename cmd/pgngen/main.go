@@ -157,7 +157,7 @@ func (conv *canboatConverter) fixup() {
 }
 
 func (conv *canboatConverter) write() {
-	if f, err := os.Create(filepath.Join("pkg", "pgninfo_generated.go")); err != nil {
+	if f, err := os.Create(filepath.Join("pkg", "n2k", "pgninfo_generated.go")); err != nil {
 		panic(err)
 	} else {
 		t := template.Must(template.New("pgninfo").Funcs(sprig.TxtFuncMap()).Funcs(template.FuncMap{

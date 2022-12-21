@@ -152,7 +152,7 @@ func {{ $funcName }}(Info PacketInfo, stream *pGNDataStream) (interface{}, error
 		}
 	{{- else }}	
 	{{- if and $repeat2 (eq $idx 2) }}
-	if isProprietaryPGN( *val.Pgn) {
+	if IsProprietaryPGN( *val.Pgn) {
 	{{- end }}
 	{{- if and $repeat2  (eq $idx 5) }}
 	} 

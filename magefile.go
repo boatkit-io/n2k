@@ -14,7 +14,7 @@ import (
 
 var Default = Build
 
-var pgnGeneratedCodePath = filepath.Join("pkg", "pgninfo_generated.go")
+var pgnGeneratedCodePath = filepath.Join("pkg", "n2k", "pgninfo_generated.go")
 
 // Build builds the code
 func Build() error {
