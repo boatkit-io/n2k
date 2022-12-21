@@ -5,8 +5,11 @@ import (
 	"testing"
 
 	"github.com/brutella/can"
+	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )
+
+var log = logrus.StandardLogger()
 
 var testData = `
 2022-12-20T04:14:09Z,6,129540,22,255,8,20,db,3c,ff,12,1a,d1,15
@@ -45,21 +48,22 @@ var testData = `
 
 func TestBigPacket(t *testing.T) {
 
-	m := newMultiBuilder()
+	m := newMultiBuilder(log)
+	var p *packet
 	lines := strings.Split(testData, "\n")
 	for _, line := range lines {
 		if len(line) == 0 {
 			continue
 		}
 		frame := canFrameFromRaw(line)
-		p := newPacket(frame)
+		p = newPacket(frame)
 		m.add(p)
 	}
-	assert.True(t, m.current.complete)
+	assert.True(t, p.complete)
 }
 
 func TestFastPacket(t *testing.T) {
-	m := newMultiBuilder()
+	m := newMultiBuilder(log)
 
 	// test fast packet that's actually complete in single-frame
 	p := newPacket(can.Frame{ID: canIdFromData(130820, 10, 1, 0), Length: 8, Data: [8]uint8{160, 5, 163, 153, 32, 128, 1, 255}})
@@ -68,7 +72,7 @@ func TestFastPacket(t *testing.T) {
 	assert.True(t, p.valid())
 
 	// we allow out of order frames
-	m = newMultiBuilder()
+	m = newMultiBuilder(log)
 	p = newPacket(can.Frame{ID: canIdFromData(130820, 10, 1, 0), Length: 8, Data: [8]uint8{161, 5, 163, 153, 32, 128, 1, 255}})
 	m.add(p)
 	assert.False(t, p.complete)
@@ -78,11 +82,11 @@ func TestFastPacket(t *testing.T) {
 
 	// test misc multi frame packet
 	// Note we only build multi frames for known PGNs.
-	// We only know a PGN is multi frame if it's know. We can guess
+	// We only know a PGN is multi frame if it's known. We can guess
 	// that an unknown pgn with a frame 0 and a valid length byte (0-223, so
 	// not much of a test) might be a fast variant, but it's a weak heuristic.
 	// Instead we'll return each packet as unknown.
-	m = newMultiBuilder()
+	m = newMultiBuilder(log)
 	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}})
 	m.add(p)
 	assert.False(t, p.complete)
@@ -100,10 +104,10 @@ func TestFastPacket(t *testing.T) {
 	m.add(p)
 	assert.True(t, p.complete)
 	assert.Equal(t, 32, len(p.data))
-	comp := p.data
+	comp := p.data // used in next test for out of order
 
 	// test misc multi frame packet out of order
-	m = newMultiBuilder()
+	m = newMultiBuilder(log)
 	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x63, 0x00, 0x00, 0x00, 0x00, 0x10, 0x7F, 0xFF}})
 	m.add(p)
 	assert.False(t, p.complete)
@@ -123,4 +127,48 @@ func TestFastPacket(t *testing.T) {
 	assert.Equal(t, 32, len(p.data))
 	assert.Equal(t, comp, p.data)
 
+	// test misc multi frame packet out of order
+	m = newMultiBuilder(log)
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x63, 0x00, 0x00, 0x00, 0x00, 0x10, 0x7F, 0xFF}})
+	m.add(p)
+	assert.False(t, p.complete)
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x61, 0x86, 0x0A, 0x05, 0x80, 0x00, 0x58, 0xE8}})
+	m.add(p)
+	assert.False(t, p.complete)
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x62, 0x55, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x7F}})
+	m.add(p)
+	assert.False(t, p.complete)
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}})
+	m.add(p)
+	assert.False(t, p.complete)
+	assert.Equal(t, 1, len(p.candidates))
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x64, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x7F, 0xFF}})
+	m.add(p)
+	assert.True(t, p.complete)
+	assert.Equal(t, 32, len(p.data))
+	assert.Equal(t, comp, p.data)
+
+	// test that receiving a duplicate frame resets the sequence
+	m = newMultiBuilder(log)
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x63, 0x00, 0x00, 0x00, 0x00, 0x10, 0x7F, 0xFF}})
+	m.add(p)
+	assert.False(t, p.complete)
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x61, 0x86, 0x0A, 0x05, 0x80, 0x00, 0x58, 0xE8}})
+	m.add(p)
+	assert.False(t, p.complete)
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x61, 0x86, 0x0A, 0x05, 0x80, 0x00, 0x58, 0xE8}})
+	m.add(p)
+	// duplicate, so sequence should reset, and after "completing" the packet will remain incomplete
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x62, 0x55, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x7F}})
+	m.add(p)
+	assert.False(t, p.complete)
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}})
+	m.add(p)
+	assert.False(t, p.complete)
+	assert.Equal(t, 1, len(p.candidates))
+	p = newPacket(can.Frame{ID: 0x09F20183, Length: 8, Data: [8]uint8{0x64, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x7F, 0xFF}})
+	m.add(p)
+	assert.False(t, p.complete)
+	assert.NotEqual(t, 32, len(p.data))
+	assert.NotEqual(t, comp, p.data)
 }

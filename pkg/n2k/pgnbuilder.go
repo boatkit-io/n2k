@@ -22,7 +22,7 @@ type PGNBuilder struct {
 func NewPGNBuilder(log *logrus.Logger, pgnCallback func(interface{})) *PGNBuilder {
 	result := PGNBuilder{
 		log:         log,
-		multi:       newMultiBuilder(),
+		multi:       newMultiBuilder(log),
 		pgnCallback: pgnCallback,
 	}
 	return &result
