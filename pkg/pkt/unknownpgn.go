@@ -7,16 +7,8 @@ import (
 	"github.com/boatkit-io/n2k/pkg/pgn"
 )
 
-type UnknownPGN struct {
-	Info             pgn.MessageInfo
-	Data             []uint8
-	ManufacturerCode pgn.ManufacturerCodeConst
-	IndustryCode     pgn.IndustryCodeConst
-	Reason           error
-}
-
-func buildUnknownPGN(p *Packet) UnknownPGN {
-	ret := UnknownPGN{
+func buildUnknownPGN(p *Packet) pgn.UnknownPGN {
+	ret := pgn.UnknownPGN{
 		Info:   p.Info,
 		Data:   p.Data,
 		Reason: fmt.Errorf("%s", mergeErrorStrings(p.ParseErrors)),
