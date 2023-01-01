@@ -1,11 +1,11 @@
-package n2k
+package pgn
 
 type PgnInfo struct {
 	PGN         uint32
 	Description string
 	Fast        bool
 	ManId       ManufacturerCodeConst
-	Decoder     func(PacketInfo, *pGNDataStream) (interface{}, error)
+	Decoder     func(MessageInfo, *PGNDataStream) (interface{}, error)
 	FieldInfo   map[int]FieldDescriptor
 }
 
@@ -17,21 +17,21 @@ type FieldDescriptor struct {
 	Signed            bool
 }
 
-var pgnInfoLookup map[uint32][]*PgnInfo
+var PgnInfoLookup map[uint32][]*PgnInfo
 
 func init() {
-	pgnInfoLookup = make(map[uint32][]*PgnInfo)
+	PgnInfoLookup = make(map[uint32][]*PgnInfo)
 
 	for i := range pgnList {
 		pi := &pgnList[i]
-		val := pgnInfoLookup[pi.PGN]
+		val := PgnInfoLookup[pi.PGN]
 		if val == nil {
 			val = make([]*PgnInfo, 1)
 			val[0] = pi
 		} else {
 			val = append(val, pi)
 		}
-		pgnInfoLookup[pi.PGN] = val
+		PgnInfoLookup[pi.PGN] = val
 	}
 }
 
@@ -56,4 +56,19 @@ func IsProprietaryPGN(pgn uint32) bool {
 	}
 
 	return false
+}
+
+func GetProprietaryInfo(data []uint8) (ManufacturerCodeConst, IndustryCodeConst, error) {
+	stream := NewPgnDataStream(data)
+	var man ManufacturerCodeConst
+	var ind IndustryCodeConst
+	var err error
+	if v, err := stream.readLookupField(11); err == nil {
+		man = ManufacturerCodeConst(v)
+	}
+	_ = stream.skipBits(2)
+	if v, err := stream.readLookupField(3); err == nil {
+		ind = IndustryCodeConst(v)
+	}
+	return man, ind, err
 }

@@ -1,4 +1,4 @@
-package n2k
+package pgn
 
 import (
 	"fmt"

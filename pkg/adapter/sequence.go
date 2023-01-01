@@ -1,16 +1,17 @@
-package n2k
+package adapter
 
 import (
 	"fmt"
 	"time"
 
+	"github.com/boatkit-io/n2k/pkg/pkt"
 	"github.com/sirupsen/logrus"
 )
 
-// NMEA 2000 sends packets with >8 bytes of data in multiple packets
+// NMEA 2000 sends packets with >8 bytes of Data in multiple packets
 // A sequence has a common sequence ID and a frame number between 0 and 31 inclusive
-// These are encoded in the first data byte
-// Frame 0 has the total number of data bytes (excluding bytes 0 and 1 of frame 0 and byte
+// These are encoded in the first Data byte
+// Frame 0 has the total number of Data bytes (excluding bytes 0 and 1 of frame 0 and byte
 // 0 of subsequent (continuation) frames)
 // Since every can frame contains 8 bytes, the final frame might have unused bytes
 // that are trimmed when constructing the complete packet.
@@ -29,37 +30,37 @@ const (
 type sequence struct {
 	started  time.Time
 	log      *logrus.Logger
-	zero     *packet // packet 0 of sequence
+	zero     *pkt.Packet // packet 0 of sequence
 	expected uint8
 	received uint8
 	contents [MaxFrameNum + 1][]uint8 // need arrays since packets can be received out of order
 }
 
-func (s *sequence) add(p *packet) {
-	if s.contents[p.frameNum] != nil { // uh-oh, we've already seen this frame
-		s.log.Warnf("received duplicate frame: %d %d %d, resetting sequence\n", p.info.SourceId, p.info.PGN, p.frameNum)
+func (s *sequence) add(p *pkt.Packet) {
+	if s.contents[p.FrameNum] != nil { // uh-oh, we've already seen this frame
+		s.log.Warnf("received duplicate frame: %d %d %d, resetting sequence\n", p.Info.SourceId, p.Info.PGN, p.FrameNum)
 		s.reset()
 	}
-	if p.frameNum == 0 {
+	if p.FrameNum == 0 {
 		s.started = time.Now()
 		s.zero = p
-		s.expected = p.data[1]
-		s.contents[p.frameNum] = p.data[2:]
+		s.expected = p.Data[1]
+		s.contents[p.FrameNum] = p.Data[2:]
 		s.received += 6
 	} else {
-		s.contents[p.frameNum] = p.data[1:]
+		s.contents[p.FrameNum] = p.Data[1:]
 		s.received += 7
 	}
 }
 
-func (s *sequence) complete(p *packet) bool {
+func (s *sequence) complete(p *pkt.Packet) bool {
 	if s.zero != nil {
 		if s.received >= s.expected {
-			//  consolidate data
+			//  consolidate Data
 			results := make([]uint8, 0)
 			for i, d := range s.contents {
 				if d == nil { // don't allow sparse nodes
-					p.parseErrors = append(p.parseErrors, fmt.Errorf("sparse data in multi"))
+					p.ParseErrors = append(p.ParseErrors, fmt.Errorf("sparse Data in multi"))
 					return true
 				} else {
 					results = append(results, s.contents[i]...)
@@ -69,11 +70,12 @@ func (s *sequence) complete(p *packet) bool {
 				}
 			}
 			results = results[:s.expected]
-			p.data = results
-			p.complete = true
+			p.Data = results
+			p.Complete = true
 			return true
 		}
 	}
+	p.Complete = false
 	return false
 }
 
