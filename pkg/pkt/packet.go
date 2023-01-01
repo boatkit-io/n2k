@@ -70,7 +70,7 @@ func (p *Packet) GetSeqFrame() {
 
 }
 
-func (p *Packet) UnknownPGN() UnknownPGN {
+func (p *Packet) UnknownPGN() pgn.UnknownPGN {
 	return buildUnknownPGN(p)
 }
 
