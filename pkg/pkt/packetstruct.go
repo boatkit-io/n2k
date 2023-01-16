@@ -12,12 +12,20 @@ type PacketStruct struct {
 	structC chan interface{}
 }
 
-func NewPacketStruct(p chan Packet, s chan interface{}) *PacketStruct {
+func NewPacketStruct() *PacketStruct {
 
 	return &PacketStruct{
-		packetC: p,
-		structC: s,
+		packetC: make(chan Packet, 10),
+		structC: make(chan any, 10),
 	}
+}
+
+func (p *PacketStruct) InChannel() chan Packet {
+	return p.packetC
+}
+
+func (p *PacketStruct) OutChannel() chan any {
+	return p.structC
 }
 
 func (p *PacketStruct) Run(wg *sync.WaitGroup) {
