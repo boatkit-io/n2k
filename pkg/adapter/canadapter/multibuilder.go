@@ -1,4 +1,4 @@
-package adapter
+package canadapter
 
 import (
 	"github.com/sirupsen/logrus"

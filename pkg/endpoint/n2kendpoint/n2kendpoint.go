@@ -9,23 +9,27 @@ import (
 	"sync"
 	"time"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
+	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
 
 type N2kEndpoint struct {
-	frameC chan adapter.Frame
+	frameC chan canadapter.Frame
 	inFile string
 	log    *logrus.Logger
 }
 
-func NewN2kEndpoint(f chan adapter.Frame, fName string, log *logrus.Logger) *N2kEndpoint {
+func NewN2kEndpoint(fName string, log *logrus.Logger) *N2kEndpoint {
 	return &N2kEndpoint{
-		frameC: f,
+		frameC: make(chan canadapter.Frame, 100),
 		inFile: fName,
 		log:    log,
 	}
+}
+
+func (n *N2kEndpoint) OutChannel() chan canadapter.Frame {
+	return n.frameC
 }
 
 func (n *N2kEndpoint) Run(wg *sync.WaitGroup) error {
@@ -55,7 +59,7 @@ func (n *N2kEndpoint) Run(wg *sync.WaitGroup) error {
 			if len(line) == 0 {
 				continue
 			}
-			var frame adapter.Frame
+			var frame canadapter.Frame
 			var canDead string
 			var timeDelta float32
 			fmt.Sscanf(line, " (%f)  %s  %8X   [%d]  %X %X %X %X %X %X %X %X", &timeDelta, &canDead, &frame.ID, &frame.Length, &frame.Data[0], &frame.Data[1], &frame.Data[2], &frame.Data[3], &frame.Data[4], &frame.Data[5], &frame.Data[6], &frame.Data[7])

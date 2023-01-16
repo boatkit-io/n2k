@@ -1,4 +1,4 @@
-package adapter
+package canadapter
 
 import (
 	"fmt"

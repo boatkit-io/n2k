@@ -9,7 +9,6 @@ import (
 
 	//	"time"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint/n2kendpoint"
 	"github.com/boatkit-io/n2k/pkg/pgn"
@@ -27,7 +26,7 @@ func main() {
 		os.Exit(exitCode)
 	}()
 
-	// Command-line parsing, largely for local testing
+	// Command-line parsing
 	var replayFile string
 	flag.StringVar(&replayFile, "replayFile", "", "An optional replay file to run")
 	var dumpPgns bool
@@ -35,18 +34,17 @@ func main() {
 	flag.Parse()
 
 	log := logrus.StandardLogger()
-	packetChannel := make(chan pkt.Packet, 10)
-	structChannel := make(chan interface{}, 10)
 	subs := subscribe.New()
-	s := pkt.NewPacketStruct(packetChannel, structChannel)
-	h := pgn.NewStructHandler(structChannel, subs)
+	s := pkt.NewPacketStruct()
+	h := pgn.NewStructHandler(s.OutChannel(), subs)
 
 	//	ctx, cancel := context.WithCancel(context.Background())
 	//	defer cancel()
 	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
-		frameChannel := make(chan adapter.Frame, 100)
-		n := n2kendpoint.NewN2kEndpoint(frameChannel, replayFile, log)
-		p := canadapter.NewCanAdapter(log, frameChannel, packetChannel)
+		n := n2kendpoint.NewN2kEndpoint(replayFile, log)
+		p := canadapter.NewCanAdapter(log)
+		p.SetInChannel(n.OutChannel())
+		p.SetOutChannel(s.InChannel())
 		activities.Add(5)
 		h.Run(activities)
 		s.Run(activities)
@@ -73,7 +71,6 @@ func main() {
 	//	})
 
 	go func() {
-		// Command-line parsing, largely for local testing
 
 		defer activities.Done()
 
