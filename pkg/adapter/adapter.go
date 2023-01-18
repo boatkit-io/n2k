@@ -6,8 +6,11 @@ import (
 	"github.com/boatkit-io/n2k/pkg/pkt"
 )
 
+type Message interface {
+}
+
 type Adapter interface {
-	Run(*sync.WaitGroup)
-	SetInChannel(chan any)
+	Run(*sync.WaitGroup) error
+	SetInChannel(chan Message)
 	SetOutChannel(chan pkt.Packet)
 }

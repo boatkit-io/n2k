@@ -5,12 +5,13 @@ import (
 
 	"github.com/sirupsen/logrus"
 
+	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/n2k/pkg/pkt"
 )
 
 type CanAdapter struct {
-	frameC  chan Frame
+	frameC  chan adapter.Message
 	packetC chan pkt.Packet
 	multi   *MultiBuilder
 	current *pkt.Packet
@@ -24,7 +25,7 @@ func NewCanAdapter(log *logrus.Logger) *CanAdapter {
 	}
 }
 
-func (c *CanAdapter) SetInChannel(in chan Frame) {
+func (c *CanAdapter) SetInChannel(in chan adapter.Message) {
 	c.frameC = in
 }
 
@@ -37,14 +38,19 @@ func (c *CanAdapter) Run(wg *sync.WaitGroup) error {
 		defer wg.Done()
 		for {
 
-			f, more := <-c.frameC
+			m, more := <-c.frameC
 			if !more {
 				close(c.packetC)
 				return
 			}
-			pInfo := NewPacketInfo(f)
-			c.current = pkt.NewPacket(pInfo, f.Data[:])
-			c.process()
+			switch f := m.(type) {
+			case Frame:
+				pInfo := NewPacketInfo(f)
+				c.current = pkt.NewPacket(pInfo, f.Data[:])
+				c.process()
+			default:
+				c.log.Warnf("CanAdapter expected Frame, received: %T\n", f)
+			}
 		}
 
 	}()
