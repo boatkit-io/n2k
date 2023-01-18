@@ -9,26 +9,27 @@ import (
 	"sync"
 	"time"
 
+	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
 
 type N2kEndpoint struct {
-	frameC chan canadapter.Frame
+	frameC chan adapter.Message
 	inFile string
 	log    *logrus.Logger
 }
 
 func NewN2kEndpoint(fName string, log *logrus.Logger) *N2kEndpoint {
 	return &N2kEndpoint{
-		frameC: make(chan canadapter.Frame, 100),
+		frameC: make(chan adapter.Message, 100),
 		inFile: fName,
 		log:    log,
 	}
 }
 
-func (n *N2kEndpoint) OutChannel() chan canadapter.Frame {
+func (n *N2kEndpoint) OutChannel() chan adapter.Message {
 	return n.frameC
 }
 

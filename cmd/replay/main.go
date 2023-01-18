@@ -9,7 +9,9 @@ import (
 
 	//	"time"
 
+	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
+	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/boatkit-io/n2k/pkg/endpoint/n2kendpoint"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/n2k/pkg/pkt"
@@ -22,6 +24,8 @@ import (
 func main() {
 	var exitCode int
 	var activities = new(sync.WaitGroup)
+	var n endpoint.Endpoint
+	var p adapter.Adapter
 	defer func() {
 		os.Exit(exitCode)
 	}()
@@ -41,15 +45,19 @@ func main() {
 	//	ctx, cancel := context.WithCancel(context.Background())
 	//	defer cancel()
 	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
-		n := n2kendpoint.NewN2kEndpoint(replayFile, log)
-		p := canadapter.NewCanAdapter(log)
+		n = n2kendpoint.NewN2kEndpoint(replayFile, log)
+		p = canadapter.NewCanAdapter(log)
 		p.SetInChannel(n.OutChannel())
 		p.SetOutChannel(s.InChannel())
 		activities.Add(5)
 		h.Run(activities)
 		s.Run(activities)
-		p.Run(activities)
-		err := n.Run(activities)
+		err := p.Run(activities)
+		if err != nil {
+			exitCode = 1
+			return
+		}
+		err = n.Run(activities)
 		if err != nil {
 			exitCode = 1
 			return
