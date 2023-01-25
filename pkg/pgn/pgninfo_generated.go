@@ -11220,7 +11220,7 @@ var pgnList = []PgnInfo{
 	{
 		PGN: 127500,
 		Description: "Load Controller Connection State/Control",
-		Fast: true,
+		Fast: false,
 		ManId: 0,
 		Decoder: DecodeLoadControllerConnectionStateControl,
 		FieldInfo: map[int]FieldDescriptor{
@@ -11260,15 +11260,15 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		7: { 16,
+		7: { 8,
 			false,
-			"*uint16",
+			"*uint8",
 			1,
 			false,
 			},
-		8: { 16,
+		8: { 8,
 			false,
-			"*uint16",
+			"*uint8",
 			1,
 			false,
 			},
@@ -31098,8 +31098,8 @@ type LoadControllerConnectionStateControl struct {
 	Status *uint8
 	OperationalStatusControl *uint8
 	PwmDutyCycle *uint8
-	Timeon *uint16
-	Timeoff *uint16
+	Timeon *uint8
+	Timeoff *uint8
 }
 func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
 	var val LoadControllerConnectionStateControl
@@ -31152,7 +31152,7 @@ func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *PGNDat
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUInt16(16); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Timeon: %w", err)
 	} else {
 		val.Timeon = v
@@ -31160,7 +31160,7 @@ func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *PGNDat
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUInt16(16); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Timeoff: %w", err)
 	} else {
 		val.Timeoff = v
