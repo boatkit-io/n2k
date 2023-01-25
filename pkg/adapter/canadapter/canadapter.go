@@ -70,6 +70,8 @@ func (c *CanAdapter) process() {
 	}
 	if c.current.Fast {
 		c.multi.Add(c.current)
+	} else {
+		c.current.Complete = true
 	}
 	if c.current.Complete {
 		c.current.AddDecoders()

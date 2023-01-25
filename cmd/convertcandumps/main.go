@@ -58,6 +58,12 @@ type rawFmt struct {
 	grouping bool
 }
 
+type ydrFmt struct {
+	contents []byte
+	packets  []packet
+	grouping bool
+}
+
 type canFmt struct {
 	contents []byte
 	packets  []packet
@@ -100,6 +106,11 @@ func main() {
 	switch fileTypeIn {
 	case "raw":
 		inVar = &rawFmt{
+			contents: make([]byte, 0),
+			packets:  make([]packet, 0),
+		}
+	case "ydr":
+		inVar = &ydrFmt{
 			contents: make([]byte, 0),
 			packets:  make([]packet, 0),
 		}
@@ -150,6 +161,96 @@ func main() {
 	inVar.SetContents(content)
 	outVar.SetPackets(inVar.GetPackets())
 	writeDumpFile(outVar.GetContents(), filePathOut, fileTypeOut)
+}
+
+func (y *ydrFmt) Update() {
+	if len(y.contents) != 0 {
+		y.processContents()
+		if y.grouping {
+			y.packets = group(y.packets)
+		}
+	} else {
+		y.processPackets()
+	}
+}
+
+func (y *ydrFmt) SetContents(in []byte) {
+	y.contents = in
+	y.Update()
+}
+
+func (y *ydrFmt) GetContents() []byte {
+	return y.contents
+}
+
+func (y *ydrFmt) SetPackets(in []packet) {
+	y.packets = in
+	y.Update()
+}
+
+func (y *ydrFmt) GetPackets() []packet {
+	return y.packets
+}
+
+func (y *ydrFmt) SetGrouping(on bool) {
+	y.grouping = on
+}
+
+func (y *ydrFmt) processContents() {
+	var result []packet
+	var baseTime time.Time
+	today := time.Now()
+	content := string(y.contents)
+	lines := strings.Split(content, "\r\n")
+	for _, line := range lines {
+		pkt := packet{canDead: "can1"}
+		if (len(line) == 0) || strings.HasPrefix(line, "#") || strings.Compare(line, "\n") == 0 {
+			continue
+		}
+		// 14:44:58.309 R 15FD0C2C 44 00 0E C1 76 04 FF FF
+		elems := strings.Split(line, " ")
+		if len(elems) != 11 {
+			continue
+		}
+		messageTime, err := time.Parse("15:04:05", elems[0])
+		if err != nil {
+			continue
+		}
+		if baseTime.IsZero() {
+			baseTime = messageTime
+		}
+		pkt.timeDelta = float32(messageTime.Sub(baseTime))
+		if pkt.timeDelta < 0 {
+			pkt.timeDelta = 0.003
+		} else if pkt.timeDelta > 1.0 {
+			pkt.timeDelta = 0.03
+		}
+		pkt.time = today.Add(time.Duration(pkt.timeDelta))
+		if frame, err := strconv.ParseUint(elems[2], 16, 32); err == nil {
+			pkt.frame.ID = uint32(frame)
+		} else {
+			continue
+		}
+
+		pkt.frame.Length = 8
+		for i := 0; i < 8; i++ {
+			if b, err := strconv.ParseUint(elems[i+3], 16, 8); err == nil {
+				pkt.frame.Data[i] = uint8(b)
+			} else {
+				continue
+			}
+		}
+		pkt.decodeCanFrameID()
+		result = append(result, pkt)
+	}
+	y.packets = result
+}
+
+func (y *ydrFmt) processPackets() {
+	for _, paket := range y.packets {
+		line := fmt.Sprintf("%s,%d,%d,%d,%d,%d,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n", paket.time.Format("2006-01-02T15:04:05Z"), paket.priority, paket.pgn, paket.source, paket.destination, paket.frame.Length, paket.frame.Data[0], paket.frame.Data[1], paket.frame.Data[2], paket.frame.Data[3], paket.frame.Data[4], paket.frame.Data[5], paket.frame.Data[6], paket.frame.Data[7])
+		y.contents = append(y.contents, line...)
+	}
 }
 
 func (r *rawFmt) Update() {

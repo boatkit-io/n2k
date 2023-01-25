@@ -1,7 +1,6 @@
 package canadapter
 
 import (
-	"strconv"
 	"strings"
 	"testing"
 
@@ -47,41 +46,31 @@ var testData = `
 2022-12-20T04:14:09Z,6,129540,22,255,8,3f,00,00,f2,ff,ff,ff,ff
 `
 
-func canFrameFromRaw(in string) Frame {
-	elems := strings.Split(in, ",")
-	priority, _ := strconv.ParseUint(elems[1], 10, 8)
-	pgn, _ := strconv.ParseUint(elems[2], 10, 32)
-	source, _ := strconv.ParseUint(elems[3], 10, 8)
-	destination, _ := strconv.ParseUint(elems[4], 10, 8)
-	length, _ := strconv.ParseUint(elems[5], 10, 8)
-
-	id := canIdFromData(uint32(pgn), uint8(source), uint8(priority), uint8(destination))
-	retval := Frame{
-		ID:     id,
-		Length: 8,
-	}
-	for i := 0; i < int(length); i++ {
-		b, _ := strconv.ParseUint(elems[i+6], 16, 8)
-		retval.Data[i] = uint8(b)
-	}
-
-	return retval
-}
-
-func canIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8) uint32 {
-	return uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26) | uint32(destination)
-}
+var testData2 = `
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,00,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,01,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,02,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,03,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,04,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,05,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,06,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,07,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,08,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,09,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,0a,00,00,00,00,00,00
+2023-01-21T15:01:40Z,3,127500,144,0,8,ff,0b,02,00,00,64,00,00
+`
 
 func TestBigPacket(t *testing.T) {
 
 	m := NewMultiBuilder(log)
 	var p *pkt.Packet
-	lines := strings.Split(testData, "\n")
+	lines := strings.Split(testData2, "\n")
 	for _, line := range lines {
 		if len(line) == 0 {
 			continue
 		}
-		frame := canFrameFromRaw(line)
+		frame := CanFrameFromRaw(line)
 		pInfo := NewPacketInfo(frame)
 		p = pkt.NewPacket(pInfo, frame.Data[:])
 		m.Add(p)
@@ -93,7 +82,7 @@ func TestFastPacket(t *testing.T) {
 	m := NewMultiBuilder(log)
 
 	// test fast packet that's actually Complete in single-frame
-	pInfo := NewPacketInfo(Frame{ID: canIdFromData(130820, 10, 1, 0), Length: 8})
+	pInfo := NewPacketInfo(Frame{ID: CanIdFromData(130820, 10, 1, 0), Length: 8})
 	data := []uint8{160, 5, 163, 153, 32, 128, 1, 255}
 	p := pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -102,7 +91,7 @@ func TestFastPacket(t *testing.T) {
 
 	// we allow out of order frames
 	m = NewMultiBuilder(log)
-	p = pkt.NewPacket(NewPacketInfo(Frame{ID: canIdFromData(130820, 10, 1, 0), Length: 8}), []uint8{161, 5, 163, 153, 32, 128, 1, 255})
+	p = pkt.NewPacket(NewPacketInfo(Frame{ID: CanIdFromData(130820, 10, 1, 0), Length: 8}), []uint8{161, 5, 163, 153, 32, 128, 1, 255})
 	m.Add(p)
 	assert.False(t, p.Complete)
 	assert.NotNil(t, m.sequences[10])
