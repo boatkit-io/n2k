@@ -1,0 +1,45 @@
+name: tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.51.1
+  test:
+    name: go test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      ### ASDF Logic
+      - name: Setup asdf
+        uses: asdf-vm/actions/setup@v1
+      - name: Install asdf plugins
+        uses: asdf-vm/actions/plugins-add@v1
+      - name: Install asdf languages
+        uses: asdf-vm/actions/install@v1
+      ### END
+
+      - name: lintroller
+        run: go run github.com/getoutreach/lintroller/cmd/lintroller@v1.16.0 -config lintroller.yaml ./...
+
+      - uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TOKEN }}
+        with:
+          coverageCommand: make test
+          coverageLocations: c.out:gocov
+          prefix: github.com/boatkit-io/tugboat
