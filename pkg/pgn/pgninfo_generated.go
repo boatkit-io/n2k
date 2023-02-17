@@ -5432,42 +5432,6 @@ func (e AirmarPostIdConst) String() string {
 	}
 }
 
-type EntertainmentRepeatBitfieldConst uint8
-const (
-	Song	EntertainmentRepeatBitfieldConst = 0
-	PlayQueue4	EntertainmentRepeatBitfieldConst = 1
-)
-
-func (e EntertainmentRepeatBitfieldConst) GoString() string {return e.String() }
-func (e EntertainmentRepeatBitfieldConst) String() string {
-	switch e {
-		case 0:
-			return "Song"
-		case 1:
-			return "Play queue"
-	default:
-		return fmt.Sprintf("%s(%d)", "EntertainmentRepeatBitfieldConst", int(e))
-	}
-}
-
-type EntertainmentShuffleBitfieldConst uint8
-const (
-	PlayQueue5	EntertainmentShuffleBitfieldConst = 0
-	All3	EntertainmentShuffleBitfieldConst = 1
-)
-
-func (e EntertainmentShuffleBitfieldConst) GoString() string {return e.String() }
-func (e EntertainmentShuffleBitfieldConst) String() string {
-	switch e {
-		case 0:
-			return "Play queue"
-		case 1:
-			return "All"
-	default:
-		return fmt.Sprintf("%s(%d)", "EntertainmentShuffleBitfieldConst", int(e))
-	}
-}
-
 type SonichubTuningConst uint8
 const (
 	SeekingUp	SonichubTuningConst = 1
@@ -6054,7 +6018,7 @@ const (
 	StationName3	EntertainmentGroupBitfieldConst = 6
 	StationNumber3	EntertainmentGroupBitfieldConst = 7
 	FavouriteNumber3	EntertainmentGroupBitfieldConst = 8
-	PlayQueue6	EntertainmentGroupBitfieldConst = 9
+	PlayQueue4	EntertainmentGroupBitfieldConst = 9
 	ContentInfo3	EntertainmentGroupBitfieldConst = 10
 )
 
@@ -6199,6 +6163,42 @@ func (e WindlassMonitoringConst) String() string {
 			return "Manufacturer defined"
 	default:
 		return fmt.Sprintf("%s(%d)", "WindlassMonitoringConst", int(e))
+	}
+}
+
+type EntertainmentRepeatBitfieldConst uint16
+const (
+	Song	EntertainmentRepeatBitfieldConst = 0
+	PlayQueue5	EntertainmentRepeatBitfieldConst = 1
+)
+
+func (e EntertainmentRepeatBitfieldConst) GoString() string {return e.String() }
+func (e EntertainmentRepeatBitfieldConst) String() string {
+	switch e {
+		case 0:
+			return "Song"
+		case 1:
+			return "Play queue"
+	default:
+		return fmt.Sprintf("%s(%d)", "EntertainmentRepeatBitfieldConst", int(e))
+	}
+}
+
+type EntertainmentShuffleBitfieldConst uint16
+const (
+	PlayQueue6	EntertainmentShuffleBitfieldConst = 0
+	All3	EntertainmentShuffleBitfieldConst = 1
+)
+
+func (e EntertainmentShuffleBitfieldConst) GoString() string {return e.String() }
+func (e EntertainmentShuffleBitfieldConst) String() string {
+	switch e {
+		case 0:
+			return "Play queue"
+		case 1:
+			return "All"
+	default:
+		return fmt.Sprintf("%s(%d)", "EntertainmentShuffleBitfieldConst", int(e))
 	}
 }
 		
@@ -6492,7 +6492,12 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		
+		10: { 1,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
 		},
 	},
 	{
@@ -21328,7 +21333,7 @@ var pgnList = []PgnInfo{
 	{
 		PGN: 130824,
 		Description: "B&G: Wind data",
-		Fast: false,
+		Fast: true,
 		ManId: 381,
 		Decoder: DecodeBGWindData,
 		FieldInfo: map[int]FieldDescriptor{
@@ -23311,6 +23316,7 @@ type IsoAddressClaim struct {
 	DeviceClass DeviceClassConst
 	SystemInstance *uint8
 	IndustryGroup IndustryCodeConst
+	ArbitraryAddressCapable *uint8
 }
 func DecodeIsoAddressClaim(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
 	var val IsoAddressClaim
@@ -23383,10 +23389,14 @@ func DecodeIsoAddressClaim(Info MessageInfo, stream *PGNDataStream) (interface{}
 			return val, nil
 		} 
 	}
-	stream.skipBits(1)
-	if stream.isEOF() {
-		return val, nil
-		}	
+	if v, err := stream.readUInt8(1); err != nil {
+		return nil, fmt.Errorf("parse failed for IsoAddressClaim-ArbitraryAddressCapable: %w", err)
+	} else {
+		val.ArbitraryAddressCapable = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
 	return val, nil
 }
 type SeatalkWirelessKeypadLightControl struct {

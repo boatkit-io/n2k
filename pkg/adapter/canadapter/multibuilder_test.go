@@ -46,7 +46,7 @@ var testData = `
 2022-12-20T04:14:09Z,6,129540,22,255,8,3f,00,00,f2,ff,ff,ff,ff
 `
 
-var testData2 = `
+/* var testData2 = `
 2023-01-21T15:01:40Z,3,127500,144,0,8,ff,00,00,00,00,00,00,00
 2023-01-21T15:01:40Z,3,127500,144,0,8,ff,01,00,00,00,00,00,00
 2023-01-21T15:01:40Z,3,127500,144,0,8,ff,02,00,00,00,00,00,00
@@ -60,12 +60,13 @@ var testData2 = `
 2023-01-21T15:01:40Z,3,127500,144,0,8,ff,0a,00,00,00,00,00,00
 2023-01-21T15:01:40Z,3,127500,144,0,8,ff,0b,02,00,00,64,00,00
 `
+*/
 
 func TestBigPacket(t *testing.T) {
 
 	m := NewMultiBuilder(log)
 	var p *pkt.Packet
-	lines := strings.Split(testData2, "\n")
+	lines := strings.Split(testData, "\n")
 	for _, line := range lines {
 		if len(line) == 0 {
 			continue

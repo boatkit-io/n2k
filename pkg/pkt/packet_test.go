@@ -51,7 +51,7 @@ func TestNewPacket(t *testing.T) {
 	assert.Equal(t, uint8(1), p.Info.Priority)
 	assert.Equal(t, 0, len(p.ParseErrors))
 	assert.Equal(t, 2, len(p.Candidates))
-	assert.False(t, p.Fast)
+	assert.True(t, p.Fast)
 	p.GetManCode()
 	assert.Equal(t, pgn.ManufacturerCodeConst(381), p.Manufacturer)
 }
