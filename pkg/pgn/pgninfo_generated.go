@@ -18133,19 +18133,19 @@ var pgnList = []PgnInfo{
 			},
 		3: { 8,
 			false,
+			"EntertainmentTypeConst",
+			1,
+			false,
+			},
+		4: { 8,
+			false,
 			"EntertainmentZoneConst",
 			1,
 			false,
 			},
-		4: { 32,
+		5: { 32,
 			false,
 			"*uint32",
-			1,
-			false,
-			},
-		5: { 16,
-			false,
-			"*uint16",
 			1,
 			false,
 			},
@@ -18161,9 +18161,9 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		8: { 8,
+		8: { 16,
 			false,
-			"EntertainmentIdTypeConst",
+			"*uint16",
 			1,
 			false,
 			},
@@ -42026,15 +42026,16 @@ type LibraryDataGroup struct {
 	Info MessageInfo
 	Source EntertainmentSourceConst
 	Number *uint8
+	Type EntertainmentTypeConst
 	Zone EntertainmentZoneConst
 	GroupId *uint32
 	IdOffset *uint16
 	IdCount *uint16
 	TotalIdCount *uint16
-	IdType EntertainmentIdTypeConst
 	Repeating1 []LibraryDataGroupRepeating1
 }
 type LibraryDataGroupRepeating1 struct {
+	IdType EntertainmentIdTypeConst
 	Id *uint32
 	Name string
 }
@@ -42054,6 +42055,14 @@ func DecodeLibraryDataGroup(Info MessageInfo, stream *PGNDataStream) (interface{
 		return nil, fmt.Errorf("parse failed for LibraryDataGroup-Number: %w", err)
 	} else {
 		val.Number = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readLookupField(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LibraryDataGroup-Type: %w", err)
+	} else {
+		val.Type = EntertainmentTypeConst(v)
 		if stream.isEOF() {
 			return val, nil
 		} 
@@ -42101,14 +42110,6 @@ func DecodeLibraryDataGroup(Info MessageInfo, stream *PGNDataStream) (interface{
 			return val, nil
 		} 
 	}
-	if v, err := stream.readLookupField(8); err != nil {
-		return nil, fmt.Errorf("parse failed for LibraryDataGroup-IdType: %w", err)
-	} else {
-		val.IdType = EntertainmentIdTypeConst(v)
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
 		if repeat1Count == 0 {
 			return val, nil
 		}
@@ -42116,6 +42117,11 @@ func DecodeLibraryDataGroup(Info MessageInfo, stream *PGNDataStream) (interface{
 	i := 0 
 	for {
 		var rep LibraryDataGroupRepeating1
+		if v, err := stream.readLookupField(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LibraryDataGroup-IdType: %w", err)
+		} else {
+			rep.IdType = EntertainmentIdTypeConst(v)
+		}
 		if v, err := stream.readUInt32(32); err != nil {
 			return nil, fmt.Errorf("parse failed for LibraryDataGroup-Id: %w", err)
 		} else {
