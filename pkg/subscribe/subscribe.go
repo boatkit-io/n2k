@@ -1,3 +1,4 @@
+// Package subscribe manages subscriptions to all or specific go structs.
 package subscribe
 
 import (
@@ -6,7 +7,7 @@ import (
 	"sync"
 )
 
-// Track subscriptions
+// SubscribeManager maintains lists of subscribers to specific or all structs.
 type SubscribeManager struct {
 	subMutex sync.Mutex
 	// tracked subs by subscriber
@@ -18,8 +19,10 @@ type SubscribeManager struct {
 	lastSubId SubscriptionId
 }
 
+// SubscriptionId identifies a specific subscriber.
 type SubscriptionId uint
 
+// trackedSub connects a  subscriber with a function that fulfills a specific subscription.
 type trackedSub struct {
 	subId      SubscriptionId
 	structName string
@@ -27,6 +30,7 @@ type trackedSub struct {
 	callback interface{}
 }
 
+// New returns a pointer to a new SubscribeManager.
 func New() *SubscribeManager {
 	return &SubscribeManager{
 		lastSubId: 0,
@@ -36,6 +40,7 @@ func New() *SubscribeManager {
 	}
 }
 
+// addSubscription adds a subscription. It's called internally by routines that validate its arguments.
 // Callback must be validated already
 func (s *SubscribeManager) addSubscription(structName string, callback interface{}) (SubscriptionId, error) {
 	s.subMutex.Lock()
@@ -63,6 +68,7 @@ func (s *SubscribeManager) addSubscription(structName string, callback interface
 	return ts.subId, nil
 }
 
+// Unsubscribe cancels a subscription.
 func (s *SubscribeManager) Unsubscribe(subId SubscriptionId) error {
 	s.subMutex.Lock()
 	defer s.subMutex.Unlock()
@@ -113,6 +119,8 @@ func (s *SubscribeManager) Unsubscribe(subId SubscriptionId) error {
 	return nil
 }
 
+// ServeStruct calls registered subscriber callbacks for a struct.
+// It calls all specific subscribers and all subscribers.
 func (s *SubscribeManager) ServeStruct(p interface{}) {
 	pv := reflect.ValueOf(p)
 	sn := pv.Type().Name()
@@ -149,6 +157,8 @@ func (s *SubscribeManager) ServeStruct(p interface{}) {
 	}
 }
 
+// SubscribeToStruct registers a subscription to the specified struct.
+// It validates the callback is a function with a matching argument type.
 func (s *SubscribeManager) SubscribeToStruct(t interface{}, callback interface{}) (SubscriptionId, error) {
 	e := reflect.ValueOf(t)
 	if e.Kind() != reflect.Struct {
@@ -166,6 +176,8 @@ func (s *SubscribeManager) SubscribeToStruct(t interface{}, callback interface{}
 	return s.addSubscription(e.Type().Name(), callback)
 }
 
+// SubscribeToAllStructs registers a subscription to all structs.
+// It validates the callback is a func with an interface{} argument.
 func (s *SubscribeManager) SubscribeToAllStructs(callback interface{}) (SubscriptionId, error) {
 	ce := reflect.ValueOf(callback)
 	if ce.Kind() != reflect.Func {

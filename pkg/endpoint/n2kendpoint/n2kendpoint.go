@@ -1,3 +1,5 @@
+// Package n2kendpoint provides reads n2k log files and sends canbus frames to a channel.
+// To use it connect its output channel to a canadapter instance.
 package n2kendpoint
 
 import (
@@ -15,12 +17,14 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// N2kEndpoint reads an n2k log file and sends canbus frames to its output channel.
 type N2kEndpoint struct {
 	frameC chan adapter.Message
 	inFile string
 	log    *logrus.Logger
 }
 
+// NewN2kEndpoint creates a new n2k endpoint.
 func NewN2kEndpoint(fName string, log *logrus.Logger) *N2kEndpoint {
 	return &N2kEndpoint{
 		frameC: make(chan adapter.Message, 100),
@@ -29,10 +33,12 @@ func NewN2kEndpoint(fName string, log *logrus.Logger) *N2kEndpoint {
 	}
 }
 
+// OutChannel method returns the channel where it sends frames.
 func (n *N2kEndpoint) OutChannel() chan adapter.Message {
 	return n.frameC
 }
 
+// Run method opens the specified log file and kicks off a goroutine that sends frames to OutChannel.
 func (n *N2kEndpoint) Run(wg *sync.WaitGroup) error {
 	wd, err := os.Getwd()
 	if err != nil {

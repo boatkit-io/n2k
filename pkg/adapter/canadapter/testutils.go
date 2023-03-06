@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// CanFrameFromRaw parses an input string into a can.Frame.
 func CanFrameFromRaw(in string) Frame {
 	elems := strings.Split(in, ",")
 	priority, _ := strconv.ParseUint(elems[1], 10, 8)
@@ -26,6 +27,7 @@ func CanFrameFromRaw(in string) Frame {
 	return retval
 }
 
+// CanIdFromData returns an encoded ID from its inputs.
 func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8) uint32 {
 	return uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26) | uint32(destination)
 }

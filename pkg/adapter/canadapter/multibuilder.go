@@ -6,10 +6,10 @@ import (
 	"github.com/boatkit-io/n2k/pkg/pkt"
 )
 
+// MultiBuilder assembles a sequence of packets into a comple Packet.
 // Manages the list of sequences used to combine multipacket PGNs
 // Instantiated by PGNBuilder
 // Uses sequence to do the work
-
 // we track sequences separately for each nmea source
 // sequence ids are 0-7, so each source can have 8 sequences in simultaneous transmission
 // sequences map[sourceid]map[pgn]map[SeqId]sequence
@@ -18,7 +18,7 @@ type MultiBuilder struct {
 	sequences map[uint8]map[uint32]map[uint8]*sequence
 }
 
-// create an instance
+// NewMultiBuilder creates a new instance.
 func NewMultiBuilder(log *logrus.Logger) *MultiBuilder {
 	mBuilder := MultiBuilder{
 		log:       log,
@@ -27,9 +27,8 @@ func NewMultiBuilder(log *logrus.Logger) *MultiBuilder {
 	return &mBuilder
 }
 
-// select (creating if needed) the sequence for this source id and pgn
-// add the packet to the sequence
-// if the packet is now complete, delete the sequence
+// Add method adds a packet to a (new or existing) sequence.
+// if the sequence (and resulting packet) is now complete, delete the sequence.
 func (m *MultiBuilder) Add(p *pkt.Packet) {
 	p.GetSeqFrame()
 	seq := m.SeqFor(p)
@@ -39,7 +38,7 @@ func (m *MultiBuilder) Add(p *pkt.Packet) {
 	}
 }
 
-// walk down the maps of source id, pgn, and SeqId, creating if needed
+// SeqFor method returns the sequence for the specified packet, creating it it needed.
 func (m *MultiBuilder) SeqFor(p *pkt.Packet) *sequence {
 	if _, t := m.sequences[p.Info.SourceId]; !t {
 		m.sequences[p.Info.SourceId] = make(map[uint32]map[uint8]*sequence)

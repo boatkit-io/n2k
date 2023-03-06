@@ -1,3 +1,4 @@
+// Package canadapter implements the adapter interface for n2k endpoints.
 package canadapter
 
 import (
@@ -10,14 +11,16 @@ import (
 	"github.com/boatkit-io/n2k/pkg/pkt"
 )
 
+// CanAdapter instances read canbus frames from its input and outputs complete Packets.
 type CanAdapter struct {
-	frameC  chan adapter.Message
-	packetC chan pkt.Packet
-	multi   *MultiBuilder
+	frameC  chan adapter.Message // input channel
+	packetC chan pkt.Packet      // output channel
+	multi   *MultiBuilder        // combines multiple frames into a complete Packet.
 	current *pkt.Packet
 	log     *logrus.Logger
 }
 
+// NewCanAdapter instantiates a new CanAdapter
 func NewCanAdapter(log *logrus.Logger) *CanAdapter {
 	return &CanAdapter{
 		multi: NewMultiBuilder(log),
@@ -25,14 +28,17 @@ func NewCanAdapter(log *logrus.Logger) *CanAdapter {
 	}
 }
 
+// SetInChannel method sets the input channel
 func (c *CanAdapter) SetInChannel(in chan adapter.Message) {
 	c.frameC = in
 }
 
+// SetOutChannel method sets the output channel
 func (c *CanAdapter) SetOutChannel(out chan pkt.Packet) {
 	c.packetC = out
 }
 
+// Run method kicks off a goroutine that reads messages from the input channel and writes complete packets to the output channel.
 func (c *CanAdapter) Run(wg *sync.WaitGroup) error {
 	go func() {
 		defer wg.Done()
@@ -57,6 +63,7 @@ func (c *CanAdapter) Run(wg *sync.WaitGroup) error {
 	return nil
 }
 
+// process method is the worker function for Run
 func (c *CanAdapter) process() {
 	// https://endige.com/2050/nmea-2000-pgns-deciphered/
 
@@ -79,9 +86,13 @@ func (c *CanAdapter) process() {
 	}
 }
 
-// PGN 130824 has 1 fast and 1 slow variant. We validate this invariant
-// on every import of canboat.json. If it changes we need to revisit this code.
-// the slow variant starts 0x7D 0x81 (man code and industry). We'll look for this and if matched select
+// handlePGN130824 method deals with the only PGN that has both a single and fast variant.
+// PGN 130824 has 1 fast and 1 slow variant; all other PGNs are one or the other.
+//
+//	We validate this invariant on every import of canboat.json.
+//
+// If it changes we need to revisit this code.
+// The slow variant starts 0x7D 0x81 (man code and industry). We'll look for this and if matched select
 // it. The fast variant is length 9, fitting in 2 frames, so the first byte of either frame
 // can't be 0x7D
 func (c *CanAdapter) handlePGN130824() {

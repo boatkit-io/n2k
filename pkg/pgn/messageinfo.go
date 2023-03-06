@@ -4,8 +4,7 @@ import (
 	"time"
 )
 
-// MessageInfo contains info from the incoming message that provides context needed to
-// use the decoded PGN
+// MessageInfo contains context needed to process an NMEA 2000 message.
 type MessageInfo struct {
 	// when did we get the message
 	Timestamp time.Time

@@ -1,3 +1,6 @@
+// Command pgngen generates the file pgninfo_generated.go.
+// The generated file provides go declarations and functions to assist conversion from
+// strongly typed go structures and NMEA 2000 frames.
 package main
 
 import (
@@ -24,12 +27,14 @@ import (
 	"golang.org/x/text/language"
 )
 
+// log provides standard logging capability to the program.
 var log = logrus.StandardLogger()
 
+// pgninfoTemplate is the template used to generate the output file.
+//
 //go:embed templates/pgninfo.go.tmpl
 var pgninfoTemplate string
 
-// Transforms a json file from canboat to generate a source file for the n2k package
 func main() {
 	fmt.Println("Entered Main")
 	builder := newCanboatConverter()
@@ -38,8 +43,8 @@ func main() {
 
 }
 
-// We suck the json into this structure, massage the result, and use a template to
-// generate the output source file
+// canboatConverter is inflated from the json file canboat.json.
+// The data is massaged and used to generate the output file.
 type canboatConverter struct {
 	Comment       string
 	CreatorCode   string
@@ -51,39 +56,48 @@ type canboatConverter struct {
 	PGNs          []PGN
 }
 
+// LookupEnumeration instances contain name/value pairs for constants used by NMEA data objects
 type LookupEnumeration struct {
 	Name     string
 	MaxValue int
 	Values   []EnumPair `json:"EnumValues"`
 }
 
+// LookupIndirectEnumeration instances contain name/value/value tuplets.
+// It's used where the value is indexed first by device type, then by attribute.
 type LookupIndirectEnumeration struct {
 	Name     string
 	MaxValue int
 	Values   []EnumTriplet `json:"EnumValues"`
 }
 
+// EnumTriplet is used as elements of a LookupIndirectEnumeration
 type EnumTriplet struct {
 	Text   string `json:"Name"`
 	Value1 int
 	Value2 int
 }
 
+// EnumPair is used as elements of LookupEnumerations.
 type EnumPair struct {
 	Text  string `json:"Name"`
 	Value int
 }
 
+// BitEnumeration instances contain pairs of bit offsets and names.
 type BitEnumeration struct {
 	Name          string
 	MaxValue      int
 	EnumBitValues []BitEnumPair
 }
+
+// BitEnumPair is an element of a BitEnumeration
 type BitEnumPair struct {
 	Label string `json:"Name"`
 	Bit   int
 }
 
+// PGN is the core data structure describing a NMEA message.
 type PGN struct {
 	PGN                          uint32
 	Id                           string
@@ -108,6 +122,7 @@ type PGN struct {
 	AllFields                    []PGNField
 }
 
+// PGNField describes an individual field in a PGN.
 type PGNField struct {
 	Order                    uint8
 	Id                       string
@@ -131,12 +146,14 @@ type PGNField struct {
 	IndirectLookupFieldOrder uint8  `json:"LookupIndirectEnumerationFieldOrder"`
 }
 
+// newCanboatConverter instantiates a new converter
 func newCanboatConverter() *canboatConverter {
 	c := new(canboatConverter)
 	c.init()
 	return c
 }
 
+// init initializes a canboatConverter from canboat.json.
 func (conv *canboatConverter) init() {
 	raw, _ := loadCachedWebContent("canboatjson", "https://github.com/canboat/canboat/raw/master/docs/canboat.json")
 	err := json.Unmarshal(raw, conv)
@@ -149,6 +166,7 @@ func (conv *canboatConverter) init() {
 	log.Infof("Parsed pgns: %d", len(conv.PGNs))
 }
 
+// fixup massages the imported data (details in the routines it invokes).
 func (conv *canboatConverter) fixup() {
 	conv.fixIDs()
 	conv.fixEnumDefs()
@@ -156,6 +174,7 @@ func (conv *canboatConverter) fixup() {
 	conv.validate()
 }
 
+// write outputs the pgninfo_generated.go file. Most of the work occurs in the template.
 func (conv *canboatConverter) write() {
 	if f, err := os.Create(filepath.Join("pkg", "pgn", "pgninfo_generated.go")); err != nil {
 		panic(err)
@@ -189,8 +208,8 @@ func (conv *canboatConverter) write() {
 	}
 }
 
-// capitalize initial letter for each ID
-// dedup field names within a pgn (latest canboat assures field names unique, so we'll just verify)
+// fixIDs uppercases the first letter of PGN Ids and assures names are unique.
+// It then invokes a function to fixup each field.
 func (conv *canboatConverter) fixIDs() {
 	pgnDeDuper := NewDeDuper()
 	for i := range conv.PGNs {
@@ -202,6 +221,9 @@ func (conv *canboatConverter) fixIDs() {
 		}
 		for j := range conv.PGNs[i].Fields {
 			fixupField(&conv.PGNs[i].Fields[j], *fieldDeDuper)
+			// For variable length fields, the length of such a field is passed
+			// in another field. When we find such a field we keep the value in
+			// the PGN so it can be used by the decoder for that PGN.
 			if conv.PGNs[i].Fields[j].BitLengthField != 0 {
 				conv.PGNs[i].BitLengthField = conv.PGNs[i].Fields[j].BitLengthField
 			}
@@ -209,6 +231,7 @@ func (conv *canboatConverter) fixIDs() {
 	}
 }
 
+// fixupField capitializes Id's first char, assures field name is unique, and forces lookup names.
 func fixupField(field *PGNField, dedup DeDuper) {
 	field.Id = capitalizeFirstChar(field.Id)
 	if field.FieldType == "LOOKUP" && len(field.LookupName) == 0 {
@@ -228,6 +251,7 @@ func fixupField(field *PGNField, dedup DeDuper) {
 	}
 }
 
+// fixRepeating identifies the range of repeating fields and extracts them to their own slice(s).
 func (builder *canboatConverter) fixRepeating() {
 	for i := range builder.PGNs {
 		pgn := &builder.PGNs[i]
@@ -251,6 +275,7 @@ func (builder *canboatConverter) fixRepeating() {
 	}
 }
 
+// fixEnumDefs checks that enum names are unique and makes them legal golang identifiers.
 func (builder *canboatConverter) fixEnumDefs() {
 	constDeDuper := NewDeDuper()
 	for i := range builder.Enums {
@@ -282,7 +307,11 @@ func (builder *canboatConverter) fixEnumDefs() {
 	}
 }
 
+// validate assures that pgns with multiple definitions and the same Manufacturer ID are all single or all fast.
+// It also warns the with the number of multiply defined pgns each with a different Manufacturer ID.
+// If more than one such warning is emitted we need to fail the build and update any code to handle the new special case.
 func (builder *canboatConverter) validate() {
+	specials := 0
 	pgns := make(map[uint32][]*PGN)
 	for i := range builder.PGNs {
 		if pgns[builder.PGNs[i].PGN] == nil {
@@ -319,16 +348,25 @@ func (builder *canboatConverter) validate() {
 			}
 		}
 		if fast > 0 && single > 0 {
+			specials++
 			log.Infof("PGN: %d has %d fast and %d single instances\n", pi[0].PGN, fast, single)
 		}
 	}
+	if specials > 1 {
+		panic("New special case(s) added to canboat.json. Resolve and update this check.")
+	}
 }
 
-// functions invoked by template
-
+// varNameReplacer points to a function that changes various substrings with values legal in golang identifiers.
+// Used by toVarName (and so by template).
 var varNameReplacer = strings.NewReplacer(" ", "", "/", "", "+1", "Plus1", "-1", "Minus1", "+", "", "-", "", "(", "", ")", "", "#", "", ".", "", ":", "", "%", "Percent", "&", "And", ",", "")
+
+// varDeDuper is used to assure a variable name is unique.
+// Used by toVarName (and so by template).
 var varDeDuper = NewDeDuper()
 
+// toVarName massages its input to a legal golang identifier.
+// Used by template.
 func toVarName(str string) string {
 	str = strings.Title(str) //nolint:staticcheck
 	str = varNameReplacer.Replace(str)
@@ -336,10 +374,14 @@ func toVarName(str string) string {
 	return str
 }
 
+// isPointerFieldType returns true if the underlying type of a field is a pointer.
+// Used by template.
 func isPointerFieldType(field PGNField) bool {
 	return strings.HasPrefix(convertFieldType(field), "*")
 }
 
+// toNumber converts its input to an integer.
+// Used by template.
 func toNumber(str string) int {
 	v, e := strconv.Atoi(str)
 	if e != nil {
@@ -348,6 +390,8 @@ func toNumber(str string) int {
 	return v
 }
 
+// constSize returns (as a string) the smallest uint needed to represent the const.
+// Used by template.
 func constSize(max int) string {
 
 	switch {
@@ -363,10 +407,14 @@ func constSize(max int) string {
 	}
 }
 
+// fieldByteCount calculates the number of bytes required to read to extract a field's value.
+// Used by template.
 func fieldByteCount(field PGNField) uint16 {
 	return uint16(math.Ceil((float64(field.BitLength) + float64(field.BitOffset)) / 8))
 }
 
+// convertFieldType returns the golang type for a PGN field.
+// used by template.
 func convertFieldType(field PGNField) string {
 	switch field.FieldType {
 
@@ -421,6 +469,8 @@ func convertFieldType(field PGNField) string {
 	}
 }
 
+// getFieldDeserializer returns a string that when evaluated returns its value from the input stream.
+// Used by template.
 func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 	switch field.FieldType {
 	case "LOOKUP":
@@ -496,6 +546,8 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 	}
 }
 
+// matchManufacturer returns the required Match value of the Manufacturer Code as a string.
+// Used by template.
 func matchManufacturer(pgn PGN) string {
 	for _, field := range pgn.Fields {
 		if field.Id == "ManufacturerCode" {
@@ -507,6 +559,8 @@ func matchManufacturer(pgn PGN) string {
 	return "0"
 }
 
+// makeIndirectMap returns a map[int]map[int][string] initialized from its argument.
+// Used by template.
 func makeIndirectMap(iEnum LookupIndirectEnumeration) map[int]map[int]string {
 	inMap := make(map[int]map[int]string)
 	for _, item := range iEnum.Values {
@@ -520,6 +574,7 @@ func makeIndirectMap(iEnum LookupIndirectEnumeration) map[int]map[int]string {
 
 // Utility functions
 
+// cacheFromWeb updates a cache file (if needed) with the contents of a URL.
 func cacheFromWeb(name, url string) (string, error) {
 	// get stats on cached file (name+cache)
 	// if not exist or expired, get contents from web and save in cached file
@@ -552,6 +607,7 @@ func cacheFromWeb(name, url string) (string, error) {
 	return cachedName, nil
 }
 
+// loadCachedWebContent updates the cache contents and returns it as a byte slice.
 func loadCachedWebContent(name, url string) ([]byte, error) {
 	cachedName, err := cacheFromWeb(name, url)
 	if err != nil {
@@ -569,6 +625,7 @@ func loadCachedWebContent(name, url string) ([]byte, error) {
 	return cacheContent, nil
 }
 
+// capitalizeFirstChar forces the first character to upper case and converts "1st" to "First".
 func capitalizeFirstChar(raw string) string {
 	title := strings.ToUpper(raw[0:1]) + raw[1:]
 	if len(title) > 3 && title[0:3] == "1st" {
@@ -577,7 +634,8 @@ func capitalizeFirstChar(raw string) string {
 	return title
 }
 
-// only call on Proprietary PGNs
+// getManId returns the required Manufacturer Code ID for the defined PGN.
+// Only call on Proprietary PGNs!
 func getManId(p *PGN) int {
 	for _, field := range p.Fields {
 		if field.Id == "ManufacturerCode" {
@@ -592,6 +650,7 @@ func getManId(p *PGN) int {
 	return 0
 }
 
+// forceFirstLetter assures the name starts with a letter (required for use as a golang identifier).
 func forceFirstLetter(name *string) {
 	current := *name
 	if !unicode.IsLetter(rune(current[0])) {
@@ -600,7 +659,7 @@ func forceFirstLetter(name *string) {
 	}
 }
 
-// convert XXX_YYY to XxxYyyConst (all have global namespace scope)
+// convertToConst changes XXX_YYY to XxxYyyConst (all go consts have global namespace scope).
 func convertToConst(name *string) {
 	parts := strings.Split(strings.ToLower(*name), "_")
 	s := ""
@@ -611,7 +670,8 @@ func convertToConst(name *string) {
 	*name = s + "Const"
 }
 
-// duplicated from n2k/pgninfo.go. Could export it there and use it here, but
+// isProprietaryPGN evaluates if its input falls into the proprietary PGN ranges.
+// Duplicated from n2k/pgninfo.go. Could export it there and use it here, but
 // we're generating a source file for that package, so a bootstrapping problem...
 func isProprietaryPGN(pgn uint32) bool {
 	if pgn >= 0x0EF00 && pgn <= 0x0EFFF {

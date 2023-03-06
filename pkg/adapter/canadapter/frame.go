@@ -35,6 +35,7 @@ SOFTWARE.
 
 */
 
+// Frame defines a canbus wire frame.
 type Frame struct {
 	// bit 0-28: CAN identifier (11/29 bit)
 	// bit 29: error message flag (ERR)
@@ -48,6 +49,7 @@ type Frame struct {
 	Data   [8]uint8
 }
 
+// NewPacketInfo instantiates a new Packet from a canbus Frame and surrounding context.
 func NewPacketInfo(message Frame) pgn.MessageInfo {
 	p := pgn.MessageInfo{
 		Timestamp: time.Now(),

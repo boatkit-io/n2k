@@ -6,11 +6,13 @@ import (
 	"strings"
 )
 
+// DebugDumpPGN uses reflection to generate a readable description of the input PGN struct.
 func DebugDumpPGN(p interface{}) string {
 	tp := reflect.TypeOf(p)
 	return tp.Name() + ": " + strings.Join(dumpFields(p), ", ")
 }
 
+// dumpFields dumps each field of the struct.
 func dumpFields(p interface{}) []string {
 	vp := reflect.ValueOf(p)
 	tp := reflect.TypeOf(p)

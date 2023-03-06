@@ -11077,6 +11077,127 @@ var pgnList = []PgnInfo{
 		},
 	},
 	{
+		PGN: 127490,
+		Description: "Electric Drive Status, Dynamic",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeElectricDriveStatusDynamic,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 4,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		
+		4: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		5: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		6: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		7: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		8: { 16,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		},
+	},
+	{
+		PGN: 127491,
+		Description: "Electric Energy Storage Status, Dynamic",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeElectricEnergyStorageStatusDynamic,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		3: { 16,
+			false,
+			"*float32",
+			60,
+			false,
+			},
+		4: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		5: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		6: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		7: { 16,
+			false,
+			"*float32",
+			0.1,
+			true,
+			},
+		8: { 16,
+			false,
+			"*float32",
+			0.1,
+			true,
+			},
+		9: { 4,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		10: { 4,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		},
+	},
+	{
 		PGN: 127493,
 		Description: "Transmission Parameters, Dynamic",
 		Fast: false,
@@ -11115,6 +11236,183 @@ var pgnList = []PgnInfo{
 			false,
 			},
 		
+		},
+	},
+	{
+		PGN: 127494,
+		Description: "Electric Drive Information",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeElectricDriveInformation,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 4,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		
+		4: { 16,
+			false,
+			"*float32",
+			0.1,
+			false,
+			},
+		5: { 32,
+			false,
+			"*uint32",
+			1,
+			false,
+			},
+		6: { 32,
+			false,
+			"*uint32",
+			1,
+			false,
+			},
+		7: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		8: { 16,
+			false,
+			"*float32",
+			0.25,
+			false,
+			},
+		9: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		10: { 16,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		11: { 16,
+			false,
+			"*float32",
+			0.1,
+			false,
+			},
+		12: { 16,
+			false,
+			"*float32",
+			0.1,
+			false,
+			},
+		13: { 32,
+			false,
+			"*uint32",
+			1,
+			false,
+			},
+		},
+	},
+	{
+		PGN: 127495,
+		Description: "Electric Energy Storage Information",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeElectricEnergyStorageInformation,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 4,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		
+		4: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		5: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		6: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		7: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		8: { 16,
+			false,
+			"*float32",
+			0.01,
+			false,
+			},
+		9: { 32,
+			false,
+			"*uint32",
+			1,
+			false,
+			},
+		10: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		11: { 16,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		12: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		13: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		
+		15: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		16: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
 		},
 	},
 	{
@@ -12380,6 +12678,131 @@ var pgnList = []PgnInfo{
 		},
 	},
 	{
+		PGN: 128001,
+		Description: "Vessel Acceleration",
+		Fast: false,
+		ManId: 0,
+		Decoder: DecodeVesselAcceleration,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 16,
+			false,
+			"*int16",
+			1,
+			true,
+			},
+		3: { 16,
+			false,
+			"*int16",
+			1,
+			true,
+			},
+		4: { 16,
+			false,
+			"*int16",
+			1,
+			true,
+			},
+		
+		},
+	},
+	{
+		PGN: 128002,
+		Description: "Electric Drive Status, Rapid Update",
+		Fast: false,
+		ManId: 0,
+		Decoder: DecodeElectricDriveStatusRapidUpdate,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		3: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		4: { 16,
+			false,
+			"*float32",
+			0.25,
+			false,
+			},
+		5: { 16,
+			false,
+			"*float32",
+			0.1,
+			false,
+			},
+		6: { 16,
+			false,
+			"*float32",
+			0.1,
+			true,
+			},
+		},
+	},
+	{
+		PGN: 128003,
+		Description: "Electric Energy Storage Status, Rapid Update",
+		Fast: false,
+		ManId: 0,
+		Decoder: DecodeElectricEnergyStorageStatusRapidUpdate,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		3: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		4: { 4,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		5: { 16,
+			false,
+			"*float32",
+			0.1,
+			false,
+			},
+		6: { 16,
+			false,
+			"*float32",
+			0.1,
+			true,
+			},
+		
+		},
+	},
+	{
 		PGN: 128006,
 		Description: "Thruster Control Status",
 		Fast: false,
@@ -12728,6 +13151,272 @@ var pgnList = []PgnInfo{
 		},
 	},
 	{
+		PGN: 128538,
+		Description: "Elevator Car Status",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeElevatorCarStatus,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		3: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		4: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		5: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		6: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		7: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		8: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		9: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		10: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		11: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		12: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		13: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		
+		15: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		16: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		17: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		18: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		19: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		20: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		
+		22: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		23: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		24: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		25: { 16,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		26: { 16,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		27: { 16,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		28: { 16,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		29: { 16,
+			false,
+			"*float32",
+			0.01,
+			true,
+			},
+		30: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		31: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		
+		},
+	},
+	{
+		PGN: 128768,
+		Description: "Elevator Motor Control",
+		Fast: false,
+		ManId: 0,
+		Decoder: DecodeElevatorMotorControl,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		3: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		4: { 4,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		5: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		
+		},
+	},
+	{
+		PGN: 128769,
+		Description: "Elevator Deck Push Button",
+		Fast: false,
+		ManId: 0,
+		Decoder: DecodeElevatorDeckPushButton,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		3: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		4: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		5: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		
+		},
+	},
+	{
 		PGN: 128776,
 		Description: "Windlass Control Status",
 		Fast: false,
@@ -12915,6 +13604,46 @@ var pgnList = []PgnInfo{
 			false,
 			"*float32",
 			60,
+			false,
+			},
+		
+		},
+	},
+	{
+		PGN: 128780,
+		Description: "Linear Actuator Control/Status",
+		Fast: false,
+		ManId: 0,
+		Decoder: DecodeLinearActuatorControlStatus,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		3: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		4: { 16,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		5: { 8,
+			false,
+			"*uint8",
+			1,
 			false,
 			},
 		
@@ -16525,6 +17254,54 @@ var pgnList = []PgnInfo{
 		ManId: 0,
 		Decoder: DecodeLabel,
 		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 24,
+			false,
+			"*uint32",
+			1,
+			false,
+			},
+		3: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		4: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		5: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		6: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		7: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		8: { 0,
+			true,
+			"string",
+			1,
+			false,
+			},
 		},
 	},
 	{
@@ -17719,6 +18496,82 @@ var pgnList = []PgnInfo{
 		},
 	},
 	{
+		PGN: 130330,
+		Description: "Lighting System Settings",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeLightingSystemSettings,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 2,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 4,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		
+		4: { 0,
+			true,
+			"string",
+			1,
+			false,
+			},
+		5: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		6: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		7: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		8: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		9: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		10: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		11: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		12: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		},
+	},
+	{
 		PGN: 130560,
 		Description: "Payload Mass",
 		Fast: false,
@@ -17747,6 +18600,321 @@ var pgnList = []PgnInfo{
 		5: { 32,
 			false,
 			"*uint32",
+			1,
+			false,
+			},
+		
+		},
+	},
+	{
+		PGN: 130561,
+		Description: "Lighting Zone",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeLightingZone,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 0,
+			true,
+			"string",
+			1,
+			false,
+			},
+		3: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		4: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		5: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		6: { 16,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		7: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		8: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		9: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		10: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		11: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		12: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		13: { 2,
+			false,
+			"OffOnConst",
+			1,
+			false,
+			},
+		
+		},
+	},
+	{
+		PGN: 130562,
+		Description: "Lighting Scene",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeLightingScene,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 0,
+			true,
+			"string",
+			1,
+			false,
+			},
+		3: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		4: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		},
+	},
+	{
+		PGN: 130563,
+		Description: "Lighting Device",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeLightingDevice,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		3: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		4: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		5: { 0,
+			true,
+			"string",
+			1,
+			false,
+			},
+		6: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		7: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		8: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		9: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		10: { 16,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		11: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		12: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		13: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		14: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		15: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		16: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		17: { 2,
+			false,
+			"OffOnConst",
+			1,
+			false,
+			},
+		
+		},
+	},
+	{
+		PGN: 130564,
+		Description: "Lighting Device Enumeration",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeLightingDeviceEnumeration,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		3: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		},
+	},
+	{
+		PGN: 130565,
+		Description: "Lighting Color Sequence",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeLightingColorSequence,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		},
+	},
+	{
+		PGN: 130566,
+		Description: "Lighting Program",
+		Fast: true,
+		ManId: 0,
+		Decoder: DecodeLightingProgram,
+		FieldInfo: map[int]FieldDescriptor{
+		1: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		2: { 0,
+			true,
+			"string",
+			1,
+			false,
+			},
+		3: { 0,
+			true,
+			"string",
+			1,
+			false,
+			},
+		4: { 4,
+			false,
+			"*uint8",
 			1,
 			false,
 			},
@@ -30898,6 +32066,179 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (int
 	}	
 	return val, nil
 }
+type ElectricDriveStatusDynamic struct {
+	Info MessageInfo
+	InverterMotorIdentifier *uint8
+	OperatingMode *uint8
+	MotorTemperature *float32
+	InverterTemperature *float32
+	CoolantTemperature *float32
+	GearTemperature *float32
+	ShaftTorque *uint16
+}
+func DecodeElectricDriveStatusDynamic(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val ElectricDriveStatusDynamic
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusDynamic-InverterMotorIdentifier: %w", err)
+	} else {
+		val.InverterMotorIdentifier = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(4); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusDynamic-OperatingMode: %w", err)
+	} else {
+		val.OperatingMode = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(4)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusDynamic-MotorTemperature: %w", err)
+	} else {
+		val.MotorTemperature = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusDynamic-InverterTemperature: %w", err)
+	} else {
+		val.InverterTemperature = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusDynamic-CoolantTemperature: %w", err)
+	} else {
+		val.CoolantTemperature = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusDynamic-GearTemperature: %w", err)
+	} else {
+		val.GearTemperature = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusDynamic-ShaftTorque: %w", err)
+	} else {
+		val.ShaftTorque = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
+	return val, nil
+}
+type ElectricEnergyStorageStatusDynamic struct {
+	Info MessageInfo
+	EnergyStorageIdentifier *uint8
+	StateOfCharge *uint8
+	TimeRemaining *float32
+	HighestCellTemperature *float32
+	LowestCellTemperature *float32
+	AverageCellTemperature *float32
+	MaxDischargeCurrent *float32
+	MaxChargeCurrent *float32
+	CoolingSystemStatus *uint8
+	HeatingSystemStatus *uint8
+}
+func DecodeElectricEnergyStorageStatusDynamic(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val ElectricEnergyStorageStatusDynamic
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusDynamic-EnergyStorageIdentifier: %w", err)
+	} else {
+		val.EnergyStorageIdentifier = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusDynamic-StateOfCharge: %w", err)
+	} else {
+		val.StateOfCharge = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 60); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusDynamic-TimeRemaining: %w", err)
+	} else {
+		val.TimeRemaining = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusDynamic-HighestCellTemperature: %w", err)
+	} else {
+		val.HighestCellTemperature = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusDynamic-LowestCellTemperature: %w", err)
+	} else {
+		val.LowestCellTemperature = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusDynamic-AverageCellTemperature: %w", err)
+	} else {
+		val.AverageCellTemperature = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusDynamic-MaxDischargeCurrent: %w", err)
+	} else {
+		val.MaxDischargeCurrent = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusDynamic-MaxChargeCurrent: %w", err)
+	} else {
+		val.MaxChargeCurrent = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(4); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusDynamic-CoolingSystemStatus: %w", err)
+	} else {
+		val.CoolingSystemStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(4); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusDynamic-HeatingSystemStatus: %w", err)
+	} else {
+		val.HeatingSystemStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
+	return val, nil
+}
 type TransmissionParametersDynamic struct {
 	Info MessageInfo
 	Instance EngineInstanceConst
@@ -30957,6 +32298,268 @@ func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *PGNDataStream
 	if stream.isEOF() {
 		return val, nil
 		}	
+	return val, nil
+}
+type ElectricDriveInformation struct {
+	Info MessageInfo
+	InverterMotorIdentifier *uint8
+	MotorType *uint8
+	MotorVoltageRating *float32
+	MaximumContinuousMotorPower *uint32
+	MaximumBoostMotorPower *uint32
+	MaximumMotorTemperatureRating *float32
+	RatedMotorSpeed *float32
+	MaximumControllerTemperatureRating *float32
+	MotorShaftTorqueRating *uint16
+	MotorDcVoltageDeratingThreshold *float32
+	MotorDcVoltageCutOffThreshold *float32
+	DriveMotorHours *uint32
+}
+func DecodeElectricDriveInformation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val ElectricDriveInformation
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-InverterMotorIdentifier: %w", err)
+	} else {
+		val.InverterMotorIdentifier = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(4); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-MotorType: %w", err)
+	} else {
+		val.MotorType = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(4)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-MotorVoltageRating: %w", err)
+	} else {
+		val.MotorVoltageRating = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt32(32); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-MaximumContinuousMotorPower: %w", err)
+	} else {
+		val.MaximumContinuousMotorPower = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt32(32); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-MaximumBoostMotorPower: %w", err)
+	} else {
+		val.MaximumBoostMotorPower = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-MaximumMotorTemperatureRating: %w", err)
+	} else {
+		val.MaximumMotorTemperatureRating = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.25); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-RatedMotorSpeed: %w", err)
+	} else {
+		val.RatedMotorSpeed = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-MaximumControllerTemperatureRating: %w", err)
+	} else {
+		val.MaximumControllerTemperatureRating = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-MotorShaftTorqueRating: %w", err)
+	} else {
+		val.MotorShaftTorqueRating = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-MotorDcVoltageDeratingThreshold: %w", err)
+	} else {
+		val.MotorDcVoltageDeratingThreshold = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-MotorDcVoltageCutOffThreshold: %w", err)
+	} else {
+		val.MotorDcVoltageCutOffThreshold = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt32(32); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveInformation-DriveMotorHours: %w", err)
+	} else {
+		val.DriveMotorHours = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
+	return val, nil
+}
+type ElectricEnergyStorageInformation struct {
+	Info MessageInfo
+	EnergyStorageIdentifier *uint8
+	MotorType *uint8
+	StorageChemistryConversion *uint8
+	MaximumTemperatureDerating *float32
+	MaximumTemperatureShutOff *float32
+	MinimumTemperatureDerating *float32
+	MinimumTemperatureShutOff *float32
+	UsableBatteryEnergy *uint32
+	StateOfHealth *uint8
+	BatteryCycleCounter *uint16
+	BatteryFullStatus *uint8
+	BatteryEmptyStatus *uint8
+	MaximumChargeSoc *uint8
+	MinimumChargeSoc *uint8
+}
+func DecodeElectricEnergyStorageInformation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val ElectricEnergyStorageInformation
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-EnergyStorageIdentifier: %w", err)
+	} else {
+		val.EnergyStorageIdentifier = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(4); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-MotorType: %w", err)
+	} else {
+		val.MotorType = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(4)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-StorageChemistryConversion: %w", err)
+	} else {
+		val.StorageChemistryConversion = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-MaximumTemperatureDerating: %w", err)
+	} else {
+		val.MaximumTemperatureDerating = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-MaximumTemperatureShutOff: %w", err)
+	} else {
+		val.MaximumTemperatureShutOff = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-MinimumTemperatureDerating: %w", err)
+	} else {
+		val.MinimumTemperatureDerating = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-MinimumTemperatureShutOff: %w", err)
+	} else {
+		val.MinimumTemperatureShutOff = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt32(32); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-UsableBatteryEnergy: %w", err)
+	} else {
+		val.UsableBatteryEnergy = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-StateOfHealth: %w", err)
+	} else {
+		val.StateOfHealth = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-BatteryCycleCounter: %w", err)
+	} else {
+		val.BatteryCycleCounter = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-BatteryFullStatus: %w", err)
+	} else {
+		val.BatteryFullStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-BatteryEmptyStatus: %w", err)
+	} else {
+		val.BatteryEmptyStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(4)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-MaximumChargeSoc: %w", err)
+	} else {
+		val.MaximumChargeSoc = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageInformation-MinimumChargeSoc: %w", err)
+	} else {
+		val.MinimumChargeSoc = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
 	return val, nil
 }
 type TripParametersVessel struct {
@@ -32902,6 +34505,182 @@ func DecodeLeewayAngle(Info MessageInfo, stream *PGNDataStream) (interface{}, er
 		}	
 	return val, nil
 }
+type VesselAcceleration struct {
+	Info MessageInfo
+	Sid *uint8
+	LongitudinalAcceleration *int16
+	TransverseAcceleration *int16
+	VerticalAcceleration *int16
+}
+func DecodeVesselAcceleration(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val VesselAcceleration
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for VesselAcceleration-Sid: %w", err)
+	} else {
+		val.Sid = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for VesselAcceleration-LongitudinalAcceleration: %w", err)
+	} else {
+		val.LongitudinalAcceleration = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for VesselAcceleration-TransverseAcceleration: %w", err)
+	} else {
+		val.TransverseAcceleration = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for VesselAcceleration-VerticalAcceleration: %w", err)
+	} else {
+		val.VerticalAcceleration = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}	
+	return val, nil
+}
+type ElectricDriveStatusRapidUpdate struct {
+	Info MessageInfo
+	InverterMotorController *uint8
+	ActiveMotorMode *uint8
+	BrakeMode *uint8
+	RotationalShaftSpeed *float32
+	MotorDcVoltage *float32
+	MotorDcCurrent *float32
+}
+func DecodeElectricDriveStatusRapidUpdate(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val ElectricDriveStatusRapidUpdate
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusRapidUpdate-InverterMotorController: %w", err)
+	} else {
+		val.InverterMotorController = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusRapidUpdate-ActiveMotorMode: %w", err)
+	} else {
+		val.ActiveMotorMode = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusRapidUpdate-BrakeMode: %w", err)
+	} else {
+		val.BrakeMode = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.25); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusRapidUpdate-RotationalShaftSpeed: %w", err)
+	} else {
+		val.RotationalShaftSpeed = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusRapidUpdate-MotorDcVoltage: %w", err)
+	} else {
+		val.MotorDcVoltage = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricDriveStatusRapidUpdate-MotorDcCurrent: %w", err)
+	} else {
+		val.MotorDcCurrent = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
+	return val, nil
+}
+type ElectricEnergyStorageStatusRapidUpdate struct {
+	Info MessageInfo
+	EnergyStorageIdentifier *uint8
+	BatteryStatus *uint8
+	IsolationStatus *uint8
+	BatteryError *uint8
+	BatteryVoltage *float32
+	BatteryCurrent *float32
+}
+func DecodeElectricEnergyStorageStatusRapidUpdate(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val ElectricEnergyStorageStatusRapidUpdate
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusRapidUpdate-EnergyStorageIdentifier: %w", err)
+	} else {
+		val.EnergyStorageIdentifier = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusRapidUpdate-BatteryStatus: %w", err)
+	} else {
+		val.BatteryStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusRapidUpdate-IsolationStatus: %w", err)
+	} else {
+		val.IsolationStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(4); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusRapidUpdate-BatteryError: %w", err)
+	} else {
+		val.BatteryError = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusRapidUpdate-BatteryVoltage: %w", err)
+	} else {
+		val.BatteryVoltage = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+		return nil, fmt.Errorf("parse failed for ElectricEnergyStorageStatusRapidUpdate-BatteryCurrent: %w", err)
+	} else {
+		val.BatteryCurrent = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}	
+	return val, nil
+}
 type ThrusterControlStatus struct {
 	Info MessageInfo
 	Sid *uint8
@@ -33393,6 +35172,401 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (interface
 	}	
 	return val, nil
 }
+type ElevatorCarStatus struct {
+	Info MessageInfo
+	Sid *uint8
+	ElevatorCarId *uint8
+	ElevatorCarUsage *uint8
+	SmokeSensorStatus *uint8
+	LimitSwitchSensorStatus *uint8
+	ProximitySwitchSensorStatus *uint8
+	InertialMeasurementUnitImuSensorStatus *uint8
+	ElevatorLoadLimitStatus *uint8
+	ElevatorLoadBalanceStatus *uint8
+	ElevatorLoadSensor1Status *uint8
+	ElevatorLoadSensor2Status *uint8
+	ElevatorLoadSensor3Status *uint8
+	ElevatorLoadSensor4Status *uint8
+	ElevatorCarMotionStatus *uint8
+	ElevatorCarDoorStatus *uint8
+	ElevatorCarEmergencyButtonStatus *uint8
+	ElevatorCarBuzzerStatus *uint8
+	OpenDoorButtonStatus *uint8
+	CloseDoorButtonStatus *uint8
+	CurrentDeck *uint8
+	DestinationDeck *uint8
+	TotalNumberOfDecks *uint8
+	WeightOfLoadCell1 *uint16
+	WeightOfLoadCell2 *uint16
+	WeightOfLoadCell3 *uint16
+	WeightOfLoadCell4 *uint16
+	SpeedOfElevatorCar *float32
+	ElevatorBrakeStatus *uint8
+	ElevatorMotorRotationControlStatus *uint8
+}
+func DecodeElevatorCarStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val ElevatorCarStatus
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-Sid: %w", err)
+	} else {
+		val.Sid = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorCarId: %w", err)
+	} else {
+		val.ElevatorCarId = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorCarUsage: %w", err)
+	} else {
+		val.ElevatorCarUsage = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-SmokeSensorStatus: %w", err)
+	} else {
+		val.SmokeSensorStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-LimitSwitchSensorStatus: %w", err)
+	} else {
+		val.LimitSwitchSensorStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ProximitySwitchSensorStatus: %w", err)
+	} else {
+		val.ProximitySwitchSensorStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-InertialMeasurementUnitImuSensorStatus: %w", err)
+	} else {
+		val.InertialMeasurementUnitImuSensorStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorLoadLimitStatus: %w", err)
+	} else {
+		val.ElevatorLoadLimitStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorLoadBalanceStatus: %w", err)
+	} else {
+		val.ElevatorLoadBalanceStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorLoadSensor1Status: %w", err)
+	} else {
+		val.ElevatorLoadSensor1Status = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorLoadSensor2Status: %w", err)
+	} else {
+		val.ElevatorLoadSensor2Status = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorLoadSensor3Status: %w", err)
+	} else {
+		val.ElevatorLoadSensor3Status = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorLoadSensor4Status: %w", err)
+	} else {
+		val.ElevatorLoadSensor4Status = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(4)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorCarMotionStatus: %w", err)
+	} else {
+		val.ElevatorCarMotionStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorCarDoorStatus: %w", err)
+	} else {
+		val.ElevatorCarDoorStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorCarEmergencyButtonStatus: %w", err)
+	} else {
+		val.ElevatorCarEmergencyButtonStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorCarBuzzerStatus: %w", err)
+	} else {
+		val.ElevatorCarBuzzerStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-OpenDoorButtonStatus: %w", err)
+	} else {
+		val.OpenDoorButtonStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-CloseDoorButtonStatus: %w", err)
+	} else {
+		val.CloseDoorButtonStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(4)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-CurrentDeck: %w", err)
+	} else {
+		val.CurrentDeck = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-DestinationDeck: %w", err)
+	} else {
+		val.DestinationDeck = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-TotalNumberOfDecks: %w", err)
+	} else {
+		val.TotalNumberOfDecks = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-WeightOfLoadCell1: %w", err)
+	} else {
+		val.WeightOfLoadCell1 = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-WeightOfLoadCell2: %w", err)
+	} else {
+		val.WeightOfLoadCell2 = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-WeightOfLoadCell3: %w", err)
+	} else {
+		val.WeightOfLoadCell3 = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-WeightOfLoadCell4: %w", err)
+	} else {
+		val.WeightOfLoadCell4 = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-SpeedOfElevatorCar: %w", err)
+	} else {
+		val.SpeedOfElevatorCar = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorBrakeStatus: %w", err)
+	} else {
+		val.ElevatorBrakeStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorCarStatus-ElevatorMotorRotationControlStatus: %w", err)
+	} else {
+		val.ElevatorMotorRotationControlStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(4)
+	if stream.isEOF() {
+		return val, nil
+		}	
+	return val, nil
+}
+type ElevatorMotorControl struct {
+	Info MessageInfo
+	Sid *uint8
+	ElevatorCarId *uint8
+	ElevatorCarUsage *uint8
+	MotorAccelerationDecelerationProfileSelection *uint8
+	MotorRotationalControlStatus *uint8
+}
+func DecodeElevatorMotorControl(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val ElevatorMotorControl
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorMotorControl-Sid: %w", err)
+	} else {
+		val.Sid = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorMotorControl-ElevatorCarId: %w", err)
+	} else {
+		val.ElevatorCarId = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorMotorControl-ElevatorCarUsage: %w", err)
+	} else {
+		val.ElevatorCarUsage = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(4); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorMotorControl-MotorAccelerationDecelerationProfileSelection: %w", err)
+	} else {
+		val.MotorAccelerationDecelerationProfileSelection = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorMotorControl-MotorRotationalControlStatus: %w", err)
+	} else {
+		val.MotorRotationalControlStatus = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(2)
+	if stream.isEOF() {
+		return val, nil
+		}	
+	return val, nil
+}
+type ElevatorDeckPushButton struct {
+	Info MessageInfo
+	Sid *uint8
+	ElevatorCallButtonId *uint8
+	DeckButtonId *uint8
+	ElevatorCarUsage *uint8
+	ElevatorCarButtonSelection *uint8
+}
+func DecodeElevatorDeckPushButton(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val ElevatorDeckPushButton
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorDeckPushButton-Sid: %w", err)
+	} else {
+		val.Sid = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorDeckPushButton-ElevatorCallButtonId: %w", err)
+	} else {
+		val.ElevatorCallButtonId = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorDeckPushButton-DeckButtonId: %w", err)
+	} else {
+		val.DeckButtonId = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorDeckPushButton-ElevatorCarUsage: %w", err)
+	} else {
+		val.ElevatorCarUsage = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for ElevatorDeckPushButton-ElevatorCarButtonSelection: %w", err)
+	} else {
+		val.ElevatorCarButtonSelection = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(24)
+	if stream.isEOF() {
+		return val, nil
+		}	
+	return val, nil
+}
 type WindlassControlStatus struct {
 	Info MessageInfo
 	Sid *uint8
@@ -33671,6 +35845,63 @@ func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *PGNDataStrea
 		} 
 	}
 	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}	
+	return val, nil
+}
+type LinearActuatorControlStatus struct {
+	Info MessageInfo
+	ActuatorIdentifier *uint8
+	CommandedDevicePosition *uint8
+	DevicePosition *uint8
+	MaximumDeviceTravel *uint16
+	DirectionOfTravel *uint8
+}
+func DecodeLinearActuatorControlStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val LinearActuatorControlStatus
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LinearActuatorControlStatus-ActuatorIdentifier: %w", err)
+	} else {
+		val.ActuatorIdentifier = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LinearActuatorControlStatus-CommandedDevicePosition: %w", err)
+	} else {
+		val.CommandedDevicePosition = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LinearActuatorControlStatus-DevicePosition: %w", err)
+	} else {
+		val.DevicePosition = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for LinearActuatorControlStatus-MaximumDeviceTravel: %w", err)
+	} else {
+		val.MaximumDeviceTravel = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LinearActuatorControlStatus-DirectionOfTravel: %w", err)
+	} else {
+		val.DirectionOfTravel = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(16)
 	if stream.isEOF() {
 		return val, nil
 		}	
@@ -39285,10 +41516,82 @@ func DecodeLoranCSignalData(Info MessageInfo, stream *PGNDataStream) (interface{
 }
 type Label struct {
 	Info MessageInfo
+	HardwareChannelId *uint8
+	Pgn *uint32
+	DataSourceInstanceFieldNumber *uint8
+	DataSourceInstanceValue *uint8
+	SecondaryEnumerationFieldNumber *uint8
+	SecondaryEnumerationFieldValue *uint8
+	ParameterFieldNumber *uint8
+	Label string
 }
 func DecodeLabel(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
 	var val Label
-	val.Info = Info	
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for Label-HardwareChannelId: %w", err)
+	} else {
+		val.HardwareChannelId = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt32(24); err != nil {
+		return nil, fmt.Errorf("parse failed for Label-Pgn: %w", err)
+	} else {
+		val.Pgn = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for Label-DataSourceInstanceFieldNumber: %w", err)
+	} else {
+		val.DataSourceInstanceFieldNumber = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for Label-DataSourceInstanceValue: %w", err)
+	} else {
+		val.DataSourceInstanceValue = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for Label-SecondaryEnumerationFieldNumber: %w", err)
+	} else {
+		val.SecondaryEnumerationFieldNumber = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for Label-SecondaryEnumerationFieldValue: %w", err)
+	} else {
+		val.SecondaryEnumerationFieldValue = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for Label-ParameterFieldNumber: %w", err)
+	} else {
+		val.ParameterFieldNumber = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
+		return nil, fmt.Errorf("parse failed for Label-Label: %w", err)
+	} else {
+		val.Label = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
 	return val, nil
 }
 type ChannelSourceConfiguration struct {
@@ -41443,6 +43746,117 @@ func DecodeMooredBuoyStationData(Info MessageInfo, stream *PGNDataStream) (inter
 	}	
 	return val, nil
 }
+type LightingSystemSettings struct {
+	Info MessageInfo
+	GlobalEnable *uint8
+	DefaultSettingsCommands *uint8
+	NameOfTheLightingController string
+	MaxScenes *uint8
+	MaxSceneConfigurationCount *uint8
+	MaxZones *uint8
+	MaxColorSequences *uint8
+	MaxColorSequenceColorCount *uint8
+	NumberOfPrograms *uint8
+	ControllerCapabilities *uint8
+	IdentifyDevice *uint8
+}
+func DecodeLightingSystemSettings(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val LightingSystemSettings
+	val.Info = Info
+	if v, err := stream.readUInt8(2); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-GlobalEnable: %w", err)
+	} else {
+		val.GlobalEnable = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(4); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-DefaultSettingsCommands: %w", err)
+	} else {
+		val.DefaultSettingsCommands = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(2)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-NameOfTheLightingController: %w", err)
+	} else {
+		val.NameOfTheLightingController = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-MaxScenes: %w", err)
+	} else {
+		val.MaxScenes = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-MaxSceneConfigurationCount: %w", err)
+	} else {
+		val.MaxSceneConfigurationCount = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-MaxZones: %w", err)
+	} else {
+		val.MaxZones = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-MaxColorSequences: %w", err)
+	} else {
+		val.MaxColorSequences = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-MaxColorSequenceColorCount: %w", err)
+	} else {
+		val.MaxColorSequenceColorCount = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-NumberOfPrograms: %w", err)
+	} else {
+		val.NumberOfPrograms = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-ControllerCapabilities: %w", err)
+	} else {
+		val.ControllerCapabilities = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-IdentifyDevice: %w", err)
+	} else {
+		val.IdentifyDevice = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
+	return val, nil
+}
 type PayloadMass struct {
 	Info MessageInfo
 	Sid *uint8
@@ -41490,6 +43904,621 @@ func DecodePayloadMass(Info MessageInfo, stream *PGNDataStream) (interface{}, er
 		} 
 	}
 	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}	
+	return val, nil
+}
+type LightingZone struct {
+	Info MessageInfo
+	ZoneIndex *uint8
+	ZoneName string
+	RedComponent *uint8
+	GreenComponent *uint8
+	BlueComponent *uint8
+	ColorTemperature *uint16
+	Intensity *uint8
+	ProgramId *uint8
+	ProgramColorSequenceIndex *uint8
+	ProgramIntensity *uint8
+	ProgramRate *uint8
+	ProgramColorSequence *uint8
+	ZoneEnabled OffOnConst
+}
+func DecodeLightingZone(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val LightingZone
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-ZoneIndex: %w", err)
+	} else {
+		val.ZoneIndex = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-ZoneName: %w", err)
+	} else {
+		val.ZoneName = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-RedComponent: %w", err)
+	} else {
+		val.RedComponent = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-GreenComponent: %w", err)
+	} else {
+		val.GreenComponent = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-BlueComponent: %w", err)
+	} else {
+		val.BlueComponent = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-ColorTemperature: %w", err)
+	} else {
+		val.ColorTemperature = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-Intensity: %w", err)
+	} else {
+		val.Intensity = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-ProgramId: %w", err)
+	} else {
+		val.ProgramId = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-ProgramColorSequenceIndex: %w", err)
+	} else {
+		val.ProgramColorSequenceIndex = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-ProgramIntensity: %w", err)
+	} else {
+		val.ProgramIntensity = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-ProgramRate: %w", err)
+	} else {
+		val.ProgramRate = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-ProgramColorSequence: %w", err)
+	} else {
+		val.ProgramColorSequence = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readLookupField(2); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingZone-ZoneEnabled: %w", err)
+	} else {
+		val.ZoneEnabled = OffOnConst(v)
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(6)
+	if stream.isEOF() {
+		return val, nil
+		}	
+	return val, nil
+}
+type LightingScene struct {
+	Info MessageInfo
+	SceneIndex *uint8
+	ZoneName string
+	Control *uint8
+	ConfigurationCount *uint8
+	Repeating1 []LightingSceneRepeating1
+}
+type LightingSceneRepeating1 struct {
+	ConfigurationIndex *uint8
+	ZoneIndex *uint8
+	DevicesId *uint8
+	ProgramIndex *uint8
+	ProgramColorSequenceIndex *uint8
+	ProgramIntensity *uint8
+	ProgramRate *uint8
+	ProgramColorSequenceRate *uint8
+}
+func DecodeLightingScene(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val LightingScene
+	val.Info = Info
+		var repeat1Count uint16 = 0
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingScene-SceneIndex: %w", err)
+	} else {
+		val.SceneIndex = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingScene-ZoneName: %w", err)
+	} else {
+		val.ZoneName = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingScene-Control: %w", err)
+	} else {
+		val.Control = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingScene-ConfigurationCount: %w", err)
+	} else {
+		val.ConfigurationCount = v
+		if v != nil {
+			repeat1Count = uint16(*v)
+		}
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+		if repeat1Count == 0 {
+			return val, nil
+		}
+	val.Repeating1 = make([]LightingSceneRepeating1, 0)
+	i := 0 
+	for {
+		var rep LightingSceneRepeating1
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingScene-ConfigurationIndex: %w", err)
+		} else {
+			rep.ConfigurationIndex = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingScene-ZoneIndex: %w", err)
+		} else {
+			rep.ZoneIndex = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingScene-DevicesId: %w", err)
+		} else {
+			rep.DevicesId = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingScene-ProgramIndex: %w", err)
+		} else {
+			rep.ProgramIndex = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingScene-ProgramColorSequenceIndex: %w", err)
+		} else {
+			rep.ProgramColorSequenceIndex = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingScene-ProgramIntensity: %w", err)
+		} else {
+			rep.ProgramIntensity = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingScene-ProgramRate: %w", err)
+		} else {
+			rep.ProgramRate = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingScene-ProgramColorSequenceRate: %w", err)
+		} else {
+			rep.ProgramColorSequenceRate = v
+		}
+		val.Repeating1 = append(val.Repeating1, rep)
+		if int(repeat1Count) == 0 {
+			if stream.isEOF() {
+				return val, nil
+			} 
+		} else {
+			i++
+			if i == int(repeat1Count) {
+				break
+			} 
+		} 
+	}	
+	return val, nil
+}
+type LightingDevice struct {
+	Info MessageInfo
+	DeviceId *uint8
+	DeviceCapabilities *uint8
+	ColorCapabilities *uint8
+	ZoneIndex *uint8
+	NameOfLightingDevice string
+	Status *uint8
+	RedComponent *uint8
+	GreenComponent *uint8
+	BlueComponent *uint8
+	ColorTemperature *uint16
+	Intensity *uint8
+	ProgramId *uint8
+	ProgramColorSequenceIndex *uint8
+	ProgramIntensity *uint8
+	ProgramRate *uint8
+	ProgramColorSequenceRate *uint8
+	Enabled OffOnConst
+}
+func DecodeLightingDevice(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val LightingDevice
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-DeviceId: %w", err)
+	} else {
+		val.DeviceId = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-DeviceCapabilities: %w", err)
+	} else {
+		val.DeviceCapabilities = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-ColorCapabilities: %w", err)
+	} else {
+		val.ColorCapabilities = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-ZoneIndex: %w", err)
+	} else {
+		val.ZoneIndex = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-NameOfLightingDevice: %w", err)
+	} else {
+		val.NameOfLightingDevice = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-Status: %w", err)
+	} else {
+		val.Status = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-RedComponent: %w", err)
+	} else {
+		val.RedComponent = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-GreenComponent: %w", err)
+	} else {
+		val.GreenComponent = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-BlueComponent: %w", err)
+	} else {
+		val.BlueComponent = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(16); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-ColorTemperature: %w", err)
+	} else {
+		val.ColorTemperature = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-Intensity: %w", err)
+	} else {
+		val.Intensity = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-ProgramId: %w", err)
+	} else {
+		val.ProgramId = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-ProgramColorSequenceIndex: %w", err)
+	} else {
+		val.ProgramColorSequenceIndex = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-ProgramIntensity: %w", err)
+	} else {
+		val.ProgramIntensity = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-ProgramRate: %w", err)
+	} else {
+		val.ProgramRate = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-ProgramColorSequenceRate: %w", err)
+	} else {
+		val.ProgramColorSequenceRate = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readLookupField(2); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDevice-Enabled: %w", err)
+	} else {
+		val.Enabled = OffOnConst(v)
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(6)
+	if stream.isEOF() {
+		return val, nil
+		}	
+	return val, nil
+}
+type LightingDeviceEnumeration struct {
+	Info MessageInfo
+	IndexOfFirstDevice *uint8
+	TotalNumberOfDevices *uint8
+	NumberOfDevices *uint8
+	Repeating1 []LightingDeviceEnumerationRepeating1
+}
+type LightingDeviceEnumerationRepeating1 struct {
+	DeviceId *uint8
+	Status *uint8
+}
+func DecodeLightingDeviceEnumeration(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val LightingDeviceEnumeration
+	val.Info = Info
+		var repeat1Count uint16 = 0
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-IndexOfFirstDevice: %w", err)
+	} else {
+		val.IndexOfFirstDevice = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-TotalNumberOfDevices: %w", err)
+	} else {
+		val.TotalNumberOfDevices = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-NumberOfDevices: %w", err)
+	} else {
+		val.NumberOfDevices = v
+		if v != nil {
+			repeat1Count = uint16(*v)
+		}
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+		if repeat1Count == 0 {
+			return val, nil
+		}
+	val.Repeating1 = make([]LightingDeviceEnumerationRepeating1, 0)
+	i := 0 
+	for {
+		var rep LightingDeviceEnumerationRepeating1
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-DeviceId: %w", err)
+		} else {
+			rep.DeviceId = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-Status: %w", err)
+		} else {
+			rep.Status = v
+		}
+		val.Repeating1 = append(val.Repeating1, rep)
+		if int(repeat1Count) == 0 {
+			if stream.isEOF() {
+				return val, nil
+			} 
+		} else {
+			i++
+			if i == int(repeat1Count) {
+				break
+			} 
+		} 
+	}	
+	return val, nil
+}
+type LightingColorSequence struct {
+	Info MessageInfo
+	SequenceIndex *uint8
+	ColorCount *uint8
+	Repeating1 []LightingColorSequenceRepeating1
+}
+type LightingColorSequenceRepeating1 struct {
+	ColorIndex *uint8
+	RedComponent *uint8
+	GreenComponent *uint8
+	BlueComponent *uint8
+	ColorTemperature *uint16
+}
+func DecodeLightingColorSequence(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val LightingColorSequence
+	val.Info = Info
+		var repeat1Count uint16 = 0
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingColorSequence-SequenceIndex: %w", err)
+	} else {
+		val.SequenceIndex = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingColorSequence-ColorCount: %w", err)
+	} else {
+		val.ColorCount = v
+		if v != nil {
+			repeat1Count = uint16(*v)
+		}
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+		if repeat1Count == 0 {
+			return val, nil
+		}
+	val.Repeating1 = make([]LightingColorSequenceRepeating1, 0)
+	i := 0 
+	for {
+		var rep LightingColorSequenceRepeating1
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingColorSequence-ColorIndex: %w", err)
+		} else {
+			rep.ColorIndex = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingColorSequence-RedComponent: %w", err)
+		} else {
+			rep.RedComponent = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingColorSequence-GreenComponent: %w", err)
+		} else {
+			rep.GreenComponent = v
+		}
+		if v, err := stream.readUInt8(8); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingColorSequence-BlueComponent: %w", err)
+		} else {
+			rep.BlueComponent = v
+		}
+		if v, err := stream.readUInt16(16); err != nil {
+			return nil, fmt.Errorf("parse failed for LightingColorSequence-ColorTemperature: %w", err)
+		} else {
+			rep.ColorTemperature = v
+		}
+		val.Repeating1 = append(val.Repeating1, rep)
+		if int(repeat1Count) == 0 {
+			if stream.isEOF() {
+				return val, nil
+			} 
+		} else {
+			i++
+			if i == int(repeat1Count) {
+				break
+			} 
+		} 
+	}	
+	return val, nil
+}
+type LightingProgram struct {
+	Info MessageInfo
+	ProgramId *uint8
+	NameOfProgram string
+	Description string
+	ProgramCapabilities *uint8
+}
+func DecodeLightingProgram(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+	var val LightingProgram
+	val.Info = Info
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingProgram-ProgramId: %w", err)
+	} else {
+		val.ProgramId = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingProgram-NameOfProgram: %w", err)
+	} else {
+		val.NameOfProgram = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readStringWithLengthAndControl(); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingProgram-Description: %w", err)
+	} else {
+		val.Description = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(4); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingProgram-ProgramCapabilities: %w", err)
+	} else {
+		val.ProgramCapabilities = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(4)
 	if stream.isEOF() {
 		return val, nil
 		}	

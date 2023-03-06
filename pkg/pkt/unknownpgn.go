@@ -7,6 +7,7 @@ import (
 	"github.com/boatkit-io/n2k/pkg/pgn"
 )
 
+// buildUnknownPGN returns an UnknownPGN with its Reason field set to the merged errors generated.
 func buildUnknownPGN(p *Packet) pgn.UnknownPGN {
 	ret := pgn.UnknownPGN{
 		Info:   p.Info,
@@ -27,6 +28,7 @@ func buildUnknownPGN(p *Packet) pgn.UnknownPGN {
 	return ret
 }
 
+// mergeErrorStrings merges the error strings in its argument.
 func mergeErrorStrings(errs []error) string {
 	sErrs := make([]string, 0, len(errs))
 	for i := range errs {
