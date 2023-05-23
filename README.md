@@ -1,7 +1,7 @@
 # Golang NMEA 2000 Library
 ## boatkit-io/n2k
 
-boatkit-io/n2k comprises packages (and associated tools) supporting the exchange of NMEA 200 messages across a range of transports. Client go code can send and receive strongly typed [go](https://go.dev) data structures, with the library translating to/from a stream of NMEA 2000 messages. (The current implementation reads from but doesn't write.)
+boatkit-io/n2k comprises packages (and associated tools) supporting the exchange of NMEA 2000 messages across a range of transports. Client go code can send and receive strongly typed [go](https://go.dev) data structures, with the library translating to/from a stream of NMEA 2000 messages. (The current implementation reads but doesn't write.)
 
 [NMEA 2000](https://www.nmea.org/content/STANDARDS/NMEA_2000) is a proprietary industry standard for inter-connecting marine electronic devices. This project leverages the great work of the [canboat](https://github.com/canboat/canboat) open-source project that has "reverse engineered the NMEA 2000 database by network observation and assembling data from public sources."
 

@@ -8,6 +8,33 @@ import "fmt"
 
 // Spit out global consts
 
+type LightingCommandConst uint8
+const (
+	Idle	LightingCommandConst = 0
+	DetectDevices	LightingCommandConst = 1
+	Reboot	LightingCommandConst = 2
+	FactoryReset	LightingCommandConst = 3
+	PoweringUp	LightingCommandConst = 4
+)
+
+func (e LightingCommandConst) GoString() string {return e.String() }
+func (e LightingCommandConst) String() string {
+	switch e {
+		case 0:
+			return "Idle"
+		case 1:
+			return "Detect Devices"
+		case 2:
+			return "Reboot"
+		case 3:
+			return "Factory Reset"
+		case 4:
+			return "Powering Up"
+	default:
+		return fmt.Sprintf("%s(%d)", "LightingCommandConst", int(e))
+	}
+}
+
 type IndustryCodeConst uint8
 const (
 	Global	IndustryCodeConst = 0
@@ -4933,6 +4960,7 @@ const (
 	SiriusXMTitle	FusionMessageIdConst = 37
 	SiriusXMArtist	FusionMessageIdConst = 38
 	SiriusXMGenre	FusionMessageIdConst = 40
+	ZoneName	FusionMessageIdConst = 45
 )
 
 func (e FusionMessageIdConst) GoString() string {return e.String() }
@@ -4986,6 +5014,8 @@ func (e FusionMessageIdConst) String() string {
 			return "SiriusXM Artist"
 		case 40:
 			return "SiriusXM Genre"
+		case 45:
+			return "Zone Name"
 	default:
 		return fmt.Sprintf("%s(%d)", "FusionMessageIdConst", int(e))
 	}
@@ -5552,6 +5582,9 @@ const (
 	LazySTurn	SimnetApEventsConst = 23
 	DepthTurn	SimnetApEventsConst = 24
 	ChangeCourse	SimnetApEventsConst = 26
+	TimerSync	SimnetApEventsConst = 61
+	PingPortEnd	SimnetApEventsConst = 112
+	PingStarboardEnd	SimnetApEventsConst = 113
 )
 
 func (e SimnetApEventsConst) GoString() string {return e.String() }
@@ -5583,6 +5616,12 @@ func (e SimnetApEventsConst) String() string {
 			return "Depth (Turn)"
 		case 26:
 			return "Change course"
+		case 61:
+			return "Timer sync"
+		case 112:
+			return "Ping port end"
+		case 113:
+			return "Ping starboard end"
 	default:
 		return fmt.Sprintf("%s(%d)", "SimnetApEventsConst", int(e))
 	}
@@ -5689,7 +5728,10 @@ var DeviceFunctionConstMap = map[int]map[int]string{10: {130: "Diagnostic",
 25: {130: "PC Gateway",
 	131: "NMEA 2000 to Analog Gateway",
 	132: "Analog to NMEA 2000 Gateway",
+	133: "NMEA 2000 to Serial Gateway",
 	135: "NMEA 0183 Gateway",
+	136: "NMEA Network Gateway",
+	137: "NMEA 2000 Wireless Gateway",
 	140: "Router",
 	150: "Bridge",
 	160: "Repeater",
@@ -5740,6 +5782,7 @@ var DeviceFunctionConstMap = map[int]map[int]string{10: {130: "Diagnostic",
 	 },
 60: {130: "Bottom Depth",
 	135: "Bottom Depth/Speed",
+	136: "Bottom Depth/Speed/Temperature",
 	140: "Ownship Attitude",
 	145: "Ownship Position (GNSS)",
 	150: "Ownship Position (Loran C)",
@@ -6544,6 +6587,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -6584,6 +6628,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -6645,6 +6690,7 @@ var pgnList = []PgnInfo{
 			0.0078125,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -6672,6 +6718,7 @@ var pgnList = []PgnInfo{
 			0.0078125,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -6699,6 +6746,7 @@ var pgnList = []PgnInfo{
 			0.0078125,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -6726,6 +6774,7 @@ var pgnList = []PgnInfo{
 			0.0078125,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -6774,6 +6823,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -6855,6 +6905,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -6936,6 +6987,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7017,6 +7069,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7119,6 +7172,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7200,6 +7254,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7281,6 +7336,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7362,6 +7418,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7573,12 +7630,13 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		4: { 4,
+		4: { 3,
 			false,
 			"BootStateConst",
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7613,6 +7671,7 @@ var pgnList = []PgnInfo{
 			0.01,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7693,6 +7752,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7715,7 +7775,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		4: { 3,
+		4: { 8,
 			false,
 			"*uint8",
 			1,
@@ -7756,6 +7816,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7830,6 +7891,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7852,6 +7914,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7874,6 +7937,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -7896,6 +7960,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -8183,6 +8248,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -8223,6 +8289,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -8298,6 +8365,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -8402,6 +8470,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -9384,72 +9453,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		6: { 8,
-			false,
-			"AirmarCalibrateStatusConst",
-			1,
-			false,
-			},
-		7: { 8,
-			false,
-			"*uint8",
-			1,
-			false,
-			},
-		8: { 16,
-			false,
-			"*float32",
-			0.01,
-			true,
-			},
-		9: { 16,
-			false,
-			"*float32",
-			0.01,
-			true,
-			},
-		10: { 16,
-			false,
-			"*float32",
-			0.01,
-			true,
-			},
-		11: { 16,
-			false,
-			"*float32",
-			0.01,
-			true,
-			},
-		12: { 16,
-			false,
-			"*float32",
-			0.01,
-			true,
-			},
-		13: { 16,
-			false,
-			"*float32",
-			0.01,
-			true,
-			},
-		14: { 16,
-			false,
-			"*float32",
-			0.1,
-			true,
-			},
-		15: { 16,
-			false,
-			"*float32",
-			0.05,
-			true,
-			},
-		16: { 16,
-			false,
-			"*float32",
-			0.05,
-			true,
-			},
+		
 		},
 	},
 	{
@@ -10918,6 +10922,7 @@ var pgnList = []PgnInfo{
 			0.0001,
 			true,
 			},
+		
 		},
 	},
 	{
@@ -10952,6 +10957,7 @@ var pgnList = []PgnInfo{
 			0.0001,
 			true,
 			},
+		
 		},
 	},
 	{
@@ -12308,12 +12314,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		5: { 8,
-			false,
-			"*uint8",
-			1,
-			false,
-			},
+		
 		6: { 8,
 			false,
 			"*uint8",
@@ -12327,6 +12328,12 @@ var pgnList = []PgnInfo{
 			false,
 			},
 		8: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
+		9: { 8,
 			false,
 			"*uint8",
 			1,
@@ -12359,6 +12366,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -12468,6 +12476,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -12736,19 +12745,20 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		4: { 16,
+		
+		5: { 16,
 			false,
 			"*float32",
 			0.25,
 			false,
 			},
-		5: { 16,
+		6: { 16,
 			false,
 			"*float32",
 			0.1,
 			false,
 			},
-		6: { 16,
+		7: { 16,
 			false,
 			"*float32",
 			0.1,
@@ -13588,7 +13598,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		4: { 16,
+		4: { 8,
 			false,
 			"*float32",
 			0.2,
@@ -13736,6 +13746,7 @@ var pgnList = []PgnInfo{
 			1,
 			true,
 			},
+		
 		},
 	},
 	{
@@ -14148,6 +14159,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -14288,6 +14300,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -14695,7 +14708,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		5: { 4,
+		5: { 3,
 			false,
 			"DirectionConst",
 			1,
@@ -14749,6 +14762,7 @@ var pgnList = []PgnInfo{
 			0.01,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -14916,6 +14930,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -15232,6 +15247,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -15849,6 +15865,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -15969,6 +15986,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -16097,10 +16115,10 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		13: { 64,
+		13: { 32,
 			false,
 			"*float32",
-			1e-06,
+			0.01,
 			true,
 			},
 		14: { 8,
@@ -16305,7 +16323,7 @@ var pgnList = []PgnInfo{
 	{
 		PGN: 129803,
 		Description: "AIS Interrogation",
-		Fast: false,
+		Fast: true,
 		ManId: 0,
 		Decoder: DecodeAisInterrogation,
 		FieldInfo: map[int]FieldDescriptor{
@@ -16335,6 +16353,64 @@ var pgnList = []PgnInfo{
 			false,
 			},
 		
+		7: { 32,
+			false,
+			"*uint32",
+			1,
+			false,
+			},
+		8: { 6,
+			false,
+			"AisMessageIdConst",
+			1,
+			false,
+			},
+		9: { 12,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		
+		11: { 6,
+			false,
+			"AisMessageIdConst",
+			1,
+			false,
+			},
+		12: { 12,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		
+		14: { 32,
+			false,
+			"*uint32",
+			1,
+			false,
+			},
+		15: { 6,
+			false,
+			"AisMessageIdConst",
+			1,
+			false,
+			},
+		16: { 12,
+			false,
+			"*uint16",
+			1,
+			false,
+			},
+		
+		
+		19: { 8,
+			false,
+			"*uint8",
+			1,
+			false,
+			},
 		},
 	},
 	{
@@ -17513,6 +17589,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -17942,6 +18019,7 @@ var pgnList = []PgnInfo{
 			0.01,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -18015,6 +18093,7 @@ var pgnList = []PgnInfo{
 			0.1,
 			true,
 			},
+		
 		},
 	},
 	{
@@ -18048,6 +18127,7 @@ var pgnList = []PgnInfo{
 			0.1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -18508,9 +18588,9 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		2: { 4,
+		2: { 3,
 			false,
-			"*uint8",
+			"LightingCommandConst",
 			1,
 			false,
 			},
@@ -18563,9 +18643,9 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
-		12: { 8,
+		12: { 32,
 			false,
-			"*uint8",
+			"*uint32",
 			1,
 			false,
 			},
@@ -18734,9 +18814,9 @@ var pgnList = []PgnInfo{
 		ManId: 0,
 		Decoder: DecodeLightingDevice,
 		FieldInfo: map[int]FieldDescriptor{
-		1: { 8,
+		1: { 32,
 			false,
-			"*uint8",
+			"*uint32",
 			1,
 			false,
 			},
@@ -18846,21 +18926,21 @@ var pgnList = []PgnInfo{
 		ManId: 0,
 		Decoder: DecodeLightingDeviceEnumeration,
 		FieldInfo: map[int]FieldDescriptor{
-		1: { 8,
+		1: { 16,
 			false,
-			"*uint8",
+			"*uint16",
 			1,
 			false,
 			},
-		2: { 8,
+		2: { 16,
 			false,
-			"*uint8",
+			"*uint16",
 			1,
 			false,
 			},
-		3: { 8,
+		3: { 16,
 			false,
-			"*uint8",
+			"*uint16",
 			1,
 			false,
 			},
@@ -19723,6 +19803,7 @@ var pgnList = []PgnInfo{
 			1,
 			false,
 			},
+		
 		},
 	},
 	{
@@ -24460,7 +24541,7 @@ func DecodeIsoTransportProtocolConnectionManagementAbort(Info MessageInfo, strea
 			return val, nil
 		} 
 	}
-	stream.skipBits(16)
+	stream.skipBits(24)
 	if stream.isEOF() {
 		return val, nil
 		}
@@ -24639,7 +24720,11 @@ func DecodeSeatalkWirelessKeypadLightControl(Info MessageInfo, stream *PGNDataSt
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type SeatalkWirelessKeypadControl struct {
@@ -24702,7 +24787,11 @@ func DecodeSeatalkWirelessKeypadControl(Info MessageInfo, stream *PGNDataStream)
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(24)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type VictronBatteryRegister struct {
@@ -24791,7 +24880,11 @@ func DecodeBus1PhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) 
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type Bus1PhaseBBasicAcQuantities struct {
@@ -24826,7 +24919,11 @@ func DecodeBus1PhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) 
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type Bus1PhaseABasicAcQuantities struct {
@@ -24861,7 +24958,11 @@ func DecodeBus1PhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) 
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type Bus1AverageBasicAcQuantities struct {
@@ -24896,7 +24997,11 @@ func DecodeBus1AverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream)
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type UtilityTotalAcEnergy struct {
@@ -24957,7 +25062,11 @@ func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStream)
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(30)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type UtilityPhaseCAcPower struct {
@@ -25062,7 +25171,11 @@ func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStream)
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(30)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type UtilityPhaseBAcPower struct {
@@ -25167,7 +25280,11 @@ func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStream)
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(14)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type UtilityPhaseAAcPower struct {
@@ -25272,7 +25389,11 @@ func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream) 
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(14)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type UtilityTotalAcPower struct {
@@ -25403,7 +25524,11 @@ func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStrea
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(14)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type GeneratorPhaseCAcPower struct {
@@ -25508,7 +25633,11 @@ func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStrea
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(14)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type GeneratorPhaseBAcPower struct {
@@ -25613,7 +25742,11 @@ func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStrea
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(14)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type GeneratorPhaseAAcPower struct {
@@ -25718,7 +25851,11 @@ func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(14)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type GeneratorTotalAcPower struct {
@@ -26039,14 +26176,18 @@ func DecodeAirmarBootStateAcknowledgment(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readLookupField(4); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarBootStateAcknowledgment-BootState: %w", err)
 	} else {
 		val.BootState = BootStateConst(v)
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(45)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type LowranceTemperature struct {
@@ -26100,7 +26241,11 @@ func DecodeLowranceTemperature(Info MessageInfo, stream *PGNDataStream) (interfa
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(24)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type ChetcoDimmer struct {
@@ -26226,7 +26371,11 @@ func DecodeAirmarBootStateRequest(Info MessageInfo, stream *PGNDataStream) (inte
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(48)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type AirmarAccessLevel struct {
@@ -26266,7 +26415,7 @@ func DecodeAirmarAccessLevel(Info MessageInfo, stream *PGNDataStream) (interface
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUInt8(3); err != nil {
+	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAccessLevel-FormatCode: %w", err)
 	} else {
 		val.FormatCode = v
@@ -26282,7 +26431,7 @@ func DecodeAirmarAccessLevel(Info MessageInfo, stream *PGNDataStream) (interface
 			return val, nil
 		} 
 	}
-	stream.skipBits(2)
+	stream.skipBits(5)
 	if stream.isEOF() {
 		return val, nil
 		}
@@ -26329,7 +26478,11 @@ func DecodeSimnetConfigureTemperatureSensor(Info MessageInfo, stream *PGNDataStr
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(48)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type SeatalkAlarm struct {
@@ -26446,7 +26599,11 @@ func DecodeSimnetTrimTabSensorCalibration(Info MessageInfo, stream *PGNDataStrea
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(48)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type SimnetPaddleWheelSpeedConfiguration struct {
@@ -26482,7 +26639,11 @@ func DecodeSimnetPaddleWheelSpeedConfiguration(Info MessageInfo, stream *PGNData
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(48)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type SimnetClearFluidLevelWarnings struct {
@@ -26518,7 +26679,11 @@ func DecodeSimnetClearFluidLevelWarnings(Info MessageInfo, stream *PGNDataStream
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(48)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type SimnetLgc2000Configuration struct {
@@ -26554,7 +26719,11 @@ func DecodeSimnetLgc2000Configuration(Info MessageInfo, stream *PGNDataStream) (
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(48)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type NavicoWirelessBatteryStatus struct {
@@ -26676,7 +26845,7 @@ func DecodeNavicoWirelessSignalStatus(Info MessageInfo, stream *PGNDataStream) (
 			return val, nil
 		} 
 	}
-	stream.skipBits(24)
+	stream.skipBits(32)
 	if stream.isEOF() {
 		return val, nil
 		}	
@@ -27023,7 +27192,11 @@ func DecodeSeatalkKeypadMessage(Info MessageInfo, stream *PGNDataStream) (interf
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type SeatalkKeypadHeartbeat struct {
@@ -27086,7 +27259,11 @@ func DecodeSeatalkKeypadHeartbeat(Info MessageInfo, stream *PGNDataStream) (inte
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(24)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type SeatalkPilotMode struct {
@@ -27207,7 +27384,11 @@ func DecodeAirmarDepthQualityFactor(Info MessageInfo, stream *PGNDataStream) (in
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(36)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type AirmarSpeedPulseCount struct {
@@ -27377,7 +27558,11 @@ func DecodeSimnetAutopilotMode(Info MessageInfo, stream *PGNDataStream) (interfa
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(48)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type NmeaRequestGroupFunction struct {
@@ -29321,17 +29506,6 @@ type AirmarTrueWindOptions struct {
 	IndustryCode IndustryCodeConst
 	ProprietaryId AirmarCommandConst
 	CogSubstitutionForHdg YesNoConst
-	CalibrationStatus AirmarCalibrateStatusConst
-	VerifyScore *uint8
-	XAxisGainValue *float32
-	YAxisGainValue *float32
-	ZAxisGainValue *float32
-	XAxisLinearOffset *float32
-	YAxisLinearOffset *float32
-	ZAxisLinearOffset *float32
-	XAxisAngularOffset *float32
-	PitchAndRollDamping *float32
-	CompassRateGyroDamping *float32
 }
 func DecodeAirmarTrueWindOptions(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
 	var val AirmarTrueWindOptions
@@ -29381,94 +29555,10 @@ func DecodeAirmarTrueWindOptions(Info MessageInfo, stream *PGNDataStream) (inter
 			return val, nil
 		} 
 	}
-	if v, err := stream.readLookupField(8); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-CalibrationStatus: %w", err)
-	} else {
-		val.CalibrationStatus = AirmarCalibrateStatusConst(v)
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
-	if v, err := stream.readUInt8(8); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-VerifyScore: %w", err)
-	} else {
-		val.VerifyScore = v
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-XAxisGainValue: %w", err)
-	} else {
-		val.XAxisGainValue = v
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-YAxisGainValue: %w", err)
-	} else {
-		val.YAxisGainValue = v
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-ZAxisGainValue: %w", err)
-	} else {
-		val.ZAxisGainValue = v
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-XAxisLinearOffset: %w", err)
-	} else {
-		val.XAxisLinearOffset = v
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-YAxisLinearOffset: %w", err)
-	} else {
-		val.YAxisLinearOffset = v
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-ZAxisLinearOffset: %w", err)
-	} else {
-		val.ZAxisLinearOffset = v
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
-	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-XAxisAngularOffset: %w", err)
-	} else {
-		val.XAxisAngularOffset = v
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
-	if v, err := stream.readSignedResolution(16, 0.05); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-PitchAndRollDamping: %w", err)
-	} else {
-		val.PitchAndRollDamping = v
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}
-	if v, err := stream.readSignedResolution(16, 0.05); err != nil {
-		return nil, fmt.Errorf("parse failed for AirmarTrueWindOptions-CompassRateGyroDamping: %w", err)
-	} else {
-		val.CompassRateGyroDamping = v
-		if stream.isEOF() {
-			return val, nil
-		} 
-	}	
+	stream.skipBits(22)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type AirmarSimulateMode struct {
@@ -31838,7 +31928,11 @@ func DecodeAttitude(Info MessageInfo, stream *PGNDataStream) (interface{}, error
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type MagneticVariation struct {
@@ -31886,7 +31980,11 @@ func DecodeMagneticVariation(Info MessageInfo, stream *PGNDataStream) (interface
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type EngineParametersRapidUpdate struct {
@@ -33842,7 +33940,7 @@ func DecodeInverterStatus(Info MessageInfo, stream *PGNDataStream) (interface{},
 			return val, nil
 		} 
 	}
-	stream.skipBits(2)
+	stream.skipBits(34)
 	if stream.isEOF() {
 		return val, nil
 		}	
@@ -33996,6 +34094,10 @@ func DecodeInverterConfigurationStatus(Info MessageInfo, stream *PGNDataStream) 
 			return val, nil
 		} 
 	}
+	stream.skipBits(6)
+	if stream.isEOF() {
+		return val, nil
+		}
 	if v, err := stream.readUInt8(8); err != nil {
 		return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-InverterMode: %w", err)
 	} else {
@@ -34062,7 +34164,11 @@ func DecodeAgsConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (inte
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(40)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type BatteryConfigurationStatus struct {
@@ -34217,7 +34323,11 @@ func DecodeAgsStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, erro
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type AcPowerCurrentPhaseA struct {
@@ -34589,6 +34699,10 @@ func DecodeElectricDriveStatusRapidUpdate(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
+	stream.skipBits(4)
+	if stream.isEOF() {
+		return val, nil
+		}
 	if v, err := stream.readUnsignedResolution(16, 0.25); err != nil {
 		return nil, fmt.Errorf("parse failed for ElectricDriveStatusRapidUpdate-RotationalShaftSpeed: %w", err)
 	} else {
@@ -35504,7 +35618,7 @@ func DecodeElevatorMotorControl(Info MessageInfo, stream *PGNDataStream) (interf
 			return val, nil
 		} 
 	}
-	stream.skipBits(2)
+	stream.skipBits(34)
 	if stream.isEOF() {
 		return val, nil
 		}	
@@ -35685,7 +35799,7 @@ func DecodeWindlassControlStatus(Info MessageInfo, stream *PGNDataStream) (inter
 			return val, nil
 		} 
 	}
-	stream.skipBits(4)
+	stream.skipBits(12)
 	if stream.isEOF() {
 		return val, nil
 		}	
@@ -35820,7 +35934,7 @@ func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.2); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 0.2); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-ControllerVoltage: %w", err)
 	} else {
 		val.ControllerVoltage = v
@@ -36026,7 +36140,11 @@ func DecodePositionDeltaRapidUpdate(Info MessageInfo, stream *PGNDataStream) (in
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type AltitudeDeltaRapidUpdate struct {
@@ -36678,7 +36796,11 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *PGNDataStream) (int
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(15)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type AisClassBExtendedPositionReport struct {
@@ -36895,7 +37017,11 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(5)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type AisAidsToNavigationAtonReport struct {
@@ -37500,7 +37626,7 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *PGNDataStream)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readLookupField(4); err != nil {
+	if v, err := stream.readLookupField(3); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-NavigationDirectionInRoute: %w", err)
 	} else {
 		val.NavigationDirectionInRoute = DirectionConst(v)
@@ -37516,7 +37642,7 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *PGNDataStream)
 			return val, nil
 		} 
 	}
-	stream.skipBits(2)
+	stream.skipBits(3)
 	if stream.isEOF() {
 		return val, nil
 		}
@@ -37618,7 +37744,11 @@ func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *PGNDataStream) (interfa
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type NavigationRouteTimeToFromMark struct {
@@ -37857,7 +37987,11 @@ func DecodeGnssControlStatus(Info MessageInfo, stream *PGNDataStream) (interface
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(6)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type GnssDops struct {
@@ -38371,7 +38505,11 @@ func DecodeGnssRaimSettings(Info MessageInfo, stream *PGNDataStream) (interface{
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(32)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type GnssPseudorangeErrorStatistics struct {
@@ -39284,7 +39422,11 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(3)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type AisAddressedBinaryMessage struct {
@@ -39472,7 +39614,11 @@ func DecodeAisAcknowledge(Info MessageInfo, stream *PGNDataStream) (interface{},
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(6)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type AisBinaryBroadcastMessage struct {
@@ -39666,7 +39812,7 @@ func DecodeAisSarAircraftPositionReport(Info MessageInfo, stream *PGNDataStream)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(64, 1e-06); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AisSarAircraftPositionReport-Altitude: %w", err)
 	} else {
 		val.Altitude = v
@@ -39966,17 +40112,19 @@ type AisInterrogation struct {
 	RepeatIndicator RepeatIndicatorConst
 	SourceId *uint32
 	AisTransceiverInformation AisTransceiverConst
-	Repeating1 []AisInterrogationRepeating1
-}
-type AisInterrogationRepeating1 struct {
-	DestinationId *uint32
-	MessageIdA AisMessageIdConst
-	SlotOffsetA *uint16
+	DestinationId1 *uint32
+	MessageId11 AisMessageIdConst
+	SlotOffset11 *uint16
+	MessageId12 AisMessageIdConst
+	SlotOffset12 *uint16
+	DestinationId2 *uint32
+	MessageId21 AisMessageIdConst
+	SlotOffset21 *uint16
+	Sid *uint8
 }
 func DecodeAisInterrogation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
 	var val AisInterrogation
 	val.Info = Info
-		var repeat1Count uint16 = 0
 	if v, err := stream.readLookupField(6); err != nil {
 		return nil, fmt.Errorf("parse failed for AisInterrogation-MessageId: %w", err)
 	} else {
@@ -40017,36 +40165,92 @@ func DecodeAisInterrogation(Info MessageInfo, stream *PGNDataStream) (interface{
 	if stream.isEOF() {
 		return val, nil
 		}
-	val.Repeating1 = make([]AisInterrogationRepeating1, 0)
-	i := 0 
-	for {
-		var rep AisInterrogationRepeating1
-		if v, err := stream.readUInt32(32); err != nil {
-			return nil, fmt.Errorf("parse failed for AisInterrogation-DestinationId: %w", err)
-		} else {
-			rep.DestinationId = v
+	if v, err := stream.readUInt32(32); err != nil {
+		return nil, fmt.Errorf("parse failed for AisInterrogation-DestinationId1: %w", err)
+	} else {
+		val.DestinationId1 = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readLookupField(6); err != nil {
+		return nil, fmt.Errorf("parse failed for AisInterrogation-MessageId11: %w", err)
+	} else {
+		val.MessageId11 = AisMessageIdConst(v)
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(12); err != nil {
+		return nil, fmt.Errorf("parse failed for AisInterrogation-SlotOffset11: %w", err)
+	} else {
+		val.SlotOffset11 = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(2)
+	if stream.isEOF() {
+		return val, nil
 		}
-		stream.skipBits(2)
-		if v, err := stream.readLookupField(6); err != nil {
-			return nil, fmt.Errorf("parse failed for AisInterrogation-MessageIdA: %w", err)
-		} else {
-			rep.MessageIdA = AisMessageIdConst(v)
+	if v, err := stream.readLookupField(6); err != nil {
+		return nil, fmt.Errorf("parse failed for AisInterrogation-MessageId12: %w", err)
+	} else {
+		val.MessageId12 = AisMessageIdConst(v)
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(12); err != nil {
+		return nil, fmt.Errorf("parse failed for AisInterrogation-SlotOffset12: %w", err)
+	} else {
+		val.SlotOffset12 = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(2)
+	if stream.isEOF() {
+		return val, nil
 		}
-		if v, err := stream.readUInt16(16); err != nil {
-			return nil, fmt.Errorf("parse failed for AisInterrogation-SlotOffsetA: %w", err)
-		} else {
-			rep.SlotOffsetA = v
+	if v, err := stream.readUInt32(32); err != nil {
+		return nil, fmt.Errorf("parse failed for AisInterrogation-DestinationId2: %w", err)
+	} else {
+		val.DestinationId2 = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readLookupField(6); err != nil {
+		return nil, fmt.Errorf("parse failed for AisInterrogation-MessageId21: %w", err)
+	} else {
+		val.MessageId21 = AisMessageIdConst(v)
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt16(12); err != nil {
+		return nil, fmt.Errorf("parse failed for AisInterrogation-SlotOffset21: %w", err)
+	} else {
+		val.SlotOffset21 = v
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(2)
+	if stream.isEOF() {
+		return val, nil
 		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		if int(repeat1Count) == 0 {
-			if stream.isEOF() {
-				return val, nil
-			} 
-		} else {
-			i++
-			if i == int(repeat1Count) {
-				break
-			} 
+	stream.skipBits(4)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for AisInterrogation-Sid: %w", err)
+	} else {
+		val.Sid = v
+		if stream.isEOF() {
+			return val, nil
 		} 
 	}	
 	return val, nil
@@ -40511,7 +40715,7 @@ func DecodeAisClassBGroupAssignment(Info MessageInfo, stream *PGNDataStream) (in
 			return val, nil
 		} 
 	}
-	stream.skipBits(2)
+	stream.skipBits(4)
 	if stream.isEOF() {
 		return val, nil
 		}
@@ -42014,7 +42218,11 @@ func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *PGND
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(2)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type RouteAndWpServiceRouteWpNamePosition struct {
@@ -42946,7 +43154,11 @@ func DecodeTemperature(Info MessageInfo, stream *PGNDataStream) (interface{}, er
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type Humidity struct {
@@ -43047,7 +43259,11 @@ func DecodeActualPressure(Info MessageInfo, stream *PGNDataStream) (interface{},
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type SetPressure struct {
@@ -43091,7 +43307,11 @@ func DecodeSetPressure(Info MessageInfo, stream *PGNDataStream) (interface{}, er
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type TemperatureExtendedRange struct {
@@ -43749,7 +43969,7 @@ func DecodeMooredBuoyStationData(Info MessageInfo, stream *PGNDataStream) (inter
 type LightingSystemSettings struct {
 	Info MessageInfo
 	GlobalEnable *uint8
-	DefaultSettingsCommands *uint8
+	DefaultSettingsCommand LightingCommandConst
 	NameOfTheLightingController string
 	MaxScenes *uint8
 	MaxSceneConfigurationCount *uint8
@@ -43758,7 +43978,7 @@ type LightingSystemSettings struct {
 	MaxColorSequenceColorCount *uint8
 	NumberOfPrograms *uint8
 	ControllerCapabilities *uint8
-	IdentifyDevice *uint8
+	IdentifyDevice *uint32
 }
 func DecodeLightingSystemSettings(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
 	var val LightingSystemSettings
@@ -43771,15 +43991,15 @@ func DecodeLightingSystemSettings(Info MessageInfo, stream *PGNDataStream) (inte
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUInt8(4); err != nil {
-		return nil, fmt.Errorf("parse failed for LightingSystemSettings-DefaultSettingsCommands: %w", err)
+	if v, err := stream.readLookupField(3); err != nil {
+		return nil, fmt.Errorf("parse failed for LightingSystemSettings-DefaultSettingsCommand: %w", err)
 	} else {
-		val.DefaultSettingsCommands = v
+		val.DefaultSettingsCommand = LightingCommandConst(v)
 		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	stream.skipBits(2)
+	stream.skipBits(3)
 	if stream.isEOF() {
 		return val, nil
 		}
@@ -43847,7 +44067,7 @@ func DecodeLightingSystemSettings(Info MessageInfo, stream *PGNDataStream) (inte
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUInt8(8); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LightingSystemSettings-IdentifyDevice: %w", err)
 	} else {
 		val.IdentifyDevice = v
@@ -44049,7 +44269,7 @@ type LightingScene struct {
 type LightingSceneRepeating1 struct {
 	ConfigurationIndex *uint8
 	ZoneIndex *uint8
-	DevicesId *uint8
+	DevicesId *uint32
 	ProgramIndex *uint8
 	ProgramColorSequenceIndex *uint8
 	ProgramIntensity *uint8
@@ -44112,7 +44332,7 @@ func DecodeLightingScene(Info MessageInfo, stream *PGNDataStream) (interface{}, 
 		} else {
 			rep.ZoneIndex = v
 		}
-		if v, err := stream.readUInt8(8); err != nil {
+		if v, err := stream.readUInt32(32); err != nil {
 			return nil, fmt.Errorf("parse failed for LightingScene-DevicesId: %w", err)
 		} else {
 			rep.DevicesId = v
@@ -44158,7 +44378,7 @@ func DecodeLightingScene(Info MessageInfo, stream *PGNDataStream) (interface{}, 
 }
 type LightingDevice struct {
 	Info MessageInfo
-	DeviceId *uint8
+	DeviceId *uint32
 	DeviceCapabilities *uint8
 	ColorCapabilities *uint8
 	ZoneIndex *uint8
@@ -44179,7 +44399,7 @@ type LightingDevice struct {
 func DecodeLightingDevice(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
 	var val LightingDevice
 	val.Info = Info
-	if v, err := stream.readUInt8(8); err != nil {
+	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for LightingDevice-DeviceId: %w", err)
 	} else {
 		val.DeviceId = v
@@ -44323,20 +44543,20 @@ func DecodeLightingDevice(Info MessageInfo, stream *PGNDataStream) (interface{},
 }
 type LightingDeviceEnumeration struct {
 	Info MessageInfo
-	IndexOfFirstDevice *uint8
-	TotalNumberOfDevices *uint8
-	NumberOfDevices *uint8
+	IndexOfFirstDevice *uint16
+	TotalNumberOfDevices *uint16
+	NumberOfDevices *uint16
 	Repeating1 []LightingDeviceEnumerationRepeating1
 }
 type LightingDeviceEnumerationRepeating1 struct {
-	DeviceId *uint8
+	DeviceId *uint32
 	Status *uint8
 }
 func DecodeLightingDeviceEnumeration(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
 	var val LightingDeviceEnumeration
 	val.Info = Info
 		var repeat1Count uint16 = 0
-	if v, err := stream.readUInt8(8); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-IndexOfFirstDevice: %w", err)
 	} else {
 		val.IndexOfFirstDevice = v
@@ -44344,7 +44564,7 @@ func DecodeLightingDeviceEnumeration(Info MessageInfo, stream *PGNDataStream) (i
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUInt8(8); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-TotalNumberOfDevices: %w", err)
 	} else {
 		val.TotalNumberOfDevices = v
@@ -44352,7 +44572,7 @@ func DecodeLightingDeviceEnumeration(Info MessageInfo, stream *PGNDataStream) (i
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUInt8(8); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-NumberOfDevices: %w", err)
 	} else {
 		val.NumberOfDevices = v
@@ -44370,7 +44590,7 @@ func DecodeLightingDeviceEnumeration(Info MessageInfo, stream *PGNDataStream) (i
 	i := 0 
 	for {
 		var rep LightingDeviceEnumerationRepeating1
-		if v, err := stream.readUInt8(8); err != nil {
+		if v, err := stream.readUInt32(32); err != nil {
 			return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-DeviceId: %w", err)
 		} else {
 			rep.DeviceId = v
@@ -45871,7 +46091,11 @@ func DecodeZoneVolume(Info MessageInfo, stream *PGNDataStream) (interface{}, err
 		if stream.isEOF() {
 			return val, nil
 		} 
-	}	
+	}
+	stream.skipBits(32)
+	if stream.isEOF() {
+		return val, nil
+		}	
 	return val, nil
 }
 type AvailableAudioEqPresets struct {
@@ -51070,7 +51294,7 @@ func DecodeMaretronSwitchStatusCounter(Info MessageInfo, stream *PGNDataStream) 
 			return val, nil
 		} 
 	}
-	stream.skipBits(16)
+	stream.skipBits(6)
 	if stream.isEOF() {
 		return val, nil
 		}	
