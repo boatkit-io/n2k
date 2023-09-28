@@ -7,6 +7,7 @@ import (
 	"io"
 	"math"
 	"path/filepath"
+	"slices"
 	"strconv"
 
 	//	"math"
@@ -150,6 +151,14 @@ func (conv *canboatConverter) init() {
 }
 
 func (conv *canboatConverter) fixup() {
+	// Delete PGNs that this lib doesn't know how to deal with for now.
+	conv.PGNs = slices.DeleteFunc(conv.PGNs, func(pgn PGN) (delete bool) {
+		for field := range pgn.Fields {
+			delete = pgn.Fields[field].FieldType == "KEY_VALUE"
+		}
+		return delete
+	})
+
 	conv.fixIDs()
 	conv.fixEnumDefs()
 	conv.fixRepeating()
