@@ -37682,9 +37682,6 @@ func DecodeNmeaReadFieldsGroupFunction(Info MessageInfo, stream *PGNDataStream) 
 			return nil, fmt.Errorf("parse failed for NmeaReadFieldsGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
-			if v != nil {
-				fieldIndex = *v
-			}
 		}
 		val.Repeating2 = append(val.Repeating2, rep)
 		if int(repeat2Count) == 0 {
@@ -37848,9 +37845,6 @@ func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *PGNDataStr
 			return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
-			if v != nil {
-				fieldIndex = *v
-			}
 		}
 		if v, err := stream.readVariableData(*val.Pgn, manufacturer, fieldIndex); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-Value: %w", err)
@@ -38019,9 +38013,6 @@ func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *PGNDataStream)
 			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
-			if v != nil {
-				fieldIndex = *v
-			}
 		}
 		if v, err := stream.readVariableData(*val.Pgn, manufacturer, fieldIndex); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-Value: %w", err)
@@ -38190,9 +38181,6 @@ func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *PGNDataSt
 			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-Parameter: %w", err)
 		} else {
 			rep.Parameter = v
-			if v != nil {
-				fieldIndex = *v
-			}
 		}
 		if v, err := stream.readVariableData(*val.Pgn, manufacturer, fieldIndex); err != nil {
 			return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-Value: %w", err)
