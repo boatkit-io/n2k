@@ -92,7 +92,7 @@ func TestFilterFast(t *testing.T) {
 	p.GetManCode()
 	p.AddDecoders()
 	assert.Equal(t, 0, len(p.ParseErrors))
-	assert.Equal(t, 23, len(p.Decoders))
+	assert.Equal(t, 16, len(p.Decoders)) // was 23, but 1 is furuno, and 6 have no sample data
 }
 
 func TestBroadcast(t *testing.T) {

@@ -39,21 +39,35 @@ func main() {
 	fmt.Println("Entered Main")
 	builder := newCanboatConverter()
 	builder.fixup()
+	builder.filter()
 	builder.write()
 
 }
 
 // canboatConverter is inflated from the json file canboat.json.
 // The data is massaged and used to generate the output file.
+// We filter PGNs that have never been seen into a separate list. If one is encountered we'll log it and its data, and return an UnknownPGN to
+// allow processing to continue.
 type canboatConverter struct {
-	Comment       string
-	CreatorCode   string
-	License       string
-	Version       string
-	BitEnums      []BitEnumeration            `json:"LookupBitEnumerations"`
-	Enums         []LookupEnumeration         `json:"LookupEnumerations"`
-	IndirectEnums []LookupIndirectEnumeration `json:"LookupIndirectEnumerations"`
-	PGNs          []PGN
+	Comment        string
+	CreatorCode    string
+	License        string
+	Version        string
+	PhysicalUnits  []PhysicalUnit              `json:"PhysicalQuantities"`
+	BitEnums       []BitEnumeration            `json:"LookupBitEnumerations"`
+	Enums          []LookupEnumeration         `json:"LookupEnumerations"`
+	IndirectEnums  []LookupIndirectEnumeration `json:"LookupIndirectEnumerations"`
+	FieldTypeEnums []FieldTypeEnumeration      `json:"LookupFieldTypeEnumerations"`
+	PGNs           []*PGN
+	NeverSeenPGNs  []*PGN
+	IncompletePGNS []*PGN
+}
+
+type PhysicalUnit struct {
+	Name            string
+	Description     string
+	UnitDescription string
+	Unit            string
 }
 
 // LookupEnumeration instances contain name/value pairs for constants used by NMEA data objects
@@ -97,6 +111,24 @@ type BitEnumPair struct {
 	Bit   int
 }
 
+// FieldTypeEnumeration instances contain a list of EnumFieldTypes for a given PGN.
+type FieldTypeEnumeration struct {
+	Name                string
+	MaxValue            int
+	EnumFieldTypeValues []EnumFieldType
+}
+
+// EnumFieldType contains the possible fields found in a FieldTypeEnumeration
+type EnumFieldType struct {
+	Name          string
+	Value         uint32
+	FieldType     string
+	Resolution    float32
+	Unit          string
+	BitLength     uint8
+	BitLookupName string `json:"LookupBitEnumeration"`
+}
+
 // PGN is the core data structure describing a NMEA message.
 type PGN struct {
 	PGN                          uint32
@@ -105,6 +137,7 @@ type PGN struct {
 	Explanation                  string
 	Type                         string
 	Complete                     bool
+	Missing                      []string
 	FieldCount                   uint8
 	Length                       uint32
 	MinLength                    uint32
@@ -139,11 +172,12 @@ type PGNField struct {
 	RangeMax                 float32
 	Match                    *int
 	Signed                   bool
-	Units                    string
+	Unit                     string
 	LookupName               string `json:"LookupEnumeration"`
 	BitLookupName            string `json:"LookupBitEnumeration"`
 	IndirectLookupName       string `json:"LookupIndirectEnumeration"`
 	IndirectLookupFieldOrder uint8  `json:"LookupIndirectEnumerationFieldOrder"`
+	FieldTypeLookupName      string `json:"LookupFieldTypeEnumeration"`
 }
 
 // newCanboatConverter instantiates a new converter
@@ -155,14 +189,15 @@ func newCanboatConverter() *canboatConverter {
 
 // init initializes a canboatConverter from canboat.json.
 func (conv *canboatConverter) init() {
-	raw, _ := loadCachedWebContent("canboatjson", "https://github.com/canboat/canboat/raw/master/docs/canboat.json")
+	raw, _ := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/boatkit-io/canboat/boatkit.0.0.0/docs/canboat.json")
 	err := json.Unmarshal(raw, conv)
 	if err != nil {
 		log.Info(err)
 	}
-	log.Infof("\nInitially Parsed Bitfield enums: %d", len(conv.BitEnums))
 	log.Infof("Initially Parsed Lookup enums: %d", len(conv.Enums))
 	log.Infof("Initially Parsed IndirectLookup enums: %d", len(conv.IndirectEnums))
+	log.Infof("Initially Parsed BitLookup enums: %d", len(conv.BitEnums))
+	log.Infof("Initially Parsed FieldTypeLookup enums: %d", len(conv.FieldTypeEnums))
 	log.Infof("Parsed pgns: %d", len(conv.PGNs))
 }
 
@@ -172,6 +207,39 @@ func (conv *canboatConverter) fixup() {
 	conv.fixEnumDefs()
 	conv.fixRepeating()
 	conv.validate()
+}
+
+func (conv *canboatConverter) filter() {
+	known := make([]*PGN, 0)
+	unknown := make([]*PGN, 0)
+	incomplete := make([]*PGN, 0)
+	var keep bool
+	for _, pgn := range conv.PGNs {
+		keep = true
+		if !pgn.Complete {
+			switch len(pgn.Missing) {
+			case 0:
+				panic("Complete is false but Missing is empty!")
+			case 1:
+				keep = true // pgn.Missing[0] == "Interval"
+			default:
+				incomplete = append(incomplete, pgn)
+				for _, miss := range pgn.Missing {
+					if miss == "SampleData" {
+						keep = false
+						unknown = append(unknown, pgn)
+					}
+				}
+			}
+		}
+		if keep {
+			known = append(known, pgn)
+		}
+	}
+	conv.PGNs = known
+	conv.NeverSeenPGNs = unknown
+	conv.IncompletePGNS = incomplete
+	log.Infof("After filtering, known: %d, unknown: %d, incomplete: %d", len(conv.PGNs), len(conv.NeverSeenPGNs), len(conv.IncompletePGNS))
 }
 
 // write outputs the pgninfo_generated.go file. Most of the work occurs in the template.
@@ -193,6 +261,7 @@ func (conv *canboatConverter) write() {
 			"makeIndirectMap":      makeIndirectMap,
 			"derefInt":             func(ip *int) int { return *ip },
 			"isNil":                func(fp *int) bool { return fp == nil },
+			"contains":             func(in, substr string) bool { return strings.Contains(in, substr) },
 		}).Parse(pgninfoTemplate))
 
 		templateData := struct {
@@ -234,6 +303,9 @@ func (conv *canboatConverter) fixIDs() {
 // fixupField capitializes Id's first char, assures field name is unique, and forces lookup names.
 func fixupField(field *PGNField, dedup DeDuper) {
 	field.Id = capitalizeFirstChar(field.Id)
+	if len(field.FieldTypeLookupName) > 0 {
+		convertToConst(&field.FieldTypeLookupName)
+	}
 	if field.FieldType == "LOOKUP" && len(field.LookupName) == 0 {
 		log.Infof("Lookup without Enumeration Name: " + field.Id)
 	}
@@ -254,7 +326,9 @@ func fixupField(field *PGNField, dedup DeDuper) {
 // fixRepeating identifies the range of repeating fields and extracts them to their own slice(s).
 func (builder *canboatConverter) fixRepeating() {
 	for i := range builder.PGNs {
-		pgn := &builder.PGNs[i]
+		pgn := builder.PGNs[i]
+		pgn.AllFields = make([]PGNField, 0)
+		pgn.AllFields = append(pgn.AllFields, pgn.Fields...)
 		if pgn.RepeatingFieldSet2Size > 0 { // work back from the end
 			pgn.FieldsRepeating2 = pgn.Fields[pgn.RepeatingFieldSet2StartField-1 : pgn.RepeatingFieldSet2StartField-1+pgn.RepeatingFieldSet2Size]
 			pgn.Fields = pgn.Fields[0 : pgn.RepeatingFieldSet2StartField-1]
@@ -269,9 +343,6 @@ func (builder *canboatConverter) fixRepeating() {
 		} else {
 			pgn.FieldsRepeating1 = []PGNField{}
 		}
-
-		builder.PGNs[i].AllFields = append(pgn.Fields, pgn.FieldsRepeating1...)
-		builder.PGNs[i].AllFields = append(pgn.Fields, pgn.FieldsRepeating2...)
 	}
 }
 
@@ -305,6 +376,12 @@ func (builder *canboatConverter) fixEnumDefs() {
 			forceFirstLetter(&builder.BitEnums[i].EnumBitValues[j].Label)
 		}
 	}
+	for i := range builder.FieldTypeEnums {
+		convertToConst(&builder.FieldTypeEnums[i].Name)
+		if builder.FieldTypeEnums[i].Name != constDeDuper.unique(builder.FieldTypeEnums[i].Name) {
+			panic("FieldTypeEnum name not unique: " + builder.FieldTypeEnums[i].Name)
+		}
+	}
 }
 
 // validate assures that pgns with multiple definitions and the same Manufacturer ID are all single or all fast.
@@ -317,7 +394,7 @@ func (builder *canboatConverter) validate() {
 		if pgns[builder.PGNs[i].PGN] == nil {
 			pgns[builder.PGNs[i].PGN] = make([](*PGN), 0)
 		}
-		pgns[builder.PGNs[i].PGN] = append(pgns[builder.PGNs[i].PGN], &builder.PGNs[i])
+		pgns[builder.PGNs[i].PGN] = append(pgns[builder.PGNs[i].PGN], builder.PGNs[i])
 	}
 	for _, pi := range pgns {
 		var fast, single int
@@ -352,7 +429,7 @@ func (builder *canboatConverter) validate() {
 			log.Infof("PGN: %d has %d fast and %d single instances\n", pi[0].PGN, fast, single)
 		}
 	}
-	if specials > 1 {
+	if specials > 0 {
 		panic("New special case(s) added to canboat.json. Resolve and update this check.")
 	}
 }
@@ -413,8 +490,9 @@ func fieldByteCount(field PGNField) uint16 {
 	return uint16(math.Ceil((float64(field.BitLength) + float64(field.BitOffset)) / 8))
 }
 
-// convertFieldType returns the golang type for a PGN field.
+// convertFieldType returns a string describing the golang type for a PGN field.
 // used by template.
+// for lookups the name of the lookup is returned.
 func convertFieldType(field PGNField) string {
 	switch field.FieldType {
 
@@ -427,7 +505,10 @@ func convertFieldType(field PGNField) string {
 		return field.BitLookupName
 	case "INDIRECT_LOOKUP":
 		return field.IndirectLookupName
-
+	case "FIELDTYPE_LOOKUP":
+		return field.FieldTypeLookupName
+	case "FIELD_INDEX":
+		return "*uint8"
 	case "NUMBER", "DATE", "TIME", "MMSI":
 		if field.Resolution != nil && *field.Resolution != 1.0 {
 			// Let's actually make it a float
@@ -458,10 +539,8 @@ func convertFieldType(field PGNField) string {
 			return "*float64"
 		}
 		return "*float32"
-	case "DECIMAL":
+	case "DECIMAL", "BINARY", "KEY_VALUE", "VARIABLE":
 		return "[]uint8"
-	case "VARIABLE", "BINARY":
-		return "interface{}"
 	case "STRING_FIX", "STRING_VAR", "STRING_LZ", "STRING_LAU":
 		return "string"
 	default:
@@ -488,6 +567,13 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 			panic("No deserializer for INDIRECT_LOOKUP with bitlength > 32")
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.IndirectLookupName}
+	case "FIELDTYPE_LOOKUP":
+		if field.BitLength > 32 {
+			panic("No deserializer for FIELDTYPE_LOOKUP with bitlength > 32")
+		}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName}
+	case "FIELD_INDEX":
+		return [2]string{fmt.Sprintf("stream.readUInt8(%d)", field.BitLength), ""}
 	case "NUMBER", "TIME", "DATE", "MMSI":
 		var outerVal string
 		if field.Signed {
@@ -539,8 +625,9 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 		}
 		return [2]string{"stream.readBinaryData(binaryLength)", ""}
 	case "VARIABLE":
-		return [2]string{"stream.readVariableData(pgn, fieldIndex)", ""}
-	//	return [2]string{"stream.readBinaryData(0)", ""}
+		return [2]string{"stream.readVariableData(*val.Pgn, manufacturer, fieldIndex)", ""}
+	case "KEY_VALUE":
+		return [2]string{"stream.readBinaryData(valueLength)", ""}
 	default:
 		panic("No deserializer for type: " + field.FieldType)
 	}

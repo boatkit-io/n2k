@@ -8,4 +8,5 @@ type UnknownPGN struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode     IndustryCodeConst
 	Reason           error
+	WasUnseen        bool // Marked as not seen in log files by Canboat.
 }

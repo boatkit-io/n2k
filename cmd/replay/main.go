@@ -38,6 +38,7 @@ func main() {
 	flag.Parse()
 
 	log := logrus.StandardLogger()
+	log.Infof("in replayfile, dump:%t, file:%s\n", dumpPgns, replayFile)
 	subs := subscribe.New()
 	s := pkt.NewPacketStruct()
 	h := pgn.NewStructHandler(s.OutChannel(), subs)

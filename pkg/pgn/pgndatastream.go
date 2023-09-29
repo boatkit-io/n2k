@@ -281,7 +281,7 @@ func (s *PGNDataStream) readBinaryData(bitLength uint16) ([]uint8, error) {
 
 // readStringStartStopByte method reads a string encoded as described in reference:
 // https://github.com/canboat/canboatjs/blob/b857a503323291b92dd0fe8c41ad6fa0d6bda088/lib/fromPgn.js#L752
-func (s *PGNDataStream) readStringStartStopByte() (string, error) {
+/* func (s *PGNDataStream) readStringStartStopByte() (string, error) {
 	// guaranteed to be aligned on byte boundary
 	startByte, err := s.getNumberRaw(8)
 	if err != nil {
@@ -305,7 +305,7 @@ func (s *PGNDataStream) readStringStartStopByte() (string, error) {
 		arr = append(arr, uint8(b))
 	}
 }
-
+*/
 // readStringWithLengthAndControl method reads a string with length and control byte
 // String has a terminating zero.
 // Length incudes the len/control bytes.
@@ -461,79 +461,21 @@ func (s *PGNDataStream) getSignedNullableNumber(bitLength uint16) (*int64, error
 }
 
 // readVariableData method reads and returns the value of pgn.fieldIndex as an interface{}
-func (s *PGNDataStream) readVariableData(pgn uint32, fieldIndex uint8) (interface{}, error) {
-	if pi, piKnown := PgnInfoLookup[pgn]; !piKnown {
-		p := pi[0].FieldInfo[int(fieldIndex)]
-		switch p.FieldType {
-		case "LOOKUP":
-			if p.BitLength > 32 {
-				return nil, fmt.Errorf("read for lookup > 32 bits")
-			}
-			return s.readLookupField(p.BitLength)
-		case "BITLOOKUP":
-			if p.BitLength > 32 {
-				return nil, fmt.Errorf("read for bitlookup > 32 bits")
-			}
-			return s.readLookupField(p.BitLength)
-		case "INDIRECT_LOOKUP":
-			if p.BitLength > 32 {
-				return nil, fmt.Errorf("read for bitlookup > 32 bits")
-			}
-			return s.readLookupField(p.BitLength)
-		case "NUMBER", "TIME", "DATE", "MMSI":
-			if p.Signed {
-				switch {
-				case p.Resolution != 1.0:
-					return s.readSignedResolution(p.BitLength, p.Resolution)
-				case p.BitLength > 32:
-					return s.readInt64(p.BitLength)
-				case p.BitLength > 16:
-					return s.readInt32(p.BitLength)
-				case p.BitLength > 8:
-					return s.readInt16(p.BitLength)
-				default:
-					return s.readInt8(p.BitLength)
+func (s *PGNDataStream) readVariableData(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint8) ([]uint8, error) {
+	field, err := GetFieldDescriptor(pgn, manID, fieldIndex)
+	if err == nil {
+		if field.BitLengthVariable {
+			if field.CanboatType == "STRING_LAU" {
+				str, err := s.readStringWithLengthAndControl()
+				if err != nil {
+					return nil, err
 				}
-			} else {
-				switch {
-				case p.Resolution != 1.0:
-					return s.readUnsignedResolution(p.BitLength, p.Resolution)
-				case p.BitLength > 32:
-					return s.readUInt64(p.BitLength)
-				case p.BitLength > 16:
-					return s.readUInt32(p.BitLength)
-				case p.BitLength > 8:
-					return s.readUInt16(p.BitLength)
-				default:
-					return s.readUInt8(p.BitLength)
-				}
+				return []uint8(str), nil
 			}
-		case "FLOAT":
-			if p.BitLength != 32 {
-				return nil, fmt.Errorf("no deserializer for ieee float with bitlength !=32")
-			}
-			return s.readFloat32()
-		case "DECIMAL":
-			return s.readBinaryData(p.BitLength)
-		case "STRING_VAR":
-			return s.readStringStartStopByte()
-		case "STRING_LAU":
-			return s.readStringWithLengthAndControl()
-		case "STRING_FIX":
-			return s.readFixedString(p.BitLength)
-		case "STRING_LZ":
-			return s.readStringWithLength()
-		case "BINARY":
-			if p.BitLength > 0 {
-				return s.readBinaryData(p.BitLength)
-			} else {
-				return nil, fmt.Errorf("can't support dynamically sized binary data in this context")
-			}
-		case "VARIABLE":
-			return nil, fmt.Errorf("can't display recursive variable field ")
-		default:
-			return nil, fmt.Errorf("No deserializer for type: " + p.FieldType)
 		}
+		len := (field.BitLength + 7) &^ 0x7
+		return s.readBinaryData(len)
+	} else {
+		return nil, err
 	}
-	return nil, nil
 }

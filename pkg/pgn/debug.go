@@ -53,6 +53,8 @@ func dumpFields(p interface{}) []string {
 					}
 				case reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Slice, reflect.Interface:
 					vStr = fmt.Sprintf("%#v", vf.Interface())
+				case reflect.Bool:
+					vStr = fmt.Sprintf("%t", vf.Interface())
 				default:
 					vStr = fmt.Sprintf("Unhandled PGN field type: %d, %#v", tf.Type.Kind(), vf.Interface())
 				}
