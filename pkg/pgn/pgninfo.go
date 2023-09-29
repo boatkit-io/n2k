@@ -113,20 +113,18 @@ func GetFieldDescriptor(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint
 	var err error
 
 	if pi, piKnown := PgnInfoLookup[pgn]; piKnown {
-		if !IsProprietaryPGN(pgn) || manID == 0 { // not proprietary, or no way to distinguish, so return the first
-			// might also return found if length of pi is 1?
+		if (len(pi) == 1) || manID == 0 { // either one, or no manID, so no way to tell, so return the first
 			retval = pi[0].Fields[int(fieldIndex)]
-		} else {
-			// look for pgn with matching manufacturer
+		} else if IsProprietaryPGN(pgn) && manID != 0 { // we have a manufacturer to match against
 			for _, p := range pi {
 				if p.ManId == manID {
 					retval = p.Fields[int(fieldIndex)]
 				}
 			}
-			if retval == nil {
-				err = fmt.Errorf("error: Field Index: %d, not found for pgn: %d", fieldIndex, pgn)
 
-			}
+		}
+		if retval == nil {
+			err = fmt.Errorf("error: Field Index: %d, not found for pgn: %d with manufacturer code: %d\n", fieldIndex, pgn, manID)
 		}
 		return retval, err
 	}
