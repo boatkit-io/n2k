@@ -107,6 +107,7 @@ func GetProprietaryInfo(data []uint8) (ManufacturerCodeConst, IndustryCodeConst,
 	return man, ind, err
 }
 
+// GetFieldDescriptor returns the FieldDescriptor for the specified PGN variant.
 func GetFieldDescriptor(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint8) (*FieldDescriptor, error) {
 	var retval *FieldDescriptor
 	var err error
@@ -132,6 +133,7 @@ func GetFieldDescriptor(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint
 	return nil, fmt.Errorf("PGN not found")
 }
 
+// SearchUnseenList returns true if the PGN has no Canboat samples.
 func SearchUnseenList(pgn uint32) bool {
 	return UnseenLookup[pgn] != nil
 }

@@ -63,6 +63,7 @@ type canboatConverter struct {
 	IncompletePGNS []*PGN
 }
 
+// PhysicalUnit, defined in Canboat.json, defines the units used by Canboat.
 type PhysicalUnit struct {
 	Name            string
 	Description     string
@@ -209,6 +210,7 @@ func (conv *canboatConverter) fixup() {
 	conv.validate()
 }
 
+// filter builds separate slices for known, unknown (no Canboat samples), and incomplete PGNs
 func (conv *canboatConverter) filter() {
 	known := make([]*PGN, 0)
 	unknown := make([]*PGN, 0)

@@ -306,6 +306,7 @@ func (s *PGNDataStream) readBinaryData(bitLength uint16) ([]uint8, error) {
 	}
 }
 */
+
 // readStringWithLengthAndControl method reads a string with length and control byte
 // String has a terminating zero.
 // Length incudes the len/control bytes.

@@ -317,7 +317,7 @@ func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (interface{}, erro
 			return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
 		} else {
 			rep.{{- .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}(v){{ else }}v{{ end }}
-		{{- if eq .FieldType "FIELD_INDEX" }}
+		{{- if and (gt $pgn.RepeatingFieldSet2CountField 1) (eq .FieldType "FIELD_INDEX") }}
 			if v != nil {
 				fieldIndex = *v
 			}
