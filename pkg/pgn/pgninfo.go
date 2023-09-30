@@ -113,12 +113,21 @@ func GetFieldDescriptor(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint
 	var err error
 
 	if pi, piKnown := PgnInfoLookup[pgn]; piKnown {
-		if (len(pi) == 1) || manID == 0 { // either one, or no manID, so no way to tell, so return the first
+		if !IsProprietaryPGN(pgn) { // should validate other match fields, but for now return the first
 			retval = pi[0].Fields[int(fieldIndex)]
-		} else if IsProprietaryPGN(pgn) && manID != 0 { // we have a manufacturer to match against
-			for _, p := range pi {
-				if p.ManId == manID {
-					retval = p.Fields[int(fieldIndex)]
+		} else {
+			if manID != 0 { // we have a manufacturer to match against
+				for _, p := range pi {
+					if p.ManId == manID {
+						retval = p.Fields[int(fieldIndex)]
+					}
+				}
+			} else { // proprietary, but no manid, so no way to distinguish
+				if len(pi) == 1 { // we only know of one variant, so we can give it a shot
+					retval = pi[0].Fields[int(fieldIndex)]
+				} else {
+					err = fmt.Errorf("error: cannot distinguish between variants for pgn:%d\n", pgn)
+					return nil, err
 				}
 			}
 

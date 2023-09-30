@@ -37,6 +37,7 @@ func (p *PacketStruct) Run(wg *sync.WaitGroup) {
 	go func() {
 		defer wg.Done()
 		for {
+			success := false
 			pkt, more := <-p.packetC
 			if !more {
 				close(p.structC)
@@ -51,9 +52,13 @@ func (p *PacketStruct) Run(wg *sync.WaitGroup) {
 						pkt.ParseErrors = append(pkt.ParseErrors, err)
 						continue
 					} else {
+						success = true
 						p.structC <- ret
 						break
 					}
+				}
+				if !success { // no decoder succeeded
+					p.structC <- (pkt.UnknownPGN())
 				}
 			} else {
 				// No valid decoder, so send on an UnknownPGN.
