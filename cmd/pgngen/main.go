@@ -190,7 +190,7 @@ func newCanboatConverter() *canboatConverter {
 
 // init initializes a canboatConverter from canboat.json.
 func (conv *canboatConverter) init() {
-	raw, _ := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/boatkit-io/canboat/boatkit.0.0.0/docs/canboat.json")
+	raw, _ := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json")
 	err := json.Unmarshal(raw, conv)
 	if err != nil {
 		log.Info(err)
