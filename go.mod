@@ -4,8 +4,6 @@ go 1.19
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.2
-	github.com/boatkit-io/canbus v0.0.0-20221124102108-b14e35a46af1
-	github.com/boatkit-io/tugboat v0.3.0
 	github.com/brutella/can v0.0.2
 	github.com/magefile/mage v1.14.0
 	github.com/pkg/errors v0.9.1
@@ -30,8 +28,6 @@ require (
 	github.com/rivo/uniseg v0.4.2 // indirect
 	github.com/shopspring/decimal v1.2.0 // indirect
 	github.com/spf13/cast v1.3.1 // indirect
-	github.com/vishvananda/netlink v1.2.1-beta.2 // indirect
-	github.com/vishvananda/netns v0.0.1 // indirect
 	golang.org/x/crypto v0.0.0-20200414173820-0848c9571904 // indirect
 	golang.org/x/sys v0.2.0 // indirect
 	golang.org/x/term v0.1.0 // indirect

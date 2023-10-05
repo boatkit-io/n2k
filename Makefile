@@ -8,6 +8,11 @@ machine-deps:
 build: machine-deps
 	@mage build
 
+.PHONY: lint
+lint:
+	go run github.com/getoutreach/lintroller/cmd/lintroller@v1.16.0 -config lintroller.yaml ./...
+	go run github.com/golangci/golangci-lint/cmd/golangci-lint@v1.51.1 run ./...
+
 .PHONY: test
 test: machine-deps
 	@mage -v test
