@@ -12,5 +12,5 @@ import (
 type Endpoint interface {
 	Run(ctx context.Context) error
 	SubscribeToFrameReady(f func(adapter.Message)) subscribableevent.SubscriptionId
-	UnsubscribeFromFrameReady(t subscribableevent.SubscriptionId)
+	UnsubscribeFromFrameReady(t subscribableevent.SubscriptionId) error
 }
