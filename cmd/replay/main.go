@@ -11,7 +11,7 @@ import (
 
 	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
-	"github.com/boatkit-io/n2k/pkg/endpoint/n2kendpoint"
+	"github.com/boatkit-io/n2k/pkg/endpoint/n2kfileendpoint"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/n2k/pkg/pkt"
 	"github.com/boatkit-io/n2k/pkg/subscribe"
@@ -58,7 +58,7 @@ func main() {
 			ps.ProcessPacket(p)
 		})
 
-		ep := n2kendpoint.NewN2kEndpoint(replayFile, log)
+		ep := n2kfileendpoint.NewN2kFileEndpoint(replayFile, log)
 		ep.SubscribeToFrameReady(func(m adapter.Message) {
 			ca.ProcessMessage(m)
 		})

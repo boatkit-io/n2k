@@ -1,6 +1,6 @@
-// Package n2kendpoint provides reads n2k log files and sends canbus frames to a channel.
+// Package n2kfileendpoint provides reads n2k log files and sends canbus frames to a channel.
 // To use it connect its output channel to a canadapter instance.
-package n2kendpoint
+package n2kfileendpoint
 
 import (
 	"bufio"
@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"math"
 	"os"
-	"path"
 	"time"
 
 	"github.com/boatkit-io/goatutils/pkg/subscribableevent"
@@ -18,42 +17,37 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-// N2kEndpoint reads an n2k log file and sends canbus frames to its output channel.
-type N2kEndpoint struct {
-	log    *logrus.Logger
-	inFile string
+// N2kFileEndpoint reads an n2k log file and sends canbus frames to its output channel.
+type N2kFileEndpoint struct {
+	log        *logrus.Logger
+	inFilePath string
 
 	frameReady subscribableevent.Event[func(adapter.Message)]
 }
 
-// NewN2kEndpoint creates a new n2k endpoint.
-func NewN2kEndpoint(fName string, log *logrus.Logger) *N2kEndpoint {
-	return &N2kEndpoint{
-		log:    log,
-		inFile: fName,
+// NewN2kFileEndpoint creates a new n2k endpoint.
+func NewN2kFileEndpoint(file string, log *logrus.Logger) *N2kFileEndpoint {
+	return &N2kFileEndpoint{
+		log:        log,
+		inFilePath: file,
 
 		frameReady: subscribableevent.NewEvent[func(adapter.Message)](),
 	}
 }
 
 // SubscribeToFrameReady subscribes a callback function for whenever a frame is ready
-func (n *N2kEndpoint) SubscribeToFrameReady(f func(adapter.Message)) subscribableevent.SubscriptionId {
+func (n *N2kFileEndpoint) SubscribeToFrameReady(f func(adapter.Message)) subscribableevent.SubscriptionId {
 	return n.frameReady.Subscribe(f)
 }
 
 // UnsubscribeFromFrameReady unsubscribes a previous subscription for ready frames
-func (n *N2kEndpoint) UnsubscribeFromFrameReady(t subscribableevent.SubscriptionId) error {
+func (n *N2kFileEndpoint) UnsubscribeFromFrameReady(t subscribableevent.SubscriptionId) error {
 	return n.frameReady.Unsubscribe(t)
 }
 
 // Run method opens the specified log file and kicks off a goroutine that sends frames to OutChannel.
-func (n *N2kEndpoint) Run(ctx context.Context) error {
-	wd, err := os.Getwd()
-	if err != nil {
-		return err
-	}
-
-	file, err := os.Open(path.Join(wd, "n2kreplays", n.inFile))
+func (n *N2kFileEndpoint) Run(ctx context.Context) error {
+	file, err := os.Open(n.inFilePath)
 	if err != nil {
 		return err
 	}

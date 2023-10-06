@@ -16,6 +16,11 @@ require (
 )
 
 require (
+	github.com/vishvananda/netlink v1.2.1-beta.2.0.20221214185949-378a404a26f0 // indirect
+	github.com/vishvananda/netns v0.0.0-20200728191858-db3c7e526aae // indirect
+)
+
+require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver/v3 v3.2.1 // indirect
 	github.com/boatkit-io/goatutils v0.0.0-20231006015102-a95a1be47efd
