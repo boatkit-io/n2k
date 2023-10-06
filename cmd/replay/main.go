@@ -53,7 +53,7 @@ func main() {
 	//	ctx, cancel := context.WithCancel(context.Background())
 	//	defer cancel()
 	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
-		ca := canadapter.NewCanAdapter(log)
+		ca := canadapter.NewCANAdapter(log)
 		ca.SubscribeToPacketReady(func(p pkt.Packet) {
 			ps.ProcessPacket(p)
 		})

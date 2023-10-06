@@ -17,8 +17,8 @@ type CANAdapter struct {
 	packetReady subscribableevent.Event[func(pkt.Packet)]
 }
 
-// NewCanAdapter instantiates a new CanAdapter
-func NewCanAdapter(log *logrus.Logger) *CANAdapter {
+// NewCANAdapter instantiates a new CanAdapter
+func NewCANAdapter(log *logrus.Logger) *CANAdapter {
 	return &CANAdapter{
 		multi: NewMultiBuilder(log),
 		log:   log,
