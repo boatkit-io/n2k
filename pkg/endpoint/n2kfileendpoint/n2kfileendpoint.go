@@ -10,9 +10,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/boatkit-io/goatutils/pkg/subscribableevent"
-	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
+	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
@@ -22,7 +21,7 @@ type N2kFileEndpoint struct {
 	log        *logrus.Logger
 	inFilePath string
 
-	frameReady subscribableevent.Event[func(adapter.Message)]
+	handler endpoint.MessageHandler
 }
 
 // NewN2kFileEndpoint creates a new n2k endpoint.
@@ -30,22 +29,15 @@ func NewN2kFileEndpoint(file string, log *logrus.Logger) *N2kFileEndpoint {
 	return &N2kFileEndpoint{
 		log:        log,
 		inFilePath: file,
-
-		frameReady: subscribableevent.NewEvent[func(adapter.Message)](),
 	}
 }
 
-// SubscribeToFrameReady subscribes a callback function for whenever a frame is ready
-func (n *N2kFileEndpoint) SubscribeToFrameReady(f func(adapter.Message)) subscribableevent.SubscriptionId {
-	return n.frameReady.Subscribe(f)
+// SetOutput sets the output struct for handling when a message is ready
+func (n *N2kFileEndpoint) SetOutput(mh endpoint.MessageHandler) {
+	n.handler = mh
 }
 
-// UnsubscribeFromFrameReady unsubscribes a previous subscription for ready frames
-func (n *N2kFileEndpoint) UnsubscribeFromFrameReady(t subscribableevent.SubscriptionId) error {
-	return n.frameReady.Unsubscribe(t)
-}
-
-// Run method opens the specified log file and kicks off a goroutine that sends frames to OutChannel.
+// Run method opens the specified log file and kicks off a goroutine that sends frames to the handler
 func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 	file, err := os.Open(n.inFilePath)
 	if err != nil {
@@ -96,7 +88,7 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 			}
 		}
 
-		n.frameReady.Fire(frame)
+		n.frameReady(&frame)
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -106,4 +98,11 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 	n.log.Info("n2k file playback complete")
 
 	return nil
+}
+
+// frameReady is a helper to handle passing completed frames to the handler
+func (n *N2kFileEndpoint) frameReady(frame *canadapter.Frame) {
+	if n.handler != nil {
+		n.handler.HandleMessage(frame)
+	}
 }

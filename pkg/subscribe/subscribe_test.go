@@ -31,7 +31,7 @@ func TestSubscriptions(t *testing.T) {
 		field1: makeFloat(1.0),
 	}
 
-	s.ServeStruct(toSend)
+	s.HandleStruct(toSend)
 
 	assert.NotNil(t, ov)
 	assert.Equal(t, float32(1.0), *ov.field1)
@@ -39,7 +39,7 @@ func TestSubscriptions(t *testing.T) {
 
 	// Add global sub
 	var ov2 *test1
-	cf2 := func(s interface{}) {
+	cf2 := func(s any) {
 		s2 := s.(test1)
 		assert.NotNil(t, s2)
 		ov2 = &s2
@@ -49,7 +49,7 @@ func TestSubscriptions(t *testing.T) {
 	assert.Equal(t, SubscriptionId(2), subId2)
 
 	toSend.field1 = makeFloat(2.0)
-	s.ServeStruct(toSend)
+	s.HandleStruct(toSend)
 
 	assert.NotNil(t, ov)
 	assert.Equal(t, float32(2.0), *ov.field1)
@@ -63,7 +63,7 @@ func TestSubscriptions(t *testing.T) {
 	assert.NoError(t, err)
 
 	toSend.field1 = makeFloat(3.0)
-	s.ServeStruct(toSend)
+	s.HandleStruct(toSend)
 
 	assert.Nil(t, ov)
 	assert.NotNil(t, ov2)
@@ -75,7 +75,7 @@ func TestSubscriptions(t *testing.T) {
 	assert.NoError(t, err)
 
 	toSend.field1 = makeFloat(4.0)
-	s.ServeStruct(toSend)
+	s.HandleStruct(toSend)
 
 	assert.Nil(t, ov)
 	assert.Nil(t, ov2)

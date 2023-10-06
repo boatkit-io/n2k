@@ -5,9 +5,8 @@ import (
 	"context"
 
 	"github.com/boatkit-io/goatutils/pkg/canbus"
-	"github.com/boatkit-io/goatutils/pkg/subscribableevent"
 	"github.com/boatkit-io/n2k/pkg/adapter"
-	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
+	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/brutella/can"
 	"github.com/pkg/errors"
 
@@ -21,7 +20,7 @@ type CANEndpoint struct {
 	canbus     *canbus.Channel
 	canbusOpts canbus.ChannelOptions
 
-	frameReady subscribableevent.Event[func(adapter.Message)]
+	handler endpoint.MessageHandler
 }
 
 // NewCANEndpoint builds a new CANEndpoint for the given CAN interface name
@@ -33,11 +32,9 @@ func NewCANEndpoint(log *logrus.Logger, canInterfaceName string) *CANEndpoint {
 			CanInterfaceName: canInterfaceName,
 			MessageHandler:   nil,
 		},
-
-		frameReady: subscribableevent.NewEvent[func(adapter.Message)](),
 	}
 
-	c.canbusOpts.MessageHandler = c.handleFrame
+	c.canbusOpts.MessageHandler = c.frameReady
 
 	return &c
 }
@@ -57,14 +54,9 @@ func (c *CANEndpoint) Run(ctx context.Context) error {
 	return nil
 }
 
-// SubscribeToFrameReady subscribes a callback function for whenever a message is ready
-func (c *CANEndpoint) SubscribeToFrameReady(f func(adapter.Message)) subscribableevent.SubscriptionId {
-	return c.frameReady.Subscribe(f)
-}
-
-// UnsubscribeFromFrameReady unsubscribes a previous subscription for ready frames
-func (c *CANEndpoint) UnsubscribeFromFrameReady(t subscribableevent.SubscriptionId) error {
-	return c.frameReady.Unsubscribe(t)
+// SetOutput subscribes a callback handler for whenever a message is ready
+func (c *CANEndpoint) SetOutput(mh endpoint.MessageHandler) {
+	c.handler = mh
 }
 
 // Shutdown will stop the endpoint from processing further frames
@@ -89,7 +81,9 @@ func (c *CANEndpoint) Shutdown() error {
 	return nil
 }
 
-// handleFrame is an internal handler function for frames from the CAN handler
-func (c *CANEndpoint) handleFrame(message can.Frame) {
-	c.frameReady.Fire(canadapter.Frame(message))
+// frameReady is a helper to handle passing completed frames to the handler
+func (n *CANEndpoint) frameReady(frame can.Frame) {
+	if n.handler != nil {
+		n.handler.HandleMessage(adapter.Message(frame))
+	}
 }

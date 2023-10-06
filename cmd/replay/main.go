@@ -9,7 +9,6 @@ import (
 
 	//	"time"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint/n2kfileendpoint"
 	"github.com/boatkit-io/n2k/pkg/pgn"
@@ -39,29 +38,23 @@ func main() {
 	subs := subscribe.New()
 	go func() {
 		if dumpPgns {
-			_, _ = subs.SubscribeToAllStructs(func(p interface{}) {
+			_, _ = subs.SubscribeToAllStructs(func(p any) {
 				log.Infof("Handling PGN: %s", pgn.DebugDumpPGN(p))
 			})
 		}
 	}()
 
 	ps := pkt.NewPacketStruct()
-	ps.SubscribeToPGNReady(func(fullPGN any) {
-		subs.ServeStruct(fullPGN)
-	})
+	ps.SetOutput(subs)
 
 	//	ctx, cancel := context.WithCancel(context.Background())
 	//	defer cancel()
 	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
 		ca := canadapter.NewCANAdapter(log)
-		ca.SubscribeToPacketReady(func(p pkt.Packet) {
-			ps.ProcessPacket(p)
-		})
+		ca.SetOutput(ps)
 
 		ep := n2kfileendpoint.NewN2kFileEndpoint(replayFile, log)
-		ep.SubscribeToFrameReady(func(m adapter.Message) {
-			ca.ProcessMessage(m)
-		})
+		ep.SetOutput(ca)
 
 		ctx := context.Background()
 		err := ep.Run(ctx)

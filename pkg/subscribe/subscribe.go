@@ -26,8 +26,8 @@ type SubscriptionId uint
 type trackedSub struct {
 	subId      SubscriptionId
 	structName string
-	// Will be either func(interface{}) for global handler or func(specific struct) for a struct callback
-	callback interface{}
+	// Will be either func(any) for global handler or func(specific struct) for a struct callback
+	callback any
 }
 
 // New returns a pointer to a new SubscribeManager.
@@ -42,7 +42,7 @@ func New() *SubscribeManager {
 
 // addSubscription adds a subscription. It's called internally by routines that validate its arguments.
 // Callback must be validated already
-func (s *SubscribeManager) addSubscription(structName string, callback interface{}) (SubscriptionId, error) {
+func (s *SubscribeManager) addSubscription(structName string, callback any) (SubscriptionId, error) {
 	s.subMutex.Lock()
 	defer s.subMutex.Unlock()
 
@@ -119,9 +119,9 @@ func (s *SubscribeManager) Unsubscribe(subId SubscriptionId) error {
 	return nil
 }
 
-// ServeStruct calls registered subscriber callbacks for a struct.
+// HandleStruct calls registered subscriber callbacks for a struct.
 // It calls all specific subscribers and all subscribers.
-func (s *SubscribeManager) ServeStruct(p interface{}) {
+func (s *SubscribeManager) HandleStruct(p any) {
 	pv := reflect.ValueOf(p)
 	sn := pv.Type().Name()
 
@@ -159,7 +159,7 @@ func (s *SubscribeManager) ServeStruct(p interface{}) {
 
 // SubscribeToStruct registers a subscription to the specified struct.
 // It validates the callback is a function with a matching argument type.
-func (s *SubscribeManager) SubscribeToStruct(t interface{}, callback interface{}) (SubscriptionId, error) {
+func (s *SubscribeManager) SubscribeToStruct(t any, callback any) (SubscriptionId, error) {
 	e := reflect.ValueOf(t)
 	if e.Kind() != reflect.Struct {
 		return 0, fmt.Errorf("subscribeToPgn called with non-struct type: %+v", e.Kind())
@@ -177,14 +177,14 @@ func (s *SubscribeManager) SubscribeToStruct(t interface{}, callback interface{}
 }
 
 // SubscribeToAllStructs registers a subscription to all structs.
-// It validates the callback is a func with an interface{} argument.
-func (s *SubscribeManager) SubscribeToAllStructs(callback interface{}) (SubscriptionId, error) {
+// It validates the callback is a func with an any argument.
+func (s *SubscribeManager) SubscribeToAllStructs(callback any) (SubscriptionId, error) {
 	ce := reflect.ValueOf(callback)
 	if ce.Kind() != reflect.Func {
 		return 0, fmt.Errorf("subscribeToAllStructs called with non-func callback: %+v", ce.Kind())
 	}
 	if ce.Type().In(0).Kind() != reflect.Interface {
-		return 0, fmt.Errorf("subscribeToAllStructs called with non-interface{}-taking callback type (%+v)", ce.Type().In(0).Kind())
+		return 0, fmt.Errorf("subscribeToAllStructs called with non-any-taking callback type (%+v)", ce.Type().In(0).Kind())
 	}
 
 	return s.addSubscription("", callback)

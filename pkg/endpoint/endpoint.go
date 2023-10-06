@@ -4,13 +4,16 @@ package endpoint
 import (
 	"context"
 
-	"github.com/boatkit-io/goatutils/pkg/subscribableevent"
 	"github.com/boatkit-io/n2k/pkg/adapter"
 )
 
 // Endpoint declares the interface for endpoints.
 type Endpoint interface {
 	Run(ctx context.Context) error
-	SubscribeToFrameReady(f func(adapter.Message)) subscribableevent.SubscriptionId
-	UnsubscribeFromFrameReady(t subscribableevent.SubscriptionId) error
+	SetOutput(MessageHandler)
+}
+
+// MessageHandler is an interface for the handler of an Endpoint that takes a finished Message object
+type MessageHandler interface {
+	HandleMessage(adapter.Message)
 }

@@ -3,34 +3,31 @@ package pkt
 import (
 	"fmt"
 
-	"github.com/boatkit-io/goatutils/pkg/subscribableevent"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 )
 
+// StructHandler is an interface for a handler of the output of a PacketStruct
+type StructHandler interface {
+	HandleStruct(any)
+}
+
 // PacketStruct methods convert Packets to golang structs and sends them on.
 type PacketStruct struct {
-	pgnReady subscribableevent.Event[func(any)]
+	handler StructHandler
 }
 
 // NewPacketStruct initializes and returns a new PacketStruct instance.
 func NewPacketStruct() *PacketStruct {
-	return &PacketStruct{
-		pgnReady: subscribableevent.NewEvent[func(any)](),
-	}
+	return &PacketStruct{}
 }
 
-// SubscribeToPGNReady subscribes a callback function for whenever a PGN is ready
-func (ps *PacketStruct) SubscribeToPGNReady(f func(any)) subscribableevent.SubscriptionId {
-	return ps.pgnReady.Subscribe(f)
+// SetOutput hooks up the output from packetstruct processing into a handler
+func (ps *PacketStruct) SetOutput(sh StructHandler) {
+	ps.handler = sh
 }
 
-// UnsubscribeFromPGNReady unsubscribes a previous subscription for ready PGNs
-func (ps *PacketStruct) UnsubscribeFromPGNReady(t subscribableevent.SubscriptionId) error {
-	return ps.pgnReady.Unsubscribe(t)
-}
-
-// ProcessPacket is how you tell PacketStruct to start processing a new packet into a PGN
-func (ps *PacketStruct) ProcessPacket(pkt Packet) {
+// HandlePacket is how you tell PacketStruct to start processing a new packet into a PGN
+func (ps *PacketStruct) HandlePacket(pkt Packet) {
 	if len(pkt.Decoders) > 0 {
 		// call frame decoders, send valid return on.
 		for _, decoder := range pkt.Decoders {
@@ -40,16 +37,23 @@ func (ps *PacketStruct) ProcessPacket(pkt Packet) {
 				pkt.ParseErrors = append(pkt.ParseErrors, err)
 				continue
 			} else {
-				ps.pgnReady.Fire(ret)
+				ps.pgnReady(ret)
 				return
 			}
 		}
 
 		// no decoder succeeded
-		ps.pgnReady.Fire(pkt.UnknownPGN())
+		ps.pgnReady(pkt.UnknownPGN())
 	} else {
 		// No valid decoder, so send on an UnknownPGN.
 		pkt.ParseErrors = append(pkt.ParseErrors, fmt.Errorf("no matching decoder"))
-		ps.pgnReady.Fire(pkt.UnknownPGN())
+		ps.pgnReady(pkt.UnknownPGN())
+	}
+}
+
+// pgnReady is a helper to call when a PGN is ready to run it through the handler
+func (ps *PacketStruct) pgnReady(fullPGN any) {
+	if ps.handler != nil {
+		ps.handler.HandleStruct(fullPGN)
 	}
 }

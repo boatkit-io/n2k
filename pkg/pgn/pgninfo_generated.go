@@ -32913,7 +32913,7 @@ type IsoAcknowledgement struct {
 	GroupFunction *uint8
 	Pgn *uint32
 }
-func DecodeIsoAcknowledgement(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoAcknowledgement(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val IsoAcknowledgement
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -32953,7 +32953,7 @@ type IsoRequest struct {
 	Info MessageInfo
 	Pgn *uint32
 }
-func DecodeIsoRequest(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoRequest(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val IsoRequest
 	val.Info = Info
 	if v, err := stream.readUInt32(24); err != nil {
@@ -32972,7 +32972,7 @@ type IsoTransportProtocolDataTransfer struct {
 	Sid *uint8
 	Data []uint8
 }
-func DecodeIsoTransportProtocolDataTransfer(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolDataTransfer(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val IsoTransportProtocolDataTransfer
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -33003,7 +33003,7 @@ type IsoTransportProtocolConnectionManagementRequestToSend struct {
 	PacketsReply *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementRequestToSend(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolConnectionManagementRequestToSend(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val IsoTransportProtocolConnectionManagementRequestToSend
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33063,7 +33063,7 @@ type IsoTransportProtocolConnectionManagementClearToSend struct {
 	NextSid *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementClearToSend(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolConnectionManagementClearToSend(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val IsoTransportProtocolConnectionManagementClearToSend
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33118,7 +33118,7 @@ type IsoTransportProtocolConnectionManagementEndOfMessage struct {
 	TotalNumberOfFramesReceived *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementEndOfMessage(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolConnectionManagementEndOfMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val IsoTransportProtocolConnectionManagementEndOfMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33173,7 +33173,7 @@ type IsoTransportProtocolConnectionManagementBroadcastAnnounce struct {
 	Packets *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val IsoTransportProtocolConnectionManagementBroadcastAnnounce
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33227,7 +33227,7 @@ type IsoTransportProtocolConnectionManagementAbort struct {
 	Reason []uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementAbort(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoTransportProtocolConnectionManagementAbort(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val IsoTransportProtocolConnectionManagementAbort
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33278,7 +33278,7 @@ type IsoAddressClaim struct {
 	IndustryGroup IndustryCodeConst
 	ArbitraryAddressCapable *uint8
 }
-func DecodeIsoAddressClaim(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoAddressClaim(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val IsoAddressClaim
 	val.Info = Info
 	if v, err := stream.readUInt32(21); err != nil {
@@ -33377,7 +33377,7 @@ type SeatalkWirelessKeypadLightControl struct {
 	WirelessSetting *uint8
 	WiredSetting *uint8
 }
-func DecodeSeatalkWirelessKeypadLightControl(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkWirelessKeypadLightControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SeatalkWirelessKeypadLightControl
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -33461,7 +33461,7 @@ type SeatalkWirelessKeypadControl struct {
 	Variant *uint8
 	BeepControl *uint8
 }
-func DecodeSeatalkWirelessKeypadControl(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkWirelessKeypadControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SeatalkWirelessKeypadControl
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -33532,7 +33532,7 @@ type VictronBatteryRegister struct {
 	RegisterId *uint16
 	Payload *uint32
 }
-func DecodeVictronBatteryRegister(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeVictronBatteryRegister(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val VictronBatteryRegister
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -33589,7 +33589,7 @@ type Bus1PhaseCBasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1PhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBus1PhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Bus1PhaseCBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -33631,7 +33631,7 @@ type Bus1PhaseBBasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1PhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBus1PhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Bus1PhaseBBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -33673,7 +33673,7 @@ type Bus1PhaseABasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1PhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBus1PhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Bus1PhaseABasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -33715,7 +33715,7 @@ type Bus1AverageBasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1AverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBus1AverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Bus1AverageBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -33756,7 +33756,7 @@ type UtilityTotalAcEnergy struct {
 	TotalEnergyExport *uint32
 	TotalEnergyImport *uint32
 }
-func DecodeUtilityTotalAcEnergy(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityTotalAcEnergy(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityTotalAcEnergy
 	val.Info = Info
 	if v, err := stream.readUInt32(32); err != nil {
@@ -33785,7 +33785,7 @@ type UtilityPhaseCAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityPhaseCAcReactivePower
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -33826,7 +33826,7 @@ type UtilityPhaseCAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeUtilityPhaseCAcPower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseCAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityPhaseCAcPower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -33856,7 +33856,7 @@ type UtilityPhaseCBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityPhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityPhaseCBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -33903,7 +33903,7 @@ type UtilityPhaseBAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityPhaseBAcReactivePower
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -33944,7 +33944,7 @@ type UtilityPhaseBAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeUtilityPhaseBAcPower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseBAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityPhaseBAcPower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -33974,7 +33974,7 @@ type UtilityPhaseBBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityPhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityPhaseBBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34021,7 +34021,7 @@ type UtilityPhaseAAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityPhaseAAcReactivePower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34062,7 +34062,7 @@ type UtilityPhaseAAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeUtilityPhaseAAcPower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseAAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityPhaseAAcPower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34092,7 +34092,7 @@ type UtilityPhaseABasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityPhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityPhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityPhaseABasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34139,7 +34139,7 @@ type UtilityTotalAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityTotalAcReactivePower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34180,7 +34180,7 @@ type UtilityTotalAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeUtilityTotalAcPower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityTotalAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityTotalAcPower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34210,7 +34210,7 @@ type UtilityAverageBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityAverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUtilityAverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UtilityAverageBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34256,7 +34256,7 @@ type GeneratorTotalAcEnergy struct {
 	TotalEnergyExport *uint32
 	TotalEnergyImport *uint32
 }
-func DecodeGeneratorTotalAcEnergy(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorTotalAcEnergy(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorTotalAcEnergy
 	val.Info = Info
 	if v, err := stream.readUInt32(32); err != nil {
@@ -34285,7 +34285,7 @@ type GeneratorPhaseCAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorPhaseCAcReactivePower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34326,7 +34326,7 @@ type GeneratorPhaseCAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeGeneratorPhaseCAcPower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseCAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorPhaseCAcPower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34356,7 +34356,7 @@ type GeneratorPhaseCBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorPhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorPhaseCBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34403,7 +34403,7 @@ type GeneratorPhaseBAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorPhaseBAcReactivePower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34444,7 +34444,7 @@ type GeneratorPhaseBAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeGeneratorPhaseBAcPower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseBAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorPhaseBAcPower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34474,7 +34474,7 @@ type GeneratorPhaseBBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorPhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorPhaseBBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34521,7 +34521,7 @@ type GeneratorPhaseAAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorPhaseAAcReactivePower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34562,7 +34562,7 @@ type GeneratorPhaseAAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeGeneratorPhaseAAcPower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseAAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorPhaseAAcPower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34592,7 +34592,7 @@ type GeneratorPhaseABasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorPhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorPhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorPhaseABasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34639,7 +34639,7 @@ type GeneratorTotalAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorTotalAcReactivePower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34680,7 +34680,7 @@ type GeneratorTotalAcPower struct {
 	RealPower *int32
 	ApparentPower *int32
 }
-func DecodeGeneratorTotalAcPower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorTotalAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorTotalAcPower
 	val.Info = Info
 	if v, err := stream.readInt32(32); err != nil {
@@ -34710,7 +34710,7 @@ type GeneratorAverageBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorAverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGeneratorAverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GeneratorAverageBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34763,7 +34763,7 @@ type IsoCommandedAddress struct {
 	IndustryCode IndustryCodeConst
 	NewSourceAddress *uint8
 }
-func DecodeIsoCommandedAddress(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeIsoCommandedAddress(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val IsoCommandedAddress
 	val.Info = Info
 	if v, err := stream.readBinaryData(21); err != nil {
@@ -34863,7 +34863,7 @@ type FurunoHeave struct {
 	IndustryCode IndustryCodeConst
 	Heave *float32
 }
-func DecodeFurunoHeave(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoHeave(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FurunoHeave
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -34917,7 +34917,7 @@ type MaretronProprietaryDcBreakerCurrent struct {
 	IndicatorNumber *uint8
 	BreakerCurrent *float32
 }
-func DecodeMaretronProprietaryDcBreakerCurrent(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronProprietaryDcBreakerCurrent(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val MaretronProprietaryDcBreakerCurrent
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -34987,7 +34987,7 @@ type AirmarBootStateAcknowledgment struct {
 	IndustryCode IndustryCodeConst
 	BootState BootStateConst
 }
-func DecodeAirmarBootStateAcknowledgment(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarBootStateAcknowledgment(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarBootStateAcknowledgment
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35040,7 +35040,7 @@ type LowranceTemperature struct {
 	TemperatureSource TemperatureSourceConst
 	ActualTemperature *float32
 }
-func DecodeLowranceTemperature(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLowranceTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val LowranceTemperature
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35106,7 +35106,7 @@ type ChetcoDimmer struct {
 	Dimmer4 *uint8
 	Control *uint8
 }
-func DecodeChetcoDimmer(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeChetcoDimmer(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ChetcoDimmer
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35198,7 +35198,7 @@ type AirmarBootStateRequest struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeAirmarBootStateRequest(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarBootStateRequest(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarBootStateRequest
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35243,7 +35243,7 @@ type AirmarAccessLevel struct {
 	AccessLevel AccessLevelConst
 	AccessSeedKey *uint32
 }
-func DecodeAirmarAccessLevel(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarAccessLevel(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarAccessLevel
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35312,7 +35312,7 @@ type SimnetConfigureTemperatureSensor struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetConfigureTemperatureSensor(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetConfigureTemperatureSensor(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetConfigureTemperatureSensor
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35359,7 +35359,7 @@ type SeatalkAlarm struct {
 	AlarmGroup SeatalkAlarmGroupConst
 	AlarmPriority []uint8
 }
-func DecodeSeatalkAlarm(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkAlarm(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SeatalkAlarm
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35442,7 +35442,7 @@ type SimnetTrimTabSensorCalibration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetTrimTabSensorCalibration(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetTrimTabSensorCalibration(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetTrimTabSensorCalibration
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35484,7 +35484,7 @@ type SimnetPaddleWheelSpeedConfiguration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetPaddleWheelSpeedConfiguration(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetPaddleWheelSpeedConfiguration(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetPaddleWheelSpeedConfiguration
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35526,7 +35526,7 @@ type SimnetClearFluidLevelWarnings struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetClearFluidLevelWarnings(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetClearFluidLevelWarnings(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetClearFluidLevelWarnings
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35568,7 +35568,7 @@ type SimnetLgc2000Configuration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetLgc2000Configuration(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetLgc2000Configuration(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetLgc2000Configuration
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35614,7 +35614,7 @@ type SimnetApUnknown1 struct {
 	C *uint16
 	D *uint8
 }
-func DecodeSimnetApUnknown1(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetApUnknown1(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetApUnknown1
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35695,7 +35695,7 @@ type SimnetDeviceStatus struct {
 	Report SimnetDeviceReportConst
 	Status SimnetApStatusConst
 }
-func DecodeSimnetDeviceStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetDeviceStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetDeviceStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35769,7 +35769,7 @@ type SimnetDeviceStatusRequest struct {
 	Model SimnetDeviceModelConst
 	Report SimnetDeviceReportConst
 }
-func DecodeSimnetDeviceStatusRequest(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetDeviceStatusRequest(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetDeviceStatusRequest
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35835,7 +35835,7 @@ type SimnetPilotMode struct {
 	Report SimnetDeviceReportConst
 	Mode SimnetApModeBitfieldConst
 }
-func DecodeSimnetPilotMode(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetPilotMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetPilotMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35909,7 +35909,7 @@ type SimnetDeviceModeRequest struct {
 	Model SimnetDeviceModelConst
 	Report SimnetDeviceReportConst
 }
-func DecodeSimnetDeviceModeRequest(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetDeviceModeRequest(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetDeviceModeRequest
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35975,7 +35975,7 @@ type SimnetSailingProcessorStatus struct {
 	Report SimnetDeviceReportConst
 	Data []uint8
 }
-func DecodeSimnetSailingProcessorStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetSailingProcessorStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetSailingProcessorStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36046,7 +36046,7 @@ type NavicoWirelessBatteryStatus struct {
 	BatteryStatus *uint8
 	BatteryChargeStatus *uint8
 }
-func DecodeNavicoWirelessBatteryStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavicoWirelessBatteryStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NavicoWirelessBatteryStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36117,7 +36117,7 @@ type NavicoWirelessSignalStatus struct {
 	Unknown *uint8
 	SignalStrength *uint8
 }
-func DecodeNavicoWirelessSignalStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavicoWirelessSignalStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NavicoWirelessSignalStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36182,7 +36182,7 @@ type SimnetApUnknown2 struct {
 	D *uint8
 	E *uint8
 }
-func DecodeSimnetApUnknown2(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetApUnknown2(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetApUnknown2
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36271,7 +36271,7 @@ type SimnetAutopilotAngle struct {
 	Mode SimnetApModeConst
 	Angle *float32
 }
-func DecodeSimnetAutopilotAngle(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetAutopilotAngle(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetAutopilotAngle
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36337,7 +36337,7 @@ type SeatalkPilotWindDatum struct {
 	WindDatum *float32
 	RollingAverageWindAngle *float32
 }
-func DecodeSeatalkPilotWindDatum(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkPilotWindDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SeatalkPilotWindDatum
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36399,7 +36399,7 @@ type SimnetMagneticField struct {
 	C *float32
 	D *float32
 }
-func DecodeSimnetMagneticField(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetMagneticField(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetMagneticField
 	val.Info = Info
 	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
@@ -36452,7 +36452,7 @@ type SeatalkPilotHeading struct {
 	HeadingTrue *float32
 	HeadingMagnetic *float32
 }
-func DecodeSeatalkPilotHeading(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkPilotHeading(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SeatalkPilotHeading
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36524,7 +36524,7 @@ type SeatalkPilotLockedHeading struct {
 	TargetHeadingTrue *float32
 	TargetHeadingMagnetic *float32
 }
-func DecodeSeatalkPilotLockedHeading(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkPilotLockedHeading(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SeatalkPilotLockedHeading
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36595,7 +36595,7 @@ type SeatalkSilenceAlarm struct {
 	AlarmId SeatalkAlarmIdConst
 	AlarmGroup SeatalkAlarmGroupConst
 }
-func DecodeSeatalkSilenceAlarm(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkSilenceAlarm(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SeatalkSilenceAlarm
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36661,7 +36661,7 @@ type SeatalkKeypadMessage struct {
 	SecondKeyState *uint8
 	EncoderPosition *uint8
 }
-func DecodeSeatalkKeypadMessage(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkKeypadMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SeatalkKeypadMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36764,7 +36764,7 @@ type SeatalkKeypadHeartbeat struct {
 	Variant *uint8
 	Status *uint8
 }
-func DecodeSeatalkKeypadHeartbeat(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkKeypadHeartbeat(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SeatalkKeypadHeartbeat
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36836,7 +36836,7 @@ type SeatalkPilotMode struct {
 	SubMode []uint8
 	PilotModeData []uint8
 }
-func DecodeSeatalkPilotMode(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalkPilotMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SeatalkPilotMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36907,7 +36907,7 @@ type AirmarDepthQualityFactor struct {
 	Sid *uint8
 	DepthQualityFactor AirmarDepthQualityFactorConst
 }
-func DecodeAirmarDepthQualityFactor(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarDepthQualityFactor(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarDepthQualityFactor
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36970,7 +36970,7 @@ type AirmarSpeedPulseCount struct {
 	DurationOfInterval *float32
 	NumberOfPulsesReceived *uint16
 }
-func DecodeAirmarSpeedPulseCount(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarSpeedPulseCount(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarSpeedPulseCount
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37042,7 +37042,7 @@ type AirmarDeviceInformation struct {
 	InternalDeviceTemperature *float32
 	SupplyVoltage *float32
 }
-func DecodeAirmarDeviceInformation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarDeviceInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarDeviceInformation
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37116,7 +37116,7 @@ type SimnetApUnknown3 struct {
 	D *uint8
 	E *uint8
 }
-func DecodeSimnetApUnknown3(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetApUnknown3(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetApUnknown3
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37203,7 +37203,7 @@ type SimnetAutopilotMode struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetAutopilotMode(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetAutopilotMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetAutopilotMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37253,7 +37253,7 @@ type NmeaRequestGroupFunctionRepeating1 struct {
 	Parameter *uint8
 	Value []uint8
 }
-func DecodeNmeaRequestGroupFunction(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaRequestGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NmeaRequestGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -37356,7 +37356,7 @@ type NmeaCommandGroupFunctionRepeating1 struct {
 	Parameter *uint8
 	Value []uint8
 }
-func DecodeNmeaCommandGroupFunction(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaCommandGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NmeaCommandGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -37454,7 +37454,7 @@ type NmeaAcknowledgeGroupFunction struct {
 type NmeaAcknowledgeGroupFunctionRepeating1 struct {
 	Parameter ParameterFieldConst
 }
-func DecodeNmeaAcknowledgeGroupFunction(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaAcknowledgeGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NmeaAcknowledgeGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -37554,7 +37554,7 @@ type NmeaReadFieldsGroupFunctionRepeating1 struct {
 type NmeaReadFieldsGroupFunctionRepeating2 struct {
 	Parameter *uint8
 }
-func DecodeNmeaReadFieldsGroupFunction(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaReadFieldsGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NmeaReadFieldsGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -37717,7 +37717,7 @@ type NmeaReadFieldsReplyGroupFunctionRepeating2 struct {
 	Parameter *uint8
 	Value []uint8
 }
-func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NmeaReadFieldsReplyGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -37885,7 +37885,7 @@ type NmeaWriteFieldsGroupFunctionRepeating2 struct {
 	Parameter *uint8
 	Value []uint8
 }
-func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NmeaWriteFieldsGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -38053,7 +38053,7 @@ type NmeaWriteFieldsReplyGroupFunctionRepeating2 struct {
 	Parameter *uint8
 	Value []uint8
 }
-func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NmeaWriteFieldsReplyGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -38209,7 +38209,7 @@ type PgnListTransmitAndReceive struct {
 type PgnListTransmitAndReceiveRepeating1 struct {
 	Pgn *uint32
 }
-func DecodePgnListTransmitAndReceive(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodePgnListTransmitAndReceive(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val PgnListTransmitAndReceive
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -38257,7 +38257,7 @@ type Seatalk1PilotMode struct {
 	PilotModeData []uint8
 	Unknown2 []uint8
 }
-func DecodeSeatalk1PilotMode(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalk1PilotMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Seatalk1PilotMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -38368,7 +38368,7 @@ type FusionMediaControl struct {
 	SourceId *uint8
 	Command FusionCommandConst
 }
-func DecodeFusionMediaControl(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionMediaControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionMediaControl
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -38449,7 +38449,7 @@ type FusionSiriusControl struct {
 	SourceId *uint8
 	Command FusionSiriusCommandConst
 }
-func DecodeFusionSiriusControl(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSiriusControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionSiriusControl
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -38528,7 +38528,7 @@ type FusionRequestStatus struct {
 	ProprietaryId FusionMessageIdConst
 	Unknown *uint8
 }
-func DecodeFusionRequestStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionRequestStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionRequestStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -38590,7 +38590,7 @@ type FusionSetSource struct {
 	Unknown *uint8
 	SourceId *uint8
 }
-func DecodeFusionSetSource(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSetSource(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionSetSource
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -38660,7 +38660,7 @@ type FusionSetMute struct {
 	ProprietaryId FusionMessageIdConst
 	Command FusionMuteCommandConst
 }
-func DecodeFusionSetMute(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSetMute(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionSetMute
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -38723,7 +38723,7 @@ type FusionSetZoneVolume struct {
 	Zone *uint8
 	Volume *uint8
 }
-func DecodeFusionSetZoneVolume(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSetZoneVolume(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionSetZoneVolume
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -38806,7 +38806,7 @@ type FusionSetAllVolumes struct {
 	Zone3 *uint8
 	Zone4 *uint8
 }
-func DecodeFusionSetAllVolumes(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSetAllVolumes(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionSetAllVolumes
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -38907,7 +38907,7 @@ type Seatalk1Keystroke struct {
 	Keyinverted *uint8
 	UnknownData []uint8
 }
-func DecodeSeatalk1Keystroke(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalk1Keystroke(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Seatalk1Keystroke
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39008,7 +39008,7 @@ type Seatalk1DeviceIdentification struct {
 	Command *uint8
 	Device SeatalkDeviceIdConst
 }
-func DecodeSeatalk1DeviceIdentification(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalk1DeviceIdentification(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Seatalk1DeviceIdentification
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39089,7 +39089,7 @@ type Seatalk1DisplayBrightness struct {
 	Brightness *uint8
 	Unknown2 []uint8
 }
-func DecodeSeatalk1DisplayBrightness(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalk1DisplayBrightness(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Seatalk1DisplayBrightness
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39193,7 +39193,7 @@ type Seatalk1DisplayColor struct {
 	Color SeatalkDisplayColorConst
 	Unknown2 []uint8
 }
-func DecodeSeatalk1DisplayColor(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSeatalk1DisplayColor(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Seatalk1DisplayColor
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39295,7 +39295,7 @@ type AirmarAttitudeOffset struct {
 	PitchOffset *float32
 	RollOffset *float32
 }
-func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarAttitudeOffset
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39385,7 +39385,7 @@ type AirmarCalibrateCompass struct {
 	PitchAndRollDamping *float32
 	CompassRateGyroDamping *float32
 }
-func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarCalibrateCompass
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39545,7 +39545,7 @@ type AirmarTrueWindOptions struct {
 	ProprietaryId AirmarCommandConst
 	CogSubstitutionForHdg YesNoConst
 }
-func DecodeAirmarTrueWindOptions(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarTrueWindOptions(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarTrueWindOptions
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39610,7 +39610,7 @@ type AirmarSimulateMode struct {
 	ProprietaryId AirmarCommandConst
 	SimulateMode OffOnConst
 }
-func DecodeAirmarSimulateMode(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarSimulateMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarSimulateMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39675,7 +39675,7 @@ type AirmarCalibrateDepth struct {
 	ProprietaryId AirmarCommandConst
 	SpeedOfSoundMode *float32
 }
-func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarCalibrateDepth
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39745,7 +39745,7 @@ type AirmarCalibrateSpeedRepeating1 struct {
 	InputFrequency *float32
 	OutputSpeed *float32
 }
-func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarCalibrateSpeed
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -39840,7 +39840,7 @@ type AirmarCalibrateTemperature struct {
 	TemperatureInstance AirmarTemperatureInstanceConst
 	TemperatureOffset *float32
 }
-func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarCalibrateTemperature
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39915,7 +39915,7 @@ type AirmarSpeedFilterNone struct {
 	FilterType *uint8
 	SampleInterval *float32
 }
-func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarSpeedFilterNone
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39994,7 +39994,7 @@ type AirmarSpeedFilterIir struct {
 	SampleInterval *float32
 	FilterDuration *float32
 }
-func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarSpeedFilterIir
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40081,7 +40081,7 @@ type AirmarTemperatureFilterNone struct {
 	FilterType *uint8
 	SampleInterval *float32
 }
-func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarTemperatureFilterNone
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40160,7 +40160,7 @@ type AirmarTemperatureFilterIir struct {
 	SampleInterval *float32
 	FilterDuration *float32
 }
-func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarTemperatureFilterIir
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40246,7 +40246,7 @@ type AirmarNmea2000Options struct {
 	ProprietaryId AirmarCommandConst
 	TransmissionInterval AirmarTransmissionIntervalConst
 }
-func DecodeAirmarNmea2000Options(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarNmea2000Options(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarNmea2000Options
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40310,7 +40310,7 @@ type AirmarAddressableMultiFrame struct {
 	IndustryCode IndustryCodeConst
 	ProprietaryId *uint8
 }
-func DecodeAirmarAddressableMultiFrame(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAirmarAddressableMultiFrame(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarAddressableMultiFrame
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40361,7 +40361,7 @@ type MaretronSlaveResponse struct {
 	Command *uint8
 	Status *uint8
 }
-func DecodeMaretronSlaveResponse(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronSlaveResponse(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val MaretronSlaveResponse
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40453,7 +40453,7 @@ type Alert struct {
 	AlertPriority *uint8
 	AlertState AlertStateConst
 }
-func DecodeAlert(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlert(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Alert
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -40656,7 +40656,7 @@ type AlertResponse struct {
 	AcknowledgeSourceNetworkIdName *uint64
 	ResponseCommand AlertResponseCommandConst
 }
-func DecodeAlertResponse(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlertResponse(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AlertResponse
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -40779,7 +40779,7 @@ type AlertText struct {
 	AlertTextDescription string
 	AlertLocationTextDescription string
 }
-func DecodeAlertText(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlertText(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AlertText
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -40909,7 +40909,7 @@ type AlertConfiguration struct {
 	TemporarySilencePeriod *uint8
 	EscalationPeriod *uint8
 }
-func DecodeAlertConfiguration(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlertConfiguration(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AlertConfiguration
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -41064,7 +41064,7 @@ type AlertThresholdRepeating1 struct {
 	ThresholdDataFormat *uint8
 	ThresholdLevel *uint64
 }
-func DecodeAlertThreshold(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlertThreshold(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AlertThreshold
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -41221,7 +41221,7 @@ type AlertValueRepeating1 struct {
 	ValueDataFormat *uint8
 	ValueData *uint64
 }
-func DecodeAlertValue(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAlertValue(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AlertValue
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -41361,7 +41361,7 @@ type SystemTime struct {
 	Date *uint16
 	Time *float32
 }
-func DecodeSystemTime(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSystemTime(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SystemTime
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -41414,7 +41414,7 @@ type Heartbeat struct {
 	Controller2State ControllerStateConst
 	EquipmentStatus EquipmentStatusConst
 }
-func DecodeHeartbeat(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeHeartbeat(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Heartbeat
 	val.Info = Info
 	if v, err := stream.readUnsignedResolution(16, 0.001); err != nil {
@@ -41479,7 +41479,7 @@ type ProductInformation struct {
 	CertificationLevel *uint8
 	LoadEquivalency *uint8
 }
-func DecodeProductInformation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeProductInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ProductInformation
 	val.Info = Info
 	if v, err := stream.readUnsignedResolution(16, 0.001); err != nil {
@@ -41562,7 +41562,7 @@ type ConfigurationInformation struct {
 	InstallationDescription2 string
 	ManufacturerInformation string
 }
-func DecodeConfigurationInformation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeConfigurationInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ConfigurationInformation
 	val.Info = Info
 	if v, err := stream.readStringWithLengthAndControl(); err != nil {
@@ -41611,7 +41611,7 @@ type ManOverboardNotification struct {
 	MmsiOfVesselOfOrigin *uint32
 	MobEmitterBatteryLowStatus LowBatteryConst
 }
-func DecodeManOverboardNotification(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeManOverboardNotification(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ManOverboardNotification
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -41778,7 +41778,7 @@ type HeadingTrackControl struct {
 	OffTrackLimit *int16
 	VesselHeading *float32
 }
-func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val HeadingTrackControl
 	val.Info = Info
 	if v, err := stream.readLookupField(2); err != nil {
@@ -41947,7 +41947,7 @@ type Rudder struct {
 	AngleOrder *float32
 	Position *float32
 }
-func DecodeRudder(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRudder(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Rudder
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -42004,7 +42004,7 @@ type VesselHeading struct {
 	Variation *float32
 	Reference DirectionReferenceConst
 }
-func DecodeVesselHeading(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeVesselHeading(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val VesselHeading
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -42063,7 +42063,7 @@ type RateOfTurn struct {
 	Sid *uint8
 	Rate *float32
 }
-func DecodeRateOfTurn(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRateOfTurn(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val RateOfTurn
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -42095,7 +42095,7 @@ type Heave struct {
 	Sid *uint8
 	Heave *float32
 }
-func DecodeHeave(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeHeave(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Heave
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -42129,7 +42129,7 @@ type Attitude struct {
 	Pitch *float32
 	Roll *float32
 }
-func DecodeAttitude(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAttitude(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Attitude
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -42181,7 +42181,7 @@ type MagneticVariation struct {
 	AgeOfService *uint16
 	Variation *float32
 }
-func DecodeMagneticVariation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMagneticVariation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val MagneticVariation
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -42237,7 +42237,7 @@ type EngineParametersRapidUpdate struct {
 	BoostPressure *float32
 	TiltTrim *int8
 }
-func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val EngineParametersRapidUpdate
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -42298,7 +42298,7 @@ type EngineParametersDynamic struct {
 	EngineLoad *int8
 	EngineTorque *int8
 }
-func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val EngineParametersDynamic
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -42432,7 +42432,7 @@ type TransmissionParametersDynamic struct {
 	OilTemperature *float32
 	DiscreteStatus1 *uint8
 }
-func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val TransmissionParametersDynamic
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -42497,7 +42497,7 @@ type TripParametersVessel struct {
 	EstimatedFuelRemaining *uint16
 	TripRunTime *float32
 }
-func DecodeTripParametersVessel(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTripParametersVessel(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val TripParametersVessel
 	val.Info = Info
 	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
@@ -42546,7 +42546,7 @@ type TripParametersEngine struct {
 	FuelRateEconomy *float32
 	InstantaneousFuelEconomy *float32
 }
-func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val TripParametersEngine
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -42603,7 +42603,7 @@ type EngineParametersStatic struct {
 	Vin string
 	SoftwareId string
 }
-func DecodeEngineParametersStatic(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeEngineParametersStatic(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val EngineParametersStatic
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -42655,7 +42655,7 @@ type LoadControllerConnectionStateControl struct {
 	Timeon *uint8
 	Timeoff *uint8
 }
-func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val LoadControllerConnectionStateControl
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -42764,7 +42764,7 @@ type BinarySwitchBankStatus struct {
 	Indicator27 OffOnConst
 	Indicator28 OffOnConst
 }
-func DecodeBinarySwitchBankStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBinarySwitchBankStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val BinarySwitchBankStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43062,7 +43062,7 @@ type SwitchBankControl struct {
 	Switch27 OffOnConst
 	Switch28 OffOnConst
 }
-func DecodeSwitchBankControl(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSwitchBankControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SwitchBankControl
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43345,7 +43345,7 @@ type AcInputStatusRepeating1 struct {
 	ReactivePower *uint32
 	PowerFactor *float32
 }
-func DecodeAcInputStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAcInputStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AcInputStatus
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -43454,7 +43454,7 @@ type AcOutputStatusRepeating1 struct {
 	ReactivePower *uint32
 	PowerFactor *float32
 }
-func DecodeAcOutputStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAcOutputStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AcOutputStatus
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -43553,7 +43553,7 @@ type FluidLevel struct {
 	Level *float32
 	Capacity *float32
 }
-func DecodeFluidLevel(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFluidLevel(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FluidLevel
 	val.Info = Info
 	if v, err := stream.readUInt8(4); err != nil {
@@ -43609,7 +43609,7 @@ type DcDetailedStatus struct {
 	RippleVoltage *float32
 	RemainingCapacity *uint16
 }
-func DecodeDcDetailedStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDcDetailedStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val DcDetailedStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43696,7 +43696,7 @@ type ChargerStatus struct {
 	EqualizationPending OffOnConst
 	EqualizationTimeRemaining *float32
 }
-func DecodeChargerStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeChargerStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ChargerStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43776,7 +43776,7 @@ type BatteryStatus struct {
 	Temperature *float32
 	Sid *uint8
 }
-func DecodeBatteryStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBatteryStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val BatteryStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43834,7 +43834,7 @@ type InverterStatus struct {
 	OperatingState InverterStateConst
 	InverterEnable OffOnConst
 }
-func DecodeInverterStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeInverterStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val InverterStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43899,7 +43899,7 @@ type InverterConfigurationStatus struct {
 	LoadSensePowerThreshold *uint8
 	LoadSenseInterval *uint8
 }
-func DecodeInverterConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeInverterConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val InverterConfigurationStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43986,7 +43986,7 @@ type AgsConfigurationStatus struct {
 	GeneratorInstance *uint8
 	AgsMode *uint8
 }
-func DecodeAgsConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAgsConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AgsConfigurationStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44034,7 +44034,7 @@ type BatteryConfigurationStatus struct {
 	PeukertExponent *float32
 	ChargeEfficiencyFactor *int8
 }
-func DecodeBatteryConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBatteryConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val BatteryConfigurationStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44133,7 +44133,7 @@ type AgsStatus struct {
 	GeneratorOnReason *uint8
 	GeneratorOffReason *uint8
 }
-func DecodeAgsStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAgsStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AgsStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44203,7 +44203,7 @@ type AcPowerCurrentPhaseA struct {
 	AcRmsCurrent *float32
 	Power *int32
 }
-func DecodeAcPowerCurrentPhaseA(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAcPowerCurrentPhaseA(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AcPowerCurrentPhaseA
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44251,7 +44251,7 @@ type AcPowerCurrentPhaseB struct {
 	AcRmsCurrent *float32
 	Power *int32
 }
-func DecodeAcPowerCurrentPhaseB(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAcPowerCurrentPhaseB(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AcPowerCurrentPhaseB
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44299,7 +44299,7 @@ type AcPowerCurrentPhaseC struct {
 	AcRmsCurrent *float32
 	Power *int32
 }
-func DecodeAcPowerCurrentPhaseC(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAcPowerCurrentPhaseC(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AcPowerCurrentPhaseC
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44350,7 +44350,7 @@ type ConverterStatus struct {
 	LowDcVoltageState GoodWarningErrorConst
 	RippleState GoodWarningErrorConst
 }
-func DecodeConverterStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeConverterStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ConverterStatus
 	val.Info = Info
 	if v, err := stream.readBinaryData(8); err != nil {
@@ -44429,7 +44429,7 @@ type DcVoltageCurrent struct {
 	DcVoltage *float32
 	DcCurrent *float32
 }
-func DecodeDcVoltageCurrent(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDcVoltageCurrent(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val DcVoltageCurrent
 	val.Info = Info
 	if v, err := stream.readBinaryData(8); err != nil {
@@ -44479,7 +44479,7 @@ type LeewayAngle struct {
 	Sid *uint8
 	LeewayAngle *float32
 }
-func DecodeLeewayAngle(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLeewayAngle(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val LeewayAngle
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44518,7 +44518,7 @@ type ThrusterControlStatus struct {
 	CommandTimeout *float32
 	AzimuthControl *float32
 }
-func DecodeThrusterControlStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeThrusterControlStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ThrusterControlStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44612,7 +44612,7 @@ type ThrusterInformation struct {
 	MaximumTemperatureRating *float32
 	MaximumRotationalSpeed *float32
 }
-func DecodeThrusterInformation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeThrusterInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ThrusterInformation
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44675,7 +44675,7 @@ type ThrusterMotorStatus struct {
 	Temperature *float32
 	OperatingTime *float32
 }
-func DecodeThrusterMotorStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeThrusterMotorStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ThrusterMotorStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44742,7 +44742,7 @@ type Speed struct {
 	SpeedWaterReferencedType WaterReferenceConst
 	SpeedDirection *uint8
 }
-func DecodeSpeed(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSpeed(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Speed
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44803,7 +44803,7 @@ type WaterDepth struct {
 	Offset *float32
 	Range *float32
 }
-func DecodeWaterDepth(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeWaterDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val WaterDepth
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44851,7 +44851,7 @@ type DistanceLog struct {
 	Log *uint32
 	TripLog *uint32
 }
-func DecodeDistanceLog(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDistanceLog(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val DistanceLog
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -44909,7 +44909,7 @@ type TrackedTargetData struct {
 	UtcOfFix *float32
 	Name string
 }
-func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val TrackedTargetData
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45059,7 +45059,7 @@ type WindlassControlStatus struct {
 	CommandTimeout *float32
 	WindlassControlEvents WindlassControlConst
 }
-func DecodeWindlassControlStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeWindlassControlStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val WindlassControlStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45192,7 +45192,7 @@ type AnchorWindlassOperatingStatus struct {
 	AnchorDockingStatus DockingStatusConst
 	WindlassOperatingEvents WindlassOperationConst
 }
-func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AnchorWindlassOperatingStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45291,7 +45291,7 @@ type AnchorWindlassMonitoringStatus struct {
 	MotorCurrent *uint8
 	TotalMotorTime *float32
 }
-func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AnchorWindlassMonitoringStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45359,7 +45359,7 @@ type PositionRapidUpdate struct {
 	Latitude *float32
 	Longitude *float32
 }
-func DecodePositionRapidUpdate(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodePositionRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val PositionRapidUpdate
 	val.Info = Info
 	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
@@ -45389,7 +45389,7 @@ type CogSogRapidUpdate struct {
 	Cog *float32
 	Sog *float32
 }
-func DecodeCogSogRapidUpdate(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeCogSogRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val CogSogRapidUpdate
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45445,7 +45445,7 @@ type PositionDeltaRapidUpdate struct {
 	LatitudeDelta *int16
 	LongitudeDelta *int16
 }
-func DecodePositionDeltaRapidUpdate(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodePositionDeltaRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val PositionDeltaRapidUpdate
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45499,7 +45499,7 @@ type AltitudeDeltaRapidUpdate struct {
 	Cog *float32
 	AltitudeDelta *int16
 }
-func DecodeAltitudeDeltaRapidUpdate(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAltitudeDeltaRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AltitudeDeltaRapidUpdate
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45585,7 +45585,7 @@ type GnssPositionDataRepeating1 struct {
 	ReferenceStationId *uint16
 	AgeOfDgnssCorrections *float32
 }
-func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GnssPositionData
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -45764,7 +45764,7 @@ type TimeDate struct {
 	Time *float32
 	LocalOffset *float32
 }
-func DecodeTimeDate(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTimeDate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val TimeDate
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -45816,7 +45816,7 @@ type AisClassAPositionReport struct {
 	SpecialManeuverIndicator AisSpecialManeuverConst
 	SequenceId *uint8
 }
-func DecodeAisClassAPositionReport(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassAPositionReport(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisClassAPositionReport
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -46009,7 +46009,7 @@ type AisClassBPositionReport struct {
 	AisMode AisModeConst
 	AisCommunicationState AisCommunicationStateConst
 }
-func DecodeAisClassBPositionReport(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassBPositionReport(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisClassBPositionReport
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -46230,7 +46230,7 @@ type AisClassBExtendedPositionReport struct {
 	AisMode AisModeConst
 	AisTransceiverInformation AisTransceiverConst
 }
-func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisClassBExtendedPositionReport
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -46471,7 +46471,7 @@ type AisAidsToNavigationAtonReport struct {
 	AisTransceiverInformation AisTransceiverConst
 	AtonName string
 }
-func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisAidsToNavigationAtonReport
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -46676,7 +46676,7 @@ type Datum struct {
 	DeltaAltitude *float32
 	ReferenceDatum string
 }
-func DecodeDatum(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Datum
 	val.Info = Info
 	if v, err := stream.readFixedString(32); err != nil {
@@ -46739,7 +46739,7 @@ type UserDatum struct {
 	EllipsoidFlatteningInverse *float32
 	DatumName string
 }
-func DecodeUserDatum(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeUserDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val UserDatum
 	val.Info = Info
 	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
@@ -46841,7 +46841,7 @@ type CrossTrackError struct {
 	NavigationTerminated YesNoConst
 	Xte *float32
 }
-func DecodeCrossTrackError(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeCrossTrackError(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val CrossTrackError
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -46908,7 +46908,7 @@ type NavigationData struct {
 	DestinationLongitude *float32
 	WaypointClosingVelocity *float32
 }
-func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NavigationData
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -47065,7 +47065,7 @@ type NavigationRouteWpInformationRepeating1 struct {
 	WpLatitude *float32
 	WpLongitude *float32
 }
-func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NavigationRouteWpInformation
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -47191,7 +47191,7 @@ type SetDriftRapidUpdate struct {
 	Set *float32
 	Drift *float32
 }
-func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SetDriftRapidUpdate
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -47249,7 +47249,7 @@ type GnssDops struct {
 	Vdop *float32
 	Tdop *float32
 }
-func DecodeGnssDops(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssDops(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GnssDops
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -47327,7 +47327,7 @@ type GnssSatsInViewRepeating1 struct {
 	RangeResiduals *int32
 	Status SatelliteStatusConst
 }
-func DecodeGnssSatsInView(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGnssSatsInView(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GnssSatsInView
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -47433,7 +47433,7 @@ type GpsAlmanacData struct {
 	ClockParameter1 *float32
 	ClockParameter2 *float32
 }
-func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GpsAlmanacData
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -47574,7 +47574,7 @@ type AisUtcAndDateReport struct {
 	PositionDate *uint16
 	GnssType PositionFixDeviceConst
 }
-func DecodeAisUtcAndDateReport(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisUtcAndDateReport(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisUtcAndDateReport
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -47721,7 +47721,7 @@ type AisClassAStaticAndVoyageRelatedData struct {
 	Dte AvailableConst
 	AisTransceiverInformation AisTransceiverConst
 }
-func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisClassAStaticAndVoyageRelatedData
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -47917,7 +47917,7 @@ type AisAddressedBinaryMessage struct {
 	NumberOfBitsInBinaryDataField *uint16
 	BinaryData []uint8
 }
-func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisAddressedBinaryMessage
 	val.Info = Info
 		var binaryLength uint16 = 0
@@ -48029,7 +48029,7 @@ type AisAcknowledge struct {
 	SequenceNumberForId1 []uint8
 	SequenceNumberForIdN []uint8
 }
-func DecodeAisAcknowledge(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisAcknowledge(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisAcknowledge
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -48122,7 +48122,7 @@ type AisBinaryBroadcastMessage struct {
 	NumberOfBitsInBinaryDataField *uint16
 	BinaryData []uint8
 }
-func DecodeAisBinaryBroadcastMessage(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisBinaryBroadcastMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisBinaryBroadcastMessage
 	val.Info = Info
 		var binaryLength uint16 = 0
@@ -48202,7 +48202,7 @@ type RadioFrequencyModePower struct {
 	Mode *uint8
 	ChannelBandwidth *uint8
 }
-func DecodeRadioFrequencyModePower(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeRadioFrequencyModePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val RadioFrequencyModePower
 	val.Info = Info
 	if v, err := stream.readUnsignedResolution(32, 10); err != nil {
@@ -48269,7 +48269,7 @@ type AisUtcDateInquiry struct {
 	AisTransceiverInformation AisTransceiverConst
 	DestinationId *uint32
 }
-func DecodeAisUtcDateInquiry(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisUtcDateInquiry(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisUtcDateInquiry
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -48334,7 +48334,7 @@ type AisAddressedSafetyRelatedMessage struct {
 	RetransmitFlag *uint8
 	SafetyRelatedText string
 }
-func DecodeAisAddressedSafetyRelatedMessage(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisAddressedSafetyRelatedMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisAddressedSafetyRelatedMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -48427,7 +48427,7 @@ type AisSafetyRelatedBroadcastMessage struct {
 	AisTransceiverInformation AisTransceiverConst
 	SafetyRelatedText string
 }
-func DecodeAisSafetyRelatedBroadcastMessage(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisSafetyRelatedBroadcastMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisSafetyRelatedBroadcastMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -48497,7 +48497,7 @@ type AisInterrogation struct {
 	SlotOffset21 *uint16
 	Sid *uint8
 }
-func DecodeAisInterrogation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisInterrogation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisInterrogation
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -48657,7 +48657,7 @@ type AisDataLinkManagementMessageRepeating1 struct {
 	Timeout *uint8
 	Increment *uint16
 }
-func DecodeAisDataLinkManagementMessage(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisDataLinkManagementMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisDataLinkManagementMessage
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -48758,7 +48758,7 @@ type AisChannelManagement struct {
 	ChannelBBandwidth *uint8
 	TransitionalZoneSize *uint8
 }
-func DecodeAisChannelManagement(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisChannelManagement(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisChannelManagement
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -48932,7 +48932,7 @@ type AisClassBStaticDataMsg24PartA struct {
 	AisTransceiverInformation AisTransceiverConst
 	SequenceId *uint8
 }
-func DecodeAisClassBStaticDataMsg24PartA(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassBStaticDataMsg24PartA(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisClassBStaticDataMsg24PartA
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -49011,7 +49011,7 @@ type AisClassBStaticDataMsg24PartB struct {
 	AisTransceiverInformation AisTransceiverConst
 	SequenceId *uint8
 }
-func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AisClassBStaticDataMsg24PartB
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -49152,7 +49152,7 @@ type WindData struct {
 	WindAngle *float32
 	Reference WindReferenceConst
 }
-func DecodeWindData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeWindData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val WindData
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -49204,7 +49204,7 @@ type EnvironmentalParametersObsolete struct {
 	OutsideAmbientAirTemperature *float32
 	AtmosphericPressure *float32
 }
-func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val EnvironmentalParametersObsolete
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -49258,7 +49258,7 @@ type EnvironmentalParameters struct {
 	Humidity *float32
 	AtmosphericPressure *float32
 }
-func DecodeEnvironmentalParameters(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeEnvironmentalParameters(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val EnvironmentalParameters
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -49325,7 +49325,7 @@ type Temperature struct {
 	ActualTemperature *float32
 	SetTemperature *float32
 }
-func DecodeTemperature(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Temperature
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -49387,7 +49387,7 @@ type Humidity struct {
 	ActualHumidity *float32
 	SetHumidity *float32
 }
-func DecodeHumidity(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeHumidity(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Humidity
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -49448,7 +49448,7 @@ type ActualPressure struct {
 	Source PressureSourceConst
 	Pressure *float32
 }
-func DecodeActualPressure(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeActualPressure(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ActualPressure
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -49500,7 +49500,7 @@ type SetPressure struct {
 	Source PressureSourceConst
 	Pressure *float32
 }
-func DecodeSetPressure(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSetPressure(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SetPressure
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -49553,7 +49553,7 @@ type TemperatureExtendedRange struct {
 	Temperature *float32
 	SetTemperature *float32
 }
-func DecodeTemperatureExtendedRange(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTemperatureExtendedRange(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val TemperatureExtendedRange
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -49616,7 +49616,7 @@ type TideStationData struct {
 	StationId string
 	StationName string
 }
-func DecodeTideStationData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeTideStationData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val TideStationData
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -49727,7 +49727,7 @@ type SalinityStationData struct {
 	StationId string
 	StationName string
 }
-func DecodeSalinityStationData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSalinityStationData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SalinityStationData
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -49842,7 +49842,7 @@ type WatermakerInputSettingAndStatus struct {
 	BrineWaterFlow *float32
 	RunTime *uint32
 }
-func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val WatermakerInputSettingAndStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -50054,7 +50054,7 @@ type SmallCraftStatus struct {
 	PortTrimTab *int8
 	StarboardTrimTab *int8
 }
-func DecodeSmallCraftStatus(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSmallCraftStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SmallCraftStatus
 	val.Info = Info
 	if v, err := stream.readInt8(8); err != nil {
@@ -50090,7 +50090,7 @@ type VesselSpeedComponents struct {
 	SternSpeedWaterReferenced *float32
 	SternSpeedGroundReferenced *float32
 }
-func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val VesselSpeedComponents
 	val.Info = Info
 	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
@@ -50157,7 +50157,7 @@ type SonichubZoneInfo struct {
 	Control SonichubControlConst
 	Zone *uint8
 }
-func DecodeSonichubZoneInfo(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubZoneInfo(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubZoneInfo
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -50232,7 +50232,7 @@ type SonichubSource struct {
 	Control SonichubControlConst
 	Source SonichubSourceConst
 }
-func DecodeSonichubSource(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubSource(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubSource
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -50309,7 +50309,7 @@ type SonichubSourceList struct {
 	A *uint8
 	Text string
 }
-func DecodeSonichubSourceList(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubSourceList(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubSourceList
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -50402,7 +50402,7 @@ type SonichubControl struct {
 	Control SonichubControlConst
 	Item FusionMuteCommandConst
 }
-func DecodeSonichubControl(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubControl
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -50481,7 +50481,7 @@ type SonichubFmRadio struct {
 	SignalLevel *uint8
 	Text string
 }
-func DecodeSonichubFmRadio(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubFmRadio(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubFmRadio
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -50601,7 +50601,7 @@ type SonichubPlaylist struct {
 	Length *float32
 	PositionInTrack *float32
 }
-func DecodeSonichubPlaylist(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubPlaylist(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubPlaylist
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -50722,7 +50722,7 @@ type SonichubTrack struct {
 	Item *uint32
 	Text string
 }
-func DecodeSonichubTrack(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubTrack(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubTrack
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -50807,7 +50807,7 @@ type SonichubArtist struct {
 	Item *uint32
 	Text string
 }
-func DecodeSonichubArtist(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubArtist(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubArtist
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -50892,7 +50892,7 @@ type SonichubAlbum struct {
 	Item *uint32
 	Text string
 }
-func DecodeSonichubAlbum(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubAlbum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubAlbum
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -50980,7 +50980,7 @@ type SonichubMenuItem struct {
 	E *uint8
 	Text string
 }
-func DecodeSonichubMenuItem(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubMenuItem(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubMenuItem
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51091,7 +51091,7 @@ type SonichubZones struct {
 	Control SonichubControlConst
 	Zones *uint8
 }
-func DecodeSonichubZones(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubZones(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubZones
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51167,7 +51167,7 @@ type SonichubMaxVolume struct {
 	Zone *uint8
 	Level *uint8
 }
-func DecodeSonichubMaxVolume(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubMaxVolume(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubMaxVolume
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51252,7 +51252,7 @@ type SonichubVolume struct {
 	Zone *uint8
 	Level *uint8
 }
-func DecodeSonichubVolume(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubVolume(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubVolume
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51335,7 +51335,7 @@ type SonichubInit1 struct {
 	ProprietaryId SonichubCommandConst
 	Control SonichubControlConst
 }
-func DecodeSonichubInit1(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubInit1(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubInit1
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51401,7 +51401,7 @@ type SonichubPosition struct {
 	Control SonichubControlConst
 	Position *float32
 }
-func DecodeSonichubPosition(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSonichubPosition(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SonichubPosition
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51480,7 +51480,7 @@ type SimradTextMessage struct {
 	Prio *uint8
 	Text string
 }
-func DecodeSimradTextMessage(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimradTextMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimradTextMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51596,7 +51596,7 @@ type NavicoProductInformation struct {
 	FirmwareDate string
 	FirmwareTime string
 }
-func DecodeNavicoProductInformation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavicoProductInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NavicoProductInformation
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51714,7 +51714,7 @@ type LowranceProductInformation struct {
 	FirmwareDate string
 	FirmwareTime string
 }
-func DecodeLowranceProductInformation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeLowranceProductInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val LowranceProductInformation
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51827,7 +51827,7 @@ type SimnetReprogramData struct {
 	Sequence *uint16
 	Data []uint8
 }
-func DecodeSimnetReprogramData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetReprogramData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetReprogramData
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51897,7 +51897,7 @@ type FurunoUnknown130820 struct {
 	D *uint8
 	E *uint8
 }
-func DecodeFurunoUnknown130820(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoUnknown130820(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FurunoUnknown130820
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51987,7 +51987,7 @@ type FusionSourceName struct {
 	E *uint8
 	Source string
 }
-func DecodeFusionSourceName(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSourceName(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionSourceName
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52103,7 +52103,7 @@ type FusionTrackInfo struct {
 	PositionInTrack *float32
 	H *uint16
 }
-func DecodeFusionTrackInfo(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionTrackInfo(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionTrackInfo
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52256,7 +52256,7 @@ type FusionTrack struct {
 	B *uint64
 	Track string
 }
-func DecodeFusionTrack(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionTrack(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionTrack
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52337,7 +52337,7 @@ type FusionArtist struct {
 	B *uint64
 	Artist string
 }
-func DecodeFusionArtist(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionArtist(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionArtist
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52418,7 +52418,7 @@ type FusionAlbum struct {
 	B *uint64
 	Album string
 }
-func DecodeFusionAlbum(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionAlbum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionAlbum
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52498,7 +52498,7 @@ type FusionUnitName struct {
 	A *uint8
 	Name string
 }
-func DecodeFusionUnitName(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionUnitName(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionUnitName
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52570,7 +52570,7 @@ type FusionZoneName struct {
 	Number *uint8
 	Name string
 }
-func DecodeFusionZoneName(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionZoneName(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionZoneName
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52651,7 +52651,7 @@ type FusionPlayProgress struct {
 	B *uint8
 	Progress *float32
 }
-func DecodeFusionPlayProgress(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionPlayProgress(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionPlayProgress
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52735,7 +52735,7 @@ type FusionAmFmStation struct {
 	C *uint8
 	Track string
 }
-func DecodeFusionAmFmStation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionAmFmStation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionAmFmStation
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52844,7 +52844,7 @@ type FusionVhf struct {
 	Channel *uint8
 	D *uint32
 }
-func DecodeFusionVhf(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionVhf(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionVhf
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52934,7 +52934,7 @@ type FusionSquelch struct {
 	B *uint8
 	Squelch *uint8
 }
-func DecodeFusionSquelch(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSquelch(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionSquelch
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53016,7 +53016,7 @@ type FusionScan struct {
 	Scan YesNoConst
 	C *uint8
 }
-func DecodeFusionScan(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionScan(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionScan
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53112,7 +53112,7 @@ type FusionMenuItem struct {
 	I *uint8
 	Text string
 }
-func DecodeFusionMenuItem(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionMenuItem(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionMenuItem
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53253,7 +53253,7 @@ type FusionReplay struct {
 	I *uint8
 	J *uint8
 }
-func DecodeFusionReplay(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionReplay(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionReplay
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53387,7 +53387,7 @@ type FusionMute struct {
 	A *uint8
 	Mute FusionMuteCommandConst
 }
-func DecodeFusionMute(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionMute(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionMute
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53461,7 +53461,7 @@ type FusionSubVolume struct {
 	Zone3 *uint8
 	Zone4 *uint8
 }
-func DecodeFusionSubVolume(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFusionSubVolume(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FusionSubVolume
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53558,7 +53558,7 @@ type NavicoAsciiData struct {
 	A *uint8
 	Message string
 }
-func DecodeNavicoAsciiData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavicoAsciiData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NavicoAsciiData
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53624,7 +53624,7 @@ type FurunoUnknown130821 struct {
 	H *uint8
 	I *uint8
 }
-func DecodeFurunoUnknown130821(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoUnknown130821(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FurunoUnknown130821
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53753,7 +53753,7 @@ type NavicoUnknown1 struct {
 	IndustryCode IndustryCodeConst
 	Data []uint8
 }
-func DecodeNavicoUnknown1(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavicoUnknown1(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NavicoUnknown1
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53805,7 +53805,7 @@ type MaretronProprietaryTemperatureHighRange struct {
 	ActualTemperature *float32
 	SetTemperature *float32
 }
-func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val MaretronProprietaryTemperatureHighRange
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53894,7 +53894,7 @@ type BGKeyValueDataRepeating1 struct {
 	Length *uint8
 	Value []uint8
 }
-func DecodeBGKeyValueData(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBGKeyValueData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val BGKeyValueData
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -53975,7 +53975,7 @@ type MaretronAnnunciator struct {
 	Field7 *uint8
 	Field8 *uint16
 }
-func DecodeMaretronAnnunciator(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronAnnunciator(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val MaretronAnnunciator
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54059,7 +54059,7 @@ type NavicoUnknown2 struct {
 	IndustryCode IndustryCodeConst
 	Data []uint8
 }
-func DecodeNavicoUnknown2(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeNavicoUnknown2(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NavicoUnknown2
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54111,7 +54111,7 @@ type BGUserAndRemoteRename struct {
 	ShortName string
 	LongName string
 }
-func DecodeBGUserAndRemoteRename(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeBGUserAndRemoteRename(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val BGUserAndRemoteRename
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54207,7 +54207,7 @@ type SimnetFluidLevelSensorConfiguration struct {
 	H *int16
 	I *int8
 }
-func DecodeSimnetFluidLevelSensorConfiguration(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetFluidLevelSensorConfiguration(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetFluidLevelSensorConfiguration
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54334,7 +54334,7 @@ type MaretronSwitchStatusCounter struct {
 	ErrorCounter *uint8
 	SwitchStatus OffOnConst
 }
-func DecodeMaretronSwitchStatusCounter(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronSwitchStatusCounter(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val MaretronSwitchStatusCounter
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54456,7 +54456,7 @@ type MaretronSwitchStatusTimer struct {
 	AccumulatedErrorPeriod *uint32
 	SwitchStatus OffOnConst
 }
-func DecodeMaretronSwitchStatusTimer(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeMaretronSwitchStatusTimer(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val MaretronSwitchStatusTimer
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54579,7 +54579,7 @@ type FurunoSixDegreesOfFreedomMovement struct {
 	H *int16
 	I *int16
 }
-func DecodeFurunoSixDegreesOfFreedomMovement(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoSixDegreesOfFreedomMovement(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FurunoSixDegreesOfFreedomMovement
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54711,7 +54711,7 @@ type SimnetAisClassBStaticDataMsg24PartB struct {
 	PositionReferenceFromBow *float32
 	MothershipUserId *uint32
 }
-func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetAisClassBStaticDataMsg24PartB
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54882,7 +54882,7 @@ type FurunoHeelAngleRollInformation struct {
 	Pitch *float32
 	Roll *float32
 }
-func DecodeFurunoHeelAngleRollInformation(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoHeelAngleRollInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FurunoHeelAngleRollInformation
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54965,7 +54965,7 @@ type FurunoMultiSatsInViewExtended struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeFurunoMultiSatsInViewExtended(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoMultiSatsInViewExtended(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FurunoMultiSatsInViewExtended
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55009,7 +55009,7 @@ type SimnetKeyValue struct {
 	Minlength *uint8
 	Value []uint8
 }
-func DecodeSimnetKeyValue(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetKeyValue(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetKeyValue
 	val.Info = Info
 		var valueLength uint16
@@ -55122,7 +55122,7 @@ type SimnetParameterSet struct {
 	Length *uint8
 	Value []uint8
 }
-func DecodeSimnetParameterSet(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetParameterSet(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetParameterSet
 	val.Info = Info
 		var valueLength uint16
@@ -55229,7 +55229,7 @@ type FurunoMotionSensorStatusExtended struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeFurunoMotionSensorStatusExtended(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeFurunoMotionSensorStatusExtended(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FurunoMotionSensorStatusExtended
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55273,7 +55273,7 @@ type SimnetApCommand struct {
 	Direction SimnetDirectionConst
 	Angle *float32
 }
-func DecodeSimnetApCommand(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetApCommand(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetApCommand
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55384,7 +55384,7 @@ type SimnetEventCommandApCommand struct {
 	Angle *float32
 	UnusedC *uint8
 }
-func DecodeSimnetEventCommandApCommand(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetEventCommandApCommand(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetEventCommandApCommand
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55503,7 +55503,7 @@ type SimnetAlarm struct {
 	F *uint8
 	G *uint8
 }
-func DecodeSimnetAlarm(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetAlarm(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetAlarm
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55614,7 +55614,7 @@ type SimnetEventReplyApCommand struct {
 	Angle *float32
 	G *uint8
 }
-func DecodeSimnetEventReplyApCommand(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetEventReplyApCommand(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetEventReplyApCommand
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55731,7 +55731,7 @@ type SimnetAlarmMessage struct {
 	C *uint8
 	Text string
 }
-func DecodeSimnetAlarmMessage(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetAlarmMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetAlarmMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55811,7 +55811,7 @@ type SimnetApUnknown4 struct {
 	E *int32
 	F *uint32
 }
-func DecodeSimnetApUnknown4(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func DecodeSimnetApUnknown4(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SimnetApUnknown4
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
