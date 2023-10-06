@@ -2,16 +2,15 @@ package main
 
 import (
 	//	"context"
+	"context"
 	"flag"
 	"os"
 	"strings"
-	"sync"
 
 	//	"time"
 
 	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
-	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/boatkit-io/n2k/pkg/endpoint/n2kendpoint"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/n2k/pkg/pkt"
@@ -23,9 +22,6 @@ import (
 
 func main() {
 	var exitCode int
-	var activities = new(sync.WaitGroup)
-	var n endpoint.Endpoint
-	var p adapter.Adapter
 	defer func() {
 		os.Exit(exitCode)
 	}()
@@ -39,36 +35,9 @@ func main() {
 
 	log := logrus.StandardLogger()
 	log.Infof("in replayfile, dump:%t, file:%s\n", dumpPgns, replayFile)
+
 	subs := subscribe.New()
-	s := pkt.NewPacketStruct()
-	h := pgn.NewStructHandler(s.OutChannel(), subs)
-
-	//	ctx, cancel := context.WithCancel(context.Background())
-	//	defer cancel()
-	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
-		n = n2kendpoint.NewN2kEndpoint(replayFile, log)
-		p = canadapter.NewCanAdapter(log)
-		p.SetInChannel(n.OutChannel())
-		p.SetOutChannel(s.InChannel())
-		activities.Add(5)
-		h.Run(activities)
-		s.Run(activities)
-		err := p.Run(activities)
-		if err != nil {
-			exitCode = 1
-			return
-		}
-		err = n.Run(activities)
-		if err != nil {
-			exitCode = 1
-			return
-		}
-	}
-
 	go func() {
-
-		defer activities.Done()
-
 		if dumpPgns {
 			_, _ = subs.SubscribeToAllStructs(func(p interface{}) {
 				log.Infof("Handling PGN: %s", pgn.DebugDumpPGN(p))
@@ -76,6 +45,29 @@ func main() {
 		}
 	}()
 
-	activities.Wait()
+	ps := pkt.NewPacketStruct()
+	ps.SubscribeToPGNReady(func(fullPGN any) {
+		subs.ServeStruct(fullPGN)
+	})
 
+	//	ctx, cancel := context.WithCancel(context.Background())
+	//	defer cancel()
+	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
+		ca := canadapter.NewCanAdapter(log)
+		ca.SubscribeToPacketReady(func(p pkt.Packet) {
+			ps.ProcessPacket(p)
+		})
+
+		ep := n2kendpoint.NewN2kEndpoint(replayFile, log)
+		ep.SubscribeToFrameReady(func(m adapter.Message) {
+			ca.ProcessMessage(m)
+		})
+
+		ctx := context.Background()
+		err := ep.Run(ctx)
+		if err != nil {
+			exitCode = 1
+			return
+		}
+	}
 }

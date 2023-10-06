@@ -25,7 +25,6 @@ testfast: machine-deps
 codegen: machine-deps
 	@mage -v codegen
 
-
 .PHONY: clean
 clean: machine-deps
 	@mage clean

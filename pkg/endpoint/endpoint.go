@@ -2,13 +2,15 @@
 package endpoint
 
 import (
-	"sync"
+	"context"
 
+	"github.com/boatkit-io/goatutils/pkg/subscribableevent"
 	"github.com/boatkit-io/n2k/pkg/adapter"
 )
 
 // Endpoint declares the interface for endpoints.
 type Endpoint interface {
-	Run(*sync.WaitGroup) error
-	OutChannel() chan adapter.Message
+	Run(ctx context.Context) error
+	SubscribeToFrameReady(f func(adapter.Message)) subscribableevent.SubscriptionId
+	UnsubscribeFromFrameReady(t subscribableevent.SubscriptionId)
 }

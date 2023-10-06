@@ -1,21 +1,24 @@
 module github.com/boatkit-io/n2k
 
-go 1.19
+go 1.21
+
+toolchain go1.21.1
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.2
 	github.com/brutella/can v0.0.2
-	github.com/magefile/mage v1.14.0
+	github.com/magefile/mage v1.15.0
 	github.com/pkg/errors v0.9.1
 	github.com/schollz/progressbar/v3 v3.12.1
-	github.com/sirupsen/logrus v1.9.0
-	github.com/stretchr/testify v1.8.1
+	github.com/sirupsen/logrus v1.9.3
+	github.com/stretchr/testify v1.8.4
 	golang.org/x/text v0.4.0
 )
 
 require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver/v3 v3.1.1 // indirect
+	github.com/boatkit-io/goatutils v0.0.0-20231006015102-a95a1be47efd
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/huandu/xstrings v1.3.1 // indirect

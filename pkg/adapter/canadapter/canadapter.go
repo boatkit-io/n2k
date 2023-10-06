@@ -2,82 +2,66 @@
 package canadapter
 
 import (
-	"sync"
-
 	"github.com/sirupsen/logrus"
 
+	"github.com/boatkit-io/goatutils/pkg/subscribableevent"
 	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/pkt"
 )
 
-// CanAdapter instances read canbus frames from its input and outputs complete Packets.
-type CanAdapter struct {
-	frameC  chan adapter.Message // input channel
-	packetC chan pkt.Packet      // output channel
-	multi   *MultiBuilder        // combines multiple frames into a complete Packet.
-	current *pkt.Packet
-	log     *logrus.Logger
+// CANAdapter instances read canbus frames from its input and outputs complete Packets.
+type CANAdapter struct {
+	multi *MultiBuilder // combines multiple frames into a complete Packet.
+	log   *logrus.Logger
+
+	packetReady subscribableevent.Event[func(pkt.Packet)]
 }
 
 // NewCanAdapter instantiates a new CanAdapter
-func NewCanAdapter(log *logrus.Logger) *CanAdapter {
-	return &CanAdapter{
+func NewCanAdapter(log *logrus.Logger) *CANAdapter {
+	return &CANAdapter{
 		multi: NewMultiBuilder(log),
 		log:   log,
+
+		packetReady: subscribableevent.NewEvent[func(pkt.Packet)](),
 	}
 }
 
-// SetInChannel method sets the input channel
-func (c *CanAdapter) SetInChannel(in chan adapter.Message) {
-	c.frameC = in
+// SubscribeToPacketReady subscribes a callback function for whenever a packet is ready
+func (c *CANAdapter) SubscribeToPacketReady(f func(pkt.Packet)) subscribableevent.SubscriptionId {
+	return c.packetReady.Subscribe(f)
 }
 
-// SetOutChannel method sets the output channel
-func (c *CanAdapter) SetOutChannel(out chan pkt.Packet) {
-	c.packetC = out
+// UnsubscribeFromPacketReady unsubscribes a previous subscription for ready packets
+func (c *CANAdapter) UnsubscribeFromPacketReady(t subscribableevent.SubscriptionId) error {
+	return c.packetReady.Unsubscribe(t)
 }
 
-// Run method kicks off a goroutine that reads messages from the input channel and writes complete packets to the output channel.
-func (c *CanAdapter) Run(wg *sync.WaitGroup) error {
-	go func() {
-		defer wg.Done()
-		for {
+// ProcessMessage is how you tell CanAdapter to start processing a new message into a packet
+func (c *CANAdapter) ProcessMessage(message adapter.Message) {
+	switch f := message.(type) {
+	case Frame:
+		pInfo := NewPacketInfo(f)
+		packet := pkt.NewPacket(pInfo, f.Data[:])
 
-			m, more := <-c.frameC
-			if !more {
-				close(c.packetC)
-				return
-			}
-			switch f := m.(type) {
-			case Frame:
-				pInfo := NewPacketInfo(f)
-				c.current = pkt.NewPacket(pInfo, f.Data[:])
-				c.process()
-			default:
-				c.log.Warnf("CanAdapter expected Frame, received: %T\n", f)
-			}
+		// https://endige.com/2050/nmea-2000-pgns-deciphered/
+
+		if len(packet.ParseErrors) > 0 {
+			c.packetReady.Fire(*packet)
+			return
 		}
 
-	}()
-	return nil
-}
-
-// process method is the worker function for Run
-func (c *CanAdapter) process() {
-	// https://endige.com/2050/nmea-2000-pgns-deciphered/
-
-	if len(c.current.ParseErrors) > 0 {
-		c.packetC <- *c.current
-		return
-	}
-
-	if c.current.Fast {
-		c.multi.Add(c.current)
-	} else {
-		c.current.Complete = true
-	}
-	if c.current.Complete {
-		c.current.AddDecoders()
-		c.packetC <- *c.current
+		if packet.Fast {
+			// TODO: What does this go into?  Black hole? :D
+			c.multi.Add(packet)
+		} else {
+			packet.Complete = true
+		}
+		if packet.Complete {
+			packet.AddDecoders()
+			c.packetReady.Fire(*packet)
+		}
+	default:
+		c.log.Warnf("CanAdapter expected Frame, received: %T\n", f)
 	}
 }
