@@ -13,4 +13,16 @@ Initial restructuring of the package as we move it from private to public.
 - Canboat PGN definitions without samples (that is, no logs including the PGN/variant have been submitted to Canboat) are tracked separately--when they're found in logs the samples should be submitted to the project.
 - Imports canboat.json from an interim version forked on Boatkit while we wait for the project to address issues related to values with lengths not known in the PGN definition.
 
+### 2023-10-05
+Release v0.0.1
+
+- Switched back to Canboat's canboat.json.
+
+### 2023-10-07
+Release v0.0.2
+Moved from Pipeline constructed from channels to a much simpler model connecting each stage
+through function variables.
+
+
+
 

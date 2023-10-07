@@ -39,11 +39,11 @@ See the source to replay as an example of the intended use model.
 
 Responsible for managing the interaction with the nmea gateway (or to replay a recording of message frames received from a gateway or other source). To support a new gateway create a new implementation that supports this interface definition.
 
-The endpoint puts new message frames onto a channel. The data format is determined by the gateway or other source.
+The endpoint passes new message frames to the adapter through its input function. The data format is determined by the gateway or other source.
 
 ### Frame to Packet Adapter
 
-Responsible for generating a "packet" from frames received on its input channel, and putting complete packets onto its output channel. The packet is an intermediate format used by subsequent processors.
+Responsible for generating a "packet" from frames received through its input function, and passes complete packets on through its output function. The packet is an intermediate format used by subsequent processors.
 
 This adapter can access a number of helper functions:
 - is the PGN known (defined in canboat)?
@@ -52,7 +52,7 @@ This adapter can access a number of helper functions:
 
 ### Packet to Struct Adapter
 
-Receives packet on its input channel, decodes it, and puts the resulting Go struct on its output channel (or an UnknownPGN if it fails to decode the packet).
+Receives packet through its input function, decodes it, and passes the resulting Go struct (or an UnknownPGN if it fails to decode the packet) on through its output function.
 
 ### Subscribe 
 
@@ -76,6 +76,4 @@ See [changelog](./changelog.md)
 
 ## License
 [n2k license](./LICENSE)
-
-
 
