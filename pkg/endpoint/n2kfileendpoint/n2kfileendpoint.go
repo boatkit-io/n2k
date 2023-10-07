@@ -10,6 +10,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/pkg/errors"
@@ -88,7 +89,7 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 			}
 		}
 
-		n.frameReady(frame)
+		n.frameReady(&frame)
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -101,7 +102,7 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 }
 
 // frameReady is a helper to handle passing completed frames to the handler
-func (n *N2kFileEndpoint) frameReady(frame canadapter.Frame) {
+func (n *N2kFileEndpoint) frameReady(frame adapter.Message) {
 	if n.handler != nil {
 		n.handler.HandleMessage(frame)
 	}

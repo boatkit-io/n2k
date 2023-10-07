@@ -37,7 +37,7 @@ func (c *CANAdapter) SetOutput(ph PacketHandler) {
 // HandleMessage is how you tell CanAdapter to start processing a new message into a packet
 func (c *CANAdapter) HandleMessage(message adapter.Message) {
 	switch f := message.(type) {
-	case Frame:
+	case *Frame:
 		pInfo := NewPacketInfo(f)
 		packet := pkt.NewPacket(pInfo, f.Data[:])
 

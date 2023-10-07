@@ -72,7 +72,7 @@ func TestBigPacket(t *testing.T) {
 			continue
 		}
 		frame := CanFrameFromRaw(line)
-		pInfo := NewPacketInfo(frame)
+		pInfo := NewPacketInfo(&frame)
 		p = pkt.NewPacket(pInfo, frame.Data[:])
 		m.Add(p)
 	}
@@ -83,7 +83,7 @@ func TestFastPacket(t *testing.T) {
 	m := NewMultiBuilder(log)
 
 	// test fast packet that's actually Complete in single-frame
-	pInfo := NewPacketInfo(Frame{ID: CanIdFromData(130820, 10, 1, 0), Length: 8})
+	pInfo := NewPacketInfo(&Frame{ID: CanIdFromData(130820, 10, 1, 0), Length: 8})
 	data := []uint8{160, 5, 163, 153, 32, 128, 1, 255}
 	p := pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -92,7 +92,7 @@ func TestFastPacket(t *testing.T) {
 
 	// we allow out of order frames
 	m = NewMultiBuilder(log)
-	p = pkt.NewPacket(NewPacketInfo(Frame{ID: CanIdFromData(130820, 10, 1, 0), Length: 8}), []uint8{161, 5, 163, 153, 32, 128, 1, 255})
+	p = pkt.NewPacket(NewPacketInfo(&Frame{ID: CanIdFromData(130820, 10, 1, 0), Length: 8}), []uint8{161, 5, 163, 153, 32, 128, 1, 255})
 	m.Add(p)
 	assert.False(t, p.Complete)
 	assert.NotNil(t, m.sequences[10])
@@ -106,7 +106,7 @@ func TestFastPacket(t *testing.T) {
 	// not much of a test) might be a fast variant, but it's a weak heuristic.
 	// Instead we'll return each packet as unknown.
 	m = NewMultiBuilder(log)
-	pInfo = NewPacketInfo(Frame{ID: 0x09F20183})
+	pInfo = NewPacketInfo(&Frame{ID: 0x09F20183})
 	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)

@@ -50,7 +50,7 @@ type Frame struct {
 }
 
 // NewPacketInfo instantiates a new Packet from a canbus Frame and surrounding context.
-func NewPacketInfo(message Frame) pgn.MessageInfo {
+func NewPacketInfo(message *Frame) pgn.MessageInfo {
 	p := pgn.MessageInfo{
 		Timestamp: time.Now(),
 		SourceId:  uint8(message.ID & 0xFF),
