@@ -2,82 +2,70 @@
 package canadapter
 
 import (
-	"sync"
-
 	"github.com/sirupsen/logrus"
 
 	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/pkt"
 )
 
-// CanAdapter instances read canbus frames from its input and outputs complete Packets.
-type CanAdapter struct {
-	frameC  chan adapter.Message // input channel
-	packetC chan pkt.Packet      // output channel
-	multi   *MultiBuilder        // combines multiple frames into a complete Packet.
-	current *pkt.Packet
-	log     *logrus.Logger
+// CANAdapter instances read canbus frames from its input and outputs complete Packets.
+type CANAdapter struct {
+	multi *MultiBuilder // combines multiple frames into a complete Packet.
+	log   *logrus.Logger
+
+	handler PacketHandler
 }
 
-// NewCanAdapter instantiates a new CanAdapter
-func NewCanAdapter(log *logrus.Logger) *CanAdapter {
-	return &CanAdapter{
+// PacketHandler is an interface for the output handler for a CANAdapter
+type PacketHandler interface {
+	HandlePacket(pkt.Packet)
+}
+
+// NewCANAdapter instantiates a new CanAdapter
+func NewCANAdapter(log *logrus.Logger) *CANAdapter {
+	return &CANAdapter{
 		multi: NewMultiBuilder(log),
 		log:   log,
 	}
 }
 
-// SetInChannel method sets the input channel
-func (c *CanAdapter) SetInChannel(in chan adapter.Message) {
-	c.frameC = in
+// SetOutput assigns a handler for any ready packets
+func (c *CANAdapter) SetOutput(ph PacketHandler) {
+	c.handler = ph
 }
 
-// SetOutChannel method sets the output channel
-func (c *CanAdapter) SetOutChannel(out chan pkt.Packet) {
-	c.packetC = out
-}
+// HandleMessage is how you tell CanAdapter to start processing a new message into a packet
+func (c *CANAdapter) HandleMessage(message adapter.Message) {
+	switch f := message.(type) {
+	case *Frame:
+		pInfo := NewPacketInfo(f)
+		packet := pkt.NewPacket(pInfo, f.Data[:])
 
-// Run method kicks off a goroutine that reads messages from the input channel and writes complete packets to the output channel.
-func (c *CanAdapter) Run(wg *sync.WaitGroup) error {
-	go func() {
-		defer wg.Done()
-		for {
+		// https://endige.com/2050/nmea-2000-pgns-deciphered/
 
-			m, more := <-c.frameC
-			if !more {
-				close(c.packetC)
-				return
-			}
-			switch f := m.(type) {
-			case Frame:
-				pInfo := NewPacketInfo(f)
-				c.current = pkt.NewPacket(pInfo, f.Data[:])
-				c.process()
-			default:
-				c.log.Warnf("CanAdapter expected Frame, received: %T\n", f)
-			}
+		if len(packet.ParseErrors) > 0 {
+			c.packetReady(packet)
+			return
 		}
 
-	}()
-	return nil
+		if packet.Fast {
+			c.multi.Add(packet)
+		} else {
+			packet.Complete = true
+		}
+
+		if packet.Complete {
+			packet.AddDecoders()
+			c.packetReady(packet)
+		}
+	default:
+		c.log.Warnf("CanAdapter expected Frame, received: %T\n", f)
+	}
 }
 
-// process method is the worker function for Run
-func (c *CanAdapter) process() {
-	// https://endige.com/2050/nmea-2000-pgns-deciphered/
-
-	if len(c.current.ParseErrors) > 0 {
-		c.packetC <- *c.current
-		return
-	}
-
-	if c.current.Fast {
-		c.multi.Add(c.current)
-	} else {
-		c.current.Complete = true
-	}
-	if c.current.Complete {
-		c.current.AddDecoders()
-		c.packetC <- *c.current
+// packetReady is a helper for fanning out completed packets to the handler
+func (c *CANAdapter) packetReady(packet *pkt.Packet) {
+	if c.handler != nil {
+		c.handler.HandlePacket(*packet)
 	}
 }

@@ -166,7 +166,7 @@ type {{ .Id }}Repeating2 struct {
 }
 {{- end }}
 {{- $funcName := concat "Decode" .Id }}
-func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (interface{}, error) {
+func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val {{ .Id }}
 	val.Info = Info
 

@@ -48,7 +48,7 @@ type Packet struct {
 	// Decoders reduces the list of candidate decoders to those that match the complete Packet.
 	// We eliminate possible matches with different Manufacturer IDs.
 	// And fast decoders for single packets (and vice versa).
-	Decoders []func(pgn.MessageInfo, *pgn.PGNDataStream) (interface{}, error)
+	Decoders []func(pgn.MessageInfo, *pgn.PGNDataStream) (any, error)
 
 	// ParseErrors track errors in processing the input (we might try multiple decoders)
 	ParseErrors []error

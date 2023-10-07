@@ -19,7 +19,7 @@ type PgnInfo struct {
 	// ManId identifies the Manufacturer for Proprietary PGNs
 	ManId ManufacturerCodeConst
 	// Decoder is a function that generates golang data from the messsage data.
-	Decoder func(MessageInfo, *PGNDataStream) (interface{}, error)
+	Decoder func(MessageInfo, *PGNDataStream) (any, error)
 	// Fields is a map of field descriptions needed at runtime to deal with variable pgn fields
 	Fields map[int]*FieldDescriptor
 }

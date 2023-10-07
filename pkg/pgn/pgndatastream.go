@@ -461,7 +461,7 @@ func (s *PGNDataStream) getSignedNullableNumber(bitLength uint16) (*int64, error
 	return &vi, nil
 }
 
-// readVariableData method reads and returns the value of pgn.fieldIndex as an interface{}
+// readVariableData method reads and returns the value of pgn.fieldIndex as a byte array
 func (s *PGNDataStream) readVariableData(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint8) ([]uint8, error) {
 	field, err := GetFieldDescriptor(pgn, manID, fieldIndex)
 	if err == nil {

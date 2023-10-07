@@ -267,7 +267,7 @@ func (conv *canboatConverter) write() {
 		}).Parse(pgninfoTemplate))
 
 		templateData := struct {
-			PGNDoc interface{}
+			PGNDoc any
 		}{
 			PGNDoc: conv,
 		}

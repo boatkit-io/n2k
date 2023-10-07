@@ -2,30 +2,24 @@ package main
 
 import (
 	//	"context"
+	"context"
 	"flag"
 	"os"
 	"strings"
-	"sync"
 
 	//	"time"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
-	"github.com/boatkit-io/n2k/pkg/endpoint"
-	"github.com/boatkit-io/n2k/pkg/endpoint/n2kendpoint"
+	"github.com/boatkit-io/n2k/pkg/endpoint/n2kfileendpoint"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/n2k/pkg/pkt"
 	"github.com/boatkit-io/n2k/pkg/subscribe"
 
-	//	"github.com/boatkit-io/tugboat/pkg/service"
 	"github.com/sirupsen/logrus"
 )
 
 func main() {
 	var exitCode int
-	var activities = new(sync.WaitGroup)
-	var n endpoint.Endpoint
-	var p adapter.Adapter
 	defer func() {
 		os.Exit(exitCode)
 	}()
@@ -39,43 +33,33 @@ func main() {
 
 	log := logrus.StandardLogger()
 	log.Infof("in replayfile, dump:%t, file:%s\n", dumpPgns, replayFile)
+
 	subs := subscribe.New()
-	s := pkt.NewPacketStruct()
-	h := pgn.NewStructHandler(s.OutChannel(), subs)
-
-	//	ctx, cancel := context.WithCancel(context.Background())
-	//	defer cancel()
-	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
-		n = n2kendpoint.NewN2kEndpoint(replayFile, log)
-		p = canadapter.NewCanAdapter(log)
-		p.SetInChannel(n.OutChannel())
-		p.SetOutChannel(s.InChannel())
-		activities.Add(5)
-		h.Run(activities)
-		s.Run(activities)
-		err := p.Run(activities)
-		if err != nil {
-			exitCode = 1
-			return
-		}
-		err = n.Run(activities)
-		if err != nil {
-			exitCode = 1
-			return
-		}
-	}
-
 	go func() {
-
-		defer activities.Done()
-
 		if dumpPgns {
-			_, _ = subs.SubscribeToAllStructs(func(p interface{}) {
+			_, _ = subs.SubscribeToAllStructs(func(p any) {
 				log.Infof("Handling PGN: %s", pgn.DebugDumpPGN(p))
 			})
 		}
 	}()
 
-	activities.Wait()
+	ps := pkt.NewPacketStruct()
+	ps.SetOutput(subs)
 
+	//	ctx, cancel := context.WithCancel(context.Background())
+	//	defer cancel()
+	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
+		ca := canadapter.NewCANAdapter(log)
+		ca.SetOutput(ps)
+
+		ep := n2kfileendpoint.NewN2kFileEndpoint(replayFile, log)
+		ep.SetOutput(ca)
+
+		ctx := context.Background()
+		err := ep.Run(ctx)
+		if err != nil {
+			exitCode = 1
+			return
+		}
+	}
 }
