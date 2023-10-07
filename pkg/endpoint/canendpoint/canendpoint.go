@@ -82,8 +82,8 @@ func (c *CANEndpoint) Shutdown() error {
 }
 
 // frameReady is a helper to handle passing completed frames to the handler
-func (n *CANEndpoint) frameReady(frame can.Frame) {
-	if n.handler != nil {
-		n.handler.HandleMessage(adapter.Message(frame))
+func (c *CANEndpoint) frameReady(frame can.Frame) {
+	if c.handler != nil {
+		c.handler.HandleMessage(adapter.Message(&frame))
 	}
 }
