@@ -88,7 +88,7 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 			}
 		}
 
-		n.frameReady(&frame)
+		n.frameReady(frame)
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -101,7 +101,7 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 }
 
 // frameReady is a helper to handle passing completed frames to the handler
-func (n *N2kFileEndpoint) frameReady(frame *canadapter.Frame) {
+func (n *N2kFileEndpoint) frameReady(frame canadapter.Frame) {
 	if n.handler != nil {
 		n.handler.HandleMessage(frame)
 	}
