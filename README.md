@@ -77,5 +77,3 @@ See [changelog](./changelog.md)
 ## License
 [n2k license](./LICENSE)
 
-
-
