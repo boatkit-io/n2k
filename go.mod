@@ -6,6 +6,7 @@ toolchain go1.21.1
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
+	github.com/boatkit-io/tugboat v0.5.1
 	github.com/brutella/can v0.0.2
 	github.com/magefile/mage v1.15.0
 	github.com/pkg/errors v0.9.1
@@ -23,7 +24,6 @@ require (
 require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver/v3 v3.2.1 // indirect
-	github.com/boatkit-io/goatutils v0.0.0-20231006015102-a95a1be47efd
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/google/uuid v1.3.1 // indirect
 	github.com/huandu/xstrings v1.4.0 // indirect

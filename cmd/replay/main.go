@@ -15,7 +15,6 @@ import (
 	"github.com/boatkit-io/n2k/pkg/pkt"
 	"github.com/boatkit-io/n2k/pkg/subscribe"
 
-	//	"github.com/boatkit-io/tugboat/pkg/service"
 	"github.com/sirupsen/logrus"
 )
 

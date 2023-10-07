@@ -4,9 +4,9 @@ package canendpoint
 import (
 	"context"
 
-	"github.com/boatkit-io/goatutils/pkg/canbus"
 	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
+	"github.com/boatkit-io/tugboat/pkg/canbus"
 	"github.com/brutella/can"
 	"github.com/pkg/errors"
 
@@ -17,8 +17,7 @@ import (
 type CANEndpoint struct {
 	log *logrus.Logger
 
-	canbus     *canbus.Channel
-	canbusOpts canbus.ChannelOptions
+	channel *canbus.Channel
 
 	handler endpoint.MessageHandler
 }
@@ -27,14 +26,14 @@ type CANEndpoint struct {
 func NewCANEndpoint(log *logrus.Logger, canInterfaceName string) *CANEndpoint {
 	c := CANEndpoint{
 		log: log,
-
-		canbusOpts: canbus.ChannelOptions{
-			CanInterfaceName: canInterfaceName,
-			MessageHandler:   nil,
-		},
 	}
 
-	c.canbusOpts.MessageHandler = c.frameReady
+	channelOpts := canbus.ChannelOptions{
+		CanInterfaceName: canInterfaceName,
+		MessageHandler:   c.frameReady,
+	}
+
+	c.channel = canbus.NewChannel(log, channelOpts)
 
 	return &c
 }
@@ -42,16 +41,7 @@ func NewCANEndpoint(log *logrus.Logger, canInterfaceName string) *CANEndpoint {
 // Run should, in theory, run the endpoint and block until completion/error, but the canbus implementation doesn't work like that
 // right now unfortunately, so it just spawns in the background and keeps running until Shutdown kills it...
 func (c *CANEndpoint) Run(ctx context.Context) error {
-	// TODO: canbus.NewChannel actually doesn't block, it makes its own goroutine, we should fix this threading model someday
-	cc, err := canbus.NewChannel(ctx, c.log, c.canbusOpts)
-	if err != nil {
-		c.log.WithError(err).Warn("n2k channel creation failed")
-		return err
-	}
-
-	c.canbus = cc
-
-	return nil
+	return c.channel.Run(ctx)
 }
 
 // SetOutput subscribes a callback handler for whenever a message is ready
@@ -61,11 +51,10 @@ func (c *CANEndpoint) SetOutput(mh endpoint.MessageHandler) {
 
 // Shutdown will stop the endpoint from processing further frames
 func (c *CANEndpoint) Shutdown() error {
-	if c.canbus != nil {
+	if c.channel != nil {
 		var errs []error
 
-		// TODO: Fix this context thing, it's not used/needed
-		if err := c.canbus.Close(context.Background()); err != nil {
+		if err := c.channel.Close(); err != nil {
 			errs = append(errs, errors.Wrap(err, "closing n2k canbus channel"))
 		}
 

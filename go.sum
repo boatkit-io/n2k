@@ -5,8 +5,8 @@ github.com/Masterminds/semver/v3 v3.2.1 h1:RN9w6+7QoMeJVGyfmbcgs28Br8cvmnucEXnY0
 github.com/Masterminds/semver/v3 v3.2.1/go.mod h1:qvl/7zhW3nngYb5+80sSMF+FG2BjYrf8m9wsX0PNOMQ=
 github.com/Masterminds/sprig/v3 v3.2.3 h1:eL2fZNezLomi0uOLqjQoN6BfsDD+fyLtgbJMAj9n6YA=
 github.com/Masterminds/sprig/v3 v3.2.3/go.mod h1:rXcFaZ2zZbLRJv/xSysmlgIM1u11eBaRMhvYXJNkGuM=
-github.com/boatkit-io/goatutils v0.0.0-20231006015102-a95a1be47efd h1:RA6l6xQvVaiuOA/Q7sNkM767y5ewmjmRd+fozso6/hs=
-github.com/boatkit-io/goatutils v0.0.0-20231006015102-a95a1be47efd/go.mod h1:p/huZUSuUjt8RTaFKEbc1PzC7AzQIOi/TSq93xpWa9Y=
+github.com/boatkit-io/tugboat v0.5.1 h1:A0hM8MUWVoJd/qx/HEtYiC7EWQFWE9aDKnYEq6EqFws=
+github.com/boatkit-io/tugboat v0.5.1/go.mod h1:HxcOHfUOQqF/rk8d+6v4grl/STsmOPQ9eCh39c/XEo0=
 github.com/brutella/can v0.0.2 h1:8TyjZrBZSwQwSr5x3U9KtKzGW8HNE/NpUgsNcYDAVIM=
 github.com/brutella/can v0.0.2/go.mod h1:NYDxbQito3w4+4DcjWs/fpQ3xyaFdpXw/KYqtZFU98k=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
