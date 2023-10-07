@@ -26,11 +26,11 @@ jobs:
 
       ### ASDF Logic
       - name: Setup asdf
-        uses: asdf-vm/actions/setup@v1
+        uses: asdf-vm/actions/setup@v2
       - name: Install asdf plugins
-        uses: asdf-vm/actions/plugins-add@v1
+        uses: asdf-vm/actions/plugins-add@v2
       - name: Install asdf languages
-        uses: asdf-vm/actions/install@v1
+        uses: asdf-vm/actions/install@v2
       ### END
 
       - name: lintroller
