@@ -2,8 +2,6 @@ module github.com/boatkit-io/n2k
 
 go 1.21
 
-toolchain go1.21.1
-
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
 	github.com/boatkit-io/tugboat v0.5.1
