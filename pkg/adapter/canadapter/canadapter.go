@@ -2,6 +2,7 @@
 package canadapter
 
 import (
+	"github.com/brutella/can"
 	"github.com/sirupsen/logrus"
 
 	"github.com/boatkit-io/n2k/pkg/adapter"
@@ -37,7 +38,7 @@ func (c *CANAdapter) SetOutput(ph PacketHandler) {
 // HandleMessage is how you tell CanAdapter to start processing a new message into a packet
 func (c *CANAdapter) HandleMessage(message adapter.Message) {
 	switch f := message.(type) {
-	case *Frame:
+	case *can.Frame:
 		pInfo := NewPacketInfo(f)
 		packet := pkt.NewPacket(pInfo, f.Data[:])
 
@@ -59,7 +60,7 @@ func (c *CANAdapter) HandleMessage(message adapter.Message) {
 			c.packetReady(packet)
 		}
 	default:
-		c.log.Warnf("CanAdapter expected Frame, received: %T\n", f)
+		c.log.Warnf("CanAdapter expected *can.Frame, received: %T", f)
 	}
 }
 

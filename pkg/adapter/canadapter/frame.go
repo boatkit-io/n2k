@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/boatkit-io/n2k/pkg/pgn"
+	"github.com/brutella/can"
 )
 
 // This data structure is copied from
@@ -35,22 +36,8 @@ SOFTWARE.
 
 */
 
-// Frame defines a canbus wire frame.
-type Frame struct {
-	// bit 0-28: CAN identifier (11/29 bit)
-	// bit 29: error message flag (ERR)
-	// bit 30: remote transmision request (RTR)
-	// bit 31: extended frame format (EFF)
-	ID     uint32
-	Length uint8
-	Flags  uint8
-	Res0   uint8
-	Res1   uint8
-	Data   [8]uint8
-}
-
 // NewPacketInfo instantiates a new Packet from a canbus Frame and surrounding context.
-func NewPacketInfo(message *Frame) pgn.MessageInfo {
+func NewPacketInfo(message *can.Frame) pgn.MessageInfo {
 	p := pgn.MessageInfo{
 		Timestamp: time.Now(),
 		SourceId:  uint8(message.ID & 0xFF),

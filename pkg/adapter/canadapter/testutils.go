@@ -3,10 +3,12 @@ package canadapter
 import (
 	"strconv"
 	"strings"
+
+	"github.com/brutella/can"
 )
 
 // CanFrameFromRaw parses an input string into a can.Frame.
-func CanFrameFromRaw(in string) Frame {
+func CanFrameFromRaw(in string) can.Frame {
 	elems := strings.Split(in, ",")
 	priority, _ := strconv.ParseUint(elems[1], 10, 8)
 	pgn, _ := strconv.ParseUint(elems[2], 10, 32)
@@ -15,7 +17,7 @@ func CanFrameFromRaw(in string) Frame {
 	length, _ := strconv.ParseUint(elems[5], 10, 8)
 
 	id := CanIdFromData(uint32(pgn), uint8(source), uint8(priority), uint8(destination))
-	retval := Frame{
+	retval := can.Frame{
 		ID:     id,
 		Length: 8,
 	}
