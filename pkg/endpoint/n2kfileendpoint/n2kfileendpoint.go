@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"github.com/boatkit-io/n2k/pkg/adapter"
-	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
+	"github.com/brutella/can"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
@@ -69,7 +69,7 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 		if len(line) == 0 {
 			continue
 		}
-		var frame canadapter.Frame
+		var frame can.Frame
 		var canDead string
 		var timeDelta float32
 		fmt.Sscanf(line, " (%f)  %s  %8X   [%d]  %X %X %X %X %X %X %X %X", &timeDelta, &canDead, &frame.ID, &frame.Length, &frame.Data[0], &frame.Data[1], &frame.Data[2], &frame.Data[3], &frame.Data[4], &frame.Data[5], &frame.Data[6], &frame.Data[7])
