@@ -11,7 +11,7 @@ require (
 	github.com/schollz/progressbar/v3 v3.13.1
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.8.4
-	golang.org/x/text v0.13.0
+	golang.org/x/text v0.15.0
 )
 
 require (
