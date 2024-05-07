@@ -7,6 +7,8 @@ github.com/Masterminds/sprig/v3 v3.2.3 h1:eL2fZNezLomi0uOLqjQoN6BfsDD+fyLtgbJMAj
 github.com/Masterminds/sprig/v3 v3.2.3/go.mod h1:rXcFaZ2zZbLRJv/xSysmlgIM1u11eBaRMhvYXJNkGuM=
 github.com/boatkit-io/tugboat v0.5.1 h1:A0hM8MUWVoJd/qx/HEtYiC7EWQFWE9aDKnYEq6EqFws=
 github.com/boatkit-io/tugboat v0.5.1/go.mod h1:HxcOHfUOQqF/rk8d+6v4grl/STsmOPQ9eCh39c/XEo0=
+github.com/boatkit-io/tugboat v0.6.0 h1:lUtBDm0CftCsxvXYxV52TJnot1br5CbFKEd6A4MVbqA=
+github.com/boatkit-io/tugboat v0.6.0/go.mod h1:HxcOHfUOQqF/rk8d+6v4grl/STsmOPQ9eCh39c/XEo0=
 github.com/brutella/can v0.0.2 h1:8TyjZrBZSwQwSr5x3U9KtKzGW8HNE/NpUgsNcYDAVIM=
 github.com/brutella/can v0.0.2/go.mod h1:NYDxbQito3w4+4DcjWs/fpQ3xyaFdpXw/KYqtZFU98k=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
