@@ -287,7 +287,7 @@ func (conv *canboatConverter) fixIDs() {
 		fieldDeDuper := NewDeDuper()
 		// Capitalize first letter of the Ids (currently lowercase)
 		conv.PGNs[i].Id = capitalizeFirstChar(conv.PGNs[i].Id)
-		if !pgnDeDuper.isUnique(conv.PGNs[i].Id) {
+		if len(conv.PGNs[i].Id) != len(pgnDeDuper.unique(conv.PGNs[i].Id)) {
 			panic("PGN ID not unique: " + conv.PGNs[i].Id)
 		}
 		for j := range conv.PGNs[i].Fields {
@@ -311,7 +311,7 @@ func fixupField(field *PGNField, dedup DeDuper) {
 	if field.FieldType == "LOOKUP" && len(field.LookupName) == 0 {
 		log.Infof("Lookup without Enumeration Name: " + field.Id)
 	}
-	if field.Id != dedup.unique(field.Id) {
+	if len(field.Id) != len(dedup.unique(field.Id)) {
 		panic("field ID not unique: " + field.Id)
 	}
 	if len(field.LookupName) > 0 {
@@ -353,7 +353,7 @@ func (builder *canboatConverter) fixEnumDefs() {
 	constDeDuper := NewDeDuper()
 	for i := range builder.Enums {
 		convertToConst(&builder.Enums[i].Name)
-		if !constDeDuper.isUnique(builder.Enums[i].Name) {
+		if len(builder.Enums[i].Name) != len(constDeDuper.unique(builder.Enums[i].Name)) {
 			panic("Enum name not unique: " + builder.Enums[i].Name)
 		}
 		for j := range builder.Enums[i].Values {
@@ -362,7 +362,7 @@ func (builder *canboatConverter) fixEnumDefs() {
 	}
 	for i := range builder.IndirectEnums {
 		convertToConst(&builder.IndirectEnums[i].Name)
-		if !constDeDuper.isUnique(builder.IndirectEnums[i].Name) {
+		if len(builder.IndirectEnums[i].Name) != len(constDeDuper.unique(builder.IndirectEnums[i].Name)) {
 			panic("IndirectEnum name not unique: " + builder.IndirectEnums[i].Name)
 		}
 		for j := range builder.IndirectEnums[i].Values { // not strictly necessary since we aren't creating identifiers from them
@@ -371,7 +371,7 @@ func (builder *canboatConverter) fixEnumDefs() {
 	}
 	for i := range builder.BitEnums {
 		convertToConst(&builder.BitEnums[i].Name)
-		if builder.BitEnums[i].Name != constDeDuper.unique(builder.BitEnums[i].Name) {
+		if len(builder.BitEnums[i].Name) != len(constDeDuper.unique(builder.BitEnums[i].Name)) {
 			panic("BitEnum name not unique: " + builder.BitEnums[i].Name)
 		}
 		for j := range builder.BitEnums[i].EnumBitValues {

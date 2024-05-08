@@ -92,18 +92,18 @@ const (
 	Nobletec	ManufacturerCodeConst = 193
 	MysticValleyCommunications	ManufacturerCodeConst = 198
 	Actia	ManufacturerCodeConst = 199
-	HondaMarine2	ManufacturerCodeConst = 200
+	HondaMarine_2	ManufacturerCodeConst = 200
 	DisenosYTechnologia	ManufacturerCodeConst = 201
 	DigitalSwitchingSystems	ManufacturerCodeConst = 211
 	XintexAtena	ManufacturerCodeConst = 215
 	EMMINETWORKSL	ManufacturerCodeConst = 224
-	HondaMarine3	ManufacturerCodeConst = 225
+	HondaMarine_3	ManufacturerCodeConst = 225
 	ZF	ManufacturerCodeConst = 228
 	Garmin	ManufacturerCodeConst = 229
 	YachtMonitoringSolutions	ManufacturerCodeConst = 233
 	SailormadeMarineTelemetryTetraTechnologyLTD	ManufacturerCodeConst = 235
 	Eride	ManufacturerCodeConst = 243
-	HondaMarine4	ManufacturerCodeConst = 250
+	HondaMarine_4	ManufacturerCodeConst = 250
 	HondaMotorCompanyLTD	ManufacturerCodeConst = 257
 	Groco	ManufacturerCodeConst = 272
 	Actisense	ManufacturerCodeConst = 273
@@ -112,7 +112,7 @@ const (
 	HamiltonJet	ManufacturerCodeConst = 283
 	SeaRecovery	ManufacturerCodeConst = 285
 	CoelmoSRLItaly	ManufacturerCodeConst = 286
-	BEPMarine2	ManufacturerCodeConst = 295
+	BEPMarine_2	ManufacturerCodeConst = 295
 	EmpirBus	ManufacturerCodeConst = 304
 	NovAtel	ManufacturerCodeConst = 305
 	SleipnerMotorAS	ManufacturerCodeConst = 306
@@ -157,7 +157,7 @@ const (
 	SITEXMarineElectronics	ManufacturerCodeConst = 470
 	SeaCrossMarineAB	ManufacturerCodeConst = 471
 	GMEAkaStandardCommunicationsPtyLTD	ManufacturerCodeConst = 475
-	HumminbirdMarineElectronics2	ManufacturerCodeConst = 476
+	HumminbirdMarineElectronics_2	ManufacturerCodeConst = 476
 	OceanSatBV	ManufacturerCodeConst = 478
 	ChetcoDigitialInstruments	ManufacturerCodeConst = 481
 	Watcheye	ManufacturerCodeConst = 493
@@ -187,7 +187,7 @@ const (
 	BavariaYacts	ManufacturerCodeConst = 637
 	DiverseYachtServices	ManufacturerCodeConst = 641
 	WemaUSADbaKUS	ManufacturerCodeConst = 644
-	Garmin2	ManufacturerCodeConst = 645
+	Garmin_2	ManufacturerCodeConst = 645
 	ShenzhenJiuzhouHimunication	ManufacturerCodeConst = 658
 	RockfordCorp	ManufacturerCodeConst = 688
 	JLAudio	ManufacturerCodeConst = 704
@@ -1239,7 +1239,7 @@ const (
 	NotAvailable	AisSpecialManeuverConst = 0
 	NotEngagedInSpecialManeuver	AisSpecialManeuverConst = 1
 	EngagedInSpecialManeuver	AisSpecialManeuverConst = 2
-	Reserved2	AisSpecialManeuverConst = 3
+	Reserved_2	AisSpecialManeuverConst = 3
 )
 
 func (e AisSpecialManeuverConst) GoString() string {return e.String() }
@@ -1302,15 +1302,15 @@ func (e PositionFixDeviceConst) String() string {
 
 type GnsConst uint8
 const (
-	GPS2	GnsConst = 0
-	GLONASS2	GnsConst = 1
+	GPS_2	GnsConst = 0
+	GLONASS_2	GnsConst = 1
 	GPSGLONASS	GnsConst = 2
 	GPSSBASWAAS	GnsConst = 3
 	GPSSBASWAASGLONASS	GnsConst = 4
-	Chayka2	GnsConst = 5
+	Chayka_2	GnsConst = 5
 	Integrated	GnsConst = 6
-	Surveyed2	GnsConst = 7
-	Galileo2	GnsConst = 8
+	Surveyed_2	GnsConst = 7
+	Galileo_2	GnsConst = 8
 )
 
 func (e GnsConst) GoString() string {return e.String() }
@@ -1380,8 +1380,8 @@ func (e GearStatusConst) String() string {
 
 type DirectionConst uint8
 const (
-	Forward2	DirectionConst = 0
-	Reverse2	DirectionConst = 1
+	Forward_2	DirectionConst = 0
+	Reverse_2	DirectionConst = 1
 )
 
 func (e DirectionConst) GoString() string {return e.String() }
@@ -1434,7 +1434,7 @@ func (e RaimFlagConst) String() string {
 
 type TimeStampConst uint8
 const (
-	NotAvailable2	TimeStampConst = 60
+	NotAvailable_2	TimeStampConst = 60
 	ManualInputMode	TimeStampConst = 61
 	DeadReckoningMode	TimeStampConst = 62
 	PositioningSystemIsInoperative	TimeStampConst = 63
@@ -1518,8 +1518,8 @@ func (e GnsIntegrityConst) String() string {
 
 type SystemTimeConst uint8
 const (
-	GPS3	SystemTimeConst = 0
-	GLONASS3	SystemTimeConst = 1
+	GPS_3	SystemTimeConst = 0
+	GLONASS_3	SystemTimeConst = 1
 	RadioStation	SystemTimeConst = 2
 	LocalCesiumClock	SystemTimeConst = 3
 	LocalRubidiumClock	SystemTimeConst = 4
@@ -1591,7 +1591,7 @@ const (
 	DifferentialEnhanced	ResidualModeConst = 1
 	Estimated	ResidualModeConst = 2
 	Simulator	ResidualModeConst = 3
-	Manual2	ResidualModeConst = 4
+	Manual_2	ResidualModeConst = 4
 )
 
 func (e ResidualModeConst) GoString() string {return e.String() }
@@ -1820,7 +1820,7 @@ type PowerFactorConst uint8
 const (
 	Leading	PowerFactorConst = 0
 	Lagging	PowerFactorConst = 1
-	Error2	PowerFactorConst = 2
+	Error_2	PowerFactorConst = 2
 )
 
 func (e PowerFactorConst) GoString() string {return e.String() }
@@ -1992,7 +1992,7 @@ const (
 	Routine	DscCategoryConst = 100
 	Safety	DscCategoryConst = 108
 	Urgency	DscCategoryConst = 110
-	Distress2	DscCategoryConst = 112
+	Distress_2	DscCategoryConst = 112
 )
 
 func (e DscCategoryConst) GoString() string {return e.String() }
@@ -2125,11 +2125,11 @@ const (
 	EquipmentDisabled	DscSecondTelecommandConst = 107
 	UnableToUseProposedChannel	DscSecondTelecommandConst = 108
 	UnableToUseProposedMode	DscSecondTelecommandConst = 109
-	ShipsAndAircraftOfStatesNotPartiesToAnArmedConflict2	DscSecondTelecommandConst = 110
+	ShipsAndAircraftOfStatesNotPartiesToAnArmedConflict_2	DscSecondTelecommandConst = 110
 	MedicalTransports	DscSecondTelecommandConst = 111
 	PayPhonePublicCallOffice	DscSecondTelecommandConst = 112
 	FaxData	DscSecondTelecommandConst = 113
-	NoInformation2	DscSecondTelecommandConst = 126
+	NoInformation_2	DscSecondTelecommandConst = 126
 )
 
 func (e DscSecondTelecommandConst) GoString() string {return e.String() }
@@ -2808,7 +2808,7 @@ func (e EntertainmentPlayStatusConst) String() string {
 
 type EntertainmentRepeatStatusConst uint8
 const (
-	Off2	EntertainmentRepeatStatusConst = 0
+	Off_2	EntertainmentRepeatStatusConst = 0
 	One	EntertainmentRepeatStatusConst = 1
 	All	EntertainmentRepeatStatusConst = 2
 )
@@ -2829,9 +2829,9 @@ func (e EntertainmentRepeatStatusConst) String() string {
 
 type EntertainmentShuffleStatusConst uint8
 const (
-	Off3	EntertainmentShuffleStatusConst = 0
+	Off_3	EntertainmentShuffleStatusConst = 0
 	PlayQueue	EntertainmentShuffleStatusConst = 1
-	All2	EntertainmentShuffleStatusConst = 2
+	All_2	EntertainmentShuffleStatusConst = 2
 )
 
 func (e EntertainmentShuffleStatusConst) GoString() string {return e.String() }
@@ -2880,7 +2880,7 @@ const (
 	StationName	EntertainmentTypeConst = 6
 	StationNumber	EntertainmentTypeConst = 7
 	FavouriteNumber	EntertainmentTypeConst = 8
-	PlayQueue2	EntertainmentTypeConst = 9
+	PlayQueue_2	EntertainmentTypeConst = 9
 	ContentInfo	EntertainmentTypeConst = 10
 )
 
@@ -2916,17 +2916,17 @@ func (e EntertainmentTypeConst) String() string {
 
 type EntertainmentGroupConst uint8
 const (
-	File2	EntertainmentGroupConst = 0
-	PlaylistName2	EntertainmentGroupConst = 1
-	GenreName2	EntertainmentGroupConst = 2
-	AlbumName2	EntertainmentGroupConst = 3
-	ArtistName2	EntertainmentGroupConst = 4
-	TrackName2	EntertainmentGroupConst = 5
-	StationName2	EntertainmentGroupConst = 6
-	StationNumber2	EntertainmentGroupConst = 7
-	FavouriteNumber2	EntertainmentGroupConst = 8
-	PlayQueue3	EntertainmentGroupConst = 9
-	ContentInfo2	EntertainmentGroupConst = 10
+	File_2	EntertainmentGroupConst = 0
+	PlaylistName_2	EntertainmentGroupConst = 1
+	GenreName_2	EntertainmentGroupConst = 2
+	AlbumName_2	EntertainmentGroupConst = 3
+	ArtistName_2	EntertainmentGroupConst = 4
+	TrackName_2	EntertainmentGroupConst = 5
+	StationName_2	EntertainmentGroupConst = 6
+	StationNumber_2	EntertainmentGroupConst = 7
+	FavouriteNumber_2	EntertainmentGroupConst = 8
+	PlayQueue_3	EntertainmentGroupConst = 9
+	ContentInfo_2	EntertainmentGroupConst = 10
 )
 
 func (e EntertainmentGroupConst) GoString() string {return e.String() }
@@ -3086,8 +3086,8 @@ type AlertTypeConst uint8
 const (
 	EmergencyAlarm	AlertTypeConst = 1
 	Alarm	AlertTypeConst = 2
-	Warning2	AlertTypeConst = 5
-	Caution2	AlertTypeConst = 8
+	Warning_2	AlertTypeConst = 5
+	Caution_2	AlertTypeConst = 8
 )
 
 func (e AlertTypeConst) GoString() string {return e.String() }
@@ -3126,9 +3126,9 @@ func (e AlertCategoryConst) String() string {
 
 type AlertTriggerConditionConst uint8
 const (
-	Manual3	AlertTriggerConditionConst = 0
-	Auto2	AlertTriggerConditionConst = 1
-	Test2	AlertTriggerConditionConst = 2
+	Manual_3	AlertTriggerConditionConst = 0
+	Auto_2	AlertTriggerConditionConst = 1
+	Test_2	AlertTriggerConditionConst = 2
 	Disabled	AlertTriggerConditionConst = 3
 )
 
@@ -3180,12 +3180,12 @@ func (e AlertThresholdStatusConst) String() string {
 
 type AlertStateConst uint8
 const (
-	Disabled2	AlertStateConst = 0
-	Normal2	AlertStateConst = 1
+	Disabled_2	AlertStateConst = 0
+	Normal_2	AlertStateConst = 1
 	Active	AlertStateConst = 2
 	Silenced	AlertStateConst = 3
-	Acknowledged2	AlertStateConst = 4
-	AwaitingAcknowledge2	AlertStateConst = 5
+	Acknowledged_2	AlertStateConst = 4
+	AwaitingAcknowledge_2	AlertStateConst = 5
 )
 
 func (e AlertStateConst) GoString() string {return e.String() }
@@ -3306,7 +3306,7 @@ func (e AlertResponseCommandConst) String() string {
 
 type ConverterStateConst uint8
 const (
-	Off4	ConverterStateConst = 0
+	Off_4	ConverterStateConst = 0
 	LowPowerMode	ConverterStateConst = 1
 	Fault	ConverterStateConst = 2
 	Bulk	ConverterStateConst = 3
@@ -3351,7 +3351,7 @@ func (e ConverterStateConst) String() string {
 
 type ThrusterDirectionControlConst uint8
 const (
-	Off5	ThrusterDirectionControlConst = 0
+	Off_5	ThrusterDirectionControlConst = 0
 	Ready	ThrusterDirectionControlConst = 1
 	ToPort	ThrusterDirectionControlConst = 2
 	ToStarboard	ThrusterDirectionControlConst = 3
@@ -3375,7 +3375,7 @@ func (e ThrusterDirectionControlConst) String() string {
 
 type ThrusterRetractControlConst uint8
 const (
-	Off6	ThrusterRetractControlConst = 0
+	Off_6	ThrusterRetractControlConst = 0
 	Extend	ThrusterRetractControlConst = 1
 	Retract	ThrusterRetractControlConst = 2
 )
@@ -3400,7 +3400,7 @@ const (
 	A24VDC	ThrusterMotorTypeConst = 1
 	A48VDC	ThrusterMotorTypeConst = 2
 	A24VAC	ThrusterMotorTypeConst = 3
-	Hydraulic2	ThrusterMotorTypeConst = 4
+	Hydraulic_2	ThrusterMotorTypeConst = 4
 )
 
 func (e ThrusterMotorTypeConst) GoString() string {return e.String() }
@@ -3465,7 +3465,7 @@ func (e AccessLevelConst) String() string {
 
 type TransmissionIntervalConst uint8
 const (
-	Acknowledge2	TransmissionIntervalConst = 0
+	Acknowledge_2	TransmissionIntervalConst = 0
 	TransmitIntervalPriorityNotSupported	TransmissionIntervalConst = 1
 	TransmitIntervalTooLow	TransmissionIntervalConst = 2
 	AccessDenied	TransmissionIntervalConst = 3
@@ -3492,12 +3492,12 @@ func (e TransmissionIntervalConst) String() string {
 
 type ParameterFieldConst uint8
 const (
-	Acknowledge3	ParameterFieldConst = 0
+	Acknowledge_3	ParameterFieldConst = 0
 	InvalidParameterField	ParameterFieldConst = 1
 	TemporaryError	ParameterFieldConst = 2
 	ParameterOutOfRange	ParameterFieldConst = 3
-	AccessDenied2	ParameterFieldConst = 4
-	NotSupported2	ParameterFieldConst = 5
+	AccessDenied_2	ParameterFieldConst = 4
+	NotSupported_2	ParameterFieldConst = 5
 	ReadOrWriteNotSupported	ParameterFieldConst = 6
 )
 
@@ -3543,8 +3543,8 @@ func (e PgnListFunctionConst) String() string {
 
 type FusionCommandConst uint8
 const (
-	Play2	FusionCommandConst = 1
-	Pause2	FusionCommandConst = 2
+	Play_2	FusionCommandConst = 1
+	Pause_2	FusionCommandConst = 2
 	Next	FusionCommandConst = 4
 	Prev	FusionCommandConst = 6
 )
@@ -3567,8 +3567,8 @@ func (e FusionCommandConst) String() string {
 
 type FusionSiriusCommandConst uint8
 const (
-	Next2	FusionSiriusCommandConst = 1
-	Prev2	FusionSiriusCommandConst = 2
+	Next_2	FusionSiriusCommandConst = 1
+	Prev_2	FusionSiriusCommandConst = 2
 )
 
 func (e FusionSiriusCommandConst) GoString() string {return e.String() }
@@ -3603,16 +3603,16 @@ func (e FusionMuteCommandConst) String() string {
 
 type SeatalkKeystrokeConst uint8
 const (
-	Auto3	SeatalkKeystrokeConst = 1
-	Standby2	SeatalkKeystrokeConst = 2
-	Wind2	SeatalkKeystrokeConst = 3
+	Auto_3	SeatalkKeystrokeConst = 1
+	Standby_2	SeatalkKeystrokeConst = 2
+	Wind_2	SeatalkKeystrokeConst = 3
 	AMinus1	SeatalkKeystrokeConst = 5
 	AMinus10	SeatalkKeystrokeConst = 6
 	APlus1	SeatalkKeystrokeConst = 7
 	APlus10	SeatalkKeystrokeConst = 8
 	AMinus1AndMinus10	SeatalkKeystrokeConst = 33
 	APlus1AndPlus10	SeatalkKeystrokeConst = 34
-	Track2	SeatalkKeystrokeConst = 35
+	Track_2	SeatalkKeystrokeConst = 35
 )
 
 func (e SeatalkKeystrokeConst) GoString() string {return e.String() }
@@ -3663,7 +3663,7 @@ func (e SeatalkDeviceIdConst) String() string {
 
 type SeatalkNetworkGroupConst uint8
 const (
-	None2	SeatalkNetworkGroupConst = 0
+	None_2	SeatalkNetworkGroupConst = 0
 	Helm1	SeatalkNetworkGroupConst = 1
 	Helm2	SeatalkNetworkGroupConst = 2
 	Cockpit	SeatalkNetworkGroupConst = 3
@@ -3853,7 +3853,7 @@ func (e ControllerStateConst) String() string {
 type EquipmentStatusConst uint8
 const (
 	Operational	EquipmentStatusConst = 0
-	Fault2	EquipmentStatusConst = 1
+	Fault_2	EquipmentStatusConst = 1
 )
 
 func (e EquipmentStatusConst) GoString() string {return e.String() }
@@ -3892,7 +3892,7 @@ func (e MobStatusConst) String() string {
 type LowBatteryConst uint8
 const (
 	Good	LowBatteryConst = 0
-	Low2	LowBatteryConst = 1
+	Low_2	LowBatteryConst = 1
 )
 
 func (e LowBatteryConst) GoString() string {return e.String() }
@@ -3933,7 +3933,7 @@ const (
 	BadLevel	AcceptabilityConst = 0
 	BadFrequency	AcceptabilityConst = 1
 	BeingQualified	AcceptabilityConst = 2
-	Good2	AcceptabilityConst = 3
+	Good_2	AcceptabilityConst = 3
 )
 
 func (e AcceptabilityConst) GoString() string {return e.String() }
@@ -3993,11 +3993,11 @@ func (e WaveformConst) String() string {
 
 type TankTypeConst uint8
 const (
-	Fuel2	TankTypeConst = 0
-	Water2	TankTypeConst = 1
+	Fuel_2	TankTypeConst = 0
+	Water_2	TankTypeConst = 1
 	GrayWater	TankTypeConst = 2
 	LiveWell	TankTypeConst = 3
-	Oil2	TankTypeConst = 4
+	Oil_2	TankTypeConst = 4
 	BlackWater	TankTypeConst = 5
 )
 
@@ -4051,15 +4051,15 @@ func (e DcSourceConst) String() string {
 type ChargerStateConst uint8
 const (
 	NotCharging	ChargerStateConst = 0
-	Bulk2	ChargerStateConst = 1
-	Absorption2	ChargerStateConst = 2
+	Bulk_2	ChargerStateConst = 1
+	Absorption_2	ChargerStateConst = 2
 	Overcharge	ChargerStateConst = 3
 	Equalise	ChargerStateConst = 4
-	Float2	ChargerStateConst = 5
+	Float_2	ChargerStateConst = 5
 	NoFloat	ChargerStateConst = 6
 	ConstantVI	ChargerStateConst = 7
-	Disabled3	ChargerStateConst = 8
-	Fault3	ChargerStateConst = 9
+	Disabled_3	ChargerStateConst = 8
+	Fault_3	ChargerStateConst = 9
 )
 
 func (e ChargerStateConst) GoString() string {return e.String() }
@@ -4143,8 +4143,8 @@ const (
 	Invert	InverterStateConst = 0
 	ACPassthru	InverterStateConst = 1
 	LoadSense	InverterStateConst = 2
-	Fault4	InverterStateConst = 3
-	Disabled4	InverterStateConst = 4
+	Fault_4	InverterStateConst = 3
+	Disabled_4	InverterStateConst = 4
 )
 
 func (e InverterStateConst) GoString() string {return e.String() }
@@ -4248,9 +4248,9 @@ func (e BatteryChemistryConst) String() string {
 
 type GoodWarningErrorConst uint8
 const (
-	Good3	GoodWarningErrorConst = 0
-	Warning3	GoodWarningErrorConst = 1
-	Error3	GoodWarningErrorConst = 2
+	Good_3	GoodWarningErrorConst = 0
+	Warning_3	GoodWarningErrorConst = 1
+	Error_3	GoodWarningErrorConst = 2
 )
 
 func (e GoodWarningErrorConst) GoString() string {return e.String() }
@@ -4293,7 +4293,7 @@ func (e TrackingConst) String() string {
 
 type TargetAcquisitionConst uint8
 const (
-	Manual4	TargetAcquisitionConst = 0
+	Manual_4	TargetAcquisitionConst = 0
 	Automatic	TargetAcquisitionConst = 1
 )
 
@@ -4311,7 +4311,7 @@ func (e TargetAcquisitionConst) String() string {
 
 type WindlassDirectionConst uint8
 const (
-	Off7	WindlassDirectionConst = 0
+	Off_7	WindlassDirectionConst = 0
 	Down	WindlassDirectionConst = 1
 	Up	WindlassDirectionConst = 2
 )
@@ -4446,7 +4446,7 @@ func (e AisBandConst) String() string {
 
 type AisModeConst uint8
 const (
-	Autonomous2	AisModeConst = 0
+	Autonomous_2	AisModeConst = 0
 	Assigned	AisModeConst = 1
 )
 
@@ -4464,7 +4464,7 @@ func (e AisModeConst) String() string {
 
 type AisCommunicationStateConst uint8
 const (
-	SOTDMA2	AisCommunicationStateConst = 0
+	SOTDMA_2	AisCommunicationStateConst = 0
 	ITDMA	AisCommunicationStateConst = 1
 )
 
@@ -4483,7 +4483,7 @@ func (e AisCommunicationStateConst) String() string {
 type AvailableConst uint8
 const (
 	Available	AvailableConst = 0
-	NotAvailable3	AvailableConst = 1
+	NotAvailable_3	AvailableConst = 1
 )
 
 func (e AvailableConst) GoString() string {return e.String() }
@@ -4518,7 +4518,7 @@ func (e BearingModeConst) String() string {
 
 type MarkTypeConst uint8
 const (
-	Collision2	MarkTypeConst = 0
+	Collision_2	MarkTypeConst = 0
 	TurningPoint	MarkTypeConst = 1
 	Reference	MarkTypeConst = 2
 	Wheelover	MarkTypeConst = 3
@@ -4548,7 +4548,7 @@ const (
 	A1D	GnssModeConst = 0
 	A2D	GnssModeConst = 1
 	A3D	GnssModeConst = 2
-	Auto4	GnssModeConst = 3
+	Auto_4	GnssModeConst = 3
 )
 
 func (e GnssModeConst) GoString() string {return e.String() }
@@ -4587,7 +4587,7 @@ func (e RangeResidualModeConst) String() string {
 
 type DgnssModeConst uint8
 const (
-	None3	DgnssModeConst = 0
+	None_3	DgnssModeConst = 0
 	SBASIfAvailable	DgnssModeConst = 1
 	SBAS	DgnssModeConst = 3
 )
@@ -4687,7 +4687,7 @@ const (
 	Flushing	WatermakerStateConst = 4
 	Rinsing	WatermakerStateConst = 5
 	Initiating	WatermakerStateConst = 6
-	Manual5	WatermakerStateConst = 7
+	Manual_5	WatermakerStateConst = 7
 )
 
 func (e WatermakerStateConst) GoString() string {return e.String() }
@@ -4717,7 +4717,7 @@ func (e WatermakerStateConst) String() string {
 type EntertainmentIdTypeConst uint8
 const (
 	Group	EntertainmentIdTypeConst = 0
-	File3	EntertainmentIdTypeConst = 1
+	File_3	EntertainmentIdTypeConst = 1
 	EncryptedGroup	EntertainmentIdTypeConst = 2
 	EncryptedFile	EntertainmentIdTypeConst = 3
 )
@@ -4815,8 +4815,8 @@ func (e VideoProtocolsConst) String() string {
 
 type EntertainmentVolumeControlConst uint8
 const (
-	Up2	EntertainmentVolumeControlConst = 0
-	Down2	EntertainmentVolumeControlConst = 1
+	Up_2	EntertainmentVolumeControlConst = 0
+	Down_2	EntertainmentVolumeControlConst = 1
 )
 
 func (e EntertainmentVolumeControlConst) GoString() string {return e.String() }
@@ -4854,10 +4854,10 @@ func (e BluetoothStatusConst) String() string {
 
 type BluetoothSourceStatusConst uint8
 const (
-	Reserved3	BluetoothSourceStatusConst = 0
-	Connected2	BluetoothSourceStatusConst = 1
+	Reserved_3	BluetoothSourceStatusConst = 0
+	Connected_2	BluetoothSourceStatusConst = 1
 	Connecting	BluetoothSourceStatusConst = 2
-	NotConnected2	BluetoothSourceStatusConst = 3
+	NotConnected_2	BluetoothSourceStatusConst = 3
 )
 
 func (e BluetoothSourceStatusConst) GoString() string {return e.String() }
@@ -4886,7 +4886,7 @@ const (
 	Control	SonichubCommandConst = 9
 	FMRadio	SonichubCommandConst = 12
 	Playlist	SonichubCommandConst = 13
-	Track3	SonichubCommandConst = 14
+	Track_3	SonichubCommandConst = 14
 	Artist	SonichubCommandConst = 15
 	Album	SonichubCommandConst = 16
 	MenuItem	SonichubCommandConst = 19
@@ -4945,7 +4945,7 @@ func (e SonichubCommandConst) String() string {
 type SimnetApModeConst uint8
 const (
 	Heading	SimnetApModeConst = 2
-	Wind3	SimnetApModeConst = 3
+	Wind_3	SimnetApModeConst = 3
 	Nav	SimnetApModeConst = 10
 	NoDrift	SimnetApModeConst = 11
 )
@@ -5016,8 +5016,8 @@ func (e SimnetDeviceReportConst) String() string {
 
 type SimnetApStatusConst uint8
 const (
-	Manual6	SimnetApStatusConst = 2
-	Automatic2	SimnetApStatusConst = 16
+	Manual_6	SimnetApStatusConst = 2
+	Automatic_2	SimnetApStatusConst = 16
 )
 
 func (e SimnetApStatusConst) GoString() string {return e.String() }
@@ -5049,9 +5049,9 @@ func (e SimnetCommandConst) String() string {
 
 type SimnetEventCommandConst uint8
 const (
-	Alarm2	SimnetEventCommandConst = 1
+	Alarm_2	SimnetEventCommandConst = 1
 	APCommand	SimnetEventCommandConst = 2
-	Autopilot2	SimnetEventCommandConst = 255
+	Autopilot_2	SimnetEventCommandConst = 255
 )
 
 func (e SimnetEventCommandConst) GoString() string {return e.String() }
@@ -5113,11 +5113,11 @@ func (e SimnetNightModeColorConst) String() string {
 type SimnetDisplayGroupConst uint8
 const (
 	Default	SimnetDisplayGroupConst = 1
-	Group12	SimnetDisplayGroupConst = 2
-	Group22	SimnetDisplayGroupConst = 3
-	Group32	SimnetDisplayGroupConst = 4
-	Group42	SimnetDisplayGroupConst = 5
-	Group52	SimnetDisplayGroupConst = 6
+	Group1_2	SimnetDisplayGroupConst = 2
+	Group2_2	SimnetDisplayGroupConst = 3
+	Group3_2	SimnetDisplayGroupConst = 4
+	Group4_2	SimnetDisplayGroupConst = 5
+	Group5_2	SimnetDisplayGroupConst = 6
 	Group6	SimnetDisplayGroupConst = 7
 )
 
@@ -5229,7 +5229,7 @@ func (e SimnetBacklightLevelConst) String() string {
 
 type SimnetApEventsConst uint8
 const (
-	Standby3	SimnetApEventsConst = 6
+	Standby_3	SimnetApEventsConst = 6
 	AutoMode	SimnetApEventsConst = 9
 	NavMode	SimnetApEventsConst = 10
 	NonFollowUpMode	SimnetApEventsConst = 13
@@ -5335,7 +5335,7 @@ func (e SimnetAlarmConst) String() string {
 type FusionMessageIdConst uint8
 const (
 	RequestStatus	FusionMessageIdConst = 1
-	Source2	FusionMessageIdConst = 2
+	Source_2	FusionMessageIdConst = 2
 	TrackInfo	FusionMessageIdConst = 4
 	TrackTitle	FusionMessageIdConst = 5
 	TrackArtist	FusionMessageIdConst = 6
@@ -5345,14 +5345,14 @@ const (
 	VHF	FusionMessageIdConst = 12
 	Squelch	FusionMessageIdConst = 13
 	Scan	FusionMessageIdConst = 14
-	MenuItem2	FusionMessageIdConst = 17
+	MenuItem_2	FusionMessageIdConst = 17
 	Replay	FusionMessageIdConst = 20
 	Mute	FusionMessageIdConst = 23
 	SetZoneVolume	FusionMessageIdConst = 24
 	SetAllVolumes	FusionMessageIdConst = 25
 	SubVolume	FusionMessageIdConst = 26
 	Tone	FusionMessageIdConst = 27
-	Volume2	FusionMessageIdConst = 29
+	Volume_2	FusionMessageIdConst = 29
 	Power	FusionMessageIdConst = 32
 	UnitName	FusionMessageIdConst = 33
 	SiriusXMChannel	FusionMessageIdConst = 36
@@ -5442,10 +5442,10 @@ func (e SonichubControlConst) String() string {
 
 type SonichubSourceConst uint8
 const (
-	AM2	SonichubSourceConst = 0
-	FM2	SonichubSourceConst = 1
+	AM_2	SonichubSourceConst = 0
+	FM_2	SonichubSourceConst = 1
 	IPod	SonichubSourceConst = 2
-	USB2	SonichubSourceConst = 3
+	USB_2	SonichubSourceConst = 3
 	AUX	SonichubSourceConst = 4
 	AUX2	SonichubSourceConst = 5
 	Mic	SonichubSourceConst = 6
@@ -5477,7 +5477,7 @@ type IsoControlConst uint8
 const (
 	ACK	IsoControlConst = 0
 	NAK	IsoControlConst = 1
-	AccessDenied3	IsoControlConst = 2
+	AccessDenied_3	IsoControlConst = 2
 	AddressBusy	IsoControlConst = 3
 )
 
@@ -5499,7 +5499,7 @@ func (e IsoControlConst) String() string {
 
 type IsoCommandConst uint8
 const (
-	ACK2	IsoCommandConst = 0
+	ACK_2	IsoCommandConst = 0
 	RTS	IsoCommandConst = 16
 	CTS	IsoCommandConst = 17
 	EOM	IsoCommandConst = 19
@@ -5531,7 +5531,7 @@ type GroupFunctionConst uint8
 const (
 	Request	GroupFunctionConst = 0
 	Command	GroupFunctionConst = 1
-	Acknowledge4	GroupFunctionConst = 2
+	Acknowledge_4	GroupFunctionConst = 2
 	ReadFields	GroupFunctionConst = 3
 	ReadFieldsReply	GroupFunctionConst = 4
 	WriteFields	GroupFunctionConst = 5
@@ -5565,7 +5565,7 @@ const (
 	AttitudeOffsets	AirmarCommandConst = 32
 	CalibrateCompass	AirmarCommandConst = 33
 	TrueWindOptions	AirmarCommandConst = 34
-	SimulateMode2	AirmarCommandConst = 35
+	SimulateMode_2	AirmarCommandConst = 35
 	CalibrateDepth	AirmarCommandConst = 40
 	CalibrateSpeed	AirmarCommandConst = 41
 	CalibrateTemperature	AirmarCommandConst = 42
@@ -5649,13 +5649,13 @@ func (e AirmarDepthQualityFactorConst) String() string {
 
 type PgnErrorCodeConst uint8
 const (
-	Acknowledge5	PgnErrorCodeConst = 0
+	Acknowledge_5	PgnErrorCodeConst = 0
 	PGNNotSupported	PgnErrorCodeConst = 1
 	PGNNotAvailable	PgnErrorCodeConst = 2
-	AccessDenied4	PgnErrorCodeConst = 3
-	NotSupported3	PgnErrorCodeConst = 4
+	AccessDenied_4	PgnErrorCodeConst = 3
+	NotSupported_3	PgnErrorCodeConst = 4
 	TagNotSupported	PgnErrorCodeConst = 5
-	ReadOrWriteNotSupported2	PgnErrorCodeConst = 6
+	ReadOrWriteNotSupported_2	PgnErrorCodeConst = 6
 )
 
 func (e PgnErrorCodeConst) GoString() string {return e.String() }
@@ -5748,8 +5748,8 @@ func (e SteeringModeConst) String() string {
 
 type FusionRadioSourceConst uint8
 const (
-	AM3	FusionRadioSourceConst = 0
-	FM3	FusionRadioSourceConst = 1
+	AM_3	FusionRadioSourceConst = 0
+	FM_3	FusionRadioSourceConst = 1
 )
 
 func (e FusionRadioSourceConst) GoString() string {return e.String() }
@@ -5790,7 +5790,7 @@ func (e FusionReplayModeConst) String() string {
 
 type FusionReplayStatusConst uint8
 const (
-	Off8	FusionReplayStatusConst = 0
+	Off_8	FusionReplayStatusConst = 0
 	OneTrack	FusionReplayStatusConst = 1
 	AllAlbum	FusionReplayStatusConst = 2
 )
@@ -5907,8 +5907,8 @@ func (e SonichubPlaylistConst) String() string {
 
 type FusionPowerStateConst uint8
 const (
-	On2	FusionPowerStateConst = 1
-	Off9	FusionPowerStateConst = 2
+	On_2	FusionPowerStateConst = 1
+	Off_9	FusionPowerStateConst = 2
 )
 
 func (e FusionPowerStateConst) GoString() string {return e.String() }
@@ -5988,12 +5988,12 @@ func (e DeviceTempStateConst) String() string {
 
 type BandgDecimalsConst uint8
 const (
-	A02	BandgDecimalsConst = 0
-	A12	BandgDecimalsConst = 1
-	A22	BandgDecimalsConst = 2
-	A32	BandgDecimalsConst = 3
-	A42	BandgDecimalsConst = 4
-	Auto5	BandgDecimalsConst = 254
+	A0_2	BandgDecimalsConst = 0
+	A1_2	BandgDecimalsConst = 1
+	A2_2	BandgDecimalsConst = 2
+	A3_2	BandgDecimalsConst = 3
+	A4_2	BandgDecimalsConst = 4
+	Auto_5	BandgDecimalsConst = 254
 )
 
 func (e BandgDecimalsConst) GoString() string {return e.String() }
@@ -6013,6 +6013,156 @@ func (e BandgDecimalsConst) String() string {
 			return "Auto"
 	default:
 		return fmt.Sprintf("%s(%d)", "BandgDecimalsConst", int(e))
+	}
+}
+
+type GarminColorModeConst uint8
+const (
+	Day_2	GarminColorModeConst = 0
+	Night_2	GarminColorModeConst = 1
+	Color	GarminColorModeConst = 13
+)
+
+func (e GarminColorModeConst) GoString() string {return e.String() }
+func (e GarminColorModeConst) String() string {
+	switch e {
+		case 0:
+			return "Day"
+		case 1:
+			return "Night"
+		case 13:
+			return "Color"
+	default:
+		return fmt.Sprintf("%s(%d)", "GarminColorModeConst", int(e))
+	}
+}
+
+type GarminColorConst uint8
+const (
+	DayFullColor	GarminColorConst = 0
+	DayHighContrast	GarminColorConst = 1
+	NightFullColor	GarminColorConst = 2
+	NightRedBlack	GarminColorConst = 3
+	NightGreenBlack	GarminColorConst = 4
+)
+
+func (e GarminColorConst) GoString() string {return e.String() }
+func (e GarminColorConst) String() string {
+	switch e {
+		case 0:
+			return "Day full color"
+		case 1:
+			return "Day high contrast"
+		case 2:
+			return "Night full color"
+		case 3:
+			return "Night red/black"
+		case 4:
+			return "Night green/black"
+	default:
+		return fmt.Sprintf("%s(%d)", "GarminColorConst", int(e))
+	}
+}
+
+type GarminBacklightLevelConst uint8
+const (
+	A0Percent	GarminBacklightLevelConst = 0
+	A5Percent	GarminBacklightLevelConst = 1
+	A10Percent	GarminBacklightLevelConst = 2
+	A15Percent	GarminBacklightLevelConst = 3
+	A20Percent_2	GarminBacklightLevelConst = 4
+	A25Percent	GarminBacklightLevelConst = 5
+	A30Percent_2	GarminBacklightLevelConst = 6
+	A35Percent	GarminBacklightLevelConst = 7
+	A40Percent_2	GarminBacklightLevelConst = 8
+	A45Percent	GarminBacklightLevelConst = 9
+	A50Percent_2	GarminBacklightLevelConst = 10
+	A55Percent	GarminBacklightLevelConst = 11
+	A60Percent_2	GarminBacklightLevelConst = 12
+	A65Percent	GarminBacklightLevelConst = 13
+	A70Percent_2	GarminBacklightLevelConst = 14
+	A75Percent	GarminBacklightLevelConst = 15
+	A80Percent_2	GarminBacklightLevelConst = 16
+	A85Percent	GarminBacklightLevelConst = 17
+	A90Percent_2	GarminBacklightLevelConst = 18
+	A95Percent	GarminBacklightLevelConst = 19
+	A100Percent	GarminBacklightLevelConst = 20
+)
+
+func (e GarminBacklightLevelConst) GoString() string {return e.String() }
+func (e GarminBacklightLevelConst) String() string {
+	switch e {
+		case 0:
+			return "A0%"
+		case 1:
+			return "A5%"
+		case 2:
+			return "A10%"
+		case 3:
+			return "A15%"
+		case 4:
+			return "A20%"
+		case 5:
+			return "A25%"
+		case 6:
+			return "A30%"
+		case 7:
+			return "A35%"
+		case 8:
+			return "A40%"
+		case 9:
+			return "A45%"
+		case 10:
+			return "A50%"
+		case 11:
+			return "A55%"
+		case 12:
+			return "A60%"
+		case 13:
+			return "A65%"
+		case 14:
+			return "A70%"
+		case 15:
+			return "A75%"
+		case 16:
+			return "A80%"
+		case 17:
+			return "A85%"
+		case 18:
+			return "A90%"
+		case 19:
+			return "A95%"
+		case 20:
+			return "A100%"
+	default:
+		return fmt.Sprintf("%s(%d)", "GarminBacklightLevelConst", int(e))
+	}
+}
+
+type SeatalkPilotMode16Const uint16
+const (
+	Standby_4	SeatalkPilotMode16Const = 0
+	AutoCompassCommanded	SeatalkPilotMode16Const = 64
+	VaneWindMode	SeatalkPilotMode16Const = 256
+	TrackMode	SeatalkPilotMode16Const = 384
+	NoDriftCOGReferencedInTrackCourseChanges	SeatalkPilotMode16Const = 385
+)
+
+func (e SeatalkPilotMode16Const) GoString() string {return e.String() }
+func (e SeatalkPilotMode16Const) String() string {
+	switch e {
+		case 0:
+			return "Standby"
+		case 64:
+			return "Auto, compass commanded"
+		case 256:
+			return "Vane, Wind Mode"
+		case 384:
+			return "Track Mode"
+		case 385:
+			return "No Drift, COG referenced (In track, course changes)"
+	default:
+		return fmt.Sprintf("%s(%d)", "SeatalkPilotMode16Const", int(e))
 	}
 }
 
@@ -7668,31 +7818,31 @@ func (e EngineStatus2Const) String() string {
 
 type EntertainmentPlayStatusBitfieldConst uint16
 const (
-	Play3	EntertainmentPlayStatusBitfieldConst = 0
-	Pause3	EntertainmentPlayStatusBitfieldConst = 1
-	Stop2	EntertainmentPlayStatusBitfieldConst = 2
-	FF1x2	EntertainmentPlayStatusBitfieldConst = 3
-	FF2x2	EntertainmentPlayStatusBitfieldConst = 4
-	FF3x2	EntertainmentPlayStatusBitfieldConst = 5
-	FF4x2	EntertainmentPlayStatusBitfieldConst = 6
-	RW1x2	EntertainmentPlayStatusBitfieldConst = 7
-	RW2x2	EntertainmentPlayStatusBitfieldConst = 8
-	RW3x2	EntertainmentPlayStatusBitfieldConst = 9
-	RW4x2	EntertainmentPlayStatusBitfieldConst = 10
-	SkipAhead2	EntertainmentPlayStatusBitfieldConst = 11
-	SkipBack2	EntertainmentPlayStatusBitfieldConst = 12
-	JogAhead2	EntertainmentPlayStatusBitfieldConst = 13
-	JogBack2	EntertainmentPlayStatusBitfieldConst = 14
-	SeekUp2	EntertainmentPlayStatusBitfieldConst = 15
-	SeekDown2	EntertainmentPlayStatusBitfieldConst = 16
-	ScanUp2	EntertainmentPlayStatusBitfieldConst = 17
-	ScanDown2	EntertainmentPlayStatusBitfieldConst = 18
-	TuneUp2	EntertainmentPlayStatusBitfieldConst = 19
-	TuneDown2	EntertainmentPlayStatusBitfieldConst = 20
-	SlowMotion75x2	EntertainmentPlayStatusBitfieldConst = 21
-	SlowMotion5x2	EntertainmentPlayStatusBitfieldConst = 22
-	SlowMotion25x2	EntertainmentPlayStatusBitfieldConst = 23
-	SlowMotion125x2	EntertainmentPlayStatusBitfieldConst = 24
+	Play_3	EntertainmentPlayStatusBitfieldConst = 0
+	Pause_3	EntertainmentPlayStatusBitfieldConst = 1
+	Stop_2	EntertainmentPlayStatusBitfieldConst = 2
+	FF1x_2	EntertainmentPlayStatusBitfieldConst = 3
+	FF2x_2	EntertainmentPlayStatusBitfieldConst = 4
+	FF3x_2	EntertainmentPlayStatusBitfieldConst = 5
+	FF4x_2	EntertainmentPlayStatusBitfieldConst = 6
+	RW1x_2	EntertainmentPlayStatusBitfieldConst = 7
+	RW2x_2	EntertainmentPlayStatusBitfieldConst = 8
+	RW3x_2	EntertainmentPlayStatusBitfieldConst = 9
+	RW4x_2	EntertainmentPlayStatusBitfieldConst = 10
+	SkipAhead_2	EntertainmentPlayStatusBitfieldConst = 11
+	SkipBack_2	EntertainmentPlayStatusBitfieldConst = 12
+	JogAhead_2	EntertainmentPlayStatusBitfieldConst = 13
+	JogBack_2	EntertainmentPlayStatusBitfieldConst = 14
+	SeekUp_2	EntertainmentPlayStatusBitfieldConst = 15
+	SeekDown_2	EntertainmentPlayStatusBitfieldConst = 16
+	ScanUp_2	EntertainmentPlayStatusBitfieldConst = 17
+	ScanDown_2	EntertainmentPlayStatusBitfieldConst = 18
+	TuneUp_2	EntertainmentPlayStatusBitfieldConst = 19
+	TuneDown_2	EntertainmentPlayStatusBitfieldConst = 20
+	SlowMotion75x_2	EntertainmentPlayStatusBitfieldConst = 21
+	SlowMotion5x_2	EntertainmentPlayStatusBitfieldConst = 22
+	SlowMotion25x_2	EntertainmentPlayStatusBitfieldConst = 23
+	SlowMotion125x_2	EntertainmentPlayStatusBitfieldConst = 24
 	SourceRenaming	EntertainmentPlayStatusBitfieldConst = 25
 )
 
@@ -7758,17 +7908,17 @@ func (e EntertainmentPlayStatusBitfieldConst) String() string {
 
 type EntertainmentGroupBitfieldConst uint16
 const (
-	File4	EntertainmentGroupBitfieldConst = 0
-	PlaylistName3	EntertainmentGroupBitfieldConst = 1
-	GenreName3	EntertainmentGroupBitfieldConst = 2
-	AlbumName3	EntertainmentGroupBitfieldConst = 3
-	ArtistName3	EntertainmentGroupBitfieldConst = 4
-	TrackName3	EntertainmentGroupBitfieldConst = 5
-	StationName3	EntertainmentGroupBitfieldConst = 6
-	StationNumber3	EntertainmentGroupBitfieldConst = 7
-	FavouriteNumber3	EntertainmentGroupBitfieldConst = 8
-	PlayQueue4	EntertainmentGroupBitfieldConst = 9
-	ContentInfo3	EntertainmentGroupBitfieldConst = 10
+	File_4	EntertainmentGroupBitfieldConst = 0
+	PlaylistName_3	EntertainmentGroupBitfieldConst = 1
+	GenreName_3	EntertainmentGroupBitfieldConst = 2
+	AlbumName_3	EntertainmentGroupBitfieldConst = 3
+	ArtistName_3	EntertainmentGroupBitfieldConst = 4
+	TrackName_3	EntertainmentGroupBitfieldConst = 5
+	StationName_3	EntertainmentGroupBitfieldConst = 6
+	StationNumber_3	EntertainmentGroupBitfieldConst = 7
+	FavouriteNumber_3	EntertainmentGroupBitfieldConst = 8
+	PlayQueue_4	EntertainmentGroupBitfieldConst = 9
+	ContentInfo_3	EntertainmentGroupBitfieldConst = 10
 )
 
 func (e EntertainmentGroupBitfieldConst) GoString() string {return e.String() }
@@ -7896,7 +8046,7 @@ const (
 	ControllerUnderVoltageCutOut	WindlassMonitoringConst = 0
 	ControllerOverCurrentCutOut	WindlassMonitoringConst = 1
 	ControllerOverTemperatureCutOut	WindlassMonitoringConst = 2
-	ManufacturerDefined2	WindlassMonitoringConst = 3
+	ManufacturerDefined_2	WindlassMonitoringConst = 3
 )
 
 func (e WindlassMonitoringConst) GoString() string {return e.String() }
@@ -7917,11 +8067,11 @@ func (e WindlassMonitoringConst) String() string {
 
 type SimnetApModeBitfieldConst uint16
 const (
-	Standby4	SimnetApModeBitfieldConst = 3
-	Heading2	SimnetApModeBitfieldConst = 4
-	Nav2	SimnetApModeBitfieldConst = 6
-	NoDrift2	SimnetApModeBitfieldConst = 8
-	Wind4	SimnetApModeBitfieldConst = 10
+	Standby_5	SimnetApModeBitfieldConst = 3
+	Heading_2	SimnetApModeBitfieldConst = 4
+	Nav_2	SimnetApModeBitfieldConst = 6
+	NoDrift_2	SimnetApModeBitfieldConst = 8
+	Wind_4	SimnetApModeBitfieldConst = 10
 )
 
 func (e SimnetApModeBitfieldConst) GoString() string {return e.String() }
@@ -8044,7 +8194,7 @@ func (e SimnetAlertBitfieldConst) String() string {
 type EntertainmentRepeatBitfieldConst uint16
 const (
 	Song	EntertainmentRepeatBitfieldConst = 0
-	PlayQueue5	EntertainmentRepeatBitfieldConst = 1
+	PlayQueue_5	EntertainmentRepeatBitfieldConst = 1
 )
 
 func (e EntertainmentRepeatBitfieldConst) GoString() string {return e.String() }
@@ -8061,8 +8211,8 @@ func (e EntertainmentRepeatBitfieldConst) String() string {
 
 type EntertainmentShuffleBitfieldConst uint16
 const (
-	PlayQueue6	EntertainmentShuffleBitfieldConst = 0
-	All3	EntertainmentShuffleBitfieldConst = 1
+	PlayQueue_6	EntertainmentShuffleBitfieldConst = 0
+	All_3	EntertainmentShuffleBitfieldConst = 1
 )
 
 func (e EntertainmentShuffleBitfieldConst) GoString() string {return e.String() }
@@ -11666,6 +11816,76 @@ var pgnList = []PgnInfo{
 		},
 	},
 	{
+		Id: "DiverseYachtServicesLoadCell",
+		PGN: 65293,
+		Description: "Diverse Yacht Services: Load Cell",
+		Fast: false,
+		ManId: 641,
+		Decoder: DecodeDiverseYachtServicesLoadCell,
+		Fields: map[int]*FieldDescriptor{
+		1: { 
+			Name: "Manufacturer Code",
+			BitLength: 11,
+			BitOffset: 0,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"ManufacturerCodeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		2: { 
+			Name: "Reserved",
+			BitLength: 2,
+			BitOffset: 11,
+			BitLengthVariable: false,
+			CanboatType: "RESERVED",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		3: { 
+			Name: "Industry Code",
+			BitLength: 3,
+			BitOffset: 13,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"IndustryCodeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		4: { 
+			Name: "Instance",
+			BitLength: 8,
+			BitOffset: 16,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		5: { 
+			Name: "Reserved",
+			BitLength: 8,
+			BitOffset: 24,
+			BitLengthVariable: false,
+			CanboatType: "RESERVED",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		6: { 
+			Name: "Load Cell",
+			BitLength: 32,
+			BitOffset: 32,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint32",
+			Resolution:1,
+			Signed: false,
+			},
+		},
+	},
+	{
 		Id: "SimnetApUnknown1",
 		PGN: 65302,
 		Description: "Simnet: AP Unknown 1",
@@ -13055,18 +13275,18 @@ var pgnList = []PgnInfo{
 			},
 		4: { 
 			Name: "Pilot Mode",
-			BitLength: 8,
+			BitLength: 16,
 			BitOffset: 16,
 			BitLengthVariable: false,
-			CanboatType: "BINARY",
-			GolangType:"[]uint8",
+			CanboatType: "LOOKUP",
+			GolangType:"SeatalkPilotMode16Const",
 			Resolution:1,
 			Signed: false,
 			},
 		5: { 
 			Name: "Sub Mode",
-			BitLength: 8,
-			BitOffset: 24,
+			BitLength: 16,
+			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "BINARY",
 			GolangType:"[]uint8",
@@ -13076,7 +13296,7 @@ var pgnList = []PgnInfo{
 		6: { 
 			Name: "Pilot Mode Data",
 			BitLength: 8,
-			BitOffset: 32,
+			BitOffset: 48,
 			BitLengthVariable: false,
 			CanboatType: "BINARY",
 			GolangType:"[]uint8",
@@ -13085,8 +13305,8 @@ var pgnList = []PgnInfo{
 			},
 		7: { 
 			Name: "Reserved",
-			BitLength: 24,
-			BitOffset: 40,
+			BitLength: 8,
+			BitOffset: 56,
 			BitLengthVariable: false,
 			CanboatType: "RESERVED",
 			GolangType:"",
@@ -16420,6 +16640,366 @@ var pgnList = []PgnInfo{
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
 			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		},
+	},
+	{
+		Id: "GarminDayMode",
+		PGN: 126720,
+		Description: "Garmin: Day Mode",
+		Fast: true,
+		ManId: 229,
+		Decoder: DecodeGarminDayMode,
+		Fields: map[int]*FieldDescriptor{
+		1: { 
+			Name: "Manufacturer Code",
+			BitLength: 11,
+			BitOffset: 0,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"ManufacturerCodeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		2: { 
+			Name: "Reserved",
+			BitLength: 2,
+			BitOffset: 11,
+			BitLengthVariable: false,
+			CanboatType: "RESERVED",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		3: { 
+			Name: "Industry Code",
+			BitLength: 3,
+			BitOffset: 13,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"IndustryCodeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		4: { 
+			Name: "Unknown ID 1",
+			BitLength: 8,
+			BitOffset: 16,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		5: { 
+			Name: "Unknown ID 2",
+			BitLength: 8,
+			BitOffset: 24,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		6: { 
+			Name: "Unknown ID 3",
+			BitLength: 8,
+			BitOffset: 32,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		7: { 
+			Name: "Unknown ID 4",
+			BitLength: 8,
+			BitOffset: 40,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		8: { 
+			Name: "Spare",
+			BitLength: 16,
+			BitOffset: 48,
+			BitLengthVariable: false,
+			CanboatType: "SPARE",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		9: { 
+			Name: "Mode",
+			BitLength: 8,
+			BitOffset: 64,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"GarminColorModeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		10: { 
+			Name: "Spare",
+			BitLength: 8,
+			BitOffset: 72,
+			BitLengthVariable: false,
+			CanboatType: "SPARE",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		11: { 
+			Name: "Backlight",
+			BitLength: 8,
+			BitOffset: 80,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"GarminBacklightLevelConst",
+			Resolution:1,
+			Signed: false,
+			},
+		},
+	},
+	{
+		Id: "GarminNightMode",
+		PGN: 126720,
+		Description: "Garmin: Night Mode",
+		Fast: true,
+		ManId: 229,
+		Decoder: DecodeGarminNightMode,
+		Fields: map[int]*FieldDescriptor{
+		1: { 
+			Name: "Manufacturer Code",
+			BitLength: 11,
+			BitOffset: 0,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"ManufacturerCodeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		2: { 
+			Name: "Reserved",
+			BitLength: 2,
+			BitOffset: 11,
+			BitLengthVariable: false,
+			CanboatType: "RESERVED",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		3: { 
+			Name: "Industry Code",
+			BitLength: 3,
+			BitOffset: 13,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"IndustryCodeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		4: { 
+			Name: "Unknown ID 1",
+			BitLength: 8,
+			BitOffset: 16,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		5: { 
+			Name: "Unknown ID 2",
+			BitLength: 8,
+			BitOffset: 24,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		6: { 
+			Name: "Unknown ID 3",
+			BitLength: 8,
+			BitOffset: 32,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		7: { 
+			Name: "Unknown ID 4",
+			BitLength: 8,
+			BitOffset: 40,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		8: { 
+			Name: "Spare",
+			BitLength: 16,
+			BitOffset: 48,
+			BitLengthVariable: false,
+			CanboatType: "SPARE",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		9: { 
+			Name: "Mode",
+			BitLength: 8,
+			BitOffset: 64,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"GarminColorModeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		10: { 
+			Name: "Spare",
+			BitLength: 8,
+			BitOffset: 72,
+			BitLengthVariable: false,
+			CanboatType: "SPARE",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		11: { 
+			Name: "Backlight",
+			BitLength: 8,
+			BitOffset: 80,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"GarminBacklightLevelConst",
+			Resolution:1,
+			Signed: false,
+			},
+		},
+	},
+	{
+		Id: "GarminColorMode",
+		PGN: 126720,
+		Description: "Garmin: Color mode",
+		Fast: true,
+		ManId: 229,
+		Decoder: DecodeGarminColorMode,
+		Fields: map[int]*FieldDescriptor{
+		1: { 
+			Name: "Manufacturer Code",
+			BitLength: 11,
+			BitOffset: 0,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"ManufacturerCodeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		2: { 
+			Name: "Reserved",
+			BitLength: 2,
+			BitOffset: 11,
+			BitLengthVariable: false,
+			CanboatType: "RESERVED",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		3: { 
+			Name: "Industry Code",
+			BitLength: 3,
+			BitOffset: 13,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"IndustryCodeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		4: { 
+			Name: "Unknown ID 1",
+			BitLength: 8,
+			BitOffset: 16,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		5: { 
+			Name: "Unknown ID 2",
+			BitLength: 8,
+			BitOffset: 24,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		6: { 
+			Name: "Unknown ID 3",
+			BitLength: 8,
+			BitOffset: 32,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		7: { 
+			Name: "Unknown ID 4",
+			BitLength: 8,
+			BitOffset: 40,
+			BitLengthVariable: false,
+			CanboatType: "NUMBER",
+			GolangType:"*uint8",
+			Resolution:1,
+			Signed: false,
+			},
+		8: { 
+			Name: "Spare",
+			BitLength: 16,
+			BitOffset: 48,
+			BitLengthVariable: false,
+			CanboatType: "SPARE",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		9: { 
+			Name: "Mode",
+			BitLength: 8,
+			BitOffset: 64,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"GarminColorModeConst",
+			Resolution:1,
+			Signed: false,
+			},
+		10: { 
+			Name: "Spare",
+			BitLength: 8,
+			BitOffset: 72,
+			BitLengthVariable: false,
+			CanboatType: "SPARE",
+			GolangType:"",
+			Resolution:1,
+			Signed: false,
+			},
+		11: { 
+			Name: "Color",
+			BitLength: 8,
+			BitOffset: 80,
+			BitLengthVariable: false,
+			CanboatType: "LOOKUP",
+			GolangType:"GarminColorConst",
 			Resolution:1,
 			Signed: false,
 			},
@@ -20049,7 +20629,7 @@ var pgnList = []PgnInfo{
 		Id: "InverterStatus",
 		PGN: 127509,
 		Description: "Inverter Status",
-		Fast: false,
+		Fast: true,
 		ManId: 0,
 		Decoder: DecodeInverterStatus,
 		Fields: map[int]*FieldDescriptor{
@@ -20105,7 +20685,7 @@ var pgnList = []PgnInfo{
 			},
 		6: { 
 			Name: "Reserved",
-			BitLength: 34,
+			BitLength: 2,
 			BitOffset: 30,
 			BitLengthVariable: false,
 			CanboatType: "RESERVED",
@@ -24855,18 +25435,18 @@ var pgnList = []PgnInfo{
 			},
 		3: { 
 			Name: "Radio Channel",
-			BitLength: 8,
+			BitLength: 48,
 			BitOffset: 64,
 			BitLengthVariable: false,
-			CanboatType: "NUMBER",
-			GolangType:"*uint8",
+			CanboatType: "STRING_FIX",
+			GolangType:"string",
 			Resolution:1,
 			Signed: false,
 			},
 		4: { 
 			Name: "Tx Power",
 			BitLength: 8,
-			BitOffset: 72,
+			BitOffset: 112,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
 			GolangType:"*uint8",
@@ -24875,21 +25455,21 @@ var pgnList = []PgnInfo{
 			},
 		5: { 
 			Name: "Mode",
-			BitLength: 8,
-			BitOffset: 80,
+			BitLength: 16,
+			BitOffset: 120,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*uint8",
+			GolangType:"*uint16",
 			Resolution:1,
 			Signed: false,
 			},
 		6: { 
 			Name: "Channel Bandwidth",
-			BitLength: 8,
-			BitOffset: 88,
+			BitLength: 16,
+			BitOffset: 136,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*uint8",
+			GolangType:"*uint16",
 			Resolution:1,
 			Signed: false,
 			},
@@ -35605,6 +36185,68 @@ func DecodeSimnetLgc2000Configuration(Info MessageInfo, stream *PGNDataStream) (
 		}	
 	return val, nil
 }
+type DiverseYachtServicesLoadCell struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Instance *uint8
+	LoadCell *uint32
+}
+func DecodeDiverseYachtServicesLoadCell(Info MessageInfo, stream *PGNDataStream) (any, error) {
+	var val DiverseYachtServicesLoadCell
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
+		return nil, fmt.Errorf("parse failed for DiverseYachtServicesLoadCell-ManufacturerCode: %w", err)
+	} else {
+		if v != 641 {
+			return nil, fmt.Errorf("match failed for DiverseYachtServicesLoadCell-ManufacturerCode: Expected %d != %d", 641, v)
+		}
+		val.ManufacturerCode = ManufacturerCodeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(2)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readLookupField(3); err != nil {
+		return nil, fmt.Errorf("parse failed for DiverseYachtServicesLoadCell-IndustryCode: %w", err)
+	} else {
+		if v != 4 {
+			return nil, fmt.Errorf("match failed for DiverseYachtServicesLoadCell-IndustryCode: Expected %d != %d", 4, v)
+		}
+		val.IndustryCode = IndustryCodeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for DiverseYachtServicesLoadCell-Instance: %w", err)
+	} else {
+		val.Instance = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readUInt32(32); err != nil {
+		return nil, fmt.Errorf("parse failed for DiverseYachtServicesLoadCell-LoadCell: %w", err)
+	} else {
+		val.LoadCell = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
+	return val, nil
+}
 type SimnetApUnknown1 struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -36832,7 +37474,7 @@ type SeatalkPilotMode struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	PilotMode []uint8
+	PilotMode SeatalkPilotMode16Const
 	SubMode []uint8
 	PilotModeData []uint8
 }
@@ -36867,16 +37509,16 @@ func DecodeSeatalkPilotMode(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readBinaryData(8); err != nil {
+	if v, err := stream.readLookupField(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotMode-PilotMode: %w", err)
 	} else {
-		val.PilotMode = v
+		val.PilotMode = SeatalkPilotMode16Const(v)
 
 		if stream.isEOF() {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readBinaryData(8); err != nil {
+	if v, err := stream.readBinaryData(16); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotMode-SubMode: %w", err)
 	} else {
 		val.SubMode = v
@@ -36894,7 +37536,7 @@ func DecodeSeatalkPilotMode(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	stream.skipBits(24)
+	stream.skipBits(8)
 	if stream.isEOF() {
 		return val, nil
 		}	
@@ -40430,6 +41072,369 @@ func DecodeMaretronSlaveResponse(Info MessageInfo, stream *PGNDataStream) (any, 
 	}	
 	return val, nil
 }
+type GarminDayMode struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	UnknownId1 *uint8
+	UnknownId2 *uint8
+	UnknownId3 *uint8
+	UnknownId4 *uint8
+	Mode GarminColorModeConst
+	Backlight GarminBacklightLevelConst
+}
+func DecodeGarminDayMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+	var val GarminDayMode
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminDayMode-ManufacturerCode: %w", err)
+	} else {
+		if v != 229 {
+			return nil, fmt.Errorf("match failed for GarminDayMode-ManufacturerCode: Expected %d != %d", 229, v)
+		}
+		val.ManufacturerCode = ManufacturerCodeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(2)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readLookupField(3); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminDayMode-IndustryCode: %w", err)
+	} else {
+		if v != 4 {
+			return nil, fmt.Errorf("match failed for GarminDayMode-IndustryCode: Expected %d != %d", 4, v)
+		}
+		val.IndustryCode = IndustryCodeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminDayMode-UnknownId1: %w", err)
+	} else {
+		if v != nil && *v != 222 {
+			return nil, fmt.Errorf("match failed for GarminDayMode-UnknownId1: Expected %d != %d", 222, *v)
+		}
+		val.UnknownId1 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminDayMode-UnknownId2: %w", err)
+	} else {
+		if v != nil && *v != 5 {
+			return nil, fmt.Errorf("match failed for GarminDayMode-UnknownId2: Expected %d != %d", 5, *v)
+		}
+		val.UnknownId2 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminDayMode-UnknownId3: %w", err)
+	} else {
+		if v != nil && *v != 5 {
+			return nil, fmt.Errorf("match failed for GarminDayMode-UnknownId3: Expected %d != %d", 5, *v)
+		}
+		val.UnknownId3 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminDayMode-UnknownId4: %w", err)
+	} else {
+		if v != nil && *v != 5 {
+			return nil, fmt.Errorf("match failed for GarminDayMode-UnknownId4: Expected %d != %d", 5, *v)
+		}
+		val.UnknownId4 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readLookupField(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminDayMode-Mode: %w", err)
+	} else {
+		if v != 0 {
+			return nil, fmt.Errorf("match failed for GarminDayMode-Mode: Expected %d != %d", 0, v)
+		}
+		val.Mode = GarminColorModeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readLookupField(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminDayMode-Backlight: %w", err)
+	} else {
+		val.Backlight = GarminBacklightLevelConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
+	return val, nil
+}
+type GarminNightMode struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	UnknownId1 *uint8
+	UnknownId2 *uint8
+	UnknownId3 *uint8
+	UnknownId4 *uint8
+	Mode GarminColorModeConst
+	Backlight GarminBacklightLevelConst
+}
+func DecodeGarminNightMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+	var val GarminNightMode
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminNightMode-ManufacturerCode: %w", err)
+	} else {
+		if v != 229 {
+			return nil, fmt.Errorf("match failed for GarminNightMode-ManufacturerCode: Expected %d != %d", 229, v)
+		}
+		val.ManufacturerCode = ManufacturerCodeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(2)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readLookupField(3); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminNightMode-IndustryCode: %w", err)
+	} else {
+		if v != 4 {
+			return nil, fmt.Errorf("match failed for GarminNightMode-IndustryCode: Expected %d != %d", 4, v)
+		}
+		val.IndustryCode = IndustryCodeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminNightMode-UnknownId1: %w", err)
+	} else {
+		if v != nil && *v != 222 {
+			return nil, fmt.Errorf("match failed for GarminNightMode-UnknownId1: Expected %d != %d", 222, *v)
+		}
+		val.UnknownId1 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminNightMode-UnknownId2: %w", err)
+	} else {
+		if v != nil && *v != 5 {
+			return nil, fmt.Errorf("match failed for GarminNightMode-UnknownId2: Expected %d != %d", 5, *v)
+		}
+		val.UnknownId2 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminNightMode-UnknownId3: %w", err)
+	} else {
+		if v != nil && *v != 5 {
+			return nil, fmt.Errorf("match failed for GarminNightMode-UnknownId3: Expected %d != %d", 5, *v)
+		}
+		val.UnknownId3 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminNightMode-UnknownId4: %w", err)
+	} else {
+		if v != nil && *v != 5 {
+			return nil, fmt.Errorf("match failed for GarminNightMode-UnknownId4: Expected %d != %d", 5, *v)
+		}
+		val.UnknownId4 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readLookupField(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminNightMode-Mode: %w", err)
+	} else {
+		if v != 1 {
+			return nil, fmt.Errorf("match failed for GarminNightMode-Mode: Expected %d != %d", 1, v)
+		}
+		val.Mode = GarminColorModeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readLookupField(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminNightMode-Backlight: %w", err)
+	} else {
+		val.Backlight = GarminBacklightLevelConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
+	return val, nil
+}
+type GarminColorMode struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	UnknownId1 *uint8
+	UnknownId2 *uint8
+	UnknownId3 *uint8
+	UnknownId4 *uint8
+	Mode GarminColorModeConst
+	Color GarminColorConst
+}
+func DecodeGarminColorMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+	var val GarminColorMode
+	val.Info = Info
+	if v, err := stream.readLookupField(11); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminColorMode-ManufacturerCode: %w", err)
+	} else {
+		if v != 229 {
+			return nil, fmt.Errorf("match failed for GarminColorMode-ManufacturerCode: Expected %d != %d", 229, v)
+		}
+		val.ManufacturerCode = ManufacturerCodeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(2)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readLookupField(3); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminColorMode-IndustryCode: %w", err)
+	} else {
+		if v != 4 {
+			return nil, fmt.Errorf("match failed for GarminColorMode-IndustryCode: Expected %d != %d", 4, v)
+		}
+		val.IndustryCode = IndustryCodeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminColorMode-UnknownId1: %w", err)
+	} else {
+		if v != nil && *v != 222 {
+			return nil, fmt.Errorf("match failed for GarminColorMode-UnknownId1: Expected %d != %d", 222, *v)
+		}
+		val.UnknownId1 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminColorMode-UnknownId2: %w", err)
+	} else {
+		if v != nil && *v != 5 {
+			return nil, fmt.Errorf("match failed for GarminColorMode-UnknownId2: Expected %d != %d", 5, *v)
+		}
+		val.UnknownId2 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminColorMode-UnknownId3: %w", err)
+	} else {
+		if v != nil && *v != 5 {
+			return nil, fmt.Errorf("match failed for GarminColorMode-UnknownId3: Expected %d != %d", 5, *v)
+		}
+		val.UnknownId3 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	if v, err := stream.readUInt8(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminColorMode-UnknownId4: %w", err)
+	} else {
+		if v != nil && *v != 5 {
+			return nil, fmt.Errorf("match failed for GarminColorMode-UnknownId4: Expected %d != %d", 5, *v)
+		}
+		val.UnknownId4 = v
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(16)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readLookupField(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminColorMode-Mode: %w", err)
+	} else {
+		if v != 13 {
+			return nil, fmt.Errorf("match failed for GarminColorMode-Mode: Expected %d != %d", 13, v)
+		}
+		val.Mode = GarminColorModeConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}
+	stream.skipBits(8)
+	if stream.isEOF() {
+		return val, nil
+		}
+	if v, err := stream.readLookupField(8); err != nil {
+		return nil, fmt.Errorf("parse failed for GarminColorMode-Color: %w", err)
+	} else {
+		val.Color = GarminColorConst(v)
+
+		if stream.isEOF() {
+			return val, nil
+		} 
+	}	
+	return val, nil
+}
 type Alert struct {
 	Info MessageInfo
 	AlertType AlertTypeConst
@@ -43882,7 +44887,7 @@ func DecodeInverterStatus(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	stream.skipBits(34)
+	stream.skipBits(2)
 	if stream.isEOF() {
 		return val, nil
 		}	
@@ -48197,10 +49202,10 @@ type RadioFrequencyModePower struct {
 	Info MessageInfo
 	RxFrequency *float32
 	TxFrequency *float32
-	RadioChannel *uint8
+	RadioChannel string
 	TxPower *uint8
-	Mode *uint8
-	ChannelBandwidth *uint8
+	Mode *uint16
+	ChannelBandwidth *uint16
 }
 func DecodeRadioFrequencyModePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val RadioFrequencyModePower
@@ -48223,7 +49228,7 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUInt8(8); err != nil {
+	if v, err := stream.readFixedString(48); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-RadioChannel: %w", err)
 	} else {
 		val.RadioChannel = v
@@ -48241,7 +49246,7 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUInt8(8); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-Mode: %w", err)
 	} else {
 		val.Mode = v
@@ -48250,7 +49255,7 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUInt8(8); err != nil {
+	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-ChannelBandwidth: %w", err)
 	} else {
 		val.ChannelBandwidth = v
