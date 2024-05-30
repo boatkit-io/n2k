@@ -1,6 +1,6 @@
 module github.com/boatkit-io/n2k
 
-go 1.21
+go 1.22.3
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
@@ -26,7 +26,6 @@ require (
 	github.com/google/uuid v1.3.1 // indirect
 	github.com/huandu/xstrings v1.4.0 // indirect
 	github.com/imdario/mergo v0.3.16 // indirect
-	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
