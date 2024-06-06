@@ -17,7 +17,8 @@ func NewDeDuper() *DeDuper {
 	}
 }
 
-// unique returns the name (if not already used) or appends an incrementing counter to name
+// unique returns true if the name is encountered for the first time
+// if false the name has "_"+ incrementing digit(s) appended
 func (deduper *DeDuper) unique(name string) (bool, string) {
 	firstTime := true
 	count := deduper.used[name]
