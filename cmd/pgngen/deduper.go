@@ -18,12 +18,14 @@ func NewDeDuper() *DeDuper {
 }
 
 // unique returns the name (if not already used) or appends an incrementing counter to name
-func (deduper *DeDuper) unique(name string) string {
+func (deduper *DeDuper) unique(name string) (bool, string) {
+	firstTime := true
 	count := deduper.used[name]
 	count++
 	deduper.used[name] = count
 	if count > 1 {
 		name += "_" + strconv.FormatInt(int64(count), 10)
+		firstTime = false
 	}
-	return name
+	return firstTime, name
 }

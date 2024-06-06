@@ -287,7 +287,7 @@ func (conv *canboatConverter) fixIDs() {
 		fieldDeDuper := NewDeDuper()
 		// Capitalize first letter of the Ids (currently lowercase)
 		conv.PGNs[i].Id = capitalizeFirstChar(conv.PGNs[i].Id)
-		if len(conv.PGNs[i].Id) != len(pgnDeDuper.unique(conv.PGNs[i].Id)) {
+		if firstTime,_ := pgnDeDuper.unique(conv.PGNs[i].Id); !firstTime {
 			panic("PGN ID not unique: " + conv.PGNs[i].Id)
 		}
 		for j := range conv.PGNs[i].Fields {
@@ -311,7 +311,7 @@ func fixupField(field *PGNField, dedup DeDuper) {
 	if field.FieldType == "LOOKUP" && len(field.LookupName) == 0 {
 		log.Infof("Lookup without Enumeration Name: " + field.Id)
 	}
-	if len(field.Id) != len(dedup.unique(field.Id)) {
+	if firstTime, _ := dedup.unique(field.Id); !firstTime {
 		panic("field ID not unique: " + field.Id)
 	}
 	if len(field.LookupName) > 0 {
@@ -353,36 +353,36 @@ func (builder *canboatConverter) fixEnumDefs() {
 	constDeDuper := NewDeDuper()
 	for i := range builder.Enums {
 		convertToConst(&builder.Enums[i].Name)
-		if len(builder.Enums[i].Name) != len(constDeDuper.unique(builder.Enums[i].Name)) {
+		if firstTime, _ := constDeDuper.unique(builder.Enums[i].Name); !firstTime {
 			panic("Enum name not unique: " + builder.Enums[i].Name)
-		}
+		} 
 		for j := range builder.Enums[i].Values {
 			forceFirstLetter(&builder.Enums[i].Values[j].Text)
 		}
 	}
 	for i := range builder.IndirectEnums {
 		convertToConst(&builder.IndirectEnums[i].Name)
-		if len(builder.IndirectEnums[i].Name) != len(constDeDuper.unique(builder.IndirectEnums[i].Name)) {
+		if firstTime, _ := constDeDuper.unique(builder.IndirectEnums[i].Name); !firstTime {
 			panic("IndirectEnum name not unique: " + builder.IndirectEnums[i].Name)
-		}
+		} // else don't need to change name
 		for j := range builder.IndirectEnums[i].Values { // not strictly necessary since we aren't creating identifiers from them
 			forceFirstLetter(&builder.IndirectEnums[i].Values[j].Text)
 		}
 	}
 	for i := range builder.BitEnums {
 		convertToConst(&builder.BitEnums[i].Name)
-		if len(builder.BitEnums[i].Name) != len(constDeDuper.unique(builder.BitEnums[i].Name)) {
+		if firstTime, _ := constDeDuper.unique(builder.BitEnums[i].Name); !firstTime {
 			panic("BitEnum name not unique: " + builder.BitEnums[i].Name)
-		}
+		} // else don't need to change name
 		for j := range builder.BitEnums[i].EnumBitValues {
 			forceFirstLetter(&builder.BitEnums[i].EnumBitValues[j].Label)
 		}
 	}
 	for i := range builder.FieldTypeEnums {
 		convertToConst(&builder.FieldTypeEnums[i].Name)
-		if builder.FieldTypeEnums[i].Name != constDeDuper.unique(builder.FieldTypeEnums[i].Name) {
+		if firstTime, _ := constDeDuper.unique(builder.FieldTypeEnums[i].Name); !firstTime {
 			panic("FieldTypeEnum name not unique: " + builder.FieldTypeEnums[i].Name)
-		}
+		} // else don't need to change name
 	}
 }
 
@@ -449,7 +449,7 @@ var varDeDuper = NewDeDuper()
 func toVarName(str string) string {
 	str = strings.Title(str) //nolint:staticcheck
 	str = varNameReplacer.Replace(str)
-	str = varDeDuper.unique(str)
+	_,str = varDeDuper.unique(str)
 	return str
 }
 
