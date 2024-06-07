@@ -35,6 +35,6 @@ jobs:
       ### END
 
       - name: lintroller
-        run: go run github.com/getoutreach/lintroller/cmd/lintroller@v1.16.0 -config lintroller.yaml ./...
+        run: go run github.com/getoutreach/lintroller/cmd/lintroller@v1.18.1 -config lintroller.yaml ./...
       - name: test
         run: make test

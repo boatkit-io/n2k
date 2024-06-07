@@ -17,19 +17,16 @@ func NewDeDuper() *DeDuper {
 	}
 }
 
-// isUnique returns true if the name hasn't been seen
-func (deduper *DeDuper) isUnique(name string) bool {
-	_, exists := deduper.used[name]
-	return !exists
-}
-
-// unique returns the name (if not already used) or appends an incrementing counter to name
-func (duduper *DeDuper) unique(name string) string {
-	count := duduper.used[name]
+// unique returns true if the name is encountered for the first time
+// if false the name has "_"+ incrementing digit(s) appended
+func (deduper *DeDuper) unique(name string) (bool, string) {
+	firstTime := true
+	count := deduper.used[name]
 	count++
-	duduper.used[name] = count
+	deduper.used[name] = count
 	if count > 1 {
-		name += strconv.FormatInt(int64(count), 10)
+		name += "_" + strconv.FormatInt(int64(count), 10)
+		firstTime = false
 	}
-	return name
+	return firstTime, name
 }
