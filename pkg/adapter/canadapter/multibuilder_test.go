@@ -134,6 +134,11 @@ func TestFastPacket(t *testing.T) {
 
 	// test misc multi frame packet out of order
 	m = NewMultiBuilder(log)
+	// zero must be first!
+	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
+	p = pkt.NewPacket(pInfo, data)
+	m.Add(p)
+	assert.False(t, p.Complete)
 	data = []uint8{0x63, 0x00, 0x00, 0x00, 0x00, 0x10, 0x7F, 0xFF}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -143,10 +148,6 @@ func TestFastPacket(t *testing.T) {
 	m.Add(p)
 	assert.False(t, p.Complete)
 	data = []uint8{0x62, 0x55, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x7F}
-	p = pkt.NewPacket(pInfo, data)
-	m.Add(p)
-	assert.False(t, p.Complete)
-	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
 	assert.False(t, p.Complete)
@@ -160,6 +161,10 @@ func TestFastPacket(t *testing.T) {
 
 	// test misc multi frame packet out of order
 	m = NewMultiBuilder(log)
+	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
+	p = pkt.NewPacket(pInfo, data)
+	m.Add(p)
+	assert.False(t, p.Complete)
 	data = []uint8{0x63, 0x00, 0x00, 0x00, 0x00, 0x10, 0x7F, 0xFF}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -169,10 +174,6 @@ func TestFastPacket(t *testing.T) {
 	m.Add(p)
 	assert.False(t, p.Complete)
 	data = []uint8{0x62, 0x55, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x7F}
-	p = pkt.NewPacket(pInfo, data)
-	m.Add(p)
-	assert.False(t, p.Complete)
-	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
 	assert.False(t, p.Complete)
@@ -186,6 +187,10 @@ func TestFastPacket(t *testing.T) {
 
 	// test that receiving a duplicate frame resets the sequence
 	m = NewMultiBuilder(log)
+	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
+	p = pkt.NewPacket(pInfo, data)
+	m.Add(p)
+	assert.False(t, p.Complete)
 	data = []uint8{0x63, 0x00, 0x00, 0x00, 0x00, 0x10, 0x7F, 0xFF}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -199,10 +204,6 @@ func TestFastPacket(t *testing.T) {
 	m.Add(p)
 	// duplicate, so sequence should reset, and after "completing" the packet will remain inComplete
 	data = []uint8{0x62, 0x55, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x7F}
-	p = pkt.NewPacket(pInfo, data)
-	m.Add(p)
-	assert.False(t, p.Complete)
-	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
 	assert.False(t, p.Complete)
