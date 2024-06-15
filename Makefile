@@ -2,7 +2,6 @@ SHELL := /bin/bash
 
 .PHONY: machine-deps
 machine-deps:
-	@./scripts/setup.sh
 
 .PHONY: build
 build: machine-deps

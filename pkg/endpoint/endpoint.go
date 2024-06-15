@@ -10,6 +10,7 @@ import (
 // Endpoint declares the interface for endpoints.
 type Endpoint interface {
 	Run(ctx context.Context) error
+	Close() error
 	SetOutput(MessageHandler)
 }
 
