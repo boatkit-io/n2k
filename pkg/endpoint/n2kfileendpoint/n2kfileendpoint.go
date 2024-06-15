@@ -72,12 +72,15 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 		var frame can.Frame
 		var canDead string
 		var timeDelta float32
-		fmt.Sscanf(line, " (%f)  %s  %8X   [%d]  %X %X %X %X %X %X %X %X", &timeDelta, &canDead, &frame.ID, &frame.Length, &frame.Data[0], &frame.Data[1], &frame.Data[2], &frame.Data[3], &frame.Data[4], &frame.Data[5], &frame.Data[6], &frame.Data[7])
+		_, err := fmt.Sscanf(line, " (%f)  %s  %8X   [%d]  %X %X %X %X %X %X %X %X", &timeDelta, &canDead, &frame.ID, &frame.Length, &frame.Data[0], &frame.Data[1], &frame.Data[2], &frame.Data[3], &frame.Data[4], &frame.Data[5], &frame.Data[6], &frame.Data[7])
+		if err != nil {
+			return err
+		}
 		// Pause until the timeDelta has expired, so this all replays in "real-time" (relative to start, obvs)
 		for {
-			//				if n.shuttingDown {
-			//					return
-			//				}
+			if canceled {
+				break
+			}
 
 			curDelta := time.Since(startTime).Seconds()
 			nextTime := timeDelta - float32(curDelta)
@@ -87,6 +90,9 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 			if time.Since(startTime) > time.Duration(timeDelta) {
 				break
 			}
+		}
+		if canceled {
+			break
 		}
 
 		n.frameReady(&frame)

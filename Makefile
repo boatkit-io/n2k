@@ -2,7 +2,6 @@ SHELL := /bin/bash
 
 .PHONY: machine-deps
 machine-deps:
-	@./scripts/setup.sh
 
 .PHONY: build
 build: machine-deps
@@ -10,8 +9,8 @@ build: machine-deps
 
 .PHONY: lint
 lint:
-	go run github.com/getoutreach/lintroller/cmd/lintroller@v1.18.1 -config lintroller.yaml ./...
-	go run github.com/golangci/golangci-lint/cmd/golangci-lint@v1.58.0 run ./...
+	@golangci-lint run
+	@go run github.com/getoutreach/lintroller/cmd/lintroller@v1.18.2 -config lintroller.yaml ./...
 
 .PHONY: test
 test: machine-deps
