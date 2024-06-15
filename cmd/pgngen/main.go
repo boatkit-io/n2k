@@ -508,6 +508,9 @@ func getUnitType(unitName string) (string, string) {
 	case "Pa":
 		return "Pressure", "Pa"
 
+	case "L/h":
+		return "Flow", "LitersPerHour"
+
 	default:
 		return "", ""
 	}

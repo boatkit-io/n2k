@@ -19060,7 +19060,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 72,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -19310,7 +19310,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -19320,7 +19320,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -19330,7 +19330,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 56,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -27450,7 +27450,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 128,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -27460,7 +27460,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 144,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -43305,7 +43305,7 @@ type EngineParametersDynamic struct {
 	OilTemperature *units.Temperature
 	Temperature *units.Temperature
 	AlternatorPotential *float32
-	FuelRate *float32
+	FuelRate *units.Flow
 	TotalEngineHours *uint32
 	CoolantPressure *units.Pressure
 	FuelPressure *units.Pressure
@@ -43365,7 +43365,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelRate: %w", err)
 	} else {
-		val.FuelRate = v
+		val.FuelRate = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43558,9 +43558,9 @@ type TripParametersEngine struct {
 	Info MessageInfo
 	Instance EngineInstanceConst
 	TripFuelUsed *units.Volume
-	FuelRateAverage *float32
-	FuelRateEconomy *float32
-	InstantaneousFuelEconomy *float32
+	FuelRateAverage *units.Flow
+	FuelRateEconomy *units.Flow
+	InstantaneousFuelEconomy *units.Flow
 }
 func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val TripParametersEngine
@@ -43586,7 +43586,7 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, e
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateAverage: %w", err)
 	} else {
-		val.FuelRateAverage = v
+		val.FuelRateAverage = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43595,7 +43595,7 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, e
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateEconomy: %w", err)
 	} else {
-		val.FuelRateEconomy = v
+		val.FuelRateEconomy = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43604,7 +43604,7 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, e
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-InstantaneousFuelEconomy: %w", err)
 	} else {
-		val.InstantaneousFuelEconomy = v
+		val.InstantaneousFuelEconomy = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50854,8 +50854,8 @@ type WatermakerInputSettingAndStatus struct {
 	PostFilterPressure *units.Pressure
 	FeedPressure *units.Pressure
 	SystemHighPressure *units.Pressure
-	ProductWaterFlow *float32
-	BrineWaterFlow *float32
+	ProductWaterFlow *units.Flow
+	BrineWaterFlow *units.Flow
 	RunTime *uint32
 }
 func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -51039,7 +51039,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterFlow: %w", err)
 	} else {
-		val.ProductWaterFlow = v
+		val.ProductWaterFlow = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51048,7 +51048,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-BrineWaterFlow: %w", err)
 	} else {
-		val.BrineWaterFlow = v
+		val.BrineWaterFlow = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
