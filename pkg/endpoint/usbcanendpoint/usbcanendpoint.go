@@ -23,16 +23,16 @@ type USBCANEndpoint struct {
 }
 
 // NewUSBCANEndpoint builds a new SocketCANEndpoint for the given CAN interface name
-func NewUSBCANEndpoint(log *logrus.Logger, serialInterfaceName string) endpoint.Endpoint {
+func NewUSBCANEndpoint(log *logrus.Logger, serialPortName string) endpoint.Endpoint {
 	c := USBCANEndpoint{
 		log: log,
 	}
 
 	channelOpts := canbus.USBCANChannelOptions{
-		SerialInterfaceName: serialInterfaceName,
-		SerialBaudRate:      2000000,
-		BitRate:             250000,
-		FrameHandler:        c.frameReady,
+		SerialPortName: serialPortName,
+		SerialBaudRate: 2000000,
+		BitRate:        250000,
+		FrameHandler:   c.frameReady,
 	}
 
 	c.channel = canbus.NewUSBCANChannel(log, channelOpts)
