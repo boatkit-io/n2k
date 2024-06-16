@@ -2,8 +2,19 @@
 
 package pgn
 
-import "fmt"
+import (
+	"fmt"
+	
+	"github.com/boatkit-io/tugboat/pkg/units"
+)
 
+func nullableUnit[T any, U any, V float32|uint16|int16|uint32](u U, v *V, newer func(u U, v float32) T) *T {
+	if v == nil {
+		return nil
+	}
+	ov := newer(u, float32(*v))
+	return &ov
+}
 
 // Spit out global consts
 {{- range .PGNDoc.Enums }}
@@ -202,10 +213,10 @@ func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	{{- if and $repeat2 (eq $idx 2) }}
 	if IsProprietaryPGN( *val.Pgn) {
 	{{- end }}
-	{{- if and $repeat2  (eq $idx 5) }}
+	{{- if and $repeat2 (eq $idx 5) }}
 	} 
 	{{- end }}
-{{- $funcs := getFieldDeserializer $pgn . }}
+	{{- $funcs := getFieldDeserializer $pgn . }}
 	if v, err := {{ index $funcs 0 }}; err != nil {
 		return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
 	} else {
@@ -220,7 +231,7 @@ func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (any, error) {
 		} 
 	{{- end }}
 	{{- end }}
-		val.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}(v){{ else }}v{{ end }}
+		val.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
 	{{- if and $repeat1 (eq $idx (subtract $pgn.RepeatingFieldSet1CountField 1)) }}
 		if v != nil {
 			repeat1Count = uint16(*v)
@@ -236,7 +247,7 @@ func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			binaryLength = uint16(*v)
 		}
 	{{- end }}
-	{{- if and  $hasVariableData (eq .Id "ManufacturerCodeConst") }}
+	{{- if and $hasVariableData (eq .Id "ManufacturerCodeConst") }}
 		if v != nil {
 			manufacturer = ManufacturerCodeConst(*v)
 		}
@@ -271,7 +282,7 @@ func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (any, error) {
 		if v, err := {{ index $funcs 0 }}; err != nil {
 			return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
 		} else {
-			rep.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}(v){{ else }}v{{ end }}
+			rep.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
 		{{- if eq .FieldType "FIELD_INDEX" }}
 			if v != nil {
 				fieldIndex = *v
@@ -316,7 +327,7 @@ func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (any, error) {
 		if v, err := {{ index $funcs 0 }}; err != nil {
 			return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
 		} else {
-			rep.{{- .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}(v){{ else }}v{{ end }}
+			rep.{{- .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
 		{{- if and (eq $pgn.RepeatingFieldSet2CountField 2) (eq .FieldType "FIELD_INDEX") }}
 			if v != nil {
 				fieldIndex = *v

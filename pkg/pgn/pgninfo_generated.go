@@ -2,8 +2,19 @@
 
 package pgn
 
-import "fmt"
+import (
+	"fmt"
+	
+	"github.com/boatkit-io/tugboat/pkg/units"
+)
 
+func nullableUnit[T any, U any, V float32|uint16|int16|uint32](u U, v *V, newer func(u U, v float32) T) *T {
+	if v == nil {
+		return nil
+	}
+	ov := newer(u, float32(*v))
+	return &ov
+}
 
 // Spit out global consts
 
@@ -11019,7 +11030,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 16,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.001,
 			Signed: true,
 			},
@@ -11229,7 +11240,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -13519,7 +13530,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -15929,7 +15940,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -16019,7 +16030,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 48,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -16099,7 +16110,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.001,
 			Signed: true,
 			},
@@ -18349,7 +18360,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 224,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -18559,7 +18570,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 136,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int16",
+			GolangType:"*units.Distance",
 			Resolution:1,
 			Signed: true,
 			},
@@ -18779,7 +18790,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 8,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: true,
 			},
@@ -18959,7 +18970,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:100,
 			Signed: false,
 			},
@@ -19009,7 +19020,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 8,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:100,
 			Signed: false,
 			},
@@ -19019,7 +19030,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -19029,7 +19040,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -19049,7 +19060,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 72,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -19069,7 +19080,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 120,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:100,
 			Signed: false,
 			},
@@ -19079,7 +19090,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 136,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:1000,
 			Signed: false,
 			},
@@ -19179,7 +19190,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 16,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:100,
 			Signed: false,
 			},
@@ -19189,7 +19200,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -19239,7 +19250,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -19249,7 +19260,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 64,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*uint16",
+			GolangType:"*units.Volume",
 			Resolution:1,
 			Signed: false,
 			},
@@ -19289,7 +19300,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 8,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*uint16",
+			GolangType:"*units.Volume",
 			Resolution:1,
 			Signed: false,
 			},
@@ -19299,7 +19310,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -19309,7 +19320,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -19319,7 +19330,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 56,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -20369,7 +20380,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Volume",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -20609,7 +20620,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -21529,7 +21540,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -21599,7 +21610,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -21639,7 +21650,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 8,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -21649,7 +21660,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -21709,7 +21720,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 8,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -21719,7 +21730,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.001,
 			Signed: true,
 			},
@@ -21729,7 +21740,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 56,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:10,
 			Signed: false,
 			},
@@ -21769,7 +21780,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 48,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*uint32",
+			GolangType:"*units.Distance",
 			Resolution:1,
 			Signed: false,
 			},
@@ -21779,7 +21790,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 80,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*uint32",
+			GolangType:"*units.Distance",
 			Resolution:1,
 			Signed: false,
 			},
@@ -21879,7 +21890,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.001,
 			Signed: false,
 			},
@@ -21899,7 +21910,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 88,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -21909,7 +21920,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 104,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -22169,7 +22180,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -22179,7 +22190,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -22369,7 +22380,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -22589,7 +22600,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 184,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:1e-06,
 			Signed: true,
 			},
@@ -22669,7 +22680,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 304,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: true,
 			},
@@ -22859,7 +22870,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 128,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -23069,7 +23080,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 128,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -23309,7 +23320,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 128,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -23389,7 +23400,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 192,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -23399,7 +23410,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 208,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -23409,7 +23420,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 224,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -23419,7 +23430,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 240,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -23579,7 +23590,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 112,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -23589,7 +23600,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 128,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -23599,7 +23610,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 144,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -23609,7 +23620,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 160,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -23769,7 +23780,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 96,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: true,
 			},
@@ -23799,7 +23810,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: true,
 			},
@@ -23809,7 +23820,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: true,
 			},
@@ -23819,7 +23830,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 64,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: true,
 			},
@@ -23869,7 +23880,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 224,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: true,
 			},
@@ -23949,7 +23960,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 16,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: true,
 			},
@@ -23989,7 +24000,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 8,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -24119,7 +24130,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 256,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: true,
 			},
@@ -24319,7 +24330,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -24929,7 +24940,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 296,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -24939,7 +24950,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 312,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -24949,7 +24960,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 328,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -24959,7 +24970,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 344,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -24989,7 +25000,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 408,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -26389,7 +26400,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 160,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -26399,7 +26410,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 176,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -26409,7 +26420,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 192,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -26419,7 +26430,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 208,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -26509,7 +26520,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 8,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -26569,7 +26580,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 8,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -26579,7 +26590,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -26589,7 +26600,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:100,
 			Signed: false,
 			},
@@ -26649,7 +26660,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 16,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -26669,7 +26680,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 48,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:100,
 			Signed: false,
 			},
@@ -26719,7 +26730,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -26729,7 +26740,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -26859,7 +26870,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -26919,7 +26930,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -26979,7 +26990,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 24,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.001,
 			Signed: false,
 			},
@@ -26989,7 +27000,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 48,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -27079,7 +27090,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 120,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.001,
 			Signed: true,
 			},
@@ -27089,7 +27100,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 136,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -27199,7 +27210,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 152,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -27389,7 +27400,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 48,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.01,
 			Signed: false,
 			},
@@ -27399,7 +27410,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 64,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:100,
 			Signed: false,
 			},
@@ -27409,7 +27420,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 80,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:100,
 			Signed: false,
 			},
@@ -27419,7 +27430,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 96,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:1000,
 			Signed: true,
 			},
@@ -27429,7 +27440,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 112,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Pressure",
 			Resolution:1000,
 			Signed: false,
 			},
@@ -27439,7 +27450,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 128,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -27449,7 +27460,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 144,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Flow",
 			Resolution:0.1,
 			Signed: true,
 			},
@@ -27519,7 +27530,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.001,
 			Signed: true,
 			},
@@ -27529,7 +27540,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 16,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.001,
 			Signed: true,
 			},
@@ -27539,7 +27550,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.001,
 			Signed: true,
 			},
@@ -27549,7 +27560,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 48,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.001,
 			Signed: true,
 			},
@@ -27559,7 +27570,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 64,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.001,
 			Signed: true,
 			},
@@ -27569,7 +27580,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 80,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Velocity",
 			Resolution:0.001,
 			Signed: true,
 			},
@@ -31379,7 +31390,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -31389,7 +31400,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 56,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Temperature",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -31799,7 +31810,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 48,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Volume",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -32349,7 +32360,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 192,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -32359,7 +32370,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 208,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -32369,7 +32380,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 224,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -32379,7 +32390,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 240,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*units.Distance",
 			Resolution:0.1,
 			Signed: false,
 			},
@@ -35441,7 +35452,7 @@ type FurunoHeave struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Heave *float32
+	Heave *units.Distance
 }
 func DecodeFurunoHeave(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FurunoHeave
@@ -35477,7 +35488,7 @@ func DecodeFurunoHeave(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readSignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeave-Heave: %w", err)
 	} else {
-		val.Heave = v
+		val.Heave = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -35618,7 +35629,7 @@ type LowranceTemperature struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	TemperatureSource TemperatureSourceConst
-	ActualTemperature *float32
+	ActualTemperature *units.Temperature
 }
 func DecodeLowranceTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val LowranceTemperature
@@ -35663,7 +35674,7 @@ func DecodeLowranceTemperature(Info MessageInfo, stream *PGNDataStream) (any, er
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceTemperature-ActualTemperature: %w", err)
 	} else {
-		val.ActualTemperature = v
+		val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -37681,7 +37692,7 @@ type AirmarDeviceInformation struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Sid *uint8
-	InternalDeviceTemperature *float32
+	InternalDeviceTemperature *units.Temperature
 	SupplyVoltage *float32
 }
 func DecodeAirmarDeviceInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -37727,7 +37738,7 @@ func DecodeAirmarDeviceInformation(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDeviceInformation-InternalDeviceTemperature: %w", err)
 	} else {
-		val.InternalDeviceTemperature = v
+		val.InternalDeviceTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -40315,7 +40326,7 @@ type AirmarCalibrateDepth struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	ProprietaryId AirmarCommandConst
-	SpeedOfSoundMode *float32
+	SpeedOfSoundMode *units.Velocity
 }
 func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarCalibrateDepth
@@ -40363,7 +40374,7 @@ func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *PGNDataStream) (any, e
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-SpeedOfSoundMode: %w", err)
 	} else {
-		val.SpeedOfSoundMode = v
+		val.SpeedOfSoundMode = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -40385,7 +40396,7 @@ type AirmarCalibrateSpeed struct {
 }
 type AirmarCalibrateSpeedRepeating1 struct {
 	InputFrequency *float32
-	OutputSpeed *float32
+	OutputSpeed *units.Velocity
 }
 func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarCalibrateSpeed
@@ -40458,7 +40469,7 @@ func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *PGNDataStream) (any, e
 		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 			return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-OutputSpeed: %w", err)
 		} else {
-			rep.OutputSpeed = v
+			rep.OutputSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 		}
 		val.Repeating1 = append(val.Repeating1, rep)
 		if int(repeat1Count) == 0 {
@@ -40480,7 +40491,7 @@ type AirmarCalibrateTemperature struct {
 	IndustryCode IndustryCodeConst
 	ProprietaryId AirmarCommandConst
 	TemperatureInstance AirmarTemperatureInstanceConst
-	TemperatureOffset *float32
+	TemperatureOffset *units.Temperature
 }
 func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val AirmarCalibrateTemperature
@@ -40541,7 +40552,7 @@ func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *PGNDataStream) (
 	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-TemperatureOffset: %w", err)
 	} else {
-		val.TemperatureOffset = v
+		val.TemperatureOffset = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -42612,7 +42623,7 @@ type ManOverboardNotification struct {
 	Longitude *float32
 	CogReference DirectionReferenceConst
 	Cog *float32
-	Sog *float32
+	Sog *units.Velocity
 	MmsiOfVesselOfOrigin *uint32
 	MobEmitterBatteryLowStatus LowBatteryConst
 }
@@ -42733,7 +42744,7 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *PGNDataStream) (an
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-Sog: %w", err)
 	} else {
-		val.Sog = v
+		val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -42780,7 +42791,7 @@ type HeadingTrackControl struct {
 	OffHeadingLimit *float32
 	RadiusOfTurnOrder *float32
 	RateOfTurnOrder *float32
-	OffTrackLimit *int16
+	OffTrackLimit *units.Distance
 	VesselHeading *float32
 }
 func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -42928,7 +42939,7 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, er
 	if v, err := stream.readInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffTrackLimit: %w", err)
 	} else {
-		val.OffTrackLimit = v
+		val.OffTrackLimit = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43098,7 +43109,7 @@ func DecodeRateOfTurn(Info MessageInfo, stream *PGNDataStream) (any, error) {
 type Heave struct {
 	Info MessageInfo
 	Sid *uint8
-	Heave *float32
+	Heave *units.Distance
 }
 func DecodeHeave(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Heave
@@ -43115,7 +43126,7 @@ func DecodeHeave(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Heave-Heave: %w", err)
 	} else {
-		val.Heave = v
+		val.Heave = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43239,7 +43250,7 @@ type EngineParametersRapidUpdate struct {
 	Info MessageInfo
 	Instance EngineInstanceConst
 	Speed *float32
-	BoostPressure *float32
+	BoostPressure *units.Pressure
 	TiltTrim *int8
 }
 func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -43266,7 +43277,7 @@ func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *PGNDataStream) 
 	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-BoostPressure: %w", err)
 	} else {
-		val.BoostPressure = v
+		val.BoostPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43290,14 +43301,14 @@ func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *PGNDataStream) 
 type EngineParametersDynamic struct {
 	Info MessageInfo
 	Instance EngineInstanceConst
-	OilPressure *float32
-	OilTemperature *float32
-	Temperature *float32
+	OilPressure *units.Pressure
+	OilTemperature *units.Temperature
+	Temperature *units.Temperature
 	AlternatorPotential *float32
-	FuelRate *float32
+	FuelRate *units.Flow
 	TotalEngineHours *uint32
-	CoolantPressure *float32
-	FuelPressure *float32
+	CoolantPressure *units.Pressure
+	FuelPressure *units.Pressure
 	DiscreteStatus1 EngineStatus1Const
 	DiscreteStatus2 EngineStatus2Const
 	EngineLoad *int8
@@ -43318,7 +43329,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-OilPressure: %w", err)
 	} else {
-		val.OilPressure = v
+		val.OilPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43327,7 +43338,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-OilTemperature: %w", err)
 	} else {
-		val.OilTemperature = v
+		val.OilTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43336,7 +43347,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-Temperature: %w", err)
 	} else {
-		val.Temperature = v
+		val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43354,7 +43365,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelRate: %w", err)
 	} else {
-		val.FuelRate = v
+		val.FuelRate = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43372,7 +43383,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-CoolantPressure: %w", err)
 	} else {
-		val.CoolantPressure = v
+		val.CoolantPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43381,7 +43392,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readUnsignedResolution(16, 1000); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelPressure: %w", err)
 	} else {
-		val.FuelPressure = v
+		val.FuelPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43433,8 +43444,8 @@ type TransmissionParametersDynamic struct {
 	Info MessageInfo
 	Instance EngineInstanceConst
 	TransmissionGear GearStatusConst
-	OilPressure *float32
-	OilTemperature *float32
+	OilPressure *units.Pressure
+	OilTemperature *units.Temperature
 	DiscreteStatus1 *uint8
 }
 func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -43465,7 +43476,7 @@ func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-OilPressure: %w", err)
 	} else {
-		val.OilPressure = v
+		val.OilPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43474,7 +43485,7 @@ func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-OilTemperature: %w", err)
 	} else {
-		val.OilTemperature = v
+		val.OilTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43498,8 +43509,8 @@ func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *PGNDataStream
 type TripParametersVessel struct {
 	Info MessageInfo
 	TimeToEmpty *float32
-	DistanceToEmpty *float32
-	EstimatedFuelRemaining *uint16
+	DistanceToEmpty *units.Distance
+	EstimatedFuelRemaining *units.Volume
 	TripRunTime *float32
 }
 func DecodeTripParametersVessel(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -43517,7 +43528,7 @@ func DecodeTripParametersVessel(Info MessageInfo, stream *PGNDataStream) (any, e
 	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersVessel-DistanceToEmpty: %w", err)
 	} else {
-		val.DistanceToEmpty = v
+		val.DistanceToEmpty = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43526,7 +43537,7 @@ func DecodeTripParametersVessel(Info MessageInfo, stream *PGNDataStream) (any, e
 	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersVessel-EstimatedFuelRemaining: %w", err)
 	} else {
-		val.EstimatedFuelRemaining = v
+		val.EstimatedFuelRemaining = nullableUnit(units.Liter, v, units.NewVolume)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43546,10 +43557,10 @@ func DecodeTripParametersVessel(Info MessageInfo, stream *PGNDataStream) (any, e
 type TripParametersEngine struct {
 	Info MessageInfo
 	Instance EngineInstanceConst
-	TripFuelUsed *uint16
-	FuelRateAverage *float32
-	FuelRateEconomy *float32
-	InstantaneousFuelEconomy *float32
+	TripFuelUsed *units.Volume
+	FuelRateAverage *units.Flow
+	FuelRateEconomy *units.Flow
+	InstantaneousFuelEconomy *units.Flow
 }
 func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val TripParametersEngine
@@ -43566,7 +43577,7 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, e
 	if v, err := stream.readUInt16(16); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-TripFuelUsed: %w", err)
 	} else {
-		val.TripFuelUsed = v
+		val.TripFuelUsed = nullableUnit(units.Liter, v, units.NewVolume)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43575,7 +43586,7 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, e
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateAverage: %w", err)
 	} else {
-		val.FuelRateAverage = v
+		val.FuelRateAverage = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43584,7 +43595,7 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, e
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateEconomy: %w", err)
 	} else {
-		val.FuelRateEconomy = v
+		val.FuelRateEconomy = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -43593,7 +43604,7 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, e
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-InstantaneousFuelEconomy: %w", err)
 	} else {
-		val.InstantaneousFuelEconomy = v
+		val.InstantaneousFuelEconomy = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -44556,7 +44567,7 @@ type FluidLevel struct {
 	Instance *uint8
 	Type TankTypeConst
 	Level *float32
-	Capacity *float32
+	Capacity *units.Volume
 }
 func DecodeFluidLevel(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val FluidLevel
@@ -44591,7 +44602,7 @@ func DecodeFluidLevel(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUnsignedResolution(32, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for FluidLevel-Capacity: %w", err)
 	} else {
-		val.Capacity = v
+		val.Capacity = nullableUnit(units.Liter, v, units.NewVolume)
 
 		if stream.isEOF() {
 			return val, nil
@@ -44778,7 +44789,7 @@ type BatteryStatus struct {
 	Instance *uint8
 	Voltage *float32
 	Current *float32
-	Temperature *float32
+	Temperature *units.Temperature
 	Sid *uint8
 }
 func DecodeBatteryStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -44814,7 +44825,7 @@ func DecodeBatteryStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryStatus-Temperature: %w", err)
 	} else {
-		val.Temperature = v
+		val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -45614,7 +45625,7 @@ type ThrusterInformation struct {
 	Identifier *uint8
 	MotorType ThrusterMotorTypeConst
 	PowerRating *uint16
-	MaximumTemperatureRating *float32
+	MaximumTemperatureRating *units.Temperature
 	MaximumRotationalSpeed *float32
 }
 func DecodeThrusterInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -45654,7 +45665,7 @@ func DecodeThrusterInformation(Info MessageInfo, stream *PGNDataStream) (any, er
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterInformation-MaximumTemperatureRating: %w", err)
 	} else {
-		val.MaximumTemperatureRating = v
+		val.MaximumTemperatureRating = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -45677,7 +45688,7 @@ type ThrusterMotorStatus struct {
 	Identifier *uint8
 	MotorEvents ThrusterMotorEventsConst
 	Current *uint8
-	Temperature *float32
+	Temperature *units.Temperature
 	OperatingTime *float32
 }
 func DecodeThrusterMotorStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -45722,7 +45733,7 @@ func DecodeThrusterMotorStatus(Info MessageInfo, stream *PGNDataStream) (any, er
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Temperature: %w", err)
 	} else {
-		val.Temperature = v
+		val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -45742,8 +45753,8 @@ func DecodeThrusterMotorStatus(Info MessageInfo, stream *PGNDataStream) (any, er
 type Speed struct {
 	Info MessageInfo
 	Sid *uint8
-	SpeedWaterReferenced *float32
-	SpeedGroundReferenced *float32
+	SpeedWaterReferenced *units.Velocity
+	SpeedGroundReferenced *units.Velocity
 	SpeedWaterReferencedType WaterReferenceConst
 	SpeedDirection *uint8
 }
@@ -45762,7 +45773,7 @@ func DecodeSpeed(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Speed-SpeedWaterReferenced: %w", err)
 	} else {
-		val.SpeedWaterReferenced = v
+		val.SpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -45771,7 +45782,7 @@ func DecodeSpeed(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Speed-SpeedGroundReferenced: %w", err)
 	} else {
-		val.SpeedGroundReferenced = v
+		val.SpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -45804,9 +45815,9 @@ func DecodeSpeed(Info MessageInfo, stream *PGNDataStream) (any, error) {
 type WaterDepth struct {
 	Info MessageInfo
 	Sid *uint8
-	Depth *float32
-	Offset *float32
-	Range *float32
+	Depth *units.Distance
+	Offset *units.Distance
+	Range *units.Distance
 }
 func DecodeWaterDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val WaterDepth
@@ -45823,7 +45834,7 @@ func DecodeWaterDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for WaterDepth-Depth: %w", err)
 	} else {
-		val.Depth = v
+		val.Depth = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -45832,7 +45843,7 @@ func DecodeWaterDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for WaterDepth-Offset: %w", err)
 	} else {
-		val.Offset = v
+		val.Offset = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -45841,7 +45852,7 @@ func DecodeWaterDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUnsignedResolution(8, 10); err != nil {
 		return nil, fmt.Errorf("parse failed for WaterDepth-Range: %w", err)
 	} else {
-		val.Range = v
+		val.Range = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -45853,8 +45864,8 @@ type DistanceLog struct {
 	Info MessageInfo
 	Date *uint16
 	Time *float32
-	Log *uint32
-	TripLog *uint32
+	Log *units.Distance
+	TripLog *units.Distance
 }
 func DecodeDistanceLog(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val DistanceLog
@@ -45880,7 +45891,7 @@ func DecodeDistanceLog(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for DistanceLog-Log: %w", err)
 	} else {
-		val.Log = v
+		val.Log = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -45889,7 +45900,7 @@ func DecodeDistanceLog(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUInt32(32); err != nil {
 		return nil, fmt.Errorf("parse failed for DistanceLog-TripLog: %w", err)
 	} else {
-		val.TripLog = v
+		val.TripLog = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -45906,10 +45917,10 @@ type TrackedTargetData struct {
 	TargetAcquisition TargetAcquisitionConst
 	BearingReference DirectionReferenceConst
 	Bearing *float32
-	Distance *float32
+	Distance *units.Distance
 	Course *float32
-	Speed *float32
-	Cpa *float32
+	Speed *units.Velocity
+	Cpa *units.Distance
 	Tcpa *float32
 	UtcOfFix *float32
 	Name string
@@ -45987,7 +45998,7 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, erro
 	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Distance: %w", err)
 	} else {
-		val.Distance = v
+		val.Distance = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -46005,7 +46016,7 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, erro
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Speed: %w", err)
 	} else {
-		val.Speed = v
+		val.Speed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -46014,7 +46025,7 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, erro
 	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Cpa: %w", err)
 	} else {
-		val.Cpa = v
+		val.Cpa = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -46192,8 +46203,8 @@ type AnchorWindlassOperatingStatus struct {
 	WindlassDirectionControl WindlassDirectionConst
 	WindlassMotionStatus WindlassMotionConst
 	RodeTypeStatus RodeTypeConst
-	RodeCounterValue *float32
-	WindlassLineSpeed *float32
+	RodeCounterValue *units.Distance
+	WindlassLineSpeed *units.Velocity
 	AnchorDockingStatus DockingStatusConst
 	WindlassOperatingEvents WindlassOperationConst
 }
@@ -46252,7 +46263,7 @@ func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-RodeCounterValue: %w", err)
 	} else {
-		val.RodeCounterValue = v
+		val.RodeCounterValue = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -46261,7 +46272,7 @@ func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassLineSpeed: %w", err)
 	} else {
-		val.WindlassLineSpeed = v
+		val.WindlassLineSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -46392,7 +46403,7 @@ type CogSogRapidUpdate struct {
 	Sid *uint8
 	CogReference DirectionReferenceConst
 	Cog *float32
-	Sog *float32
+	Sog *units.Velocity
 }
 func DecodeCogSogRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val CogSogRapidUpdate
@@ -46431,7 +46442,7 @@ func DecodeCogSogRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, erro
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Sog: %w", err)
 	} else {
-		val.Sog = v
+		val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -46574,14 +46585,14 @@ type GnssPositionData struct {
 	Time *float32
 	Latitude *float32
 	Longitude *float32
-	Altitude *float32
+	Altitude *units.Distance
 	GnssType GnsConst
 	Method GnsMethodConst
 	Integrity GnsIntegrityConst
 	NumberOfSvs *uint8
 	Hdop *float32
 	Pdop *float32
-	GeoidalSeparation *float32
+	GeoidalSeparation *units.Distance
 	ReferenceStations *uint8
 	Repeating1 []GnssPositionDataRepeating1
 }
@@ -46642,7 +46653,7 @@ func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error
 	if v, err := stream.readSignedResolution(64, 1e-06); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Altitude: %w", err)
 	} else {
-		val.Altitude = v
+		val.Altitude = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -46709,7 +46720,7 @@ func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error
 	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-GeoidalSeparation: %w", err)
 	} else {
-		val.GeoidalSeparation = v
+		val.GeoidalSeparation = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -46812,7 +46823,7 @@ type AisClassAPositionReport struct {
 	Raim RaimFlagConst
 	TimeStamp TimeStampConst
 	Cog *float32
-	Sog *float32
+	Sog *units.Velocity
 	CommunicationState []uint8
 	AisTransceiverInformation AisTransceiverConst
 	Heading *float32
@@ -46908,7 +46919,7 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Sog: %w", err)
 	} else {
-		val.Sog = v
+		val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47002,7 +47013,7 @@ type AisClassBPositionReport struct {
 	Raim RaimFlagConst
 	TimeStamp TimeStampConst
 	Cog *float32
-	Sog *float32
+	Sog *units.Velocity
 	CommunicationState []uint8
 	AisTransceiverInformation AisTransceiverConst
 	Heading *float32
@@ -47101,7 +47112,7 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Sog: %w", err)
 	} else {
-		val.Sog = v
+		val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47222,14 +47233,14 @@ type AisClassBExtendedPositionReport struct {
 	Raim RaimFlagConst
 	TimeStamp TimeStampConst
 	Cog *float32
-	Sog *float32
+	Sog *units.Velocity
 	TypeOfShip ShipTypeConst
 	TrueHeading *float32
 	GnssType PositionFixDeviceConst
-	Length *float32
-	Beam *float32
-	PositionReferenceFromStarboard *float32
-	PositionReferenceFromBow *float32
+	Length *units.Distance
+	Beam *units.Distance
+	PositionReferenceFromStarboard *units.Distance
+	PositionReferenceFromBow *units.Distance
 	Name string
 	Dte AvailableConst
 	AisMode AisModeConst
@@ -47322,7 +47333,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Sog: %w", err)
 	} else {
-		val.Sog = v
+		val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47374,7 +47385,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Length: %w", err)
 	} else {
-		val.Length = v
+		val.Length = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47383,7 +47394,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Beam: %w", err)
 	} else {
-		val.Beam = v
+		val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47392,7 +47403,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-PositionReferenceFromStarboard: %w", err)
 	} else {
-		val.PositionReferenceFromStarboard = v
+		val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47401,7 +47412,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-PositionReferenceFromBow: %w", err)
 	} else {
-		val.PositionReferenceFromBow = v
+		val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47463,10 +47474,10 @@ type AisAidsToNavigationAtonReport struct {
 	PositionAccuracy PositionAccuracyConst
 	Raim RaimFlagConst
 	TimeStamp TimeStampConst
-	LengthDiameter *float32
-	BeamDiameter *float32
-	PositionReferenceFromStarboardEdge *float32
-	PositionReferenceFromTrueNorthFacingEdge *float32
+	LengthDiameter *units.Distance
+	BeamDiameter *units.Distance
+	PositionReferenceFromStarboardEdge *units.Distance
+	PositionReferenceFromTrueNorthFacingEdge *units.Distance
 	AtonType AtonTypeConst
 	OffPositionIndicator YesNoConst
 	VirtualAtonFlag YesNoConst
@@ -47554,7 +47565,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-LengthDiameter: %w", err)
 	} else {
-		val.LengthDiameter = v
+		val.LengthDiameter = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47563,7 +47574,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-BeamDiameter: %w", err)
 	} else {
-		val.BeamDiameter = v
+		val.BeamDiameter = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47572,7 +47583,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionReferenceFromStarboardEdge: %w", err)
 	} else {
-		val.PositionReferenceFromStarboardEdge = v
+		val.PositionReferenceFromStarboardEdge = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47581,7 +47592,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionReferenceFromTrueNorthFacingEdge: %w", err)
 	} else {
-		val.PositionReferenceFromTrueNorthFacingEdge = v
+		val.PositionReferenceFromTrueNorthFacingEdge = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47678,7 +47689,7 @@ type Datum struct {
 	LocalDatum string
 	DeltaLatitude *float32
 	DeltaLongitude *float32
-	DeltaAltitude *float32
+	DeltaAltitude *units.Distance
 	ReferenceDatum string
 }
 func DecodeDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -47714,7 +47725,7 @@ func DecodeDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Datum-DeltaAltitude: %w", err)
 	} else {
-		val.DeltaAltitude = v
+		val.DeltaAltitude = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47733,14 +47744,14 @@ func DecodeDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 }
 type UserDatum struct {
 	Info MessageInfo
-	DeltaX *float32
-	DeltaY *float32
-	DeltaZ *float32
+	DeltaX *units.Distance
+	DeltaY *units.Distance
+	DeltaZ *units.Distance
 	RotationInX *float32
 	RotationInY *float32
 	RotationInZ *float32
 	Scale *float32
-	EllipsoidSemiMajorAxis *float32
+	EllipsoidSemiMajorAxis *units.Distance
 	EllipsoidFlatteningInverse *float32
 	DatumName string
 }
@@ -47750,7 +47761,7 @@ func DecodeUserDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-DeltaX: %w", err)
 	} else {
-		val.DeltaX = v
+		val.DeltaX = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47759,7 +47770,7 @@ func DecodeUserDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-DeltaY: %w", err)
 	} else {
-		val.DeltaY = v
+		val.DeltaY = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47768,7 +47779,7 @@ func DecodeUserDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-DeltaZ: %w", err)
 	} else {
-		val.DeltaZ = v
+		val.DeltaZ = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47813,7 +47824,7 @@ func DecodeUserDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-EllipsoidSemiMajorAxis: %w", err)
 	} else {
-		val.EllipsoidSemiMajorAxis = v
+		val.EllipsoidSemiMajorAxis = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47844,7 +47855,7 @@ type CrossTrackError struct {
 	Sid *uint8
 	XteMode ResidualModeConst
 	NavigationTerminated YesNoConst
-	Xte *float32
+	Xte *units.Distance
 }
 func DecodeCrossTrackError(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val CrossTrackError
@@ -47883,7 +47894,7 @@ func DecodeCrossTrackError(Info MessageInfo, stream *PGNDataStream) (any, error)
 	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for CrossTrackError-Xte: %w", err)
 	} else {
-		val.Xte = v
+		val.Xte = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -47898,7 +47909,7 @@ func DecodeCrossTrackError(Info MessageInfo, stream *PGNDataStream) (any, error)
 type NavigationData struct {
 	Info MessageInfo
 	Sid *uint8
-	DistanceToWaypoint *float32
+	DistanceToWaypoint *units.Distance
 	CourseBearingReference DirectionReferenceConst
 	PerpendicularCrossed YesNoConst
 	ArrivalCircleEntered YesNoConst
@@ -47911,7 +47922,7 @@ type NavigationData struct {
 	DestinationWaypointNumber *uint32
 	DestinationLatitude *float32
 	DestinationLongitude *float32
-	WaypointClosingVelocity *float32
+	WaypointClosingVelocity *units.Velocity
 }
 func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NavigationData
@@ -47928,7 +47939,7 @@ func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-DistanceToWaypoint: %w", err)
 	} else {
-		val.DistanceToWaypoint = v
+		val.DistanceToWaypoint = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -48045,7 +48056,7 @@ func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-WaypointClosingVelocity: %w", err)
 	} else {
-		val.WaypointClosingVelocity = v
+		val.WaypointClosingVelocity = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -48194,7 +48205,7 @@ type SetDriftRapidUpdate struct {
 	Sid *uint8
 	SetReference DirectionReferenceConst
 	Set *float32
-	Drift *float32
+	Drift *units.Velocity
 }
 func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SetDriftRapidUpdate
@@ -48233,7 +48244,7 @@ func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, er
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-Drift: %w", err)
 	} else {
-		val.Drift = v
+		val.Drift = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -48713,13 +48724,13 @@ type AisClassAStaticAndVoyageRelatedData struct {
 	Callsign string
 	Name string
 	TypeOfShip ShipTypeConst
-	Length *float32
-	Beam *float32
-	PositionReferenceFromStarboard *float32
-	PositionReferenceFromBow *float32
+	Length *units.Distance
+	Beam *units.Distance
+	PositionReferenceFromStarboard *units.Distance
+	PositionReferenceFromBow *units.Distance
 	EtaDate *uint16
 	EtaTime *float32
-	Draft *float32
+	Draft *units.Distance
 	Destination string
 	AisVersionIndicator AisVersionConst
 	GnssType PositionFixDeviceConst
@@ -48795,7 +48806,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Length: %w", err)
 	} else {
-		val.Length = v
+		val.Length = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -48804,7 +48815,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Beam: %w", err)
 	} else {
-		val.Beam = v
+		val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -48813,7 +48824,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-PositionReferenceFromStarboard: %w", err)
 	} else {
-		val.PositionReferenceFromStarboard = v
+		val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -48822,7 +48833,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-PositionReferenceFromBow: %w", err)
 	} else {
-		val.PositionReferenceFromBow = v
+		val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -48849,7 +48860,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Draft: %w", err)
 	} else {
-		val.Draft = v
+		val.Draft = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50008,10 +50019,10 @@ type AisClassBStaticDataMsg24PartB struct {
 	TypeOfShip ShipTypeConst
 	VendorId string
 	Callsign string
-	Length *float32
-	Beam *float32
-	PositionReferenceFromStarboard *float32
-	PositionReferenceFromBow *float32
+	Length *units.Distance
+	Beam *units.Distance
+	PositionReferenceFromStarboard *units.Distance
+	PositionReferenceFromBow *units.Distance
 	MothershipUserId *uint32
 	AisTransceiverInformation AisTransceiverConst
 	SequenceId *uint8
@@ -50076,7 +50087,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Length: %w", err)
 	} else {
-		val.Length = v
+		val.Length = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50085,7 +50096,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Beam: %w", err)
 	} else {
-		val.Beam = v
+		val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50094,7 +50105,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-PositionReferenceFromStarboard: %w", err)
 	} else {
-		val.PositionReferenceFromStarboard = v
+		val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50103,7 +50114,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-PositionReferenceFromBow: %w", err)
 	} else {
-		val.PositionReferenceFromBow = v
+		val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50153,7 +50164,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream
 type WindData struct {
 	Info MessageInfo
 	Sid *uint8
-	WindSpeed *float32
+	WindSpeed *units.Velocity
 	WindAngle *float32
 	Reference WindReferenceConst
 }
@@ -50172,7 +50183,7 @@ func DecodeWindData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for WindData-WindSpeed: %w", err)
 	} else {
-		val.WindSpeed = v
+		val.WindSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50205,9 +50216,9 @@ func DecodeWindData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 type EnvironmentalParametersObsolete struct {
 	Info MessageInfo
 	Sid *uint8
-	WaterTemperature *float32
-	OutsideAmbientAirTemperature *float32
-	AtmosphericPressure *float32
+	WaterTemperature *units.Temperature
+	OutsideAmbientAirTemperature *units.Temperature
+	AtmosphericPressure *units.Pressure
 }
 func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val EnvironmentalParametersObsolete
@@ -50224,7 +50235,7 @@ func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-WaterTemperature: %w", err)
 	} else {
-		val.WaterTemperature = v
+		val.WaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50233,7 +50244,7 @@ func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-OutsideAmbientAirTemperature: %w", err)
 	} else {
-		val.OutsideAmbientAirTemperature = v
+		val.OutsideAmbientAirTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50242,7 +50253,7 @@ func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-AtmosphericPressure: %w", err)
 	} else {
-		val.AtmosphericPressure = v
+		val.AtmosphericPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50259,9 +50270,9 @@ type EnvironmentalParameters struct {
 	Sid *uint8
 	TemperatureSource TemperatureSourceConst
 	HumiditySource HumiditySourceConst
-	Temperature *float32
+	Temperature *units.Temperature
 	Humidity *float32
-	AtmosphericPressure *float32
+	AtmosphericPressure *units.Pressure
 }
 func DecodeEnvironmentalParameters(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val EnvironmentalParameters
@@ -50296,7 +50307,7 @@ func DecodeEnvironmentalParameters(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Temperature: %w", err)
 	} else {
-		val.Temperature = v
+		val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50314,7 +50325,7 @@ func DecodeEnvironmentalParameters(Info MessageInfo, stream *PGNDataStream) (any
 	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-AtmosphericPressure: %w", err)
 	} else {
-		val.AtmosphericPressure = v
+		val.AtmosphericPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50327,8 +50338,8 @@ type Temperature struct {
 	Sid *uint8
 	Instance *uint8
 	Source TemperatureSourceConst
-	ActualTemperature *float32
-	SetTemperature *float32
+	ActualTemperature *units.Temperature
+	SetTemperature *units.Temperature
 }
 func DecodeTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val Temperature
@@ -50363,7 +50374,7 @@ func DecodeTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Temperature-ActualTemperature: %w", err)
 	} else {
-		val.ActualTemperature = v
+		val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50372,7 +50383,7 @@ func DecodeTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for Temperature-SetTemperature: %w", err)
 	} else {
-		val.SetTemperature = v
+		val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50451,7 +50462,7 @@ type ActualPressure struct {
 	Sid *uint8
 	Instance *uint8
 	Source PressureSourceConst
-	Pressure *float32
+	Pressure *units.Pressure
 }
 func DecodeActualPressure(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val ActualPressure
@@ -50486,7 +50497,7 @@ func DecodeActualPressure(Info MessageInfo, stream *PGNDataStream) (any, error) 
 	if v, err := stream.readSignedResolution(32, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for ActualPressure-Pressure: %w", err)
 	} else {
-		val.Pressure = v
+		val.Pressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50503,7 +50514,7 @@ type SetPressure struct {
 	Sid *uint8
 	Instance *uint8
 	Source PressureSourceConst
-	Pressure *float32
+	Pressure *units.Pressure
 }
 func DecodeSetPressure(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val SetPressure
@@ -50538,7 +50549,7 @@ func DecodeSetPressure(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if v, err := stream.readUnsignedResolution(32, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SetPressure-Pressure: %w", err)
 	} else {
-		val.Pressure = v
+		val.Pressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50555,8 +50566,8 @@ type TemperatureExtendedRange struct {
 	Sid *uint8
 	Instance *uint8
 	Source TemperatureSourceConst
-	Temperature *float32
-	SetTemperature *float32
+	Temperature *units.Temperature
+	SetTemperature *units.Temperature
 }
 func DecodeTemperatureExtendedRange(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val TemperatureExtendedRange
@@ -50591,7 +50602,7 @@ func DecodeTemperatureExtendedRange(Info MessageInfo, stream *PGNDataStream) (an
 	if v, err := stream.readUnsignedResolution(24, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Temperature: %w", err)
 	} else {
-		val.Temperature = v
+		val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50600,7 +50611,7 @@ func DecodeTemperatureExtendedRange(Info MessageInfo, stream *PGNDataStream) (an
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-SetTemperature: %w", err)
 	} else {
-		val.SetTemperature = v
+		val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50616,8 +50627,8 @@ type TideStationData struct {
 	MeasurementTime *float32
 	StationLatitude *float32
 	StationLongitude *float32
-	TideLevel *float32
-	TideLevelStandardDeviation *float32
+	TideLevel *units.Distance
+	TideLevelStandardDeviation *units.Distance
 	StationId string
 	StationName string
 }
@@ -50685,7 +50696,7 @@ func DecodeTideStationData(Info MessageInfo, stream *PGNDataStream) (any, error)
 	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-TideLevel: %w", err)
 	} else {
-		val.TideLevel = v
+		val.TideLevel = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50694,7 +50705,7 @@ func DecodeTideStationData(Info MessageInfo, stream *PGNDataStream) (any, error)
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-TideLevelStandardDeviation: %w", err)
 	} else {
-		val.TideLevelStandardDeviation = v
+		val.TideLevelStandardDeviation = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50728,7 +50739,7 @@ type SalinityStationData struct {
 	StationLatitude *float32
 	StationLongitude *float32
 	Salinity *float32
-	WaterTemperature *float32
+	WaterTemperature *units.Temperature
 	StationId string
 	StationName string
 }
@@ -50796,7 +50807,7 @@ func DecodeSalinityStationData(Info MessageInfo, stream *PGNDataStream) (any, er
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-WaterTemperature: %w", err)
 	} else {
-		val.WaterTemperature = v
+		val.WaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50838,13 +50849,13 @@ type WatermakerInputSettingAndStatus struct {
 	FilterStatus OkWarningConst
 	SystemStatus OkWarningConst
 	Salinity *uint16
-	ProductWaterTemperature *float32
-	PreFilterPressure *float32
-	PostFilterPressure *float32
-	FeedPressure *float32
-	SystemHighPressure *float32
-	ProductWaterFlow *float32
-	BrineWaterFlow *float32
+	ProductWaterTemperature *units.Temperature
+	PreFilterPressure *units.Pressure
+	PostFilterPressure *units.Pressure
+	FeedPressure *units.Pressure
+	SystemHighPressure *units.Pressure
+	ProductWaterFlow *units.Flow
+	BrineWaterFlow *units.Flow
 	RunTime *uint32
 }
 func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -50983,7 +50994,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterTemperature: %w", err)
 	} else {
-		val.ProductWaterTemperature = v
+		val.ProductWaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -50992,7 +51003,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-PreFilterPressure: %w", err)
 	} else {
-		val.PreFilterPressure = v
+		val.PreFilterPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51001,7 +51012,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-PostFilterPressure: %w", err)
 	} else {
-		val.PostFilterPressure = v
+		val.PostFilterPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51010,7 +51021,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readSignedResolution(16, 1000); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-FeedPressure: %w", err)
 	} else {
-		val.FeedPressure = v
+		val.FeedPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51019,7 +51030,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readUnsignedResolution(16, 1000); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SystemHighPressure: %w", err)
 	} else {
-		val.SystemHighPressure = v
+		val.SystemHighPressure = nullableUnit(units.Pa, v, units.NewPressure)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51028,7 +51039,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterFlow: %w", err)
 	} else {
-		val.ProductWaterFlow = v
+		val.ProductWaterFlow = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51037,7 +51048,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-BrineWaterFlow: %w", err)
 	} else {
-		val.BrineWaterFlow = v
+		val.BrineWaterFlow = nullableUnit(units.LitersPerHour, v, units.NewFlow)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51088,12 +51099,12 @@ func DecodeSmallCraftStatus(Info MessageInfo, stream *PGNDataStream) (any, error
 }
 type VesselSpeedComponents struct {
 	Info MessageInfo
-	LongitudinalSpeedWaterReferenced *float32
-	TransverseSpeedWaterReferenced *float32
-	LongitudinalSpeedGroundReferenced *float32
-	TransverseSpeedGroundReferenced *float32
-	SternSpeedWaterReferenced *float32
-	SternSpeedGroundReferenced *float32
+	LongitudinalSpeedWaterReferenced *units.Velocity
+	TransverseSpeedWaterReferenced *units.Velocity
+	LongitudinalSpeedGroundReferenced *units.Velocity
+	TransverseSpeedGroundReferenced *units.Velocity
+	SternSpeedWaterReferenced *units.Velocity
+	SternSpeedGroundReferenced *units.Velocity
 }
 func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val VesselSpeedComponents
@@ -51101,7 +51112,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-LongitudinalSpeedWaterReferenced: %w", err)
 	} else {
-		val.LongitudinalSpeedWaterReferenced = v
+		val.LongitudinalSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51110,7 +51121,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-TransverseSpeedWaterReferenced: %w", err)
 	} else {
-		val.TransverseSpeedWaterReferenced = v
+		val.TransverseSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51119,7 +51130,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-LongitudinalSpeedGroundReferenced: %w", err)
 	} else {
-		val.LongitudinalSpeedGroundReferenced = v
+		val.LongitudinalSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51128,7 +51139,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-TransverseSpeedGroundReferenced: %w", err)
 	} else {
-		val.TransverseSpeedGroundReferenced = v
+		val.TransverseSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51137,7 +51148,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-SternSpeedWaterReferenced: %w", err)
 	} else {
-		val.SternSpeedWaterReferenced = v
+		val.SternSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -51146,7 +51157,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-SternSpeedGroundReferenced: %w", err)
 	} else {
-		val.SternSpeedGroundReferenced = v
+		val.SternSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
 
 		if stream.isEOF() {
 			return val, nil
@@ -54807,8 +54818,8 @@ type MaretronProprietaryTemperatureHighRange struct {
 	Sid *uint8
 	Instance *uint8
 	Source TemperatureSourceConst
-	ActualTemperature *float32
-	SetTemperature *float32
+	ActualTemperature *units.Temperature
+	SetTemperature *units.Temperature
 }
 func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val MaretronProprietaryTemperatureHighRange
@@ -54871,7 +54882,7 @@ func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *PGN
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-ActualTemperature: %w", err)
 	} else {
-		val.ActualTemperature = v
+		val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -54880,7 +54891,7 @@ func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *PGN
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-SetTemperature: %w", err)
 	} else {
-		val.SetTemperature = v
+		val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
 
 		if stream.isEOF() {
 			return val, nil
@@ -55207,7 +55218,7 @@ type SimnetFluidLevelSensorConfiguration struct {
 	Instance *uint8
 	F *uint8
 	TankType TankTypeConst
-	Capacity *float32
+	Capacity *units.Volume
 	G *uint8
 	H *int16
 	I *int8
@@ -55291,7 +55302,7 @@ func DecodeSimnetFluidLevelSensorConfiguration(Info MessageInfo, stream *PGNData
 	if v, err := stream.readUnsignedResolution(32, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-Capacity: %w", err)
 	} else {
-		val.Capacity = v
+		val.Capacity = nullableUnit(units.Liter, v, units.NewVolume)
 
 		if stream.isEOF() {
 			return val, nil
@@ -55710,10 +55721,10 @@ type SimnetAisClassBStaticDataMsg24PartB struct {
 	TypeOfShip ShipTypeConst
 	VendorId string
 	Callsign string
-	Length *float32
-	Beam *float32
-	PositionReferenceFromStarboard *float32
-	PositionReferenceFromBow *float32
+	Length *units.Distance
+	Beam *units.Distance
+	PositionReferenceFromStarboard *units.Distance
+	PositionReferenceFromBow *units.Distance
 	MothershipUserId *uint32
 }
 func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -55825,7 +55836,7 @@ func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNData
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-Length: %w", err)
 	} else {
-		val.Length = v
+		val.Length = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -55834,7 +55845,7 @@ func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNData
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-Beam: %w", err)
 	} else {
-		val.Beam = v
+		val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -55843,7 +55854,7 @@ func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNData
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-PositionReferenceFromStarboard: %w", err)
 	} else {
-		val.PositionReferenceFromStarboard = v
+		val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil
@@ -55852,7 +55863,7 @@ func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNData
 	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-PositionReferenceFromBow: %w", err)
 	} else {
-		val.PositionReferenceFromBow = v
+		val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
 
 		if stream.isEOF() {
 			return val, nil

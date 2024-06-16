@@ -287,7 +287,7 @@ func (conv *canboatConverter) fixIDs() {
 		fieldDeDuper := NewDeDuper()
 		// Capitalize first letter of the Ids (currently lowercase)
 		conv.PGNs[i].Id = capitalizeFirstChar(conv.PGNs[i].Id)
-		if firstTime,_ := pgnDeDuper.unique(conv.PGNs[i].Id); !firstTime {
+		if firstTime, _ := pgnDeDuper.unique(conv.PGNs[i].Id); !firstTime {
 			panic("PGN ID not unique: " + conv.PGNs[i].Id)
 		}
 		for j := range conv.PGNs[i].Fields {
@@ -355,7 +355,7 @@ func (builder *canboatConverter) fixEnumDefs() {
 		convertToConst(&builder.Enums[i].Name)
 		if firstTime, _ := constDeDuper.unique(builder.Enums[i].Name); !firstTime {
 			panic("Enum name not unique: " + builder.Enums[i].Name)
-		} 
+		}
 		for j := range builder.Enums[i].Values {
 			forceFirstLetter(&builder.Enums[i].Values[j].Text)
 		}
@@ -449,7 +449,7 @@ var varDeDuper = NewDeDuper()
 func toVarName(str string) string {
 	str = strings.Title(str) //nolint:staticcheck
 	str = varNameReplacer.Replace(str)
-	_,str = varDeDuper.unique(str)
+	_, str = varDeDuper.unique(str)
 	return str
 }
 
@@ -492,6 +492,31 @@ func fieldByteCount(field PGNField) uint16 {
 	return uint16(math.Ceil((float64(field.BitLength) + float64(field.BitOffset)) / 8))
 }
 
+// getUnitType maps the canboat units into our tugboat unit library's categories/types
+func getUnitType(unitName string) (string, string) {
+	switch unitName {
+	case "m":
+		return "Distance", "Meter"
+	case "m/s":
+		return "Velocity", "MetersPerSecond"
+
+	case "L":
+		return "Volume", "Liter"
+
+	case "K":
+		return "Temperature", "Kelvin"
+
+	case "Pa":
+		return "Pressure", "Pa"
+
+	case "L/h":
+		return "Flow", "LitersPerHour"
+
+	default:
+		return "", ""
+	}
+}
+
 // convertFieldType returns a string describing the golang type for a PGN field.
 // used by template.
 // for lookups the name of the lookup is returned.
@@ -512,6 +537,12 @@ func convertFieldType(field PGNField) string {
 	case "FIELD_INDEX":
 		return "*uint8"
 	case "NUMBER", "DATE", "TIME", "MMSI":
+		// If it has a unit, use that
+		unitType, _ := getUnitType(field.Unit)
+		if unitType != "" {
+			return "*units." + unitType
+		}
+
 		if field.Resolution != nil && *field.Resolution != 1.0 {
 			// Let's actually make it a float
 			return "*float32"
@@ -558,22 +589,22 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 		if field.BitLength > 32 {
 			panic("No deserializer for LOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.LookupName}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.LookupName + "(v)"}
 	case "BITLOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for BITLOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.BitLookupName}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.BitLookupName + "(v)"}
 	case "INDIRECT_LOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for INDIRECT_LOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.IndirectLookupName}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.IndirectLookupName + "(v)"}
 	case "FIELDTYPE_LOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for FIELDTYPE_LOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName + "(v)"}
 	case "FIELD_INDEX":
 		return [2]string{fmt.Sprintf("stream.readUInt8(%d)", field.BitLength), ""}
 	case "NUMBER", "TIME", "DATE", "MMSI":
@@ -605,7 +636,14 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 				outerVal = fmt.Sprintf("stream.readUInt8(%d)", field.BitLength)
 			}
 		}
-		return [2]string{outerVal, ""}
+
+		unitConv := ""
+		unitType, unitName := getUnitType(field.Unit)
+		if unitType != "" {
+			unitConv = fmt.Sprintf("nullableUnit(units.%s, v, units.New%s)", unitName, unitType)
+		}
+
+		return [2]string{outerVal, unitConv}
 	case "FLOAT":
 		if field.BitLength != 32 {
 			panic("No deserializer for IEEE Float with bitlength non-32")

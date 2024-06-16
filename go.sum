@@ -5,8 +5,8 @@ github.com/Masterminds/semver/v3 v3.2.1 h1:RN9w6+7QoMeJVGyfmbcgs28Br8cvmnucEXnY0
 github.com/Masterminds/semver/v3 v3.2.1/go.mod h1:qvl/7zhW3nngYb5+80sSMF+FG2BjYrf8m9wsX0PNOMQ=
 github.com/Masterminds/sprig/v3 v3.2.3 h1:eL2fZNezLomi0uOLqjQoN6BfsDD+fyLtgbJMAj9n6YA=
 github.com/Masterminds/sprig/v3 v3.2.3/go.mod h1:rXcFaZ2zZbLRJv/xSysmlgIM1u11eBaRMhvYXJNkGuM=
-github.com/boatkit-io/tugboat v0.7.1 h1:S/VEeUdPXsJRMnYSZhBL5/t8RSycbzRRoPIiMZwei+I=
-github.com/boatkit-io/tugboat v0.7.1/go.mod h1:USwkDg8TkTZfMzzWUiWb6vUsWYHsLk4LjsJod1tYRrE=
+github.com/boatkit-io/tugboat v0.7.2 h1:TBuvIEhZkYzT3UU3qnkrVVSwvgy4Y1x9iCaUAK/e4Jw=
+github.com/boatkit-io/tugboat v0.7.2/go.mod h1:USwkDg8TkTZfMzzWUiWb6vUsWYHsLk4LjsJod1tYRrE=
 github.com/brutella/can v0.0.2 h1:8TyjZrBZSwQwSr5x3U9KtKzGW8HNE/NpUgsNcYDAVIM=
 github.com/brutella/can v0.0.2/go.mod h1:NYDxbQito3w4+4DcjWs/fpQ3xyaFdpXw/KYqtZFU98k=
 github.com/creack/goselect v0.1.2 h1:2DNy14+JPjRBgPzAd1thbQp4BSIihxcBf0IXhQXDRa0=

@@ -126,14 +126,14 @@ func GetFieldDescriptor(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint
 				if len(pi) == 1 { // we only know of one variant, so we can give it a shot
 					retval = pi[0].Fields[int(fieldIndex)]
 				} else {
-					err = fmt.Errorf("error: cannot distinguish between variants for pgn:%d\n", pgn)
+					err = fmt.Errorf("error: cannot distinguish between variants for pgn: %d", pgn)
 					return nil, err
 				}
 			}
 
 		}
 		if retval == nil {
-			err = fmt.Errorf("error: Field Index: %d, not found for pgn: %d with manufacturer code: %d\n", fieldIndex, pgn, manID)
+			err = fmt.Errorf("error: Field Index: %d, not found for pgn: %d with manufacturer code: %d", fieldIndex, pgn, manID)
 		}
 		return retval, err
 	}
