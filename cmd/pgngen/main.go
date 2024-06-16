@@ -492,6 +492,7 @@ func fieldByteCount(field PGNField) uint16 {
 	return uint16(math.Ceil((float64(field.BitLength) + float64(field.BitOffset)) / 8))
 }
 
+// getUnitType maps the canboat units into our tugboat unit library's categories/types
 func getUnitType(unitName string) (string, string) {
 	switch unitName {
 	case "m":
