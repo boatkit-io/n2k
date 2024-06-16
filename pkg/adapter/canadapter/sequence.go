@@ -42,7 +42,7 @@ func (s *sequence) add(p *pkt.Packet) {
 	s.recent = time.Now().Unix()
 	if p.FrameNum == 0 {
 		if s.zero != nil { // we've received frame zero for a new sequence before completing the previous one.
-			s.log.Warn("duplicate zero detected. Resetting")
+			s.log.Debug("Fast sequence duplicate frame zero detected. Resetting")
 			s.reset() // so we toss the old one and start anew
 		}
 		s.started = time.Now().Unix()
@@ -52,12 +52,11 @@ func (s *sequence) add(p *pkt.Packet) {
 		s.received += 6
 	} else {
 		if s.zero == nil { // we've received a subsequent frame before getting the first one
-			s.log.Warn("received subsequent frame before zeroth. Resetting")
+			s.log.Debugf("Fast sequence received subsequent frame before zero frame. Resetting")
+			s.log.Debugf("Source: %d PGN: %d Sequence #: %d FrameNum #: %d", p.Info.SourceId, p.Info.PGN, p.SeqId, p.FrameNum)
 			s.reset()
 		} else if s.contents[p.FrameNum] != nil { // uh-oh, we've already seen this frame
-			s.log.Warnf("received duplicate frame. Source: %d PGN: %d Sequence #: %d FrameNum #: %d, resetting sequence", p.Info.SourceId, p.Info.PGN, p.SeqId, p.FrameNum)
-			s.log.Warnf("expected:%v", s.expected)
-			s.log.Warnf("received:%d", s.calcReceived())
+			s.log.Debugf("Fast sequence received duplicate frame. Resetting Source: %d PGN: %d Sequence #: %d FrameNum #: %d, resetting sequence", p.Info.SourceId, p.Info.PGN, p.SeqId, p.FrameNum)
 			s.reset()
 		} else {
 			s.contents[p.FrameNum] = p.Data[1:]
@@ -105,19 +104,4 @@ func (s *sequence) reset() {
 	for i := range s.contents {
 		s.contents[i] = nil
 	}
-}
-
-func (s *sequence) calcReceived() int {
-
-	received := 0
-	for i := range s.contents {
-
-		if s.contents[i] != nil {
-			received += len(s.contents[i])
-		} else { // no sparse nodes
-			break
-		}
-	}
-	return received
-
 }
