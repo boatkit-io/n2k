@@ -2,8 +2,6 @@ package canadapter
 
 import (
 	"fmt"
-	"time"
-
 	"github.com/boatkit-io/n2k/pkg/pkt"
 	"github.com/sirupsen/logrus"
 )
@@ -22,11 +20,8 @@ const MaxFrameNum = 31
 // that are trimmed when constructing the complete packet.
 // The sequence ID is 3 bits, so 0-7.
 // The frame number is 5 bits, so 0-31.
-// Sequence frames can be received in any order.
-// we track the time started to allow for releasing incomplete sequences (TBD).
+// Sequence frame 0 must be received first; others can be received in any order.
 type sequence struct {
-	started  int64
-	recent   int64
 	log      *logrus.Logger
 	zero     *pkt.Packet // packet 0 of sequence
 	expected uint8
@@ -39,13 +34,11 @@ type sequence struct {
 // else it copies 7 bytes of data.
 // it warns if a packet in the sequence has been received twice and resets the sequence.
 func (s *sequence) add(p *pkt.Packet) {
-	s.recent = time.Now().Unix()
 	if p.FrameNum == 0 {
 		if s.zero != nil { // we've received frame zero for a new sequence before completing the previous one.
 			s.log.Debug("Fast sequence duplicate frame zero detected. Resetting")
 			s.reset() // so we toss the old one and start anew
 		}
-		s.started = time.Now().Unix()
 		s.zero = p
 		s.expected = p.Data[1]
 		s.contents[p.FrameNum] = p.Data[2:]
@@ -97,7 +90,6 @@ func (s *sequence) complete(p *pkt.Packet) bool {
 // reset method clears the sequence to try again.
 // Called if we receive a duplicate packet, assuming it belongs to a new sequence.
 func (s *sequence) reset() {
-	s.started = time.Now().Unix()
 	s.zero = nil
 	s.expected = 0
 	s.received = 0
