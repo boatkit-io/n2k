@@ -11,7 +11,7 @@ import (
 // Instantiated by PGNBuilder
 // Uses sequence to do the work
 // we track sequences separately for each nmea source
-// sequence ids are 0-7, so each source can have 8 sequences in simultaneous transmission
+// sequence ids are 0-7, so each source|PGN can have 8 sequences in simultaneous transmission
 // sequences map[sourceid]map[pgn]map[SeqId]sequence
 type MultiBuilder struct {
 	log       *logrus.Logger

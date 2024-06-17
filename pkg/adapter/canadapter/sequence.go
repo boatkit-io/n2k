@@ -2,8 +2,6 @@ package canadapter
 
 import (
 	"fmt"
-	"time"
-
 	"github.com/boatkit-io/n2k/pkg/pkt"
 	"github.com/sirupsen/logrus"
 )
@@ -22,10 +20,8 @@ const MaxFrameNum = 31
 // that are trimmed when constructing the complete packet.
 // The sequence ID is 3 bits, so 0-7.
 // The frame number is 5 bits, so 0-31.
-// Sequence frames can be received in any order.
-// we track the time started to allow for releasing incomplete sequences (TBD).
+// Sequence frame 0 must be received first; others can be received in any order.
 type sequence struct {
-	started  time.Time
 	log      *logrus.Logger
 	zero     *pkt.Packet // packet 0 of sequence
 	expected uint8
@@ -34,23 +30,31 @@ type sequence struct {
 }
 
 // add method copies the frame's data into the sequence.
-// if it's frame 0 it sets sequence info (time, expected length) and copies out 6 byts of data.
+// if it's frame 0 it sets sequence info (time, expected length) and copies out 6 bytes of data.
 // else it copies 7 bytes of data.
 // it warns if a packet in the sequence has been received twice and resets the sequence.
 func (s *sequence) add(p *pkt.Packet) {
-	if s.contents[p.FrameNum] != nil { // uh-oh, we've already seen this frame
-		s.log.Warnf("received duplicate frame: %d %d %d, resetting sequence\n", p.Info.SourceId, p.Info.PGN, p.FrameNum)
-		s.reset()
-	}
-	if p.FrameNum == 0 { // first packet has overall length in 2nd byte
-		s.started = time.Now()
+	if p.FrameNum == 0 {
+		if s.zero != nil { // we've received frame zero for a new sequence before completing the previous one.
+			s.log.Debug("Fast sequence duplicate frame zero detected. Resetting")
+			s.reset() // so we toss the old one and start anew
+		}
 		s.zero = p
 		s.expected = p.Data[1]
 		s.contents[p.FrameNum] = p.Data[2:]
 		s.received += 6
 	} else {
-		s.contents[p.FrameNum] = p.Data[1:]
-		s.received += 7
+		if s.zero == nil { // we've received a subsequent frame before getting the first one
+			s.log.Debugf("Fast sequence received subsequent frame before zero frame. Resetting")
+			s.log.Debugf("Source: %d PGN: %d Sequence #: %d FrameNum #: %d", p.Info.SourceId, p.Info.PGN, p.SeqId, p.FrameNum)
+			s.reset()
+		} else if s.contents[p.FrameNum] != nil { // uh-oh, we've already seen this frame
+			s.log.Debugf("Fast sequence received duplicate frame. Resetting Source: %d PGN: %d Sequence #: %d FrameNum #: %d, resetting sequence", p.Info.SourceId, p.Info.PGN, p.SeqId, p.FrameNum)
+			s.reset()
+		} else {
+			s.contents[p.FrameNum] = p.Data[1:]
+			s.received += 7
+		}
 	}
 }
 
@@ -86,7 +90,6 @@ func (s *sequence) complete(p *pkt.Packet) bool {
 // reset method clears the sequence to try again.
 // Called if we receive a duplicate packet, assuming it belongs to a new sequence.
 func (s *sequence) reset() {
-	s.started = time.Now()
 	s.zero = nil
 	s.expected = 0
 	s.received = 0
