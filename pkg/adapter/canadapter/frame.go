@@ -43,6 +43,7 @@ func NewPacketInfo(message *can.Frame) pgn.MessageInfo {
 		SourceId:  uint8(message.ID & 0xFF),
 		PGN:       (message.ID & 0x3FFFF00) >> 8,
 		Priority:  uint8((message.ID & 0x1C000000) >> 26),
+		Length:    message.Length,
 	}
 
 	pduFormat := uint8((p.PGN & 0xFF00) >> 8)

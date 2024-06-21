@@ -29,10 +29,12 @@ func main() {
 	flag.StringVar(&replayFile, "replayFile", "", "An optional replay file to run")
 	var dumpPgns bool
 	flag.BoolVar(&dumpPgns, "dumpPgns", false, "Debug spew all PGNs coming down the pipe")
+	var dumpRaw bool
+	flag.BoolVar(&dumpRaw, "dumpRaw", false, "Dump each frame in RAW format")
 	flag.Parse()
 
 	log := logrus.StandardLogger()
-	log.Infof("in replayfile, dump:%t, file:%s\n", dumpPgns, replayFile)
+	log.Infof("in replayfile, dump:%t, file:%s", dumpPgns, replayFile)
 
 	subs := subscribe.New()
 	go func() {
@@ -51,6 +53,11 @@ func main() {
 	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
 		ca := canadapter.NewCANAdapter(log)
 		ca.SetOutput(ps)
+		if dumpRaw {
+			ca.SetCanLogger(func(out string) {
+				log.Infoln(out)
+			})
+		}
 
 		ep := n2kfileendpoint.NewN2kFileEndpoint(replayFile, log)
 		ep.SetOutput(ca)

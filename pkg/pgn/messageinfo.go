@@ -20,4 +20,7 @@ type MessageInfo struct {
 
 	// target address, when relevant (PGNs with PF < 240)
 	TargetId uint8
+
+	// Length of Frame data: max (and almost always) 8
+	Length uint8
 }
