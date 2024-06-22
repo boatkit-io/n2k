@@ -31,6 +31,9 @@ func main() {
 	var outputPath string
 	flag.StringVar(&outputPath, "outputPath", "", "output path")
 
+	var interfaceName string
+	flag.StringVar(&interfaceName, "usbCanName", "", "name of Can interface")
+
 	flag.Parse()
 
 	f, err := os.Create(outputPath)
