@@ -23,6 +23,31 @@ Release v0.0.2
 Moved from Pipeline constructed from channels to a much simpler model connecting each stage
 through function variables.
 
+### 2024-06-15
+release v0.1.0
+Bug Fixes
+- Add package.json for semantic-release (ff5efe1)
+- Add release workflow (30adef9)
+- Add releaserc (e26e1e5)
+- deps: update module github.com/boatkit-io/tugboat to v0.6.0 (#23) (01866a0)
+- deps: update module github.com/schollz/progressbar/v3 to v3.14.2 (#25) (978463b)
+- deps: update module github.com/stretchr/testify to v1.9.0 (#28) (15e920e)
+- deps: update module golang.org/x/text to v0.15.0 (#24) (811cc94)
 
+Features
+- Supporting USBCANEndpoint, updated deps and build scripts (#36) (621cf9f)
 
+### 2024-06-16
+release v0.2.0
+Features
+- Added (tugboat) units directly into PGN type generation (#37) (30aad39)
 
+### 2024-06-17
+release v0.2.1
+Bug Fixes
+- Fast Packet Assembly fixed to detect incomplete sequences
+
+### 2024-06-21
+release v0.3.0
+Features
+--added command to record nmea2k messages in the single frame RAW format, using a USBCan device.
