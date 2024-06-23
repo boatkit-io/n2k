@@ -31,8 +31,8 @@ func main() {
 	var outputPath string
 	flag.StringVar(&outputPath, "outputPath", "", "output path")
 
-	var interfaceName string
-	flag.StringVar(&interfaceName, "usbCanName", "", "name of Can interface")
+	var canInterfaceName string
+	flag.StringVar(&canInterfaceName, "usbCanName", "", "name of Can interface")
 
 	flag.Parse()
 
@@ -43,8 +43,7 @@ func main() {
 	defer f.Close()
 
 	// set up can endpoint, connect to canadapter
-	canInterface := "/dev/ttyUSB0"
-	canEndpoint := usbcanendpoint.NewUSBCANEndpoint(logger, canInterface)
+	canEndpoint := usbcanendpoint.NewUSBCANEndpoint(logger, canInterfaceName)
 	canAdapter := canadapter.NewCANAdapter((logger))
 	canEndpoint.SetOutput(canAdapter)
 
