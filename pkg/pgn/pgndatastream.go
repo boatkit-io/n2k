@@ -89,6 +89,23 @@ func (s *PGNDataStream) readSignedResolution(bitLength uint16, multiplyBy float3
 	return &vo, nil
 }
 
+// readSignedResolution64Override method reads the specified length of data, scales it, and returns as a *float64.
+func (s *PGNDataStream) readSignedResolution64Override(bitLength uint16, multiplyBy float64) (*float64, error) {
+	if bitLength > 64 {
+		return nil, fmt.Errorf("requested %d bitLength in ReadSignedResolution", bitLength)
+	}
+
+	v, err := s.getSignedNullableNumber(bitLength)
+	if err != nil {
+		return nil, err
+	}
+	if v == nil {
+		return nil, nil
+	}
+	vo := float64(*v) * multiplyBy
+	return &vo, nil
+}
+
 // readUnsignedResolution method reads the specified data as an unsigned number and scales it.
 func (s *PGNDataStream) readUnsignedResolution(bitLength uint16, multiplyBy float32) (*float32, error) {
 	if bitLength > 64 {

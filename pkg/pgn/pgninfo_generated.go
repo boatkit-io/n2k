@@ -18310,7 +18310,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 136,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -18320,7 +18320,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 168,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -18750,7 +18750,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 8,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:3.125e-08,
 			Signed: true,
 			},
@@ -22310,7 +22310,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -22320,7 +22320,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -22580,7 +22580,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 56,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-16,
 			Signed: true,
 			},
@@ -22590,7 +22590,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 120,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-16,
 			Signed: true,
 			},
@@ -22810,7 +22810,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -22820,7 +22820,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 72,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -23020,7 +23020,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -23030,7 +23030,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 72,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -23260,7 +23260,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -23270,7 +23270,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 72,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -23540,7 +23540,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -23550,7 +23550,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 72,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -23760,7 +23760,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -23770,7 +23770,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 64,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -24110,7 +24110,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 192,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -24120,7 +24120,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 224,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -24260,7 +24260,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -24270,7 +24270,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -24620,7 +24620,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 72,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:3.63798e-12,
 			Signed: true,
 			},
@@ -24680,7 +24680,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 195,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:3.63798e-12,
 			Signed: true,
 			},
@@ -24740,7 +24740,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 40,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -24750,7 +24750,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 72,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -26150,7 +26150,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 80,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -26160,7 +26160,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 112,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -26170,7 +26170,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 144,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -26180,7 +26180,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 176,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -27070,7 +27070,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 56,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -27080,7 +27080,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 88,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -27180,7 +27180,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 56,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -27190,7 +27190,7 @@ var pgnList = []PgnInfo{
 			BitOffset: 88,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*float32",
+			GolangType:"*float64",
 			Resolution:1e-07,
 			Signed: true,
 			},
@@ -42619,8 +42619,8 @@ type ManOverboardNotification struct {
 	PositionSource MobPositionSourceConst
 	PositionDate *uint16
 	PositionTime *float32
-	Latitude *float32
-	Longitude *float32
+	Latitude *float64
+	Longitude *float64
 	CogReference DirectionReferenceConst
 	Cog *float32
 	Sog *units.Velocity
@@ -42701,7 +42701,7 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *PGNDataStream) (an
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-Latitude: %w", err)
 	} else {
 		val.Latitude = v
@@ -42710,7 +42710,7 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *PGNDataStream) (an
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-Longitude: %w", err)
 	} else {
 		val.Longitude = v
@@ -43077,7 +43077,7 @@ func DecodeVesselHeading(Info MessageInfo, stream *PGNDataStream) (any, error) {
 type RateOfTurn struct {
 	Info MessageInfo
 	Sid *uint8
-	Rate *float32
+	Rate *float64
 }
 func DecodeRateOfTurn(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val RateOfTurn
@@ -43091,7 +43091,7 @@ func DecodeRateOfTurn(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 3.125e-08); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 3.125e-08); err != nil {
 		return nil, fmt.Errorf("parse failed for RateOfTurn-Rate: %w", err)
 	} else {
 		val.Rate = v
@@ -46372,13 +46372,13 @@ func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *PGNDataStrea
 }
 type PositionRapidUpdate struct {
 	Info MessageInfo
-	Latitude *float32
-	Longitude *float32
+	Latitude *float64
+	Longitude *float64
 }
 func DecodePositionRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val PositionRapidUpdate
 	val.Info = Info
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for PositionRapidUpdate-Latitude: %w", err)
 	} else {
 		val.Latitude = v
@@ -46387,7 +46387,7 @@ func DecodePositionRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for PositionRapidUpdate-Longitude: %w", err)
 	} else {
 		val.Longitude = v
@@ -46583,8 +46583,8 @@ type GnssPositionData struct {
 	Sid *uint8
 	Date *uint16
 	Time *float32
-	Latitude *float32
-	Longitude *float32
+	Latitude *float64
+	Longitude *float64
 	Altitude *units.Distance
 	GnssType GnsConst
 	Method GnsMethodConst
@@ -46632,7 +46632,7 @@ func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(64, 1e-16); err != nil {
+	if v, err := stream.readSignedResolution64Override(64, 1e-16); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Latitude: %w", err)
 	} else {
 		val.Latitude = v
@@ -46641,7 +46641,7 @@ func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(64, 1e-16); err != nil {
+	if v, err := stream.readSignedResolution64Override(64, 1e-16); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Longitude: %w", err)
 	} else {
 		val.Longitude = v
@@ -46817,8 +46817,8 @@ type AisClassAPositionReport struct {
 	MessageId AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
 	UserId *uint32
-	Longitude *float32
-	Latitude *float32
+	Longitude *float64
+	Latitude *float64
 	PositionAccuracy PositionAccuracyConst
 	Raim RaimFlagConst
 	TimeStamp TimeStampConst
@@ -46862,7 +46862,7 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
@@ -46871,7 +46871,7 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
@@ -47007,8 +47007,8 @@ type AisClassBPositionReport struct {
 	MessageId AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
 	UserId *uint32
-	Longitude *float32
-	Latitude *float32
+	Longitude *float64
+	Latitude *float64
 	PositionAccuracy PositionAccuracyConst
 	Raim RaimFlagConst
 	TimeStamp TimeStampConst
@@ -47055,7 +47055,7 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
@@ -47064,7 +47064,7 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
@@ -47227,8 +47227,8 @@ type AisClassBExtendedPositionReport struct {
 	MessageId AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
 	UserId *uint32
-	Longitude *float32
-	Latitude *float32
+	Longitude *float64
+	Latitude *float64
 	PositionAccuracy PositionAccuracyConst
 	Raim RaimFlagConst
 	TimeStamp TimeStampConst
@@ -47276,7 +47276,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
@@ -47285,7 +47285,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
@@ -47469,8 +47469,8 @@ type AisAidsToNavigationAtonReport struct {
 	MessageId AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
 	UserId *uint32
-	Longitude *float32
-	Latitude *float32
+	Longitude *float64
+	Latitude *float64
 	PositionAccuracy PositionAccuracyConst
 	Raim RaimFlagConst
 	TimeStamp TimeStampConst
@@ -47517,7 +47517,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
@@ -47526,7 +47526,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
@@ -47687,8 +47687,8 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 type Datum struct {
 	Info MessageInfo
 	LocalDatum string
-	DeltaLatitude *float32
-	DeltaLongitude *float32
+	DeltaLatitude *float64
+	DeltaLongitude *float64
 	DeltaAltitude *units.Distance
 	ReferenceDatum string
 }
@@ -47704,7 +47704,7 @@ func DecodeDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for Datum-DeltaLatitude: %w", err)
 	} else {
 		val.DeltaLatitude = v
@@ -47713,7 +47713,7 @@ func DecodeDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for Datum-DeltaLongitude: %w", err)
 	} else {
 		val.DeltaLongitude = v
@@ -47920,8 +47920,8 @@ type NavigationData struct {
 	BearingPositionToDestinationWaypoint *float32
 	OriginWaypointNumber *uint32
 	DestinationWaypointNumber *uint32
-	DestinationLatitude *float32
-	DestinationLongitude *float32
+	DestinationLatitude *float64
+	DestinationLongitude *float64
 	WaypointClosingVelocity *units.Velocity
 }
 func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) {
@@ -48035,7 +48035,7 @@ func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-DestinationLatitude: %w", err)
 	} else {
 		val.DestinationLatitude = v
@@ -48044,7 +48044,7 @@ func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-DestinationLongitude: %w", err)
 	} else {
 		val.DestinationLongitude = v
@@ -48078,8 +48078,8 @@ type NavigationRouteWpInformation struct {
 type NavigationRouteWpInformationRepeating1 struct {
 	WpId *uint16
 	WpName string
-	WpLatitude *float32
-	WpLongitude *float32
+	WpLatitude *float64
+	WpLongitude *float64
 }
 func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val NavigationRouteWpInformation
@@ -48176,12 +48176,12 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *PGNDataStream)
 		} else {
 			rep.WpName = v
 		}
-		if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+		if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 			return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpLatitude: %w", err)
 		} else {
 			rep.WpLatitude = v
 		}
-		if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+		if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 			return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpLongitude: %w", err)
 		} else {
 			rep.WpLongitude = v
@@ -48441,13 +48441,13 @@ type GpsAlmanacData struct {
 	Eccentricity *float32
 	AlmanacReferenceTime *float32
 	InclinationAngle *float32
-	RateOfRightAscension *float32
+	RateOfRightAscension *float64
 	RootOfSemiMajorAxis *float32
 	ArgumentOfPerigee *float32
 	LongitudeOfAscensionNode *float32
 	MeanAnomaly *float32
 	ClockParameter1 *float32
-	ClockParameter2 *float32
+	ClockParameter2 *float64
 }
 func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	var val GpsAlmanacData
@@ -48506,7 +48506,7 @@ func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 3.63798e-12); err != nil {
+	if v, err := stream.readSignedResolution64Override(16, 3.63798e-12); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-RateOfRightAscension: %w", err)
 	} else {
 		val.RateOfRightAscension = v
@@ -48560,7 +48560,7 @@ func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(11, 3.63798e-12); err != nil {
+	if v, err := stream.readSignedResolution64Override(11, 3.63798e-12); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-ClockParameter2: %w", err)
 	} else {
 		val.ClockParameter2 = v
@@ -48580,8 +48580,8 @@ type AisUtcAndDateReport struct {
 	MessageId AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
 	UserId *uint32
-	Longitude *float32
-	Latitude *float32
+	Longitude *float64
+	Latitude *float64
 	PositionAccuracy PositionAccuracyConst
 	Raim RaimFlagConst
 	PositionTime *float32
@@ -48620,7 +48620,7 @@ func DecodeAisUtcAndDateReport(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-Longitude: %w", err)
 	} else {
 		val.Longitude = v
@@ -48629,7 +48629,7 @@ func DecodeAisUtcAndDateReport(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-Latitude: %w", err)
 	} else {
 		val.Latitude = v
@@ -49765,10 +49765,10 @@ type AisChannelManagement struct {
 	ChannelB *uint8
 	Power *uint8
 	TxRxMode *uint8
-	NorthEastLongitudeCorner1 *float32
-	NorthEastLatitudeCorner1 *float32
-	SouthWestLongitudeCorner1 *float32
-	SouthWestLatitudeCorner2 *float32
+	NorthEastLongitudeCorner1 *float64
+	NorthEastLatitudeCorner1 *float64
+	SouthWestLongitudeCorner1 *float64
+	SouthWestLatitudeCorner2 *float64
 	AddressedOrBroadcastMessageIndicator *uint8
 	ChannelABandwidth *uint8
 	ChannelBBandwidth *uint8
@@ -49857,7 +49857,7 @@ func DecodeAisChannelManagement(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-NorthEastLongitudeCorner1: %w", err)
 	} else {
 		val.NorthEastLongitudeCorner1 = v
@@ -49866,7 +49866,7 @@ func DecodeAisChannelManagement(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-NorthEastLatitudeCorner1: %w", err)
 	} else {
 		val.NorthEastLatitudeCorner1 = v
@@ -49875,7 +49875,7 @@ func DecodeAisChannelManagement(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-SouthWestLongitudeCorner1: %w", err)
 	} else {
 		val.SouthWestLongitudeCorner1 = v
@@ -49884,7 +49884,7 @@ func DecodeAisChannelManagement(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for AisChannelManagement-SouthWestLatitudeCorner2: %w", err)
 	} else {
 		val.SouthWestLatitudeCorner2 = v
@@ -50625,8 +50625,8 @@ type TideStationData struct {
 	TideTendency TideConst
 	MeasurementDate *uint16
 	MeasurementTime *float32
-	StationLatitude *float32
-	StationLongitude *float32
+	StationLatitude *float64
+	StationLongitude *float64
 	TideLevel *units.Distance
 	TideLevelStandardDeviation *units.Distance
 	StationId string
@@ -50675,7 +50675,7 @@ func DecodeTideStationData(Info MessageInfo, stream *PGNDataStream) (any, error)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-StationLatitude: %w", err)
 	} else {
 		val.StationLatitude = v
@@ -50684,7 +50684,7 @@ func DecodeTideStationData(Info MessageInfo, stream *PGNDataStream) (any, error)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-StationLongitude: %w", err)
 	} else {
 		val.StationLongitude = v
@@ -50736,8 +50736,8 @@ type SalinityStationData struct {
 	Mode ResidualModeConst
 	MeasurementDate *uint16
 	MeasurementTime *float32
-	StationLatitude *float32
-	StationLongitude *float32
+	StationLatitude *float64
+	StationLongitude *float64
 	Salinity *float32
 	WaterTemperature *units.Temperature
 	StationId string
@@ -50777,7 +50777,7 @@ func DecodeSalinityStationData(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-StationLatitude: %w", err)
 	} else {
 		val.StationLatitude = v
@@ -50786,7 +50786,7 @@ func DecodeSalinityStationData(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 1e-07); err != nil {
+	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-StationLongitude: %w", err)
 	} else {
 		val.StationLongitude = v
