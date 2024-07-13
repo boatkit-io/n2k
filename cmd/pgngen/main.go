@@ -27,6 +27,9 @@ import (
 	"golang.org/x/text/language"
 )
 
+// resolution64BitCutoff is a heuristic for a cutoff to jump from float32 -> float64 for uint32->float conversion
+const resolution64BitCutoff = 0.0000001
+
 // log provides standard logging capability to the program.
 var log = logrus.StandardLogger()
 
@@ -545,6 +548,9 @@ func convertFieldType(field PGNField) string {
 
 		if field.Resolution != nil && *field.Resolution != 1.0 {
 			// Let's actually make it a float
+			if *field.Resolution <= resolution64BitCutoff {
+				return "*float64"
+			}
 			return "*float32"
 		}
 
@@ -611,6 +617,8 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 		var outerVal string
 		if field.Signed {
 			switch {
+			case field.Resolution != nil && *field.Resolution <= resolution64BitCutoff:
+				outerVal = fmt.Sprintf("stream.readSignedResolution64Override(%d, %g)", field.BitLength, *field.Resolution)
 			case field.Resolution != nil && *field.Resolution != 1.0:
 				outerVal = fmt.Sprintf("stream.readSignedResolution(%d, %g)", field.BitLength, *field.Resolution)
 			case field.BitLength > 32:
