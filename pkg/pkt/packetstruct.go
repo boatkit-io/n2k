@@ -31,7 +31,7 @@ func (ps *PacketStruct) HandlePacket(pkt Packet) {
 	if len(pkt.Decoders) > 0 {
 		// call frame decoders, send valid return on.
 		for _, decoder := range pkt.Decoders {
-			stream := pgn.NewPgnDataStream(pkt.Data)
+			stream := pgn.NewDataStream(pkt.Data)
 			ret, err := decoder(pkt.Info, stream)
 			if err != nil {
 				pkt.ParseErrors = append(pkt.ParseErrors, err)

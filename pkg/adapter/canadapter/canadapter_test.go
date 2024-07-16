@@ -19,7 +19,7 @@ func TestPgn127501(t *testing.T) {
 	p.AddDecoders()
 	assert.Equal(t, len(p.Decoders), 1)
 	decoder := p.Decoders[0]
-	stream := pgn.NewPgnDataStream(p.Data)
+	stream := pgn.NewDataStream(p.Data)
 	ret, err := decoder(p.Info, stream)
 	assert.Nil(t, err)
 	assert.IsType(t, pgn.BinarySwitchBankStatus{}, ret)

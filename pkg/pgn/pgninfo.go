@@ -19,13 +19,14 @@ type PgnInfo struct {
 	// ManId identifies the Manufacturer for Proprietary PGNs
 	ManId ManufacturerCodeConst
 	// Decoder is a function that generates golang data from the messsage data.
-	Decoder func(MessageInfo, *PGNDataStream) (any, error)
+	Decoder func(MessageInfo, *DataStream) (any, error)
 	// Fields is a map of field descriptions needed at runtime to deal with variable pgn fields
 	Fields map[int]*FieldDescriptor
 }
 
 // FieldDescriptor instances describe a PGN field.
 type FieldDescriptor struct {
+	Id                string
 	Name              string
 	BitLength         uint16
 	BitOffset         uint16
@@ -93,7 +94,7 @@ func IsProprietaryPGN(pgn uint32) bool {
 // GetProprietaryInfo returns Manufacturer and Industry constants.
 // Invalid data returned if called on non-proprietary PGNs.
 func GetProprietaryInfo(data []uint8) (ManufacturerCodeConst, IndustryCodeConst, error) {
-	stream := NewPgnDataStream(data)
+	stream := NewDataStream(data)
 	var man ManufacturerCodeConst
 	var ind IndustryCodeConst
 	var err error
@@ -143,4 +144,12 @@ func GetFieldDescriptor(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint
 // SearchUnseenList returns true if the PGN has no Canboat samples.
 func SearchUnseenList(pgn uint32) bool {
 	return UnseenLookup[pgn] != nil
+}
+
+// IsFast returns true if the specified PGN is Fast
+func IsFast(pgn uint32) bool {
+	if pi, piKnown := PgnInfoLookup[pgn]; piKnown {
+		return pi[0].Fast
+	}
+	return false // should never be called with an invalid PGN, but avoid a panic
 }

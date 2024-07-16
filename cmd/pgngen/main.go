@@ -581,6 +581,12 @@ func convertFieldType(field PGNField) string {
 	}
 }
 
+// convert returns a string that when evaluated writes its value into the output stream.
+// Used by template
+func getFieldSerializer(pgn, field PGNField) {
+
+}
+
 // getFieldDeserializer returns a string that when evaluated returns its value from the input stream.
 // Used by template.
 func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
