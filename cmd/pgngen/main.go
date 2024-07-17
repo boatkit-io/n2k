@@ -251,6 +251,7 @@ func (conv *canboatConverter) write() {
 	} else {
 		t := template.Must(template.New("pgninfo").Funcs(sprig.TxtFuncMap()).Funcs(template.FuncMap{
 			"convertFieldType":     convertFieldType,
+			"getFieldSerializer":   getFieldSerializer,
 			"getFieldDeserializer": getFieldDeserializer,
 			"fieldByteCount":       fieldByteCount,
 			"concat":               func(strs ...string) string { return strings.Join(strs, "") },
@@ -583,8 +584,13 @@ func convertFieldType(field PGNField) string {
 
 // convert returns a string that when evaluated writes its value into the output stream.
 // Used by template
-func getFieldSerializer(pgn, field PGNField) {
+func getFieldSerializer(field PGNField) string {
+	switch field.FieldType {
+	case "LOOKUP", "BITLOOKUP", "INDIRECT_LOOKUP", "FIELDTYPE_LOOKUP", "FIELD_INDEX":
+		return fmt.Sprintf("err = stream.putNumberRaw(uint64(p.%s), %d)", field.Id, field.BitLength)
+	}
 
+	return ""
 }
 
 // getFieldDeserializer returns a string that when evaluated returns its value from the input stream.
