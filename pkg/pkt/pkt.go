@@ -3,6 +3,7 @@ package pkt
 
 import (
 	"fmt"
+
 	// "github.com/sirupsen/logrus"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 )
@@ -48,7 +49,7 @@ type Packet struct {
 	// Decoders reduces the list of candidate decoders to those that match the complete Packet.
 	// We eliminate possible matches with different Manufacturer IDs.
 	// And fast decoders for single packets (and vice versa).
-	Decoders []func(pgn.MessageInfo, *pgn.PGNDataStream) (any, error)
+	Decoders []func(pgn.MessageInfo, *pgn.DataStream) (any, error)
 
 	// ParseErrors track errors in processing the input (we might try multiple decoders)
 	ParseErrors []error
@@ -66,7 +67,7 @@ func NewPacket(info pgn.MessageInfo, data []byte) *Packet {
 			// not found, an unknown PGN
 			p.ParseErrors = append(p.ParseErrors, fmt.Errorf("no data for pgn"))
 		} else {
-			p.Fast = p.Candidates[0].Fast // only misleading for PGN 130824
+			p.Fast = p.Candidates[0].Fast // pgns variants are always all fast or all single, so any match works.
 		}
 	}
 	return &p

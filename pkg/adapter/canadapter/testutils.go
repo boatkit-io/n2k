@@ -28,8 +28,3 @@ func CanFrameFromRaw(in string) can.Frame {
 
 	return retval
 }
-
-// CanIdFromData returns an encoded ID from its inputs.
-func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8) uint32 {
-	return uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26) | uint32(destination)
-}

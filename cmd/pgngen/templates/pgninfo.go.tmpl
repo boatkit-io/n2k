@@ -119,6 +119,7 @@ var pgnList = []PgnInfo{
 		Fields: map[int]*FieldDescriptor{
 		{{- range .AllFields }}
 		{{ .Order }}: { 
+			Id: "{{ .Id }}",
 			Name: "{{ .Name }}",
 			BitLength: {{ .BitLength }},
 			BitOffset: {{ .BitOffset }},
@@ -176,8 +177,27 @@ type {{ .Id }}Repeating2 struct {
 	{{- end }}
 }
 {{- end }}
+func (p *{{- .Id }} ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	{{- range $idx, $field := .Fields }}
+	{{- $func := getFieldSerializer $field }}
+	{{- if ne $func "" }}
+	{{ $func }}
+	if err != nil {
+		return &p.Info, err
+	}
+	{{- end }}
+	{{- if (eq $field.FieldType "RESERVED") }}
+			if err := stream.writeReserved( {{- $field.BitLength }}, {{- $field.BitOffset }}); err != nil {
+				return &p.Info, err
+			}
+	{{- end }}
+	{{- end }}
+
+	return &p.Info, err
+}
 {{- $funcName := concat "Decode" .Id }}
-func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
 	var val {{ .Id }}
 	val.Info = Info
 
@@ -193,7 +213,7 @@ func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	{{- if $repeat2 }}
 		var repeat2Count uint16
 	{{- end }}
-	{{- $isKeyValue :=  or (eq .Id "SimnetParameterSet") (contains .Id "KeyValue") }}
+	{{- $isKeyValue := or (eq .Id "SimnetParameterSet") (eq .Id "SimnetKeyValue" ) (eq .Id "BGKeyValueData" ) }}
 	{{- if $isKeyValue }}
 		var valueLength uint16
 	{{ end }}
