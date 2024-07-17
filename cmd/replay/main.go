@@ -55,6 +55,8 @@ func main() {
 		ep := n2kfileendpoint.NewN2kFileEndpoint(replayFile, log)
 		ep.SetOutput(ca)
 
+		sp := pgn.NewPublisher(ca)
+
 		ctx := context.Background()
 		err := ep.Run(ctx)
 		if err != nil {
