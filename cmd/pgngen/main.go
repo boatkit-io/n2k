@@ -588,6 +588,8 @@ func getFieldSerializer(field PGNField) string {
 	switch field.FieldType {
 	case "LOOKUP", "BITLOOKUP", "INDIRECT_LOOKUP", "FIELDTYPE_LOOKUP", "FIELD_INDEX":
 		return fmt.Sprintf("err = stream.putNumberRaw(uint64(p.%s), %d)", field.Id, field.BitLength)
+	case "NUMBER", "TIME", "DATE", "MMSI":
+
 	}
 
 	return ""
