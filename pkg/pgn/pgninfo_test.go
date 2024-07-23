@@ -36,3 +36,23 @@ func TestDecoding(t *testing.T) {
 	assert.Nil(t, longDecode.RippleVoltage)
 	assert.NotNil(t, longDecode.RemainingCapacity)
 }
+func TestGenerated(t *testing.T) {
+
+	for _, pgn := range pgnList {
+		for _, field := range pgn.Fields {
+			switch field.CanboatType {
+			case "VARIABLE", "BINARY":
+				assert.True(t, field.BitOffset%8 == 0)
+			case "STRING_LAU":
+				assert.True(t, field.BitLengthVariable)
+			case "DECIMAL", "STRING_LZ":
+				//				assert.Failf(t, "field:%s", field.Id)
+			case "DATE":
+				assert.True(t, field.Resolution == 1)
+			case "STRING_FIX":
+				assert.True(t, field.BitOffset%8 == 0)
+				assert.True(t, field.BitLength%8 == 0)
+			}
+		}
+	}
+}

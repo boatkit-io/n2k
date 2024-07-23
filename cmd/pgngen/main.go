@@ -391,7 +391,7 @@ func (builder *canboatConverter) fixEnumDefs() {
 }
 
 // validate assures that pgns with multiple definitions and the same Manufacturer ID are all single or all fast.
-// It also warns the with the number of multiply defined pgns each with a different Manufacturer ID.
+// It also warns with the number of multiply defined pgns each with a different Manufacturer ID.
 // If more than one such warning is emitted we need to fail the build and update any code to handle the new special case.
 func (builder *canboatConverter) validate() {
 	specials := 0
@@ -588,17 +588,66 @@ func convertFieldType(field PGNField) string {
 	}
 }
 
-// convert returns a string that when evaluated writes its value into the output stream.
+// getFloatType returns a string with the
+
+// getFieldSerializer returns a string that when evaluated writes its value into the output stream.
 // Used by template
 func getFieldSerializer(field PGNField) string {
-	switch field.FieldType {
-	case "LOOKUP", "BITLOOKUP", "INDIRECT_LOOKUP", "FIELDTYPE_LOOKUP", "FIELD_INDEX":
-		return fmt.Sprintf("err = stream.putNumberRaw(uint64(p.%s), %d)", field.Id, field.BitLength)
-	case "NUMBER", "TIME", "DATE", "MMSI":
+	var outstr, pre, value, post string
+	if field.Unit != "" { // handle unit conversion now
+		outstr = ""
+	} else {
+		switch field.FieldType {
+		case "RESERVED":
+			outstr = fmt.Sprintf("err = stream.writeReserved(%d, %d)", field.BitLength, field.BitOffset)
+		case "SPARE":
+			outstr = fmt.Sprintf("err = stream.writeReserved(%d, %d)", field.BitLength, field.BitOffset)
+		case "LOOKUP", "BITLOOKUP", "INDIRECT_LOOKUP", "FIELDTYPE_LOOKUP", "FIELD_INDEX":
+			outstr = fmt.Sprintf("err = stream.putNumberRaw(uint64(p.%s), %d, %d)", field.Id, field.BitLength, field.BitOffset)
+		case "NUMBER", "TIME", "DATE", "MMSI":
+			switch {
+			case field.Signed:
+				outstr = ""
+			case field.Resolution != nil && *field.Resolution != 1.0:
+				pre = "err = stream.writeUnsignedResolution(float64("
+				if isPointerFieldType(field) {
+					value = "*"
+				}
+				value = value + "p.%s"
+				post = "), %d, %f, %d)"
+				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, *field.Resolution, field.BitOffset)
+			default:
+				outstr = ""
+				/*			pre = "err = stream.putNumberRaw(uint64("
+							if isPointerFieldType(field) {
+								value = "*"
+							}
+							value += "p.%s"
+							post = "), %d, %d)"
+							outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, field.BitOffset)
+				*/
+			}
+		case "FLOAT":
+			pre = "err = stream.writeFloat32("
+			if isPointerFieldType(field) {
+				value = "*"
+			}
+			value += "p.%s"
+			post = ", %d, %d)"
+			outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, field.BitOffset)
+		case "BINARY":
+			outstr = fmt.Sprintf("err = stream.writeBinary(p.%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
+		case "STRING_FIX":
+			outstr = fmt.Sprintf("err = stream.writeBinary([]uint8(p.%s), %d, %d )", field.Id, field.BitLength, field.BitOffset)
+		case "STRING_LAU":
+			outstr = fmt.Sprintf("err = stream.writeStringLau(p.%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
+		default:
+			// outstr = ""
+			outstr = fmt.Sprintf("log.Infof(\"field %s, index %d, type %s, unhandled\")", field.Name, field.Order, field.FieldType)
+		}
 
 	}
-
-	return ""
+	return outstr
 }
 
 // getFieldDeserializer returns a string that when evaluated returns its value from the input stream.

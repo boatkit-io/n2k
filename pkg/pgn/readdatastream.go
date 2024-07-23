@@ -60,7 +60,7 @@ func (s *DataStream) readSignedResolution(bitLength uint16, multiplyBy float32) 
 }
 
 // readSignedResolution64Override method reads the specified length of data, scales it, and returns as a *float64.
-func (s *PGNDataStream) readSignedResolution64Override(bitLength uint16, multiplyBy float64) (*float64, error) {
+func (s *DataStream) readSignedResolution64Override(bitLength uint16, multiplyBy float64) (*float64, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadSignedResolution", bitLength)
 	}

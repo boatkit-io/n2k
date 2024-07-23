@@ -10,3 +10,10 @@ type UnknownPGN struct {
 	Reason           error
 	WasUnseen        bool // Marked as not seen in log files by Canboat.
 }
+
+func (p *UnknownPGN) Encode(stream *DataStream) (*MessageInfo, error) {
+	if stream != nil {
+		// use to avoid compile error. Don't care.
+	}
+	return &p.Info, nil
+}

@@ -76,12 +76,12 @@ func (c *CANAdapter) packetReady(packet *pkt.Packet) {
 // WritePgn generates one or more frames from its input and writes them to its configured endpoint.
 func (c *CANAdapter) WritePgn(info pgn.MessageInfo, data []uint8) error {
 	var err error
-	canId := CanIdFromData(info.PGN, info.SourceId, info.Priority, info.TargetId)
-	if pgn.IsFast((info.PGN)) {
-		err = c.sendFast(canId, data)
-	} else {
-		err = c.sendSingle(canId, data)
-	}
+	/* 	canId := CanIdFromData(info.PGN, info.SourceId, info.Priority, info.TargetId)
+	   	if pgn.IsFast((info.PGN)) {
+	   		err = c.sendFast(canId, data)
+	   	} else {
+	   		err = c.sendSingle(canId, data)
+	   	} */
 	return err
 }
 
@@ -90,7 +90,7 @@ func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, target uint8) uin
 	return uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26) | uint32(target)
 }
 
-func (c *CANAdapter) sendFast(canId uint32, data []uint8) error {
+/* func (c *CANAdapter) sendFast(canId uint32, data []uint8) error {
 	return nil
 }
 
@@ -112,7 +112,7 @@ func (c *CANAdapter) sendSingle(canId uint32, data []uint8) error {
 	}
 	return nil
 }
-
+*/
 /*
 for fast packet sending:
 need to choose sequence# for sourceID|Pgn

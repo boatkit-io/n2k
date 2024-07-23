@@ -33,13 +33,14 @@ func TestWriteNumerics(t *testing.T) {
 		*/
 	}
 
-	data := make([]uint8, 223, 223) // 0-filled, len=223
-	p := NewDataStream(data)
+	p := NewDataStream(make([]uint8, 223, 223))
+	bitOffset := uint16(0)
 	for _, tst := range uintTests {
-		err := p.putNumberRaw(tst.value, tst.length)
+		err := p.putNumberRaw(tst.value, tst.length, bitOffset)
+		bitOffset += tst.length
 		assert.NoError(t, err)
 		for i := range tst.exp {
-			assert.Equal(t, tst.exp[i], data[i])
+			assert.Equal(t, tst.exp[i], p.data[i])
 		}
 	}
 	readTests := []struct {
@@ -57,6 +58,27 @@ func TestWriteNumerics(t *testing.T) {
 		v, err := p.getNumberRaw(tst.length)
 		assert.NoError(t, err)
 		assert.Equal(t, tst.exp, v)
+	}
+
+	// binary data
+	bdTests := []struct {
+		exp    []uint8
+		data   []uint8
+		length uint16
+	}{
+		{[]uint8{1, 2, 3}, []uint8{1, 2, 3}, 24},
+		{[]uint8{1, 2, 3, 0xFF, 0x00, 0xF0}, []uint8{0xFF, 0x00, 0xFF}, 20},
+	}
+
+	p = NewDataStream(make([]uint8, 223, 223))
+	offset := uint16(0)
+	for _, tst := range bdTests {
+		err := p.writeBinary(tst.data, uint16(tst.length), offset)
+		offset += tst.length
+		assert.NoError(t, err)
+		for i := range tst.exp {
+			assert.Equal(t, tst.exp[i], p.data[i])
+		}
 	}
 }
 
@@ -112,28 +134,6 @@ func TestWriteNumerics(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Nil(t, vintn4)
 
-	// binary data
-	bdTests := []struct {
-		exp    []uint8
-		data   []uint8
-		offset uint16
-		length uint16
-	}{
-		{[]uint8{1, 2, 3}, []uint8{1, 2, 3}, 0, 24},
-		{[]uint8{0x1E}, []uint8{0xFE}, 0, 5},
-		{[]uint8{0x21}, []uint8{0, 0x1F, 0xF2, 0}, 12, 8},
-	}
-
-	for _, tst := range bdTests {
-		p := NewDataStream(tst.data)
-		if tst.offset > 0 {
-			_, _ = p.readUInt64(uint16(tst.offset))
-		}
-		v, err := p.readBinaryData(tst.length)
-		assert.NoError(t, err)
-		assert.Equal(t, tst.exp, v)
-	}
-}
 
 // TODO: Tests for strings once we get more confidence
 
