@@ -20,10 +20,11 @@ func (s *DataStream) writeFloat32(value float32, bitLength uint16, bitOffset uin
 
 func (s *DataStream) writeStringLau(value string, bitLength uint16, bitOffset uint16) error {
 	out := []uint8{
-		uint8(len(value)),
+		uint8(len(value) + 3),
 		0x0,
 	}
-	out = append(out, value)
+	out = append(out, value...)
+	out = append(out, 0x0)
 	return s.writeBinary(out, bitLength, bitOffset)
 }
 
