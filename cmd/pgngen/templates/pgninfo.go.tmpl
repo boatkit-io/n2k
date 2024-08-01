@@ -187,11 +187,6 @@ func (p *{{- .Id }} ) Encode(stream *DataStream) (*MessageInfo, error) {
 		return &p.Info, err
 	}
 	{{- end }}
-	{{- if (eq $field.FieldType "RESERVED") }}
-			if err := stream.writeReserved( {{- $field.BitLength }}, {{- $field.BitOffset }}); err != nil {
-				return &p.Info, err
-			}
-	{{- end }}
 	{{- end }}
 
 	return &p.Info, err

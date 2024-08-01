@@ -1,6 +1,7 @@
 package pgn
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -45,14 +46,30 @@ func TestGenerated(t *testing.T) {
 				assert.True(t, field.BitOffset%8 == 0)
 			case "STRING_LAU":
 				assert.True(t, field.BitLengthVariable)
-			case "DECIMAL", "STRING_LZ":
-				//				assert.Failf(t, "field:%s", field.Id)
-			case "DATE":
-				assert.True(t, field.Resolution == 1)
+			case "DECIMAL":
+				assert.Failf(t, "field:%s", field.Id)
 			case "STRING_FIX":
 				assert.True(t, field.BitOffset%8 == 0)
 				assert.True(t, field.BitLength%8 == 0)
+				assert.True(t, field.BitLength != 0)
+			case "STRING_LZ":
+				assert.True(t, field.BitLength != 0)
+				assert.False(t, field.BitLengthVariable)
+			case "MMSI", "DATE":
+				assert.True(t, field.BitLength != 0)
+				assert.False(t, field.BitLengthVariable)
+				assert.True(t, field.Resolution == 1)
+				assert.False(t, field.Signed)
+			case "TIME":
+				assert.False(t, field.BitLengthVariable)
+				assert.True(t, field.BitLength != 0)
+
 			}
+			switch {
+			case field.Resolution != 1:
+				assert.True(t, strings.HasPrefix(field.GolangType, "*"))
+			}
+
 		}
 	}
 }

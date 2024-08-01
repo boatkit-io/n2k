@@ -29,3 +29,33 @@ func (s *DataStream) resetToStart() {
 	s.byteOffset = 0
 	s.bitOffset = 0
 }
+
+func calcMaxPositiveValue(bitLength uint16, signed bool) uint64 {
+	// calculate maximum valid value
+	maxVal := uint64(0xFFFFFFFFFFFFFFFF)
+
+	maxVal >>= 64 - bitLength // the largest value representable in length of field
+	if signed {               // high bit set means it's negative, so maximum positive value is 1 bit shorter
+		maxVal >>= 1 // we know it's a positive value, so safe for us to check.
+	}
+	switch bitLength {
+	case 1: // leave alone
+	case 2, 3: // for fields < 4 bits long, largest possible positive value indicates the field is missing
+		maxVal -= 1
+	default: // for larger fields, largest positive value means missing, that value minus 1 means invalid
+		maxVal -= 2
+	}
+	return maxVal
+}
+
+func missingValue(bitLength uint16, signed bool) uint64 {
+	var plus uint64
+	switch bitLength {
+	case 1:
+	case 2, 3:
+		plus = 1
+	default:
+		plus = 2
+	}
+	return calcMaxPositiveValue(bitLength, signed) + plus
+}

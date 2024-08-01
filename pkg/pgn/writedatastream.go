@@ -28,8 +28,24 @@ func (s *DataStream) writeStringLau(value string, bitLength uint16, bitOffset ui
 	return s.writeBinary(out, bitLength, bitOffset)
 }
 
+func (s *DataStream) writeStringWithLength(value string, bitLength uint16, bitOffset uint16) error {
+	length := uint8(len(value)) + 1 //  string length plus terminator
+	fieldLength := uint8(bitLength % 8)
+	if length+1 > fieldLength { // field must contain the length byte, the string, and the terminator
+		return fmt.Errorf("Attempt to write string with length longer than field's length")
+	}
+	out := make([]uint8, fieldLength, fieldLength) // allocate the field's length, filled with zeros
+	out[0] = uint8(length)
+	for i := range value {
+		out[i+1] = value[i]
+	}
+	return s.writeBinary(out, bitLength, bitOffset)
+}
+
 func (s *DataStream) writeBinary(value []uint8, bitLength uint16, bitOffset uint16) error {
-	// For now, reuse getNumberRaw, 64 bits at a time
+	if s.getBitOffset() != uint32(bitOffset) && bitOffset != 0 { // bitOffset == 0 can mean we don't know the offset, sadly
+		return fmt.Errorf("attempt to write field at wrong offset in putNumberRaw: %d, %d", s.getBitOffset(), bitOffset)
+	}
 	// if length of value in bits is less than bitlength, we'll call it an error for now
 	// Binary values always start on a byte boundary, so we don't have to worry about the field being misaligned.
 	// the value can be any bit length, so we need to update the datastream fields after moving the slice in
@@ -57,9 +73,46 @@ func (s *DataStream) writeBinary(value []uint8, bitLength uint16, bitOffset uint
 	}
 	return nil
 }
+func (s *DataStream) writeSignedResolution(value float64, length uint16, divideBy float32, bitOffset uint16, offset uint32) error {
+	if value == nil {
+		outVal = missingValue(length, true)
+	} else {
+		outVal := uint64(value/float64(divideBy) - float64(offset))
+		maxValid := calcMaxPositiveValue(length, true)
+		if outVal > maxValid {
+			outVal = maxValid // pin at maximum value
+		}
+	}
+	return s.putNumberRaw(outVal, length, bitOffset)
+}
 
-func (s *DataStream) writeUnsignedResolution(value float64, length uint16, divideBy float32, bitOffset uint16) error {
-	return s.putNumberRaw(uint64(value/float64(divideBy)), length, bitOffset)
+func (s *DataStream) writeUnsignedResolution(value *float64, length uint16, divideBy float32, bitOffset uint16, offset uint32) error {
+	if value == nil {
+		outVal = missingValue(length, false)
+	} else {
+		outVal := uint64(value/float64(divideBy) - float64(offset))
+		maxValid := calcMaxPositiveValue(length, false)
+		if outVal > maxValid {
+			outVal = maxValid // pin at maximum value
+		}
+	}
+	return s.putNumberRaw(outVal, length, bitOffset)
+}
+
+func (s *DataStream) writeUnsignedNumber(value uint64, length uint16, bitOffset uint16) error {
+	maxVal := calcMaxPositiveValue(length, false)
+	if value > maxVal {
+		value = maxVal
+	}
+	return s.putNumberRaw(value, length, bitOffset)
+}
+
+func (s *DataStream) writeSignedNumber(value int64, length uint16, bitOffset uint16) error {
+	maxVal := calcMaxPositiveValue(length, false)
+	if value > int64(maxVal) {
+		value = int64(maxVal)
+	}
+	return s.putNumberRaw(uint64(value), length, bitOffset)
 }
 
 // putNumberRaw method writes up to 64 bits to the stream from a uint64 argument.

@@ -35,12 +35,12 @@ func TestNumerics(t *testing.T) {
 		{0xffffeed4, []uint8{0xd4, 0xee, 0xff, 0xff}, 0, 32},
 
 		// On byte boundary, sub-byte
-		{0x1E, []uint8{0xFE}, 0, 5},
+		{0x1D, []uint8{0xFD}, 0, 5},
 		{2, []uint8{0xFE}, 0, 2},
 
 		// Off byte boundary
 		{2, []uint8{0x14}, 1, 3},
-		{0x3E, []uint8{0xFB}, 2, 6},
+		{0x3D, []uint8{0xF7}, 2, 6},
 		{0x21, []uint8{0, 0x1F, 0xF2, 0}, 12, 8},
 		{0xC080, []uint8{1, 2, 0x3}, 2, 16},
 	}

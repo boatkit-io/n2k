@@ -411,6 +411,9 @@ func (n *n2kFmt) processContents() {
 	content := string(n.contents)
 	lines := strings.Split(content, "\n")
 	for _, line := range lines {
+		if line == "" {
+			break
+		}
 		_, err := fmt.Sscanf(line, " (%f)  %s  %8X   [%d]  %X %X %X %X %X %X %X %X", &result.timeDelta, &result.canDead, &result.frame.ID, &result.frame.Length, &result.frame.Data[0], &result.frame.Data[1], &result.frame.Data[2], &result.frame.Data[3], &result.frame.Data[4], &result.frame.Data[5], &result.frame.Data[6], &result.frame.Data[7])
 		if err != nil {
 			panic(err)
