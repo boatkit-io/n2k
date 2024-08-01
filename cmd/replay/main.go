@@ -20,6 +20,31 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+func IsMissing(value any) bool {
+
+	switch v := value.(type) {
+	case int8:
+		return v>>6&0x01 == 1
+	case int16:
+		return v>>14&0x01 == 1
+	case int32:
+		return v>>30&0x01 == 1
+	case int64:
+		return v>>62&0x01 == 1
+	case uint8:
+		return v>>7&0x01 == 1
+	case uint16:
+		return v>>15&0x01 == 1
+	case uint32:
+		return v>>31&0x01 == 1
+	case uint64:
+		return v>>63&0x01 == 1
+	default:
+		// Unsupported type
+		return false
+	}
+}
+
 func main() {
 	var exitCode int
 	defer func() {
@@ -31,8 +56,10 @@ func main() {
 	flag.StringVar(&replayFile, "replayFile", "", "An optional replay file to run")
 	var dumpPgns bool
 	var checkUnseen bool
+	var checkMissingOrInvalid bool
 	flag.BoolVar(&dumpPgns, "dumpPgns", false, "Debug spew all PGNs coming down the pipe")
 	flag.BoolVar(&checkUnseen, "checkUnseen", false, "Check if any of the messages are pgns not yet seen")
+	flag.BoolVar(&checkMissingOrInvalid, "checkMissingOrInvalid", false, "Check if any numeric values are missing or invalid")
 	flag.Parse()
 
 	log := logrus.StandardLogger()
@@ -56,6 +83,12 @@ func main() {
 				}
 			})
 		}
+		if checkMissingOrInvalid {
+			_, _ = subs.SubscribeToAllStructs(func(p pgn.PgnStruct) {
+
+			})
+		}
+
 	}()
 
 	ps := pkt.NewPacketStruct()
