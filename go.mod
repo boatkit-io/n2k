@@ -8,7 +8,7 @@ require (
 	github.com/brutella/can v0.0.2
 	github.com/magefile/mage v1.15.0
 	github.com/pkg/errors v0.9.1
-	github.com/schollz/progressbar/v3 v3.14.4
+	github.com/schollz/progressbar/v3 v3.14.6
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/text v0.16.0

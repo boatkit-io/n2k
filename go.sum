@@ -53,6 +53,8 @@ github.com/rogpeppe/go-internal v1.9.0 h1:73kH8U+JUqXU8lRuOHeVHaa/SZPifC7BkcraZV
 github.com/rogpeppe/go-internal v1.9.0/go.mod h1:WtVeX8xhTBvf0smdhujwtBcq4Qrzq/fJaraNFVN+nFs=
 github.com/schollz/progressbar/v3 v3.14.4 h1:W9ZrDSJk7eqmQhd3uxFNNcTr0QL+xuGNI9dEMrw0r74=
 github.com/schollz/progressbar/v3 v3.14.4/go.mod h1:aT3UQ7yGm+2ZjeXPqsjTenwL3ddUiuZ0kfQ/2tHlyNI=
+github.com/schollz/progressbar/v3 v3.14.6 h1:GyjwcWBAf+GFDMLziwerKvpuS7ZF+mNTAXIB2aspiZs=
+github.com/schollz/progressbar/v3 v3.14.6/go.mod h1:Nrzpuw3Nl0srLY0VlTvC4V6RL50pcEymjy6qyJAaLa0=
 github.com/shopspring/decimal v1.2.0/go.mod h1:DKyhrW/HYNuLGql+MJL6WCR6knT2jwCFRcu2hWCYk4o=
 github.com/shopspring/decimal v1.4.0 h1:bxl37RwXBklmTi0C79JfXCEBD1cqqHt0bbgBAGFp81k=
 github.com/shopspring/decimal v1.4.0/go.mod h1:gawqmDU56v4yIKSwfBSFip1HdCCXN8/+DMd9qYNcwME=
