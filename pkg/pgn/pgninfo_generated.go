@@ -8845,6 +8845,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeIsoAcknowledgement,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 0,
@@ -8855,6 +8856,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "GroupFunction",
 			Name: "Group Function",
 			BitLength: 8,
 			BitOffset: 8,
@@ -8865,6 +8867,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 24,
 			BitOffset: 16,
@@ -8875,6 +8878,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 40,
@@ -8895,6 +8899,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeIsoRequest,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 0,
@@ -8915,6 +8920,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeIsoTransportProtocolDataTransfer,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -8925,6 +8931,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Data",
 			Name: "Data",
 			BitLength: 56,
 			BitOffset: 8,
@@ -8945,6 +8952,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeIsoTransportProtocolConnectionManagementRequestToSend,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "GroupFunctionCode",
 			Name: "Group Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -8955,6 +8963,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "MessageSize",
 			Name: "Message size",
 			BitLength: 16,
 			BitOffset: 8,
@@ -8965,6 +8974,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Packets",
 			Name: "Packets",
 			BitLength: 8,
 			BitOffset: 24,
@@ -8975,6 +8985,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "PacketsReply",
 			Name: "Packets reply",
 			BitLength: 8,
 			BitOffset: 32,
@@ -8985,6 +8996,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 40,
@@ -9005,6 +9017,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeIsoTransportProtocolConnectionManagementClearToSend,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "GroupFunctionCode",
 			Name: "Group Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -9015,6 +9028,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "MaxPackets",
 			Name: "Max packets",
 			BitLength: 8,
 			BitOffset: 8,
@@ -9025,6 +9039,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "NextSid",
 			Name: "Next SID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -9035,6 +9050,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 24,
@@ -9045,6 +9061,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 40,
@@ -9065,6 +9082,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeIsoTransportProtocolConnectionManagementEndOfMessage,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "GroupFunctionCode",
 			Name: "Group Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -9075,6 +9093,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TotalMessageSize",
 			Name: "Total message size",
 			BitLength: 16,
 			BitOffset: 8,
@@ -9085,6 +9104,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "TotalNumberOfFramesReceived",
 			Name: "Total number of frames received",
 			BitLength: 8,
 			BitOffset: 24,
@@ -9095,6 +9115,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 32,
@@ -9105,6 +9126,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 40,
@@ -9125,6 +9147,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "GroupFunctionCode",
 			Name: "Group Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -9135,6 +9158,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "MessageSize",
 			Name: "Message size",
 			BitLength: 16,
 			BitOffset: 8,
@@ -9145,6 +9169,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Packets",
 			Name: "Packets",
 			BitLength: 8,
 			BitOffset: 24,
@@ -9155,6 +9180,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 32,
@@ -9165,6 +9191,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 40,
@@ -9185,6 +9212,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeIsoTransportProtocolConnectionManagementAbort,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "GroupFunctionCode",
 			Name: "Group Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -9195,6 +9223,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reason",
 			Name: "Reason",
 			BitLength: 8,
 			BitOffset: 8,
@@ -9205,6 +9234,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 24,
 			BitOffset: 16,
@@ -9215,6 +9245,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 40,
@@ -9235,6 +9266,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeIsoAddressClaim,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "UniqueNumber",
 			Name: "Unique Number",
 			BitLength: 21,
 			BitOffset: 0,
@@ -9245,6 +9277,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 21,
@@ -9255,6 +9288,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "DeviceInstanceLower",
 			Name: "Device Instance Lower",
 			BitLength: 3,
 			BitOffset: 32,
@@ -9265,6 +9299,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "DeviceInstanceUpper",
 			Name: "Device Instance Upper",
 			BitLength: 5,
 			BitOffset: 35,
@@ -9275,6 +9310,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "DeviceFunction",
 			Name: "Device Function",
 			BitLength: 8,
 			BitOffset: 40,
@@ -9285,6 +9321,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Spare",
 			Name: "Spare",
 			BitLength: 1,
 			BitOffset: 48,
@@ -9295,6 +9332,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DeviceClass",
 			Name: "Device Class",
 			BitLength: 7,
 			BitOffset: 49,
@@ -9305,6 +9343,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "SystemInstance",
 			Name: "System Instance",
 			BitLength: 4,
 			BitOffset: 56,
@@ -9315,6 +9354,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "IndustryGroup",
 			Name: "Industry Group",
 			BitLength: 3,
 			BitOffset: 60,
@@ -9325,6 +9365,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "ArbitraryAddressCapable",
 			Name: "Arbitrary address capable",
 			BitLength: 1,
 			BitOffset: 63,
@@ -9345,6 +9386,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalkWirelessKeypadLightControl,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -9355,6 +9397,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -9365,6 +9408,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -9375,6 +9419,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -9385,6 +9430,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Variant",
 			Name: "Variant",
 			BitLength: 8,
 			BitOffset: 24,
@@ -9395,6 +9441,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "WirelessSetting",
 			Name: "Wireless Setting",
 			BitLength: 8,
 			BitOffset: 32,
@@ -9405,6 +9452,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "WiredSetting",
 			Name: "Wired Setting",
 			BitLength: 8,
 			BitOffset: 40,
@@ -9415,6 +9463,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Reserved8",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -9435,6 +9484,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalkWirelessKeypadControl,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -9445,6 +9495,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -9455,6 +9506,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -9465,6 +9517,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Pid",
 			Name: "PID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -9475,6 +9528,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Variant",
 			Name: "Variant",
 			BitLength: 8,
 			BitOffset: 24,
@@ -9485,6 +9539,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "BeepControl",
 			Name: "Beep Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -9495,6 +9550,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 24,
 			BitOffset: 40,
@@ -9515,6 +9571,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeVictronBatteryRegister,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -9525,6 +9582,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -9535,6 +9593,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -9545,6 +9604,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "RegisterId",
 			Name: "Register Id",
 			BitLength: 16,
 			BitOffset: 16,
@@ -9555,6 +9615,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Payload",
 			Name: "Payload",
 			BitLength: 32,
 			BitOffset: 32,
@@ -9575,6 +9636,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeBus1PhaseCBasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -9585,6 +9647,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -9595,6 +9658,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -9605,6 +9669,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -9625,6 +9690,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeBus1PhaseBBasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -9635,6 +9701,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -9645,6 +9712,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -9655,6 +9723,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -9675,6 +9744,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeBus1PhaseABasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -9685,6 +9755,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -9695,6 +9766,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -9705,6 +9777,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -9725,6 +9798,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeBus1AverageBasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -9735,6 +9809,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -9745,6 +9820,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -9755,6 +9831,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -9775,6 +9852,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityTotalAcEnergy,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "TotalEnergyExport",
 			Name: "Total Energy Export",
 			BitLength: 32,
 			BitOffset: 0,
@@ -9785,6 +9863,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TotalEnergyImport",
 			Name: "Total Energy Import",
 			BitLength: 32,
 			BitOffset: 32,
@@ -9805,6 +9884,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityPhaseCAcReactivePower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ReactivePower",
 			Name: "Reactive Power",
 			BitLength: 16,
 			BitOffset: 0,
@@ -9815,6 +9895,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "PowerFactor",
 			Name: "Power factor",
 			BitLength: 16,
 			BitOffset: 16,
@@ -9825,6 +9906,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "PowerFactorLagging",
 			Name: "Power Factor Lagging",
 			BitLength: 2,
 			BitOffset: 32,
@@ -9835,6 +9917,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 30,
 			BitOffset: 34,
@@ -9855,22 +9938,24 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityPhaseCAcPower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "RealPower",
 			Name: "Real Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "ApparentPower",
 			Name: "Apparent Power",
 			BitLength: 32,
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
@@ -9885,6 +9970,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityPhaseCBasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -9895,6 +9981,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -9905,6 +9992,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -9915,6 +10003,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 48,
@@ -9935,6 +10024,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityPhaseBAcReactivePower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ReactivePower",
 			Name: "Reactive Power",
 			BitLength: 16,
 			BitOffset: 0,
@@ -9945,6 +10035,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "PowerFactor",
 			Name: "Power factor",
 			BitLength: 16,
 			BitOffset: 16,
@@ -9955,6 +10046,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "PowerFactorLagging",
 			Name: "Power Factor Lagging",
 			BitLength: 2,
 			BitOffset: 32,
@@ -9965,6 +10057,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 30,
 			BitOffset: 34,
@@ -9985,22 +10078,24 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityPhaseBAcPower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "RealPower",
 			Name: "Real Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "ApparentPower",
 			Name: "Apparent Power",
 			BitLength: 32,
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
@@ -10015,6 +10110,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityPhaseBBasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -10025,6 +10121,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -10035,6 +10132,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10045,6 +10143,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 48,
@@ -10065,16 +10164,18 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityPhaseAAcReactivePower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ReactivePower",
 			Name: "Reactive Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "PowerFactor",
 			Name: "Power factor",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10085,6 +10186,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "PowerFactorLagging",
 			Name: "Power Factor Lagging",
 			BitLength: 2,
 			BitOffset: 48,
@@ -10095,6 +10197,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 14,
 			BitOffset: 50,
@@ -10115,22 +10218,24 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityPhaseAAcPower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "RealPower",
 			Name: "Real Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "ApparentPower",
 			Name: "Apparent Power",
 			BitLength: 32,
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
@@ -10145,6 +10250,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityPhaseABasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -10155,6 +10261,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -10165,6 +10272,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10175,6 +10283,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 48,
@@ -10195,16 +10304,18 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityTotalAcReactivePower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ReactivePower",
 			Name: "Reactive Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "PowerFactor",
 			Name: "Power factor",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10215,6 +10326,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "PowerFactorLagging",
 			Name: "Power Factor Lagging",
 			BitLength: 2,
 			BitOffset: 48,
@@ -10225,6 +10337,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 14,
 			BitOffset: 50,
@@ -10245,22 +10358,24 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityTotalAcPower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "RealPower",
 			Name: "Real Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "ApparentPower",
 			Name: "Apparent Power",
 			BitLength: 32,
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
@@ -10275,6 +10390,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUtilityAverageBasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -10285,6 +10401,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -10295,6 +10412,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10305,6 +10423,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 48,
@@ -10325,6 +10444,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorTotalAcEnergy,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "TotalEnergyExport",
 			Name: "Total Energy Export",
 			BitLength: 32,
 			BitOffset: 0,
@@ -10335,6 +10455,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TotalEnergyImport",
 			Name: "Total Energy Import",
 			BitLength: 32,
 			BitOffset: 32,
@@ -10355,16 +10476,18 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorPhaseCAcReactivePower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ReactivePower",
 			Name: "Reactive Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "PowerFactor",
 			Name: "Power factor",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10375,6 +10498,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "PowerFactorLagging",
 			Name: "Power Factor Lagging",
 			BitLength: 2,
 			BitOffset: 48,
@@ -10385,6 +10509,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 14,
 			BitOffset: 50,
@@ -10405,22 +10530,24 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorPhaseCAcPower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "RealPower",
 			Name: "Real Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "ApparentPower",
 			Name: "Apparent Power",
 			BitLength: 32,
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
@@ -10435,6 +10562,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorPhaseCBasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -10445,6 +10573,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -10455,6 +10584,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10465,6 +10595,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 48,
@@ -10485,16 +10616,18 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorPhaseBAcReactivePower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ReactivePower",
 			Name: "Reactive Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "PowerFactor",
 			Name: "Power factor",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10505,6 +10638,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "PowerFactorLagging",
 			Name: "Power Factor Lagging",
 			BitLength: 2,
 			BitOffset: 48,
@@ -10515,6 +10649,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 14,
 			BitOffset: 50,
@@ -10535,22 +10670,24 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorPhaseBAcPower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "RealPower",
 			Name: "Real Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "ApparentPower",
 			Name: "Apparent Power",
 			BitLength: 32,
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
@@ -10565,6 +10702,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorPhaseBBasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -10575,6 +10713,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -10585,6 +10724,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10595,6 +10735,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 48,
@@ -10615,16 +10756,18 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorPhaseAAcReactivePower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ReactivePower",
 			Name: "Reactive Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "PowerFactor",
 			Name: "Power factor",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10635,6 +10778,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "PowerFactorLagging",
 			Name: "Power Factor Lagging",
 			BitLength: 2,
 			BitOffset: 48,
@@ -10645,6 +10789,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 14,
 			BitOffset: 50,
@@ -10665,22 +10810,24 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorPhaseAAcPower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "RealPower",
 			Name: "Real Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "ApparentPower",
 			Name: "Apparent Power",
 			BitLength: 32,
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
@@ -10695,6 +10842,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorPhaseABasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -10705,6 +10853,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -10715,6 +10864,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10725,6 +10875,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 48,
@@ -10745,16 +10896,18 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorTotalAcReactivePower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ReactivePower",
 			Name: "Reactive Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "PowerFactor",
 			Name: "Power factor",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10765,6 +10918,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "PowerFactorLagging",
 			Name: "Power Factor Lagging",
 			BitLength: 2,
 			BitOffset: 48,
@@ -10775,6 +10929,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 14,
 			BitOffset: 50,
@@ -10795,22 +10950,24 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorTotalAcPower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "RealPower",
 			Name: "Real Power",
 			BitLength: 32,
 			BitOffset: 0,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
 		2: { 
+			Id: "ApparentPower",
 			Name: "Apparent Power",
 			BitLength: 32,
 			BitOffset: 32,
 			BitLengthVariable: false,
 			CanboatType: "NUMBER",
-			GolangType:"*int32",
+			GolangType:"*float32",
 			Resolution:1,
 			Signed: true,
 			},
@@ -10825,6 +10982,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGeneratorAverageBasicAcQuantities,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LineLineAcRmsVoltage",
 			Name: "Line-Line AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 0,
@@ -10835,6 +10993,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LineNeutralAcRmsVoltage",
 			Name: "Line-Neutral AC RMS Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -10845,6 +11004,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcFrequency",
 			Name: "AC Frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -10855,6 +11015,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 48,
@@ -10875,6 +11036,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeIsoCommandedAddress,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "UniqueNumber",
 			Name: "Unique Number",
 			BitLength: 21,
 			BitOffset: 0,
@@ -10885,6 +11047,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 21,
@@ -10895,6 +11058,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "DeviceInstanceLower",
 			Name: "Device Instance Lower",
 			BitLength: 3,
 			BitOffset: 32,
@@ -10905,6 +11069,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "DeviceInstanceUpper",
 			Name: "Device Instance Upper",
 			BitLength: 5,
 			BitOffset: 35,
@@ -10915,6 +11080,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "DeviceFunction",
 			Name: "Device Function",
 			BitLength: 8,
 			BitOffset: 40,
@@ -10925,6 +11091,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 1,
 			BitOffset: 48,
@@ -10935,6 +11102,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DeviceClass",
 			Name: "Device Class",
 			BitLength: 7,
 			BitOffset: 49,
@@ -10945,6 +11113,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "SystemInstance",
 			Name: "System Instance",
 			BitLength: 4,
 			BitOffset: 56,
@@ -10955,6 +11124,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 60,
@@ -10965,6 +11135,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Reserved10",
 			Name: "Reserved",
 			BitLength: 1,
 			BitOffset: 63,
@@ -10975,6 +11146,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "NewSourceAddress",
 			Name: "New Source Address",
 			BitLength: 8,
 			BitOffset: 64,
@@ -10995,6 +11167,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFurunoHeave,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11005,6 +11178,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11015,6 +11189,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11025,6 +11200,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Heave",
 			Name: "Heave",
 			BitLength: 32,
 			BitOffset: 16,
@@ -11035,6 +11211,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Reserved5",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -11055,6 +11232,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeMaretronProprietaryDcBreakerCurrent,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11065,6 +11243,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11075,6 +11254,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11085,6 +11265,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "BankInstance",
 			Name: "Bank Instance",
 			BitLength: 8,
 			BitOffset: 16,
@@ -11095,6 +11276,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "IndicatorNumber",
 			Name: "Indicator Number",
 			BitLength: 8,
 			BitOffset: 24,
@@ -11105,6 +11287,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "BreakerCurrent",
 			Name: "Breaker Current",
 			BitLength: 16,
 			BitOffset: 32,
@@ -11115,6 +11298,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -11135,6 +11319,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarBootStateAcknowledgment,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11145,6 +11330,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11155,6 +11341,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11165,6 +11352,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "BootState",
 			Name: "Boot State",
 			BitLength: 3,
 			BitOffset: 16,
@@ -11175,6 +11363,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved5",
 			Name: "Reserved",
 			BitLength: 45,
 			BitOffset: 19,
@@ -11195,6 +11384,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeLowranceTemperature,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11205,6 +11395,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11215,6 +11406,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11225,6 +11417,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "TemperatureSource",
 			Name: "Temperature Source",
 			BitLength: 8,
 			BitOffset: 16,
@@ -11235,6 +11428,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ActualTemperature",
 			Name: "Actual Temperature",
 			BitLength: 16,
 			BitOffset: 24,
@@ -11245,6 +11439,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 24,
 			BitOffset: 40,
@@ -11265,6 +11460,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeChetcoDimmer,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11275,6 +11471,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11285,6 +11482,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11295,6 +11493,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 16,
@@ -11305,6 +11504,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Dimmer1",
 			Name: "Dimmer1",
 			BitLength: 8,
 			BitOffset: 24,
@@ -11315,6 +11515,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Dimmer2",
 			Name: "Dimmer2",
 			BitLength: 8,
 			BitOffset: 32,
@@ -11325,6 +11526,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Dimmer3",
 			Name: "Dimmer3",
 			BitLength: 8,
 			BitOffset: 40,
@@ -11335,6 +11537,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Dimmer4",
 			Name: "Dimmer4",
 			BitLength: 8,
 			BitOffset: 48,
@@ -11345,6 +11548,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 56,
@@ -11365,6 +11569,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarBootStateRequest,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11375,6 +11580,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11385,6 +11591,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11395,6 +11602,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 48,
 			BitOffset: 16,
@@ -11415,6 +11623,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarAccessLevel,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11425,6 +11634,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11435,6 +11645,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11445,6 +11656,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "FormatCode",
 			Name: "Format Code",
 			BitLength: 8,
 			BitOffset: 16,
@@ -11455,6 +11667,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AccessLevel",
 			Name: "Access Level",
 			BitLength: 3,
 			BitOffset: 24,
@@ -11465,6 +11678,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 5,
 			BitOffset: 27,
@@ -11475,6 +11689,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "AccessSeedKey",
 			Name: "Access Seed/Key",
 			BitLength: 32,
 			BitOffset: 32,
@@ -11495,6 +11710,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetConfigureTemperatureSensor,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11505,6 +11721,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11515,6 +11732,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11525,6 +11743,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 48,
 			BitOffset: 16,
@@ -11545,6 +11764,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalkAlarm,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11555,6 +11775,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11565,6 +11786,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11575,6 +11797,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -11585,6 +11808,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AlarmStatus",
 			Name: "Alarm Status",
 			BitLength: 8,
 			BitOffset: 24,
@@ -11595,6 +11819,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "AlarmId",
 			Name: "Alarm ID",
 			BitLength: 8,
 			BitOffset: 32,
@@ -11605,6 +11830,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "AlarmGroup",
 			Name: "Alarm Group",
 			BitLength: 8,
 			BitOffset: 40,
@@ -11615,6 +11841,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "AlarmPriority",
 			Name: "Alarm Priority",
 			BitLength: 16,
 			BitOffset: 48,
@@ -11635,6 +11862,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetTrimTabSensorCalibration,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11645,6 +11873,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11655,6 +11884,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11665,6 +11895,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 48,
 			BitOffset: 16,
@@ -11685,6 +11916,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetPaddleWheelSpeedConfiguration,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11695,6 +11927,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11705,6 +11938,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11715,6 +11949,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 48,
 			BitOffset: 16,
@@ -11735,6 +11970,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetClearFluidLevelWarnings,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11745,6 +11981,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11755,6 +11992,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11765,6 +12003,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 48,
 			BitOffset: 16,
@@ -11785,6 +12024,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetLgc2000Configuration,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11795,6 +12035,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11805,6 +12046,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11815,6 +12057,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 48,
 			BitOffset: 16,
@@ -11835,6 +12078,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeDiverseYachtServicesLoadCell,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11845,6 +12089,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11855,6 +12100,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11865,6 +12111,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 16,
@@ -11875,6 +12122,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved5",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 24,
@@ -11885,6 +12133,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "LoadCell",
 			Name: "Load Cell",
 			BitLength: 32,
 			BitOffset: 32,
@@ -11905,6 +12154,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetApUnknown1,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -11915,6 +12165,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -11925,6 +12176,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -11935,6 +12187,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 16,
@@ -11945,6 +12198,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 24,
@@ -11955,6 +12209,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 16,
 			BitOffset: 32,
@@ -11965,6 +12220,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 8,
 			BitOffset: 48,
@@ -11975,6 +12231,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Reserved8",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -11995,6 +12252,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetDeviceStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12005,6 +12263,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12015,6 +12274,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12025,6 +12285,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Model",
 			Name: "Model",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12035,6 +12296,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Report",
 			Name: "Report",
 			BitLength: 8,
 			BitOffset: 24,
@@ -12045,6 +12307,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Status",
 			Name: "Status",
 			BitLength: 8,
 			BitOffset: 32,
@@ -12055,6 +12318,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Spare7",
 			Name: "Spare",
 			BitLength: 24,
 			BitOffset: 40,
@@ -12075,6 +12339,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetDeviceStatusRequest,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12085,6 +12350,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12095,6 +12361,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12105,6 +12372,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Model",
 			Name: "Model",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12115,6 +12383,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Report",
 			Name: "Report",
 			BitLength: 8,
 			BitOffset: 24,
@@ -12125,6 +12394,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Spare6",
 			Name: "Spare",
 			BitLength: 32,
 			BitOffset: 32,
@@ -12145,6 +12415,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetPilotMode,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12155,6 +12426,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12165,6 +12437,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12175,6 +12448,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Model",
 			Name: "Model",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12185,6 +12459,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Report",
 			Name: "Report",
 			BitLength: 8,
 			BitOffset: 24,
@@ -12195,6 +12470,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Mode",
 			Name: "Mode",
 			BitLength: 16,
 			BitOffset: 32,
@@ -12205,6 +12481,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Spare7",
 			Name: "Spare",
 			BitLength: 16,
 			BitOffset: 48,
@@ -12225,6 +12502,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetDeviceModeRequest,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12235,6 +12513,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12245,6 +12524,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12255,6 +12535,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Model",
 			Name: "Model",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12265,6 +12546,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Report",
 			Name: "Report",
 			BitLength: 8,
 			BitOffset: 24,
@@ -12275,6 +12557,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Spare6",
 			Name: "Spare",
 			BitLength: 32,
 			BitOffset: 32,
@@ -12295,6 +12578,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetSailingProcessorStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12305,6 +12589,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12315,6 +12600,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12325,6 +12611,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Model",
 			Name: "Model",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12335,6 +12622,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Report",
 			Name: "Report",
 			BitLength: 8,
 			BitOffset: 24,
@@ -12345,6 +12633,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Data",
 			Name: "Data",
 			BitLength: 32,
 			BitOffset: 32,
@@ -12365,6 +12654,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNavicoWirelessBatteryStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12375,6 +12665,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12385,6 +12676,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12395,6 +12687,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Status",
 			Name: "Status",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12405,6 +12698,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "BatteryStatus",
 			Name: "Battery Status",
 			BitLength: 8,
 			BitOffset: 24,
@@ -12415,6 +12709,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "BatteryChargeStatus",
 			Name: "Battery Charge Status",
 			BitLength: 8,
 			BitOffset: 32,
@@ -12425,6 +12720,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 24,
 			BitOffset: 40,
@@ -12445,6 +12741,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNavicoWirelessSignalStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12455,6 +12752,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12465,6 +12763,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12475,6 +12774,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Unknown",
 			Name: "Unknown",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12485,6 +12785,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SignalStrength",
 			Name: "Signal Strength",
 			BitLength: 8,
 			BitOffset: 24,
@@ -12495,6 +12796,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 32,
 			BitOffset: 32,
@@ -12515,6 +12817,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetApUnknown2,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12525,6 +12828,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12535,6 +12839,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12545,6 +12850,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12555,6 +12861,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 24,
@@ -12565,6 +12872,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 32,
@@ -12575,6 +12883,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 8,
 			BitOffset: 40,
@@ -12585,6 +12894,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 8,
 			BitOffset: 48,
@@ -12595,6 +12905,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Reserved9",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -12615,6 +12926,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetAutopilotAngle,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12625,6 +12937,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12635,6 +12948,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12645,6 +12959,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 16,
@@ -12655,6 +12970,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Mode",
 			Name: "Mode",
 			BitLength: 8,
 			BitOffset: 32,
@@ -12665,6 +12981,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 40,
@@ -12675,6 +12992,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Angle",
 			Name: "Angle",
 			BitLength: 16,
 			BitOffset: 48,
@@ -12695,6 +13013,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalkPilotWindDatum,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12705,6 +13024,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12715,6 +13035,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12725,6 +13046,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "WindDatum",
 			Name: "Wind Datum",
 			BitLength: 16,
 			BitOffset: 16,
@@ -12735,6 +13057,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "RollingAverageWindAngle",
 			Name: "Rolling Average Wind Angle",
 			BitLength: 16,
 			BitOffset: 32,
@@ -12745,6 +13068,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -12765,6 +13089,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetMagneticField,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 16,
 			BitOffset: 0,
@@ -12775,6 +13100,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		2: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12785,6 +13111,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 16,
 			BitOffset: 24,
@@ -12795,6 +13122,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 16,
 			BitOffset: 40,
@@ -12805,6 +13133,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -12825,6 +13154,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalkPilotHeading,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12835,6 +13165,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12845,6 +13176,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12855,6 +13187,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12865,6 +13198,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "HeadingTrue",
 			Name: "Heading True",
 			BitLength: 16,
 			BitOffset: 24,
@@ -12875,6 +13209,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "HeadingMagnetic",
 			Name: "Heading Magnetic",
 			BitLength: 16,
 			BitOffset: 40,
@@ -12885,6 +13220,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -12905,6 +13241,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalkPilotLockedHeading,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12915,6 +13252,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -12925,6 +13263,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -12935,6 +13274,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -12945,6 +13285,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "TargetHeadingTrue",
 			Name: "Target Heading True",
 			BitLength: 16,
 			BitOffset: 24,
@@ -12955,6 +13296,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "TargetHeadingMagnetic",
 			Name: "Target Heading Magnetic",
 			BitLength: 16,
 			BitOffset: 40,
@@ -12965,6 +13307,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -12985,6 +13328,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalkSilenceAlarm,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -12995,6 +13339,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -13005,6 +13350,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -13015,6 +13361,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AlarmId",
 			Name: "Alarm ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -13025,6 +13372,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AlarmGroup",
 			Name: "Alarm Group",
 			BitLength: 8,
 			BitOffset: 24,
@@ -13035,6 +13383,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 32,
 			BitOffset: 32,
@@ -13055,6 +13404,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalkKeypadMessage,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -13065,6 +13415,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -13075,6 +13426,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -13085,6 +13437,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -13095,6 +13448,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "FirstKey",
 			Name: "First key",
 			BitLength: 8,
 			BitOffset: 24,
@@ -13105,6 +13459,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "SecondKey",
 			Name: "Second key",
 			BitLength: 8,
 			BitOffset: 32,
@@ -13115,6 +13470,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "FirstKeyState",
 			Name: "First key state",
 			BitLength: 2,
 			BitOffset: 40,
@@ -13125,6 +13481,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "SecondKeyState",
 			Name: "Second key state",
 			BitLength: 2,
 			BitOffset: 42,
@@ -13135,6 +13492,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Reserved9",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 44,
@@ -13145,6 +13503,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "EncoderPosition",
 			Name: "Encoder Position",
 			BitLength: 8,
 			BitOffset: 48,
@@ -13155,6 +13514,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Reserved11",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -13175,6 +13535,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalkKeypadHeartbeat,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -13185,6 +13546,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -13195,6 +13557,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -13205,6 +13568,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -13215,6 +13579,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Variant",
 			Name: "Variant",
 			BitLength: 8,
 			BitOffset: 24,
@@ -13225,6 +13590,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Status",
 			Name: "Status",
 			BitLength: 8,
 			BitOffset: 32,
@@ -13235,6 +13601,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 24,
 			BitOffset: 40,
@@ -13255,6 +13622,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalkPilotMode,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -13265,6 +13633,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -13275,6 +13644,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -13285,6 +13655,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "PilotMode",
 			Name: "Pilot Mode",
 			BitLength: 16,
 			BitOffset: 16,
@@ -13295,6 +13666,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SubMode",
 			Name: "Sub Mode",
 			BitLength: 16,
 			BitOffset: 32,
@@ -13305,6 +13677,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "PilotModeData",
 			Name: "Pilot Mode Data",
 			BitLength: 8,
 			BitOffset: 48,
@@ -13315,6 +13688,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -13335,6 +13709,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarDepthQualityFactor,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -13345,6 +13720,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -13355,6 +13731,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -13365,6 +13742,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -13375,6 +13753,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "DepthQualityFactor",
 			Name: "Depth Quality Factor",
 			BitLength: 4,
 			BitOffset: 24,
@@ -13385,6 +13764,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 36,
 			BitOffset: 28,
@@ -13405,6 +13785,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarSpeedPulseCount,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -13415,6 +13796,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -13425,6 +13807,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -13435,6 +13818,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -13445,6 +13829,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "DurationOfInterval",
 			Name: "Duration of interval",
 			BitLength: 16,
 			BitOffset: 24,
@@ -13455,6 +13840,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "NumberOfPulsesReceived",
 			Name: "Number of pulses received",
 			BitLength: 16,
 			BitOffset: 40,
@@ -13465,6 +13851,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -13485,6 +13872,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarDeviceInformation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -13495,6 +13883,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -13505,6 +13894,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -13515,6 +13905,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -13525,6 +13916,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "InternalDeviceTemperature",
 			Name: "Internal Device Temperature",
 			BitLength: 16,
 			BitOffset: 24,
@@ -13535,6 +13927,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "SupplyVoltage",
 			Name: "Supply Voltage",
 			BitLength: 16,
 			BitOffset: 40,
@@ -13545,6 +13938,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -13565,6 +13959,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetApUnknown3,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -13575,6 +13970,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -13585,6 +13981,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -13595,6 +13992,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 16,
@@ -13605,6 +14003,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 24,
@@ -13615,6 +14014,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 32,
@@ -13625,6 +14025,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 8,
 			BitOffset: 40,
@@ -13635,6 +14036,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 8,
 			BitOffset: 48,
@@ -13645,6 +14047,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Reserved9",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -13665,6 +14068,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetAutopilotMode,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -13675,6 +14079,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -13685,6 +14090,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -13695,6 +14101,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 48,
 			BitOffset: 16,
@@ -13715,6 +14122,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNmeaRequestGroupFunction,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "FunctionCode",
 			Name: "Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -13725,6 +14133,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 8,
@@ -13735,6 +14144,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "TransmissionInterval",
 			Name: "Transmission interval",
 			BitLength: 32,
 			BitOffset: 32,
@@ -13745,6 +14155,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "TransmissionIntervalOffset",
 			Name: "Transmission interval offset",
 			BitLength: 16,
 			BitOffset: 64,
@@ -13755,6 +14166,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "NumberOfParameters",
 			Name: "Number of Parameters",
 			BitLength: 8,
 			BitOffset: 80,
@@ -13765,6 +14177,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Parameter",
 			Name: "Parameter",
 			BitLength: 8,
 			BitOffset: 88,
@@ -13775,6 +14188,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Value",
 			Name: "Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -13795,6 +14209,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNmeaCommandGroupFunction,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "FunctionCode",
 			Name: "Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -13805,6 +14220,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 8,
@@ -13815,6 +14231,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Priority",
 			Name: "Priority",
 			BitLength: 4,
 			BitOffset: 32,
@@ -13825,6 +14242,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 36,
@@ -13835,6 +14253,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "NumberOfParameters",
 			Name: "Number of Parameters",
 			BitLength: 8,
 			BitOffset: 40,
@@ -13845,6 +14264,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Parameter",
 			Name: "Parameter",
 			BitLength: 8,
 			BitOffset: 48,
@@ -13855,6 +14275,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Value",
 			Name: "Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -13875,6 +14296,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNmeaAcknowledgeGroupFunction,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "FunctionCode",
 			Name: "Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -13885,6 +14307,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 8,
@@ -13895,6 +14318,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "PgnErrorCode",
 			Name: "PGN error code",
 			BitLength: 4,
 			BitOffset: 32,
@@ -13905,6 +14329,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "TransmissionIntervalPriorityErrorCode",
 			Name: "Transmission interval/Priority error code",
 			BitLength: 4,
 			BitOffset: 36,
@@ -13915,6 +14340,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "NumberOfParameters",
 			Name: "Number of Parameters",
 			BitLength: 8,
 			BitOffset: 40,
@@ -13925,6 +14351,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Parameter",
 			Name: "Parameter",
 			BitLength: 4,
 			BitOffset: 48,
@@ -13945,6 +14372,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNmeaReadFieldsGroupFunction,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "FunctionCode",
 			Name: "Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -13955,6 +14383,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 8,
@@ -13965,6 +14394,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 32,
@@ -13975,6 +14405,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 0,
@@ -13985,6 +14416,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 0,
@@ -13995,6 +14427,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "UniqueId",
 			Name: "Unique ID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14005,6 +14438,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "NumberOfSelectionPairs",
 			Name: "Number of Selection Pairs",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14015,6 +14449,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "NumberOfParameters",
 			Name: "Number of Parameters",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14025,6 +14460,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "SelectionParameter",
 			Name: "Selection Parameter",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14035,6 +14471,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "SelectionValue",
 			Name: "Selection Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -14045,6 +14482,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Parameter",
 			Name: "Parameter",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14065,6 +14503,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNmeaReadFieldsReplyGroupFunction,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "FunctionCode",
 			Name: "Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14075,6 +14514,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 8,
@@ -14085,6 +14525,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 32,
@@ -14095,6 +14536,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 0,
@@ -14105,6 +14547,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 0,
@@ -14115,6 +14558,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "UniqueId",
 			Name: "Unique ID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14125,6 +14569,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "NumberOfSelectionPairs",
 			Name: "Number of Selection Pairs",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14135,6 +14580,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "NumberOfParameters",
 			Name: "Number of Parameters",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14145,6 +14591,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "SelectionParameter",
 			Name: "Selection Parameter",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14155,6 +14602,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "SelectionValue",
 			Name: "Selection Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -14165,6 +14613,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Parameter",
 			Name: "Parameter",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14175,6 +14624,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Value",
 			Name: "Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -14195,6 +14645,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNmeaWriteFieldsGroupFunction,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "FunctionCode",
 			Name: "Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14205,6 +14656,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 8,
@@ -14215,6 +14667,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 32,
@@ -14225,6 +14678,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 0,
@@ -14235,6 +14689,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 0,
@@ -14245,6 +14700,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "UniqueId",
 			Name: "Unique ID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14255,6 +14711,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "NumberOfSelectionPairs",
 			Name: "Number of Selection Pairs",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14265,6 +14722,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "NumberOfParameters",
 			Name: "Number of Parameters",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14275,6 +14733,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "SelectionParameter",
 			Name: "Selection Parameter",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14285,6 +14744,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "SelectionValue",
 			Name: "Selection Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -14295,6 +14755,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Parameter",
 			Name: "Parameter",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14305,6 +14766,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Value",
 			Name: "Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -14325,6 +14787,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNmeaWriteFieldsReplyGroupFunction,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "FunctionCode",
 			Name: "Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14335,6 +14798,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 8,
@@ -14345,6 +14809,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 32,
@@ -14355,6 +14820,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 0,
@@ -14365,6 +14831,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 0,
@@ -14375,6 +14842,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "UniqueId",
 			Name: "Unique ID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14385,6 +14853,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "NumberOfSelectionPairs",
 			Name: "Number of Selection Pairs",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14395,6 +14864,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "NumberOfParameters",
 			Name: "Number of Parameters",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14405,6 +14875,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "SelectionParameter",
 			Name: "Selection Parameter",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14415,6 +14886,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "SelectionValue",
 			Name: "Selection Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -14425,6 +14897,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Parameter",
 			Name: "Parameter",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14435,6 +14908,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Value",
 			Name: "Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -14455,6 +14929,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodePgnListTransmitAndReceive,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "FunctionCode",
 			Name: "Function Code",
 			BitLength: 8,
 			BitOffset: 0,
@@ -14465,6 +14940,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Pgn",
 			Name: "PGN",
 			BitLength: 24,
 			BitOffset: 8,
@@ -14485,6 +14961,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalk1PilotMode,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -14495,6 +14972,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -14505,6 +14983,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -14515,6 +14994,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 16,
 			BitOffset: 16,
@@ -14525,6 +15005,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Command",
 			Name: "command",
 			BitLength: 8,
 			BitOffset: 32,
@@ -14535,6 +15016,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Unknown1",
 			Name: "Unknown 1",
 			BitLength: 24,
 			BitOffset: 40,
@@ -14545,6 +15027,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "PilotMode",
 			Name: "Pilot Mode",
 			BitLength: 8,
 			BitOffset: 64,
@@ -14555,6 +15038,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "SubMode",
 			Name: "Sub Mode",
 			BitLength: 8,
 			BitOffset: 72,
@@ -14565,6 +15049,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "PilotModeData",
 			Name: "Pilot Mode Data",
 			BitLength: 8,
 			BitOffset: 80,
@@ -14575,6 +15060,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Unknown2",
 			Name: "Unknown 2",
 			BitLength: 80,
 			BitOffset: 88,
@@ -14595,6 +15081,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionMediaControl,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -14605,6 +15092,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -14615,6 +15103,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -14625,6 +15114,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -14635,6 +15125,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Unknown",
 			Name: "Unknown",
 			BitLength: 8,
 			BitOffset: 24,
@@ -14645,6 +15136,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 8,
 			BitOffset: 32,
@@ -14655,6 +15147,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Command",
 			Name: "Command",
 			BitLength: 8,
 			BitOffset: 40,
@@ -14675,6 +15168,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionSiriusControl,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -14685,6 +15179,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -14695,6 +15190,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -14705,6 +15201,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -14715,6 +15212,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Unknown",
 			Name: "Unknown",
 			BitLength: 8,
 			BitOffset: 24,
@@ -14725,6 +15223,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 8,
 			BitOffset: 32,
@@ -14735,6 +15234,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Command",
 			Name: "Command",
 			BitLength: 8,
 			BitOffset: 40,
@@ -14755,6 +15255,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionRequestStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -14765,6 +15266,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -14775,6 +15277,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -14785,6 +15288,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -14795,6 +15299,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Unknown",
 			Name: "Unknown",
 			BitLength: 8,
 			BitOffset: 24,
@@ -14815,6 +15320,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionSetSource,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -14825,6 +15331,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -14835,6 +15342,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -14845,6 +15353,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -14855,6 +15364,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Unknown",
 			Name: "Unknown",
 			BitLength: 8,
 			BitOffset: 24,
@@ -14865,6 +15375,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 8,
 			BitOffset: 32,
@@ -14885,6 +15396,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionSetMute,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -14895,6 +15407,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -14905,6 +15418,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -14915,6 +15429,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -14925,6 +15440,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Command",
 			Name: "Command",
 			BitLength: 8,
 			BitOffset: 24,
@@ -14945,6 +15461,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionSetZoneVolume,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -14955,6 +15472,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -14965,6 +15483,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -14975,6 +15494,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -14985,6 +15505,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Unknown",
 			Name: "Unknown",
 			BitLength: 8,
 			BitOffset: 24,
@@ -14995,6 +15516,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Zone",
 			Name: "Zone",
 			BitLength: 8,
 			BitOffset: 32,
@@ -15005,6 +15527,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Volume",
 			Name: "Volume",
 			BitLength: 8,
 			BitOffset: 40,
@@ -15025,6 +15548,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionSetAllVolumes,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15035,6 +15559,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15045,6 +15570,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15055,6 +15581,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -15065,6 +15592,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Unknown",
 			Name: "Unknown",
 			BitLength: 8,
 			BitOffset: 24,
@@ -15075,6 +15603,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Zone1",
 			Name: "Zone1",
 			BitLength: 8,
 			BitOffset: 32,
@@ -15085,6 +15614,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Zone2",
 			Name: "Zone2",
 			BitLength: 8,
 			BitOffset: 40,
@@ -15095,6 +15625,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Zone3",
 			Name: "Zone3",
 			BitLength: 8,
 			BitOffset: 48,
@@ -15105,6 +15636,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Zone4",
 			Name: "Zone4",
 			BitLength: 8,
 			BitOffset: 56,
@@ -15125,6 +15657,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalk1Keystroke,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15135,6 +15668,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15145,6 +15679,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15155,6 +15690,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 16,
 			BitOffset: 16,
@@ -15165,6 +15701,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Command",
 			Name: "command",
 			BitLength: 8,
 			BitOffset: 32,
@@ -15175,6 +15712,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Device",
 			Name: "device",
 			BitLength: 8,
 			BitOffset: 40,
@@ -15185,6 +15723,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Key",
 			Name: "key",
 			BitLength: 8,
 			BitOffset: 48,
@@ -15195,6 +15734,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Keyinverted",
 			Name: "keyInverted",
 			BitLength: 8,
 			BitOffset: 56,
@@ -15205,6 +15745,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "UnknownData",
 			Name: "Unknown data",
 			BitLength: 112,
 			BitOffset: 64,
@@ -15225,6 +15766,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalk1DeviceIdentification,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15235,6 +15777,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15245,6 +15788,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15255,6 +15799,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 16,
 			BitOffset: 16,
@@ -15265,6 +15810,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Command",
 			Name: "command",
 			BitLength: 8,
 			BitOffset: 32,
@@ -15275,6 +15821,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 40,
@@ -15285,6 +15832,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Device",
 			Name: "device",
 			BitLength: 8,
 			BitOffset: 48,
@@ -15305,6 +15853,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalk1DisplayBrightness,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15315,6 +15864,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15325,6 +15875,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15335,6 +15886,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 16,
 			BitOffset: 16,
@@ -15345,6 +15897,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Group",
 			Name: "Group",
 			BitLength: 8,
 			BitOffset: 32,
@@ -15355,6 +15908,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Unknown1",
 			Name: "Unknown 1",
 			BitLength: 8,
 			BitOffset: 40,
@@ -15365,6 +15919,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Command",
 			Name: "Command",
 			BitLength: 8,
 			BitOffset: 48,
@@ -15375,6 +15930,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Brightness",
 			Name: "Brightness",
 			BitLength: 8,
 			BitOffset: 56,
@@ -15385,6 +15941,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Unknown2",
 			Name: "Unknown 2",
 			BitLength: 8,
 			BitOffset: 64,
@@ -15405,6 +15962,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSeatalk1DisplayColor,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15415,6 +15973,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15425,6 +15984,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15435,6 +15995,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 16,
 			BitOffset: 16,
@@ -15445,6 +16006,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Group",
 			Name: "Group",
 			BitLength: 8,
 			BitOffset: 32,
@@ -15455,6 +16017,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Unknown1",
 			Name: "Unknown 1",
 			BitLength: 8,
 			BitOffset: 40,
@@ -15465,6 +16028,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Command",
 			Name: "Command",
 			BitLength: 8,
 			BitOffset: 48,
@@ -15475,6 +16039,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Color",
 			Name: "Color",
 			BitLength: 8,
 			BitOffset: 56,
@@ -15485,6 +16050,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Unknown2",
 			Name: "Unknown 2",
 			BitLength: 8,
 			BitOffset: 64,
@@ -15505,6 +16071,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarAttitudeOffset,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15515,6 +16082,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15525,6 +16093,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15535,6 +16104,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -15545,6 +16115,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AzimuthOffset",
 			Name: "Azimuth offset",
 			BitLength: 16,
 			BitOffset: 24,
@@ -15555,6 +16126,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "PitchOffset",
 			Name: "Pitch offset",
 			BitLength: 16,
 			BitOffset: 40,
@@ -15565,6 +16137,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "RollOffset",
 			Name: "Roll offset",
 			BitLength: 16,
 			BitOffset: 56,
@@ -15585,6 +16158,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarCalibrateCompass,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15595,6 +16169,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15605,6 +16180,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15615,6 +16191,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -15625,6 +16202,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "CalibrateFunction",
 			Name: "Calibrate Function",
 			BitLength: 8,
 			BitOffset: 24,
@@ -15635,6 +16213,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "CalibrationStatus",
 			Name: "Calibration Status",
 			BitLength: 8,
 			BitOffset: 32,
@@ -15645,6 +16224,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "VerifyScore",
 			Name: "Verify Score",
 			BitLength: 8,
 			BitOffset: 40,
@@ -15655,6 +16235,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "XAxisGainValue",
 			Name: "X-axis gain value",
 			BitLength: 16,
 			BitOffset: 48,
@@ -15665,6 +16246,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		9: { 
+			Id: "YAxisGainValue",
 			Name: "Y-axis gain value",
 			BitLength: 16,
 			BitOffset: 64,
@@ -15675,6 +16257,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		10: { 
+			Id: "ZAxisGainValue",
 			Name: "Z-axis gain value",
 			BitLength: 16,
 			BitOffset: 80,
@@ -15685,6 +16268,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		11: { 
+			Id: "XAxisLinearOffset",
 			Name: "X-axis linear offset",
 			BitLength: 16,
 			BitOffset: 96,
@@ -15695,6 +16279,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		12: { 
+			Id: "YAxisLinearOffset",
 			Name: "Y-axis linear offset",
 			BitLength: 16,
 			BitOffset: 112,
@@ -15705,6 +16290,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		13: { 
+			Id: "ZAxisLinearOffset",
 			Name: "Z-axis linear offset",
 			BitLength: 16,
 			BitOffset: 128,
@@ -15715,6 +16301,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		14: { 
+			Id: "XAxisAngularOffset",
 			Name: "X-axis angular offset",
 			BitLength: 16,
 			BitOffset: 144,
@@ -15725,6 +16312,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		15: { 
+			Id: "PitchAndRollDamping",
 			Name: "Pitch and Roll damping",
 			BitLength: 16,
 			BitOffset: 160,
@@ -15735,6 +16323,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		16: { 
+			Id: "CompassRateGyroDamping",
 			Name: "Compass/Rate gyro damping",
 			BitLength: 16,
 			BitOffset: 176,
@@ -15755,6 +16344,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarTrueWindOptions,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15765,6 +16355,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15775,6 +16366,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15785,6 +16377,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -15795,6 +16388,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "CogSubstitutionForHdg",
 			Name: "COG substitution for HDG",
 			BitLength: 2,
 			BitOffset: 24,
@@ -15805,6 +16399,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 22,
 			BitOffset: 26,
@@ -15825,6 +16420,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarSimulateMode,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15835,6 +16431,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15845,6 +16442,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15855,6 +16453,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -15865,6 +16464,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SimulateMode",
 			Name: "Simulate Mode",
 			BitLength: 2,
 			BitOffset: 24,
@@ -15875,6 +16475,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 22,
 			BitOffset: 26,
@@ -15895,6 +16496,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarCalibrateDepth,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15905,6 +16507,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15915,6 +16518,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15925,6 +16529,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -15935,6 +16540,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SpeedOfSoundMode",
 			Name: "Speed of Sound Mode",
 			BitLength: 16,
 			BitOffset: 24,
@@ -15945,6 +16551,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 40,
@@ -15965,6 +16572,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarCalibrateSpeed,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -15975,6 +16583,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -15985,6 +16594,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -15995,6 +16605,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16005,6 +16616,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "NumberOfPairsOfDataPoints",
 			Name: "Number of pairs of data points",
 			BitLength: 8,
 			BitOffset: 24,
@@ -16015,6 +16627,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "InputFrequency",
 			Name: "Input frequency",
 			BitLength: 16,
 			BitOffset: 32,
@@ -16025,6 +16638,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "OutputSpeed",
 			Name: "Output speed",
 			BitLength: 16,
 			BitOffset: 48,
@@ -16045,6 +16659,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarCalibrateTemperature,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16055,6 +16670,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16065,6 +16681,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16075,6 +16692,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16085,6 +16703,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "TemperatureInstance",
 			Name: "Temperature instance",
 			BitLength: 2,
 			BitOffset: 24,
@@ -16095,6 +16714,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 26,
@@ -16105,6 +16725,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "TemperatureOffset",
 			Name: "Temperature offset",
 			BitLength: 16,
 			BitOffset: 32,
@@ -16125,6 +16746,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarSpeedFilterNone,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16135,6 +16757,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16145,6 +16768,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16155,6 +16779,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16165,6 +16790,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "FilterType",
 			Name: "Filter type",
 			BitLength: 4,
 			BitOffset: 24,
@@ -16175,6 +16801,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 28,
@@ -16185,6 +16812,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "SampleInterval",
 			Name: "Sample interval",
 			BitLength: 16,
 			BitOffset: 32,
@@ -16205,6 +16833,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarSpeedFilterIir,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16215,6 +16844,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16225,6 +16855,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16235,6 +16866,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16245,6 +16877,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "FilterType",
 			Name: "Filter type",
 			BitLength: 4,
 			BitOffset: 24,
@@ -16255,6 +16888,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 28,
@@ -16265,6 +16899,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "SampleInterval",
 			Name: "Sample interval",
 			BitLength: 16,
 			BitOffset: 32,
@@ -16275,6 +16910,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "FilterDuration",
 			Name: "Filter duration",
 			BitLength: 16,
 			BitOffset: 48,
@@ -16295,6 +16931,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarTemperatureFilterNone,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16305,6 +16942,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16315,6 +16953,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16325,6 +16964,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16335,6 +16975,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "FilterType",
 			Name: "Filter type",
 			BitLength: 4,
 			BitOffset: 24,
@@ -16345,6 +16986,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 28,
@@ -16355,6 +16997,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "SampleInterval",
 			Name: "Sample interval",
 			BitLength: 16,
 			BitOffset: 32,
@@ -16375,6 +17018,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarTemperatureFilterIir,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16385,6 +17029,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16395,6 +17040,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16405,6 +17051,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16415,6 +17062,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "FilterType",
 			Name: "Filter type",
 			BitLength: 4,
 			BitOffset: 24,
@@ -16425,6 +17073,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 28,
@@ -16435,6 +17084,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "SampleInterval",
 			Name: "Sample interval",
 			BitLength: 16,
 			BitOffset: 32,
@@ -16445,6 +17095,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "FilterDuration",
 			Name: "Filter duration",
 			BitLength: 16,
 			BitOffset: 48,
@@ -16465,6 +17116,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarNmea2000Options,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16475,6 +17127,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16485,6 +17138,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16495,6 +17149,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16505,6 +17160,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "TransmissionInterval",
 			Name: "Transmission Interval",
 			BitLength: 2,
 			BitOffset: 24,
@@ -16515,6 +17171,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 22,
 			BitOffset: 26,
@@ -16535,6 +17192,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAirmarAddressableMultiFrame,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16545,6 +17203,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16555,6 +17214,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16565,6 +17225,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16585,6 +17246,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeMaretronSlaveResponse,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16595,6 +17257,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16605,6 +17268,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16615,6 +17279,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProductCode",
 			Name: "Product code",
 			BitLength: 16,
 			BitOffset: 16,
@@ -16625,6 +17290,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SoftwareCode",
 			Name: "Software code",
 			BitLength: 16,
 			BitOffset: 32,
@@ -16635,6 +17301,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Command",
 			Name: "Command",
 			BitLength: 8,
 			BitOffset: 48,
@@ -16645,6 +17312,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Status",
 			Name: "Status",
 			BitLength: 8,
 			BitOffset: 56,
@@ -16665,6 +17333,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGarminDayMode,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16675,6 +17344,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16685,6 +17355,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16695,6 +17366,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "UnknownId1",
 			Name: "Unknown ID 1",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16705,6 +17377,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "UnknownId2",
 			Name: "Unknown ID 2",
 			BitLength: 8,
 			BitOffset: 24,
@@ -16715,6 +17388,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "UnknownId3",
 			Name: "Unknown ID 3",
 			BitLength: 8,
 			BitOffset: 32,
@@ -16725,6 +17399,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "UnknownId4",
 			Name: "Unknown ID 4",
 			BitLength: 8,
 			BitOffset: 40,
@@ -16735,6 +17410,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Spare8",
 			Name: "Spare",
 			BitLength: 16,
 			BitOffset: 48,
@@ -16745,6 +17421,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Mode",
 			Name: "Mode",
 			BitLength: 8,
 			BitOffset: 64,
@@ -16755,6 +17432,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Spare10",
 			Name: "Spare",
 			BitLength: 8,
 			BitOffset: 72,
@@ -16765,6 +17443,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Backlight",
 			Name: "Backlight",
 			BitLength: 8,
 			BitOffset: 80,
@@ -16785,6 +17464,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGarminNightMode,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16795,6 +17475,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16805,6 +17486,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16815,6 +17497,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "UnknownId1",
 			Name: "Unknown ID 1",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16825,6 +17508,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "UnknownId2",
 			Name: "Unknown ID 2",
 			BitLength: 8,
 			BitOffset: 24,
@@ -16835,6 +17519,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "UnknownId3",
 			Name: "Unknown ID 3",
 			BitLength: 8,
 			BitOffset: 32,
@@ -16845,6 +17530,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "UnknownId4",
 			Name: "Unknown ID 4",
 			BitLength: 8,
 			BitOffset: 40,
@@ -16855,6 +17541,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Spare8",
 			Name: "Spare",
 			BitLength: 16,
 			BitOffset: 48,
@@ -16865,6 +17552,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Mode",
 			Name: "Mode",
 			BitLength: 8,
 			BitOffset: 64,
@@ -16875,6 +17563,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Spare10",
 			Name: "Spare",
 			BitLength: 8,
 			BitOffset: 72,
@@ -16885,6 +17574,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Backlight",
 			Name: "Backlight",
 			BitLength: 8,
 			BitOffset: 80,
@@ -16905,6 +17595,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGarminColorMode,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -16915,6 +17606,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -16925,6 +17617,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -16935,6 +17628,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "UnknownId1",
 			Name: "Unknown ID 1",
 			BitLength: 8,
 			BitOffset: 16,
@@ -16945,6 +17639,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "UnknownId2",
 			Name: "Unknown ID 2",
 			BitLength: 8,
 			BitOffset: 24,
@@ -16955,6 +17650,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "UnknownId3",
 			Name: "Unknown ID 3",
 			BitLength: 8,
 			BitOffset: 32,
@@ -16965,6 +17661,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "UnknownId4",
 			Name: "Unknown ID 4",
 			BitLength: 8,
 			BitOffset: 40,
@@ -16975,6 +17672,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Spare8",
 			Name: "Spare",
 			BitLength: 16,
 			BitOffset: 48,
@@ -16985,6 +17683,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Mode",
 			Name: "Mode",
 			BitLength: 8,
 			BitOffset: 64,
@@ -16995,6 +17694,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Spare10",
 			Name: "Spare",
 			BitLength: 8,
 			BitOffset: 72,
@@ -17005,6 +17705,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Color",
 			Name: "Color",
 			BitLength: 8,
 			BitOffset: 80,
@@ -17025,6 +17726,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAlert,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "AlertType",
 			Name: "Alert Type",
 			BitLength: 4,
 			BitOffset: 0,
@@ -17035,6 +17737,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "AlertCategory",
 			Name: "Alert Category",
 			BitLength: 4,
 			BitOffset: 4,
@@ -17045,6 +17748,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AlertSystem",
 			Name: "Alert System",
 			BitLength: 8,
 			BitOffset: 8,
@@ -17055,6 +17759,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AlertSubSystem",
 			Name: "Alert Sub-System",
 			BitLength: 8,
 			BitOffset: 16,
@@ -17065,6 +17770,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AlertId",
 			Name: "Alert ID",
 			BitLength: 16,
 			BitOffset: 24,
@@ -17075,6 +17781,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "DataSourceNetworkIdName",
 			Name: "Data Source Network ID NAME",
 			BitLength: 64,
 			BitOffset: 40,
@@ -17085,6 +17792,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DataSourceInstance",
 			Name: "Data Source Instance",
 			BitLength: 8,
 			BitOffset: 104,
@@ -17095,6 +17803,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "DataSourceIndexSource",
 			Name: "Data Source Index-Source",
 			BitLength: 8,
 			BitOffset: 112,
@@ -17105,6 +17814,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "AlertOccurrenceNumber",
 			Name: "Alert Occurrence Number",
 			BitLength: 8,
 			BitOffset: 120,
@@ -17115,6 +17825,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "TemporarySilenceStatus",
 			Name: "Temporary Silence Status",
 			BitLength: 1,
 			BitOffset: 128,
@@ -17125,6 +17836,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "AcknowledgeStatus",
 			Name: "Acknowledge Status",
 			BitLength: 1,
 			BitOffset: 129,
@@ -17135,6 +17847,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "EscalationStatus",
 			Name: "Escalation Status",
 			BitLength: 1,
 			BitOffset: 130,
@@ -17145,6 +17858,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "TemporarySilenceSupport",
 			Name: "Temporary Silence Support",
 			BitLength: 1,
 			BitOffset: 131,
@@ -17155,6 +17869,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "AcknowledgeSupport",
 			Name: "Acknowledge Support",
 			BitLength: 1,
 			BitOffset: 132,
@@ -17165,6 +17880,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "EscalationSupport",
 			Name: "Escalation Support",
 			BitLength: 1,
 			BitOffset: 133,
@@ -17175,6 +17891,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 134,
@@ -17185,6 +17902,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "AcknowledgeSourceNetworkIdName",
 			Name: "Acknowledge Source Network ID NAME",
 			BitLength: 64,
 			BitOffset: 136,
@@ -17195,6 +17913,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "TriggerCondition",
 			Name: "Trigger Condition",
 			BitLength: 4,
 			BitOffset: 200,
@@ -17205,6 +17924,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "ThresholdStatus",
 			Name: "Threshold Status",
 			BitLength: 4,
 			BitOffset: 204,
@@ -17215,6 +17935,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		20: { 
+			Id: "AlertPriority",
 			Name: "Alert Priority",
 			BitLength: 8,
 			BitOffset: 208,
@@ -17225,6 +17946,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		21: { 
+			Id: "AlertState",
 			Name: "Alert State",
 			BitLength: 8,
 			BitOffset: 216,
@@ -17245,6 +17967,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAlertResponse,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "AlertType",
 			Name: "Alert Type",
 			BitLength: 4,
 			BitOffset: 0,
@@ -17255,6 +17978,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "AlertCategory",
 			Name: "Alert Category",
 			BitLength: 4,
 			BitOffset: 4,
@@ -17265,6 +17989,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AlertSystem",
 			Name: "Alert System",
 			BitLength: 8,
 			BitOffset: 8,
@@ -17275,6 +18000,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AlertSubSystem",
 			Name: "Alert Sub-System",
 			BitLength: 8,
 			BitOffset: 16,
@@ -17285,6 +18011,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AlertId",
 			Name: "Alert ID",
 			BitLength: 16,
 			BitOffset: 24,
@@ -17295,6 +18022,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "DataSourceNetworkIdName",
 			Name: "Data Source Network ID NAME",
 			BitLength: 64,
 			BitOffset: 40,
@@ -17305,6 +18033,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DataSourceInstance",
 			Name: "Data Source Instance",
 			BitLength: 8,
 			BitOffset: 104,
@@ -17315,6 +18044,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "DataSourceIndexSource",
 			Name: "Data Source Index-Source",
 			BitLength: 8,
 			BitOffset: 112,
@@ -17325,6 +18055,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "AlertOccurrenceNumber",
 			Name: "Alert Occurrence Number",
 			BitLength: 8,
 			BitOffset: 120,
@@ -17335,6 +18066,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "AcknowledgeSourceNetworkIdName",
 			Name: "Acknowledge Source Network ID NAME",
 			BitLength: 64,
 			BitOffset: 128,
@@ -17345,6 +18077,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "ResponseCommand",
 			Name: "Response Command",
 			BitLength: 2,
 			BitOffset: 192,
@@ -17355,6 +18088,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 194,
@@ -17375,6 +18109,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAlertText,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "AlertType",
 			Name: "Alert Type",
 			BitLength: 4,
 			BitOffset: 0,
@@ -17385,6 +18120,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "AlertCategory",
 			Name: "Alert Category",
 			BitLength: 4,
 			BitOffset: 4,
@@ -17395,6 +18131,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AlertSystem",
 			Name: "Alert System",
 			BitLength: 8,
 			BitOffset: 8,
@@ -17405,6 +18142,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AlertSubSystem",
 			Name: "Alert Sub-System",
 			BitLength: 8,
 			BitOffset: 16,
@@ -17415,6 +18153,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AlertId",
 			Name: "Alert ID",
 			BitLength: 16,
 			BitOffset: 24,
@@ -17425,6 +18164,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "DataSourceNetworkIdName",
 			Name: "Data Source Network ID NAME",
 			BitLength: 64,
 			BitOffset: 40,
@@ -17435,6 +18175,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DataSourceInstance",
 			Name: "Data Source Instance",
 			BitLength: 8,
 			BitOffset: 104,
@@ -17445,6 +18186,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "DataSourceIndexSource",
 			Name: "Data Source Index-Source",
 			BitLength: 8,
 			BitOffset: 112,
@@ -17455,6 +18197,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "AlertOccurrenceNumber",
 			Name: "Alert Occurrence Number",
 			BitLength: 8,
 			BitOffset: 120,
@@ -17465,6 +18208,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "LanguageId",
 			Name: "Language ID",
 			BitLength: 8,
 			BitOffset: 128,
@@ -17475,6 +18219,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "AlertTextDescription",
 			Name: "Alert Text Description",
 			BitLength: 0,
 			BitOffset: 0,
@@ -17485,6 +18230,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "AlertLocationTextDescription",
 			Name: "Alert Location Text Description",
 			BitLength: 0,
 			BitOffset: 0,
@@ -17505,6 +18251,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAlertConfiguration,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "AlertType",
 			Name: "Alert Type",
 			BitLength: 4,
 			BitOffset: 0,
@@ -17515,6 +18262,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "AlertCategory",
 			Name: "Alert Category",
 			BitLength: 4,
 			BitOffset: 4,
@@ -17525,6 +18273,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AlertSystem",
 			Name: "Alert System",
 			BitLength: 8,
 			BitOffset: 8,
@@ -17535,6 +18284,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AlertSubSystem",
 			Name: "Alert Sub-System",
 			BitLength: 8,
 			BitOffset: 16,
@@ -17545,6 +18295,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AlertId",
 			Name: "Alert ID",
 			BitLength: 16,
 			BitOffset: 24,
@@ -17555,6 +18306,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "DataSourceNetworkIdName",
 			Name: "Data Source Network ID NAME",
 			BitLength: 64,
 			BitOffset: 40,
@@ -17565,6 +18317,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DataSourceInstance",
 			Name: "Data Source Instance",
 			BitLength: 8,
 			BitOffset: 104,
@@ -17575,6 +18328,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "DataSourceIndexSource",
 			Name: "Data Source Index-Source",
 			BitLength: 8,
 			BitOffset: 112,
@@ -17585,6 +18339,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "AlertOccurrenceNumber",
 			Name: "Alert Occurrence Number",
 			BitLength: 8,
 			BitOffset: 120,
@@ -17595,6 +18350,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "AlertControl",
 			Name: "Alert Control",
 			BitLength: 2,
 			BitOffset: 128,
@@ -17605,6 +18361,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "UserDefinedAlertAssignment",
 			Name: "User Defined Alert Assignment",
 			BitLength: 2,
 			BitOffset: 130,
@@ -17615,6 +18372,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 132,
@@ -17625,6 +18383,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "ReactivationPeriod",
 			Name: "Reactivation Period",
 			BitLength: 8,
 			BitOffset: 136,
@@ -17635,6 +18394,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "TemporarySilencePeriod",
 			Name: "Temporary Silence Period",
 			BitLength: 8,
 			BitOffset: 144,
@@ -17645,6 +18405,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "EscalationPeriod",
 			Name: "Escalation Period",
 			BitLength: 8,
 			BitOffset: 152,
@@ -17665,6 +18426,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAlertThreshold,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "AlertType",
 			Name: "Alert Type",
 			BitLength: 4,
 			BitOffset: 0,
@@ -17675,6 +18437,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "AlertCategory",
 			Name: "Alert Category",
 			BitLength: 4,
 			BitOffset: 4,
@@ -17685,6 +18448,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AlertSystem",
 			Name: "Alert System",
 			BitLength: 8,
 			BitOffset: 8,
@@ -17695,6 +18459,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AlertSubSystem",
 			Name: "Alert Sub-System",
 			BitLength: 8,
 			BitOffset: 16,
@@ -17705,6 +18470,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AlertId",
 			Name: "Alert ID",
 			BitLength: 16,
 			BitOffset: 24,
@@ -17715,6 +18481,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "DataSourceNetworkIdName",
 			Name: "Data Source Network ID NAME",
 			BitLength: 64,
 			BitOffset: 40,
@@ -17725,6 +18492,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DataSourceInstance",
 			Name: "Data Source Instance",
 			BitLength: 8,
 			BitOffset: 104,
@@ -17735,6 +18503,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "DataSourceIndexSource",
 			Name: "Data Source Index-Source",
 			BitLength: 8,
 			BitOffset: 112,
@@ -17745,6 +18514,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "AlertOccurrenceNumber",
 			Name: "Alert Occurrence Number",
 			BitLength: 8,
 			BitOffset: 120,
@@ -17755,6 +18525,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "NumberOfParameters",
 			Name: "Number of Parameters",
 			BitLength: 8,
 			BitOffset: 128,
@@ -17765,6 +18536,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "ParameterNumber",
 			Name: "Parameter Number",
 			BitLength: 8,
 			BitOffset: 136,
@@ -17775,6 +18547,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "TriggerMethod",
 			Name: "Trigger Method",
 			BitLength: 8,
 			BitOffset: 144,
@@ -17785,6 +18558,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "ThresholdDataFormat",
 			Name: "Threshold Data Format",
 			BitLength: 8,
 			BitOffset: 152,
@@ -17795,6 +18569,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "ThresholdLevel",
 			Name: "Threshold Level",
 			BitLength: 64,
 			BitOffset: 160,
@@ -17815,6 +18590,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAlertValue,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "AlertType",
 			Name: "Alert Type",
 			BitLength: 4,
 			BitOffset: 0,
@@ -17825,6 +18601,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "AlertCategory",
 			Name: "Alert Category",
 			BitLength: 4,
 			BitOffset: 4,
@@ -17835,6 +18612,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AlertSystem",
 			Name: "Alert System",
 			BitLength: 8,
 			BitOffset: 8,
@@ -17845,6 +18623,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AlertSubSystem",
 			Name: "Alert Sub-System",
 			BitLength: 8,
 			BitOffset: 16,
@@ -17855,6 +18634,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AlertId",
 			Name: "Alert ID",
 			BitLength: 16,
 			BitOffset: 24,
@@ -17865,6 +18645,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "DataSourceNetworkIdName",
 			Name: "Data Source Network ID NAME",
 			BitLength: 64,
 			BitOffset: 40,
@@ -17875,6 +18656,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DataSourceInstance",
 			Name: "Data Source Instance",
 			BitLength: 8,
 			BitOffset: 104,
@@ -17885,6 +18667,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "DataSourceIndexSource",
 			Name: "Data Source Index-Source",
 			BitLength: 8,
 			BitOffset: 112,
@@ -17895,6 +18678,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "AlertOccurrenceNumber",
 			Name: "Alert Occurrence Number",
 			BitLength: 8,
 			BitOffset: 120,
@@ -17905,6 +18689,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "NumberOfParameters",
 			Name: "Number of Parameters",
 			BitLength: 8,
 			BitOffset: 128,
@@ -17915,6 +18700,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "ValueParameterNumber",
 			Name: "Value Parameter Number",
 			BitLength: 8,
 			BitOffset: 136,
@@ -17925,6 +18711,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "ValueDataFormat",
 			Name: "Value Data Format",
 			BitLength: 8,
 			BitOffset: 144,
@@ -17935,6 +18722,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "ValueData",
 			Name: "Value Data",
 			BitLength: 64,
 			BitOffset: 152,
@@ -17955,6 +18743,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSystemTime,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -17965,6 +18754,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Source",
 			Name: "Source",
 			BitLength: 4,
 			BitOffset: 8,
@@ -17975,6 +18765,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 12,
@@ -17985,6 +18776,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Date",
 			Name: "Date",
 			BitLength: 16,
 			BitOffset: 16,
@@ -17995,6 +18787,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Time",
 			Name: "Time",
 			BitLength: 32,
 			BitOffset: 32,
@@ -18015,6 +18808,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeHeartbeat,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "DataTransmitOffset",
 			Name: "Data transmit offset",
 			BitLength: 16,
 			BitOffset: 0,
@@ -18025,6 +18819,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "SequenceCounter",
 			Name: "Sequence Counter",
 			BitLength: 8,
 			BitOffset: 16,
@@ -18035,6 +18830,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Controller1State",
 			Name: "Controller 1 State",
 			BitLength: 2,
 			BitOffset: 24,
@@ -18045,6 +18841,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Controller2State",
 			Name: "Controller 2 State",
 			BitLength: 2,
 			BitOffset: 26,
@@ -18055,6 +18852,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "EquipmentStatus",
 			Name: "Equipment Status",
 			BitLength: 2,
 			BitOffset: 28,
@@ -18065,6 +18863,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 34,
 			BitOffset: 30,
@@ -18085,6 +18884,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeProductInformation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Nmea2000Version",
 			Name: "NMEA 2000 Version",
 			BitLength: 16,
 			BitOffset: 0,
@@ -18095,6 +18895,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "ProductCode",
 			Name: "Product Code",
 			BitLength: 16,
 			BitOffset: 16,
@@ -18105,6 +18906,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "ModelId",
 			Name: "Model ID",
 			BitLength: 256,
 			BitOffset: 32,
@@ -18115,6 +18917,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "SoftwareVersionCode",
 			Name: "Software Version Code",
 			BitLength: 256,
 			BitOffset: 288,
@@ -18125,6 +18928,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ModelVersion",
 			Name: "Model Version",
 			BitLength: 256,
 			BitOffset: 544,
@@ -18135,6 +18939,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "ModelSerialCode",
 			Name: "Model Serial Code",
 			BitLength: 256,
 			BitOffset: 800,
@@ -18145,6 +18950,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "CertificationLevel",
 			Name: "Certification Level",
 			BitLength: 8,
 			BitOffset: 1056,
@@ -18155,6 +18961,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "LoadEquivalency",
 			Name: "Load Equivalency",
 			BitLength: 8,
 			BitOffset: 1064,
@@ -18175,6 +18982,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeConfigurationInformation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "InstallationDescription1",
 			Name: "Installation Description #1",
 			BitLength: 0,
 			BitOffset: 0,
@@ -18185,6 +18993,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "InstallationDescription2",
 			Name: "Installation Description #2",
 			BitLength: 0,
 			BitOffset: 0,
@@ -18195,6 +19004,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "ManufacturerInformation",
 			Name: "Manufacturer Information",
 			BitLength: 0,
 			BitOffset: 0,
@@ -18215,6 +19025,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeManOverboardNotification,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -18225,6 +19036,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "MobEmitterId",
 			Name: "MOB Emitter ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -18235,6 +19047,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "ManOverboardStatus",
 			Name: "Man Overboard Status",
 			BitLength: 3,
 			BitOffset: 40,
@@ -18245,6 +19058,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 5,
 			BitOffset: 43,
@@ -18255,6 +19069,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ActivationTime",
 			Name: "Activation Time",
 			BitLength: 32,
 			BitOffset: 48,
@@ -18265,6 +19080,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "PositionSource",
 			Name: "Position Source",
 			BitLength: 3,
 			BitOffset: 80,
@@ -18275,6 +19091,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 5,
 			BitOffset: 83,
@@ -18285,6 +19102,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "PositionDate",
 			Name: "Position Date",
 			BitLength: 16,
 			BitOffset: 88,
@@ -18295,6 +19113,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "PositionTime",
 			Name: "Position Time",
 			BitLength: 32,
 			BitOffset: 104,
@@ -18305,6 +19124,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Latitude",
 			Name: "Latitude",
 			BitLength: 32,
 			BitOffset: 136,
@@ -18315,6 +19135,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		11: { 
+			Id: "Longitude",
 			Name: "Longitude",
 			BitLength: 32,
 			BitOffset: 168,
@@ -18325,6 +19146,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		12: { 
+			Id: "CogReference",
 			Name: "COG Reference",
 			BitLength: 2,
 			BitOffset: 200,
@@ -18335,6 +19157,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Reserved13",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 202,
@@ -18345,6 +19168,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "Cog",
 			Name: "COG",
 			BitLength: 16,
 			BitOffset: 208,
@@ -18355,6 +19179,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "Sog",
 			Name: "SOG",
 			BitLength: 16,
 			BitOffset: 224,
@@ -18365,6 +19190,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "MmsiOfVesselOfOrigin",
 			Name: "MMSI of vessel of origin",
 			BitLength: 32,
 			BitOffset: 240,
@@ -18375,6 +19201,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "MobEmitterBatteryLowStatus",
 			Name: "MOB Emitter Battery Low Status",
 			BitLength: 3,
 			BitOffset: 272,
@@ -18385,6 +19212,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "Reserved18",
 			Name: "Reserved",
 			BitLength: 5,
 			BitOffset: 275,
@@ -18405,6 +19233,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeHeadingTrackControl,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "RudderLimitExceeded",
 			Name: "Rudder Limit Exceeded",
 			BitLength: 2,
 			BitOffset: 0,
@@ -18415,6 +19244,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "OffHeadingLimitExceeded",
 			Name: "Off-Heading Limit Exceeded",
 			BitLength: 2,
 			BitOffset: 2,
@@ -18425,6 +19255,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "OffTrackLimitExceeded",
 			Name: "Off-Track Limit Exceeded",
 			BitLength: 2,
 			BitOffset: 4,
@@ -18435,6 +19266,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Override",
 			Name: "Override",
 			BitLength: 2,
 			BitOffset: 6,
@@ -18445,6 +19277,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SteeringMode",
 			Name: "Steering Mode",
 			BitLength: 3,
 			BitOffset: 8,
@@ -18455,6 +19288,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "TurnMode",
 			Name: "Turn Mode",
 			BitLength: 3,
 			BitOffset: 11,
@@ -18465,6 +19299,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "HeadingReference",
 			Name: "Heading Reference",
 			BitLength: 2,
 			BitOffset: 14,
@@ -18475,6 +19310,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 5,
 			BitOffset: 16,
@@ -18485,6 +19321,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "CommandedRudderDirection",
 			Name: "Commanded Rudder Direction",
 			BitLength: 3,
 			BitOffset: 21,
@@ -18495,6 +19332,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "CommandedRudderAngle",
 			Name: "Commanded Rudder Angle",
 			BitLength: 16,
 			BitOffset: 24,
@@ -18505,6 +19343,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		11: { 
+			Id: "HeadingToSteerCourse",
 			Name: "Heading-To-Steer (Course)",
 			BitLength: 16,
 			BitOffset: 40,
@@ -18515,6 +19354,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Track",
 			Name: "Track",
 			BitLength: 16,
 			BitOffset: 56,
@@ -18525,6 +19365,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "RudderLimit",
 			Name: "Rudder Limit",
 			BitLength: 16,
 			BitOffset: 72,
@@ -18535,6 +19376,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "OffHeadingLimit",
 			Name: "Off-Heading Limit",
 			BitLength: 16,
 			BitOffset: 88,
@@ -18545,6 +19387,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "RadiusOfTurnOrder",
 			Name: "Radius of Turn Order",
 			BitLength: 16,
 			BitOffset: 104,
@@ -18555,6 +19398,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		16: { 
+			Id: "RateOfTurnOrder",
 			Name: "Rate of Turn Order",
 			BitLength: 16,
 			BitOffset: 120,
@@ -18565,6 +19409,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		17: { 
+			Id: "OffTrackLimit",
 			Name: "Off-Track Limit",
 			BitLength: 16,
 			BitOffset: 136,
@@ -18575,6 +19420,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		18: { 
+			Id: "VesselHeading",
 			Name: "Vessel Heading",
 			BitLength: 16,
 			BitOffset: 152,
@@ -18595,6 +19441,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeRudder,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -18605,6 +19452,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "DirectionOrder",
 			Name: "Direction Order",
 			BitLength: 3,
 			BitOffset: 8,
@@ -18615,6 +19463,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 5,
 			BitOffset: 11,
@@ -18625,6 +19474,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AngleOrder",
 			Name: "Angle Order",
 			BitLength: 16,
 			BitOffset: 16,
@@ -18635,6 +19485,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Position",
 			Name: "Position",
 			BitLength: 16,
 			BitOffset: 32,
@@ -18645,6 +19496,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -18665,6 +19517,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeVesselHeading,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -18675,6 +19528,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Heading",
 			Name: "Heading",
 			BitLength: 16,
 			BitOffset: 8,
@@ -18685,6 +19539,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Deviation",
 			Name: "Deviation",
 			BitLength: 16,
 			BitOffset: 24,
@@ -18695,6 +19550,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "Variation",
 			Name: "Variation",
 			BitLength: 16,
 			BitOffset: 40,
@@ -18705,6 +19561,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Reference",
 			Name: "Reference",
 			BitLength: 2,
 			BitOffset: 56,
@@ -18715,6 +19572,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 58,
@@ -18735,6 +19593,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeRateOfTurn,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -18745,6 +19604,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Rate",
 			Name: "Rate",
 			BitLength: 32,
 			BitOffset: 8,
@@ -18755,6 +19615,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 24,
 			BitOffset: 40,
@@ -18775,6 +19636,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeHeave,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -18785,6 +19647,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Heave",
 			Name: "Heave",
 			BitLength: 16,
 			BitOffset: 8,
@@ -18795,6 +19658,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 40,
 			BitOffset: 24,
@@ -18815,6 +19679,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAttitude,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -18825,6 +19690,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Yaw",
 			Name: "Yaw",
 			BitLength: 16,
 			BitOffset: 8,
@@ -18835,6 +19701,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		3: { 
+			Id: "Pitch",
 			Name: "Pitch",
 			BitLength: 16,
 			BitOffset: 24,
@@ -18845,6 +19712,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "Roll",
 			Name: "Roll",
 			BitLength: 16,
 			BitOffset: 40,
@@ -18855,6 +19723,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -18875,6 +19744,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeMagneticVariation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -18885,6 +19755,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Source",
 			Name: "Source",
 			BitLength: 4,
 			BitOffset: 8,
@@ -18895,6 +19766,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 12,
@@ -18905,6 +19777,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AgeOfService",
 			Name: "Age of service",
 			BitLength: 16,
 			BitOffset: 16,
@@ -18915,6 +19788,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Variation",
 			Name: "Variation",
 			BitLength: 16,
 			BitOffset: 32,
@@ -18925,6 +19799,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -18945,6 +19820,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeEngineParametersRapidUpdate,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -18955,6 +19831,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Speed",
 			Name: "Speed",
 			BitLength: 16,
 			BitOffset: 8,
@@ -18965,6 +19842,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "BoostPressure",
 			Name: "Boost Pressure",
 			BitLength: 16,
 			BitOffset: 24,
@@ -18975,6 +19853,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "TiltTrim",
 			Name: "Tilt/Trim",
 			BitLength: 8,
 			BitOffset: 40,
@@ -18985,6 +19864,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -19005,6 +19885,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeEngineParametersDynamic,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -19015,6 +19896,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "OilPressure",
 			Name: "Oil pressure",
 			BitLength: 16,
 			BitOffset: 8,
@@ -19025,6 +19907,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "OilTemperature",
 			Name: "Oil temperature",
 			BitLength: 16,
 			BitOffset: 24,
@@ -19035,6 +19918,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Temperature",
 			Name: "Temperature",
 			BitLength: 16,
 			BitOffset: 40,
@@ -19045,6 +19929,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AlternatorPotential",
 			Name: "Alternator Potential",
 			BitLength: 16,
 			BitOffset: 56,
@@ -19055,6 +19940,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "FuelRate",
 			Name: "Fuel Rate",
 			BitLength: 16,
 			BitOffset: 72,
@@ -19065,6 +19951,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "TotalEngineHours",
 			Name: "Total Engine hours",
 			BitLength: 32,
 			BitOffset: 88,
@@ -19075,6 +19962,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "CoolantPressure",
 			Name: "Coolant Pressure",
 			BitLength: 16,
 			BitOffset: 120,
@@ -19085,6 +19973,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "FuelPressure",
 			Name: "Fuel Pressure",
 			BitLength: 16,
 			BitOffset: 136,
@@ -19095,6 +19984,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 152,
@@ -19105,6 +19995,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "DiscreteStatus1",
 			Name: "Discrete Status 1",
 			BitLength: 16,
 			BitOffset: 160,
@@ -19115,6 +20006,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "DiscreteStatus2",
 			Name: "Discrete Status 2",
 			BitLength: 16,
 			BitOffset: 176,
@@ -19125,6 +20017,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "EngineLoad",
 			Name: "Engine Load",
 			BitLength: 8,
 			BitOffset: 192,
@@ -19135,6 +20028,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		14: { 
+			Id: "EngineTorque",
 			Name: "Engine Torque",
 			BitLength: 8,
 			BitOffset: 200,
@@ -19155,6 +20049,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeTransmissionParametersDynamic,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -19165,6 +20060,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TransmissionGear",
 			Name: "Transmission Gear",
 			BitLength: 2,
 			BitOffset: 8,
@@ -19175,6 +20071,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 10,
@@ -19185,6 +20082,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "OilPressure",
 			Name: "Oil pressure",
 			BitLength: 16,
 			BitOffset: 16,
@@ -19195,6 +20093,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "OilTemperature",
 			Name: "Oil temperature",
 			BitLength: 16,
 			BitOffset: 32,
@@ -19205,6 +20104,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "DiscreteStatus1",
 			Name: "Discrete Status 1",
 			BitLength: 8,
 			BitOffset: 48,
@@ -19215,6 +20115,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -19235,6 +20136,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeTripParametersVessel,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "TimeToEmpty",
 			Name: "Time to Empty",
 			BitLength: 32,
 			BitOffset: 0,
@@ -19245,6 +20147,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "DistanceToEmpty",
 			Name: "Distance to Empty",
 			BitLength: 32,
 			BitOffset: 32,
@@ -19255,6 +20158,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "EstimatedFuelRemaining",
 			Name: "Estimated Fuel Remaining",
 			BitLength: 16,
 			BitOffset: 64,
@@ -19265,6 +20169,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "TripRunTime",
 			Name: "Trip Run Time",
 			BitLength: 32,
 			BitOffset: 80,
@@ -19285,6 +20190,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeTripParametersEngine,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -19295,6 +20201,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TripFuelUsed",
 			Name: "Trip Fuel Used",
 			BitLength: 16,
 			BitOffset: 8,
@@ -19305,6 +20212,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "FuelRateAverage",
 			Name: "Fuel Rate, Average",
 			BitLength: 16,
 			BitOffset: 24,
@@ -19315,6 +20223,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "FuelRateEconomy",
 			Name: "Fuel Rate, Economy",
 			BitLength: 16,
 			BitOffset: 40,
@@ -19325,6 +20234,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "InstantaneousFuelEconomy",
 			Name: "Instantaneous Fuel Economy",
 			BitLength: 16,
 			BitOffset: 56,
@@ -19345,6 +20255,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeEngineParametersStatic,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -19355,6 +20266,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RatedEngineSpeed",
 			Name: "Rated Engine Speed",
 			BitLength: 16,
 			BitOffset: 8,
@@ -19365,6 +20277,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Vin",
 			Name: "VIN",
 			BitLength: 136,
 			BitOffset: 24,
@@ -19375,6 +20288,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "SoftwareId",
 			Name: "Software ID",
 			BitLength: 256,
 			BitOffset: 160,
@@ -19395,6 +20309,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeLoadControllerConnectionStateControl,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "SequenceId",
 			Name: "Sequence ID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -19405,6 +20320,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "ConnectionId",
 			Name: "Connection ID",
 			BitLength: 8,
 			BitOffset: 8,
@@ -19415,6 +20331,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "State",
 			Name: "State",
 			BitLength: 8,
 			BitOffset: 16,
@@ -19425,6 +20342,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Status",
 			Name: "Status",
 			BitLength: 8,
 			BitOffset: 24,
@@ -19435,6 +20353,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "OperationalStatusControl",
 			Name: "Operational Status & Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -19445,6 +20364,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "PwmDutyCycle",
 			Name: "PWM Duty Cycle",
 			BitLength: 8,
 			BitOffset: 40,
@@ -19455,6 +20375,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Timeon",
 			Name: "TimeON",
 			BitLength: 8,
 			BitOffset: 48,
@@ -19465,6 +20386,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Timeoff",
 			Name: "TimeOFF",
 			BitLength: 8,
 			BitOffset: 56,
@@ -19485,6 +20407,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeBinarySwitchBankStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -19495,6 +20418,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Indicator1",
 			Name: "Indicator1",
 			BitLength: 2,
 			BitOffset: 8,
@@ -19505,6 +20429,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Indicator2",
 			Name: "Indicator2",
 			BitLength: 2,
 			BitOffset: 10,
@@ -19515,6 +20440,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Indicator3",
 			Name: "Indicator3",
 			BitLength: 2,
 			BitOffset: 12,
@@ -19525,6 +20451,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Indicator4",
 			Name: "Indicator4",
 			BitLength: 2,
 			BitOffset: 14,
@@ -19535,6 +20462,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Indicator5",
 			Name: "Indicator5",
 			BitLength: 2,
 			BitOffset: 16,
@@ -19545,6 +20473,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Indicator6",
 			Name: "Indicator6",
 			BitLength: 2,
 			BitOffset: 18,
@@ -19555,6 +20484,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Indicator7",
 			Name: "Indicator7",
 			BitLength: 2,
 			BitOffset: 20,
@@ -19565,6 +20495,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Indicator8",
 			Name: "Indicator8",
 			BitLength: 2,
 			BitOffset: 22,
@@ -19575,6 +20506,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Indicator9",
 			Name: "Indicator9",
 			BitLength: 2,
 			BitOffset: 24,
@@ -19585,6 +20517,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Indicator10",
 			Name: "Indicator10",
 			BitLength: 2,
 			BitOffset: 26,
@@ -19595,6 +20528,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Indicator11",
 			Name: "Indicator11",
 			BitLength: 2,
 			BitOffset: 28,
@@ -19605,6 +20539,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Indicator12",
 			Name: "Indicator12",
 			BitLength: 2,
 			BitOffset: 30,
@@ -19615,6 +20550,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "Indicator13",
 			Name: "Indicator13",
 			BitLength: 2,
 			BitOffset: 32,
@@ -19625,6 +20561,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "Indicator14",
 			Name: "Indicator14",
 			BitLength: 2,
 			BitOffset: 34,
@@ -19635,6 +20572,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "Indicator15",
 			Name: "Indicator15",
 			BitLength: 2,
 			BitOffset: 36,
@@ -19645,6 +20583,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "Indicator16",
 			Name: "Indicator16",
 			BitLength: 2,
 			BitOffset: 38,
@@ -19655,6 +20594,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "Indicator17",
 			Name: "Indicator17",
 			BitLength: 2,
 			BitOffset: 40,
@@ -19665,6 +20605,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "Indicator18",
 			Name: "Indicator18",
 			BitLength: 2,
 			BitOffset: 42,
@@ -19675,6 +20616,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		20: { 
+			Id: "Indicator19",
 			Name: "Indicator19",
 			BitLength: 2,
 			BitOffset: 44,
@@ -19685,6 +20627,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		21: { 
+			Id: "Indicator20",
 			Name: "Indicator20",
 			BitLength: 2,
 			BitOffset: 46,
@@ -19695,6 +20638,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		22: { 
+			Id: "Indicator21",
 			Name: "Indicator21",
 			BitLength: 2,
 			BitOffset: 48,
@@ -19705,6 +20649,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		23: { 
+			Id: "Indicator22",
 			Name: "Indicator22",
 			BitLength: 2,
 			BitOffset: 50,
@@ -19715,6 +20660,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		24: { 
+			Id: "Indicator23",
 			Name: "Indicator23",
 			BitLength: 2,
 			BitOffset: 52,
@@ -19725,6 +20671,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		25: { 
+			Id: "Indicator24",
 			Name: "Indicator24",
 			BitLength: 2,
 			BitOffset: 54,
@@ -19735,6 +20682,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		26: { 
+			Id: "Indicator25",
 			Name: "Indicator25",
 			BitLength: 2,
 			BitOffset: 56,
@@ -19745,6 +20693,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		27: { 
+			Id: "Indicator26",
 			Name: "Indicator26",
 			BitLength: 2,
 			BitOffset: 58,
@@ -19755,6 +20704,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		28: { 
+			Id: "Indicator27",
 			Name: "Indicator27",
 			BitLength: 2,
 			BitOffset: 60,
@@ -19765,6 +20715,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		29: { 
+			Id: "Indicator28",
 			Name: "Indicator28",
 			BitLength: 2,
 			BitOffset: 62,
@@ -19785,6 +20736,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSwitchBankControl,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -19795,6 +20747,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Switch1",
 			Name: "Switch1",
 			BitLength: 2,
 			BitOffset: 8,
@@ -19805,6 +20758,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Switch2",
 			Name: "Switch2",
 			BitLength: 2,
 			BitOffset: 10,
@@ -19815,6 +20769,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Switch3",
 			Name: "Switch3",
 			BitLength: 2,
 			BitOffset: 12,
@@ -19825,6 +20780,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Switch4",
 			Name: "Switch4",
 			BitLength: 2,
 			BitOffset: 14,
@@ -19835,6 +20791,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Switch5",
 			Name: "Switch5",
 			BitLength: 2,
 			BitOffset: 16,
@@ -19845,6 +20802,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Switch6",
 			Name: "Switch6",
 			BitLength: 2,
 			BitOffset: 18,
@@ -19855,6 +20813,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Switch7",
 			Name: "Switch7",
 			BitLength: 2,
 			BitOffset: 20,
@@ -19865,6 +20824,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Switch8",
 			Name: "Switch8",
 			BitLength: 2,
 			BitOffset: 22,
@@ -19875,6 +20835,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Switch9",
 			Name: "Switch9",
 			BitLength: 2,
 			BitOffset: 24,
@@ -19885,6 +20846,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Switch10",
 			Name: "Switch10",
 			BitLength: 2,
 			BitOffset: 26,
@@ -19895,6 +20857,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Switch11",
 			Name: "Switch11",
 			BitLength: 2,
 			BitOffset: 28,
@@ -19905,6 +20868,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Switch12",
 			Name: "Switch12",
 			BitLength: 2,
 			BitOffset: 30,
@@ -19915,6 +20879,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "Switch13",
 			Name: "Switch13",
 			BitLength: 2,
 			BitOffset: 32,
@@ -19925,6 +20890,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "Switch14",
 			Name: "Switch14",
 			BitLength: 2,
 			BitOffset: 34,
@@ -19935,6 +20901,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "Switch15",
 			Name: "Switch15",
 			BitLength: 2,
 			BitOffset: 36,
@@ -19945,6 +20912,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "Switch16",
 			Name: "Switch16",
 			BitLength: 2,
 			BitOffset: 38,
@@ -19955,6 +20923,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "Switch17",
 			Name: "Switch17",
 			BitLength: 2,
 			BitOffset: 40,
@@ -19965,6 +20934,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "Switch18",
 			Name: "Switch18",
 			BitLength: 2,
 			BitOffset: 42,
@@ -19975,6 +20945,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		20: { 
+			Id: "Switch19",
 			Name: "Switch19",
 			BitLength: 2,
 			BitOffset: 44,
@@ -19985,6 +20956,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		21: { 
+			Id: "Switch20",
 			Name: "Switch20",
 			BitLength: 2,
 			BitOffset: 46,
@@ -19995,6 +20967,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		22: { 
+			Id: "Switch21",
 			Name: "Switch21",
 			BitLength: 2,
 			BitOffset: 48,
@@ -20005,6 +20978,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		23: { 
+			Id: "Switch22",
 			Name: "Switch22",
 			BitLength: 2,
 			BitOffset: 50,
@@ -20015,6 +20989,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		24: { 
+			Id: "Switch23",
 			Name: "Switch23",
 			BitLength: 2,
 			BitOffset: 52,
@@ -20025,6 +21000,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		25: { 
+			Id: "Switch24",
 			Name: "Switch24",
 			BitLength: 2,
 			BitOffset: 54,
@@ -20035,6 +21011,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		26: { 
+			Id: "Switch25",
 			Name: "Switch25",
 			BitLength: 2,
 			BitOffset: 56,
@@ -20045,6 +21022,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		27: { 
+			Id: "Switch26",
 			Name: "Switch26",
 			BitLength: 2,
 			BitOffset: 58,
@@ -20055,6 +21033,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		28: { 
+			Id: "Switch27",
 			Name: "Switch27",
 			BitLength: 2,
 			BitOffset: 60,
@@ -20065,6 +21044,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		29: { 
+			Id: "Switch28",
 			Name: "Switch28",
 			BitLength: 2,
 			BitOffset: 62,
@@ -20085,6 +21065,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAcInputStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -20095,6 +21076,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "NumberOfLines",
 			Name: "Number of Lines",
 			BitLength: 8,
 			BitOffset: 8,
@@ -20105,6 +21087,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Line",
 			Name: "Line",
 			BitLength: 2,
 			BitOffset: 16,
@@ -20115,6 +21098,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Acceptability",
 			Name: "Acceptability",
 			BitLength: 2,
 			BitOffset: 18,
@@ -20125,6 +21109,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 20,
@@ -20135,6 +21120,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Voltage",
 			Name: "Voltage",
 			BitLength: 16,
 			BitOffset: 24,
@@ -20145,6 +21131,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Current",
 			Name: "Current",
 			BitLength: 16,
 			BitOffset: 40,
@@ -20155,6 +21142,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Frequency",
 			Name: "Frequency",
 			BitLength: 16,
 			BitOffset: 56,
@@ -20165,6 +21153,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "BreakerSize",
 			Name: "Breaker Size",
 			BitLength: 16,
 			BitOffset: 72,
@@ -20175,6 +21164,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "RealPower",
 			Name: "Real Power",
 			BitLength: 32,
 			BitOffset: 88,
@@ -20185,6 +21175,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "ReactivePower",
 			Name: "Reactive Power",
 			BitLength: 32,
 			BitOffset: 120,
@@ -20195,6 +21186,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "PowerFactor",
 			Name: "Power factor",
 			BitLength: 8,
 			BitOffset: 152,
@@ -20215,6 +21207,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAcOutputStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -20225,6 +21218,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "NumberOfLines",
 			Name: "Number of Lines",
 			BitLength: 8,
 			BitOffset: 8,
@@ -20235,6 +21229,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Line",
 			Name: "Line",
 			BitLength: 2,
 			BitOffset: 16,
@@ -20245,6 +21240,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Waveform",
 			Name: "Waveform",
 			BitLength: 3,
 			BitOffset: 18,
@@ -20255,6 +21251,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 21,
@@ -20265,6 +21262,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Voltage",
 			Name: "Voltage",
 			BitLength: 16,
 			BitOffset: 24,
@@ -20275,6 +21273,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Current",
 			Name: "Current",
 			BitLength: 16,
 			BitOffset: 40,
@@ -20285,6 +21284,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Frequency",
 			Name: "Frequency",
 			BitLength: 16,
 			BitOffset: 56,
@@ -20295,6 +21295,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "BreakerSize",
 			Name: "Breaker Size",
 			BitLength: 16,
 			BitOffset: 72,
@@ -20305,6 +21306,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "RealPower",
 			Name: "Real Power",
 			BitLength: 32,
 			BitOffset: 88,
@@ -20315,6 +21317,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "ReactivePower",
 			Name: "Reactive Power",
 			BitLength: 32,
 			BitOffset: 120,
@@ -20325,6 +21328,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "PowerFactor",
 			Name: "Power factor",
 			BitLength: 8,
 			BitOffset: 152,
@@ -20345,6 +21349,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFluidLevel,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 4,
 			BitOffset: 0,
@@ -20355,6 +21360,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Type",
 			Name: "Type",
 			BitLength: 4,
 			BitOffset: 4,
@@ -20365,6 +21371,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Level",
 			Name: "Level",
 			BitLength: 16,
 			BitOffset: 8,
@@ -20375,6 +21382,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "Capacity",
 			Name: "Capacity",
 			BitLength: 32,
 			BitOffset: 24,
@@ -20385,6 +21393,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -20405,6 +21414,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeDcDetailedStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -20415,6 +21425,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -20425,6 +21436,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "DcType",
 			Name: "DC Type",
 			BitLength: 8,
 			BitOffset: 16,
@@ -20435,6 +21447,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "StateOfCharge",
 			Name: "State of Charge",
 			BitLength: 8,
 			BitOffset: 24,
@@ -20445,6 +21458,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "StateOfHealth",
 			Name: "State of Health",
 			BitLength: 8,
 			BitOffset: 32,
@@ -20455,6 +21469,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "TimeRemaining",
 			Name: "Time Remaining",
 			BitLength: 16,
 			BitOffset: 40,
@@ -20465,6 +21480,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "RippleVoltage",
 			Name: "Ripple Voltage",
 			BitLength: 16,
 			BitOffset: 56,
@@ -20475,6 +21491,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "RemainingCapacity",
 			Name: "Remaining capacity",
 			BitLength: 16,
 			BitOffset: 72,
@@ -20495,6 +21512,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeChargerStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -20505,6 +21523,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "BatteryInstance",
 			Name: "Battery Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -20515,6 +21534,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "OperatingState",
 			Name: "Operating State",
 			BitLength: 4,
 			BitOffset: 16,
@@ -20525,6 +21545,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ChargeMode",
 			Name: "Charge Mode",
 			BitLength: 4,
 			BitOffset: 20,
@@ -20535,6 +21556,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Enabled",
 			Name: "Enabled",
 			BitLength: 2,
 			BitOffset: 24,
@@ -20545,6 +21567,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "EqualizationPending",
 			Name: "Equalization Pending",
 			BitLength: 2,
 			BitOffset: 26,
@@ -20555,6 +21578,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 28,
@@ -20565,6 +21589,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "EqualizationTimeRemaining",
 			Name: "Equalization Time Remaining",
 			BitLength: 16,
 			BitOffset: 32,
@@ -20585,6 +21610,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeBatteryStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -20595,6 +21621,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Voltage",
 			Name: "Voltage",
 			BitLength: 16,
 			BitOffset: 8,
@@ -20605,6 +21632,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Current",
 			Name: "Current",
 			BitLength: 16,
 			BitOffset: 24,
@@ -20615,6 +21643,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "Temperature",
 			Name: "Temperature",
 			BitLength: 16,
 			BitOffset: 40,
@@ -20625,6 +21654,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 56,
@@ -20645,6 +21675,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeInverterStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -20655,6 +21686,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "AcInstance",
 			Name: "AC Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -20665,6 +21697,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "DcInstance",
 			Name: "DC Instance",
 			BitLength: 8,
 			BitOffset: 16,
@@ -20675,6 +21708,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "OperatingState",
 			Name: "Operating State",
 			BitLength: 4,
 			BitOffset: 24,
@@ -20685,6 +21719,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "InverterEnable",
 			Name: "Inverter Enable",
 			BitLength: 2,
 			BitOffset: 28,
@@ -20695,6 +21730,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 30,
@@ -20715,6 +21751,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeInverterConfigurationStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -20725,6 +21762,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "AcInstance",
 			Name: "AC Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -20735,6 +21773,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "DcInstance",
 			Name: "DC Instance",
 			BitLength: 8,
 			BitOffset: 16,
@@ -20745,6 +21784,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "InverterEnableDisable",
 			Name: "Inverter Enable/Disable",
 			BitLength: 2,
 			BitOffset: 24,
@@ -20755,6 +21795,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 26,
@@ -20765,6 +21806,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "InverterMode",
 			Name: "Inverter Mode",
 			BitLength: 8,
 			BitOffset: 32,
@@ -20775,6 +21817,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "LoadSenseEnableDisable",
 			Name: "Load Sense Enable/Disable",
 			BitLength: 8,
 			BitOffset: 40,
@@ -20785,6 +21828,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "LoadSensePowerThreshold",
 			Name: "Load Sense Power Threshold",
 			BitLength: 8,
 			BitOffset: 48,
@@ -20795,6 +21839,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "LoadSenseInterval",
 			Name: "Load Sense Interval",
 			BitLength: 8,
 			BitOffset: 56,
@@ -20815,6 +21860,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAgsConfigurationStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -20825,6 +21871,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "GeneratorInstance",
 			Name: "Generator Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -20835,6 +21882,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AgsMode",
 			Name: "AGS Mode",
 			BitLength: 8,
 			BitOffset: 16,
@@ -20845,6 +21893,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 40,
 			BitOffset: 24,
@@ -20865,6 +21914,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeBatteryConfigurationStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -20875,6 +21925,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "BatteryType",
 			Name: "Battery Type",
 			BitLength: 4,
 			BitOffset: 8,
@@ -20885,6 +21936,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SupportsEqualization",
 			Name: "Supports Equalization",
 			BitLength: 2,
 			BitOffset: 12,
@@ -20895,6 +21947,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 14,
@@ -20905,6 +21958,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "NominalVoltage",
 			Name: "Nominal Voltage",
 			BitLength: 4,
 			BitOffset: 16,
@@ -20915,6 +21969,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Chemistry",
 			Name: "Chemistry",
 			BitLength: 4,
 			BitOffset: 20,
@@ -20925,6 +21980,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Capacity",
 			Name: "Capacity",
 			BitLength: 16,
 			BitOffset: 24,
@@ -20935,6 +21991,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "TemperatureCoefficient",
 			Name: "Temperature Coefficient",
 			BitLength: 8,
 			BitOffset: 40,
@@ -20945,6 +22002,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		9: { 
+			Id: "PeukertExponent",
 			Name: "Peukert Exponent",
 			BitLength: 8,
 			BitOffset: 48,
@@ -20955,6 +22013,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "ChargeEfficiencyFactor",
 			Name: "Charge Efficiency Factor",
 			BitLength: 8,
 			BitOffset: 56,
@@ -20975,6 +22034,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAgsStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 0,
@@ -20985,6 +22045,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "GeneratorInstance",
 			Name: "Generator Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -20995,6 +22056,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AgsOperatingState",
 			Name: "AGS Operating State",
 			BitLength: 8,
 			BitOffset: 16,
@@ -21005,6 +22067,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "GeneratorState",
 			Name: "Generator State",
 			BitLength: 8,
 			BitOffset: 24,
@@ -21015,6 +22078,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "GeneratorOnReason",
 			Name: "Generator On Reason",
 			BitLength: 8,
 			BitOffset: 32,
@@ -21025,6 +22089,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "GeneratorOffReason",
 			Name: "Generator Off Reason",
 			BitLength: 8,
 			BitOffset: 40,
@@ -21035,6 +22100,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -21055,6 +22121,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAcPowerCurrentPhaseA,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21065,6 +22132,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "ConnectionNumber",
 			Name: "Connection Number",
 			BitLength: 8,
 			BitOffset: 8,
@@ -21075,6 +22143,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 16,
@@ -21085,6 +22154,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Power",
 			Name: "Power",
 			BitLength: 32,
 			BitOffset: 32,
@@ -21105,6 +22175,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAcPowerCurrentPhaseB,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21115,6 +22186,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "ConnectionNumber",
 			Name: "Connection Number",
 			BitLength: 8,
 			BitOffset: 8,
@@ -21125,6 +22197,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 16,
@@ -21135,6 +22208,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Power",
 			Name: "Power",
 			BitLength: 32,
 			BitOffset: 32,
@@ -21155,6 +22229,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAcPowerCurrentPhaseC,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21165,6 +22240,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "ConnectionNumber",
 			Name: "Connection Number",
 			BitLength: 8,
 			BitOffset: 8,
@@ -21175,6 +22251,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "AcRmsCurrent",
 			Name: "AC RMS Current",
 			BitLength: 16,
 			BitOffset: 16,
@@ -21185,6 +22262,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Power",
 			Name: "Power",
 			BitLength: 32,
 			BitOffset: 32,
@@ -21205,6 +22283,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeConverterStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21215,6 +22294,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "ConnectionNumber",
 			Name: "Connection Number",
 			BitLength: 8,
 			BitOffset: 8,
@@ -21225,6 +22305,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "OperatingState",
 			Name: "Operating State",
 			BitLength: 8,
 			BitOffset: 16,
@@ -21235,6 +22316,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "TemperatureState",
 			Name: "Temperature State",
 			BitLength: 2,
 			BitOffset: 24,
@@ -21245,6 +22327,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "OverloadState",
 			Name: "Overload State",
 			BitLength: 2,
 			BitOffset: 26,
@@ -21255,6 +22338,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "LowDcVoltageState",
 			Name: "Low DC Voltage State",
 			BitLength: 2,
 			BitOffset: 28,
@@ -21265,6 +22349,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "RippleState",
 			Name: "Ripple State",
 			BitLength: 2,
 			BitOffset: 30,
@@ -21275,6 +22360,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 32,
 			BitOffset: 32,
@@ -21295,6 +22381,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeDcVoltageCurrent,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21305,6 +22392,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "ConnectionNumber",
 			Name: "Connection Number",
 			BitLength: 8,
 			BitOffset: 8,
@@ -21315,6 +22403,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "DcVoltage",
 			Name: "DC Voltage",
 			BitLength: 16,
 			BitOffset: 16,
@@ -21325,6 +22414,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "DcCurrent",
 			Name: "DC Current",
 			BitLength: 24,
 			BitOffset: 32,
@@ -21335,6 +22425,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -21355,6 +22446,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeLeewayAngle,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21365,6 +22457,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "LeewayAngle",
 			Name: "Leeway Angle",
 			BitLength: 16,
 			BitOffset: 8,
@@ -21375,6 +22468,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 40,
 			BitOffset: 24,
@@ -21395,6 +22489,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeThrusterControlStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21405,6 +22500,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Identifier",
 			Name: "Identifier",
 			BitLength: 8,
 			BitOffset: 8,
@@ -21415,6 +22511,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "DirectionControl",
 			Name: "Direction Control",
 			BitLength: 4,
 			BitOffset: 16,
@@ -21425,6 +22522,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "PowerEnabled",
 			Name: "Power Enabled",
 			BitLength: 2,
 			BitOffset: 20,
@@ -21435,6 +22533,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "RetractControl",
 			Name: "Retract Control",
 			BitLength: 2,
 			BitOffset: 22,
@@ -21445,6 +22544,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "SpeedControl",
 			Name: "Speed Control",
 			BitLength: 8,
 			BitOffset: 24,
@@ -21455,6 +22555,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "ControlEvents",
 			Name: "Control Events",
 			BitLength: 8,
 			BitOffset: 32,
@@ -21465,6 +22566,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "CommandTimeout",
 			Name: "Command Timeout",
 			BitLength: 8,
 			BitOffset: 40,
@@ -21475,6 +22577,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "AzimuthControl",
 			Name: "Azimuth Control",
 			BitLength: 16,
 			BitOffset: 48,
@@ -21495,6 +22598,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeThrusterInformation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Identifier",
 			Name: "Identifier",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21505,6 +22609,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "MotorType",
 			Name: "Motor Type",
 			BitLength: 4,
 			BitOffset: 8,
@@ -21515,6 +22620,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 12,
@@ -21525,6 +22631,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "PowerRating",
 			Name: "Power Rating",
 			BitLength: 16,
 			BitOffset: 16,
@@ -21535,6 +22642,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "MaximumTemperatureRating",
 			Name: "Maximum Temperature Rating",
 			BitLength: 16,
 			BitOffset: 32,
@@ -21545,6 +22653,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "MaximumRotationalSpeed",
 			Name: "Maximum Rotational Speed",
 			BitLength: 16,
 			BitOffset: 48,
@@ -21565,6 +22674,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeThrusterMotorStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21575,6 +22685,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Identifier",
 			Name: "Identifier",
 			BitLength: 8,
 			BitOffset: 8,
@@ -21585,6 +22696,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "MotorEvents",
 			Name: "Motor Events",
 			BitLength: 8,
 			BitOffset: 16,
@@ -21595,6 +22707,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Current",
 			Name: "Current",
 			BitLength: 8,
 			BitOffset: 24,
@@ -21605,6 +22718,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Temperature",
 			Name: "Temperature",
 			BitLength: 16,
 			BitOffset: 32,
@@ -21615,6 +22729,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "OperatingTime",
 			Name: "Operating Time",
 			BitLength: 16,
 			BitOffset: 48,
@@ -21635,6 +22750,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSpeed,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21645,6 +22761,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "SpeedWaterReferenced",
 			Name: "Speed Water Referenced",
 			BitLength: 16,
 			BitOffset: 8,
@@ -21655,6 +22772,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SpeedGroundReferenced",
 			Name: "Speed Ground Referenced",
 			BitLength: 16,
 			BitOffset: 24,
@@ -21665,6 +22783,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "SpeedWaterReferencedType",
 			Name: "Speed Water Referenced Type",
 			BitLength: 8,
 			BitOffset: 40,
@@ -21675,6 +22794,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SpeedDirection",
 			Name: "Speed Direction",
 			BitLength: 4,
 			BitOffset: 48,
@@ -21685,6 +22805,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 12,
 			BitOffset: 52,
@@ -21705,6 +22826,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeWaterDepth,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21715,6 +22837,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Depth",
 			Name: "Depth",
 			BitLength: 32,
 			BitOffset: 8,
@@ -21725,6 +22848,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Offset",
 			Name: "Offset",
 			BitLength: 16,
 			BitOffset: 40,
@@ -21735,6 +22859,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "Range",
 			Name: "Range",
 			BitLength: 8,
 			BitOffset: 56,
@@ -21755,6 +22880,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeDistanceLog,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Date",
 			Name: "Date",
 			BitLength: 16,
 			BitOffset: 0,
@@ -21765,6 +22891,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Time",
 			Name: "Time",
 			BitLength: 32,
 			BitOffset: 16,
@@ -21775,6 +22902,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Log",
 			Name: "Log",
 			BitLength: 32,
 			BitOffset: 48,
@@ -21785,6 +22913,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "TripLog",
 			Name: "Trip Log",
 			BitLength: 32,
 			BitOffset: 80,
@@ -21805,6 +22934,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeTrackedTargetData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21815,6 +22945,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TargetId",
 			Name: "Target ID #",
 			BitLength: 8,
 			BitOffset: 8,
@@ -21825,6 +22956,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "TrackStatus",
 			Name: "Track Status",
 			BitLength: 2,
 			BitOffset: 16,
@@ -21835,6 +22967,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ReportedTarget",
 			Name: "Reported Target",
 			BitLength: 1,
 			BitOffset: 18,
@@ -21845,6 +22978,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "TargetAcquisition",
 			Name: "Target Acquisition",
 			BitLength: 1,
 			BitOffset: 19,
@@ -21855,6 +22989,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "BearingReference",
 			Name: "Bearing Reference",
 			BitLength: 2,
 			BitOffset: 20,
@@ -21865,6 +23000,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 22,
@@ -21875,6 +23011,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Bearing",
 			Name: "Bearing",
 			BitLength: 16,
 			BitOffset: 24,
@@ -21885,6 +23022,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Distance",
 			Name: "Distance",
 			BitLength: 32,
 			BitOffset: 40,
@@ -21895,6 +23033,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Course",
 			Name: "Course",
 			BitLength: 16,
 			BitOffset: 72,
@@ -21905,6 +23044,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Speed",
 			Name: "Speed",
 			BitLength: 16,
 			BitOffset: 88,
@@ -21915,6 +23055,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Cpa",
 			Name: "CPA",
 			BitLength: 32,
 			BitOffset: 104,
@@ -21925,6 +23066,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Tcpa",
 			Name: "TCPA",
 			BitLength: 32,
 			BitOffset: 136,
@@ -21935,6 +23077,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		14: { 
+			Id: "UtcOfFix",
 			Name: "UTC of Fix",
 			BitLength: 32,
 			BitOffset: 168,
@@ -21945,6 +23088,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "Name",
 			Name: "Name",
 			BitLength: 1784,
 			BitOffset: 200,
@@ -21965,6 +23109,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeWindlassControlStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -21975,6 +23120,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "WindlassId",
 			Name: "Windlass ID",
 			BitLength: 8,
 			BitOffset: 8,
@@ -21985,6 +23131,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "WindlassDirectionControl",
 			Name: "Windlass Direction Control",
 			BitLength: 2,
 			BitOffset: 16,
@@ -21995,6 +23142,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AnchorDockingControl",
 			Name: "Anchor Docking Control",
 			BitLength: 2,
 			BitOffset: 18,
@@ -22005,6 +23153,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SpeedControlType",
 			Name: "Speed Control Type",
 			BitLength: 2,
 			BitOffset: 20,
@@ -22015,6 +23164,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 22,
@@ -22025,6 +23175,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "SpeedControl",
 			Name: "Speed Control",
 			BitLength: 8,
 			BitOffset: 24,
@@ -22035,6 +23186,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "PowerEnable",
 			Name: "Power Enable",
 			BitLength: 2,
 			BitOffset: 32,
@@ -22045,6 +23197,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "MechanicalLock",
 			Name: "Mechanical Lock",
 			BitLength: 2,
 			BitOffset: 34,
@@ -22055,6 +23208,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "DeckAndAnchorWash",
 			Name: "Deck and Anchor Wash",
 			BitLength: 2,
 			BitOffset: 36,
@@ -22065,6 +23219,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "AnchorLight",
 			Name: "Anchor Light",
 			BitLength: 2,
 			BitOffset: 38,
@@ -22075,6 +23230,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "CommandTimeout",
 			Name: "Command Timeout",
 			BitLength: 8,
 			BitOffset: 40,
@@ -22085,6 +23241,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "WindlassControlEvents",
 			Name: "Windlass Control Events",
 			BitLength: 4,
 			BitOffset: 48,
@@ -22095,6 +23252,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "Reserved14",
 			Name: "Reserved",
 			BitLength: 12,
 			BitOffset: 52,
@@ -22115,6 +23273,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAnchorWindlassOperatingStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -22125,6 +23284,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "WindlassId",
 			Name: "Windlass ID",
 			BitLength: 8,
 			BitOffset: 8,
@@ -22135,6 +23295,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "WindlassDirectionControl",
 			Name: "Windlass Direction Control",
 			BitLength: 2,
 			BitOffset: 16,
@@ -22145,6 +23306,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "WindlassMotionStatus",
 			Name: "Windlass Motion Status",
 			BitLength: 2,
 			BitOffset: 18,
@@ -22155,6 +23317,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "RodeTypeStatus",
 			Name: "Rode Type Status",
 			BitLength: 2,
 			BitOffset: 20,
@@ -22165,6 +23328,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 22,
@@ -22175,6 +23339,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "RodeCounterValue",
 			Name: "Rode Counter Value",
 			BitLength: 16,
 			BitOffset: 24,
@@ -22185,6 +23350,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "WindlassLineSpeed",
 			Name: "Windlass Line Speed",
 			BitLength: 16,
 			BitOffset: 40,
@@ -22195,6 +23361,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "AnchorDockingStatus",
 			Name: "Anchor Docking Status",
 			BitLength: 2,
 			BitOffset: 56,
@@ -22205,6 +23372,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "WindlassOperatingEvents",
 			Name: "Windlass Operating Events",
 			BitLength: 6,
 			BitOffset: 58,
@@ -22225,6 +23393,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAnchorWindlassMonitoringStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -22235,6 +23404,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "WindlassId",
 			Name: "Windlass ID",
 			BitLength: 8,
 			BitOffset: 8,
@@ -22245,6 +23415,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "WindlassMonitoringEvents",
 			Name: "Windlass Monitoring Events",
 			BitLength: 8,
 			BitOffset: 16,
@@ -22255,6 +23426,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ControllerVoltage",
 			Name: "Controller voltage",
 			BitLength: 8,
 			BitOffset: 24,
@@ -22265,6 +23437,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "MotorCurrent",
 			Name: "Motor current",
 			BitLength: 8,
 			BitOffset: 32,
@@ -22275,6 +23448,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "TotalMotorTime",
 			Name: "Total Motor Time",
 			BitLength: 16,
 			BitOffset: 40,
@@ -22285,6 +23459,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -22305,6 +23480,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodePositionRapidUpdate,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Latitude",
 			Name: "Latitude",
 			BitLength: 32,
 			BitOffset: 0,
@@ -22315,6 +23491,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		2: { 
+			Id: "Longitude",
 			Name: "Longitude",
 			BitLength: 32,
 			BitOffset: 32,
@@ -22335,6 +23512,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeCogSogRapidUpdate,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -22345,6 +23523,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "CogReference",
 			Name: "COG Reference",
 			BitLength: 2,
 			BitOffset: 8,
@@ -22355,6 +23534,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 10,
@@ -22365,6 +23545,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Cog",
 			Name: "COG",
 			BitLength: 16,
 			BitOffset: 16,
@@ -22375,6 +23556,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Sog",
 			Name: "SOG",
 			BitLength: 16,
 			BitOffset: 32,
@@ -22385,6 +23567,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -22405,6 +23588,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodePositionDeltaRapidUpdate,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -22415,6 +23599,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TimeDelta",
 			Name: "Time Delta",
 			BitLength: 16,
 			BitOffset: 8,
@@ -22425,6 +23610,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "LatitudeDelta",
 			Name: "Latitude Delta",
 			BitLength: 16,
 			BitOffset: 24,
@@ -22435,6 +23621,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "LongitudeDelta",
 			Name: "Longitude Delta",
 			BitLength: 16,
 			BitOffset: 40,
@@ -22445,6 +23632,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -22465,6 +23653,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAltitudeDeltaRapidUpdate,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -22475,6 +23664,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TimeDelta",
 			Name: "Time Delta",
 			BitLength: 16,
 			BitOffset: 8,
@@ -22485,6 +23675,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		3: { 
+			Id: "GnssQuality",
 			Name: "GNSS Quality",
 			BitLength: 2,
 			BitOffset: 24,
@@ -22495,6 +23686,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Direction",
 			Name: "Direction",
 			BitLength: 2,
 			BitOffset: 26,
@@ -22505,6 +23697,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 28,
@@ -22515,6 +23708,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Cog",
 			Name: "COG",
 			BitLength: 16,
 			BitOffset: 32,
@@ -22525,6 +23719,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "AltitudeDelta",
 			Name: "Altitude Delta",
 			BitLength: 16,
 			BitOffset: 48,
@@ -22545,6 +23740,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGnssPositionData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -22555,6 +23751,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Date",
 			Name: "Date",
 			BitLength: 16,
 			BitOffset: 8,
@@ -22565,6 +23762,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Time",
 			Name: "Time",
 			BitLength: 32,
 			BitOffset: 24,
@@ -22575,6 +23773,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Latitude",
 			Name: "Latitude",
 			BitLength: 64,
 			BitOffset: 56,
@@ -22585,6 +23784,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Longitude",
 			Name: "Longitude",
 			BitLength: 64,
 			BitOffset: 120,
@@ -22595,6 +23795,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "Altitude",
 			Name: "Altitude",
 			BitLength: 64,
 			BitOffset: 184,
@@ -22605,6 +23806,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "GnssType",
 			Name: "GNSS type",
 			BitLength: 4,
 			BitOffset: 248,
@@ -22615,6 +23817,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Method",
 			Name: "Method",
 			BitLength: 4,
 			BitOffset: 252,
@@ -22625,6 +23828,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Integrity",
 			Name: "Integrity",
 			BitLength: 2,
 			BitOffset: 256,
@@ -22635,6 +23839,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 258,
@@ -22645,6 +23850,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "NumberOfSvs",
 			Name: "Number of SVs",
 			BitLength: 8,
 			BitOffset: 264,
@@ -22655,6 +23861,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Hdop",
 			Name: "HDOP",
 			BitLength: 16,
 			BitOffset: 272,
@@ -22665,6 +23872,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		13: { 
+			Id: "Pdop",
 			Name: "PDOP",
 			BitLength: 16,
 			BitOffset: 288,
@@ -22675,6 +23883,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		14: { 
+			Id: "GeoidalSeparation",
 			Name: "Geoidal Separation",
 			BitLength: 32,
 			BitOffset: 304,
@@ -22685,6 +23894,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		15: { 
+			Id: "ReferenceStations",
 			Name: "Reference Stations",
 			BitLength: 8,
 			BitOffset: 336,
@@ -22695,6 +23905,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "ReferenceStationType",
 			Name: "Reference Station Type",
 			BitLength: 4,
 			BitOffset: 344,
@@ -22705,6 +23916,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "ReferenceStationId",
 			Name: "Reference Station ID",
 			BitLength: 12,
 			BitOffset: 348,
@@ -22715,6 +23927,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "AgeOfDgnssCorrections",
 			Name: "Age of DGNSS Corrections",
 			BitLength: 16,
 			BitOffset: 360,
@@ -22735,6 +23948,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeTimeDate,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Date",
 			Name: "Date",
 			BitLength: 16,
 			BitOffset: 0,
@@ -22745,6 +23959,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Time",
 			Name: "Time",
 			BitLength: 32,
 			BitOffset: 16,
@@ -22755,6 +23970,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "LocalOffset",
 			Name: "Local Offset",
 			BitLength: 16,
 			BitOffset: 48,
@@ -22775,6 +23991,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisClassAPositionReport,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -22785,6 +24002,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -22795,6 +24013,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "UserId",
 			Name: "User ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -22805,6 +24024,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Longitude",
 			Name: "Longitude",
 			BitLength: 32,
 			BitOffset: 40,
@@ -22815,6 +24035,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Latitude",
 			Name: "Latitude",
 			BitLength: 32,
 			BitOffset: 72,
@@ -22825,6 +24046,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "PositionAccuracy",
 			Name: "Position Accuracy",
 			BitLength: 1,
 			BitOffset: 104,
@@ -22835,6 +24057,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Raim",
 			Name: "RAIM",
 			BitLength: 1,
 			BitOffset: 105,
@@ -22845,6 +24068,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "TimeStamp",
 			Name: "Time Stamp",
 			BitLength: 6,
 			BitOffset: 106,
@@ -22855,6 +24079,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Cog",
 			Name: "COG",
 			BitLength: 16,
 			BitOffset: 112,
@@ -22865,6 +24090,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Sog",
 			Name: "SOG",
 			BitLength: 16,
 			BitOffset: 128,
@@ -22875,6 +24101,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "CommunicationState",
 			Name: "Communication State",
 			BitLength: 19,
 			BitOffset: 144,
@@ -22885,6 +24112,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 163,
@@ -22895,6 +24123,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Heading",
 			Name: "Heading",
 			BitLength: 16,
 			BitOffset: 168,
@@ -22905,6 +24134,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "RateOfTurn",
 			Name: "Rate of Turn",
 			BitLength: 16,
 			BitOffset: 184,
@@ -22915,6 +24145,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		15: { 
+			Id: "NavStatus",
 			Name: "Nav Status",
 			BitLength: 4,
 			BitOffset: 200,
@@ -22925,6 +24156,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "SpecialManeuverIndicator",
 			Name: "Special Maneuver Indicator",
 			BitLength: 2,
 			BitOffset: 204,
@@ -22935,6 +24167,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 206,
@@ -22945,6 +24178,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "Spare18",
 			Name: "Spare",
 			BitLength: 3,
 			BitOffset: 208,
@@ -22955,6 +24189,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "Reserved19",
 			Name: "Reserved",
 			BitLength: 5,
 			BitOffset: 211,
@@ -22965,6 +24200,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		20: { 
+			Id: "SequenceId",
 			Name: "Sequence ID",
 			BitLength: 8,
 			BitOffset: 216,
@@ -22985,6 +24221,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisClassBPositionReport,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -22995,6 +24232,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -23005,6 +24243,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "UserId",
 			Name: "User ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -23015,6 +24254,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Longitude",
 			Name: "Longitude",
 			BitLength: 32,
 			BitOffset: 40,
@@ -23025,6 +24265,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Latitude",
 			Name: "Latitude",
 			BitLength: 32,
 			BitOffset: 72,
@@ -23035,6 +24276,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "PositionAccuracy",
 			Name: "Position Accuracy",
 			BitLength: 1,
 			BitOffset: 104,
@@ -23045,6 +24287,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Raim",
 			Name: "RAIM",
 			BitLength: 1,
 			BitOffset: 105,
@@ -23055,6 +24298,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "TimeStamp",
 			Name: "Time Stamp",
 			BitLength: 6,
 			BitOffset: 106,
@@ -23065,6 +24309,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Cog",
 			Name: "COG",
 			BitLength: 16,
 			BitOffset: 112,
@@ -23075,6 +24320,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Sog",
 			Name: "SOG",
 			BitLength: 16,
 			BitOffset: 128,
@@ -23085,6 +24331,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "CommunicationState",
 			Name: "Communication State",
 			BitLength: 19,
 			BitOffset: 144,
@@ -23095,6 +24342,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 163,
@@ -23105,6 +24353,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Heading",
 			Name: "Heading",
 			BitLength: 16,
 			BitOffset: 168,
@@ -23115,6 +24364,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "RegionalApplication",
 			Name: "Regional Application",
 			BitLength: 8,
 			BitOffset: 184,
@@ -23125,6 +24375,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "RegionalApplicationB",
 			Name: "Regional Application B",
 			BitLength: 2,
 			BitOffset: 192,
@@ -23135,6 +24386,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "UnitType",
 			Name: "Unit type",
 			BitLength: 1,
 			BitOffset: 194,
@@ -23145,6 +24397,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "IntegratedDisplay",
 			Name: "Integrated Display",
 			BitLength: 1,
 			BitOffset: 195,
@@ -23155,6 +24408,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "Dsc",
 			Name: "DSC",
 			BitLength: 1,
 			BitOffset: 196,
@@ -23165,6 +24419,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "Band",
 			Name: "Band",
 			BitLength: 1,
 			BitOffset: 197,
@@ -23175,6 +24430,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		20: { 
+			Id: "CanHandleMsg22",
 			Name: "Can handle Msg 22",
 			BitLength: 1,
 			BitOffset: 198,
@@ -23185,6 +24441,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		21: { 
+			Id: "AisMode",
 			Name: "AIS mode",
 			BitLength: 1,
 			BitOffset: 199,
@@ -23195,6 +24452,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		22: { 
+			Id: "AisCommunicationState",
 			Name: "AIS communication state",
 			BitLength: 1,
 			BitOffset: 200,
@@ -23205,6 +24463,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		23: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 15,
 			BitOffset: 201,
@@ -23225,6 +24484,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisClassBExtendedPositionReport,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -23235,6 +24495,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -23245,6 +24506,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "UserId",
 			Name: "User ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -23255,6 +24517,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Longitude",
 			Name: "Longitude",
 			BitLength: 32,
 			BitOffset: 40,
@@ -23265,6 +24528,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Latitude",
 			Name: "Latitude",
 			BitLength: 32,
 			BitOffset: 72,
@@ -23275,6 +24539,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "PositionAccuracy",
 			Name: "Position Accuracy",
 			BitLength: 1,
 			BitOffset: 104,
@@ -23285,6 +24550,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Raim",
 			Name: "RAIM",
 			BitLength: 1,
 			BitOffset: 105,
@@ -23295,6 +24561,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "TimeStamp",
 			Name: "Time Stamp",
 			BitLength: 6,
 			BitOffset: 106,
@@ -23305,6 +24572,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Cog",
 			Name: "COG",
 			BitLength: 16,
 			BitOffset: 112,
@@ -23315,6 +24583,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Sog",
 			Name: "SOG",
 			BitLength: 16,
 			BitOffset: 128,
@@ -23325,6 +24594,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "RegionalApplication",
 			Name: "Regional Application",
 			BitLength: 8,
 			BitOffset: 144,
@@ -23335,6 +24605,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "RegionalApplicationB",
 			Name: "Regional Application B",
 			BitLength: 4,
 			BitOffset: 152,
@@ -23345,6 +24616,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 156,
@@ -23355,6 +24627,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "TypeOfShip",
 			Name: "Type of ship",
 			BitLength: 8,
 			BitOffset: 160,
@@ -23365,6 +24638,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "TrueHeading",
 			Name: "True Heading",
 			BitLength: 16,
 			BitOffset: 168,
@@ -23375,6 +24649,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "Reserved16",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 184,
@@ -23385,6 +24660,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "GnssType",
 			Name: "GNSS type",
 			BitLength: 4,
 			BitOffset: 188,
@@ -23395,6 +24671,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "Length",
 			Name: "Length",
 			BitLength: 16,
 			BitOffset: 192,
@@ -23405,6 +24682,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "Beam",
 			Name: "Beam",
 			BitLength: 16,
 			BitOffset: 208,
@@ -23415,6 +24693,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		20: { 
+			Id: "PositionReferenceFromStarboard",
 			Name: "Position reference from Starboard",
 			BitLength: 16,
 			BitOffset: 224,
@@ -23425,6 +24704,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		21: { 
+			Id: "PositionReferenceFromBow",
 			Name: "Position reference from Bow",
 			BitLength: 16,
 			BitOffset: 240,
@@ -23435,6 +24715,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		22: { 
+			Id: "Name",
 			Name: "Name",
 			BitLength: 160,
 			BitOffset: 256,
@@ -23445,6 +24726,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		23: { 
+			Id: "Dte",
 			Name: "DTE",
 			BitLength: 1,
 			BitOffset: 416,
@@ -23455,6 +24737,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		24: { 
+			Id: "AisMode",
 			Name: "AIS mode",
 			BitLength: 1,
 			BitOffset: 417,
@@ -23465,6 +24748,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		25: { 
+			Id: "Spare25",
 			Name: "Spare",
 			BitLength: 4,
 			BitOffset: 418,
@@ -23475,6 +24759,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		26: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 422,
@@ -23485,6 +24770,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		27: { 
+			Id: "Reserved27",
 			Name: "Reserved",
 			BitLength: 5,
 			BitOffset: 427,
@@ -23505,6 +24791,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisAidsToNavigationAtonReport,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -23515,6 +24802,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -23525,6 +24813,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "UserId",
 			Name: "User ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -23535,6 +24824,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Longitude",
 			Name: "Longitude",
 			BitLength: 32,
 			BitOffset: 40,
@@ -23545,6 +24835,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Latitude",
 			Name: "Latitude",
 			BitLength: 32,
 			BitOffset: 72,
@@ -23555,6 +24846,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "PositionAccuracy",
 			Name: "Position Accuracy",
 			BitLength: 1,
 			BitOffset: 104,
@@ -23565,6 +24857,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Raim",
 			Name: "RAIM",
 			BitLength: 1,
 			BitOffset: 105,
@@ -23575,6 +24868,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "TimeStamp",
 			Name: "Time Stamp",
 			BitLength: 6,
 			BitOffset: 106,
@@ -23585,6 +24879,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "LengthDiameter",
 			Name: "Length/Diameter",
 			BitLength: 16,
 			BitOffset: 112,
@@ -23595,6 +24890,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "BeamDiameter",
 			Name: "Beam/Diameter",
 			BitLength: 16,
 			BitOffset: 128,
@@ -23605,6 +24901,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "PositionReferenceFromStarboardEdge",
 			Name: "Position Reference from Starboard Edge",
 			BitLength: 16,
 			BitOffset: 144,
@@ -23615,6 +24912,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "PositionReferenceFromTrueNorthFacingEdge",
 			Name: "Position Reference from True North Facing Edge",
 			BitLength: 16,
 			BitOffset: 160,
@@ -23625,6 +24923,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "AtonType",
 			Name: "AtoN Type",
 			BitLength: 5,
 			BitOffset: 176,
@@ -23635,6 +24934,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "OffPositionIndicator",
 			Name: "Off Position Indicator",
 			BitLength: 1,
 			BitOffset: 181,
@@ -23645,6 +24945,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "VirtualAtonFlag",
 			Name: "Virtual AtoN Flag",
 			BitLength: 1,
 			BitOffset: 182,
@@ -23655,6 +24956,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "AssignedModeFlag",
 			Name: "Assigned Mode Flag",
 			BitLength: 1,
 			BitOffset: 183,
@@ -23665,6 +24967,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "Spare",
 			Name: "Spare",
 			BitLength: 1,
 			BitOffset: 184,
@@ -23675,6 +24978,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "PositionFixingDeviceType",
 			Name: "Position Fixing Device Type",
 			BitLength: 4,
 			BitOffset: 185,
@@ -23685,6 +24989,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "Reserved19",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 189,
@@ -23695,6 +25000,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		20: { 
+			Id: "AtonStatus",
 			Name: "AtoN Status",
 			BitLength: 8,
 			BitOffset: 192,
@@ -23705,6 +25011,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		21: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 200,
@@ -23715,6 +25022,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		22: { 
+			Id: "Reserved22",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 205,
@@ -23725,6 +25033,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		23: { 
+			Id: "AtonName",
 			Name: "AtoN Name",
 			BitLength: 0,
 			BitOffset: 0,
@@ -23745,6 +25054,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeDatum,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LocalDatum",
 			Name: "Local Datum",
 			BitLength: 32,
 			BitOffset: 0,
@@ -23755,6 +25065,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "DeltaLatitude",
 			Name: "Delta Latitude",
 			BitLength: 32,
 			BitOffset: 32,
@@ -23765,6 +25076,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		3: { 
+			Id: "DeltaLongitude",
 			Name: "Delta Longitude",
 			BitLength: 32,
 			BitOffset: 64,
@@ -23775,6 +25087,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "DeltaAltitude",
 			Name: "Delta Altitude",
 			BitLength: 32,
 			BitOffset: 96,
@@ -23785,6 +25098,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "ReferenceDatum",
 			Name: "Reference Datum",
 			BitLength: 32,
 			BitOffset: 128,
@@ -23805,6 +25119,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeUserDatum,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "DeltaX",
 			Name: "Delta X",
 			BitLength: 32,
 			BitOffset: 0,
@@ -23815,6 +25130,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		2: { 
+			Id: "DeltaY",
 			Name: "Delta Y",
 			BitLength: 32,
 			BitOffset: 32,
@@ -23825,6 +25141,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		3: { 
+			Id: "DeltaZ",
 			Name: "Delta Z",
 			BitLength: 32,
 			BitOffset: 64,
@@ -23835,6 +25152,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "RotationInX",
 			Name: "Rotation in X",
 			BitLength: 32,
 			BitOffset: 96,
@@ -23845,6 +25163,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "RotationInY",
 			Name: "Rotation in Y",
 			BitLength: 32,
 			BitOffset: 128,
@@ -23855,6 +25174,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "RotationInZ",
 			Name: "Rotation in Z",
 			BitLength: 32,
 			BitOffset: 160,
@@ -23865,6 +25185,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "Scale",
 			Name: "Scale",
 			BitLength: 32,
 			BitOffset: 192,
@@ -23875,6 +25196,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		8: { 
+			Id: "EllipsoidSemiMajorAxis",
 			Name: "Ellipsoid Semi-major Axis",
 			BitLength: 32,
 			BitOffset: 224,
@@ -23885,6 +25207,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		9: { 
+			Id: "EllipsoidFlatteningInverse",
 			Name: "Ellipsoid Flattening Inverse",
 			BitLength: 32,
 			BitOffset: 256,
@@ -23895,6 +25218,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		10: { 
+			Id: "DatumName",
 			Name: "Datum Name",
 			BitLength: 32,
 			BitOffset: 288,
@@ -23915,6 +25239,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeCrossTrackError,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -23925,6 +25250,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "XteMode",
 			Name: "XTE mode",
 			BitLength: 4,
 			BitOffset: 8,
@@ -23935,6 +25261,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 12,
@@ -23945,6 +25272,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "NavigationTerminated",
 			Name: "Navigation Terminated",
 			BitLength: 2,
 			BitOffset: 14,
@@ -23955,6 +25283,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Xte",
 			Name: "XTE",
 			BitLength: 32,
 			BitOffset: 16,
@@ -23965,6 +25294,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -23985,6 +25315,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNavigationData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -23995,6 +25326,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "DistanceToWaypoint",
 			Name: "Distance to Waypoint",
 			BitLength: 32,
 			BitOffset: 8,
@@ -24005,6 +25337,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "CourseBearingReference",
 			Name: "Course/Bearing reference",
 			BitLength: 2,
 			BitOffset: 40,
@@ -24015,6 +25348,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "PerpendicularCrossed",
 			Name: "Perpendicular Crossed",
 			BitLength: 2,
 			BitOffset: 42,
@@ -24025,6 +25359,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ArrivalCircleEntered",
 			Name: "Arrival Circle Entered",
 			BitLength: 2,
 			BitOffset: 44,
@@ -24035,6 +25370,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "CalculationType",
 			Name: "Calculation Type",
 			BitLength: 2,
 			BitOffset: 46,
@@ -24045,6 +25381,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "EtaTime",
 			Name: "ETA Time",
 			BitLength: 32,
 			BitOffset: 48,
@@ -24055,6 +25392,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "EtaDate",
 			Name: "ETA Date",
 			BitLength: 16,
 			BitOffset: 80,
@@ -24065,6 +25403,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "BearingOriginToDestinationWaypoint",
 			Name: "Bearing, Origin to Destination Waypoint",
 			BitLength: 16,
 			BitOffset: 96,
@@ -24075,6 +25414,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "BearingPositionToDestinationWaypoint",
 			Name: "Bearing, Position to Destination Waypoint",
 			BitLength: 16,
 			BitOffset: 112,
@@ -24085,6 +25425,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "OriginWaypointNumber",
 			Name: "Origin Waypoint Number",
 			BitLength: 32,
 			BitOffset: 128,
@@ -24095,6 +25436,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "DestinationWaypointNumber",
 			Name: "Destination Waypoint Number",
 			BitLength: 32,
 			BitOffset: 160,
@@ -24105,6 +25447,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "DestinationLatitude",
 			Name: "Destination Latitude",
 			BitLength: 32,
 			BitOffset: 192,
@@ -24115,6 +25458,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		14: { 
+			Id: "DestinationLongitude",
 			Name: "Destination Longitude",
 			BitLength: 32,
 			BitOffset: 224,
@@ -24125,6 +25469,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		15: { 
+			Id: "WaypointClosingVelocity",
 			Name: "Waypoint Closing Velocity",
 			BitLength: 16,
 			BitOffset: 256,
@@ -24145,6 +25490,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNavigationRouteWpInformation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "StartRps",
 			Name: "Start RPS#",
 			BitLength: 16,
 			BitOffset: 0,
@@ -24155,6 +25501,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Nitems",
 			Name: "nItems",
 			BitLength: 16,
 			BitOffset: 16,
@@ -24165,6 +25512,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "DatabaseId",
 			Name: "Database ID",
 			BitLength: 16,
 			BitOffset: 32,
@@ -24175,6 +25523,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "RouteId",
 			Name: "Route ID",
 			BitLength: 16,
 			BitOffset: 48,
@@ -24185,6 +25534,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "NavigationDirectionInRoute",
 			Name: "Navigation direction in route",
 			BitLength: 3,
 			BitOffset: 64,
@@ -24195,6 +25545,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "SupplementaryRouteWpDataAvailable",
 			Name: "Supplementary Route/WP data available",
 			BitLength: 2,
 			BitOffset: 67,
@@ -24205,6 +25556,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 69,
@@ -24215,6 +25567,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "RouteName",
 			Name: "Route Name",
 			BitLength: 0,
 			BitOffset: 0,
@@ -24225,6 +25578,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Reserved9",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 0,
@@ -24235,6 +25589,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "WpId",
 			Name: "WP ID",
 			BitLength: 16,
 			BitOffset: 0,
@@ -24245,6 +25600,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "WpName",
 			Name: "WP Name",
 			BitLength: 0,
 			BitOffset: 0,
@@ -24255,6 +25611,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "WpLatitude",
 			Name: "WP Latitude",
 			BitLength: 32,
 			BitOffset: 0,
@@ -24265,6 +25622,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		13: { 
+			Id: "WpLongitude",
 			Name: "WP Longitude",
 			BitLength: 32,
 			BitOffset: 0,
@@ -24285,6 +25643,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSetDriftRapidUpdate,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -24295,6 +25654,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "SetReference",
 			Name: "Set Reference",
 			BitLength: 2,
 			BitOffset: 8,
@@ -24305,6 +25665,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 10,
@@ -24315,6 +25676,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Set",
 			Name: "Set",
 			BitLength: 16,
 			BitOffset: 16,
@@ -24325,6 +25687,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Drift",
 			Name: "Drift",
 			BitLength: 16,
 			BitOffset: 32,
@@ -24335,6 +25698,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 16,
 			BitOffset: 48,
@@ -24355,6 +25719,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGnssDops,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -24365,6 +25730,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "DesiredMode",
 			Name: "Desired Mode",
 			BitLength: 3,
 			BitOffset: 8,
@@ -24375,6 +25741,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "ActualMode",
 			Name: "Actual Mode",
 			BitLength: 3,
 			BitOffset: 11,
@@ -24385,6 +25752,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 14,
@@ -24395,6 +25763,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Hdop",
 			Name: "HDOP",
 			BitLength: 16,
 			BitOffset: 16,
@@ -24405,6 +25774,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "Vdop",
 			Name: "VDOP",
 			BitLength: 16,
 			BitOffset: 32,
@@ -24415,6 +25785,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "Tdop",
 			Name: "TDOP",
 			BitLength: 16,
 			BitOffset: 48,
@@ -24435,6 +25806,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGnssSatsInView,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -24445,6 +25817,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RangeResidualMode",
 			Name: "Range Residual Mode",
 			BitLength: 2,
 			BitOffset: 8,
@@ -24455,6 +25828,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 10,
@@ -24465,6 +25839,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "SatsInView",
 			Name: "Sats in View",
 			BitLength: 8,
 			BitOffset: 16,
@@ -24475,6 +25850,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Prn",
 			Name: "PRN",
 			BitLength: 8,
 			BitOffset: 24,
@@ -24485,6 +25861,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Elevation",
 			Name: "Elevation",
 			BitLength: 16,
 			BitOffset: 32,
@@ -24495,6 +25872,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "Azimuth",
 			Name: "Azimuth",
 			BitLength: 16,
 			BitOffset: 48,
@@ -24505,6 +25883,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Snr",
 			Name: "SNR",
 			BitLength: 16,
 			BitOffset: 64,
@@ -24515,6 +25894,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "RangeResiduals",
 			Name: "Range residuals",
 			BitLength: 32,
 			BitOffset: 80,
@@ -24525,6 +25905,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		10: { 
+			Id: "Status",
 			Name: "Status",
 			BitLength: 4,
 			BitOffset: 112,
@@ -24535,6 +25916,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Reserved11",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 116,
@@ -24555,6 +25937,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeGpsAlmanacData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Prn",
 			Name: "PRN",
 			BitLength: 8,
 			BitOffset: 0,
@@ -24565,6 +25948,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "GpsWeekNumber",
 			Name: "GPS Week number",
 			BitLength: 16,
 			BitOffset: 8,
@@ -24575,6 +25959,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SvHealthBits",
 			Name: "SV Health Bits",
 			BitLength: 8,
 			BitOffset: 24,
@@ -24585,6 +25970,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Eccentricity",
 			Name: "Eccentricity",
 			BitLength: 16,
 			BitOffset: 32,
@@ -24595,6 +25981,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AlmanacReferenceTime",
 			Name: "Almanac Reference Time",
 			BitLength: 8,
 			BitOffset: 48,
@@ -24605,6 +25992,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "InclinationAngle",
 			Name: "Inclination Angle",
 			BitLength: 16,
 			BitOffset: 56,
@@ -24615,6 +26003,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "RateOfRightAscension",
 			Name: "Rate of Right Ascension",
 			BitLength: 16,
 			BitOffset: 72,
@@ -24625,6 +26014,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		8: { 
+			Id: "RootOfSemiMajorAxis",
 			Name: "Root of Semi-major Axis",
 			BitLength: 24,
 			BitOffset: 88,
@@ -24635,6 +26025,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "ArgumentOfPerigee",
 			Name: "Argument of Perigee",
 			BitLength: 24,
 			BitOffset: 112,
@@ -24645,6 +26036,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		10: { 
+			Id: "LongitudeOfAscensionNode",
 			Name: "Longitude of Ascension Node",
 			BitLength: 24,
 			BitOffset: 136,
@@ -24655,6 +26047,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		11: { 
+			Id: "MeanAnomaly",
 			Name: "Mean Anomaly",
 			BitLength: 24,
 			BitOffset: 160,
@@ -24665,6 +26058,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		12: { 
+			Id: "ClockParameter1",
 			Name: "Clock Parameter 1",
 			BitLength: 11,
 			BitOffset: 184,
@@ -24675,6 +26069,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		13: { 
+			Id: "ClockParameter2",
 			Name: "Clock Parameter 2",
 			BitLength: 11,
 			BitOffset: 195,
@@ -24685,6 +26080,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		14: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 206,
@@ -24705,6 +26101,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisUtcAndDateReport,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -24715,6 +26112,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -24725,6 +26123,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "UserId",
 			Name: "User ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -24735,6 +26134,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Longitude",
 			Name: "Longitude",
 			BitLength: 32,
 			BitOffset: 40,
@@ -24745,6 +26145,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Latitude",
 			Name: "Latitude",
 			BitLength: 32,
 			BitOffset: 72,
@@ -24755,6 +26156,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "PositionAccuracy",
 			Name: "Position Accuracy",
 			BitLength: 1,
 			BitOffset: 104,
@@ -24765,6 +26167,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Raim",
 			Name: "RAIM",
 			BitLength: 1,
 			BitOffset: 105,
@@ -24775,6 +26178,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 106,
@@ -24785,6 +26189,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "PositionTime",
 			Name: "Position Time",
 			BitLength: 32,
 			BitOffset: 112,
@@ -24795,6 +26200,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "CommunicationState",
 			Name: "Communication State",
 			BitLength: 19,
 			BitOffset: 144,
@@ -24805,6 +26211,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 163,
@@ -24815,6 +26222,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "PositionDate",
 			Name: "Position Date",
 			BitLength: 16,
 			BitOffset: 168,
@@ -24825,6 +26233,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Reserved13",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 184,
@@ -24835,6 +26244,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "GnssType",
 			Name: "GNSS type",
 			BitLength: 4,
 			BitOffset: 188,
@@ -24845,6 +26255,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "Spare15",
 			Name: "Spare",
 			BitLength: 8,
 			BitOffset: 192,
@@ -24865,6 +26276,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisClassAStaticAndVoyageRelatedData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -24875,6 +26287,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -24885,6 +26298,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "UserId",
 			Name: "User ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -24895,6 +26309,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ImoNumber",
 			Name: "IMO number",
 			BitLength: 32,
 			BitOffset: 40,
@@ -24905,6 +26320,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Callsign",
 			Name: "Callsign",
 			BitLength: 56,
 			BitOffset: 72,
@@ -24915,6 +26331,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Name",
 			Name: "Name",
 			BitLength: 160,
 			BitOffset: 128,
@@ -24925,6 +26342,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "TypeOfShip",
 			Name: "Type of ship",
 			BitLength: 8,
 			BitOffset: 288,
@@ -24935,6 +26353,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Length",
 			Name: "Length",
 			BitLength: 16,
 			BitOffset: 296,
@@ -24945,6 +26364,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Beam",
 			Name: "Beam",
 			BitLength: 16,
 			BitOffset: 312,
@@ -24955,6 +26375,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "PositionReferenceFromStarboard",
 			Name: "Position reference from Starboard",
 			BitLength: 16,
 			BitOffset: 328,
@@ -24965,6 +26386,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "PositionReferenceFromBow",
 			Name: "Position reference from Bow",
 			BitLength: 16,
 			BitOffset: 344,
@@ -24975,6 +26397,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "EtaDate",
 			Name: "ETA Date",
 			BitLength: 16,
 			BitOffset: 360,
@@ -24985,6 +26408,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "EtaTime",
 			Name: "ETA Time",
 			BitLength: 32,
 			BitOffset: 376,
@@ -24995,6 +26419,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "Draft",
 			Name: "Draft",
 			BitLength: 16,
 			BitOffset: 408,
@@ -25005,6 +26430,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "Destination",
 			Name: "Destination",
 			BitLength: 160,
 			BitOffset: 424,
@@ -25015,6 +26441,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "AisVersionIndicator",
 			Name: "AIS version indicator",
 			BitLength: 2,
 			BitOffset: 584,
@@ -25025,6 +26452,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "GnssType",
 			Name: "GNSS type",
 			BitLength: 4,
 			BitOffset: 586,
@@ -25035,6 +26463,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "Dte",
 			Name: "DTE",
 			BitLength: 1,
 			BitOffset: 590,
@@ -25045,6 +26474,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 1,
 			BitOffset: 591,
@@ -25055,6 +26485,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		20: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 592,
@@ -25065,6 +26496,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		21: { 
+			Id: "Reserved21",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 597,
@@ -25085,6 +26517,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisAddressedBinaryMessage,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -25095,6 +26528,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -25105,6 +26539,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -25115,6 +26550,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 1,
 			BitOffset: 40,
@@ -25125,6 +26561,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 41,
@@ -25135,6 +26572,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "SequenceNumber",
 			Name: "Sequence Number",
 			BitLength: 2,
 			BitOffset: 46,
@@ -25145,6 +26583,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DestinationId",
 			Name: "Destination ID",
 			BitLength: 32,
 			BitOffset: 48,
@@ -25155,6 +26594,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Reserved8",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 80,
@@ -25165,6 +26605,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "RetransmitFlag",
 			Name: "Retransmit flag",
 			BitLength: 1,
 			BitOffset: 86,
@@ -25175,6 +26616,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Reserved10",
 			Name: "Reserved",
 			BitLength: 1,
 			BitOffset: 87,
@@ -25185,6 +26627,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "NumberOfBitsInBinaryDataField",
 			Name: "Number of Bits in Binary Data Field",
 			BitLength: 16,
 			BitOffset: 88,
@@ -25195,6 +26638,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "BinaryData",
 			Name: "Binary Data",
 			BitLength: 0,
 			BitOffset: 0,
@@ -25215,6 +26659,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisAcknowledge,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -25225,6 +26670,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -25235,6 +26681,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -25245,6 +26692,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 1,
 			BitOffset: 40,
@@ -25255,6 +26703,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 41,
@@ -25265,6 +26714,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 46,
@@ -25275,6 +26725,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DestinationId1",
 			Name: "Destination ID #1",
 			BitLength: 32,
 			BitOffset: 48,
@@ -25285,6 +26736,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "SequenceNumberForId1",
 			Name: "Sequence Number for ID 1",
 			BitLength: 2,
 			BitOffset: 80,
@@ -25295,6 +26747,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Reserved9",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 82,
@@ -25305,6 +26758,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "SequenceNumberForIdN",
 			Name: "Sequence Number for ID n",
 			BitLength: 2,
 			BitOffset: 88,
@@ -25315,6 +26769,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Reserved11",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 90,
@@ -25335,6 +26790,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisBinaryBroadcastMessage,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -25345,6 +26801,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -25355,6 +26812,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -25365,6 +26823,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 1,
 			BitOffset: 40,
@@ -25375,6 +26834,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 41,
@@ -25385,6 +26845,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 46,
@@ -25395,6 +26856,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "NumberOfBitsInBinaryDataField",
 			Name: "Number of Bits in Binary Data Field",
 			BitLength: 16,
 			BitOffset: 48,
@@ -25405,6 +26867,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "BinaryData",
 			Name: "Binary Data",
 			BitLength: 0,
 			BitOffset: 0,
@@ -25425,6 +26888,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeRadioFrequencyModePower,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "RxFrequency",
 			Name: "Rx Frequency",
 			BitLength: 32,
 			BitOffset: 0,
@@ -25435,6 +26899,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TxFrequency",
 			Name: "Tx Frequency",
 			BitLength: 32,
 			BitOffset: 32,
@@ -25445,6 +26910,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "RadioChannel",
 			Name: "Radio Channel",
 			BitLength: 48,
 			BitOffset: 64,
@@ -25455,6 +26921,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "TxPower",
 			Name: "Tx Power",
 			BitLength: 8,
 			BitOffset: 112,
@@ -25465,6 +26932,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Mode",
 			Name: "Mode",
 			BitLength: 16,
 			BitOffset: 120,
@@ -25475,6 +26943,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "ChannelBandwidth",
 			Name: "Channel Bandwidth",
 			BitLength: 16,
 			BitOffset: 136,
@@ -25495,6 +26964,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisUtcDateInquiry,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -25505,6 +26975,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -25515,6 +26986,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -25525,6 +26997,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 40,
@@ -25535,6 +27008,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 45,
@@ -25545,6 +27019,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "DestinationId",
 			Name: "Destination ID",
 			BitLength: 32,
 			BitOffset: 48,
@@ -25565,6 +27040,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisAddressedSafetyRelatedMessage,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -25575,6 +27051,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -25585,6 +27062,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -25595,6 +27073,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 40,
@@ -25605,6 +27084,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SequenceNumber",
 			Name: "Sequence Number",
 			BitLength: 2,
 			BitOffset: 45,
@@ -25615,6 +27095,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 1,
 			BitOffset: 47,
@@ -25625,6 +27106,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DestinationId",
 			Name: "Destination ID",
 			BitLength: 32,
 			BitOffset: 48,
@@ -25635,6 +27117,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "RetransmitFlag",
 			Name: "Retransmit flag",
 			BitLength: 1,
 			BitOffset: 80,
@@ -25645,6 +27128,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Reserved9",
 			Name: "Reserved",
 			BitLength: 7,
 			BitOffset: 81,
@@ -25655,6 +27139,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "SafetyRelatedText",
 			Name: "Safety Related Text",
 			BitLength: 936,
 			BitOffset: 88,
@@ -25675,6 +27160,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisSafetyRelatedBroadcastMessage,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -25685,6 +27171,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -25695,6 +27182,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -25705,6 +27193,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 40,
@@ -25715,6 +27204,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 45,
@@ -25725,6 +27215,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "SafetyRelatedText",
 			Name: "Safety Related Text",
 			BitLength: 1296,
 			BitOffset: 48,
@@ -25745,6 +27236,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisInterrogation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -25755,6 +27247,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -25765,6 +27258,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -25775,6 +27269,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 1,
 			BitOffset: 40,
@@ -25785,6 +27280,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 41,
@@ -25795,6 +27291,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Spare6",
 			Name: "Spare",
 			BitLength: 2,
 			BitOffset: 46,
@@ -25805,6 +27302,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "DestinationId1",
 			Name: "Destination ID 1",
 			BitLength: 32,
 			BitOffset: 48,
@@ -25815,6 +27313,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "MessageId11",
 			Name: "Message ID 1.1",
 			BitLength: 6,
 			BitOffset: 80,
@@ -25825,6 +27324,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "SlotOffset11",
 			Name: "Slot Offset 1.1",
 			BitLength: 12,
 			BitOffset: 86,
@@ -25835,6 +27335,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Spare10",
 			Name: "Spare",
 			BitLength: 2,
 			BitOffset: 98,
@@ -25845,6 +27346,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "MessageId12",
 			Name: "Message ID 1.2",
 			BitLength: 6,
 			BitOffset: 100,
@@ -25855,6 +27357,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "SlotOffset12",
 			Name: "Slot Offset 1.2",
 			BitLength: 12,
 			BitOffset: 106,
@@ -25865,6 +27368,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Spare13",
 			Name: "Spare",
 			BitLength: 2,
 			BitOffset: 118,
@@ -25875,6 +27379,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "DestinationId2",
 			Name: "Destination ID 2",
 			BitLength: 32,
 			BitOffset: 120,
@@ -25885,6 +27390,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "MessageId21",
 			Name: "Message ID 2.1",
 			BitLength: 6,
 			BitOffset: 152,
@@ -25895,6 +27401,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "SlotOffset21",
 			Name: "Slot Offset 2.1",
 			BitLength: 12,
 			BitOffset: 158,
@@ -25905,6 +27412,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "Spare17",
 			Name: "Spare",
 			BitLength: 2,
 			BitOffset: 170,
@@ -25915,6 +27423,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "Reserved18",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 172,
@@ -25925,6 +27434,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 176,
@@ -25945,6 +27455,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisDataLinkManagementMessage,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -25955,6 +27466,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -25965,6 +27477,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -25975,6 +27488,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 40,
@@ -25985,6 +27499,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 45,
@@ -25995,6 +27510,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Offset",
 			Name: "Offset",
 			BitLength: 16,
 			BitOffset: 48,
@@ -26005,6 +27521,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "NumberOfSlots",
 			Name: "Number of Slots",
 			BitLength: 8,
 			BitOffset: 64,
@@ -26015,6 +27532,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Timeout",
 			Name: "Timeout",
 			BitLength: 8,
 			BitOffset: 72,
@@ -26025,6 +27543,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Increment",
 			Name: "Increment",
 			BitLength: 16,
 			BitOffset: 80,
@@ -26045,6 +27564,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisChannelManagement,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -26055,6 +27575,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -26065,6 +27586,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -26075,6 +27597,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 40,
@@ -26085,6 +27608,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 45,
@@ -26095,6 +27619,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "ChannelA",
 			Name: "Channel A",
 			BitLength: 7,
 			BitOffset: 48,
@@ -26105,6 +27630,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "ChannelB",
 			Name: "Channel B",
 			BitLength: 7,
 			BitOffset: 55,
@@ -26115,6 +27641,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Reserved8",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 62,
@@ -26125,6 +27652,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Power",
 			Name: "Power",
 			BitLength: 8,
 			BitOffset: 64,
@@ -26135,6 +27663,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "TxRxMode",
 			Name: "Tx/Rx Mode",
 			BitLength: 8,
 			BitOffset: 72,
@@ -26145,6 +27674,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "NorthEastLongitudeCorner1",
 			Name: "North East Longitude Corner 1",
 			BitLength: 32,
 			BitOffset: 80,
@@ -26155,6 +27685,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		12: { 
+			Id: "NorthEastLatitudeCorner1",
 			Name: "North East Latitude Corner 1",
 			BitLength: 32,
 			BitOffset: 112,
@@ -26165,6 +27696,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		13: { 
+			Id: "SouthWestLongitudeCorner1",
 			Name: "South West Longitude Corner 1",
 			BitLength: 32,
 			BitOffset: 144,
@@ -26175,6 +27707,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		14: { 
+			Id: "SouthWestLatitudeCorner2",
 			Name: "South West Latitude Corner 2",
 			BitLength: 32,
 			BitOffset: 176,
@@ -26185,6 +27718,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		15: { 
+			Id: "Reserved15",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 208,
@@ -26195,6 +27729,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "AddressedOrBroadcastMessageIndicator",
 			Name: "Addressed or Broadcast Message Indicator",
 			BitLength: 2,
 			BitOffset: 214,
@@ -26205,6 +27740,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "ChannelABandwidth",
 			Name: "Channel A Bandwidth",
 			BitLength: 7,
 			BitOffset: 216,
@@ -26215,6 +27751,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "ChannelBBandwidth",
 			Name: "Channel B Bandwidth",
 			BitLength: 7,
 			BitOffset: 223,
@@ -26225,6 +27762,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "Reserved19",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 230,
@@ -26235,6 +27773,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		20: { 
+			Id: "TransitionalZoneSize",
 			Name: "Transitional Zone Size",
 			BitLength: 8,
 			BitOffset: 232,
@@ -26255,6 +27794,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisClassBStaticDataMsg24PartA,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -26265,6 +27805,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -26275,6 +27816,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "UserId",
 			Name: "User ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -26285,6 +27827,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Name",
 			Name: "Name",
 			BitLength: 160,
 			BitOffset: 40,
@@ -26295,6 +27838,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 200,
@@ -26305,6 +27849,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 205,
@@ -26315,6 +27860,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "SequenceId",
 			Name: "Sequence ID",
 			BitLength: 8,
 			BitOffset: 208,
@@ -26335,6 +27881,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeAisClassBStaticDataMsg24PartB,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 0,
@@ -26345,6 +27892,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 6,
@@ -26355,6 +27903,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "UserId",
 			Name: "User ID",
 			BitLength: 32,
 			BitOffset: 8,
@@ -26365,6 +27914,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "TypeOfShip",
 			Name: "Type of ship",
 			BitLength: 8,
 			BitOffset: 40,
@@ -26375,6 +27925,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "VendorId",
 			Name: "Vendor ID",
 			BitLength: 56,
 			BitOffset: 48,
@@ -26385,6 +27936,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Callsign",
 			Name: "Callsign",
 			BitLength: 56,
 			BitOffset: 104,
@@ -26395,6 +27947,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Length",
 			Name: "Length",
 			BitLength: 16,
 			BitOffset: 160,
@@ -26405,6 +27958,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Beam",
 			Name: "Beam",
 			BitLength: 16,
 			BitOffset: 176,
@@ -26415,6 +27969,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "PositionReferenceFromStarboard",
 			Name: "Position reference from Starboard",
 			BitLength: 16,
 			BitOffset: 192,
@@ -26425,6 +27980,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "PositionReferenceFromBow",
 			Name: "Position reference from Bow",
 			BitLength: 16,
 			BitOffset: 208,
@@ -26435,6 +27991,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "MothershipUserId",
 			Name: "Mothership User ID",
 			BitLength: 32,
 			BitOffset: 224,
@@ -26445,6 +28002,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 256,
@@ -26455,6 +28013,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Spare13",
 			Name: "Spare",
 			BitLength: 6,
 			BitOffset: 258,
@@ -26465,6 +28024,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "AisTransceiverInformation",
 			Name: "AIS Transceiver information",
 			BitLength: 5,
 			BitOffset: 264,
@@ -26475,6 +28035,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "Reserved15",
 			Name: "Reserved",
 			BitLength: 3,
 			BitOffset: 269,
@@ -26485,6 +28046,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "SequenceId",
 			Name: "Sequence ID",
 			BitLength: 8,
 			BitOffset: 272,
@@ -26505,6 +28067,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeWindData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -26515,6 +28078,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "WindSpeed",
 			Name: "Wind Speed",
 			BitLength: 16,
 			BitOffset: 8,
@@ -26525,6 +28089,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "WindAngle",
 			Name: "Wind Angle",
 			BitLength: 16,
 			BitOffset: 24,
@@ -26535,6 +28100,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reference",
 			Name: "Reference",
 			BitLength: 3,
 			BitOffset: 40,
@@ -26545,6 +28111,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 21,
 			BitOffset: 43,
@@ -26565,6 +28132,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeEnvironmentalParametersObsolete,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -26575,6 +28143,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "WaterTemperature",
 			Name: "Water Temperature",
 			BitLength: 16,
 			BitOffset: 8,
@@ -26585,6 +28154,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "OutsideAmbientAirTemperature",
 			Name: "Outside Ambient Air Temperature",
 			BitLength: 16,
 			BitOffset: 24,
@@ -26595,6 +28165,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "AtmosphericPressure",
 			Name: "Atmospheric Pressure",
 			BitLength: 16,
 			BitOffset: 40,
@@ -26605,6 +28176,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -26625,6 +28197,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeEnvironmentalParameters,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -26635,6 +28208,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TemperatureSource",
 			Name: "Temperature Source",
 			BitLength: 6,
 			BitOffset: 8,
@@ -26645,6 +28219,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "HumiditySource",
 			Name: "Humidity Source",
 			BitLength: 2,
 			BitOffset: 14,
@@ -26655,6 +28230,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Temperature",
 			Name: "Temperature",
 			BitLength: 16,
 			BitOffset: 16,
@@ -26665,6 +28241,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Humidity",
 			Name: "Humidity",
 			BitLength: 16,
 			BitOffset: 32,
@@ -26675,6 +28252,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "AtmosphericPressure",
 			Name: "Atmospheric Pressure",
 			BitLength: 16,
 			BitOffset: 48,
@@ -26695,6 +28273,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeTemperature,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -26705,6 +28284,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -26715,6 +28295,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Source",
 			Name: "Source",
 			BitLength: 8,
 			BitOffset: 16,
@@ -26725,6 +28306,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ActualTemperature",
 			Name: "Actual Temperature",
 			BitLength: 16,
 			BitOffset: 24,
@@ -26735,6 +28317,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SetTemperature",
 			Name: "Set Temperature",
 			BitLength: 16,
 			BitOffset: 40,
@@ -26745,6 +28328,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -26765,6 +28349,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeHumidity,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -26775,6 +28360,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -26785,6 +28371,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Source",
 			Name: "Source",
 			BitLength: 8,
 			BitOffset: 16,
@@ -26795,6 +28382,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ActualHumidity",
 			Name: "Actual Humidity",
 			BitLength: 16,
 			BitOffset: 24,
@@ -26805,6 +28393,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "SetHumidity",
 			Name: "Set Humidity",
 			BitLength: 16,
 			BitOffset: 40,
@@ -26815,6 +28404,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -26835,6 +28425,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeActualPressure,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -26845,6 +28436,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -26855,6 +28447,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Source",
 			Name: "Source",
 			BitLength: 8,
 			BitOffset: 16,
@@ -26865,6 +28458,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Pressure",
 			Name: "Pressure",
 			BitLength: 32,
 			BitOffset: 24,
@@ -26875,6 +28469,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -26895,6 +28490,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSetPressure,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -26905,6 +28501,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -26915,6 +28512,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Source",
 			Name: "Source",
 			BitLength: 8,
 			BitOffset: 16,
@@ -26925,6 +28523,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Pressure",
 			Name: "Pressure",
 			BitLength: 32,
 			BitOffset: 24,
@@ -26935,6 +28534,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 56,
@@ -26955,6 +28555,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeTemperatureExtendedRange,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 0,
@@ -26965,6 +28566,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 8,
@@ -26975,6 +28577,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Source",
 			Name: "Source",
 			BitLength: 8,
 			BitOffset: 16,
@@ -26985,6 +28588,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Temperature",
 			Name: "Temperature",
 			BitLength: 24,
 			BitOffset: 24,
@@ -26995,6 +28599,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "SetTemperature",
 			Name: "Set Temperature",
 			BitLength: 16,
 			BitOffset: 48,
@@ -27015,6 +28620,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeTideStationData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Mode",
 			Name: "Mode",
 			BitLength: 4,
 			BitOffset: 0,
@@ -27025,6 +28631,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "TideTendency",
 			Name: "Tide Tendency",
 			BitLength: 2,
 			BitOffset: 4,
@@ -27035,6 +28642,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 6,
@@ -27045,6 +28653,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MeasurementDate",
 			Name: "Measurement Date",
 			BitLength: 16,
 			BitOffset: 8,
@@ -27055,6 +28664,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "MeasurementTime",
 			Name: "Measurement Time",
 			BitLength: 32,
 			BitOffset: 24,
@@ -27065,6 +28675,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "StationLatitude",
 			Name: "Station Latitude",
 			BitLength: 32,
 			BitOffset: 56,
@@ -27075,6 +28686,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "StationLongitude",
 			Name: "Station Longitude",
 			BitLength: 32,
 			BitOffset: 88,
@@ -27085,6 +28697,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		8: { 
+			Id: "TideLevel",
 			Name: "Tide Level",
 			BitLength: 16,
 			BitOffset: 120,
@@ -27095,6 +28708,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		9: { 
+			Id: "TideLevelStandardDeviation",
 			Name: "Tide Level standard deviation",
 			BitLength: 16,
 			BitOffset: 136,
@@ -27105,6 +28719,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "StationId",
 			Name: "Station ID",
 			BitLength: 0,
 			BitOffset: 0,
@@ -27115,6 +28730,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "StationName",
 			Name: "Station Name",
 			BitLength: 0,
 			BitOffset: 0,
@@ -27135,6 +28751,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSalinityStationData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "Mode",
 			Name: "Mode",
 			BitLength: 4,
 			BitOffset: 0,
@@ -27145,6 +28762,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 4,
 			BitOffset: 4,
@@ -27155,6 +28773,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "MeasurementDate",
 			Name: "Measurement Date",
 			BitLength: 16,
 			BitOffset: 8,
@@ -27165,6 +28784,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MeasurementTime",
 			Name: "Measurement Time",
 			BitLength: 32,
 			BitOffset: 24,
@@ -27175,6 +28795,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "StationLatitude",
 			Name: "Station Latitude",
 			BitLength: 32,
 			BitOffset: 56,
@@ -27185,6 +28806,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "StationLongitude",
 			Name: "Station Longitude",
 			BitLength: 32,
 			BitOffset: 88,
@@ -27195,6 +28817,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "Salinity",
 			Name: "Salinity",
 			BitLength: 32,
 			BitOffset: 120,
@@ -27205,6 +28828,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		8: { 
+			Id: "WaterTemperature",
 			Name: "Water Temperature",
 			BitLength: 16,
 			BitOffset: 152,
@@ -27215,6 +28839,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "StationId",
 			Name: "Station ID",
 			BitLength: 0,
 			BitOffset: 0,
@@ -27225,6 +28850,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "StationName",
 			Name: "Station Name",
 			BitLength: 0,
 			BitOffset: 0,
@@ -27245,6 +28871,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeWatermakerInputSettingAndStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "WatermakerOperatingState",
 			Name: "Watermaker Operating State",
 			BitLength: 6,
 			BitOffset: 0,
@@ -27255,6 +28882,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "ProductionStartStop",
 			Name: "Production Start/Stop",
 			BitLength: 2,
 			BitOffset: 6,
@@ -27265,6 +28893,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "RinseStartStop",
 			Name: "Rinse Start/Stop",
 			BitLength: 2,
 			BitOffset: 8,
@@ -27275,6 +28904,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "LowPressurePumpStatus",
 			Name: "Low Pressure Pump Status",
 			BitLength: 2,
 			BitOffset: 10,
@@ -27285,6 +28915,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "HighPressurePumpStatus",
 			Name: "High Pressure Pump Status",
 			BitLength: 2,
 			BitOffset: 12,
@@ -27295,6 +28926,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "EmergencyStop",
 			Name: "Emergency Stop",
 			BitLength: 2,
 			BitOffset: 14,
@@ -27305,6 +28937,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "ProductSolenoidValveStatus",
 			Name: "Product Solenoid Valve Status",
 			BitLength: 2,
 			BitOffset: 16,
@@ -27315,6 +28948,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "FlushModeStatus",
 			Name: "Flush Mode Status",
 			BitLength: 2,
 			BitOffset: 18,
@@ -27325,6 +28959,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "SalinityStatus",
 			Name: "Salinity Status",
 			BitLength: 2,
 			BitOffset: 20,
@@ -27335,6 +28970,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "SensorStatus",
 			Name: "Sensor Status",
 			BitLength: 2,
 			BitOffset: 22,
@@ -27345,6 +28981,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "OilChangeIndicatorStatus",
 			Name: "Oil Change Indicator Status",
 			BitLength: 2,
 			BitOffset: 24,
@@ -27355,6 +28992,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "FilterStatus",
 			Name: "Filter Status",
 			BitLength: 2,
 			BitOffset: 26,
@@ -27365,6 +29003,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "SystemStatus",
 			Name: "System Status",
 			BitLength: 2,
 			BitOffset: 28,
@@ -27375,6 +29014,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 30,
@@ -27385,6 +29025,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "Salinity",
 			Name: "Salinity",
 			BitLength: 16,
 			BitOffset: 32,
@@ -27395,6 +29036,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "ProductWaterTemperature",
 			Name: "Product Water Temperature",
 			BitLength: 16,
 			BitOffset: 48,
@@ -27405,6 +29047,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "PreFilterPressure",
 			Name: "Pre-filter Pressure",
 			BitLength: 16,
 			BitOffset: 64,
@@ -27415,6 +29058,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "PostFilterPressure",
 			Name: "Post-filter Pressure",
 			BitLength: 16,
 			BitOffset: 80,
@@ -27425,6 +29069,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		19: { 
+			Id: "FeedPressure",
 			Name: "Feed Pressure",
 			BitLength: 16,
 			BitOffset: 96,
@@ -27435,6 +29080,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		20: { 
+			Id: "SystemHighPressure",
 			Name: "System High Pressure",
 			BitLength: 16,
 			BitOffset: 112,
@@ -27445,6 +29091,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		21: { 
+			Id: "ProductWaterFlow",
 			Name: "Product Water Flow",
 			BitLength: 16,
 			BitOffset: 128,
@@ -27455,6 +29102,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		22: { 
+			Id: "BrineWaterFlow",
 			Name: "Brine Water Flow",
 			BitLength: 16,
 			BitOffset: 144,
@@ -27465,6 +29113,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		23: { 
+			Id: "RunTime",
 			Name: "Run Time",
 			BitLength: 32,
 			BitOffset: 160,
@@ -27485,6 +29134,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSmallCraftStatus,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "PortTrimTab",
 			Name: "Port trim tab",
 			BitLength: 8,
 			BitOffset: 0,
@@ -27495,6 +29145,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		2: { 
+			Id: "StarboardTrimTab",
 			Name: "Starboard trim tab",
 			BitLength: 8,
 			BitOffset: 8,
@@ -27505,6 +29156,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		3: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 48,
 			BitOffset: 16,
@@ -27525,6 +29177,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeVesselSpeedComponents,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "LongitudinalSpeedWaterReferenced",
 			Name: "Longitudinal Speed, Water-referenced",
 			BitLength: 16,
 			BitOffset: 0,
@@ -27535,6 +29188,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		2: { 
+			Id: "TransverseSpeedWaterReferenced",
 			Name: "Transverse Speed, Water-referenced",
 			BitLength: 16,
 			BitOffset: 16,
@@ -27545,6 +29199,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		3: { 
+			Id: "LongitudinalSpeedGroundReferenced",
 			Name: "Longitudinal Speed, Ground-referenced",
 			BitLength: 16,
 			BitOffset: 32,
@@ -27555,6 +29210,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		4: { 
+			Id: "TransverseSpeedGroundReferenced",
 			Name: "Transverse Speed, Ground-referenced",
 			BitLength: 16,
 			BitOffset: 48,
@@ -27565,6 +29221,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "SternSpeedWaterReferenced",
 			Name: "Stern Speed, Water-referenced",
 			BitLength: 16,
 			BitOffset: 64,
@@ -27575,6 +29232,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "SternSpeedGroundReferenced",
 			Name: "Stern Speed, Ground-referenced",
 			BitLength: 16,
 			BitOffset: 80,
@@ -27595,6 +29253,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubZoneInfo,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -27605,6 +29264,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -27615,6 +29275,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -27625,6 +29286,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -27635,6 +29297,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -27645,6 +29308,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -27655,6 +29319,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Zone",
 			Name: "Zone",
 			BitLength: 8,
 			BitOffset: 40,
@@ -27675,6 +29340,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubSource,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -27685,6 +29351,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -27695,6 +29362,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -27705,6 +29373,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -27715,6 +29384,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -27725,6 +29395,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -27735,6 +29406,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Source",
 			Name: "Source",
 			BitLength: 8,
 			BitOffset: 40,
@@ -27755,6 +29427,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubSourceList,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -27765,6 +29438,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -27775,6 +29449,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -27785,6 +29460,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -27795,6 +29471,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -27805,6 +29482,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -27815,6 +29493,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 8,
 			BitOffset: 40,
@@ -27825,6 +29504,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 48,
@@ -27835,6 +29515,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Text",
 			Name: "Text",
 			BitLength: 256,
 			BitOffset: 56,
@@ -27855,6 +29536,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubControl,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -27865,6 +29547,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -27875,6 +29558,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -27885,6 +29569,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -27895,6 +29580,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -27905,6 +29591,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -27915,6 +29602,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Item",
 			Name: "Item",
 			BitLength: 8,
 			BitOffset: 40,
@@ -27935,6 +29623,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubFmRadio,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -27945,6 +29634,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -27955,6 +29645,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -27965,6 +29656,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -27975,6 +29667,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -27985,6 +29678,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -27995,6 +29689,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Item",
 			Name: "Item",
 			BitLength: 8,
 			BitOffset: 40,
@@ -28005,6 +29700,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Frequency",
 			Name: "Frequency",
 			BitLength: 32,
 			BitOffset: 48,
@@ -28015,6 +29711,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "NoiseLevel",
 			Name: "Noise level",
 			BitLength: 2,
 			BitOffset: 80,
@@ -28025,6 +29722,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "SignalLevel",
 			Name: "Signal level",
 			BitLength: 4,
 			BitOffset: 82,
@@ -28035,6 +29733,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Reserved11",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 86,
@@ -28045,6 +29744,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Text",
 			Name: "Text",
 			BitLength: 256,
 			BitOffset: 88,
@@ -28065,6 +29765,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubPlaylist,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -28075,6 +29776,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -28085,6 +29787,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -28095,6 +29798,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -28105,6 +29809,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -28115,6 +29820,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -28125,6 +29831,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Item",
 			Name: "Item",
 			BitLength: 8,
 			BitOffset: 40,
@@ -28135,6 +29842,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 48,
@@ -28145,6 +29853,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "CurrentTrack",
 			Name: "Current Track",
 			BitLength: 32,
 			BitOffset: 56,
@@ -28155,6 +29864,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Tracks",
 			Name: "Tracks",
 			BitLength: 32,
 			BitOffset: 88,
@@ -28165,6 +29875,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Length",
 			Name: "Length",
 			BitLength: 32,
 			BitOffset: 120,
@@ -28175,6 +29886,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "PositionInTrack",
 			Name: "Position in track",
 			BitLength: 32,
 			BitOffset: 152,
@@ -28195,6 +29907,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubTrack,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -28205,6 +29918,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -28215,6 +29929,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -28225,6 +29940,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -28235,6 +29951,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -28245,6 +29962,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -28255,6 +29973,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Item",
 			Name: "Item",
 			BitLength: 32,
 			BitOffset: 40,
@@ -28265,6 +29984,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Text",
 			Name: "Text",
 			BitLength: 256,
 			BitOffset: 72,
@@ -28285,6 +30005,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubArtist,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -28295,6 +30016,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -28305,6 +30027,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -28315,6 +30038,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -28325,6 +30049,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -28335,6 +30060,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -28345,6 +30071,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Item",
 			Name: "Item",
 			BitLength: 32,
 			BitOffset: 40,
@@ -28355,6 +30082,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Text",
 			Name: "Text",
 			BitLength: 256,
 			BitOffset: 72,
@@ -28375,6 +30103,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubAlbum,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -28385,6 +30114,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -28395,6 +30125,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -28405,6 +30136,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -28415,6 +30147,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -28425,6 +30158,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -28435,6 +30169,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Item",
 			Name: "Item",
 			BitLength: 32,
 			BitOffset: 40,
@@ -28445,6 +30180,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Text",
 			Name: "Text",
 			BitLength: 256,
 			BitOffset: 72,
@@ -28465,6 +30201,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubMenuItem,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -28475,6 +30212,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -28485,6 +30223,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -28495,6 +30234,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -28505,6 +30245,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -28515,6 +30256,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -28525,6 +30267,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Item",
 			Name: "Item",
 			BitLength: 32,
 			BitOffset: 40,
@@ -28535,6 +30278,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 72,
@@ -28545,6 +30289,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 8,
 			BitOffset: 80,
@@ -28555,6 +30300,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 8,
 			BitOffset: 88,
@@ -28565,6 +30311,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Text",
 			Name: "Text",
 			BitLength: 256,
 			BitOffset: 96,
@@ -28585,6 +30332,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubZones,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -28595,6 +30343,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -28605,6 +30354,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -28615,6 +30365,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -28625,6 +30376,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -28635,6 +30387,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -28645,6 +30398,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Zones",
 			Name: "Zones",
 			BitLength: 8,
 			BitOffset: 40,
@@ -28665,6 +30419,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubMaxVolume,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -28675,6 +30430,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -28685,6 +30441,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -28695,6 +30452,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -28705,6 +30463,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -28715,6 +30474,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -28725,6 +30485,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Zone",
 			Name: "Zone",
 			BitLength: 8,
 			BitOffset: 40,
@@ -28735,6 +30496,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Level",
 			Name: "Level",
 			BitLength: 8,
 			BitOffset: 48,
@@ -28755,6 +30517,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubVolume,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -28765,6 +30528,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -28775,6 +30539,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -28785,6 +30550,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -28795,6 +30561,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -28805,6 +30572,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -28815,6 +30583,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Zone",
 			Name: "Zone",
 			BitLength: 8,
 			BitOffset: 40,
@@ -28825,6 +30594,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Level",
 			Name: "Level",
 			BitLength: 8,
 			BitOffset: 48,
@@ -28845,6 +30615,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubInit1,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -28855,6 +30626,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -28865,6 +30637,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -28875,6 +30648,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -28885,6 +30659,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -28895,6 +30670,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -28915,6 +30691,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSonichubPosition,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -28925,6 +30702,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -28935,6 +30713,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -28945,6 +30724,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -28955,6 +30735,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -28965,6 +30746,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Control",
 			Name: "Control",
 			BitLength: 8,
 			BitOffset: 32,
@@ -28975,6 +30757,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Position",
 			Name: "Position",
 			BitLength: 32,
 			BitOffset: 40,
@@ -28995,6 +30778,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimradTextMessage,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -29005,6 +30789,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -29015,6 +30800,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -29025,6 +30811,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Reserved4",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 16,
@@ -29035,6 +30822,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 24,
@@ -29045,6 +30833,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 32,
@@ -29055,6 +30844,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 40,
@@ -29065,6 +30855,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 48,
@@ -29075,6 +30866,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 56,
@@ -29085,6 +30877,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Prio",
 			Name: "Prio",
 			BitLength: 8,
 			BitOffset: 64,
@@ -29095,6 +30888,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Text",
 			Name: "Text",
 			BitLength: 256,
 			BitOffset: 72,
@@ -29115,6 +30909,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNavicoProductInformation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -29125,6 +30920,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -29135,6 +30931,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -29145,6 +30942,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProductCode",
 			Name: "Product Code",
 			BitLength: 16,
 			BitOffset: 16,
@@ -29155,6 +30953,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Model",
 			Name: "Model",
 			BitLength: 256,
 			BitOffset: 32,
@@ -29165,6 +30964,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 288,
@@ -29175,6 +30975,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 296,
@@ -29185,6 +30986,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 304,
@@ -29195,6 +30997,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "FirmwareVersion",
 			Name: "Firmware version",
 			BitLength: 80,
 			BitOffset: 312,
@@ -29205,6 +31008,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "FirmwareDate",
 			Name: "Firmware date",
 			BitLength: 256,
 			BitOffset: 392,
@@ -29215,6 +31019,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "FirmwareTime",
 			Name: "Firmware time",
 			BitLength: 256,
 			BitOffset: 648,
@@ -29235,6 +31040,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeLowranceProductInformation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -29245,6 +31051,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -29255,6 +31062,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -29265,6 +31073,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProductCode",
 			Name: "Product Code",
 			BitLength: 16,
 			BitOffset: 16,
@@ -29275,6 +31084,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Model",
 			Name: "Model",
 			BitLength: 256,
 			BitOffset: 32,
@@ -29285,6 +31095,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 288,
@@ -29295,6 +31106,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 296,
@@ -29305,6 +31117,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 304,
@@ -29315,6 +31128,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "FirmwareVersion",
 			Name: "Firmware version",
 			BitLength: 80,
 			BitOffset: 312,
@@ -29325,6 +31139,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "FirmwareDate",
 			Name: "Firmware date",
 			BitLength: 256,
 			BitOffset: 392,
@@ -29335,6 +31150,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "FirmwareTime",
 			Name: "Firmware time",
 			BitLength: 256,
 			BitOffset: 648,
@@ -29355,6 +31171,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetReprogramData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -29365,6 +31182,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -29375,6 +31193,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -29385,6 +31204,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Version",
 			Name: "Version",
 			BitLength: 16,
 			BitOffset: 16,
@@ -29395,6 +31215,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Sequence",
 			Name: "Sequence",
 			BitLength: 16,
 			BitOffset: 32,
@@ -29405,6 +31226,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Data",
 			Name: "Data",
 			BitLength: 1736,
 			BitOffset: 48,
@@ -29425,6 +31247,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFurunoUnknown130820,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -29435,6 +31258,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -29445,6 +31269,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -29455,6 +31280,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 16,
@@ -29465,6 +31291,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 24,
@@ -29475,6 +31302,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 32,
@@ -29485,6 +31313,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 8,
 			BitOffset: 40,
@@ -29495,6 +31324,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 8,
 			BitOffset: 48,
@@ -29515,6 +31345,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionSourceName,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -29525,6 +31356,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -29535,6 +31367,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -29545,6 +31378,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -29555,6 +31389,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -29565,6 +31400,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "SourceId",
 			Name: "Source ID",
 			BitLength: 8,
 			BitOffset: 32,
@@ -29575,6 +31411,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "CurrentSourceId",
 			Name: "Current Source ID",
 			BitLength: 8,
 			BitOffset: 40,
@@ -29585,6 +31422,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 8,
 			BitOffset: 48,
@@ -29595,6 +31433,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 8,
 			BitOffset: 56,
@@ -29605,6 +31444,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Source",
 			Name: "Source",
 			BitLength: 40,
 			BitOffset: 64,
@@ -29625,6 +31465,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionTrackInfo,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -29635,6 +31476,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -29645,6 +31487,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -29655,6 +31498,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -29665,6 +31509,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 16,
 			BitOffset: 24,
@@ -29675,6 +31520,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Transport",
 			Name: "Transport",
 			BitLength: 4,
 			BitOffset: 40,
@@ -29685,6 +31531,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "X",
 			Name: "X",
 			BitLength: 4,
 			BitOffset: 44,
@@ -29695,6 +31542,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 48,
@@ -29705,6 +31553,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Track",
 			Name: "Track #",
 			BitLength: 16,
 			BitOffset: 56,
@@ -29715,6 +31564,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 16,
 			BitOffset: 72,
@@ -29725,6 +31575,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "TrackCount",
 			Name: "Track Count",
 			BitLength: 16,
 			BitOffset: 88,
@@ -29735,6 +31586,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 16,
 			BitOffset: 104,
@@ -29745,6 +31597,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Length",
 			Name: "Length",
 			BitLength: 24,
 			BitOffset: 120,
@@ -29755,6 +31608,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "PositionInTrack",
 			Name: "Position in track",
 			BitLength: 24,
 			BitOffset: 144,
@@ -29765,6 +31619,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "H",
 			Name: "H",
 			BitLength: 16,
 			BitOffset: 168,
@@ -29785,6 +31640,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionTrack,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -29795,6 +31651,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -29805,6 +31662,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -29815,6 +31673,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -29825,6 +31684,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -29835,6 +31695,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 40,
 			BitOffset: 32,
@@ -29845,6 +31706,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Track",
 			Name: "Track",
 			BitLength: 80,
 			BitOffset: 72,
@@ -29865,6 +31727,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionArtist,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -29875,6 +31738,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -29885,6 +31749,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -29895,6 +31760,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -29905,6 +31771,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -29915,6 +31782,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 40,
 			BitOffset: 32,
@@ -29925,6 +31793,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Artist",
 			Name: "Artist",
 			BitLength: 80,
 			BitOffset: 72,
@@ -29945,6 +31814,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionAlbum,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -29955,6 +31825,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -29965,6 +31836,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -29975,6 +31847,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -29985,6 +31858,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -29995,6 +31869,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 40,
 			BitOffset: 32,
@@ -30005,6 +31880,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Album",
 			Name: "Album",
 			BitLength: 80,
 			BitOffset: 72,
@@ -30025,6 +31901,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionUnitName,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30035,6 +31912,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30045,6 +31923,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -30055,6 +31934,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -30065,6 +31945,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -30075,6 +31956,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Name",
 			Name: "Name",
 			BitLength: 112,
 			BitOffset: 32,
@@ -30095,6 +31977,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionZoneName,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30105,6 +31988,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30115,6 +31999,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -30125,6 +32010,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -30135,6 +32021,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -30145,6 +32032,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Number",
 			Name: "Number",
 			BitLength: 8,
 			BitOffset: 32,
@@ -30155,6 +32043,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Name",
 			Name: "Name",
 			BitLength: 104,
 			BitOffset: 40,
@@ -30175,6 +32064,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionPlayProgress,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30185,6 +32075,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30195,6 +32086,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -30205,6 +32097,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -30215,6 +32108,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -30225,6 +32119,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 32,
@@ -30235,6 +32130,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Progress",
 			Name: "Progress",
 			BitLength: 24,
 			BitOffset: 40,
@@ -30255,6 +32151,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionAmFmStation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30265,6 +32162,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30275,6 +32173,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -30285,6 +32184,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -30295,6 +32195,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -30305,6 +32206,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "AmFm",
 			Name: "AM/FM",
 			BitLength: 8,
 			BitOffset: 32,
@@ -30315,6 +32217,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 40,
@@ -30325,6 +32228,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Frequency",
 			Name: "Frequency",
 			BitLength: 32,
 			BitOffset: 48,
@@ -30335,6 +32239,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 80,
@@ -30345,6 +32250,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Track",
 			Name: "Track",
 			BitLength: 80,
 			BitOffset: 88,
@@ -30365,6 +32271,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionVhf,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30375,6 +32282,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30385,6 +32293,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -30395,6 +32304,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -30405,6 +32315,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -30415,6 +32326,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 32,
@@ -30425,6 +32337,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Channel",
 			Name: "Channel",
 			BitLength: 8,
 			BitOffset: 40,
@@ -30435,6 +32348,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 24,
 			BitOffset: 48,
@@ -30455,6 +32369,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionSquelch,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30465,6 +32380,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30475,6 +32391,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -30485,6 +32402,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -30495,6 +32413,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -30505,6 +32424,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 32,
@@ -30515,6 +32435,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Squelch",
 			Name: "Squelch",
 			BitLength: 8,
 			BitOffset: 40,
@@ -30535,6 +32456,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionScan,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30545,6 +32467,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30555,6 +32478,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -30565,6 +32489,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -30575,6 +32500,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -30585,6 +32511,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 32,
@@ -30595,6 +32522,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Scan",
 			Name: "Scan",
 			BitLength: 2,
 			BitOffset: 40,
@@ -30605,6 +32533,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 6,
 			BitOffset: 42,
@@ -30625,6 +32554,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionMenuItem,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30635,6 +32565,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30645,6 +32576,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -30655,6 +32587,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -30665,6 +32598,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -30675,6 +32609,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 32,
@@ -30685,6 +32620,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Line",
 			Name: "Line",
 			BitLength: 8,
 			BitOffset: 40,
@@ -30695,6 +32631,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 8,
 			BitOffset: 48,
@@ -30705,6 +32642,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "F",
 			Name: "F",
 			BitLength: 8,
 			BitOffset: 56,
@@ -30715,6 +32653,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "G",
 			Name: "G",
 			BitLength: 8,
 			BitOffset: 64,
@@ -30725,6 +32664,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "H",
 			Name: "H",
 			BitLength: 8,
 			BitOffset: 72,
@@ -30735,6 +32675,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "I",
 			Name: "I",
 			BitLength: 8,
 			BitOffset: 80,
@@ -30745,6 +32686,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Text",
 			Name: "Text",
 			BitLength: 40,
 			BitOffset: 88,
@@ -30765,6 +32707,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionReplay,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30775,6 +32718,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30785,6 +32729,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -30795,6 +32740,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -30805,6 +32751,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -30815,6 +32762,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Mode",
 			Name: "Mode",
 			BitLength: 8,
 			BitOffset: 32,
@@ -30825,6 +32773,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 24,
 			BitOffset: 40,
@@ -30835,6 +32784,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 8,
 			BitOffset: 64,
@@ -30845,6 +32795,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 8,
 			BitOffset: 72,
@@ -30855,6 +32806,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Status",
 			Name: "Status",
 			BitLength: 8,
 			BitOffset: 80,
@@ -30865,6 +32817,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "H",
 			Name: "H",
 			BitLength: 8,
 			BitOffset: 88,
@@ -30875,6 +32828,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "I",
 			Name: "I",
 			BitLength: 8,
 			BitOffset: 96,
@@ -30885,6 +32839,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "J",
 			Name: "J",
 			BitLength: 8,
 			BitOffset: 104,
@@ -30905,6 +32860,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionMute,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30915,6 +32871,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30925,6 +32882,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -30935,6 +32893,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -30945,6 +32904,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -30955,6 +32915,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Mute",
 			Name: "Mute",
 			BitLength: 8,
 			BitOffset: 32,
@@ -30975,6 +32936,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFusionSubVolume,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -30985,6 +32947,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -30995,6 +32958,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31005,6 +32969,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -31015,6 +32980,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -31025,6 +32991,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Zone1",
 			Name: "Zone 1",
 			BitLength: 8,
 			BitOffset: 32,
@@ -31035,6 +33002,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Zone2",
 			Name: "Zone 2",
 			BitLength: 8,
 			BitOffset: 40,
@@ -31045,6 +33013,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Zone3",
 			Name: "Zone 3",
 			BitLength: 8,
 			BitOffset: 48,
@@ -31055,6 +33024,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Zone4",
 			Name: "Zone 4",
 			BitLength: 8,
 			BitOffset: 56,
@@ -31075,6 +33045,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNavicoAsciiData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31085,6 +33056,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -31095,6 +33067,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31105,6 +33078,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 16,
@@ -31115,6 +33089,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Message",
 			Name: "Message",
 			BitLength: 2048,
 			BitOffset: 24,
@@ -31135,6 +33110,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFurunoUnknown130821,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31145,6 +33121,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -31155,6 +33132,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31165,6 +33143,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -31175,6 +33154,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 24,
@@ -31185,6 +33165,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 32,
@@ -31195,6 +33176,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 40,
@@ -31205,6 +33187,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 8,
 			BitOffset: 48,
@@ -31215,6 +33198,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 8,
 			BitOffset: 56,
@@ -31225,6 +33209,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "F",
 			Name: "F",
 			BitLength: 8,
 			BitOffset: 64,
@@ -31235,6 +33220,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "G",
 			Name: "G",
 			BitLength: 8,
 			BitOffset: 72,
@@ -31245,6 +33231,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "H",
 			Name: "H",
 			BitLength: 8,
 			BitOffset: 80,
@@ -31255,6 +33242,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "I",
 			Name: "I",
 			BitLength: 8,
 			BitOffset: 88,
@@ -31275,6 +33263,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNavicoUnknown1,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31285,6 +33274,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -31295,6 +33285,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31305,6 +33296,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Data",
 			Name: "Data",
 			BitLength: 1848,
 			BitOffset: 16,
@@ -31325,6 +33317,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeMaretronProprietaryTemperatureHighRange,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31335,6 +33328,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -31345,6 +33339,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31355,6 +33350,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Sid",
 			Name: "SID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -31365,6 +33361,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 24,
@@ -31375,6 +33372,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Source",
 			Name: "Source",
 			BitLength: 8,
 			BitOffset: 32,
@@ -31385,6 +33383,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "ActualTemperature",
 			Name: "Actual Temperature",
 			BitLength: 16,
 			BitOffset: 40,
@@ -31395,6 +33394,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "SetTemperature",
 			Name: "Set Temperature",
 			BitLength: 16,
 			BitOffset: 56,
@@ -31415,6 +33415,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeBGKeyValueData,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31425,6 +33426,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -31435,6 +33437,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31445,6 +33448,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Key",
 			Name: "Key",
 			BitLength: 12,
 			BitOffset: 16,
@@ -31455,6 +33459,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Length",
 			Name: "Length",
 			BitLength: 4,
 			BitOffset: 28,
@@ -31465,6 +33470,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Value",
 			Name: "Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -31485,6 +33491,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeMaretronAnnunciator,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31495,6 +33502,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -31505,6 +33513,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31515,6 +33524,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Field4",
 			Name: "Field 4",
 			BitLength: 8,
 			BitOffset: 16,
@@ -31525,6 +33535,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Field5",
 			Name: "Field 5",
 			BitLength: 8,
 			BitOffset: 24,
@@ -31535,6 +33546,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Field6",
 			Name: "Field 6",
 			BitLength: 16,
 			BitOffset: 32,
@@ -31545,6 +33557,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Field7",
 			Name: "Field 7",
 			BitLength: 8,
 			BitOffset: 48,
@@ -31555,6 +33568,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Field8",
 			Name: "Field 8",
 			BitLength: 16,
 			BitOffset: 56,
@@ -31575,6 +33589,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeNavicoUnknown2,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31585,6 +33600,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -31595,6 +33611,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31605,6 +33622,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Data",
 			Name: "Data",
 			BitLength: 80,
 			BitOffset: 16,
@@ -31625,6 +33643,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeBGUserAndRemoteRename,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31635,6 +33654,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -31645,6 +33665,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31655,6 +33676,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "DataType",
 			Name: "Data Type",
 			BitLength: 12,
 			BitOffset: 16,
@@ -31665,6 +33687,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Length",
 			Name: "Length",
 			BitLength: 4,
 			BitOffset: 28,
@@ -31675,6 +33698,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Reserved6",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 32,
@@ -31685,6 +33709,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Decimals",
 			Name: "Decimals",
 			BitLength: 8,
 			BitOffset: 40,
@@ -31695,6 +33720,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "ShortName",
 			Name: "Short name",
 			BitLength: 64,
 			BitOffset: 48,
@@ -31705,6 +33731,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "LongName",
 			Name: "Long name",
 			BitLength: 128,
 			BitOffset: 112,
@@ -31725,6 +33752,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetFluidLevelSensorConfiguration,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31735,6 +33763,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -31745,6 +33774,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31755,6 +33785,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 16,
@@ -31765,6 +33796,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Device",
 			Name: "Device",
 			BitLength: 8,
 			BitOffset: 24,
@@ -31775,6 +33807,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 32,
@@ -31785,6 +33818,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "F",
 			Name: "F",
 			BitLength: 4,
 			BitOffset: 40,
@@ -31795,6 +33829,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "TankType",
 			Name: "Tank type",
 			BitLength: 4,
 			BitOffset: 44,
@@ -31805,6 +33840,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Capacity",
 			Name: "Capacity",
 			BitLength: 32,
 			BitOffset: 48,
@@ -31815,6 +33851,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "G",
 			Name: "G",
 			BitLength: 8,
 			BitOffset: 80,
@@ -31825,6 +33862,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "H",
 			Name: "H",
 			BitLength: 16,
 			BitOffset: 88,
@@ -31835,6 +33873,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		12: { 
+			Id: "I",
 			Name: "I",
 			BitLength: 8,
 			BitOffset: 104,
@@ -31855,6 +33894,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeMaretronSwitchStatusCounter,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31865,6 +33905,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -31875,6 +33916,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -31885,6 +33927,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 16,
@@ -31895,6 +33938,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "IndicatorNumber",
 			Name: "Indicator Number",
 			BitLength: 8,
 			BitOffset: 24,
@@ -31905,6 +33949,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "StartDate",
 			Name: "Start Date",
 			BitLength: 16,
 			BitOffset: 32,
@@ -31915,6 +33960,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "StartTime",
 			Name: "Start Time",
 			BitLength: 32,
 			BitOffset: 48,
@@ -31925,6 +33971,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "OffCounter",
 			Name: "OFF Counter",
 			BitLength: 8,
 			BitOffset: 80,
@@ -31935,6 +33982,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "OnCounter",
 			Name: "ON Counter",
 			BitLength: 8,
 			BitOffset: 88,
@@ -31945,6 +33993,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "ErrorCounter",
 			Name: "ERROR Counter",
 			BitLength: 8,
 			BitOffset: 96,
@@ -31955,6 +34004,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "SwitchStatus",
 			Name: "Switch Status",
 			BitLength: 2,
 			BitOffset: 104,
@@ -31965,6 +34015,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Reserved12",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 106,
@@ -31985,6 +34036,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeMaretronSwitchStatusTimer,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -31995,6 +34047,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -32005,6 +34058,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -32015,6 +34069,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Instance",
 			Name: "Instance",
 			BitLength: 8,
 			BitOffset: 16,
@@ -32025,6 +34080,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "IndicatorNumber",
 			Name: "Indicator Number",
 			BitLength: 8,
 			BitOffset: 24,
@@ -32035,6 +34091,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "StartDate",
 			Name: "Start Date",
 			BitLength: 16,
 			BitOffset: 32,
@@ -32045,6 +34102,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "StartTime",
 			Name: "Start Time",
 			BitLength: 32,
 			BitOffset: 48,
@@ -32055,6 +34113,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "AccumulatedOffPeriod",
 			Name: "Accumulated OFF Period",
 			BitLength: 32,
 			BitOffset: 80,
@@ -32065,6 +34124,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "AccumulatedOnPeriod",
 			Name: "Accumulated ON Period",
 			BitLength: 32,
 			BitOffset: 112,
@@ -32075,6 +34135,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "AccumulatedErrorPeriod",
 			Name: "Accumulated ERROR Period",
 			BitLength: 32,
 			BitOffset: 144,
@@ -32085,6 +34146,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "SwitchStatus",
 			Name: "Switch Status",
 			BitLength: 2,
 			BitOffset: 176,
@@ -32095,6 +34157,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Reserved12",
 			Name: "Reserved",
 			BitLength: 6,
 			BitOffset: 178,
@@ -32115,6 +34178,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFurunoSixDegreesOfFreedomMovement,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -32125,6 +34189,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -32135,6 +34200,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -32145,6 +34211,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 32,
 			BitOffset: 16,
@@ -32155,6 +34222,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		5: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 32,
 			BitOffset: 48,
@@ -32165,6 +34233,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 32,
 			BitOffset: 80,
@@ -32175,6 +34244,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 8,
 			BitOffset: 112,
@@ -32185,6 +34255,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		8: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 32,
 			BitOffset: 120,
@@ -32195,6 +34266,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		9: { 
+			Id: "F",
 			Name: "F",
 			BitLength: 32,
 			BitOffset: 152,
@@ -32205,6 +34277,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		10: { 
+			Id: "G",
 			Name: "G",
 			BitLength: 16,
 			BitOffset: 184,
@@ -32215,6 +34288,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		11: { 
+			Id: "H",
 			Name: "H",
 			BitLength: 16,
 			BitOffset: 200,
@@ -32225,6 +34299,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		12: { 
+			Id: "I",
 			Name: "I",
 			BitLength: 16,
 			BitOffset: 216,
@@ -32245,6 +34320,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetAisClassBStaticDataMsg24PartB,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -32255,6 +34331,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -32265,6 +34342,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -32275,6 +34353,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 6,
 			BitOffset: 16,
@@ -32285,6 +34364,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 2,
 			BitOffset: 22,
@@ -32295,6 +34375,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 8,
 			BitOffset: 24,
@@ -32305,6 +34386,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 8,
 			BitOffset: 32,
@@ -32315,6 +34397,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "UserId",
 			Name: "User ID",
 			BitLength: 32,
 			BitOffset: 40,
@@ -32325,6 +34408,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "TypeOfShip",
 			Name: "Type of ship",
 			BitLength: 8,
 			BitOffset: 72,
@@ -32335,6 +34419,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "VendorId",
 			Name: "Vendor ID",
 			BitLength: 56,
 			BitOffset: 80,
@@ -32345,6 +34430,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Callsign",
 			Name: "Callsign",
 			BitLength: 56,
 			BitOffset: 136,
@@ -32355,6 +34441,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		12: { 
+			Id: "Length",
 			Name: "Length",
 			BitLength: 16,
 			BitOffset: 192,
@@ -32365,6 +34452,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		13: { 
+			Id: "Beam",
 			Name: "Beam",
 			BitLength: 16,
 			BitOffset: 208,
@@ -32375,6 +34463,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		14: { 
+			Id: "PositionReferenceFromStarboard",
 			Name: "Position reference from Starboard",
 			BitLength: 16,
 			BitOffset: 224,
@@ -32385,6 +34474,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		15: { 
+			Id: "PositionReferenceFromBow",
 			Name: "Position reference from Bow",
 			BitLength: 16,
 			BitOffset: 240,
@@ -32395,6 +34485,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		16: { 
+			Id: "MothershipUserId",
 			Name: "Mothership User ID",
 			BitLength: 32,
 			BitOffset: 256,
@@ -32405,6 +34496,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		17: { 
+			Id: "Spare17",
 			Name: "Spare",
 			BitLength: 6,
 			BitOffset: 288,
@@ -32415,6 +34507,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		18: { 
+			Id: "Reserved18",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 294,
@@ -32435,6 +34528,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFurunoHeelAngleRollInformation,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -32445,6 +34539,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -32455,6 +34550,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -32465,6 +34561,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 16,
@@ -32475,6 +34572,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 24,
@@ -32485,6 +34583,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Yaw",
 			Name: "Yaw",
 			BitLength: 16,
 			BitOffset: 32,
@@ -32495,6 +34594,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "Pitch",
 			Name: "Pitch",
 			BitLength: 16,
 			BitOffset: 48,
@@ -32505,6 +34605,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		8: { 
+			Id: "Roll",
 			Name: "Roll",
 			BitLength: 16,
 			BitOffset: 64,
@@ -32525,6 +34626,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFurunoMultiSatsInViewExtended,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -32535,6 +34637,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -32545,6 +34648,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -32565,6 +34669,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetKeyValue,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -32575,6 +34680,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -32585,6 +34691,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -32595,6 +34702,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Address",
 			Name: "Address",
 			BitLength: 8,
 			BitOffset: 16,
@@ -32605,6 +34713,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "RepeatIndicator",
 			Name: "Repeat Indicator",
 			BitLength: 8,
 			BitOffset: 24,
@@ -32615,6 +34724,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "DisplayGroup",
 			Name: "Display Group",
 			BitLength: 8,
 			BitOffset: 32,
@@ -32625,6 +34735,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 40,
@@ -32635,6 +34746,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Key",
 			Name: "Key",
 			BitLength: 16,
 			BitOffset: 48,
@@ -32645,6 +34757,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Spare9",
 			Name: "Spare",
 			BitLength: 8,
 			BitOffset: 64,
@@ -32655,6 +34768,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Minlength",
 			Name: "MinLength",
 			BitLength: 8,
 			BitOffset: 72,
@@ -32665,6 +34779,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Value",
 			Name: "Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -32685,6 +34800,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetParameterSet,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -32695,6 +34811,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -32705,6 +34822,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -32715,6 +34833,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Address",
 			Name: "Address",
 			BitLength: 8,
 			BitOffset: 16,
@@ -32725,6 +34844,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 24,
@@ -32735,6 +34855,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "DisplayGroup",
 			Name: "Display Group",
 			BitLength: 8,
 			BitOffset: 32,
@@ -32745,6 +34866,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 16,
 			BitOffset: 40,
@@ -32755,6 +34877,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Key",
 			Name: "Key",
 			BitLength: 16,
 			BitOffset: 56,
@@ -32765,6 +34888,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Spare9",
 			Name: "Spare",
 			BitLength: 8,
 			BitOffset: 72,
@@ -32775,6 +34899,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Length",
 			Name: "Length",
 			BitLength: 8,
 			BitOffset: 80,
@@ -32785,6 +34910,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Value",
 			Name: "Value",
 			BitLength: 0,
 			BitOffset: 0,
@@ -32805,6 +34931,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeFurunoMotionSensorStatusExtended,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -32815,6 +34942,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -32825,6 +34953,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -32845,6 +34974,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetApCommand,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -32855,6 +34985,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -32865,6 +34996,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -32875,6 +35007,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Address",
 			Name: "Address",
 			BitLength: 8,
 			BitOffset: 16,
@@ -32885,6 +35018,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved5",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 24,
@@ -32895,6 +35029,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 32,
@@ -32905,6 +35040,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "ApStatus",
 			Name: "AP status",
 			BitLength: 8,
 			BitOffset: 40,
@@ -32915,6 +35051,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "ApCommand",
 			Name: "AP Command",
 			BitLength: 8,
 			BitOffset: 48,
@@ -32925,6 +35062,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Spare9",
 			Name: "Spare",
 			BitLength: 8,
 			BitOffset: 56,
@@ -32935,6 +35073,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Direction",
 			Name: "Direction",
 			BitLength: 8,
 			BitOffset: 64,
@@ -32945,6 +35084,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "Angle",
 			Name: "Angle",
 			BitLength: 16,
 			BitOffset: 72,
@@ -32965,6 +35105,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetEventCommandApCommand,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -32975,6 +35116,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -32985,6 +35127,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -32995,6 +35138,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -33005,6 +35149,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "UnusedA",
 			Name: "Unused A",
 			BitLength: 16,
 			BitOffset: 24,
@@ -33015,6 +35160,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "ControllingDevice",
 			Name: "Controlling Device",
 			BitLength: 8,
 			BitOffset: 40,
@@ -33025,6 +35171,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Event",
 			Name: "Event",
 			BitLength: 8,
 			BitOffset: 48,
@@ -33035,6 +35182,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "UnusedB",
 			Name: "Unused B",
 			BitLength: 8,
 			BitOffset: 56,
@@ -33045,6 +35193,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Direction",
 			Name: "Direction",
 			BitLength: 8,
 			BitOffset: 64,
@@ -33055,6 +35204,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Angle",
 			Name: "Angle",
 			BitLength: 16,
 			BitOffset: 72,
@@ -33065,6 +35215,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "UnusedC",
 			Name: "Unused C",
 			BitLength: 8,
 			BitOffset: 88,
@@ -33085,6 +35236,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetAlarm,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -33095,6 +35247,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -33105,6 +35258,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -33115,6 +35269,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "Address",
 			Name: "Address",
 			BitLength: 8,
 			BitOffset: 16,
@@ -33125,6 +35280,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "Reserved5",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 24,
@@ -33135,6 +35291,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 32,
@@ -33145,6 +35302,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Reserved7",
 			Name: "Reserved",
 			BitLength: 8,
 			BitOffset: 40,
@@ -33155,6 +35313,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "Alarm",
 			Name: "Alarm",
 			BitLength: 16,
 			BitOffset: 48,
@@ -33165,6 +35324,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 16,
 			BitOffset: 64,
@@ -33175,6 +35335,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "F",
 			Name: "F",
 			BitLength: 8,
 			BitOffset: 80,
@@ -33185,6 +35346,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "G",
 			Name: "G",
 			BitLength: 8,
 			BitOffset: 88,
@@ -33205,6 +35367,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetEventReplyApCommand,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -33215,6 +35378,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -33225,6 +35389,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -33235,6 +35400,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "ProprietaryId",
 			Name: "Proprietary ID",
 			BitLength: 8,
 			BitOffset: 16,
@@ -33245,6 +35411,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 16,
 			BitOffset: 24,
@@ -33255,6 +35422,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "Address",
 			Name: "Address",
 			BitLength: 8,
 			BitOffset: 40,
@@ -33265,6 +35433,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Event",
 			Name: "Event",
 			BitLength: 8,
 			BitOffset: 48,
@@ -33275,6 +35444,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 56,
@@ -33285,6 +35455,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		9: { 
+			Id: "Direction",
 			Name: "Direction",
 			BitLength: 8,
 			BitOffset: 64,
@@ -33295,6 +35466,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		10: { 
+			Id: "Angle",
 			Name: "Angle",
 			BitLength: 16,
 			BitOffset: 72,
@@ -33305,6 +35477,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		11: { 
+			Id: "G",
 			Name: "G",
 			BitLength: 8,
 			BitOffset: 88,
@@ -33325,6 +35498,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetAlarmMessage,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -33335,6 +35509,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -33345,6 +35520,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -33355,6 +35531,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "MessageId",
 			Name: "Message ID",
 			BitLength: 16,
 			BitOffset: 16,
@@ -33365,6 +35542,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 8,
 			BitOffset: 32,
@@ -33375,6 +35553,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		6: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 8,
 			BitOffset: 40,
@@ -33385,6 +35564,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		7: { 
+			Id: "Text",
 			Name: "Text",
 			BitLength: 1784,
 			BitOffset: 48,
@@ -33405,6 +35585,7 @@ var pgnList = []PgnInfo{
 		Decoder: DecodeSimnetApUnknown4,
 		Fields: map[int]*FieldDescriptor{
 		1: { 
+			Id: "ManufacturerCode",
 			Name: "Manufacturer Code",
 			BitLength: 11,
 			BitOffset: 0,
@@ -33415,6 +35596,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		2: { 
+			Id: "Reserved",
 			Name: "Reserved",
 			BitLength: 2,
 			BitOffset: 11,
@@ -33425,6 +35607,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		3: { 
+			Id: "IndustryCode",
 			Name: "Industry Code",
 			BitLength: 3,
 			BitOffset: 13,
@@ -33435,6 +35618,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		4: { 
+			Id: "A",
 			Name: "A",
 			BitLength: 8,
 			BitOffset: 16,
@@ -33445,6 +35629,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		5: { 
+			Id: "B",
 			Name: "B",
 			BitLength: 32,
 			BitOffset: 24,
@@ -33455,6 +35640,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		6: { 
+			Id: "C",
 			Name: "C",
 			BitLength: 32,
 			BitOffset: 56,
@@ -33465,6 +35651,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		7: { 
+			Id: "D",
 			Name: "D",
 			BitLength: 32,
 			BitOffset: 88,
@@ -33475,6 +35662,7 @@ var pgnList = []PgnInfo{
 			Signed: false,
 			},
 		8: { 
+			Id: "E",
 			Name: "E",
 			BitLength: 32,
 			BitOffset: 120,
@@ -33485,6 +35673,7 @@ var pgnList = []PgnInfo{
 			Signed: true,
 			},
 		9: { 
+			Id: "F",
 			Name: "F",
 			BitLength: 32,
 			BitOffset: 152,
@@ -33504,7 +35693,28 @@ type IsoAcknowledgement struct {
 	GroupFunction *uint8
 	Pgn *uint32
 }
-func DecodeIsoAcknowledgement(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *IsoAcknowledgement ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.Control), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.GroupFunction, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(24, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeIsoAcknowledgement(Info MessageInfo, stream *DataStream) (any, error) {
 	var val IsoAcknowledgement
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33544,7 +35754,16 @@ type IsoRequest struct {
 	Info MessageInfo
 	Pgn *uint32
 }
-func DecodeIsoRequest(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *IsoRequest ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint32(p.Pgn, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeIsoRequest(Info MessageInfo, stream *DataStream) (any, error) {
 	var val IsoRequest
 	val.Info = Info
 	if v, err := stream.readUInt32(24); err != nil {
@@ -33563,7 +35782,20 @@ type IsoTransportProtocolDataTransfer struct {
 	Sid *uint8
 	Data []uint8
 }
-func DecodeIsoTransportProtocolDataTransfer(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *IsoTransportProtocolDataTransfer ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Data, 56, 8 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeIsoTransportProtocolDataTransfer(Info MessageInfo, stream *DataStream) (any, error) {
 	var val IsoTransportProtocolDataTransfer
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -33594,7 +35826,32 @@ type IsoTransportProtocolConnectionManagementRequestToSend struct {
 	PacketsReply *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementRequestToSend(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *IsoTransportProtocolConnectionManagementRequestToSend ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.GroupFunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.MessageSize, 16, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Packets, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.PacketsReply, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeIsoTransportProtocolConnectionManagementRequestToSend(Info MessageInfo, stream *DataStream) (any, error) {
 	var val IsoTransportProtocolConnectionManagementRequestToSend
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33654,7 +35911,32 @@ type IsoTransportProtocolConnectionManagementClearToSend struct {
 	NextSid *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementClearToSend(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *IsoTransportProtocolConnectionManagementClearToSend ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.GroupFunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.MaxPackets, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NextSid, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeIsoTransportProtocolConnectionManagementClearToSend(Info MessageInfo, stream *DataStream) (any, error) {
 	var val IsoTransportProtocolConnectionManagementClearToSend
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33709,7 +35991,32 @@ type IsoTransportProtocolConnectionManagementEndOfMessage struct {
 	TotalNumberOfFramesReceived *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementEndOfMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *IsoTransportProtocolConnectionManagementEndOfMessage ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.GroupFunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.TotalMessageSize, 16, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.TotalNumberOfFramesReceived, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeIsoTransportProtocolConnectionManagementEndOfMessage(Info MessageInfo, stream *DataStream) (any, error) {
 	var val IsoTransportProtocolConnectionManagementEndOfMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33764,7 +36071,32 @@ type IsoTransportProtocolConnectionManagementBroadcastAnnounce struct {
 	Packets *uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *IsoTransportProtocolConnectionManagementBroadcastAnnounce ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.GroupFunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.MessageSize, 16, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Packets, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(Info MessageInfo, stream *DataStream) (any, error) {
 	var val IsoTransportProtocolConnectionManagementBroadcastAnnounce
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33818,7 +36150,28 @@ type IsoTransportProtocolConnectionManagementAbort struct {
 	Reason []uint8
 	Pgn *uint32
 }
-func DecodeIsoTransportProtocolConnectionManagementAbort(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *IsoTransportProtocolConnectionManagementAbort ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.GroupFunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Reason, 8, 8 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(24, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeIsoTransportProtocolConnectionManagementAbort(Info MessageInfo, stream *DataStream) (any, error) {
 	var val IsoTransportProtocolConnectionManagementAbort
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -33869,7 +36222,52 @@ type IsoAddressClaim struct {
 	IndustryGroup IndustryCodeConst
 	ArbitraryAddressCapable *uint8
 }
-func DecodeIsoAddressClaim(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *IsoAddressClaim ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint32(p.UniqueNumber, 21, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 21)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DeviceInstanceLower, 3, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DeviceInstanceUpper, 5, 35)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DeviceFunction), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(1, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DeviceClass), 7, 49)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SystemInstance, 4, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryGroup), 3, 60)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ArbitraryAddressCapable, 1, 63)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeIsoAddressClaim(Info MessageInfo, stream *DataStream) (any, error) {
 	var val IsoAddressClaim
 	val.Info = Info
 	if v, err := stream.readUInt32(21); err != nil {
@@ -33968,7 +36366,44 @@ type SeatalkWirelessKeypadLightControl struct {
 	WirelessSetting *uint8
 	WiredSetting *uint8
 }
-func DecodeSeatalkWirelessKeypadLightControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SeatalkWirelessKeypadLightControl ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ProprietaryId, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Variant, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.WirelessSetting, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.WiredSetting, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalkWirelessKeypadLightControl(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SeatalkWirelessKeypadLightControl
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -34052,7 +36487,40 @@ type SeatalkWirelessKeypadControl struct {
 	Variant *uint8
 	BeepControl *uint8
 }
-func DecodeSeatalkWirelessKeypadControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SeatalkWirelessKeypadControl ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Pid, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Variant, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.BeepControl, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalkWirelessKeypadControl(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SeatalkWirelessKeypadControl
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -34123,7 +36591,32 @@ type VictronBatteryRegister struct {
 	RegisterId *uint16
 	Payload *uint32
 }
-func DecodeVictronBatteryRegister(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *VictronBatteryRegister ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.RegisterId, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Payload, 32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeVictronBatteryRegister(Info MessageInfo, stream *DataStream) (any, error) {
 	var val VictronBatteryRegister
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -34180,7 +36673,28 @@ type Bus1PhaseCBasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1PhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Bus1PhaseCBasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeBus1PhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Bus1PhaseCBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34201,7 +36715,7 @@ func DecodeBus1PhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseCBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -34222,7 +36736,28 @@ type Bus1PhaseBBasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1PhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Bus1PhaseBBasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeBus1PhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Bus1PhaseBBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34243,7 +36778,7 @@ func DecodeBus1PhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseBBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -34264,7 +36799,28 @@ type Bus1PhaseABasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1PhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Bus1PhaseABasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeBus1PhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Bus1PhaseABasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34285,7 +36841,7 @@ func DecodeBus1PhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1PhaseABasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -34306,7 +36862,28 @@ type Bus1AverageBasicAcQuantities struct {
 	LineNeutralAcRmsVoltage *uint16
 	AcFrequency *float32
 }
-func DecodeBus1AverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Bus1AverageBasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeBus1AverageBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Bus1AverageBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34327,7 +36904,7 @@ func DecodeBus1AverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Bus1AverageBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -34347,7 +36924,20 @@ type UtilityTotalAcEnergy struct {
 	TotalEnergyExport *uint32
 	TotalEnergyImport *uint32
 }
-func DecodeUtilityTotalAcEnergy(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityTotalAcEnergy ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint32(p.TotalEnergyExport, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.TotalEnergyImport, 32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityTotalAcEnergy(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityTotalAcEnergy
 	val.Info = Info
 	if v, err := stream.readUInt32(32); err != nil {
@@ -34376,7 +36966,28 @@ type UtilityPhaseCAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityPhaseCAcReactivePower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.ReactivePower, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 0.000061, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PowerFactorLagging), 2, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(30, 34)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityPhaseCAcReactivePower
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34388,7 +36999,7 @@ func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStream)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
@@ -34414,13 +37025,26 @@ func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStream)
 }
 type UtilityPhaseCAcPower struct {
 	Info MessageInfo
-	RealPower *int32
-	ApparentPower *int32
+	RealPower *float32
+	ApparentPower *float32
 }
-func DecodeUtilityPhaseCAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityPhaseCAcPower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.RealPower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ApparentPower, 32, 1.000000, 32, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityPhaseCAcPower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityPhaseCAcPower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
@@ -34429,7 +37053,7 @@ func DecodeUtilityPhaseCAcPower(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
@@ -34447,7 +37071,28 @@ type UtilityPhaseCBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityPhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityPhaseCBasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityPhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityPhaseCBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34468,7 +37113,7 @@ func DecodeUtilityPhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -34494,7 +37139,28 @@ type UtilityPhaseBAcReactivePower struct {
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityPhaseBAcReactivePower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.ReactivePower, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 0.000061, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PowerFactorLagging), 2, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(30, 34)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityPhaseBAcReactivePower
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34506,7 +37172,7 @@ func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStream)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
@@ -34532,13 +37198,26 @@ func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStream)
 }
 type UtilityPhaseBAcPower struct {
 	Info MessageInfo
-	RealPower *int32
-	ApparentPower *int32
+	RealPower *float32
+	ApparentPower *float32
 }
-func DecodeUtilityPhaseBAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityPhaseBAcPower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.RealPower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ApparentPower, 32, 1.000000, 32, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityPhaseBAcPower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityPhaseBAcPower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
@@ -34547,7 +37226,7 @@ func DecodeUtilityPhaseBAcPower(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
@@ -34565,7 +37244,28 @@ type UtilityPhaseBBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityPhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityPhaseBBasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityPhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityPhaseBBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34586,7 +37286,7 @@ func DecodeUtilityPhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -34608,14 +37308,35 @@ func DecodeUtilityPhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStrea
 }
 type UtilityPhaseAAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *int32
+	ReactivePower *float32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityPhaseAAcReactivePower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.ReactivePower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 0.000061, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PowerFactorLagging), 2, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(14, 50)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityPhaseAAcReactivePower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseAAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
@@ -34624,7 +37345,7 @@ func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStream)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseAAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
@@ -34650,13 +37371,26 @@ func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStream)
 }
 type UtilityPhaseAAcPower struct {
 	Info MessageInfo
-	RealPower *int32
-	ApparentPower *int32
+	RealPower *float32
+	ApparentPower *float32
 }
-func DecodeUtilityPhaseAAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityPhaseAAcPower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.RealPower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ApparentPower, 32, 1.000000, 32, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityPhaseAAcPower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityPhaseAAcPower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseAAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
@@ -34665,7 +37399,7 @@ func DecodeUtilityPhaseAAcPower(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseAAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
@@ -34683,7 +37417,28 @@ type UtilityPhaseABasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityPhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityPhaseABasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityPhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityPhaseABasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34704,7 +37459,7 @@ func DecodeUtilityPhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -34726,14 +37481,35 @@ func DecodeUtilityPhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStrea
 }
 type UtilityTotalAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *int32
+	ReactivePower *float32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityTotalAcReactivePower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.ReactivePower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 0.000061, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PowerFactorLagging), 2, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(14, 50)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityTotalAcReactivePower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
@@ -34742,7 +37518,7 @@ func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
@@ -34768,13 +37544,26 @@ func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream) 
 }
 type UtilityTotalAcPower struct {
 	Info MessageInfo
-	RealPower *int32
-	ApparentPower *int32
+	RealPower *float32
+	ApparentPower *float32
 }
-func DecodeUtilityTotalAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityTotalAcPower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.RealPower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ApparentPower, 32, 1.000000, 32, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityTotalAcPower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityTotalAcPower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
@@ -34783,7 +37572,7 @@ func DecodeUtilityTotalAcPower(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityTotalAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
@@ -34801,7 +37590,28 @@ type UtilityAverageBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeUtilityAverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UtilityAverageBasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUtilityAverageBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UtilityAverageBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34822,7 +37632,7 @@ func DecodeUtilityAverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -34847,7 +37657,20 @@ type GeneratorTotalAcEnergy struct {
 	TotalEnergyExport *uint32
 	TotalEnergyImport *uint32
 }
-func DecodeGeneratorTotalAcEnergy(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorTotalAcEnergy ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint32(p.TotalEnergyExport, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.TotalEnergyImport, 32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorTotalAcEnergy(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorTotalAcEnergy
 	val.Info = Info
 	if v, err := stream.readUInt32(32); err != nil {
@@ -34872,14 +37695,35 @@ func DecodeGeneratorTotalAcEnergy(Info MessageInfo, stream *PGNDataStream) (any,
 }
 type GeneratorPhaseCAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *int32
+	ReactivePower *float32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorPhaseCAcReactivePower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.ReactivePower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 0.000061, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PowerFactorLagging), 2, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(14, 50)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorPhaseCAcReactivePower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
@@ -34888,7 +37732,7 @@ func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
@@ -34914,13 +37758,26 @@ func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *PGNDataStrea
 }
 type GeneratorPhaseCAcPower struct {
 	Info MessageInfo
-	RealPower *int32
-	ApparentPower *int32
+	RealPower *float32
+	ApparentPower *float32
 }
-func DecodeGeneratorPhaseCAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorPhaseCAcPower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.RealPower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ApparentPower, 32, 1.000000, 32, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorPhaseCAcPower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorPhaseCAcPower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
@@ -34929,7 +37786,7 @@ func DecodeGeneratorPhaseCAcPower(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
@@ -34947,7 +37804,28 @@ type GeneratorPhaseCBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorPhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorPhaseCBasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorPhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorPhaseCBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -34968,7 +37846,7 @@ func DecodeGeneratorPhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStr
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -34990,14 +37868,35 @@ func DecodeGeneratorPhaseCBasicAcQuantities(Info MessageInfo, stream *PGNDataStr
 }
 type GeneratorPhaseBAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *int32
+	ReactivePower *float32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorPhaseBAcReactivePower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.ReactivePower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 0.000061, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PowerFactorLagging), 2, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(14, 50)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorPhaseBAcReactivePower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
@@ -35006,7 +37905,7 @@ func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
@@ -35032,13 +37931,26 @@ func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *PGNDataStrea
 }
 type GeneratorPhaseBAcPower struct {
 	Info MessageInfo
-	RealPower *int32
-	ApparentPower *int32
+	RealPower *float32
+	ApparentPower *float32
 }
-func DecodeGeneratorPhaseBAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorPhaseBAcPower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.RealPower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ApparentPower, 32, 1.000000, 32, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorPhaseBAcPower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorPhaseBAcPower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
@@ -35047,7 +37959,7 @@ func DecodeGeneratorPhaseBAcPower(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
@@ -35065,7 +37977,28 @@ type GeneratorPhaseBBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorPhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorPhaseBBasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorPhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorPhaseBBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -35086,7 +38019,7 @@ func DecodeGeneratorPhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStr
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -35108,14 +38041,35 @@ func DecodeGeneratorPhaseBBasicAcQuantities(Info MessageInfo, stream *PGNDataStr
 }
 type GeneratorPhaseAAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *int32
+	ReactivePower *float32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorPhaseAAcReactivePower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.ReactivePower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 0.000061, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PowerFactorLagging), 2, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(14, 50)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorPhaseAAcReactivePower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
@@ -35124,7 +38078,7 @@ func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
@@ -35150,13 +38104,26 @@ func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *PGNDataStrea
 }
 type GeneratorPhaseAAcPower struct {
 	Info MessageInfo
-	RealPower *int32
-	ApparentPower *int32
+	RealPower *float32
+	ApparentPower *float32
 }
-func DecodeGeneratorPhaseAAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorPhaseAAcPower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.RealPower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ApparentPower, 32, 1.000000, 32, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorPhaseAAcPower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorPhaseAAcPower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
@@ -35165,7 +38132,7 @@ func DecodeGeneratorPhaseAAcPower(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
@@ -35183,7 +38150,28 @@ type GeneratorPhaseABasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorPhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorPhaseABasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorPhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorPhaseABasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -35204,7 +38192,7 @@ func DecodeGeneratorPhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStr
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -35226,14 +38214,35 @@ func DecodeGeneratorPhaseABasicAcQuantities(Info MessageInfo, stream *PGNDataStr
 }
 type GeneratorTotalAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *int32
+	ReactivePower *float32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorTotalAcReactivePower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.ReactivePower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 0.000061, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PowerFactorLagging), 2, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(14, 50)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorTotalAcReactivePower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcReactivePower-ReactivePower: %w", err)
 	} else {
 		val.ReactivePower = v
@@ -35242,7 +38251,7 @@ func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 6.10352e-05); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcReactivePower-PowerFactor: %w", err)
 	} else {
 		val.PowerFactor = v
@@ -35268,13 +38277,26 @@ func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *PGNDataStream
 }
 type GeneratorTotalAcPower struct {
 	Info MessageInfo
-	RealPower *int32
-	ApparentPower *int32
+	RealPower *float32
+	ApparentPower *float32
 }
-func DecodeGeneratorTotalAcPower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorTotalAcPower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.RealPower, 32, 1.000000, 0, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ApparentPower, 32, 1.000000, 32, -2000000000)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorTotalAcPower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorTotalAcPower
 	val.Info = Info
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcPower-RealPower: %w", err)
 	} else {
 		val.RealPower = v
@@ -35283,7 +38305,7 @@ func DecodeGeneratorTotalAcPower(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readInt32(32); err != nil {
+	if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorTotalAcPower-ApparentPower: %w", err)
 	} else {
 		val.ApparentPower = v
@@ -35301,7 +38323,28 @@ type GeneratorAverageBasicAcQuantities struct {
 	AcFrequency *float32
 	AcRmsCurrent *uint16
 }
-func DecodeGeneratorAverageBasicAcQuantities(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GeneratorAverageBasicAcQuantities ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.007812, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGeneratorAverageBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GeneratorAverageBasicAcQuantities
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -35322,7 +38365,7 @@ func DecodeGeneratorAverageBasicAcQuantities(Info MessageInfo, stream *PGNDataSt
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0078125); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-AcFrequency: %w", err)
 	} else {
 		val.AcFrequency = v
@@ -35354,7 +38397,56 @@ type IsoCommandedAddress struct {
 	IndustryCode IndustryCodeConst
 	NewSourceAddress *uint8
 }
-func DecodeIsoCommandedAddress(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *IsoCommandedAddress ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeBinary(p.UniqueNumber, 21, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 21)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DeviceInstanceLower, 3, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DeviceInstanceUpper, 5, 35)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DeviceFunction), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(1, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DeviceClass), 7, 49)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SystemInstance, 4, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 60)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(1, 63)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NewSourceAddress, 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeIsoCommandedAddress(Info MessageInfo, stream *DataStream) (any, error) {
 	var val IsoCommandedAddress
 	val.Info = Info
 	if v, err := stream.readBinaryData(21); err != nil {
@@ -35454,7 +38546,32 @@ type FurunoHeave struct {
 	IndustryCode IndustryCodeConst
 	Heave *units.Distance
 }
-func DecodeFurunoHeave(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FurunoHeave ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.Heave.Value, 32, 0.001000, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFurunoHeave(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FurunoHeave
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35485,7 +38602,7 @@ func DecodeFurunoHeave(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeave-Heave: %w", err)
 	} else {
 		val.Heave = nullableUnit(units.Meter, v, units.NewDistance)
@@ -35508,7 +38625,40 @@ type MaretronProprietaryDcBreakerCurrent struct {
 	IndicatorNumber *uint8
 	BreakerCurrent *float32
 }
-func DecodeMaretronProprietaryDcBreakerCurrent(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *MaretronProprietaryDcBreakerCurrent ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.BankInstance, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.IndicatorNumber, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.BreakerCurrent, 16, 0.100000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeMaretronProprietaryDcBreakerCurrent(Info MessageInfo, stream *DataStream) (any, error) {
 	var val MaretronProprietaryDcBreakerCurrent
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35557,7 +38707,7 @@ func DecodeMaretronProprietaryDcBreakerCurrent(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-BreakerCurrent: %w", err)
 	} else {
 		val.BreakerCurrent = v
@@ -35578,7 +38728,32 @@ type AirmarBootStateAcknowledgment struct {
 	IndustryCode IndustryCodeConst
 	BootState BootStateConst
 }
-func DecodeAirmarBootStateAcknowledgment(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarBootStateAcknowledgment ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.BootState), 3, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(45, 19)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarBootStateAcknowledgment(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarBootStateAcknowledgment
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35631,7 +38806,36 @@ type LowranceTemperature struct {
 	TemperatureSource TemperatureSourceConst
 	ActualTemperature *units.Temperature
 }
-func DecodeLowranceTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *LowranceTemperature ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TemperatureSource), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.ActualTemperature.Value, 16, 0.010000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeLowranceTemperature(Info MessageInfo, stream *DataStream) (any, error) {
 	var val LowranceTemperature
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35671,7 +38875,7 @@ func DecodeLowranceTemperature(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for LowranceTemperature-ActualTemperature: %w", err)
 	} else {
 		val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -35697,7 +38901,48 @@ type ChetcoDimmer struct {
 	Dimmer4 *uint8
 	Control *uint8
 }
-func DecodeChetcoDimmer(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *ChetcoDimmer ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Dimmer1, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Dimmer2, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Dimmer3, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Dimmer4, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Control, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeChetcoDimmer(Info MessageInfo, stream *DataStream) (any, error) {
 	var val ChetcoDimmer
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35789,7 +39034,28 @@ type AirmarBootStateRequest struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeAirmarBootStateRequest(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarBootStateRequest ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(48, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarBootStateRequest(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarBootStateRequest
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35834,7 +39100,40 @@ type AirmarAccessLevel struct {
 	AccessLevel AccessLevelConst
 	AccessSeedKey *uint32
 }
-func DecodeAirmarAccessLevel(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarAccessLevel ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.FormatCode, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AccessLevel), 3, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(5, 27)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.AccessSeedKey, 32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarAccessLevel(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarAccessLevel
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35903,7 +39202,28 @@ type SimnetConfigureTemperatureSensor struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetConfigureTemperatureSensor(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetConfigureTemperatureSensor ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(48, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetConfigureTemperatureSensor(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetConfigureTemperatureSensor
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -35950,7 +39270,44 @@ type SeatalkAlarm struct {
 	AlarmGroup SeatalkAlarmGroupConst
 	AlarmPriority []uint8
 }
-func DecodeSeatalkAlarm(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SeatalkAlarm ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Sid, 8, 16 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlarmStatus), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlarmId), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlarmGroup), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.AlarmPriority, 16, 48 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalkAlarm(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SeatalkAlarm
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36033,7 +39390,28 @@ type SimnetTrimTabSensorCalibration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetTrimTabSensorCalibration(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetTrimTabSensorCalibration ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(48, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetTrimTabSensorCalibration(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetTrimTabSensorCalibration
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36075,7 +39453,28 @@ type SimnetPaddleWheelSpeedConfiguration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetPaddleWheelSpeedConfiguration(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetPaddleWheelSpeedConfiguration ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(48, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetPaddleWheelSpeedConfiguration(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetPaddleWheelSpeedConfiguration
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36117,7 +39516,28 @@ type SimnetClearFluidLevelWarnings struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetClearFluidLevelWarnings(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetClearFluidLevelWarnings ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(48, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetClearFluidLevelWarnings(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetClearFluidLevelWarnings
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36159,7 +39579,28 @@ type SimnetLgc2000Configuration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetLgc2000Configuration(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetLgc2000Configuration ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(48, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetLgc2000Configuration(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetLgc2000Configuration
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36203,7 +39644,36 @@ type DiverseYachtServicesLoadCell struct {
 	Instance *uint8
 	LoadCell *uint32
 }
-func DecodeDiverseYachtServicesLoadCell(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *DiverseYachtServicesLoadCell ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.LoadCell, 32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeDiverseYachtServicesLoadCell(Info MessageInfo, stream *DataStream) (any, error) {
 	var val DiverseYachtServicesLoadCell
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36267,7 +39737,44 @@ type SimnetApUnknown1 struct {
 	C *uint16
 	D *uint8
 }
-func DecodeSimnetApUnknown1(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetApUnknown1 ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.C, 16, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.D, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetApUnknown1(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetApUnknown1
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36348,7 +39855,40 @@ type SimnetDeviceStatus struct {
 	Report SimnetDeviceReportConst
 	Status SimnetApStatusConst
 }
-func DecodeSimnetDeviceStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetDeviceStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Model), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Report), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Status), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetDeviceStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetDeviceStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36422,7 +39962,36 @@ type SimnetDeviceStatusRequest struct {
 	Model SimnetDeviceModelConst
 	Report SimnetDeviceReportConst
 }
-func DecodeSimnetDeviceStatusRequest(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetDeviceStatusRequest ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Model), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Report), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetDeviceStatusRequest(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetDeviceStatusRequest
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36488,7 +40057,40 @@ type SimnetPilotMode struct {
 	Report SimnetDeviceReportConst
 	Mode SimnetApModeBitfieldConst
 }
-func DecodeSimnetPilotMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetPilotMode ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Model), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Report), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Mode), 16, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetPilotMode(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetPilotMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36562,7 +40164,36 @@ type SimnetDeviceModeRequest struct {
 	Model SimnetDeviceModelConst
 	Report SimnetDeviceReportConst
 }
-func DecodeSimnetDeviceModeRequest(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetDeviceModeRequest ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Model), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Report), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetDeviceModeRequest(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetDeviceModeRequest
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36628,7 +40259,36 @@ type SimnetSailingProcessorStatus struct {
 	Report SimnetDeviceReportConst
 	Data []uint8
 }
-func DecodeSimnetSailingProcessorStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetSailingProcessorStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Model), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Report), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Data, 32, 32 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetSailingProcessorStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetSailingProcessorStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36699,7 +40359,40 @@ type NavicoWirelessBatteryStatus struct {
 	BatteryStatus *uint8
 	BatteryChargeStatus *uint8
 }
-func DecodeNavicoWirelessBatteryStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NavicoWirelessBatteryStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Status, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.BatteryStatus, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.BatteryChargeStatus, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNavicoWirelessBatteryStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NavicoWirelessBatteryStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36770,7 +40463,36 @@ type NavicoWirelessSignalStatus struct {
 	Unknown *uint8
 	SignalStrength *uint8
 }
-func DecodeNavicoWirelessSignalStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NavicoWirelessSignalStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Unknown, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SignalStrength, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNavicoWirelessSignalStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NavicoWirelessSignalStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36835,7 +40557,48 @@ type SimnetApUnknown2 struct {
 	D *uint8
 	E *uint8
 }
-func DecodeSimnetApUnknown2(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetApUnknown2 ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.D, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.E, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetApUnknown2(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetApUnknown2
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36924,7 +40687,40 @@ type SimnetAutopilotAngle struct {
 	Mode SimnetApModeConst
 	Angle *float32
 }
-func DecodeSimnetAutopilotAngle(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetAutopilotAngle ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Mode), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Angle, 16, 0.000100, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetAutopilotAngle(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetAutopilotAngle
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -36972,7 +40768,7 @@ func DecodeSimnetAutopilotAngle(Info MessageInfo, stream *PGNDataStream) (any, e
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAutopilotAngle-Angle: %w", err)
 	} else {
 		val.Angle = v
@@ -36990,7 +40786,36 @@ type SeatalkPilotWindDatum struct {
 	WindDatum *float32
 	RollingAverageWindAngle *float32
 }
-func DecodeSeatalkPilotWindDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SeatalkPilotWindDatum ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.WindDatum, 16, 0.000100, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.RollingAverageWindAngle, 16, 0.000100, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalkPilotWindDatum(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SeatalkPilotWindDatum
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37021,7 +40846,7 @@ func DecodeSeatalkPilotWindDatum(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotWindDatum-WindDatum: %w", err)
 	} else {
 		val.WindDatum = v
@@ -37030,7 +40855,7 @@ func DecodeSeatalkPilotWindDatum(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotWindDatum-RollingAverageWindAngle: %w", err)
 	} else {
 		val.RollingAverageWindAngle = v
@@ -37052,10 +40877,35 @@ type SimnetMagneticField struct {
 	C *float32
 	D *float32
 }
-func DecodeSimnetMagneticField(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetMagneticField ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(p.A, 16, 0.000100, 0, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.C, 16, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.D, 16, 0.000100, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetMagneticField(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetMagneticField
 	val.Info = Info
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetMagneticField-A: %w", err)
 	} else {
 		val.A = v
@@ -37073,7 +40923,7 @@ func DecodeSimnetMagneticField(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetMagneticField-C: %w", err)
 	} else {
 		val.C = v
@@ -37082,7 +40932,7 @@ func DecodeSimnetMagneticField(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetMagneticField-D: %w", err)
 	} else {
 		val.D = v
@@ -37105,7 +40955,40 @@ type SeatalkPilotHeading struct {
 	HeadingTrue *float32
 	HeadingMagnetic *float32
 }
-func DecodeSeatalkPilotHeading(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SeatalkPilotHeading ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Sid, 8, 16 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.HeadingTrue, 16, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.HeadingMagnetic, 16, 0.000100, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalkPilotHeading(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SeatalkPilotHeading
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37145,7 +41028,7 @@ func DecodeSeatalkPilotHeading(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotHeading-HeadingTrue: %w", err)
 	} else {
 		val.HeadingTrue = v
@@ -37154,7 +41037,7 @@ func DecodeSeatalkPilotHeading(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotHeading-HeadingMagnetic: %w", err)
 	} else {
 		val.HeadingMagnetic = v
@@ -37177,7 +41060,40 @@ type SeatalkPilotLockedHeading struct {
 	TargetHeadingTrue *float32
 	TargetHeadingMagnetic *float32
 }
-func DecodeSeatalkPilotLockedHeading(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SeatalkPilotLockedHeading ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Sid, 8, 16 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.TargetHeadingTrue, 16, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.TargetHeadingMagnetic, 16, 0.000100, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalkPilotLockedHeading(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SeatalkPilotLockedHeading
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37217,7 +41133,7 @@ func DecodeSeatalkPilotLockedHeading(Info MessageInfo, stream *PGNDataStream) (a
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-TargetHeadingTrue: %w", err)
 	} else {
 		val.TargetHeadingTrue = v
@@ -37226,7 +41142,7 @@ func DecodeSeatalkPilotLockedHeading(Info MessageInfo, stream *PGNDataStream) (a
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-TargetHeadingMagnetic: %w", err)
 	} else {
 		val.TargetHeadingMagnetic = v
@@ -37248,7 +41164,36 @@ type SeatalkSilenceAlarm struct {
 	AlarmId SeatalkAlarmIdConst
 	AlarmGroup SeatalkAlarmGroupConst
 }
-func DecodeSeatalkSilenceAlarm(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SeatalkSilenceAlarm ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlarmId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlarmGroup), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalkSilenceAlarm(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SeatalkSilenceAlarm
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37314,7 +41259,56 @@ type SeatalkKeypadMessage struct {
 	SecondKeyState *uint8
 	EncoderPosition *uint8
 }
-func DecodeSeatalkKeypadMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SeatalkKeypadMessage ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ProprietaryId, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.FirstKey, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SecondKey, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.FirstKeyState, 2, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SecondKeyState, 2, 42)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 44)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.EncoderPosition, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalkKeypadMessage(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SeatalkKeypadMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37417,7 +41411,40 @@ type SeatalkKeypadHeartbeat struct {
 	Variant *uint8
 	Status *uint8
 }
-func DecodeSeatalkKeypadHeartbeat(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SeatalkKeypadHeartbeat ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ProprietaryId, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Variant, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Status, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalkKeypadHeartbeat(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SeatalkKeypadHeartbeat
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37489,7 +41516,40 @@ type SeatalkPilotMode struct {
 	SubMode []uint8
 	PilotModeData []uint8
 }
-func DecodeSeatalkPilotMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SeatalkPilotMode ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PilotMode), 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.SubMode, 16, 32 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.PilotModeData, 8, 48 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalkPilotMode(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SeatalkPilotMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37560,7 +41620,36 @@ type AirmarDepthQualityFactor struct {
 	Sid *uint8
 	DepthQualityFactor AirmarDepthQualityFactorConst
 }
-func DecodeAirmarDepthQualityFactor(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarDepthQualityFactor ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Sid, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DepthQualityFactor), 4, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(36, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarDepthQualityFactor(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarDepthQualityFactor
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37623,7 +41712,40 @@ type AirmarSpeedPulseCount struct {
 	DurationOfInterval *float32
 	NumberOfPulsesReceived *uint16
 }
-func DecodeAirmarSpeedPulseCount(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarSpeedPulseCount ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Sid, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.DurationOfInterval, 16, 0.001000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.NumberOfPulsesReceived, 16, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarSpeedPulseCount(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarSpeedPulseCount
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37663,7 +41785,7 @@ func DecodeAirmarSpeedPulseCount(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-DurationOfInterval: %w", err)
 	} else {
 		val.DurationOfInterval = v
@@ -37695,7 +41817,40 @@ type AirmarDeviceInformation struct {
 	InternalDeviceTemperature *units.Temperature
 	SupplyVoltage *float32
 }
-func DecodeAirmarDeviceInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarDeviceInformation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Sid, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.InternalDeviceTemperature.Value, 16, 0.010000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.SupplyVoltage, 16, 0.010000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarDeviceInformation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarDeviceInformation
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37735,7 +41890,7 @@ func DecodeAirmarDeviceInformation(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDeviceInformation-InternalDeviceTemperature: %w", err)
 	} else {
 		val.InternalDeviceTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -37744,7 +41899,7 @@ func DecodeAirmarDeviceInformation(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarDeviceInformation-SupplyVoltage: %w", err)
 	} else {
 		val.SupplyVoltage = v
@@ -37769,7 +41924,48 @@ type SimnetApUnknown3 struct {
 	D *uint8
 	E *uint8
 }
-func DecodeSimnetApUnknown3(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetApUnknown3 ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.D, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.E, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetApUnknown3(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetApUnknown3
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37856,7 +42052,28 @@ type SimnetAutopilotMode struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeSimnetAutopilotMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetAutopilotMode ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(48, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetAutopilotMode(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetAutopilotMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -37906,7 +42123,32 @@ type NmeaRequestGroupFunctionRepeating1 struct {
 	Parameter *uint8
 	Value []uint8
 }
-func DecodeNmeaRequestGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NmeaRequestGroupFunction ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.TransmissionInterval, 32, 0.001000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.TransmissionIntervalOffset, 16, 0.010000, 64, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfParameters, 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNmeaRequestGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NmeaRequestGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -37933,7 +42175,7 @@ func DecodeNmeaRequestGroupFunction(Info MessageInfo, stream *PGNDataStream) (an
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-TransmissionInterval: %w", err)
 	} else {
 		val.TransmissionInterval = v
@@ -37942,7 +42184,7 @@ func DecodeNmeaRequestGroupFunction(Info MessageInfo, stream *PGNDataStream) (an
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-TransmissionIntervalOffset: %w", err)
 	} else {
 		val.TransmissionIntervalOffset = v
@@ -38009,7 +42251,32 @@ type NmeaCommandGroupFunctionRepeating1 struct {
 	Parameter *uint8
 	Value []uint8
 }
-func DecodeNmeaCommandGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NmeaCommandGroupFunction ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Priority), 4, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 36)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfParameters, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNmeaCommandGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NmeaCommandGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -38107,7 +42374,32 @@ type NmeaAcknowledgeGroupFunction struct {
 type NmeaAcknowledgeGroupFunctionRepeating1 struct {
 	Parameter ParameterFieldConst
 }
-func DecodeNmeaAcknowledgeGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NmeaAcknowledgeGroupFunction ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PgnErrorCode), 4, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TransmissionIntervalPriorityErrorCode), 4, 36)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfParameters, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNmeaAcknowledgeGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NmeaAcknowledgeGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -38207,7 +42499,44 @@ type NmeaReadFieldsGroupFunctionRepeating1 struct {
 type NmeaReadFieldsGroupFunctionRepeating2 struct {
 	Parameter *uint8
 }
-func DecodeNmeaReadFieldsGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NmeaReadFieldsGroupFunction ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UniqueId, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfSelectionPairs, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfParameters, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNmeaReadFieldsGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NmeaReadFieldsGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -38370,7 +42699,44 @@ type NmeaReadFieldsReplyGroupFunctionRepeating2 struct {
 	Parameter *uint8
 	Value []uint8
 }
-func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NmeaReadFieldsReplyGroupFunction ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UniqueId, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfSelectionPairs, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfParameters, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NmeaReadFieldsReplyGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -38538,7 +42904,44 @@ type NmeaWriteFieldsGroupFunctionRepeating2 struct {
 	Parameter *uint8
 	Value []uint8
 }
-func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NmeaWriteFieldsGroupFunction ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UniqueId, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfSelectionPairs, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfParameters, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NmeaWriteFieldsGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -38706,7 +43109,44 @@ type NmeaWriteFieldsReplyGroupFunctionRepeating2 struct {
 	Parameter *uint8
 	Value []uint8
 }
-func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NmeaWriteFieldsReplyGroupFunction ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Pgn, 24, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UniqueId, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfSelectionPairs, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfParameters, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NmeaWriteFieldsReplyGroupFunction
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -38862,7 +43302,16 @@ type PgnListTransmitAndReceive struct {
 type PgnListTransmitAndReceiveRepeating1 struct {
 	Pgn *uint32
 }
-func DecodePgnListTransmitAndReceive(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *PgnListTransmitAndReceive ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodePgnListTransmitAndReceive(Info MessageInfo, stream *DataStream) (any, error) {
 	var val PgnListTransmitAndReceive
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -38910,7 +43359,52 @@ type Seatalk1PilotMode struct {
 	PilotModeData []uint8
 	Unknown2 []uint8
 }
-func DecodeSeatalk1PilotMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Seatalk1PilotMode ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.ProprietaryId, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Command, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Unknown1, 24, 40 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PilotMode), 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SubMode, 8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.PilotModeData, 8, 80 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Unknown2, 80, 88 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalk1PilotMode(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Seatalk1PilotMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39021,7 +43515,40 @@ type FusionMediaControl struct {
 	SourceId *uint8
 	Command FusionCommandConst
 }
-func DecodeFusionMediaControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionMediaControl ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ProprietaryId, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Unknown, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SourceId, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Command), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionMediaControl(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionMediaControl
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39102,7 +43629,40 @@ type FusionSiriusControl struct {
 	SourceId *uint8
 	Command FusionSiriusCommandConst
 }
-func DecodeFusionSiriusControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionSiriusControl ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ProprietaryId, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Unknown, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SourceId, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Command), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionSiriusControl(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionSiriusControl
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39181,7 +43741,32 @@ type FusionRequestStatus struct {
 	ProprietaryId FusionMessageIdConst
 	Unknown *uint8
 }
-func DecodeFusionRequestStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionRequestStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Unknown, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionRequestStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionRequestStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39243,7 +43828,36 @@ type FusionSetSource struct {
 	Unknown *uint8
 	SourceId *uint8
 }
-func DecodeFusionSetSource(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionSetSource ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Unknown, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SourceId, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionSetSource(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionSetSource
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39313,7 +43927,32 @@ type FusionSetMute struct {
 	ProprietaryId FusionMessageIdConst
 	Command FusionMuteCommandConst
 }
-func DecodeFusionSetMute(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionSetMute ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Command), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionSetMute(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionSetMute
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39376,7 +44015,40 @@ type FusionSetZoneVolume struct {
 	Zone *uint8
 	Volume *uint8
 }
-func DecodeFusionSetZoneVolume(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionSetZoneVolume ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Unknown, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Volume, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionSetZoneVolume(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionSetZoneVolume
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39459,7 +44131,48 @@ type FusionSetAllVolumes struct {
 	Zone3 *uint8
 	Zone4 *uint8
 }
-func DecodeFusionSetAllVolumes(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionSetAllVolumes ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Unknown, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone1, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone2, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone3, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone4, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionSetAllVolumes(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionSetAllVolumes
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39560,7 +44273,48 @@ type Seatalk1Keystroke struct {
 	Keyinverted *uint8
 	UnknownData []uint8
 }
-func DecodeSeatalk1Keystroke(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Seatalk1Keystroke ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.ProprietaryId, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Command, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Device, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Key), 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Keyinverted, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.UnknownData, 112, 64 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalk1Keystroke(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Seatalk1Keystroke
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39661,7 +44415,40 @@ type Seatalk1DeviceIdentification struct {
 	Command *uint8
 	Device SeatalkDeviceIdConst
 }
-func DecodeSeatalk1DeviceIdentification(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Seatalk1DeviceIdentification ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.ProprietaryId, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Command, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Device), 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalk1DeviceIdentification(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Seatalk1DeviceIdentification
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39742,7 +44529,48 @@ type Seatalk1DisplayBrightness struct {
 	Brightness *uint8
 	Unknown2 []uint8
 }
-func DecodeSeatalk1DisplayBrightness(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Seatalk1DisplayBrightness ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.ProprietaryId, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Group), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Unknown1, 8, 40 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Command, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Brightness, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Unknown2, 8, 64 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalk1DisplayBrightness(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Seatalk1DisplayBrightness
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39846,7 +44674,48 @@ type Seatalk1DisplayColor struct {
 	Color SeatalkDisplayColorConst
 	Unknown2 []uint8
 }
-func DecodeSeatalk1DisplayColor(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Seatalk1DisplayColor ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.ProprietaryId, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Group), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Unknown1, 8, 40 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Command, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Color), 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Unknown2, 8, 64 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSeatalk1DisplayColor(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Seatalk1DisplayColor
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39948,7 +44817,40 @@ type AirmarAttitudeOffset struct {
 	PitchOffset *float32
 	RollOffset *float32
 }
-func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarAttitudeOffset ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.AzimuthOffset, 16, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.PitchOffset, 16, 0.000100, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.RollOffset, 16, 0.000100, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarAttitudeOffset
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -39991,7 +44893,7 @@ func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-AzimuthOffset: %w", err)
 	} else {
 		val.AzimuthOffset = v
@@ -40000,7 +44902,7 @@ func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-PitchOffset: %w", err)
 	} else {
 		val.PitchOffset = v
@@ -40009,7 +44911,7 @@ func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-RollOffset: %w", err)
 	} else {
 		val.RollOffset = v
@@ -40038,7 +44940,76 @@ type AirmarCalibrateCompass struct {
 	PitchAndRollDamping *float32
 	CompassRateGyroDamping *float32
 }
-func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarCalibrateCompass ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.CalibrateFunction), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.CalibrationStatus), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.VerifyScore, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.XAxisGainValue, 16, 0.010000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.YAxisGainValue, 16, 0.010000, 64, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ZAxisGainValue, 16, 0.010000, 80, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.XAxisLinearOffset, 16, 0.010000, 96, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.YAxisLinearOffset, 16, 0.010000, 112, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ZAxisLinearOffset, 16, 0.010000, 128, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.XAxisAngularOffset, 16, 0.100000, 144, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.PitchAndRollDamping, 16, 0.050000, 160, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.CompassRateGyroDamping, 16, 0.050000, 176, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarCalibrateCompass
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40108,7 +45079,7 @@ func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-XAxisGainValue: %w", err)
 	} else {
 		val.XAxisGainValue = v
@@ -40117,7 +45088,7 @@ func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-YAxisGainValue: %w", err)
 	} else {
 		val.YAxisGainValue = v
@@ -40126,7 +45097,7 @@ func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-ZAxisGainValue: %w", err)
 	} else {
 		val.ZAxisGainValue = v
@@ -40135,7 +45106,7 @@ func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-XAxisLinearOffset: %w", err)
 	} else {
 		val.XAxisLinearOffset = v
@@ -40144,7 +45115,7 @@ func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-YAxisLinearOffset: %w", err)
 	} else {
 		val.YAxisLinearOffset = v
@@ -40153,7 +45124,7 @@ func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-ZAxisLinearOffset: %w", err)
 	} else {
 		val.ZAxisLinearOffset = v
@@ -40162,7 +45133,7 @@ func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-XAxisAngularOffset: %w", err)
 	} else {
 		val.XAxisAngularOffset = v
@@ -40171,7 +45142,7 @@ func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.05); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-PitchAndRollDamping: %w", err)
 	} else {
 		val.PitchAndRollDamping = v
@@ -40180,7 +45151,7 @@ func DecodeAirmarCalibrateCompass(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.05); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateCompass-CompassRateGyroDamping: %w", err)
 	} else {
 		val.CompassRateGyroDamping = v
@@ -40198,7 +45169,36 @@ type AirmarTrueWindOptions struct {
 	ProprietaryId AirmarCommandConst
 	CogSubstitutionForHdg YesNoConst
 }
-func DecodeAirmarTrueWindOptions(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarTrueWindOptions ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.CogSubstitutionForHdg), 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(22, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarTrueWindOptions(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarTrueWindOptions
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40263,7 +45263,36 @@ type AirmarSimulateMode struct {
 	ProprietaryId AirmarCommandConst
 	SimulateMode OffOnConst
 }
-func DecodeAirmarSimulateMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarSimulateMode ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SimulateMode), 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(22, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarSimulateMode(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarSimulateMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40328,7 +45357,36 @@ type AirmarCalibrateDepth struct {
 	ProprietaryId AirmarCommandConst
 	SpeedOfSoundMode *units.Velocity
 }
-func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarCalibrateDepth ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.SpeedOfSoundMode.Value, 16, 0.100000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarCalibrateDepth
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40371,7 +45429,7 @@ func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-SpeedOfSoundMode: %w", err)
 	} else {
 		val.SpeedOfSoundMode = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -40398,7 +45456,32 @@ type AirmarCalibrateSpeedRepeating1 struct {
 	InputFrequency *float32
 	OutputSpeed *units.Velocity
 }
-func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarCalibrateSpeed ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfPairsOfDataPoints, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarCalibrateSpeed
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -40461,12 +45544,12 @@ func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *PGNDataStream) (any, e
 	i := 0 
 	for {
 		var rep AirmarCalibrateSpeedRepeating1
-		if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-InputFrequency: %w", err)
 		} else {
 			rep.InputFrequency = v
 		}
-		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-OutputSpeed: %w", err)
 		} else {
 			rep.OutputSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -40493,7 +45576,40 @@ type AirmarCalibrateTemperature struct {
 	TemperatureInstance AirmarTemperatureInstanceConst
 	TemperatureOffset *units.Temperature
 }
-func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarCalibrateTemperature ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TemperatureInstance), 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.TemperatureOffset.Value, 16, 0.001000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarCalibrateTemperature
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40549,7 +45665,7 @@ func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *PGNDataStream) (
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-TemperatureOffset: %w", err)
 	} else {
 		val.TemperatureOffset = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -40568,7 +45684,40 @@ type AirmarSpeedFilterNone struct {
 	FilterType *uint8
 	SampleInterval *float32
 }
-func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarSpeedFilterNone ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.FilterType, 4, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarSpeedFilterNone
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40627,7 +45776,7 @@ func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *PGNDataStream) (any, 
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-SampleInterval: %w", err)
 	} else {
 		val.SampleInterval = v
@@ -40647,7 +45796,44 @@ type AirmarSpeedFilterIir struct {
 	SampleInterval *float32
 	FilterDuration *float32
 }
-func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarSpeedFilterIir ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.FilterType, 4, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.FilterDuration, 16, 0.010000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarSpeedFilterIir
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40706,7 +45892,7 @@ func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *PGNDataStream) (any, e
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-SampleInterval: %w", err)
 	} else {
 		val.SampleInterval = v
@@ -40715,7 +45901,7 @@ func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-FilterDuration: %w", err)
 	} else {
 		val.FilterDuration = v
@@ -40734,7 +45920,40 @@ type AirmarTemperatureFilterNone struct {
 	FilterType *uint8
 	SampleInterval *float32
 }
-func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarTemperatureFilterNone ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.FilterType, 4, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarTemperatureFilterNone
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40793,7 +46012,7 @@ func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *PGNDataStream) 
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-SampleInterval: %w", err)
 	} else {
 		val.SampleInterval = v
@@ -40813,7 +46032,44 @@ type AirmarTemperatureFilterIir struct {
 	SampleInterval *float32
 	FilterDuration *float32
 }
-func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarTemperatureFilterIir ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.FilterType, 4, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.FilterDuration, 16, 0.010000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarTemperatureFilterIir
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40872,7 +46128,7 @@ func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *PGNDataStream) (
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-SampleInterval: %w", err)
 	} else {
 		val.SampleInterval = v
@@ -40881,7 +46137,7 @@ func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *PGNDataStream) (
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-FilterDuration: %w", err)
 	} else {
 		val.FilterDuration = v
@@ -40899,7 +46155,36 @@ type AirmarNmea2000Options struct {
 	ProprietaryId AirmarCommandConst
 	TransmissionInterval AirmarTransmissionIntervalConst
 }
-func DecodeAirmarNmea2000Options(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarNmea2000Options ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TransmissionInterval), 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(22, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarNmea2000Options(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarNmea2000Options
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -40963,7 +46248,28 @@ type AirmarAddressableMultiFrame struct {
 	IndustryCode IndustryCodeConst
 	ProprietaryId *uint8
 }
-func DecodeAirmarAddressableMultiFrame(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AirmarAddressableMultiFrame ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ProprietaryId, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAirmarAddressableMultiFrame(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AirmarAddressableMultiFrame
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -41014,7 +46320,40 @@ type MaretronSlaveResponse struct {
 	Command *uint8
 	Status *uint8
 }
-func DecodeMaretronSlaveResponse(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *MaretronSlaveResponse ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.ProductCode, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.SoftwareCode, 16, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Command, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Status, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeMaretronSlaveResponse(Info MessageInfo, stream *DataStream) (any, error) {
 	var val MaretronSlaveResponse
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -41094,7 +46433,56 @@ type GarminDayMode struct {
 	Mode GarminColorModeConst
 	Backlight GarminBacklightLevelConst
 }
-func DecodeGarminDayMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GarminDayMode ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId1, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId2, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId3, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId4, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Mode), 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Backlight), 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGarminDayMode(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GarminDayMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -41215,7 +46603,56 @@ type GarminNightMode struct {
 	Mode GarminColorModeConst
 	Backlight GarminBacklightLevelConst
 }
-func DecodeGarminNightMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GarminNightMode ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId1, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId2, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId3, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId4, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Mode), 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Backlight), 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGarminNightMode(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GarminNightMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -41336,7 +46773,56 @@ type GarminColorMode struct {
 	Mode GarminColorModeConst
 	Color GarminColorConst
 }
-func DecodeGarminColorMode(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GarminColorMode ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId1, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId2, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId3, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnknownId4, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Mode), 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Color), 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGarminColorMode(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GarminColorMode
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -41469,7 +46955,96 @@ type Alert struct {
 	AlertPriority *uint8
 	AlertState AlertStateConst
 }
-func DecodeAlert(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Alert ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.AlertType), 4, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlertCategory), 4, 4)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSystem, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSubSystem, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AlertId, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceInstance, 8, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceIndexSource, 8, 112)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TemporarySilenceStatus), 1, 128)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AcknowledgeStatus), 1, 129)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.EscalationStatus), 1, 130)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TemporarySilenceSupport), 1, 131)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AcknowledgeSupport), 1, 132)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.EscalationSupport), 1, 133)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 134)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.AcknowledgeSourceNetworkIdName, 64, 136)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TriggerCondition), 4, 200)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ThresholdStatus), 4, 204)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertPriority, 8, 208)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlertState), 8, 216)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAlert(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Alert
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -41672,7 +47247,60 @@ type AlertResponse struct {
 	AcknowledgeSourceNetworkIdName *uint64
 	ResponseCommand AlertResponseCommandConst
 }
-func DecodeAlertResponse(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AlertResponse ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.AlertType), 4, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlertCategory), 4, 4)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSystem, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSubSystem, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AlertId, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceInstance, 8, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceIndexSource, 8, 112)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.AcknowledgeSourceNetworkIdName, 64, 128)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ResponseCommand), 2, 192)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 194)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAlertResponse(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AlertResponse
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -41795,7 +47423,60 @@ type AlertText struct {
 	AlertTextDescription string
 	AlertLocationTextDescription string
 }
-func DecodeAlertText(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AlertText ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.AlertType), 4, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlertCategory), 4, 4)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSystem, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSubSystem, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AlertId, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceInstance, 8, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceIndexSource, 8, 112)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.LanguageId), 8, 128)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringLau(p.AlertTextDescription, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringLau(p.AlertLocationTextDescription, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAlertText(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AlertText
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -41925,7 +47606,72 @@ type AlertConfiguration struct {
 	TemporarySilencePeriod *uint8
 	EscalationPeriod *uint8
 }
-func DecodeAlertConfiguration(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AlertConfiguration ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.AlertType), 4, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlertCategory), 4, 4)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSystem, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSubSystem, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AlertId, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceInstance, 8, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceIndexSource, 8, 112)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertControl, 2, 128)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UserDefinedAlertAssignment, 2, 130)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 132)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ReactivationPeriod, 8, 136)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.TemporarySilencePeriod, 8, 144)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.EscalationPeriod, 8, 152)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAlertConfiguration(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AlertConfiguration
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -42080,7 +47826,52 @@ type AlertThresholdRepeating1 struct {
 	ThresholdDataFormat *uint8
 	ThresholdLevel *uint64
 }
-func DecodeAlertThreshold(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AlertThreshold ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.AlertType), 4, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlertCategory), 4, 4)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSystem, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSubSystem, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AlertId, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceInstance, 8, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceIndexSource, 8, 112)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfParameters, 8, 128)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAlertThreshold(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AlertThreshold
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -42237,7 +48028,52 @@ type AlertValueRepeating1 struct {
 	ValueDataFormat *uint8
 	ValueData *uint64
 }
-func DecodeAlertValue(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AlertValue ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.AlertType), 4, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AlertCategory), 4, 4)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSystem, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertSubSystem, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AlertId, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceInstance, 8, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DataSourceIndexSource, 8, 112)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfParameters, 8, 128)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAlertValue(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AlertValue
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -42377,7 +48213,32 @@ type SystemTime struct {
 	Date *uint16
 	Time *float32
 }
-func DecodeSystemTime(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SystemTime ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Source), 4, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 12)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Date, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Time, 32, 0.000100, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSystemTime(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SystemTime
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -42411,7 +48272,7 @@ func DecodeSystemTime(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SystemTime-Time: %w", err)
 	} else {
 		val.Time = v
@@ -42430,10 +48291,39 @@ type Heartbeat struct {
 	Controller2State ControllerStateConst
 	EquipmentStatus EquipmentStatusConst
 }
-func DecodeHeartbeat(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Heartbeat ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUnsignedResolution32(p.DataTransmitOffset, 16, 0.001000, 0, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SequenceCounter, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Controller1State), 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Controller2State), 2, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.EquipmentStatus), 2, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(34, 30)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeHeartbeat(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Heartbeat
 	val.Info = Info
-	if v, err := stream.readUnsignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Heartbeat-DataTransmitOffset: %w", err)
 	} else {
 		val.DataTransmitOffset = v
@@ -42495,10 +48385,47 @@ type ProductInformation struct {
 	CertificationLevel *uint8
 	LoadEquivalency *uint8
 }
-func DecodeProductInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *ProductInformation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUnsignedResolution32(p.Nmea2000Version, 16, 0.001000, 0, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.ProductCode, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.ModelId), 256, 32 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.SoftwareVersionCode), 256, 288 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.ModelVersion), 256, 544 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.ModelSerialCode), 256, 800 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.CertificationLevel, 8, 1056)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.LoadEquivalency, 8, 1064)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeProductInformation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val ProductInformation
 	val.Info = Info
-	if v, err := stream.readUnsignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ProductInformation-Nmea2000Version: %w", err)
 	} else {
 		val.Nmea2000Version = v
@@ -42578,7 +48505,24 @@ type ConfigurationInformation struct {
 	InstallationDescription2 string
 	ManufacturerInformation string
 }
-func DecodeConfigurationInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *ConfigurationInformation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeStringLau(p.InstallationDescription1, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringLau(p.InstallationDescription2, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringLau(p.ManufacturerInformation, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeConfigurationInformation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val ConfigurationInformation
 	val.Info = Info
 	if v, err := stream.readStringWithLengthAndControl(); err != nil {
@@ -42627,7 +48571,84 @@ type ManOverboardNotification struct {
 	MmsiOfVesselOfOrigin *uint32
 	MobEmitterBatteryLowStatus LowBatteryConst
 }
-func DecodeManOverboardNotification(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *ManOverboardNotification ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.MobEmitterId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ManOverboardStatus), 3, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(5, 43)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.ActivationTime, 32, 0.000100, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PositionSource), 3, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(5, 83)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.PositionDate, 16, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PositionTime, 32, 0.000100, 104, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Latitude, 32, 0.000000, 136, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Longitude, 32, 0.000000, 168, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.CogReference), 2, 200)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 202)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Cog, 16, 0.000100, 208, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Sog.Value, 16, 0.010000, 224, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.MmsiOfVesselOfOrigin, 32, 240)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MobEmitterBatteryLowStatus), 3, 272)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(5, 275)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, error) {
 	var val ManOverboardNotification
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -42661,7 +48682,7 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *PGNDataStream) (an
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-ActivationTime: %w", err)
 	} else {
 		val.ActivationTime = v
@@ -42692,7 +48713,7 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *PGNDataStream) (an
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-PositionTime: %w", err)
 	} else {
 		val.PositionTime = v
@@ -42732,7 +48753,7 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *PGNDataStream) (an
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-Cog: %w", err)
 	} else {
 		val.Cog = v
@@ -42741,7 +48762,7 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *PGNDataStream) (an
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ManOverboardNotification-Sog: %w", err)
 	} else {
 		val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -42794,7 +48815,84 @@ type HeadingTrackControl struct {
 	OffTrackLimit *units.Distance
 	VesselHeading *float32
 }
-func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *HeadingTrackControl ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.RudderLimitExceeded), 2, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.OffHeadingLimitExceeded), 2, 2)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.OffTrackLimitExceeded), 2, 4)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Override), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SteeringMode), 3, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TurnMode), 3, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.HeadingReference), 2, 14)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(5, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.CommandedRudderDirection), 3, 21)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.CommandedRudderAngle, 16, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.HeadingToSteerCourse, 16, 0.000100, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Track, 16, 0.000100, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.RudderLimit, 16, 0.000100, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.OffHeadingLimit, 16, 0.000100, 88, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.RadiusOfTurnOrder, 16, 0.000100, 104, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.RateOfTurnOrder, 16, 0.000031, 120, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.OffTrackLimit.Value, 16, 1.000000, 136, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.VesselHeading, 16, 0.000100, 152, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeHeadingTrackControl(Info MessageInfo, stream *DataStream) (any, error) {
 	var val HeadingTrackControl
 	val.Info = Info
 	if v, err := stream.readLookupField(2); err != nil {
@@ -42873,7 +48971,7 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-CommandedRudderAngle: %w", err)
 	} else {
 		val.CommandedRudderAngle = v
@@ -42882,7 +48980,7 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-HeadingToSteerCourse: %w", err)
 	} else {
 		val.HeadingToSteerCourse = v
@@ -42891,7 +48989,7 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-Track: %w", err)
 	} else {
 		val.Track = v
@@ -42900,7 +48998,7 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-RudderLimit: %w", err)
 	} else {
 		val.RudderLimit = v
@@ -42909,7 +49007,7 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffHeadingLimit: %w", err)
 	} else {
 		val.OffHeadingLimit = v
@@ -42918,7 +49016,7 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-RadiusOfTurnOrder: %w", err)
 	} else {
 		val.RadiusOfTurnOrder = v
@@ -42927,7 +49025,7 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 3.125e-05); err != nil {
+	if v, err := stream.readSignedResolution(16, 3.125e-05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-RateOfTurnOrder: %w", err)
 	} else {
 		val.RateOfTurnOrder = v
@@ -42945,7 +49043,7 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for HeadingTrackControl-VesselHeading: %w", err)
 	} else {
 		val.VesselHeading = v
@@ -42963,7 +49061,36 @@ type Rudder struct {
 	AngleOrder *float32
 	Position *float32
 }
-func DecodeRudder(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Rudder ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DirectionOrder), 3, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(5, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.AngleOrder, 16, 0.000100, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Position, 16, 0.000100, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeRudder(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Rudder
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -42988,7 +49115,7 @@ func DecodeRudder(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Rudder-AngleOrder: %w", err)
 	} else {
 		val.AngleOrder = v
@@ -42997,7 +49124,7 @@ func DecodeRudder(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Rudder-Position: %w", err)
 	} else {
 		val.Position = v
@@ -43020,7 +49147,36 @@ type VesselHeading struct {
 	Variation *float32
 	Reference DirectionReferenceConst
 }
-func DecodeVesselHeading(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *VesselHeading ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Heading, 16, 0.000100, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Deviation, 16, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Variation, 16, 0.000100, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Reference), 2, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 58)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeVesselHeading(Info MessageInfo, stream *DataStream) (any, error) {
 	var val VesselHeading
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43032,7 +49188,7 @@ func DecodeVesselHeading(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselHeading-Heading: %w", err)
 	} else {
 		val.Heading = v
@@ -43041,7 +49197,7 @@ func DecodeVesselHeading(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselHeading-Deviation: %w", err)
 	} else {
 		val.Deviation = v
@@ -43050,7 +49206,7 @@ func DecodeVesselHeading(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselHeading-Variation: %w", err)
 	} else {
 		val.Variation = v
@@ -43079,7 +49235,24 @@ type RateOfTurn struct {
 	Sid *uint8
 	Rate *float64
 }
-func DecodeRateOfTurn(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *RateOfTurn ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Rate, 32, 0.000000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeRateOfTurn(Info MessageInfo, stream *DataStream) (any, error) {
 	var val RateOfTurn
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43111,7 +49284,24 @@ type Heave struct {
 	Sid *uint8
 	Heave *units.Distance
 }
-func DecodeHeave(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Heave ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.Heave.Value, 16, 0.010000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(40, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeHeave(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Heave
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43123,7 +49313,7 @@ func DecodeHeave(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Heave-Heave: %w", err)
 	} else {
 		val.Heave = nullableUnit(units.Meter, v, units.NewDistance)
@@ -43145,7 +49335,32 @@ type Attitude struct {
 	Pitch *float32
 	Roll *float32
 }
-func DecodeAttitude(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Attitude ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Yaw, 16, 0.000100, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Pitch, 16, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Roll, 16, 0.000100, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAttitude(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Attitude
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43157,7 +49372,7 @@ func DecodeAttitude(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Attitude-Yaw: %w", err)
 	} else {
 		val.Yaw = v
@@ -43166,7 +49381,7 @@ func DecodeAttitude(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Attitude-Pitch: %w", err)
 	} else {
 		val.Pitch = v
@@ -43175,7 +49390,7 @@ func DecodeAttitude(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Attitude-Roll: %w", err)
 	} else {
 		val.Roll = v
@@ -43197,7 +49412,36 @@ type MagneticVariation struct {
 	AgeOfService *uint16
 	Variation *float32
 }
-func DecodeMagneticVariation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *MagneticVariation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Source), 4, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 12)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.AgeOfService, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Variation, 16, 0.000100, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeMagneticVariation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val MagneticVariation
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43231,7 +49475,7 @@ func DecodeMagneticVariation(Info MessageInfo, stream *PGNDataStream) (any, erro
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for MagneticVariation-Variation: %w", err)
 	} else {
 		val.Variation = v
@@ -43253,7 +49497,32 @@ type EngineParametersRapidUpdate struct {
 	BoostPressure *units.Pressure
 	TiltTrim *int8
 }
-func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *EngineParametersRapidUpdate ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.Instance), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Speed, 16, 0.250000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.BoostPressure.Value, 16, 100.000000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt8(p.TiltTrim, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) {
 	var val EngineParametersRapidUpdate
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -43265,7 +49534,7 @@ func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *PGNDataStream) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.25); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.25, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-Speed: %w", err)
 	} else {
 		val.Speed = v
@@ -43274,7 +49543,7 @@ func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *PGNDataStream) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-BoostPressure: %w", err)
 	} else {
 		val.BoostPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -43314,7 +49583,68 @@ type EngineParametersDynamic struct {
 	EngineLoad *int8
 	EngineTorque *int8
 }
-func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *EngineParametersDynamic ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.Instance), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.OilPressure.Value, 16, 100.000000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.OilTemperature.Value, 16, 0.100000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Temperature.Value, 16, 0.010000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.AlternatorPotential, 16, 0.010000, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.FuelRate.Value, 16, 0.100000, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.TotalEngineHours, 32, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.CoolantPressure.Value, 16, 100.000000, 120, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.FuelPressure.Value, 16, 1000.000000, 136, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 152)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DiscreteStatus1), 16, 160)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DiscreteStatus2), 16, 176)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt8(p.EngineLoad, 8, 192)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt8(p.EngineTorque, 8, 200)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeEngineParametersDynamic(Info MessageInfo, stream *DataStream) (any, error) {
 	var val EngineParametersDynamic
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -43326,7 +49656,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-OilPressure: %w", err)
 	} else {
 		val.OilPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -43335,7 +49665,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-OilTemperature: %w", err)
 	} else {
 		val.OilTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -43344,7 +49674,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-Temperature: %w", err)
 	} else {
 		val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -43353,7 +49683,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-AlternatorPotential: %w", err)
 	} else {
 		val.AlternatorPotential = v
@@ -43362,7 +49692,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelRate: %w", err)
 	} else {
 		val.FuelRate = nullableUnit(units.LitersPerHour, v, units.NewFlow)
@@ -43380,7 +49710,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-CoolantPressure: %w", err)
 	} else {
 		val.CoolantPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -43389,7 +49719,7 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 1000); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 1000, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelPressure: %w", err)
 	} else {
 		val.FuelPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -43448,7 +49778,40 @@ type TransmissionParametersDynamic struct {
 	OilTemperature *units.Temperature
 	DiscreteStatus1 *uint8
 }
-func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *TransmissionParametersDynamic ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.Instance), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TransmissionGear), 2, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 10)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.OilPressure.Value, 16, 100.000000, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.OilTemperature.Value, 16, 0.100000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DiscreteStatus1, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *DataStream) (any, error) {
 	var val TransmissionParametersDynamic
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -43473,7 +49836,7 @@ func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *PGNDataStream
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-OilPressure: %w", err)
 	} else {
 		val.OilPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -43482,7 +49845,7 @@ func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-OilTemperature: %w", err)
 	} else {
 		val.OilTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -43513,10 +49876,31 @@ type TripParametersVessel struct {
 	EstimatedFuelRemaining *units.Volume
 	TripRunTime *float32
 }
-func DecodeTripParametersVessel(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *TripParametersVessel ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUnsignedResolution32(p.TimeToEmpty, 32, 0.001000, 0, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.DistanceToEmpty.Value, 32, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.EstimatedFuelRemaining.Value, 16, 1.000000, 64, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.TripRunTime, 32, 0.001000, 80, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeTripParametersVessel(Info MessageInfo, stream *DataStream) (any, error) {
 	var val TripParametersVessel
 	val.Info = Info
-	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersVessel-TimeToEmpty: %w", err)
 	} else {
 		val.TimeToEmpty = v
@@ -43525,7 +49909,7 @@ func DecodeTripParametersVessel(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersVessel-DistanceToEmpty: %w", err)
 	} else {
 		val.DistanceToEmpty = nullableUnit(units.Meter, v, units.NewDistance)
@@ -43543,7 +49927,7 @@ func DecodeTripParametersVessel(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersVessel-TripRunTime: %w", err)
 	} else {
 		val.TripRunTime = v
@@ -43562,7 +49946,32 @@ type TripParametersEngine struct {
 	FuelRateEconomy *units.Flow
 	InstantaneousFuelEconomy *units.Flow
 }
-func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *TripParametersEngine ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.Instance), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.TripFuelUsed.Value, 16, 1.000000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.FuelRateAverage.Value, 16, 0.100000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.FuelRateEconomy.Value, 16, 0.100000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.InstantaneousFuelEconomy.Value, 16, 0.100000, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeTripParametersEngine(Info MessageInfo, stream *DataStream) (any, error) {
 	var val TripParametersEngine
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -43583,7 +49992,7 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateAverage: %w", err)
 	} else {
 		val.FuelRateAverage = nullableUnit(units.LitersPerHour, v, units.NewFlow)
@@ -43592,7 +50001,7 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateEconomy: %w", err)
 	} else {
 		val.FuelRateEconomy = nullableUnit(units.LitersPerHour, v, units.NewFlow)
@@ -43601,7 +50010,7 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TripParametersEngine-InstantaneousFuelEconomy: %w", err)
 	} else {
 		val.InstantaneousFuelEconomy = nullableUnit(units.LitersPerHour, v, units.NewFlow)
@@ -43619,7 +50028,28 @@ type EngineParametersStatic struct {
 	Vin string
 	SoftwareId string
 }
-func DecodeEngineParametersStatic(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *EngineParametersStatic ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.Instance), 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.RatedEngineSpeed, 16, 0.250000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Vin), 136, 24 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.SoftwareId), 256, 160 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeEngineParametersStatic(Info MessageInfo, stream *DataStream) (any, error) {
 	var val EngineParametersStatic
 	val.Info = Info
 	if v, err := stream.readLookupField(8); err != nil {
@@ -43631,7 +50061,7 @@ func DecodeEngineParametersStatic(Info MessageInfo, stream *PGNDataStream) (any,
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.25); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.25, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EngineParametersStatic-RatedEngineSpeed: %w", err)
 	} else {
 		val.RatedEngineSpeed = v
@@ -43671,7 +50101,44 @@ type LoadControllerConnectionStateControl struct {
 	Timeon *uint8
 	Timeoff *uint8
 }
-func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *LoadControllerConnectionStateControl ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.SequenceId, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ConnectionId, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.State, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Status, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.OperationalStatusControl, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.PwmDutyCycle, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Timeon, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Timeoff, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *DataStream) (any, error) {
 	var val LoadControllerConnectionStateControl
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -43780,7 +50247,128 @@ type BinarySwitchBankStatus struct {
 	Indicator27 OffOnConst
 	Indicator28 OffOnConst
 }
-func DecodeBinarySwitchBankStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *BinarySwitchBankStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator1), 2, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator2), 2, 10)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator3), 2, 12)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator4), 2, 14)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator5), 2, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator6), 2, 18)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator7), 2, 20)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator8), 2, 22)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator9), 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator10), 2, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator11), 2, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator12), 2, 30)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator13), 2, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator14), 2, 34)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator15), 2, 36)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator16), 2, 38)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator17), 2, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator18), 2, 42)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator19), 2, 44)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator20), 2, 46)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator21), 2, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator22), 2, 50)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator23), 2, 52)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator24), 2, 54)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator25), 2, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator26), 2, 58)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator27), 2, 60)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Indicator28), 2, 62)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeBinarySwitchBankStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val BinarySwitchBankStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44078,7 +50666,128 @@ type SwitchBankControl struct {
 	Switch27 OffOnConst
 	Switch28 OffOnConst
 }
-func DecodeSwitchBankControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SwitchBankControl ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch1), 2, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch2), 2, 10)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch3), 2, 12)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch4), 2, 14)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch5), 2, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch6), 2, 18)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch7), 2, 20)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch8), 2, 22)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch9), 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch10), 2, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch11), 2, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch12), 2, 30)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch13), 2, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch14), 2, 34)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch15), 2, 36)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch16), 2, 38)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch17), 2, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch18), 2, 42)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch19), 2, 44)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch20), 2, 46)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch21), 2, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch22), 2, 50)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch23), 2, 52)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch24), 2, 54)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch25), 2, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch26), 2, 58)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch27), 2, 60)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Switch28), 2, 62)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSwitchBankControl(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SwitchBankControl
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44361,7 +51070,20 @@ type AcInputStatusRepeating1 struct {
 	ReactivePower *uint32
 	PowerFactor *float32
 }
-func DecodeAcInputStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AcInputStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfLines, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAcInputStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AcInputStatus
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -44404,22 +51126,22 @@ func DecodeAcInputStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			rep.Acceptability = AcceptabilityConst(v)
 		}
 		stream.skipBits(4)
-		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-Voltage: %w", err)
 		} else {
 			rep.Voltage = v
 		}
-		if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-Current: %w", err)
 		} else {
 			rep.Current = v
 		}
-		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-Frequency: %w", err)
 		} else {
 			rep.Frequency = v
 		}
-		if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-BreakerSize: %w", err)
 		} else {
 			rep.BreakerSize = v
@@ -44434,7 +51156,7 @@ func DecodeAcInputStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 		} else {
 			rep.ReactivePower = v
 		}
-		if v, err := stream.readUnsignedResolution(8, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(8, 0.01, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AcInputStatus-PowerFactor: %w", err)
 		} else {
 			rep.PowerFactor = v
@@ -44470,7 +51192,20 @@ type AcOutputStatusRepeating1 struct {
 	ReactivePower *uint32
 	PowerFactor *float32
 }
-func DecodeAcOutputStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AcOutputStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfLines, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAcOutputStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AcOutputStatus
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -44513,22 +51248,22 @@ func DecodeAcOutputStatus(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			rep.Waveform = WaveformConst(v)
 		}
 		stream.skipBits(3)
-		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-Voltage: %w", err)
 		} else {
 			rep.Voltage = v
 		}
-		if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-Current: %w", err)
 		} else {
 			rep.Current = v
 		}
-		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-Frequency: %w", err)
 		} else {
 			rep.Frequency = v
 		}
-		if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-BreakerSize: %w", err)
 		} else {
 			rep.BreakerSize = v
@@ -44543,7 +51278,7 @@ func DecodeAcOutputStatus(Info MessageInfo, stream *PGNDataStream) (any, error) 
 		} else {
 			rep.ReactivePower = v
 		}
-		if v, err := stream.readUnsignedResolution(8, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(8, 0.01, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for AcOutputStatus-PowerFactor: %w", err)
 		} else {
 			rep.PowerFactor = v
@@ -44569,7 +51304,32 @@ type FluidLevel struct {
 	Level *float32
 	Capacity *units.Volume
 }
-func DecodeFluidLevel(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FluidLevel ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 4, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Type), 4, 4)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Level, 16, 0.004000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Capacity.Value, 32, 0.100000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFluidLevel(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FluidLevel
 	val.Info = Info
 	if v, err := stream.readUInt8(4); err != nil {
@@ -44590,7 +51350,7 @@ func DecodeFluidLevel(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.004); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.004, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for FluidLevel-Level: %w", err)
 	} else {
 		val.Level = v
@@ -44599,7 +51359,7 @@ func DecodeFluidLevel(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for FluidLevel-Capacity: %w", err)
 	} else {
 		val.Capacity = nullableUnit(units.Liter, v, units.NewVolume)
@@ -44625,7 +51385,44 @@ type DcDetailedStatus struct {
 	RippleVoltage *float32
 	RemainingCapacity *uint16
 }
-func DecodeDcDetailedStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *DcDetailedStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DcType), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.StateOfCharge, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.StateOfHealth, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.TimeRemaining, 16, 60.000000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.RippleVoltage, 16, 0.010000, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.RemainingCapacity, 16, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeDcDetailedStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val DcDetailedStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44673,7 +51470,7 @@ func DecodeDcDetailedStatus(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 60); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 60, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for DcDetailedStatus-TimeRemaining: %w", err)
 	} else {
 		val.TimeRemaining = v
@@ -44682,7 +51479,7 @@ func DecodeDcDetailedStatus(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for DcDetailedStatus-RippleVoltage: %w", err)
 	} else {
 		val.RippleVoltage = v
@@ -44712,7 +51509,44 @@ type ChargerStatus struct {
 	EqualizationPending OffOnConst
 	EqualizationTimeRemaining *float32
 }
-func DecodeChargerStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *ChargerStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.BatteryInstance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.OperatingState), 4, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ChargeMode), 4, 20)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Enabled), 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.EqualizationPending), 2, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.EqualizationTimeRemaining, 16, 60.000000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeChargerStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val ChargerStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44773,7 +51607,7 @@ func DecodeChargerStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 60); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 60, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ChargerStatus-EqualizationTimeRemaining: %w", err)
 	} else {
 		val.EqualizationTimeRemaining = v
@@ -44792,7 +51626,32 @@ type BatteryStatus struct {
 	Temperature *units.Temperature
 	Sid *uint8
 }
-func DecodeBatteryStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *BatteryStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Voltage, 16, 0.010000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Current, 16, 0.100000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Temperature.Value, 16, 0.010000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Sid, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeBatteryStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val BatteryStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44804,7 +51663,7 @@ func DecodeBatteryStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryStatus-Voltage: %w", err)
 	} else {
 		val.Voltage = v
@@ -44813,7 +51672,7 @@ func DecodeBatteryStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryStatus-Current: %w", err)
 	} else {
 		val.Current = v
@@ -44822,7 +51681,7 @@ func DecodeBatteryStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryStatus-Temperature: %w", err)
 	} else {
 		val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -44850,7 +51709,36 @@ type InverterStatus struct {
 	OperatingState InverterStateConst
 	InverterEnable OffOnConst
 }
-func DecodeInverterStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *InverterStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AcInstance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DcInstance, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.OperatingState), 4, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.InverterEnable), 2, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 30)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeInverterStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val InverterStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -44915,7 +51803,48 @@ type InverterConfigurationStatus struct {
 	LoadSensePowerThreshold *uint8
 	LoadSenseInterval *uint8
 }
-func DecodeInverterConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *InverterConfigurationStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AcInstance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.DcInstance, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.InverterEnableDisable, 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.InverterMode, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.LoadSenseEnableDisable, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.LoadSensePowerThreshold, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.LoadSenseInterval, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeInverterConfigurationStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val InverterConfigurationStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45002,7 +51931,28 @@ type AgsConfigurationStatus struct {
 	GeneratorInstance *uint8
 	AgsMode *uint8
 }
-func DecodeAgsConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AgsConfigurationStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.GeneratorInstance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AgsMode, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(40, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAgsConfigurationStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AgsConfigurationStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45050,7 +52000,52 @@ type BatteryConfigurationStatus struct {
 	PeukertExponent *float32
 	ChargeEfficiencyFactor *int8
 }
-func DecodeBatteryConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *BatteryConfigurationStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.BatteryType), 4, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SupportsEqualization), 2, 12)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 14)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.NominalVoltage), 4, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Chemistry), 4, 20)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Capacity, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt8(p.TemperatureCoefficient, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PeukertExponent, 8, 0.002000, 48, 500)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt8(p.ChargeEfficiencyFactor, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeBatteryConfigurationStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val BatteryConfigurationStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45120,7 +52115,7 @@ func DecodeBatteryConfigurationStatus(Info MessageInfo, stream *PGNDataStream) (
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(8, 0.002); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 0.002, 500); err != nil {
 		return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-PeukertExponent: %w", err)
 	} else {
 		val.PeukertExponent = v
@@ -45149,7 +52144,40 @@ type AgsStatus struct {
 	GeneratorOnReason *uint8
 	GeneratorOffReason *uint8
 }
-func DecodeAgsStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AgsStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Instance, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.GeneratorInstance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AgsOperatingState, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.GeneratorState, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.GeneratorOnReason, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.GeneratorOffReason, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAgsStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AgsStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45219,7 +52247,28 @@ type AcPowerCurrentPhaseA struct {
 	AcRmsCurrent *float32
 	Power *int32
 }
-func DecodeAcPowerCurrentPhaseA(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AcPowerCurrentPhaseA ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcRmsCurrent, 16, 0.100000, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.Power, 32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAcPowerCurrentPhaseA(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AcPowerCurrentPhaseA
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45240,7 +52289,7 @@ func DecodeAcPowerCurrentPhaseA(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
@@ -45267,7 +52316,28 @@ type AcPowerCurrentPhaseB struct {
 	AcRmsCurrent *float32
 	Power *int32
 }
-func DecodeAcPowerCurrentPhaseB(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AcPowerCurrentPhaseB ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcRmsCurrent, 16, 0.100000, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.Power, 32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAcPowerCurrentPhaseB(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AcPowerCurrentPhaseB
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45288,7 +52358,7 @@ func DecodeAcPowerCurrentPhaseB(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
@@ -45315,7 +52385,28 @@ type AcPowerCurrentPhaseC struct {
 	AcRmsCurrent *float32
 	Power *int32
 }
-func DecodeAcPowerCurrentPhaseC(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AcPowerCurrentPhaseC ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AcRmsCurrent, 16, 0.100000, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.Power, 32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAcPowerCurrentPhaseC(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AcPowerCurrentPhaseC
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45336,7 +52427,7 @@ func DecodeAcPowerCurrentPhaseC(Info MessageInfo, stream *PGNDataStream) (any, e
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-AcRmsCurrent: %w", err)
 	} else {
 		val.AcRmsCurrent = v
@@ -45366,7 +52457,44 @@ type ConverterStatus struct {
 	LowDcVoltageState GoodWarningErrorConst
 	RippleState GoodWarningErrorConst
 }
-func DecodeConverterStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *ConverterStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeBinary(p.Sid, 8, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.OperatingState), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TemperatureState), 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.OverloadState), 2, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.LowDcVoltageState), 2, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RippleState), 2, 30)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(32, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeConverterStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val ConverterStatus
 	val.Info = Info
 	if v, err := stream.readBinaryData(8); err != nil {
@@ -45445,7 +52573,32 @@ type DcVoltageCurrent struct {
 	DcVoltage *float32
 	DcCurrent *float32
 }
-func DecodeDcVoltageCurrent(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *DcVoltageCurrent ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeBinary(p.Sid, 8, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.DcVoltage, 16, 0.100000, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.DcCurrent, 24, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeDcVoltageCurrent(Info MessageInfo, stream *DataStream) (any, error) {
 	var val DcVoltageCurrent
 	val.Info = Info
 	if v, err := stream.readBinaryData(8); err != nil {
@@ -45466,7 +52619,7 @@ func DecodeDcVoltageCurrent(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for DcVoltageCurrent-DcVoltage: %w", err)
 	} else {
 		val.DcVoltage = v
@@ -45475,7 +52628,7 @@ func DecodeDcVoltageCurrent(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(24, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(24, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for DcVoltageCurrent-DcCurrent: %w", err)
 	} else {
 		val.DcCurrent = v
@@ -45495,7 +52648,24 @@ type LeewayAngle struct {
 	Sid *uint8
 	LeewayAngle *float32
 }
-func DecodeLeewayAngle(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *LeewayAngle ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.LeewayAngle, 16, 0.000100, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(40, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeLeewayAngle(Info MessageInfo, stream *DataStream) (any, error) {
 	var val LeewayAngle
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45507,7 +52677,7 @@ func DecodeLeewayAngle(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for LeewayAngle-LeewayAngle: %w", err)
 	} else {
 		val.LeewayAngle = v
@@ -45534,7 +52704,48 @@ type ThrusterControlStatus struct {
 	CommandTimeout *float32
 	AzimuthControl *float32
 }
-func DecodeThrusterControlStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *ThrusterControlStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Identifier, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DirectionControl), 4, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PowerEnabled), 2, 20)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RetractControl), 2, 22)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SpeedControl, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ControlEvents), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.CommandTimeout, 8, 0.005000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AzimuthControl, 16, 0.000100, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeThrusterControlStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val ThrusterControlStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45600,7 +52811,7 @@ func DecodeThrusterControlStatus(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(8, 0.005); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 0.005, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-CommandTimeout: %w", err)
 	} else {
 		val.CommandTimeout = v
@@ -45609,7 +52820,7 @@ func DecodeThrusterControlStatus(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterControlStatus-AzimuthControl: %w", err)
 	} else {
 		val.AzimuthControl = v
@@ -45628,7 +52839,36 @@ type ThrusterInformation struct {
 	MaximumTemperatureRating *units.Temperature
 	MaximumRotationalSpeed *float32
 }
-func DecodeThrusterInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *ThrusterInformation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Identifier, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MotorType), 4, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 12)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.PowerRating, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.MaximumTemperatureRating.Value, 16, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.MaximumRotationalSpeed, 16, 0.250000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeThrusterInformation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val ThrusterInformation
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45662,7 +52902,7 @@ func DecodeThrusterInformation(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterInformation-MaximumTemperatureRating: %w", err)
 	} else {
 		val.MaximumTemperatureRating = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -45671,7 +52911,7 @@ func DecodeThrusterInformation(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.25); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.25, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterInformation-MaximumRotationalSpeed: %w", err)
 	} else {
 		val.MaximumRotationalSpeed = v
@@ -45691,7 +52931,36 @@ type ThrusterMotorStatus struct {
 	Temperature *units.Temperature
 	OperatingTime *float32
 }
-func DecodeThrusterMotorStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *ThrusterMotorStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Identifier, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MotorEvents), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Current, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Temperature.Value, 16, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.OperatingTime, 16, 60.000000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeThrusterMotorStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val ThrusterMotorStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45730,7 +52999,7 @@ func DecodeThrusterMotorStatus(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Temperature: %w", err)
 	} else {
 		val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -45739,7 +53008,7 @@ func DecodeThrusterMotorStatus(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 60); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 60, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-OperatingTime: %w", err)
 	} else {
 		val.OperatingTime = v
@@ -45758,7 +53027,36 @@ type Speed struct {
 	SpeedWaterReferencedType WaterReferenceConst
 	SpeedDirection *uint8
 }
-func DecodeSpeed(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Speed ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.SpeedWaterReferenced.Value, 16, 0.010000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.SpeedGroundReferenced.Value, 16, 0.010000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SpeedWaterReferencedType), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SpeedDirection, 4, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(12, 52)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSpeed(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Speed
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45770,7 +53068,7 @@ func DecodeSpeed(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Speed-SpeedWaterReferenced: %w", err)
 	} else {
 		val.SpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -45779,7 +53077,7 @@ func DecodeSpeed(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Speed-SpeedGroundReferenced: %w", err)
 	} else {
 		val.SpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -45819,7 +53117,28 @@ type WaterDepth struct {
 	Offset *units.Distance
 	Range *units.Distance
 }
-func DecodeWaterDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *WaterDepth ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Depth.Value, 32, 0.010000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.Offset.Value, 16, 0.001000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Range.Value, 8, 10.000000, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeWaterDepth(Info MessageInfo, stream *DataStream) (any, error) {
 	var val WaterDepth
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45831,7 +53150,7 @@ func DecodeWaterDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WaterDepth-Depth: %w", err)
 	} else {
 		val.Depth = nullableUnit(units.Meter, v, units.NewDistance)
@@ -45840,7 +53159,7 @@ func DecodeWaterDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WaterDepth-Offset: %w", err)
 	} else {
 		val.Offset = nullableUnit(units.Meter, v, units.NewDistance)
@@ -45849,7 +53168,7 @@ func DecodeWaterDepth(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(8, 10); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 10, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WaterDepth-Range: %w", err)
 	} else {
 		val.Range = nullableUnit(units.Meter, v, units.NewDistance)
@@ -45867,7 +53186,28 @@ type DistanceLog struct {
 	Log *units.Distance
 	TripLog *units.Distance
 }
-func DecodeDistanceLog(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *DistanceLog ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.Date, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Time, 32, 0.000100, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Log.Value, 32, 1.000000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.TripLog.Value, 32, 1.000000, 80, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeDistanceLog(Info MessageInfo, stream *DataStream) (any, error) {
 	var val DistanceLog
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -45879,7 +53219,7 @@ func DecodeDistanceLog(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for DistanceLog-Time: %w", err)
 	} else {
 		val.Time = v
@@ -45925,7 +53265,72 @@ type TrackedTargetData struct {
 	UtcOfFix *float32
 	Name string
 }
-func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *TrackedTargetData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.TargetId, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TrackStatus), 2, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ReportedTarget), 1, 18)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TargetAcquisition), 1, 19)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.BearingReference), 2, 20)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 22)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Bearing, 16, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Distance.Value, 32, 0.001000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Course, 16, 0.000100, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Speed.Value, 16, 0.010000, 88, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Cpa.Value, 32, 0.010000, 104, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Tcpa, 32, 0.001000, 136, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.UtcOfFix, 32, 0.000100, 168, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Name), 1784, 200 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeTrackedTargetData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val TrackedTargetData
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -45986,7 +53391,7 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, erro
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Bearing: %w", err)
 	} else {
 		val.Bearing = v
@@ -45995,7 +53400,7 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, erro
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Distance: %w", err)
 	} else {
 		val.Distance = nullableUnit(units.Meter, v, units.NewDistance)
@@ -46004,7 +53409,7 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, erro
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Course: %w", err)
 	} else {
 		val.Course = v
@@ -46013,7 +53418,7 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, erro
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Speed: %w", err)
 	} else {
 		val.Speed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -46022,7 +53427,7 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, erro
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Cpa: %w", err)
 	} else {
 		val.Cpa = nullableUnit(units.Meter, v, units.NewDistance)
@@ -46031,7 +53436,7 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, erro
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-Tcpa: %w", err)
 	} else {
 		val.Tcpa = v
@@ -46040,7 +53445,7 @@ func DecodeTrackedTargetData(Info MessageInfo, stream *PGNDataStream) (any, erro
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TrackedTargetData-UtcOfFix: %w", err)
 	} else {
 		val.UtcOfFix = v
@@ -46075,7 +53480,68 @@ type WindlassControlStatus struct {
 	CommandTimeout *float32
 	WindlassControlEvents WindlassControlConst
 }
-func DecodeWindlassControlStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *WindlassControlStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.WindlassId, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.WindlassDirectionControl), 2, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AnchorDockingControl), 2, 18)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SpeedControlType), 2, 20)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 22)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.SpeedControl, 8, 24 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PowerEnable), 2, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MechanicalLock), 2, 34)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DeckAndAnchorWash), 2, 36)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AnchorLight), 2, 38)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.CommandTimeout, 8, 0.005000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.WindlassControlEvents), 4, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(12, 52)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeWindlassControlStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val WindlassControlStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -46172,7 +53638,7 @@ func DecodeWindlassControlStatus(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(8, 0.005); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 0.005, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WindlassControlStatus-CommandTimeout: %w", err)
 	} else {
 		val.CommandTimeout = v
@@ -46208,7 +53674,52 @@ type AnchorWindlassOperatingStatus struct {
 	AnchorDockingStatus DockingStatusConst
 	WindlassOperatingEvents WindlassOperationConst
 }
-func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AnchorWindlassOperatingStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.WindlassId, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.WindlassDirectionControl), 2, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.WindlassMotionStatus), 2, 18)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RodeTypeStatus), 2, 20)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 22)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.RodeCounterValue.Value, 16, 0.100000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.WindlassLineSpeed.Value, 16, 0.010000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AnchorDockingStatus), 2, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.WindlassOperatingEvents), 6, 58)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AnchorWindlassOperatingStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -46260,7 +53771,7 @@ func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *PGNDataStream
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-RodeCounterValue: %w", err)
 	} else {
 		val.RodeCounterValue = nullableUnit(units.Meter, v, units.NewDistance)
@@ -46269,7 +53780,7 @@ func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassLineSpeed: %w", err)
 	} else {
 		val.WindlassLineSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -46307,7 +53818,40 @@ type AnchorWindlassMonitoringStatus struct {
 	MotorCurrent *uint8
 	TotalMotorTime *float32
 }
-func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AnchorWindlassMonitoringStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.WindlassId, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.WindlassMonitoringEvents), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.ControllerVoltage, 8, 0.200000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.MotorCurrent, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.TotalMotorTime, 16, 60.000000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AnchorWindlassMonitoringStatus
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -46337,7 +53881,7 @@ func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(8, 0.2); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 0.2, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-ControllerVoltage: %w", err)
 	} else {
 		val.ControllerVoltage = v
@@ -46355,7 +53899,7 @@ func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 60); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 60, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-TotalMotorTime: %w", err)
 	} else {
 		val.TotalMotorTime = v
@@ -46375,7 +53919,20 @@ type PositionRapidUpdate struct {
 	Latitude *float64
 	Longitude *float64
 }
-func DecodePositionRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *PositionRapidUpdate ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution64(p.Latitude, 32, 0.000000, 0, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Longitude, 32, 0.000000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodePositionRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) {
 	var val PositionRapidUpdate
 	val.Info = Info
 	if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
@@ -46405,7 +53962,36 @@ type CogSogRapidUpdate struct {
 	Cog *float32
 	Sog *units.Velocity
 }
-func DecodeCogSogRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *CogSogRapidUpdate ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.CogReference), 2, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 10)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Cog, 16, 0.000100, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Sog.Value, 16, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeCogSogRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) {
 	var val CogSogRapidUpdate
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -46430,7 +54016,7 @@ func DecodeCogSogRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, erro
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Cog: %w", err)
 	} else {
 		val.Cog = v
@@ -46439,7 +54025,7 @@ func DecodeCogSogRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, erro
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Sog: %w", err)
 	} else {
 		val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -46461,7 +54047,32 @@ type PositionDeltaRapidUpdate struct {
 	LatitudeDelta *int16
 	LongitudeDelta *int16
 }
-func DecodePositionDeltaRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *PositionDeltaRapidUpdate ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.TimeDelta, 16, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt16(p.LatitudeDelta, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt16(p.LongitudeDelta, 16, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodePositionDeltaRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) {
 	var val PositionDeltaRapidUpdate
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -46515,7 +54126,40 @@ type AltitudeDeltaRapidUpdate struct {
 	Cog *float32
 	AltitudeDelta *int16
 }
-func DecodeAltitudeDeltaRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AltitudeDeltaRapidUpdate ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt16(p.TimeDelta, 16, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.GnssQuality, 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Direction, 2, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Cog, 16, 0.000100, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt16(p.AltitudeDelta, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAltitudeDeltaRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AltitudeDeltaRapidUpdate
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -46558,7 +54202,7 @@ func DecodeAltitudeDeltaRapidUpdate(Info MessageInfo, stream *PGNDataStream) (an
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AltitudeDeltaRapidUpdate-Cog: %w", err)
 	} else {
 		val.Cog = v
@@ -46601,7 +54245,72 @@ type GnssPositionDataRepeating1 struct {
 	ReferenceStationId *uint16
 	AgeOfDgnssCorrections *float32
 }
-func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GnssPositionData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Date, 16, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Time, 32, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Latitude, 64, 0.000000, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Longitude, 64, 0.000000, 120, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.Altitude.Value, 64, 0.000001, 184, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.GnssType), 4, 248)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Method), 4, 252)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Integrity), 2, 256)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 258)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NumberOfSvs, 8, 264)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Hdop, 16, 0.010000, 272, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Pdop, 16, 0.010000, 288, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.GeoidalSeparation.Value, 32, 0.010000, 304, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ReferenceStations, 8, 336)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGnssPositionData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GnssPositionData
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -46623,7 +54332,7 @@ func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Time: %w", err)
 	} else {
 		val.Time = v
@@ -46650,7 +54359,7 @@ func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(64, 1e-06); err != nil {
+	if v, err := stream.readSignedResolution(64, 1e-06, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Altitude: %w", err)
 	} else {
 		val.Altitude = nullableUnit(units.Meter, v, units.NewDistance)
@@ -46699,7 +54408,7 @@ func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Hdop: %w", err)
 	} else {
 		val.Hdop = v
@@ -46708,7 +54417,7 @@ func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-Pdop: %w", err)
 	} else {
 		val.Pdop = v
@@ -46717,7 +54426,7 @@ func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssPositionData-GeoidalSeparation: %w", err)
 	} else {
 		val.GeoidalSeparation = nullableUnit(units.Meter, v, units.NewDistance)
@@ -46755,7 +54464,7 @@ func DecodeGnssPositionData(Info MessageInfo, stream *PGNDataStream) (any, error
 		} else {
 			rep.ReferenceStationId = v
 		}
-		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssPositionData-AgeOfDgnssCorrections: %w", err)
 		} else {
 			rep.AgeOfDgnssCorrections = v
@@ -46780,7 +54489,24 @@ type TimeDate struct {
 	Time *float32
 	LocalOffset *float32
 }
-func DecodeTimeDate(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *TimeDate ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.Date, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Time, 32, 0.000100, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.LocalOffset, 16, 60.000000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeTimeDate(Info MessageInfo, stream *DataStream) (any, error) {
 	var val TimeDate
 	val.Info = Info
 	if v, err := stream.readUInt16(16); err != nil {
@@ -46792,7 +54518,7 @@ func DecodeTimeDate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TimeDate-Time: %w", err)
 	} else {
 		val.Time = v
@@ -46801,7 +54527,7 @@ func DecodeTimeDate(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 60); err != nil {
+	if v, err := stream.readSignedResolution(16, 60, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TimeDate-LocalOffset: %w", err)
 	} else {
 		val.LocalOffset = v
@@ -46832,7 +54558,92 @@ type AisClassAPositionReport struct {
 	SpecialManeuverIndicator AisSpecialManeuverConst
 	SequenceId *uint8
 }
-func DecodeAisClassAPositionReport(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisClassAPositionReport ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.UserId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Longitude, 32, 0.000000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Latitude, 32, 0.000000, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PositionAccuracy), 1, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Raim), 1, 105)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TimeStamp), 6, 106)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Cog, 16, 0.000100, 112, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Sog.Value, 16, 0.010000, 128, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.CommunicationState, 19, 144 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 163)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Heading, 16, 0.000100, 168, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.RateOfTurn, 16, 0.000031, 184, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.NavStatus), 4, 200)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SpecialManeuverIndicator), 2, 204)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 206)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(3, 208)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(5, 211)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SequenceId, 8, 216)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisClassAPositionReport(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisClassAPositionReport
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -46907,7 +54718,7 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Cog: %w", err)
 	} else {
 		val.Cog = v
@@ -46916,7 +54727,7 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Sog: %w", err)
 	} else {
 		val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -46943,7 +54754,7 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Heading: %w", err)
 	} else {
 		val.Heading = v
@@ -46952,7 +54763,7 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 3.125e-05); err != nil {
+	if v, err := stream.readSignedResolution(16, 3.125e-05, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAPositionReport-RateOfTurn: %w", err)
 	} else {
 		val.RateOfTurn = v
@@ -47025,7 +54836,104 @@ type AisClassBPositionReport struct {
 	AisMode AisModeConst
 	AisCommunicationState AisCommunicationStateConst
 }
-func DecodeAisClassBPositionReport(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisClassBPositionReport ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.UserId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Longitude, 32, 0.000000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Latitude, 32, 0.000000, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PositionAccuracy), 1, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Raim), 1, 105)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TimeStamp), 6, 106)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Cog, 16, 0.000100, 112, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Sog.Value, 16, 0.010000, 128, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.CommunicationState, 19, 144 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 163)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Heading, 16, 0.000100, 168, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(8, 184)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(2, 192)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.UnitType), 1, 194)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IntegratedDisplay), 1, 195)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Dsc), 1, 196)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Band), 1, 197)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.CanHandleMsg22), 1, 198)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisMode), 1, 199)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisCommunicationState), 1, 200)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(15, 201)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisClassBPositionReport(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisClassBPositionReport
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -47100,7 +55008,7 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Cog: %w", err)
 	} else {
 		val.Cog = v
@@ -47109,7 +55017,7 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Sog: %w", err)
 	} else {
 		val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -47136,7 +55044,7 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Heading: %w", err)
 	} else {
 		val.Heading = v
@@ -47246,7 +55154,120 @@ type AisClassBExtendedPositionReport struct {
 	AisMode AisModeConst
 	AisTransceiverInformation AisTransceiverConst
 }
-func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisClassBExtendedPositionReport ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.UserId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Longitude, 32, 0.000000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Latitude, 32, 0.000000, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PositionAccuracy), 1, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Raim), 1, 105)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TimeStamp), 6, 106)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Cog, 16, 0.000100, 112, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Sog.Value, 16, 0.010000, 128, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(8, 144)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(4, 152)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 156)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TypeOfShip), 8, 160)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.TrueHeading, 16, 0.000100, 168, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 184)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.GnssType), 4, 188)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Length.Value, 16, 0.100000, 192, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Beam.Value, 16, 0.100000, 208, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PositionReferenceFromStarboard.Value, 16, 0.100000, 224, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PositionReferenceFromBow.Value, 16, 0.100000, 240, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Name), 160, 256 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Dte), 1, 416)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisMode), 1, 417)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(4, 418)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 422)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(5, 427)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisClassBExtendedPositionReport
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -47321,7 +55342,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Cog: %w", err)
 	} else {
 		val.Cog = v
@@ -47330,7 +55351,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Sog: %w", err)
 	} else {
 		val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -47360,7 +55381,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-TrueHeading: %w", err)
 	} else {
 		val.TrueHeading = v
@@ -47382,7 +55403,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Length: %w", err)
 	} else {
 		val.Length = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47391,7 +55412,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-Beam: %w", err)
 	} else {
 		val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47400,7 +55421,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-PositionReferenceFromStarboard: %w", err)
 	} else {
 		val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47409,7 +55430,7 @@ func DecodeAisClassBExtendedPositionReport(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBExtendedPositionReport-PositionReferenceFromBow: %w", err)
 	} else {
 		val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47487,7 +55508,104 @@ type AisAidsToNavigationAtonReport struct {
 	AisTransceiverInformation AisTransceiverConst
 	AtonName string
 }
-func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisAidsToNavigationAtonReport ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.UserId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Longitude, 32, 0.000000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Latitude, 32, 0.000000, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PositionAccuracy), 1, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Raim), 1, 105)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TimeStamp), 6, 106)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.LengthDiameter.Value, 16, 0.100000, 112, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.BeamDiameter.Value, 16, 0.100000, 128, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PositionReferenceFromStarboardEdge.Value, 16, 0.100000, 144, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PositionReferenceFromTrueNorthFacingEdge.Value, 16, 0.100000, 160, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AtonType), 5, 176)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.OffPositionIndicator), 1, 181)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.VirtualAtonFlag), 1, 182)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AssignedModeFlag), 1, 183)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(1, 184)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PositionFixingDeviceType), 4, 185)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(3, 189)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.AtonStatus, 8, 192 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 200)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(3, 205)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringLau(p.AtonName, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisAidsToNavigationAtonReport
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -47562,7 +55680,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-LengthDiameter: %w", err)
 	} else {
 		val.LengthDiameter = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47571,7 +55689,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-BeamDiameter: %w", err)
 	} else {
 		val.BeamDiameter = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47580,7 +55698,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionReferenceFromStarboardEdge: %w", err)
 	} else {
 		val.PositionReferenceFromStarboardEdge = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47589,7 +55707,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionReferenceFromTrueNorthFacingEdge: %w", err)
 	} else {
 		val.PositionReferenceFromTrueNorthFacingEdge = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47692,7 +55810,32 @@ type Datum struct {
 	DeltaAltitude *units.Distance
 	ReferenceDatum string
 }
-func DecodeDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Datum ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeBinary([]uint8(p.LocalDatum), 32, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.DeltaLatitude, 32, 0.000000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.DeltaLongitude, 32, 0.000000, 64, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.DeltaAltitude.Value, 32, 0.010000, 96, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.ReferenceDatum), 32, 128 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeDatum(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Datum
 	val.Info = Info
 	if v, err := stream.readFixedString(32); err != nil {
@@ -47722,7 +55865,7 @@ func DecodeDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Datum-DeltaAltitude: %w", err)
 	} else {
 		val.DeltaAltitude = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47755,10 +55898,55 @@ type UserDatum struct {
 	EllipsoidFlatteningInverse *float32
 	DatumName string
 }
-func DecodeUserDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *UserDatum ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(&p.DeltaX.Value, 32, 0.010000, 0, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.DeltaY.Value, 32, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.DeltaZ.Value, 32, 0.010000, 64, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeFloat32(*p.RotationInX, 32, 96)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeFloat32(*p.RotationInY, 32, 128)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeFloat32(*p.RotationInZ, 32, 160)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeFloat32(*p.Scale, 32, 192)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.EllipsoidSemiMajorAxis.Value, 32, 0.010000, 224, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeFloat32(*p.EllipsoidFlatteningInverse, 32, 256)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.DatumName), 32, 288 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeUserDatum(Info MessageInfo, stream *DataStream) (any, error) {
 	var val UserDatum
 	val.Info = Info
-	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-DeltaX: %w", err)
 	} else {
 		val.DeltaX = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47767,7 +55955,7 @@ func DecodeUserDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-DeltaY: %w", err)
 	} else {
 		val.DeltaY = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47776,7 +55964,7 @@ func DecodeUserDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-DeltaZ: %w", err)
 	} else {
 		val.DeltaZ = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47821,7 +56009,7 @@ func DecodeUserDatum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for UserDatum-EllipsoidSemiMajorAxis: %w", err)
 	} else {
 		val.EllipsoidSemiMajorAxis = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47857,7 +56045,36 @@ type CrossTrackError struct {
 	NavigationTerminated YesNoConst
 	Xte *units.Distance
 }
-func DecodeCrossTrackError(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *CrossTrackError ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.XteMode), 4, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 12)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.NavigationTerminated), 2, 14)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.Xte.Value, 32, 0.010000, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeCrossTrackError(Info MessageInfo, stream *DataStream) (any, error) {
 	var val CrossTrackError
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -47891,7 +56108,7 @@ func DecodeCrossTrackError(Info MessageInfo, stream *PGNDataStream) (any, error)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for CrossTrackError-Xte: %w", err)
 	} else {
 		val.Xte = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47924,7 +56141,72 @@ type NavigationData struct {
 	DestinationLongitude *float64
 	WaypointClosingVelocity *units.Velocity
 }
-func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NavigationData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.DistanceToWaypoint.Value, 32, 0.010000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.CourseBearingReference), 2, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PerpendicularCrossed), 2, 42)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ArrivalCircleEntered), 2, 44)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.CalculationType), 2, 46)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.EtaTime, 32, 0.000100, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.EtaDate, 16, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.BearingOriginToDestinationWaypoint, 16, 0.000100, 96, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.BearingPositionToDestinationWaypoint, 16, 0.000100, 112, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.OriginWaypointNumber, 32, 128)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.DestinationWaypointNumber, 32, 160)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.DestinationLatitude, 32, 0.000000, 192, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.DestinationLongitude, 32, 0.000000, 224, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.WaypointClosingVelocity.Value, 16, 0.010000, 256, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNavigationData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NavigationData
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -47936,7 +56218,7 @@ func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-DistanceToWaypoint: %w", err)
 	} else {
 		val.DistanceToWaypoint = nullableUnit(units.Meter, v, units.NewDistance)
@@ -47981,7 +56263,7 @@ func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-EtaTime: %w", err)
 	} else {
 		val.EtaTime = v
@@ -47999,7 +56281,7 @@ func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-BearingOriginToDestinationWaypoint: %w", err)
 	} else {
 		val.BearingOriginToDestinationWaypoint = v
@@ -48008,7 +56290,7 @@ func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-BearingPositionToDestinationWaypoint: %w", err)
 	} else {
 		val.BearingPositionToDestinationWaypoint = v
@@ -48053,7 +56335,7 @@ func DecodeNavigationData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for NavigationData-WaypointClosingVelocity: %w", err)
 	} else {
 		val.WaypointClosingVelocity = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -48081,7 +56363,48 @@ type NavigationRouteWpInformationRepeating1 struct {
 	WpLatitude *float64
 	WpLongitude *float64
 }
-func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NavigationRouteWpInformation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint16(p.StartRps, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Nitems, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.DatabaseId, 16, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.RouteId, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.NavigationDirectionInRoute), 3, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SupplementaryRouteWpDataAvailable), 2, 67)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(3, 69)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringLau(p.RouteName, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NavigationRouteWpInformation
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -48207,7 +56530,36 @@ type SetDriftRapidUpdate struct {
 	Set *float32
 	Drift *units.Velocity
 }
-func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SetDriftRapidUpdate ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SetReference), 2, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 10)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Set, 16, 0.000100, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Drift.Value, 16, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SetDriftRapidUpdate
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -48232,7 +56584,7 @@ func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, er
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-Set: %w", err)
 	} else {
 		val.Set = v
@@ -48241,7 +56593,7 @@ func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-Drift: %w", err)
 	} else {
 		val.Drift = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -48265,7 +56617,40 @@ type GnssDops struct {
 	Vdop *float32
 	Tdop *float32
 }
-func DecodeGnssDops(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GnssDops ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DesiredMode), 3, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ActualMode), 3, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 14)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Hdop, 16, 0.010000, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Vdop, 16, 0.010000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Tdop, 16, 0.010000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGnssDops(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GnssDops
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -48299,7 +56684,7 @@ func DecodeGnssDops(Info MessageInfo, stream *PGNDataStream) (any, error) {
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDops-Hdop: %w", err)
 	} else {
 		val.Hdop = v
@@ -48308,7 +56693,7 @@ func DecodeGnssDops(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDops-Vdop: %w", err)
 	} else {
 		val.Vdop = v
@@ -48317,7 +56702,7 @@ func DecodeGnssDops(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GnssDops-Tdop: %w", err)
 	} else {
 		val.Tdop = v
@@ -48343,7 +56728,28 @@ type GnssSatsInViewRepeating1 struct {
 	RangeResiduals *int32
 	Status SatelliteStatusConst
 }
-func DecodeGnssSatsInView(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GnssSatsInView ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RangeResidualMode), 2, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 10)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SatsInView, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGnssSatsInView(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GnssSatsInView
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -48393,17 +56799,17 @@ func DecodeGnssSatsInView(Info MessageInfo, stream *PGNDataStream) (any, error) 
 		} else {
 			rep.Prn = v
 		}
-		if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+		if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssSatsInView-Elevation: %w", err)
 		} else {
 			rep.Elevation = v
 		}
-		if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssSatsInView-Azimuth: %w", err)
 		} else {
 			rep.Azimuth = v
 		}
-		if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+		if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 			return nil, fmt.Errorf("parse failed for GnssSatsInView-Snr: %w", err)
 		} else {
 			rep.Snr = v
@@ -48449,7 +56855,68 @@ type GpsAlmanacData struct {
 	ClockParameter1 *float32
 	ClockParameter2 *float64
 }
-func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *GpsAlmanacData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Prn, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.GpsWeekNumber, 16, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.SvHealthBits, 8, 24 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Eccentricity, 16, 0.000000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.AlmanacReferenceTime, 8, 4096.000000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.InclinationAngle, 16, 0.000002, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.RateOfRightAscension, 16, 0.000000, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.RootOfSemiMajorAxis, 24, 0.000488, 88, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ArgumentOfPerigee, 24, 0.000000, 112, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.LongitudeOfAscensionNode, 24, 0.000000, 136, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.MeanAnomaly, 24, 0.000000, 160, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ClockParameter1, 11, 0.000001, 184, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.ClockParameter2, 11, 0.000000, 195, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 206)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeGpsAlmanacData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val GpsAlmanacData
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -48479,7 +56946,7 @@ func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 4.76837e-07); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 4.76837e-07, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-Eccentricity: %w", err)
 	} else {
 		val.Eccentricity = v
@@ -48488,7 +56955,7 @@ func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(8, 4096); err != nil {
+	if v, err := stream.readUnsignedResolution(8, 4096, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-AlmanacReferenceTime: %w", err)
 	} else {
 		val.AlmanacReferenceTime = v
@@ -48497,7 +56964,7 @@ func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 1.90735e-06); err != nil {
+	if v, err := stream.readSignedResolution(16, 1.90735e-06, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-InclinationAngle: %w", err)
 	} else {
 		val.InclinationAngle = v
@@ -48515,7 +56982,7 @@ func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(24, 0.000488281); err != nil {
+	if v, err := stream.readUnsignedResolution(24, 0.000488281, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-RootOfSemiMajorAxis: %w", err)
 	} else {
 		val.RootOfSemiMajorAxis = v
@@ -48524,7 +56991,7 @@ func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(24, 1.19209e-07); err != nil {
+	if v, err := stream.readSignedResolution(24, 1.19209e-07, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-ArgumentOfPerigee: %w", err)
 	} else {
 		val.ArgumentOfPerigee = v
@@ -48533,7 +57000,7 @@ func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(24, 1.19209e-07); err != nil {
+	if v, err := stream.readSignedResolution(24, 1.19209e-07, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-LongitudeOfAscensionNode: %w", err)
 	} else {
 		val.LongitudeOfAscensionNode = v
@@ -48542,7 +57009,7 @@ func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(24, 1.19209e-07); err != nil {
+	if v, err := stream.readSignedResolution(24, 1.19209e-07, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-MeanAnomaly: %w", err)
 	} else {
 		val.MeanAnomaly = v
@@ -48551,7 +57018,7 @@ func DecodeGpsAlmanacData(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(11, 9.53674e-07); err != nil {
+	if v, err := stream.readSignedResolution(11, 9.53674e-07, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for GpsAlmanacData-ClockParameter1: %w", err)
 	} else {
 		val.ClockParameter1 = v
@@ -48590,7 +57057,72 @@ type AisUtcAndDateReport struct {
 	PositionDate *uint16
 	GnssType PositionFixDeviceConst
 }
-func DecodeAisUtcAndDateReport(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisUtcAndDateReport ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.UserId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Longitude, 32, 0.000000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.Latitude, 32, 0.000000, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.PositionAccuracy), 1, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Raim), 1, 105)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 106)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PositionTime, 32, 0.000100, 112, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.CommunicationState, 19, 144 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 163)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.PositionDate, 16, 168)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 184)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.GnssType), 4, 188)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(8, 192)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisUtcAndDateReport(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisUtcAndDateReport
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -48660,7 +57192,7 @@ func DecodeAisUtcAndDateReport(Info MessageInfo, stream *PGNDataStream) (any, er
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-PositionTime: %w", err)
 	} else {
 		val.PositionTime = v
@@ -48737,7 +57269,96 @@ type AisClassAStaticAndVoyageRelatedData struct {
 	Dte AvailableConst
 	AisTransceiverInformation AisTransceiverConst
 }
-func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisClassAStaticAndVoyageRelatedData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.UserId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.ImoNumber, 32, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Callsign), 56, 72 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Name), 160, 128 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TypeOfShip), 8, 288)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Length.Value, 16, 0.100000, 296, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Beam.Value, 16, 0.100000, 312, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PositionReferenceFromStarboard.Value, 16, 0.100000, 328, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PositionReferenceFromBow.Value, 16, 0.100000, 344, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.EtaDate, 16, 360)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.EtaTime, 32, 0.000100, 376, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Draft.Value, 16, 0.010000, 408, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Destination), 160, 424 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisVersionIndicator), 2, 584)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.GnssType), 4, 586)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Dte), 1, 590)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(1, 591)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 592)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(3, 597)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisClassAStaticAndVoyageRelatedData
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -48803,7 +57424,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Length: %w", err)
 	} else {
 		val.Length = nullableUnit(units.Meter, v, units.NewDistance)
@@ -48812,7 +57433,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Beam: %w", err)
 	} else {
 		val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
@@ -48821,7 +57442,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-PositionReferenceFromStarboard: %w", err)
 	} else {
 		val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
@@ -48830,7 +57451,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-PositionReferenceFromBow: %w", err)
 	} else {
 		val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
@@ -48848,7 +57469,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-EtaTime: %w", err)
 	} else {
 		val.EtaTime = v
@@ -48857,7 +57478,7 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Draft: %w", err)
 	} else {
 		val.Draft = nullableUnit(units.Meter, v, units.NewDistance)
@@ -48933,7 +57554,60 @@ type AisAddressedBinaryMessage struct {
 	NumberOfBitsInBinaryDataField *uint16
 	BinaryData []uint8
 }
-func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisAddressedBinaryMessage ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.SourceId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(1, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 41)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SequenceNumber, 2, 46)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.DestinationId, 32, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.RetransmitFlag, 1, 86)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(1, 87)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.NumberOfBitsInBinaryDataField, 16, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.BinaryData, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisAddressedBinaryMessage
 	val.Info = Info
 		var binaryLength uint16 = 0
@@ -49045,7 +57719,56 @@ type AisAcknowledge struct {
 	SequenceNumberForId1 []uint8
 	SequenceNumberForIdN []uint8
 }
-func DecodeAisAcknowledge(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisAcknowledge ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.SourceId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(1, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 41)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 46)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.DestinationId1, 32, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.SequenceNumberForId1, 2, 80 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 82)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.SequenceNumberForIdN, 2, 88 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 90)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisAcknowledge(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisAcknowledge
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -49138,7 +57861,44 @@ type AisBinaryBroadcastMessage struct {
 	NumberOfBitsInBinaryDataField *uint16
 	BinaryData []uint8
 }
-func DecodeAisBinaryBroadcastMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisBinaryBroadcastMessage ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.SourceId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(1, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 41)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 46)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.NumberOfBitsInBinaryDataField, 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.BinaryData, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisBinaryBroadcastMessage(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisBinaryBroadcastMessage
 	val.Info = Info
 		var binaryLength uint16 = 0
@@ -49218,10 +57978,39 @@ type RadioFrequencyModePower struct {
 	Mode *uint16
 	ChannelBandwidth *uint16
 }
-func DecodeRadioFrequencyModePower(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *RadioFrequencyModePower ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUnsignedResolution32(p.RxFrequency, 32, 10.000000, 0, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.TxFrequency, 32, 10.000000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.RadioChannel), 48, 64 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.TxPower, 8, 112)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Mode, 16, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.ChannelBandwidth, 16, 136)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeRadioFrequencyModePower(Info MessageInfo, stream *DataStream) (any, error) {
 	var val RadioFrequencyModePower
 	val.Info = Info
-	if v, err := stream.readUnsignedResolution(32, 10); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 10, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-RxFrequency: %w", err)
 	} else {
 		val.RxFrequency = v
@@ -49230,7 +58019,7 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 10); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 10, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-TxFrequency: %w", err)
 	} else {
 		val.TxFrequency = v
@@ -49285,7 +58074,36 @@ type AisUtcDateInquiry struct {
 	AisTransceiverInformation AisTransceiverConst
 	DestinationId *uint32
 }
-func DecodeAisUtcDateInquiry(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisUtcDateInquiry ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.SourceId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(3, 45)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.DestinationId, 32, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisUtcDateInquiry(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisUtcDateInquiry
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -49350,7 +58168,52 @@ type AisAddressedSafetyRelatedMessage struct {
 	RetransmitFlag *uint8
 	SafetyRelatedText string
 }
-func DecodeAisAddressedSafetyRelatedMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisAddressedSafetyRelatedMessage ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.SourceId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SequenceNumber, 2, 45)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(1, 47)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.DestinationId, 32, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.RetransmitFlag, 1, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(7, 81)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.SafetyRelatedText), 936, 88 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisAddressedSafetyRelatedMessage(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisAddressedSafetyRelatedMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -49443,7 +58306,36 @@ type AisSafetyRelatedBroadcastMessage struct {
 	AisTransceiverInformation AisTransceiverConst
 	SafetyRelatedText string
 }
-func DecodeAisSafetyRelatedBroadcastMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisSafetyRelatedBroadcastMessage ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.SourceId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(3, 45)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.SafetyRelatedText), 1296, 48 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisSafetyRelatedBroadcastMessage(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisSafetyRelatedBroadcastMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -49513,7 +58405,88 @@ type AisInterrogation struct {
 	SlotOffset21 *uint16
 	Sid *uint8
 }
-func DecodeAisInterrogation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisInterrogation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.SourceId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(1, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 41)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(2, 46)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.DestinationId1, 32, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId11), 6, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.SlotOffset11, 12, 86)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(2, 98)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId12), 6, 100)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.SlotOffset12, 12, 106)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(2, 118)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.DestinationId2, 32, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId21), 6, 152)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.SlotOffset21, 12, 158)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(2, 170)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 172)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Sid, 8, 176)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisInterrogation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisInterrogation
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -49673,7 +58646,32 @@ type AisDataLinkManagementMessageRepeating1 struct {
 	Timeout *uint8
 	Increment *uint16
 }
-func DecodeAisDataLinkManagementMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisDataLinkManagementMessage ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.SourceId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(3, 45)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisDataLinkManagementMessage(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisDataLinkManagementMessage
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -49774,7 +58772,92 @@ type AisChannelManagement struct {
 	ChannelBBandwidth *uint8
 	TransitionalZoneSize *uint8
 }
-func DecodeAisChannelManagement(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisChannelManagement ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.SourceId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(3, 45)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ChannelA, 7, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ChannelB, 7, 55)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 62)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Power, 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.TxRxMode, 8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.NorthEastLongitudeCorner1, 32, 0.000000, 80, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.NorthEastLatitudeCorner1, 32, 0.000000, 112, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.SouthWestLongitudeCorner1, 32, 0.000000, 144, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.SouthWestLatitudeCorner2, 32, 0.000000, 176, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 208)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.AddressedOrBroadcastMessageIndicator, 2, 214)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ChannelABandwidth, 7, 216)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ChannelBBandwidth, 7, 223)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 230)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.TransitionalZoneSize, 8, 232)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisChannelManagement(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisChannelManagement
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -49948,7 +59031,40 @@ type AisClassBStaticDataMsg24PartA struct {
 	AisTransceiverInformation AisTransceiverConst
 	SequenceId *uint8
 }
-func DecodeAisClassBStaticDataMsg24PartA(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisClassBStaticDataMsg24PartA ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.UserId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Name), 160, 40 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 200)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(3, 205)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SequenceId, 8, 208)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisClassBStaticDataMsg24PartA(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisClassBStaticDataMsg24PartA
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -50027,7 +59143,76 @@ type AisClassBStaticDataMsg24PartB struct {
 	AisTransceiverInformation AisTransceiverConst
 	SequenceId *uint8
 }
-func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *AisClassBStaticDataMsg24PartB ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.UserId, 32, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TypeOfShip), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.VendorId), 56, 48 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Callsign), 56, 104 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Length.Value, 16, 0.100000, 160, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Beam.Value, 16, 0.100000, 176, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PositionReferenceFromStarboard.Value, 16, 0.100000, 192, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PositionReferenceFromBow.Value, 16, 0.100000, 208, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.MothershipUserId, 32, 224)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 256)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(6, 258)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 264)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(3, 269)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SequenceId, 8, 272)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *DataStream) (any, error) {
 	var val AisClassBStaticDataMsg24PartB
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -50084,7 +59269,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Length: %w", err)
 	} else {
 		val.Length = nullableUnit(units.Meter, v, units.NewDistance)
@@ -50093,7 +59278,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Beam: %w", err)
 	} else {
 		val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
@@ -50102,7 +59287,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-PositionReferenceFromStarboard: %w", err)
 	} else {
 		val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
@@ -50111,7 +59296,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-PositionReferenceFromBow: %w", err)
 	} else {
 		val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
@@ -50168,7 +59353,32 @@ type WindData struct {
 	WindAngle *float32
 	Reference WindReferenceConst
 }
-func DecodeWindData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *WindData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.WindSpeed.Value, 16, 0.010000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.WindAngle, 16, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Reference), 3, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(21, 43)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeWindData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val WindData
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -50180,7 +59390,7 @@ func DecodeWindData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WindData-WindSpeed: %w", err)
 	} else {
 		val.WindSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -50189,7 +59399,7 @@ func DecodeWindData(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WindData-WindAngle: %w", err)
 	} else {
 		val.WindAngle = v
@@ -50220,7 +59430,32 @@ type EnvironmentalParametersObsolete struct {
 	OutsideAmbientAirTemperature *units.Temperature
 	AtmosphericPressure *units.Pressure
 }
-func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *EnvironmentalParametersObsolete ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.WaterTemperature.Value, 16, 0.010000, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.OutsideAmbientAirTemperature.Value, 16, 0.010000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.AtmosphericPressure.Value, 16, 100.000000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *DataStream) (any, error) {
 	var val EnvironmentalParametersObsolete
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -50232,7 +59467,7 @@ func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-WaterTemperature: %w", err)
 	} else {
 		val.WaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -50241,7 +59476,7 @@ func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-OutsideAmbientAirTemperature: %w", err)
 	} else {
 		val.OutsideAmbientAirTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -50250,7 +59485,7 @@ func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-AtmosphericPressure: %w", err)
 	} else {
 		val.AtmosphericPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -50274,7 +59509,36 @@ type EnvironmentalParameters struct {
 	Humidity *float32
 	AtmosphericPressure *units.Pressure
 }
-func DecodeEnvironmentalParameters(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *EnvironmentalParameters ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TemperatureSource), 6, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.HumiditySource), 2, 14)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Temperature.Value, 16, 0.010000, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Humidity, 16, 0.004000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.AtmosphericPressure.Value, 16, 100.000000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeEnvironmentalParameters(Info MessageInfo, stream *DataStream) (any, error) {
 	var val EnvironmentalParameters
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -50304,7 +59568,7 @@ func DecodeEnvironmentalParameters(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Temperature: %w", err)
 	} else {
 		val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -50313,7 +59577,7 @@ func DecodeEnvironmentalParameters(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.004); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.004, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Humidity: %w", err)
 	} else {
 		val.Humidity = v
@@ -50322,7 +59586,7 @@ func DecodeEnvironmentalParameters(Info MessageInfo, stream *PGNDataStream) (any
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for EnvironmentalParameters-AtmosphericPressure: %w", err)
 	} else {
 		val.AtmosphericPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -50341,7 +59605,36 @@ type Temperature struct {
 	ActualTemperature *units.Temperature
 	SetTemperature *units.Temperature
 }
-func DecodeTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Temperature ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Source), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.ActualTemperature.Value, 16, 0.010000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.SetTemperature.Value, 16, 0.010000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeTemperature(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Temperature
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -50371,7 +59664,7 @@ func DecodeTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Temperature-ActualTemperature: %w", err)
 	} else {
 		val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -50380,7 +59673,7 @@ func DecodeTemperature(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Temperature-SetTemperature: %w", err)
 	} else {
 		val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -50403,7 +59696,36 @@ type Humidity struct {
 	ActualHumidity *float32
 	SetHumidity *float32
 }
-func DecodeHumidity(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *Humidity ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Source), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.ActualHumidity, 16, 0.004000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.SetHumidity, 16, 0.004000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeHumidity(Info MessageInfo, stream *DataStream) (any, error) {
 	var val Humidity
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -50433,7 +59755,7 @@ func DecodeHumidity(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.004); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.004, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Humidity-ActualHumidity: %w", err)
 	} else {
 		val.ActualHumidity = v
@@ -50442,7 +59764,7 @@ func DecodeHumidity(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.004); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.004, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for Humidity-SetHumidity: %w", err)
 	} else {
 		val.SetHumidity = v
@@ -50464,7 +59786,32 @@ type ActualPressure struct {
 	Source PressureSourceConst
 	Pressure *units.Pressure
 }
-func DecodeActualPressure(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *ActualPressure ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Source), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.Pressure.Value, 32, 0.100000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeActualPressure(Info MessageInfo, stream *DataStream) (any, error) {
 	var val ActualPressure
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -50494,7 +59841,7 @@ func DecodeActualPressure(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(32, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(32, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for ActualPressure-Pressure: %w", err)
 	} else {
 		val.Pressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -50516,7 +59863,32 @@ type SetPressure struct {
 	Source PressureSourceConst
 	Pressure *units.Pressure
 }
-func DecodeSetPressure(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SetPressure ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Source), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Pressure.Value, 32, 0.100000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSetPressure(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SetPressure
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -50546,7 +59918,7 @@ func DecodeSetPressure(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SetPressure-Pressure: %w", err)
 	} else {
 		val.Pressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -50569,7 +59941,32 @@ type TemperatureExtendedRange struct {
 	Temperature *units.Temperature
 	SetTemperature *units.Temperature
 }
-func DecodeTemperatureExtendedRange(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *TemperatureExtendedRange ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeUint8(p.Sid, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Source), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Temperature.Value, 24, 0.001000, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.SetTemperature.Value, 16, 0.100000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeTemperatureExtendedRange(Info MessageInfo, stream *DataStream) (any, error) {
 	var val TemperatureExtendedRange
 	val.Info = Info
 	if v, err := stream.readUInt8(8); err != nil {
@@ -50599,7 +59996,7 @@ func DecodeTemperatureExtendedRange(Info MessageInfo, stream *PGNDataStream) (an
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(24, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(24, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Temperature: %w", err)
 	} else {
 		val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -50608,7 +60005,7 @@ func DecodeTemperatureExtendedRange(Info MessageInfo, stream *PGNDataStream) (an
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-SetTemperature: %w", err)
 	} else {
 		val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -50632,7 +60029,56 @@ type TideStationData struct {
 	StationId string
 	StationName string
 }
-func DecodeTideStationData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *TideStationData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.Mode), 4, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TideTendency), 2, 4)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.MeasurementDate, 16, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.MeasurementTime, 32, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.StationLatitude, 32, 0.000000, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.StationLongitude, 32, 0.000000, 88, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.TideLevel.Value, 16, 0.001000, 120, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.TideLevelStandardDeviation.Value, 16, 0.010000, 136, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringLau(p.StationId, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringLau(p.StationName, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeTideStationData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val TideStationData
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -50666,7 +60112,7 @@ func DecodeTideStationData(Info MessageInfo, stream *PGNDataStream) (any, error)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-MeasurementTime: %w", err)
 	} else {
 		val.MeasurementTime = v
@@ -50693,7 +60139,7 @@ func DecodeTideStationData(Info MessageInfo, stream *PGNDataStream) (any, error)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-TideLevel: %w", err)
 	} else {
 		val.TideLevel = nullableUnit(units.Meter, v, units.NewDistance)
@@ -50702,7 +60148,7 @@ func DecodeTideStationData(Info MessageInfo, stream *PGNDataStream) (any, error)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for TideStationData-TideLevelStandardDeviation: %w", err)
 	} else {
 		val.TideLevelStandardDeviation = nullableUnit(units.Meter, v, units.NewDistance)
@@ -50743,7 +60189,52 @@ type SalinityStationData struct {
 	StationId string
 	StationName string
 }
-func DecodeSalinityStationData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SalinityStationData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.Mode), 4, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(4, 4)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.MeasurementDate, 16, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.MeasurementTime, 32, 0.000100, 24, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.StationLatitude, 32, 0.000000, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution64(p.StationLongitude, 32, 0.000000, 88, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeFloat32(*p.Salinity, 32, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.WaterTemperature.Value, 16, 0.010000, 152, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringLau(p.StationId, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringLau(p.StationName, 0, 0 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSalinityStationData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SalinityStationData
 	val.Info = Info
 	if v, err := stream.readLookupField(4); err != nil {
@@ -50768,7 +60259,7 @@ func DecodeSalinityStationData(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-MeasurementTime: %w", err)
 	} else {
 		val.MeasurementTime = v
@@ -50804,7 +60295,7 @@ func DecodeSalinityStationData(Info MessageInfo, stream *PGNDataStream) (any, er
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SalinityStationData-WaterTemperature: %w", err)
 	} else {
 		val.WaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -50858,7 +60349,104 @@ type WatermakerInputSettingAndStatus struct {
 	BrineWaterFlow *units.Flow
 	RunTime *uint32
 }
-func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *WatermakerInputSettingAndStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.WatermakerOperatingState), 6, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProductionStartStop), 2, 6)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RinseStartStop), 2, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.LowPressurePumpStatus), 2, 10)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.HighPressurePumpStatus), 2, 12)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.EmergencyStop), 2, 14)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProductSolenoidValveStatus), 2, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.FlushModeStatus), 2, 18)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SalinityStatus), 2, 20)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SensorStatus), 2, 22)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.OilChangeIndicatorStatus), 2, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.FilterStatus), 2, 26)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SystemStatus), 2, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 30)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Salinity, 16, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.ProductWaterTemperature.Value, 16, 0.010000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PreFilterPressure.Value, 16, 100.000000, 64, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PostFilterPressure.Value, 16, 100.000000, 80, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.FeedPressure.Value, 16, 1000.000000, 96, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.SystemHighPressure.Value, 16, 1000.000000, 112, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.ProductWaterFlow.Value, 16, 0.100000, 128, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.BrineWaterFlow.Value, 16, 0.100000, 144, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.RunTime, 32, 160)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val WatermakerInputSettingAndStatus
 	val.Info = Info
 	if v, err := stream.readLookupField(6); err != nil {
@@ -50991,7 +60579,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.01); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterTemperature: %w", err)
 	} else {
 		val.ProductWaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -51000,7 +60588,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-PreFilterPressure: %w", err)
 	} else {
 		val.PreFilterPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -51009,7 +60597,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 100); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-PostFilterPressure: %w", err)
 	} else {
 		val.PostFilterPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -51018,7 +60606,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 1000); err != nil {
+	if v, err := stream.readSignedResolution(16, 1000, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-FeedPressure: %w", err)
 	} else {
 		val.FeedPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -51027,7 +60615,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 1000); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 1000, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SystemHighPressure: %w", err)
 	} else {
 		val.SystemHighPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -51036,7 +60624,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterFlow: %w", err)
 	} else {
 		val.ProductWaterFlow = nullableUnit(units.LitersPerHour, v, units.NewFlow)
@@ -51045,7 +60633,7 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *PGNDataStre
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-BrineWaterFlow: %w", err)
 	} else {
 		val.BrineWaterFlow = nullableUnit(units.LitersPerHour, v, units.NewFlow)
@@ -51070,7 +60658,24 @@ type SmallCraftStatus struct {
 	PortTrimTab *int8
 	StarboardTrimTab *int8
 }
-func DecodeSmallCraftStatus(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SmallCraftStatus ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeInt8(p.PortTrimTab, 8, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt8(p.StarboardTrimTab, 8, 8)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(48, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSmallCraftStatus(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SmallCraftStatus
 	val.Info = Info
 	if v, err := stream.readInt8(8); err != nil {
@@ -51106,10 +60711,39 @@ type VesselSpeedComponents struct {
 	SternSpeedWaterReferenced *units.Velocity
 	SternSpeedGroundReferenced *units.Velocity
 }
-func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *VesselSpeedComponents ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.writeSignedResolution32(&p.LongitudinalSpeedWaterReferenced.Value, 16, 0.001000, 0, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.TransverseSpeedWaterReferenced.Value, 16, 0.001000, 16, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.LongitudinalSpeedGroundReferenced.Value, 16, 0.001000, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.TransverseSpeedGroundReferenced.Value, 16, 0.001000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.SternSpeedWaterReferenced.Value, 16, 0.001000, 64, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(&p.SternSpeedGroundReferenced.Value, 16, 0.001000, 80, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeVesselSpeedComponents(Info MessageInfo, stream *DataStream) (any, error) {
 	var val VesselSpeedComponents
 	val.Info = Info
-	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-LongitudinalSpeedWaterReferenced: %w", err)
 	} else {
 		val.LongitudinalSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -51118,7 +60752,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-TransverseSpeedWaterReferenced: %w", err)
 	} else {
 		val.TransverseSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -51127,7 +60761,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-LongitudinalSpeedGroundReferenced: %w", err)
 	} else {
 		val.LongitudinalSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -51136,7 +60770,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-TransverseSpeedGroundReferenced: %w", err)
 	} else {
 		val.TransverseSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -51145,7 +60779,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-SternSpeedWaterReferenced: %w", err)
 	} else {
 		val.SternSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -51154,7 +60788,7 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *PGNDataStream) (any, 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for VesselSpeedComponents-SternSpeedGroundReferenced: %w", err)
 	} else {
 		val.SternSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -51173,7 +60807,40 @@ type SonichubZoneInfo struct {
 	Control SonichubControlConst
 	Zone *uint8
 }
-func DecodeSonichubZoneInfo(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubZoneInfo ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubZoneInfo(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubZoneInfo
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51248,7 +60915,40 @@ type SonichubSource struct {
 	Control SonichubControlConst
 	Source SonichubSourceConst
 }
-func DecodeSonichubSource(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubSource ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Source), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubSource(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubSource
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51325,7 +61025,48 @@ type SonichubSourceList struct {
 	A *uint8
 	Text string
 }
-func DecodeSonichubSourceList(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubSourceList ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SourceId, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Text, 256, 56 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubSourceList(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubSourceList
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51399,7 +61140,7 @@ func DecodeSonichubSourceList(Info MessageInfo, stream *PGNDataStream) (any, err
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(256); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubSourceList-Text: %w", err)
 	} else {
 		val.Text = v
@@ -51418,7 +61159,40 @@ type SonichubControl struct {
 	Control SonichubControlConst
 	Item FusionMuteCommandConst
 }
-func DecodeSonichubControl(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubControl ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Item), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubControl(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubControl
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51497,7 +61271,60 @@ type SonichubFmRadio struct {
 	SignalLevel *uint8
 	Text string
 }
-func DecodeSonichubFmRadio(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubFmRadio ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Item), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Frequency, 32, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.NoiseLevel, 2, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SignalLevel, 4, 82)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 86)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Text, 256, 88 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubFmRadio(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubFmRadio
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51593,7 +61420,7 @@ func DecodeSonichubFmRadio(Info MessageInfo, stream *PGNDataStream) (any, error)
 	if stream.isEOF() {
 		return val, nil
 		}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(256); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubFmRadio-Text: %w", err)
 	} else {
 		val.Text = v
@@ -51617,7 +61444,60 @@ type SonichubPlaylist struct {
 	Length *float32
 	PositionInTrack *float32
 }
-func DecodeSonichubPlaylist(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubPlaylist ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Item), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.CurrentTrack, 32, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Tracks, 32, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Length, 32, 0.001000, 120, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PositionInTrack, 32, 0.001000, 152, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubPlaylist(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubPlaylist
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51709,7 +61589,7 @@ func DecodeSonichubPlaylist(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-Length: %w", err)
 	} else {
 		val.Length = v
@@ -51718,7 +61598,7 @@ func DecodeSonichubPlaylist(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPlaylist-PositionInTrack: %w", err)
 	} else {
 		val.PositionInTrack = v
@@ -51738,7 +61618,44 @@ type SonichubTrack struct {
 	Item *uint32
 	Text string
 }
-func DecodeSonichubTrack(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubTrack ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Item, 32, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Text, 256, 72 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubTrack(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubTrack
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51803,7 +61720,7 @@ func DecodeSonichubTrack(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(256); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubTrack-Text: %w", err)
 	} else {
 		val.Text = v
@@ -51823,7 +61740,44 @@ type SonichubArtist struct {
 	Item *uint32
 	Text string
 }
-func DecodeSonichubArtist(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubArtist ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Item, 32, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Text, 256, 72 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubArtist(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubArtist
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51888,7 +61842,7 @@ func DecodeSonichubArtist(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(256); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubArtist-Text: %w", err)
 	} else {
 		val.Text = v
@@ -51908,7 +61862,44 @@ type SonichubAlbum struct {
 	Item *uint32
 	Text string
 }
-func DecodeSonichubAlbum(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubAlbum ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Item, 32, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Text, 256, 72 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubAlbum(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubAlbum
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -51973,7 +61964,7 @@ func DecodeSonichubAlbum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(256); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubAlbum-Text: %w", err)
 	} else {
 		val.Text = v
@@ -51996,7 +61987,56 @@ type SonichubMenuItem struct {
 	E *uint8
 	Text string
 }
-func DecodeSonichubMenuItem(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubMenuItem ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Item, 32, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.D, 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.E, 8, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Text, 256, 96 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubMenuItem(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubMenuItem
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52088,7 +62128,7 @@ func DecodeSonichubMenuItem(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(256); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubMenuItem-Text: %w", err)
 	} else {
 		val.Text = v
@@ -52107,7 +62147,40 @@ type SonichubZones struct {
 	Control SonichubControlConst
 	Zones *uint8
 }
-func DecodeSonichubZones(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubZones ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zones, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubZones(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubZones
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52183,7 +62256,44 @@ type SonichubMaxVolume struct {
 	Zone *uint8
 	Level *uint8
 }
-func DecodeSonichubMaxVolume(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubMaxVolume ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Level, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubMaxVolume(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubMaxVolume
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52268,7 +62378,44 @@ type SonichubVolume struct {
 	Zone *uint8
 	Level *uint8
 }
-func DecodeSonichubVolume(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubVolume ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Level, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubVolume(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubVolume
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52351,7 +62498,36 @@ type SonichubInit1 struct {
 	ProprietaryId SonichubCommandConst
 	Control SonichubControlConst
 }
-func DecodeSonichubInit1(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubInit1 ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubInit1(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubInit1
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52417,7 +62593,40 @@ type SonichubPosition struct {
 	Control SonichubControlConst
 	Position *float32
 }
-func DecodeSonichubPosition(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SonichubPosition ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Control), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Position, 32, 0.001000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSonichubPosition(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SonichubPosition
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52473,7 +62682,7 @@ func DecodeSonichubPosition(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SonichubPosition-Position: %w", err)
 	} else {
 		val.Position = v
@@ -52496,7 +62705,56 @@ type SimradTextMessage struct {
 	Prio *uint8
 	Text string
 }
-func DecodeSimradTextMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimradTextMessage ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Sid, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Prio, 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Text), 256, 72 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimradTextMessage(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimradTextMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52612,7 +62870,56 @@ type NavicoProductInformation struct {
 	FirmwareDate string
 	FirmwareTime string
 }
-func DecodeNavicoProductInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NavicoProductInformation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.ProductCode, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Model), 256, 32 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 288)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 296)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 304)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.FirmwareVersion), 80, 312 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.FirmwareDate), 256, 392 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.FirmwareTime), 256, 648 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNavicoProductInformation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NavicoProductInformation
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52730,7 +63037,56 @@ type LowranceProductInformation struct {
 	FirmwareDate string
 	FirmwareTime string
 }
-func DecodeLowranceProductInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *LowranceProductInformation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.ProductCode, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Model), 256, 32 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 288)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 296)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 304)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.FirmwareVersion), 80, 312 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.FirmwareDate), 256, 392 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.FirmwareTime), 256, 648 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeLowranceProductInformation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val LowranceProductInformation
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52843,7 +63199,36 @@ type SimnetReprogramData struct {
 	Sequence *uint16
 	Data []uint8
 }
-func DecodeSimnetReprogramData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetReprogramData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Version, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Sequence, 16, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Data, 1736, 48 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetReprogramData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetReprogramData
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -52913,7 +63298,44 @@ type FurunoUnknown130820 struct {
 	D *uint8
 	E *uint8
 }
-func DecodeFurunoUnknown130820(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FurunoUnknown130820 ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.D, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.E, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFurunoUnknown130820(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FurunoUnknown130820
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53003,7 +63425,52 @@ type FusionSourceName struct {
 	E *uint8
 	Source string
 }
-func DecodeFusionSourceName(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionSourceName ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.SourceId, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.CurrentSourceId, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.D, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.E, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Source, 40, 64 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionSourceName(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionSourceName
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53091,7 +63558,7 @@ func DecodeFusionSourceName(Info MessageInfo, stream *PGNDataStream) (any, error
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(40); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionSourceName-Source: %w", err)
 	} else {
 		val.Source = v
@@ -53119,7 +63586,72 @@ type FusionTrackInfo struct {
 	PositionInTrack *float32
 	H *uint16
 }
-func DecodeFusionTrackInfo(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionTrackInfo ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.A, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Transport), 4, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.X, 4, 44)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Track, 16, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.C, 16, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.TrackCount, 16, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.E, 16, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Length, 24, 0.001000, 120, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.PositionInTrack, 24, 0.001000, 144, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.H, 16, 168)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionTrackInfo(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionTrackInfo
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53234,7 +63766,7 @@ func DecodeFusionTrackInfo(Info MessageInfo, stream *PGNDataStream) (any, error)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(24, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(24, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-Length: %w", err)
 	} else {
 		val.Length = v
@@ -53243,7 +63775,7 @@ func DecodeFusionTrackInfo(Info MessageInfo, stream *PGNDataStream) (any, error)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(24, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(24, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrackInfo-PositionInTrack: %w", err)
 	} else {
 		val.PositionInTrack = v
@@ -53272,7 +63804,40 @@ type FusionTrack struct {
 	B *uint64
 	Track string
 }
-func DecodeFusionTrack(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionTrack ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.B, 40, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Track, 80, 72 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionTrack(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionTrack
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53333,7 +63898,7 @@ func DecodeFusionTrack(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(80); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionTrack-Track: %w", err)
 	} else {
 		val.Track = v
@@ -53353,7 +63918,40 @@ type FusionArtist struct {
 	B *uint64
 	Artist string
 }
-func DecodeFusionArtist(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionArtist ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.B, 40, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Artist, 80, 72 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionArtist(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionArtist
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53414,7 +64012,7 @@ func DecodeFusionArtist(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(80); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionArtist-Artist: %w", err)
 	} else {
 		val.Artist = v
@@ -53434,7 +64032,40 @@ type FusionAlbum struct {
 	B *uint64
 	Album string
 }
-func DecodeFusionAlbum(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionAlbum ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint64(p.B, 40, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Album, 80, 72 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionAlbum(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionAlbum
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53495,7 +64126,7 @@ func DecodeFusionAlbum(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(80); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAlbum-Album: %w", err)
 	} else {
 		val.Album = v
@@ -53514,7 +64145,36 @@ type FusionUnitName struct {
 	A *uint8
 	Name string
 }
-func DecodeFusionUnitName(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionUnitName ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Name, 112, 32 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionUnitName(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionUnitName
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53566,7 +64226,7 @@ func DecodeFusionUnitName(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(112); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionUnitName-Name: %w", err)
 	} else {
 		val.Name = v
@@ -53586,7 +64246,40 @@ type FusionZoneName struct {
 	Number *uint8
 	Name string
 }
-func DecodeFusionZoneName(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionZoneName ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Number, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Name, 104, 40 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionZoneName(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionZoneName
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53647,7 +64340,7 @@ func DecodeFusionZoneName(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(104); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionZoneName-Name: %w", err)
 	} else {
 		val.Name = v
@@ -53667,7 +64360,40 @@ type FusionPlayProgress struct {
 	B *uint8
 	Progress *float32
 }
-func DecodeFusionPlayProgress(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionPlayProgress ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Progress, 24, 0.001000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionPlayProgress(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionPlayProgress
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53728,7 +64454,7 @@ func DecodeFusionPlayProgress(Info MessageInfo, stream *PGNDataStream) (any, err
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(24, 0.001); err != nil {
+	if v, err := stream.readUnsignedResolution(24, 0.001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionPlayProgress-Progress: %w", err)
 	} else {
 		val.Progress = v
@@ -53751,7 +64477,52 @@ type FusionAmFmStation struct {
 	C *uint8
 	Track string
 }
-func DecodeFusionAmFmStation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionAmFmStation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.AmFm), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.Frequency, 32, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Track, 80, 88 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionAmFmStation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionAmFmStation
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53839,7 +64610,7 @@ func DecodeFusionAmFmStation(Info MessageInfo, stream *PGNDataStream) (any, erro
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(80); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionAmFmStation-Track: %w", err)
 	} else {
 		val.Track = v
@@ -53860,7 +64631,44 @@ type FusionVhf struct {
 	Channel *uint8
 	D *uint32
 }
-func DecodeFusionVhf(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionVhf ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Channel, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.D, 24, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionVhf(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionVhf
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -53950,7 +64758,40 @@ type FusionSquelch struct {
 	B *uint8
 	Squelch *uint8
 }
-func DecodeFusionSquelch(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionSquelch ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Squelch, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionSquelch(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionSquelch
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54032,7 +64873,44 @@ type FusionScan struct {
 	Scan YesNoConst
 	C *uint8
 }
-func DecodeFusionScan(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionScan ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Scan), 2, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 6, 42)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionScan(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionScan
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54128,7 +65006,64 @@ type FusionMenuItem struct {
 	I *uint8
 	Text string
 }
-func DecodeFusionMenuItem(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionMenuItem ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Line, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.E, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.F, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.G, 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.H, 8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.I, 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeStringWithLength(p.Text, 40, 88 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionMenuItem(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionMenuItem
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54243,7 +65178,7 @@ func DecodeFusionMenuItem(Info MessageInfo, stream *PGNDataStream) (any, error) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readStringWithLength(); err != nil {
+	if v, err := stream.readStringWithLength(40); err != nil {
 		return nil, fmt.Errorf("parse failed for FusionMenuItem-Text: %w", err)
 	} else {
 		val.Text = v
@@ -54269,7 +65204,64 @@ type FusionReplay struct {
 	I *uint8
 	J *uint8
 }
-func DecodeFusionReplay(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionReplay ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Mode), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.C, 24, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.D, 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.E, 8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Status), 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.H, 8, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.I, 8, 96)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.J, 8, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionReplay(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionReplay
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54403,7 +65395,36 @@ type FusionMute struct {
 	A *uint8
 	Mute FusionMuteCommandConst
 }
-func DecodeFusionMute(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionMute ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Mute), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionMute(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionMute
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54477,7 +65498,48 @@ type FusionSubVolume struct {
 	Zone3 *uint8
 	Zone4 *uint8
 }
-func DecodeFusionSubVolume(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FusionSubVolume ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.MessageId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone1, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone2, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone3, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Zone4, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFusionSubVolume(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FusionSubVolume
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54574,7 +65636,32 @@ type NavicoAsciiData struct {
 	A *uint8
 	Message string
 }
-func DecodeNavicoAsciiData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NavicoAsciiData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Message), 2048, 24 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNavicoAsciiData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NavicoAsciiData
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54640,7 +65727,64 @@ type FurunoUnknown130821 struct {
 	H *uint8
 	I *uint8
 }
-func DecodeFurunoUnknown130821(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FurunoUnknown130821 ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Sid, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.D, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.E, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.F, 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.G, 8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.H, 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.I, 8, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFurunoUnknown130821(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FurunoUnknown130821
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54769,7 +65913,28 @@ type NavicoUnknown1 struct {
 	IndustryCode IndustryCodeConst
 	Data []uint8
 }
-func DecodeNavicoUnknown1(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NavicoUnknown1 ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Data, 1848, 16 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNavicoUnknown1(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NavicoUnknown1
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54821,7 +65986,44 @@ type MaretronProprietaryTemperatureHighRange struct {
 	ActualTemperature *units.Temperature
 	SetTemperature *units.Temperature
 }
-func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *MaretronProprietaryTemperatureHighRange ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Sid, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Source), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.ActualTemperature.Value, 16, 0.100000, 40, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.SetTemperature.Value, 16, 0.100000, 56, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *DataStream) (any, error) {
 	var val MaretronProprietaryTemperatureHighRange
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -54879,7 +66081,7 @@ func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *PGN
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-ActualTemperature: %w", err)
 	} else {
 		val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -54888,7 +66090,7 @@ func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *PGN
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-SetTemperature: %w", err)
 	} else {
 		val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -54910,7 +66112,24 @@ type BGKeyValueDataRepeating1 struct {
 	Length *uint8
 	Value []uint8
 }
-func DecodeBGKeyValueData(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *BGKeyValueData ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeBGKeyValueData(Info MessageInfo, stream *DataStream) (any, error) {
 	var val BGKeyValueData
 	val.Info = Info
 		var repeat1Count uint16 = 0
@@ -54991,7 +66210,44 @@ type MaretronAnnunciator struct {
 	Field7 *uint8
 	Field8 *uint16
 }
-func DecodeMaretronAnnunciator(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *MaretronAnnunciator ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Field4, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Field5, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Field6, 16, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Field7, 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.Field8, 16, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeMaretronAnnunciator(Info MessageInfo, stream *DataStream) (any, error) {
 	var val MaretronAnnunciator
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55075,7 +66331,28 @@ type NavicoUnknown2 struct {
 	IndustryCode IndustryCodeConst
 	Data []uint8
 }
-func DecodeNavicoUnknown2(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *NavicoUnknown2 ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary(p.Data, 80, 16 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeNavicoUnknown2(Info MessageInfo, stream *DataStream) (any, error) {
 	var val NavicoUnknown2
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55127,7 +66404,48 @@ type BGUserAndRemoteRename struct {
 	ShortName string
 	LongName string
 }
-func DecodeBGUserAndRemoteRename(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *BGUserAndRemoteRename ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DataType), 12, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Length, 4, 28)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Decimals), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.ShortName), 64, 48 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.LongName), 128, 112 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeBGUserAndRemoteRename(Info MessageInfo, stream *DataStream) (any, error) {
 	var val BGUserAndRemoteRename
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55223,7 +66541,60 @@ type SimnetFluidLevelSensorConfiguration struct {
 	H *int16
 	I *int8
 }
-func DecodeSimnetFluidLevelSensorConfiguration(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetFluidLevelSensorConfiguration ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Device, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.F, 4, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TankType), 4, 44)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Capacity.Value, 32, 0.100000, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.G, 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt16(p.H, 16, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt8(p.I, 8, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetFluidLevelSensorConfiguration(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetFluidLevelSensorConfiguration
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55299,7 +66670,7 @@ func DecodeSimnetFluidLevelSensorConfiguration(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetFluidLevelSensorConfiguration-Capacity: %w", err)
 	} else {
 		val.Capacity = nullableUnit(units.Liter, v, units.NewVolume)
@@ -55350,7 +66721,60 @@ type MaretronSwitchStatusCounter struct {
 	ErrorCounter *uint8
 	SwitchStatus OffOnConst
 }
-func DecodeMaretronSwitchStatusCounter(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *MaretronSwitchStatusCounter ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.IndicatorNumber, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.StartDate, 16, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.StartTime, 32, 0.000100, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.OffCounter, 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.OnCounter, 8, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ErrorCounter, 8, 96)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SwitchStatus), 2, 104)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 106)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeMaretronSwitchStatusCounter(Info MessageInfo, stream *DataStream) (any, error) {
 	var val MaretronSwitchStatusCounter
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55408,7 +66832,7 @@ func DecodeMaretronSwitchStatusCounter(Info MessageInfo, stream *PGNDataStream) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-StartTime: %w", err)
 	} else {
 		val.StartTime = v
@@ -55472,7 +66896,60 @@ type MaretronSwitchStatusTimer struct {
 	AccumulatedErrorPeriod *uint32
 	SwitchStatus OffOnConst
 }
-func DecodeMaretronSwitchStatusTimer(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *MaretronSwitchStatusTimer ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Instance, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.IndicatorNumber, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.StartDate, 16, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.StartTime, 32, 0.000100, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.AccumulatedOffPeriod, 32, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.AccumulatedOnPeriod, 32, 112)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.AccumulatedErrorPeriod, 32, 144)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.SwitchStatus), 2, 176)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(6, 178)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeMaretronSwitchStatusTimer(Info MessageInfo, stream *DataStream) (any, error) {
 	var val MaretronSwitchStatusTimer
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55530,7 +67007,7 @@ func DecodeMaretronSwitchStatusTimer(Info MessageInfo, stream *PGNDataStream) (a
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(32, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-StartTime: %w", err)
 	} else {
 		val.StartTime = v
@@ -55595,7 +67072,60 @@ type FurunoSixDegreesOfFreedomMovement struct {
 	H *int16
 	I *int16
 }
-func DecodeFurunoSixDegreesOfFreedomMovement(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FurunoSixDegreesOfFreedomMovement ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.A, 32, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.B, 32, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.C, 32, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt8(p.D, 8, 112)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.E, 32, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.F, 32, 152)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt16(p.G, 16, 184)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt16(p.H, 16, 200)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt16(p.I, 16, 216)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFurunoSixDegreesOfFreedomMovement(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FurunoSixDegreesOfFreedomMovement
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55727,7 +67257,84 @@ type SimnetAisClassBStaticDataMsg24PartB struct {
 	PositionReferenceFromBow *units.Distance
 	MothershipUserId *uint32
 }
-func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetAisClassBStaticDataMsg24PartB ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.MessageId, 6, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 22)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.D, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.E, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.UserId, 32, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.TypeOfShip), 8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.VendorId), 56, 80 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Callsign), 56, 136 )
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Length.Value, 16, 0.100000, 192, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.Beam.Value, 16, 0.100000, 208, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PositionReferenceFromStarboard.Value, 16, 0.100000, 224, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(&p.PositionReferenceFromBow.Value, 16, 0.100000, 240, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.MothershipUserId, 32, 256)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(6, 288)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 294)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetAisClassBStaticDataMsg24PartB
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55833,7 +67440,7 @@ func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-Length: %w", err)
 	} else {
 		val.Length = nullableUnit(units.Meter, v, units.NewDistance)
@@ -55842,7 +67449,7 @@ func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-Beam: %w", err)
 	} else {
 		val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
@@ -55851,7 +67458,7 @@ func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-PositionReferenceFromStarboard: %w", err)
 	} else {
 		val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
@@ -55860,7 +67467,7 @@ func DecodeSimnetAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *PGNData
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.1); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetAisClassBStaticDataMsg24PartB-PositionReferenceFromBow: %w", err)
 	} else {
 		val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
@@ -55898,7 +67505,44 @@ type FurunoHeelAngleRollInformation struct {
 	Pitch *float32
 	Roll *float32
 }
-func DecodeFurunoHeelAngleRollInformation(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FurunoHeelAngleRollInformation ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Yaw, 16, 0.000100, 32, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Pitch, 16, 0.000100, 48, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSignedResolution32(p.Roll, 16, 0.000100, 64, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFurunoHeelAngleRollInformation(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FurunoHeelAngleRollInformation
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -55947,7 +67591,7 @@ func DecodeFurunoHeelAngleRollInformation(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeelAngleRollInformation-Yaw: %w", err)
 	} else {
 		val.Yaw = v
@@ -55956,7 +67600,7 @@ func DecodeFurunoHeelAngleRollInformation(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeelAngleRollInformation-Pitch: %w", err)
 	} else {
 		val.Pitch = v
@@ -55965,7 +67609,7 @@ func DecodeFurunoHeelAngleRollInformation(Info MessageInfo, stream *PGNDataStrea
 			return val, nil
 		} 
 	}
-	if v, err := stream.readSignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for FurunoHeelAngleRollInformation-Roll: %w", err)
 	} else {
 		val.Roll = v
@@ -55981,7 +67625,24 @@ type FurunoMultiSatsInViewExtended struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeFurunoMultiSatsInViewExtended(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FurunoMultiSatsInViewExtended ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFurunoMultiSatsInViewExtended(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FurunoMultiSatsInViewExtended
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -56025,7 +67686,52 @@ type SimnetKeyValue struct {
 	Minlength *uint8
 	Value []uint8
 }
-func DecodeSimnetKeyValue(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetKeyValue ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Address, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.RepeatIndicator), 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DisplayGroup), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Key), 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Minlength, 8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetKeyValue(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetKeyValue
 	val.Info = Info
 		var valueLength uint16
@@ -56138,7 +67844,52 @@ type SimnetParameterSet struct {
 	Length *uint8
 	Value []uint8
 }
-func DecodeSimnetParameterSet(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetParameterSet ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Address, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.DisplayGroup), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.D, 16, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Key), 16, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(8, 72)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Length, 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetParameterSet(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetParameterSet
 	val.Info = Info
 		var valueLength uint16
@@ -56245,7 +67996,24 @@ type FurunoMotionSensorStatusExtended struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
-func DecodeFurunoMotionSensorStatusExtended(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *FurunoMotionSensorStatusExtended ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeFurunoMotionSensorStatusExtended(Info MessageInfo, stream *DataStream) (any, error) {
 	var val FurunoMotionSensorStatusExtended
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -56289,7 +68057,56 @@ type SimnetApCommand struct {
 	Direction SimnetDirectionConst
 	Angle *float32
 }
-func DecodeSimnetApCommand(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetApCommand ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Address, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ApStatus), 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ApCommand), 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeSpare(8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Direction), 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Angle, 16, 0.000100, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetApCommand(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetApCommand
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -56376,7 +68193,7 @@ func DecodeSimnetApCommand(Info MessageInfo, stream *PGNDataStream) (any, error)
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetApCommand-Angle: %w", err)
 	} else {
 		val.Angle = v
@@ -56400,7 +68217,56 @@ type SimnetEventCommandApCommand struct {
 	Angle *float32
 	UnusedC *uint8
 }
-func DecodeSimnetEventCommandApCommand(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetEventCommandApCommand ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.UnusedA, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.ControllingDevice, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Event), 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnusedB, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Direction), 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Angle, 16, 0.000100, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.UnusedC, 8, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetEventCommandApCommand(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetEventCommandApCommand
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -56488,7 +68354,7 @@ func DecodeSimnetEventCommandApCommand(Info MessageInfo, stream *PGNDataStream) 
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventCommandApCommand-Angle: %w", err)
 	} else {
 		val.Angle = v
@@ -56519,7 +68385,56 @@ type SimnetAlarm struct {
 	F *uint8
 	G *uint8
 }
-func DecodeSimnetAlarm(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetAlarm ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Address, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Alarm), 16, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.MessageId, 16, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.F, 8, 80)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.G, 8, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetAlarm(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetAlarm
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -56630,7 +68545,56 @@ type SimnetEventReplyApCommand struct {
 	Angle *float32
 	G *uint8
 }
-func DecodeSimnetEventReplyApCommand(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetEventReplyApCommand ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.B, 16, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.Address, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Event), 8, 48)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.Direction), 8, 64)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUnsignedResolution32(p.Angle, 16, 0.000100, 72, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.G, 8, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetEventReplyApCommand(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetEventReplyApCommand
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -56718,7 +68682,7 @@ func DecodeSimnetEventReplyApCommand(Info MessageInfo, stream *PGNDataStream) (a
 			return val, nil
 		} 
 	}
-	if v, err := stream.readUnsignedResolution(16, 0.0001); err != nil {
+	if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
 		return nil, fmt.Errorf("parse failed for SimnetEventReplyApCommand-Angle: %w", err)
 	} else {
 		val.Angle = v
@@ -56747,7 +68711,40 @@ type SimnetAlarmMessage struct {
 	C *uint8
 	Text string
 }
-func DecodeSimnetAlarmMessage(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetAlarmMessage ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint16(p.MessageId, 16, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.B, 8, 32)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.C, 8, 40)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeBinary([]uint8(p.Text), 1784, 48 )
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetAlarmMessage(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetAlarmMessage
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {
@@ -56827,7 +68824,48 @@ type SimnetApUnknown4 struct {
 	E *int32
 	F *uint32
 }
-func DecodeSimnetApUnknown4(Info MessageInfo, stream *PGNDataStream) (any, error) {
+func (p *SimnetApUnknown4 ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeReserved(2, 11)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint8(p.A, 8, 16)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.B, 32, 24)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.C, 32, 56)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.D, 32, 88)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeInt32(p.E, 32, 120)
+	if err != nil {
+		return &p.Info, err
+	}
+	err = stream.writeUint32(p.F, 32, 152)
+	if err != nil {
+		return &p.Info, err
+	}
+
+	return &p.Info, err
+}
+func DecodeSimnetApUnknown4(Info MessageInfo, stream *DataStream) (any, error) {
 	var val SimnetApUnknown4
 	val.Info = Info
 	if v, err := stream.readLookupField(11); err != nil {

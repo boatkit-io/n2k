@@ -598,11 +598,13 @@ func convertFieldType(field PGNField) string {
 // getFieldSerializer returns a string that when evaluated writes its value into the output stream.
 // Used by template
 func getFieldSerializer(field PGNField) string {
-	var outstr, pre, conv, value, post string
+	var outstr, pre, value, post string
+	var isUnit bool
 	if field.Unit != "" { // set conv to invoke conversion to default type
-		unitType, unitName := getUnitType(field.Unit)
-		if unitType != "" {
-			conv = fmt.Sprintf(".Convert(units.%s).Value", unitName)
+		unitType, _ := getUnitType(field.Unit)
+		if isUnit = unitType != ""; isUnit {
+			value = "&p.%s.Value"
+
 		}
 	}
 	switch field.FieldType {
@@ -615,41 +617,53 @@ func getFieldSerializer(field PGNField) string {
 	case "NUMBER", "TIME", "DATE", "MMSI":
 		if field.Signed {
 			switch {
-			case field.Resolution != nil && *field.Resolution != 1.0, field.Offset != 0:
-				pre = "err = stream.writeSignedResolution(float64("
-				if len(conv) == 0 {
-					value = "*"
+			case field.Resolution != nil && (*field.Resolution != 1.0 || isUnit), field.Offset != 0:
+				size := "32"
+				if *field.Resolution <= resolution64BitCutoff {
+					size = "64"
 				}
-				value = value + "p.%s" + conv
-				post = "), %d, %f, %d, %d)"
+				pre = fmt.Sprintf("err = stream.writeSignedResolution%s(", size)
+				if len(value) == 0 {
+					if !isPointerFieldType(field) {
+						value = "&"
+					}
+					value += "p.%s"
+				}
+				post = ", %d, %f, %d, %d)"
 				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset)
+			case field.BitLength > 32:
+				outstr = fmt.Sprintf("err = stream.writeInt64(p.%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+			case field.BitLength > 16:
+				outstr = fmt.Sprintf("err = stream.writeInt32(p.%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+			case field.BitLength > 8:
+				outstr = fmt.Sprintf("err = stream.writeInt16(p.%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
 			default:
-				pre = "err = stream.writeSignedNumber(int64("
-				if isPointerFieldType(field) {
-					value = "*"
-				}
-				value += "p.%s"
-				post = "), %d, %d)"
-				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, field.BitOffset)
+				outstr = fmt.Sprintf("err = stream.writeInt8(p.%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
 			}
 		} else {
 			switch {
-			case field.Resolution != nil && *field.Resolution != 1.0:
-				pre = "err = stream.writeSignedResolution(float64("
-				if len(conv) == 0 && isPointerFieldType(field) {
-					value = "*"
+			case field.Resolution != nil && (*field.Resolution != 1.0 || isUnit):
+				size := "32"
+				if *field.Resolution <= resolution64BitCutoff {
+					size = "64"
 				}
-				value = value + "p.%s" + conv
-				post = "), %d, %f, %d, %d)"
+				pre = fmt.Sprintf("err = stream.writeUnsignedResolution%s(", size)
+				if len(value) == 0 {
+					if !isPointerFieldType(field) {
+						value = "&"
+					}
+					value += "p.%s"
+				}
+				post = ", %d, %f, %d, %d)"
 				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset)
+			case field.BitLength > 32:
+				outstr = fmt.Sprintf("err = stream.writeUint64(p.%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+			case field.BitLength > 16:
+				outstr = fmt.Sprintf("err = stream.writeUint32(p.%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+			case field.BitLength > 8:
+				outstr = fmt.Sprintf("err = stream.writeUint16(p.%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
 			default:
-				pre = "err = stream.writeUnsignedNumber(uint64("
-				if isPointerFieldType(field) {
-					value = "*"
-				}
-				value += "p.%s"
-				post = "), %d, %d)"
-				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, field.BitOffset)
+				outstr = fmt.Sprintf("err = stream.writeUint8(p.%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
 			}
 		}
 	case "FLOAT":
@@ -668,9 +682,11 @@ func getFieldSerializer(field PGNField) string {
 		outstr = fmt.Sprintf("err = stream.writeStringLau(p.%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
 	case "STRING_LZ":
 		outstr = fmt.Sprintf("err = stream.writeStringWithLength(p.%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
+	case "KEY_VALUE":
+		outstr = ""
 	default:
 		outstr = ""
-		//	outstr = fmt.Sprintf("log.Infof(\"field %s, index %d, type %s, unhandled\")", field.Name, field.Order, field.FieldType)
+		outstr = fmt.Sprintf("log.Infof(\"field %s, index %d, type %s, unhandled\")", field.Name, field.Order, field.FieldType)
 	}
 
 	return outstr

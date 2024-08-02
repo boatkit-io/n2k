@@ -73,11 +73,110 @@ func (s *DataStream) writeBinary(value []uint8, bitLength uint16, bitOffset uint
 	}
 	return nil
 }
-func (s *DataStream) writeSignedResolution(value float64, length uint16, divideBy float32, bitOffset uint16, offset uint32) error {
+
+func (s *DataStream) writeInt8(value *int8, length uint16, bitOffset uint16) error {
+	var outVal, maxVal uint64
+	maxVal = calcMaxPositiveValue(length, true)
+	if value == nil || uint64(*value) > maxVal {
+		outVal = missingValue(length, true)
+	} else {
+		outVal = uint64(*value)
+	}
+	return s.putNumberRaw(outVal, length, bitOffset)
+}
+
+func (s *DataStream) writeInt16(value *int16, length uint16, bitOffset uint16) error {
+	var outVal, maxVal uint64
+	maxVal = calcMaxPositiveValue(length, true)
+	if value == nil || uint64(*value) > maxVal {
+		outVal = missingValue(length, true)
+	} else {
+		outVal = uint64(*value)
+	}
+	return s.putNumberRaw(outVal, length, bitOffset)
+}
+
+func (s *DataStream) writeInt32(value *int32, length uint16, bitOffset uint16) error {
+	var outVal, maxVal uint64
+	maxVal = calcMaxPositiveValue(length, true)
+	if value == nil || uint64(*value) > maxVal {
+		outVal = missingValue(length, true)
+	} else {
+		outVal = uint64(*value)
+	}
+	return s.putNumberRaw(outVal, length, bitOffset)
+}
+
+func (s *DataStream) writeInt64(value *int64, length uint16, bitOffset uint16) error {
+	var outVal, maxVal uint64
+	maxVal = calcMaxPositiveValue(length, true)
+	if value == nil || uint64(*value) > maxVal {
+		outVal = missingValue(length, true)
+	} else {
+		outVal = uint64(*value)
+	}
+	return s.putNumberRaw(outVal, length, bitOffset)
+}
+
+func (s *DataStream) writeUint8(value *uint8, length uint16, bitOffset uint16) error {
+	var outVal, maxVal uint64
+	maxVal = calcMaxPositiveValue(length, false)
+	if value == nil || uint64(*value) > maxVal {
+		outVal = missingValue(length, false)
+	} else {
+		outVal = uint64(*value)
+	}
+	return s.putNumberRaw(outVal, length, bitOffset)
+}
+
+func (s *DataStream) writeUint16(value *uint16, length uint16, bitOffset uint16) error {
+	var outVal, maxVal uint64
+	maxVal = calcMaxPositiveValue(length, false)
+	if value == nil || uint64(*value) > maxVal {
+		outVal = missingValue(length, false)
+	} else {
+		outVal = uint64(*value)
+	}
+	return s.putNumberRaw(outVal, length, bitOffset)
+}
+
+func (s *DataStream) writeUint32(value *uint32, length uint16, bitOffset uint16) error {
+	var outVal, maxVal uint64
+	maxVal = calcMaxPositiveValue(length, false)
+	if value == nil || uint64(*value) > maxVal {
+		outVal = missingValue(length, false)
+	} else {
+		outVal = uint64(*value)
+	}
+	return s.putNumberRaw(outVal, length, bitOffset)
+}
+
+func (s *DataStream) writeUint64(value *uint64, length uint16, bitOffset uint16) error {
+	var outVal, maxVal uint64
+	maxVal = calcMaxPositiveValue(length, false)
+	if value == nil || uint64(*value) > maxVal {
+		outVal = missingValue(length, false)
+	} else {
+		outVal = uint64(*value)
+	}
+	return s.putNumberRaw(outVal, length, bitOffset)
+}
+
+func (s *DataStream) writeSignedResolution32(value *float32, length uint16, divideBy float32, bitOffset uint16, offset int64) error {
+	var value64 *float64
+	if value != nil {
+		value64 = new(float64)
+		*value64 = float64(*value)
+	}
+	return s.writeSignedResolution64(value64, length, divideBy, bitOffset, offset)
+}
+
+func (s *DataStream) writeSignedResolution64(value *float64, length uint16, divideBy float32, bitOffset uint16, offset int64) error {
+	var outVal uint64
 	if value == nil {
 		outVal = missingValue(length, true)
 	} else {
-		outVal := uint64(value/float64(divideBy) - float64(offset))
+		outVal := uint64(*value/float64(divideBy) - float64(offset))
 		maxValid := calcMaxPositiveValue(length, true)
 		if outVal > maxValid {
 			outVal = maxValid // pin at maximum value
@@ -86,11 +185,21 @@ func (s *DataStream) writeSignedResolution(value float64, length uint16, divideB
 	return s.putNumberRaw(outVal, length, bitOffset)
 }
 
-func (s *DataStream) writeUnsignedResolution(value *float64, length uint16, divideBy float32, bitOffset uint16, offset uint32) error {
+func (s *DataStream) writeUnsignedResolution32(value *float32, length uint16, divideBy float32, bitOffset uint16, offset int64) error {
+	var value64 *float64
+	if value != nil {
+		value64 = new(float64)
+		*value64 = float64(*value)
+	}
+	return s.writeUnsignedResolution64(value64, length, divideBy, bitOffset, offset)
+}
+
+func (s *DataStream) writeUnsignedResolution64(value *float64, length uint16, divideBy float32, bitOffset uint16, offset int64) error {
+	var outVal uint64
 	if value == nil {
 		outVal = missingValue(length, false)
 	} else {
-		outVal := uint64(value/float64(divideBy) - float64(offset))
+		outVal = uint64(*value/float64(divideBy) - float64(offset))
 		maxValid := calcMaxPositiveValue(length, false)
 		if outVal > maxValid {
 			outVal = maxValid // pin at maximum value
@@ -99,12 +208,12 @@ func (s *DataStream) writeUnsignedResolution(value *float64, length uint16, divi
 	return s.putNumberRaw(outVal, length, bitOffset)
 }
 
-func (s *DataStream) writeUnsignedNumber(value uint64, length uint16, bitOffset uint16) error {
+func (s *DataStream) writeUnsignedNumber(value *uint64, length uint16, bitOffset uint16) error {
 	maxVal := calcMaxPositiveValue(length, false)
-	if value > maxVal {
-		value = maxVal
+	if *value > maxVal {
+		*value = maxVal
 	}
-	return s.putNumberRaw(value, length, bitOffset)
+	return s.putNumberRaw(*value, length, bitOffset)
 }
 
 func (s *DataStream) writeSignedNumber(value int64, length uint16, bitOffset uint16) error {
