@@ -167,6 +167,23 @@ type {{ $pgn.Id }}Repeating1 struct {
 	{{- end }}
 	{{- end }}
 }
+func (p *{{- .Id }} ) encode{{- .Id }}Repeating1(stream *DataStream) error {
+	var err error
+	{{- $substruct := "Repeating1[index]." }}
+	for index := range p.Repeating1 {
+	{{- range $idx, $field := $pgn.FieldsRepeating1 }}
+	{{- $func := getFieldSerializer $field $substruct  }}
+	{{- if ne $func "" }}
+	{{ $func }}
+	if err != nil {
+		return err
+	}
+	{{- end }}
+	{{- end }}
+	}
+	return nil
+}
+
 {{- end }}
 {{- if $pgn.RepeatingFieldSet2Size }}
 type {{ .Id }}Repeating2 struct {
@@ -176,21 +193,90 @@ type {{ .Id }}Repeating2 struct {
 	{{- end }}
 	{{- end }}
 }
-{{- end }}
-func (p *{{- .Id }} ) Encode(stream *DataStream) (*MessageInfo, error) {
+
+func (p *{{- .Id }} ) encode{{- .Id }}Repeating2(stream *DataStream) error {
 	var err error
-	{{- range $idx, $field := .Fields }}
-	{{- $func := getFieldSerializer $field }}
+	{{- $substruct := "Repeating2[index]." }}
+	for index := range p.Repeating2 {
+	{{- range $idx, $field := $pgn.FieldsRepeating2 }}
+	{{- $func := getFieldSerializer $field $substruct  }}
 	{{- if ne $func "" }}
 	{{ $func }}
 	if err != nil {
-		return &p.Info, err
+		return err
 	}
 	{{- end }}
 	{{- end }}
-
+	}
+	return nil
+}
+{{- end }}
+func (p *{{- .Id }} ) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+	{{- $repeat1CountIndex :=  $pgn.RepeatingFieldSet1CountField }}
+	{{- $repeat2CountIndex :=  $pgn.RepeatingFieldSet2CountField }}
+	{{- $repeat1StartIndex := $pgn.RepeatingFieldSet1StartField}}
+	{{- $repeat2StartIndex := $pgn.RepeatingFieldSet2StartField }}
+	{{- if (gt $repeat1CountIndex 0) }}
+	repeat1Count := uint8(len(p.Repeating1))
+	{{- end }}
+	{{- if (gt $repeat2CountIndex 0) }}
+	repeat2Count := uint8(len(p.Repeating2))
+	{{- end }}
+	{{- range $idx, $field := $pgn.Fields }}
+	{{- if and (gt $repeat2CountIndex 0) (eq $field.Id "Pgn") }}
+	{{- $func := getFieldSerializer $field "" }}
+	{{- if ne $func "" }}
+	{{ $func }}
+	if err != nil {
+		return nil, err
+	}	
+	if IsProprietaryPGN(*p.Pgn) {
+	{{- continue }}
+	{{- end }}
+	{{- end }}
+	{{- if and (gt $repeat2CountIndex 0) (eq $idx 5) }}
+	}
+	{{- end }}
+	{{- if and (gt $repeat1CountIndex 0) (eq $repeat1CountIndex $field.Order) }}
+	err = stream.writeUint8(&repeat1Count, {{- $field.BitLength }}, 0)
+	if err != nil {
+		return nil, err
+		}
+	{{- continue }}
+	{{- end }}
+	{{- if and (gt $repeat2CountIndex 0) (eq $repeat2CountIndex $field.Order) }}
+	err = stream.writeUint8(&repeat2Count, {{- $field.BitLength }}, 0)
+	if err != nil {
+		return nil, err
+		}
+	{{- continue }}		
+	{{- end }}
+	{{- if and (gt $repeat1StartIndex 0) (eq $repeat1StartIndex $field.Order) }}
+	err = p.encode{{- $pgn.Id }}Repeating1(stream)
+	if err != nil {
+		return nil, err
+		}
+	{{- continue }}
+	{{- end }}
+	{{- if and (gt $repeat2StartIndex 0) (eq $repeat2StartIndex $field.Order) }}
+	err = p.encode{{- $pgn.Id }}Repeating2(stream)
+	if err != nil {
+		return nil, err
+		}
+	{{- continue }}
+	{{- end }}
+	{{- $func := getFieldSerializer $field "" }}
+	{{- if ne $func "" }}
+	{{ $func }}
+	if err != nil {
+		return nil, err
+	}
+	{{- end }}
+	{{- end }}
 	return &p.Info, err
 }
+
 {{- $funcName := concat "Decode" .Id }}
 func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
 	var val {{ .Id }}
