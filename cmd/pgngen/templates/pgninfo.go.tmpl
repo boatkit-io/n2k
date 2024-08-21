@@ -4,6 +4,7 @@ package pgn
 
 import (
 	"fmt"
+	"encoding/json"
 	
 	"github.com/boatkit-io/tugboat/pkg/units"
 )
@@ -167,7 +168,7 @@ type {{ $pgn.Id }}Repeating1 struct {
 	{{- end }}
 	{{- end }}
 }
-func (p *{{- .Id }} ) encode{{- .Id }}Repeating1(stream *DataStream) error {
+func (p {{ .Id }} ) encode{{- .Id }}Repeating1(stream *DataStream) error {
 	var err error
 	{{- $substruct := "Repeating1[index]." }}
 	for index := range p.Repeating1 {
@@ -194,7 +195,7 @@ type {{ .Id }}Repeating2 struct {
 	{{- end }}
 }
 
-func (p *{{- .Id }} ) encode{{- .Id }}Repeating2(stream *DataStream) error {
+func (p {{ .Id }} ) encode{{- .Id }}Repeating2(stream *DataStream) error {
 	var err error
 	{{- $substruct := "Repeating2[index]." }}
 	for index := range p.Repeating2 {
@@ -211,7 +212,19 @@ func (p *{{- .Id }} ) encode{{- .Id }}Repeating2(stream *DataStream) error {
 	return nil
 }
 {{- end }}
-func (p *{{- .Id }} ) Encode(stream *DataStream) (*MessageInfo, error) {
+func (p {{ .Id }} ) Marshal() ([]byte, error) {
+	var pre, post []byte
+	pre = []byte("{ \"{{- .Id}}\":")
+	post = []byte("}")
+	ret, err :=  json.Marshal(p)
+	if err != nil {
+		return nil, err
+		}
+	pre = append(pre, ret...)
+	pre = append(pre, post...)
+	 return pre, nil
+}
+func (p {{ .Id }} ) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
 	{{- $repeat1CountIndex :=  $pgn.RepeatingFieldSet1CountField }}
 	{{- $repeat2CountIndex :=  $pgn.RepeatingFieldSet2CountField }}

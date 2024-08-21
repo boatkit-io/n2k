@@ -1,4 +1,6 @@
-package canadapter
+// Package Converter provides routines that convert between various text
+// data formats and Can frames.
+package converter
 
 import (
 	"strconv"
@@ -8,7 +10,7 @@ import (
 )
 
 // CanFrameFromRaw parses an input string into a can.Frame.
-func CanFrameFromRaw(in string) can.Frame {
+func CanFrameFromRaw(in string) *can.Frame {
 	elems := strings.Split(in, ",")
 	priority, _ := strconv.ParseUint(elems[1], 10, 8)
 	pgn, _ := strconv.ParseUint(elems[2], 10, 32)
@@ -26,5 +28,10 @@ func CanFrameFromRaw(in string) can.Frame {
 		retval.Data[i] = uint8(b)
 	}
 
-	return retval
+	return &retval
+}
+
+// CanIdFromData returns an encoded ID from its inputs.
+func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8) uint32 {
+	return uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26) | uint32(destination)
 }

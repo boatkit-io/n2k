@@ -4,6 +4,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/boatkit-io/n2k/pkg/converter"
 	"github.com/boatkit-io/n2k/pkg/pkt"
 	"github.com/brutella/can"
 	"github.com/sirupsen/logrus"
@@ -72,8 +73,8 @@ func TestBigPacket(t *testing.T) {
 		if len(line) == 0 {
 			continue
 		}
-		frame := CanFrameFromRaw(line)
-		pInfo := NewPacketInfo(&frame)
+		frame := converter.CanFrameFromRaw(line)
+		pInfo := NewPacketInfo(frame)
 		p = pkt.NewPacket(pInfo, frame.Data[:])
 		m.Add(p)
 	}

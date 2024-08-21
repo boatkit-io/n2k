@@ -3,6 +3,7 @@ package pgn
 import (
 	"testing"
 
+	"github.com/boatkit-io/tugboat/pkg/units"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -130,3 +131,37 @@ func TestNumerics(t *testing.T) {
 }
 
 // TODO: Tests for strings once we get more confidence
+
+func TestWritePgn(t *testing.T) {
+	p := ManOverboardNotification{
+		Info: MessageInfo{
+			SourceId: 12,
+			PGN:      129702,
+		},
+		Sid:                nil,
+		MobEmitterId:       nil,
+		ManOverboardStatus: MobStatusConst(1),
+		ActivationTime:     nil,
+		PositionSource:     MobPositionSourceConst(3),
+		PositionDate:       nil,
+		PositionTime:       nil,
+		Latitude:           nil,
+		Longitude:          nil,
+		CogReference:       DirectionReferenceConst(2),
+		Cog:                nil,
+		Sog: &units.Velocity{
+			Unit:  1,
+			Value: 8,
+		},
+		MmsiOfVesselOfOrigin:       nil,
+		MobEmitterBatteryLowStatus: LowBatteryConst(1),
+	}
+	stream := NewDataStream(make([]uint8, 223, 223))
+	info, err := p.Encode(stream)
+	var ok bool
+	if _, ok = interface{}(&p).(PgnStruct); ok {
+	}
+	assert.True(t, ok)
+	assert.Equal(t, info.PGN, uint32(129702))
+	assert.Nil(t, err)
+}

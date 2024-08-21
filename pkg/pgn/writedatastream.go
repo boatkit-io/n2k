@@ -3,6 +3,9 @@ package pgn
 import (
 	"fmt"
 	"math"
+	"reflect"
+
+	"github.com/boatkit-io/tugboat/pkg/units"
 )
 
 func (s *DataStream) writeReserved(bitLength uint16, bitOffset uint16) error {
@@ -162,6 +165,28 @@ func (s *DataStream) writeUint64(value *uint64, length uint16, bitOffset uint16)
 	return s.putNumberRaw(outVal, length, bitOffset)
 }
 
+func checkNilInterface(i interface{}) bool {
+	iv := reflect.ValueOf(i)
+	if !iv.IsValid() {
+		return true
+	}
+	switch iv.Kind() {
+	case reflect.Ptr, reflect.Slice, reflect.Map, reflect.Func, reflect.Interface:
+		return iv.IsNil()
+	default:
+		return false
+	}
+}
+
+func (s *DataStream) writeUnit(value units.Units, length uint16, divideBy float32, bitOffset uint16, offset int64) error {
+	var val *float32
+	if checkNilInterface(value) {
+		return s.writeSignedResolution32(nil, length, divideBy, bitOffset, offset)
+	}
+	val = value.GetValue()
+	return s.writeSignedResolution32(val, length, divideBy, bitOffset, offset)
+}
+
 func (s *DataStream) writeSignedResolution32(value *float32, length uint16, divideBy float32, bitOffset uint16, offset int64) error {
 	var value64 *float64
 	if value != nil {
@@ -176,7 +201,11 @@ func (s *DataStream) writeSignedResolution64(value *float64, length uint16, divi
 	if value == nil {
 		outVal = missingValue(length, true)
 	} else {
-		outVal := uint64(*value/float64(divideBy) - float64(offset))
+		if divideBy != 0 {
+			outVal = uint64(*value/float64(divideBy) - float64(offset))
+		} else {
+			outVal = uint64(*value - float64(offset))
+		}
 		maxValid := calcMaxPositiveValue(length, true)
 		if outVal > maxValid {
 			outVal = maxValid // pin at maximum value
@@ -199,7 +228,11 @@ func (s *DataStream) writeUnsignedResolution64(value *float64, length uint16, di
 	if value == nil {
 		outVal = missingValue(length, false)
 	} else {
-		outVal = uint64(*value/float64(divideBy) - float64(offset))
+		if divideBy != 0 {
+			outVal = uint64(*value/float64(divideBy) - float64(offset))
+		} else {
+			outVal = uint64(*value - float64(offset))
+		}
 		maxValid := calcMaxPositiveValue(length, false)
 		if outVal > maxValid {
 			outVal = maxValid // pin at maximum value
