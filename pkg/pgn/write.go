@@ -33,7 +33,7 @@ func (p *Publisher) Write(s any) error {
 	data := make([]uint8, 223)
 	stream := NewDataStream(data)
 	if v, ok := s.(PgnStruct); ok {
-		info, err = v.Encode(stream)
+		info, err = v.Encode(stream) // Encode returns the MessageInfo for the PGN, since we're using an interface and can't acess it directly
 	} else {
 		return fmt.Errorf("trying to write a struct that isn't a PGN")
 	}

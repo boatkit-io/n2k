@@ -24,11 +24,12 @@
                 "--inputFormat",
                 "raw",
                 "--outputFormat",
-                "n2k",
+                "raw",
                 "--inputPath",
-                "/home/russd/dev/n2k/n2kreplays/2024-07-23-inquest.raw",
+                "/home/russ/dev/n2k/n2kreplays/raw/2024-07-23-inquest.001.raw",
                 "--outputPath",
-                "/home/russd/dev/n2k/n2kreplays/2024-07-23-inquest.001"
+                "/home/russ/dev/n2k/test-consolidated.raw",
+                "--consolidate-fast"
             ]
         },
         {
@@ -38,8 +39,8 @@
             "mode":"debug",
             "program": "${workspaceFolder}/cmd/replay",
             "args": [
-                "--replayFile",
-                "${workspaceFolder}/n2kreplays/dirona-actisense-serial.n2k",
+                "--rawReplayFile",
+                "${workspaceFolder}/test-engine-sim.raw",
                 "--writeRaw",
                 "--dumpPgns",
                 "--rawOutFile",

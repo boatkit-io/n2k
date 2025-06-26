@@ -58,8 +58,13 @@ func NewRawFileEndpoint(file string, log *logrus.Logger) *RawFileEndpoint {
 
 // Run method opens the specified log file and kicks off a goroutine that sends frames to the handler
 func (r *RawEndpoint) Run(ctx context.Context) error {
-
-	defer r.file.Close()
+	if r.file != nil {
+		defer func() {
+			if err := r.file.Close(); err != nil {
+				r.log.WithError(err).Error("failed to close raw endpoint file")
+			}
+		}()
+	}
 
 	go func() {
 		<-ctx.Done()
@@ -91,7 +96,11 @@ func (r *RawFileEndpoint) Run(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			r.log.WithError(err).Errorf("failed to close raw input file %s", r.inFilePath)
+		}
+	}()
 
 	r.log.Info("starting raw file playback")
 

@@ -77,10 +77,7 @@ func missingValue(bitLength uint16, signed bool) uint64 {
 func calcPrecision(resolution float64) uint8 {
 	precision := resolution
 	digits := uint8(0)
-	for {
-		if precision < 0 || precision >= 1.0 {
-			break
-		}
+	for precision >= 0 && precision < 1.0 {
 		precision *= 10
 		digits++
 	}

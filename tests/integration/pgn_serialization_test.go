@@ -52,7 +52,7 @@ func findDecodeFunc(pgnStruct pgn.PgnStruct) (reflect.Value, error) {
 
 func TestPGNSerializationFromN2K(t *testing.T) {
 	// Get path to test data file
-	testFile := filepath.Join("/home/russd/dev/n2k/n2kreplays/n2k", "longdump.n2k")
+	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/n2k", "longdump.n2k")
 
 	// Setup the file endpoint
 	ca := canadapter.NewCANAdapter(logrus.New())

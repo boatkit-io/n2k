@@ -71,6 +71,15 @@ func (c *SocketCANEndpoint) Close() error {
 	return nil
 }
 
+// WriteFrame sends a CAN frame to the SocketCAN interface
+func (c *SocketCANEndpoint) WriteFrame(frame can.Frame) {
+	if c.channel != nil {
+		if err := c.channel.WriteFrame(frame); err != nil {
+			c.log.WithError(err).Error("failed to send frame to SocketCAN interface")
+		}
+	}
+}
+
 // frameReady is a helper to handle passing completed frames to the handler
 func (c *SocketCANEndpoint) frameReady(frame can.Frame) {
 	if c.handler != nil {

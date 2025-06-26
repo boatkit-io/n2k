@@ -6,6 +6,7 @@ import (
 	"flag"
 	"os"
 	"strings"
+	"time"
 
 	//	"time"
 
@@ -98,6 +99,10 @@ func main() {
 			exitCode = 1
 			return
 		}
+		// Give subscription goroutines time to process messages
+		if dumpPgns || writeRaw {
+			time.Sleep(100 * time.Millisecond)
+		}
 	}
 	if len(rawReplayFile) > 0 {
 		ctx := context.Background()
@@ -105,6 +110,10 @@ func main() {
 		if err != nil {
 			exitCode = 1
 			return
+		}
+		// Give subscription goroutines time to process messages
+		if dumpPgns || writeRaw {
+			time.Sleep(100 * time.Millisecond)
 		}
 	}
 	if writeRaw {

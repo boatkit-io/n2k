@@ -17,6 +17,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// FilterOptions contains the options for filtering raw log files
 type FilterOptions struct {
 	InputFile   string
 	Unseen      bool
@@ -24,6 +25,7 @@ type FilterOptions struct {
 	SpecificPGN uint32
 }
 
+// FilterRawFile filters a raw log file based on the options
 func FilterRawFile(opts FilterOptions) {
 	log := logrus.New()
 	builder := canadapter.NewMultiBuilder(log)
@@ -33,7 +35,11 @@ func FilterRawFile(opts FilterOptions) {
 		fmt.Printf("Error opening file: %v\n", err)
 		os.Exit(1)
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.WithError(err).Errorf("failed to close input file %s", opts.InputFile)
+		}
+	}()
 
 	reader := csv.NewReader(bufio.NewReader(file))
 
@@ -115,6 +121,7 @@ func FilterRawFile(opts FilterOptions) {
 	}
 }
 
+// shouldProcessPGN determines if a PGN should be processed based on the options
 func shouldProcessPGN(pgnNum uint32, opts FilterOptions) bool {
 	if opts.SpecificPGN != 0 {
 		return pgnNum == opts.SpecificPGN
@@ -128,6 +135,7 @@ func shouldProcessPGN(pgnNum uint32, opts FilterOptions) bool {
 	return true
 }
 
+// processPacket processes a packet and prints the raw output
 func processPacket(p *pkt.Packet) {
 	// Create a CAN frame from the packet
 	frame := can.Frame{

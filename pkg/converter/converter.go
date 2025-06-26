@@ -62,20 +62,23 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 		return []*can.Frame{frame}, nil
 	}
 
-	// For data > 8 bytes, create multiple frames
+	// For data > 8 bytes, create multiple frames using NMEA 2000 fast packet format
 	var frames []*can.Frame
 	remainingBytes := int(length)
 	dataIndex := 6 // Start of data in elems
 
-	// First frame
+	// Use sequence ID 0 for now (will be overridden by RawFileEndpoint)
+	seqId := uint8(0)
+
+	// First frame (frame 0)
 	firstFrame := &can.Frame{
 		ID:     id,
 		Length: 8,
 	}
-	// First byte: 0x1_ where _ is high nibble of length
-	firstFrame.Data[0] = 0x10 | uint8((length>>8)&0x0F)
-	// Second byte: low byte of length
-	firstFrame.Data[1] = uint8(length & 0xFF)
+	// First byte: (sequenceId << 5) | frameNumber
+	firstFrame.Data[0] = (seqId << 5) | 0 // Frame 0
+	// Second byte: total data length
+	firstFrame.Data[1] = uint8(length)
 
 	// Copy up to 6 bytes of data
 	for i := 0; i < min(6, remainingBytes); i++ {
@@ -89,7 +92,7 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 
 	remainingBytes -= 6
 	dataIndex += 6
-	seqNum := uint8(1)
+	frameNum := uint8(1)
 
 	// Consecutive frames
 	for remainingBytes > 0 {
@@ -97,9 +100,10 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 			ID:     id,
 			Length: 8,
 		}
-		frame.Data[0] = 0x20 | (seqNum & 0x0F) // Consecutive frame PCI byte
+		// First byte: (sequenceId << 5) | frameNumber
+		frame.Data[0] = (seqId << 5) | (frameNum & 0x1F)
 
-		// Copy up to 7 bytes of data
+		// Copy up to 7 bytes of data (no length byte in continuation frames)
 		bytesToCopy := min(7, remainingBytes)
 		for i := 0; i < bytesToCopy; i++ {
 			b, err := strconv.ParseUint(elems[dataIndex+i], 16, 8)
@@ -112,7 +116,7 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 		frames = append(frames, frame)
 		remainingBytes -= bytesToCopy
 		dataIndex += bytesToCopy
-		seqNum++
+		frameNum++
 	}
 
 	return frames, nil
@@ -128,7 +132,14 @@ func min(a, b int) int {
 
 // CanIdFromData returns an encoded ID from its inputs.
 func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8) uint32 {
-	return uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26) | uint32(destination)
+	// Handle destination encoding based on PDU format
+	pduFormat := uint8((pgn & 0xFF00) >> 8)
+	if pduFormat < 240 && destination != 255 {
+		// This is a targeted packet, encode destination in lower 8 bits of PGN
+		pgn = (pgn & 0xFFF00) | uint32(destination)
+	}
+
+	return uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26)
 }
 
 // FrameHeader defines a structure to capture the RAW defined information comprising a CAN Frame ID

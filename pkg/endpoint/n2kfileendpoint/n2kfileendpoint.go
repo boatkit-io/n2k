@@ -45,8 +45,11 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			n.log.WithError(err).Warnf("failed to close n2k file %s", n.inFilePath)
+		}
+	}()
 
 	startTime := time.Now()
 
@@ -90,11 +93,7 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 			}
 		}
 		// Pause until the timeDelta has expired, so this all replays in "real-time" (relative to start, obvs)
-		for {
-			if canceled {
-				break
-			}
-
+		for !canceled {
 			curDelta := time.Since(startTime).Seconds()
 			nextTime := timeDelta - float32(curDelta)
 			// Make sure we wait at most 0.5 seconds to gracefully quit as needed

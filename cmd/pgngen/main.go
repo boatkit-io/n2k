@@ -286,7 +286,9 @@ func (conv *canboatConverter) write() {
 		if err := t.Execute(f, templateData); err != nil {
 			panic(err)
 		}
-		f.Close()
+		if err := f.Close(); err != nil {
+			log.WithError(err).Error("failed to close generated file")
+		}
 	}
 }
 
@@ -875,17 +877,28 @@ func cacheFromWeb(name, url string) (string, error) {
 		if err != nil {
 			return cachedName, err
 		}
-		defer resp.Body.Close()
+		defer func() {
+			if err := resp.Body.Close(); err != nil {
+				log.WithError(err).Warn("error closing http response body")
+			}
+		}()
 
-		f, _ := os.OpenFile(cachedName, os.O_CREATE|os.O_WRONLY, 0644)
+		f, err := os.OpenFile(cachedName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
+		if err != nil {
+			log.WithError(err).Fatalf("failed to open cache file %s", cachedName)
+		}
 
 		bar := progressbar.DefaultBytes(
 			resp.ContentLength,
 			fmt.Sprintf("Downloading %s", name),
 		)
-		_, _ = io.Copy(io.MultiWriter(f, bar), resp.Body)
+		if _, err = io.Copy(io.MultiWriter(f, bar), resp.Body); err != nil {
+			log.WithError(err).Fatalf("failed to write to cache file %s", cachedName)
+		}
 
-		f.Close()
+		if err := f.Close(); err != nil {
+			log.WithError(err).Fatalf("failed to close cache file %s", cachedName)
+		}
 	} else {
 		log.Infof("Using cached file %s", name)
 	}
@@ -902,7 +915,11 @@ func loadCachedWebContent(name, url string) ([]byte, error) {
 	if err != nil {
 		panic(err)
 	}
-	defer f.Close()
+	defer func() {
+		if err := f.Close(); err != nil {
+			log.WithError(err).Warnf("failed to close cache file %s", cachedName)
+		}
+	}()
 	cacheContent, err := io.ReadAll(f)
 	if err != nil {
 		panic(err)
