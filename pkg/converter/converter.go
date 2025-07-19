@@ -46,6 +46,8 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 
 	id := CanIdFromData(uint32(pgn), uint8(source), uint8(priority), uint8(destination))
 
+	// TO DO: if this is a fast PGN, we need to handle it differently
+	// those must always be formatted as a fast frame, even if it's only 6 bytes (sequence/frame number, length, 6 bytes of data)
 	// For data <= 8 bytes, return a single frame
 	if length <= 8 {
 		frame := &can.Frame{
@@ -76,7 +78,7 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 		Length: 8,
 	}
 	// First byte: (sequenceId << 5) | frameNumber
-	firstFrame.Data[0] = (seqId << 5) | 0 // Frame 0
+	firstFrame.Data[0] = (seqId << 5) // Frame 0
 	// Second byte: total data length
 	firstFrame.Data[1] = uint8(length)
 

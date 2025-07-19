@@ -40,7 +40,7 @@
             "program": "${workspaceFolder}/cmd/replay",
             "args": [
                 "--rawReplayFile",
-                "${workspaceFolder}/test-engine-sim.raw",
+                "${workspaceFolder}/basic-consolidated.raw",
                 "--writeRaw",
                 "--dumpPgns",
                 "--rawOutFile",

@@ -2,21 +2,34 @@
 
 ## Overview
 
-This document outlines a comprehensive testing framework for the NMEA 2000 Node implementation, leveraging existing infrastructure and enhancing it with simulation capabilities. The approach uses captured network data, response injection, and scenario-based testing to validate Node behavior in realistic network conditions.
+This document outlines a comprehensive testing framework for the NMEA 2000 Node implementation, leveraging the existing n2k pipeline infrastructure. The approach uses scenario-based testing with dynamic response injection and comprehensive output capture to validate Node behavior in controlled network conditions.
+
+The framework operates entirely within the n2k package ecosystem, using proper PGN structs and the existing pipeline architecture for realistic testing without requiring live network hardware.
 
 ## Architecture Integration
 
 ```
-Test Scenario
-    ↓
-Node Simulator
-    ↓ (configures)
-Node Under Test ←→ Test Network Environment
-    ↓ (monitors)              ↓ (injects responses)
-Output Capture           Response Injection
-    ↓                         ↓
-Test Assertions ←→ Network Behavior Simulation
+Test Harness (Long-Running)
+    ↓ (loads scenarios)
+Test Scenario → TestOrchestrator
+    ↓ (configures)         ↓ (coordinates)
+Node Under Test ←→ Shared n2k Pipeline ←→ ResponseInjector
+    ↓ (sends PGNs)       (Publisher/Subscriber)    ↑ (sends responses)
+    ↓                           ↓                   ↑
+    ↓                    OutputCapture              ↑
+    ↓                    (via Subscriber)           ↑
+    ↓                           ↓                   ↑
+    └→ receives responses ←─────────────────────────┘
+                  ↓
+            Test Assertions
 ```
+
+### Key Design Principles
+
+1. **Shared Pipeline**: Both Node Under Test and ResponseInjector use the same n2k pipeline infrastructure
+2. **PGN Struct Based**: All communication uses proper PGN structs, not raw bytes
+3. **Long-Running Harness**: Test tool runs continuously, accepting scenario files for execution
+4. **Pure Software**: No dependency on live network hardware or SocketCAN interfaces
 
 ## Key Components
 
@@ -45,53 +58,61 @@ Add `--consolidate-fast` flag to write fast format PGNs as single lines with ext
 - Simplified pattern matching in tests
 - `rawendpoint` handles frame sequencing automatically
 
-### 2. Node Simulator Framework
+### 2. Test Harness Framework
 
 #### Core Structure
 ```go
-type NodeSimulator struct {
+type TestHarness struct {
+    // Long-running test orchestration
+    orchestrator *TestOrchestrator
+    
+    // Shared n2k pipeline components
+    publisher   *pgn.Publisher
+    subscriber  *subscribe.Manager
+    
+    // Test components
+    responseInjector *ResponseInjector
+    outputCapture   *OutputCapture
+    
+    // Currently loaded scenario
+    currentScenario *TestScenario
+    
+    // Control
+    running bool
+    scenarioQueue chan string // File paths of scenarios to run
+}
+
+type TestOrchestrator struct {
     // Node under test
     testNode Node
     
-    // Network simulation
-    networkSim *NetworkEnvironment
+    // Test environment coordination
+    responseInjector *ResponseInjector
+    outputCapture   *OutputCapture
+    assertionRunner *AssertionRunner
     
-    // Test orchestration
+    // Test execution
     scenario *TestScenario
-    
-    // Result validation
-    validator *TestValidator
+    results  *TestResults
     
     // Timing control
-    clock *TestClock
-}
-
-type NetworkEnvironment struct {
-    // Incoming network traffic simulation
-    responseInjector *ResponseInjector
-    
-    // Outgoing traffic capture
-    outputCapture *OutputCapture
-    
-    // Network state simulation
-    networkDevices map[uint8]*SimulatedDevice
-    
-    // Protocol state tracking
-    addressRegistry *AddressRegistry
+    startTime time.Time
+    phases    []TestPhase
 }
 ```
 
 #### Response Injection System
 ```go
 type ResponseInjector struct {
-    // Static responses from files
-    staticResponses *RawFileEndpoint
+    // n2k pipeline integration
+    publisher *pgn.Publisher  // Sends real PGN structs
     
     // Dynamic response generation
-    dynamicTriggers []ResponseTrigger
+    triggers []ResponseTrigger
     
-    // Timing control
-    responseQueue chan TimedResponse
+    // State management
+    triggerStates map[string]*TriggerState
+    responseQueue chan *TimedResponse
 }
 
 type ResponseTrigger struct {
@@ -104,11 +125,11 @@ type ResponseTrigger struct {
     MatchTarget  uint8
     MatchData    []byte     // Optional data pattern
     
-    // Response generation
+    // Response generation (creates real PGN structs)
     ResponsePGN     uint32
     ResponseSource  uint8
     ResponseTarget  uint8
-    ResponseData    []byte
+    ResponseData    []byte  // Used to construct proper PGN structs
     ResponseDelay   time.Duration
     
     // Trigger behavior
@@ -319,30 +340,49 @@ assertions:
 
 ### 5. Command Line Interface
 
-#### Node Simulator Command
+#### Test Harness Commands
 ```bash
-# Basic scenario execution
-./nodesim --scenario testdata/scenarios/address_claiming/basic_claim.yaml
+# Start long-running test harness
+./nodetest --daemon --port 8080
 
-# Override node configuration
-./nodesim --scenario basic_claim.yaml \
-    --preferred-address 60 \
-    --manufacturer-code 1851 \
-    --unique-number 54321
+# Run single scenario (daemon mode)
+./nodetest --run-scenario testdata/scenarios/address_claiming/basic_claim.yaml
 
-# Custom timing and output
-./nodesim --scenario basic_claim.yaml \
-    --duration 60s \
-    --output-capture test_output.raw \
-    --verbose
+# Run single scenario (standalone mode)
+./nodetest --scenario basic_claim.yaml --output results.json
 
 # Interactive mode for debugging
-./nodesim --scenario basic_claim.yaml --interactive
+./nodetest --scenario basic_claim.yaml --interactive --verbose
 
-# Batch testing
-./nodesim --test-suite testdata/scenarios/address_claiming/ \
-    --parallel 4 \
-    --output-format junit
+# Queue multiple scenarios (daemon mode)
+./nodetest --queue-scenarios testdata/scenarios/address_claiming/*.yaml
+
+# Monitor running tests
+./nodetest --status
+./nodetest --logs --follow
+
+# Batch testing (standalone)
+./nodetest --test-suite testdata/scenarios/address_claiming/ \
+    --output-format junit \
+    --parallel 4
+
+# Configuration override
+./nodetest --scenario basic_claim.yaml \
+    --node-config preferred_address=60,manufacturer_code=1851
+```
+
+#### API Interface (Daemon Mode)
+```bash
+# HTTP API for scenario management
+curl -X POST http://localhost:8080/scenarios \
+    -H "Content-Type: application/json" \
+    -d '{"file": "basic_claim.yaml"}'
+
+# Get test results
+curl http://localhost:8080/results/latest
+
+# List running tests
+curl http://localhost:8080/status
 ```
 
 #### Enhanced convertcandumps Command
@@ -446,29 +486,29 @@ type HeartbeatIntervalAssertion struct {
 
 ### 8. Implementation Phases
 
-#### Phase 1: Infrastructure (Week 1-2)
-1. Enhance `convertcandumps` with `--consolidate-fast` flag
-2. Create basic `NodeSimulator` framework
-3. Implement `ResponseInjector` with file-based responses
-4. Create `OutputCapture` and basic assertions
+#### Phase 1: Infrastructure (Week 1-2) ✅ COMPLETE
+1. ✅ Enhance `convertcandumps` with `--consolidate-fast` flag  
+2. ✅ Create `ResponseInjector` with dynamic response generation
+3. ✅ Implement `OutputCapture` with message validation
+4. ✅ Create basic assertion framework
 
-#### Phase 2: Scenario Framework (Week 3-4)
-1. Implement YAML scenario definition parsing
-2. Create test action and expectation system
-3. Build assertion validation framework
-4. Add timing control and test phases
+#### Phase 2: Test Harness (Week 3-4) 🎯 CURRENT
+1. Create `TestOrchestrator` for coordinating test execution
+2. Implement `TestHarness` with shared pipeline architecture
+3. Build YAML scenario parser and configuration system
+4. Add basic `nodetest` command with scenario execution
 
-#### Phase 3: Test Scenarios (Week 5-6)
-1. Create address claiming test scenarios
-2. Implement ISO protocol test scenarios
+#### Phase 3: Long-Running Harness (Week 5-6)
+1. Add daemon mode with HTTP API
+2. Implement scenario queuing and management
+3. Create real-time monitoring and logging
+4. Build interactive debugging interface
+
+#### Phase 4: Test Scenarios (Week 7-8)
+1. Create comprehensive address claiming test scenarios
+2. Implement ISO protocol test scenarios  
 3. Add heartbeat and custom PGN test scenarios
-4. Build response template library
-
-#### Phase 4: Advanced Features (Week 7-8)
-1. Add interactive debugging mode
-2. Implement response pattern harvesting
-3. Create batch testing and CI integration
-4. Add performance and stress testing scenarios
+4. Build CI integration and batch testing capabilities
 
 ## Test Scenarios
 
@@ -574,30 +614,91 @@ type HeartbeatIntervalAssertion struct {
 
 ## Integration with Existing Pipeline
 
-The testing framework leverages the existing n2k pipeline architecture:
+The testing framework leverages the existing n2k pipeline architecture with a shared Publisher/Subscriber system:
 
 ```go
-// Test environment setup using existing components
-func createTestEnvironment() (*Node, *NetworkSimulator) {
-    // Create simulated network endpoints
-    responseEndpoint := NewRawFileEndpoint("testdata/responses.raw", log)
-    captureEndpoint := NewRawEndpoint("test_output.raw", log)
+// Test environment setup using shared n2k pipeline
+func createTestEnvironment() (*TestHarness, error) {
+    log := logrus.StandardLogger()
     
-    // Set up incoming network simulation
-    networkAdapter := canadapter.NewCANAdapter(responseEndpoint, log)
-    networkConverter := converter.NewConverter(networkAdapter, log)
-    subscriber := subscribe.NewManager(networkConverter, log)
+    // Create shared pipeline components
+    adapter := canadapter.NewCANAdapter(log)
+    packetStruct := pkt.NewPacketStruct()
+    subscriber := subscribe.New()
+    publisher := pgn.NewPublisher(adapter)
     
-    // Set up outgoing capture
-    captureAdapter := canadapter.NewCANAdapter(captureEndpoint, log)
-    captureConverter := converter.NewConverter(captureAdapter, log)
-    publisher := pgn.NewPublisher(captureConverter, log)
+    // Wire the pipeline
+    packetStruct.SetOutput(subscriber)
+    adapter.SetOutput(packetStruct)
     
-    // Create node with test environment
-    node := NewNode(subscriber, publisher)
+    // Create output capture (subscribes to outgoing messages)
+    outputCapture := NewOutputCapture(subscriber, log)
     
-    return node, &NetworkSimulator{...}
+    // Create response injector (publishes responses via publisher)
+    responseInjector := NewResponseInjector(publisher, subscriber, log)
+    
+    // Create test orchestrator
+    orchestrator := &TestOrchestrator{
+        responseInjector: responseInjector,
+        outputCapture:   outputCapture,
+    }
+    
+    // Create Node Under Test with shared publisher/subscriber
+    testNode := NewNode(subscriber, publisher)
+    orchestrator.testNode = testNode
+    
+    return &TestHarness{
+        orchestrator:     orchestrator,
+        publisher:       publisher,  
+        subscriber:      subscriber,
+        responseInjector: responseInjector,
+        outputCapture:   outputCapture,
+    }, nil
 }
+
+// Example test execution flow
+func (h *TestHarness) runAddressClaimTest() error {
+    // 1. Node sends ISOAddressClaim via publisher
+    // 2. OutputCapture receives it via subscriber
+    // 3. ResponseInjector can send response via publisher (if configured)
+    // 4. Node receives response via subscriber
+    // 5. Test assertions validate the sequence
+    
+    // Node creates and sends address claim
+    addressClaim := &ISOAddressClaim{
+        UniqueNumber: 12345,
+        ManufacturerCode: 1851,
+        // ... other fields
+    }
+    
+    // Node publishes through shared pipeline
+    err := h.publisher.Write(addressClaim)
+    if err != nil {
+        return err
+    }
+    
+    // OutputCapture automatically captures via subscription
+    // ResponseInjector can respond if triggers match
+    // Test assertions validate behavior
+    
+    return nil
+}
+```
+
+### Pipeline Flow for Address Claim Test
+
+```
+1. Node Under Test
+    ↓ publisher.Write(ISOAddressClaim)
+2. Publisher → Adapter → PacketStruct → Subscriber
+    ↓                                        ↓
+3. OutputCapture.onMessage()         ResponseInjector.onMessage()
+    ↓ (captures for validation)              ↓ (checks triggers)
+4. Test Assertions                    publisher.Write(ResponseClaim)
+    ↓                                        ↓
+5. Validate address claim sent         Back to step 2 (response flows through)
+                                              ↓
+                                       Node receives response
 ```
 
 ## Success Metrics
@@ -612,14 +713,15 @@ func createTestEnvironment() (*Node, *NetworkSimulator) {
 ## Dependencies
 
 ### Required Enhancements
-- `convertcandumps`: Add `--consolidate-fast` flag for single-line fast PGN format
+- `convertcandumps`: Add `--consolidate-fast` flag for single-line fast PGN format ✅
 - `rawendpoint`: Verify multi-frame handling from consolidated format
-- New `nodesim` command: Complete test orchestration framework
+- New `nodetest` command: Long-running test harness with daemon mode
+- Pipeline integration: Shared Publisher/Subscriber architecture
 
 ### Optional Enhancements
-- Response pattern harvesting tools
-- Interactive debugging interface
-- Performance benchmarking capabilities
-- Network topology visualization for complex scenarios
+- HTTP API for test management in daemon mode
+- Interactive debugging interface with step-through capability
+- Real-time test monitoring and logging
+- Scenario validation and syntax checking
 
 This comprehensive testing framework provides the foundation for thoroughly validating the Node implementation while maintaining the flexibility to add new test scenarios as the Node interface evolves. 

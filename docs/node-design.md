@@ -47,16 +47,9 @@ type Node interface {
     SetProductInfo(info ProductInfo)
     SetSupportedPGNs(transmit, receive []uint32)
     
-    // Customizable handlers
-    RegisterPGNHandler(pgn uint32, handler PGNHandler)
-    
     // Heartbeat control
     SetHeartbeatInterval(interval time.Duration)
     EnableHeartbeat(enable bool)
-}
-
-type PGNHandler interface {
-    HandlePGN(pgnStruct any, sourceAddress uint8) error
 }
 ```
 
@@ -82,9 +75,6 @@ type Node struct {
     // Standard PGN support
     transmitPGNs []uint32
     receivePGNs  []uint32
-    
-    // Custom handlers
-    pgnHandlers map[uint32]PGNHandler
     
     // Heartbeat management
     heartbeatEnabled  bool
@@ -118,7 +108,7 @@ type DeviceInfo struct {
 }
 
 type ProductInfo struct {
-    NMEA2000Version      float32
+    NMEA2000Version      uint16 // Stored as a scaled integer, e.g., 2100 for v2.100
     ProductCode          uint16
     ModelID              string
     SoftwareVersionCode  string
@@ -164,7 +154,8 @@ The Node automatically subscribes to and handles these standard PGNs:
 - Automatically triggered by ISO Request
 
 **Default ISO Request Response:**
-- For unhandled PGNs, sends `IsoAcknowledgement` with "Not Available" control byte
+- The `Node` only handles ISO Requests for PGNs it manages directly (e.g., Product Information and PGN List).
+- It is the responsibility of the application developer to subscribe to ISO Requests (PGN 59904) and respond with data or an `IsoAcknowledgement` for all other PGNs their device supports.
 
 ### 4. NAME Field Validation
 
@@ -213,7 +204,7 @@ if err != nil {
 
 // Set product information
 node.SetProductInfo(ProductInfo{
-    NMEA2000Version: 2.300,
+    NMEA2000Version: 2100, // v2.100
     ProductCode:     1001,
     ModelID:         "MyEngine v1.0",
     SoftwareVersionCode: "1.0.0",
@@ -223,7 +214,7 @@ node.SetProductInfo(ProductInfo{
     LoadEquivalency: 1,
 })
 
-// Configure supported PGNs
+// Configure supported PGNs for PGN List requests
 node.SetSupportedPGNs(
     []uint32{127488, 127489}, // Transmit: Engine parameters
     []uint32{126208},         // Receive: NMEA Request Group Function
@@ -242,35 +233,19 @@ if err != nil {
 // Enable heartbeat
 node.SetHeartbeatInterval(60 * time.Second)
 node.EnableHeartbeat(true)
-```
 
-### Custom PGN Handler
-```go
-// Register custom handler for engine data requests
-node.RegisterPGNHandler(127488, &MyEngineHandler{})
-
-type MyEngineHandler struct {
-    engine *Engine
-}
-
-func (h *MyEngineHandler) HandlePGN(pgnStruct any, sourceAddress uint8) error {
-    // Handle ISO Request for engine data
-    request := pgnStruct.(*pgn.IsoRequest)
-    
-    // Create engine data response
-    engineData := &pgn.EngineParametersRapid{
-        Info: pgn.MessageInfo{
-            PGN:      127488,
-            SourceId: node.GetNetworkAddress(),
-            TargetId: sourceAddress,
-        },
-        EngineInstance: &[]uint8{0}[0],
-        EngineSpeed:    &h.engine.RPM,
-        // ... other fields
+// Application subscribes to PGNs it needs to handle directly.
+// For example, to handle requests for engine data, the application would
+// subscribe to ISO Request (59904) and implement its own logic.
+subscriberManager.Subscribe(59904, "engine-iso-request-handler", func(p any, source uint8) error {
+    request := p.(*pgn.IsoRequest)
+    if request.RequestedPGN == 127488 {
+        // ... logic to create and send the EngineParametersRapid PGN ...
+        // responsePgn := &pgn.EngineParametersRapid{...}
+        // node.WriteTo(responsePgn, source)
     }
-    
-    return node.WriteTo(engineData, sourceAddress)
-}
+    return nil
+})
 ```
 
 ### Multiple Device Functions
@@ -328,9 +303,10 @@ go func() {
 - **Graceful Shutdown**: Stop() cancels goroutines and cleans up subscriptions
 
 ### 2. Error Handling
-- **Silent Write Failures**: If endpoint doesn't support writing, operations succeed but nothing happens
+- **Silent Write Failures**: By default, if the endpoint doesn't support writing, operations succeed but do nothing. This behavior can be overridden.
 - **Address Conflicts**: Automatically handled per ISO 11783-5
 - **Invalid Configurations**: `SetDeviceInfo()` validates and returns errors
+- **Configurable Write Errors**: For easier debugging, the Node can be configured to return an error on write operations if the underlying transport fails, rather than failing silently.
 
 ### 3. Thread Safety
 - All public methods are thread-safe
@@ -351,7 +327,7 @@ go func() {
 
 ### Deferred Features
 - **Address Contention**: `ForceAddress()` method to actively contend for higher priority addresses
-- **ISO Transport Protocol**: Multi-frame message support for large PGNs
+- **J1939 Transport Protocol**: Support for the connection-based ISO 11783-6 transport protocol (TP.CM/BAM), which is distinct from the already-supported NMEA 2000 fast-packet protocol.
 - **Network Device List**: Track other devices on the network
 - **Configuration Persistence**: Save/load device configuration
 
@@ -359,6 +335,9 @@ go func() {
 - **PGN Filtering**: Only subscribe to PGNs we actually handle
 - **Batched Writes**: Combine multiple PGNs into single transmission
 - **Priority-based Transmission**: Queue management for different PGN priorities
+
+### Testing Recommendations
+- **Simulated Clock**: To ensure deterministic and fast test execution, the testing framework should be built around a simulated clock. This allows the test orchestrator to advance time programmatically, removing dependencies on `time.Sleep()` and making timing-related assertions exact and not subject to system load.
 
 ## Dependencies
 
