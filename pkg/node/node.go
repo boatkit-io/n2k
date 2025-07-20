@@ -3,14 +3,13 @@ package node
 import (
 	"context"
 	"fmt"
-	"io"
-	"log"
 	"reflect"
 	"sync"
 	"time"
 
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/n2k/pkg/subscribe"
+	"github.com/sirupsen/logrus"
 )
 
 // Node represents a generic NMEA 2000 device, handling standard behaviors
@@ -101,7 +100,7 @@ type node struct {
 	pgnIn             chan any
 	mutex             sync.RWMutex
 	wakeUp            chan struct{}
-	logger            *log.Logger
+	logger            *logrus.Logger
 }
 
 type toSend struct {
@@ -129,16 +128,29 @@ func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) Node {
 		pgnIn:             make(chan any, 10),
 		mutex:             sync.RWMutex{},
 		wakeUp:            make(chan struct{}, 1),
-		logger:            log.New(io.Discard, "node | ", log.Ltime|log.Lmicroseconds),
+		logger:            logrus.New(),
 	}
 }
 
 // SetLogger allows overriding the default logger for debugging.
 // This method is not part of the Node interface.
-func (n *node) SetLogger(logger *log.Logger) {
+func (n *node) SetLogger(logger *logrus.Logger) {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.logger = logger
+}
+
+func (n *node) handleIsoRequest(p pgn.IsoRequest) {
+	n.enqueuePgn(p)
+}
+
+func (n *node) handleIsoAddressClaim(p pgn.IsoAddressClaim) {
+	n.logger.Infof("handleIsoAddressClaim: received address claim from source %d", p.Info.SourceId)
+	n.enqueuePgn(p)
+}
+
+func (n *node) handleIsoCommandedAddress(p pgn.IsoCommandedAddress) {
+	n.enqueuePgn(p)
 }
 
 func (n *node) Start() error {
@@ -148,19 +160,19 @@ func (n *node) Start() error {
 		return fmt.Errorf("node already started")
 	}
 
-	sub, err := n.subscriber.SubscribeToStruct(pgn.IsoRequest{}, n.enqueuePgn)
+	sub, err := n.subscriber.SubscribeToStruct(pgn.IsoRequest{}, n.handleIsoRequest)
 	if err != nil {
 		return fmt.Errorf("failed to subscribe to IsoRequest: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
-	sub, err = n.subscriber.SubscribeToStruct(pgn.IsoAddressClaim{}, n.enqueuePgn)
+	sub, err = n.subscriber.SubscribeToStruct(pgn.IsoAddressClaim{}, n.handleIsoAddressClaim)
 	if err != nil {
 		return fmt.Errorf("failed to subscribe to IsoAddressClaim: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
-	sub, err = n.subscriber.SubscribeToStruct(pgn.IsoCommandedAddress{}, n.enqueuePgn)
+	sub, err = n.subscriber.SubscribeToStruct(pgn.IsoCommandedAddress{}, n.handleIsoCommandedAddress)
 	if err != nil {
 		return fmt.Errorf("failed to subscribe to IsoCommandedAddress: %w", err)
 	}
@@ -250,25 +262,23 @@ func (n *node) write(pgnStruct any, destination uint8) error {
 	n.mutex.RUnlock()
 
 	if !addressClaimed {
-		return fmt.Errorf("cannot write PGNs until address is claimed")
+		return fmt.Errorf("cannot write PGN, address not claimed")
 	}
 
-	err := setMessageInfo(pgnStruct, networkAddress, destination)
-	if err != nil {
-		return fmt.Errorf("failed to set message info on PGN: %w", err)
+	if err := setMessageInfo(pgnStruct, networkAddress, destination); err != nil {
+		return fmt.Errorf("failed to set message info: %w", err)
 	}
 
-	n.logger.Printf("write: writing PGN %T to %d", pgnStruct, destination)
 	return publisher.Write(pgnStruct)
 }
 
 func (n *node) SetDeviceInfo(info DeviceInfo) error {
-	n.mutex.Lock()
-	defer n.mutex.Unlock()
 	name, err := computeName(info)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to compute NAME from device info: %w", err)
 	}
+	n.mutex.Lock()
+	defer n.mutex.Unlock()
 	n.deviceInfo = info
 	n.name = name
 	return nil
@@ -300,15 +310,15 @@ func (n *node) EnableHeartbeat(enable bool) {
 }
 
 func (n *node) enqueuePgn(p any) {
-	n.logger.Printf("enqueuePgn: received %T", p)
+	n.logger.Infof("enqueuePgn: received %T", p)
 	select {
 	case n.pgnIn <- p:
 	case <-n.ctx.Done():
-		n.logger.Printf("enqueuePgn: context done, dropping PGN")
+		n.logger.Infof("enqueuePgn: context done, dropping PGN")
 	}
 }
 
-func (n *node) processIsoRequest(req *pgn.IsoRequest) []toSend {
+func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	n.mutex.RLock()
 	defer n.mutex.RUnlock()
 
@@ -316,7 +326,7 @@ func (n *node) processIsoRequest(req *pgn.IsoRequest) []toSend {
 		return nil
 	}
 
-	n.logger.Printf("processIsoRequest: processing request for PGN %d from source %d", *req.Pgn, req.Info.SourceId)
+	n.logger.Infof("processIsoRequest: processing request for PGN %d from source %d", *req.Pgn, req.Info.SourceId)
 
 	var responses []toSend
 
@@ -377,12 +387,12 @@ func (n *node) processIsoRequest(req *pgn.IsoRequest) []toSend {
 	return responses
 }
 
-func (n *node) processIsoCommandedAddress(cmd *pgn.IsoCommandedAddress) {
+func (n *node) processIsoCommandedAddress(cmd pgn.IsoCommandedAddress) {
 	n.mutex.RLock()
 	currentName := n.name
 	n.mutex.RUnlock()
 
-	cmdName, err := computeNameFromCommand(cmd)
+	cmdName, err := computeNameFromCommand(&cmd)
 	if err != nil {
 		return
 	}
@@ -403,31 +413,44 @@ func (n *node) processIsoCommandedAddress(cmd *pgn.IsoCommandedAddress) {
 	n.mutex.Unlock()
 }
 
-func (n *node) processIsoAddressClaim(claim *pgn.IsoAddressClaim) {
+func (n *node) processIsoAddressClaim(claim pgn.IsoAddressClaim) {
 	n.mutex.RLock()
 	currentState := n.addressState
 	currentAddress := n.networkAddress
 	currentName := n.name
 	n.mutex.RUnlock()
 
+	n.logger.Infof("processIsoAddressClaim: received claim from source %d, our address %d, state %d", 
+		claim.Info.SourceId, currentAddress, currentState)
+
 	if currentState != stateClaiming && currentState != stateClaimed {
+		n.logger.Infof("processIsoAddressClaim: ignoring claim, not in claiming/claimed state")
 		return
 	}
 
 	if claim.Info.SourceId != currentAddress {
+		n.logger.Infof("processIsoAddressClaim: ignoring claim, different address (%d vs %d)", 
+			claim.Info.SourceId, currentAddress)
 		return
 	}
 
-	incomingName, err := computeNameFromClaim(claim)
+	incomingName, err := computeNameFromClaim(&claim)
 	if err != nil {
+		n.logger.Infof("processIsoAddressClaim: failed to compute incoming NAME: %v", err)
 		return
 	}
+
+	n.logger.Infof("processIsoAddressClaim: comparing NAMEs - incoming: %x, ours: %x", 
+		incomingName, currentName)
 
 	if incomingName < currentName {
+		n.logger.Infof("processIsoAddressClaim: incoming NAME has higher priority, yielding address")
 		n.mutex.Lock()
 		n.addressState = stateLost
 		n.addressClaimed = false
 		n.mutex.Unlock()
+	} else {
+		n.logger.Infof("processIsoAddressClaim: our NAME has higher priority, keeping address")
 	}
 }
 
@@ -448,6 +471,7 @@ func (n *node) sendAddressClaim() {
 			PGN:      60928,
 			SourceId: networkAddressCopy,
 			TargetId: 255,
+			Priority: 6,
 		},
 		UniqueNumber:            &deviceInfoCopy.UniqueNumber,
 		ManufacturerCode:        deviceInfoCopy.ManufacturerCode,
@@ -459,7 +483,7 @@ func (n *node) sendAddressClaim() {
 		IndustryGroup:           deviceInfoCopy.IndustryGroup,
 		ArbitraryAddressCapable: &arbitraryBit,
 	}
-	n.logger.Printf("sendAddressClaim: sending claim for address %d", networkAddressCopy)
+	n.logger.Infof("sendAddressClaim: sending claim for address %d", networkAddressCopy)
 	_ = publisher.Write(claim)
 }
 
@@ -489,8 +513,8 @@ func (n *node) sendHeartbeat() {
 
 func (n *node) process() {
 	defer n.wg.Done()
-	n.logger.Printf("process: goroutine started")
-	defer n.logger.Printf("process: goroutine stopped")
+	n.logger.Infof("process: goroutine started")
+	defer n.logger.Infof("process: goroutine stopped")
 
 	var claimTicker Ticker
 	var heartbeatTicker Ticker
@@ -499,59 +523,98 @@ func (n *node) process() {
 		var initialHeartbeat bool
 		var shouldSendClaim bool
 		n.mutex.Lock()
-		n.logger.Printf("process: loop start, state=%d", n.addressState)
-		switch n.addressState {
-		case stateClaiming:
+		if n.addressState == stateClaiming {
+			// We are in the process of claiming an address
 			if claimTicker == nil {
 				claimTicker = n.clock.NewTicker(250 * time.Millisecond)
 				n.networkAddress = n.preferredAddress
 				shouldSendClaim = true
 			}
-		case stateLost:
+		} else {
 			if claimTicker != nil {
 				claimTicker.Stop()
 				claimTicker = nil
 			}
-			n.preferredAddress++
-			if n.preferredAddress > 253 {
-				n.preferredAddress = 128
-			}
-			n.addressState = stateClaiming
-			n.mutex.Unlock()
-			continue
-		case stateClaimed:
-			if claimTicker != nil {
-				claimTicker.Stop()
-				claimTicker = nil
-			}
-			if n.heartbeatEnabled && heartbeatTicker == nil {
+		}
+
+		if n.heartbeatEnabled && n.addressClaimed {
+			if heartbeatTicker == nil {
 				heartbeatTicker = n.clock.NewTicker(n.heartbeatInterval)
-				initialHeartbeat = true // Signal to send heartbeat after unlock
+				initialHeartbeat = true
 			}
-			if !n.heartbeatEnabled && heartbeatTicker != nil {
+		} else {
+			if heartbeatTicker != nil {
 				heartbeatTicker.Stop()
 				heartbeatTicker = nil
 			}
 		}
 		n.mutex.Unlock()
 
-		if initialHeartbeat {
-			n.sendHeartbeat()
-		}
 		if shouldSendClaim {
 			n.sendAddressClaim()
 		}
 
-		var claimTickerC <-chan time.Time
-		if claimTicker != nil {
-			claimTickerC = claimTicker.C()
+		if initialHeartbeat {
+			n.sendHeartbeat()
 		}
-		var heartbeatTickerC <-chan time.Time
+
+		var claimTick <-chan time.Time
+		if claimTicker != nil {
+			claimTick = claimTicker.C()
+		}
+
+		var heartbeatTick <-chan time.Time
 		if heartbeatTicker != nil {
-			heartbeatTickerC = heartbeatTicker.C()
+			heartbeatTick = heartbeatTicker.C()
 		}
 
 		select {
+		case p, ok := <-n.pgnIn:
+			if !ok {
+				n.logger.Infof("process: pgnIn channel closed")
+				return
+			}
+			var toSendList []toSend
+			switch v := p.(type) {
+			case pgn.IsoRequest:
+				toSendList = n.processIsoRequest(v)
+			case pgn.IsoAddressClaim:
+				n.processIsoAddressClaim(v)
+			case pgn.IsoCommandedAddress:
+				n.processIsoCommandedAddress(v)
+			default:
+				n.logger.Infof("process: received unhandled PGN type %T", p)
+			}
+
+			if len(toSendList) > 0 {
+				n.mutex.RLock()
+				publisher := n.publisher
+				n.mutex.RUnlock()
+				for _, ts := range toSendList {
+					n.logger.Infof("process: sending PGN %+v to %d", ts.pgn, ts.dest)
+					if ts.dest == 255 {
+						_ = publisher.Write(ts.pgn)
+					} else {
+						// This is a bit of a hack until we have a proper way to send to a specific address
+						//_ = n.WriteTo(ts.pgn, ts.dest)
+					}
+				}
+			}
+
+		case <-claimTick:
+			n.mutex.Lock()
+			if n.addressState == stateClaiming {
+				n.addressState = stateClaimed
+				n.addressClaimed = true
+				n.logger.Infof("process: address %d claimed", n.networkAddress)
+			}
+			n.mutex.Unlock()
+
+		case <-heartbeatTick:
+			n.sendHeartbeat()
+
+		case <-n.wakeUp:
+		// Just loop again to re-evaluate tickers
 		case <-n.ctx.Done():
 			if claimTicker != nil {
 				claimTicker.Stop()
@@ -559,63 +622,35 @@ func (n *node) process() {
 			if heartbeatTicker != nil {
 				heartbeatTicker.Stop()
 			}
-			n.logger.Printf("process: <-ctx.Done()")
 			return
-		case <-n.wakeUp:
-			n.logger.Printf("process: <-wakeUp")
-			continue
-		case <-claimTickerC:
-			n.logger.Printf("process: <-claimTickerC")
-			n.mutex.Lock()
-			if n.addressState == stateClaiming {
-				n.addressState = stateClaimed
-				n.addressClaimed = true
-			}
-			n.mutex.Unlock()
-		case <-heartbeatTickerC:
-			n.logger.Printf("process: <-heartbeatTickerC")
-			n.sendHeartbeat()
-		case p := <-n.pgnIn:
-			n.logger.Printf("process: <-pgnIn, received %T", p)
-			switch pgn := p.(type) {
-			case *pgn.IsoRequest:
-				responses := n.processIsoRequest(pgn)
-				for _, r := range responses {
-					_ = n.write(r.pgn, r.dest)
-				}
-			case *pgn.IsoAddressClaim:
-				n.processIsoAddressClaim(pgn)
-			case *pgn.IsoCommandedAddress:
-				n.processIsoCommandedAddress(pgn)
-			}
 		}
 	}
 }
 
 func computeName(d DeviceInfo) (uint64, error) {
 	if d.UniqueNumber > 0x1FFFFF {
-		return 0, fmt.Errorf("unique number (%d) exceeds 21-bit limit", d.UniqueNumber)
+		return 0, fmt.Errorf("unique number %d is too large", d.UniqueNumber)
 	}
 	if d.ManufacturerCode > 0x7FF {
-		return 0, fmt.Errorf("manufacturer code (%d) exceeds 11-bit limit", d.ManufacturerCode)
+		return 0, fmt.Errorf("manufacturer code %d is too large", d.ManufacturerCode)
 	}
-	if d.DeviceInstanceLower > 0x7 {
-		return 0, fmt.Errorf("device instance lower (%d) exceeds 3-bit limit", d.DeviceInstanceLower)
+	if d.DeviceInstanceLower > 7 {
+		return 0, fmt.Errorf("device instance lower %d is too large", d.DeviceInstanceLower)
 	}
-	if d.DeviceInstanceUpper > 0x1F {
-		return 0, fmt.Errorf("device instance upper (%d) exceeds 5-bit limit", d.DeviceInstanceUpper)
+	if d.DeviceInstanceUpper > 31 {
+		return 0, fmt.Errorf("device instance upper %d is too large", d.DeviceInstanceUpper)
 	}
-	if d.DeviceFunction > 0xFF {
-		return 0, fmt.Errorf("device function (%d) exceeds 8-bit limit", d.DeviceFunction)
+	if d.DeviceFunction > 255 {
+		return 0, fmt.Errorf("device function %d is too large", d.DeviceFunction)
 	}
-	if d.DeviceClass > 0x7F {
-		return 0, fmt.Errorf("device class (%d) exceeds 7-bit limit", d.DeviceClass)
+	if d.DeviceClass > 127 {
+		return 0, fmt.Errorf("device class %d is too large", d.DeviceClass)
 	}
-	if d.SystemInstance > 0xF {
-		return 0, fmt.Errorf("system instance (%d) exceeds 4-bit limit", d.SystemInstance)
+	if d.SystemInstance > 15 {
+		return 0, fmt.Errorf("system instance %d is too large", d.SystemInstance)
 	}
-	if d.IndustryGroup > 0x7 {
-		return 0, fmt.Errorf("industry group (%d) exceeds 3-bit limit", d.IndustryGroup)
+	if d.IndustryGroup > 7 {
+		return 0, fmt.Errorf("industry group %d is too large", d.IndustryGroup)
 	}
 
 	name := uint64(d.UniqueNumber) |
@@ -623,74 +658,94 @@ func computeName(d DeviceInfo) (uint64, error) {
 		(uint64(d.DeviceInstanceLower) << 32) |
 		(uint64(d.DeviceInstanceUpper) << 35) |
 		(uint64(d.DeviceFunction) << 40) |
-		(uint64(0) << 48) |
+		(uint64(0) << 48) | // Reserved bit
 		(uint64(d.DeviceClass) << 49) |
 		(uint64(d.SystemInstance) << 56) |
 		(uint64(d.IndustryGroup) << 60)
 
 	if d.ArbitraryAddressCapable {
-		name |= (1 << 63)
+		name |= 1 << 63
 	}
 
 	return name, nil
 }
 
 func computeNameFromClaim(claim *pgn.IsoAddressClaim) (uint64, error) {
-	if claim.UniqueNumber == nil || claim.DeviceInstanceLower == nil || claim.DeviceInstanceUpper == nil || claim.SystemInstance == nil || claim.ArbitraryAddressCapable == nil {
-		return 0, fmt.Errorf("invalid claim: missing required fields")
+	var name uint64
+	if claim.UniqueNumber != nil {
+		name |= uint64(*claim.UniqueNumber)
 	}
-	info := DeviceInfo{
-		UniqueNumber:            *claim.UniqueNumber,
-		ManufacturerCode:        claim.ManufacturerCode,
-		DeviceInstanceLower:     *claim.DeviceInstanceLower,
-		DeviceInstanceUpper:     *claim.DeviceInstanceUpper,
-		DeviceFunction:          claim.DeviceFunction,
-		DeviceClass:             claim.DeviceClass,
-		SystemInstance:          *claim.SystemInstance,
-		IndustryGroup:           claim.IndustryGroup,
-		ArbitraryAddressCapable: *claim.ArbitraryAddressCapable == 1,
+	if claim.ManufacturerCode != 0 {
+		name |= uint64(claim.ManufacturerCode) << 21
 	}
-	return computeName(info)
-}
-
-func computeNameFromCommand(cmd *pgn.IsoCommandedAddress) (uint64, error) {
-	if cmd.UniqueNumber == nil || cmd.DeviceInstanceLower == nil || cmd.DeviceInstanceUpper == nil || cmd.SystemInstance == nil {
-		return 0, fmt.Errorf("invalid command: missing required fields")
+	if claim.DeviceInstanceLower != nil {
+		name |= uint64(*claim.DeviceInstanceLower) << 32
 	}
-
-	var uniqueNum uint32
-	if len(cmd.UniqueNumber) < 3 {
-		return 0, fmt.Errorf("invalid UniqueNumber length in command")
+	if claim.DeviceInstanceUpper != nil {
+		name |= uint64(*claim.DeviceInstanceUpper) << 35
 	}
-	uniqueNum = uint32(cmd.UniqueNumber[0]) | (uint32(cmd.UniqueNumber[1]) << 8) | (uint32(cmd.UniqueNumber[2]) << 16)
-	uniqueNum &= 0x1FFFFF
-
-	name := uint64(uniqueNum) |
-		(uint64(cmd.ManufacturerCode) << 21) |
-		(uint64(*cmd.DeviceInstanceLower) << 32) |
-		(uint64(*cmd.DeviceInstanceUpper) << 35) |
-		(uint64(cmd.DeviceFunction) << 40) |
-		(uint64(0) << 48) |
-		(uint64(cmd.DeviceClass) << 49) |
-		(uint64(*cmd.SystemInstance) << 56) |
-		(uint64(cmd.IndustryCode) << 60)
-
+	if claim.DeviceFunction != 0 {
+		name |= uint64(claim.DeviceFunction) << 40
+	}
+	// Reserved bit at 48 is 0
+	if claim.DeviceClass != 0 {
+		name |= uint64(claim.DeviceClass) << 49
+	}
+	if claim.SystemInstance != nil {
+		name |= uint64(*claim.SystemInstance) << 56
+	}
+	if claim.IndustryGroup != 0 {
+		name |= uint64(claim.IndustryGroup) << 60
+	}
 	return name, nil
 }
 
+func computeNameFromCommand(cmd *pgn.IsoCommandedAddress) (uint64, error) {
+	var name uint64
+	if len(cmd.UniqueNumber) >= 3 {
+		uniqueNum := uint64(cmd.UniqueNumber[0]) | (uint64(cmd.UniqueNumber[1]) << 8) | (uint64(cmd.UniqueNumber[2]) << 16)
+		name |= uniqueNum
+	}
+	if cmd.ManufacturerCode != 0 {
+		name |= uint64(cmd.ManufacturerCode) << 21
+	}
+	if cmd.DeviceInstanceLower != nil {
+		name |= uint64(*cmd.DeviceInstanceLower) << 32
+	}
+	if cmd.DeviceInstanceUpper != nil {
+		name |= uint64(*cmd.DeviceInstanceUpper) << 35
+	}
+	if cmd.DeviceFunction != 0 {
+		name |= uint64(cmd.DeviceFunction) << 40
+	}
+	// Reserved bit at 48 is 0
+	if cmd.DeviceClass != 0 {
+		name |= uint64(cmd.DeviceClass) << 49
+	}
+	if cmd.SystemInstance != nil {
+		name |= uint64(*cmd.SystemInstance) << 56
+	}
+	if cmd.IndustryCode != 0 {
+		name |= uint64(cmd.IndustryCode) << 60
+	}
+	return name, nil
+}
+
+// setMessageInfo uses reflection to set the "Info" field on a PGN struct.
+// This is a helper to avoid repetitive code when sending PGNs.
 func setMessageInfo(s any, source, destination uint8) error {
 	v := reflect.ValueOf(s)
 	if v.Kind() != reflect.Ptr || v.Elem().Kind() != reflect.Struct {
-		return fmt.Errorf("input is not a pointer to a struct")
+		return fmt.Errorf("expected a pointer to a struct, got %T", s)
 	}
 
 	infoField := v.Elem().FieldByName("Info")
 	if !infoField.IsValid() || !infoField.CanSet() {
-		return fmt.Errorf("struct does not have a settable 'Info' field")
+		return fmt.Errorf("struct %T does not have an exported 'Info' field", s)
 	}
 
 	if infoField.Type() != reflect.TypeOf(pgn.MessageInfo{}) {
-		return fmt.Errorf("'Info' field is not of type pgn.MessageInfo")
+		return fmt.Errorf("'Info' field in struct %T is not of type pgn.MessageInfo", s)
 	}
 
 	info := infoField.Interface().(pgn.MessageInfo)

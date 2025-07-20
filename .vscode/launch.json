@@ -15,6 +15,23 @@
             ]
         },
         {
+            "name": "node-integration-test",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}/pkg/node",
+            "buildFlags": "-tags=integration",
+            "env": {
+                "IFACE": "can0"
+            },
+            "args": [
+                "-test.run",
+                "TestNodeIntegration",
+                "-test.v",
+                "-count=1"
+            ]
+        },
+        {
             "name": "convertcandumps",
             "type": "go",
             "request": "launch",

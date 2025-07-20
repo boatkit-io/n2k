@@ -22,10 +22,17 @@ var canInterface string
 func TestMain(m *testing.M) {
 	flag.StringVar(&canInterface, "iface", "", "CAN interface name for integration tests")
 	flag.Parse()
+	
+	// Also check environment variable
+	if canInterface == "" {
+		canInterface = os.Getenv("IFACE")
+	}
+	
 	os.Exit(m.Run())
 }
 
 func TestNodeIntegration(t *testing.T) {
+	var err error
 	if canInterface == "" {
 		t.Skip("skipping integration test: -iface flag not provided")
 	}
@@ -42,10 +49,7 @@ func TestNodeIntegration(t *testing.T) {
 	publisher := pgn.NewPublisher(adapter)
 	packetStruct := pkt.NewPacketStruct()
 
-	endpoint, err := socketcanendpoint.NewSocketCANEndpoint(canInterface, log)
-	if err != nil {
-		t.Fatalf("failed to create socketcan endpoint: %v", err)
-	}
+	endpoint := socketcanendpoint.NewSocketCANEndpoint(log,canInterface)
 
 	// Wire it all up
 	endpoint.SetOutput(adapter)
@@ -67,28 +71,34 @@ func TestNodeIntegration(t *testing.T) {
 			log.Errorf("endpoint exited with error: %v", err)
 		}
 	}()
+	time.Sleep(100 * time.Millisecond)
 	log.Infof("Pipeline started on interface %s", canInterface)
 
 	// 4. Instantiate and configure the node
-	node := New(subs, publisher)
-	node.SetLogger(log)
+	nodeImpl := NewNode(subs, &publisher, nil)
+	if n, ok := nodeImpl.(*node); ok {
+		n.SetLogger(log)
+	}
 
 	deviceInfo := DeviceInfo{
 		UniqueNumber:            123456,
-		ManufacturerCode:        pgn.ManufacturerCode_Garmin,
+		ManufacturerCode:        pgn.Garmin,
 		DeviceFunction:          140, // GPS
-		DeviceClass:             pgn.DeviceClass_Navigation,
+		DeviceClass:             pgn.Navigation,
 		DeviceInstanceLower:     0,
 		DeviceInstanceUpper:     0,
 		SystemInstance:          0,
-		IndustryGroup:           pgn.IndustryGroup_Marine,
+		IndustryGroup:           pgn.Marine,
 		ArbitraryAddressCapable: true,
 	}
-	if err := node.SetDeviceInfo(deviceInfo); err != nil {
+	if err := nodeImpl.SetDeviceInfo(deviceInfo); err != nil {
 		t.Fatalf("failed to set device info: %v", err)
 	}
+	
+	// Log our computed NAME for debugging
+	log.Infof("Our device NAME: %x", nodeImpl.(*node).name)
 
-	node.SetProductInfo(ProductInfo{
+	nodeImpl.SetProductInfo(ProductInfo{
 		NMEA2000Version:     2100,
 		ProductCode:         101,
 		ModelID:             "Test Node v1",
@@ -100,24 +110,35 @@ func TestNodeIntegration(t *testing.T) {
 	})
 
 	// 5. Start the node and claim an address
-	if err := node.Start(); err != nil {
+	if err := nodeImpl.Start(); err != nil {
 		t.Fatalf("failed to start node: %v", err)
 	}
-	defer node.Stop()
+	defer nodeImpl.Stop()
 
-	if err := node.ClaimAddress(55); err != nil {
+	if err := nodeImpl.ClaimAddress(110); err != nil {
 		t.Fatalf("failed to claim address: %v", err)
 	}
-	log.Info("Node started and address claim initiated for address 55.")
+	log.Info("Node started and address claim initiated for address 110.")
 
 	// Give the node a moment to claim its address
 	time.Sleep(2 * time.Second)
+	
+	// Check if address was successfully claimed
+	if nodeImpl.GetNetworkAddress() == 110 {
+		log.Info("Address 110 successfully claimed")
+	} else {
+		log.Warnf("Address claim conflict occurred, current address: %d", nodeImpl.GetNetworkAddress())
+	}
 
 	// 6. Send ISO requests to the bus
 	log.Info("Sending ISO Request for Address Claim (PGN 60928)")
 	isoRequestAddrClaim := &pgn.IsoRequest{
-		PGN:          60928, // ISO Address Claim
-		SourceNodeId: node.GetNetworkAddress(),
+		Pgn: ptrUint32(60928), // ISO Address Claim
+		Info: pgn.MessageInfo{
+			PGN:      59904, // ISO Request PGN
+			SourceId: nodeImpl.GetNetworkAddress(),
+			Priority: 6,
+		},
 	}
 	if err := publisher.Write(isoRequestAddrClaim); err != nil {
 		t.Errorf("failed to write ISO request for address claim: %v", err)
@@ -127,8 +148,12 @@ func TestNodeIntegration(t *testing.T) {
 
 	log.Info("Sending ISO Request for Product Info (PGN 126996)")
 	isoRequestProdInfo := &pgn.IsoRequest{
-		PGN:          126996, // Product Information
-		SourceNodeId: node.GetNetworkAddress(),
+		Pgn: ptrUint32(126996), // Product Information
+		Info: pgn.MessageInfo{
+			PGN:      59904, // ISO Request PGN
+			SourceId: nodeImpl.GetNetworkAddress(),
+			Priority: 6,
+		},
 	}
 	if err := publisher.Write(isoRequestProdInfo); err != nil {
 		t.Errorf("failed to write ISO request for product info: %v", err)
@@ -136,6 +161,10 @@ func TestNodeIntegration(t *testing.T) {
 
 	// 7. Run for a while to observe traffic
 	log.Info("Running for 10 seconds to observe traffic...")
-	time.Sleep(10 * time.Second)
+	time.Sleep(30 * time.Second)
 	log.Info("Integration test finished.")
+}
+
+func ptrUint32(v uint32) *uint32 {
+	return &v
 }

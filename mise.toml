@@ -30,8 +30,7 @@ fi
 """
 
 [tasks.pgngen]
-env = { "CGO_ENABLED" = "0" }
-description = "Generate Pgninfo"
+description = "Generate PGN information from template"
 run = "./bin/pgngen"
 
 [tasks.test-debug]
