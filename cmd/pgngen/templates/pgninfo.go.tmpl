@@ -78,7 +78,7 @@ type FieldDescriptor struct {
 type {{ $name }} {{ constSize .MaxValue }}
 const (
 {{- range .Values }}
-	{{ toVarName .Text }}	{{ $name }} = {{ .Value }}
+	{{ .Name }}	{{ $name }} = {{ .Value }}
 {{- end }}
 )
 
@@ -134,7 +134,7 @@ var {{ .Name  }}Map = map[int]FieldDescriptor{
 type {{ $name }} uint16
 const (
 {{- range .EnumBitValues }}
-	{{ toVarName .Label }}	{{ $name }} = {{ .Bit }}
+	{{ .Name }}	{{ $name }} = {{ .Bit }}
 {{- end }}
 )
 
@@ -289,34 +289,41 @@ type {{ .Id }} struct {
     {{- end }}
 }
 
+
 {{- $funcName := concat "Decode" .Id }}
 func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
     var val {{ .Id }}
     val.Info = Info
-	{{- $repeat1 :=  $pgn.RepeatingFieldSet1Size }}
+    {{- $repeat1 :=  $pgn.RepeatingFieldSet1Size }}
     {{- if $repeat1 }}
     var repeat1Count uint16 = 0
     {{- end }}
- 	{{- $repeat2 :=  $pgn.RepeatingFieldSet2Size }}
+    {{- $repeat2 :=  $pgn.RepeatingFieldSet2Size }}
     {{- if $repeat2 }}
     var repeat2Count uint16 = 0
     {{- end }}
    {{- if and (eq .PGN 126208) (gt $repeat1 1) }}
     var fieldIndex uint8
     {{- end }}
-	{{- $binaryLengthField :=  $pgn.BitLengthField }}
-	{{- if  $binaryLengthField }}
-		var binaryLength uint16 = 0
-	{{- end }}
-	{{- $isKeyValue := or (eq .Id "SimnetParameterSet") (eq .Id "SimnetKeyValue" ) (eq .Id "BGKeyValueData" ) }}
-	{{- if $isKeyValue }}
-		var valueLength uint16
-	{{ end }}
+    {{- $binaryLengthField :=  $pgn.BitLengthField }}
+    {{- if  $binaryLengthField }}
+        var binaryLength uint16 = 0
+    {{- end }}
+
+    {{- $hasMainDynamic := false -}}
+    {{- range .Fields -}}
+        {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" -}}
+            {{- $hasMainDynamic = true -}}
+        {{- end -}}
+    {{- end -}}
+    {{- if $hasMainDynamic }}
+    var valueLength uint16
+    {{- end }}
 
     // Decode all non-repeating fields
     {{- range $idx, $field := $pgn.Fields }}
     {{- if or (eq $field.FieldType "RESERVED") (eq $field.FieldType "SPARE") }}
-    stream.skipBits({{ $field.BitLength }})
+       stream.skipBits({{ $field.BitLength }})
     {{- else }}
     if v, err := {{ index (getFieldDeserializer $pgn $field) 0 }}; err != nil {
         return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ $field.Id }}: %w", err)
@@ -327,18 +334,18 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
             repeat1Count = uint16(*v)
         }
         {{- end }}
-		{{- if and $binaryLengthField (eq $idx (subtract $pgn.BitLengthField 1)) }}
-		if v != nil {
-			binaryLength = uint16(*v)
-		}
-	{{- end }}
-	{{- if and $isKeyValue (eq $field.Name "MinLength") }}
-		if v != nil {
-			valueLength = uint16(*v) * 8
-		}
-	{{ end }}
+        {{- if and $binaryLengthField (eq $idx (subtract $pgn.BitLengthField 1)) }}
+        if v != nil {
+            binaryLength = uint16(*v)
+        }
+    {{- end }}
+    {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
+        if v != nil {
+            valueLength = uint16(*v) * 8
+        }
+    {{ end }}
 
-        {{- if and (eq $pgn.PGN 126208) (eq $field.FieldType "FIELD_INDEX") }}
+        {{- if  (eq $field.FieldType "FIELD_INDEX") }}
         if v != nil {
             fieldIndex = uint8(*v)
         }
@@ -381,7 +388,7 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
 
     {{- if $repeat1 }}
     val.Repeating1 = make([]{{ .Id }}Repeating1, 0)
-	{{- if gt $pgn.RepeatingFieldSet1CountField 0 }}
+    {{- if gt $pgn.RepeatingFieldSet1CountField 0 }}
     if repeat1Count == 0 {
         return val, nil
     }
@@ -389,100 +396,142 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
     if stream.isEOF() {
         return val, nil
     }
-	{{- end }}
+    {{- end }}
 
-    i := 0 
-	for {
-		var rep {{ $pgn.Id }}Repeating1
-		{{- range $pgn.FieldsRepeating1 }}
-		{{- if eq .FieldType "RESERVED" }}
-		stream.skipBits({{ .BitLength }})
-		{{- else }}
-		{{- $funcs := getFieldDeserializer $pgn . }}
-		if v, err := {{ index $funcs 0 }}; err != nil {
-			return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
-		} else {
-			rep.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
-		{{- if eq .FieldType "FIELD_INDEX" }}
-			if v != nil {
-				fieldIndex = *v
-			}
-		{{- end }}
-		{{- if and $isKeyValue (eq .Name "Length") }}
-			if v != nil {
-				valueLength = uint16(*v) * 8
-			}
-		{{ end }}
-		} 
-		{{- end }}
-		{{- end }}
-		val.Repeating1 = append(val.Repeating1, rep)
-		if int(repeat1Count) == 0 {
-			if stream.isEOF() {
-				return val, nil
-			} 
-		} else {
-			i++
-			if i == int(repeat1Count) {
-				break
-			} 
-		} 
+    {{- $hasRepeat1Dynamic := false -}}
+    {{- range $pgn.FieldsRepeating1 -}}
+        {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" -}}
+            {{- $hasRepeat1Dynamic = true -}}
+        {{- end -}}
+    {{- end }}
+
+    i := 0
+    for {
+        {{- if $hasRepeat1Dynamic }}
+        var valueLength uint16
+        {{- end }}
+        var rep {{ $pgn.Id }}Repeating1
+        {{- range $pgn.FieldsRepeating1 }}
+        {{- if eq .FieldType "RESERVED" }}
+        stream.skipBits({{ .BitLength }})
+        {{- else }}
+        {{- $funcs := getFieldDeserializer $pgn . }}
+        if v, err := {{ index $funcs 0 }}; err != nil {
+            return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
+        } else {
+            rep.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
+        {{- if eq .FieldType "FIELD_INDEX" }}
+            if v != nil {
+                fieldIndex = *v
+            }
+        {{- end }}
+        {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
+            if v != nil {
+                valueLength = uint16(*v) * 8
+            }
+        {{ end }}
+        }
+        {{- end }}
+        {{- end }}
+        val.Repeating1 = append(val.Repeating1, rep)
+        if int(repeat1Count) == 0 {
+            if stream.isEOF() {
+                return val, nil
+            }
+        } else {
+            i++
+            if i == int(repeat1Count) {
+                break
+            }
+        }
     }
     {{- end }}
-	{{- if $repeat2 }}
-	{{- if gt $pgn.RepeatingFieldSet2CountField 0 }}
-		if repeat2Count == 0 {
-			return val, nil
-		}
-	{{- end }}	
-	val.Repeating2 = make([]{{ $pgn.Id }}Repeating2, 0)
-	i = 0
-	for {
-		var rep {{ $pgn.Id }}Repeating2
-		{{- range $pgn.FieldsRepeating2 }}
-		{{- if eq .FieldType "RESERVED" }}
-		stream.skipBits({{ .BitLength }})
-		{{- else }}
-		{{- $funcs := getFieldDeserializer $pgn . }}
-		if v, err := {{ index $funcs 0 }}; err != nil {
-			return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
-		} else {
-			rep.{{- .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
-		{{- if and (eq $pgn.RepeatingFieldSet2CountField 2) (eq .FieldType "FIELD_INDEX") }}
-			if v != nil {
-				fieldIndex = *v
-			}
-		{{- end }}
-		}  
-		{{- end }}
-	{{- end }}
-		val.Repeating2 = append(val.Repeating2, rep)
-		if int(repeat2Count) == 0 {
-			if stream.isEOF() {
-				return val, nil
-			}  
-		} else {
-			i++
-			if i == int(repeat2Count) {
-				break
-			} 
-		} 
-	} 
-	{{- end }}	
+    {{- if $repeat2 }}
+    {{- if gt $pgn.RepeatingFieldSet2CountField 0 }}
+        if repeat2Count == 0 {
+            return val, nil
+        }
+    {{- end }}
+
+    {{- $hasRepeat2Dynamic := false -}}
+    {{- range $pgn.FieldsRepeating2 -}}
+        {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" -}}
+            {{- $hasRepeat2Dynamic = true -}}
+        {{- end -}}
+    {{- end }}
+
+    val.Repeating2 = make([]{{ .Id }}Repeating2, 0)
+    i = 0
+    for {
+        {{- if $hasRepeat2Dynamic }}
+        var valueLength uint16
+        {{- end }}
+        var rep {{ $pgn.Id }}Repeating2
+        {{- range $pgn.FieldsRepeating2 }}
+        {{- if eq .FieldType "RESERVED" }}
+        stream.skipBits({{ .BitLength }})
+        {{- else }}
+        {{- $funcs := getFieldDeserializer $pgn . }}
+        if v, err := {{ index $funcs 0 }}; err != nil {
+            return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
+        } else {
+            rep.{{- .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
+        {{- if and (eq $pgn.RepeatingFieldSet2CountField 2) (eq .FieldType "FIELD_INDEX") }}
+            if v != nil {
+                fieldIndex = *v
+            }
+        {{- end }}
+        {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
+            if v != nil {
+                valueLength = uint16(*v) * 8
+            }
+        {{ end }}
+        }
+        {{- end }}
+    {{- end }}
+        val.Repeating2 = append(val.Repeating2, rep)
+        if int(repeat2Count) == 0 {
+            if stream.isEOF() {
+                return val, nil
+            }
+        } else {
+            i++
+            if i == int(repeat2Count) {
+                break
+            }
+        }
+    }
+    {{- end }}
     return val, nil
 }
 
 // Encode implementation for complete variant
 func (p {{ .Id }}) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-	{{- $binaryLengthField :=  $pgn.BitLengthField }}
-	{{- if  $binaryLengthField }}
+	{{- $bitLengthFieldOrder :=  $pgn.BitLengthField }}
+	{{- if  $bitLengthFieldOrder }}
 		var binaryLength uint16
-		if p.NumberOfBitsInBinaryDataField != nil {
-			binaryLength = *p.NumberOfBitsInBinaryDataField
+		{{- range .Fields }}
+			{{- if eq .Order $bitLengthFieldOrder }}
+		if p.{{ .Id }} != nil {
+			binaryLength = uint16(*p.{{ .Id }})
 		}
+			{{- end }}
+		{{- end }}
+	{{- end }}
+	{{- $fieldTypes := "" -}}
+	{{- range .Fields -}}
+		{{- $fieldTypes = print $fieldTypes .FieldType -}}
+	{{- end -}}
+	{{- if contains $fieldTypes "DYNAMIC_FIELD_LENGTH" }}
+	var valueLength uint16
 	{{- end }}
     {{- range $idx, $field := .Fields }}
+    {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
+    if p.{{ .Id }} != nil {
+        valueLength = uint16(*p.{{ .Id }}) * 8
+    }
+    {{- end }}
     {{- $func := getFieldSerializer $field "" }}
     {{- if ne $func "" }}
     {{ $func }}
@@ -509,18 +558,21 @@ func (p {{ .Id }}) Encode(stream *DataStream) (*MessageInfo, error) {
 {{- if gt .RepeatingFieldSet1StartField 0 }}
 func (p {{ .Id }}) encodeRepeating1(stream *DataStream) error {
      var err error
- 	{{- $isKeyValue := or (eq .Id "SimnetParameterSet") (eq .Id "SimnetKeyValue" ) (eq .Id "BGKeyValueData" ) }}
-	{{- if $isKeyValue }}
-		var valueLength uint16
+	{{- $fieldTypes := "" -}}
+	{{- range .FieldsRepeating1 -}}
+		{{- $fieldTypes = print $fieldTypes .FieldType -}}
 	{{- end }}
 	if len(p.Repeating1) == 0 {
 		return nil
 	}
     for index, _ := range p.Repeating1 {
+		{{- if contains $fieldTypes "DYNAMIC_FIELD_LENGTH" }}
+		var valueLength uint16
+		{{- end }}
         {{- range .FieldsRepeating1 }}
-		{{- if and $isKeyValue (eq .Name "Length") }}
-		if p.Repeating1[index].Length != nil {
-			valueLength = uint16(*p.Repeating1[index].Length) * 8
+		{{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
+		if p.Repeating1[index].{{.Id}} != nil {
+			valueLength = uint16(*p.Repeating1[index].{{.Id}}) * 8
 		}
 		{{- end }}
         {{- $func := getFieldSerializer . "Repeating1[index]." }}
@@ -539,12 +591,24 @@ func (p {{ .Id }}) encodeRepeating1(stream *DataStream) error {
 {{- if gt .RepeatingFieldSet2StartField 0 }}
 func (p {{ .Id }}) encodeRepeating2(stream *DataStream) error {
     var err error
+	{{- $fieldTypes := "" -}}
+	{{- range .FieldsRepeating2 -}}
+		{{- $fieldTypes = print $fieldTypes .FieldType -}}
+	{{- end }}
 	if len(p.Repeating2) == 0 {
 		return nil
 	}
     for index, _ := range p.Repeating2 {
+		{{- if contains $fieldTypes "DYNAMIC_FIELD_LENGTH" }}
+		var valueLength uint16
+		{{- end }}
         {{- range .FieldsRepeating2 }}
  		{{- $substruct := "Repeating2[index]." }}
+        {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
+        if p.Repeating2[index].{{.Id}} != nil {
+            valueLength = uint16(*p.Repeating2[index].{{.Id}}) * 8
+        }
+        {{- end }}
        	{{- $func := getFieldSerializer . $substruct }}
         {{- if ne $func "" }}
         {{ $func }}

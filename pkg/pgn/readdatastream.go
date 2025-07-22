@@ -367,7 +367,7 @@ func (s *DataStream) readStringWithLengthAndControl() (string, error) {
 // We'll read the field's defined length just in case it's used differently in a newly defined pgn.
 // String has a terminating zero; we remove it (and subsequent values up to the field's length)
 // Length does not seem to include length byte here
-/* func (s *DataStream) readStringWithLength(bitLength uint16) (string, error) {
+func (s *DataStream) readStringWithLength(bitLength uint16) (string, error) {
 	arr, err := s.readBinaryData(bitLength)
 	if err != nil {
 		return "", err
@@ -382,7 +382,7 @@ func (s *DataStream) readStringWithLengthAndControl() (string, error) {
 		return "", fmt.Errorf("string not zero terminated in ReadStringWithLength")
 	}
 	return string(arr[1 : strLen+1]), nil
-} */
+}
 
 // readFixedString method reads a string of fixed length.
 func (s *DataStream) readFixedString(bitLength uint16) (string, error) {

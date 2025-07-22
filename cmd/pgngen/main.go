@@ -101,6 +101,7 @@ type EnumTriplet struct {
 
 // EnumPair is used as elements of LookupEnumerations.
 type EnumPair struct {
+	Name  string // The generated name for the go const
 	Text  string `json:"Name"`
 	Value int
 }
@@ -114,6 +115,7 @@ type BitEnumeration struct {
 
 // BitEnumPair is an element of a BitEnumeration
 type BitEnumPair struct {
+	Name  string // The generated name for the go const
 	Label string `json:"Name"`
 	Bit   int
 }
@@ -265,7 +267,6 @@ func (conv *canboatConverter) write() {
 			"fieldByteCount":       fieldByteCount,
 			"concat":               func(strs ...string) string { return strings.Join(strs, "") },
 			"toNumber":             toNumber,
-			"toVarName":            toVarName,
 			"isPointerFieldType":   isPointerFieldType,
 			"constSize":            constSize,
 			"subtract":             func(x, y uint8) uint8 { return x - y },
@@ -383,38 +384,44 @@ func (builder *canboatConverter) fixRepeating() {
 // fixEnumDefs checks that enum names are unique and makes them legal golang identifiers.
 func (builder *canboatConverter) fixEnumDefs() {
 	constDeDuper := NewDeDuper()
+	constValDeDuper := NewDeDuper()
 	for i := range builder.Enums {
 		convertToConst(&builder.Enums[i].Name)
-		if firstTime, _ := constDeDuper.unique(builder.Enums[i].Name); !firstTime {
-			panic("Enum name not unique: " + builder.Enums[i].Name)
+		if firstTime, uniqueName := constDeDuper.unique(builder.Enums[i].Name); !firstTime {
+			builder.Enums[i].Name = uniqueName
 		}
 		for j := range builder.Enums[i].Values {
-			forceFirstLetter(&builder.Enums[i].Values[j].Text)
+			enumPair := &builder.Enums[i].Values[j]
+			candidateName := generateConstName(builder.Enums[i].Name, enumPair.Text, enumPair.Value)
+			_, uniqueName := constValDeDuper.unique(candidateName)
+			enumPair.Name = uniqueName
 		}
 	}
 	for i := range builder.IndirectEnums {
 		convertToConst(&builder.IndirectEnums[i].Name)
-		if firstTime, _ := constDeDuper.unique(builder.IndirectEnums[i].Name); !firstTime {
-			panic("IndirectEnum name not unique: " + builder.IndirectEnums[i].Name)
-		} // else don't need to change name
-		for j := range builder.IndirectEnums[i].Values { // not strictly necessary since we aren't creating identifiers from them
-			forceFirstLetter(&builder.IndirectEnums[i].Values[j].Text)
+		if firstTime, uniqueName := constDeDuper.unique(builder.IndirectEnums[i].Name); !firstTime {
+			builder.IndirectEnums[i].Name = uniqueName
+		}
+		for range builder.IndirectEnums[i].Values { // not strictly necessary since we aren't creating identifiers from them
 		}
 	}
 	for i := range builder.BitEnums {
 		convertToConst(&builder.BitEnums[i].Name)
-		if firstTime, _ := constDeDuper.unique(builder.BitEnums[i].Name); !firstTime {
-			panic("BitEnum name not unique: " + builder.BitEnums[i].Name)
-		} // else don't need to change name
+		if firstTime, uniqueName := constDeDuper.unique(builder.BitEnums[i].Name); !firstTime {
+			builder.BitEnums[i].Name = uniqueName
+		}
 		for j := range builder.BitEnums[i].EnumBitValues {
-			forceFirstLetter(&builder.BitEnums[i].EnumBitValues[j].Label)
+			bitEnumPair := &builder.BitEnums[i].EnumBitValues[j]
+			candidateName := generateConstName(builder.BitEnums[i].Name, bitEnumPair.Label, bitEnumPair.Bit)
+			_, uniqueName := constValDeDuper.unique(candidateName)
+			bitEnumPair.Name = uniqueName
 		}
 	}
 	for i := range builder.FieldTypeEnums {
 		convertToConst(&builder.FieldTypeEnums[i].Name)
-		if firstTime, _ := constDeDuper.unique(builder.FieldTypeEnums[i].Name); !firstTime {
-			panic("FieldTypeEnum name not unique: " + builder.FieldTypeEnums[i].Name)
-		} // else don't need to change name
+		if firstTime, uniqueName := constDeDuper.unique(builder.FieldTypeEnums[i].Name); !firstTime {
+			builder.FieldTypeEnums[i].Name = uniqueName
+		}
 	}
 }
 
@@ -485,23 +492,6 @@ func (builder *canboatConverter) zeroBitOffsets() {
 	}
 }
 
-// varNameReplacer points to a function that changes various substrings with values legal in golang identifiers.
-// Used by toVarName (and so by template).
-var varNameReplacer = strings.NewReplacer(" ", "", "/", "", "+1", "Plus1", "-1", "Minus1", "+", "", "-", "", "(", "", ")", "", "#", "", ".", "", ":", "", "%", "Percent", "&", "And", ",", "")
-
-// varDeDuper is used to assure a variable name is unique.
-// Used by toVarName (and so by template).
-var varDeDuper = NewDeDuper()
-
-// toVarName massages its input to a legal golang identifier.
-// Used by template.
-func toVarName(str string) string {
-	str = strings.Title(str) //nolint:staticcheck
-	str = varNameReplacer.Replace(str)
-	_, str = varDeDuper.unique(str)
-	return str
-}
-
 // isPointerFieldType returns true if the underlying type of a field is a pointer.
 // Used by template.
 func isPointerFieldType(field PGNField) bool {
@@ -528,7 +518,7 @@ func constSize(max int) string {
 	case max < 65536:
 		return "uint16"
 	case max < 4294967296:
-		return "uinit32"
+		return "uint32"
 	default:
 		return "uint64"
 
@@ -585,7 +575,7 @@ func convertFieldType(field PGNField) string {
 		return field.FieldTypeLookupName
 	case "FIELD_INDEX":
 		return "*uint8"
-	case "NUMBER", "DATE", "TIME", "MMSI":
+	case "NUMBER", "DATE", "TIME", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
 		// If it has a unit, use that
 		unitType, _ := getUnitType(field.Unit)
 		if unitType != "" {
@@ -628,7 +618,7 @@ func convertFieldType(field PGNField) string {
 			return "*float64"
 		}
 		return "*float32"
-	case "DECIMAL", "BINARY", "KEY_VALUE", "VARIABLE":
+	case "DECIMAL", "BINARY", "DYNAMIC_FIELD_VALUE", "VARIABLE":
 		return "[]uint8"
 	case "STRING_FIX", "STRING_VAR", "STRING_LZ", "STRING_LAU":
 		return "string"
@@ -655,7 +645,7 @@ func getFieldSerializer(field PGNField, substruct string) string {
 		outstr = fmt.Sprintf("err = stream.writeSpare(%d, %d)", field.BitLength, field.BitOffset)
 	case "LOOKUP", "BITLOOKUP", "INDIRECT_LOOKUP", "FIELDTYPE_LOOKUP":
 		outstr = fmt.Sprintf("err = stream.putNumberRaw(uint64(p."+substruct+"%s), %d, %d)", field.Id, field.BitLength, field.BitOffset)
-	case "NUMBER", "TIME", "DATE", "MMSI", "FIELD_INDEX":
+	case "NUMBER", "TIME", "DATE", "MMSI", "FIELD_INDEX", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH", "DURATION", "PGN", "ISO_NAME":
 		if field.Signed {
 			switch {
 			case field.Resolution != nil && (*field.Resolution != 1.0 || isUnit), field.Offset != 0:
@@ -730,7 +720,7 @@ func getFieldSerializer(field PGNField, substruct string) string {
 		outstr = fmt.Sprintf("err = stream.writeStringLau(p."+substruct+"%s, %d )", field.Id, field.BitOffset)
 	case "STRING_LZ":
 		outstr = fmt.Sprintf("err = stream.writeStringWithLength(p."+substruct+"%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
-	case "KEY_VALUE":
+	case "DYNAMIC_FIELD_VALUE":
 		outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s, valueLength, 0)", field.Id)
 	default:
 		outstr = fmt.Sprintf("log.Infof(\"field %s, index %d, type %s, unhandled\")", field.Name, field.Order, field.FieldType)
@@ -765,7 +755,7 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName + "(v)"}
 	case "FIELD_INDEX":
 		return [2]string{fmt.Sprintf("stream.readUInt8(%d)", field.BitLength), ""}
-	case "NUMBER", "TIME", "DATE", "MMSI":
+	case "NUMBER", "TIME", "DATE", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
 		var outerVal string
 		if field.Signed {
 			switch {
@@ -826,7 +816,7 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 		return [2]string{"stream.readBinaryData(binaryLength)", ""}
 	case "VARIABLE":
 		return [2]string{"stream.readVariableData(*val.Pgn, fieldIndex)", ""}
-	case "KEY_VALUE":
+	case "DYNAMIC_FIELD_VALUE":
 		return [2]string{"stream.readBinaryData(valueLength)", ""}
 	default:
 		panic("No deserializer for type: " + field.FieldType)
@@ -878,7 +868,7 @@ func cacheFromWeb(name, url string) (string, error) {
 			return cachedName, err
 		}
 		defer func() {
-			if err := resp.Body.Close(); err != nil {
+			if err = resp.Body.Close(); err != nil {
 				log.WithError(err).Warn("error closing http response body")
 			}
 		}()
@@ -952,13 +942,52 @@ func getManId(p *PGN) int {
 	return 0
 }
 
-// forceFirstLetter assures the name starts with a letter (required for use as a golang identifier).
-func forceFirstLetter(name *string) {
-	current := *name
-	if !unicode.IsLetter(rune(current[0])) {
-		current = "A" + current
-		*name = current
+// A map for converting leading digits to words.
+var digitToWord = map[string]string{
+	"0": "Zero", "1": "One", "2": "Two", "3": "Three", "4": "Four",
+	"5": "Five", "6": "Six", "7": "Seven", "8": "Eight", "9": "Nine",
+}
+
+// generateConstName creates a Go constant identifier from a display string.
+func generateConstName(enumName, text string, value int) string {
+	// Handle leading digit
+	if len(text) > 0 && unicode.IsDigit(rune(text[0])) {
+		parts := strings.Fields(text)
+		if word, ok := digitToWord[parts[0]]; ok {
+			parts[0] = word
+			text = strings.Join(parts, " ")
+		}
 	}
+
+	var candidateName string
+	words := strings.Fields(text)
+
+	// Use heuristic for 1-2 word names to generate a readable identifier
+	if len(words) > 0 && len(words) <= 2 {
+		caser := cases.Title(language.English)
+		camelCase := caser.String(text)
+
+		var builder strings.Builder
+		for _, r := range camelCase {
+			if unicode.IsLetter(r) || unicode.IsDigit(r) {
+				builder.WriteRune(r)
+			}
+		}
+		candidateName = builder.String()
+	}
+
+	// If the resulting name is empty, or for longer text, use the fallback.
+	if len(candidateName) == 0 {
+		return fmt.Sprintf("%s%d", enumName, value)
+	}
+
+	// Ensure the first character is a letter.
+	if !unicode.IsLetter(rune(candidateName[0])) {
+		// Prepend the enumeration name to guarantee a valid identifier start.
+		candidateName = enumName + candidateName
+	}
+
+	return candidateName
 }
 
 // convertToConst changes XXX_YYY to XxxYyyConst (all go consts have global namespace scope).

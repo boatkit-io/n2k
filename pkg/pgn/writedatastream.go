@@ -35,7 +35,7 @@ func (s *DataStream) writeStringLau(value string, bitOffset uint16) error {
 }
 
 // writeStringWithLength writes the specified length of value at the specified offset
-/* func (s *DataStream) writeStringWithLength(value string, bitLength uint16, bitOffset uint16) error {
+func (s *DataStream) writeStringWithLength(value string, bitLength uint16, bitOffset uint16) error {
 	length := uint8(len(value)) + 1 //  string length plus terminator
 	fieldLength := uint8(bitLength / 8)
 	if length+1 > fieldLength { // field must contain the length byte, the string, and the terminator
@@ -47,7 +47,7 @@ func (s *DataStream) writeStringLau(value string, bitOffset uint16) error {
 		out[i+1] = value[i]
 	}
 	return s.writeBinary(out, bitLength, bitOffset)
-} */
+}
 
 // writeStringFix writes the fixed string, first padding its length as necessary.
 // padding has been seen as "@", 0x00, and 0xff. we use the latter.
