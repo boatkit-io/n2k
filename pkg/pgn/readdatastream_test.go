@@ -51,59 +51,63 @@ func TestNumerics(t *testing.T) {
 		if tst.offset > 0 {
 			_ = p.skipBits(uint16(tst.offset))
 		}
-		v, err := p.readUInt64(tst.length)
+		cnt := 2
+		if tst.length < 4 {
+			cnt = 1
+		}
+		v, err := p.readUInt64(tst.length, cnt)
 		assert.NoError(t, err)
 		assert.Equal(t, tst.exp, *v)
 	}
 
 	// other uints
-	vuint2, err := NewDataStream([]uint8{0xd4, 0xee, 0xff, 0xff}).readUInt32(32)
+	vuint2, err := NewDataStream([]uint8{0xd4, 0xee, 0xff, 0xff}).readUInt32(32, 2)
 	assert.NoError(t, err)
 	assert.Equal(t, uint32(0xFFFFEED4), *vuint2)
-	vuint3, err := NewDataStream([]uint8{0xd4, 0xee, 0xff, 0xff}).readUInt16(16)
+	vuint3, err := NewDataStream([]uint8{0xd4, 0xee, 0xff, 0xff}).readUInt16(16, 2)
 	assert.NoError(t, err)
 	assert.Equal(t, uint16(0xEED4), *vuint3)
-	vuint4, err := NewDataStream([]uint8{0xd4, 0xee, 0xff, 0xff}).readUInt8(8)
+	vuint4, err := NewDataStream([]uint8{0xd4, 0xee, 0xff, 0xff}).readUInt8(8, 2)
 	assert.NoError(t, err)
 	assert.Equal(t, uint8(0xD4), *vuint4)
 
-	vuintn1, err := NewDataStream([]uint8{0xff, 0xff, 0xff, 0xff}).readUInt32(32)
+	vuintn1, err := NewDataStream([]uint8{0xff, 0xff, 0xff, 0xff}).readUInt32(32, 2)
 	assert.NoError(t, err)
 	assert.Nil(t, vuintn1)
-	vuintn2, err := NewDataStream([]uint8{0xff, 0xff, 0xff, 0xff}).readUInt32(16)
+	vuintn2, err := NewDataStream([]uint8{0xff, 0xff, 0xff, 0xff}).readUInt32(16, 2)
 	assert.NoError(t, err)
 	assert.Nil(t, vuintn2)
-	vuintn3, err := NewDataStream([]uint8{0xff, 0xff, 0xff, 0xff}).readUInt32(8)
+	vuintn3, err := NewDataStream([]uint8{0xff, 0xff, 0xff, 0xff}).readUInt32(8, 2)
 	assert.NoError(t, err)
 	assert.Nil(t, vuintn3)
-	vuintn4, err := NewDataStream([]uint8{0xff, 0xff, 0xff, 0xff}).readUInt32(4)
+	vuintn4, err := NewDataStream([]uint8{0xff, 0xff, 0xff, 0xff}).readUInt32(4, 2)
 	assert.NoError(t, err)
 	assert.Nil(t, vuintn4)
 
 	// signed cases
-	vint, err := NewDataStream([]uint8{0xd4, 0xee, 0xff, 0xff}).readInt64(32)
+	vint, err := NewDataStream([]uint8{0xd4, 0xee, 0xff, 0xff}).readInt64(32, 2)
 	assert.NoError(t, err)
 	assert.Equal(t, int64(-4396), *vint)
-	vint2, err := NewDataStream([]uint8{0xd4, 0xee, 0xff, 0xff}).readInt32(32)
+	vint2, err := NewDataStream([]uint8{0xd4, 0xee, 0xff, 0xff}).readInt32(32, 2)
 	assert.NoError(t, err)
 	assert.Equal(t, int32(-4396), *vint2)
-	vint3, err := NewDataStream([]uint8{0xd4, 0xee}).readInt16(16)
+	vint3, err := NewDataStream([]uint8{0xd4, 0xee}).readInt16(16, 2)
 	assert.NoError(t, err)
 	assert.Equal(t, int16(-4396), *vint3)
-	vint4, err := NewDataStream([]uint8{0xd4}).readInt8(8)
+	vint4, err := NewDataStream([]uint8{0xd4}).readInt8(8, 2)
 	assert.NoError(t, err)
 	assert.Equal(t, int8(-44), *vint4)
 
-	vintn1, err := NewDataStream([]uint8{0xff, 0xff, 0xff, 0x7f}).readInt32(32)
+	vintn1, err := NewDataStream([]uint8{0xff, 0xff, 0xff, 0x7f}).readInt32(32, 2)
 	assert.NoError(t, err)
 	assert.Nil(t, vintn1)
-	vintn2, err := NewDataStream([]uint8{0xff, 0x7f}).readInt32(16)
+	vintn2, err := NewDataStream([]uint8{0xff, 0x7f}).readInt32(16, 2)
 	assert.NoError(t, err)
 	assert.Nil(t, vintn2)
-	vintn3, err := NewDataStream([]uint8{0x7f}).readInt32(8)
+	vintn3, err := NewDataStream([]uint8{0x7f}).readInt32(8, 2)
 	assert.NoError(t, err)
 	assert.Nil(t, vintn3)
-	vintn4, err := NewDataStream([]uint8{0x7}).readInt32(4)
+	vintn4, err := NewDataStream([]uint8{0x7}).readInt32(4, 2)
 	assert.NoError(t, err)
 	assert.Nil(t, vintn4)
 
@@ -123,7 +127,7 @@ func TestNumerics(t *testing.T) {
 	for _, tst := range bdTests {
 		p := NewDataStream(tst.data)
 		if tst.offset > 0 {
-			_, _ = p.readUInt64(uint16(tst.offset))
+			_, _ = p.readUInt64(uint16(tst.offset), 2)
 		}
 		v, err := p.readBinaryData(tst.length)
 		if tst.errExpected {

@@ -45,7 +45,7 @@ func (s *DataStream) remainingLength() uint16 {
 
 // calcMaxPositiveValue calculates the maximum value that can be represented
 // with a given length of signed or unsigned contents.
-func calcMaxPositiveValue(bitLength uint16, signed bool) uint64 {
+func calcMaxPositiveValue(bitLength uint16, signed bool, reservedValuesCount int) uint64 {
 	// calculate maximum valid value
 	maxVal := uint64(0xFFFFFFFFFFFFFFFF)
 
@@ -53,18 +53,21 @@ func calcMaxPositiveValue(bitLength uint16, signed bool) uint64 {
 	if signed {               // high bit set means it's negative, so maximum positive value is 1 bit shorter
 		maxVal >>= 1 // we know it's a positive value, so safe for us to check.
 	}
-	switch bitLength {
-	case 1: // leave alone
-	case 2, 3: // for fields < 4 bits long, largest possible positive value indicates the field is missing
-		maxVal -= 1
-	default: // for larger fields, largest positive value means missing, that value minus 1 means invalid
-		maxVal -= 2
+
+	if reservedValuesCount > 0 {
+		maxVal -= uint64(reservedValuesCount)
 	}
+
 	return maxVal
 }
 
 // missingValue calculates the value representing a missing (nil) wire value
-func missingValue(bitLength uint16, signed bool) uint64 {
+func missingValue(bitLength uint16, signed bool, reservedValuesCount int) uint64 {
+	if reservedValuesCount == 0 {
+		// No reserved values means we can't represent missing - return 0 as a safe default
+		return 0
+	}
+
 	missing := uint64(0xFFFFFFFFFFFFFFFF)
 	missing >>= 64 - bitLength // the largest value representable in length of field if unsigned
 	if signed {                // high bit set means it's negative, so maximum positive value is 1 bit shorter

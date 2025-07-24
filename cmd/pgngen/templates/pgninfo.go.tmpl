@@ -56,6 +56,7 @@ type FieldDescriptor struct {
 	Unit              string
 	BitLookupName     string
     Match             int
+	ReservedValuesCount int
 
 	{{if $forDebug}}
 	// The following fields are used for testing only. Uncomment to use.
@@ -209,12 +210,13 @@ var pgnList = []PgnInfo{
         {{- end }}
         {{- end }}
         Fields: map[int]*FieldDescriptor{
-        {{- range .Fields }}
+        {{- range .AllFields }}
         {{ .Order }}: { 
             BitLength: {{ .BitLength }},
             BitOffset: {{ .BitOffset }},
             BitLengthVariable: {{ .BitLengthVariable }},
             CanboatType: "{{ .FieldType }}",
+            ReservedValuesCount: {{ getReservedValueCount . }},
             Resolution: {{- if .Resolution -}}
             {{ .Resolution }}
             {{- else -}}

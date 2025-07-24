@@ -41,31 +41,32 @@ func TestDataStream_resetToStart(t *testing.T) {
 func TestCalcMaxPositiveValue(t *testing.T) {
 	tests := []struct {
 		name      string
+		length    int
 		bitLength uint16
 		signed    bool
 		want      uint64
 	}{
-		{"1 bit unsigned", 1, false, 1},
-		{"1 bit signed", 1, true, 0},
-		{"2 bit unsigned", 2, false, 0x2},
-		{"2 bit signed", 2, true, 0x0},
-		{"3 bit unsigned", 3, false, 0x6},
-		{"3 bit signed", 3, true, 0x2},
-		{"4 bit unsigned", 4, false, 0xD},
-		{"4 bit signed", 4, true, 0x5},
-		{"8 bits unsigned", 8, false, 0xFD},
-		{"8 bits signed", 8, true, 0x7D},
-		{"16 bits unsigned", 16, false, 0xFFFD},
-		{"16 bits signed", 16, true, 0x7FFD},
-		{"32 bits unsigned", 32, false, 0xFFFFFFFD},
-		{"32 bits signed", 32, true, 0x7FFFFFFD},
-		{"64 bits unsigned", 64, false, 0xFFFFFFFFFFFFFFFD},
-		{"64 bits signed", 64, true, 0x7FFFFFFFFFFFFFFD},
+		{"1 bit unsigned", 1, 1, false, 1},
+		{"1 bit signed", 1, 1, true, 0},
+		{"2 bit unsigned", 2, 2, false, 0x2},
+		{"2 bit signed", 2, 2, true, 0x0},
+		{"3 bit unsigned", 3, 3, false, 0x6},
+		{"3 bit signed", 3, 3, true, 0x2},
+		{"4 bit unsigned", 4, 4, false, 0xD},
+		{"4 bit signed", 4, 4, true, 0x5},
+		{"8 bits unsigned", 8, 8, false, 0xFD},
+		{"8 bits signed", 8, 8, true, 0x7D},
+		{"16 bits unsigned", 16, 16, false, 0xFFFD},
+		{"16 bits signed", 16, 16, true, 0x7FFD},
+		{"32 bits unsigned", 32, 32, false, 0xFFFFFFFD},
+		{"32 bits signed", 32, 32, true, 0x7FFFFFFD},
+		{"64 bits unsigned", 64, 64, false, 0xFFFFFFFFFFFFFFFD},
+		{"64 bits signed", 64, 64, true, 0x7FFFFFFFFFFFFFFD},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := calcMaxPositiveValue(tt.bitLength, tt.signed)
+			got := calcMaxPositiveValue(tt.bitLength, tt.signed, tt.length)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -83,31 +84,32 @@ func TestNewDataStream(t *testing.T) {
 func TestMissingValue(t *testing.T) {
 	tests := []struct {
 		name      string
+		length    int
 		bitLength uint16
 		signed    bool
 		want      uint64
 	}{
-		{"1 bit unsigned", 1, false, 1},
-		{"1 bit signed", 1, true, 0},
-		{"2 bit unsigned", 2, false, 3},
-		{"2 bit signed", 2, true, 1},
-		{"3 bit unsigned", 3, false, 7},
-		{"3 bit signed", 3, true, 3},
-		{"4 bit unsigned", 4, false, 15},
-		{"4 bit signed", 4, true, 7},
-		{"8 bits unsigned", 8, false, 255},
-		{"8 bits signed", 8, true, 127},
-		{"16 bits unsigned", 16, false, 65535},
-		{"16 bits signed", 16, true, 32767},
-		{"32 bits unsigned", 32, false, 4294967295},
-		{"32 bits signed", 32, true, 2147483647},
-		{"64 bits unsigned", 64, false, 18446744073709551615},
-		{"64 bits signed", 64, true, 9223372036854775807},
+		{"1 bit unsigned", 1, 1, false, 1},
+		{"1 bit signed", 1, 1, true, 0},
+		{"2 bit unsigned", 2, 2, false, 3},
+		{"2 bit signed", 2, 2, true, 1},
+		{"3 bit unsigned", 3, 3, false, 7},
+		{"3 bit signed", 3, 3, true, 3},
+		{"4 bit unsigned", 4, 4, false, 15},
+		{"4 bit signed", 4, 4, true, 7},
+		{"8 bits unsigned", 8, 8, false, 255},
+		{"8 bits signed", 8, 8, true, 127},
+		{"16 bits unsigned", 16, 16, false, 65535},
+		{"16 bits signed", 16, 16, true, 32767},
+		{"32 bits unsigned", 32, 32, false, 4294967295},
+		{"32 bits signed", 32, 32, true, 2147483647},
+		{"64 bits unsigned", 64, 64, false, 18446744073709551615},
+		{"64 bits signed", 64, 64, true, 9223372036854775807},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := missingValue(tt.bitLength, tt.signed)
+			got := missingValue(tt.bitLength, tt.signed, tt.length)
 			assert.Equal(t, tt.want, got)
 		})
 	}

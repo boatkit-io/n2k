@@ -1,0 +1,9 @@
+# TODO
+
+- Resolve the test failure for `AisAddressedBinaryMessage`'s `SequenceNumber` field. The current test infrastructure assumes that the maximum value for a 2-bit field (3) is reserved, but the AIS specification allows all values from 0-3. This causes a mismatch in `TestTypeMax`. The Canboat project has an open issue to add attributes to the PGN definitions to specify which values are reserved. Once that is implemented, we can update our definitions and fix the test. For now, this test is expected to fail.
+
+- Generate more DomainMax and DomainMin values in the PGN definitions. We should use these for comparisons where the unit type has a natural range (like angles limited to 0-2π, times limited to 24 hours, etc.). This would help distinguish between fields that are artificially limited by the protocol vs. those that are limited by the physical domain.
+
+- File an issue with the Canboat project regarding systematic RangeMax errors in fields with resolution ≠ 1. Our validation found ~60-70 fields where the RangeMax is significantly different from the maximum expressible value (accounting for 2 reserved values). Many of these appear to be fields with artificially limited ranges rather than protocol-based limitations.
+
+- Improve the test generation logic in `pgn_debug_test.go` to handle binary data length fields more generically. Instead of hardcoding the field name "NumberOfBitsInBinaryDataField", we should test if `field.Order == pgn.BitLengthField` (which would need to be added to the field descriptor during generation). This would make the test more robust and handle other PGNs that have similar binary data length fields with different names. 

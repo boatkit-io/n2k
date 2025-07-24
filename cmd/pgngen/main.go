@@ -1,6 +1,3 @@
-// Command pgngen generates the file pgninfo_generated.go.
-// The generated file provides go declarations and functions to assist conversion from
-// strongly typed go structures and NMEA 2000 frames.
 package main
 
 import (
@@ -261,20 +258,28 @@ func (conv *canboatConverter) write() {
 		panic(err)
 	} else {
 		t := template.Must(template.New("pgninfo").Funcs(sprig.TxtFuncMap()).Funcs(template.FuncMap{
-			"convertFieldType":     convertFieldType,
-			"getFieldSerializer":   getFieldSerializer,
-			"getFieldDeserializer": getFieldDeserializer,
-			"fieldByteCount":       fieldByteCount,
-			"concat":               func(strs ...string) string { return strings.Join(strs, "") },
-			"toNumber":             toNumber,
-			"isPointerFieldType":   isPointerFieldType,
-			"constSize":            constSize,
-			"subtract":             func(x, y uint8) uint8 { return x - y },
-			"matchManufacturer":    matchManufacturer,
-			"makeIndirectMap":      makeIndirectMap,
-			"derefInt":             func(ip *int) int { return *ip },
-			"isNil":                func(fp *int) bool { return fp == nil },
-			"contains":             func(in, substr string) bool { return strings.Contains(in, substr) },
+			"convertFieldType":      convertFieldType,
+			"getFieldSerializer":    getFieldSerializer,
+			"getFieldDeserializer":  getFieldDeserializer,
+			"fieldByteCount":        fieldByteCount,
+			"concat":                func(strs ...string) string { return strings.Join(strs, "") },
+			"toNumber":              toNumber,
+			"isPointerFieldType":    isPointerFieldType,
+			"constSize":             constSize,
+			"subtract":              func(x, y uint8) uint8 { return x - y },
+			"matchManufacturer":     matchManufacturer,
+			"makeIndirectMap":       makeIndirectMap,
+			"getReservedValueCount": getReservedValueCount,
+			"derefOrZero": func(v *uint64) uint64 {
+				if v == nil {
+					return 0
+				} else {
+					return *v
+				}
+			},
+			"derefInt": func(ip *int) int { return *ip },
+			"isNil":    func(fp *int) bool { return fp == nil },
+			"contains": func(in, substr string) bool { return strings.Contains(in, substr) },
 		}).Parse(pgninfoTemplate))
 
 		templateData := struct {
@@ -290,6 +295,45 @@ func (conv *canboatConverter) write() {
 		if err := f.Close(); err != nil {
 			log.WithError(err).Error("failed to close generated file")
 		}
+	}
+}
+
+// getReservedValueCount returns the number of reserved values at the top of a field's range.
+// It uses RangeMax from canboat.json if available, otherwise it uses the default logic.
+// Used by template.
+func getReservedValueCount(field PGNField) int {
+	switch field.FieldType {
+	case "NUMBER", "DATE", "TIME", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
+		// These can be considered numeric types that might have reserved values.
+	default:
+		return 0 // Other types like STRING, BINARY, LOOKUP don't use this mechanism.
+	}
+
+	if field.BitLength == 0 {
+		return 0
+	}
+
+	// Calculate the maximum expressible value for this field
+	maxExpressibleValue := (uint64(1) << field.BitLength) - 1
+	if field.Signed {
+		maxExpressibleValue = (uint64(1) << (field.BitLength - 1)) - 1
+	}
+
+	// If RangeMax is not set or equals maxExpressibleValue, return 0
+	if field.RangeMax <= 0 || uint64(field.RangeMax) == maxExpressibleValue {
+		return 0
+	}
+
+	// Calculate the difference between maxExpressibleValue and RangeMax
+	diff := int(maxExpressibleValue - uint64(field.RangeMax))
+
+	// Return 0, 1, or 2 based on the difference
+	if diff == 0 {
+		return 0
+	} else if diff == 1 {
+		return 1
+	} else {
+		return 2 // For diff >= 2
 	}
 }
 
@@ -473,6 +517,50 @@ func (builder *canboatConverter) validate() {
 	if specials > 0 {
 		panic("New special case(s) added to canboat.json. Resolve and update this check.")
 	}
+
+	// Validate fields with resolution != 1
+	builder.validateResolutionFields()
+}
+
+// validateResolutionFields checks if fields with resolution != 1 have correct RangeMax values
+func (builder *canboatConverter) validateResolutionFields() {
+	var issues []string
+
+	for _, pgn := range builder.PGNs {
+		for _, field := range pgn.Fields {
+			if field.Resolution != nil && *field.Resolution != 1.0 && *field.Resolution != 0 {
+				// Calculate maximum expressible raw value
+				// The 2 largest values are reserved (maxRawValue and maxRawValue-1)
+				maxRawValue := uint64(1)<<field.BitLength - 1
+				if field.Signed {
+					maxRawValue = uint64(1)<<(field.BitLength-1) - 1
+				}
+
+				// Account for 2 reserved values
+				maxExpressibleRaw := maxRawValue - 2
+
+				// Convert to scaled value
+				maxScaledValue := float64(maxExpressibleRaw)*float64(*field.Resolution) + float64(field.Offset)
+
+				// Compare with RangeMax using tolerance of ±1 resolution step
+				tolerance := float64(*field.Resolution)
+				if field.RangeMax > 0 && math.Abs(maxScaledValue-field.RangeMax) > tolerance {
+					issue := fmt.Sprintf("PGN %s field %s: max expressible %.6f != RangeMax %.6f (resolution %.6f, bitLength %d, signed %t)",
+						pgn.Id, field.Id, maxScaledValue, field.RangeMax, *field.Resolution, field.BitLength, field.Signed)
+					issues = append(issues, issue)
+				}
+			}
+		}
+	}
+
+	if len(issues) > 0 {
+		log.Infof("Found %d fields with resolution != 1 that have incorrect RangeMax values:", len(issues))
+		for _, issue := range issues {
+			log.Infof("  %s", issue)
+		}
+	} else {
+		log.Infof("All fields with resolution != 1 have correct RangeMax values")
+	}
 }
 
 // zeroBitOffsets sets the BitOffset fields of repeating fields
@@ -632,10 +720,11 @@ func convertFieldType(field PGNField) string {
 func getFieldSerializer(field PGNField, substruct string) string {
 	var outstr, pre, value, post string
 	var isUnit bool
+	reservedCount := getReservedValueCount(field)
 	if field.Unit != "" { // set conv to invoke conversion to default type
 		unitType, _ := getUnitType(field.Unit)
 		if isUnit = unitType != ""; isUnit {
-			return fmt.Sprintf("err = stream.writeUnit(p."+substruct+"%s, %d, %f, %d, %d, %t)", field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset, field.Signed)
+			return fmt.Sprintf("err = stream.writeUnit(p."+substruct+"%s, %d, %f, %d, %d, %t, 2)", field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset, field.Signed)
 		}
 	}
 	switch field.FieldType {
@@ -660,16 +749,16 @@ func getFieldSerializer(field PGNField, substruct string) string {
 					}
 					value += "p." + substruct + "%s"
 				}
-				post = ", %d, %g, %d, %d)"
-				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset)
+				post = ", %d, %g, %d, %d, %d)"
+				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset, reservedCount)
 			case field.BitLength > 32:
-				outstr = fmt.Sprintf("err = stream.writeInt64(p."+substruct+"%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+				outstr = fmt.Sprintf("err = stream.writeInt64(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
 			case field.BitLength > 16:
-				outstr = fmt.Sprintf("err = stream.writeInt32(p."+substruct+"%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+				outstr = fmt.Sprintf("err = stream.writeInt32(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
 			case field.BitLength > 8:
-				outstr = fmt.Sprintf("err = stream.writeInt16(p."+substruct+"%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+				outstr = fmt.Sprintf("err = stream.writeInt16(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
 			default:
-				outstr = fmt.Sprintf("err = stream.writeInt8(p."+substruct+"%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+				outstr = fmt.Sprintf("err = stream.writeInt8(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
 			}
 		} else {
 			switch {
@@ -685,16 +774,16 @@ func getFieldSerializer(field PGNField, substruct string) string {
 					}
 					value += "p." + substruct + "%s"
 				}
-				post = ", %d, %g, %d, %d)"
-				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset)
+				post = ", %d, %g, %d, %d, %d)"
+				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset, reservedCount)
 			case field.BitLength > 32:
-				outstr = fmt.Sprintf("err = stream.writeUint64(p."+substruct+"%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+				outstr = fmt.Sprintf("err = stream.writeUint64(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
 			case field.BitLength > 16:
-				outstr = fmt.Sprintf("err = stream.writeUint32(p."+substruct+"%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+				outstr = fmt.Sprintf("err = stream.writeUint32(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
 			case field.BitLength > 8:
-				outstr = fmt.Sprintf("err = stream.writeUint16(p."+substruct+"%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+				outstr = fmt.Sprintf("err = stream.writeUint16(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
 			default:
-				outstr = fmt.Sprintf("err = stream.writeUint8(p."+substruct+"%s, %d, %d)", field.Id, field.BitLength, field.BitOffset)
+				outstr = fmt.Sprintf("err = stream.writeUint8(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
 			}
 		}
 	case "FLOAT":
@@ -704,8 +793,8 @@ func getFieldSerializer(field PGNField, substruct string) string {
 			pre = "err = stream.writeFloat32("
 		}
 		value += "p." + substruct + "%s"
-		post = ", %d, %d)"
-		outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, field.BitOffset)
+		post = ", %d, %d, %d)"
+		outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, field.BitOffset, reservedCount)
 	case "VARIABLE":
 		outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
 	case "BINARY":
@@ -732,6 +821,8 @@ func getFieldSerializer(field PGNField, substruct string) string {
 // getFieldDeserializer returns a string that when evaluated returns its value from the input stream.
 // Used by template.
 func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
+	reservedCount := getReservedValueCount(field)
+
 	switch field.FieldType {
 	case "LOOKUP":
 		if field.BitLength > 32 {
@@ -754,36 +845,36 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName + "(v)"}
 	case "FIELD_INDEX":
-		return [2]string{fmt.Sprintf("stream.readUInt8(%d)", field.BitLength), ""}
+		return [2]string{fmt.Sprintf("stream.readUInt8(%d, %d)", field.BitLength, reservedCount), ""}
 	case "NUMBER", "TIME", "DATE", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
 		var outerVal string
 		if field.Signed {
 			switch {
 			case field.Resolution != nil && *field.Resolution <= resolution64BitCutoff:
-				outerVal = fmt.Sprintf("stream.readSignedResolution64Override(%d, %g)", field.BitLength, *field.Resolution)
+				outerVal = fmt.Sprintf("stream.readSignedResolution64Override(%d, %g, %d)", field.BitLength, *field.Resolution, reservedCount)
 			case field.Resolution != nil && *field.Resolution != 1.0, field.Offset != 0:
-				outerVal = fmt.Sprintf("stream.readSignedResolution(%d, %g, %d)", field.BitLength, *field.Resolution, field.Offset)
+				outerVal = fmt.Sprintf("stream.readSignedResolution(%d, %g, %d, %d)", field.BitLength, *field.Resolution, field.Offset, reservedCount)
 			case field.BitLength > 32:
-				outerVal = fmt.Sprintf("stream.readInt64(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt64(%d, %d)", field.BitLength, reservedCount)
 			case field.BitLength > 16:
-				outerVal = fmt.Sprintf("stream.readInt32(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt32(%d, %d)", field.BitLength, reservedCount)
 			case field.BitLength > 8:
-				outerVal = fmt.Sprintf("stream.readInt16(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt16(%d, %d)", field.BitLength, reservedCount)
 			default:
-				outerVal = fmt.Sprintf("stream.readInt8(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt8(%d, %d)", field.BitLength, reservedCount)
 			}
 		} else {
 			switch {
 			case field.Resolution != nil && *field.Resolution != 1.0:
-				outerVal = fmt.Sprintf("stream.readUnsignedResolution(%d, %g, %d)", field.BitLength, *field.Resolution, field.Offset)
+				outerVal = fmt.Sprintf("stream.readUnsignedResolution(%d, %g, %d, %d)", field.BitLength, *field.Resolution, field.Offset, reservedCount)
 			case field.BitLength > 32:
-				outerVal = fmt.Sprintf("stream.readUInt64(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt64(%d, %d)", field.BitLength, reservedCount)
 			case field.BitLength > 16:
-				outerVal = fmt.Sprintf("stream.readUInt32(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt32(%d, %d)", field.BitLength, reservedCount)
 			case field.BitLength > 8:
-				outerVal = fmt.Sprintf("stream.readUInt16(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt16(%d, %d)", field.BitLength, reservedCount)
 			default:
-				outerVal = fmt.Sprintf("stream.readUInt8(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt8(%d, %d)", field.BitLength, reservedCount)
 			}
 		}
 
@@ -906,7 +997,7 @@ func loadCachedWebContent(name, url string) ([]byte, error) {
 		panic(err)
 	}
 	defer func() {
-		if err := f.Close(); err != nil {
+		if err = f.Close(); err != nil {
 			log.WithError(err).Warnf("failed to close cache file %s", cachedName)
 		}
 	}()
@@ -959,24 +1050,24 @@ func generateConstName(enumName, text string, value int) string {
 		}
 	}
 
-	var candidateName string
 	words := strings.Fields(text)
+	caser := cases.Title(language.English)
+	camelCase := caser.String(text)
 
-	// Use heuristic for 1-2 word names to generate a readable identifier
-	if len(words) > 0 && len(words) <= 2 {
-		caser := cases.Title(language.English)
-		camelCase := caser.String(text)
-
-		var builder strings.Builder
-		for _, r := range camelCase {
-			if unicode.IsLetter(r) || unicode.IsDigit(r) {
-				builder.WriteRune(r)
-			}
+	var builder strings.Builder
+	for _, r := range camelCase {
+		if unicode.IsLetter(r) || unicode.IsDigit(r) {
+			builder.WriteRune(r)
 		}
-		candidateName = builder.String()
+	}
+	candidateName := builder.String()
+
+	// If there are more than 3 words, truncate at 30 characters
+	if len(words) > 3 && len(candidateName) > 30 {
+		candidateName = candidateName[:30]
 	}
 
-	// If the resulting name is empty, or for longer text, use the fallback.
+	// If the resulting name is empty, use the fallback.
 	if len(candidateName) == 0 {
 		return fmt.Sprintf("%s%d", enumName, value)
 	}

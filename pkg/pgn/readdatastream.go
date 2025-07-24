@@ -31,6 +31,7 @@ func (s *DataStream) skipBits(bitLength uint16) error {
 }
 
 // readLookupField method returns the specified length (max 64) data.
+// Lookups don't have reserved values - all bit patterns are either defined enum values or unknown enum values.
 func (s *DataStream) readLookupField(bitLength uint16) (uint64, error) {
 	if bitLength > 64 {
 		return 0, fmt.Errorf("requested %d bitLength in ReadLookupField", bitLength)
@@ -44,22 +45,27 @@ func (s *DataStream) readLookupField(bitLength uint16) (uint64, error) {
 }
 
 // readSignedResolution method reads the specified length of data, scales it, and returns as a *float32.
-func (s *DataStream) readSignedResolution(length uint16, resolution float32, offset int32) (*float32, error) {
+func (s *DataStream) readSignedResolution(length uint16, resolution float32, offset int32, reservedValuesCount int) (*float32, error) {
 	// For 32-bit fields, handle as IEEE 754 float if no resolution/offset
 	if length == 32 && resolution == 1 && offset == 0 {
 		val, err := s.getNumberRaw(length)
 		if err != nil {
 			return nil, err
 		}
-		if val == missingValue(length, true) {
-			return nil, nil
+
+		// Only check for missing value if there are reserved values
+		if reservedValuesCount > 0 {
+			if val == missingValue(length, true, reservedValuesCount) {
+				return nil, nil
+			}
 		}
+
 		result := math.Float32frombits(uint32(val))
 		return &result, nil
 	}
 
 	// Otherwise handle as scaled integer
-	val, err := s.getSignedNullableNumber(length)
+	val, err := s.getSignedNullableNumber(length, reservedValuesCount)
 	if err != nil {
 		return nil, err
 	}
@@ -81,12 +87,12 @@ func (s *DataStream) readSignedResolution(length uint16, resolution float32, off
 }
 
 // readSignedResolution64Override method reads the specified length of data, scales it, and returns as a *float64.
-func (s *DataStream) readSignedResolution64Override(bitLength uint16, multiplyBy float64) (*float64, error) {
+func (s *DataStream) readSignedResolution64Override(bitLength uint16, multiplyBy float64, reservedValuesCount int) (*float64, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadSignedResolution", bitLength)
 	}
 
-	v, err := s.getSignedNullableNumber(bitLength)
+	v, err := s.getSignedNullableNumber(bitLength, reservedValuesCount)
 	if err != nil {
 		return nil, err
 	}
@@ -98,25 +104,39 @@ func (s *DataStream) readSignedResolution64Override(bitLength uint16, multiplyBy
 }
 
 // readUnsignedResolution method reads the specified data as an unsigned number and scales it.
-func (s *DataStream) readUnsignedResolution(bitLength uint16, multiplyBy float32, offset int32) (*float32, error) {
+func (s *DataStream) readUnsignedResolution(bitLength uint16, multiplyBy float32, offset int32, reservedValuesCount int) (*float32, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUnsignedResolution", bitLength)
 	}
 
-	v, err := s.getUnsignedNullableNumber(bitLength)
-	if err != nil {
-		return nil, err
-	}
-	if v == nil {
-		return nil, nil
+	var rawValue uint64
+	var err error
+
+	if reservedValuesCount == 0 {
+		// No reserved values - all bit patterns are valid, never return nil
+		rawValue, err = s.getNumberRaw(bitLength)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		// Has reserved values - use nullable logic
+		v, err := s.getUnsignedNullableNumber(bitLength, reservedValuesCount)
+		if err != nil {
+			return nil, err
+		}
+		if v == nil {
+			return nil, nil
+		}
+		rawValue = *v
 	}
 
 	// Use float64 for intermediate calculations to maintain precision
-	val := float64(*v)
+	val := float64(rawValue)
 	val += float64(offset)
 	if multiplyBy != 0 && multiplyBy != 1 && multiplyBy != 1.0 {
 		val = val * float64(multiplyBy)
-		//		val = roundFloat(val, calcPrecision(float64(multiplyBy)))
+		// Round to appropriate precision based on the resolution
+		// val = roundFloat(val, calcPrecision(float64(multiplyBy)))
 	}
 
 	result := float32(val)
@@ -124,143 +144,251 @@ func (s *DataStream) readUnsignedResolution(bitLength uint16, multiplyBy float32
 }
 
 // readUInt64 method reads and returns *uint64
-func (s *DataStream) readUInt64(bitLength uint16) (*uint64, error) {
+func (s *DataStream) readUInt64(bitLength uint16, reservedValuesCount int) (*uint64, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt64", bitLength)
 	}
 
-	v, err := s.getUnsignedNullableNumber(bitLength)
-	if err != nil {
-		return nil, err
+	if reservedValuesCount == 0 {
+		// No reserved values - all bit patterns are valid, never return nil
+		v, err := s.getNumberRaw(bitLength)
+		if err != nil {
+			return nil, err
+		}
+		return &v, nil
+	} else {
+		// Has reserved values - use nullable logic
+		v, err := s.getUnsignedNullableNumber(bitLength, reservedValuesCount)
+		if err != nil {
+			return nil, err
+		}
+		return v, nil
 	}
-	if v == nil {
-		return nil, nil
-	}
-	return v, nil
 }
 
 // readUInt32 method reads and returns a *uint32
-func (s *DataStream) readUInt32(bitLength uint16) (*uint32, error) {
+func (s *DataStream) readUInt32(bitLength uint16, reservedValuesCount int) (*uint32, error) {
 	if bitLength > 32 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt32", bitLength)
 	}
 
-	v, err := s.getUnsignedNullableNumber(bitLength)
-	if err != nil {
-		return nil, err
+	if reservedValuesCount == 0 {
+		// No reserved values - all bit patterns are valid, never return nil
+		v, err := s.getNumberRaw(bitLength)
+		if err != nil {
+			return nil, err
+		}
+		result := uint32(v)
+		return &result, nil
+	} else {
+		// Has reserved values - use nullable logic
+		v, err := s.getUnsignedNullableNumber(bitLength, reservedValuesCount)
+		if err != nil {
+			return nil, err
+		}
+		if v == nil {
+			return nil, nil
+		}
+		result := uint32(*v)
+		return &result, nil
 	}
-	if v == nil {
-		return nil, nil
-	}
-	vo := uint32(*v)
-	return &vo, nil
 }
 
 // readUInt16 method reads and returns a *uint16
-func (s *DataStream) readUInt16(bitLength uint16) (*uint16, error) {
+func (s *DataStream) readUInt16(bitLength uint16, reservedValuesCount int) (*uint16, error) {
 	if bitLength > 16 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt16", bitLength)
 	}
 
-	v, err := s.getUnsignedNullableNumber(bitLength)
-	if err != nil {
-		return nil, err
+	if reservedValuesCount == 0 {
+		// No reserved values - all bit patterns are valid, never return nil
+		v, err := s.getNumberRaw(bitLength)
+		if err != nil {
+			return nil, err
+		}
+		result := uint16(v)
+		return &result, nil
+	} else {
+		// Has reserved values - use nullable logic
+		v, err := s.getUnsignedNullableNumber(bitLength, reservedValuesCount)
+		if err != nil {
+			return nil, err
+		}
+		if v == nil {
+			return nil, nil
+		}
+		result := uint16(*v)
+		return &result, nil
 	}
-	if v == nil {
-		return nil, nil
-	}
-	vo := uint16(*v)
-	return &vo, nil
 }
 
 // readUInt8 method reads and returns a *uint8
-func (s *DataStream) readUInt8(bitLength uint16) (*uint8, error) {
+func (s *DataStream) readUInt8(bitLength uint16, reservedValuesCount int) (*uint8, error) {
 	if bitLength > 8 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt8", bitLength)
 	}
 
-	v, err := s.getUnsignedNullableNumber(bitLength)
-	if err != nil {
-		return nil, err
+	if reservedValuesCount == 0 {
+		// No reserved values - all bit patterns are valid, never return nil
+		v, err := s.getNumberRaw(bitLength)
+		if err != nil {
+			return nil, err
+		}
+		result := uint8(v)
+		return &result, nil
+	} else {
+		// Has reserved values - use nullable logic
+		v, err := s.getUnsignedNullableNumber(bitLength, reservedValuesCount)
+		if err != nil {
+			return nil, err
+		}
+		if v == nil {
+			return nil, nil
+		}
+		result := uint8(*v)
+		return &result, nil
 	}
-	if v == nil {
-		return nil, nil
-	}
-	vo := uint8(*v)
-	return &vo, nil
 }
 
 // readInt64 method reads and returns a *int64
-func (s *DataStream) readInt64(bitLength uint16) (*int64, error) {
+func (s *DataStream) readInt64(bitLength uint16, reservedValuesCount int) (*int64, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt64", bitLength)
 	}
 
-	v, err := s.getSignedNullableNumber(bitLength)
-	if err != nil {
-		return nil, err
+	if reservedValuesCount == 0 {
+		// No reserved values - all bit patterns are valid, never return nil
+		v, err := s.getNumberRaw(bitLength)
+		if err != nil {
+			return nil, err
+		}
+		// Handle signed conversion manually
+		if bitLength < 64 && (v&(1<<(bitLength-1))) != 0 {
+			// Negative number - sign extend
+			mask := uint64(0xFFFFFFFFFFFFFFFF) << bitLength
+			v |= mask
+		}
+		result := int64(v)
+		return &result, nil
+	} else {
+		// Has reserved values - use nullable logic
+		v, err := s.getSignedNullableNumber(bitLength, reservedValuesCount)
+		if err != nil {
+			return nil, err
+		}
+		if v == nil {
+			return nil, nil
+		}
+		result := int64(*v)
+		return &result, nil
 	}
-	if v == nil {
-		return nil, nil
-	}
-	vo := int64(*v)
-	return &vo, nil
 }
 
 // readInt32 method reads and returns a *int32
-func (s *DataStream) readInt32(bitLength uint16) (*int32, error) {
+func (s *DataStream) readInt32(bitLength uint16, reservedValuesCount int) (*int32, error) {
 	if bitLength > 32 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt32", bitLength)
 	}
 
-	v, err := s.getSignedNullableNumber(bitLength)
-	if err != nil {
-		return nil, err
+	if reservedValuesCount == 0 {
+		// No reserved values - all bit patterns are valid, never return nil
+		v, err := s.getNumberRaw(bitLength)
+		if err != nil {
+			return nil, err
+		}
+		// Handle signed conversion manually
+		if bitLength < 32 && (v&(1<<(bitLength-1))) != 0 {
+			// Negative number - sign extend
+			mask := uint64(0xFFFFFFFFFFFFFFFF) << bitLength
+			v |= mask
+		}
+		result := int32(v)
+		return &result, nil
+	} else {
+		// Has reserved values - use nullable logic
+		v, err := s.getSignedNullableNumber(bitLength, reservedValuesCount)
+		if err != nil {
+			return nil, err
+		}
+		if v == nil {
+			return nil, nil
+		}
+		result := int32(*v)
+		return &result, nil
 	}
-	if v == nil {
-		return nil, nil
-	}
-	vo := int32(*v)
-	return &vo, nil
 }
 
 // readInt16 method reads and returns a *int16
-func (s *DataStream) readInt16(bitLength uint16) (*int16, error) {
+func (s *DataStream) readInt16(bitLength uint16, reservedValuesCount int) (*int16, error) {
 	if bitLength > 16 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt16", bitLength)
 	}
 
-	v, err := s.getSignedNullableNumber(bitLength)
-	if err != nil {
-		return nil, err
+	if reservedValuesCount == 0 {
+		// No reserved values - all bit patterns are valid, never return nil
+		v, err := s.getNumberRaw(bitLength)
+		if err != nil {
+			return nil, err
+		}
+		// Handle signed conversion manually
+		if bitLength < 16 && (v&(1<<(bitLength-1))) != 0 {
+			// Negative number - sign extend
+			mask := uint64(0xFFFFFFFFFFFFFFFF) << bitLength
+			v |= mask
+		}
+		result := int16(v)
+		return &result, nil
+	} else {
+		// Has reserved values - use nullable logic
+		v, err := s.getSignedNullableNumber(bitLength, reservedValuesCount)
+		if err != nil {
+			return nil, err
+		}
+		if v == nil {
+			return nil, nil
+		}
+		result := int16(*v)
+		return &result, nil
 	}
-	if v == nil {
-		return nil, nil
-	}
-	vo := int16(*v)
-	return &vo, nil
 }
 
 // readInt8 method reads and returns a *int8
-func (s *DataStream) readInt8(bitLength uint16) (*int8, error) {
+func (s *DataStream) readInt8(bitLength uint16, reservedValuesCount int) (*int8, error) {
 	if bitLength > 8 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt8", bitLength)
 	}
 
-	v, err := s.getSignedNullableNumber(bitLength)
-	if err != nil {
-		return nil, err
+	if reservedValuesCount == 0 {
+		// No reserved values - all bit patterns are valid, never return nil
+		v, err := s.getNumberRaw(bitLength)
+		if err != nil {
+			return nil, err
+		}
+		// Handle signed conversion manually
+		if bitLength < 8 && (v&(1<<(bitLength-1))) != 0 {
+			// Negative number - sign extend
+			mask := uint64(0xFFFFFFFFFFFFFFFF) << bitLength
+			v |= mask
+		}
+		result := int8(v)
+		return &result, nil
+	} else {
+		// Has reserved values - use nullable logic
+		v, err := s.getSignedNullableNumber(bitLength, reservedValuesCount)
+		if err != nil {
+			return nil, err
+		}
+		if v == nil {
+			return nil, nil
+		}
+		result := int8(*v)
+		return &result, nil
 	}
-	if v == nil {
-		return nil, nil
-	}
-	vo := int8(*v)
-	return &vo, nil
 }
 
 // readFloat32 method reads and returns a *float32
 func (s *DataStream) readFloat32() (*float32, error) {
-	return s.readSignedResolution(32, 1, 0)
+	return s.readSignedResolution(32, 1, 0, 0)
 }
 
 // readBinaryData method reads the specified length of data and returns it in a uint8 slice
@@ -456,7 +584,7 @@ func (s *DataStream) getNumberRaw(bitLength uint16) (uint64, error) {
 // we then calculate the maximum positive value the length allows (shifted down by 1 bit if signed).
 // we decrease that by 2 if > 4 length, and 1 for length 2 and 3
 // if the received value is greater than that value we return nil.
-func (s *DataStream) getNullableNumberRaw(bitLength uint16, signed bool) (*uint64, error) {
+func (s *DataStream) getNullableNumberRaw(bitLength uint16, signed bool, reservedValuesCount int) (*uint64, error) {
 	v, err := s.getNumberRaw(bitLength)
 	if err != nil {
 		return nil, err
@@ -469,7 +597,7 @@ func (s *DataStream) getNullableNumberRaw(bitLength uint16, signed bool) (*uint6
 		}
 	}
 
-	maxValue := calcMaxPositiveValue(bitLength, signed)
+	maxValue := calcMaxPositiveValue(bitLength, signed, reservedValuesCount)
 	if v > maxValue { // either missing or invalid. We'll return nil either way
 		return nil, nil
 	}
@@ -478,13 +606,13 @@ func (s *DataStream) getNullableNumberRaw(bitLength uint16, signed bool) (*uint6
 }
 
 // getUnsignedNullableNumber method returns a *uint64 or nil if null
-func (s *DataStream) getUnsignedNullableNumber(bitLength uint16) (*uint64, error) {
-	return s.getNullableNumberRaw(bitLength, false)
+func (s *DataStream) getUnsignedNullableNumber(bitLength uint16, reservedValuesCount int) (*uint64, error) {
+	return s.getNullableNumberRaw(bitLength, false, reservedValuesCount)
 }
 
 // getSignedNullableNumber method returns a *int64 or nil if null
-func (s *DataStream) getSignedNullableNumber(bitLength uint16) (*int64, error) {
-	v, err := s.getNullableNumberRaw(bitLength, true)
+func (s *DataStream) getSignedNullableNumber(bitLength uint16, reservedValuesCount int) (*int64, error) {
+	v, err := s.getNullableNumberRaw(bitLength, true, reservedValuesCount)
 	if err != nil {
 		return nil, err
 	}

@@ -64,7 +64,7 @@ func TestComputeName(t *testing.T) {
 		DeviceInstanceLower:     0,
 		DeviceInstanceUpper:     0,
 		SystemInstance:          0,
-		IndustryGroup:           pgn.Marine,
+		IndustryGroup:           pgn.MarineIndustry,
 		ArbitraryAddressCapable: true,
 	}
 
@@ -79,13 +79,13 @@ func TestComputeName(t *testing.T) {
 		mutator       func(d *DeviceInfo)
 		expectedError string
 	}{
-		{"UniqueNumberTooLarge", func(d *DeviceInfo) { d.UniqueNumber = 0x200000 }, "exceeds 21-bit limit"},
-		{"ManufacturerCodeTooLarge", func(d *DeviceInfo) { d.ManufacturerCode = 0x800 }, "exceeds 11-bit limit"},
-		{"DeviceInstanceLowerTooLarge", func(d *DeviceInfo) { d.DeviceInstanceLower = 8 }, "exceeds 3-bit limit"},
-		{"DeviceInstanceUpperTooLarge", func(d *DeviceInfo) { d.DeviceInstanceUpper = 32 }, "exceeds 5-bit limit"},
-		{"DeviceClassTooLarge", func(d *DeviceInfo) { d.DeviceClass = 128 }, "exceeds 7-bit limit"},
-		{"SystemInstanceTooLarge", func(d *DeviceInfo) { d.SystemInstance = 16 }, "exceeds 4-bit limit"},
-		{"IndustryGroupTooLarge", func(d *DeviceInfo) { d.IndustryGroup = 8 }, "exceeds 3-bit limit"},
+		{"UniqueNumberTooLarge", func(d *DeviceInfo) { d.UniqueNumber = 0x200000 }, "unique number 2097152 is too large"},
+		{"ManufacturerCodeTooLarge", func(d *DeviceInfo) { d.ManufacturerCode = 0x800 }, "manufacturer code 2048 is too large"},
+		{"DeviceInstanceLowerTooLarge", func(d *DeviceInfo) { d.DeviceInstanceLower = 8 }, "device instance lower 8 is too large"},
+		{"DeviceInstanceUpperTooLarge", func(d *DeviceInfo) { d.DeviceInstanceUpper = 32 }, "device instance upper 32 is too large"},
+		{"DeviceClassTooLarge", func(d *DeviceInfo) { d.DeviceClass = 128 }, "device class 128 is too large"},
+		{"SystemInstanceTooLarge", func(d *DeviceInfo) { d.SystemInstance = 16 }, "system instance 16 is too large"},
+		{"IndustryGroupTooLarge", func(d *DeviceInfo) { d.IndustryGroup = 8 }, "industry group 8 is too large"},
 	}
 
 	for _, tc := range testCases {
@@ -147,7 +147,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		productInfo := ProductInfo{ProductCode: 1234, ModelID: "Test"}
 		n.SetProductInfo(productInfo)
 
-		requestPgn := &pgn.IsoRequest{
+		requestPgn := pgn.IsoRequest{
 			Info: pgn.MessageInfo{SourceId: 10},
 			Pgn:  uint32Ptr(126996),
 		}

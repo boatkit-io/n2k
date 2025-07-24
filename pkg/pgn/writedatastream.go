@@ -105,106 +105,118 @@ func (s *DataStream) writeBinary(value []uint8, bitLength uint16, bitOffset uint
 }
 
 // writeInt8 writes the specified length of the signed value at the specified offset
-func (s *DataStream) writeInt8(value *int8, length uint16, bitOffset uint16) error {
+func (s *DataStream) writeInt8(value *int8, length uint16, bitOffset uint16, reservedValuesCount int) error {
 	var value64 *int64
 	if value != nil {
 		value64 = new(int64)
 		*value64 = int64(*value)
 	}
-	return s.writeSignedNumber(value64, length, bitOffset)
+	return s.writeSignedNumber(value64, length, bitOffset, reservedValuesCount)
 }
 
 // writeInt16 writes the specified length of the signed value at the specified offset
-func (s *DataStream) writeInt16(value *int16, length uint16, bitOffset uint16) error {
+func (s *DataStream) writeInt16(value *int16, length uint16, bitOffset uint16, reservedValuesCount int) error {
 	var value64 *int64
 	if value != nil {
 		value64 = new(int64)
 		*value64 = int64(*value)
 	}
-	return s.writeSignedNumber(value64, length, bitOffset)
+	return s.writeSignedNumber(value64, length, bitOffset, reservedValuesCount)
 }
 
 // writeInt32 writes the specified length of the signed value at the specified offset
-func (s *DataStream) writeInt32(value *int32, length uint16, bitOffset uint16) error {
+func (s *DataStream) writeInt32(value *int32, length uint16, bitOffset uint16, reservedValuesCount int) error {
 	var value64 *int64
 	if value != nil {
 		value64 = new(int64)
 		*value64 = int64(*value)
 	}
-	return s.writeSignedNumber(value64, length, bitOffset)
+	return s.writeSignedNumber(value64, length, bitOffset, reservedValuesCount)
 }
 
 // writeInt64 writes the specified length of the signed value at the specified offset
 //
 //lint:ignore U1000 // future
-func (s *DataStream) writeInt64(value *int64, length uint16, bitOffset uint16) error {
+func (s *DataStream) writeInt64(value *int64, length uint16, bitOffset uint16, reservedValuesCount int) error {
 
-	return s.writeSignedNumber(value, length, bitOffset)
+	return s.writeSignedNumber(value, length, bitOffset, reservedValuesCount)
 }
 
 // writeUint8 writes the specified length of the unsigned value at the specified offset
-func (s *DataStream) writeUint8(value *uint8, length uint16, bitOffset uint16) error {
+func (s *DataStream) writeUint8(value *uint8, length uint16, bitOffset uint16, reservedValuesCount int) error {
 	var value64 *uint64
 	if value != nil {
 		value64 = new(uint64)
 		*value64 = uint64(*value)
 	}
-	return s.writeUnsignedNumber(value64, length, bitOffset)
+	return s.writeUnsignedNumber(value64, length, bitOffset, reservedValuesCount)
 }
 
 // writeUint16 writes the specified length of the unsigned value at the specified offset
-func (s *DataStream) writeUint16(value *uint16, length uint16, bitOffset uint16) error {
+func (s *DataStream) writeUint16(value *uint16, length uint16, bitOffset uint16, reservedValuesCount int) error {
 	var value64 *uint64
 	if value != nil {
 		value64 = new(uint64)
 		*value64 = uint64(*value)
 	}
-	return s.writeUnsignedNumber(value64, length, bitOffset)
+	return s.writeUnsignedNumber(value64, length, bitOffset, reservedValuesCount)
 }
 
 // writeUint32 writes the specified length of the unsigned value at the specified offset
-func (s *DataStream) writeUint32(value *uint32, length uint16, bitOffset uint16) error {
+func (s *DataStream) writeUint32(value *uint32, length uint16, bitOffset uint16, reservedValuesCount int) error {
 	var value64 *uint64
 	if value != nil {
 		value64 = new(uint64)
 		*value64 = uint64(*value)
 	}
-	return s.writeUnsignedNumber(value64, length, bitOffset)
+	return s.writeUnsignedNumber(value64, length, bitOffset, reservedValuesCount)
 }
 
 // writeUint64 writes the specified length of the unsigned value at the specified offset
-func (s *DataStream) writeUint64(value *uint64, length uint16, bitOffset uint16) error {
-	return s.writeUnsignedNumber(value, length, bitOffset)
+func (s *DataStream) writeUint64(value *uint64, length uint16, bitOffset uint16, reservedValuesCount int) error {
+	return s.writeUnsignedNumber(value, length, bitOffset, reservedValuesCount)
 }
 
 // writeUnsignedNumber writes the specified length of the unsigned value at the specified offset
-func (s *DataStream) writeUnsignedNumber(value *uint64, length uint16, bitOffset uint16) error {
+func (s *DataStream) writeUnsignedNumber(value *uint64, length uint16, bitOffset uint16, reservedValuesCount int) error {
 	var outVal uint64
 	if value == nil {
-		outVal = missingValue(length, false)
+		if reservedValuesCount == 0 {
+			return fmt.Errorf("cannot write nil value to field with no reserved values")
+		}
+		outVal = missingValue(length, false, reservedValuesCount)
 	} else {
 		outVal = *value
-		maxVal := calcMaxPositiveValue(length, false)
-		if outVal > maxVal {
-			//			return fmt.Errorf("attempt to write unsigned value greater than max value")
-			outVal = maxVal
+		if reservedValuesCount > 0 {
+			maxVal := calcMaxPositiveValue(length, false, reservedValuesCount)
+			if outVal > maxVal {
+				//			return fmt.Errorf("attempt to write unsigned value greater than max value")
+				outVal = maxVal
+			}
 		}
+		// If reservedValuesCount == 0, no validation needed - all values are valid
 	}
 	return s.putNumberRaw(outVal, length, bitOffset)
 }
 
 // writeSignedNumber writes the specified length of the signed value at the specified offset
-func (s *DataStream) writeSignedNumber(value *int64, length uint16, bitOffset uint16) error {
+func (s *DataStream) writeSignedNumber(value *int64, length uint16, bitOffset uint16, reservedValuesCount int) error {
 	var outVal uint64
 	if value == nil {
-		outVal = missingValue(length, true)
+		if reservedValuesCount == 0 {
+			return fmt.Errorf("cannot write nil value to field with no reserved values")
+		}
+		outVal = missingValue(length, true, reservedValuesCount)
 	} else {
 		outVal = uint64(*value)
-		maxVal := calcMaxPositiveValue(length, true)
-		if *value > int64(maxVal) {
-			//			return fmt.Errorf("attempt to write signed value greater than max value")
-			outVal = maxVal
+		if reservedValuesCount > 0 {
+			maxVal := calcMaxPositiveValue(length, true, reservedValuesCount)
+			if *value > int64(maxVal) {
+				//			return fmt.Errorf("attempt to write signed value greater than max value")
+				outVal = maxVal
+			}
 		}
+		// If reservedValuesCount == 0, no validation needed - all values are valid
 	}
 	return s.putNumberRaw(outVal, length, bitOffset)
 }
@@ -225,12 +237,12 @@ func checkNilInterface(i interface{}) bool {
 
 // writeUnit writes units package values
 // value must be converted to the canboat unit before calling
-func (s *DataStream) writeUnit(value any, length uint16, resolution float32, bitOffset uint16, offset int64, signed bool) error {
+func (s *DataStream) writeUnit(value any, length uint16, resolution float32, bitOffset uint16, offset int64, signed bool, reservedValuesCount int) error {
 	if checkNilInterface(value) {
 		if signed {
-			return s.writeSignedResolution32(nil, length, resolution, bitOffset, offset)
+			return s.writeSignedResolution32(nil, length, resolution, bitOffset, offset, reservedValuesCount)
 		}
-		return s.writeUnsignedResolution32(nil, length, resolution, bitOffset, offset)
+		return s.writeUnsignedResolution32(nil, length, resolution, bitOffset, offset, reservedValuesCount)
 	}
 
 	// Convert to canboat's default unit based on the type
@@ -254,15 +266,15 @@ func (s *DataStream) writeUnit(value any, length uint16, resolution float32, bit
 	}
 
 	if signed {
-		return s.writeSignedResolution32(&canboatValue, length, resolution, bitOffset, offset)
+		return s.writeSignedResolution32(&canboatValue, length, resolution, bitOffset, offset, reservedValuesCount)
 	}
-	return s.writeUnsignedResolution32(&canboatValue, length, resolution, bitOffset, offset)
+	return s.writeUnsignedResolution32(&canboatValue, length, resolution, bitOffset, offset, reservedValuesCount)
 }
 
 // writeFloat32 writes the specified length of value at the specified offset
-func (s *DataStream) writeFloat32(value *float32, bitLength uint16, bitOffset uint16) error {
+func (s *DataStream) writeFloat32(value *float32, bitLength uint16, bitOffset uint16, reservedValuesCount int) error {
 
-	return s.writeSignedResolution32(value, bitLength, 1, bitOffset, 0)
+	return s.writeSignedResolution32(value, bitLength, 1, bitOffset, 0, reservedValuesCount)
 }
 
 // writeFloat64 writes the specified length of value at the specified offset
@@ -272,19 +284,22 @@ func (s *DataStream) writeFloat32(value *float32, bitLength uint16, bitOffset ui
 } */
 
 // writeSignedResolution32 backs out the resolution and offset and writes the resulting signed value
-func (s *DataStream) writeSignedResolution32(value *float32, length uint16, resolution float32, bitOffset uint16, offset int64) error {
+func (s *DataStream) writeSignedResolution32(value *float32, length uint16, resolution float32, bitOffset uint16, offset int64, reservedValuesCount int) error {
 	var value64 *float64
 	if value != nil {
 		value64 = new(float64)
 		*value64 = float64(*value)
 	}
-	return s.writeSignedResolution64(value64, length, float64(resolution), bitOffset, offset)
+	return s.writeSignedResolution64(value64, length, float64(resolution), bitOffset, offset, reservedValuesCount)
 }
 
 // writeSignedResolution64 backs out the resolution and offset and writes the resulting signed value
-func (s *DataStream) writeSignedResolution64(value *float64, length uint16, resolution float64, bitOffset uint16, offset int64) error {
+func (s *DataStream) writeSignedResolution64(value *float64, length uint16, resolution float64, bitOffset uint16, offset int64, reservedValuesCount int) error {
 	if value == nil {
-		return s.putNumberRaw(missingValue(length, true), length, bitOffset)
+		if reservedValuesCount == 0 {
+			return fmt.Errorf("cannot write nil value to field with no reserved values")
+		}
+		return s.putNumberRaw(missingValue(length, true, reservedValuesCount), length, bitOffset)
 	}
 
 	// For 32-bit fields, preserve IEEE 754 float bit pattern if no resolution/offset
@@ -325,21 +340,24 @@ func (s *DataStream) writeSignedResolution64(value *float64, length uint16, reso
 }
 
 // writeUnsignedResolution32 backs out the resolution and offset and writes the resulting unsigned value
-func (s *DataStream) writeUnsignedResolution32(value *float32, length uint16, resolution float32, bitOffset uint16, offset int64) error {
+func (s *DataStream) writeUnsignedResolution32(value *float32, length uint16, resolution float32, bitOffset uint16, offset int64, reservedValuesCount int) error {
 	var value64 *float64
 	if value != nil {
 		value64 = new(float64)
 		*value64 = float64(*value)
 	}
-	return s.writeUnsignedResolution64(value64, length, float64(resolution), bitOffset, offset)
+	return s.writeUnsignedResolution64(value64, length, float64(resolution), bitOffset, offset, reservedValuesCount)
 }
 
 // writeUnsignedResolution64 backs out the resolution and offset and writes the resulting unsigned value
-func (s *DataStream) writeUnsignedResolution64(value *float64, length uint16, resolution float64, bitOffset uint16, offset int64) error {
+func (s *DataStream) writeUnsignedResolution64(value *float64, length uint16, resolution float64, bitOffset uint16, offset int64, reservedValuesCount int) error {
 	var outVal uint64
 	var val float64
 	if value == nil {
-		outVal = missingValue(length, false)
+		if reservedValuesCount == 0 {
+			return fmt.Errorf("cannot write nil value to field with no reserved values")
+		}
+		outVal = missingValue(length, false, reservedValuesCount)
 	} else {
 		val = *value
 		if resolution != 0 && resolution != 1 && resolution != 1.0 {
@@ -348,10 +366,13 @@ func (s *DataStream) writeUnsignedResolution64(value *float64, length uint16, re
 		}
 		val -= float64(offset)
 		outVal = uint64(val)
-		maxValid := calcMaxPositiveValue(length, false)
-		if outVal > maxValid {
-			outVal = maxValid // pin at maximum value
+		if reservedValuesCount > 0 {
+			maxValid := calcMaxPositiveValue(length, false, reservedValuesCount)
+			if outVal > maxValid {
+				outVal = maxValid // pin at maximum value
+			}
 		}
+		// If reservedValuesCount == 0, no validation needed - all values are valid
 	}
 	return s.putNumberRaw(outVal, length, bitOffset)
 }

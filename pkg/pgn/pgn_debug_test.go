@@ -15,7 +15,7 @@ import (
 
 // calcMax calculates the actual maximum value for a field
 func calcMax(field *FieldDescriptor) uint64 {
-	val := calcMaxPositiveValue(field.BitLength, field.Signed) + uint64(field.Offset)
+	val := calcMaxPositiveValue(field.BitLength, field.Signed, field.ReservedValuesCount) + uint64(field.Offset)
 	if field.Resolution != 0 {
 		val = val * uint64(field.Resolution)
 	}
@@ -24,6 +24,7 @@ func calcMax(field *FieldDescriptor) uint64 {
 
 // calcNumericValue is a generic helper function that handles numeric value calculation
 func calcNumericValue[T constraints.Integer | constraints.Float](field *FieldDescriptor, testType int) T {
+
 	if field.Id == "SignalSnr" {
 		switch testType {
 		case TestTypeRandom:
@@ -118,7 +119,7 @@ func calcNumericValue[T constraints.Integer | constraints.Float](field *FieldDes
 			return T(randomFloat + min)
 		}
 
-		return T((rand.Intn(int(max-min+1)) + int(min)) >> 3 << 3)
+		return T(rand.Intn(int(max-min+1)) + int(min))
 	}
 	return 0
 }
@@ -126,6 +127,41 @@ func calcNumericValue[T constraints.Integer | constraints.Float](field *FieldDes
 // calcValue sets the value of the field to the testType
 func calcValue(field *FieldDescriptor, testType int, t reflect.Type) reflect.Value {
 	val := reflect.New(t)
+
+	// For TestTypeZero, check if field has reserved values
+	if testType == TestTypeZero && field.ReservedValuesCount == 0 {
+		// For fields with no reserved values, write actual zero values instead of nil
+		// But only for basic numeric types, not custom enum types
+		switch t.Kind() {
+		case reflect.Int, reflect.Int64:
+			val.Elem().Set(reflect.ValueOf(int64(0)).Convert(val.Elem().Type()))
+		case reflect.Int8:
+			val.Elem().Set(reflect.ValueOf(int8(0)).Convert(val.Elem().Type()))
+		case reflect.Int16:
+			val.Elem().Set(reflect.ValueOf(int16(0)).Convert(val.Elem().Type()))
+		case reflect.Int32:
+			val.Elem().Set(reflect.ValueOf(int32(0)).Convert(val.Elem().Type()))
+		case reflect.Uint8:
+			val.Elem().Set(reflect.ValueOf(uint8(0)).Convert(val.Elem().Type()))
+		case reflect.Uint16:
+			val.Elem().Set(reflect.ValueOf(uint16(0)).Convert(val.Elem().Type()))
+		case reflect.Uint32:
+			val.Elem().Set(reflect.ValueOf(uint32(0)).Convert(val.Elem().Type()))
+		case reflect.Uint, reflect.Uint64:
+			val.Elem().Set(reflect.ValueOf(uint64(0)).Convert(val.Elem().Type()))
+		case reflect.Float32:
+			val.Elem().Set(reflect.ValueOf(float32(0)).Convert(val.Elem().Type()))
+		case reflect.Float64:
+			val.Elem().Set(reflect.ValueOf(float64(0)).Convert(val.Elem().Type()))
+		default:
+			// For custom types (like enums), fall through to normal logic
+		}
+		// If we handled a basic type, return it; otherwise fall through to normal logic
+		if t.Kind() >= reflect.Int && t.Kind() <= reflect.Float64 {
+			return val
+		}
+	}
+
 	switch t.Kind() {
 	case reflect.Int, reflect.Int64:
 		result := calcNumericValue[int64](field, testType)
@@ -169,9 +205,15 @@ func genBytes(numBytes uint16, testType int, field *FieldDescriptor) []uint8 {
 	case TestTypeRandom:
 		switch field.CanboatType {
 		case "STRING_FIX":
+			// if field.BitLength is a multiple of 8, then it's a fixed length string
+			var length int
+			if field.BitLength%8 == 0 {
+				length = int(field.BitLength / 8)
+			} else {
+				// generate ascii string of length 1 to random length less than numBytes
+				length = rand.Intn(int(numBytes)) + 1
+			}
 			bytes := make([]uint8, numBytes)
-			// generate ascii string of length 1 to random length less than numBytes
-			length := rand.Intn(int(numBytes)) + 1
 			for i := 0; i < length; i++ {
 				bytes[i] = uint8(rand.Intn(26) + 65) // ASCII A-Z
 			}
@@ -217,6 +259,16 @@ func genBytes(numBytes uint16, testType int, field *FieldDescriptor) []uint8 {
 				}
 				return bytes
 			}
+		case "STRING_LZ":
+			// generate ascii string of length 1 to random length less than numBytes
+			// STRING_LZ has a length byte and is null terminated
+			length := rand.Intn(int(numBytes)-2) + 1
+			bytes := make([]uint8, length+2)
+			bytes[0] = uint8(length)
+			for i := 0; i < length; i++ {
+				bytes[i+1] = uint8(rand.Intn(26) + 65) // ASCII A-Z
+			}
+			return bytes
 		case "BINARY", "VARIABLE":
 			limit := numBytes
 			if limit == 0 {
@@ -390,7 +442,11 @@ func setState(o reflect.Value, n PgnInfo, testType int) {
 		}
 		// Then handle the different types
 		if strings.HasPrefix(field.GolangType, "*units") {
-			fType := o.Elem().FieldByName(field.Id).Type()
+			fieldValue := o.Elem().FieldByName(field.Id)
+			if !fieldValue.IsValid() {
+				continue
+			}
+			fType := fieldValue.Type()
 			unitVal := reflect.New(fType.Elem())
 
 			// Set the Value field of the unit type
@@ -398,13 +454,19 @@ func setState(o reflect.Value, n PgnInfo, testType int) {
 			if valueField.IsValid() {
 				// Dereference the pointer returned by calcValue
 				calculatedValue := calcValue(field, testType, valueField.Type())
-				valueField.Set(calculatedValue.Elem())
+				if calculatedValue.IsValid() {
+					valueField.Set(calculatedValue.Elem())
+				}
 			}
 
 			o.Elem().FieldByName(field.Id).Set(unitVal)
 			continue
 		} else if strings.HasPrefix(field.GolangType, "*") {
-			fType := o.Elem().FieldByName(field.Id).Type()
+			fieldValue := o.Elem().FieldByName(field.Id)
+			if !fieldValue.IsValid() {
+				continue
+			}
+			fType := fieldValue.Type()
 			o.Elem().FieldByName(field.Id).Set(calcValue(field, testType, fType.Elem()))
 			continue
 		}
@@ -413,7 +475,37 @@ func setState(o reflect.Value, n PgnInfo, testType int) {
 		case "": // skip Reserved and Spare canboat types
 			continue
 		case "*uint8":
-			o.Elem().FieldByName(field.Id).Set(calcValue(field, testType, o.Elem().FieldByName(field.Id).Type().Elem()))
+			fieldValue := o.Elem().FieldByName(field.Id)
+			if !fieldValue.IsValid() {
+				continue
+			}
+			calcResult := calcValue(field, testType, fieldValue.Type().Elem())
+			if calcResult.IsValid() {
+				fieldValue.Set(calcResult)
+			}
+		case "*uint16":
+			fieldValue := o.Elem().FieldByName(field.Id)
+			if !fieldValue.IsValid() {
+				continue
+			}
+			calcResult := calcValue(field, testType, fieldValue.Type().Elem())
+			if calcResult.IsValid() {
+				// Special handling for NumberOfBitsInBinaryDataField to ensure it doesn't exceed buffer capacity
+				if field.Id == "NumberOfBitsInBinaryDataField" {
+					value := calcResult.Elem().Uint()
+					// Limit to a reasonable value that fits in the buffer
+					maxBits := uint64(254*8 - nextOffset) // 254 bytes * 8 bits - bits already used
+					if value > maxBits {
+						value = maxBits
+					}
+					// Create a new value with the limited value
+					newVal := reflect.New(fieldValue.Type().Elem())
+					newVal.Elem().SetUint(value)
+					fieldValue.Set(newVal)
+				} else {
+					fieldValue.Set(calcResult)
+				}
+			}
 		case "[]uint8":
 			numBytes := uint16(0)
 			if !field.BitLengthVariable {
@@ -430,10 +522,37 @@ func setState(o reflect.Value, n PgnInfo, testType int) {
 				} else {
 					numBytes = MaxPGNLength - (nextOffset / 8)
 				}
+
+				// Ensure we don't exceed the available buffer space
+				maxAvailableBytes := uint16(254) - (nextOffset / 8)
+				if numBytes > maxAvailableBytes {
+					numBytes = maxAvailableBytes
+				}
 			}
 			o.Elem().FieldByName(field.Id).Set(reflect.ValueOf(genBytes(numBytes, testType, field)))
 		default:
-			o.Elem().FieldByName(field.Id).Set(calcValue(field, testType, o.Elem().FieldByName(field.Id).Type()).Elem())
+			fieldValue := o.Elem().FieldByName(field.Id)
+			if !fieldValue.IsValid() {
+				continue
+			}
+			calcResult := calcValue(field, testType, fieldValue.Type())
+			if calcResult.IsValid() {
+				// Special handling for NumberOfBitsInBinaryDataField to ensure it doesn't exceed buffer capacity
+				if field.Id == "NumberOfBitsInBinaryDataField" {
+					value := calcResult.Elem().Uint()
+					// Limit to a reasonable value that fits in the buffer
+					maxBits := uint64(254*8 - nextOffset) // 254 bytes * 8 bits - bits already used
+					if value > maxBits {
+						value = maxBits
+					}
+					// Create a new value with the limited value
+					newVal := reflect.New(fieldValue.Type().Elem())
+					newVal.Elem().SetUint(value)
+					fieldValue.Set(newVal)
+				} else {
+					fieldValue.Set(calcResult.Elem())
+				}
+			}
 		}
 	}
 }

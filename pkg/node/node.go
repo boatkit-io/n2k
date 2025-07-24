@@ -345,7 +345,7 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 			SoftwareVersionCode: n.productInfo.SoftwareVersionCode,
 			ModelVersion:        n.productInfo.ModelVersion,
 			ModelSerialCode:     n.productInfo.ModelSerialCode,
-			CertificationLevel:  &n.productInfo.CertificationLevel,
+			CertificationLevel:  pgn.CertificationLevelConst(n.productInfo.CertificationLevel),
 			LoadEquivalency:     &n.productInfo.LoadEquivalency,
 		}
 		responses = append(responses, toSend{pgn: responsePgn, dest: req.Info.SourceId})
@@ -362,7 +362,7 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 				SourceId: n.networkAddress,
 				TargetId: req.Info.SourceId,
 			},
-			FunctionCode: pgn.TransmitPGNList,
+			FunctionCode: pgn.TransmitPgnList,
 			Repeating1:   txRepeating,
 		}
 		responses = append(responses, toSend{pgn: txResponse, dest: req.Info.SourceId})
@@ -378,7 +378,7 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 				SourceId: n.networkAddress,
 				TargetId: req.Info.SourceId,
 			},
-			FunctionCode: pgn.ReceivePGNList,
+			FunctionCode: pgn.ReceivePgnList,
 			Repeating1:   rxRepeating,
 		}
 		responses = append(responses, toSend{pgn: rxResponse, dest: req.Info.SourceId})
@@ -420,7 +420,7 @@ func (n *node) processIsoAddressClaim(claim pgn.IsoAddressClaim) {
 	currentName := n.name
 	n.mutex.RUnlock()
 
-	n.logger.Infof("processIsoAddressClaim: received claim from source %d, our address %d, state %d", 
+	n.logger.Infof("processIsoAddressClaim: received claim from source %d, our address %d, state %d",
 		claim.Info.SourceId, currentAddress, currentState)
 
 	if currentState != stateClaiming && currentState != stateClaimed {
@@ -429,7 +429,7 @@ func (n *node) processIsoAddressClaim(claim pgn.IsoAddressClaim) {
 	}
 
 	if claim.Info.SourceId != currentAddress {
-		n.logger.Infof("processIsoAddressClaim: ignoring claim, different address (%d vs %d)", 
+		n.logger.Infof("processIsoAddressClaim: ignoring claim, different address (%d vs %d)",
 			claim.Info.SourceId, currentAddress)
 		return
 	}
@@ -440,7 +440,7 @@ func (n *node) processIsoAddressClaim(claim pgn.IsoAddressClaim) {
 		return
 	}
 
-	n.logger.Infof("processIsoAddressClaim: comparing NAMEs - incoming: %x, ours: %x", 
+	n.logger.Infof("processIsoAddressClaim: comparing NAMEs - incoming: %x, ours: %x",
 		incomingName, currentName)
 
 	if incomingName < currentName {
@@ -481,7 +481,7 @@ func (n *node) sendAddressClaim() {
 		DeviceClass:             deviceInfoCopy.DeviceClass,
 		SystemInstance:          &deviceInfoCopy.SystemInstance,
 		IndustryGroup:           deviceInfoCopy.IndustryGroup,
-		ArbitraryAddressCapable: &arbitraryBit,
+		ArbitraryAddressCapable: pgn.YesNoConst(arbitraryBit),
 	}
 	n.logger.Infof("sendAddressClaim: sending claim for address %d", networkAddressCopy)
 	_ = publisher.Write(claim)

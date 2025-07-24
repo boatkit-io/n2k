@@ -46,6 +46,7 @@ type FieldDescriptor struct {
 	Unit              string
 	BitLookupName     string
     Match             int
+	ReservedValuesCount int
 
 	
 }
@@ -111,76 +112,76 @@ func (e IndustryCodeConst) String() string {
 
 type ManufacturerCodeConst uint16
 const (
-	ManufacturerCodeConst69	ManufacturerCodeConst = 69
-	ManufacturerCodeConst78	ManufacturerCodeConst = 78
+	ArksEnterprisesInc	ManufacturerCodeConst = 69
+	FwMurphyEnovationControls	ManufacturerCodeConst = 78
 	TwinDisc	ManufacturerCodeConst = 80
-	ManufacturerCodeConst85	ManufacturerCodeConst = 85
-	ManufacturerCodeConst88	ManufacturerCodeConst = 88
+	KohlerPowerSystems	ManufacturerCodeConst = 85
+	HemisphereGpsInc	ManufacturerCodeConst = 88
 	BepMarine	ManufacturerCodeConst = 116
 	Airmar	ManufacturerCodeConst = 135
 	Maretron	ManufacturerCodeConst = 137
 	Lowrance	ManufacturerCodeConst = 140
 	MercuryMarine	ManufacturerCodeConst = 144
-	ManufacturerCodeConst147	ManufacturerCodeConst = 147
-	ManufacturerCodeConst148	ManufacturerCodeConst = 148
+	NautibusElectronicGmbh	ManufacturerCodeConst = 147
+	BlueWaterData	ManufacturerCodeConst = 148
 	Westerbeke	ManufacturerCodeConst = 154
 	IssproInc	ManufacturerCodeConst = 157
-	ManufacturerCodeConst161	ManufacturerCodeConst = 161
+	OffshoreSystemsUkLtd	ManufacturerCodeConst = 161
 	EvinrudeBrp	ManufacturerCodeConst = 163
-	ManufacturerCodeConst165	ManufacturerCodeConst = 165
-	ManufacturerCodeConst168	ManufacturerCodeConst = 168
-	ManufacturerCodeConst169	ManufacturerCodeConst = 169
+	CpacSystemsAb	ManufacturerCodeConst = 165
+	XantrexTechnologyInc	ManufacturerCodeConst = 168
+	MarlinTechnologiesInc	ManufacturerCodeConst = 169
 	YanmarMarine	ManufacturerCodeConst = 172
 	VolvoPenta	ManufacturerCodeConst = 174
 	HondaMarine	ManufacturerCodeConst = 175
-	ManufacturerCodeConst176	ManufacturerCodeConst = 176
+	CarlingTechnologiesIncMoritzAe	ManufacturerCodeConst = 176
 	BeedeInstruments	ManufacturerCodeConst = 185
-	ManufacturerCodeConst192	ManufacturerCodeConst = 192
+	FloscanInstrumentCoInc	ManufacturerCodeConst = 192
 	Nobletec	ManufacturerCodeConst = 193
-	ManufacturerCodeConst198	ManufacturerCodeConst = 198
+	MysticValleyCommunications	ManufacturerCodeConst = 198
 	Actia	ManufacturerCodeConst = 199
 	HondaMarine_2	ManufacturerCodeConst = 200
-	ManufacturerCodeConst201	ManufacturerCodeConst = 201
-	ManufacturerCodeConst211	ManufacturerCodeConst = 211
+	DisenosYTechnologia	ManufacturerCodeConst = 201
+	DigitalSwitchingSystems	ManufacturerCodeConst = 211
 	XintexAtena	ManufacturerCodeConst = 215
-	ManufacturerCodeConst224	ManufacturerCodeConst = 224
+	EmmiNetworkSl	ManufacturerCodeConst = 224
 	HondaMarine_3	ManufacturerCodeConst = 225
 	Zf	ManufacturerCodeConst = 228
 	Garmin	ManufacturerCodeConst = 229
-	ManufacturerCodeConst233	ManufacturerCodeConst = 233
-	ManufacturerCodeConst235	ManufacturerCodeConst = 235
+	YachtMonitoringSolutions	ManufacturerCodeConst = 233
+	SailormadeMarineTelemetryTetra	ManufacturerCodeConst = 235
 	Eride	ManufacturerCodeConst = 243
 	HondaMarine_4	ManufacturerCodeConst = 250
-	ManufacturerCodeConst257	ManufacturerCodeConst = 257
+	HondaMotorCompanyLtd	ManufacturerCodeConst = 257
 	Groco	ManufacturerCodeConst = 272
 	Actisense	ManufacturerCodeConst = 273
-	ManufacturerCodeConst274	ManufacturerCodeConst = 274
+	AmphenolLtwTechnology	ManufacturerCodeConst = 274
 	Navico	ManufacturerCodeConst = 275
 	HamiltonJet	ManufacturerCodeConst = 283
 	SeaRecovery	ManufacturerCodeConst = 285
-	ManufacturerCodeConst286	ManufacturerCodeConst = 286
+	CoelmoSrlItaly	ManufacturerCodeConst = 286
 	BepMarine_2	ManufacturerCodeConst = 295
 	EmpirBus	ManufacturerCodeConst = 304
 	Novatel	ManufacturerCodeConst = 305
-	ManufacturerCodeConst306	ManufacturerCodeConst = 306
+	SleipnerMotorAs	ManufacturerCodeConst = 306
 	MbwTechnologies	ManufacturerCodeConst = 307
 	FischerPanda	ManufacturerCodeConst = 311
 	Icom	ManufacturerCodeConst = 315
 	Qwerty	ManufacturerCodeConst = 328
 	Dief	ManufacturerCodeConst = 329
-	ManufacturerCodeConst341	ManufacturerCodeConst = 341
-	ManufacturerCodeConst345	ManufacturerCodeConst = 345
-	ManufacturerCodeConst351	ManufacturerCodeConst = 351
+	BoeningAutomationstechnologieG	ManufacturerCodeConst = 341
+	KoreanMaritimeUniversity	ManufacturerCodeConst = 345
+	ThraneAndThrane	ManufacturerCodeConst = 351
 	Mastervolt	ManufacturerCodeConst = 355
-	ManufacturerCodeConst356	ManufacturerCodeConst = 356
+	FischerPandaGenerators	ManufacturerCodeConst = 356
 	VictronEnergy	ManufacturerCodeConst = 358
-	ManufacturerCodeConst370	ManufacturerCodeConst = 370
+	RollsRoyceMarine	ManufacturerCodeConst = 370
 	ElectronicDesign	ManufacturerCodeConst = 373
 	NorthernLights	ManufacturerCodeConst = 374
 	Glendinning	ManufacturerCodeConst = 378
-	ManufacturerCodeConst381	ManufacturerCodeConst = 381
-	ManufacturerCodeConst384	ManufacturerCodeConst = 384
-	ManufacturerCodeConst385	ManufacturerCodeConst = 385
+	BG	ManufacturerCodeConst = 381
+	RosePointNavigationSystems	ManufacturerCodeConst = 384
+	JohnsonOutdoorsMarineElectroni	ManufacturerCodeConst = 385
 	Capi2	ManufacturerCodeConst = 394
 	BeyondMeasure	ManufacturerCodeConst = 396
 	LivorsiMarine	ManufacturerCodeConst = 400
@@ -188,56 +189,56 @@ const (
 	Chetco	ManufacturerCodeConst = 409
 	FusionElectronics	ManufacturerCodeConst = 419
 	StandardHorizon	ManufacturerCodeConst = 421
-	ManufacturerCodeConst422	ManufacturerCodeConst = 422
-	ManufacturerCodeConst426	ManufacturerCodeConst = 426
-	ManufacturerCodeConst427	ManufacturerCodeConst = 427
-	ManufacturerCodeConst431	ManufacturerCodeConst = 431
+	TrueHeadingAb	ManufacturerCodeConst = 422
+	EgersundMarineElectronicsAs	ManufacturerCodeConst = 426
+	EmTrakMarineElectronics	ManufacturerCodeConst = 427
+	TohatsuCoJp	ManufacturerCodeConst = 431
 	DigitalYacht	ManufacturerCodeConst = 437
-	ManufacturerCodeConst438	ManufacturerCodeConst = 438
+	ComarSystemsLimited	ManufacturerCodeConst = 438
 	Cummins	ManufacturerCodeConst = 440
-	ManufacturerCodeConst443	ManufacturerCodeConst = 443
-	ManufacturerCodeConst451	ManufacturerCodeConst = 451
-	ManufacturerCodeConst459	ManufacturerCodeConst = 459
-	ManufacturerCodeConst460	ManufacturerCodeConst = 460
-	ManufacturerCodeConst466	ManufacturerCodeConst = 466
-	ManufacturerCodeConst467	ManufacturerCodeConst = 467
-	ManufacturerCodeConst470	ManufacturerCodeConst = 470
-	ManufacturerCodeConst471	ManufacturerCodeConst = 471
-	ManufacturerCodeConst475	ManufacturerCodeConst = 475
-	ManufacturerCodeConst476	ManufacturerCodeConst = 476
-	ManufacturerCodeConst478	ManufacturerCodeConst = 478
-	ManufacturerCodeConst481	ManufacturerCodeConst = 481
+	VdoAkaContinentalCorporation	ManufacturerCodeConst = 443
+	ParkerHannifinAkaVillageMarine	ManufacturerCodeConst = 451
+	AlltekMarineElectronicsCorp	ManufacturerCodeConst = 459
+	SanGiorgioSein	ManufacturerCodeConst = 460
+	VeethreeElectronicsMarine	ManufacturerCodeConst = 466
+	HumminbirdMarineElectronics	ManufacturerCodeConst = 467
+	SiTexMarineElectronics	ManufacturerCodeConst = 470
+	SeaCrossMarineAb	ManufacturerCodeConst = 471
+	GmeAkaStandardCommunicationsPt	ManufacturerCodeConst = 475
+	HumminbirdMarineElectronics_2	ManufacturerCodeConst = 476
+	OceanSatBv	ManufacturerCodeConst = 478
+	ChetcoDigitialInstruments	ManufacturerCodeConst = 481
 	Watcheye	ManufacturerCodeConst = 493
 	LcjCapteurs	ManufacturerCodeConst = 499
 	AttwoodMarine	ManufacturerCodeConst = 502
 	NaviopSrl	ManufacturerCodeConst = 503
-	ManufacturerCodeConst504	ManufacturerCodeConst = 504
-	ManufacturerCodeConst510	ManufacturerCodeConst = 510
+	VesperMarineLtd	ManufacturerCodeConst = 504
+	MarinesoftCoLtd	ManufacturerCodeConst = 510
 	NolandEngineering	ManufacturerCodeConst = 517
 	TransasUsa	ManufacturerCodeConst = 518
-	ManufacturerCodeConst529	ManufacturerCodeConst = 529
-	ManufacturerCodeConst530	ManufacturerCodeConst = 530
+	NationalInstrumentsKorea	ManufacturerCodeConst = 529
+	NationalMarineElectronicsAssoc	ManufacturerCodeConst = 530
 	OnwaMarine	ManufacturerCodeConst = 532
 	Webasto	ManufacturerCodeConst = 540
-	ManufacturerCodeConst571	ManufacturerCodeConst = 571
-	ManufacturerCodeConst573	ManufacturerCodeConst = 573
+	MarinecraftSouthKorea	ManufacturerCodeConst = 571
+	McmurdoGroupAkaOroliaLtd	ManufacturerCodeConst = 573
 	Advansea	ManufacturerCodeConst = 578
 	Kvh	ManufacturerCodeConst = 579
-	ManufacturerCodeConst580	ManufacturerCodeConst = 580
+	SanJoseTechnology	ManufacturerCodeConst = 580
 	YachtControl	ManufacturerCodeConst = 583
-	ManufacturerCodeConst586	ManufacturerCodeConst = 586
-	ManufacturerCodeConst591	ManufacturerCodeConst = 591
-	ManufacturerCodeConst595	ManufacturerCodeConst = 595
+	SuzukiMotorCorporation	ManufacturerCodeConst = 586
+	UsCoastGuard	ManufacturerCodeConst = 591
+	ShipModuleAkaCustomware	ManufacturerCodeConst = 595
 	AquaticAv	ManufacturerCodeConst = 600
 	AventicsGmbh	ManufacturerCodeConst = 605
 	Intellian	ManufacturerCodeConst = 606
 	Samwonit	ManufacturerCodeConst = 612
 	ArltTecnologies	ManufacturerCodeConst = 614
 	BavariaYacts	ManufacturerCodeConst = 637
-	ManufacturerCodeConst641	ManufacturerCodeConst = 641
-	ManufacturerCodeConst644	ManufacturerCodeConst = 644
+	DiverseYachtServices	ManufacturerCodeConst = 641
+	WemaUsaDbaKus	ManufacturerCodeConst = 644
 	Garmin_2	ManufacturerCodeConst = 645
-	ManufacturerCodeConst658	ManufacturerCodeConst = 658
+	ShenzhenJiuzhouHimunication	ManufacturerCodeConst = 658
 	RockfordCorp	ManufacturerCodeConst = 688
 	HarmanInternational	ManufacturerCodeConst = 699
 	JlAudio	ManufacturerCodeConst = 704
@@ -245,26 +246,26 @@ const (
 	Autonnic	ManufacturerCodeConst = 715
 	YachtDevices	ManufacturerCodeConst = 717
 	ReapSystems	ManufacturerCodeConst = 734
-	ManufacturerCodeConst735	ManufacturerCodeConst = 735
+	AuElectronicsGroup	ManufacturerCodeConst = 735
 	Lxnav	ManufacturerCodeConst = 739
-	ManufacturerCodeConst741	ManufacturerCodeConst = 741
+	LittelfuseIncFormerlyCarlingTe	ManufacturerCodeConst = 741
 	Daemyung	ManufacturerCodeConst = 743
 	Woosung	ManufacturerCodeConst = 744
-	ManufacturerCodeConst748	ManufacturerCodeConst = 748
+	IsottaIfraSrl	ManufacturerCodeConst = 748
 	ClarionUs	ManufacturerCodeConst = 773
 	HmiSystems	ManufacturerCodeConst = 776
 	OceanSignal	ManufacturerCodeConst = 777
 	Seekeeper	ManufacturerCodeConst = 778
 	PolyPlanar	ManufacturerCodeConst = 781
-	ManufacturerCodeConst785	ManufacturerCodeConst = 785
+	FischerPandaDe	ManufacturerCodeConst = 785
 	BroydaIndustries	ManufacturerCodeConst = 795
 	CanadianAutomotive	ManufacturerCodeConst = 796
 	TidesMarine	ManufacturerCodeConst = 797
 	Lumishore	ManufacturerCodeConst = 798
-	ManufacturerCodeConst799	ManufacturerCodeConst = 799
-	ManufacturerCodeConst802	ManufacturerCodeConst = 802
+	StillWaterDesignsAndAudio	ManufacturerCodeConst = 799
+	BjTechnologiesBeneteau	ManufacturerCodeConst = 802
 	GillSensors	ManufacturerCodeConst = 803
-	ManufacturerCodeConst811	ManufacturerCodeConst = 811
+	BlueWaterDesalination	ManufacturerCodeConst = 811
 	Flir	ManufacturerCodeConst = 815
 	UndheimSystems	ManufacturerCodeConst = 824
 	LewmarInc	ManufacturerCodeConst = 826
@@ -272,15 +273,15 @@ const (
 	FellMarine	ManufacturerCodeConst = 844
 	Oceanvolt	ManufacturerCodeConst = 847
 	Prospec	ManufacturerCodeConst = 862
-	ManufacturerCodeConst868	ManufacturerCodeConst = 868
+	DataPanelCorp	ManufacturerCodeConst = 868
 	L3Technologies	ManufacturerCodeConst = 890
-	ManufacturerCodeConst894	ManufacturerCodeConst = 894
+	RhodanMarineSystems	ManufacturerCodeConst = 894
 	NexfourSolutions	ManufacturerCodeConst = 896
 	AsaElectronics	ManufacturerCodeConst = 905
-	ManufacturerCodeConst909	ManufacturerCodeConst = 909
+	MarinesCoSouthKorea	ManufacturerCodeConst = 909
 	NauticOn	ManufacturerCodeConst = 911
 	Sentinel	ManufacturerCodeConst = 917
-	ManufacturerCodeConst929	ManufacturerCodeConst = 929
+	JlMarineYstems	ManufacturerCodeConst = 929
 	Ecotronix	ManufacturerCodeConst = 930
 	ZontisaMarine	ManufacturerCodeConst = 944
 	ExorInternational	ManufacturerCodeConst = 951
@@ -288,108 +289,108 @@ const (
 	TjcMicro	ManufacturerCodeConst = 963
 	CoxPowertrain	ManufacturerCodeConst = 968
 	BlueSeas	ManufacturerCodeConst = 969
-	ManufacturerCodeConst981	ManufacturerCodeConst = 981
-	ManufacturerCodeConst992	ManufacturerCodeConst = 992
+	KobeltManufacturingCoLtd	ManufacturerCodeConst = 981
+	BlueOceanIot	ManufacturerCodeConst = 992
 	XentaSystems	ManufacturerCodeConst = 997
 	UltraflexSpa	ManufacturerCodeConst = 1004
 	LintestSmartboat	ManufacturerCodeConst = 1008
 	Soundmax	ManufacturerCodeConst = 1011
-	ManufacturerCodeConst1020	ManufacturerCodeConst = 1020
+	TeamItaliaMarineOnyxMarineAuto	ManufacturerCodeConst = 1020
 	Entratech	ManufacturerCodeConst = 1021
 	ItcInc	ManufacturerCodeConst = 1022
-	ManufacturerCodeConst1029	ManufacturerCodeConst = 1029
+	TheMarineGuardianLlc	ManufacturerCodeConst = 1029
 	SonicCorporation	ManufacturerCodeConst = 1047
 	Pronav	ManufacturerCodeConst = 1051
-	ManufacturerCodeConst1053	ManufacturerCodeConst = 1053
+	VetusMaxwellInc	ManufacturerCodeConst = 1053
 	LithiumPros	ManufacturerCodeConst = 1056
 	Boatrax	ManufacturerCodeConst = 1059
-	ManufacturerCodeConst1062	ManufacturerCodeConst = 1062
+	MarolCoLtd	ManufacturerCodeConst = 1062
 	CalypsoInstruments	ManufacturerCodeConst = 1065
-	ManufacturerCodeConst1066	ManufacturerCodeConst = 1066
-	ManufacturerCodeConst1069	ManufacturerCodeConst = 1069
-	ManufacturerCodeConst1070	ManufacturerCodeConst = 1070
+	SpotZeroWater	ManufacturerCodeConst = 1066
+	LithionicsBatteryLlc	ManufacturerCodeConst = 1069
+	QuickTeckElectronicsLtd	ManufacturerCodeConst = 1070
 	UnidenAmerica	ManufacturerCodeConst = 1075
 	Nauticoncept	ManufacturerCodeConst = 1083
-	ManufacturerCodeConst1084	ManufacturerCodeConst = 1084
-	ManufacturerCodeConst1085	ManufacturerCodeConst = 1085
-	ManufacturerCodeConst1088	ManufacturerCodeConst = 1088
+	ShadowCasterLedLightingLlc	ManufacturerCodeConst = 1084
+	WetSoundsLlc	ManufacturerCodeConst = 1085
+	ETACircuitBreakers	ManufacturerCodeConst = 1088
 	Scheiber	ManufacturerCodeConst = 1092
-	ManufacturerCodeConst1100	ManufacturerCodeConst = 1100
+	SmartYachtsInternationalLimite	ManufacturerCodeConst = 1100
 	Dockmate	ManufacturerCodeConst = 1109
 	BobsMachine	ManufacturerCodeConst = 1114
 	L3harrisAsv	ManufacturerCodeConst = 1118
 	BalmarLlc	ManufacturerCodeConst = 1119
 	ElettromediaSpa	ManufacturerCodeConst = 1120
 	Electromaax	ManufacturerCodeConst = 1127
-	ManufacturerCodeConst1140	ManufacturerCodeConst = 1140
+	AcrossOceansSystemsLtd	ManufacturerCodeConst = 1140
 	KiwiYachting	ManufacturerCodeConst = 1145
-	ManufacturerCodeConst1150	ManufacturerCodeConst = 1150
-	ManufacturerCodeConst1151	ManufacturerCodeConst = 1151
-	ManufacturerCodeConst1154	ManufacturerCodeConst = 1154
+	BsbArtificialIntelligenceGmbh	ManufacturerCodeConst = 1150
+	OrcaTechnologoesAs	ManufacturerCodeConst = 1151
+	TbsElectronicsBv	ManufacturerCodeConst = 1154
 	TechnotonElectroics	ManufacturerCodeConst = 1158
-	ManufacturerCodeConst1160	ManufacturerCodeConst = 1160
-	ManufacturerCodeConst1169	ManufacturerCodeConst = 1169
+	MgEnergySystemsBv	ManufacturerCodeConst = 1160
+	SeaMacineRoboticsInc	ManufacturerCodeConst = 1169
 	VistaManufacturing	ManufacturerCodeConst = 1171
 	Zipwake	ManufacturerCodeConst = 1183
 	SailmonBv	ManufacturerCodeConst = 1186
-	ManufacturerCodeConst1192	ManufacturerCodeConst = 1192
+	AirmoniqProKft	ManufacturerCodeConst = 1192
 	SierraMarine	ManufacturerCodeConst = 1194
-	ManufacturerCodeConst1200	ManufacturerCodeConst = 1200
+	XinuoInformationTechnologyXiam	ManufacturerCodeConst = 1200
 	Septentrio	ManufacturerCodeConst = 1218
-	ManufacturerCodeConst1233	ManufacturerCodeConst = 1233
+	NkeMarineElecronics	ManufacturerCodeConst = 1233
 	SupertrackAps	ManufacturerCodeConst = 1238
-	ManufacturerCodeConst1239	ManufacturerCodeConst = 1239
-	ManufacturerCodeConst1245	ManufacturerCodeConst = 1245
-	ManufacturerCodeConst1249	ManufacturerCodeConst = 1249
-	ManufacturerCodeConst1260	ManufacturerCodeConst = 1260
+	HondaElectronicsCoLtd	ManufacturerCodeConst = 1239
+	RaritanEngineeringCompanyInc	ManufacturerCodeConst = 1245
+	IntegratedPowerSolutionsAg	ManufacturerCodeConst = 1249
+	InteractiveTechnologiesInc	ManufacturerCodeConst = 1260
 	LtgTech	ManufacturerCodeConst = 1283
-	ManufacturerCodeConst1299	ManufacturerCodeConst = 1299
-	ManufacturerCodeConst1300	ManufacturerCodeConst = 1300
+	EnergySolutionsUkLtd	ManufacturerCodeConst = 1299
+	WattFuelCellCorp	ManufacturerCodeConst = 1300
 	ProMainer	ManufacturerCodeConst = 1302
 	DragonflyEnergy	ManufacturerCodeConst = 1305
-	ManufacturerCodeConst1306	ManufacturerCodeConst = 1306
+	KodenElectronicsCoLtd	ManufacturerCodeConst = 1306
 	HumphreeAb	ManufacturerCodeConst = 1311
 	HinkleyYachts	ManufacturerCodeConst = 1316
-	ManufacturerCodeConst1317	ManufacturerCodeConst = 1317
-	ManufacturerCodeConst1320	ManufacturerCodeConst = 1320
-	ManufacturerCodeConst1330	ManufacturerCodeConst = 1330
+	GlobalMarineManagementGmbhGmm	ManufacturerCodeConst = 1317
+	TriskelMarineLtd	ManufacturerCodeConst = 1320
+	WarwickControlTechnologies	ManufacturerCodeConst = 1330
 	DolphinCharger	ManufacturerCodeConst = 1331
-	ManufacturerCodeConst1337	ManufacturerCodeConst = 1337
-	ManufacturerCodeConst1348	ManufacturerCodeConst = 1348
-	ManufacturerCodeConst1353	ManufacturerCodeConst = 1353
+	BarnacleSystemsInc	ManufacturerCodeConst = 1337
+	RadianIotInc	ManufacturerCodeConst = 1348
+	OceanLedMarineLtd	ManufacturerCodeConst = 1353
 	Blunav	ManufacturerCodeConst = 1359
-	ManufacturerCodeConst1361	ManufacturerCodeConst = 1361
+	OvaNantongSaiyangElectronicsCo	ManufacturerCodeConst = 1361
 	RadPropulsion	ManufacturerCodeConst = 1368
 	ElectricYacht	ManufacturerCodeConst = 1369
-	ManufacturerCodeConst1372	ManufacturerCodeConst = 1372
-	ManufacturerCodeConst1384	ManufacturerCodeConst = 1384
-	ManufacturerCodeConst1385	ManufacturerCodeConst = 1385
-	ManufacturerCodeConst1389	ManufacturerCodeConst = 1389
-	ManufacturerCodeConst1398	ManufacturerCodeConst = 1398
+	ElcoMotorYachts	ManufacturerCodeConst = 1372
+	TecnosealFoundrySrl	ManufacturerCodeConst = 1384
+	ProChargingSystemsLlc	ManufacturerCodeConst = 1385
+	EvexCoLtd	ManufacturerCodeConst = 1389
+	GobiusSensorTechnologyAb	ManufacturerCodeConst = 1398
 	ArcoMarine	ManufacturerCodeConst = 1403
-	ManufacturerCodeConst1408	ManufacturerCodeConst = 1408
+	LencoMarineInc	ManufacturerCodeConst = 1408
 	NaocontrolSl	ManufacturerCodeConst = 1413
 	Revatek	ManufacturerCodeConst = 1417
 	Aeolionics	ManufacturerCodeConst = 1438
 	PredictwindLtd	ManufacturerCodeConst = 1439
-	ManufacturerCodeConst1440	ManufacturerCodeConst = 1440
-	ManufacturerCodeConst1445	ManufacturerCodeConst = 1445
+	EgisMobileElectric	ManufacturerCodeConst = 1440
+	StarboardYachtGroup	ManufacturerCodeConst = 1445
 	RoswellMarine	ManufacturerCodeConst = 1446
-	ManufacturerCodeConst1451	ManufacturerCodeConst = 1451
+	EpropulsionGuangdongEpropulsio	ManufacturerCodeConst = 1451
 	MicroAirLlc	ManufacturerCodeConst = 1452
 	VitalBattery	ManufacturerCodeConst = 1453
-	ManufacturerCodeConst1458	ManufacturerCodeConst = 1458
+	RideControllerLlc	ManufacturerCodeConst = 1458
 	TocaroBlue	ManufacturerCodeConst = 1460
 	VanquishYachts	ManufacturerCodeConst = 1461
 	FtTechnologies	ManufacturerCodeConst = 1471
-	ManufacturerCodeConst1478	ManufacturerCodeConst = 1478
+	AlpsAlpineCoLtd	ManufacturerCodeConst = 1478
 	EForceMarine	ManufacturerCodeConst = 1481
 	CmcMarine	ManufacturerCodeConst = 1482
-	ManufacturerCodeConst1483	ManufacturerCodeConst = 1483
-	ManufacturerCodeConst1850	ManufacturerCodeConst = 1850
+	NanjingSandemarineInformationT	ManufacturerCodeConst = 1483
+	TeleflexMarineSeastarSolutions	ManufacturerCodeConst = 1850
 	Raymarine	ManufacturerCodeConst = 1851
 	Navionics	ManufacturerCodeConst = 1852
-	ManufacturerCodeConst1853	ManufacturerCodeConst = 1853
+	JapanRadioCo	ManufacturerCodeConst = 1853
 	NorthstarTechnologies	ManufacturerCodeConst = 1854
 	Furuno	ManufacturerCodeConst = 1855
 	Trimble	ManufacturerCodeConst = 1856
@@ -990,33 +991,33 @@ func (e ManufacturerCodeConst) String() string {
 
 type AisMessageIdConst uint8
 const (
-	AisMessageIdConst1	AisMessageIdConst = 1
-	AisMessageIdConst2	AisMessageIdConst = 2
-	AisMessageIdConst3	AisMessageIdConst = 3
-	AisMessageIdConst4	AisMessageIdConst = 4
-	AisMessageIdConst5	AisMessageIdConst = 5
-	AisMessageIdConst6	AisMessageIdConst = 6
+	ScheduledClassAPositionReport	AisMessageIdConst = 1
+	AssignedScheduledClassAPositio	AisMessageIdConst = 2
+	InterrogatedClassAPositionRepo	AisMessageIdConst = 3
+	BaseStationReport	AisMessageIdConst = 4
+	StaticAndVoyageRelatedData	AisMessageIdConst = 5
+	BinaryAddressedMessage	AisMessageIdConst = 6
 	BinaryAcknowledgement	AisMessageIdConst = 7
-	AisMessageIdConst8	AisMessageIdConst = 8
-	AisMessageIdConst9	AisMessageIdConst = 9
+	BinaryBroadcastMessage	AisMessageIdConst = 8
+	StandardSarAircraftPositionRep	AisMessageIdConst = 9
 	UtcDateInquiry	AisMessageIdConst = 10
 	UtcDateResponse	AisMessageIdConst = 11
-	AisMessageIdConst12	AisMessageIdConst = 12
-	AisMessageIdConst13	AisMessageIdConst = 13
-	AisMessageIdConst14	AisMessageIdConst = 14
+	SafetyRelatedAddressedMessage	AisMessageIdConst = 12
+	SafetyRelatedAcknowledgement	AisMessageIdConst = 13
+	SatetyRelatedBroadcastMessage	AisMessageIdConst = 14
 	Interrogation	AisMessageIdConst = 15
-	AisMessageIdConst16	AisMessageIdConst = 16
-	AisMessageIdConst17	AisMessageIdConst = 17
-	AisMessageIdConst18	AisMessageIdConst = 18
-	AisMessageIdConst19	AisMessageIdConst = 19
-	AisMessageIdConst20	AisMessageIdConst = 20
+	AssignmentModeCommand	AisMessageIdConst = 16
+	DgnssBroadcastBinaryMessage	AisMessageIdConst = 17
+	StandardClassBPositionReport	AisMessageIdConst = 18
+	ExtendedClassBPositionReport	AisMessageIdConst = 19
+	DataLinkManagementMessage	AisMessageIdConst = 20
 	AtonReport	AisMessageIdConst = 21
 	ChannelManagement	AisMessageIdConst = 22
-	AisMessageIdConst23	AisMessageIdConst = 23
-	AisMessageIdConst24	AisMessageIdConst = 24
-	AisMessageIdConst25	AisMessageIdConst = 25
-	AisMessageIdConst26	AisMessageIdConst = 26
-	AisMessageIdConst27	AisMessageIdConst = 27
+	GroupAssignmentCommand	AisMessageIdConst = 23
+	StaticDataReport	AisMessageIdConst = 24
+	SingleSlotBinaryMessage	AisMessageIdConst = 25
+	MultipleSlotBinaryMessage	AisMessageIdConst = 26
+	PositionReportForLongRangeAppl	AisMessageIdConst = 27
 )
 
 func (e AisMessageIdConst) GoString() string {return e.String() }
@@ -1084,26 +1085,26 @@ func (e AisMessageIdConst) String() string {
 type ShipTypeConst uint8
 const (
 	Unavailable	ShipTypeConst = 0
-	ShipTypeConst20	ShipTypeConst = 20
-	ShipTypeConst21	ShipTypeConst = 21
-	ShipTypeConst22	ShipTypeConst = 22
-	ShipTypeConst23	ShipTypeConst = 23
-	ShipTypeConst24	ShipTypeConst = 24
-	ShipTypeConst29	ShipTypeConst = 29
+	WingInGround	ShipTypeConst = 20
+	WingInGroundHazardCatX	ShipTypeConst = 21
+	WingInGroundHazardCatY	ShipTypeConst = 22
+	WingInGroundHazardCatZ	ShipTypeConst = 23
+	WingInGroundHazardCatOs	ShipTypeConst = 24
+	WingInGroundNoAdditionalInform	ShipTypeConst = 29
 	Fishing	ShipTypeConst = 30
 	Towing	ShipTypeConst = 31
-	ShipTypeConst32	ShipTypeConst = 32
-	ShipTypeConst33	ShipTypeConst = 33
-	ShipTypeConst34	ShipTypeConst = 34
-	ShipTypeConst35	ShipTypeConst = 35
+	TowingExceeds200MOrWiderThan25	ShipTypeConst = 32
+	EngagedInDredgingOrUnderwaterO	ShipTypeConst = 33
+	EngagedInDivingOperations	ShipTypeConst = 34
+	EngagedInMilitaryOperations	ShipTypeConst = 35
 	Sailing	ShipTypeConst = 36
 	Pleasure	ShipTypeConst = 37
-	ShipTypeConst40	ShipTypeConst = 40
-	ShipTypeConst41	ShipTypeConst = 41
-	ShipTypeConst42	ShipTypeConst = 42
-	ShipTypeConst43	ShipTypeConst = 43
-	ShipTypeConst44	ShipTypeConst = 44
-	ShipTypeConst49	ShipTypeConst = 49
+	HighSpeedCraft	ShipTypeConst = 40
+	HighSpeedCraftHazardCatX	ShipTypeConst = 41
+	HighSpeedCraftHazardCatY	ShipTypeConst = 42
+	HighSpeedCraftHazardCatZ	ShipTypeConst = 43
+	HighSpeedCraftHazardCatOs	ShipTypeConst = 44
+	HighSpeedCraftNoAdditionalInfo	ShipTypeConst = 49
 	PilotVessel	ShipTypeConst = 50
 	Sar	ShipTypeConst = 51
 	Tug	ShipTypeConst = 52
@@ -1113,31 +1114,31 @@ const (
 	Spare	ShipTypeConst = 56
 	Spare2	ShipTypeConst = 57
 	Medical	ShipTypeConst = 58
-	ShipTypeConst59	ShipTypeConst = 59
+	ShipsAndAircraftOfStatesNotPar	ShipTypeConst = 59
 	PassengerShip	ShipTypeConst = 60
-	ShipTypeConst61	ShipTypeConst = 61
-	ShipTypeConst62	ShipTypeConst = 62
-	ShipTypeConst63	ShipTypeConst = 63
-	ShipTypeConst64	ShipTypeConst = 64
-	ShipTypeConst69	ShipTypeConst = 69
+	PassengerShipHazardCatX	ShipTypeConst = 61
+	PassengerShipHazardCatY	ShipTypeConst = 62
+	PassengerShipHazardCatZ	ShipTypeConst = 63
+	PassengerShipHazardCatOs	ShipTypeConst = 64
+	PassengerShipNoAdditionalInfor	ShipTypeConst = 69
 	CargoShip	ShipTypeConst = 70
-	ShipTypeConst71	ShipTypeConst = 71
-	ShipTypeConst72	ShipTypeConst = 72
-	ShipTypeConst73	ShipTypeConst = 73
-	ShipTypeConst74	ShipTypeConst = 74
-	ShipTypeConst79	ShipTypeConst = 79
+	CargoShipHazardCatX	ShipTypeConst = 71
+	CargoShipHazardCatY	ShipTypeConst = 72
+	CargoShipHazardCatZ	ShipTypeConst = 73
+	CargoShipHazardCatOs	ShipTypeConst = 74
+	CargoShipNoAdditionalInformati	ShipTypeConst = 79
 	Tanker	ShipTypeConst = 80
-	ShipTypeConst81	ShipTypeConst = 81
-	ShipTypeConst82	ShipTypeConst = 82
-	ShipTypeConst83	ShipTypeConst = 83
-	ShipTypeConst84	ShipTypeConst = 84
-	ShipTypeConst89	ShipTypeConst = 89
+	TankerHazardCatX	ShipTypeConst = 81
+	TankerHazardCatY	ShipTypeConst = 82
+	TankerHazardCatZ	ShipTypeConst = 83
+	TankerHazardCatOs	ShipTypeConst = 84
+	TankerNoAdditionalInformation	ShipTypeConst = 89
 	Other	ShipTypeConst = 90
-	ShipTypeConst91	ShipTypeConst = 91
-	ShipTypeConst92	ShipTypeConst = 92
-	ShipTypeConst93	ShipTypeConst = 93
-	ShipTypeConst94	ShipTypeConst = 94
-	ShipTypeConst99	ShipTypeConst = 99
+	OtherHazardCatX	ShipTypeConst = 91
+	OtherHazardCatY	ShipTypeConst = 92
+	OtherHazardCatZ	ShipTypeConst = 93
+	OtherHazardCatOs	ShipTypeConst = 94
+	OtherNoAdditionalInformation	ShipTypeConst = 99
 )
 
 func (e ShipTypeConst) GoString() string {return e.String() }
@@ -1260,21 +1261,21 @@ func (e ShipTypeConst) String() string {
 
 type DeviceClassConst uint8
 const (
-	DeviceClassConst0	DeviceClassConst = 0
+	ReservedFor2000Use	DeviceClassConst = 0
 	SystemTools	DeviceClassConst = 10
 	SafetySystems	DeviceClassConst = 20
 	InternetworkDevice	DeviceClassConst = 25
 	ElectricalDistribution	DeviceClassConst = 30
 	ElectricalGeneration	DeviceClassConst = 35
-	DeviceClassConst40	DeviceClassConst = 40
+	SteeringAndControlSurfaces	DeviceClassConst = 40
 	Propulsion	DeviceClassConst = 50
 	Navigation	DeviceClassConst = 60
 	Communication	DeviceClassConst = 70
-	DeviceClassConst75	DeviceClassConst = 75
+	SensorCommunicationInterface	DeviceClassConst = 75
 	InstrumentationGeneralSystems	DeviceClassConst = 80
 	ExternalEnvironment	DeviceClassConst = 85
 	InternalEnvironment	DeviceClassConst = 90
-	DeviceClassConst100	DeviceClassConst = 100
+	DeckCargoFishingEquipmentSyste	DeviceClassConst = 100
 	HumanInterface	DeviceClassConst = 110
 	Display	DeviceClassConst = 120
 	Entertainment	DeviceClassConst = 125
@@ -1350,9 +1351,9 @@ func (e RepeatIndicatorConst) String() string {
 
 type TxRxModeConst uint8
 const (
-	TxRxModeConst0	TxRxModeConst = 0
-	TxRxModeConst1	TxRxModeConst = 1
-	TxRxModeConst2	TxRxModeConst = 2
+	TxATxBRxARxB	TxRxModeConst = 0
+	TxARxARxB	TxRxModeConst = 1
+	TxBRxARxB	TxRxModeConst = 2
 )
 
 func (e TxRxModeConst) GoString() string {return e.String() }
@@ -1371,15 +1372,15 @@ func (e TxRxModeConst) String() string {
 
 type StationTypeConst uint8
 const (
-	StationTypeConst0	StationTypeConst = 0
-	StationTypeConst2	StationTypeConst = 2
-	StationTypeConst3	StationTypeConst = 3
+	AllTypesOfMobileStation	StationTypeConst = 0
+	AllTypesOfClassBMobileStation	StationTypeConst = 2
+	SarAirborneMobileStation	StationTypeConst = 3
 	AtonStation	StationTypeConst = 4
-	StationTypeConst5	StationTypeConst = 5
+	ClassBCsShipborneMobileStation	StationTypeConst = 5
 	InlandWaterways	StationTypeConst = 6
-	StationTypeConst7	StationTypeConst = 7
-	StationTypeConst8	StationTypeConst = 8
-	StationTypeConst9	StationTypeConst = 9
+	RegionalUse7	StationTypeConst = 7
+	RegionalUse8	StationTypeConst = 8
+	RegionalUse9	StationTypeConst = 9
 )
 
 func (e StationTypeConst) GoString() string {return e.String() }
@@ -1410,7 +1411,7 @@ func (e StationTypeConst) String() string {
 
 type ReportingIntervalConst uint8
 const (
-	ReportingIntervalConst0	ReportingIntervalConst = 0
+	AsGivenByTheAutonomousMode	ReportingIntervalConst = 0
 	ReportingIntervalConst10Min	ReportingIntervalConst = 1
 	SixMin	ReportingIntervalConst = 2
 	ThreeMin	ReportingIntervalConst = 3
@@ -1419,9 +1420,9 @@ const (
 	ReportingIntervalConst15Sec	ReportingIntervalConst = 6
 	ReportingIntervalConst10Sec	ReportingIntervalConst = 7
 	FiveSec	ReportingIntervalConst = 8
-	ReportingIntervalConst9	ReportingIntervalConst = 9
-	ReportingIntervalConst10	ReportingIntervalConst = 10
-	ReportingIntervalConst11	ReportingIntervalConst = 11
+	TwoSecNotApplicableToClassBCs	ReportingIntervalConst = 9
+	NextShorterReportingInterval	ReportingIntervalConst = 10
+	NextLongerReportingInterval	ReportingIntervalConst = 11
 )
 
 func (e ReportingIntervalConst) GoString() string {return e.String() }
@@ -1458,11 +1459,11 @@ func (e ReportingIntervalConst) String() string {
 
 type AisTransceiverConst uint8
 const (
-	AisTransceiverConst0	AisTransceiverConst = 0
-	AisTransceiverConst1	AisTransceiverConst = 1
-	AisTransceiverConst2	AisTransceiverConst = 2
-	AisTransceiverConst3	AisTransceiverConst = 3
-	AisTransceiverConst4	AisTransceiverConst = 4
+	ChannelAVdlReception	AisTransceiverConst = 0
+	ChannelBVdlReception	AisTransceiverConst = 1
+	ChannelAVdlTransmission	AisTransceiverConst = 2
+	ChannelBVdlTransmission	AisTransceiverConst = 3
+	OwnInformationNotBroadcast	AisTransceiverConst = 4
 	Reserved	AisTransceiverConst = 5
 )
 
@@ -1488,7 +1489,7 @@ func (e AisTransceiverConst) String() string {
 
 type AisAssignedModeConst uint8
 const (
-	AisAssignedModeConst0	AisAssignedModeConst = 0
+	AutonomousAndContinuous	AisAssignedModeConst = 0
 	AssignedMode	AisAssignedModeConst = 1
 )
 
@@ -1506,38 +1507,38 @@ func (e AisAssignedModeConst) String() string {
 
 type AtonTypeConst uint8
 const (
-	AtonTypeConst0	AtonTypeConst = 0
+	DefaultTypeOfAtonNotSpecified	AtonTypeConst = 0
 	ReferencePoint	AtonTypeConst = 1
 	Racon	AtonTypeConst = 2
-	AtonTypeConst3	AtonTypeConst = 3
-	AtonTypeConst4	AtonTypeConst = 4
-	AtonTypeConst5	AtonTypeConst = 5
-	AtonTypeConst6	AtonTypeConst = 6
-	AtonTypeConst7	AtonTypeConst = 7
-	AtonTypeConst8	AtonTypeConst = 8
-	AtonTypeConst9	AtonTypeConst = 9
-	AtonTypeConst10	AtonTypeConst = 10
-	AtonTypeConst11	AtonTypeConst = 11
-	AtonTypeConst12	AtonTypeConst = 12
-	AtonTypeConst13	AtonTypeConst = 13
-	AtonTypeConst14	AtonTypeConst = 14
-	AtonTypeConst15	AtonTypeConst = 15
-	AtonTypeConst16	AtonTypeConst = 16
-	AtonTypeConst17	AtonTypeConst = 17
-	AtonTypeConst18	AtonTypeConst = 18
-	AtonTypeConst19	AtonTypeConst = 19
-	AtonTypeConst20	AtonTypeConst = 20
-	AtonTypeConst21	AtonTypeConst = 21
-	AtonTypeConst22	AtonTypeConst = 22
-	AtonTypeConst23	AtonTypeConst = 23
-	AtonTypeConst24	AtonTypeConst = 24
-	AtonTypeConst25	AtonTypeConst = 25
-	AtonTypeConst26	AtonTypeConst = 26
-	AtonTypeConst27	AtonTypeConst = 27
-	AtonTypeConst28	AtonTypeConst = 28
-	AtonTypeConst29	AtonTypeConst = 29
-	AtonTypeConst30	AtonTypeConst = 30
-	AtonTypeConst31	AtonTypeConst = 31
+	FixedStructureOffShore	AtonTypeConst = 3
+	ReservedForFutureUse	AtonTypeConst = 4
+	FixedLightWithoutSectors	AtonTypeConst = 5
+	FixedLightWithSectors	AtonTypeConst = 6
+	FixedLeadingLightFront	AtonTypeConst = 7
+	FixedLeadingLightRear	AtonTypeConst = 8
+	FixedBeaconCardinalN	AtonTypeConst = 9
+	FixedBeaconCardinalE	AtonTypeConst = 10
+	FixedBeaconCardinalS	AtonTypeConst = 11
+	FixedBeaconCardinalW	AtonTypeConst = 12
+	FixedBeaconPortHand	AtonTypeConst = 13
+	FixedBeaconStarboardHand	AtonTypeConst = 14
+	FixedBeaconPreferredChannelPor	AtonTypeConst = 15
+	FixedBeaconPreferredChannelSta	AtonTypeConst = 16
+	FixedBeaconIsolatedDanger	AtonTypeConst = 17
+	FixedBeaconSafeWater	AtonTypeConst = 18
+	FixedBeaconSpecialMark	AtonTypeConst = 19
+	FloatingAtonCardinalN	AtonTypeConst = 20
+	FloatingAtonCardinalE	AtonTypeConst = 21
+	FloatingAtonCardinalS	AtonTypeConst = 22
+	FloatingAtonCardinalW	AtonTypeConst = 23
+	FloatingAtonPortHandMark	AtonTypeConst = 24
+	FloatingAtonStarboardHandMark	AtonTypeConst = 25
+	FloatingAtonPreferredChannelPo	AtonTypeConst = 26
+	FloatingAtonPreferredChannelSt	AtonTypeConst = 27
+	FloatingAtonIsolatedDanger	AtonTypeConst = 28
+	FloatingAtonSafeWater	AtonTypeConst = 29
+	FloatingAtonSpecialMark	AtonTypeConst = 30
+	FloatingAtonLightVesselLanbyRi	AtonTypeConst = 31
 )
 
 func (e AtonTypeConst) GoString() string {return e.String() }
@@ -1615,8 +1616,8 @@ func (e AtonTypeConst) String() string {
 type AisSpecialManeuverConst uint8
 const (
 	NotAvailable	AisSpecialManeuverConst = 0
-	AisSpecialManeuverConst1	AisSpecialManeuverConst = 1
-	AisSpecialManeuverConst2	AisSpecialManeuverConst = 2
+	NotEngagedInSpecialManeuver	AisSpecialManeuverConst = 1
+	EngagedInSpecialManeuver	AisSpecialManeuverConst = 2
 	Reserved_2	AisSpecialManeuverConst = 3
 )
 
@@ -1644,7 +1645,7 @@ const (
 	CombinedGpsGlonass	PositionFixDeviceConst = 3
 	LoranC	PositionFixDeviceConst = 4
 	Chayka	PositionFixDeviceConst = 5
-	PositionFixDeviceConst6	PositionFixDeviceConst = 6
+	IntegratedNavigationSystem	PositionFixDeviceConst = 6
 	Surveyed	PositionFixDeviceConst = 7
 	Galileo	PositionFixDeviceConst = 8
 )
@@ -1716,8 +1717,8 @@ func (e GnsConst) String() string {
 
 type EngineInstanceConst uint8
 const (
-	EngineInstanceConst0	EngineInstanceConst = 0
-	EngineInstanceConst1	EngineInstanceConst = 1
+	SingleEngineOrDualEnginePort	EngineInstanceConst = 0
+	DualEngineStarboard	EngineInstanceConst = 1
 )
 
 func (e EngineInstanceConst) GoString() string {return e.String() }
@@ -1791,7 +1792,7 @@ func (e PositionAccuracyConst) String() string {
 
 type RaimFlagConst uint8
 const (
-	RaimFlagConst0	RaimFlagConst = 0
+	NotInUse	RaimFlagConst = 0
 	InUse	RaimFlagConst = 1
 )
 
@@ -1810,9 +1811,9 @@ func (e RaimFlagConst) String() string {
 type TimeStampConst uint8
 const (
 	NotAvailable_2	TimeStampConst = 60
-	TimeStampConst61	TimeStampConst = 61
-	TimeStampConst62	TimeStampConst = 62
-	TimeStampConst63	TimeStampConst = 63
+	ManualInputMode	TimeStampConst = 61
+	DeadReckoningMode	TimeStampConst = 62
+	PositioningSystemIsInoperative	TimeStampConst = 63
 )
 
 func (e TimeStampConst) GoString() string {return e.String() }
@@ -1837,9 +1838,9 @@ const (
 	GnssFix	GnsMethodConst = 1
 	DgnssFix	GnsMethodConst = 2
 	PreciseGnss	GnsMethodConst = 3
-	GnsMethodConst4	GnsMethodConst = 4
+	RtkFixedInteger	GnsMethodConst = 4
 	RtkFloat	GnsMethodConst = 5
-	GnsMethodConst6	GnsMethodConst = 6
+	EstimatedDrMode	GnsMethodConst = 6
 	ManualInput	GnsMethodConst = 7
 	SimulateMode	GnsMethodConst = 8
 )
@@ -1872,7 +1873,7 @@ func (e GnsMethodConst) String() string {
 
 type GnsIntegrityConst uint8
 const (
-	GnsIntegrityConst0	GnsIntegrityConst = 0
+	NoIntegrityChecking	GnsIntegrityConst = 0
 	Safe	GnsIntegrityConst = 1
 	Caution	GnsIntegrityConst = 2
 	Unsafe	GnsIntegrityConst = 3
@@ -1899,9 +1900,9 @@ const (
 	Gps_3	SystemTimeConst = 0
 	Glonass_3	SystemTimeConst = 1
 	RadioStation	SystemTimeConst = 2
-	SystemTimeConst3	SystemTimeConst = 3
-	SystemTimeConst4	SystemTimeConst = 4
-	SystemTimeConst5	SystemTimeConst = 5
+	LocalCesiumClock	SystemTimeConst = 3
+	LocalRubidiumClock	SystemTimeConst = 4
+	LocalCrystalClock	SystemTimeConst = 5
 )
 
 func (e SystemTimeConst) GoString() string {return e.String() }
@@ -1992,11 +1993,11 @@ func (e ResidualModeConst) String() string {
 
 type WindReferenceConst uint8
 const (
-	WindReferenceConst0	WindReferenceConst = 0
-	WindReferenceConst1	WindReferenceConst = 1
+	TrueGroundReferencedToNorth	WindReferenceConst = 0
+	MagneticGroundReferencedToMagn	WindReferenceConst = 1
 	Apparent	WindReferenceConst = 2
-	WindReferenceConst3	WindReferenceConst = 3
-	WindReferenceConst4	WindReferenceConst = 4
+	TrueBoatReferenced	WindReferenceConst = 3
+	TrueWaterReferenced	WindReferenceConst = 4
 )
 
 func (e WindReferenceConst) GoString() string {return e.String() }
@@ -2022,7 +2023,7 @@ const (
 	PaddleWheel	WaterReferenceConst = 0
 	PitotTube	WaterReferenceConst = 1
 	Doppler	WaterReferenceConst = 2
-	WaterReferenceConst3	WaterReferenceConst = 3
+	CorrelationUltraSound	WaterReferenceConst = 3
 	ElectroMagnetic	WaterReferenceConst = 4
 )
 
@@ -2103,7 +2104,7 @@ const (
 	Off_2	OffOnControlConst = 0
 	On_2	OffOnControlConst = 1
 	Reserved_3	OffOnControlConst = 2
-	OffOnControlConst3	OffOnControlConst = 3
+	TakeNoActionNoChange	OffOnControlConst = 3
 )
 
 func (e OffOnControlConst) GoString() string {return e.String() }
@@ -2146,8 +2147,8 @@ func (e DirectionReferenceConst) String() string {
 type DirectionRudderConst uint8
 const (
 	NoOrder	DirectionRudderConst = 0
-	DirectionRudderConst1	DirectionRudderConst = 1
-	DirectionRudderConst2	DirectionRudderConst = 2
+	MoveToStarboard	DirectionRudderConst = 1
+	MoveToPort	DirectionRudderConst = 2
 )
 
 func (e DirectionRudderConst) GoString() string {return e.String() }
@@ -2166,19 +2167,19 @@ func (e DirectionRudderConst) String() string {
 
 type NavStatusConst uint8
 const (
-	NavStatusConst0	NavStatusConst = 0
+	UnderWayUsingEngine	NavStatusConst = 0
 	AtAnchor	NavStatusConst = 1
-	NavStatusConst2	NavStatusConst = 2
+	NotUnderCommand	NavStatusConst = 2
 	RestrictedManeuverability	NavStatusConst = 3
-	NavStatusConst4	NavStatusConst = 4
+	ConstrainedByHerDraught	NavStatusConst = 4
 	Moored	NavStatusConst = 5
 	Aground	NavStatusConst = 6
-	NavStatusConst7	NavStatusConst = 7
-	NavStatusConst8	NavStatusConst = 8
-	NavStatusConst9	NavStatusConst = 9
-	NavStatusConst10	NavStatusConst = 10
-	NavStatusConst11	NavStatusConst = 11
-	NavStatusConst12	NavStatusConst = 12
+	EngagedInFishing	NavStatusConst = 7
+	UnderWaySailing	NavStatusConst = 8
+	HazardousMaterialHighSpeed	NavStatusConst = 9
+	HazardousMaterialWingInGround	NavStatusConst = 10
+	PowerDrivenVesselTowingAstern	NavStatusConst = 11
+	PowerDrivenVesselPushingAheadO	NavStatusConst = 12
 	AisSart	NavStatusConst = 14
 )
 
@@ -2244,19 +2245,19 @@ const (
 	SeaTemperature	TemperatureSourceConst = 0
 	OutsideTemperature	TemperatureSourceConst = 1
 	InsideTemperature	TemperatureSourceConst = 2
-	TemperatureSourceConst3	TemperatureSourceConst = 3
-	TemperatureSourceConst4	TemperatureSourceConst = 4
-	TemperatureSourceConst5	TemperatureSourceConst = 5
-	TemperatureSourceConst6	TemperatureSourceConst = 6
+	EngineRoomTemperature	TemperatureSourceConst = 3
+	MainCabinTemperature	TemperatureSourceConst = 4
+	LiveWellTemperature	TemperatureSourceConst = 5
+	BaitWellTemperature	TemperatureSourceConst = 6
 	RefrigerationTemperature	TemperatureSourceConst = 7
-	TemperatureSourceConst8	TemperatureSourceConst = 8
-	TemperatureSourceConst9	TemperatureSourceConst = 9
-	TemperatureSourceConst10	TemperatureSourceConst = 10
-	TemperatureSourceConst11	TemperatureSourceConst = 11
-	TemperatureSourceConst12	TemperatureSourceConst = 12
+	HeatingSystemTemperature	TemperatureSourceConst = 8
+	DewPointTemperature	TemperatureSourceConst = 9
+	ApparentWindChillTemperature	TemperatureSourceConst = 10
+	TheoreticalWindChillTemperatur	TemperatureSourceConst = 11
+	HeatIndexTemperature	TemperatureSourceConst = 12
 	FreezerTemperature	TemperatureSourceConst = 13
-	TemperatureSourceConst14	TemperatureSourceConst = 14
-	TemperatureSourceConst15	TemperatureSourceConst = 15
+	ExhaustGasTemperature	TemperatureSourceConst = 14
+	ShaftSealTemperature	TemperatureSourceConst = 15
 )
 
 func (e TemperatureSourceConst) GoString() string {return e.String() }
@@ -2364,7 +2365,7 @@ const (
 	AllShips	DscFormatConst = 116
 	IndividualStations	DscFormatConst = 120
 	NonCallingPurpose	DscFormatConst = 121
-	DscFormatConst123	DscFormatConst = 123
+	IndividualStationAutomatic	DscFormatConst = 123
 )
 
 func (e DscFormatConst) GoString() string {return e.String() }
@@ -2421,7 +2422,7 @@ const (
 	Grounding	DscNatureConst = 103
 	Listing	DscNatureConst = 104
 	Sinking	DscNatureConst = 105
-	DscNatureConst106	DscNatureConst = 106
+	DisabledAndAdrift	DscNatureConst = 106
 	Undesignated	DscNatureConst = 107
 	AbandoningShip	DscNatureConst = 108
 	Piracy	DscNatureConst = 109
@@ -2463,11 +2464,11 @@ func (e DscNatureConst) String() string {
 
 type DscFirstTelecommandConst uint8
 const (
-	DscFirstTelecommandConst100	DscFirstTelecommandConst = 100
-	DscFirstTelecommandConst101	DscFirstTelecommandConst = 101
+	F3eG3eAllModesTp	DscFirstTelecommandConst = 100
+	F3eG3eDuplexTp	DscFirstTelecommandConst = 101
 	Polling	DscFirstTelecommandConst = 103
-	DscFirstTelecommandConst104	DscFirstTelecommandConst = 104
-	DscFirstTelecommandConst105	DscFirstTelecommandConst = 105
+	UnableToComply	DscFirstTelecommandConst = 104
+	EndOfCall	DscFirstTelecommandConst = 105
 	Data	DscFirstTelecommandConst = 106
 	J3eTp	DscFirstTelecommandConst = 109
 	DistressAcknowledgement	DscFirstTelecommandConst = 110
@@ -2475,7 +2476,7 @@ const (
 	F1bJ2bTtyFec	DscFirstTelecommandConst = 113
 	F1bJ2bTtyArq	DscFirstTelecommandConst = 115
 	Test	DscFirstTelecommandConst = 118
-	DscFirstTelecommandConst121	DscFirstTelecommandConst = 121
+	ShipPositionOrLocationRegistra	DscFirstTelecommandConst = 121
 	NoInformation	DscFirstTelecommandConst = 126
 )
 
@@ -2517,19 +2518,19 @@ func (e DscFirstTelecommandConst) String() string {
 
 type DscSecondTelecommandConst uint8
 const (
-	DscSecondTelecommandConst100	DscSecondTelecommandConst = 100
-	DscSecondTelecommandConst101	DscSecondTelecommandConst = 101
+	NoReasonGiven	DscSecondTelecommandConst = 100
+	CongestionAtMsc	DscSecondTelecommandConst = 101
 	Busy	DscSecondTelecommandConst = 102
 	QueueIndication	DscSecondTelecommandConst = 103
 	StationBarred	DscSecondTelecommandConst = 104
-	DscSecondTelecommandConst105	DscSecondTelecommandConst = 105
-	DscSecondTelecommandConst106	DscSecondTelecommandConst = 106
+	NoOperatorAvailable	DscSecondTelecommandConst = 105
+	OperatorTemporarilyUnavailable	DscSecondTelecommandConst = 106
 	EquipmentDisabled	DscSecondTelecommandConst = 107
-	DscSecondTelecommandConst108	DscSecondTelecommandConst = 108
-	DscSecondTelecommandConst109	DscSecondTelecommandConst = 109
-	DscSecondTelecommandConst110	DscSecondTelecommandConst = 110
+	UnableToUseProposedChannel	DscSecondTelecommandConst = 108
+	UnableToUseProposedMode	DscSecondTelecommandConst = 109
+	ShipsAndAircraftOfStatesNotPar_2	DscSecondTelecommandConst = 110
 	MedicalTransports	DscSecondTelecommandConst = 111
-	DscSecondTelecommandConst112	DscSecondTelecommandConst = 112
+	PayPhonePublicCallOffice	DscSecondTelecommandConst = 112
 	FaxData	DscSecondTelecommandConst = 113
 	NoInformation_2	DscSecondTelecommandConst = 126
 )
@@ -2575,12 +2576,12 @@ func (e DscSecondTelecommandConst) String() string {
 type DscExpansionDataConst uint8
 const (
 	EnhancedPosition	DscExpansionDataConst = 100
-	DscExpansionDataConst101	DscExpansionDataConst = 101
+	SourceAndDatumOfPosition	DscExpansionDataConst = 101
 	Sog	DscExpansionDataConst = 102
 	Cog	DscExpansionDataConst = 103
-	DscExpansionDataConst104	DscExpansionDataConst = 104
-	DscExpansionDataConst105	DscExpansionDataConst = 105
-	DscExpansionDataConst106	DscExpansionDataConst = 106
+	AdditionalStationIdentification	DscExpansionDataConst = 104
+	EnhancedGeographicArea	DscExpansionDataConst = 105
+	NumberOfPersonsOnBoard	DscExpansionDataConst = 106
 )
 
 func (e DscExpansionDataConst) GoString() string {return e.String() }
@@ -2607,9 +2608,9 @@ func (e DscExpansionDataConst) String() string {
 
 type SeatalkAlarmStatusConst uint8
 const (
-	SeatalkAlarmStatusConst0	SeatalkAlarmStatusConst = 0
-	SeatalkAlarmStatusConst1	SeatalkAlarmStatusConst = 1
-	SeatalkAlarmStatusConst2	SeatalkAlarmStatusConst = 2
+	AlarmConditionNotMet	SeatalkAlarmStatusConst = 0
+	AlarmConditionMetAndNotSilence	SeatalkAlarmStatusConst = 1
+	AlarmConditionMetAndSilenced	SeatalkAlarmStatusConst = 2
 )
 
 func (e SeatalkAlarmStatusConst) GoString() string {return e.String() }
@@ -2643,96 +2644,96 @@ const (
 	TwsHigh	SeatalkAlarmIdConst = 12
 	TwsLow	SeatalkAlarmIdConst = 13
 	WpArrival	SeatalkAlarmIdConst = 14
-	SeatalkAlarmIdConst15	SeatalkAlarmIdConst = 15
-	SeatalkAlarmIdConst16	SeatalkAlarmIdConst = 16
-	SeatalkAlarmIdConst17	SeatalkAlarmIdConst = 17
-	SeatalkAlarmIdConst18	SeatalkAlarmIdConst = 18
+	BoatSpeedHigh	SeatalkAlarmIdConst = 15
+	BoatSpeedLow	SeatalkAlarmIdConst = 16
+	SeaTemperatureHigh	SeatalkAlarmIdConst = 17
+	SeaTemperatureLow	SeatalkAlarmIdConst = 18
 	PilotWatch	SeatalkAlarmIdConst = 19
-	SeatalkAlarmIdConst20	SeatalkAlarmIdConst = 20
-	SeatalkAlarmIdConst21	SeatalkAlarmIdConst = 21
-	SeatalkAlarmIdConst22	SeatalkAlarmIdConst = 22
-	SeatalkAlarmIdConst23	SeatalkAlarmIdConst = 23
-	SeatalkAlarmIdConst24	SeatalkAlarmIdConst = 24
-	SeatalkAlarmIdConst25	SeatalkAlarmIdConst = 25
-	SeatalkAlarmIdConst26	SeatalkAlarmIdConst = 26
-	SeatalkAlarmIdConst27	SeatalkAlarmIdConst = 27
-	SeatalkAlarmIdConst28	SeatalkAlarmIdConst = 28
-	SeatalkAlarmIdConst29	SeatalkAlarmIdConst = 29
-	SeatalkAlarmIdConst30	SeatalkAlarmIdConst = 30
-	SeatalkAlarmIdConst31	SeatalkAlarmIdConst = 31
-	SeatalkAlarmIdConst32	SeatalkAlarmIdConst = 32
-	SeatalkAlarmIdConst33	SeatalkAlarmIdConst = 33
-	SeatalkAlarmIdConst34	SeatalkAlarmIdConst = 34
-	SeatalkAlarmIdConst35	SeatalkAlarmIdConst = 35
-	SeatalkAlarmIdConst36	SeatalkAlarmIdConst = 36
+	PilotOffCourse	SeatalkAlarmIdConst = 20
+	PilotWindShift	SeatalkAlarmIdConst = 21
+	PilotLowBattery	SeatalkAlarmIdConst = 22
+	PilotLastMinuteOfWatch	SeatalkAlarmIdConst = 23
+	PilotNoNmeaData	SeatalkAlarmIdConst = 24
+	PilotLargeXte	SeatalkAlarmIdConst = 25
+	PilotNmeaDataerror	SeatalkAlarmIdConst = 26
+	PilotCuDisconnected	SeatalkAlarmIdConst = 27
+	PilotAutoRelease	SeatalkAlarmIdConst = 28
+	PilotWayPointAdvance	SeatalkAlarmIdConst = 29
+	PilotDriveStopped	SeatalkAlarmIdConst = 30
+	PilotTypeUnspecified	SeatalkAlarmIdConst = 31
+	PilotCalibrationRequired	SeatalkAlarmIdConst = 32
+	PilotLastHeading	SeatalkAlarmIdConst = 33
+	PilotNoPilot	SeatalkAlarmIdConst = 34
+	PilotRouteComplete	SeatalkAlarmIdConst = 35
+	PilotVariableText	SeatalkAlarmIdConst = 36
 	GpsFailure	SeatalkAlarmIdConst = 37
 	Mob	SeatalkAlarmIdConst = 38
 	Seatalk1Anchor	SeatalkAlarmIdConst = 39
-	SeatalkAlarmIdConst40	SeatalkAlarmIdConst = 40
-	SeatalkAlarmIdConst41	SeatalkAlarmIdConst = 41
-	SeatalkAlarmIdConst42	SeatalkAlarmIdConst = 42
-	SeatalkAlarmIdConst43	SeatalkAlarmIdConst = 43
-	SeatalkAlarmIdConst44	SeatalkAlarmIdConst = 44
-	SeatalkAlarmIdConst45	SeatalkAlarmIdConst = 45
-	SeatalkAlarmIdConst46	SeatalkAlarmIdConst = 46
-	SeatalkAlarmIdConst47	SeatalkAlarmIdConst = 47
-	SeatalkAlarmIdConst48	SeatalkAlarmIdConst = 48
-	SeatalkAlarmIdConst49	SeatalkAlarmIdConst = 49
-	SeatalkAlarmIdConst50	SeatalkAlarmIdConst = 50
-	SeatalkAlarmIdConst51	SeatalkAlarmIdConst = 51
-	SeatalkAlarmIdConst52	SeatalkAlarmIdConst = 52
-	SeatalkAlarmIdConst53	SeatalkAlarmIdConst = 53
-	SeatalkAlarmIdConst54	SeatalkAlarmIdConst = 54
-	SeatalkAlarmIdConst55	SeatalkAlarmIdConst = 55
-	SeatalkAlarmIdConst56	SeatalkAlarmIdConst = 56
-	SeatalkAlarmIdConst57	SeatalkAlarmIdConst = 57
-	SeatalkAlarmIdConst58	SeatalkAlarmIdConst = 58
-	SeatalkAlarmIdConst59	SeatalkAlarmIdConst = 59
-	SeatalkAlarmIdConst60	SeatalkAlarmIdConst = 60
-	SeatalkAlarmIdConst61	SeatalkAlarmIdConst = 61
-	SeatalkAlarmIdConst62	SeatalkAlarmIdConst = 62
-	SeatalkAlarmIdConst63	SeatalkAlarmIdConst = 63
-	SeatalkAlarmIdConst64	SeatalkAlarmIdConst = 64
-	SeatalkAlarmIdConst65	SeatalkAlarmIdConst = 65
-	SeatalkAlarmIdConst66	SeatalkAlarmIdConst = 66
-	SeatalkAlarmIdConst67	SeatalkAlarmIdConst = 67
-	SeatalkAlarmIdConst68	SeatalkAlarmIdConst = 68
-	SeatalkAlarmIdConst69	SeatalkAlarmIdConst = 69
-	SeatalkAlarmIdConst70	SeatalkAlarmIdConst = 70
-	SeatalkAlarmIdConst71	SeatalkAlarmIdConst = 71
-	SeatalkAlarmIdConst72	SeatalkAlarmIdConst = 72
-	SeatalkAlarmIdConst73	SeatalkAlarmIdConst = 73
-	SeatalkAlarmIdConst74	SeatalkAlarmIdConst = 74
-	SeatalkAlarmIdConst75	SeatalkAlarmIdConst = 75
-	SeatalkAlarmIdConst76	SeatalkAlarmIdConst = 76
-	SeatalkAlarmIdConst80	SeatalkAlarmIdConst = 80
-	SeatalkAlarmIdConst81	SeatalkAlarmIdConst = 81
-	SeatalkAlarmIdConst82	SeatalkAlarmIdConst = 82
-	SeatalkAlarmIdConst83	SeatalkAlarmIdConst = 83
-	SeatalkAlarmIdConst84	SeatalkAlarmIdConst = 84
-	SeatalkAlarmIdConst85	SeatalkAlarmIdConst = 85
-	SeatalkAlarmIdConst86	SeatalkAlarmIdConst = 86
-	SeatalkAlarmIdConst87	SeatalkAlarmIdConst = 87
-	SeatalkAlarmIdConst88	SeatalkAlarmIdConst = 88
-	SeatalkAlarmIdConst89	SeatalkAlarmIdConst = 89
-	SeatalkAlarmIdConst90	SeatalkAlarmIdConst = 90
-	SeatalkAlarmIdConst91	SeatalkAlarmIdConst = 91
-	SeatalkAlarmIdConst92	SeatalkAlarmIdConst = 92
-	SeatalkAlarmIdConst93	SeatalkAlarmIdConst = 93
-	SeatalkAlarmIdConst94	SeatalkAlarmIdConst = 94
-	SeatalkAlarmIdConst95	SeatalkAlarmIdConst = 95
-	SeatalkAlarmIdConst96	SeatalkAlarmIdConst = 96
-	SeatalkAlarmIdConst97	SeatalkAlarmIdConst = 97
-	SeatalkAlarmIdConst98	SeatalkAlarmIdConst = 98
-	SeatalkAlarmIdConst99	SeatalkAlarmIdConst = 99
-	SeatalkAlarmIdConst100	SeatalkAlarmIdConst = 100
-	SeatalkAlarmIdConst101	SeatalkAlarmIdConst = 101
-	SeatalkAlarmIdConst102	SeatalkAlarmIdConst = 102
-	SeatalkAlarmIdConst103	SeatalkAlarmIdConst = 103
-	SeatalkAlarmIdConst104	SeatalkAlarmIdConst = 104
-	SeatalkAlarmIdConst105	SeatalkAlarmIdConst = 105
-	SeatalkAlarmIdConst106	SeatalkAlarmIdConst = 106
-	SeatalkAlarmIdConst107	SeatalkAlarmIdConst = 107
+	PilotSwappedMotorPower	SeatalkAlarmIdConst = 40
+	PilotStandbyTooFastToFish	SeatalkAlarmIdConst = 41
+	PilotNoGpsFix	SeatalkAlarmIdConst = 42
+	PilotNoGpsCog	SeatalkAlarmIdConst = 43
+	PilotStartUp	SeatalkAlarmIdConst = 44
+	PilotTooSlow	SeatalkAlarmIdConst = 45
+	PilotNoCompass	SeatalkAlarmIdConst = 46
+	PilotRateGyroFault	SeatalkAlarmIdConst = 47
+	PilotCurrentLimit	SeatalkAlarmIdConst = 48
+	PilotWayPointAdvancePort	SeatalkAlarmIdConst = 49
+	PilotWayPointAdvanceStbd	SeatalkAlarmIdConst = 50
+	PilotNoWindData	SeatalkAlarmIdConst = 51
+	PilotNoSpeedData	SeatalkAlarmIdConst = 52
+	PilotSeatalkFail1	SeatalkAlarmIdConst = 53
+	PilotSeatalkFail2	SeatalkAlarmIdConst = 54
+	PilotWarningTooFastToFish	SeatalkAlarmIdConst = 55
+	PilotAutoDocksideFail	SeatalkAlarmIdConst = 56
+	PilotTurnTooFast	SeatalkAlarmIdConst = 57
+	PilotNoNavData	SeatalkAlarmIdConst = 58
+	PilotLostWaypointData	SeatalkAlarmIdConst = 59
+	PilotEepromCorrupt	SeatalkAlarmIdConst = 60
+	PilotRudderFeedbackFail	SeatalkAlarmIdConst = 61
+	PilotAutolearnFail1	SeatalkAlarmIdConst = 62
+	PilotAutolearnFail2	SeatalkAlarmIdConst = 63
+	PilotAutolearnFail3	SeatalkAlarmIdConst = 64
+	PilotAutolearnFail4	SeatalkAlarmIdConst = 65
+	PilotAutolearnFail5	SeatalkAlarmIdConst = 66
+	PilotAutolearnFail6	SeatalkAlarmIdConst = 67
+	PilotWarningCalRequired	SeatalkAlarmIdConst = 68
+	PilotWarningOffcourse	SeatalkAlarmIdConst = 69
+	PilotWarningXte	SeatalkAlarmIdConst = 70
+	PilotWarningWindShift	SeatalkAlarmIdConst = 71
+	PilotWarningDriveShort	SeatalkAlarmIdConst = 72
+	PilotWarningClutchShort	SeatalkAlarmIdConst = 73
+	PilotWarningSolenoidShort	SeatalkAlarmIdConst = 74
+	PilotJoystickFault	SeatalkAlarmIdConst = 75
+	PilotNoJoystickData	SeatalkAlarmIdConst = 76
+	PilotInvalidCommand	SeatalkAlarmIdConst = 80
+	AisTxMalfunction	SeatalkAlarmIdConst = 81
+	AisAntennaVswrFault	SeatalkAlarmIdConst = 82
+	AisRxChannel1Malfunction	SeatalkAlarmIdConst = 83
+	AisRxChannel2Malfunction	SeatalkAlarmIdConst = 84
+	AisNoSensorPositionInUse	SeatalkAlarmIdConst = 85
+	AisNoValidSogInformation	SeatalkAlarmIdConst = 86
+	AisNoValidCogInformation	SeatalkAlarmIdConst = 87
+	Ais12VAlarm	SeatalkAlarmIdConst = 88
+	Ais6VAlarm	SeatalkAlarmIdConst = 89
+	AisNoiseThresholdExceededChann	SeatalkAlarmIdConst = 90
+	AisNoiseThresholdExceededChann_2	SeatalkAlarmIdConst = 91
+	AisTransmitterPaFault	SeatalkAlarmIdConst = 92
+	Ais3V3Alarm	SeatalkAlarmIdConst = 93
+	AisRxChannel70Malfunction	SeatalkAlarmIdConst = 94
+	AisHeadingLostInvalid	SeatalkAlarmIdConst = 95
+	AisInternalGpsLost	SeatalkAlarmIdConst = 96
+	AisNoSensorPosition	SeatalkAlarmIdConst = 97
+	AisLockFailure	SeatalkAlarmIdConst = 98
+	AisInternalGgaTimeout	SeatalkAlarmIdConst = 99
+	AisProtocolStackRestart	SeatalkAlarmIdConst = 100
+	PilotNoIpsCommunications	SeatalkAlarmIdConst = 101
+	PilotPowerOnOrSleepSwitchReset	SeatalkAlarmIdConst = 102
+	PilotUnexpectedResetWhileEngag	SeatalkAlarmIdConst = 103
+	AisDangerousTarget	SeatalkAlarmIdConst = 104
+	AisLostTarget	SeatalkAlarmIdConst = 105
+	AisSafetyRelatedMessageUsedToS	SeatalkAlarmIdConst = 106
+	AisConnectionLost	SeatalkAlarmIdConst = 107
 	NoFix	SeatalkAlarmIdConst = 108
 )
 
@@ -3144,10 +3145,10 @@ const (
 	ScanDown	EntertainmentPlayStatusConst = 18
 	TuneUp	EntertainmentPlayStatusConst = 19
 	TuneDown	EntertainmentPlayStatusConst = 20
-	EntertainmentPlayStatusConst21	EntertainmentPlayStatusConst = 21
-	EntertainmentPlayStatusConst22	EntertainmentPlayStatusConst = 22
-	EntertainmentPlayStatusConst23	EntertainmentPlayStatusConst = 23
-	EntertainmentPlayStatusConst24	EntertainmentPlayStatusConst = 24
+	SlowMotion75X	EntertainmentPlayStatusConst = 21
+	SlowMotion5X	EntertainmentPlayStatusConst = 22
+	SlowMotion25X	EntertainmentPlayStatusConst = 23
+	SlowMotion125X	EntertainmentPlayStatusConst = 24
 )
 
 func (e EntertainmentPlayStatusConst) GoString() string {return e.String() }
@@ -3364,7 +3365,7 @@ func (e EntertainmentGroupConst) String() string {
 type EntertainmentChannelConst uint8
 const (
 	AllChannels	EntertainmentChannelConst = 0
-	EntertainmentChannelConst1	EntertainmentChannelConst = 1
+	StereoFullRange	EntertainmentChannelConst = 1
 	StereoFront	EntertainmentChannelConst = 2
 	StereoBack	EntertainmentChannelConst = 3
 	StereoSurround	EntertainmentChannelConst = 4
@@ -3554,8 +3555,8 @@ type AlertThresholdStatusConst uint8
 const (
 	Normal	AlertThresholdStatusConst = 0
 	ThresholdExceeded	AlertThresholdStatusConst = 1
-	AlertThresholdStatusConst2	AlertThresholdStatusConst = 2
-	AlertThresholdStatusConst3	AlertThresholdStatusConst = 3
+	ExtremeThresholdExceeded	AlertThresholdStatusConst = 2
+	LowThresholdExceeded	AlertThresholdStatusConst = 3
 	Acknowledged	AlertThresholdStatusConst = 4
 	AwaitingAcknowledge	AlertThresholdStatusConst = 5
 )
@@ -3686,8 +3687,8 @@ type AlertResponseCommandConst uint8
 const (
 	Acknowledge	AlertResponseCommandConst = 0
 	TemporarySilence	AlertResponseCommandConst = 1
-	AlertResponseCommandConst2	AlertResponseCommandConst = 2
-	AlertResponseCommandConst3	AlertResponseCommandConst = 3
+	TestCommandOff	AlertResponseCommandConst = 2
+	TestCommandOn	AlertResponseCommandConst = 3
 )
 
 func (e AlertResponseCommandConst) GoString() string {return e.String() }
@@ -3709,7 +3710,7 @@ func (e AlertResponseCommandConst) String() string {
 type ConverterStateConst uint8
 const (
 	Off_5	ConverterStateConst = 0
-	ConverterStateConst1	ConverterStateConst = 1
+	LowPowerMode	ConverterStateConst = 1
 	Fault	ConverterStateConst = 2
 	Bulk	ConverterStateConst = 3
 	Absorption	ConverterStateConst = 4
@@ -3825,7 +3826,7 @@ func (e ThrusterMotorTypeConst) String() string {
 
 type BootStateConst uint8
 const (
-	BootStateConst0	BootStateConst = 0
+	InStartupMonitor	BootStateConst = 0
 	RunningBootloader	BootStateConst = 1
 	RunningApplication	BootStateConst = 2
 )
@@ -3847,8 +3848,8 @@ func (e BootStateConst) String() string {
 type AccessLevelConst uint8
 const (
 	Locked	AccessLevelConst = 0
-	AccessLevelConst1	AccessLevelConst = 1
-	AccessLevelConst2	AccessLevelConst = 2
+	UnlockedLevel1	AccessLevelConst = 1
+	UnlockedLevel2	AccessLevelConst = 2
 )
 
 func (e AccessLevelConst) GoString() string {return e.String() }
@@ -3868,8 +3869,8 @@ func (e AccessLevelConst) String() string {
 type TransmissionIntervalConst uint8
 const (
 	Acknowledge_2	TransmissionIntervalConst = 0
-	TransmissionIntervalConst1	TransmissionIntervalConst = 1
-	TransmissionIntervalConst2	TransmissionIntervalConst = 2
+	TransmitIntervalPriorityNotSup	TransmissionIntervalConst = 1
+	TransmitIntervalTooLow	TransmissionIntervalConst = 2
 	AccessDenied	TransmissionIntervalConst = 3
 	NotSupported	TransmissionIntervalConst = 4
 )
@@ -3895,12 +3896,12 @@ func (e TransmissionIntervalConst) String() string {
 type ParameterFieldConst uint8
 const (
 	Acknowledge_3	ParameterFieldConst = 0
-	ParameterFieldConst1	ParameterFieldConst = 1
+	InvalidParameterField	ParameterFieldConst = 1
 	TemporaryError	ParameterFieldConst = 2
-	ParameterFieldConst3	ParameterFieldConst = 3
+	ParameterOutOfRange	ParameterFieldConst = 3
 	AccessDenied_2	ParameterFieldConst = 4
 	NotSupported_2	ParameterFieldConst = 5
-	ParameterFieldConst6	ParameterFieldConst = 6
+	ReadOrWriteNotSupported	ParameterFieldConst = 6
 )
 
 func (e ParameterFieldConst) GoString() string {return e.String() }
@@ -3927,8 +3928,8 @@ func (e ParameterFieldConst) String() string {
 
 type PgnListFunctionConst uint8
 const (
-	PgnListFunctionConst0	PgnListFunctionConst = 0
-	PgnListFunctionConst1	PgnListFunctionConst = 1
+	TransmitPgnList	PgnListFunctionConst = 0
+	ReceivePgnList	PgnListFunctionConst = 1
 )
 
 func (e PgnListFunctionConst) GoString() string {return e.String() }
@@ -4012,8 +4013,8 @@ const (
 	SeatalkKeystrokeConst10	SeatalkKeystrokeConst = 6
 	SeatalkKeystrokeConst1_2	SeatalkKeystrokeConst = 7
 	SeatalkKeystrokeConst10_2	SeatalkKeystrokeConst = 8
-	SeatalkKeystrokeConst33	SeatalkKeystrokeConst = 33
-	SeatalkKeystrokeConst34	SeatalkKeystrokeConst = 34
+	SeatalkKeystrokeConst1And10	SeatalkKeystrokeConst = 33
+	SeatalkKeystrokeConst1And10_2	SeatalkKeystrokeConst = 34
 	Track_2	SeatalkKeystrokeConst = 35
 )
 
@@ -4135,11 +4136,11 @@ func (e SeatalkDisplayColorConst) String() string {
 type AirmarCalibrateFunctionConst uint8
 const (
 	NormalCancelCalibration	AirmarCalibrateFunctionConst = 0
-	AirmarCalibrateFunctionConst1	AirmarCalibrateFunctionConst = 1
-	AirmarCalibrateFunctionConst2	AirmarCalibrateFunctionConst = 2
+	EnterCalibrationMode	AirmarCalibrateFunctionConst = 1
+	ResetCalibrationTo0	AirmarCalibrateFunctionConst = 2
 	Verify	AirmarCalibrateFunctionConst = 3
-	AirmarCalibrateFunctionConst4	AirmarCalibrateFunctionConst = 4
-	AirmarCalibrateFunctionConst5	AirmarCalibrateFunctionConst = 5
+	ResetCompassToDefaults	AirmarCalibrateFunctionConst = 4
+	ResetDampingToDefaults	AirmarCalibrateFunctionConst = 5
 )
 
 func (e AirmarCalibrateFunctionConst) GoString() string {return e.String() }
@@ -4166,9 +4167,9 @@ type AirmarCalibrateStatusConst uint8
 const (
 	Queried	AirmarCalibrateStatusConst = 0
 	Passed	AirmarCalibrateStatusConst = 1
-	AirmarCalibrateStatusConst2	AirmarCalibrateStatusConst = 2
-	AirmarCalibrateStatusConst3	AirmarCalibrateStatusConst = 3
-	AirmarCalibrateStatusConst4	AirmarCalibrateStatusConst = 4
+	FailedTimeout	AirmarCalibrateStatusConst = 2
+	FailedTiltError	AirmarCalibrateStatusConst = 3
+	FailedOther	AirmarCalibrateStatusConst = 4
 	InProgress	AirmarCalibrateStatusConst = 5
 )
 
@@ -4195,8 +4196,8 @@ func (e AirmarCalibrateStatusConst) String() string {
 type AirmarTemperatureInstanceConst uint8
 const (
 	DeviceSensor	AirmarTemperatureInstanceConst = 0
-	AirmarTemperatureInstanceConst1	AirmarTemperatureInstanceConst = 1
-	AirmarTemperatureInstanceConst2	AirmarTemperatureInstanceConst = 2
+	OnboardWaterSensor	AirmarTemperatureInstanceConst = 1
+	OptionalWaterSensor	AirmarTemperatureInstanceConst = 2
 )
 
 func (e AirmarTemperatureInstanceConst) GoString() string {return e.String() }
@@ -4216,7 +4217,7 @@ func (e AirmarTemperatureInstanceConst) String() string {
 type AirmarFilterConst uint8
 const (
 	NoFilter	AirmarFilterConst = 0
-	AirmarFilterConst1	AirmarFilterConst = 1
+	BasicIirFilter	AirmarFilterConst = 1
 )
 
 func (e AirmarFilterConst) GoString() string {return e.String() }
@@ -4272,8 +4273,8 @@ func (e EquipmentStatusConst) String() string {
 
 type MobStatusConst uint8
 const (
-	MobStatusConst0	MobStatusConst = 0
-	MobStatusConst1	MobStatusConst = 1
+	MobEmitterActivated	MobStatusConst = 0
+	ManualOnBoardMobButtonActivati	MobStatusConst = 1
 	TestMode	MobStatusConst = 2
 )
 
@@ -4311,8 +4312,8 @@ func (e LowBatteryConst) String() string {
 
 type TurnModeConst uint8
 const (
-	TurnModeConst0	TurnModeConst = 0
-	TurnModeConst1	TurnModeConst = 1
+	RudderLimitControlled	TurnModeConst = 0
+	TurnRateControlled	TurnModeConst = 1
 	RadiusControlled	TurnModeConst = 2
 )
 
@@ -4378,7 +4379,7 @@ func (e LineConst) String() string {
 type WaveformConst uint8
 const (
 	SineWave	WaveformConst = 0
-	WaveformConst1	WaveformConst = 1
+	ModifiedSineWave	WaveformConst = 1
 )
 
 func (e WaveformConst) GoString() string {return e.String() }
@@ -4495,8 +4496,8 @@ func (e ChargerStateConst) String() string {
 type ChargingAlgorithmConst uint8
 const (
 	Trickle	ChargingAlgorithmConst = 0
-	ChargingAlgorithmConst1	ChargingAlgorithmConst = 1
-	ChargingAlgorithmConst2	ChargingAlgorithmConst = 2
+	ConstantVoltageConstantCurrent	ChargingAlgorithmConst = 1
+	TwoStageNoFloat	ChargingAlgorithmConst = 2
 	ThreeStage	ChargingAlgorithmConst = 3
 )
 
@@ -4776,8 +4777,8 @@ func (e WindlassMotionConst) String() string {
 
 type RodeTypeConst uint8
 const (
-	RodeTypeConst0	RodeTypeConst = 0
-	RodeTypeConst1	RodeTypeConst = 1
+	ChainPresentlyDetected	RodeTypeConst = 0
+	RopePresentlyDetected	RodeTypeConst = 1
 )
 
 func (e RodeTypeConst) GoString() string {return e.String() }
@@ -4830,8 +4831,8 @@ func (e AisTypeConst) String() string {
 
 type AisBandConst uint8
 const (
-	AisBandConst0	AisBandConst = 0
-	AisBandConst1	AisBandConst = 1
+	Top525KhzOfMarineBand	AisBandConst = 0
+	EntireMarineBand	AisBandConst = 1
 )
 
 func (e AisBandConst) GoString() string {return e.String() }
@@ -4971,8 +4972,8 @@ func (e GnssModeConst) String() string {
 
 type RangeResidualModeConst uint8
 const (
-	RangeResidualModeConst0	RangeResidualModeConst = 0
-	RangeResidualModeConst1	RangeResidualModeConst = 1
+	RangeResidualsWereUsedToCalcul	RangeResidualModeConst = 0
+	RangeResidualsWereCalculatedAf	RangeResidualModeConst = 1
 )
 
 func (e RangeResidualModeConst) GoString() string {return e.String() }
@@ -4990,7 +4991,7 @@ func (e RangeResidualModeConst) String() string {
 type DgnssModeConst uint8
 const (
 	None_3	DgnssModeConst = 0
-	DgnssModeConst1	DgnssModeConst = 1
+	SbasIfAvailable	DgnssModeConst = 1
 	Sbas	DgnssModeConst = 3
 )
 
@@ -5043,7 +5044,7 @@ const (
 	ItuRM13711	AisVersionConst = 0
 	ItuRM13713	AisVersionConst = 1
 	ItuRM13715	AisVersionConst = 2
-	AisVersionConst3	AisVersionConst = 3
+	ItuRM1371FutureEdition	AisVersionConst = 3
 )
 
 func (e AisVersionConst) GoString() string {return e.String() }
@@ -5142,9 +5143,9 @@ func (e EntertainmentIdTypeConst) String() string {
 
 type EntertainmentDefaultSettingsConst uint8
 const (
-	EntertainmentDefaultSettingsConst0	EntertainmentDefaultSettingsConst = 0
-	EntertainmentDefaultSettingsConst1	EntertainmentDefaultSettingsConst = 1
-	EntertainmentDefaultSettingsConst2	EntertainmentDefaultSettingsConst = 2
+	SaveCurrentSettingsAsUserDefau	EntertainmentDefaultSettingsConst = 0
+	LoadUserDefault	EntertainmentDefaultSettingsConst = 1
+	LoadManufacturerDefault	EntertainmentDefaultSettingsConst = 2
 )
 
 func (e EntertainmentDefaultSettingsConst) GoString() string {return e.String() }
@@ -5395,7 +5396,7 @@ const (
 	SendStatus	SimnetDeviceReportConst = 3
 	Mode	SimnetDeviceReportConst = 10
 	SendMode	SimnetDeviceReportConst = 11
-	SimnetDeviceReportConst23	SimnetDeviceReportConst = 23
+	SailingProcessorStatus	SimnetDeviceReportConst = 23
 )
 
 func (e SimnetDeviceReportConst) GoString() string {return e.String() }
@@ -5637,20 +5638,20 @@ const (
 	Standby_3	SimnetApEventsConst = 6
 	AutoMode	SimnetApEventsConst = 9
 	NavMode	SimnetApEventsConst = 10
-	SimnetApEventsConst13	SimnetApEventsConst = 13
-	SimnetApEventsConst14	SimnetApEventsConst = 14
+	NonFollowUpMode	SimnetApEventsConst = 13
+	FollowUpMode	SimnetApEventsConst = 14
 	WindMode	SimnetApEventsConst = 15
 	SquareTurn	SimnetApEventsConst = 18
 	CTurn	SimnetApEventsConst = 19
 	UTurn	SimnetApEventsConst = 20
 	SpiralTurn	SimnetApEventsConst = 21
-	SimnetApEventsConst22	SimnetApEventsConst = 22
+	ZigZagTurn	SimnetApEventsConst = 22
 	LazySTurn	SimnetApEventsConst = 23
 	DepthTurn	SimnetApEventsConst = 24
 	ChangeCourse	SimnetApEventsConst = 26
 	TimerSync	SimnetApEventsConst = 61
-	SimnetApEventsConst112	SimnetApEventsConst = 112
-	SimnetApEventsConst113	SimnetApEventsConst = 113
+	PingPortEnd	SimnetApEventsConst = 112
+	PingStarboardEnd	SimnetApEventsConst = 113
 )
 
 func (e SimnetApEventsConst) GoString() string {return e.String() }
@@ -5699,8 +5700,8 @@ type SimnetDirectionConst uint8
 const (
 	Port	SimnetDirectionConst = 2
 	Starboard	SimnetDirectionConst = 3
-	SimnetDirectionConst4	SimnetDirectionConst = 4
-	SimnetDirectionConst5	SimnetDirectionConst = 5
+	LeftRudderPort	SimnetDirectionConst = 4
+	RightRudderStarboard	SimnetDirectionConst = 5
 )
 
 func (e SimnetDirectionConst) GoString() string {return e.String() }
@@ -5721,8 +5722,8 @@ func (e SimnetDirectionConst) String() string {
 
 type SimnetAlarmConst uint8
 const (
-	SimnetAlarmConst57	SimnetAlarmConst = 57
-	SimnetAlarmConst58	SimnetAlarmConst = 58
+	LowBoatSpeed	SimnetAlarmConst = 57
+	WindDataMissing	SimnetAlarmConst = 58
 )
 
 func (e SimnetAlarmConst) GoString() string {return e.String() }
@@ -5743,50 +5744,50 @@ const (
 	SetSource	FusionMessageIdConst = 2
 	MediaCommand	FusionMessageIdConst = 3
 	TunerCommand	FusionMessageIdConst = 5
-	FusionMessageIdConst6	FusionMessageIdConst = 6
-	FusionMessageIdConst7	FusionMessageIdConst = 7
-	FusionMessageIdConst8	FusionMessageIdConst = 8
+	MarineTunerCommand	FusionMessageIdConst = 6
+	SetMarineTunerSquelch	FusionMessageIdConst = 7
+	SetMarineTunerScanMode	FusionMessageIdConst = 8
 	MenuAction	FusionMessageIdConst = 9
-	FusionMessageIdConst10	FusionMessageIdConst = 10
-	FusionMessageIdConst11	FusionMessageIdConst = 11
-	FusionMessageIdConst12	FusionMessageIdConst = 12
-	FusionMessageIdConst13	FusionMessageIdConst = 13
+	RequestMenuCount	FusionMessageIdConst = 10
+	RequestMenuItem	FusionMessageIdConst = 11
+	RequestMenuLockId	FusionMessageIdConst = 12
+	SetAuxGain	FusionMessageIdConst = 13
 	SetSettings	FusionMessageIdConst = 15
-	FusionMessageIdConst16	FusionMessageIdConst = 16
+	DabUpdtateCommand	FusionMessageIdConst = 16
 	SetMute	FusionMessageIdConst = 17
 	SetBalance	FusionMessageIdConst = 18
-	FusionMessageIdConst19	FusionMessageIdConst = 19
+	SetLowPassFiler	FusionMessageIdConst = 19
 	SetSublevel	FusionMessageIdConst = 20
 	SetEqualizer	FusionMessageIdConst = 22
-	FusionMessageIdConst23	FusionMessageIdConst = 23
-	FusionMessageIdConst24	FusionMessageIdConst = 24
-	FusionMessageIdConst25	FusionMessageIdConst = 25
-	FusionMessageIdConst27	FusionMessageIdConst = 27
+	SetVolumeLimit	FusionMessageIdConst = 23
+	SetZoneVolume	FusionMessageIdConst = 24
+	SetAllVolumes	FusionMessageIdConst = 25
+	SetLineLevelControl	FusionMessageIdConst = 27
 	Power	FusionMessageIdConst = 28
-	FusionMessageIdConst29	FusionMessageIdConst = 29
-	FusionMessageIdConst30	FusionMessageIdConst = 30
-	FusionMessageIdConst31	FusionMessageIdConst = 31
-	FusionMessageIdConst33	FusionMessageIdConst = 33
-	FusionMessageIdConst34	FusionMessageIdConst = 34
-	FusionMessageIdConst35	FusionMessageIdConst = 35
-	FusionMessageIdConst36	FusionMessageIdConst = 36
-	FusionMessageIdConst39	FusionMessageIdConst = 39
-	FusionMessageIdConst40	FusionMessageIdConst = 40
-	FusionMessageIdConst41	FusionMessageIdConst = 41
-	FusionMessageIdConst45	FusionMessageIdConst = 45
-	FusionMessageIdConst50	FusionMessageIdConst = 50
-	FusionMessageIdConst51	FusionMessageIdConst = 51
-	FusionMessageIdConst52	FusionMessageIdConst = 52
-	FusionMessageIdConst53	FusionMessageIdConst = 53
+	SetDeviceName	FusionMessageIdConst = 29
+	SendSiriusCommand	FusionMessageIdConst = 30
+	SetSiriusParental	FusionMessageIdConst = 31
+	SendFactoryResetCommand	FusionMessageIdConst = 33
+	SetZoneName	FusionMessageIdConst = 34
+	SendDvdCommand	FusionMessageIdConst = 35
+	DvdPressIrKey	FusionMessageIdConst = 36
+	SendSelectSiriusTeam	FusionMessageIdConst = 39
+	SendSelectSiriusArtist	FusionMessageIdConst = 40
+	SendSiriusSportAlertUserAction	FusionMessageIdConst = 41
+	SendSiriusArtistSongUserAction	FusionMessageIdConst = 45
+	SendMultiroomCommand	FusionMessageIdConst = 50
+	GetMultiroomDeviceRecord	FusionMessageIdConst = 51
+	ScanMultirooomDevices	FusionMessageIdConst = 52
+	SendFileTransfer	FusionMessageIdConst = 53
 	SetLoud	FusionMessageIdConst = 54
-	FusionMessageIdConst56	FusionMessageIdConst = 56
-	FusionMessageIdConst57	FusionMessageIdConst = 57
-	FusionMessageIdConst64	FusionMessageIdConst = 64
-	FusionMessageIdConst65	FusionMessageIdConst = 65
-	FusionMessageIdConst69	FusionMessageIdConst = 69
-	FusionMessageIdConst70	FusionMessageIdConst = 70
-	FusionMessageIdConst73	FusionMessageIdConst = 73
-	FusionMessageIdConst74	FusionMessageIdConst = 74
+	FapiSetSourceMultiroomEnabled	FusionMessageIdConst = 56
+	RequestHeadUnitDspSettings	FusionMessageIdConst = 57
+	SendTransferStatus	FusionMessageIdConst = 64
+	FapiGetServerInfo	FusionMessageIdConst = 65
+	FapiSetSourceEnabled	FusionMessageIdConst = 69
+	FapiSetSourceName	FusionMessageIdConst = 70
+	SendExternalAmpGain	FusionMessageIdConst = 73
+	SendInternalAmpGain	FusionMessageIdConst = 74
 	SendMono	FusionMessageIdConst = 75
 )
 
@@ -6080,35 +6081,35 @@ const (
 	Tuner	FusionStatusMessageIdConst = 32779
 	MarineTuner	FusionStatusMessageIdConst = 32780
 	MarineSquelch	FusionStatusMessageIdConst = 32781
-	FusionStatusMessageIdConst32782	FusionStatusMessageIdConst = 32782
+	MarineScanMode	FusionStatusMessageIdConst = 32782
 	MenuAction_2	FusionStatusMessageIdConst = 32783
 	MenuCount	FusionStatusMessageIdConst = 32784
 	MenuItem_2	FusionStatusMessageIdConst = 32785
-	FusionStatusMessageIdConst32786	FusionStatusMessageIdConst = 32786
+	MenuLockId	FusionStatusMessageIdConst = 32786
 	AuxGain	FusionStatusMessageIdConst = 32787
 	Setting	FusionStatusMessageIdConst = 32788
 	Settings	FusionStatusMessageIdConst = 32789
-	FusionStatusMessageIdConst32790	FusionStatusMessageIdConst = 32790
+	UpdateFirmwareResult	FusionStatusMessageIdConst = 32790
 	Mute	FusionStatusMessageIdConst = 32791
 	Balance	FusionStatusMessageIdConst = 32792
-	FusionStatusMessageIdConst32793	FusionStatusMessageIdConst = 32793
+	LowPassFilter	FusionStatusMessageIdConst = 32793
 	Sublevels	FusionStatusMessageIdConst = 32794
 	Tone	FusionStatusMessageIdConst = 32795
 	VolumeLimits	FusionStatusMessageIdConst = 32796
 	Volume_2	FusionStatusMessageIdConst = 32797
 	Capabilities	FusionStatusMessageIdConst = 32798
-	FusionStatusMessageIdConst32799	FusionStatusMessageIdConst = 32799
+	LineLevelControl	FusionStatusMessageIdConst = 32799
 	Power_2	FusionStatusMessageIdConst = 32800
 	UnitName	FusionStatusMessageIdConst = 32801
 	Sirius_2	FusionStatusMessageIdConst = 32802
-	FusionStatusMessageIdConst32803	FusionStatusMessageIdConst = 32803
+	SiriusxmPresetEvent	FusionStatusMessageIdConst = 32803
 	SiriusxmChannel	FusionStatusMessageIdConst = 32804
 	SiriusxmTitle	FusionStatusMessageIdConst = 32805
 	SiriusxmArtist	FusionStatusMessageIdConst = 32806
 	SiriusxmGenre	FusionStatusMessageIdConst = 32807
 	SiriusxmCategory	FusionStatusMessageIdConst = 32808
 	SiriusxmSignal	FusionStatusMessageIdConst = 32809
-	FusionStatusMessageIdConst32810	FusionStatusMessageIdConst = 32810
+	SiriusxmParentalRequest	FusionStatusMessageIdConst = 32810
 	SiriusxmDiagnostics	FusionStatusMessageIdConst = 32811
 	SiriusxmPresets	FusionStatusMessageIdConst = 32812
 	ZoneName	FusionStatusMessageIdConst = 32813
@@ -6325,9 +6326,9 @@ const (
 	Command	GroupFunctionConst = 1
 	Acknowledge_4	GroupFunctionConst = 2
 	ReadFields	GroupFunctionConst = 3
-	GroupFunctionConst4	GroupFunctionConst = 4
+	ReadFieldsReply	GroupFunctionConst = 4
 	WriteFields	GroupFunctionConst = 5
-	GroupFunctionConst6	GroupFunctionConst = 6
+	WriteFieldsReply	GroupFunctionConst = 6
 )
 
 func (e GroupFunctionConst) GoString() string {return e.String() }
@@ -6356,14 +6357,14 @@ type AirmarCommandConst uint8
 const (
 	AttitudeOffsets	AirmarCommandConst = 32
 	CalibrateCompass	AirmarCommandConst = 33
-	AirmarCommandConst34	AirmarCommandConst = 34
+	TrueWindOptions	AirmarCommandConst = 34
 	SimulateMode_2	AirmarCommandConst = 35
 	CalibrateDepth	AirmarCommandConst = 40
 	CalibrateSpeed	AirmarCommandConst = 41
 	CalibrateTemperature	AirmarCommandConst = 42
 	SpeedFilter	AirmarCommandConst = 43
 	TemperatureFilter	AirmarCommandConst = 44
-	AirmarCommandConst46	AirmarCommandConst = 46
+	Nmea2000Options	AirmarCommandConst = 46
 )
 
 func (e AirmarCommandConst) GoString() string {return e.String() }
@@ -6442,12 +6443,12 @@ func (e AirmarDepthQualityFactorConst) String() string {
 type PgnErrorCodeConst uint8
 const (
 	Acknowledge_5	PgnErrorCodeConst = 0
-	PgnErrorCodeConst1	PgnErrorCodeConst = 1
-	PgnErrorCodeConst2	PgnErrorCodeConst = 2
+	PgnNotSupported	PgnErrorCodeConst = 1
+	PgnNotAvailable	PgnErrorCodeConst = 2
 	AccessDenied_4	PgnErrorCodeConst = 3
 	NotSupported_3	PgnErrorCodeConst = 4
-	PgnErrorCodeConst5	PgnErrorCodeConst = 5
-	PgnErrorCodeConst6	PgnErrorCodeConst = 6
+	TagNotSupported	PgnErrorCodeConst = 5
+	ReadOrWriteNotSupported_2	PgnErrorCodeConst = 6
 )
 
 func (e PgnErrorCodeConst) GoString() string {return e.String() }
@@ -6475,7 +6476,7 @@ func (e PgnErrorCodeConst) String() string {
 type AirmarTransmissionIntervalConst uint8
 const (
 	MeasureInterval	AirmarTransmissionIntervalConst = 0
-	AirmarTransmissionIntervalConst1	AirmarTransmissionIntervalConst = 1
+	RequestedByUser	AirmarTransmissionIntervalConst = 1
 )
 
 func (e AirmarTransmissionIntervalConst) GoString() string {return e.String() }
@@ -6492,8 +6493,8 @@ func (e AirmarTransmissionIntervalConst) String() string {
 
 type MobPositionSourceConst uint8
 const (
-	MobPositionSourceConst0	MobPositionSourceConst = 0
-	MobPositionSourceConst1	MobPositionSourceConst = 1
+	PositionEstimatedByTheVessel	MobPositionSourceConst = 0
+	PositionReportedByMobEmitter	MobPositionSourceConst = 1
 )
 
 func (e MobPositionSourceConst) GoString() string {return e.String() }
@@ -6513,7 +6514,7 @@ const (
 	MainSteering	SteeringModeConst = 0
 	NonFollowUpDevice	SteeringModeConst = 1
 	FollowUpDevice	SteeringModeConst = 2
-	SteeringModeConst3	SteeringModeConst = 3
+	HeadingControlStandalone	SteeringModeConst = 3
 	HeadingControl	SteeringModeConst = 4
 	TrackControl	SteeringModeConst = 5
 )
@@ -6558,83 +6559,83 @@ func (e FusionRadioSourceConst) String() string {
 
 type FusionSettingConst uint32
 const (
-	FusionSettingConst0	FusionSettingConst = 0
+	AlphaSearchThreshold	FusionSettingConst = 0
 	IpodSubtitles	FusionSettingConst = 1
-	FusionSettingConst2	FusionSettingConst = 2
-	FusionSettingConst3	FusionSettingConst = 3
-	FusionSettingConst4	FusionSettingConst = 4
-	FusionSettingConst5	FusionSettingConst = 5
+	Zone2Linked	FusionSettingConst = 2
+	Zone2Enabled	FusionSettingConst = 3
+	Zone3Enabled	FusionSettingConst = 4
+	Zone4Enabled	FusionSettingConst = 5
 	Telemute	FusionSettingConst = 6
 	TunerRegion	FusionSettingConst = 7
 	MarineZone	FusionSettingConst = 8
 	UsbRepeat	FusionSettingConst = 9
 	UsbShuffle	FusionSettingConst = 10
-	FusionSettingConst11	FusionSettingConst = 11
+	IpodAlbumArtwork	FusionSettingConst = 11
 	IpodRepeat	FusionSettingConst = 12
 	IpodShuffle	FusionSettingConst = 13
-	FusionSettingConst14	FusionSettingConst = 14
-	FusionSettingConst15	FusionSettingConst = 15
-	FusionSettingConst16	FusionSettingConst = 16
-	FusionSettingConst17	FusionSettingConst = 17
-	FusionSettingConst18	FusionSettingConst = 18
-	FusionSettingConst19	FusionSettingConst = 19
-	FusionSettingConst20	FusionSettingConst = 20
-	FusionSettingConst21	FusionSettingConst = 21
-	FusionSettingConst22	FusionSettingConst = 22
-	FusionSettingConst23	FusionSettingConst = 23
-	FusionSettingConst24	FusionSettingConst = 24
-	FusionSettingConst25	FusionSettingConst = 25
-	FusionSettingConst26	FusionSettingConst = 26
-	FusionSettingConst27	FusionSettingConst = 27
-	FusionSettingConst28	FusionSettingConst = 28
-	FusionSettingConst29	FusionSettingConst = 29
-	FusionSettingConst30	FusionSettingConst = 30
-	FusionSettingConst31	FusionSettingConst = 31
-	FusionSettingConst32	FusionSettingConst = 32
-	FusionSettingConst33	FusionSettingConst = 33
-	FusionSettingConst34	FusionSettingConst = 34
-	FusionSettingConst35	FusionSettingConst = 35
-	FusionSettingConst36	FusionSettingConst = 36
-	FusionSettingConst37	FusionSettingConst = 37
-	FusionSettingConst38	FusionSettingConst = 38
-	FusionSettingConst39	FusionSettingConst = 39
-	FusionSettingConst40	FusionSettingConst = 40
-	FusionSettingConst41	FusionSettingConst = 41
-	FusionSettingConst42	FusionSettingConst = 42
-	FusionSettingConst43	FusionSettingConst = 43
-	FusionSettingConst44	FusionSettingConst = 44
-	FusionSettingConst45	FusionSettingConst = 45
-	FusionSettingConst46	FusionSettingConst = 46
-	FusionSettingConst47	FusionSettingConst = 47
-	FusionSettingConst48	FusionSettingConst = 48
-	FusionSettingConst49	FusionSettingConst = 49
-	FusionSettingConst50	FusionSettingConst = 50
-	FusionSettingConst51	FusionSettingConst = 51
-	FusionSettingConst52	FusionSettingConst = 52
-	FusionSettingConst53	FusionSettingConst = 53
-	FusionSettingConst54	FusionSettingConst = 54
-	FusionSettingConst55	FusionSettingConst = 55
-	FusionSettingConst56	FusionSettingConst = 56
-	FusionSettingConst57	FusionSettingConst = 57
-	FusionSettingConst58	FusionSettingConst = 58
+	AmPreset0	FusionSettingConst = 14
+	AmPreset1	FusionSettingConst = 15
+	AmPreset2	FusionSettingConst = 16
+	AmPreset3	FusionSettingConst = 17
+	AmPreset4	FusionSettingConst = 18
+	AmPreset5	FusionSettingConst = 19
+	AmPreset6	FusionSettingConst = 20
+	AmPreset7	FusionSettingConst = 21
+	AmPreset8	FusionSettingConst = 22
+	AmPreset9	FusionSettingConst = 23
+	AmPreset10	FusionSettingConst = 24
+	AmPreset11	FusionSettingConst = 25
+	AmPreset12	FusionSettingConst = 26
+	AmPreset13	FusionSettingConst = 27
+	AmPreset14	FusionSettingConst = 28
+	FmPreset0	FusionSettingConst = 29
+	FmPreset1	FusionSettingConst = 30
+	FmPreset2	FusionSettingConst = 31
+	FmPreset3	FusionSettingConst = 32
+	FmPreset4	FusionSettingConst = 33
+	FmPreset5	FusionSettingConst = 34
+	FmPreset6	FusionSettingConst = 35
+	FmPreset7	FusionSettingConst = 36
+	FmPreset8	FusionSettingConst = 37
+	FmPreset9	FusionSettingConst = 38
+	FmPreset10	FusionSettingConst = 39
+	FmPreset11	FusionSettingConst = 40
+	FmPreset12	FusionSettingConst = 41
+	FmPreset13	FusionSettingConst = 42
+	FmPreset14	FusionSettingConst = 43
+	VhfPreset0	FusionSettingConst = 44
+	VhfPreset1	FusionSettingConst = 45
+	VhfPreset2	FusionSettingConst = 46
+	VhfPreset3	FusionSettingConst = 47
+	VhfPreset4	FusionSettingConst = 48
+	VhfPreset5	FusionSettingConst = 49
+	VhfPreset6	FusionSettingConst = 50
+	VhfPreset7	FusionSettingConst = 51
+	VhfPreset8	FusionSettingConst = 52
+	VhfPreset9	FusionSettingConst = 53
+	VhfPreset10	FusionSettingConst = 54
+	VhfPreset11	FusionSettingConst = 55
+	VhfPreset12	FusionSettingConst = 56
+	VhfPreset13	FusionSettingConst = 57
+	VhfPreset14	FusionSettingConst = 58
 	ClockTime	FusionSettingConst = 59
 	ClockAlarm	FusionSettingConst = 60
-	FusionSettingConst61	FusionSettingConst = 61
-	FusionSettingConst62	FusionSettingConst = 62
-	FusionSettingConst63	FusionSettingConst = 63
+	IpodVideoSignal	FusionSettingConst = 61
+	IpodMonitorAspect	FusionSettingConst = 62
+	AuxNameIndex	FusionSettingConst = 63
 	AmEnabled	FusionSettingConst = 64
 	VhfEnabled	FusionSettingConst = 65
 	Language	FusionSettingConst = 66
-	FusionSettingConst67	FusionSettingConst = 67
+	InternalAmpsOn	FusionSettingConst = 67
 	MtpRepeat	FusionSettingConst = 68
 	MtpShuffle	FusionSettingConst = 69
-	FusionSettingConst70	FusionSettingConst = 70
+	IdAccessorySource	FusionSettingConst = 70
 	NmeaPower	FusionSettingConst = 71
-	FusionSettingConst72	FusionSettingConst = 72
+	LowPowerMode_2	FusionSettingConst = 72
 	DvdRegion	FusionSettingConst = 73
-	FusionSettingConst74	FusionSettingConst = 74
-	FusionSettingConst75	FusionSettingConst = 75
-	FusionSettingConst76	FusionSettingConst = 76
+	VolumeZoneSync	FusionSettingConst = 74
+	MaxVolumeStart	FusionSettingConst = 75
+	BtAutoConnect	FusionSettingConst = 76
 	NullSetting	FusionSettingConst = 77
 )
 
@@ -6825,8 +6826,8 @@ func (e FusionRepeatStatusConst) String() string {
 
 type AirmarPostControlConst uint8
 const (
-	AirmarPostControlConst0	AirmarPostControlConst = 0
-	AirmarPostControlConst1	AirmarPostControlConst = 1
+	ReportPreviousValues	AirmarPostControlConst = 0
+	GenerateNewValues	AirmarPostControlConst = 1
 )
 
 func (e AirmarPostControlConst) GoString() string {return e.String() }
@@ -6846,11 +6847,11 @@ const (
 	FormatCode	AirmarPostIdConst = 1
 	FactoryEeprom	AirmarPostIdConst = 2
 	UserEeprom	AirmarPostIdConst = 3
-	AirmarPostIdConst4	AirmarPostIdConst = 4
+	WaterTemperatureSensor	AirmarPostIdConst = 4
 	SonarTransceiver	AirmarPostIdConst = 5
 	SpeedSensor	AirmarPostIdConst = 6
-	AirmarPostIdConst7	AirmarPostIdConst = 7
-	AirmarPostIdConst8	AirmarPostIdConst = 8
+	InternalTemperatureSensor	AirmarPostIdConst = 7
+	BatteryVoltageSensor	AirmarPostIdConst = 8
 )
 
 func (e AirmarPostIdConst) GoString() string {return e.String() }
@@ -6948,7 +6949,7 @@ const (
 	Six	PriorityConst = 6
 	Seven	PriorityConst = 7
 	LeaveUnchanged	PriorityConst = 8
-	PriorityConst9	PriorityConst = 9
+	ResetToDefault	PriorityConst = 9
 )
 
 func (e PriorityConst) GoString() string {return e.String() }
@@ -7053,9 +7054,9 @@ func (e GarminColorModeConst) String() string {
 
 type GarminColorConst uint8
 const (
-	GarminColorConst0	GarminColorConst = 0
-	GarminColorConst1	GarminColorConst = 1
-	GarminColorConst2	GarminColorConst = 2
+	DayFullColor	GarminColorConst = 0
+	DayHighContrast	GarminColorConst = 1
+	NightFullColor	GarminColorConst = 2
 	NightRedBlack	GarminColorConst = 3
 	NightGreenBlack	GarminColorConst = 4
 )
@@ -7156,10 +7157,10 @@ func (e GarminBacklightLevelConst) String() string {
 type SeatalkPilotMode16Const uint16
 const (
 	Standby_4	SeatalkPilotMode16Const = 0
-	SeatalkPilotMode16Const64	SeatalkPilotMode16Const = 64
-	SeatalkPilotMode16Const256	SeatalkPilotMode16Const = 256
+	AutoCompassCommanded	SeatalkPilotMode16Const = 64
+	VaneWindMode	SeatalkPilotMode16Const = 256
 	TrackMode	SeatalkPilotMode16Const = 384
-	SeatalkPilotMode16Const385	SeatalkPilotMode16Const = 385
+	NoDriftCogReferencedInTrackCou	SeatalkPilotMode16Const = 385
 )
 
 func (e SeatalkPilotMode16Const) GoString() string {return e.String() }
@@ -7185,7 +7186,7 @@ const (
 	NotWorking	StationHealthConst = 0
 	Unmonitored	StationHealthConst = 1
 	HealthyOperational	StationHealthConst = 2
-	StationHealthConst3	StationHealthConst = 3
+	HealthyTestMode	StationHealthConst = 3
 	TestMode_2	StationHealthConst = 4
 )
 
@@ -7260,8 +7261,8 @@ func (e SerialBitRateConst) String() string {
 
 type SerialDetectionModeConst uint8
 const (
-	SerialDetectionModeConst0	SerialDetectionModeConst = 0
-	SerialDetectionModeConst1	SerialDetectionModeConst = 1
+	AutoBitRate	SerialDetectionModeConst = 0
+	ManualBitRate	SerialDetectionModeConst = 1
 )
 
 func (e SerialDetectionModeConst) GoString() string {return e.String() }
@@ -7283,7 +7284,7 @@ const (
 	MskBeacon	DifferentialSourceConst = 2
 	FmSubcarrier	DifferentialSourceConst = 3
 	Ais_2	DifferentialSourceConst = 4
-	DifferentialSourceConst5	DifferentialSourceConst = 5
+	GroundBasedRadio	DifferentialSourceConst = 5
 	Sbas_2	DifferentialSourceConst = 6
 	Satellite	DifferentialSourceConst = 7
 )
@@ -7335,11 +7336,11 @@ func (e DifferentialModeConst) String() string {
 
 type WpPositionResolutionConst uint8
 const (
-	WpPositionResolutionConst0	WpPositionResolutionConst = 0
-	WpPositionResolutionConst1	WpPositionResolutionConst = 1
-	WpPositionResolutionConst2	WpPositionResolutionConst = 2
-	WpPositionResolutionConst3	WpPositionResolutionConst = 3
-	WpPositionResolutionConst4	WpPositionResolutionConst = 4
+	MoreThan01Min	WpPositionResolutionConst = 0
+	WpPositionResolutionConst00101Min	WpPositionResolutionConst = 1
+	WpPositionResolutionConst0001001Min	WpPositionResolutionConst = 2
+	WpPositionResolutionConst000010001Min	WpPositionResolutionConst = 3
+	WpPositionResolutionConst000001Min	WpPositionResolutionConst = 4
 )
 
 func (e WpPositionResolutionConst) GoString() string {return e.String() }
@@ -7362,8 +7363,8 @@ func (e WpPositionResolutionConst) String() string {
 
 type WpIdentificationMethodConst uint8
 const (
-	WpIdentificationMethodConst0	WpIdentificationMethodConst = 0
-	WpIdentificationMethodConst1	WpIdentificationMethodConst = 1
+	WaypointsInWpList	WpIdentificationMethodConst = 0
+	WaypointsEmbeddedInRoute	WpIdentificationMethodConst = 1
 )
 
 func (e WpIdentificationMethodConst) GoString() string {return e.String() }
@@ -7576,16 +7577,16 @@ func (e AgsGeneratingStateConst) String() string {
 type AgsOnReasonConst uint8
 const (
 	NotOn	AgsOnReasonConst = 0
-	AgsOnReasonConst1	AgsOnReasonConst = 1
-	AgsOnReasonConst2	AgsOnReasonConst = 2
-	AgsOnReasonConst3	AgsOnReasonConst = 3
+	DcVoltageLow	AgsOnReasonConst = 1
+	BatteryStateOfChargeLow	AgsOnReasonConst = 2
+	AcCurrentHigh	AgsOnReasonConst = 3
 	ContactClosed	AgsOnReasonConst = 4
 	ManualOn_2	AgsOnReasonConst = 5
 	Exercise	AgsOnReasonConst = 6
-	AgsOnReasonConst7	AgsOnReasonConst = 7
-	AgsOnReasonConst8	AgsOnReasonConst = 8
-	AgsOnReasonConst9	AgsOnReasonConst = 9
-	AgsOnReasonConst10	AgsOnReasonConst = 10
+	NonQuietTime	AgsOnReasonConst = 7
+	ExternalOnViaAgs	AgsOnReasonConst = 8
+	ExternalOnViaGenerator	AgsOnReasonConst = 9
+	UnableToStop	AgsOnReasonConst = 10
 )
 
 func (e AgsOnReasonConst) GoString() string {return e.String() }
@@ -7621,24 +7622,24 @@ func (e AgsOnReasonConst) String() string {
 type AgsOffReasonConst uint8
 const (
 	NotOff	AgsOffReasonConst = 0
-	AgsOffReasonConst1	AgsOffReasonConst = 1
-	AgsOffReasonConst2	AgsOffReasonConst = 2
-	AgsOffReasonConst3	AgsOffReasonConst = 3
+	DcVoltageHigh	AgsOffReasonConst = 1
+	BatteryStateOfChargeHigh	AgsOffReasonConst = 2
+	AcCurrentLow	AgsOffReasonConst = 3
 	ContactOpened	AgsOffReasonConst = 4
 	ReachedAbsorption	AgsOffReasonConst = 5
 	ReachedFloat	AgsOffReasonConst = 6
 	ManualOff_2	AgsOffReasonConst = 7
-	AgsOffReasonConst8	AgsOffReasonConst = 8
-	AgsOffReasonConst9	AgsOffReasonConst = 9
+	MaxRunTime	AgsOffReasonConst = 8
+	MaxAutoCycle	AgsOffReasonConst = 9
 	ExerciseDone	AgsOffReasonConst = 10
 	QuietTime_2	AgsOffReasonConst = 11
-	AgsOffReasonConst12	AgsOffReasonConst = 12
+	ExternalOffViaAgs	AgsOffReasonConst = 12
 	SafeMode	AgsOffReasonConst = 13
-	AgsOffReasonConst14	AgsOffReasonConst = 14
+	ExternalOffViaGenerator	AgsOffReasonConst = 14
 	ExternalShutdown_2	AgsOffReasonConst = 15
 	AutoOff_2	AgsOffReasonConst = 16
 	Fault_6	AgsOffReasonConst = 17
-	AgsOffReasonConst18	AgsOffReasonConst = 18
+	UnableToStart	AgsOffReasonConst = 18
 )
 
 func (e AgsOffReasonConst) GoString() string {return e.String() }
@@ -7689,17 +7690,17 @@ func (e AgsOffReasonConst) String() string {
 
 type TelephoneModeConst uint8
 const (
-	TelephoneModeConst0	TelephoneModeConst = 0
-	TelephoneModeConst1	TelephoneModeConst = 1
+	F3eG3eSimplexTelephone	TelephoneModeConst = 0
+	F3eG3eDuplexTelephone	TelephoneModeConst = 1
 	J3eTelephone	TelephoneModeConst = 2
 	H3eTelephone	TelephoneModeConst = 3
-	TelephoneModeConst4	TelephoneModeConst = 4
-	TelephoneModeConst5	TelephoneModeConst = 5
-	TelephoneModeConst6	TelephoneModeConst = 6
+	F1bJ2bFecNbdpTelexTeleprinter	TelephoneModeConst = 4
+	F1bJ2bArqNbdpTelexTeleprinter	TelephoneModeConst = 5
+	F1bJ2bReceiveOnlyTeleprinterDs	TelephoneModeConst = 6
 	F1bJ2bTeleprinterDsc	TelephoneModeConst = 7
-	TelephoneModeConst8	TelephoneModeConst = 8
-	TelephoneModeConst9	TelephoneModeConst = 9
-	TelephoneModeConst10	TelephoneModeConst = 10
+	A1aMorseTapeRecorder	TelephoneModeConst = 8
+	A1aMorseMorseKeyHeadSet	TelephoneModeConst = 9
+	F1cF2cF3cFaxMachine	TelephoneModeConst = 10
 )
 
 func (e TelephoneModeConst) GoString() string {return e.String() }
@@ -7752,7 +7753,7 @@ func (e PowerModeConst) String() string {
 
 type BroadcastIndicatorConst uint8
 const (
-	BroadcastIndicatorConst0	BroadcastIndicatorConst = 0
+	BroadcastGeoAreaMessage	BroadcastIndicatorConst = 0
 	AddressedMessage	BroadcastIndicatorConst = 1
 )
 
@@ -7910,9 +7911,9 @@ type MaretronStatusDeviationConst uint8
 const (
 	Started	MaretronStatusDeviationConst = 1
 	CompletedSuccessfully	MaretronStatusDeviationConst = 2
-	MaretronStatusDeviationConst3	MaretronStatusDeviationConst = 3
-	MaretronStatusDeviationConst4	MaretronStatusDeviationConst = 4
-	MaretronStatusDeviationConst5	MaretronStatusDeviationConst = 5
+	FailedToComplete	MaretronStatusDeviationConst = 3
+	TurningTooFast	MaretronStatusDeviationConst = 4
+	TurningTooSlow	MaretronStatusDeviationConst = 5
 	InvalidMovement	MaretronStatusDeviationConst = 6
 )
 
@@ -9468,7 +9469,7 @@ var BandgKeyValueConstMap = map[int]FieldDescriptor{0: {
 
 type StationStatusConst uint16
 const (
-	StationStatusConst0	StationStatusConst = 0
+	StationInUse	StationStatusConst = 0
 	LowSnr	StationStatusConst = 1
 	CycleError	StationStatusConst = 2
 	Blink	StationStatusConst = 3
@@ -9494,19 +9495,19 @@ type EngineStatus1Const uint16
 const (
 	CheckEngine	EngineStatus1Const = 0
 	OverTemperature	EngineStatus1Const = 1
-	EngineStatus1Const2	EngineStatus1Const = 2
-	EngineStatus1Const3	EngineStatus1Const = 3
-	EngineStatus1Const4	EngineStatus1Const = 4
-	EngineStatus1Const5	EngineStatus1Const = 5
-	EngineStatus1Const6	EngineStatus1Const = 6
+	LowOilPressure	EngineStatus1Const = 2
+	LowOilLevel	EngineStatus1Const = 3
+	LowFuelPressure	EngineStatus1Const = 4
+	LowSystemVoltage	EngineStatus1Const = 5
+	LowCoolantLevel	EngineStatus1Const = 6
 	WaterFlow	EngineStatus1Const = 7
-	EngineStatus1Const8	EngineStatus1Const = 8
+	WaterInFuel	EngineStatus1Const = 8
 	ChargeIndicator	EngineStatus1Const = 9
 	PreheatIndicator	EngineStatus1Const = 10
-	EngineStatus1Const11	EngineStatus1Const = 11
-	EngineStatus1Const12	EngineStatus1Const = 12
+	HighBoostPressure	EngineStatus1Const = 11
+	RevLimitExceeded	EngineStatus1Const = 12
 	EgrSystem	EngineStatus1Const = 13
-	EngineStatus1Const14	EngineStatus1Const = 14
+	ThrottlePositionSensor	EngineStatus1Const = 14
 	EmergencyStop	EngineStatus1Const = 15
 )
 
@@ -9552,14 +9553,14 @@ func (e EngineStatus1Const) String() string {
 
 type EngineStatus2Const uint16
 const (
-	EngineStatus2Const0	EngineStatus2Const = 0
-	EngineStatus2Const1	EngineStatus2Const = 1
+	WarningLevel1	EngineStatus2Const = 0
+	WarningLevel2	EngineStatus2Const = 1
 	PowerReduction	EngineStatus2Const = 2
 	MaintenanceNeeded	EngineStatus2Const = 3
-	EngineStatus2Const4	EngineStatus2Const = 4
-	EngineStatus2Const5	EngineStatus2Const = 5
-	EngineStatus2Const6	EngineStatus2Const = 6
-	EngineStatus2Const7	EngineStatus2Const = 7
+	EngineCommError	EngineStatus2Const = 4
+	SubOrSecondaryThrottle	EngineStatus2Const = 5
+	NeutralStartProtect	EngineStatus2Const = 6
+	EngineShuttingDown	EngineStatus2Const = 7
 )
 
 func (e EngineStatus2Const) GoString() string {return e.String() }
@@ -9609,10 +9610,10 @@ const (
 	ScanDown_2	EntertainmentPlayStatusBitfieldConst = 18
 	TuneUp_2	EntertainmentPlayStatusBitfieldConst = 19
 	TuneDown_2	EntertainmentPlayStatusBitfieldConst = 20
-	EntertainmentPlayStatusBitfieldConst21	EntertainmentPlayStatusBitfieldConst = 21
-	EntertainmentPlayStatusBitfieldConst22	EntertainmentPlayStatusBitfieldConst = 22
-	EntertainmentPlayStatusBitfieldConst23	EntertainmentPlayStatusBitfieldConst = 23
-	EntertainmentPlayStatusBitfieldConst24	EntertainmentPlayStatusBitfieldConst = 24
+	SlowMotion75X_2	EntertainmentPlayStatusBitfieldConst = 21
+	SlowMotion5X_2	EntertainmentPlayStatusBitfieldConst = 22
+	SlowMotion25X_2	EntertainmentPlayStatusBitfieldConst = 23
+	SlowMotion125X_2	EntertainmentPlayStatusBitfieldConst = 24
 	SourceRenaming	EntertainmentPlayStatusBitfieldConst = 25
 )
 
@@ -9723,8 +9724,8 @@ func (e EntertainmentGroupBitfieldConst) String() string {
 
 type ThrusterControlEventsConst uint16
 const (
-	ThrusterControlEventsConst0	ThrusterControlEventsConst = 0
-	ThrusterControlEventsConst1	ThrusterControlEventsConst = 1
+	AnotherDeviceControllingThrust	ThrusterControlEventsConst = 0
+	BoatSpeedTooFastToSafelyUseThr	ThrusterControlEventsConst = 1
 )
 
 func (e ThrusterControlEventsConst) GoString() string {return e.String() }
@@ -9741,11 +9742,11 @@ func (e ThrusterControlEventsConst) String() string {
 
 type ThrusterMotorEventsConst uint16
 const (
-	ThrusterMotorEventsConst0	ThrusterMotorEventsConst = 0
-	ThrusterMotorEventsConst1	ThrusterMotorEventsConst = 1
-	ThrusterMotorEventsConst2	ThrusterMotorEventsConst = 2
-	ThrusterMotorEventsConst3	ThrusterMotorEventsConst = 3
-	ThrusterMotorEventsConst4	ThrusterMotorEventsConst = 4
+	MotorOverTemperatureCutout	ThrusterMotorEventsConst = 0
+	MotorOverCurrentCutout	ThrusterMotorEventsConst = 1
+	LowOilLevelWarning	ThrusterMotorEventsConst = 2
+	OilOverTemperatureWarning	ThrusterMotorEventsConst = 3
+	ControllerUnderVoltageCutout	ThrusterMotorEventsConst = 4
 	ManufacturerDefined	ThrusterMotorEventsConst = 5
 )
 
@@ -9771,7 +9772,7 @@ func (e ThrusterMotorEventsConst) String() string {
 
 type WindlassControlConst uint16
 const (
-	WindlassControlConst0	WindlassControlConst = 0
+	AnotherDeviceControllingWindla	WindlassControlConst = 0
 )
 
 func (e WindlassControlConst) GoString() string {return e.String() }
@@ -9788,9 +9789,9 @@ type WindlassOperationConst uint16
 const (
 	SystemError	WindlassOperationConst = 0
 	SensorError	WindlassOperationConst = 1
-	WindlassOperationConst2	WindlassOperationConst = 2
-	WindlassOperationConst3	WindlassOperationConst = 3
-	WindlassOperationConst4	WindlassOperationConst = 4
+	NoWindlassMotionDetected	WindlassOperationConst = 2
+	RetrievalDockingDistanceReache	WindlassOperationConst = 3
+	EndOfRodeReached	WindlassOperationConst = 4
 )
 
 func (e WindlassOperationConst) GoString() string {return e.String() }
@@ -9813,9 +9814,9 @@ func (e WindlassOperationConst) String() string {
 
 type WindlassMonitoringConst uint16
 const (
-	WindlassMonitoringConst0	WindlassMonitoringConst = 0
-	WindlassMonitoringConst1	WindlassMonitoringConst = 1
-	WindlassMonitoringConst2	WindlassMonitoringConst = 2
+	ControllerUnderVoltageCutOut	WindlassMonitoringConst = 0
+	ControllerOverCurrentCutOut	WindlassMonitoringConst = 1
+	ControllerOverTemperatureCutOu	WindlassMonitoringConst = 2
 	ManufacturerDefined_2	WindlassMonitoringConst = 3
 )
 
@@ -9864,35 +9865,35 @@ func (e SimnetApModeBitfieldConst) String() string {
 
 type SimnetAlertBitfieldConst uint16
 const (
-	SimnetAlertBitfieldConst0	SimnetAlertBitfieldConst = 0
-	SimnetAlertBitfieldConst2	SimnetAlertBitfieldConst = 2
-	SimnetAlertBitfieldConst4	SimnetAlertBitfieldConst = 4
-	SimnetAlertBitfieldConst6	SimnetAlertBitfieldConst = 6
-	SimnetAlertBitfieldConst8	SimnetAlertBitfieldConst = 8
-	SimnetAlertBitfieldConst10	SimnetAlertBitfieldConst = 10
-	SimnetAlertBitfieldConst12	SimnetAlertBitfieldConst = 12
-	SimnetAlertBitfieldConst14	SimnetAlertBitfieldConst = 14
-	SimnetAlertBitfieldConst16	SimnetAlertBitfieldConst = 16
-	SimnetAlertBitfieldConst18	SimnetAlertBitfieldConst = 18
+	NoGpsFix	SimnetAlertBitfieldConst = 0
+	NoActiveAutopilotControlUnit	SimnetAlertBitfieldConst = 2
+	NoAutopilotComputer	SimnetAlertBitfieldConst = 4
+	ApClutchOverload	SimnetAlertBitfieldConst = 6
+	ApClutchDisengaged	SimnetAlertBitfieldConst = 8
+	RudderControllerFault	SimnetAlertBitfieldConst = 10
+	NoRudderResponse	SimnetAlertBitfieldConst = 12
+	RudderDriveOverload	SimnetAlertBitfieldConst = 14
+	HighDriveSupply	SimnetAlertBitfieldConst = 16
+	LowDriveSupply	SimnetAlertBitfieldConst = 18
 	MemoryFail	SimnetAlertBitfieldConst = 20
-	SimnetAlertBitfieldConst22	SimnetAlertBitfieldConst = 22
-	SimnetAlertBitfieldConst24	SimnetAlertBitfieldConst = 24
-	SimnetAlertBitfieldConst26	SimnetAlertBitfieldConst = 26
-	SimnetAlertBitfieldConst28	SimnetAlertBitfieldConst = 28
-	SimnetAlertBitfieldConst30	SimnetAlertBitfieldConst = 30
-	SimnetAlertBitfieldConst32	SimnetAlertBitfieldConst = 32
-	SimnetAlertBitfieldConst34	SimnetAlertBitfieldConst = 34
-	SimnetAlertBitfieldConst36	SimnetAlertBitfieldConst = 36
-	SimnetAlertBitfieldConst38	SimnetAlertBitfieldConst = 38
+	ApPositionDataMissing	SimnetAlertBitfieldConst = 22
+	ApSpeedDataMissing	SimnetAlertBitfieldConst = 24
+	ApDepthDataMissing	SimnetAlertBitfieldConst = 26
+	ApHeadingDataMissing	SimnetAlertBitfieldConst = 28
+	ApNavDataMissing	SimnetAlertBitfieldConst = 30
+	ApRudderDataMissing	SimnetAlertBitfieldConst = 32
+	ApWindDataMissing	SimnetAlertBitfieldConst = 34
+	ApOffCourse	SimnetAlertBitfieldConst = 36
+	HighDriveTemperature	SimnetAlertBitfieldConst = 38
 	DriveInhibit	SimnetAlertBitfieldConst = 40
 	RudderLimit	SimnetAlertBitfieldConst = 42
-	SimnetAlertBitfieldConst44	SimnetAlertBitfieldConst = 44
-	SimnetAlertBitfieldConst46	SimnetAlertBitfieldConst = 46
-	SimnetAlertBitfieldConst48	SimnetAlertBitfieldConst = 48
+	DriveComputerMissing	SimnetAlertBitfieldConst = 44
+	DriveReadyMissing	SimnetAlertBitfieldConst = 46
+	EvcComError	SimnetAlertBitfieldConst = 48
 	EvcOverride	SimnetAlertBitfieldConst = 50
-	SimnetAlertBitfieldConst52	SimnetAlertBitfieldConst = 52
-	SimnetAlertBitfieldConst54	SimnetAlertBitfieldConst = 54
-	SimnetAlertBitfieldConst56	SimnetAlertBitfieldConst = 56
+	LowCanBusVoltage	SimnetAlertBitfieldConst = 52
+	CanBusSupplyOverload	SimnetAlertBitfieldConst = 54
+	WindSensorBatteryLow	SimnetAlertBitfieldConst = 56
 )
 
 func (e SimnetAlertBitfieldConst) GoString() string {return e.String() }
@@ -9999,11 +10000,11 @@ func (e EntertainmentShuffleBitfieldConst) String() string {
 
 type WpChangeConst uint16
 const (
-	WpChangeConst0	WpChangeConst = 0
-	WpChangeConst1	WpChangeConst = 1
-	WpChangeConst2	WpChangeConst = 2
-	WpChangeConst3	WpChangeConst = 3
-	WpChangeConst6	WpChangeConst = 6
+	ChangeInMainDataPositionName	WpChangeConst = 0
+	ChangeInSupplementaryParameter	WpChangeConst = 1
+	ChangedNumberOfWpsInRouteWpLis	WpChangeConst = 2
+	RouteChangeSupplementaryParame	WpChangeConst = 3
+	OtherNotSpecifiedChanged	WpChangeConst = 6
 )
 
 func (e WpChangeConst) GoString() string {return e.String() }
@@ -10773,6 +10774,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -10780,6 +10782,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -10787,6 +10790,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -10794,6 +10798,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -10811,6 +10816,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -10828,6 +10834,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -10835,6 +10842,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -10852,6 +10860,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 16,
             },
@@ -10860,6 +10869,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -10867,6 +10877,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -10874,6 +10885,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -10881,6 +10893,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -10898,6 +10911,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 17,
             },
@@ -10906,6 +10920,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -10913,6 +10928,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -10920,6 +10936,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -10927,6 +10944,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -10944,6 +10962,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 19,
             },
@@ -10952,6 +10971,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -10959,6 +10979,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -10966,6 +10987,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -10973,6 +10995,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -10990,6 +11013,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32,
             },
@@ -10998,6 +11022,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11005,6 +11030,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -11012,6 +11038,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -11019,6 +11046,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11036,6 +11064,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 255,
             },
@@ -11044,6 +11073,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -11051,6 +11081,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -11058,6 +11089,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11075,6 +11107,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11082,6 +11115,7 @@ var pgnList = []PgnInfo{
             BitOffset: 21,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -11089,6 +11123,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 1,
             Resolution:1,
             },
         4: { 
@@ -11096,6 +11131,7 @@ var pgnList = []PgnInfo{
             BitOffset: 35,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -11103,6 +11139,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "INDIRECT_LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -11110,6 +11147,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -11117,6 +11155,7 @@ var pgnList = []PgnInfo{
             BitOffset: 49,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -11124,6 +11163,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -11131,6 +11171,7 @@ var pgnList = []PgnInfo{
             BitOffset: 60,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -11138,6 +11179,7 @@ var pgnList = []PgnInfo{
             BitOffset: 63,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11155,6 +11197,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11162,6 +11205,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11169,6 +11213,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -11176,6 +11221,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11193,6 +11239,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11200,6 +11247,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11207,6 +11255,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -11214,6 +11263,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11231,6 +11281,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11238,6 +11289,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11245,6 +11297,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -11252,6 +11305,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11269,6 +11323,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11276,6 +11331,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:6.10352e-05,
             },
         3: { 
@@ -11283,6 +11339,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -11290,6 +11347,7 @@ var pgnList = []PgnInfo{
             BitOffset: 34,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11307,6 +11365,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11314,6 +11373,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11331,6 +11391,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11338,6 +11399,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11345,6 +11407,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -11352,6 +11415,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11369,6 +11433,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11376,6 +11441,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:6.10352e-05,
             },
         3: { 
@@ -11383,6 +11449,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -11390,6 +11457,7 @@ var pgnList = []PgnInfo{
             BitOffset: 34,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11407,6 +11475,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11414,6 +11483,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11431,6 +11501,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11438,6 +11509,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11445,6 +11517,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -11452,6 +11525,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11469,6 +11543,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11476,6 +11551,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:6.10352e-05,
             },
         3: { 
@@ -11483,6 +11559,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -11490,6 +11567,7 @@ var pgnList = []PgnInfo{
             BitOffset: 50,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11507,6 +11585,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11514,6 +11593,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11531,6 +11611,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11538,6 +11619,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11545,6 +11627,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -11552,6 +11635,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11569,6 +11653,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11576,6 +11661,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:6.10352e-05,
             },
         3: { 
@@ -11583,6 +11669,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -11590,6 +11677,7 @@ var pgnList = []PgnInfo{
             BitOffset: 50,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11607,6 +11695,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11614,6 +11703,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11631,6 +11721,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11638,6 +11729,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11645,6 +11737,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -11652,6 +11745,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11669,6 +11763,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11676,6 +11771,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:6.10352e-05,
             },
         3: { 
@@ -11683,6 +11779,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -11690,6 +11787,7 @@ var pgnList = []PgnInfo{
             BitOffset: 50,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11707,6 +11805,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11714,6 +11813,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11731,6 +11831,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11738,6 +11839,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11745,6 +11847,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -11752,6 +11855,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11769,6 +11873,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11776,6 +11881,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:6.10352e-05,
             },
         3: { 
@@ -11783,6 +11889,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -11790,6 +11897,7 @@ var pgnList = []PgnInfo{
             BitOffset: 50,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11807,6 +11915,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11814,6 +11923,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11831,6 +11941,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11838,6 +11949,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11845,6 +11957,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -11852,6 +11965,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11869,6 +11983,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11876,6 +11991,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:6.10352e-05,
             },
         3: { 
@@ -11883,6 +11999,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -11890,6 +12007,7 @@ var pgnList = []PgnInfo{
             BitOffset: 50,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -11907,6 +12025,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11914,6 +12033,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11931,6 +12051,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11938,6 +12059,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -11945,6 +12067,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -11952,6 +12075,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -11969,6 +12093,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -11976,6 +12101,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:6.10352e-05,
             },
         3: { 
@@ -11983,6 +12109,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -11990,6 +12117,7 @@ var pgnList = []PgnInfo{
             BitOffset: 50,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12007,6 +12135,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -12014,6 +12143,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -12031,6 +12161,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -12038,6 +12169,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -12045,6 +12177,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0078125,
             },
         4: { 
@@ -12052,6 +12185,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -12069,6 +12203,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -12076,6 +12211,7 @@ var pgnList = []PgnInfo{
             BitOffset: 21,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12083,6 +12219,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 1,
             Resolution:1,
             },
         4: { 
@@ -12090,6 +12227,7 @@ var pgnList = []PgnInfo{
             BitOffset: 35,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -12097,6 +12235,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "INDIRECT_LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -12104,6 +12243,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -12111,6 +12251,7 @@ var pgnList = []PgnInfo{
             BitOffset: 49,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -12118,6 +12259,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -12125,6 +12267,7 @@ var pgnList = []PgnInfo{
             BitOffset: 60,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -12132,6 +12275,7 @@ var pgnList = []PgnInfo{
             BitOffset: 63,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -12139,6 +12283,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -12156,6 +12301,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
             },
@@ -12164,6 +12310,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12171,6 +12318,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12179,6 +12327,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -12186,6 +12335,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -12193,6 +12343,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         7: { 
@@ -12200,6 +12351,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12217,6 +12369,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -12225,6 +12378,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12232,6 +12386,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12240,6 +12395,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12247,6 +12403,7 @@ var pgnList = []PgnInfo{
             BitOffset: 19,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12264,6 +12421,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 140,
             },
@@ -12272,6 +12430,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12279,6 +12438,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12287,6 +12447,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12294,6 +12455,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         6: { 
@@ -12301,6 +12463,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12318,6 +12481,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -12326,6 +12490,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12333,6 +12498,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12341,6 +12507,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12358,6 +12525,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -12366,6 +12534,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12373,6 +12542,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12381,6 +12551,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -12388,6 +12559,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -12395,6 +12567,7 @@ var pgnList = []PgnInfo{
             BitOffset: 27,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -12402,6 +12575,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -12419,6 +12593,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 1857,
             },
@@ -12427,6 +12602,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12434,6 +12610,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12442,6 +12619,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12449,6 +12627,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 2,
             },
@@ -12457,6 +12636,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -12464,6 +12644,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12481,6 +12662,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 1857,
             },
@@ -12489,6 +12671,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12496,6 +12679,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12504,6 +12688,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12511,6 +12696,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 3,
             },
@@ -12519,6 +12705,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12536,6 +12723,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 1857,
             },
@@ -12544,6 +12732,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12551,6 +12740,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12559,6 +12749,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12566,6 +12757,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 10,
             },
@@ -12574,6 +12766,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "BITLOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -12581,6 +12774,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12598,6 +12792,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 1857,
             },
@@ -12606,6 +12801,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12613,6 +12809,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12621,6 +12818,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12628,6 +12826,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 11,
             },
@@ -12636,6 +12835,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12653,6 +12853,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 1851,
             },
@@ -12661,6 +12862,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12668,6 +12870,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12676,6 +12879,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12683,6 +12887,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         6: { 
@@ -12690,6 +12895,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         7: { 
@@ -12697,6 +12903,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12714,6 +12921,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 1851,
             },
@@ -12722,6 +12930,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12729,6 +12938,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12737,6 +12947,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12744,6 +12955,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -12751,6 +12963,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12768,6 +12981,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -12776,6 +12990,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -12783,6 +12998,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12791,6 +13007,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -12798,6 +13015,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         6: { 
@@ -12805,6 +13023,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -12812,6 +13031,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12829,6 +13049,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 0,
             },
@@ -12837,6 +13058,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -12844,6 +13066,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         4: { 
@@ -12851,6 +13074,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         5: { 
@@ -12858,6 +13082,23 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 8,
+            BitOffset: 88,
+            BitLengthVariable: false,
+            CanboatType: "FIELD_INDEX",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 0,
+            BitOffset: 96,
+            BitLengthVariable: true,
+            CanboatType: "VARIABLE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12875,6 +13116,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 1,
             },
@@ -12883,6 +13125,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -12890,6 +13133,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -12897,6 +13141,7 @@ var pgnList = []PgnInfo{
             BitOffset: 36,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12904,6 +13149,23 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 8,
+            BitOffset: 48,
+            BitLengthVariable: false,
+            CanboatType: "FIELD_INDEX",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 0,
+            BitOffset: 56,
+            BitLengthVariable: true,
+            CanboatType: "VARIABLE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12921,6 +13183,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 2,
             },
@@ -12929,6 +13192,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -12936,6 +13200,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -12943,6 +13208,7 @@ var pgnList = []PgnInfo{
             BitOffset: 36,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12950,6 +13216,15 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 4,
+            BitOffset: 48,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -12967,6 +13242,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -12975,6 +13251,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -12982,6 +13259,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -12989,6 +13267,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -12996,6 +13275,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -13003,6 +13283,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -13010,6 +13291,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -13017,6 +13299,39 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        9: { 
+            BitLength: 8,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "FIELD_INDEX",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        10: { 
+            BitLength: 0,
+            BitOffset: 0,
+            BitLengthVariable: true,
+            CanboatType: "VARIABLE",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        11: { 
+            BitLength: 8,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "FIELD_INDEX",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        12: { 
+            BitLength: 0,
+            BitOffset: 0,
+            BitLengthVariable: true,
+            CanboatType: "VARIABLE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -13034,6 +13349,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 5,
             },
@@ -13042,6 +13358,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -13049,6 +13366,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -13056,6 +13374,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -13063,6 +13382,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -13070,6 +13390,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -13077,6 +13398,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -13084,6 +13406,39 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        9: { 
+            BitLength: 8,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "FIELD_INDEX",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        10: { 
+            BitLength: 0,
+            BitOffset: 0,
+            BitLengthVariable: true,
+            CanboatType: "VARIABLE",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        11: { 
+            BitLength: 8,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "FIELD_INDEX",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        12: { 
+            BitLength: 0,
+            BitOffset: 0,
+            BitLengthVariable: true,
+            CanboatType: "VARIABLE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -13101,6 +13456,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 6,
             },
@@ -13109,6 +13465,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -13116,6 +13473,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -13123,6 +13481,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -13130,6 +13489,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -13137,6 +13497,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -13144,6 +13505,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -13151,6 +13513,39 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        9: { 
+            BitLength: 8,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "FIELD_INDEX",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        10: { 
+            BitLength: 0,
+            BitOffset: 0,
+            BitLengthVariable: true,
+            CanboatType: "VARIABLE",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        11: { 
+            BitLength: 8,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "FIELD_INDEX",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        12: { 
+            BitLength: 0,
+            BitOffset: 0,
+            BitLengthVariable: true,
+            CanboatType: "VARIABLE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -13168,6 +13563,15 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        2: { 
+            BitLength: 24,
+            BitOffset: 8,
+            BitLengthVariable: false,
+            CanboatType: "PGN",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -13185,6 +13589,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -13193,6 +13598,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13200,6 +13606,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13208,6 +13615,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 3,
             },
@@ -13216,6 +13624,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -13223,6 +13632,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -13240,6 +13650,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -13248,6 +13659,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13255,6 +13667,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13263,6 +13676,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 30,
             },
@@ -13271,6 +13685,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -13278,6 +13693,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -13285,6 +13701,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -13302,6 +13719,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -13310,6 +13728,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13317,6 +13736,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13325,6 +13745,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 1,
             },
@@ -13343,6 +13764,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -13351,6 +13773,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13358,6 +13781,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13366,6 +13790,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 2,
             },
@@ -13374,6 +13799,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -13391,6 +13817,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -13399,6 +13826,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13406,6 +13834,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13414,6 +13843,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 17,
             },
@@ -13422,6 +13852,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -13439,6 +13870,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -13447,6 +13879,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13454,6 +13887,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13462,6 +13896,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 24,
             },
@@ -13470,6 +13905,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -13477,6 +13913,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -13494,6 +13931,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -13502,6 +13940,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13509,6 +13948,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13517,6 +13957,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 25,
             },
@@ -13525,6 +13966,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -13532,6 +13974,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -13539,6 +13982,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -13546,6 +13990,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -13563,6 +14008,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -13571,6 +14017,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13578,6 +14025,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13586,6 +14034,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32,
             },
@@ -13594,6 +14043,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         6: { 
@@ -13601,6 +14051,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         7: { 
@@ -13608,6 +14059,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         },
@@ -13625,6 +14077,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -13633,6 +14086,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13640,6 +14094,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13648,6 +14103,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 35,
             },
@@ -13656,6 +14112,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -13663,6 +14120,7 @@ var pgnList = []PgnInfo{
             BitOffset: 26,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -13680,6 +14138,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -13688,6 +14147,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13695,6 +14155,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13703,6 +14164,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 40,
             },
@@ -13711,6 +14173,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         6: { 
@@ -13718,6 +14181,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -13735,6 +14199,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -13743,6 +14208,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13750,6 +14216,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13758,6 +14225,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 41,
             },
@@ -13766,7 +14234,24 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
+            },
+        6: { 
+            BitLength: 16,
+            BitOffset: 32,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.1,
+            },
+        7: { 
+            BitLength: 16,
+            BitOffset: 48,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.01,
             },
         },
     },
@@ -13783,6 +14268,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -13791,6 +14277,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13798,6 +14285,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13806,6 +14294,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 42,
             },
@@ -13814,6 +14303,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -13821,6 +14311,7 @@ var pgnList = []PgnInfo{
             BitOffset: 26,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -13828,6 +14319,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         },
@@ -13845,6 +14337,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -13853,6 +14346,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13860,6 +14354,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13868,6 +14363,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 43,
             },
@@ -13876,6 +14372,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             Match: 0,
             },
@@ -13884,6 +14381,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -13891,6 +14389,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         },
@@ -13908,6 +14407,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -13916,6 +14416,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13923,6 +14424,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -13931,6 +14433,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 43,
             },
@@ -13939,6 +14442,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             Match: 1,
             },
@@ -13947,6 +14451,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -13954,6 +14459,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         8: { 
@@ -13961,6 +14467,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         },
@@ -13978,6 +14485,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -13986,6 +14494,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -13993,6 +14502,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -14001,6 +14511,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 44,
             },
@@ -14009,6 +14520,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             Match: 0,
             },
@@ -14017,6 +14529,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -14024,6 +14537,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         },
@@ -14041,6 +14555,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -14049,6 +14564,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -14056,6 +14572,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -14064,6 +14581,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 44,
             },
@@ -14072,6 +14590,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             Match: 1,
             },
@@ -14080,6 +14599,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -14087,6 +14607,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         8: { 
@@ -14094,6 +14615,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         },
@@ -14111,6 +14633,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
             },
@@ -14119,6 +14642,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -14126,6 +14650,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -14134,6 +14659,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 46,
             },
@@ -14142,6 +14668,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -14149,6 +14676,7 @@ var pgnList = []PgnInfo{
             BitOffset: 26,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -14166,6 +14694,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
             },
@@ -14174,6 +14703,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -14181,6 +14711,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -14189,6 +14720,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -14196,6 +14728,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 1,
             },
@@ -14204,6 +14737,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 80,
             },
@@ -14212,6 +14746,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -14229,6 +14764,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
             },
@@ -14237,6 +14773,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -14244,6 +14781,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -14252,6 +14790,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -14259,6 +14798,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -14266,6 +14806,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -14273,6 +14814,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -14290,6 +14832,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -14297,6 +14840,7 @@ var pgnList = []PgnInfo{
             BitOffset: 4,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -14304,6 +14848,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -14311,6 +14856,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -14318,6 +14864,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -14325,6 +14872,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "ISO_NAME",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -14332,6 +14880,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -14339,6 +14888,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -14346,6 +14896,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         10: { 
@@ -14353,6 +14904,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -14360,6 +14912,7 @@ var pgnList = []PgnInfo{
             BitOffset: 129,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -14367,6 +14920,7 @@ var pgnList = []PgnInfo{
             BitOffset: 130,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         13: { 
@@ -14374,6 +14928,7 @@ var pgnList = []PgnInfo{
             BitOffset: 131,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         14: { 
@@ -14381,6 +14936,7 @@ var pgnList = []PgnInfo{
             BitOffset: 132,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         15: { 
@@ -14388,6 +14944,7 @@ var pgnList = []PgnInfo{
             BitOffset: 133,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         16: { 
@@ -14395,6 +14952,7 @@ var pgnList = []PgnInfo{
             BitOffset: 134,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         17: { 
@@ -14402,6 +14960,7 @@ var pgnList = []PgnInfo{
             BitOffset: 136,
             BitLengthVariable: false,
             CanboatType: "ISO_NAME",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         18: { 
@@ -14409,6 +14968,7 @@ var pgnList = []PgnInfo{
             BitOffset: 200,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         19: { 
@@ -14416,6 +14976,7 @@ var pgnList = []PgnInfo{
             BitOffset: 204,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         20: { 
@@ -14423,6 +14984,7 @@ var pgnList = []PgnInfo{
             BitOffset: 208,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         21: { 
@@ -14430,6 +14992,7 @@ var pgnList = []PgnInfo{
             BitOffset: 216,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -14447,6 +15010,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -14454,6 +15018,7 @@ var pgnList = []PgnInfo{
             BitOffset: 4,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -14461,6 +15026,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -14468,6 +15034,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -14475,6 +15042,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -14482,6 +15050,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "ISO_NAME",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -14489,6 +15058,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -14496,6 +15066,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -14503,6 +15074,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         10: { 
@@ -14510,6 +15082,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "ISO_NAME",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         11: { 
@@ -14517,6 +15090,7 @@ var pgnList = []PgnInfo{
             BitOffset: 192,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -14524,6 +15098,7 @@ var pgnList = []PgnInfo{
             BitOffset: 194,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -14541,6 +15116,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -14548,6 +15124,7 @@ var pgnList = []PgnInfo{
             BitOffset: 4,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -14555,6 +15132,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -14562,6 +15140,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -14569,6 +15148,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -14576,6 +15156,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "ISO_NAME",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -14583,6 +15164,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -14590,6 +15172,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -14597,6 +15180,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         10: { 
@@ -14604,6 +15188,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -14611,6 +15196,7 @@ var pgnList = []PgnInfo{
             BitOffset: 136,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -14618,6 +15204,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -14635,6 +15222,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -14642,6 +15230,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -14649,6 +15238,7 @@ var pgnList = []PgnInfo{
             BitOffset: 12,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -14656,6 +15246,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -14663,6 +15254,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         },
@@ -14680,6 +15272,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         2: { 
@@ -14687,6 +15280,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -14694,6 +15288,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -14701,6 +15296,7 @@ var pgnList = []PgnInfo{
             BitOffset: 26,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -14708,6 +15304,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -14715,6 +15312,7 @@ var pgnList = []PgnInfo{
             BitOffset: 30,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -14732,6 +15330,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         2: { 
@@ -14739,6 +15338,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -14746,6 +15346,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -14753,6 +15354,7 @@ var pgnList = []PgnInfo{
             BitOffset: 288,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -14760,6 +15362,7 @@ var pgnList = []PgnInfo{
             BitOffset: 544,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -14767,6 +15370,7 @@ var pgnList = []PgnInfo{
             BitOffset: 800,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -14774,6 +15378,7 @@ var pgnList = []PgnInfo{
             BitOffset: 1056,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -14781,6 +15386,7 @@ var pgnList = []PgnInfo{
             BitOffset: 1064,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -14798,6 +15404,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -14805,6 +15412,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -14812,6 +15420,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -14829,6 +15438,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -14836,6 +15446,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -14843,6 +15454,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -14850,6 +15462,7 @@ var pgnList = []PgnInfo{
             BitOffset: 43,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -14857,6 +15470,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         6: { 
@@ -14864,6 +15478,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -14871,6 +15486,7 @@ var pgnList = []PgnInfo{
             BitOffset: 83,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -14878,6 +15494,7 @@ var pgnList = []PgnInfo{
             BitOffset: 88,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -14885,6 +15502,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         10: { 
@@ -14892,6 +15510,7 @@ var pgnList = []PgnInfo{
             BitOffset: 136,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         11: { 
@@ -14899,6 +15518,7 @@ var pgnList = []PgnInfo{
             BitOffset: 168,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         12: { 
@@ -14906,6 +15526,7 @@ var pgnList = []PgnInfo{
             BitOffset: 200,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         13: { 
@@ -14913,6 +15534,7 @@ var pgnList = []PgnInfo{
             BitOffset: 202,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         14: { 
@@ -14920,6 +15542,7 @@ var pgnList = []PgnInfo{
             BitOffset: 208,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         15: { 
@@ -14927,6 +15550,7 @@ var pgnList = []PgnInfo{
             BitOffset: 224,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         16: { 
@@ -14934,6 +15558,7 @@ var pgnList = []PgnInfo{
             BitOffset: 240,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         17: { 
@@ -14941,6 +15566,7 @@ var pgnList = []PgnInfo{
             BitOffset: 272,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         18: { 
@@ -14948,6 +15574,7 @@ var pgnList = []PgnInfo{
             BitOffset: 275,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -14965,6 +15592,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -14972,6 +15600,7 @@ var pgnList = []PgnInfo{
             BitOffset: 2,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -14979,6 +15608,7 @@ var pgnList = []PgnInfo{
             BitOffset: 4,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -14986,6 +15616,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -14993,6 +15624,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -15000,6 +15632,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -15007,6 +15640,7 @@ var pgnList = []PgnInfo{
             BitOffset: 14,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -15014,6 +15648,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -15021,6 +15656,7 @@ var pgnList = []PgnInfo{
             BitOffset: 21,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -15028,6 +15664,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         11: { 
@@ -15035,6 +15672,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         12: { 
@@ -15042,6 +15680,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         13: { 
@@ -15049,6 +15688,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         14: { 
@@ -15056,6 +15696,7 @@ var pgnList = []PgnInfo{
             BitOffset: 88,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         15: { 
@@ -15063,6 +15704,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         16: { 
@@ -15070,6 +15712,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:3.125e-05,
             },
         17: { 
@@ -15077,6 +15720,7 @@ var pgnList = []PgnInfo{
             BitOffset: 136,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         18: { 
@@ -15084,6 +15728,7 @@ var pgnList = []PgnInfo{
             BitOffset: 152,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         },
@@ -15101,6 +15746,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -15108,6 +15754,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -15115,6 +15762,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -15122,6 +15770,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         5: { 
@@ -15129,6 +15778,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         6: { 
@@ -15136,6 +15786,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -15153,6 +15804,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -15160,6 +15812,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         3: { 
@@ -15167,6 +15820,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         4: { 
@@ -15174,6 +15828,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         5: { 
@@ -15181,6 +15836,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -15188,6 +15844,7 @@ var pgnList = []PgnInfo{
             BitOffset: 58,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -15205,6 +15862,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -15212,6 +15870,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:3.125e-08,
             },
         3: { 
@@ -15219,6 +15878,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -15236,6 +15896,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -15243,6 +15904,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         3: { 
@@ -15250,6 +15912,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         4: { 
@@ -15257,6 +15920,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         5: { 
@@ -15264,6 +15928,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -15281,6 +15946,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -15288,6 +15954,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -15295,6 +15962,7 @@ var pgnList = []PgnInfo{
             BitOffset: 12,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -15302,6 +15970,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -15309,6 +15978,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         6: { 
@@ -15316,6 +15986,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -15333,6 +16004,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -15340,6 +16012,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.25,
             },
         3: { 
@@ -15347,6 +16020,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:100,
             },
         4: { 
@@ -15354,6 +16028,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -15361,6 +16036,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -15378,6 +16054,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -15385,6 +16062,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:100,
             },
         3: { 
@@ -15392,6 +16070,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         4: { 
@@ -15399,6 +16078,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         5: { 
@@ -15406,6 +16086,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         6: { 
@@ -15413,6 +16094,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         7: { 
@@ -15420,6 +16102,7 @@ var pgnList = []PgnInfo{
             BitOffset: 88,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -15427,6 +16110,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:100,
             },
         9: { 
@@ -15434,6 +16118,7 @@ var pgnList = []PgnInfo{
             BitOffset: 136,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1000,
             },
         10: { 
@@ -15441,6 +16126,7 @@ var pgnList = []PgnInfo{
             BitOffset: 152,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -15448,6 +16134,7 @@ var pgnList = []PgnInfo{
             BitOffset: 160,
             BitLengthVariable: false,
             CanboatType: "BITLOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -15455,6 +16142,7 @@ var pgnList = []PgnInfo{
             BitOffset: 176,
             BitLengthVariable: false,
             CanboatType: "BITLOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         13: { 
@@ -15462,6 +16150,7 @@ var pgnList = []PgnInfo{
             BitOffset: 192,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         14: { 
@@ -15469,6 +16158,7 @@ var pgnList = []PgnInfo{
             BitOffset: 200,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -15486,6 +16176,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -15493,6 +16184,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -15500,6 +16192,7 @@ var pgnList = []PgnInfo{
             BitOffset: 10,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -15507,6 +16200,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:100,
             },
         5: { 
@@ -15514,6 +16208,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         6: { 
@@ -15521,6 +16216,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -15528,6 +16224,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -15545,6 +16242,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         2: { 
@@ -15552,6 +16250,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         3: { 
@@ -15559,6 +16258,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -15566,6 +16266,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         },
@@ -15583,6 +16284,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -15590,6 +16292,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -15597,6 +16300,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         4: { 
@@ -15604,6 +16308,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         5: { 
@@ -15611,6 +16316,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         },
@@ -15628,6 +16334,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -15635,6 +16342,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.25,
             },
         3: { 
@@ -15642,6 +16350,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -15649,6 +16358,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -15666,6 +16376,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -15673,6 +16384,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -15680,6 +16392,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -15687,6 +16400,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -15694,6 +16408,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -15701,6 +16416,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -15708,6 +16424,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -15715,6 +16432,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -15732,6 +16450,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -15739,6 +16458,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -15746,6 +16466,7 @@ var pgnList = []PgnInfo{
             BitOffset: 10,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -15753,6 +16474,7 @@ var pgnList = []PgnInfo{
             BitOffset: 12,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -15760,6 +16482,7 @@ var pgnList = []PgnInfo{
             BitOffset: 14,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -15767,6 +16490,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -15774,6 +16498,7 @@ var pgnList = []PgnInfo{
             BitOffset: 18,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -15781,6 +16506,7 @@ var pgnList = []PgnInfo{
             BitOffset: 20,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -15788,6 +16514,7 @@ var pgnList = []PgnInfo{
             BitOffset: 22,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -15795,6 +16522,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -15802,6 +16530,7 @@ var pgnList = []PgnInfo{
             BitOffset: 26,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -15809,6 +16538,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         13: { 
@@ -15816,6 +16546,7 @@ var pgnList = []PgnInfo{
             BitOffset: 30,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         14: { 
@@ -15823,6 +16554,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         15: { 
@@ -15830,6 +16562,7 @@ var pgnList = []PgnInfo{
             BitOffset: 34,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         16: { 
@@ -15837,6 +16570,7 @@ var pgnList = []PgnInfo{
             BitOffset: 36,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         17: { 
@@ -15844,6 +16578,7 @@ var pgnList = []PgnInfo{
             BitOffset: 38,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         18: { 
@@ -15851,6 +16586,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         19: { 
@@ -15858,6 +16594,7 @@ var pgnList = []PgnInfo{
             BitOffset: 42,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         20: { 
@@ -15865,6 +16602,7 @@ var pgnList = []PgnInfo{
             BitOffset: 44,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         21: { 
@@ -15872,6 +16610,7 @@ var pgnList = []PgnInfo{
             BitOffset: 46,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         22: { 
@@ -15879,6 +16618,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         23: { 
@@ -15886,6 +16626,7 @@ var pgnList = []PgnInfo{
             BitOffset: 50,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         24: { 
@@ -15893,6 +16634,7 @@ var pgnList = []PgnInfo{
             BitOffset: 52,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         25: { 
@@ -15900,6 +16642,7 @@ var pgnList = []PgnInfo{
             BitOffset: 54,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         26: { 
@@ -15907,6 +16650,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         27: { 
@@ -15914,6 +16658,7 @@ var pgnList = []PgnInfo{
             BitOffset: 58,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         28: { 
@@ -15921,6 +16666,7 @@ var pgnList = []PgnInfo{
             BitOffset: 60,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         29: { 
@@ -15928,6 +16674,7 @@ var pgnList = []PgnInfo{
             BitOffset: 62,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -15945,6 +16692,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -15952,6 +16700,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -15959,6 +16708,7 @@ var pgnList = []PgnInfo{
             BitOffset: 10,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -15966,6 +16716,7 @@ var pgnList = []PgnInfo{
             BitOffset: 12,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -15973,6 +16724,7 @@ var pgnList = []PgnInfo{
             BitOffset: 14,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -15980,6 +16732,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -15987,6 +16740,7 @@ var pgnList = []PgnInfo{
             BitOffset: 18,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -15994,6 +16748,7 @@ var pgnList = []PgnInfo{
             BitOffset: 20,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -16001,6 +16756,7 @@ var pgnList = []PgnInfo{
             BitOffset: 22,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -16008,6 +16764,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -16015,6 +16772,7 @@ var pgnList = []PgnInfo{
             BitOffset: 26,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -16022,6 +16780,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         13: { 
@@ -16029,6 +16788,7 @@ var pgnList = []PgnInfo{
             BitOffset: 30,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         14: { 
@@ -16036,6 +16796,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         15: { 
@@ -16043,6 +16804,7 @@ var pgnList = []PgnInfo{
             BitOffset: 34,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         16: { 
@@ -16050,6 +16812,7 @@ var pgnList = []PgnInfo{
             BitOffset: 36,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         17: { 
@@ -16057,6 +16820,7 @@ var pgnList = []PgnInfo{
             BitOffset: 38,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         18: { 
@@ -16064,6 +16828,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         19: { 
@@ -16071,6 +16836,7 @@ var pgnList = []PgnInfo{
             BitOffset: 42,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         20: { 
@@ -16078,6 +16844,7 @@ var pgnList = []PgnInfo{
             BitOffset: 44,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         21: { 
@@ -16085,6 +16852,7 @@ var pgnList = []PgnInfo{
             BitOffset: 46,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         22: { 
@@ -16092,6 +16860,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         23: { 
@@ -16099,6 +16868,7 @@ var pgnList = []PgnInfo{
             BitOffset: 50,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         24: { 
@@ -16106,6 +16876,7 @@ var pgnList = []PgnInfo{
             BitOffset: 52,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         25: { 
@@ -16113,6 +16884,7 @@ var pgnList = []PgnInfo{
             BitOffset: 54,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         26: { 
@@ -16120,6 +16892,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         27: { 
@@ -16127,6 +16900,7 @@ var pgnList = []PgnInfo{
             BitOffset: 58,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         28: { 
@@ -16134,6 +16908,7 @@ var pgnList = []PgnInfo{
             BitOffset: 60,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         29: { 
@@ -16141,6 +16916,7 @@ var pgnList = []PgnInfo{
             BitOffset: 62,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -16158,6 +16934,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16165,7 +16942,88 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
+            },
+        3: { 
+            BitLength: 2,
+            BitOffset: 16,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        4: { 
+            BitLength: 2,
+            BitOffset: 18,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        5: { 
+            BitLength: 4,
+            BitOffset: 20,
+            BitLengthVariable: false,
+            CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 16,
+            BitOffset: 24,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.01,
+            },
+        7: { 
+            BitLength: 16,
+            BitOffset: 40,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.1,
+            },
+        8: { 
+            BitLength: 16,
+            BitOffset: 56,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.01,
+            },
+        9: { 
+            BitLength: 16,
+            BitOffset: 72,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.1,
+            },
+        10: { 
+            BitLength: 32,
+            BitOffset: 88,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        11: { 
+            BitLength: 32,
+            BitOffset: 120,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        12: { 
+            BitLength: 8,
+            BitOffset: 152,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.01,
             },
         },
     },
@@ -16182,6 +17040,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16189,7 +17048,88 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
+            },
+        3: { 
+            BitLength: 2,
+            BitOffset: 16,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        4: { 
+            BitLength: 3,
+            BitOffset: 18,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        5: { 
+            BitLength: 3,
+            BitOffset: 21,
+            BitLengthVariable: false,
+            CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 16,
+            BitOffset: 24,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.01,
+            },
+        7: { 
+            BitLength: 16,
+            BitOffset: 40,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.1,
+            },
+        8: { 
+            BitLength: 16,
+            BitOffset: 56,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.01,
+            },
+        9: { 
+            BitLength: 16,
+            BitOffset: 72,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.1,
+            },
+        10: { 
+            BitLength: 32,
+            BitOffset: 88,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        11: { 
+            BitLength: 32,
+            BitOffset: 120,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        12: { 
+            BitLength: 8,
+            BitOffset: 152,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.01,
             },
         },
     },
@@ -16206,6 +17146,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16213,6 +17154,7 @@ var pgnList = []PgnInfo{
             BitOffset: 4,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -16220,6 +17162,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.004,
             },
         4: { 
@@ -16227,6 +17170,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         5: { 
@@ -16234,6 +17178,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -16251,6 +17196,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16258,6 +17204,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16265,6 +17212,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -16272,6 +17220,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -16279,6 +17228,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -16286,6 +17236,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:60,
             },
         7: { 
@@ -16293,6 +17244,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         8: { 
@@ -16300,6 +17252,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -16317,6 +17270,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16324,6 +17278,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16331,6 +17286,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -16338,6 +17294,7 @@ var pgnList = []PgnInfo{
             BitOffset: 20,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -16345,6 +17302,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -16352,6 +17310,7 @@ var pgnList = []PgnInfo{
             BitOffset: 26,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -16359,6 +17318,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -16366,6 +17326,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:60,
             },
         },
@@ -16383,6 +17344,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16390,6 +17352,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         3: { 
@@ -16397,6 +17360,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         4: { 
@@ -16404,6 +17368,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         5: { 
@@ -16411,6 +17376,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -16428,6 +17394,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16435,6 +17402,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16442,6 +17410,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -16449,6 +17418,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -16456,6 +17426,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -16463,6 +17434,7 @@ var pgnList = []PgnInfo{
             BitOffset: 30,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -16480,6 +17452,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16487,6 +17460,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16494,6 +17468,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         4: { 
@@ -16501,6 +17476,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -16518,6 +17494,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16525,6 +17502,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16532,6 +17510,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         4: { 
@@ -16539,6 +17518,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -16556,6 +17536,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16563,6 +17544,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16570,6 +17552,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         4: { 
@@ -16577,6 +17560,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -16594,6 +17578,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16601,6 +17586,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16608,6 +17594,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         4: { 
@@ -16615,6 +17602,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         5: { 
@@ -16622,6 +17610,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         },
@@ -16639,6 +17628,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16646,6 +17636,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16653,6 +17644,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         4: { 
@@ -16660,6 +17652,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         5: { 
@@ -16667,6 +17660,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         },
@@ -16684,6 +17678,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16691,6 +17686,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16698,6 +17694,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         4: { 
@@ -16705,6 +17702,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         5: { 
@@ -16712,6 +17710,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         },
@@ -16729,6 +17728,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -16736,6 +17736,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16743,6 +17744,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -16750,6 +17752,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -16757,6 +17760,7 @@ var pgnList = []PgnInfo{
             BitOffset: 26,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -16764,6 +17768,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -16771,6 +17776,7 @@ var pgnList = []PgnInfo{
             BitOffset: 30,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -16778,6 +17784,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -16795,6 +17802,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -16802,6 +17810,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16809,6 +17818,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         4: { 
@@ -16816,6 +17826,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         5: { 
@@ -16823,6 +17834,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -16840,6 +17852,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16847,6 +17860,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         3: { 
@@ -16854,6 +17868,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -16871,6 +17886,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16878,6 +17894,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -16885,6 +17902,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -16892,6 +17910,7 @@ var pgnList = []PgnInfo{
             BitOffset: 20,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -16899,6 +17918,7 @@ var pgnList = []PgnInfo{
             BitOffset: 22,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -16906,6 +17926,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -16913,6 +17934,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "BITLOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -16920,6 +17942,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.005,
             },
         9: { 
@@ -16927,6 +17950,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         },
@@ -16944,6 +17968,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -16951,6 +17976,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -16958,6 +17984,7 @@ var pgnList = []PgnInfo{
             BitOffset: 12,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -16965,6 +17992,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -16972,6 +18000,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         6: { 
@@ -16979,6 +18008,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.25,
             },
         },
@@ -16996,6 +18026,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -17003,6 +18034,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -17010,6 +18042,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "BITLOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -17017,6 +18050,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -17024,6 +18058,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         6: { 
@@ -17031,6 +18066,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:60,
             },
         },
@@ -17048,6 +18084,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -17055,6 +18092,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         3: { 
@@ -17062,6 +18100,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         4: { 
@@ -17069,6 +18108,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -17076,6 +18116,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -17083,6 +18124,7 @@ var pgnList = []PgnInfo{
             BitOffset: 52,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -17100,6 +18142,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -17107,6 +18150,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         3: { 
@@ -17114,6 +18158,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         4: { 
@@ -17121,6 +18166,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:10,
             },
         },
@@ -17138,6 +18184,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -17145,6 +18192,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         3: { 
@@ -17152,6 +18200,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -17159,6 +18208,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -17176,6 +18226,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -17183,6 +18234,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -17190,6 +18242,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -17197,6 +18250,7 @@ var pgnList = []PgnInfo{
             BitOffset: 18,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -17204,6 +18258,7 @@ var pgnList = []PgnInfo{
             BitOffset: 20,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -17211,6 +18266,7 @@ var pgnList = []PgnInfo{
             BitOffset: 22,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -17218,6 +18274,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -17225,6 +18282,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -17232,6 +18290,7 @@ var pgnList = []PgnInfo{
             BitOffset: 34,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -17239,6 +18298,7 @@ var pgnList = []PgnInfo{
             BitOffset: 36,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -17246,6 +18306,7 @@ var pgnList = []PgnInfo{
             BitOffset: 38,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -17253,6 +18314,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.005,
             },
         13: { 
@@ -17260,6 +18322,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "BITLOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         14: { 
@@ -17267,6 +18330,7 @@ var pgnList = []PgnInfo{
             BitOffset: 52,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -17284,6 +18348,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -17291,6 +18356,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -17298,6 +18364,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -17305,6 +18372,7 @@ var pgnList = []PgnInfo{
             BitOffset: 18,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -17312,6 +18380,7 @@ var pgnList = []PgnInfo{
             BitOffset: 20,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -17319,6 +18388,7 @@ var pgnList = []PgnInfo{
             BitOffset: 22,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -17326,6 +18396,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         8: { 
@@ -17333,6 +18404,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         9: { 
@@ -17340,6 +18412,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -17347,6 +18420,7 @@ var pgnList = []PgnInfo{
             BitOffset: 58,
             BitLengthVariable: false,
             CanboatType: "BITLOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -17364,6 +18438,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -17371,6 +18446,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -17378,6 +18454,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "BITLOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -17385,6 +18462,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.2,
             },
         5: { 
@@ -17392,6 +18470,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -17399,6 +18478,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:60,
             },
         7: { 
@@ -17406,6 +18486,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -17423,6 +18504,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         2: { 
@@ -17430,6 +18512,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         },
@@ -17447,6 +18530,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -17454,6 +18538,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -17461,6 +18546,7 @@ var pgnList = []PgnInfo{
             BitOffset: 10,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -17468,6 +18554,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         5: { 
@@ -17475,6 +18562,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         6: { 
@@ -17482,6 +18570,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -17499,6 +18588,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -17506,6 +18596,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -17513,6 +18604,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         4: { 
@@ -17520,6 +18612,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-16,
             },
         5: { 
@@ -17527,6 +18620,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-16,
             },
         6: { 
@@ -17534,6 +18628,7 @@ var pgnList = []PgnInfo{
             BitOffset: 184,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-06,
             },
         7: { 
@@ -17541,6 +18636,7 @@ var pgnList = []PgnInfo{
             BitOffset: 248,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -17548,6 +18644,7 @@ var pgnList = []PgnInfo{
             BitOffset: 252,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -17555,6 +18652,7 @@ var pgnList = []PgnInfo{
             BitOffset: 256,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -17562,6 +18660,7 @@ var pgnList = []PgnInfo{
             BitOffset: 258,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -17569,6 +18668,7 @@ var pgnList = []PgnInfo{
             BitOffset: 264,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         12: { 
@@ -17576,6 +18676,7 @@ var pgnList = []PgnInfo{
             BitOffset: 272,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         13: { 
@@ -17583,6 +18684,7 @@ var pgnList = []PgnInfo{
             BitOffset: 288,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         14: { 
@@ -17590,6 +18692,7 @@ var pgnList = []PgnInfo{
             BitOffset: 304,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         15: { 
@@ -17597,7 +18700,32 @@ var pgnList = []PgnInfo{
             BitOffset: 336,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
+            },
+        16: { 
+            BitLength: 4,
+            BitOffset: 344,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        17: { 
+            BitLength: 12,
+            BitOffset: 348,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        18: { 
+            BitLength: 16,
+            BitOffset: 360,
+            BitLengthVariable: false,
+            CanboatType: "DURATION",
+            ReservedValuesCount: 2,
+            Resolution:0.01,
             },
         },
     },
@@ -17614,6 +18742,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -17621,6 +18750,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         3: { 
@@ -17628,6 +18758,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:60,
             },
         },
@@ -17645,6 +18776,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -17652,6 +18784,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -17659,6 +18792,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -17666,6 +18800,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         5: { 
@@ -17673,6 +18808,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         6: { 
@@ -17680,6 +18816,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -17687,6 +18824,7 @@ var pgnList = []PgnInfo{
             BitOffset: 105,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -17694,6 +18832,7 @@ var pgnList = []PgnInfo{
             BitOffset: 106,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -17701,6 +18840,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         10: { 
@@ -17708,6 +18848,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         11: { 
@@ -17715,6 +18856,7 @@ var pgnList = []PgnInfo{
             BitOffset: 144,
             BitLengthVariable: false,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -17722,6 +18864,7 @@ var pgnList = []PgnInfo{
             BitOffset: 163,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         13: { 
@@ -17729,6 +18872,7 @@ var pgnList = []PgnInfo{
             BitOffset: 168,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         14: { 
@@ -17736,6 +18880,7 @@ var pgnList = []PgnInfo{
             BitOffset: 184,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:3.125e-05,
             },
         15: { 
@@ -17743,6 +18888,7 @@ var pgnList = []PgnInfo{
             BitOffset: 200,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         16: { 
@@ -17750,6 +18896,7 @@ var pgnList = []PgnInfo{
             BitOffset: 204,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         17: { 
@@ -17757,6 +18904,7 @@ var pgnList = []PgnInfo{
             BitOffset: 206,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         18: { 
@@ -17764,6 +18912,7 @@ var pgnList = []PgnInfo{
             BitOffset: 208,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         19: { 
@@ -17771,6 +18920,7 @@ var pgnList = []PgnInfo{
             BitOffset: 211,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         20: { 
@@ -17778,6 +18928,7 @@ var pgnList = []PgnInfo{
             BitOffset: 216,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -17795,6 +18946,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -17802,6 +18954,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -17809,6 +18962,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -17816,6 +18970,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         5: { 
@@ -17823,6 +18978,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         6: { 
@@ -17830,6 +18986,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -17837,6 +18994,7 @@ var pgnList = []PgnInfo{
             BitOffset: 105,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -17844,6 +19002,7 @@ var pgnList = []PgnInfo{
             BitOffset: 106,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -17851,6 +19010,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         10: { 
@@ -17858,6 +19018,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         11: { 
@@ -17865,6 +19026,7 @@ var pgnList = []PgnInfo{
             BitOffset: 144,
             BitLengthVariable: false,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -17872,6 +19034,7 @@ var pgnList = []PgnInfo{
             BitOffset: 163,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         13: { 
@@ -17879,6 +19042,7 @@ var pgnList = []PgnInfo{
             BitOffset: 168,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         14: { 
@@ -17886,6 +19050,7 @@ var pgnList = []PgnInfo{
             BitOffset: 184,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         15: { 
@@ -17893,6 +19058,7 @@ var pgnList = []PgnInfo{
             BitOffset: 192,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         16: { 
@@ -17900,6 +19066,7 @@ var pgnList = []PgnInfo{
             BitOffset: 194,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         17: { 
@@ -17907,6 +19074,7 @@ var pgnList = []PgnInfo{
             BitOffset: 195,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         18: { 
@@ -17914,6 +19082,7 @@ var pgnList = []PgnInfo{
             BitOffset: 196,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         19: { 
@@ -17921,6 +19090,7 @@ var pgnList = []PgnInfo{
             BitOffset: 197,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         20: { 
@@ -17928,6 +19098,7 @@ var pgnList = []PgnInfo{
             BitOffset: 198,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         21: { 
@@ -17935,6 +19106,7 @@ var pgnList = []PgnInfo{
             BitOffset: 199,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         22: { 
@@ -17942,6 +19114,7 @@ var pgnList = []PgnInfo{
             BitOffset: 200,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         23: { 
@@ -17949,6 +19122,7 @@ var pgnList = []PgnInfo{
             BitOffset: 201,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -17966,6 +19140,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -17973,6 +19148,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -17980,6 +19156,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -17987,6 +19164,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         5: { 
@@ -17994,6 +19172,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         6: { 
@@ -18001,6 +19180,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -18008,6 +19188,7 @@ var pgnList = []PgnInfo{
             BitOffset: 105,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -18015,6 +19196,7 @@ var pgnList = []PgnInfo{
             BitOffset: 106,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -18022,6 +19204,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         10: { 
@@ -18029,6 +19212,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         11: { 
@@ -18036,6 +19220,7 @@ var pgnList = []PgnInfo{
             BitOffset: 144,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         12: { 
@@ -18043,6 +19228,7 @@ var pgnList = []PgnInfo{
             BitOffset: 160,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         13: { 
@@ -18050,6 +19236,7 @@ var pgnList = []PgnInfo{
             BitOffset: 176,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         14: { 
@@ -18057,6 +19244,7 @@ var pgnList = []PgnInfo{
             BitOffset: 181,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         15: { 
@@ -18064,6 +19252,7 @@ var pgnList = []PgnInfo{
             BitOffset: 182,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         16: { 
@@ -18071,6 +19260,7 @@ var pgnList = []PgnInfo{
             BitOffset: 183,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         17: { 
@@ -18078,6 +19268,7 @@ var pgnList = []PgnInfo{
             BitOffset: 184,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         18: { 
@@ -18085,6 +19276,7 @@ var pgnList = []PgnInfo{
             BitOffset: 185,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         19: { 
@@ -18092,6 +19284,7 @@ var pgnList = []PgnInfo{
             BitOffset: 189,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         20: { 
@@ -18099,6 +19292,7 @@ var pgnList = []PgnInfo{
             BitOffset: 192,
             BitLengthVariable: false,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         21: { 
@@ -18106,6 +19300,7 @@ var pgnList = []PgnInfo{
             BitOffset: 200,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         22: { 
@@ -18113,6 +19308,7 @@ var pgnList = []PgnInfo{
             BitOffset: 205,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         23: { 
@@ -18120,6 +19316,7 @@ var pgnList = []PgnInfo{
             BitOffset: 208,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -18137,6 +19334,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -18144,6 +19342,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         3: { 
@@ -18151,6 +19350,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         4: { 
@@ -18158,6 +19358,7 @@ var pgnList = []PgnInfo{
             BitOffset: 96,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         5: { 
@@ -18165,6 +19366,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -18182,6 +19384,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         2: { 
@@ -18189,6 +19392,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         3: { 
@@ -18196,6 +19400,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         4: { 
@@ -18203,6 +19408,7 @@ var pgnList = []PgnInfo{
             BitOffset: 96,
             BitLengthVariable: false,
             CanboatType: "FLOAT",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -18210,6 +19416,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "FLOAT",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -18217,6 +19424,7 @@ var pgnList = []PgnInfo{
             BitOffset: 160,
             BitLengthVariable: false,
             CanboatType: "FLOAT",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -18224,6 +19432,7 @@ var pgnList = []PgnInfo{
             BitOffset: 192,
             BitLengthVariable: false,
             CanboatType: "FLOAT",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -18231,6 +19440,7 @@ var pgnList = []PgnInfo{
             BitOffset: 224,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         9: { 
@@ -18238,6 +19448,7 @@ var pgnList = []PgnInfo{
             BitOffset: 256,
             BitLengthVariable: false,
             CanboatType: "FLOAT",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -18245,6 +19456,7 @@ var pgnList = []PgnInfo{
             BitOffset: 288,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -18262,6 +19474,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -18269,6 +19482,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -18276,6 +19490,7 @@ var pgnList = []PgnInfo{
             BitOffset: 12,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -18283,6 +19498,7 @@ var pgnList = []PgnInfo{
             BitOffset: 14,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -18290,6 +19506,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         6: { 
@@ -18297,6 +19514,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -18314,6 +19532,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -18321,6 +19540,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         3: { 
@@ -18328,6 +19548,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -18335,6 +19556,7 @@ var pgnList = []PgnInfo{
             BitOffset: 42,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -18342,6 +19564,7 @@ var pgnList = []PgnInfo{
             BitOffset: 44,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -18349,6 +19572,7 @@ var pgnList = []PgnInfo{
             BitOffset: 46,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -18356,6 +19580,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         8: { 
@@ -18363,6 +19588,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -18370,6 +19596,7 @@ var pgnList = []PgnInfo{
             BitOffset: 96,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         10: { 
@@ -18377,6 +19604,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         11: { 
@@ -18384,6 +19612,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         12: { 
@@ -18391,6 +19620,7 @@ var pgnList = []PgnInfo{
             BitOffset: 160,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         13: { 
@@ -18398,6 +19628,7 @@ var pgnList = []PgnInfo{
             BitOffset: 192,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         14: { 
@@ -18405,6 +19636,7 @@ var pgnList = []PgnInfo{
             BitOffset: 224,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         15: { 
@@ -18412,6 +19644,7 @@ var pgnList = []PgnInfo{
             BitOffset: 256,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         },
@@ -18429,6 +19662,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -18436,6 +19670,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -18443,6 +19678,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -18450,6 +19686,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -18457,6 +19694,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -18464,6 +19702,7 @@ var pgnList = []PgnInfo{
             BitOffset: 67,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -18471,6 +19710,7 @@ var pgnList = []PgnInfo{
             BitOffset: 69,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -18478,6 +19718,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -18485,7 +19726,40 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
+            },
+        10: { 
+            BitLength: 16,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        11: { 
+            BitLength: 0,
+            BitOffset: 0,
+            BitLengthVariable: true,
+            CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        12: { 
+            BitLength: 32,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1e-07,
+            },
+        13: { 
+            BitLength: 32,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1e-07,
             },
         },
     },
@@ -18502,6 +19776,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -18509,6 +19784,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -18516,6 +19792,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -18523,6 +19800,7 @@ var pgnList = []PgnInfo{
             BitOffset: 14,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -18530,6 +19808,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         6: { 
@@ -18537,6 +19816,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         7: { 
@@ -18544,6 +19824,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         },
@@ -18561,6 +19842,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -18568,6 +19850,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -18575,6 +19858,7 @@ var pgnList = []PgnInfo{
             BitOffset: 10,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -18582,6 +19866,63 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        5: { 
+            BitLength: 8,
+            BitOffset: 24,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 16,
+            BitOffset: 32,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.0001,
+            },
+        7: { 
+            BitLength: 16,
+            BitOffset: 48,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.0001,
+            },
+        8: { 
+            BitLength: 16,
+            BitOffset: 64,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:0.01,
+            },
+        9: { 
+            BitLength: 32,
+            BitOffset: 80,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1e-05,
+            },
+        10: { 
+            BitLength: 4,
+            BitOffset: 112,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        11: { 
+            BitLength: 4,
+            BitOffset: 116,
+            BitLengthVariable: false,
+            CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -18599,6 +19940,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         2: { 
@@ -18606,6 +19948,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -18613,6 +19956,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -18620,6 +19964,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -18627,6 +19972,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -18644,6 +19990,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -18651,6 +19998,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         3: { 
@@ -18658,6 +20006,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         4: { 
@@ -18665,6 +20014,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         5: { 
@@ -18672,6 +20022,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         6: { 
@@ -18679,6 +20030,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         7: { 
@@ -18686,6 +20038,7 @@ var pgnList = []PgnInfo{
             BitOffset: 88,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         8: { 
@@ -18693,6 +20046,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         },
@@ -18710,6 +20064,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -18717,6 +20072,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -18724,6 +20080,7 @@ var pgnList = []PgnInfo{
             BitOffset: 20,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -18731,6 +20088,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         5: { 
@@ -18738,6 +20096,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -18745,6 +20104,7 @@ var pgnList = []PgnInfo{
             BitOffset: 44,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -18752,6 +20112,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -18759,6 +20120,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         9: { 
@@ -18766,6 +20128,7 @@ var pgnList = []PgnInfo{
             BitOffset: 88,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         10: { 
@@ -18773,6 +20136,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         11: { 
@@ -18780,6 +20144,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -18797,6 +20162,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -18804,6 +20170,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:10,
             },
         3: { 
@@ -18811,6 +20178,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -18818,6 +20186,7 @@ var pgnList = []PgnInfo{
             BitOffset: 45,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -18825,6 +20194,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -18832,6 +20202,7 @@ var pgnList = []PgnInfo{
             BitOffset: 52,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -18839,6 +20210,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -18856,6 +20228,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -18863,6 +20236,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -18870,6 +20244,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         4: { 
@@ -18877,6 +20252,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         5: { 
@@ -18884,6 +20260,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:10,
             },
         6: { 
@@ -18891,6 +20268,7 @@ var pgnList = []PgnInfo{
             BitOffset: 96,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -18898,6 +20276,7 @@ var pgnList = []PgnInfo{
             BitOffset: 100,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -18905,6 +20284,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -18912,6 +20292,7 @@ var pgnList = []PgnInfo{
             BitOffset: 117,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -18919,6 +20300,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -18926,6 +20308,7 @@ var pgnList = []PgnInfo{
             BitOffset: 122,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -18933,6 +20316,7 @@ var pgnList = []PgnInfo{
             BitOffset: 124,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         13: { 
@@ -18940,6 +20324,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         14: { 
@@ -18947,6 +20332,7 @@ var pgnList = []PgnInfo{
             BitOffset: 144,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -18964,6 +20350,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -18971,6 +20358,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -18978,6 +20366,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -18985,6 +20374,7 @@ var pgnList = []PgnInfo{
             BitOffset: 26,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -18992,6 +20382,7 @@ var pgnList = []PgnInfo{
             BitOffset: 27,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -18999,6 +20390,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -19006,6 +20398,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -19013,6 +20406,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -19020,6 +20414,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         10: { 
@@ -19027,6 +20422,7 @@ var pgnList = []PgnInfo{
             BitOffset: 96,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         11: { 
@@ -19034,6 +20430,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         12: { 
@@ -19041,6 +20438,7 @@ var pgnList = []PgnInfo{
             BitOffset: 144,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         13: { 
@@ -19048,6 +20446,7 @@ var pgnList = []PgnInfo{
             BitOffset: 168,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         14: { 
@@ -19055,6 +20454,7 @@ var pgnList = []PgnInfo{
             BitOffset: 196,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -19072,6 +20472,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -19079,6 +20480,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -19086,6 +20488,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -19093,6 +20496,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -19100,6 +20504,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -19107,6 +20512,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -19114,6 +20520,7 @@ var pgnList = []PgnInfo{
             BitOffset: 288,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -19121,6 +20528,7 @@ var pgnList = []PgnInfo{
             BitOffset: 296,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         9: { 
@@ -19128,6 +20536,7 @@ var pgnList = []PgnInfo{
             BitOffset: 312,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         10: { 
@@ -19135,6 +20544,7 @@ var pgnList = []PgnInfo{
             BitOffset: 328,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         11: { 
@@ -19142,6 +20552,7 @@ var pgnList = []PgnInfo{
             BitOffset: 344,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         12: { 
@@ -19149,6 +20560,7 @@ var pgnList = []PgnInfo{
             BitOffset: 360,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         13: { 
@@ -19156,6 +20568,7 @@ var pgnList = []PgnInfo{
             BitOffset: 376,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         14: { 
@@ -19163,6 +20576,7 @@ var pgnList = []PgnInfo{
             BitOffset: 408,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         15: { 
@@ -19170,6 +20584,7 @@ var pgnList = []PgnInfo{
             BitOffset: 424,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         16: { 
@@ -19177,6 +20592,7 @@ var pgnList = []PgnInfo{
             BitOffset: 584,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         17: { 
@@ -19184,6 +20600,7 @@ var pgnList = []PgnInfo{
             BitOffset: 586,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         18: { 
@@ -19191,6 +20608,7 @@ var pgnList = []PgnInfo{
             BitOffset: 590,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         19: { 
@@ -19198,6 +20616,7 @@ var pgnList = []PgnInfo{
             BitOffset: 591,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         20: { 
@@ -19205,6 +20624,7 @@ var pgnList = []PgnInfo{
             BitOffset: 592,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         21: { 
@@ -19212,6 +20632,7 @@ var pgnList = []PgnInfo{
             BitOffset: 597,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -19229,6 +20650,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -19236,6 +20658,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -19243,6 +20666,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -19250,6 +20674,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -19257,6 +20682,7 @@ var pgnList = []PgnInfo{
             BitOffset: 41,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -19264,6 +20690,7 @@ var pgnList = []PgnInfo{
             BitOffset: 46,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -19271,6 +20698,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -19278,6 +20706,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -19285,6 +20714,7 @@ var pgnList = []PgnInfo{
             BitOffset: 86,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -19292,6 +20722,7 @@ var pgnList = []PgnInfo{
             BitOffset: 87,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -19299,6 +20730,7 @@ var pgnList = []PgnInfo{
             BitOffset: 88,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         12: { 
@@ -19306,6 +20738,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: true,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -19323,6 +20756,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -19330,6 +20764,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -19337,6 +20772,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -19344,6 +20780,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -19351,6 +20788,7 @@ var pgnList = []PgnInfo{
             BitOffset: 41,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -19358,6 +20796,31 @@ var pgnList = []PgnInfo{
             BitOffset: 46,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 32,
+            BitOffset: 48,
+            BitLengthVariable: false,
+            CanboatType: "MMSI",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        8: { 
+            BitLength: 2,
+            BitOffset: 80,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        9: { 
+            BitLength: 6,
+            BitOffset: 82,
+            BitLengthVariable: false,
+            CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -19375,6 +20838,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -19382,6 +20846,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -19389,6 +20854,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -19396,6 +20862,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -19403,6 +20870,7 @@ var pgnList = []PgnInfo{
             BitOffset: 41,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -19410,6 +20878,7 @@ var pgnList = []PgnInfo{
             BitOffset: 46,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -19417,6 +20886,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -19424,6 +20894,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: true,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -19441,6 +20912,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:10,
             },
         2: { 
@@ -19448,6 +20920,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:10,
             },
         3: { 
@@ -19455,6 +20928,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -19462,6 +20936,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -19469,6 +20944,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -19476,6 +20952,7 @@ var pgnList = []PgnInfo{
             BitOffset: 136,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -19493,6 +20970,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -19500,6 +20978,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -19507,6 +20986,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -19514,6 +20994,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -19521,6 +21002,7 @@ var pgnList = []PgnInfo{
             BitOffset: 200,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -19528,6 +21010,7 @@ var pgnList = []PgnInfo{
             BitOffset: 205,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -19535,6 +21018,7 @@ var pgnList = []PgnInfo{
             BitOffset: 208,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -19552,6 +21036,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -19559,6 +21044,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -19566,6 +21052,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -19573,6 +21060,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -19580,6 +21068,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -19587,6 +21076,7 @@ var pgnList = []PgnInfo{
             BitOffset: 104,
             BitLengthVariable: false,
             CanboatType: "STRING_FIX",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -19594,6 +21084,7 @@ var pgnList = []PgnInfo{
             BitOffset: 160,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         8: { 
@@ -19601,6 +21092,7 @@ var pgnList = []PgnInfo{
             BitOffset: 176,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         9: { 
@@ -19608,6 +21100,7 @@ var pgnList = []PgnInfo{
             BitOffset: 192,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         10: { 
@@ -19615,6 +21108,7 @@ var pgnList = []PgnInfo{
             BitOffset: 208,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         11: { 
@@ -19622,6 +21116,7 @@ var pgnList = []PgnInfo{
             BitOffset: 224,
             BitLengthVariable: false,
             CanboatType: "MMSI",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         12: { 
@@ -19629,6 +21124,7 @@ var pgnList = []PgnInfo{
             BitOffset: 256,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         13: { 
@@ -19636,6 +21132,7 @@ var pgnList = []PgnInfo{
             BitOffset: 258,
             BitLengthVariable: false,
             CanboatType: "SPARE",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         14: { 
@@ -19643,6 +21140,7 @@ var pgnList = []PgnInfo{
             BitOffset: 260,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         15: { 
@@ -19650,6 +21148,7 @@ var pgnList = []PgnInfo{
             BitOffset: 264,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         16: { 
@@ -19657,6 +21156,7 @@ var pgnList = []PgnInfo{
             BitOffset: 269,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         17: { 
@@ -19664,6 +21164,7 @@ var pgnList = []PgnInfo{
             BitOffset: 272,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -19681,6 +21182,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -19688,6 +21190,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -19695,6 +21198,79 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        4: { 
+            BitLength: 16,
+            BitOffset: 48,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        5: { 
+            BitLength: 0,
+            BitOffset: 64,
+            BitLengthVariable: true,
+            CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 32,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "TIME",
+            ReservedValuesCount: 2,
+            Resolution:0.0001,
+            },
+        7: { 
+            BitLength: 16,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "DATE",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        8: { 
+            BitLength: 4,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        9: { 
+            BitLength: 4,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        10: { 
+            BitLength: 16,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        11: { 
+            BitLength: 32,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        12: { 
+            BitLength: 32,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -19712,6 +21288,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -19719,6 +21296,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -19726,6 +21304,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -19733,6 +21312,47 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        5: { 
+            BitLength: 16,
+            BitOffset: 64,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 0,
+            BitOffset: 80,
+            BitLengthVariable: true,
+            CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 2,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        8: { 
+            BitLength: 2,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        9: { 
+            BitLength: 4,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -19750,6 +21370,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -19757,6 +21378,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -19764,6 +21386,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -19771,6 +21394,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         5: { 
@@ -19778,6 +21402,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -19785,6 +21410,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "BITLOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -19792,6 +21418,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -19799,6 +21426,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "BITLOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -19806,6 +21434,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -19813,6 +21442,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -19820,6 +21450,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -19827,6 +21458,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -19844,6 +21476,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -19851,6 +21484,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -19858,6 +21492,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -19865,6 +21500,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -19872,7 +21508,40 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
+            },
+        6: { 
+            BitLength: 16,
+            BitOffset: 80,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 0,
+            BitOffset: 96,
+            BitLengthVariable: true,
+            CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        8: { 
+            BitLength: 32,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1e-07,
+            },
+        9: { 
+            BitLength: 32,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1e-07,
             },
         },
     },
@@ -19889,6 +21558,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -19896,6 +21566,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -19903,6 +21574,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -19910,6 +21582,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -19917,6 +21590,23 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 16,
+            BitOffset: 80,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 0,
+            BitOffset: 96,
+            BitLengthVariable: true,
+            CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -19934,6 +21624,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -19941,6 +21632,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -19948,6 +21640,55 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        4: { 
+            BitLength: 16,
+            BitOffset: 48,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        5: { 
+            BitLength: 16,
+            BitOffset: 64,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 16,
+            BitOffset: 80,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 16,
+            BitOffset: 96,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        8: { 
+            BitLength: 2,
+            BitOffset: 112,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        9: { 
+            BitLength: 6,
+            BitOffset: 114,
+            BitLengthVariable: false,
+            CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -19965,6 +21706,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -19972,6 +21714,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -19979,6 +21722,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -19986,6 +21730,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -19993,6 +21738,23 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 16,
+            BitOffset: 80,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 0,
+            BitOffset: 96,
+            BitLengthVariable: true,
+            CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -20010,6 +21772,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20017,6 +21780,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -20024,6 +21788,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -20031,6 +21796,23 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        5: { 
+            BitLength: 16,
+            BitOffset: 64,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 0,
+            BitOffset: 80,
+            BitLengthVariable: true,
+            CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -20048,6 +21830,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20055,6 +21838,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -20062,6 +21846,23 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        4: { 
+            BitLength: 16,
+            BitOffset: 48,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        5: { 
+            BitLength: 0,
+            BitOffset: 64,
+            BitLengthVariable: true,
+            CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -20079,6 +21880,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20086,6 +21888,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -20093,6 +21896,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -20100,6 +21904,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -20107,6 +21912,23 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 16,
+            BitOffset: 80,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 16,
+            BitOffset: 96,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -20124,6 +21946,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20131,6 +21954,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -20138,6 +21962,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         4: { 
@@ -20145,6 +21970,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -20152,7 +21978,40 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
+            },
+        6: { 
+            BitLength: 16,
+            BitOffset: 80,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 0,
+            BitOffset: 96,
+            BitLengthVariable: true,
+            CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        8: { 
+            BitLength: 32,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1e-07,
+            },
+        9: { 
+            BitLength: 32,
+            BitOffset: 0,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1e-07,
             },
         },
     },
@@ -20169,6 +22028,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20176,6 +22036,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         3: { 
@@ -20183,6 +22044,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         4: { 
@@ -20190,6 +22052,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -20197,6 +22060,7 @@ var pgnList = []PgnInfo{
             BitOffset: 43,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -20214,6 +22078,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20221,6 +22086,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         3: { 
@@ -20228,6 +22094,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         4: { 
@@ -20235,6 +22102,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:100,
             },
         5: { 
@@ -20242,6 +22110,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -20259,6 +22128,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20266,6 +22136,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -20273,6 +22144,7 @@ var pgnList = []PgnInfo{
             BitOffset: 14,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -20280,6 +22152,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         5: { 
@@ -20287,6 +22160,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.004,
             },
         6: { 
@@ -20294,6 +22168,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:100,
             },
         },
@@ -20311,6 +22186,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20318,6 +22194,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -20325,6 +22202,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -20332,6 +22210,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         5: { 
@@ -20339,6 +22218,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         6: { 
@@ -20346,6 +22226,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -20363,6 +22244,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20370,6 +22252,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -20377,6 +22260,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -20384,6 +22268,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.004,
             },
         5: { 
@@ -20391,6 +22276,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.004,
             },
         6: { 
@@ -20398,6 +22284,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -20415,6 +22302,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20422,6 +22310,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -20429,6 +22318,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -20436,6 +22326,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         5: { 
@@ -20443,6 +22334,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -20460,6 +22352,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20467,6 +22360,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -20474,6 +22368,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -20481,6 +22376,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         5: { 
@@ -20488,6 +22384,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -20505,6 +22402,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         2: { 
@@ -20512,6 +22410,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         3: { 
@@ -20519,6 +22418,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -20526,6 +22426,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         5: { 
@@ -20533,6 +22434,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         },
@@ -20550,6 +22452,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -20557,6 +22460,7 @@ var pgnList = []PgnInfo{
             BitOffset: 4,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -20564,6 +22468,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -20571,6 +22476,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -20578,6 +22484,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         6: { 
@@ -20585,6 +22492,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         7: { 
@@ -20592,6 +22500,7 @@ var pgnList = []PgnInfo{
             BitOffset: 88,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1e-07,
             },
         8: { 
@@ -20599,6 +22508,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         9: { 
@@ -20606,6 +22516,7 @@ var pgnList = []PgnInfo{
             BitOffset: 136,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         10: { 
@@ -20613,6 +22524,7 @@ var pgnList = []PgnInfo{
             BitOffset: 152,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -20620,6 +22532,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: true,
             CanboatType: "STRING_LAU",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -20637,6 +22550,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         2: { 
@@ -20644,6 +22558,7 @@ var pgnList = []PgnInfo{
             BitOffset: 6,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -20651,6 +22566,7 @@ var pgnList = []PgnInfo{
             BitOffset: 8,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         4: { 
@@ -20658,6 +22574,7 @@ var pgnList = []PgnInfo{
             BitOffset: 10,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -20665,6 +22582,7 @@ var pgnList = []PgnInfo{
             BitOffset: 12,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -20672,6 +22590,7 @@ var pgnList = []PgnInfo{
             BitOffset: 14,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -20679,6 +22598,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -20686,6 +22606,7 @@ var pgnList = []PgnInfo{
             BitOffset: 18,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         9: { 
@@ -20693,6 +22614,7 @@ var pgnList = []PgnInfo{
             BitOffset: 20,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         10: { 
@@ -20700,6 +22622,7 @@ var pgnList = []PgnInfo{
             BitOffset: 22,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         11: { 
@@ -20707,6 +22630,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -20714,6 +22638,7 @@ var pgnList = []PgnInfo{
             BitOffset: 26,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         13: { 
@@ -20721,6 +22646,7 @@ var pgnList = []PgnInfo{
             BitOffset: 28,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         14: { 
@@ -20728,6 +22654,7 @@ var pgnList = []PgnInfo{
             BitOffset: 30,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         15: { 
@@ -20735,6 +22662,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         16: { 
@@ -20742,6 +22670,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.01,
             },
         17: { 
@@ -20749,6 +22678,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:100,
             },
         18: { 
@@ -20756,6 +22686,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:100,
             },
         19: { 
@@ -20763,6 +22694,7 @@ var pgnList = []PgnInfo{
             BitOffset: 96,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1000,
             },
         20: { 
@@ -20770,6 +22702,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1000,
             },
         21: { 
@@ -20777,6 +22710,7 @@ var pgnList = []PgnInfo{
             BitOffset: 128,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         22: { 
@@ -20784,6 +22718,7 @@ var pgnList = []PgnInfo{
             BitOffset: 144,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         23: { 
@@ -20791,6 +22726,7 @@ var pgnList = []PgnInfo{
             BitOffset: 160,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -20808,6 +22744,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         2: { 
@@ -20815,6 +22752,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         3: { 
@@ -20822,6 +22760,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         4: { 
@@ -20829,6 +22768,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         5: { 
@@ -20836,6 +22776,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         6: { 
@@ -20843,6 +22784,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         },
@@ -20860,6 +22802,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 275,
             },
@@ -20868,6 +22811,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -20875,6 +22819,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -20883,6 +22828,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         5: { 
@@ -20890,6 +22836,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 24,
             },
@@ -20898,6 +22845,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -20905,6 +22853,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -20912,6 +22861,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -20929,6 +22879,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -20937,6 +22888,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -20944,6 +22896,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -20952,6 +22905,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32769,
             },
@@ -20960,6 +22914,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -20967,6 +22922,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -20974,6 +22930,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -20981,6 +22938,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -20988,6 +22946,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -21005,6 +22964,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21013,6 +22973,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21020,6 +22981,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21028,6 +22990,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32770,
             },
@@ -21036,6 +22999,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21043,6 +23007,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -21050,6 +23015,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -21057,6 +23023,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -21064,6 +23031,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21081,6 +23049,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21089,6 +23058,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21096,6 +23066,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21104,6 +23075,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32771,
             },
@@ -21112,6 +23084,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -21129,6 +23102,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21137,6 +23111,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21144,6 +23119,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21152,6 +23128,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32772,
             },
@@ -21160,6 +23137,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21167,6 +23145,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -21174,6 +23153,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -21181,6 +23161,7 @@ var pgnList = []PgnInfo{
             BitOffset: 88,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -21188,6 +23169,7 @@ var pgnList = []PgnInfo{
             BitOffset: 120,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         10: { 
@@ -21195,6 +23177,7 @@ var pgnList = []PgnInfo{
             BitOffset: 152,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         },
@@ -21212,6 +23195,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21220,6 +23204,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21227,6 +23212,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21235,6 +23221,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32773,
             },
@@ -21243,6 +23230,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21250,6 +23238,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -21257,6 +23246,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21274,6 +23264,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21282,6 +23273,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21289,6 +23281,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21297,6 +23290,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32774,
             },
@@ -21305,6 +23299,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21312,6 +23307,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -21319,6 +23315,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21336,6 +23333,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21344,6 +23342,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21351,6 +23350,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21359,6 +23359,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32775,
             },
@@ -21367,6 +23368,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21374,6 +23376,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -21381,6 +23384,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21398,6 +23402,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21406,6 +23411,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21413,6 +23419,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21421,6 +23428,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32801,
             },
@@ -21429,6 +23437,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21446,6 +23455,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21454,6 +23464,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21461,6 +23472,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21469,6 +23481,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32813,
             },
@@ -21477,6 +23490,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21484,6 +23498,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21501,6 +23516,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21509,6 +23525,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21516,6 +23533,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21524,6 +23542,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32777,
             },
@@ -21532,6 +23551,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21539,6 +23559,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:0.001,
             },
         },
@@ -21556,6 +23577,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21564,6 +23586,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21571,6 +23594,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21579,6 +23603,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32779,
             },
@@ -21587,6 +23612,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -21594,6 +23620,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -21601,6 +23628,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -21608,6 +23636,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -21615,6 +23644,7 @@ var pgnList = []PgnInfo{
             BitOffset: 88,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21632,6 +23662,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21640,6 +23671,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21647,6 +23679,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21655,6 +23688,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32780,
             },
@@ -21663,6 +23697,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21670,6 +23705,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -21677,6 +23713,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -21684,6 +23721,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21701,6 +23739,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21709,6 +23748,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21716,6 +23756,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21724,6 +23765,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32781,
             },
@@ -21732,6 +23774,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21739,6 +23782,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -21756,6 +23800,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21764,6 +23809,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21771,6 +23817,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21779,6 +23826,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32782,
             },
@@ -21787,6 +23835,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21794,6 +23843,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21811,6 +23861,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21819,6 +23870,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21826,6 +23878,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21834,6 +23887,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32785,
             },
@@ -21842,6 +23896,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21849,6 +23904,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -21856,6 +23912,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -21863,6 +23920,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -21870,6 +23928,7 @@ var pgnList = []PgnInfo{
             BitOffset: 88,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21887,6 +23946,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21895,6 +23955,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21902,6 +23963,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21910,6 +23972,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32787,
             },
@@ -21918,6 +23981,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -21925,6 +23989,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -21942,6 +24007,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -21950,6 +24016,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -21957,6 +24024,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -21965,6 +24033,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32788,
             },
@@ -21973,6 +24042,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 9,
             },
@@ -21981,6 +24051,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -21998,6 +24069,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22006,6 +24078,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22013,6 +24086,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22021,6 +24095,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32788,
             },
@@ -22029,6 +24104,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         6: { 
@@ -22036,6 +24112,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -22053,6 +24130,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22061,6 +24139,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22068,6 +24147,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22076,6 +24156,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32789,
             },
@@ -22084,6 +24165,23 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 32,
+            BitOffset: 64,
+            BitLengthVariable: false,
+            CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
+            Resolution:1,
+            },
+        7: { 
+            BitLength: 32,
+            BitOffset: 96,
+            BitLengthVariable: false,
+            CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -22101,6 +24199,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22109,6 +24208,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22116,6 +24216,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22124,6 +24225,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32791,
             },
@@ -22132,6 +24234,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -22149,6 +24252,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22157,6 +24261,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22164,6 +24269,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22172,6 +24278,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32792,
             },
@@ -22180,6 +24287,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22187,6 +24295,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -22204,6 +24313,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22212,6 +24322,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22219,6 +24330,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22227,6 +24339,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32793,
             },
@@ -22235,6 +24348,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22242,6 +24356,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -22259,6 +24374,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22267,6 +24383,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22274,6 +24391,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22282,6 +24400,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32794,
             },
@@ -22290,6 +24409,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22297,6 +24417,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -22304,6 +24425,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -22311,6 +24433,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -22328,6 +24451,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22336,6 +24460,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22343,6 +24468,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22351,6 +24477,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32795,
             },
@@ -22359,6 +24486,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22366,6 +24494,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -22373,6 +24502,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -22380,6 +24510,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -22397,6 +24528,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22405,6 +24537,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22412,6 +24545,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22420,6 +24554,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32796,
             },
@@ -22428,6 +24563,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22435,6 +24571,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -22442,6 +24579,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -22449,6 +24587,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -22466,6 +24605,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22474,6 +24614,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22481,6 +24622,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22489,6 +24631,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32797,
             },
@@ -22497,6 +24640,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22504,6 +24648,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -22511,6 +24656,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -22518,6 +24664,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -22535,6 +24682,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22543,6 +24691,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22550,6 +24699,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22558,6 +24708,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32798,
             },
@@ -22566,6 +24717,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22573,6 +24725,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -22580,6 +24733,7 @@ var pgnList = []PgnInfo{
             BitOffset: 64,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         8: { 
@@ -22587,6 +24741,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -22594,6 +24749,7 @@ var pgnList = []PgnInfo{
             BitOffset: 96,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -22611,6 +24767,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22619,6 +24776,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22626,6 +24784,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22634,6 +24793,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32799,
             },
@@ -22642,6 +24802,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22649,6 +24810,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -22666,6 +24828,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22674,6 +24837,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22681,6 +24845,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22689,6 +24854,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32800,
             },
@@ -22697,6 +24863,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -22714,6 +24881,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22722,6 +24890,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22729,6 +24898,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22737,6 +24907,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32802,
             },
@@ -22745,6 +24916,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22752,6 +24924,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -22759,6 +24932,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         8: { 
@@ -22766,6 +24940,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -22773,6 +24948,7 @@ var pgnList = []PgnInfo{
             BitOffset: 72,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -22790,6 +24966,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22798,6 +24975,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22805,6 +24983,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22813,6 +24992,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32804,
             },
@@ -22821,6 +25001,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22828,6 +25009,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -22835,6 +25017,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -22852,6 +25035,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22860,6 +25044,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22867,6 +25052,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22875,6 +25061,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32805,
             },
@@ -22883,6 +25070,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22890,6 +25078,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -22897,6 +25086,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -22914,6 +25104,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22922,6 +25113,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22929,6 +25121,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22937,6 +25130,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32806,
             },
@@ -22945,6 +25139,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -22952,6 +25147,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -22959,6 +25155,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -22976,6 +25173,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -22984,6 +25182,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -22991,6 +25190,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -22999,6 +25199,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32807,
             },
@@ -23007,6 +25208,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -23014,6 +25216,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -23021,6 +25224,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -23038,6 +25242,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -23046,6 +25251,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -23053,6 +25259,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -23061,6 +25268,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32808,
             },
@@ -23069,6 +25277,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -23076,6 +25285,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -23083,6 +25293,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: true,
             CanboatType: "STRING_LZ",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -23100,6 +25311,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -23108,6 +25320,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -23115,6 +25328,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -23123,6 +25337,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32809,
             },
@@ -23131,6 +25346,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -23138,6 +25354,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         },
@@ -23155,6 +25372,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
             },
@@ -23163,6 +25381,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -23170,6 +25389,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -23178,6 +25398,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 32812,
             },
@@ -23186,6 +25407,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -23193,6 +25415,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -23200,6 +25423,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: true,
             CanboatType: "BINARY",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -23217,6 +25441,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
             },
@@ -23225,6 +25450,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -23232,6 +25458,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -23240,6 +25467,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -23247,6 +25475,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -23254,6 +25483,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         7: { 
@@ -23261,6 +25491,7 @@ var pgnList = []PgnInfo{
             BitOffset: 40,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         8: { 
@@ -23268,6 +25499,7 @@ var pgnList = []PgnInfo{
             BitOffset: 56,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:0.1,
             },
         },
@@ -23285,6 +25517,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 381,
             },
@@ -23293,6 +25526,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -23300,8 +25534,33 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            },
+        4: { 
+            BitLength: 12,
+            BitOffset: 16,
+            BitLengthVariable: false,
+            CanboatType: "DYNAMIC_FIELD_KEY",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        5: { 
+            BitLength: 4,
+            BitOffset: 28,
+            BitLengthVariable: false,
+            CanboatType: "DYNAMIC_FIELD_LENGTH",
+            ReservedValuesCount: 2,
+            Resolution:1,
+            },
+        6: { 
+            BitLength: 0,
+            BitOffset: 32,
+            BitLengthVariable: true,
+            CanboatType: "DYNAMIC_FIELD_VALUE",
+            ReservedValuesCount: 0,
+            Resolution:1,
             },
         },
     },
@@ -23318,6 +25577,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
             },
@@ -23326,6 +25586,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -23333,6 +25594,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -23341,6 +25603,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -23348,6 +25611,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -23355,6 +25619,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -23362,6 +25627,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         8: { 
@@ -23369,6 +25635,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -23376,6 +25643,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         10: { 
@@ -23383,6 +25651,7 @@ var pgnList = []PgnInfo{
             BitOffset: 144,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         11: { 
@@ -23390,6 +25659,7 @@ var pgnList = []PgnInfo{
             BitOffset: 176,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -23397,6 +25667,7 @@ var pgnList = []PgnInfo{
             BitOffset: 178,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -23414,6 +25685,7 @@ var pgnList = []PgnInfo{
             BitOffset: 0,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
             },
@@ -23422,6 +25694,7 @@ var pgnList = []PgnInfo{
             BitOffset: 11,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         3: { 
@@ -23429,6 +25702,7 @@ var pgnList = []PgnInfo{
             BitOffset: 13,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
             },
@@ -23437,6 +25711,7 @@ var pgnList = []PgnInfo{
             BitOffset: 16,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         5: { 
@@ -23444,6 +25719,7 @@ var pgnList = []PgnInfo{
             BitOffset: 24,
             BitLengthVariable: false,
             CanboatType: "NUMBER",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         6: { 
@@ -23451,6 +25727,7 @@ var pgnList = []PgnInfo{
             BitOffset: 32,
             BitLengthVariable: false,
             CanboatType: "DATE",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         7: { 
@@ -23458,6 +25735,7 @@ var pgnList = []PgnInfo{
             BitOffset: 48,
             BitLengthVariable: false,
             CanboatType: "TIME",
+            ReservedValuesCount: 2,
             Resolution:0.0001,
             },
         8: { 
@@ -23465,6 +25743,7 @@ var pgnList = []PgnInfo{
             BitOffset: 80,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         9: { 
@@ -23472,6 +25751,7 @@ var pgnList = []PgnInfo{
             BitOffset: 112,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         10: { 
@@ -23479,6 +25759,7 @@ var pgnList = []PgnInfo{
             BitOffset: 144,
             BitLengthVariable: false,
             CanboatType: "DURATION",
+            ReservedValuesCount: 2,
             Resolution:1,
             },
         11: { 
@@ -23486,6 +25767,7 @@ var pgnList = []PgnInfo{
             BitOffset: 176,
             BitLengthVariable: false,
             CanboatType: "LOOKUP",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         12: { 
@@ -23493,6 +25775,7 @@ var pgnList = []PgnInfo{
             BitOffset: 178,
             BitLengthVariable: false,
             CanboatType: "RESERVED",
+            ReservedValuesCount: 0,
             Resolution:1,
             },
         },
@@ -23517,13 +25800,13 @@ func DecodeIsoAcknowledgement(Info MessageInfo, stream *DataStream) (any, error)
     } else {
         val.Control = IsoControlConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAcknowledgement-GroupFunction: %w", err)
     } else {
         val.GroupFunction = v
     }
        stream.skipBits(24)
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAcknowledgement-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -23538,7 +25821,7 @@ func (p IsoAcknowledgement) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.GroupFunction, 8, 8)
+    err = stream.writeUint8(p.GroupFunction, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -23546,7 +25829,7 @@ func (p IsoAcknowledgement) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 40)
+    err = stream.writeUint32(p.Pgn, 24, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -23562,7 +25845,7 @@ func DecodeIsoRequest(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoRequest-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -23573,7 +25856,7 @@ func DecodeIsoRequest(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p IsoRequest) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint32(p.Pgn, 24, 0)
+    err = stream.writeUint32(p.Pgn, 24, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -23590,7 +25873,7 @@ func DecodeIsoTransportProtocolDataTransfer(Info MessageInfo, stream *DataStream
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolDataTransfer-Sid: %w", err)
     } else {
         val.Sid = v
@@ -23606,7 +25889,7 @@ func DecodeIsoTransportProtocolDataTransfer(Info MessageInfo, stream *DataStream
 // Encode implementation for complete variant
 func (p IsoTransportProtocolDataTransfer) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -23638,22 +25921,22 @@ func DecodeIsoTransportProtocolConnectionManagementRequestToSend(Info MessageInf
             return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementRequestToSend-GroupFunctionCode: Expected %d != %d", 16, v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-MessageSize: %w", err)
     } else {
         val.MessageSize = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-Packets: %w", err)
     } else {
         val.Packets = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-PacketsReply: %w", err)
     } else {
         val.PacketsReply = v
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -23668,19 +25951,19 @@ func (p IsoTransportProtocolConnectionManagementRequestToSend) Encode(stream *Da
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.MessageSize, 16, 8)
+    err = stream.writeUint16(p.MessageSize, 16, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Packets, 8, 24)
+    err = stream.writeUint8(p.Packets, 8, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.PacketsReply, 8, 32)
+    err = stream.writeUint8(p.PacketsReply, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 40)
+    err = stream.writeUint32(p.Pgn, 24, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -23707,18 +25990,18 @@ func DecodeIsoTransportProtocolConnectionManagementClearToSend(Info MessageInfo,
             return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementClearToSend-GroupFunctionCode: Expected %d != %d", 17, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-MaxPackets: %w", err)
     } else {
         val.MaxPackets = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-NextSid: %w", err)
     } else {
         val.NextSid = v
     }
        stream.skipBits(16)
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -23733,11 +26016,11 @@ func (p IsoTransportProtocolConnectionManagementClearToSend) Encode(stream *Data
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.MaxPackets, 8, 8)
+    err = stream.writeUint8(p.MaxPackets, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NextSid, 8, 16)
+    err = stream.writeUint8(p.NextSid, 8, 16, 2)
     if err != nil {
         return nil, err
     }
@@ -23745,7 +26028,7 @@ func (p IsoTransportProtocolConnectionManagementClearToSend) Encode(stream *Data
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 40)
+    err = stream.writeUint32(p.Pgn, 24, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -23772,18 +26055,18 @@ func DecodeIsoTransportProtocolConnectionManagementEndOfMessage(Info MessageInfo
             return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementEndOfMessage-GroupFunctionCode: Expected %d != %d", 19, v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-TotalMessageSize: %w", err)
     } else {
         val.TotalMessageSize = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-TotalNumberOfFramesReceived: %w", err)
     } else {
         val.TotalNumberOfFramesReceived = v
     }
        stream.skipBits(8)
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -23798,11 +26081,11 @@ func (p IsoTransportProtocolConnectionManagementEndOfMessage) Encode(stream *Dat
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.TotalMessageSize, 16, 8)
+    err = stream.writeUint16(p.TotalMessageSize, 16, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.TotalNumberOfFramesReceived, 8, 24)
+    err = stream.writeUint8(p.TotalNumberOfFramesReceived, 8, 24, 2)
     if err != nil {
         return nil, err
     }
@@ -23810,7 +26093,7 @@ func (p IsoTransportProtocolConnectionManagementEndOfMessage) Encode(stream *Dat
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 40)
+    err = stream.writeUint32(p.Pgn, 24, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -23837,18 +26120,18 @@ func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(Info Messag
             return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-GroupFunctionCode: Expected %d != %d", 32, v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-MessageSize: %w", err)
     } else {
         val.MessageSize = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-Packets: %w", err)
     } else {
         val.Packets = v
     }
        stream.skipBits(8)
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -23863,11 +26146,11 @@ func (p IsoTransportProtocolConnectionManagementBroadcastAnnounce) Encode(stream
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.MessageSize, 16, 8)
+    err = stream.writeUint16(p.MessageSize, 16, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Packets, 8, 24)
+    err = stream.writeUint8(p.Packets, 8, 24, 2)
     if err != nil {
         return nil, err
     }
@@ -23875,7 +26158,7 @@ func (p IsoTransportProtocolConnectionManagementBroadcastAnnounce) Encode(stream
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 40)
+    err = stream.writeUint32(p.Pgn, 24, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -23907,7 +26190,7 @@ func DecodeIsoTransportProtocolConnectionManagementAbort(Info MessageInfo, strea
         val.Reason = v
     }
        stream.skipBits(24)
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementAbort-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -23930,7 +26213,7 @@ func (p IsoTransportProtocolConnectionManagementAbort) Encode(stream *DataStream
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 40)
+    err = stream.writeUint32(p.Pgn, 24, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -23954,7 +26237,7 @@ func DecodeIsoAddressClaim(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt32(21); err != nil {
+    if v, err := stream.readUInt32(21, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-UniqueNumber: %w", err)
     } else {
         val.UniqueNumber = v
@@ -23964,12 +26247,12 @@ func DecodeIsoAddressClaim(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.ManufacturerCode = ManufacturerCodeConst(v)
     }
-    if v, err := stream.readUInt8(3); err != nil {
+    if v, err := stream.readUInt8(3, 1); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-DeviceInstanceLower: %w", err)
     } else {
         val.DeviceInstanceLower = v
     }
-    if v, err := stream.readUInt8(5); err != nil {
+    if v, err := stream.readUInt8(5, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-DeviceInstanceUpper: %w", err)
     } else {
         val.DeviceInstanceUpper = v
@@ -23985,7 +26268,7 @@ func DecodeIsoAddressClaim(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.DeviceClass = DeviceClassConst(v)
     }
-    if v, err := stream.readUInt8(4); err != nil {
+    if v, err := stream.readUInt8(4, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-SystemInstance: %w", err)
     } else {
         val.SystemInstance = v
@@ -24006,7 +26289,7 @@ func DecodeIsoAddressClaim(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p IsoAddressClaim) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint32(p.UniqueNumber, 21, 0)
+    err = stream.writeUint32(p.UniqueNumber, 21, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -24014,11 +26297,11 @@ func (p IsoAddressClaim) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DeviceInstanceLower, 3, 32)
+    err = stream.writeUint8(p.DeviceInstanceLower, 3, 32, 1)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DeviceInstanceUpper, 5, 35)
+    err = stream.writeUint8(p.DeviceInstanceUpper, 5, 35, 2)
     if err != nil {
         return nil, err
     }
@@ -24034,7 +26317,7 @@ func (p IsoAddressClaim) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SystemInstance, 4, 56)
+    err = stream.writeUint8(p.SystemInstance, 4, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -24060,17 +26343,17 @@ func DecodeBus1PhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) (an
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseCBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseCBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseCBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
@@ -24082,15 +26365,15 @@ func DecodeBus1PhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) (an
 // Encode implementation for complete variant
 func (p Bus1PhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -24112,17 +26395,17 @@ func DecodeBus1PhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) (an
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseBBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseBBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseBBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
@@ -24134,15 +26417,15 @@ func DecodeBus1PhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) (an
 // Encode implementation for complete variant
 func (p Bus1PhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -24164,17 +26447,17 @@ func DecodeBus1PhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) (an
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseABasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseABasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseABasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
@@ -24186,15 +26469,15 @@ func DecodeBus1PhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) (an
 // Encode implementation for complete variant
 func (p Bus1PhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -24216,12 +26499,12 @@ func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *DataStream) (a
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -24238,11 +26521,11 @@ func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *DataStream) (a
 // Encode implementation for complete variant
 func (p UtilityPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.ReactivePower, 16, 0)
+    err = stream.writeUint16(p.ReactivePower, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 16, 0)
+    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 16, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -24267,12 +26550,12 @@ func DecodeUtilityPhaseCAcPower(Info MessageInfo, stream *DataStream) (any, erro
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -24283,11 +26566,11 @@ func DecodeUtilityPhaseCAcPower(Info MessageInfo, stream *DataStream) (any, erro
 // Encode implementation for complete variant
 func (p UtilityPhaseCAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000)
+    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000, 2)
     if err != nil {
         return nil, err
     }
@@ -24306,22 +26589,22 @@ func DecodeUtilityPhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -24332,19 +26615,19 @@ func DecodeUtilityPhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) 
 // Encode implementation for complete variant
 func (p UtilityPhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+    err = stream.writeUint16(p.AcRmsCurrent, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -24362,12 +26645,12 @@ func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *DataStream) (a
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -24384,11 +26667,11 @@ func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *DataStream) (a
 // Encode implementation for complete variant
 func (p UtilityPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.ReactivePower, 16, 0)
+    err = stream.writeUint16(p.ReactivePower, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 16, 0)
+    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 16, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -24413,12 +26696,12 @@ func DecodeUtilityPhaseBAcPower(Info MessageInfo, stream *DataStream) (any, erro
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -24429,11 +26712,11 @@ func DecodeUtilityPhaseBAcPower(Info MessageInfo, stream *DataStream) (any, erro
 // Encode implementation for complete variant
 func (p UtilityPhaseBAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000)
+    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000, 2)
     if err != nil {
         return nil, err
     }
@@ -24452,22 +26735,22 @@ func DecodeUtilityPhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -24478,19 +26761,19 @@ func DecodeUtilityPhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) 
 // Encode implementation for complete variant
 func (p UtilityPhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+    err = stream.writeUint16(p.AcRmsCurrent, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -24508,12 +26791,12 @@ func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *DataStream) (a
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseAAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseAAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -24530,11 +26813,11 @@ func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *DataStream) (a
 // Encode implementation for complete variant
 func (p UtilityPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0)
+    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -24559,12 +26842,12 @@ func DecodeUtilityPhaseAAcPower(Info MessageInfo, stream *DataStream) (any, erro
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseAAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseAAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -24575,11 +26858,11 @@ func DecodeUtilityPhaseAAcPower(Info MessageInfo, stream *DataStream) (any, erro
 // Encode implementation for complete variant
 func (p UtilityPhaseAAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000)
+    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000, 2)
     if err != nil {
         return nil, err
     }
@@ -24598,22 +26881,22 @@ func DecodeUtilityPhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -24624,19 +26907,19 @@ func DecodeUtilityPhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) 
 // Encode implementation for complete variant
 func (p UtilityPhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+    err = stream.writeUint16(p.AcRmsCurrent, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -24654,12 +26937,12 @@ func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *DataStream) (an
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityTotalAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityTotalAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -24676,11 +26959,11 @@ func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *DataStream) (an
 // Encode implementation for complete variant
 func (p UtilityTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0)
+    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -24705,12 +26988,12 @@ func DecodeUtilityTotalAcPower(Info MessageInfo, stream *DataStream) (any, error
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityTotalAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityTotalAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -24721,11 +27004,11 @@ func DecodeUtilityTotalAcPower(Info MessageInfo, stream *DataStream) (any, error
 // Encode implementation for complete variant
 func (p UtilityTotalAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000)
+    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000, 2)
     if err != nil {
         return nil, err
     }
@@ -24744,22 +27027,22 @@ func DecodeUtilityAverageBasicAcQuantities(Info MessageInfo, stream *DataStream)
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -24770,19 +27053,19 @@ func DecodeUtilityAverageBasicAcQuantities(Info MessageInfo, stream *DataStream)
 // Encode implementation for complete variant
 func (p UtilityAverageBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+    err = stream.writeUint16(p.AcRmsCurrent, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -24800,12 +27083,12 @@ func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *DataStream) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -24822,11 +27105,11 @@ func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *DataStream) 
 // Encode implementation for complete variant
 func (p GeneratorPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0)
+    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -24851,12 +27134,12 @@ func DecodeGeneratorPhaseCAcPower(Info MessageInfo, stream *DataStream) (any, er
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -24867,11 +27150,11 @@ func DecodeGeneratorPhaseCAcPower(Info MessageInfo, stream *DataStream) (any, er
 // Encode implementation for complete variant
 func (p GeneratorPhaseCAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000)
+    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000, 2)
     if err != nil {
         return nil, err
     }
@@ -24890,22 +27173,22 @@ func DecodeGeneratorPhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -24916,19 +27199,19 @@ func DecodeGeneratorPhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream
 // Encode implementation for complete variant
 func (p GeneratorPhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+    err = stream.writeUint16(p.AcRmsCurrent, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -24946,12 +27229,12 @@ func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *DataStream) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -24968,11 +27251,11 @@ func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *DataStream) 
 // Encode implementation for complete variant
 func (p GeneratorPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0)
+    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -24997,12 +27280,12 @@ func DecodeGeneratorPhaseBAcPower(Info MessageInfo, stream *DataStream) (any, er
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -25013,11 +27296,11 @@ func DecodeGeneratorPhaseBAcPower(Info MessageInfo, stream *DataStream) (any, er
 // Encode implementation for complete variant
 func (p GeneratorPhaseBAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000)
+    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000, 2)
     if err != nil {
         return nil, err
     }
@@ -25036,22 +27319,22 @@ func DecodeGeneratorPhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -25062,19 +27345,19 @@ func DecodeGeneratorPhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream
 // Encode implementation for complete variant
 func (p GeneratorPhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+    err = stream.writeUint16(p.AcRmsCurrent, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -25092,12 +27375,12 @@ func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *DataStream) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -25114,11 +27397,11 @@ func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *DataStream) 
 // Encode implementation for complete variant
 func (p GeneratorPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0)
+    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -25143,12 +27426,12 @@ func DecodeGeneratorPhaseAAcPower(Info MessageInfo, stream *DataStream) (any, er
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -25159,11 +27442,11 @@ func DecodeGeneratorPhaseAAcPower(Info MessageInfo, stream *DataStream) (any, er
 // Encode implementation for complete variant
 func (p GeneratorPhaseAAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000)
+    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000, 2)
     if err != nil {
         return nil, err
     }
@@ -25182,22 +27465,22 @@ func DecodeGeneratorPhaseABasicAcQuantities(Info MessageInfo, stream *DataStream
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -25208,19 +27491,19 @@ func DecodeGeneratorPhaseABasicAcQuantities(Info MessageInfo, stream *DataStream
 // Encode implementation for complete variant
 func (p GeneratorPhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+    err = stream.writeUint16(p.AcRmsCurrent, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -25238,12 +27521,12 @@ func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *DataStream) (
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorTotalAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 6.10352e-05, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorTotalAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -25260,11 +27543,11 @@ func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *DataStream) (
 // Encode implementation for complete variant
 func (p GeneratorTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.ReactivePower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0)
+    err = stream.writeUnsignedResolution32(p.PowerFactor, 16, 6.10352e-05, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -25289,12 +27572,12 @@ func DecodeGeneratorTotalAcPower(Info MessageInfo, stream *DataStream) (any, err
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorTotalAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := stream.readSignedResolution(32, 1, -2000000000); err != nil {
+    if v, err := stream.readSignedResolution(32, 1, -2000000000, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorTotalAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -25305,11 +27588,11 @@ func DecodeGeneratorTotalAcPower(Info MessageInfo, stream *DataStream) (any, err
 // Encode implementation for complete variant
 func (p GeneratorTotalAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000)
+    err = stream.writeSignedResolution32(p.RealPower, 32, 1, 0, -2000000000, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000)
+    err = stream.writeSignedResolution32(p.ApparentPower, 32, 1, 32, -2000000000, 2)
     if err != nil {
         return nil, err
     }
@@ -25328,22 +27611,22 @@ func DecodeGeneratorAverageBasicAcQuantities(Info MessageInfo, stream *DataStrea
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0078125, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -25354,19 +27637,19 @@ func DecodeGeneratorAverageBasicAcQuantities(Info MessageInfo, stream *DataStrea
 // Encode implementation for complete variant
 func (p GeneratorAverageBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0)
+    err = stream.writeUint16(p.LineLineAcRmsVoltage, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16)
+    err = stream.writeUint16(p.LineNeutralAcRmsVoltage, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcFrequency, 16, 0.0078125, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AcRmsCurrent, 16, 48)
+    err = stream.writeUint16(p.AcRmsCurrent, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -25400,12 +27683,12 @@ func DecodeIsoCommandedAddress(Info MessageInfo, stream *DataStream) (any, error
     } else {
         val.ManufacturerCode = ManufacturerCodeConst(v)
     }
-    if v, err := stream.readUInt8(3); err != nil {
+    if v, err := stream.readUInt8(3, 1); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-DeviceInstanceLower: %w", err)
     } else {
         val.DeviceInstanceLower = v
     }
-    if v, err := stream.readUInt8(5); err != nil {
+    if v, err := stream.readUInt8(5, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-DeviceInstanceUpper: %w", err)
     } else {
         val.DeviceInstanceUpper = v
@@ -25421,7 +27704,7 @@ func DecodeIsoCommandedAddress(Info MessageInfo, stream *DataStream) (any, error
     } else {
         val.DeviceClass = DeviceClassConst(v)
     }
-    if v, err := stream.readUInt8(4); err != nil {
+    if v, err := stream.readUInt8(4, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-SystemInstance: %w", err)
     } else {
         val.SystemInstance = v
@@ -25432,7 +27715,7 @@ func DecodeIsoCommandedAddress(Info MessageInfo, stream *DataStream) (any, error
         val.IndustryCode = IndustryCodeConst(v)
     }
        stream.skipBits(1)
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-NewSourceAddress: %w", err)
     } else {
         val.NewSourceAddress = v
@@ -25451,11 +27734,11 @@ func (p IsoCommandedAddress) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DeviceInstanceLower, 3, 32)
+    err = stream.writeUint8(p.DeviceInstanceLower, 3, 32, 1)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DeviceInstanceUpper, 5, 35)
+    err = stream.writeUint8(p.DeviceInstanceUpper, 5, 35, 2)
     if err != nil {
         return nil, err
     }
@@ -25471,7 +27754,7 @@ func (p IsoCommandedAddress) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SystemInstance, 4, 56)
+    err = stream.writeUint8(p.SystemInstance, 4, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -25483,7 +27766,7 @@ func (p IsoCommandedAddress) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NewSourceAddress, 8, 64)
+    err = stream.writeUint8(p.NewSourceAddress, 8, 64, 2)
     if err != nil {
         return nil, err
     }
@@ -25520,17 +27803,17 @@ func DecodeMaretronProprietaryDcBreakerCurrent(Info MessageInfo, stream *DataStr
             return nil, fmt.Errorf("match failed for MaretronProprietaryDcBreakerCurrent-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-BankInstance: %w", err)
     } else {
         val.BankInstance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-IndicatorNumber: %w", err)
     } else {
         val.IndicatorNumber = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-BreakerCurrent: %w", err)
     } else {
         val.BreakerCurrent = v
@@ -25554,15 +27837,15 @@ func (p MaretronProprietaryDcBreakerCurrent) Encode(stream *DataStream) (*Messag
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.BankInstance, 8, 16)
+    err = stream.writeUint8(p.BankInstance, 8, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.IndicatorNumber, 8, 24)
+    err = stream.writeUint8(p.IndicatorNumber, 8, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.BreakerCurrent, 16, 0.1, 32, 0)
+    err = stream.writeUnsignedResolution32(p.BreakerCurrent, 16, 0.1, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -25670,7 +27953,7 @@ func DecodeLowranceTemperature(Info MessageInfo, stream *DataStream) (any, error
     } else {
         val.TemperatureSource = TemperatureSourceConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LowranceTemperature-ActualTemperature: %w", err)
     } else {
         val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -25698,7 +27981,7 @@ func (p LowranceTemperature) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.ActualTemperature, 16, 0.010000, 24, 0, false)
+    err = stream.writeUnit(p.ActualTemperature, 16, 0.010000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -25792,7 +28075,7 @@ func DecodeAirmarAccessLevel(Info MessageInfo, stream *DataStream) (any, error) 
             return nil, fmt.Errorf("match failed for AirmarAccessLevel-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAccessLevel-FormatCode: %w", err)
     } else {
         val.FormatCode = v
@@ -25803,7 +28086,7 @@ func DecodeAirmarAccessLevel(Info MessageInfo, stream *DataStream) (any, error) 
         val.AccessLevel = AccessLevelConst(v)
     }
        stream.skipBits(5)
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAccessLevel-AccessSeedKey: %w", err)
     } else {
         val.AccessSeedKey = v
@@ -25826,7 +28109,7 @@ func (p AirmarAccessLevel) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.FormatCode, 8, 16)
+    err = stream.writeUint8(p.FormatCode, 8, 16, 2)
     if err != nil {
         return nil, err
     }
@@ -25838,7 +28121,7 @@ func (p AirmarAccessLevel) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.AccessSeedKey, 32, 32)
+    err = stream.writeUint32(p.AccessSeedKey, 32, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -26204,12 +28487,12 @@ func DecodeSeatalkPilotLockedHeading(Info MessageInfo, stream *DataStream) (any,
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-TargetHeadingTrue: %w", err)
     } else {
         val.TargetHeadingTrue = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-TargetHeadingMagnetic: %w", err)
     } else {
         val.TargetHeadingMagnetic = v
@@ -26237,11 +28520,11 @@ func (p SeatalkPilotLockedHeading) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.TargetHeadingTrue, 16, 0.0001, 24, 0)
+    err = stream.writeUnsignedResolution32(p.TargetHeadingTrue, 16, 0.0001, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.TargetHeadingMagnetic, 16, 0.0001, 40, 0)
+    err = stream.writeUnsignedResolution32(p.TargetHeadingMagnetic, 16, 0.0001, 40, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -26355,17 +28638,17 @@ func DecodeAirmarSpeedPulseCount(Info MessageInfo, stream *DataStream) (any, err
             return nil, fmt.Errorf("match failed for AirmarSpeedPulseCount-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-DurationOfInterval: %w", err)
     } else {
         val.DurationOfInterval = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-NumberOfPulsesReceived: %w", err)
     } else {
         val.NumberOfPulsesReceived = v
@@ -26389,15 +28672,15 @@ func (p AirmarSpeedPulseCount) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Sid, 8, 16)
+    err = stream.writeUint8(p.Sid, 8, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.DurationOfInterval, 16, 0.001, 24, 0)
+    err = stream.writeUnsignedResolution32(p.DurationOfInterval, 16, 0.001, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfPulsesReceived, 16, 40)
+    err = stream.writeUint16(p.NumberOfPulsesReceived, 16, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -26436,22 +28719,22 @@ func DecodeNmeaRequestGroupFunction(Info MessageInfo, stream *DataStream) (any, 
             return nil, fmt.Errorf("match failed for NmeaRequestGroupFunction-FunctionCode: Expected %d != %d", 0, v)
         }
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-Pgn: %w", err)
     } else {
         val.Pgn = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-TransmissionInterval: %w", err)
     } else {
         val.TransmissionInterval = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-TransmissionIntervalOffset: %w", err)
     } else {
         val.TransmissionIntervalOffset = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-NumberOfParameters: %w", err)
     } else {
         val.NumberOfParameters = v
@@ -26483,7 +28766,7 @@ func DecodeNmeaRequestGroupFunction(Info MessageInfo, stream *DataStream) (any, 
     i := 0
     for {
         var rep NmeaRequestGroupFunctionRepeating1
-        if v, err := stream.readUInt8(8); err != nil {
+        if v, err := stream.readUInt8(8, 0); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-Parameter: %w", err)
         } else {
             rep.Parameter = v
@@ -26518,19 +28801,19 @@ func (p NmeaRequestGroupFunction) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 8)
+    err = stream.writeUint32(p.Pgn, 24, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.TransmissionInterval, 32, 0.001, 32, 0)
+    err = stream.writeUnsignedResolution32(p.TransmissionInterval, 32, 0.001, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.TransmissionIntervalOffset, 16, 0.01, 64, 0)
+    err = stream.writeUnsignedResolution32(p.TransmissionIntervalOffset, 16, 0.01, 64, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfParameters, 8, 80)
+    err = stream.writeUint8(p.NumberOfParameters, 8, 80, 2)
     if err != nil {
         return nil, err
     }
@@ -26546,7 +28829,7 @@ func (p NmeaRequestGroupFunction) encodeRepeating1(stream *DataStream) error {
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint8(p.Repeating1[index].Parameter, 8, 0)
+        err = stream.writeUint8(p.Repeating1[index].Parameter, 8, 0, 0)
         if err != nil {
             return err
         }
@@ -26585,7 +28868,7 @@ func DecodeNmeaCommandGroupFunction(Info MessageInfo, stream *DataStream) (any, 
             return nil, fmt.Errorf("match failed for NmeaCommandGroupFunction-FunctionCode: Expected %d != %d", 1, v)
         }
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -26596,7 +28879,7 @@ func DecodeNmeaCommandGroupFunction(Info MessageInfo, stream *DataStream) (any, 
         val.Priority = PriorityConst(v)
     }
        stream.skipBits(4)
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-NumberOfParameters: %w", err)
     } else {
         val.NumberOfParameters = v
@@ -26627,7 +28910,7 @@ func DecodeNmeaCommandGroupFunction(Info MessageInfo, stream *DataStream) (any, 
     i := 0
     for {
         var rep NmeaCommandGroupFunctionRepeating1
-        if v, err := stream.readUInt8(8); err != nil {
+        if v, err := stream.readUInt8(8, 0); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Parameter: %w", err)
         } else {
             rep.Parameter = v
@@ -26662,7 +28945,7 @@ func (p NmeaCommandGroupFunction) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 8)
+    err = stream.writeUint32(p.Pgn, 24, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -26674,7 +28957,7 @@ func (p NmeaCommandGroupFunction) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfParameters, 8, 40)
+    err = stream.writeUint8(p.NumberOfParameters, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -26690,7 +28973,7 @@ func (p NmeaCommandGroupFunction) encodeRepeating1(stream *DataStream) error {
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint8(p.Repeating1[index].Parameter, 8, 0)
+        err = stream.writeUint8(p.Repeating1[index].Parameter, 8, 0, 0)
         if err != nil {
             return err
         }
@@ -26728,7 +29011,7 @@ func DecodeNmeaAcknowledgeGroupFunction(Info MessageInfo, stream *DataStream) (a
             return nil, fmt.Errorf("match failed for NmeaAcknowledgeGroupFunction-FunctionCode: Expected %d != %d", 2, v)
         }
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -26743,7 +29026,7 @@ func DecodeNmeaAcknowledgeGroupFunction(Info MessageInfo, stream *DataStream) (a
     } else {
         val.TransmissionIntervalPriorityErrorCode = TransmissionIntervalConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-NumberOfParameters: %w", err)
     } else {
         val.NumberOfParameters = v
@@ -26802,7 +29085,7 @@ func (p NmeaAcknowledgeGroupFunction) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 8)
+    err = stream.writeUint32(p.Pgn, 24, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -26814,7 +29097,7 @@ func (p NmeaAcknowledgeGroupFunction) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfParameters, 8, 40)
+    err = stream.writeUint8(p.NumberOfParameters, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -26874,7 +29157,7 @@ func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *DataStream
             return nil, fmt.Errorf("match failed for NmeaReadFieldsReplyGroupFunction-FunctionCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -26890,12 +29173,12 @@ func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *DataStream
     } else {
         val.IndustryCode = IndustryCodeConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-UniqueId: %w", err)
     } else {
         val.UniqueId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-NumberOfSelectionPairs: %w", err)
     } else {
         val.NumberOfSelectionPairs = v
@@ -26903,7 +29186,7 @@ func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *DataStream
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-NumberOfParameters: %w", err)
     } else {
         val.NumberOfParameters = v
@@ -26934,7 +29217,7 @@ func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *DataStream
     i := 0
     for {
         var rep NmeaReadFieldsReplyGroupFunctionRepeating1
-        if v, err := stream.readUInt8(8); err != nil {
+        if v, err := stream.readUInt8(8, 0); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-SelectionParameter: %w", err)
         } else {
             rep.SelectionParameter = v
@@ -26967,7 +29250,7 @@ func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *DataStream
     i = 0
     for {
         var rep NmeaReadFieldsReplyGroupFunctionRepeating2
-        if v, err := stream.readUInt8(8); err != nil {
+        if v, err := stream.readUInt8(8, 0); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-Parameter: %w", err)
         } else {
             rep.Parameter = v
@@ -26999,7 +29282,7 @@ func (p NmeaReadFieldsReplyGroupFunction) Encode(stream *DataStream) (*MessageIn
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 8)
+    err = stream.writeUint32(p.Pgn, 24, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -27015,15 +29298,15 @@ func (p NmeaReadFieldsReplyGroupFunction) Encode(stream *DataStream) (*MessageIn
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.UniqueId, 8, 0)
+    err = stream.writeUint8(p.UniqueId, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfSelectionPairs, 8, 0)
+    err = stream.writeUint8(p.NumberOfSelectionPairs, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfParameters, 8, 0)
+    err = stream.writeUint8(p.NumberOfParameters, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -27043,7 +29326,7 @@ func (p NmeaReadFieldsReplyGroupFunction) encodeRepeating1(stream *DataStream) e
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint8(p.Repeating1[index].SelectionParameter, 8, 0)
+        err = stream.writeUint8(p.Repeating1[index].SelectionParameter, 8, 0, 0)
         if err != nil {
             return err
         }
@@ -27060,7 +29343,7 @@ func (p NmeaReadFieldsReplyGroupFunction) encodeRepeating2(stream *DataStream) e
 		return nil
 	}
     for index, _ := range p.Repeating2 {
-        err = stream.writeUint8(p.Repeating2[index].Parameter, 8, 0)
+        err = stream.writeUint8(p.Repeating2[index].Parameter, 8, 0, 0)
         if err != nil {
             return err
         }
@@ -27108,7 +29391,7 @@ func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *DataStream) (a
             return nil, fmt.Errorf("match failed for NmeaWriteFieldsGroupFunction-FunctionCode: Expected %d != %d", 5, v)
         }
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -27124,12 +29407,12 @@ func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *DataStream) (a
     } else {
         val.IndustryCode = IndustryCodeConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-UniqueId: %w", err)
     } else {
         val.UniqueId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-NumberOfSelectionPairs: %w", err)
     } else {
         val.NumberOfSelectionPairs = v
@@ -27137,7 +29420,7 @@ func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *DataStream) (a
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-NumberOfParameters: %w", err)
     } else {
         val.NumberOfParameters = v
@@ -27168,7 +29451,7 @@ func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *DataStream) (a
     i := 0
     for {
         var rep NmeaWriteFieldsGroupFunctionRepeating1
-        if v, err := stream.readUInt8(8); err != nil {
+        if v, err := stream.readUInt8(8, 0); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-SelectionParameter: %w", err)
         } else {
             rep.SelectionParameter = v
@@ -27201,7 +29484,7 @@ func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *DataStream) (a
     i = 0
     for {
         var rep NmeaWriteFieldsGroupFunctionRepeating2
-        if v, err := stream.readUInt8(8); err != nil {
+        if v, err := stream.readUInt8(8, 0); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-Parameter: %w", err)
         } else {
             rep.Parameter = v
@@ -27233,7 +29516,7 @@ func (p NmeaWriteFieldsGroupFunction) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 8)
+    err = stream.writeUint32(p.Pgn, 24, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -27249,15 +29532,15 @@ func (p NmeaWriteFieldsGroupFunction) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.UniqueId, 8, 0)
+    err = stream.writeUint8(p.UniqueId, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfSelectionPairs, 8, 0)
+    err = stream.writeUint8(p.NumberOfSelectionPairs, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfParameters, 8, 0)
+    err = stream.writeUint8(p.NumberOfParameters, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -27277,7 +29560,7 @@ func (p NmeaWriteFieldsGroupFunction) encodeRepeating1(stream *DataStream) error
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint8(p.Repeating1[index].SelectionParameter, 8, 0)
+        err = stream.writeUint8(p.Repeating1[index].SelectionParameter, 8, 0, 0)
         if err != nil {
             return err
         }
@@ -27294,7 +29577,7 @@ func (p NmeaWriteFieldsGroupFunction) encodeRepeating2(stream *DataStream) error
 		return nil
 	}
     for index, _ := range p.Repeating2 {
-        err = stream.writeUint8(p.Repeating2[index].Parameter, 8, 0)
+        err = stream.writeUint8(p.Repeating2[index].Parameter, 8, 0, 0)
         if err != nil {
             return err
         }
@@ -27342,7 +29625,7 @@ func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *DataStrea
             return nil, fmt.Errorf("match failed for NmeaWriteFieldsReplyGroupFunction-FunctionCode: Expected %d != %d", 6, v)
         }
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -27358,12 +29641,12 @@ func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *DataStrea
     } else {
         val.IndustryCode = IndustryCodeConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-UniqueId: %w", err)
     } else {
         val.UniqueId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-NumberOfSelectionPairs: %w", err)
     } else {
         val.NumberOfSelectionPairs = v
@@ -27371,7 +29654,7 @@ func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *DataStrea
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-NumberOfParameters: %w", err)
     } else {
         val.NumberOfParameters = v
@@ -27402,7 +29685,7 @@ func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *DataStrea
     i := 0
     for {
         var rep NmeaWriteFieldsReplyGroupFunctionRepeating1
-        if v, err := stream.readUInt8(8); err != nil {
+        if v, err := stream.readUInt8(8, 0); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-SelectionParameter: %w", err)
         } else {
             rep.SelectionParameter = v
@@ -27435,7 +29718,7 @@ func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *DataStrea
     i = 0
     for {
         var rep NmeaWriteFieldsReplyGroupFunctionRepeating2
-        if v, err := stream.readUInt8(8); err != nil {
+        if v, err := stream.readUInt8(8, 0); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-Parameter: %w", err)
         } else {
             rep.Parameter = v
@@ -27467,7 +29750,7 @@ func (p NmeaWriteFieldsReplyGroupFunction) Encode(stream *DataStream) (*MessageI
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Pgn, 24, 8)
+    err = stream.writeUint32(p.Pgn, 24, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -27483,15 +29766,15 @@ func (p NmeaWriteFieldsReplyGroupFunction) Encode(stream *DataStream) (*MessageI
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.UniqueId, 8, 0)
+    err = stream.writeUint8(p.UniqueId, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfSelectionPairs, 8, 0)
+    err = stream.writeUint8(p.NumberOfSelectionPairs, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfParameters, 8, 0)
+    err = stream.writeUint8(p.NumberOfParameters, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -27511,7 +29794,7 @@ func (p NmeaWriteFieldsReplyGroupFunction) encodeRepeating1(stream *DataStream) 
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint8(p.Repeating1[index].SelectionParameter, 8, 0)
+        err = stream.writeUint8(p.Repeating1[index].SelectionParameter, 8, 0, 0)
         if err != nil {
             return err
         }
@@ -27528,7 +29811,7 @@ func (p NmeaWriteFieldsReplyGroupFunction) encodeRepeating2(stream *DataStream) 
 		return nil
 	}
     for index, _ := range p.Repeating2 {
-        err = stream.writeUint8(p.Repeating2[index].Parameter, 8, 0)
+        err = stream.writeUint8(p.Repeating2[index].Parameter, 8, 0, 0)
         if err != nil {
             return err
         }
@@ -27567,7 +29850,7 @@ func DecodePgnListTransmitAndReceive(Info MessageInfo, stream *DataStream) (any,
     i := 0
     for {
         var rep PgnListTransmitAndReceiveRepeating1
-        if v, err := stream.readUInt32(24); err != nil {
+        if v, err := stream.readUInt32(24, 2); err != nil {
             return nil, fmt.Errorf("parse failed for PgnListTransmitAndReceive-Pgn: %w", err)
         } else {
             rep.Pgn = v
@@ -27606,7 +29889,7 @@ func (p PgnListTransmitAndReceive) encodeRepeating1(stream *DataStream) error {
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint32(p.Repeating1[index].Pgn, 24, 0)
+        err = stream.writeUint32(p.Repeating1[index].Pgn, 24, 0, 2)
         if err != nil {
             return err
         }
@@ -27652,7 +29935,7 @@ func DecodeFusionMediaControl(Info MessageInfo, stream *DataStream) (any, error)
             return nil, fmt.Errorf("match failed for FusionMediaControl-ProprietaryId: Expected %d != %d", 3, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMediaControl-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -27684,7 +29967,7 @@ func (p FusionMediaControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -27734,7 +30017,7 @@ func DecodeFusionSiriusControl(Info MessageInfo, stream *DataStream) (any, error
             return nil, fmt.Errorf("match failed for FusionSiriusControl-ProprietaryId: Expected %d != %d", 30, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusControl-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -27744,7 +30027,7 @@ func DecodeFusionSiriusControl(Info MessageInfo, stream *DataStream) (any, error
     } else {
         val.Command = FusionSiriusCommandConst(v)
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusControl-Data: %w", err)
     } else {
         val.Data = v
@@ -27771,7 +30054,7 @@ func (p FusionSiriusControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -27779,7 +30062,7 @@ func (p FusionSiriusControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Data, 16, 48)
+    err = stream.writeUint16(p.Data, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -27884,7 +30167,7 @@ func DecodeFusionSetSource(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionSetSource-ProprietaryId: Expected %d != %d", 2, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetSource-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -27911,7 +30194,7 @@ func (p FusionSetSource) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -28027,12 +30310,12 @@ func DecodeFusionSetZoneVolume(Info MessageInfo, stream *DataStream) (any, error
             return nil, fmt.Errorf("match failed for FusionSetZoneVolume-ProprietaryId: Expected %d != %d", 24, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-Volume: %w", err)
     } else {
         val.Volume = v
@@ -28059,11 +30342,11 @@ func (p FusionSetZoneVolume) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone, 8, 32)
+    err = stream.writeUint8(p.Zone, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Volume, 8, 40)
+    err = stream.writeUint8(p.Volume, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -28110,22 +30393,22 @@ func DecodeFusionSetAllVolumes(Info MessageInfo, stream *DataStream) (any, error
             return nil, fmt.Errorf("match failed for FusionSetAllVolumes-ProprietaryId: Expected %d != %d", 25, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone1: %w", err)
     } else {
         val.Zone1 = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone2: %w", err)
     } else {
         val.Zone2 = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone3: %w", err)
     } else {
         val.Zone3 = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone4: %w", err)
     } else {
         val.Zone4 = v
@@ -28152,19 +30435,19 @@ func (p FusionSetAllVolumes) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone1, 8, 32)
+    err = stream.writeUint8(p.Zone1, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone2, 8, 40)
+    err = stream.writeUint8(p.Zone2, 8, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone3, 8, 48)
+    err = stream.writeUint8(p.Zone3, 8, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone4, 8, 56)
+    err = stream.writeUint8(p.Zone4, 8, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -28210,17 +30493,17 @@ func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *DataStream) (any, erro
             return nil, fmt.Errorf("match failed for AirmarAttitudeOffset-ProprietaryId: Expected %d != %d", 32, v)
         }
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-AzimuthOffset: %w", err)
     } else {
         val.AzimuthOffset = v
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-PitchOffset: %w", err)
     } else {
         val.PitchOffset = v
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-RollOffset: %w", err)
     } else {
         val.RollOffset = v
@@ -28247,15 +30530,15 @@ func (p AirmarAttitudeOffset) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.AzimuthOffset, 16, 0.0001, 24, 0)
+    err = stream.writeSignedResolution32(p.AzimuthOffset, 16, 0.0001, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.PitchOffset, 16, 0.0001, 40, 0)
+    err = stream.writeSignedResolution32(p.PitchOffset, 16, 0.0001, 40, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.RollOffset, 16, 0.0001, 56, 0)
+    err = stream.writeSignedResolution32(p.RollOffset, 16, 0.0001, 56, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -28375,7 +30658,7 @@ func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *DataStream) (any, erro
             return nil, fmt.Errorf("match failed for AirmarCalibrateDepth-ProprietaryId: Expected %d != %d", 40, v)
         }
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-SpeedOfSoundMode: %w", err)
     } else {
         val.SpeedOfSoundMode = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -28403,7 +30686,7 @@ func (p AirmarCalibrateDepth) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.SpeedOfSoundMode, 16, 0.100000, 24, 0, false)
+    err = stream.writeUnit(p.SpeedOfSoundMode, 16, 0.100000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -28457,7 +30740,7 @@ func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *DataStream) (any, erro
             return nil, fmt.Errorf("match failed for AirmarCalibrateSpeed-ProprietaryId: Expected %d != %d", 41, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-NumberOfPairsOfDataPoints: %w", err)
     } else {
         val.NumberOfPairsOfDataPoints = v
@@ -28473,12 +30756,12 @@ func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *DataStream) (any, erro
     i := 0
     for {
         var rep AirmarCalibrateSpeedRepeating1
-        if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-InputFrequency: %w", err)
         } else {
             rep.InputFrequency = v
         }
-        if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-OutputSpeed: %w", err)
         } else {
             rep.OutputSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -28517,7 +30800,7 @@ func (p AirmarCalibrateSpeed) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfPairsOfDataPoints, 8, 24)
+    err = stream.writeUint8(p.NumberOfPairsOfDataPoints, 8, 24, 2)
     if err != nil {
         return nil, err
     }
@@ -28533,11 +30816,11 @@ func (p AirmarCalibrateSpeed) encodeRepeating1(stream *DataStream) error {
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].InputFrequency, 16, 0.1, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].InputFrequency, 16, 0.1, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnit(p.Repeating1[index].OutputSpeed, 16, 0.010000, 0, 0, false)
+        err = stream.writeUnit(p.Repeating1[index].OutputSpeed, 16, 0.010000, 0, 0, false, 2)
         if err != nil {
             return err
         }
@@ -28589,7 +30872,7 @@ func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *DataStream) (any
         val.TemperatureInstance = AirmarTemperatureInstanceConst(v)
     }
        stream.skipBits(6)
-    if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-TemperatureOffset: %w", err)
     } else {
         val.TemperatureOffset = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -28624,7 +30907,7 @@ func (p AirmarCalibrateTemperature) Encode(stream *DataStream) (*MessageInfo, er
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.TemperatureOffset, 16, 0.001000, 32, 0, true)
+    err = stream.writeUnit(p.TemperatureOffset, 16, 0.001000, 32, 0, true, 2)
     if err != nil {
         return nil, err
     }
@@ -28669,7 +30952,7 @@ func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *DataStream) (any, err
             return nil, fmt.Errorf("match failed for AirmarSpeedFilterNone-ProprietaryId: Expected %d != %d", 43, v)
         }
     }
-    if v, err := stream.readUInt8(4); err != nil {
+    if v, err := stream.readUInt8(4, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-FilterType: %w", err)
     } else {
         val.FilterType = v
@@ -28678,7 +30961,7 @@ func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *DataStream) (any, err
         }
     }
        stream.skipBits(4)
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-SampleInterval: %w", err)
     } else {
         val.SampleInterval = v
@@ -28705,7 +30988,7 @@ func (p AirmarSpeedFilterNone) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.FilterType, 4, 24)
+    err = stream.writeUint8(p.FilterType, 4, 24, 2)
     if err != nil {
         return nil, err
     }
@@ -28713,7 +30996,7 @@ func (p AirmarSpeedFilterNone) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.01, 32, 0)
+    err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.01, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -28759,7 +31042,7 @@ func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *DataStream) (any, erro
             return nil, fmt.Errorf("match failed for AirmarSpeedFilterIir-ProprietaryId: Expected %d != %d", 43, v)
         }
     }
-    if v, err := stream.readUInt8(4); err != nil {
+    if v, err := stream.readUInt8(4, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-FilterType: %w", err)
     } else {
         val.FilterType = v
@@ -28768,12 +31051,12 @@ func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *DataStream) (any, erro
         }
     }
        stream.skipBits(4)
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-SampleInterval: %w", err)
     } else {
         val.SampleInterval = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-FilterDuration: %w", err)
     } else {
         val.FilterDuration = v
@@ -28800,7 +31083,7 @@ func (p AirmarSpeedFilterIir) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.FilterType, 4, 24)
+    err = stream.writeUint8(p.FilterType, 4, 24, 2)
     if err != nil {
         return nil, err
     }
@@ -28808,11 +31091,11 @@ func (p AirmarSpeedFilterIir) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.01, 32, 0)
+    err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.01, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.FilterDuration, 16, 0.01, 48, 0)
+    err = stream.writeUnsignedResolution32(p.FilterDuration, 16, 0.01, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -28857,7 +31140,7 @@ func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *DataStream) (an
             return nil, fmt.Errorf("match failed for AirmarTemperatureFilterNone-ProprietaryId: Expected %d != %d", 44, v)
         }
     }
-    if v, err := stream.readUInt8(4); err != nil {
+    if v, err := stream.readUInt8(4, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-FilterType: %w", err)
     } else {
         val.FilterType = v
@@ -28866,7 +31149,7 @@ func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *DataStream) (an
         }
     }
        stream.skipBits(4)
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-SampleInterval: %w", err)
     } else {
         val.SampleInterval = v
@@ -28893,7 +31176,7 @@ func (p AirmarTemperatureFilterNone) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.FilterType, 4, 24)
+    err = stream.writeUint8(p.FilterType, 4, 24, 2)
     if err != nil {
         return nil, err
     }
@@ -28901,7 +31184,7 @@ func (p AirmarTemperatureFilterNone) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.01, 32, 0)
+    err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.01, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -28947,7 +31230,7 @@ func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *DataStream) (any
             return nil, fmt.Errorf("match failed for AirmarTemperatureFilterIir-ProprietaryId: Expected %d != %d", 44, v)
         }
     }
-    if v, err := stream.readUInt8(4); err != nil {
+    if v, err := stream.readUInt8(4, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-FilterType: %w", err)
     } else {
         val.FilterType = v
@@ -28956,12 +31239,12 @@ func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *DataStream) (any
         }
     }
        stream.skipBits(4)
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-SampleInterval: %w", err)
     } else {
         val.SampleInterval = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-FilterDuration: %w", err)
     } else {
         val.FilterDuration = v
@@ -28988,7 +31271,7 @@ func (p AirmarTemperatureFilterIir) Encode(stream *DataStream) (*MessageInfo, er
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.FilterType, 4, 24)
+    err = stream.writeUint8(p.FilterType, 4, 24, 2)
     if err != nil {
         return nil, err
     }
@@ -28996,11 +31279,11 @@ func (p AirmarTemperatureFilterIir) Encode(stream *DataStream) (*MessageInfo, er
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.01, 32, 0)
+    err = stream.writeUnsignedResolution32(p.SampleInterval, 16, 0.01, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.FilterDuration, 16, 0.01, 48, 0)
+    err = stream.writeUnsignedResolution32(p.FilterDuration, 16, 0.01, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -29208,22 +31491,22 @@ func DecodeMaretronSlaveResponse(Info MessageInfo, stream *DataStream) (any, err
             return nil, fmt.Errorf("match failed for MaretronSlaveResponse-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-ProductCode: %w", err)
     } else {
         val.ProductCode = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-SoftwareCode: %w", err)
     } else {
         val.SoftwareCode = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-Command: %w", err)
     } else {
         val.Command = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-Status: %w", err)
     } else {
         val.Status = v
@@ -29246,19 +31529,19 @@ func (p MaretronSlaveResponse) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.ProductCode, 16, 16)
+    err = stream.writeUint16(p.ProductCode, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.SoftwareCode, 16, 32)
+    err = stream.writeUint16(p.SoftwareCode, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Command, 8, 48)
+    err = stream.writeUint8(p.Command, 8, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Status, 8, 56)
+    err = stream.writeUint8(p.Status, 8, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -29303,37 +31586,37 @@ func DecodeAlert(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.AlertCategory = AlertCategoryConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertSystem: %w", err)
     } else {
         val.AlertSystem = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertSubSystem: %w", err)
     } else {
         val.AlertSubSystem = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertId: %w", err)
     } else {
         val.AlertId = v
     }
-    if v, err := stream.readUInt64(64); err != nil {
+    if v, err := stream.readUInt64(64, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-DataSourceNetworkIdName: %w", err)
     } else {
         val.DataSourceNetworkIdName = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-DataSourceInstance: %w", err)
     } else {
         val.DataSourceInstance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-DataSourceIndexSource: %w", err)
     } else {
         val.DataSourceIndexSource = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertOccurrenceNumber: %w", err)
     } else {
         val.AlertOccurrenceNumber = v
@@ -29369,7 +31652,7 @@ func DecodeAlert(Info MessageInfo, stream *DataStream) (any, error) {
         val.EscalationSupport = YesNoConst(v)
     }
        stream.skipBits(2)
-    if v, err := stream.readUInt64(64); err != nil {
+    if v, err := stream.readUInt64(64, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AcknowledgeSourceNetworkIdName: %w", err)
     } else {
         val.AcknowledgeSourceNetworkIdName = v
@@ -29384,7 +31667,7 @@ func DecodeAlert(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.ThresholdStatus = AlertThresholdStatusConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertPriority: %w", err)
     } else {
         val.AlertPriority = v
@@ -29408,31 +31691,31 @@ func (p Alert) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AlertSystem, 8, 8)
+    err = stream.writeUint8(p.AlertSystem, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AlertSubSystem, 8, 16)
+    err = stream.writeUint8(p.AlertSubSystem, 8, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AlertId, 16, 24)
+    err = stream.writeUint16(p.AlertId, 16, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40)
+    err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DataSourceInstance, 8, 104)
+    err = stream.writeUint8(p.DataSourceInstance, 8, 104, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DataSourceIndexSource, 8, 112)
+    err = stream.writeUint8(p.DataSourceIndexSource, 8, 112, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120)
+    err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120, 2)
     if err != nil {
         return nil, err
     }
@@ -29464,7 +31747,7 @@ func (p Alert) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint64(p.AcknowledgeSourceNetworkIdName, 64, 136)
+    err = stream.writeUint64(p.AcknowledgeSourceNetworkIdName, 64, 136, 2)
     if err != nil {
         return nil, err
     }
@@ -29476,7 +31759,7 @@ func (p Alert) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AlertPriority, 8, 208)
+    err = stream.writeUint8(p.AlertPriority, 8, 208, 2)
     if err != nil {
         return nil, err
     }
@@ -29516,42 +31799,42 @@ func DecodeAlertResponse(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.AlertCategory = AlertCategoryConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AlertSystem: %w", err)
     } else {
         val.AlertSystem = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AlertSubSystem: %w", err)
     } else {
         val.AlertSubSystem = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AlertId: %w", err)
     } else {
         val.AlertId = v
     }
-    if v, err := stream.readUInt64(64); err != nil {
+    if v, err := stream.readUInt64(64, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-DataSourceNetworkIdName: %w", err)
     } else {
         val.DataSourceNetworkIdName = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-DataSourceInstance: %w", err)
     } else {
         val.DataSourceInstance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-DataSourceIndexSource: %w", err)
     } else {
         val.DataSourceIndexSource = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AlertOccurrenceNumber: %w", err)
     } else {
         val.AlertOccurrenceNumber = v
     }
-    if v, err := stream.readUInt64(64); err != nil {
+    if v, err := stream.readUInt64(64, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AcknowledgeSourceNetworkIdName: %w", err)
     } else {
         val.AcknowledgeSourceNetworkIdName = v
@@ -29576,35 +31859,35 @@ func (p AlertResponse) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AlertSystem, 8, 8)
+    err = stream.writeUint8(p.AlertSystem, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AlertSubSystem, 8, 16)
+    err = stream.writeUint8(p.AlertSubSystem, 8, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AlertId, 16, 24)
+    err = stream.writeUint16(p.AlertId, 16, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40)
+    err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DataSourceInstance, 8, 104)
+    err = stream.writeUint8(p.DataSourceInstance, 8, 104, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DataSourceIndexSource, 8, 112)
+    err = stream.writeUint8(p.DataSourceIndexSource, 8, 112, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120)
+    err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint64(p.AcknowledgeSourceNetworkIdName, 64, 128)
+    err = stream.writeUint64(p.AcknowledgeSourceNetworkIdName, 64, 128, 2)
     if err != nil {
         return nil, err
     }
@@ -29649,37 +31932,37 @@ func DecodeAlertText(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.AlertCategory = AlertCategoryConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertSystem: %w", err)
     } else {
         val.AlertSystem = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertSubSystem: %w", err)
     } else {
         val.AlertSubSystem = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertId: %w", err)
     } else {
         val.AlertId = v
     }
-    if v, err := stream.readUInt64(64); err != nil {
+    if v, err := stream.readUInt64(64, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-DataSourceNetworkIdName: %w", err)
     } else {
         val.DataSourceNetworkIdName = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-DataSourceInstance: %w", err)
     } else {
         val.DataSourceInstance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-DataSourceIndexSource: %w", err)
     } else {
         val.DataSourceIndexSource = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertOccurrenceNumber: %w", err)
     } else {
         val.AlertOccurrenceNumber = v
@@ -29713,31 +31996,31 @@ func (p AlertText) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AlertSystem, 8, 8)
+    err = stream.writeUint8(p.AlertSystem, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AlertSubSystem, 8, 16)
+    err = stream.writeUint8(p.AlertSubSystem, 8, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AlertId, 16, 24)
+    err = stream.writeUint16(p.AlertId, 16, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40)
+    err = stream.writeUint64(p.DataSourceNetworkIdName, 64, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DataSourceInstance, 8, 104)
+    err = stream.writeUint8(p.DataSourceInstance, 8, 104, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DataSourceIndexSource, 8, 112)
+    err = stream.writeUint8(p.DataSourceIndexSource, 8, 112, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120)
+    err = stream.writeUint8(p.AlertOccurrenceNumber, 8, 120, 2)
     if err != nil {
         return nil, err
     }
@@ -29768,7 +32051,7 @@ func DecodeSystemTime(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SystemTime-Sid: %w", err)
     } else {
         val.Sid = v
@@ -29779,12 +32062,12 @@ func DecodeSystemTime(Info MessageInfo, stream *DataStream) (any, error) {
         val.Source = SystemTimeConst(v)
     }
        stream.skipBits(4)
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SystemTime-Date: %w", err)
     } else {
         val.Date = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SystemTime-Time: %w", err)
     } else {
         val.Time = v
@@ -29795,7 +32078,7 @@ func DecodeSystemTime(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p SystemTime) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -29807,11 +32090,11 @@ func (p SystemTime) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Date, 16, 16)
+    err = stream.writeUint16(p.Date, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Time, 32, 0.0001, 32, 0)
+    err = stream.writeUnsignedResolution32(p.Time, 32, 0.0001, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -29831,12 +32114,12 @@ func DecodeHeartbeat(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Heartbeat-DataTransmitOffset: %w", err)
     } else {
         val.DataTransmitOffset = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Heartbeat-SequenceCounter: %w", err)
     } else {
         val.SequenceCounter = v
@@ -29863,11 +32146,11 @@ func DecodeHeartbeat(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p Heartbeat) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUnsignedResolution32(p.DataTransmitOffset, 16, 0.01, 0, 0)
+    err = stream.writeUnsignedResolution32(p.DataTransmitOffset, 16, 0.01, 0, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SequenceCounter, 8, 16)
+    err = stream.writeUint8(p.SequenceCounter, 8, 16, 2)
     if err != nil {
         return nil, err
     }
@@ -29906,12 +32189,12 @@ func DecodeProductInformation(Info MessageInfo, stream *DataStream) (any, error)
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUnsignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ProductInformation-Nmea2000Version: %w", err)
     } else {
         val.Nmea2000Version = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ProductInformation-ProductCode: %w", err)
     } else {
         val.ProductCode = v
@@ -29941,7 +32224,7 @@ func DecodeProductInformation(Info MessageInfo, stream *DataStream) (any, error)
     } else {
         val.CertificationLevel = CertificationLevelConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ProductInformation-LoadEquivalency: %w", err)
     } else {
         val.LoadEquivalency = v
@@ -29952,11 +32235,11 @@ func DecodeProductInformation(Info MessageInfo, stream *DataStream) (any, error)
 // Encode implementation for complete variant
 func (p ProductInformation) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUnsignedResolution32(p.Nmea2000Version, 16, 0.001, 0, 0)
+    err = stream.writeUnsignedResolution32(p.Nmea2000Version, 16, 0.001, 0, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.ProductCode, 16, 16)
+    err = stream.writeUint16(p.ProductCode, 16, 16, 2)
     if err != nil {
         return nil, err
     }
@@ -29980,7 +32263,7 @@ func (p ProductInformation) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.LoadEquivalency, 8, 1064)
+    err = stream.writeUint8(p.LoadEquivalency, 8, 1064, 2)
     if err != nil {
         return nil, err
     }
@@ -30056,12 +32339,12 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-MobEmitterId: %w", err)
     } else {
         val.MobEmitterId = v
@@ -30072,7 +32355,7 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, 
         val.ManOverboardStatus = MobStatusConst(v)
     }
        stream.skipBits(5)
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-ActivationTime: %w", err)
     } else {
         val.ActivationTime = v
@@ -30083,22 +32366,22 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, 
         val.PositionSource = MobPositionSourceConst(v)
     }
        stream.skipBits(5)
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-PositionDate: %w", err)
     } else {
         val.PositionDate = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-PositionTime: %w", err)
     } else {
         val.PositionTime = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-Latitude: %w", err)
     } else {
         val.Latitude = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-Longitude: %w", err)
     } else {
         val.Longitude = v
@@ -30109,17 +32392,17 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, 
         val.CogReference = DirectionReferenceConst(v)
     }
        stream.skipBits(6)
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-Cog: %w", err)
     } else {
         val.Cog = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-Sog: %w", err)
     } else {
         val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-MmsiOfVesselOfOrigin: %w", err)
     } else {
         val.MmsiOfVesselOfOrigin = v
@@ -30136,11 +32419,11 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, 
 // Encode implementation for complete variant
 func (p ManOverboardNotification) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.MobEmitterId, 32, 8)
+    err = stream.writeUint32(p.MobEmitterId, 32, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -30152,7 +32435,7 @@ func (p ManOverboardNotification) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.ActivationTime, 32, 0.0001, 48, 0)
+    err = stream.writeUnsignedResolution32(p.ActivationTime, 32, 0.0001, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -30164,19 +32447,19 @@ func (p ManOverboardNotification) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.PositionDate, 16, 88)
+    err = stream.writeUint16(p.PositionDate, 16, 88, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.PositionTime, 32, 0.0001, 104, 0)
+    err = stream.writeUnsignedResolution32(p.PositionTime, 32, 0.0001, 104, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Latitude, 32, 1e-07, 136, 0)
+    err = stream.writeSignedResolution64(p.Latitude, 32, 1e-07, 136, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Longitude, 32, 1e-07, 168, 0)
+    err = stream.writeSignedResolution64(p.Longitude, 32, 1e-07, 168, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -30188,15 +32471,15 @@ func (p ManOverboardNotification) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Cog, 16, 0.0001, 208, 0)
+    err = stream.writeUnsignedResolution32(p.Cog, 16, 0.0001, 208, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Sog, 16, 0.010000, 224, 0, false)
+    err = stream.writeUnit(p.Sog, 16, 0.010000, 224, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.MmsiOfVesselOfOrigin, 32, 240)
+    err = stream.writeUint32(p.MmsiOfVesselOfOrigin, 32, 240, 2)
     if err != nil {
         return nil, err
     }
@@ -30277,47 +32560,47 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *DataStream) (any, error
     } else {
         val.CommandedRudderDirection = DirectionRudderConst(v)
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-CommandedRudderAngle: %w", err)
     } else {
         val.CommandedRudderAngle = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-HeadingToSteerCourse: %w", err)
     } else {
         val.HeadingToSteerCourse = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-Track: %w", err)
     } else {
         val.Track = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-RudderLimit: %w", err)
     } else {
         val.RudderLimit = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffHeadingLimit: %w", err)
     } else {
         val.OffHeadingLimit = v
     }
-    if v, err := stream.readInt16(16); err != nil {
+    if v, err := stream.readInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-RadiusOfTurnOrder: %w", err)
     } else {
         val.RadiusOfTurnOrder = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readSignedResolution(16, 3.125e-05, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 3.125e-05, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-RateOfTurnOrder: %w", err)
     } else {
         val.RateOfTurnOrder = v
     }
-    if v, err := stream.readInt16(16); err != nil {
+    if v, err := stream.readInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffTrackLimit: %w", err)
     } else {
         val.OffTrackLimit = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-VesselHeading: %w", err)
     } else {
         val.VesselHeading = v
@@ -30364,39 +32647,39 @@ func (p HeadingTrackControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.CommandedRudderAngle, 16, 0.0001, 24, 0)
+    err = stream.writeSignedResolution32(p.CommandedRudderAngle, 16, 0.0001, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.HeadingToSteerCourse, 16, 0.0001, 40, 0)
+    err = stream.writeUnsignedResolution32(p.HeadingToSteerCourse, 16, 0.0001, 40, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Track, 16, 0.0001, 56, 0)
+    err = stream.writeUnsignedResolution32(p.Track, 16, 0.0001, 56, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.RudderLimit, 16, 0.0001, 72, 0)
+    err = stream.writeUnsignedResolution32(p.RudderLimit, 16, 0.0001, 72, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.OffHeadingLimit, 16, 0.0001, 88, 0)
+    err = stream.writeUnsignedResolution32(p.OffHeadingLimit, 16, 0.0001, 88, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.RadiusOfTurnOrder, 16, 1.000000, 104, 0, true)
+    err = stream.writeUnit(p.RadiusOfTurnOrder, 16, 1.000000, 104, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.RateOfTurnOrder, 16, 3.125e-05, 120, 0)
+    err = stream.writeSignedResolution32(p.RateOfTurnOrder, 16, 3.125e-05, 120, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.OffTrackLimit, 16, 1.000000, 136, 0, true)
+    err = stream.writeUnit(p.OffTrackLimit, 16, 1.000000, 136, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.VesselHeading, 16, 0.0001, 152, 0)
+    err = stream.writeUnsignedResolution32(p.VesselHeading, 16, 0.0001, 152, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -30415,7 +32698,7 @@ func DecodeRudder(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Rudder-Instance: %w", err)
     } else {
         val.Instance = v
@@ -30426,12 +32709,12 @@ func DecodeRudder(Info MessageInfo, stream *DataStream) (any, error) {
         val.DirectionOrder = DirectionRudderConst(v)
     }
        stream.skipBits(5)
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Rudder-AngleOrder: %w", err)
     } else {
         val.AngleOrder = v
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Rudder-Position: %w", err)
     } else {
         val.Position = v
@@ -30443,7 +32726,7 @@ func DecodeRudder(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p Rudder) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Instance, 8, 0)
+    err = stream.writeUint8(p.Instance, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -30455,11 +32738,11 @@ func (p Rudder) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.AngleOrder, 16, 0.0001, 16, 0)
+    err = stream.writeSignedResolution32(p.AngleOrder, 16, 0.0001, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Position, 16, 0.0001, 32, 0)
+    err = stream.writeSignedResolution32(p.Position, 16, 0.0001, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -30483,22 +32766,22 @@ func DecodeVesselHeading(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselHeading-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselHeading-Heading: %w", err)
     } else {
         val.Heading = v
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselHeading-Deviation: %w", err)
     } else {
         val.Deviation = v
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselHeading-Variation: %w", err)
     } else {
         val.Variation = v
@@ -30515,19 +32798,19 @@ func DecodeVesselHeading(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p VesselHeading) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Heading, 16, 0.0001, 8, 0)
+    err = stream.writeUnsignedResolution32(p.Heading, 16, 0.0001, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Deviation, 16, 0.0001, 24, 0)
+    err = stream.writeSignedResolution32(p.Deviation, 16, 0.0001, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Variation, 16, 0.0001, 40, 0)
+    err = stream.writeSignedResolution32(p.Variation, 16, 0.0001, 40, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -30552,12 +32835,12 @@ func DecodeRateOfTurn(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RateOfTurn-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 3.125e-08); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 3.125e-08, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RateOfTurn-Rate: %w", err)
     } else {
         val.Rate = v
@@ -30569,11 +32852,11 @@ func DecodeRateOfTurn(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p RateOfTurn) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Rate, 32, 3.125e-08, 8, 0)
+    err = stream.writeSignedResolution64(p.Rate, 32, 3.125e-08, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -30596,22 +32879,22 @@ func DecodeAttitude(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Attitude-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Attitude-Yaw: %w", err)
     } else {
         val.Yaw = v
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Attitude-Pitch: %w", err)
     } else {
         val.Pitch = v
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Attitude-Roll: %w", err)
     } else {
         val.Roll = v
@@ -30623,19 +32906,19 @@ func DecodeAttitude(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p Attitude) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Yaw, 16, 0.0001, 8, 0)
+    err = stream.writeSignedResolution32(p.Yaw, 16, 0.0001, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Pitch, 16, 0.0001, 24, 0)
+    err = stream.writeSignedResolution32(p.Pitch, 16, 0.0001, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Roll, 16, 0.0001, 40, 0)
+    err = stream.writeSignedResolution32(p.Roll, 16, 0.0001, 40, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -30658,7 +32941,7 @@ func DecodeMagneticVariation(Info MessageInfo, stream *DataStream) (any, error) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MagneticVariation-Sid: %w", err)
     } else {
         val.Sid = v
@@ -30669,12 +32952,12 @@ func DecodeMagneticVariation(Info MessageInfo, stream *DataStream) (any, error) 
         val.Source = MagneticVariationConst(v)
     }
        stream.skipBits(4)
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MagneticVariation-AgeOfService: %w", err)
     } else {
         val.AgeOfService = v
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MagneticVariation-Variation: %w", err)
     } else {
         val.Variation = v
@@ -30686,7 +32969,7 @@ func DecodeMagneticVariation(Info MessageInfo, stream *DataStream) (any, error) 
 // Encode implementation for complete variant
 func (p MagneticVariation) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -30698,11 +32981,11 @@ func (p MagneticVariation) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AgeOfService, 16, 16)
+    err = stream.writeUint16(p.AgeOfService, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Variation, 16, 0.0001, 32, 0)
+    err = stream.writeSignedResolution32(p.Variation, 16, 0.0001, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -30730,17 +33013,17 @@ func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *DataStream) (an
     } else {
         val.Instance = EngineInstanceConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.25, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.25, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-Speed: %w", err)
     } else {
         val.Speed = v
     }
-    if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 100, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-BoostPressure: %w", err)
     } else {
         val.BoostPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := stream.readInt8(8); err != nil {
+    if v, err := stream.readInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-TiltTrim: %w", err)
     } else {
         val.TiltTrim = v
@@ -30756,15 +33039,15 @@ func (p EngineParametersRapidUpdate) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Speed, 16, 0.25, 8, 0)
+    err = stream.writeUnsignedResolution32(p.Speed, 16, 0.25, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.BoostPressure, 16, 100.000000, 24, 0, false)
+    err = stream.writeUnit(p.BoostPressure, 16, 100.000000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt8(p.TiltTrim, 8, 40)
+    err = stream.writeInt8(p.TiltTrim, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -30801,42 +33084,42 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.Instance = EngineInstanceConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 100, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-OilPressure: %w", err)
     } else {
         val.OilPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-OilTemperature: %w", err)
     } else {
         val.OilTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-Temperature: %w", err)
     } else {
         val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-AlternatorPotential: %w", err)
     } else {
         val.AlternatorPotential = v
     }
-    if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelRate: %w", err)
     } else {
         val.FuelRate = nullableUnit(units.LitersPerHour, v, units.NewFlow)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-TotalEngineHours: %w", err)
     } else {
         val.TotalEngineHours = v
     }
-    if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 100, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-CoolantPressure: %w", err)
     } else {
         val.CoolantPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := stream.readUnsignedResolution(16, 1000, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 1000, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelPressure: %w", err)
     } else {
         val.FuelPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -30852,12 +33135,12 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.DiscreteStatus2 = EngineStatus2Const(v)
     }
-    if v, err := stream.readInt8(8); err != nil {
+    if v, err := stream.readInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-EngineLoad: %w", err)
     } else {
         val.EngineLoad = v
     }
-    if v, err := stream.readInt8(8); err != nil {
+    if v, err := stream.readInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-EngineTorque: %w", err)
     } else {
         val.EngineTorque = v
@@ -30872,35 +33155,35 @@ func (p EngineParametersDynamic) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.OilPressure, 16, 100.000000, 8, 0, false)
+    err = stream.writeUnit(p.OilPressure, 16, 100.000000, 8, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.OilTemperature, 16, 0.100000, 24, 0, false)
+    err = stream.writeUnit(p.OilTemperature, 16, 0.100000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Temperature, 16, 0.010000, 40, 0, false)
+    err = stream.writeUnit(p.Temperature, 16, 0.010000, 40, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.AlternatorPotential, 16, 0.01, 56, 0)
+    err = stream.writeSignedResolution32(p.AlternatorPotential, 16, 0.01, 56, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.FuelRate, 16, 0.100000, 72, 0, true)
+    err = stream.writeUnit(p.FuelRate, 16, 0.100000, 72, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.TotalEngineHours, 32, 88)
+    err = stream.writeUint32(p.TotalEngineHours, 32, 88, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.CoolantPressure, 16, 100.000000, 120, 0, false)
+    err = stream.writeUnit(p.CoolantPressure, 16, 100.000000, 120, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.FuelPressure, 16, 1000.000000, 136, 0, false)
+    err = stream.writeUnit(p.FuelPressure, 16, 1000.000000, 136, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -30916,11 +33199,11 @@ func (p EngineParametersDynamic) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt8(p.EngineLoad, 8, 192)
+    err = stream.writeInt8(p.EngineLoad, 8, 192, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt8(p.EngineTorque, 8, 200)
+    err = stream.writeInt8(p.EngineTorque, 8, 200, 2)
     if err != nil {
         return nil, err
     }
@@ -30951,17 +33234,17 @@ func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *DataStream) (
         val.TransmissionGear = GearStatusConst(v)
     }
        stream.skipBits(6)
-    if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 100, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-OilPressure: %w", err)
     } else {
         val.OilPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-OilTemperature: %w", err)
     } else {
         val.OilTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-DiscreteStatus1: %w", err)
     } else {
         val.DiscreteStatus1 = v
@@ -30985,15 +33268,15 @@ func (p TransmissionParametersDynamic) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.OilPressure, 16, 100.000000, 16, 0, false)
+    err = stream.writeUnit(p.OilPressure, 16, 100.000000, 16, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.OilTemperature, 16, 0.100000, 32, 0, false)
+    err = stream.writeUnit(p.OilTemperature, 16, 0.100000, 32, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DiscreteStatus1, 8, 48)
+    err = stream.writeUint8(p.DiscreteStatus1, 8, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -31016,22 +33299,22 @@ func DecodeTripParametersVessel(Info MessageInfo, stream *DataStream) (any, erro
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersVessel-TimeToEmpty: %w", err)
     } else {
         val.TimeToEmpty = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersVessel-DistanceToEmpty: %w", err)
     } else {
         val.DistanceToEmpty = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersVessel-EstimatedFuelRemaining: %w", err)
     } else {
         val.EstimatedFuelRemaining = nullableUnit(units.Liter, v, units.NewVolume)
     }
-    if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersVessel-TripRunTime: %w", err)
     } else {
         val.TripRunTime = v
@@ -31042,19 +33325,19 @@ func DecodeTripParametersVessel(Info MessageInfo, stream *DataStream) (any, erro
 // Encode implementation for complete variant
 func (p TripParametersVessel) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUnsignedResolution32(p.TimeToEmpty, 32, 0.001, 0, 0)
+    err = stream.writeUnsignedResolution32(p.TimeToEmpty, 32, 0.001, 0, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.DistanceToEmpty, 32, 0.010000, 32, 0, false)
+    err = stream.writeUnit(p.DistanceToEmpty, 32, 0.010000, 32, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.EstimatedFuelRemaining, 16, 1.000000, 64, 0, false)
+    err = stream.writeUnit(p.EstimatedFuelRemaining, 16, 1.000000, 64, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.TripRunTime, 32, 0.001, 80, 0)
+    err = stream.writeUnsignedResolution32(p.TripRunTime, 32, 0.001, 80, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -31079,22 +33362,22 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *DataStream) (any, erro
     } else {
         val.Instance = EngineInstanceConst(v)
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersEngine-TripFuelUsed: %w", err)
     } else {
         val.TripFuelUsed = nullableUnit(units.Liter, v, units.NewVolume)
     }
-    if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateAverage: %w", err)
     } else {
         val.FuelRateAverage = nullableUnit(units.LitersPerHour, v, units.NewFlow)
     }
-    if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateEconomy: %w", err)
     } else {
         val.FuelRateEconomy = nullableUnit(units.LitersPerHour, v, units.NewFlow)
     }
-    if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersEngine-InstantaneousFuelEconomy: %w", err)
     } else {
         val.InstantaneousFuelEconomy = nullableUnit(units.LitersPerHour, v, units.NewFlow)
@@ -31109,19 +33392,19 @@ func (p TripParametersEngine) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.TripFuelUsed, 16, 1.000000, 8, 0, false)
+    err = stream.writeUnit(p.TripFuelUsed, 16, 1.000000, 8, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.FuelRateAverage, 16, 0.100000, 24, 0, true)
+    err = stream.writeUnit(p.FuelRateAverage, 16, 0.100000, 24, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.FuelRateEconomy, 16, 0.100000, 40, 0, true)
+    err = stream.writeUnit(p.FuelRateEconomy, 16, 0.100000, 40, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.InstantaneousFuelEconomy, 16, 0.100000, 56, 0, true)
+    err = stream.writeUnit(p.InstantaneousFuelEconomy, 16, 0.100000, 56, 0, true, 2)
     if err != nil {
         return nil, err
     }
@@ -31145,7 +33428,7 @@ func DecodeEngineParametersStatic(Info MessageInfo, stream *DataStream) (any, er
     } else {
         val.Instance = EngineInstanceConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.25, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.25, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersStatic-RatedEngineSpeed: %w", err)
     } else {
         val.RatedEngineSpeed = v
@@ -31170,7 +33453,7 @@ func (p EngineParametersStatic) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.RatedEngineSpeed, 16, 0.25, 8, 0)
+    err = stream.writeUnsignedResolution32(p.RatedEngineSpeed, 16, 0.25, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -31201,42 +33484,42 @@ func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *DataSt
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-SequenceId: %w", err)
     } else {
         val.SequenceId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-ConnectionId: %w", err)
     } else {
         val.ConnectionId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-State: %w", err)
     } else {
         val.State = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Status: %w", err)
     } else {
         val.Status = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-OperationalStatusControl: %w", err)
     } else {
         val.OperationalStatusControl = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-PwmDutyCycle: %w", err)
     } else {
         val.PwmDutyCycle = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Timeon: %w", err)
     } else {
         val.Timeon = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Timeoff: %w", err)
     } else {
         val.Timeoff = v
@@ -31247,35 +33530,35 @@ func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *DataSt
 // Encode implementation for complete variant
 func (p LoadControllerConnectionStateControl) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.SequenceId, 8, 0)
+    err = stream.writeUint8(p.SequenceId, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.ConnectionId, 8, 8)
+    err = stream.writeUint8(p.ConnectionId, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.State, 8, 16)
+    err = stream.writeUint8(p.State, 8, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Status, 8, 24)
+    err = stream.writeUint8(p.Status, 8, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.OperationalStatusControl, 8, 32)
+    err = stream.writeUint8(p.OperationalStatusControl, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.PwmDutyCycle, 8, 40)
+    err = stream.writeUint8(p.PwmDutyCycle, 8, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Timeon, 8, 48)
+    err = stream.writeUint8(p.Timeon, 8, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Timeoff, 8, 56)
+    err = stream.writeUint8(p.Timeoff, 8, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -31319,7 +33602,7 @@ func DecodeBinarySwitchBankStatus(Info MessageInfo, stream *DataStream) (any, er
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Instance: %w", err)
     } else {
         val.Instance = v
@@ -31470,7 +33753,7 @@ func DecodeBinarySwitchBankStatus(Info MessageInfo, stream *DataStream) (any, er
 // Encode implementation for complete variant
 func (p BinarySwitchBankStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Instance, 8, 0)
+    err = stream.writeUint8(p.Instance, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -31626,7 +33909,7 @@ func DecodeSwitchBankControl(Info MessageInfo, stream *DataStream) (any, error) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Instance: %w", err)
     } else {
         val.Instance = v
@@ -31777,7 +34060,7 @@ func DecodeSwitchBankControl(Info MessageInfo, stream *DataStream) (any, error) 
 // Encode implementation for complete variant
 func (p SwitchBankControl) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Instance, 8, 0)
+    err = stream.writeUint8(p.Instance, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -31919,12 +34202,12 @@ func DecodeAcInputStatus(Info MessageInfo, stream *DataStream) (any, error) {
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcInputStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcInputStatus-NumberOfLines: %w", err)
     } else {
         val.NumberOfLines = v
@@ -31951,37 +34234,37 @@ func DecodeAcInputStatus(Info MessageInfo, stream *DataStream) (any, error) {
             rep.Acceptability = AcceptabilityConst(v)
         }
         stream.skipBits(4)
-        if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-Voltage: %w", err)
         } else {
             rep.Voltage = v
         }
-        if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-Current: %w", err)
         } else {
             rep.Current = v
         }
-        if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-Frequency: %w", err)
         } else {
             rep.Frequency = v
         }
-        if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-BreakerSize: %w", err)
         } else {
             rep.BreakerSize = v
         }
-        if v, err := stream.readUInt32(32); err != nil {
+        if v, err := stream.readUInt32(32, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-RealPower: %w", err)
         } else {
             rep.RealPower = v
         }
-        if v, err := stream.readUInt32(32); err != nil {
+        if v, err := stream.readUInt32(32, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-ReactivePower: %w", err)
         } else {
             rep.ReactivePower = v
         }
-        if v, err := stream.readSignedResolution(8, 0.01, 0); err != nil {
+        if v, err := stream.readSignedResolution(8, 0.01, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-PowerFactor: %w", err)
         } else {
             rep.PowerFactor = v
@@ -32004,11 +34287,11 @@ func DecodeAcInputStatus(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p AcInputStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Instance, 8, 0)
+    err = stream.writeUint8(p.Instance, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfLines, 8, 8)
+    err = stream.writeUint8(p.NumberOfLines, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -32036,31 +34319,31 @@ func (p AcInputStatus) encodeRepeating1(stream *DataStream) error {
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].Voltage, 16, 0.01, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].Voltage, 16, 0.01, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].Current, 16, 0.1, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].Current, 16, 0.1, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].Frequency, 16, 0.01, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].Frequency, 16, 0.01, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].BreakerSize, 16, 0.1, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].BreakerSize, 16, 0.1, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUint32(p.Repeating1[index].RealPower, 32, 0)
+        err = stream.writeUint32(p.Repeating1[index].RealPower, 32, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUint32(p.Repeating1[index].ReactivePower, 32, 0)
+        err = stream.writeUint32(p.Repeating1[index].ReactivePower, 32, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeSignedResolution32(p.Repeating1[index].PowerFactor, 8, 0.01, 0, 0)
+        err = stream.writeSignedResolution32(p.Repeating1[index].PowerFactor, 8, 0.01, 0, 0, 2)
         if err != nil {
             return err
         }
@@ -32091,12 +34374,12 @@ func DecodeAcOutputStatus(Info MessageInfo, stream *DataStream) (any, error) {
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcOutputStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcOutputStatus-NumberOfLines: %w", err)
     } else {
         val.NumberOfLines = v
@@ -32123,37 +34406,37 @@ func DecodeAcOutputStatus(Info MessageInfo, stream *DataStream) (any, error) {
             rep.Waveform = WaveformConst(v)
         }
         stream.skipBits(3)
-        if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-Voltage: %w", err)
         } else {
             rep.Voltage = v
         }
-        if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-Current: %w", err)
         } else {
             rep.Current = v
         }
-        if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-Frequency: %w", err)
         } else {
             rep.Frequency = v
         }
-        if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-BreakerSize: %w", err)
         } else {
             rep.BreakerSize = v
         }
-        if v, err := stream.readUInt32(32); err != nil {
+        if v, err := stream.readUInt32(32, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-RealPower: %w", err)
         } else {
             rep.RealPower = v
         }
-        if v, err := stream.readUInt32(32); err != nil {
+        if v, err := stream.readUInt32(32, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-ReactivePower: %w", err)
         } else {
             rep.ReactivePower = v
         }
-        if v, err := stream.readSignedResolution(8, 0.01, 0); err != nil {
+        if v, err := stream.readSignedResolution(8, 0.01, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-PowerFactor: %w", err)
         } else {
             rep.PowerFactor = v
@@ -32176,11 +34459,11 @@ func DecodeAcOutputStatus(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p AcOutputStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Instance, 8, 0)
+    err = stream.writeUint8(p.Instance, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfLines, 8, 8)
+    err = stream.writeUint8(p.NumberOfLines, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -32208,31 +34491,31 @@ func (p AcOutputStatus) encodeRepeating1(stream *DataStream) error {
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].Voltage, 16, 0.01, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].Voltage, 16, 0.01, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].Current, 16, 0.1, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].Current, 16, 0.1, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].Frequency, 16, 0.01, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].Frequency, 16, 0.01, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].BreakerSize, 16, 0.1, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].BreakerSize, 16, 0.1, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUint32(p.Repeating1[index].RealPower, 32, 0)
+        err = stream.writeUint32(p.Repeating1[index].RealPower, 32, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUint32(p.Repeating1[index].ReactivePower, 32, 0)
+        err = stream.writeUint32(p.Repeating1[index].ReactivePower, 32, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeSignedResolution32(p.Repeating1[index].PowerFactor, 8, 0.01, 0, 0)
+        err = stream.writeSignedResolution32(p.Repeating1[index].PowerFactor, 8, 0.01, 0, 0, 2)
         if err != nil {
             return err
         }
@@ -32252,7 +34535,7 @@ func DecodeFluidLevel(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(4); err != nil {
+    if v, err := stream.readUInt8(4, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FluidLevel-Instance: %w", err)
     } else {
         val.Instance = v
@@ -32262,12 +34545,12 @@ func DecodeFluidLevel(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Type = TankTypeConst(v)
     }
-    if v, err := stream.readSignedResolution(16, 0.004, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.004, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FluidLevel-Level: %w", err)
     } else {
         val.Level = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FluidLevel-Capacity: %w", err)
     } else {
         val.Capacity = nullableUnit(units.Liter, v, units.NewVolume)
@@ -32279,7 +34562,7 @@ func DecodeFluidLevel(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p FluidLevel) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Instance, 4, 0)
+    err = stream.writeUint8(p.Instance, 4, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -32287,11 +34570,11 @@ func (p FluidLevel) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Level, 16, 0.004, 8, 0)
+    err = stream.writeSignedResolution32(p.Level, 16, 0.004, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Capacity, 32, 0.100000, 24, 0, false)
+    err = stream.writeUnit(p.Capacity, 32, 0.100000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -32318,12 +34601,12 @@ func DecodeDcDetailedStatus(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-Instance: %w", err)
     } else {
         val.Instance = v
@@ -32333,27 +34616,27 @@ func DecodeDcDetailedStatus(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.DcType = DcSourceConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-StateOfCharge: %w", err)
     } else {
         val.StateOfCharge = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-StateOfHealth: %w", err)
     } else {
         val.StateOfHealth = v
     }
-    if v, err := stream.readUnsignedResolution(16, 60, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 60, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-TimeRemaining: %w", err)
     } else {
         val.TimeRemaining = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-RippleVoltage: %w", err)
     } else {
         val.RippleVoltage = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-RemainingCapacity: %w", err)
     } else {
         val.RemainingCapacity = v
@@ -32364,11 +34647,11 @@ func DecodeDcDetailedStatus(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p DcDetailedStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Instance, 8, 8)
+    err = stream.writeUint8(p.Instance, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -32376,23 +34659,23 @@ func (p DcDetailedStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.StateOfCharge, 8, 24)
+    err = stream.writeUint8(p.StateOfCharge, 8, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.StateOfHealth, 8, 32)
+    err = stream.writeUint8(p.StateOfHealth, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.TimeRemaining, 16, 60, 40, 0)
+    err = stream.writeUnsignedResolution32(p.TimeRemaining, 16, 60, 40, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.RippleVoltage, 16, 0.001, 56, 0)
+    err = stream.writeUnsignedResolution32(p.RippleVoltage, 16, 0.001, 56, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.RemainingCapacity, 16, 72)
+    err = stream.writeUint16(p.RemainingCapacity, 16, 72, 2)
     if err != nil {
         return nil, err
     }
@@ -32414,12 +34697,12 @@ func DecodeChargerStatus(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerStatus-BatteryInstance: %w", err)
     } else {
         val.BatteryInstance = v
@@ -32445,7 +34728,7 @@ func DecodeChargerStatus(Info MessageInfo, stream *DataStream) (any, error) {
         val.EqualizationPending = OffOnConst(v)
     }
        stream.skipBits(4)
-    if v, err := stream.readUnsignedResolution(16, 60, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 60, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerStatus-EqualizationTimeRemaining: %w", err)
     } else {
         val.EqualizationTimeRemaining = v
@@ -32456,11 +34739,11 @@ func DecodeChargerStatus(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p ChargerStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Instance, 8, 0)
+    err = stream.writeUint8(p.Instance, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.BatteryInstance, 8, 8)
+    err = stream.writeUint8(p.BatteryInstance, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -32484,7 +34767,7 @@ func (p ChargerStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.EqualizationTimeRemaining, 16, 60, 32, 0)
+    err = stream.writeUnsignedResolution32(p.EqualizationTimeRemaining, 16, 60, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -32504,27 +34787,27 @@ func DecodeBatteryStatus(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryStatus-Voltage: %w", err)
     } else {
         val.Voltage = v
     }
-    if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryStatus-Current: %w", err)
     } else {
         val.Current = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryStatus-Temperature: %w", err)
     } else {
         val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryStatus-Sid: %w", err)
     } else {
         val.Sid = v
@@ -32535,23 +34818,23 @@ func DecodeBatteryStatus(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p BatteryStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Instance, 8, 0)
+    err = stream.writeUint8(p.Instance, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Voltage, 16, 0.01, 8, 0)
+    err = stream.writeSignedResolution32(p.Voltage, 16, 0.01, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Current, 16, 0.1, 24, 0)
+    err = stream.writeSignedResolution32(p.Current, 16, 0.1, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Temperature, 16, 0.010000, 40, 0, false)
+    err = stream.writeUnit(p.Temperature, 16, 0.010000, 40, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Sid, 8, 56)
+    err = stream.writeUint8(p.Sid, 8, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -32571,17 +34854,17 @@ func DecodeInverterStatus(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for InverterStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for InverterStatus-AcInstance: %w", err)
     } else {
         val.AcInstance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for InverterStatus-DcInstance: %w", err)
     } else {
         val.DcInstance = v
@@ -32603,15 +34886,15 @@ func DecodeInverterStatus(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p InverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Instance, 8, 0)
+    err = stream.writeUint8(p.Instance, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.AcInstance, 8, 8)
+    err = stream.writeUint8(p.AcInstance, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DcInstance, 8, 16)
+    err = stream.writeUint8(p.DcInstance, 8, 16, 2)
     if err != nil {
         return nil, err
     }
@@ -32642,22 +34925,22 @@ func DecodeAcPowerCurrentPhaseA(Info MessageInfo, stream *DataStream) (any, erro
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
     }
-    if v, err := stream.readInt32(32); err != nil {
+    if v, err := stream.readInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-Power: %w", err)
     } else {
         val.Power = v
@@ -32668,19 +34951,19 @@ func DecodeAcPowerCurrentPhaseA(Info MessageInfo, stream *DataStream) (any, erro
 // Encode implementation for complete variant
 func (p AcPowerCurrentPhaseA) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+    err = stream.writeUint8(p.ConnectionNumber, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcRmsCurrent, 16, 0.1, 16, 0)
+    err = stream.writeUnsignedResolution32(p.AcRmsCurrent, 16, 0.1, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt32(p.Power, 32, 32)
+    err = stream.writeInt32(p.Power, 32, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -32699,22 +34982,22 @@ func DecodeAcPowerCurrentPhaseB(Info MessageInfo, stream *DataStream) (any, erro
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
     }
-    if v, err := stream.readInt32(32); err != nil {
+    if v, err := stream.readInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-Power: %w", err)
     } else {
         val.Power = v
@@ -32725,19 +35008,19 @@ func DecodeAcPowerCurrentPhaseB(Info MessageInfo, stream *DataStream) (any, erro
 // Encode implementation for complete variant
 func (p AcPowerCurrentPhaseB) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+    err = stream.writeUint8(p.ConnectionNumber, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcRmsCurrent, 16, 0.1, 16, 0)
+    err = stream.writeUnsignedResolution32(p.AcRmsCurrent, 16, 0.1, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt32(p.Power, 32, 32)
+    err = stream.writeInt32(p.Power, 32, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -32756,22 +35039,22 @@ func DecodeAcPowerCurrentPhaseC(Info MessageInfo, stream *DataStream) (any, erro
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
     }
-    if v, err := stream.readInt32(32); err != nil {
+    if v, err := stream.readInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-Power: %w", err)
     } else {
         val.Power = v
@@ -32782,19 +35065,19 @@ func DecodeAcPowerCurrentPhaseC(Info MessageInfo, stream *DataStream) (any, erro
 // Encode implementation for complete variant
 func (p AcPowerCurrentPhaseC) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+    err = stream.writeUint8(p.ConnectionNumber, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcRmsCurrent, 16, 0.1, 16, 0)
+    err = stream.writeUnsignedResolution32(p.AcRmsCurrent, 16, 0.1, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt32(p.Power, 32, 32)
+    err = stream.writeInt32(p.Power, 32, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -32814,27 +35097,27 @@ func DecodeAcVoltageFrequencyPhaseA(Info MessageInfo, stream *DataStream) (any, 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseA-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseA-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseA-AcVoltageLineToNeutral: %w", err)
     } else {
         val.AcVoltageLineToNeutral = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseA-AcVoltageLineToLine: %w", err)
     } else {
         val.AcVoltageLineToLine = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseA-Frequency: %w", err)
     } else {
         val.Frequency = v
@@ -32845,23 +35128,23 @@ func DecodeAcVoltageFrequencyPhaseA(Info MessageInfo, stream *DataStream) (any, 
 // Encode implementation for complete variant
 func (p AcVoltageFrequencyPhaseA) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+    err = stream.writeUint8(p.ConnectionNumber, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcVoltageLineToNeutral, 16, 0.1, 16, 0)
+    err = stream.writeUnsignedResolution32(p.AcVoltageLineToNeutral, 16, 0.1, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcVoltageLineToLine, 16, 0.1, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcVoltageLineToLine, 16, 0.1, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Frequency, 16, 0.1, 48, 0)
+    err = stream.writeUnsignedResolution32(p.Frequency, 16, 0.1, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -32881,27 +35164,27 @@ func DecodeAcVoltageFrequencyPhaseB(Info MessageInfo, stream *DataStream) (any, 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseB-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseB-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseB-AcVoltageLineToNeutral: %w", err)
     } else {
         val.AcVoltageLineToNeutral = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseB-AcVoltageLineToLine: %w", err)
     } else {
         val.AcVoltageLineToLine = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseB-Frequency: %w", err)
     } else {
         val.Frequency = v
@@ -32912,23 +35195,23 @@ func DecodeAcVoltageFrequencyPhaseB(Info MessageInfo, stream *DataStream) (any, 
 // Encode implementation for complete variant
 func (p AcVoltageFrequencyPhaseB) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+    err = stream.writeUint8(p.ConnectionNumber, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcVoltageLineToNeutral, 16, 0.1, 16, 0)
+    err = stream.writeUnsignedResolution32(p.AcVoltageLineToNeutral, 16, 0.1, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcVoltageLineToLine, 16, 0.1, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcVoltageLineToLine, 16, 0.1, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Frequency, 16, 0.1, 48, 0)
+    err = stream.writeUnsignedResolution32(p.Frequency, 16, 0.1, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -32948,27 +35231,27 @@ func DecodeAcVoltageFrequencyPhaseC(Info MessageInfo, stream *DataStream) (any, 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseC-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseC-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseC-AcVoltageLineToNeutral: %w", err)
     } else {
         val.AcVoltageLineToNeutral = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseC-AcVoltageLineToLine: %w", err)
     } else {
         val.AcVoltageLineToLine = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseC-Frequency: %w", err)
     } else {
         val.Frequency = v
@@ -32979,23 +35262,23 @@ func DecodeAcVoltageFrequencyPhaseC(Info MessageInfo, stream *DataStream) (any, 
 // Encode implementation for complete variant
 func (p AcVoltageFrequencyPhaseC) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+    err = stream.writeUint8(p.ConnectionNumber, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcVoltageLineToNeutral, 16, 0.1, 16, 0)
+    err = stream.writeUnsignedResolution32(p.AcVoltageLineToNeutral, 16, 0.1, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AcVoltageLineToLine, 16, 0.1, 32, 0)
+    err = stream.writeUnsignedResolution32(p.AcVoltageLineToLine, 16, 0.1, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Frequency, 16, 0.1, 48, 0)
+    err = stream.writeUnsignedResolution32(p.Frequency, 16, 0.1, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -33022,7 +35305,7 @@ func DecodeConverterStatus(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ConverterStatus-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
@@ -33063,7 +35346,7 @@ func (p ConverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+    err = stream.writeUint8(p.ConnectionNumber, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -33111,17 +35394,17 @@ func DecodeDcVoltageCurrent(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DcVoltageCurrent-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DcVoltageCurrent-DcVoltage: %w", err)
     } else {
         val.DcVoltage = v
     }
-    if v, err := stream.readSignedResolution(24, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(24, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DcVoltageCurrent-DcCurrent: %w", err)
     } else {
         val.DcCurrent = v
@@ -33137,15 +35420,15 @@ func (p DcVoltageCurrent) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.ConnectionNumber, 8, 8)
+    err = stream.writeUint8(p.ConnectionNumber, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.DcVoltage, 16, 0.1, 16, 0)
+    err = stream.writeUnsignedResolution32(p.DcVoltage, 16, 0.1, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.DcCurrent, 24, 0.01, 32, 0)
+    err = stream.writeSignedResolution32(p.DcCurrent, 24, 0.01, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -33166,12 +35449,12 @@ func DecodeLeewayAngle(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LeewayAngle-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for LeewayAngle-LeewayAngle: %w", err)
     } else {
         val.LeewayAngle = v
@@ -33183,11 +35466,11 @@ func DecodeLeewayAngle(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p LeewayAngle) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.LeewayAngle, 16, 0.0001, 8, 0)
+    err = stream.writeSignedResolution32(p.LeewayAngle, 16, 0.0001, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -33215,12 +35498,12 @@ func DecodeThrusterControlStatus(Info MessageInfo, stream *DataStream) (any, err
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-Identifier: %w", err)
     } else {
         val.Identifier = v
@@ -33240,7 +35523,7 @@ func DecodeThrusterControlStatus(Info MessageInfo, stream *DataStream) (any, err
     } else {
         val.RetractControl = ThrusterRetractControlConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-SpeedControl: %w", err)
     } else {
         val.SpeedControl = v
@@ -33250,12 +35533,12 @@ func DecodeThrusterControlStatus(Info MessageInfo, stream *DataStream) (any, err
     } else {
         val.ControlEvents = ThrusterControlEventsConst(v)
     }
-    if v, err := stream.readUnsignedResolution(8, 0.005, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(8, 0.005, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-CommandTimeout: %w", err)
     } else {
         val.CommandTimeout = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-AzimuthControl: %w", err)
     } else {
         val.AzimuthControl = v
@@ -33266,11 +35549,11 @@ func DecodeThrusterControlStatus(Info MessageInfo, stream *DataStream) (any, err
 // Encode implementation for complete variant
 func (p ThrusterControlStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Identifier, 8, 8)
+    err = stream.writeUint8(p.Identifier, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -33286,7 +35569,7 @@ func (p ThrusterControlStatus) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SpeedControl, 8, 24)
+    err = stream.writeUint8(p.SpeedControl, 8, 24, 2)
     if err != nil {
         return nil, err
     }
@@ -33294,11 +35577,11 @@ func (p ThrusterControlStatus) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.CommandTimeout, 8, 0.005, 40, 0)
+    err = stream.writeUnsignedResolution32(p.CommandTimeout, 8, 0.005, 40, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.AzimuthControl, 16, 0.0001, 48, 0)
+    err = stream.writeUnsignedResolution32(p.AzimuthControl, 16, 0.0001, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -33318,7 +35601,7 @@ func DecodeThrusterInformation(Info MessageInfo, stream *DataStream) (any, error
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterInformation-Identifier: %w", err)
     } else {
         val.Identifier = v
@@ -33329,17 +35612,17 @@ func DecodeThrusterInformation(Info MessageInfo, stream *DataStream) (any, error
         val.MotorType = ThrusterMotorTypeConst(v)
     }
        stream.skipBits(4)
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterInformation-PowerRating: %w", err)
     } else {
         val.PowerRating = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterInformation-MaximumTemperatureRating: %w", err)
     } else {
         val.MaximumTemperatureRating = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.25, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.25, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterInformation-MaximumRotationalSpeed: %w", err)
     } else {
         val.MaximumRotationalSpeed = v
@@ -33350,7 +35633,7 @@ func DecodeThrusterInformation(Info MessageInfo, stream *DataStream) (any, error
 // Encode implementation for complete variant
 func (p ThrusterInformation) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Identifier, 8, 0)
+    err = stream.writeUint8(p.Identifier, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -33362,15 +35645,15 @@ func (p ThrusterInformation) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.PowerRating, 16, 16)
+    err = stream.writeUint16(p.PowerRating, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.MaximumTemperatureRating, 16, 0.010000, 32, 0, false)
+    err = stream.writeUnit(p.MaximumTemperatureRating, 16, 0.010000, 32, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.MaximumRotationalSpeed, 16, 0.25, 48, 0)
+    err = stream.writeUnsignedResolution32(p.MaximumRotationalSpeed, 16, 0.25, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -33391,12 +35674,12 @@ func DecodeThrusterMotorStatus(Info MessageInfo, stream *DataStream) (any, error
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Identifier: %w", err)
     } else {
         val.Identifier = v
@@ -33406,17 +35689,17 @@ func DecodeThrusterMotorStatus(Info MessageInfo, stream *DataStream) (any, error
     } else {
         val.MotorEvents = ThrusterMotorEventsConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Current: %w", err)
     } else {
         val.Current = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Temperature: %w", err)
     } else {
         val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUnsignedResolution(16, 60, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 60, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-OperatingTime: %w", err)
     } else {
         val.OperatingTime = v
@@ -33427,11 +35710,11 @@ func DecodeThrusterMotorStatus(Info MessageInfo, stream *DataStream) (any, error
 // Encode implementation for complete variant
 func (p ThrusterMotorStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Identifier, 8, 8)
+    err = stream.writeUint8(p.Identifier, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -33439,15 +35722,15 @@ func (p ThrusterMotorStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Current, 8, 24)
+    err = stream.writeUint8(p.Current, 8, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Temperature, 16, 0.010000, 32, 0, false)
+    err = stream.writeUnit(p.Temperature, 16, 0.010000, 32, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.OperatingTime, 16, 60, 48, 0)
+    err = stream.writeUnsignedResolution32(p.OperatingTime, 16, 60, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -33467,17 +35750,17 @@ func DecodeSpeed(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Speed-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Speed-SpeedWaterReferenced: %w", err)
     } else {
         val.SpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Speed-SpeedGroundReferenced: %w", err)
     } else {
         val.SpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -33487,7 +35770,7 @@ func DecodeSpeed(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.SpeedWaterReferencedType = WaterReferenceConst(v)
     }
-    if v, err := stream.readUInt8(4); err != nil {
+    if v, err := stream.readUInt8(4, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Speed-SpeedDirection: %w", err)
     } else {
         val.SpeedDirection = v
@@ -33499,15 +35782,15 @@ func DecodeSpeed(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p Speed) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.SpeedWaterReferenced, 16, 0.010000, 8, 0, false)
+    err = stream.writeUnit(p.SpeedWaterReferenced, 16, 0.010000, 8, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.SpeedGroundReferenced, 16, 0.010000, 24, 0, false)
+    err = stream.writeUnit(p.SpeedGroundReferenced, 16, 0.010000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -33515,7 +35798,7 @@ func (p Speed) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SpeedDirection, 4, 48)
+    err = stream.writeUint8(p.SpeedDirection, 4, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -33538,22 +35821,22 @@ func DecodeWaterDepth(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WaterDepth-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WaterDepth-Depth: %w", err)
     } else {
         val.Depth = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WaterDepth-Offset: %w", err)
     } else {
         val.Offset = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(8, 10, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(8, 10, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WaterDepth-Range: %w", err)
     } else {
         val.Range = nullableUnit(units.Meter, v, units.NewDistance)
@@ -33564,19 +35847,19 @@ func DecodeWaterDepth(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p WaterDepth) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Depth, 32, 0.010000, 8, 0, false)
+    err = stream.writeUnit(p.Depth, 32, 0.010000, 8, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Offset, 16, 0.001000, 40, 0, true)
+    err = stream.writeUnit(p.Offset, 16, 0.001000, 40, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Range, 8, 10.000000, 56, 0, false)
+    err = stream.writeUnit(p.Range, 8, 10.000000, 56, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -33595,22 +35878,22 @@ func DecodeDistanceLog(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DistanceLog-Date: %w", err)
     } else {
         val.Date = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DistanceLog-Time: %w", err)
     } else {
         val.Time = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DistanceLog-Log: %w", err)
     } else {
         val.Log = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DistanceLog-TripLog: %w", err)
     } else {
         val.TripLog = nullableUnit(units.Meter, v, units.NewDistance)
@@ -33621,19 +35904,19 @@ func DecodeDistanceLog(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p DistanceLog) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.Date, 16, 0)
+    err = stream.writeUint16(p.Date, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Time, 32, 0.0001, 16, 0)
+    err = stream.writeUnsignedResolution32(p.Time, 32, 0.0001, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Log, 32, 1.000000, 48, 0, false)
+    err = stream.writeUnit(p.Log, 32, 1.000000, 48, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.TripLog, 32, 1.000000, 80, 0, false)
+    err = stream.writeUnit(p.TripLog, 32, 1.000000, 80, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -33660,12 +35943,12 @@ func DecodeWindlassControlStatus(Info MessageInfo, stream *DataStream) (any, err
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-WindlassId: %w", err)
     } else {
         val.WindlassId = v
@@ -33711,7 +35994,7 @@ func DecodeWindlassControlStatus(Info MessageInfo, stream *DataStream) (any, err
     } else {
         val.AnchorLight = OffOnConst(v)
     }
-    if v, err := stream.readUnsignedResolution(8, 0.005, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(8, 0.005, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-CommandTimeout: %w", err)
     } else {
         val.CommandTimeout = v
@@ -33728,11 +36011,11 @@ func DecodeWindlassControlStatus(Info MessageInfo, stream *DataStream) (any, err
 // Encode implementation for complete variant
 func (p WindlassControlStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.WindlassId, 8, 8)
+    err = stream.writeUint8(p.WindlassId, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -33772,7 +36055,7 @@ func (p WindlassControlStatus) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.CommandTimeout, 8, 0.005, 40, 0)
+    err = stream.writeUnsignedResolution32(p.CommandTimeout, 8, 0.005, 40, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -33804,12 +36087,12 @@ func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *DataStream) (
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassId: %w", err)
     } else {
         val.WindlassId = v
@@ -33830,12 +36113,12 @@ func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *DataStream) (
         val.RodeTypeStatus = RodeTypeConst(v)
     }
        stream.skipBits(2)
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-RodeCounterValue: %w", err)
     } else {
         val.RodeCounterValue = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassLineSpeed: %w", err)
     } else {
         val.WindlassLineSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -33856,11 +36139,11 @@ func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *DataStream) (
 // Encode implementation for complete variant
 func (p AnchorWindlassOperatingStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.WindlassId, 8, 8)
+    err = stream.writeUint8(p.WindlassId, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -33880,11 +36163,11 @@ func (p AnchorWindlassOperatingStatus) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.RodeCounterValue, 16, 0.100000, 24, 0, false)
+    err = stream.writeUnit(p.RodeCounterValue, 16, 0.100000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.WindlassLineSpeed, 16, 0.010000, 40, 0, false)
+    err = stream.writeUnit(p.WindlassLineSpeed, 16, 0.010000, 40, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -33913,12 +36196,12 @@ func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *DataStream) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-WindlassId: %w", err)
     } else {
         val.WindlassId = v
@@ -33928,17 +36211,17 @@ func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *DataStream) 
     } else {
         val.WindlassMonitoringEvents = WindlassMonitoringConst(v)
     }
-    if v, err := stream.readUnsignedResolution(8, 0.2, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(8, 0.2, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-ControllerVoltage: %w", err)
     } else {
         val.ControllerVoltage = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-MotorCurrent: %w", err)
     } else {
         val.MotorCurrent = v
     }
-    if v, err := stream.readUnsignedResolution(16, 60, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 60, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-TotalMotorTime: %w", err)
     } else {
         val.TotalMotorTime = v
@@ -33950,11 +36233,11 @@ func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *DataStream) 
 // Encode implementation for complete variant
 func (p AnchorWindlassMonitoringStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.WindlassId, 8, 8)
+    err = stream.writeUint8(p.WindlassId, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -33962,15 +36245,15 @@ func (p AnchorWindlassMonitoringStatus) Encode(stream *DataStream) (*MessageInfo
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.ControllerVoltage, 8, 0.2, 24, 0)
+    err = stream.writeUnsignedResolution32(p.ControllerVoltage, 8, 0.2, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.MotorCurrent, 8, 32)
+    err = stream.writeUint8(p.MotorCurrent, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.TotalMotorTime, 16, 60, 40, 0)
+    err = stream.writeUnsignedResolution32(p.TotalMotorTime, 16, 60, 40, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -33991,12 +36274,12 @@ func DecodePositionRapidUpdate(Info MessageInfo, stream *DataStream) (any, error
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for PositionRapidUpdate-Latitude: %w", err)
     } else {
         val.Latitude = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for PositionRapidUpdate-Longitude: %w", err)
     } else {
         val.Longitude = v
@@ -34007,11 +36290,11 @@ func DecodePositionRapidUpdate(Info MessageInfo, stream *DataStream) (any, error
 // Encode implementation for complete variant
 func (p PositionRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeSignedResolution64(p.Latitude, 32, 1e-07, 0, 0)
+    err = stream.writeSignedResolution64(p.Latitude, 32, 1e-07, 0, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Longitude, 32, 1e-07, 32, 0)
+    err = stream.writeSignedResolution64(p.Longitude, 32, 1e-07, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -34030,7 +36313,7 @@ func DecodeCogSogRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Sid: %w", err)
     } else {
         val.Sid = v
@@ -34041,12 +36324,12 @@ func DecodeCogSogRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) 
         val.CogReference = DirectionReferenceConst(v)
     }
        stream.skipBits(6)
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Cog: %w", err)
     } else {
         val.Cog = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Sog: %w", err)
     } else {
         val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -34058,7 +36341,7 @@ func DecodeCogSogRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) 
 // Encode implementation for complete variant
 func (p CogSogRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -34070,11 +36353,11 @@ func (p CogSogRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Cog, 16, 0.0001, 16, 0)
+    err = stream.writeUnsignedResolution32(p.Cog, 16, 0.0001, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Sog, 16, 0.010000, 32, 0, false)
+    err = stream.writeUnit(p.Sog, 16, 0.010000, 32, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -34114,32 +36397,32 @@ func DecodeGnssPositionData(Info MessageInfo, stream *DataStream) (any, error) {
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Date: %w", err)
     } else {
         val.Date = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Time: %w", err)
     } else {
         val.Time = v
     }
-    if v, err := stream.readSignedResolution64Override(64, 1e-16); err != nil {
+    if v, err := stream.readSignedResolution64Override(64, 1e-16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Latitude: %w", err)
     } else {
         val.Latitude = v
     }
-    if v, err := stream.readSignedResolution64Override(64, 1e-16); err != nil {
+    if v, err := stream.readSignedResolution64Override(64, 1e-16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Longitude: %w", err)
     } else {
         val.Longitude = v
     }
-    if v, err := stream.readSignedResolution(64, 1e-06, 0); err != nil {
+    if v, err := stream.readSignedResolution(64, 1e-06, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Altitude: %w", err)
     } else {
         val.Altitude = nullableUnit(units.Meter, v, units.NewDistance)
@@ -34160,27 +36443,27 @@ func DecodeGnssPositionData(Info MessageInfo, stream *DataStream) (any, error) {
         val.Integrity = GnsIntegrityConst(v)
     }
        stream.skipBits(6)
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-NumberOfSvs: %w", err)
     } else {
         val.NumberOfSvs = v
     }
-    if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Hdop: %w", err)
     } else {
         val.Hdop = v
     }
-    if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Pdop: %w", err)
     } else {
         val.Pdop = v
     }
-    if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-GeoidalSeparation: %w", err)
     } else {
         val.GeoidalSeparation = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-ReferenceStations: %w", err)
     } else {
         val.ReferenceStations = v
@@ -34201,12 +36484,12 @@ func DecodeGnssPositionData(Info MessageInfo, stream *DataStream) (any, error) {
         } else {
             rep.ReferenceStationType = GnsConst(v)
         }
-        if v, err := stream.readUInt16(12); err != nil {
+        if v, err := stream.readUInt16(12, 2); err != nil {
             return nil, fmt.Errorf("parse failed for GnssPositionData-ReferenceStationId: %w", err)
         } else {
             rep.ReferenceStationId = v
         }
-        if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for GnssPositionData-AgeOfDgnssCorrections: %w", err)
         } else {
             rep.AgeOfDgnssCorrections = v
@@ -34229,27 +36512,27 @@ func DecodeGnssPositionData(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p GnssPositionData) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Date, 16, 8)
+    err = stream.writeUint16(p.Date, 16, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Time, 32, 0.0001, 24, 0)
+    err = stream.writeUnsignedResolution32(p.Time, 32, 0.0001, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Latitude, 64, 1e-16, 56, 0)
+    err = stream.writeSignedResolution64(p.Latitude, 64, 1e-16, 56, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Longitude, 64, 1e-16, 120, 0)
+    err = stream.writeSignedResolution64(p.Longitude, 64, 1e-16, 120, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Altitude, 64, 0.000001, 184, 0, true)
+    err = stream.writeUnit(p.Altitude, 64, 0.000001, 184, 0, true, 2)
     if err != nil {
         return nil, err
     }
@@ -34269,23 +36552,23 @@ func (p GnssPositionData) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.NumberOfSvs, 8, 264)
+    err = stream.writeUint8(p.NumberOfSvs, 8, 264, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Hdop, 16, 0.01, 272, 0)
+    err = stream.writeSignedResolution32(p.Hdop, 16, 0.01, 272, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Pdop, 16, 0.01, 288, 0)
+    err = stream.writeSignedResolution32(p.Pdop, 16, 0.01, 288, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.GeoidalSeparation, 32, 0.010000, 304, 0, true)
+    err = stream.writeUnit(p.GeoidalSeparation, 32, 0.010000, 304, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.ReferenceStations, 8, 336)
+    err = stream.writeUint8(p.ReferenceStations, 8, 336, 2)
     if err != nil {
         return nil, err
     }
@@ -34305,11 +36588,11 @@ func (p GnssPositionData) encodeRepeating1(stream *DataStream) error {
         if err != nil {
             return err
         }
-        err = stream.writeUint16(p.Repeating1[index].ReferenceStationId, 12, 0)
+        err = stream.writeUint16(p.Repeating1[index].ReferenceStationId, 12, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].AgeOfDgnssCorrections, 16, 0.01, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].AgeOfDgnssCorrections, 16, 0.01, 0, 0, 2)
         if err != nil {
             return err
         }
@@ -34328,17 +36611,17 @@ func DecodeTimeDate(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TimeDate-Date: %w", err)
     } else {
         val.Date = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TimeDate-Time: %w", err)
     } else {
         val.Time = v
     }
-    if v, err := stream.readSignedResolution(16, 60, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 60, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TimeDate-LocalOffset: %w", err)
     } else {
         val.LocalOffset = v
@@ -34349,15 +36632,15 @@ func DecodeTimeDate(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p TimeDate) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.Date, 16, 0)
+    err = stream.writeUint16(p.Date, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Time, 32, 0.0001, 16, 0)
+    err = stream.writeUnsignedResolution32(p.Time, 32, 0.0001, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.LocalOffset, 16, 60, 48, 0)
+    err = stream.writeSignedResolution32(p.LocalOffset, 16, 60, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -34399,17 +36682,17 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.RepeatIndicator = RepeatIndicatorConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-UserId: %w", err)
     } else {
         val.UserId = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Longitude: %w", err)
     } else {
         val.Longitude = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Latitude: %w", err)
     } else {
         val.Latitude = v
@@ -34429,12 +36712,12 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.TimeStamp = TimeStampConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Cog: %w", err)
     } else {
         val.Cog = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Sog: %w", err)
     } else {
         val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -34449,12 +36732,12 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.AisTransceiverInformation = AisTransceiverConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Heading: %w", err)
     } else {
         val.Heading = v
     }
-    if v, err := stream.readSignedResolution(16, 3.125e-05, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 3.125e-05, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-RateOfTurn: %w", err)
     } else {
         val.RateOfTurn = v
@@ -34472,7 +36755,7 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *DataStream) (any, e
        stream.skipBits(2)
        stream.skipBits(3)
        stream.skipBits(5)
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-SequenceId: %w", err)
     } else {
         val.SequenceId = v
@@ -34491,15 +36774,15 @@ func (p AisClassAPositionReport) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.UserId, 32, 8)
+    err = stream.writeUint32(p.UserId, 32, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Longitude, 32, 1e-07, 40, 0)
+    err = stream.writeSignedResolution64(p.Longitude, 32, 1e-07, 40, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Latitude, 32, 1e-07, 72, 0)
+    err = stream.writeSignedResolution64(p.Latitude, 32, 1e-07, 72, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -34515,11 +36798,11 @@ func (p AisClassAPositionReport) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Cog, 16, 0.0001, 112, 0)
+    err = stream.writeUnsignedResolution32(p.Cog, 16, 0.0001, 112, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Sog, 16, 0.010000, 128, 0, false)
+    err = stream.writeUnit(p.Sog, 16, 0.010000, 128, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -34531,11 +36814,11 @@ func (p AisClassAPositionReport) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Heading, 16, 0.0001, 168, 0)
+    err = stream.writeUnsignedResolution32(p.Heading, 16, 0.0001, 168, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.RateOfTurn, 16, 3.125e-05, 184, 0)
+    err = stream.writeSignedResolution32(p.RateOfTurn, 16, 3.125e-05, 184, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -34559,7 +36842,7 @@ func (p AisClassAPositionReport) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SequenceId, 8, 216)
+    err = stream.writeUint8(p.SequenceId, 8, 216, 2)
     if err != nil {
         return nil, err
     }
@@ -34604,17 +36887,17 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.RepeatIndicator = RepeatIndicatorConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-UserId: %w", err)
     } else {
         val.UserId = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Longitude: %w", err)
     } else {
         val.Longitude = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Latitude: %w", err)
     } else {
         val.Latitude = v
@@ -34634,12 +36917,12 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.TimeStamp = TimeStampConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Cog: %w", err)
     } else {
         val.Cog = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Sog: %w", err)
     } else {
         val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -34654,7 +36937,7 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.AisTransceiverInformation = AisTransceiverConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Heading: %w", err)
     } else {
         val.Heading = v
@@ -34711,15 +36994,15 @@ func (p AisClassBPositionReport) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.UserId, 32, 8)
+    err = stream.writeUint32(p.UserId, 32, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Longitude, 32, 1e-07, 40, 0)
+    err = stream.writeSignedResolution64(p.Longitude, 32, 1e-07, 40, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Latitude, 32, 1e-07, 72, 0)
+    err = stream.writeSignedResolution64(p.Latitude, 32, 1e-07, 72, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -34735,11 +37018,11 @@ func (p AisClassBPositionReport) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Cog, 16, 0.0001, 112, 0)
+    err = stream.writeUnsignedResolution32(p.Cog, 16, 0.0001, 112, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Sog, 16, 0.010000, 128, 0, false)
+    err = stream.writeUnit(p.Sog, 16, 0.010000, 128, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -34751,7 +37034,7 @@ func (p AisClassBPositionReport) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Heading, 16, 0.0001, 168, 0)
+    err = stream.writeUnsignedResolution32(p.Heading, 16, 0.0001, 168, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -34836,17 +37119,17 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *DataStream) (
     } else {
         val.RepeatIndicator = RepeatIndicatorConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-UserId: %w", err)
     } else {
         val.UserId = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-Longitude: %w", err)
     } else {
         val.Longitude = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-Latitude: %w", err)
     } else {
         val.Latitude = v
@@ -34866,22 +37149,22 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *DataStream) (
     } else {
         val.TimeStamp = TimeStampConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-LengthDiameter: %w", err)
     } else {
         val.LengthDiameter = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-BeamDiameter: %w", err)
     } else {
         val.BeamDiameter = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionReferenceFromStarboardEdge: %w", err)
     } else {
         val.PositionReferenceFromStarboardEdge = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionReferenceFromTrueNorthFacingEdge: %w", err)
     } else {
         val.PositionReferenceFromTrueNorthFacingEdge = nullableUnit(units.Meter, v, units.NewDistance)
@@ -34943,15 +37226,15 @@ func (p AisAidsToNavigationAtonReport) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.UserId, 32, 8)
+    err = stream.writeUint32(p.UserId, 32, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Longitude, 32, 1e-07, 40, 0)
+    err = stream.writeSignedResolution64(p.Longitude, 32, 1e-07, 40, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.Latitude, 32, 1e-07, 72, 0)
+    err = stream.writeSignedResolution64(p.Latitude, 32, 1e-07, 72, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -34967,19 +37250,19 @@ func (p AisAidsToNavigationAtonReport) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.LengthDiameter, 16, 0.100000, 112, 0, false)
+    err = stream.writeUnit(p.LengthDiameter, 16, 0.100000, 112, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.BeamDiameter, 16, 0.100000, 128, 0, false)
+    err = stream.writeUnit(p.BeamDiameter, 16, 0.100000, 128, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PositionReferenceFromStarboardEdge, 16, 0.100000, 144, 0, false)
+    err = stream.writeUnit(p.PositionReferenceFromStarboardEdge, 16, 0.100000, 144, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PositionReferenceFromTrueNorthFacingEdge, 16, 0.100000, 160, 0, false)
+    err = stream.writeUnit(p.PositionReferenceFromTrueNorthFacingEdge, 16, 0.100000, 160, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -35048,17 +37331,17 @@ func DecodeDatum(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.LocalDatum = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Datum-DeltaLatitude: %w", err)
     } else {
         val.DeltaLatitude = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Datum-DeltaLongitude: %w", err)
     } else {
         val.DeltaLongitude = v
     }
-    if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Datum-DeltaAltitude: %w", err)
     } else {
         val.DeltaAltitude = nullableUnit(units.Meter, v, units.NewDistance)
@@ -35078,15 +37361,15 @@ func (p Datum) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.DeltaLatitude, 32, 1e-07, 32, 0)
+    err = stream.writeSignedResolution64(p.DeltaLatitude, 32, 1e-07, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.DeltaLongitude, 32, 1e-07, 64, 0)
+    err = stream.writeSignedResolution64(p.DeltaLongitude, 32, 1e-07, 64, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.DeltaAltitude, 32, 0.010000, 96, 0, true)
+    err = stream.writeUnit(p.DeltaAltitude, 32, 0.010000, 96, 0, true, 2)
     if err != nil {
         return nil, err
     }
@@ -35115,17 +37398,17 @@ func DecodeUserDatum(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UserDatum-DeltaX: %w", err)
     } else {
         val.DeltaX = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UserDatum-DeltaY: %w", err)
     } else {
         val.DeltaY = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UserDatum-DeltaZ: %w", err)
     } else {
         val.DeltaZ = nullableUnit(units.Meter, v, units.NewDistance)
@@ -35150,7 +37433,7 @@ func DecodeUserDatum(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Scale = v
     }
-    if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for UserDatum-EllipsoidSemiMajorAxis: %w", err)
     } else {
         val.EllipsoidSemiMajorAxis = nullableUnit(units.Meter, v, units.NewDistance)
@@ -35171,39 +37454,39 @@ func DecodeUserDatum(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p UserDatum) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUnit(p.DeltaX, 32, 0.010000, 0, 0, true)
+    err = stream.writeUnit(p.DeltaX, 32, 0.010000, 0, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.DeltaY, 32, 0.010000, 32, 0, true)
+    err = stream.writeUnit(p.DeltaY, 32, 0.010000, 32, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.DeltaZ, 32, 0.010000, 64, 0, true)
+    err = stream.writeUnit(p.DeltaZ, 32, 0.010000, 64, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeFloat32(p.RotationInX, 32, 96)
+    err = stream.writeFloat32(p.RotationInX, 32, 96, 0)
     if err != nil {
         return nil, err
     }
-    err = stream.writeFloat32(p.RotationInY, 32, 128)
+    err = stream.writeFloat32(p.RotationInY, 32, 128, 0)
     if err != nil {
         return nil, err
     }
-    err = stream.writeFloat32(p.RotationInZ, 32, 160)
+    err = stream.writeFloat32(p.RotationInZ, 32, 160, 0)
     if err != nil {
         return nil, err
     }
-    err = stream.writeFloat32(p.Scale, 32, 192)
+    err = stream.writeFloat32(p.Scale, 32, 192, 0)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.EllipsoidSemiMajorAxis, 32, 0.010000, 224, 0, true)
+    err = stream.writeUnit(p.EllipsoidSemiMajorAxis, 32, 0.010000, 224, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeFloat32(p.EllipsoidFlatteningInverse, 32, 256)
+    err = stream.writeFloat32(p.EllipsoidFlatteningInverse, 32, 256, 0)
     if err != nil {
         return nil, err
     }
@@ -35226,7 +37509,7 @@ func DecodeCrossTrackError(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for CrossTrackError-Sid: %w", err)
     } else {
         val.Sid = v
@@ -35242,7 +37525,7 @@ func DecodeCrossTrackError(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.NavigationTerminated = YesNoConst(v)
     }
-    if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for CrossTrackError-Xte: %w", err)
     } else {
         val.Xte = nullableUnit(units.Meter, v, units.NewDistance)
@@ -35254,7 +37537,7 @@ func DecodeCrossTrackError(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p CrossTrackError) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -35270,7 +37553,7 @@ func (p CrossTrackError) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Xte, 32, 0.010000, 16, 0, true)
+    err = stream.writeUnit(p.Xte, 32, 0.010000, 16, 0, true, 2)
     if err != nil {
         return nil, err
     }
@@ -35304,12 +37587,12 @@ func DecodeNavigationData(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-DistanceToWaypoint: %w", err)
     } else {
         val.DistanceToWaypoint = nullableUnit(units.Meter, v, units.NewDistance)
@@ -35334,47 +37617,47 @@ func DecodeNavigationData(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.CalculationType = BearingModeConst(v)
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-EtaTime: %w", err)
     } else {
         val.EtaTime = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-EtaDate: %w", err)
     } else {
         val.EtaDate = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-BearingOriginToDestinationWaypoint: %w", err)
     } else {
         val.BearingOriginToDestinationWaypoint = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-BearingPositionToDestinationWaypoint: %w", err)
     } else {
         val.BearingPositionToDestinationWaypoint = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-OriginWaypointNumber: %w", err)
     } else {
         val.OriginWaypointNumber = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-DestinationWaypointNumber: %w", err)
     } else {
         val.DestinationWaypointNumber = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-DestinationLatitude: %w", err)
     } else {
         val.DestinationLatitude = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-DestinationLongitude: %w", err)
     } else {
         val.DestinationLongitude = v
     }
-    if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-WaypointClosingVelocity: %w", err)
     } else {
         val.WaypointClosingVelocity = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -35385,11 +37668,11 @@ func DecodeNavigationData(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p NavigationData) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.DistanceToWaypoint, 32, 0.010000, 8, 0, false)
+    err = stream.writeUnit(p.DistanceToWaypoint, 32, 0.010000, 8, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -35409,39 +37692,39 @@ func (p NavigationData) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.EtaTime, 32, 0.0001, 48, 0)
+    err = stream.writeUnsignedResolution32(p.EtaTime, 32, 0.0001, 48, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.EtaDate, 16, 80)
+    err = stream.writeUint16(p.EtaDate, 16, 80, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.BearingOriginToDestinationWaypoint, 16, 0.0001, 96, 0)
+    err = stream.writeUnsignedResolution32(p.BearingOriginToDestinationWaypoint, 16, 0.0001, 96, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.BearingPositionToDestinationWaypoint, 16, 0.0001, 112, 0)
+    err = stream.writeUnsignedResolution32(p.BearingPositionToDestinationWaypoint, 16, 0.0001, 112, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.OriginWaypointNumber, 32, 128)
+    err = stream.writeUint32(p.OriginWaypointNumber, 32, 128, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.DestinationWaypointNumber, 32, 160)
+    err = stream.writeUint32(p.DestinationWaypointNumber, 32, 160, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.DestinationLatitude, 32, 1e-07, 192, 0)
+    err = stream.writeSignedResolution64(p.DestinationLatitude, 32, 1e-07, 192, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.DestinationLongitude, 32, 1e-07, 224, 0)
+    err = stream.writeSignedResolution64(p.DestinationLongitude, 32, 1e-07, 224, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.WaypointClosingVelocity, 16, 0.010000, 256, 0, true)
+    err = stream.writeUnit(p.WaypointClosingVelocity, 16, 0.010000, 256, 0, true, 2)
     if err != nil {
         return nil, err
     }
@@ -35471,12 +37754,12 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (a
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-StartRps: %w", err)
     } else {
         val.StartRps = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -35484,12 +37767,12 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (a
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-RouteId: %w", err)
     } else {
         val.RouteId = v
@@ -35519,7 +37802,7 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (a
     i := 0
     for {
         var rep NavigationRouteWpInformationRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpId: %w", err)
         } else {
             rep.WpId = v
@@ -35529,12 +37812,12 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (a
         } else {
             rep.WpName = v
         }
-        if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+        if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
             return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpLatitude: %w", err)
         } else {
             rep.WpLatitude = v
         }
-        if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+        if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
             return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpLongitude: %w", err)
         } else {
             rep.WpLongitude = v
@@ -35557,19 +37840,19 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (a
 // Encode implementation for complete variant
 func (p NavigationRouteWpInformation) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartRps, 16, 0)
+    err = stream.writeUint16(p.StartRps, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.DatabaseId, 16, 32)
+    err = stream.writeUint16(p.DatabaseId, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.RouteId, 16, 48)
+    err = stream.writeUint16(p.RouteId, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -35605,7 +37888,7 @@ func (p NavigationRouteWpInformation) encodeRepeating1(stream *DataStream) error
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].WpId, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].WpId, 16, 0, 2)
         if err != nil {
             return err
         }
@@ -35613,11 +37896,11 @@ func (p NavigationRouteWpInformation) encodeRepeating1(stream *DataStream) error
         if err != nil {
             return err
         }
-        err = stream.writeSignedResolution64(p.Repeating1[index].WpLatitude, 32, 1e-07, 0, 0)
+        err = stream.writeSignedResolution64(p.Repeating1[index].WpLatitude, 32, 1e-07, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeSignedResolution64(p.Repeating1[index].WpLongitude, 32, 1e-07, 0, 0)
+        err = stream.writeSignedResolution64(p.Repeating1[index].WpLongitude, 32, 1e-07, 0, 0, 2)
         if err != nil {
             return err
         }
@@ -35639,7 +37922,7 @@ func DecodeGnssDops(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDops-Sid: %w", err)
     } else {
         val.Sid = v
@@ -35655,17 +37938,17 @@ func DecodeGnssDops(Info MessageInfo, stream *DataStream) (any, error) {
         val.ActualMode = GnssModeConst(v)
     }
        stream.skipBits(2)
-    if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDops-Hdop: %w", err)
     } else {
         val.Hdop = v
     }
-    if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDops-Vdop: %w", err)
     } else {
         val.Vdop = v
     }
-    if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDops-Tdop: %w", err)
     } else {
         val.Tdop = v
@@ -35676,7 +37959,7 @@ func DecodeGnssDops(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p GnssDops) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -35692,15 +37975,15 @@ func (p GnssDops) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Hdop, 16, 0.01, 16, 0)
+    err = stream.writeSignedResolution32(p.Hdop, 16, 0.01, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Vdop, 16, 0.01, 32, 0)
+    err = stream.writeSignedResolution32(p.Vdop, 16, 0.01, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Tdop, 16, 0.01, 48, 0)
+    err = stream.writeSignedResolution32(p.Tdop, 16, 0.01, 48, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -35728,7 +38011,7 @@ func DecodeGnssSatsInView(Info MessageInfo, stream *DataStream) (any, error) {
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssSatsInView-Sid: %w", err)
     } else {
         val.Sid = v
@@ -35739,7 +38022,7 @@ func DecodeGnssSatsInView(Info MessageInfo, stream *DataStream) (any, error) {
         val.RangeResidualMode = RangeResidualModeConst(v)
     }
        stream.skipBits(6)
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssSatsInView-SatsInView: %w", err)
     } else {
         val.SatsInView = v
@@ -35755,27 +38038,27 @@ func DecodeGnssSatsInView(Info MessageInfo, stream *DataStream) (any, error) {
     i := 0
     for {
         var rep GnssSatsInViewRepeating1
-        if v, err := stream.readUInt8(8); err != nil {
+        if v, err := stream.readUInt8(8, 2); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-Prn: %w", err)
         } else {
             rep.Prn = v
         }
-        if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+        if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-Elevation: %w", err)
         } else {
             rep.Elevation = v
         }
-        if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-Azimuth: %w", err)
         } else {
             rep.Azimuth = v
         }
-        if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
+        if v, err := stream.readSignedResolution(16, 0.01, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-Snr: %w", err)
         } else {
             rep.Snr = v
         }
-        if v, err := stream.readSignedResolution(32, 1e-05, 0); err != nil {
+        if v, err := stream.readSignedResolution(32, 1e-05, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-RangeResiduals: %w", err)
         } else {
             rep.RangeResiduals = nullableUnit(units.Meter, v, units.NewDistance)
@@ -35804,7 +38087,7 @@ func DecodeGnssSatsInView(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p GnssSatsInView) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -35816,7 +38099,7 @@ func (p GnssSatsInView) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SatsInView, 8, 16)
+    err = stream.writeUint8(p.SatsInView, 8, 16, 2)
     if err != nil {
         return nil, err
     }
@@ -35832,23 +38115,23 @@ func (p GnssSatsInView) encodeRepeating1(stream *DataStream) error {
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint8(p.Repeating1[index].Prn, 8, 0)
+        err = stream.writeUint8(p.Repeating1[index].Prn, 8, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeSignedResolution32(p.Repeating1[index].Elevation, 16, 0.0001, 0, 0)
+        err = stream.writeSignedResolution32(p.Repeating1[index].Elevation, 16, 0.0001, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].Azimuth, 16, 0.0001, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].Azimuth, 16, 0.0001, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeSignedResolution32(p.Repeating1[index].Snr, 16, 0.01, 0, 0)
+        err = stream.writeSignedResolution32(p.Repeating1[index].Snr, 16, 0.01, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnit(p.Repeating1[index].RangeResiduals, 32, 0.000010, 0, 0, true)
+        err = stream.writeUnit(p.Repeating1[index].RangeResiduals, 32, 0.000010, 0, 0, true, 2)
         if err != nil {
             return err
         }
@@ -35876,22 +38159,22 @@ func DecodeGnssRaimSettings(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssRaimSettings-RadialPositionErrorMaximumThreshold: %w", err)
     } else {
         val.RadialPositionErrorMaximumThreshold = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readInt8(8); err != nil {
+    if v, err := stream.readInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssRaimSettings-ProbabilityOfFalseAlarm: %w", err)
     } else {
         val.ProbabilityOfFalseAlarm = v
     }
-    if v, err := stream.readInt8(8); err != nil {
+    if v, err := stream.readInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssRaimSettings-ProbabilityOfMissedDetection: %w", err)
     } else {
         val.ProbabilityOfMissedDetection = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssRaimSettings-PseudorangeResidualFilteringTimeConstant: %w", err)
     } else {
         val.PseudorangeResidualFilteringTimeConstant = v
@@ -35903,19 +38186,19 @@ func DecodeGnssRaimSettings(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p GnssRaimSettings) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUnit(p.RadialPositionErrorMaximumThreshold, 16, 0.010000, 0, 0, false)
+    err = stream.writeUnit(p.RadialPositionErrorMaximumThreshold, 16, 0.010000, 0, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt8(p.ProbabilityOfFalseAlarm, 8, 16)
+    err = stream.writeInt8(p.ProbabilityOfFalseAlarm, 8, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt8(p.ProbabilityOfMissedDetection, 8, 24)
+    err = stream.writeInt8(p.ProbabilityOfMissedDetection, 8, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.PseudorangeResidualFilteringTimeConstant, 16, 32)
+    err = stream.writeUint16(p.PseudorangeResidualFilteringTimeConstant, 16, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -35942,42 +38225,42 @@ func DecodeGnssPseudorangeErrorStatistics(Info MessageInfo, stream *DataStream) 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-RmsStdDevOfRangeInputs: %w", err)
     } else {
         val.RmsStdDevOfRangeInputs = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevOfMajorErrorEllipse: %w", err)
     } else {
         val.StdDevOfMajorErrorEllipse = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevOfMinorErrorEllipse: %w", err)
     } else {
         val.StdDevOfMinorErrorEllipse = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-OrientationOfErrorEllipse: %w", err)
     } else {
         val.OrientationOfErrorEllipse = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevLatError: %w", err)
     } else {
         val.StdDevLatError = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevLonError: %w", err)
     } else {
         val.StdDevLonError = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevAltError: %w", err)
     } else {
         val.StdDevAltError = nullableUnit(units.Meter, v, units.NewDistance)
@@ -35988,35 +38271,35 @@ func DecodeGnssPseudorangeErrorStatistics(Info MessageInfo, stream *DataStream) 
 // Encode implementation for complete variant
 func (p GnssPseudorangeErrorStatistics) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.RmsStdDevOfRangeInputs, 16, 0.010000, 8, 0, false)
+    err = stream.writeUnit(p.RmsStdDevOfRangeInputs, 16, 0.010000, 8, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.StdDevOfMajorErrorEllipse, 16, 0.010000, 24, 0, false)
+    err = stream.writeUnit(p.StdDevOfMajorErrorEllipse, 16, 0.010000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.StdDevOfMinorErrorEllipse, 16, 0.010000, 40, 0, false)
+    err = stream.writeUnit(p.StdDevOfMinorErrorEllipse, 16, 0.010000, 40, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.OrientationOfErrorEllipse, 16, 0.0001, 56, 0)
+    err = stream.writeUnsignedResolution32(p.OrientationOfErrorEllipse, 16, 0.0001, 56, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.StdDevLatError, 16, 0.010000, 72, 0, false)
+    err = stream.writeUnit(p.StdDevLatError, 16, 0.010000, 72, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.StdDevLonError, 16, 0.010000, 88, 0, false)
+    err = stream.writeUnit(p.StdDevLonError, 16, 0.010000, 88, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.StdDevAltError, 16, 0.010000, 104, 0, false)
+    err = stream.writeUnit(p.StdDevAltError, 16, 0.010000, 104, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -36041,12 +38324,12 @@ func DecodeDgnssCorrections(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt16(12); err != nil {
+    if v, err := stream.readUInt16(12, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-ReferenceStationId: %w", err)
     } else {
         val.ReferenceStationId = v
@@ -36056,7 +38339,7 @@ func DecodeDgnssCorrections(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.ReferenceStationType = GnsConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-TimeOfCorrections: %w", err)
     } else {
         val.TimeOfCorrections = v
@@ -36067,27 +38350,27 @@ func DecodeDgnssCorrections(Info MessageInfo, stream *DataStream) (any, error) {
         val.StationHealth = StationHealthConst(v)
     }
        stream.skipBits(4)
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-SatelliteId: %w", err)
     } else {
         val.SatelliteId = v
     }
-    if v, err := stream.readSignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-Prc: %w", err)
     } else {
         val.Prc = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readSignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-Rrc: %w", err)
     } else {
         val.Rrc = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-Udre: %w", err)
     } else {
         val.Udre = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-Iod: %w", err)
     } else {
         val.Iod = v
@@ -36098,11 +38381,11 @@ func DecodeDgnssCorrections(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p DgnssCorrections) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.ReferenceStationId, 12, 8)
+    err = stream.writeUint16(p.ReferenceStationId, 12, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -36110,7 +38393,7 @@ func (p DgnssCorrections) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.TimeOfCorrections, 16, 0.1, 24, 0)
+    err = stream.writeUnsignedResolution32(p.TimeOfCorrections, 16, 0.1, 24, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -36122,23 +38405,23 @@ func (p DgnssCorrections) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SatelliteId, 8, 48)
+    err = stream.writeUint8(p.SatelliteId, 8, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Prc, 32, 0.000100, 56, 0, true)
+    err = stream.writeUnit(p.Prc, 32, 0.000100, 56, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Rrc, 16, 0.000100, 88, 0, true)
+    err = stream.writeUnit(p.Rrc, 16, 0.000100, 88, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Udre, 16, 0.010000, 104, 0, false)
+    err = stream.writeUnit(p.Udre, 16, 0.010000, 104, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Iod, 8, 120)
+    err = stream.writeUint8(p.Iod, 8, 120, 2)
     if err != nil {
         return nil, err
     }
@@ -36159,12 +38442,12 @@ func DecodeGnssDifferentialCorrectionReceiverInterface(Info MessageInfo, stream 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-Channel: %w", err)
     } else {
         val.Channel = v
     }
-    if v, err := stream.readUnsignedResolution(32, 10, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 10, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-Frequency: %w", err)
     } else {
         val.Frequency = v
@@ -36196,11 +38479,11 @@ func DecodeGnssDifferentialCorrectionReceiverInterface(Info MessageInfo, stream 
 // Encode implementation for complete variant
 func (p GnssDifferentialCorrectionReceiverInterface) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Channel, 8, 0)
+    err = stream.writeUint8(p.Channel, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Frequency, 32, 10, 8, 0)
+    err = stream.writeUnsignedResolution32(p.Frequency, 32, 10, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -36248,27 +38531,27 @@ func DecodeGnssDifferentialCorrectionReceiverSignal(Info MessageInfo, stream *Da
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-Channel: %w", err)
     } else {
         val.Channel = v
     }
-    if v, err := stream.readSignedResolution(32, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-SignalStrength: %w", err)
     } else {
         val.SignalStrength = v
     }
-    if v, err := stream.readSignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-SignalSnr: %w", err)
     } else {
         val.SignalSnr = v
     }
-    if v, err := stream.readUnsignedResolution(32, 10, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 10, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-Frequency: %w", err)
     } else {
         val.Frequency = v
@@ -36278,7 +38561,7 @@ func DecodeGnssDifferentialCorrectionReceiverSignal(Info MessageInfo, stream *Da
     } else {
         val.StationType = GnsConst(v)
     }
-    if v, err := stream.readUInt16(12); err != nil {
+    if v, err := stream.readUInt16(12, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-ReferenceStationId: %w", err)
     } else {
         val.ReferenceStationId = v
@@ -36304,12 +38587,12 @@ func DecodeGnssDifferentialCorrectionReceiverSignal(Info MessageInfo, stream *Da
     } else {
         val.DifferentialSource = DifferentialSourceConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-TimeSinceLastSatDifferentialSync: %w", err)
     } else {
         val.TimeSinceLastSatDifferentialSync = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-SatelliteServiceIdNo: %w", err)
     } else {
         val.SatelliteServiceIdNo = v
@@ -36320,23 +38603,23 @@ func DecodeGnssDifferentialCorrectionReceiverSignal(Info MessageInfo, stream *Da
 // Encode implementation for complete variant
 func (p GnssDifferentialCorrectionReceiverSignal) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Channel, 8, 8)
+    err = stream.writeUint8(p.Channel, 8, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.SignalStrength, 32, 0.01, 16, 0)
+    err = stream.writeSignedResolution32(p.SignalStrength, 32, 0.01, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.SignalSnr, 16, 0.01, 48, 0)
+    err = stream.writeSignedResolution32(p.SignalSnr, 16, 0.01, 48, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Frequency, 32, 10, 64, 0)
+    err = stream.writeUnsignedResolution32(p.Frequency, 32, 10, 64, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -36344,7 +38627,7 @@ func (p GnssDifferentialCorrectionReceiverSignal) Encode(stream *DataStream) (*M
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.ReferenceStationId, 12, 100)
+    err = stream.writeUint16(p.ReferenceStationId, 12, 100, 2)
     if err != nil {
         return nil, err
     }
@@ -36368,11 +38651,11 @@ func (p GnssDifferentialCorrectionReceiverSignal) Encode(stream *DataStream) (*M
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.TimeSinceLastSatDifferentialSync, 16, 0.01, 128, 0)
+    err = stream.writeUnsignedResolution32(p.TimeSinceLastSatDifferentialSync, 16, 0.01, 128, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.SatelliteServiceIdNo, 16, 144)
+    err = stream.writeUint16(p.SatelliteServiceIdNo, 16, 144, 2)
     if err != nil {
         return nil, err
     }
@@ -36400,68 +38683,68 @@ func DecodeGlonassAlmanacData(Info MessageInfo, stream *DataStream) (any, error)
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Prn: %w", err)
     } else {
         val.Prn = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Na: %w", err)
     } else {
         val.Na = v
     }
        stream.skipBits(2)
-    if v, err := stream.readUInt8(1); err != nil {
+    if v, err := stream.readUInt8(1, 0); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Cna: %w", err)
     } else {
         val.Cna = v
     }
-    if v, err := stream.readUInt8(5); err != nil {
+    if v, err := stream.readUInt8(5, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Hna: %w", err)
     } else {
         val.Hna = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-EpsilonNa: %w", err)
     } else {
         val.EpsilonNa = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-DeltatnaDot: %w", err)
     } else {
         val.DeltatnaDot = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-OmegaNa: %w", err)
     } else {
         val.OmegaNa = v
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-DeltaTna: %w", err)
     } else {
         val.DeltaTna = v
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Tna: %w", err)
     } else {
         val.Tna = v
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-LambdaNa: %w", err)
     } else {
         val.LambdaNa = v
     }
-    if v, err := stream.readUInt32(24); err != nil {
+    if v, err := stream.readUInt32(24, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-DeltaIna: %w", err)
     } else {
         val.DeltaIna = v
     }
-    if v, err := stream.readUInt32(28); err != nil {
+    if v, err := stream.readUInt32(28, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-TauCa: %w", err)
     } else {
         val.TauCa = v
     }
-    if v, err := stream.readUInt16(12); err != nil {
+    if v, err := stream.readUInt16(12, 2); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-TauNa: %w", err)
     } else {
         val.TauNa = v
@@ -36472,11 +38755,11 @@ func DecodeGlonassAlmanacData(Info MessageInfo, stream *DataStream) (any, error)
 // Encode implementation for complete variant
 func (p GlonassAlmanacData) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Prn, 8, 0)
+    err = stream.writeUint8(p.Prn, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Na, 16, 8)
+    err = stream.writeUint16(p.Na, 16, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -36484,47 +38767,47 @@ func (p GlonassAlmanacData) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Cna, 1, 26)
+    err = stream.writeUint8(p.Cna, 1, 26, 0)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Hna, 5, 27)
+    err = stream.writeUint8(p.Hna, 5, 27, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.EpsilonNa, 16, 32)
+    err = stream.writeUint16(p.EpsilonNa, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.DeltatnaDot, 8, 48)
+    err = stream.writeUint8(p.DeltatnaDot, 8, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.OmegaNa, 16, 56)
+    err = stream.writeUint16(p.OmegaNa, 16, 56, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.DeltaTna, 24, 72)
+    err = stream.writeUint32(p.DeltaTna, 24, 72, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Tna, 24, 96)
+    err = stream.writeUint32(p.Tna, 24, 96, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.LambdaNa, 24, 120)
+    err = stream.writeUint32(p.LambdaNa, 24, 120, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.DeltaIna, 24, 144)
+    err = stream.writeUint32(p.DeltaIna, 24, 144, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.TauCa, 28, 168)
+    err = stream.writeUint32(p.TauCa, 28, 168, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.TauNa, 12, 196)
+    err = stream.writeUint16(p.TauNa, 12, 196, 2)
     if err != nil {
         return nil, err
     }
@@ -36568,12 +38851,12 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *DataStr
     } else {
         val.RepeatIndicator = RepeatIndicatorConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-UserId: %w", err)
     } else {
         val.UserId = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-ImoNumber: %w", err)
     } else {
         val.ImoNumber = v
@@ -36593,37 +38876,37 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *DataStr
     } else {
         val.TypeOfShip = ShipTypeConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Length: %w", err)
     } else {
         val.Length = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Beam: %w", err)
     } else {
         val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-PositionReferenceFromStarboard: %w", err)
     } else {
         val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-PositionReferenceFromBow: %w", err)
     } else {
         val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-EtaDate: %w", err)
     } else {
         val.EtaDate = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-EtaTime: %w", err)
     } else {
         val.EtaTime = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Draft: %w", err)
     } else {
         val.Draft = nullableUnit(units.Meter, v, units.NewDistance)
@@ -36669,11 +38952,11 @@ func (p AisClassAStaticAndVoyageRelatedData) Encode(stream *DataStream) (*Messag
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.UserId, 32, 8)
+    err = stream.writeUint32(p.UserId, 32, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.ImoNumber, 32, 40)
+    err = stream.writeUint32(p.ImoNumber, 32, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -36689,31 +38972,31 @@ func (p AisClassAStaticAndVoyageRelatedData) Encode(stream *DataStream) (*Messag
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Length, 16, 0.100000, 296, 0, false)
+    err = stream.writeUnit(p.Length, 16, 0.100000, 296, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Beam, 16, 0.100000, 312, 0, false)
+    err = stream.writeUnit(p.Beam, 16, 0.100000, 312, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PositionReferenceFromStarboard, 16, 0.100000, 328, 0, false)
+    err = stream.writeUnit(p.PositionReferenceFromStarboard, 16, 0.100000, 328, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PositionReferenceFromBow, 16, 0.100000, 344, 0, false)
+    err = stream.writeUnit(p.PositionReferenceFromBow, 16, 0.100000, 344, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.EtaDate, 16, 360)
+    err = stream.writeUint16(p.EtaDate, 16, 360, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.EtaTime, 32, 0.0001, 376, 0)
+    err = stream.writeUnsignedResolution32(p.EtaTime, 32, 0.0001, 376, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Draft, 16, 0.010000, 408, 0, false)
+    err = stream.writeUnit(p.Draft, 16, 0.010000, 408, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -36776,7 +39059,7 @@ func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *DataStream) (any,
     } else {
         val.RepeatIndicator = RepeatIndicatorConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -36787,12 +39070,12 @@ func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *DataStream) (any,
     } else {
         val.AisTransceiverInformation = AisTransceiverConst(v)
     }
-    if v, err := stream.readUInt8(2); err != nil {
+    if v, err := stream.readUInt8(2, 0); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-SequenceNumber: %w", err)
     } else {
         val.SequenceNumber = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-DestinationId: %w", err)
     } else {
         val.DestinationId = v
@@ -36804,7 +39087,7 @@ func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *DataStream) (any,
         val.RetransmitFlag = YesNoConst(v)
     }
        stream.skipBits(1)
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-NumberOfBitsInBinaryDataField: %w", err)
     } else {
         val.NumberOfBitsInBinaryDataField = v
@@ -36835,7 +39118,7 @@ func (p AisAddressedBinaryMessage) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.SourceId, 32, 8)
+    err = stream.writeUint32(p.SourceId, 32, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -36847,11 +39130,11 @@ func (p AisAddressedBinaryMessage) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SequenceNumber, 2, 46)
+    err = stream.writeUint8(p.SequenceNumber, 2, 46, 0)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.DestinationId, 32, 48)
+    err = stream.writeUint32(p.DestinationId, 32, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -36867,7 +39150,7 @@ func (p AisAddressedBinaryMessage) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfBitsInBinaryDataField, 16, 88)
+    err = stream.writeUint16(p.NumberOfBitsInBinaryDataField, 16, 88, 2)
     if err != nil {
         return nil, err
     }
@@ -36906,7 +39189,7 @@ func DecodeAisAcknowledge(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.RepeatIndicator = RepeatIndicatorConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAcknowledge-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -36926,12 +39209,12 @@ func DecodeAisAcknowledge(Info MessageInfo, stream *DataStream) (any, error) {
     i := 0
     for {
         var rep AisAcknowledgeRepeating1
-        if v, err := stream.readUInt32(32); err != nil {
+        if v, err := stream.readUInt32(32, 2); err != nil {
             return nil, fmt.Errorf("parse failed for AisAcknowledge-DestinationId: %w", err)
         } else {
             rep.DestinationId = v
         }
-        if v, err := stream.readUInt8(2); err != nil {
+        if v, err := stream.readUInt8(2, 0); err != nil {
             return nil, fmt.Errorf("parse failed for AisAcknowledge-SequenceNumber: %w", err)
         } else {
             rep.SequenceNumber = v
@@ -36963,7 +39246,7 @@ func (p AisAcknowledge) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.SourceId, 32, 8)
+    err = stream.writeUint32(p.SourceId, 32, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -36991,11 +39274,11 @@ func (p AisAcknowledge) encodeRepeating1(stream *DataStream) error {
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint32(p.Repeating1[index].DestinationId, 32, 0)
+        err = stream.writeUint32(p.Repeating1[index].DestinationId, 32, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUint8(p.Repeating1[index].SequenceNumber, 2, 0)
+        err = stream.writeUint8(p.Repeating1[index].SequenceNumber, 2, 0, 0)
         if err != nil {
             return err
         }
@@ -37032,7 +39315,7 @@ func DecodeAisBinaryBroadcastMessage(Info MessageInfo, stream *DataStream) (any,
     } else {
         val.RepeatIndicator = RepeatIndicatorConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -37044,7 +39327,7 @@ func DecodeAisBinaryBroadcastMessage(Info MessageInfo, stream *DataStream) (any,
         val.AisTransceiverInformation = AisTransceiverConst(v)
     }
        stream.skipBits(2)
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-NumberOfBitsInBinaryDataField: %w", err)
     } else {
         val.NumberOfBitsInBinaryDataField = v
@@ -37075,7 +39358,7 @@ func (p AisBinaryBroadcastMessage) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.SourceId, 32, 8)
+    err = stream.writeUint32(p.SourceId, 32, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -37091,7 +39374,7 @@ func (p AisBinaryBroadcastMessage) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfBitsInBinaryDataField, 16, 48)
+    err = stream.writeUint16(p.NumberOfBitsInBinaryDataField, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -37116,12 +39399,12 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *DataStream) (any, e
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUnsignedResolution(32, 10, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 10, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-RxFrequency: %w", err)
     } else {
         val.RxFrequency = v
     }
-    if v, err := stream.readUnsignedResolution(32, 10, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 10, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-TxFrequency: %w", err)
     } else {
         val.TxFrequency = v
@@ -37131,7 +39414,7 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.RadioChannel = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-TxPower: %w", err)
     } else {
         val.TxPower = v
@@ -37141,7 +39424,7 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.Mode = TelephoneModeConst(v)
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-ChannelBandwidth: %w", err)
     } else {
         val.ChannelBandwidth = v
@@ -37152,11 +39435,11 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *DataStream) (any, e
 // Encode implementation for complete variant
 func (p RadioFrequencyModePower) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUnsignedResolution32(p.RxFrequency, 32, 10, 0, 0)
+    err = stream.writeUnsignedResolution32(p.RxFrequency, 32, 10, 0, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.TxFrequency, 32, 10, 32, 0)
+    err = stream.writeUnsignedResolution32(p.TxFrequency, 32, 10, 32, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -37164,7 +39447,7 @@ func (p RadioFrequencyModePower) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.TxPower, 16, 112)
+    err = stream.writeUint16(p.TxPower, 16, 112, 2)
     if err != nil {
         return nil, err
     }
@@ -37172,7 +39455,7 @@ func (p RadioFrequencyModePower) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.ChannelBandwidth, 16, 136)
+    err = stream.writeUint16(p.ChannelBandwidth, 16, 136, 2)
     if err != nil {
         return nil, err
     }
@@ -37203,7 +39486,7 @@ func DecodeAisClassBStaticDataMsg24PartA(Info MessageInfo, stream *DataStream) (
     } else {
         val.RepeatIndicator = RepeatIndicatorConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-UserId: %w", err)
     } else {
         val.UserId = v
@@ -37219,7 +39502,7 @@ func DecodeAisClassBStaticDataMsg24PartA(Info MessageInfo, stream *DataStream) (
         val.AisTransceiverInformation = AisTransceiverConst(v)
     }
        stream.skipBits(3)
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-SequenceId: %w", err)
     } else {
         val.SequenceId = v
@@ -37238,7 +39521,7 @@ func (p AisClassBStaticDataMsg24PartA) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.UserId, 32, 8)
+    err = stream.writeUint32(p.UserId, 32, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -37254,7 +39537,7 @@ func (p AisClassBStaticDataMsg24PartA) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SequenceId, 8, 208)
+    err = stream.writeUint8(p.SequenceId, 8, 208, 2)
     if err != nil {
         return nil, err
     }
@@ -37293,7 +39576,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *DataStream) (
     } else {
         val.RepeatIndicator = RepeatIndicatorConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-UserId: %w", err)
     } else {
         val.UserId = v
@@ -37313,27 +39596,27 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *DataStream) (
     } else {
         val.Callsign = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Length: %w", err)
     } else {
         val.Length = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Beam: %w", err)
     } else {
         val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-PositionReferenceFromStarboard: %w", err)
     } else {
         val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-PositionReferenceFromBow: %w", err)
     } else {
         val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-MothershipUserId: %w", err)
     } else {
         val.MothershipUserId = v
@@ -37351,7 +39634,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *DataStream) (
         val.AisTransceiverInformation = AisTransceiverConst(v)
     }
        stream.skipBits(3)
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-SequenceId: %w", err)
     } else {
         val.SequenceId = v
@@ -37370,7 +39653,7 @@ func (p AisClassBStaticDataMsg24PartB) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.UserId, 32, 8)
+    err = stream.writeUint32(p.UserId, 32, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -37386,23 +39669,23 @@ func (p AisClassBStaticDataMsg24PartB) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Length, 16, 0.100000, 160, 0, false)
+    err = stream.writeUnit(p.Length, 16, 0.100000, 160, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Beam, 16, 0.100000, 176, 0, false)
+    err = stream.writeUnit(p.Beam, 16, 0.100000, 176, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PositionReferenceFromStarboard, 16, 0.100000, 192, 0, false)
+    err = stream.writeUnit(p.PositionReferenceFromStarboard, 16, 0.100000, 192, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PositionReferenceFromBow, 16, 0.100000, 208, 0, false)
+    err = stream.writeUnit(p.PositionReferenceFromBow, 16, 0.100000, 208, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.MothershipUserId, 32, 224)
+    err = stream.writeUint32(p.MothershipUserId, 32, 224, 2)
     if err != nil {
         return nil, err
     }
@@ -37426,7 +39709,7 @@ func (p AisClassBStaticDataMsg24PartB) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SequenceId, 8, 272)
+    err = stream.writeUint8(p.SequenceId, 8, 272, 2)
     if err != nil {
         return nil, err
     }
@@ -37456,12 +39739,12 @@ func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-StartDatabaseId: %w", err)
     } else {
         val.StartDatabaseId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -37469,7 +39752,7 @@ func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfDatabasesAvailable: %w", err)
     } else {
         val.NumberOfDatabasesAvailable = v
@@ -37482,7 +39765,7 @@ func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (
     i := 0
     for {
         var rep RouteAndWpServiceDatabaseListRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-DatabaseId: %w", err)
         } else {
             rep.DatabaseId = v
@@ -37492,12 +39775,12 @@ func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (
         } else {
             rep.DatabaseName = v
         }
-        if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+        if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-DatabaseTimestamp: %w", err)
         } else {
             rep.DatabaseTimestamp = v
         }
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-DatabaseDatestamp: %w", err)
         } else {
             rep.DatabaseDatestamp = v
@@ -37508,17 +39791,17 @@ func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (
             rep.WpPositionResolution = WpPositionResolutionConst(v)
         }
         stream.skipBits(4)
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfRoutesInDatabase: %w", err)
         } else {
             rep.NumberOfRoutesInDatabase = v
         }
-        if v, err := stream.readUInt32(32); err != nil {
+        if v, err := stream.readUInt32(32, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfWpsInDatabase: %w", err)
         } else {
             rep.NumberOfWpsInDatabase = v
         }
-        if v, err := stream.readUInt32(32); err != nil {
+        if v, err := stream.readUInt32(32, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfBytesInDatabase: %w", err)
         } else {
             rep.NumberOfBytesInDatabase = v
@@ -37541,15 +39824,15 @@ func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (
 // Encode implementation for complete variant
 func (p RouteAndWpServiceDatabaseList) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartDatabaseId, 16, 0)
+    err = stream.writeUint16(p.StartDatabaseId, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfDatabasesAvailable, 16, 32)
+    err = stream.writeUint16(p.NumberOfDatabasesAvailable, 16, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -37565,7 +39848,7 @@ func (p RouteAndWpServiceDatabaseList) encodeRepeating1(stream *DataStream) erro
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].DatabaseId, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].DatabaseId, 16, 0, 2)
         if err != nil {
             return err
         }
@@ -37573,11 +39856,11 @@ func (p RouteAndWpServiceDatabaseList) encodeRepeating1(stream *DataStream) erro
         if err != nil {
             return err
         }
-        err = stream.writeUnsignedResolution32(p.Repeating1[index].DatabaseTimestamp, 32, 0.0001, 0, 0)
+        err = stream.writeUnsignedResolution32(p.Repeating1[index].DatabaseTimestamp, 32, 0.0001, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUint16(p.Repeating1[index].DatabaseDatestamp, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].DatabaseDatestamp, 16, 0, 2)
         if err != nil {
             return err
         }
@@ -37589,15 +39872,15 @@ func (p RouteAndWpServiceDatabaseList) encodeRepeating1(stream *DataStream) erro
         if err != nil {
             return err
         }
-        err = stream.writeUint16(p.Repeating1[index].NumberOfRoutesInDatabase, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].NumberOfRoutesInDatabase, 16, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUint32(p.Repeating1[index].NumberOfWpsInDatabase, 32, 0)
+        err = stream.writeUint32(p.Repeating1[index].NumberOfWpsInDatabase, 32, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUint32(p.Repeating1[index].NumberOfBytesInDatabase, 32, 0)
+        err = stream.writeUint32(p.Repeating1[index].NumberOfBytesInDatabase, 32, 0, 2)
         if err != nil {
             return err
         }
@@ -37625,12 +39908,12 @@ func DecodeRouteAndWpServiceRouteList(Info MessageInfo, stream *DataStream) (any
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-StartRouteId: %w", err)
     } else {
         val.StartRouteId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -37638,12 +39921,12 @@ func DecodeRouteAndWpServiceRouteList(Info MessageInfo, stream *DataStream) (any
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-NumberOfRoutesInDatabase: %w", err)
     } else {
         val.NumberOfRoutesInDatabase = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
@@ -37656,7 +39939,7 @@ func DecodeRouteAndWpServiceRouteList(Info MessageInfo, stream *DataStream) (any
     i := 0
     for {
         var rep RouteAndWpServiceRouteListRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-RouteId: %w", err)
         } else {
             rep.RouteId = v
@@ -37695,19 +39978,19 @@ func DecodeRouteAndWpServiceRouteList(Info MessageInfo, stream *DataStream) (any
 // Encode implementation for complete variant
 func (p RouteAndWpServiceRouteList) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartRouteId, 16, 0)
+    err = stream.writeUint16(p.StartRouteId, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfRoutesInDatabase, 16, 32)
+    err = stream.writeUint16(p.NumberOfRoutesInDatabase, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.DatabaseId, 16, 48)
+    err = stream.writeUint16(p.DatabaseId, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -37723,7 +40006,7 @@ func (p RouteAndWpServiceRouteList) encodeRepeating1(stream *DataStream) error {
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].RouteId, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].RouteId, 16, 0, 2)
         if err != nil {
             return err
         }
@@ -37767,12 +40050,12 @@ func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *Data
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteId: %w", err)
     } else {
         val.RouteId = v
@@ -37782,12 +40065,12 @@ func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *Data
     } else {
         val.RouteWpListName = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteWpListTimestamp: %w", err)
     } else {
         val.RouteWpListTimestamp = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteWpListDatestamp: %w", err)
     } else {
         val.RouteWpListDatestamp = v
@@ -37797,7 +40080,7 @@ func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *Data
     } else {
         val.ChangeAtLastTimestamp = WpChangeConst(v)
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-NumberOfWpsInTheRouteWpList: %w", err)
     } else {
         val.NumberOfWpsInTheRouteWpList = v
@@ -37822,7 +40105,7 @@ func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *Data
     } else {
         val.RouteStatus = WpRouteStatusConst(v)
     }
-    if v, err := stream.readInt16(16); err != nil {
+    if v, err := stream.readInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-XteLimitForTheRoute: %w", err)
     } else {
         val.XteLimitForTheRoute = nullableUnit(units.Meter, v, units.NewDistance)
@@ -37833,11 +40116,11 @@ func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *Data
 // Encode implementation for complete variant
 func (p RouteAndWpServiceRouteWpListAttributes) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.DatabaseId, 16, 0)
+    err = stream.writeUint16(p.DatabaseId, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.RouteId, 16, 16)
+    err = stream.writeUint16(p.RouteId, 16, 16, 2)
     if err != nil {
         return nil, err
     }
@@ -37845,11 +40128,11 @@ func (p RouteAndWpServiceRouteWpListAttributes) Encode(stream *DataStream) (*Mes
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.RouteWpListTimestamp, 32, 0.0001, 0, 0)
+    err = stream.writeUnsignedResolution32(p.RouteWpListTimestamp, 32, 0.0001, 0, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.RouteWpListDatestamp, 16, 0)
+    err = stream.writeUint16(p.RouteWpListDatestamp, 16, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -37857,7 +40140,7 @@ func (p RouteAndWpServiceRouteWpListAttributes) Encode(stream *DataStream) (*Mes
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfWpsInTheRouteWpList, 16, 0)
+    err = stream.writeUint16(p.NumberOfWpsInTheRouteWpList, 16, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -37877,7 +40160,7 @@ func (p RouteAndWpServiceRouteWpListAttributes) Encode(stream *DataStream) (*Mes
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.XteLimitForTheRoute, 16, 1.000000, 0, 0, true)
+    err = stream.writeUnit(p.XteLimitForTheRoute, 16, 1.000000, 0, 0, true, 2)
     if err != nil {
         return nil, err
     }
@@ -37905,12 +40188,12 @@ func DecodeRouteAndWpServiceRouteWpNamePosition(Info MessageInfo, stream *DataSt
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-StartRps: %w", err)
     } else {
         val.StartRps = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -37918,17 +40201,17 @@ func DecodeRouteAndWpServiceRouteWpNamePosition(Info MessageInfo, stream *DataSt
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-NumberOfWpsInTheRouteWpList: %w", err)
     } else {
         val.NumberOfWpsInTheRouteWpList = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-RouteId: %w", err)
     } else {
         val.RouteId = v
@@ -37941,7 +40224,7 @@ func DecodeRouteAndWpServiceRouteWpNamePosition(Info MessageInfo, stream *DataSt
     i := 0
     for {
         var rep RouteAndWpServiceRouteWpNamePositionRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-WpId: %w", err)
         } else {
             rep.WpId = v
@@ -37951,12 +40234,12 @@ func DecodeRouteAndWpServiceRouteWpNamePosition(Info MessageInfo, stream *DataSt
         } else {
             rep.WpName = v
         }
-        if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+        if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-WpLatitude: %w", err)
         } else {
             rep.WpLatitude = v
         }
-        if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+        if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-WpLongitude: %w", err)
         } else {
             rep.WpLongitude = v
@@ -37979,23 +40262,23 @@ func DecodeRouteAndWpServiceRouteWpNamePosition(Info MessageInfo, stream *DataSt
 // Encode implementation for complete variant
 func (p RouteAndWpServiceRouteWpNamePosition) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartRps, 16, 0)
+    err = stream.writeUint16(p.StartRps, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfWpsInTheRouteWpList, 16, 32)
+    err = stream.writeUint16(p.NumberOfWpsInTheRouteWpList, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.DatabaseId, 16, 48)
+    err = stream.writeUint16(p.DatabaseId, 16, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.RouteId, 16, 64)
+    err = stream.writeUint16(p.RouteId, 16, 64, 2)
     if err != nil {
         return nil, err
     }
@@ -38011,7 +40294,7 @@ func (p RouteAndWpServiceRouteWpNamePosition) encodeRepeating1(stream *DataStrea
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].WpId, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].WpId, 16, 0, 2)
         if err != nil {
             return err
         }
@@ -38019,11 +40302,11 @@ func (p RouteAndWpServiceRouteWpNamePosition) encodeRepeating1(stream *DataStrea
         if err != nil {
             return err
         }
-        err = stream.writeSignedResolution64(p.Repeating1[index].WpLatitude, 32, 1e-07, 0, 0)
+        err = stream.writeSignedResolution64(p.Repeating1[index].WpLatitude, 32, 1e-07, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeSignedResolution64(p.Repeating1[index].WpLongitude, 32, 1e-07, 0, 0)
+        err = stream.writeSignedResolution64(p.Repeating1[index].WpLongitude, 32, 1e-07, 0, 0, 2)
         if err != nil {
             return err
         }
@@ -38050,12 +40333,12 @@ func DecodeRouteAndWpServiceRouteWpName(Info MessageInfo, stream *DataStream) (a
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-StartRps: %w", err)
     } else {
         val.StartRps = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -38063,17 +40346,17 @@ func DecodeRouteAndWpServiceRouteWpName(Info MessageInfo, stream *DataStream) (a
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-NumberOfWpsInTheRouteWpList: %w", err)
     } else {
         val.NumberOfWpsInTheRouteWpList = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-RouteId: %w", err)
     } else {
         val.RouteId = v
@@ -38086,7 +40369,7 @@ func DecodeRouteAndWpServiceRouteWpName(Info MessageInfo, stream *DataStream) (a
     i := 0
     for {
         var rep RouteAndWpServiceRouteWpNameRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-WpId: %w", err)
         } else {
             rep.WpId = v
@@ -38114,23 +40397,23 @@ func DecodeRouteAndWpServiceRouteWpName(Info MessageInfo, stream *DataStream) (a
 // Encode implementation for complete variant
 func (p RouteAndWpServiceRouteWpName) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartRps, 16, 0)
+    err = stream.writeUint16(p.StartRps, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfWpsInTheRouteWpList, 16, 32)
+    err = stream.writeUint16(p.NumberOfWpsInTheRouteWpList, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.DatabaseId, 16, 48)
+    err = stream.writeUint16(p.DatabaseId, 16, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.RouteId, 16, 64)
+    err = stream.writeUint16(p.RouteId, 16, 64, 2)
     if err != nil {
         return nil, err
     }
@@ -38146,7 +40429,7 @@ func (p RouteAndWpServiceRouteWpName) encodeRepeating1(stream *DataStream) error
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].WpId, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].WpId, 16, 0, 2)
         if err != nil {
             return err
         }
@@ -38178,12 +40461,12 @@ func DecodeRouteAndWpServiceXteLimitNavigationMethod(Info MessageInfo, stream *D
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-StartRps: %w", err)
     } else {
         val.StartRps = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -38191,7 +40474,7 @@ func DecodeRouteAndWpServiceXteLimitNavigationMethod(Info MessageInfo, stream *D
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-NumberOfWpsWithASpecificXteLimitOrNavMethod: %w", err)
     } else {
         val.NumberOfWpsWithASpecificXteLimitOrNavMethod = v
@@ -38204,22 +40487,22 @@ func DecodeRouteAndWpServiceXteLimitNavigationMethod(Info MessageInfo, stream *D
     i := 0
     for {
         var rep RouteAndWpServiceXteLimitNavigationMethodRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-DatabaseId: %w", err)
         } else {
             rep.DatabaseId = v
         }
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-RouteId: %w", err)
         } else {
             rep.RouteId = v
         }
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-Rps: %w", err)
         } else {
             rep.Rps = v
         }
-        if v, err := stream.readInt16(16); err != nil {
+        if v, err := stream.readInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-XteLimitInTheLegAfterWp: %w", err)
         } else {
             rep.XteLimitInTheLegAfterWp = nullableUnit(units.Meter, v, units.NewDistance)
@@ -38248,15 +40531,15 @@ func DecodeRouteAndWpServiceXteLimitNavigationMethod(Info MessageInfo, stream *D
 // Encode implementation for complete variant
 func (p RouteAndWpServiceXteLimitNavigationMethod) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartRps, 16, 0)
+    err = stream.writeUint16(p.StartRps, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfWpsWithASpecificXteLimitOrNavMethod, 16, 32)
+    err = stream.writeUint16(p.NumberOfWpsWithASpecificXteLimitOrNavMethod, 16, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -38272,19 +40555,19 @@ func (p RouteAndWpServiceXteLimitNavigationMethod) encodeRepeating1(stream *Data
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].DatabaseId, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].DatabaseId, 16, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUint16(p.Repeating1[index].RouteId, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].RouteId, 16, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUint16(p.Repeating1[index].Rps, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].Rps, 16, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnit(p.Repeating1[index].XteLimitInTheLegAfterWp, 16, 1.000000, 0, 0, true)
+        err = stream.writeUnit(p.Repeating1[index].XteLimitInTheLegAfterWp, 16, 1.000000, 0, 0, true, 2)
         if err != nil {
             return err
         }
@@ -38319,12 +40602,12 @@ func DecodeRouteAndWpServiceWpComment(Info MessageInfo, stream *DataStream) (any
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-StartId: %w", err)
     } else {
         val.StartId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -38332,17 +40615,17 @@ func DecodeRouteAndWpServiceWpComment(Info MessageInfo, stream *DataStream) (any
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-NumberOfWpsWithComments: %w", err)
     } else {
         val.NumberOfWpsWithComments = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-RouteId: %w", err)
     } else {
         val.RouteId = v
@@ -38355,7 +40638,7 @@ func DecodeRouteAndWpServiceWpComment(Info MessageInfo, stream *DataStream) (any
     i := 0
     for {
         var rep RouteAndWpServiceWpCommentRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-WpIdRps: %w", err)
         } else {
             rep.WpIdRps = v
@@ -38383,23 +40666,23 @@ func DecodeRouteAndWpServiceWpComment(Info MessageInfo, stream *DataStream) (any
 // Encode implementation for complete variant
 func (p RouteAndWpServiceWpComment) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartId, 16, 0)
+    err = stream.writeUint16(p.StartId, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfWpsWithComments, 16, 32)
+    err = stream.writeUint16(p.NumberOfWpsWithComments, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.DatabaseId, 16, 48)
+    err = stream.writeUint16(p.DatabaseId, 16, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.RouteId, 16, 64)
+    err = stream.writeUint16(p.RouteId, 16, 64, 2)
     if err != nil {
         return nil, err
     }
@@ -38415,7 +40698,7 @@ func (p RouteAndWpServiceWpComment) encodeRepeating1(stream *DataStream) error {
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].WpIdRps, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].WpIdRps, 16, 0, 2)
         if err != nil {
             return err
         }
@@ -38445,12 +40728,12 @@ func DecodeRouteAndWpServiceRouteComment(Info MessageInfo, stream *DataStream) (
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-StartRouteId: %w", err)
     } else {
         val.StartRouteId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -38458,12 +40741,12 @@ func DecodeRouteAndWpServiceRouteComment(Info MessageInfo, stream *DataStream) (
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-NumberOfRoutesWithComments: %w", err)
     } else {
         val.NumberOfRoutesWithComments = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
@@ -38476,7 +40759,7 @@ func DecodeRouteAndWpServiceRouteComment(Info MessageInfo, stream *DataStream) (
     i := 0
     for {
         var rep RouteAndWpServiceRouteCommentRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-RouteId: %w", err)
         } else {
             rep.RouteId = v
@@ -38504,19 +40787,19 @@ func DecodeRouteAndWpServiceRouteComment(Info MessageInfo, stream *DataStream) (
 // Encode implementation for complete variant
 func (p RouteAndWpServiceRouteComment) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartRouteId, 16, 0)
+    err = stream.writeUint16(p.StartRouteId, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfRoutesWithComments, 16, 32)
+    err = stream.writeUint16(p.NumberOfRoutesWithComments, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.DatabaseId, 16, 48)
+    err = stream.writeUint16(p.DatabaseId, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -38532,7 +40815,7 @@ func (p RouteAndWpServiceRouteComment) encodeRepeating1(stream *DataStream) erro
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].RouteId, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].RouteId, 16, 0, 2)
         if err != nil {
             return err
         }
@@ -38561,12 +40844,12 @@ func DecodeRouteAndWpServiceDatabaseComment(Info MessageInfo, stream *DataStream
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-StartDatabaseId: %w", err)
     } else {
         val.StartDatabaseId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -38574,7 +40857,7 @@ func DecodeRouteAndWpServiceDatabaseComment(Info MessageInfo, stream *DataStream
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-NumberOfDatabasesWithComments: %w", err)
     } else {
         val.NumberOfDatabasesWithComments = v
@@ -38587,7 +40870,7 @@ func DecodeRouteAndWpServiceDatabaseComment(Info MessageInfo, stream *DataStream
     i := 0
     for {
         var rep RouteAndWpServiceDatabaseCommentRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-DatabaseId: %w", err)
         } else {
             rep.DatabaseId = v
@@ -38615,15 +40898,15 @@ func DecodeRouteAndWpServiceDatabaseComment(Info MessageInfo, stream *DataStream
 // Encode implementation for complete variant
 func (p RouteAndWpServiceDatabaseComment) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartDatabaseId, 16, 0)
+    err = stream.writeUint16(p.StartDatabaseId, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfDatabasesWithComments, 16, 32)
+    err = stream.writeUint16(p.NumberOfDatabasesWithComments, 16, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -38639,7 +40922,7 @@ func (p RouteAndWpServiceDatabaseComment) encodeRepeating1(stream *DataStream) e
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].DatabaseId, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].DatabaseId, 16, 0, 2)
         if err != nil {
             return err
         }
@@ -38670,12 +40953,12 @@ func DecodeRouteAndWpServiceRadiusOfTurn(Info MessageInfo, stream *DataStream) (
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-StartRps: %w", err)
     } else {
         val.StartRps = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -38683,17 +40966,17 @@ func DecodeRouteAndWpServiceRadiusOfTurn(Info MessageInfo, stream *DataStream) (
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-NumberOfWpsWithASpecificRadiusOfTurn: %w", err)
     } else {
         val.NumberOfWpsWithASpecificRadiusOfTurn = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-RouteId: %w", err)
     } else {
         val.RouteId = v
@@ -38706,12 +40989,12 @@ func DecodeRouteAndWpServiceRadiusOfTurn(Info MessageInfo, stream *DataStream) (
     i := 0
     for {
         var rep RouteAndWpServiceRadiusOfTurnRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-Rps: %w", err)
         } else {
             rep.Rps = v
         }
-        if v, err := stream.readInt16(16); err != nil {
+        if v, err := stream.readInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-RadiusOfTurn: %w", err)
         } else {
             rep.RadiusOfTurn = nullableUnit(units.Meter, v, units.NewDistance)
@@ -38734,23 +41017,23 @@ func DecodeRouteAndWpServiceRadiusOfTurn(Info MessageInfo, stream *DataStream) (
 // Encode implementation for complete variant
 func (p RouteAndWpServiceRadiusOfTurn) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartRps, 16, 0)
+    err = stream.writeUint16(p.StartRps, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfWpsWithASpecificRadiusOfTurn, 16, 32)
+    err = stream.writeUint16(p.NumberOfWpsWithASpecificRadiusOfTurn, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.DatabaseId, 16, 48)
+    err = stream.writeUint16(p.DatabaseId, 16, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.RouteId, 16, 64)
+    err = stream.writeUint16(p.RouteId, 16, 64, 2)
     if err != nil {
         return nil, err
     }
@@ -38766,11 +41049,11 @@ func (p RouteAndWpServiceRadiusOfTurn) encodeRepeating1(stream *DataStream) erro
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].Rps, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].Rps, 16, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeUnit(p.Repeating1[index].RadiusOfTurn, 16, 1.000000, 0, 0, true)
+        err = stream.writeUnit(p.Repeating1[index].RadiusOfTurn, 16, 1.000000, 0, 0, true, 2)
         if err != nil {
             return err
         }
@@ -38798,12 +41081,12 @@ func DecodeRouteAndWpServiceWpListWpNamePosition(Info MessageInfo, stream *DataS
     var repeat1Count uint16 = 0
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-StartWpId: %w", err)
     } else {
         val.StartWpId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -38811,12 +41094,12 @@ func DecodeRouteAndWpServiceWpListWpNamePosition(Info MessageInfo, stream *DataS
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-NumberOfValidWpsInTheWpList: %w", err)
     } else {
         val.NumberOfValidWpsInTheWpList = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
@@ -38830,7 +41113,7 @@ func DecodeRouteAndWpServiceWpListWpNamePosition(Info MessageInfo, stream *DataS
     i := 0
     for {
         var rep RouteAndWpServiceWpListWpNamePositionRepeating1
-        if v, err := stream.readUInt16(16); err != nil {
+        if v, err := stream.readUInt16(16, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-WpId: %w", err)
         } else {
             rep.WpId = v
@@ -38840,12 +41123,12 @@ func DecodeRouteAndWpServiceWpListWpNamePosition(Info MessageInfo, stream *DataS
         } else {
             rep.WpName = v
         }
-        if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+        if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-WpLatitude: %w", err)
         } else {
             rep.WpLatitude = v
         }
-        if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+        if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-WpLongitude: %w", err)
         } else {
             rep.WpLongitude = v
@@ -38868,19 +41151,19 @@ func DecodeRouteAndWpServiceWpListWpNamePosition(Info MessageInfo, stream *DataS
 // Encode implementation for complete variant
 func (p RouteAndWpServiceWpListWpNamePosition) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint16(p.StartWpId, 16, 0)
+    err = stream.writeUint16(p.StartWpId, 16, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Nitems, 16, 16)
+    err = stream.writeUint16(p.Nitems, 16, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.NumberOfValidWpsInTheWpList, 16, 32)
+    err = stream.writeUint16(p.NumberOfValidWpsInTheWpList, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.DatabaseId, 16, 48)
+    err = stream.writeUint16(p.DatabaseId, 16, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -38900,7 +41183,7 @@ func (p RouteAndWpServiceWpListWpNamePosition) encodeRepeating1(stream *DataStre
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = stream.writeUint16(p.Repeating1[index].WpId, 16, 0)
+        err = stream.writeUint16(p.Repeating1[index].WpId, 16, 0, 2)
         if err != nil {
             return err
         }
@@ -38908,11 +41191,11 @@ func (p RouteAndWpServiceWpListWpNamePosition) encodeRepeating1(stream *DataStre
         if err != nil {
             return err
         }
-        err = stream.writeSignedResolution64(p.Repeating1[index].WpLatitude, 32, 1e-07, 0, 0)
+        err = stream.writeSignedResolution64(p.Repeating1[index].WpLatitude, 32, 1e-07, 0, 0, 2)
         if err != nil {
             return err
         }
-        err = stream.writeSignedResolution64(p.Repeating1[index].WpLongitude, 32, 1e-07, 0, 0)
+        err = stream.writeSignedResolution64(p.Repeating1[index].WpLongitude, 32, 1e-07, 0, 0, 2)
         if err != nil {
             return err
         }
@@ -38932,17 +41215,17 @@ func DecodeWindData(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WindData-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WindData-WindSpeed: %w", err)
     } else {
         val.WindSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WindData-WindAngle: %w", err)
     } else {
         val.WindAngle = v
@@ -38959,15 +41242,15 @@ func DecodeWindData(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p WindData) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.WindSpeed, 16, 0.010000, 8, 0, false)
+    err = stream.writeUnit(p.WindSpeed, 16, 0.010000, 8, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.WindAngle, 16, 0.0001, 24, 0)
+    err = stream.writeUnsignedResolution32(p.WindAngle, 16, 0.0001, 24, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -38994,22 +41277,22 @@ func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *DataStream)
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-WaterTemperature: %w", err)
     } else {
         val.WaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-OutsideAmbientAirTemperature: %w", err)
     } else {
         val.OutsideAmbientAirTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 100, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-AtmosphericPressure: %w", err)
     } else {
         val.AtmosphericPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -39021,19 +41304,19 @@ func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *DataStream)
 // Encode implementation for complete variant
 func (p EnvironmentalParametersObsolete) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.WaterTemperature, 16, 0.010000, 8, 0, false)
+    err = stream.writeUnit(p.WaterTemperature, 16, 0.010000, 8, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.OutsideAmbientAirTemperature, 16, 0.010000, 24, 0, false)
+    err = stream.writeUnit(p.OutsideAmbientAirTemperature, 16, 0.010000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.AtmosphericPressure, 16, 100.000000, 40, 0, false)
+    err = stream.writeUnit(p.AtmosphericPressure, 16, 100.000000, 40, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -39058,7 +41341,7 @@ func DecodeEnvironmentalParameters(Info MessageInfo, stream *DataStream) (any, e
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Sid: %w", err)
     } else {
         val.Sid = v
@@ -39073,17 +41356,17 @@ func DecodeEnvironmentalParameters(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.HumiditySource = HumiditySourceConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Temperature: %w", err)
     } else {
         val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readSignedResolution(16, 0.004, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.004, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Humidity: %w", err)
     } else {
         val.Humidity = v
     }
-    if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 100, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParameters-AtmosphericPressure: %w", err)
     } else {
         val.AtmosphericPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -39094,7 +41377,7 @@ func DecodeEnvironmentalParameters(Info MessageInfo, stream *DataStream) (any, e
 // Encode implementation for complete variant
 func (p EnvironmentalParameters) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -39106,15 +41389,15 @@ func (p EnvironmentalParameters) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Temperature, 16, 0.010000, 16, 0, false)
+    err = stream.writeUnit(p.Temperature, 16, 0.010000, 16, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.Humidity, 16, 0.004, 32, 0)
+    err = stream.writeSignedResolution32(p.Humidity, 16, 0.004, 32, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.AtmosphericPressure, 16, 100.000000, 48, 0, false)
+    err = stream.writeUnit(p.AtmosphericPressure, 16, 100.000000, 48, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -39134,12 +41417,12 @@ func DecodeTemperature(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Temperature-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Temperature-Instance: %w", err)
     } else {
         val.Instance = v
@@ -39149,12 +41432,12 @@ func DecodeTemperature(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Source = TemperatureSourceConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Temperature-ActualTemperature: %w", err)
     } else {
         val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Temperature-SetTemperature: %w", err)
     } else {
         val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -39166,11 +41449,11 @@ func DecodeTemperature(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p Temperature) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Instance, 8, 8)
+    err = stream.writeUint8(p.Instance, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -39178,11 +41461,11 @@ func (p Temperature) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.ActualTemperature, 16, 0.010000, 24, 0, false)
+    err = stream.writeUnit(p.ActualTemperature, 16, 0.010000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.SetTemperature, 16, 0.010000, 40, 0, false)
+    err = stream.writeUnit(p.SetTemperature, 16, 0.010000, 40, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -39206,12 +41489,12 @@ func DecodeHumidity(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Humidity-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Humidity-Instance: %w", err)
     } else {
         val.Instance = v
@@ -39221,12 +41504,12 @@ func DecodeHumidity(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Source = HumiditySourceConst(v)
     }
-    if v, err := stream.readSignedResolution(16, 0.004, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.004, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Humidity-ActualHumidity: %w", err)
     } else {
         val.ActualHumidity = v
     }
-    if v, err := stream.readSignedResolution(16, 0.004, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.004, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for Humidity-SetHumidity: %w", err)
     } else {
         val.SetHumidity = v
@@ -39238,11 +41521,11 @@ func DecodeHumidity(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p Humidity) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Instance, 8, 8)
+    err = stream.writeUint8(p.Instance, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -39250,11 +41533,11 @@ func (p Humidity) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.ActualHumidity, 16, 0.004, 24, 0)
+    err = stream.writeSignedResolution32(p.ActualHumidity, 16, 0.004, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution32(p.SetHumidity, 16, 0.004, 40, 0)
+    err = stream.writeSignedResolution32(p.SetHumidity, 16, 0.004, 40, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -39277,12 +41560,12 @@ func DecodeActualPressure(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ActualPressure-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ActualPressure-Instance: %w", err)
     } else {
         val.Instance = v
@@ -39292,7 +41575,7 @@ func DecodeActualPressure(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Source = PressureSourceConst(v)
     }
-    if v, err := stream.readSignedResolution(32, 0.1, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for ActualPressure-Pressure: %w", err)
     } else {
         val.Pressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -39304,11 +41587,11 @@ func DecodeActualPressure(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p ActualPressure) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Instance, 8, 8)
+    err = stream.writeUint8(p.Instance, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -39316,7 +41599,7 @@ func (p ActualPressure) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Pressure, 32, 0.100000, 24, 0, true)
+    err = stream.writeUnit(p.Pressure, 32, 0.100000, 24, 0, true, 2)
     if err != nil {
         return nil, err
     }
@@ -39339,12 +41622,12 @@ func DecodeSetPressure(Info MessageInfo, stream *DataStream) (any, error) {
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SetPressure-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SetPressure-Instance: %w", err)
     } else {
         val.Instance = v
@@ -39354,7 +41637,7 @@ func DecodeSetPressure(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Source = PressureSourceConst(v)
     }
-    if v, err := stream.readSignedResolution(32, 0.1, 0); err != nil {
+    if v, err := stream.readSignedResolution(32, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SetPressure-Pressure: %w", err)
     } else {
         val.Pressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -39366,11 +41649,11 @@ func DecodeSetPressure(Info MessageInfo, stream *DataStream) (any, error) {
 // Encode implementation for complete variant
 func (p SetPressure) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Instance, 8, 8)
+    err = stream.writeUint8(p.Instance, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -39378,7 +41661,7 @@ func (p SetPressure) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Pressure, 32, 0.100000, 24, 0, true)
+    err = stream.writeUnit(p.Pressure, 32, 0.100000, 24, 0, true, 2)
     if err != nil {
         return nil, err
     }
@@ -39402,12 +41685,12 @@ func DecodeTemperatureExtendedRange(Info MessageInfo, stream *DataStream) (any, 
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Instance: %w", err)
     } else {
         val.Instance = v
@@ -39417,12 +41700,12 @@ func DecodeTemperatureExtendedRange(Info MessageInfo, stream *DataStream) (any, 
     } else {
         val.Source = TemperatureSourceConst(v)
     }
-    if v, err := stream.readUnsignedResolution(24, 0.001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(24, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Temperature: %w", err)
     } else {
         val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-SetTemperature: %w", err)
     } else {
         val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -39433,11 +41716,11 @@ func DecodeTemperatureExtendedRange(Info MessageInfo, stream *DataStream) (any, 
 // Encode implementation for complete variant
 func (p TemperatureExtendedRange) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUint8(p.Sid, 8, 0)
+    err = stream.writeUint8(p.Sid, 8, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Instance, 8, 8)
+    err = stream.writeUint8(p.Instance, 8, 8, 2)
     if err != nil {
         return nil, err
     }
@@ -39445,11 +41728,11 @@ func (p TemperatureExtendedRange) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.Temperature, 24, 0.001000, 24, 0, false)
+    err = stream.writeUnit(p.Temperature, 24, 0.001000, 24, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.SetTemperature, 16, 0.100000, 48, 0, false)
+    err = stream.writeUnit(p.SetTemperature, 16, 0.100000, 48, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -39485,32 +41768,32 @@ func DecodeTideStationData(Info MessageInfo, stream *DataStream) (any, error) {
         val.TideTendency = TideConst(v)
     }
        stream.skipBits(2)
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-MeasurementDate: %w", err)
     } else {
         val.MeasurementDate = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-MeasurementTime: %w", err)
     } else {
         val.MeasurementTime = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-StationLatitude: %w", err)
     } else {
         val.StationLatitude = v
     }
-    if v, err := stream.readSignedResolution64Override(32, 1e-07); err != nil {
+    if v, err := stream.readSignedResolution64Override(32, 1e-07, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-StationLongitude: %w", err)
     } else {
         val.StationLongitude = v
     }
-    if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-TideLevel: %w", err)
     } else {
         val.TideLevel = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-TideLevelStandardDeviation: %w", err)
     } else {
         val.TideLevelStandardDeviation = nullableUnit(units.Meter, v, units.NewDistance)
@@ -39543,27 +41826,27 @@ func (p TideStationData) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.MeasurementDate, 16, 8)
+    err = stream.writeUint16(p.MeasurementDate, 16, 8, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.MeasurementTime, 32, 0.0001, 24, 0)
+    err = stream.writeUnsignedResolution32(p.MeasurementTime, 32, 0.0001, 24, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.StationLatitude, 32, 1e-07, 56, 0)
+    err = stream.writeSignedResolution64(p.StationLatitude, 32, 1e-07, 56, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeSignedResolution64(p.StationLongitude, 32, 1e-07, 88, 0)
+    err = stream.writeSignedResolution64(p.StationLongitude, 32, 1e-07, 88, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.TideLevel, 16, 0.001000, 120, 0, true)
+    err = stream.writeUnit(p.TideLevel, 16, 0.001000, 120, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.TideLevelStandardDeviation, 16, 0.010000, 136, 0, false)
+    err = stream.writeUnit(p.TideLevelStandardDeviation, 16, 0.010000, 136, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -39674,47 +41957,47 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *DataStream)
         val.SystemStatus = OkWarningConst(v)
     }
        stream.skipBits(2)
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-Salinity: %w", err)
     } else {
         val.Salinity = v
     }
-    if v, err := stream.readUnsignedResolution(16, 0.01, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.01, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterTemperature: %w", err)
     } else {
         val.ProductWaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 100, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-PreFilterPressure: %w", err)
     } else {
         val.PreFilterPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := stream.readUnsignedResolution(16, 100, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 100, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-PostFilterPressure: %w", err)
     } else {
         val.PostFilterPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := stream.readSignedResolution(16, 1000, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 1000, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-FeedPressure: %w", err)
     } else {
         val.FeedPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := stream.readUnsignedResolution(16, 1000, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 1000, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SystemHighPressure: %w", err)
     } else {
         val.SystemHighPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterFlow: %w", err)
     } else {
         val.ProductWaterFlow = nullableUnit(units.LitersPerHour, v, units.NewFlow)
     }
-    if v, err := stream.readSignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-BrineWaterFlow: %w", err)
     } else {
         val.BrineWaterFlow = nullableUnit(units.LitersPerHour, v, units.NewFlow)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-RunTime: %w", err)
     } else {
         val.RunTime = v
@@ -39781,39 +42064,39 @@ func (p WatermakerInputSettingAndStatus) Encode(stream *DataStream) (*MessageInf
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Salinity, 16, 32)
+    err = stream.writeUint16(p.Salinity, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.ProductWaterTemperature, 16, 0.010000, 48, 0, false)
+    err = stream.writeUnit(p.ProductWaterTemperature, 16, 0.010000, 48, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PreFilterPressure, 16, 100.000000, 64, 0, false)
+    err = stream.writeUnit(p.PreFilterPressure, 16, 100.000000, 64, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PostFilterPressure, 16, 100.000000, 80, 0, false)
+    err = stream.writeUnit(p.PostFilterPressure, 16, 100.000000, 80, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.FeedPressure, 16, 1000.000000, 96, 0, true)
+    err = stream.writeUnit(p.FeedPressure, 16, 1000.000000, 96, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.SystemHighPressure, 16, 1000.000000, 112, 0, false)
+    err = stream.writeUnit(p.SystemHighPressure, 16, 1000.000000, 112, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.ProductWaterFlow, 16, 0.100000, 128, 0, true)
+    err = stream.writeUnit(p.ProductWaterFlow, 16, 0.100000, 128, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.BrineWaterFlow, 16, 0.100000, 144, 0, true)
+    err = stream.writeUnit(p.BrineWaterFlow, 16, 0.100000, 144, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.RunTime, 32, 160)
+    err = stream.writeUint32(p.RunTime, 32, 160, 2)
     if err != nil {
         return nil, err
     }
@@ -39834,32 +42117,32 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *DataStream) (any, err
     val.Info = Info
 
     // Decode all non-repeating fields
-    if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-LongitudinalSpeedWaterReferenced: %w", err)
     } else {
         val.LongitudinalSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-TransverseSpeedWaterReferenced: %w", err)
     } else {
         val.TransverseSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-LongitudinalSpeedGroundReferenced: %w", err)
     } else {
         val.LongitudinalSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-TransverseSpeedGroundReferenced: %w", err)
     } else {
         val.TransverseSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-SternSpeedWaterReferenced: %w", err)
     } else {
         val.SternSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := stream.readSignedResolution(16, 0.001, 0); err != nil {
+    if v, err := stream.readSignedResolution(16, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-SternSpeedGroundReferenced: %w", err)
     } else {
         val.SternSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -39870,27 +42153,27 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *DataStream) (any, err
 // Encode implementation for complete variant
 func (p VesselSpeedComponents) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
-    err = stream.writeUnit(p.LongitudinalSpeedWaterReferenced, 16, 0.001000, 0, 0, true)
+    err = stream.writeUnit(p.LongitudinalSpeedWaterReferenced, 16, 0.001000, 0, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.TransverseSpeedWaterReferenced, 16, 0.001000, 16, 0, true)
+    err = stream.writeUnit(p.TransverseSpeedWaterReferenced, 16, 0.001000, 16, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.LongitudinalSpeedGroundReferenced, 16, 0.001000, 32, 0, true)
+    err = stream.writeUnit(p.LongitudinalSpeedGroundReferenced, 16, 0.001000, 32, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.TransverseSpeedGroundReferenced, 16, 0.001000, 48, 0, true)
+    err = stream.writeUnit(p.TransverseSpeedGroundReferenced, 16, 0.001000, 48, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.SternSpeedWaterReferenced, 16, 0.001000, 64, 0, true)
+    err = stream.writeUnit(p.SternSpeedWaterReferenced, 16, 0.001000, 64, 0, true, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.SternSpeedGroundReferenced, 16, 0.001000, 80, 0, true)
+    err = stream.writeUnit(p.SternSpeedGroundReferenced, 16, 0.001000, 80, 0, true, 2)
     if err != nil {
         return nil, err
     }
@@ -39942,12 +42225,12 @@ func DecodeSonichubVolume(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Control = SonichubControlConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SonichubVolume-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for SonichubVolume-Level: %w", err)
     } else {
         val.Level = v
@@ -39982,11 +42265,11 @@ func (p SonichubVolume) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone, 8, 40)
+    err = stream.writeUint8(p.Zone, 8, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Level, 8, 48)
+    err = stream.writeUint8(p.Level, 8, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -40034,27 +42317,27 @@ func DecodeFusionVersions(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionVersions-MessageId: Expected %d != %d", 32769, v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-HwVersionMajor: %w", err)
     } else {
         val.HwVersionMajor = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-HwVersionMinor: %w", err)
     } else {
         val.HwVersionMinor = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-SwVersionMajor: %w", err)
     } else {
         val.SwVersionMajor = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-SwVersionMinor: %w", err)
     } else {
         val.SwVersionMinor = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-BuildNumber: %w", err)
     } else {
         val.BuildNumber = v
@@ -40081,23 +42364,23 @@ func (p FusionVersions) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.HwVersionMajor, 16, 32)
+    err = stream.writeUint16(p.HwVersionMajor, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.HwVersionMinor, 16, 48)
+    err = stream.writeUint16(p.HwVersionMinor, 16, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SwVersionMajor, 8, 64)
+    err = stream.writeUint8(p.SwVersionMajor, 8, 64, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SwVersionMinor, 8, 72)
+    err = stream.writeUint8(p.SwVersionMinor, 8, 72, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.BuildNumber, 8, 80)
+    err = stream.writeUint8(p.BuildNumber, 8, 80, 2)
     if err != nil {
         return nil, err
     }
@@ -40145,12 +42428,12 @@ func DecodeFusionSource(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionSource-MessageId: Expected %d != %d", 32770, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-CurrentSourceId: %w", err)
     } else {
         val.CurrentSourceId = v
@@ -40160,7 +42443,7 @@ func DecodeFusionSource(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.SourceType = FusionSourceTypeConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-Flags: %w", err)
     } else {
         val.Flags = v
@@ -40192,11 +42475,11 @@ func (p FusionSource) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.CurrentSourceId, 8, 40)
+    err = stream.writeUint8(p.CurrentSourceId, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -40204,7 +42487,7 @@ func (p FusionSource) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Flags, 8, 56)
+    err = stream.writeUint8(p.Flags, 8, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -40252,7 +42535,7 @@ func DecodeFusionSourceCount(Info MessageInfo, stream *DataStream) (any, error) 
             return nil, fmt.Errorf("match failed for FusionSourceCount-MessageId: Expected %d != %d", 32771, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSourceCount-SourceCount: %w", err)
     } else {
         val.SourceCount = v
@@ -40279,7 +42562,7 @@ func (p FusionSourceCount) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceCount, 8, 32)
+    err = stream.writeUint8(p.SourceCount, 8, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -40328,7 +42611,7 @@ func DecodeFusionMedia(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionMedia-MessageId: Expected %d != %d", 32772, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -40338,22 +42621,22 @@ func DecodeFusionMedia(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Flags = FusionPlayStatusConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-Track: %w", err)
     } else {
         val.Track = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-TrackCount: %w", err)
     } else {
         val.TrackCount = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-Length: %w", err)
     } else {
         val.Length = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-PositionInTrack: %w", err)
     } else {
         val.PositionInTrack = v
@@ -40380,7 +42663,7 @@ func (p FusionMedia) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -40388,19 +42671,19 @@ func (p FusionMedia) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Track, 32, 56)
+    err = stream.writeUint32(p.Track, 32, 56, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.TrackCount, 32, 88)
+    err = stream.writeUint32(p.TrackCount, 32, 88, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Length, 32, 0.001, 120, 0)
+    err = stream.writeUnsignedResolution32(p.Length, 32, 0.001, 120, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.PositionInTrack, 32, 0.001, 152, 0)
+    err = stream.writeUnsignedResolution32(p.PositionInTrack, 32, 0.001, 152, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -40446,12 +42729,12 @@ func DecodeFusionTrackName(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionTrackName-MessageId: Expected %d != %d", 32773, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackName-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackName-Index: %w", err)
     } else {
         val.Index = v
@@ -40483,11 +42766,11 @@ func (p FusionTrackName) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Index, 32, 40)
+    err = stream.writeUint32(p.Index, 32, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -40537,12 +42820,12 @@ func DecodeFusionArtistName(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionArtistName-MessageId: Expected %d != %d", 32774, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionArtistName-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionArtistName-Index: %w", err)
     } else {
         val.Index = v
@@ -40574,11 +42857,11 @@ func (p FusionArtistName) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Index, 32, 40)
+    err = stream.writeUint32(p.Index, 32, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -40628,12 +42911,12 @@ func DecodeFusionAlbumName(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionAlbumName-MessageId: Expected %d != %d", 32775, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAlbumName-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAlbumName-Index: %w", err)
     } else {
         val.Index = v
@@ -40665,11 +42948,11 @@ func (p FusionAlbumName) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Index, 32, 40)
+    err = stream.writeUint32(p.Index, 32, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -40789,7 +43072,7 @@ func DecodeFusionZoneName(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionZoneName-MessageId: Expected %d != %d", 32813, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionZoneName-Number: %w", err)
     } else {
         val.Number = v
@@ -40821,7 +43104,7 @@ func (p FusionZoneName) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Number, 8, 32)
+    err = stream.writeUint8(p.Number, 8, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -40870,12 +43153,12 @@ func DecodeFusionTrackPosition(Info MessageInfo, stream *DataStream) (any, error
             return nil, fmt.Errorf("match failed for FusionTrackPosition-MessageId: Expected %d != %d", 32777, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackPosition-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUnsignedResolution(24, 0.001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(24, 0.001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackPosition-Progress: %w", err)
     } else {
         val.Progress = v
@@ -40902,11 +43185,11 @@ func (p FusionTrackPosition) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.Progress, 24, 0.001, 40, 0)
+    err = stream.writeUnsignedResolution32(p.Progress, 24, 0.001, 40, 0, 2)
     if err != nil {
         return nil, err
     }
@@ -40959,17 +43242,17 @@ func DecodeFusionTuner(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.SourceId = FusionRadioSourceConst(v)
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-Scanning: %w", err)
     } else {
         val.Scanning = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-Frequency: %w", err)
     } else {
         val.Frequency = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-SignalStrength: %w", err)
     } else {
         val.SignalStrength = v
@@ -41005,15 +43288,15 @@ func (p FusionTuner) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Scanning, 8, 40)
+    err = stream.writeUint8(p.Scanning, 8, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Frequency, 32, 48)
+    err = stream.writeUint32(p.Frequency, 32, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SignalStrength, 8, 80)
+    err = stream.writeUint8(p.SignalStrength, 8, 80, 2)
     if err != nil {
         return nil, err
     }
@@ -41064,17 +43347,17 @@ func DecodeFusionMarineTuner(Info MessageInfo, stream *DataStream) (any, error) 
             return nil, fmt.Errorf("match failed for FusionMarineTuner-MessageId: Expected %d != %d", 32780, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-Channel: %w", err)
     } else {
         val.Channel = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-SignalStrength: %w", err)
     } else {
         val.SignalStrength = v
@@ -41106,15 +43389,15 @@ func (p FusionMarineTuner) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Channel, 8, 40)
+    err = stream.writeUint8(p.Channel, 8, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SignalStrength, 8, 48)
+    err = stream.writeUint8(p.SignalStrength, 8, 48, 2)
     if err != nil {
         return nil, err
     }
@@ -41163,12 +43446,12 @@ func DecodeFusionMarineSquelch(Info MessageInfo, stream *DataStream) (any, error
             return nil, fmt.Errorf("match failed for FusionMarineSquelch-MessageId: Expected %d != %d", 32781, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineSquelch-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineSquelch-Squelch: %w", err)
     } else {
         val.Squelch = v
@@ -41195,11 +43478,11 @@ func (p FusionMarineSquelch) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Squelch, 8, 40)
+    err = stream.writeUint8(p.Squelch, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -41244,7 +43527,7 @@ func DecodeFusionMarineScanMode(Info MessageInfo, stream *DataStream) (any, erro
             return nil, fmt.Errorf("match failed for FusionMarineScanMode-MessageId: Expected %d != %d", 32782, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineScanMode-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -41276,7 +43559,7 @@ func (p FusionMarineScanMode) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -41328,22 +43611,22 @@ func DecodeFusionMenuItem(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionMenuItem-MessageId: Expected %d != %d", 32785, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-ItemIndex: %w", err)
     } else {
         val.ItemIndex = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-Flags: %w", err)
     } else {
         val.Flags = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-LockId: %w", err)
     } else {
         val.LockId = v
@@ -41375,19 +43658,19 @@ func (p FusionMenuItem) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.ItemIndex, 32, 40)
+    err = stream.writeUint32(p.ItemIndex, 32, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Flags, 8, 72)
+    err = stream.writeUint8(p.Flags, 8, 72, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.LockId, 8, 80)
+    err = stream.writeUint8(p.LockId, 8, 80, 2)
     if err != nil {
         return nil, err
     }
@@ -41436,12 +43719,12 @@ func DecodeFusionAuxGain(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionAuxGain-MessageId: Expected %d != %d", 32787, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAuxGain-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAuxGain-Gain: %w", err)
     } else {
         val.Gain = v
@@ -41468,11 +43751,11 @@ func (p FusionAuxGain) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Gain, 8, 40)
+    err = stream.writeUint8(p.Gain, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -41606,7 +43889,7 @@ func DecodeFusionSetting(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Id = FusionSettingConst(v)
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetting-Value: %w", err)
     } else {
         val.Value = v
@@ -41637,7 +43920,7 @@ func (p FusionSetting) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Value, 32, 64)
+    err = stream.writeUint32(p.Value, 32, 64, 2)
     if err != nil {
         return nil, err
     }
@@ -41687,7 +43970,7 @@ func DecodeFusionSettings(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionSettings-MessageId: Expected %d != %d", 32789, v)
         }
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSettings-Count: %w", err)
     } else {
         val.Count = v
@@ -41708,7 +43991,7 @@ func DecodeFusionSettings(Info MessageInfo, stream *DataStream) (any, error) {
         } else {
             rep.Id = FusionSettingConst(v)
         }
-        if v, err := stream.readUInt32(32); err != nil {
+        if v, err := stream.readUInt32(32, 2); err != nil {
             return nil, fmt.Errorf("parse failed for FusionSettings-Value: %w", err)
         } else {
             rep.Value = v
@@ -41747,7 +44030,7 @@ func (p FusionSettings) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.Count, 32, 32)
+    err = stream.writeUint32(p.Count, 32, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -41767,7 +44050,7 @@ func (p FusionSettings) encodeRepeating1(stream *DataStream) error {
         if err != nil {
             return err
         }
-        err = stream.writeUint32(p.Repeating1[index].Value, 32, 0)
+        err = stream.writeUint32(p.Repeating1[index].Value, 32, 0, 2)
         if err != nil {
             return err
         }
@@ -41884,12 +44167,12 @@ func DecodeFusionBalance(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionBalance-MessageId: Expected %d != %d", 32792, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionBalance-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionBalance-Value: %w", err)
     } else {
         val.Value = v
@@ -41916,11 +44199,11 @@ func (p FusionBalance) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone, 8, 32)
+    err = stream.writeUint8(p.Zone, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Value, 8, 40)
+    err = stream.writeUint8(p.Value, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -41965,12 +44248,12 @@ func DecodeFusionLowPassFilter(Info MessageInfo, stream *DataStream) (any, error
             return nil, fmt.Errorf("match failed for FusionLowPassFilter-MessageId: Expected %d != %d", 32793, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLowPassFilter-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLowPassFilter-Filter: %w", err)
     } else {
         val.Filter = v
@@ -41997,11 +44280,11 @@ func (p FusionLowPassFilter) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone, 8, 32)
+    err = stream.writeUint8(p.Zone, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Filter, 8, 40)
+    err = stream.writeUint8(p.Filter, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -42048,22 +44331,22 @@ func DecodeFusionSublevels(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionSublevels-MessageId: Expected %d != %d", 32794, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-Zone1: %w", err)
     } else {
         val.Zone1 = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-Zone2: %w", err)
     } else {
         val.Zone2 = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-Zone3: %w", err)
     } else {
         val.Zone3 = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-Zone4: %w", err)
     } else {
         val.Zone4 = v
@@ -42090,19 +44373,19 @@ func (p FusionSublevels) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone1, 8, 32)
+    err = stream.writeUint8(p.Zone1, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone2, 8, 40)
+    err = stream.writeUint8(p.Zone2, 8, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone3, 8, 48)
+    err = stream.writeUint8(p.Zone3, 8, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone4, 8, 56)
+    err = stream.writeUint8(p.Zone4, 8, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -42149,22 +44432,22 @@ func DecodeFusionEq(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionEq-MessageId: Expected %d != %d", 32795, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := stream.readInt8(8); err != nil {
+    if v, err := stream.readInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-Bass: %w", err)
     } else {
         val.Bass = v
     }
-    if v, err := stream.readInt8(8); err != nil {
+    if v, err := stream.readInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-Mid: %w", err)
     } else {
         val.Mid = v
     }
-    if v, err := stream.readInt8(8); err != nil {
+    if v, err := stream.readInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-Treble: %w", err)
     } else {
         val.Treble = v
@@ -42191,19 +44474,19 @@ func (p FusionEq) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone, 8, 32)
+    err = stream.writeUint8(p.Zone, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt8(p.Bass, 8, 40)
+    err = stream.writeInt8(p.Bass, 8, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt8(p.Mid, 8, 48)
+    err = stream.writeInt8(p.Mid, 8, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeInt8(p.Treble, 8, 56)
+    err = stream.writeInt8(p.Treble, 8, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -42250,22 +44533,22 @@ func DecodeFusionVolumeLimits(Info MessageInfo, stream *DataStream) (any, error)
             return nil, fmt.Errorf("match failed for FusionVolumeLimits-MessageId: Expected %d != %d", 32796, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-Zone1VolumeLimit: %w", err)
     } else {
         val.Zone1VolumeLimit = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-Zone2VolumeLimit: %w", err)
     } else {
         val.Zone2VolumeLimit = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-Zone3VolumeLimit: %w", err)
     } else {
         val.Zone3VolumeLimit = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-Zone4VolumeLimit: %w", err)
     } else {
         val.Zone4VolumeLimit = v
@@ -42292,19 +44575,19 @@ func (p FusionVolumeLimits) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone1VolumeLimit, 8, 32)
+    err = stream.writeUint8(p.Zone1VolumeLimit, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone2VolumeLimit, 8, 40)
+    err = stream.writeUint8(p.Zone2VolumeLimit, 8, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone3VolumeLimit, 8, 48)
+    err = stream.writeUint8(p.Zone3VolumeLimit, 8, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone4VolumeLimit, 8, 56)
+    err = stream.writeUint8(p.Zone4VolumeLimit, 8, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -42351,22 +44634,22 @@ func DecodeFusionVolumes(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionVolumes-MessageId: Expected %d != %d", 32797, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-Zone1: %w", err)
     } else {
         val.Zone1 = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-Zone2: %w", err)
     } else {
         val.Zone2 = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-Zone3: %w", err)
     } else {
         val.Zone3 = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-Zone4: %w", err)
     } else {
         val.Zone4 = v
@@ -42393,19 +44676,19 @@ func (p FusionVolumes) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone1, 8, 32)
+    err = stream.writeUint8(p.Zone1, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone2, 8, 40)
+    err = stream.writeUint8(p.Zone2, 8, 40, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone3, 8, 48)
+    err = stream.writeUint8(p.Zone3, 8, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone4, 8, 56)
+    err = stream.writeUint8(p.Zone4, 8, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -42453,27 +44736,27 @@ func DecodeFusionCapabilities(Info MessageInfo, stream *DataStream) (any, error)
             return nil, fmt.Errorf("match failed for FusionCapabilities-MessageId: Expected %d != %d", 32798, v)
         }
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-Zone1: %w", err)
     } else {
         val.Zone1 = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-Zone2: %w", err)
     } else {
         val.Zone2 = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-Zone3: %w", err)
     } else {
         val.Zone3 = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-Zone4: %w", err)
     } else {
         val.Zone4 = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-Global: %w", err)
     } else {
         val.Global = v
@@ -42500,23 +44783,23 @@ func (p FusionCapabilities) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Zone1, 16, 32)
+    err = stream.writeUint16(p.Zone1, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Zone2, 16, 48)
+    err = stream.writeUint16(p.Zone2, 16, 48, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Zone3, 16, 64)
+    err = stream.writeUint16(p.Zone3, 16, 64, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Zone4, 16, 80)
+    err = stream.writeUint16(p.Zone4, 16, 80, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Global, 16, 96)
+    err = stream.writeUint16(p.Global, 16, 96, 2)
     if err != nil {
         return nil, err
     }
@@ -42561,12 +44844,12 @@ func DecodeFusionLineLevelControl(Info MessageInfo, stream *DataStream) (any, er
             return nil, fmt.Errorf("match failed for FusionLineLevelControl-MessageId: Expected %d != %d", 32799, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLineLevelControl-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLineLevelControl-Control: %w", err)
     } else {
         val.Control = v
@@ -42593,11 +44876,11 @@ func (p FusionLineLevelControl) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Zone, 8, 32)
+    err = stream.writeUint8(p.Zone, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Control, 8, 40)
+    err = stream.writeUint8(p.Control, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -42716,7 +44999,7 @@ func DecodeFusionSiriusxm(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("match failed for FusionSiriusxm-MessageId: Expected %d != %d", 32802, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxm-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -42731,7 +45014,7 @@ func DecodeFusionSiriusxm(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Alert = FusionSiriusComStateConst(v)
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxm-AdvisoryChannel: %w", err)
     } else {
         val.AdvisoryChannel = v
@@ -42763,7 +45046,7 @@ func (p FusionSiriusxm) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
@@ -42775,7 +45058,7 @@ func (p FusionSiriusxm) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.AdvisoryChannel, 16, 56)
+    err = stream.writeUint16(p.AdvisoryChannel, 16, 56, 2)
     if err != nil {
         return nil, err
     }
@@ -42825,12 +45108,12 @@ func DecodeFusionSiriusxmChannel(Info MessageInfo, stream *DataStream) (any, err
             return nil, fmt.Errorf("match failed for FusionSiriusxmChannel-MessageId: Expected %d != %d", 32804, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-ChannelNumber: %w", err)
     } else {
         val.ChannelNumber = v
@@ -42862,11 +45145,11 @@ func (p FusionSiriusxmChannel) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.ChannelNumber, 16, 40)
+    err = stream.writeUint16(p.ChannelNumber, 16, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -42916,12 +45199,12 @@ func DecodeFusionSiriusxmTitle(Info MessageInfo, stream *DataStream) (any, error
             return nil, fmt.Errorf("match failed for FusionSiriusxmTitle-MessageId: Expected %d != %d", 32805, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-Channel: %w", err)
     } else {
         val.Channel = v
@@ -42953,11 +45236,11 @@ func (p FusionSiriusxmTitle) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Channel, 16, 40)
+    err = stream.writeUint16(p.Channel, 16, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -43007,12 +45290,12 @@ func DecodeFusionSiriusxmArtist(Info MessageInfo, stream *DataStream) (any, erro
             return nil, fmt.Errorf("match failed for FusionSiriusxmArtist-MessageId: Expected %d != %d", 32806, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-Channel: %w", err)
     } else {
         val.Channel = v
@@ -43044,11 +45327,11 @@ func (p FusionSiriusxmArtist) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Channel, 16, 40)
+    err = stream.writeUint16(p.Channel, 16, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -43098,12 +45381,12 @@ func DecodeFusionSiriusxmContentInfo(Info MessageInfo, stream *DataStream) (any,
             return nil, fmt.Errorf("match failed for FusionSiriusxmContentInfo-MessageId: Expected %d != %d", 32807, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmContentInfo-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmContentInfo-Channel: %w", err)
     } else {
         val.Channel = v
@@ -43135,11 +45418,11 @@ func (p FusionSiriusxmContentInfo) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Channel, 16, 40)
+    err = stream.writeUint16(p.Channel, 16, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -43189,12 +45472,12 @@ func DecodeFusionSiriusxmCategory(Info MessageInfo, stream *DataStream) (any, er
             return nil, fmt.Errorf("match failed for FusionSiriusxmCategory-MessageId: Expected %d != %d", 32808, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmCategory-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmCategory-Channel: %w", err)
     } else {
         val.Channel = v
@@ -43226,11 +45509,11 @@ func (p FusionSiriusxmCategory) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.Channel, 16, 40)
+    err = stream.writeUint16(p.Channel, 16, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -43279,12 +45562,12 @@ func DecodeFusionSiriusxmSignal(Info MessageInfo, stream *DataStream) (any, erro
             return nil, fmt.Errorf("match failed for FusionSiriusxmSignal-MessageId: Expected %d != %d", 32809, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmSignal-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmSignal-Signal: %w", err)
     } else {
         val.Signal = v
@@ -43311,11 +45594,11 @@ func (p FusionSiriusxmSignal) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Signal, 8, 40)
+    err = stream.writeUint8(p.Signal, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -43362,12 +45645,12 @@ func DecodeFusionSiriusxmPresets(Info MessageInfo, stream *DataStream) (any, err
             return nil, fmt.Errorf("match failed for FusionSiriusxmPresets-MessageId: Expected %d != %d", 32812, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmPresets-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmPresets-Count: %w", err)
     } else {
         val.Count = v
@@ -43406,11 +45689,11 @@ func (p FusionSiriusxmPresets) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.SourceId, 8, 32)
+    err = stream.writeUint8(p.SourceId, 8, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Count, 8, 40)
+    err = stream.writeUint8(p.Count, 8, 40, 2)
     if err != nil {
         return nil, err
     }
@@ -43453,12 +45736,12 @@ func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *Dat
             return nil, fmt.Errorf("match failed for MaretronProprietaryTemperatureHighRange-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-Instance: %w", err)
     } else {
         val.Instance = v
@@ -43468,12 +45751,12 @@ func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *Dat
     } else {
         val.Source = TemperatureSourceConst(v)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-ActualTemperature: %w", err)
     } else {
         val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := stream.readUnsignedResolution(16, 0.1, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(16, 0.1, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-SetTemperature: %w", err)
     } else {
         val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -43496,11 +45779,11 @@ func (p MaretronProprietaryTemperatureHighRange) Encode(stream *DataStream) (*Me
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Sid, 8, 16)
+    err = stream.writeUint8(p.Sid, 8, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Instance, 8, 24)
+    err = stream.writeUint8(p.Instance, 8, 24, 2)
     if err != nil {
         return nil, err
     }
@@ -43508,11 +45791,11 @@ func (p MaretronProprietaryTemperatureHighRange) Encode(stream *DataStream) (*Me
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.ActualTemperature, 16, 0.100000, 40, 0, false)
+    err = stream.writeUnit(p.ActualTemperature, 16, 0.100000, 40, 0, false, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.SetTemperature, 16, 0.100000, 56, 0, false)
+    err = stream.writeUnit(p.SetTemperature, 16, 0.100000, 56, 0, false, 2)
     if err != nil {
         return nil, err
     }
@@ -43562,12 +45845,12 @@ func DecodeBGKeyValueData(Info MessageInfo, stream *DataStream) (any, error) {
     for {
         var valueLength uint16
         var rep BGKeyValueDataRepeating1
-        if v, err := stream.readUInt16(12); err != nil {
+        if v, err := stream.readUInt16(12, 2); err != nil {
             return nil, fmt.Errorf("parse failed for BGKeyValueData-Key: %w", err)
         } else {
             rep.Key = v
         }
-        if v, err := stream.readUInt8(4); err != nil {
+        if v, err := stream.readUInt8(4, 2); err != nil {
             return nil, fmt.Errorf("parse failed for BGKeyValueData-Length: %w", err)
         } else {
             rep.Length = v
@@ -43624,14 +45907,14 @@ func (p BGKeyValueData) encodeRepeating1(stream *DataStream) error {
 	}
     for index, _ := range p.Repeating1 {
 		var valueLength uint16
-        err = stream.writeUint16(p.Repeating1[index].Key, 12, 0)
+        err = stream.writeUint16(p.Repeating1[index].Key, 12, 0, 2)
         if err != nil {
             return err
         }
 		if p.Repeating1[index].Length != nil {
 			valueLength = uint16(*p.Repeating1[index].Length) * 8
 		}
-        err = stream.writeUint8(p.Repeating1[index].Length, 4, 0)
+        err = stream.writeUint8(p.Repeating1[index].Length, 4, 0, 2)
         if err != nil {
             return err
         }
@@ -43678,37 +45961,37 @@ func DecodeMaretronSwitchStatusCounter(Info MessageInfo, stream *DataStream) (an
             return nil, fmt.Errorf("match failed for MaretronSwitchStatusCounter-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-IndicatorNumber: %w", err)
     } else {
         val.IndicatorNumber = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-StartDate: %w", err)
     } else {
         val.StartDate = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-StartTime: %w", err)
     } else {
         val.StartTime = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-OffCounter: %w", err)
     } else {
         val.OffCounter = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-OnCounter: %w", err)
     } else {
         val.OnCounter = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-ErrorCounter: %w", err)
     } else {
         val.ErrorCounter = v
@@ -43737,31 +46020,31 @@ func (p MaretronSwitchStatusCounter) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Instance, 8, 16)
+    err = stream.writeUint8(p.Instance, 8, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.IndicatorNumber, 8, 24)
+    err = stream.writeUint8(p.IndicatorNumber, 8, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.StartDate, 16, 32)
+    err = stream.writeUint16(p.StartDate, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.StartTime, 32, 0.0001, 48, 0)
+    err = stream.writeUnsignedResolution32(p.StartTime, 32, 0.0001, 48, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.OffCounter, 32, 80)
+    err = stream.writeUint32(p.OffCounter, 32, 80, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.OnCounter, 32, 112)
+    err = stream.writeUint32(p.OnCounter, 32, 112, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.ErrorCounter, 32, 144)
+    err = stream.writeUint32(p.ErrorCounter, 32, 144, 2)
     if err != nil {
         return nil, err
     }
@@ -43811,37 +46094,37 @@ func DecodeMaretronSwitchStatusTimer(Info MessageInfo, stream *DataStream) (any,
             return nil, fmt.Errorf("match failed for MaretronSwitchStatusTimer-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := stream.readUInt8(8); err != nil {
+    if v, err := stream.readUInt8(8, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-IndicatorNumber: %w", err)
     } else {
         val.IndicatorNumber = v
     }
-    if v, err := stream.readUInt16(16); err != nil {
+    if v, err := stream.readUInt16(16, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-StartDate: %w", err)
     } else {
         val.StartDate = v
     }
-    if v, err := stream.readUnsignedResolution(32, 0.0001, 0); err != nil {
+    if v, err := stream.readUnsignedResolution(32, 0.0001, 0, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-StartTime: %w", err)
     } else {
         val.StartTime = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-AccumulatedOffPeriod: %w", err)
     } else {
         val.AccumulatedOffPeriod = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-AccumulatedOnPeriod: %w", err)
     } else {
         val.AccumulatedOnPeriod = v
     }
-    if v, err := stream.readUInt32(32); err != nil {
+    if v, err := stream.readUInt32(32, 2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-AccumulatedErrorPeriod: %w", err)
     } else {
         val.AccumulatedErrorPeriod = v
@@ -43870,31 +46153,31 @@ func (p MaretronSwitchStatusTimer) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.Instance, 8, 16)
+    err = stream.writeUint8(p.Instance, 8, 16, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint8(p.IndicatorNumber, 8, 24)
+    err = stream.writeUint8(p.IndicatorNumber, 8, 24, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint16(p.StartDate, 16, 32)
+    err = stream.writeUint16(p.StartDate, 16, 32, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnsignedResolution32(p.StartTime, 32, 0.0001, 48, 0)
+    err = stream.writeUnsignedResolution32(p.StartTime, 32, 0.0001, 48, 0, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.AccumulatedOffPeriod, 32, 80)
+    err = stream.writeUint32(p.AccumulatedOffPeriod, 32, 80, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.AccumulatedOnPeriod, 32, 112)
+    err = stream.writeUint32(p.AccumulatedOnPeriod, 32, 112, 2)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUint32(p.AccumulatedErrorPeriod, 32, 144)
+    err = stream.writeUint32(p.AccumulatedErrorPeriod, 32, 144, 2)
     if err != nil {
         return nil, err
     }

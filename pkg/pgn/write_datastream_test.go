@@ -256,12 +256,12 @@ func TestWriteSignedResolutionRoundTrip(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			// Write the value
 			stream := NewDataStream(make([]uint8, 32))
-			err := stream.writeSignedResolution64(&tt.value, tt.length, float64(tt.resolution), 0, int64(tt.offset))
+			err := stream.writeSignedResolution64(&tt.value, tt.length, float64(tt.resolution), 0, int64(tt.offset), 0)
 			assert.NoError(t, err)
 
 			// Read it back
 			stream.resetToStart()
-			result, err := stream.readSignedResolution(tt.length, tt.resolution, tt.offset)
+			result, err := stream.readSignedResolution(tt.length, tt.resolution, tt.offset, 0)
 			assert.NoError(t, err)
 			assert.NotNil(t, result)
 
@@ -351,12 +351,12 @@ func TestSignedResolutionRoundTrip(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			// Write the value
 			stream := NewDataStream(make([]uint8, 32))
-			err := stream.writeSignedResolution64(&tt.value, tt.length, float64(tt.resolution), 0, int64(tt.offset))
+			err := stream.writeSignedResolution64(&tt.value, tt.length, float64(tt.resolution), 0, int64(tt.offset), 0)
 			assert.NoError(t, err)
 
 			// Read it back
 			stream.resetToStart()
-			result, err := stream.readSignedResolution(tt.length, tt.resolution, tt.offset)
+			result, err := stream.readSignedResolution(tt.length, tt.resolution, tt.offset, 0)
 			assert.NoError(t, err)
 			assert.NotNil(t, result)
 
@@ -429,7 +429,7 @@ func TestWriteUint8RoundTrip(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			stream := NewDataStream(make([]uint8, 32))
-			err := stream.writeUint8(tt.value, tt.length, tt.bitOffset)
+			err := stream.writeUint8(tt.value, tt.length, tt.bitOffset, 2)
 			if tt.err {
 				assert.Error(t, err)
 				return
@@ -438,7 +438,7 @@ func TestWriteUint8RoundTrip(t *testing.T) {
 			}
 
 			stream.resetToStart()
-			result, err := stream.readUInt8(tt.length)
+			result, err := stream.readUInt8(tt.length, 2)
 			assert.NoError(t, err)
 
 			if tt.expected == nil {
@@ -521,7 +521,7 @@ func TestWriteInt16(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			stream := NewDataStream(make([]uint8, 32))
-			err := stream.writeInt16(tt.value, tt.length, tt.bitOffset)
+			err := stream.writeInt16(tt.value, tt.length, tt.bitOffset, 2)
 			if tt.err {
 				assert.Error(t, err)
 				return
@@ -530,7 +530,7 @@ func TestWriteInt16(t *testing.T) {
 			}
 
 			stream.resetToStart()
-			result, err := stream.readInt16(tt.length)
+			result, err := stream.readInt16(tt.length, 2)
 			assert.NoError(t, err)
 
 			if tt.expected == nil {
@@ -648,14 +648,14 @@ func TestWriteUnit(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			// Write the value
 			stream := NewDataStream(make([]uint8, 32))
-			err := stream.writeUnit(tt.value, tt.length, tt.resolution, tt.bitOffset, tt.offset, tt.signed)
+			err := stream.writeUnit(tt.value, tt.length, tt.resolution, tt.bitOffset, tt.offset, tt.signed, 2)
 			assert.NoError(t, err)
 
 			// Read it back
 			stream.resetToStart()
 			var result float64
 			if tt.signed {
-				val, err := stream.readSignedResolution(tt.length, (tt.resolution), int32(tt.offset))
+				val, err := stream.readSignedResolution(tt.length, (tt.resolution), int32(tt.offset), 2)
 				assert.NoError(t, err)
 				if val == nil {
 					result = float64(0xFFFE)
@@ -663,7 +663,7 @@ func TestWriteUnit(t *testing.T) {
 					result = float64(*val)
 				}
 			} else {
-				val, err := stream.readUnsignedResolution(tt.length, float32(tt.resolution), int32(tt.offset))
+				val, err := stream.readUnsignedResolution(tt.length, float32(tt.resolution), int32(tt.offset), 2)
 				assert.NoError(t, err)
 				if val == nil {
 					result = float64(0xFFFE)
@@ -789,7 +789,7 @@ func TestWriteInt32(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			stream := NewDataStream(make([]uint8, 32))
-			err := stream.writeInt32(tt.value, tt.length, tt.bitOffset)
+			err := stream.writeInt32(tt.value, tt.length, tt.bitOffset, 2)
 			if tt.err {
 				assert.Error(t, err)
 				return
@@ -798,7 +798,7 @@ func TestWriteInt32(t *testing.T) {
 			}
 
 			stream.resetToStart()
-			result, err := stream.readInt32(tt.length)
+			result, err := stream.readInt32(tt.length, 2)
 			assert.NoError(t, err)
 
 			if tt.expected == nil {
