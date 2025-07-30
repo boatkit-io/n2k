@@ -5,6 +5,95 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Debug Integration Test",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/pkg/node",
+            "buildFlags": "-tags=integration",
+            "args": [
+                "-run=TestNodeIntegration"
+            ],
+            "env": {
+                "IFACE": "can0"
+            },
+            "showLog": true
+        },
+        {
+            "name": "Debug All Tests",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}/pkg/node",
+            "buildFlags": "-tags=integration",
+            "args": [],
+            "showLog": true
+        },
+        {
+            "name": "Debug Integration Test (Alternative)",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}/pkg/node",
+            "buildFlags": "-tags=integration",
+            "args": [
+                "-test.run=TestNodeIntegration"
+            ],
+            "env": {
+                "IFACE": "can0"
+            },
+            "showLog": true
+        },
+        {
+            "name": "Debug Simple Test",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}/pkg/node",
+            "args": [
+                "-test.run=TestSimple"
+            ],
+            "showLog": true
+        },
+        {
+            "name": "Debug Integration Test (dlv)",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}/pkg/node",
+            "buildFlags": "-tags=integration",
+            "args": [
+                "-run=TestNodeIntegration"
+            ],
+            "env": {
+                "IFACE": "can0"
+            },
+            "showLog": true,
+            "dlvLoadConfig": {
+                "followPointers": true,
+                "maxVariableRecurse": 1,
+                "maxStringLen": 512,
+                "maxArrayValues": 64,
+                "maxStructFields": -1
+            }
+        },
+        {
+            "name": "Debug Node Integration Command",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/nodeintegration",
+            "args": [
+                "-iface=can0"
+            ],
+            "env": {
+                "IFACE": "can0"
+            },
+            "showLog": true
+        },
+
+        {
             "name": "pgngen",
             "type": "go",
             "request": "launch",
@@ -12,23 +101,6 @@
             "mode": "debug",
             "program": "${workspaceFolder}/cmd/pgngen",
             "args": [
-            ]
-        },
-        {
-            "name": "node-integration-test",
-            "type": "go",
-            "request": "launch",
-            "mode": "test",
-            "program": "${workspaceFolder}/pkg/node",
-            "buildFlags": "-tags=integration",
-            "env": {
-                "IFACE": "can0"
-            },
-            "args": [
-                "-test.run",
-                "TestNodeIntegration",
-                "-test.v",
-                "-count=1"
             ]
         },
         {
@@ -89,6 +161,88 @@
                 "--inputFile1",
                 "${workspaceFolder}/new.json"
             ]
+        },
+        {
+            "name": "Debug canwriter (basic)",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/canwriter",
+            "args": [
+                "-iface=vcan0",
+                "-count=5",
+                "-interval=200ms",
+                "-verbose"
+            ],
+            "showLog": true
+        },
+        {
+            "name": "Debug canwriter (NMEA mode)",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/canwriter",
+            "args": [
+                "-iface=vcan0",
+                "-pattern=nmea",
+                "-pgn=127488",
+                "-source=110",
+                "-count=3",
+                "-interval=500ms",
+                "-verbose"
+            ],
+            "showLog": true
+        },
+        {
+            "name": "Debug canwriter (random pattern)",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/canwriter",
+            "args": [
+                "-iface=vcan0",
+                "-pattern=random",
+                "-count=10",
+                "-interval=100ms",
+                "-baseid=0x1CFFFFFF",
+                "-verbose"
+            ],
+            "showLog": true
+        },
+        {
+            "name": "Debug canwriter (fixed pattern)",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/canwriter",
+            "args": [
+                "-iface=vcan0",
+                "-pattern=fixed",
+                "-count=5",
+                "-interval=1s",
+                "-verbose"
+            ],
+            "showLog": true
+        },
+        {
+            "name": "Debug canwriter (real CAN interface)",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/canwriter",
+            "args": [
+                "-iface=can0",
+                "-pattern=nmea",
+                "-pgn=126993",
+                "-source=100",
+                "-count=3",
+                "-interval=1s",
+                "-verbose"
+            ],
+            "env": {
+                "IFACE": "can0"
+            },
+            "showLog": true
         }
 
     ]

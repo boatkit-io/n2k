@@ -43,13 +43,45 @@ func main() {
 		log.SetLevel(logrus.InfoLevel)
 	}
 
-	// Validate required arguments
+	// Handle special flags first
+	if listScenarios {
+		if scenarioFile == "" {
+			log.Fatal("--scenario flag is required for --list")
+		}
+		simulator, err := nodesim.NewNodeSimulator(scenarioFile, 0, log)
+		if err != nil {
+			log.WithError(err).Fatal("Failed to create node simulator")
+		}
+		scenarios := simulator.ListScenarios()
+		fmt.Println("Available scenarios:")
+		for _, scenario := range scenarios {
+			fmt.Printf("  - %s: %s\n", scenario.Name, scenario.Description)
+		}
+		return
+	}
+
+	if validateOnly {
+		if scenarioFile == "" {
+			log.Fatal("--scenario flag is required for --validate")
+		}
+		simulator, err := nodesim.NewNodeSimulator(scenarioFile, 0, log)
+		if err != nil {
+			log.WithError(err).Fatal("Failed to create node simulator")
+		}
+		if err := simulator.Validate(); err != nil {
+			log.WithError(err).Fatal("Scenario validation failed")
+		}
+		log.Info("Scenario file validation passed")
+		return
+	}
+
+	// Validate required arguments for normal operation
 	if scenarioFile == "" {
 		log.Fatal("--scenario flag is required")
 	}
 
 	nodeID = uint8(nodeIDFlag)
-	if nodeID == 0 && !listScenarios && !validateOnly {
+	if nodeID == 0 {
 		log.Fatal("--node-id flag is required (1-253)")
 	}
 
@@ -61,24 +93,6 @@ func main() {
 	simulator, err := nodesim.NewNodeSimulator(scenarioFile, nodeID, log)
 	if err != nil {
 		log.WithError(err).Fatal("Failed to create node simulator")
-	}
-
-	// Handle special flags
-	if listScenarios {
-		scenarios := simulator.ListScenarios()
-		fmt.Println("Available scenarios:")
-		for _, scenario := range scenarios {
-			fmt.Printf("  - %s: %s\n", scenario.Name, scenario.Description)
-		}
-		return
-	}
-
-	if validateOnly {
-		if err := simulator.Validate(); err != nil {
-			log.WithError(err).Fatal("Scenario validation failed")
-		}
-		log.Info("Scenario file validation passed")
-		return
 	}
 
 	// Setup output

@@ -141,7 +141,14 @@ func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8
 		pgn = (pgn & 0xFFF00) | uint32(destination)
 	}
 
-	return uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26)
+	// Build the base CAN ID: Priority(3) + Reserved(1) + PGN(18) + Source(8)
+	canId := uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26)
+
+	// Set the Extended Frame Format (EFF) bit (bit 31) for 29-bit CAN ID
+	// This is required for NMEA 2000 which uses extended CAN IDs
+	canId |= 0x80000000 // MaskEff from brutella/can constants
+
+	return canId
 }
 
 // FrameHeader defines a structure to capture the RAW defined information comprising a CAN Frame ID

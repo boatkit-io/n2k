@@ -1,0 +1,136 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Setup vcan0 interface",
+            "type": "shell",
+            "command": "sudo",
+            "args": [
+                "bash",
+                "-c",
+                "modprobe vcan && ip link add dev vcan0 type vcan && ip link set vcan0 up"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Create and bring up virtual CAN interface vcan0 for testing"
+        },
+        {
+            "label": "Remove vcan0 interface",
+            "type": "shell",
+            "command": "sudo",
+            "args": [
+                "bash",
+                "-c",
+                "ip link delete vcan0"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Remove virtual CAN interface vcan0"
+        },
+        {
+            "label": "Monitor vcan0 traffic",
+            "type": "shell",
+            "command": "candump",
+            "args": [
+                "vcan0"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "isBackground": true,
+            "problemMatcher": [],
+            "detail": "Monitor CAN traffic on vcan0 interface using candump"
+        },
+        {
+            "label": "Check CAN interfaces",
+            "type": "shell",
+            "command": "ip",
+            "args": [
+                "link",
+                "show",
+                "type",
+                "can"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "List all available CAN interfaces"
+        },
+        {
+            "label": "Build canwriter",
+            "type": "shell",
+            "command": "mise",
+            "args": [
+                "run",
+                "build"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [
+                "$go"
+            ],
+            "detail": "Build the canwriter tool using mise"
+        },
+        {
+            "label": "Test canwriter with vcan0",
+            "type": "shell",
+            "command": "./bin/canwriter",
+            "args": [
+                "-iface=vcan0",
+                "-count=5",
+                "-pattern=nmea",
+                "-verbose"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "dependsOn": [
+                "Build canwriter"
+            ],
+            "problemMatcher": [],
+            "detail": "Run canwriter with test configuration on vcan0"
+        }
+    ]
+} 

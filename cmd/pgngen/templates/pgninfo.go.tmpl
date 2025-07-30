@@ -4,6 +4,7 @@ package pgn
 
 import (
 	"fmt"
+	"time"
 	
 	"github.com/boatkit-io/tugboat/pkg/units"
 )
@@ -554,6 +555,18 @@ func (p {{ .Id }}) Encode(stream *DataStream) (*MessageInfo, error) {
         return nil, err
     }
     {{- end }}
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = {{ .PGN }}
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 

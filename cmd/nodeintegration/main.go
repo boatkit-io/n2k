@@ -1,16 +1,14 @@
-//go:build integration
-
-package node
+package main
 
 import (
 	"context"
 	"flag"
 	"os"
-	"testing"
 	"time"
 
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint/socketcanendpoint"
+	"github.com/boatkit-io/n2k/pkg/node"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/n2k/pkg/pkt"
 	"github.com/boatkit-io/n2k/pkg/subscribe"
@@ -19,7 +17,7 @@ import (
 
 var canInterface string
 
-func TestMain(m *testing.M) {
+func main() {
 	flag.StringVar(&canInterface, "iface", "", "CAN interface name for integration tests")
 	flag.Parse()
 
@@ -28,13 +26,8 @@ func TestMain(m *testing.M) {
 		canInterface = os.Getenv("IFACE")
 	}
 
-	os.Exit(m.Run())
-}
-
-func TestNodeIntegration(t *testing.T) {
-	var err error
 	if canInterface == "" {
-		t.Skip("skipping integration test: -iface flag not provided")
+		logrus.Fatal("CAN interface not specified. Use -iface flag or IFACE environment variable")
 	}
 
 	log := logrus.StandardLogger()
@@ -58,11 +51,11 @@ func TestNodeIntegration(t *testing.T) {
 	adapter.SetWriter(endpoint)
 
 	// 2. Create a PGN dumper to see all traffic
-	_, err = subs.SubscribeToAllStructs(func(p any) {
+	_, err := subs.SubscribeToAllStructs(func(p any) {
 		log.Infof("PGN DUMP: %s", pgn.DebugDumpPGN(p))
 	})
 	if err != nil {
-		t.Fatalf("failed to subscribe to all structs: %v", err)
+		log.Fatalf("failed to subscribe to all structs: %v", err)
 	}
 
 	// 3. Start the pipeline
@@ -75,12 +68,10 @@ func TestNodeIntegration(t *testing.T) {
 	log.Infof("Pipeline started on interface %s", canInterface)
 
 	// 4. Instantiate and configure the node
-	nodeImpl := NewNode(subs, &publisher, nil)
-	if n, ok := nodeImpl.(*node); ok {
-		n.SetLogger(log)
-	}
+	nodeImpl := node.NewNode(subs, &publisher, nil)
+	// Note: SetLogger is not available on the interface, so we skip it for now
 
-	deviceInfo := DeviceInfo{
+	deviceInfo := node.DeviceInfo{
 		UniqueNumber:            123456,
 		ManufacturerCode:        pgn.Garmin,
 		DeviceFunction:          140, // GPS
@@ -92,13 +83,13 @@ func TestNodeIntegration(t *testing.T) {
 		ArbitraryAddressCapable: true,
 	}
 	if err := nodeImpl.SetDeviceInfo(deviceInfo); err != nil {
-		t.Fatalf("failed to set device info: %v", err)
+		log.Fatalf("failed to set device info: %v", err)
 	}
 
 	// Log our computed NAME for debugging
-	log.Infof("Our device NAME: %x", nodeImpl.(*node).name)
+	log.Infof("Our device NAME: %x", nodeImpl.GetNetworkAddress())
 
-	nodeImpl.SetProductInfo(ProductInfo{
+	nodeImpl.SetProductInfo(node.ProductInfo{
 		NMEA2000Version:     2100,
 		ProductCode:         101,
 		ModelID:             "Test Node v1",
@@ -111,12 +102,12 @@ func TestNodeIntegration(t *testing.T) {
 
 	// 5. Start the node and claim an address
 	if err := nodeImpl.Start(); err != nil {
-		t.Fatalf("failed to start node: %v", err)
+		log.Fatalf("failed to start node: %v", err)
 	}
 	defer nodeImpl.Stop()
 
 	if err := nodeImpl.ClaimAddress(110); err != nil {
-		t.Fatalf("failed to claim address: %v", err)
+		log.Fatalf("failed to claim address: %v", err)
 	}
 	log.Info("Node started and address claim initiated for address 110.")
 
@@ -141,7 +132,7 @@ func TestNodeIntegration(t *testing.T) {
 		},
 	}
 	if err := publisher.Write(isoRequestAddrClaim); err != nil {
-		t.Errorf("failed to write ISO request for address claim: %v", err)
+		log.Errorf("failed to write ISO request for address claim: %v", err)
 	}
 
 	time.Sleep(500 * time.Millisecond)
@@ -156,12 +147,12 @@ func TestNodeIntegration(t *testing.T) {
 		},
 	}
 	if err := publisher.Write(isoRequestProdInfo); err != nil {
-		t.Errorf("failed to write ISO request for product info: %v", err)
+		log.Errorf("failed to write ISO request for product info: %v", err)
 	}
 
 	// 7. Run for a while to observe traffic
-	log.Info("Running for 10 seconds to observe traffic...")
-	time.Sleep(10 * time.Second)
+	log.Info("Running for 30 seconds to observe traffic...")
+	time.Sleep(30 * time.Second)
 	log.Info("Integration test finished.")
 }
 

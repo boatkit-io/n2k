@@ -484,7 +484,9 @@ func (n *node) sendAddressClaim() {
 		ArbitraryAddressCapable: pgn.YesNoConst(arbitraryBit),
 	}
 	n.logger.Infof("sendAddressClaim: sending claim for address %d", networkAddressCopy)
-	_ = publisher.Write(claim)
+	if err := publisher.Write(claim); err != nil {
+		n.logger.Errorf("sendAddressClaim: failed to write claim: %v", err)
+	}
 }
 
 func (n *node) sendHeartbeat() {
@@ -504,7 +506,9 @@ func (n *node) sendHeartbeat() {
 		EquipmentStatus:  pgn.Operational,
 	}
 
-	_ = n.Write(hb)
+	if err := n.Write(hb); err != nil {
+		n.logger.Errorf("sendHeartbeat: failed to write heartbeat: %v", err)
+	}
 
 	n.mutex.Lock()
 	n.heartbeatSeq++
@@ -748,9 +752,14 @@ func setMessageInfo(s any, source, destination uint8) error {
 		return fmt.Errorf("'Info' field in struct %T is not of type pgn.MessageInfo", s)
 	}
 
+	// Get the current MessageInfo
 	info := infoField.Interface().(pgn.MessageInfo)
+
+	// Only update SourceId and TargetId, preserve PGN and Priority
 	info.SourceId = source
 	info.TargetId = destination
+
+	// Set the updated MessageInfo back
 	infoField.Set(reflect.ValueOf(info))
 
 	return nil

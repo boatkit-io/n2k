@@ -4,6 +4,7 @@ package pgn
 
 import (
 	"fmt"
+	"time"
 	
 	"github.com/boatkit-io/tugboat/pkg/units"
 )
@@ -33,6 +34,14 @@ type PgnInfo struct {
 	// Instance is a zero instance of the struct used for testing
 	// Fields is a map of field descriptions needed at runtime to deal with variable pgn fields
 	Fields map[int]*FieldDescriptor
+	// The following fields are used for testing only.
+	// Instance is a zero instance of the struct used for testing
+	Instance             any
+	// Repeating1CountField is the field that contains the count of repeating1 fields
+	Repeating1CountField uint8
+	// Repeating2CountField is the field that contains the count of repeating2 fields
+	Repeating2CountField uint8
+	
 }
 
 // FieldDescriptor instances describe a PGN field.
@@ -48,6 +57,17 @@ type FieldDescriptor struct {
     Match             int
 	ReservedValuesCount int
 
+	
+	// The following fields are used for testing only. Uncomment to use.
+	Id                string
+	GolangType        string
+	RangeMax          float64
+	RangeMin          float64
+	DomainMin         float64
+	DomainMax         float64
+	Signed            bool
+	Offset            int64
+	Order             uint8
 	
 }
 
@@ -3008,6 +3028,36 @@ func (e SeatalkPilotModeConst) String() string {
 	}
 }
 
+type SeatalkPilotHullTypeConst uint8
+const (
+	Sail	SeatalkPilotHullTypeConst = 0
+	SailSlowTurn	SeatalkPilotHullTypeConst = 1
+	SailCatamaran	SeatalkPilotHullTypeConst = 2
+	PowerSlowTurn	SeatalkPilotHullTypeConst = 3
+	PowerFastTurn	SeatalkPilotHullTypeConst = 5
+	Power	SeatalkPilotHullTypeConst = 8
+)
+
+func (e SeatalkPilotHullTypeConst) GoString() string {return e.String() }
+func (e SeatalkPilotHullTypeConst) String() string {
+	switch e {
+		case 0:
+			return "Sail"
+		case 1:
+			return "Sail (slow turn)"
+		case 2:
+			return "Sail Catamaran"
+		case 3:
+			return "Power (slow turn)"
+		case 5:
+			return "Power (fast turn)"
+		case 8:
+			return "Power"
+	default:
+		return fmt.Sprintf("%s(%d)", "SeatalkPilotHullTypeConst", int(e))
+	}
+}
+
 type EntertainmentZoneConst uint8
 const (
 	AllZones	EntertainmentZoneConst = 0
@@ -5763,7 +5813,7 @@ const (
 	SetZoneVolume	FusionMessageIdConst = 24
 	SetAllVolumes	FusionMessageIdConst = 25
 	SetLineLevelControl	FusionMessageIdConst = 27
-	Power	FusionMessageIdConst = 28
+	Power_2	FusionMessageIdConst = 28
 	SetDeviceName	FusionMessageIdConst = 29
 	SendSiriusCommand	FusionMessageIdConst = 30
 	SetSiriusParental	FusionMessageIdConst = 31
@@ -6099,7 +6149,7 @@ const (
 	Volume_2	FusionStatusMessageIdConst = 32797
 	Capabilities	FusionStatusMessageIdConst = 32798
 	LineLevelControl	FusionStatusMessageIdConst = 32799
-	Power_2	FusionStatusMessageIdConst = 32800
+	Power_3	FusionStatusMessageIdConst = 32800
 	UnitName	FusionStatusMessageIdConst = 32801
 	Sirius_2	FusionStatusMessageIdConst = 32802
 	SiriusxmPresetEvent	FusionStatusMessageIdConst = 32803
@@ -10768,6 +10818,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeIsoAcknowledgement,
+        Instance: &IsoAcknowledgement {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -10776,6 +10827,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Control",
+            GolangType:"IsoControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -10784,6 +10844,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "GroupFunction",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 24,
@@ -10792,6 +10861,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 24,
@@ -10800,6 +10878,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -10810,6 +10897,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeIsoRequest,
+        Instance: &IsoRequest {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 24,
@@ -10818,6 +10906,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         },
     },
@@ -10828,6 +10925,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeIsoTransportProtocolDataTransfer,
+        Instance: &IsoTransportProtocolDataTransfer {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -10836,6 +10934,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 56,
@@ -10844,6 +10951,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Data",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         },
     },
@@ -10854,6 +10970,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeIsoTransportProtocolConnectionManagementRequestToSend,
+        Instance: &IsoTransportProtocolConnectionManagementRequestToSend {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -10863,6 +10980,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 16,
+            Id: "GroupFunctionCode",
+            GolangType:"IsoCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -10871,6 +10996,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "MessageSize",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -10879,6 +11013,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Packets",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -10887,6 +11030,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "PacketsReply",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 24,
@@ -10895,6 +11047,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -10905,6 +11066,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeIsoTransportProtocolConnectionManagementClearToSend,
+        Instance: &IsoTransportProtocolConnectionManagementClearToSend {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -10914,6 +11076,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 17,
+            Id: "GroupFunctionCode",
+            GolangType:"IsoCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -10922,6 +11092,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "MaxPackets",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -10930,6 +11109,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NextSid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -10938,6 +11126,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 24,
@@ -10946,6 +11143,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -10956,6 +11162,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeIsoTransportProtocolConnectionManagementEndOfMessage,
+        Instance: &IsoTransportProtocolConnectionManagementEndOfMessage {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -10965,6 +11172,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 19,
+            Id: "GroupFunctionCode",
+            GolangType:"IsoCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -10973,6 +11188,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "TotalMessageSize",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -10981,6 +11205,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "TotalNumberOfFramesReceived",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -10989,6 +11222,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 24,
@@ -10997,6 +11239,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -11007,6 +11258,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce,
+        Instance: &IsoTransportProtocolConnectionManagementBroadcastAnnounce {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -11016,6 +11268,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32,
+            Id: "GroupFunctionCode",
+            GolangType:"IsoCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11024,6 +11284,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "MessageSize",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -11032,6 +11301,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Packets",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -11040,6 +11318,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 24,
@@ -11048,6 +11335,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -11058,6 +11354,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeIsoTransportProtocolConnectionManagementAbort,
+        Instance: &IsoTransportProtocolConnectionManagementAbort {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -11067,6 +11364,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 255,
+            Id: "GroupFunctionCode",
+            GolangType:"IsoCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -11075,6 +11380,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reason",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 24,
@@ -11083,6 +11397,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 24,
@@ -11091,6 +11414,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11101,6 +11433,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeIsoAddressClaim,
+        Instance: &IsoAddressClaim {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 21,
@@ -11109,6 +11442,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "UniqueNumber",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2.097148e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 11,
@@ -11117,6 +11459,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -11125,6 +11476,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 1,
             Resolution:1,
+            Id: "DeviceInstanceLower",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 5,
@@ -11133,6 +11493,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DeviceInstanceUpper",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -11141,6 +11510,15 @@ var pgnList = []PgnInfo{
             CanboatType: "INDIRECT_LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DeviceFunction",
+            GolangType:"DeviceFunctionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 1,
@@ -11149,6 +11527,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Spare",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 7,
@@ -11157,6 +11544,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DeviceClass",
+            GolangType:"DeviceClassConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 125,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 4,
@@ -11165,6 +11561,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SystemInstance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 3,
@@ -11173,6 +11578,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "IndustryGroup",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 1,
@@ -11181,6 +11595,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ArbitraryAddressCapable",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         },
     },
@@ -11191,6 +11614,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeBus1PhaseCBasicAcQuantities,
+        Instance: &Bus1PhaseCBasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11199,6 +11623,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11207,6 +11640,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -11215,6 +11657,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -11223,6 +11674,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11233,6 +11693,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeBus1PhaseBBasicAcQuantities,
+        Instance: &Bus1PhaseBBasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11241,6 +11702,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11249,6 +11719,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -11257,6 +11736,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -11265,6 +11753,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11275,6 +11772,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeBus1PhaseABasicAcQuantities,
+        Instance: &Bus1PhaseABasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11283,6 +11781,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11291,6 +11798,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -11299,6 +11815,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -11307,6 +11832,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11317,6 +11851,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityPhaseCAcReactivePower,
+        Instance: &UtilityPhaseCAcReactivePower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11325,6 +11860,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReactivePower",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11333,6 +11877,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:6.10352e-05,
+            Id: "PowerFactor",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.999755859375,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -11341,6 +11894,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PowerFactorLagging",
+            GolangType:"PowerFactorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 30,
@@ -11349,6 +11911,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11359,6 +11930,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityPhaseCAcPower,
+        Instance: &UtilityPhaseCAcPower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11367,6 +11939,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RealPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -11375,6 +11957,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ApparentPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 2,
             },
         },
     },
@@ -11385,6 +11977,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityPhaseCBasicAcQuantities,
+        Instance: &UtilityPhaseCBasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11393,6 +11986,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11401,6 +12003,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -11409,6 +12020,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -11417,6 +12037,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcRmsCurrent",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11427,6 +12056,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityPhaseBAcReactivePower,
+        Instance: &UtilityPhaseBAcReactivePower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11435,6 +12065,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReactivePower",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11443,6 +12082,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:6.10352e-05,
+            Id: "PowerFactor",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.999755859375,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -11451,6 +12099,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PowerFactorLagging",
+            GolangType:"PowerFactorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 30,
@@ -11459,6 +12116,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11469,6 +12135,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityPhaseBAcPower,
+        Instance: &UtilityPhaseBAcPower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11477,6 +12144,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RealPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -11485,6 +12162,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ApparentPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 2,
             },
         },
     },
@@ -11495,6 +12182,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityPhaseBBasicAcQuantities,
+        Instance: &UtilityPhaseBBasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11503,6 +12191,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11511,6 +12208,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -11519,6 +12225,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -11527,6 +12242,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcRmsCurrent",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11537,6 +12261,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityPhaseAAcReactivePower,
+        Instance: &UtilityPhaseAAcReactivePower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11545,6 +12270,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReactivePower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11553,6 +12288,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:6.10352e-05,
+            Id: "PowerFactor",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.999755859375,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -11561,6 +12305,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PowerFactorLagging",
+            GolangType:"PowerFactorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 14,
@@ -11569,6 +12322,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11579,6 +12341,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityPhaseAAcPower,
+        Instance: &UtilityPhaseAAcPower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11587,6 +12350,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RealPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -11595,6 +12368,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ApparentPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 2,
             },
         },
     },
@@ -11605,6 +12388,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityPhaseABasicAcQuantities,
+        Instance: &UtilityPhaseABasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11613,6 +12397,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11621,6 +12414,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -11629,6 +12431,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -11637,6 +12448,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcRmsCurrent",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11647,6 +12467,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityTotalAcReactivePower,
+        Instance: &UtilityTotalAcReactivePower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11655,6 +12476,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReactivePower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11663,6 +12494,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:6.10352e-05,
+            Id: "PowerFactor",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.999755859375,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -11671,6 +12511,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PowerFactorLagging",
+            GolangType:"PowerFactorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 14,
@@ -11679,6 +12528,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11689,6 +12547,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityTotalAcPower,
+        Instance: &UtilityTotalAcPower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11697,6 +12556,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RealPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -11705,6 +12574,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ApparentPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 2,
             },
         },
     },
@@ -11715,6 +12594,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeUtilityAverageBasicAcQuantities,
+        Instance: &UtilityAverageBasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11723,6 +12603,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11731,6 +12620,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -11739,6 +12637,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -11747,6 +12654,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcRmsCurrent",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11757,6 +12673,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorPhaseCAcReactivePower,
+        Instance: &GeneratorPhaseCAcReactivePower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11765,6 +12682,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReactivePower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11773,6 +12700,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:6.10352e-05,
+            Id: "PowerFactor",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.999755859375,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -11781,6 +12717,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PowerFactorLagging",
+            GolangType:"PowerFactorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 14,
@@ -11789,6 +12734,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11799,6 +12753,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorPhaseCAcPower,
+        Instance: &GeneratorPhaseCAcPower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11807,6 +12762,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RealPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -11815,6 +12780,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ApparentPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 2,
             },
         },
     },
@@ -11825,6 +12800,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorPhaseCBasicAcQuantities,
+        Instance: &GeneratorPhaseCBasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11833,6 +12809,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11841,6 +12826,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -11849,6 +12843,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -11857,6 +12860,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcRmsCurrent",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11867,6 +12879,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorPhaseBAcReactivePower,
+        Instance: &GeneratorPhaseBAcReactivePower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11875,6 +12888,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReactivePower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11883,6 +12906,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:6.10352e-05,
+            Id: "PowerFactor",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.999755859375,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -11891,6 +12923,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PowerFactorLagging",
+            GolangType:"PowerFactorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 14,
@@ -11899,6 +12940,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11909,6 +12959,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorPhaseBAcPower,
+        Instance: &GeneratorPhaseBAcPower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11917,6 +12968,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RealPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -11925,6 +12986,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ApparentPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 2,
             },
         },
     },
@@ -11935,6 +13006,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorPhaseBBasicAcQuantities,
+        Instance: &GeneratorPhaseBBasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -11943,6 +13015,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11951,6 +13032,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -11959,6 +13049,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -11967,6 +13066,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcRmsCurrent",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -11977,6 +13085,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorPhaseAAcReactivePower,
+        Instance: &GeneratorPhaseAAcReactivePower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -11985,6 +13094,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReactivePower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -11993,6 +13112,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:6.10352e-05,
+            Id: "PowerFactor",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.999755859375,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -12001,6 +13129,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PowerFactorLagging",
+            GolangType:"PowerFactorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 14,
@@ -12009,6 +13146,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -12019,6 +13165,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorPhaseAAcPower,
+        Instance: &GeneratorPhaseAAcPower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -12027,6 +13174,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RealPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -12035,6 +13192,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ApparentPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 2,
             },
         },
     },
@@ -12045,6 +13212,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorPhaseABasicAcQuantities,
+        Instance: &GeneratorPhaseABasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -12053,6 +13221,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -12061,6 +13238,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -12069,6 +13255,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -12077,6 +13272,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcRmsCurrent",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -12087,6 +13291,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorTotalAcReactivePower,
+        Instance: &GeneratorTotalAcReactivePower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -12095,6 +13300,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReactivePower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -12103,6 +13318,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:6.10352e-05,
+            Id: "PowerFactor",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.999755859375,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -12111,6 +13335,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PowerFactorLagging",
+            GolangType:"PowerFactorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 14,
@@ -12119,6 +13352,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -12129,6 +13371,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorTotalAcPower,
+        Instance: &GeneratorTotalAcPower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -12137,6 +13380,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RealPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -12145,6 +13398,16 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ApparentPower",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2e+09,
+            RangeMax: 2.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1, 
+            Offset: -2000000000,
+            Order: 2,
             },
         },
     },
@@ -12155,6 +13418,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGeneratorAverageBasicAcQuantities,
+        Instance: &GeneratorAverageBasicAcQuantities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -12163,6 +13427,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineLineAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -12171,6 +13444,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LineNeutralAcRmsVoltage",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -12179,6 +13461,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0078125,
+            Id: "AcFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 511.96875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -12187,6 +13478,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcRmsCurrent",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -12197,6 +13497,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeIsoCommandedAddress,
+        Instance: &IsoCommandedAddress {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 21,
@@ -12205,6 +13506,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "UniqueNumber",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 11,
@@ -12213,6 +13523,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12221,6 +13540,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 1,
             Resolution:1,
+            Id: "DeviceInstanceLower",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 5,
@@ -12229,6 +13557,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DeviceInstanceUpper",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -12237,6 +13574,15 @@ var pgnList = []PgnInfo{
             CanboatType: "INDIRECT_LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DeviceFunction",
+            GolangType:"DeviceFunctionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 1,
@@ -12245,6 +13591,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 7,
@@ -12253,6 +13608,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DeviceClass",
+            GolangType:"DeviceClassConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 125,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 4,
@@ -12261,6 +13625,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SystemInstance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 3,
@@ -12269,6 +13642,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 1,
@@ -12277,6 +13659,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved10",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 8,
@@ -12285,6 +13676,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NewSourceAddress",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         },
     },
@@ -12295,6 +13695,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 137,
         Decoder: DecodeMaretronProprietaryDcBreakerCurrent,
+        Instance: &MaretronProprietaryDcBreakerCurrent {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12304,6 +13705,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12312,6 +13721,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12321,6 +13739,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -12329,6 +13755,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "BankInstance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -12337,6 +13772,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "IndicatorNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -12345,6 +13789,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "BreakerCurrent",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -12353,6 +13806,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved7",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -12363,6 +13825,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 135,
         Decoder: DecodeAirmarBootStateAcknowledgment,
+        Instance: &AirmarBootStateAcknowledgment {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12372,6 +13835,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12380,6 +13851,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12389,6 +13869,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 3,
@@ -12397,6 +13885,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "BootState",
+            GolangType:"BootStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 45,
@@ -12405,6 +13902,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved5",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -12415,6 +13921,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 140,
         Decoder: DecodeLowranceTemperature,
+        Instance: &LowranceTemperature {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12424,6 +13931,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 140,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12432,6 +13947,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12441,6 +13965,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -12449,6 +13981,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TemperatureSource",
+            GolangType:"TemperatureSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -12457,6 +13998,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "ActualTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 24,
@@ -12465,6 +14015,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -12475,6 +14034,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 135,
         Decoder: DecodeAirmarBootStateRequest,
+        Instance: &AirmarBootStateRequest {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12484,6 +14044,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12492,6 +14060,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12501,6 +14078,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 48,
@@ -12509,6 +14094,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved4",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -12519,6 +14113,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 135,
         Decoder: DecodeAirmarAccessLevel,
+        Instance: &AirmarAccessLevel {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12528,6 +14123,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12536,6 +14139,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12545,6 +14157,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -12553,6 +14173,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "FormatCode",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 3,
@@ -12561,6 +14190,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AccessLevel",
+            GolangType:"AccessLevelConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 5,
@@ -12569,6 +14207,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -12577,6 +14224,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AccessSeedKey",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -12587,6 +14243,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 1857,
         Decoder: DecodeSimnetDeviceStatus,
+        Instance: &SimnetDeviceStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12596,6 +14253,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 1857,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12604,6 +14269,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12613,6 +14287,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -12621,6 +14303,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Model",
+            GolangType:"SimnetDeviceModelConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -12630,6 +14321,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 2,
+            Id: "Report",
+            GolangType:"SimnetDeviceReportConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -12638,6 +14337,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Status",
+            GolangType:"SimnetApStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 24,
@@ -12646,6 +14354,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Spare7",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -12656,6 +14373,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 1857,
         Decoder: DecodeSimnetDeviceStatusRequest,
+        Instance: &SimnetDeviceStatusRequest {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12665,6 +14383,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 1857,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12673,6 +14399,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12682,6 +14417,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -12690,6 +14433,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Model",
+            GolangType:"SimnetDeviceModelConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -12699,6 +14451,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 3,
+            Id: "Report",
+            GolangType:"SimnetDeviceReportConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -12707,6 +14467,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Spare6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -12717,6 +14486,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 1857,
         Decoder: DecodeSimnetPilotMode,
+        Instance: &SimnetPilotMode {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12726,6 +14496,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 1857,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12734,6 +14512,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12743,6 +14530,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -12751,6 +14546,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Model",
+            GolangType:"SimnetDeviceModelConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -12760,6 +14564,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 10,
+            Id: "Report",
+            GolangType:"SimnetDeviceReportConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -12768,6 +14580,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BITLOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Mode",
+            GolangType:"SimnetApModeBitfieldConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65535,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -12776,6 +14597,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Spare7",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -12786,6 +14616,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 1857,
         Decoder: DecodeSimnetDeviceModeRequest,
+        Instance: &SimnetDeviceModeRequest {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12795,6 +14626,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 1857,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12803,6 +14642,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12812,6 +14660,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -12820,6 +14676,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Model",
+            GolangType:"SimnetDeviceModelConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -12829,6 +14694,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 11,
+            Id: "Report",
+            GolangType:"SimnetDeviceReportConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -12837,6 +14710,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Spare6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -12847,6 +14729,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 1851,
         Decoder: DecodeSeatalkPilotLockedHeading,
+        Instance: &SeatalkPilotLockedHeading {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12856,6 +14739,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 1851,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12864,6 +14755,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12873,6 +14773,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -12881,6 +14789,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -12889,6 +14806,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "TargetHeadingTrue",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -12897,6 +14823,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "TargetHeadingMagnetic",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -12905,6 +14840,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved7",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -12915,6 +14859,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 1851,
         Decoder: DecodeSeatalkSilenceAlarm,
+        Instance: &SeatalkSilenceAlarm {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12924,6 +14869,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 1851,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12932,6 +14885,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -12941,6 +14903,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -12949,6 +14919,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlarmId",
+            GolangType:"SeatalkAlarmIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -12957,6 +14936,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlarmGroup",
+            GolangType:"SeatalkAlarmGroupConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -12965,6 +14953,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -12975,6 +14972,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 135,
         Decoder: DecodeAirmarSpeedPulseCount,
+        Instance: &AirmarSpeedPulseCount {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -12984,6 +14982,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -12992,6 +14998,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -13001,6 +15016,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -13009,6 +15032,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -13017,6 +15049,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "DurationOfInterval",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65.532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -13025,6 +15066,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfPulsesReceived",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -13033,6 +15083,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved7",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -13043,6 +15102,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeNmeaRequestGroupFunction,
+        Instance: &NmeaRequestGroupFunction {},
+        Repeating1CountField: 5,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -13052,6 +15113,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 0,
+            Id: "FunctionCode",
+            GolangType:"GroupFunctionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 24,
@@ -13060,6 +15129,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -13068,6 +15146,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "TransmissionInterval",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -13076,6 +15163,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "TransmissionIntervalOffset",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -13084,6 +15180,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfParameters",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -13092,6 +15197,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FIELD_INDEX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Parameter",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -13100,6 +15214,15 @@ var pgnList = []PgnInfo{
             CanboatType: "VARIABLE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Value",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -13110,6 +15233,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeNmeaCommandGroupFunction,
+        Instance: &NmeaCommandGroupFunction {},
+        Repeating1CountField: 5,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -13119,6 +15244,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 1,
+            Id: "FunctionCode",
+            GolangType:"GroupFunctionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 24,
@@ -13127,6 +15260,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 4,
@@ -13135,6 +15277,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Priority",
+            GolangType:"PriorityConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 4,
@@ -13143,6 +15294,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -13151,6 +15311,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfParameters",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -13159,6 +15328,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FIELD_INDEX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Parameter",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -13167,6 +15345,15 @@ var pgnList = []PgnInfo{
             CanboatType: "VARIABLE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Value",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -13177,6 +15364,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeNmeaAcknowledgeGroupFunction,
+        Instance: &NmeaAcknowledgeGroupFunction {},
+        Repeating1CountField: 5,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -13186,6 +15375,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 2,
+            Id: "FunctionCode",
+            GolangType:"GroupFunctionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 24,
@@ -13194,6 +15391,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 4,
@@ -13202,6 +15408,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PgnErrorCode",
+            GolangType:"PgnErrorCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 4,
@@ -13210,6 +15425,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TransmissionIntervalPriorityErrorCode",
+            GolangType:"TransmissionIntervalConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -13218,6 +15442,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfParameters",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 4,
@@ -13226,6 +15459,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Parameter",
+            GolangType:"ParameterFieldConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -13236,6 +15478,9 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeNmeaReadFieldsReplyGroupFunction,
+        Instance: &NmeaReadFieldsReplyGroupFunction {},
+        Repeating1CountField: 7,
+        Repeating2CountField: 8,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -13245,6 +15490,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "FunctionCode",
+            GolangType:"GroupFunctionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 24,
@@ -13253,6 +15506,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 11,
@@ -13261,6 +15523,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -13269,6 +15540,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 3,
@@ -13277,6 +15557,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -13285,6 +15574,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "UniqueId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -13293,6 +15591,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfSelectionPairs",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -13301,6 +15608,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfParameters",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 8,
@@ -13309,6 +15625,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FIELD_INDEX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SelectionParameter",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 0,
@@ -13317,6 +15642,15 @@ var pgnList = []PgnInfo{
             CanboatType: "VARIABLE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SelectionValue",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 8,
@@ -13325,6 +15659,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FIELD_INDEX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Parameter",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 0,
@@ -13333,6 +15676,15 @@ var pgnList = []PgnInfo{
             CanboatType: "VARIABLE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Value",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -13343,6 +15695,9 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeNmeaWriteFieldsGroupFunction,
+        Instance: &NmeaWriteFieldsGroupFunction {},
+        Repeating1CountField: 7,
+        Repeating2CountField: 8,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -13352,6 +15707,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 5,
+            Id: "FunctionCode",
+            GolangType:"GroupFunctionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 24,
@@ -13360,6 +15723,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 11,
@@ -13368,6 +15740,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -13376,6 +15757,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 3,
@@ -13384,6 +15774,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -13392,6 +15791,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "UniqueId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -13400,6 +15808,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfSelectionPairs",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -13408,6 +15825,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfParameters",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 8,
@@ -13416,6 +15842,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FIELD_INDEX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SelectionParameter",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 0,
@@ -13424,6 +15859,15 @@ var pgnList = []PgnInfo{
             CanboatType: "VARIABLE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SelectionValue",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 8,
@@ -13432,6 +15876,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FIELD_INDEX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Parameter",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 0,
@@ -13440,6 +15893,15 @@ var pgnList = []PgnInfo{
             CanboatType: "VARIABLE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Value",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -13450,6 +15912,9 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeNmeaWriteFieldsReplyGroupFunction,
+        Instance: &NmeaWriteFieldsReplyGroupFunction {},
+        Repeating1CountField: 7,
+        Repeating2CountField: 8,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -13459,6 +15924,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 6,
+            Id: "FunctionCode",
+            GolangType:"GroupFunctionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 24,
@@ -13467,6 +15940,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 11,
@@ -13475,6 +15957,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -13483,6 +15974,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 3,
@@ -13491,6 +15991,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -13499,6 +16008,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "UniqueId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -13507,6 +16025,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfSelectionPairs",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -13515,6 +16042,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfParameters",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 8,
@@ -13523,6 +16059,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FIELD_INDEX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SelectionParameter",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 0,
@@ -13531,6 +16076,15 @@ var pgnList = []PgnInfo{
             CanboatType: "VARIABLE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SelectionValue",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 8,
@@ -13539,6 +16093,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FIELD_INDEX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Parameter",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 0,
@@ -13547,6 +16110,15 @@ var pgnList = []PgnInfo{
             CanboatType: "VARIABLE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Value",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -13557,6 +16129,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodePgnListTransmitAndReceive,
+        Instance: &PgnListTransmitAndReceive {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -13565,6 +16138,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "FunctionCode",
+            GolangType:"PgnListFunctionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 24,
@@ -13573,6 +16155,15 @@ var pgnList = []PgnInfo{
             CanboatType: "PGN",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Pgn",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 262143,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         },
     },
@@ -13583,6 +16174,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionMediaControl,
+        Instance: &FusionMediaControl {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -13592,6 +16184,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -13600,6 +16200,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -13609,6 +16218,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -13618,6 +16235,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 3,
+            Id: "ProprietaryId",
+            GolangType:"FusionMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -13626,6 +16251,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -13634,6 +16268,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Command",
+            GolangType:"FusionCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -13644,6 +16287,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSiriusControl,
+        Instance: &FusionSiriusControl {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -13653,6 +16297,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -13661,6 +16313,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -13670,6 +16331,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -13679,6 +16348,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 30,
+            Id: "ProprietaryId",
+            GolangType:"FusionMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -13687,6 +16364,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -13695,6 +16381,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Command",
+            GolangType:"FusionSiriusCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -13703,6 +16398,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Data",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -13713,6 +16417,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionRequestStatus,
+        Instance: &FusionRequestStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -13722,6 +16427,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -13730,6 +16443,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -13739,6 +16461,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -13748,6 +16478,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 1,
+            Id: "ProprietaryId",
+            GolangType:"FusionMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         },
     },
@@ -13758,6 +16496,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSetSource,
+        Instance: &FusionSetSource {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -13767,6 +16506,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -13775,6 +16522,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -13784,6 +16540,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -13793,6 +16557,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 2,
+            Id: "ProprietaryId",
+            GolangType:"FusionMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -13801,6 +16573,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -13811,6 +16592,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSetMute,
+        Instance: &FusionSetMute {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -13820,6 +16602,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -13828,6 +16618,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -13837,6 +16636,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -13846,6 +16653,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 17,
+            Id: "ProprietaryId",
+            GolangType:"FusionMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -13854,6 +16669,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Command",
+            GolangType:"FusionMuteCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -13864,6 +16688,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSetZoneVolume,
+        Instance: &FusionSetZoneVolume {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -13873,6 +16698,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -13881,6 +16714,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -13890,6 +16732,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -13899,6 +16749,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 24,
+            Id: "ProprietaryId",
+            GolangType:"FusionMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -13907,6 +16765,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -13915,6 +16782,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Volume",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -13925,6 +16801,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSetAllVolumes,
+        Instance: &FusionSetAllVolumes {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -13934,6 +16811,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -13942,6 +16827,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -13951,6 +16845,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -13960,6 +16862,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 25,
+            Id: "ProprietaryId",
+            GolangType:"FusionMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -13968,6 +16878,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone1",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -13976,6 +16895,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone2",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -13984,6 +16912,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone3",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -13992,6 +16929,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone4",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -14002,6 +16948,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 135,
         Decoder: DecodeAirmarAttitudeOffset,
+        Instance: &AirmarAttitudeOffset {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14011,6 +16958,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14019,6 +16974,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14028,6 +16992,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14037,6 +17009,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32,
+            Id: "ProprietaryId",
+            GolangType:"AirmarCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -14045,6 +17025,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "AzimuthOffset",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -14053,6 +17042,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "PitchOffset",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -14061,6 +17059,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "RollOffset",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -14071,6 +17078,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 135,
         Decoder: DecodeAirmarSimulateMode,
+        Instance: &AirmarSimulateMode {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14080,6 +17088,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14088,6 +17104,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14097,6 +17122,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14106,6 +17139,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 35,
+            Id: "ProprietaryId",
+            GolangType:"AirmarCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -14114,6 +17155,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SimulateMode",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 22,
@@ -14122,6 +17172,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -14132,6 +17191,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 135,
         Decoder: DecodeAirmarCalibrateDepth,
+        Instance: &AirmarCalibrateDepth {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14141,6 +17201,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14149,6 +17217,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14158,6 +17235,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14167,6 +17252,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 40,
+            Id: "ProprietaryId",
+            GolangType:"AirmarCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -14175,6 +17268,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "SpeedOfSoundMode",
+            GolangType:"*units.Velocity",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -14183,6 +17285,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -14193,6 +17304,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 135,
         Decoder: DecodeAirmarCalibrateSpeed,
+        Instance: &AirmarCalibrateSpeed {},
+        Repeating1CountField: 5,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14202,6 +17315,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14210,6 +17331,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14219,6 +17349,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14228,6 +17366,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 41,
+            Id: "ProprietaryId",
+            GolangType:"AirmarCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -14236,6 +17382,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfPairsOfDataPoints",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -14244,6 +17399,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "InputFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -14252,6 +17416,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "OutputSpeed",
+            GolangType:"*units.Velocity",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -14262,6 +17435,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 135,
         Decoder: DecodeAirmarCalibrateTemperature,
+        Instance: &AirmarCalibrateTemperature {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14271,6 +17445,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14279,6 +17461,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14288,6 +17479,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14297,6 +17496,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 42,
+            Id: "ProprietaryId",
+            GolangType:"AirmarCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -14305,6 +17512,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TemperatureInstance",
+            GolangType:"AirmarTemperatureInstanceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 6,
@@ -14313,6 +17529,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -14321,6 +17546,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "TemperatureOffset",
+            GolangType:"*units.Temperature",
+            Signed: true,
+            RangeMin: -32.767,
+            RangeMax: 32.764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -14331,6 +17565,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 135,
         Decoder: DecodeAirmarSpeedFilterNone,
+        Instance: &AirmarSpeedFilterNone {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14340,6 +17575,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14348,6 +17591,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14357,6 +17609,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14366,6 +17626,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 43,
+            Id: "ProprietaryId",
+            GolangType:"AirmarCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 4,
@@ -14375,6 +17643,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 2,
             Resolution:1,
             Match: 0,
+            Id: "FilterType",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 4,
@@ -14383,6 +17659,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -14391,6 +17676,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "SampleInterval",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -14401,6 +17695,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 135,
         Decoder: DecodeAirmarSpeedFilterIir,
+        Instance: &AirmarSpeedFilterIir {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14410,6 +17705,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14418,6 +17721,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14427,6 +17739,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14436,6 +17756,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 43,
+            Id: "ProprietaryId",
+            GolangType:"AirmarCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 4,
@@ -14445,6 +17773,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 2,
             Resolution:1,
             Match: 1,
+            Id: "FilterType",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 4,
@@ -14453,6 +17789,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -14461,6 +17806,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "SampleInterval",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -14469,6 +17823,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "FilterDuration",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -14479,6 +17842,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 135,
         Decoder: DecodeAirmarTemperatureFilterNone,
+        Instance: &AirmarTemperatureFilterNone {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14488,6 +17852,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14496,6 +17868,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14505,6 +17886,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14514,6 +17903,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 44,
+            Id: "ProprietaryId",
+            GolangType:"AirmarCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 4,
@@ -14523,6 +17920,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 2,
             Resolution:1,
             Match: 0,
+            Id: "FilterType",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 4,
@@ -14531,6 +17936,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -14539,6 +17953,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "SampleInterval",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -14549,6 +17972,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 135,
         Decoder: DecodeAirmarTemperatureFilterIir,
+        Instance: &AirmarTemperatureFilterIir {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14558,6 +17982,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14566,6 +17998,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14575,6 +18016,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14584,6 +18033,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 44,
+            Id: "ProprietaryId",
+            GolangType:"AirmarCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 4,
@@ -14593,6 +18050,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 2,
             Resolution:1,
             Match: 1,
+            Id: "FilterType",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 4,
@@ -14601,6 +18066,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -14609,6 +18083,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "SampleInterval",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -14617,6 +18100,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "FilterDuration",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -14627,6 +18119,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 135,
         Decoder: DecodeAirmarNmea2000Options,
+        Instance: &AirmarNmea2000Options {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14636,6 +18129,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 135,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14644,6 +18145,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14653,6 +18163,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14662,6 +18180,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 46,
+            Id: "ProprietaryId",
+            GolangType:"AirmarCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -14670,6 +18196,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TransmissionInterval",
+            GolangType:"AirmarTransmissionIntervalConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 22,
@@ -14678,6 +18213,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -14688,6 +18232,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 137,
         Decoder: DecodeMaretronDeviationCalibrationResponse,
+        Instance: &MaretronDeviationCalibrationResponse {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14697,6 +18242,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14705,6 +18258,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14714,6 +18276,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -14722,6 +18292,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ProductCode",
+            GolangType:"MaretronProductCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -14731,6 +18310,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 1,
+            Id: "SoftwareCode",
+            GolangType:"MaretronSoftwareCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -14740,6 +18327,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 80,
+            Id: "Command",
+            GolangType:"MaretronCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -14748,6 +18343,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Status",
+            GolangType:"MaretronStatusDeviationConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -14758,6 +18362,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 137,
         Decoder: DecodeMaretronSlaveResponse,
+        Instance: &MaretronSlaveResponse {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -14767,6 +18372,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -14775,6 +18388,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -14784,6 +18406,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -14792,6 +18422,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ProductCode",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -14800,6 +18439,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SoftwareCode",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -14808,6 +18456,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Command",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -14816,6 +18473,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Status",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -14826,6 +18492,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAlert,
+        Instance: &Alert {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 4,
@@ -14834,6 +18501,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlertType",
+            GolangType:"AlertTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 4,
@@ -14842,6 +18518,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlertCategory",
+            GolangType:"AlertCategoryConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -14850,6 +18535,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertSystem",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -14858,6 +18552,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertSubSystem",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -14866,6 +18569,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 64,
@@ -14874,6 +18586,15 @@ var pgnList = []PgnInfo{
             CanboatType: "ISO_NAME",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DataSourceNetworkIdName",
+            GolangType:"*uint64",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.84467440737096e+19,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -14882,6 +18603,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DataSourceInstance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -14890,6 +18620,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DataSourceIndexSource",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 8,
@@ -14898,6 +18637,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertOccurrenceNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 1,
@@ -14906,6 +18654,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TemporarySilenceStatus",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 1,
@@ -14914,6 +18671,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AcknowledgeStatus",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 1,
@@ -14922,6 +18688,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "EscalationStatus",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 1,
@@ -14930,6 +18705,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TemporarySilenceSupport",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 1,
@@ -14938,6 +18722,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AcknowledgeSupport",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 1,
@@ -14946,6 +18739,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "EscalationSupport",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 2,
@@ -14954,6 +18756,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 64,
@@ -14962,6 +18773,15 @@ var pgnList = []PgnInfo{
             CanboatType: "ISO_NAME",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcknowledgeSourceNetworkIdName",
+            GolangType:"*uint64",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.84467440737096e+19,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 4,
@@ -14970,6 +18790,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TriggerCondition",
+            GolangType:"AlertTriggerConditionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         19: { 
             BitLength: 4,
@@ -14978,6 +18807,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ThresholdStatus",
+            GolangType:"AlertThresholdStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 19,
             },
         20: { 
             BitLength: 8,
@@ -14986,6 +18824,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertPriority",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 20,
             },
         21: { 
             BitLength: 8,
@@ -14994,6 +18841,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlertState",
+            GolangType:"AlertStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 21,
             },
         },
     },
@@ -15004,6 +18860,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAlertResponse,
+        Instance: &AlertResponse {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 4,
@@ -15012,6 +18869,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlertType",
+            GolangType:"AlertTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 4,
@@ -15020,6 +18886,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlertCategory",
+            GolangType:"AlertCategoryConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -15028,6 +18903,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertSystem",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -15036,6 +18920,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertSubSystem",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -15044,6 +18937,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 64,
@@ -15052,6 +18954,15 @@ var pgnList = []PgnInfo{
             CanboatType: "ISO_NAME",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DataSourceNetworkIdName",
+            GolangType:"*uint64",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.84467440737096e+19,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -15060,6 +18971,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DataSourceInstance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -15068,6 +18988,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DataSourceIndexSource",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 8,
@@ -15076,6 +19005,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertOccurrenceNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 64,
@@ -15084,6 +19022,15 @@ var pgnList = []PgnInfo{
             CanboatType: "ISO_NAME",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcknowledgeSourceNetworkIdName",
+            GolangType:"*uint64",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.84467440737096e+19,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 2,
@@ -15092,6 +19039,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ResponseCommand",
+            GolangType:"AlertResponseCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 6,
@@ -15100,6 +19056,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -15110,6 +19075,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAlertText,
+        Instance: &AlertText {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 4,
@@ -15118,6 +19084,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlertType",
+            GolangType:"AlertTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 4,
@@ -15126,6 +19101,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlertCategory",
+            GolangType:"AlertCategoryConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -15134,6 +19118,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertSystem",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -15142,6 +19135,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertSubSystem",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -15150,6 +19152,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 64,
@@ -15158,6 +19169,15 @@ var pgnList = []PgnInfo{
             CanboatType: "ISO_NAME",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DataSourceNetworkIdName",
+            GolangType:"*uint64",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.84467440737096e+19,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -15166,6 +19186,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DataSourceInstance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -15174,6 +19203,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DataSourceIndexSource",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 8,
@@ -15182,6 +19220,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AlertOccurrenceNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 8,
@@ -15190,6 +19237,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "LanguageId",
+            GolangType:"AlertLanguageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 0,
@@ -15198,6 +19254,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlertTextDescription",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 0,
@@ -15206,6 +19271,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AlertLocationTextDescription",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -15216,6 +19290,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeSystemTime,
+        Instance: &SystemTime {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -15224,6 +19299,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 4,
@@ -15232,6 +19316,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Source",
+            GolangType:"SystemTimeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 4,
@@ -15240,6 +19333,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -15248,6 +19350,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Date",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -15256,6 +19367,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Time",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -15266,6 +19386,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeHeartbeat,
+        Instance: &Heartbeat {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -15274,6 +19395,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "DataTransmitOffset",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -15282,6 +19412,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SequenceCounter",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -15290,6 +19429,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Controller1State",
+            GolangType:"ControllerStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -15298,6 +19446,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Controller2State",
+            GolangType:"ControllerStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -15306,6 +19463,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "EquipmentStatus",
+            GolangType:"EquipmentStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 34,
@@ -15314,6 +19480,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -15324,6 +19499,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeProductInformation,
+        Instance: &ProductInformation {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -15332,6 +19508,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "Nmea2000Version",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65.532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -15340,6 +19525,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ProductCode",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 256,
@@ -15348,6 +19542,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ModelId",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 256,
@@ -15356,6 +19559,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SoftwareVersionCode",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 256,
@@ -15364,6 +19576,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ModelVersion",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 256,
@@ -15372,6 +19593,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ModelSerialCode",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -15380,6 +19610,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "CertificationLevel",
+            GolangType:"CertificationLevelConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -15388,6 +19627,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LoadEquivalency",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -15398,6 +19646,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeConfigurationInformation,
+        Instance: &ConfigurationInformation {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 0,
@@ -15406,6 +19655,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "InstallationDescription1",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 0,
@@ -15414,6 +19672,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "InstallationDescription2",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 0,
@@ -15422,6 +19689,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ManufacturerInformation",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         },
     },
@@ -15432,6 +19708,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeManOverboardNotification,
+        Instance: &ManOverboardNotification {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -15440,6 +19717,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -15448,6 +19734,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "MobEmitterId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -15456,6 +19751,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ManOverboardStatus",
+            GolangType:"MobStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 5,
@@ -15464,6 +19768,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -15472,6 +19785,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "ActivationTime",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 3,
@@ -15480,6 +19802,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PositionSource",
+            GolangType:"MobPositionSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 5,
@@ -15488,6 +19819,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved7",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -15496,6 +19836,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "PositionDate",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 32,
@@ -15504,6 +19853,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "PositionTime",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 32,
@@ -15512,6 +19870,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "Latitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: -90,
+            DomainMax: 90, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 32,
@@ -15520,6 +19887,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "Longitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: -180,
+            DomainMax: 180, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 2,
@@ -15528,6 +19904,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "CogReference",
+            GolangType:"DirectionReferenceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 6,
@@ -15536,6 +19921,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved13",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 16,
@@ -15544,6 +19938,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Cog",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 16,
@@ -15552,6 +19955,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Sog",
+            GolangType:"*units.Velocity",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 32,
@@ -15560,6 +19972,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "MmsiOfVesselOfOrigin",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 3,
@@ -15568,6 +19989,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MobEmitterBatteryLowStatus",
+            GolangType:"LowBatteryConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 5,
@@ -15576,6 +20006,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved18",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         },
     },
@@ -15586,6 +20025,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeHeadingTrackControl,
+        Instance: &HeadingTrackControl {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 2,
@@ -15594,6 +20034,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RudderLimitExceeded",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -15602,6 +20051,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "OffHeadingLimitExceeded",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -15610,6 +20068,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "OffTrackLimitExceeded",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -15618,6 +20085,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Override",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 3,
@@ -15626,6 +20102,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SteeringMode",
+            GolangType:"SteeringModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 3,
@@ -15634,6 +20119,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TurnMode",
+            GolangType:"TurnModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 2,
@@ -15642,6 +20136,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "HeadingReference",
+            GolangType:"DirectionReferenceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 5,
@@ -15650,6 +20153,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 3,
@@ -15658,6 +20170,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "CommandedRudderDirection",
+            GolangType:"DirectionRudderConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 16,
@@ -15666,6 +20187,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "CommandedRudderAngle",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 16,
@@ -15674,6 +20204,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "HeadingToSteerCourse",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 16,
@@ -15682,6 +20221,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Track",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 16,
@@ -15690,6 +20238,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "RudderLimit",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 16,
@@ -15698,6 +20255,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "OffHeadingLimit",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 16,
@@ -15706,6 +20272,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RadiusOfTurnOrder",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -32767,
+            RangeMax: 32764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 16,
@@ -15714,6 +20289,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:3.125e-05,
+            Id: "RateOfTurnOrder",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -1.02396875,
+            RangeMax: 1.023875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 16,
@@ -15722,6 +20306,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "OffTrackLimit",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -32767,
+            RangeMax: 32764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 16,
@@ -15730,6 +20323,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "VesselHeading",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         },
     },
@@ -15740,6 +20342,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeRudder,
+        Instance: &Rudder {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -15748,6 +20351,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 3,
@@ -15756,6 +20368,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DirectionOrder",
+            GolangType:"DirectionRudderConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 5,
@@ -15764,6 +20385,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -15772,6 +20402,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "AngleOrder",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -15780,6 +20419,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Position",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -15788,6 +20436,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -15798,6 +20455,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeVesselHeading,
+        Instance: &VesselHeading {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -15806,6 +20464,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -15814,6 +20481,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Heading",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -15822,6 +20498,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Deviation",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -15830,6 +20515,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Variation",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -15838,6 +20532,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reference",
+            GolangType:"DirectionReferenceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 6,
@@ -15846,6 +20549,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -15856,6 +20568,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeRateOfTurn,
+        Instance: &RateOfTurn {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -15864,6 +20577,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -15872,6 +20594,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:3.125e-08,
+            Id: "Rate",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -67.10886396875,
+            RangeMax: 67.108863875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 24,
@@ -15880,6 +20611,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         },
     },
@@ -15890,6 +20630,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeAttitude,
+        Instance: &Attitude {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -15898,6 +20639,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -15906,6 +20656,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Yaw",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -15914,6 +20673,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Pitch",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -15922,6 +20690,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Roll",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -15930,6 +20707,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -15940,6 +20726,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeMagneticVariation,
+        Instance: &MagneticVariation {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -15948,6 +20735,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 4,
@@ -15956,6 +20752,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Source",
+            GolangType:"MagneticVariationConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 4,
@@ -15964,6 +20769,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -15972,6 +20786,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AgeOfService",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -15980,6 +20803,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Variation",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -15988,6 +20820,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -15998,6 +20839,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeEngineParametersRapidUpdate,
+        Instance: &EngineParametersRapidUpdate {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -16006,6 +20848,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"EngineInstanceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -16014,6 +20865,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.25,
+            Id: "Speed",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 16383,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -16022,6 +20882,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:100,
+            Id: "BoostPressure",
+            GolangType:"*units.Pressure",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.5532e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -16030,6 +20899,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "TiltTrim",
+            GolangType:"*int8",
+            Signed: true,
+            RangeMin: -127,
+            RangeMax: 124,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -16038,6 +20916,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -16048,6 +20935,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeEngineParametersDynamic,
+        Instance: &EngineParametersDynamic {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -16056,6 +20944,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"EngineInstanceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -16064,6 +20961,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:100,
+            Id: "OilPressure",
+            GolangType:"*units.Pressure",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.5532e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -16072,6 +20978,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "OilTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -16080,6 +20995,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Temperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -16088,6 +21012,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "AlternatorPotential",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -327.67,
+            RangeMax: 327.64,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -16096,6 +21029,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "FuelRate",
+            GolangType:"*units.Flow",
+            Signed: true,
+            RangeMin: -3276.7,
+            RangeMax: 3276.4,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -16104,6 +21046,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "TotalEngineHours",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -16112,6 +21063,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:100,
+            Id: "CoolantPressure",
+            GolangType:"*units.Pressure",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.5532e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -16120,6 +21080,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1000,
+            Id: "FuelPressure",
+            GolangType:"*units.Pressure",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.5532e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 8,
@@ -16128,6 +21097,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 16,
@@ -16136,6 +21114,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BITLOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DiscreteStatus1",
+            GolangType:"EngineStatus1Const",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65535,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 16,
@@ -16144,6 +21131,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BITLOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DiscreteStatus2",
+            GolangType:"EngineStatus2Const",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65535,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 8,
@@ -16152,6 +21148,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "EngineLoad",
+            GolangType:"*int8",
+            Signed: true,
+            RangeMin: -127,
+            RangeMax: 124,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 8,
@@ -16160,6 +21165,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "EngineTorque",
+            GolangType:"*int8",
+            Signed: true,
+            RangeMin: -127,
+            RangeMax: 124,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         },
     },
@@ -16170,6 +21184,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeTransmissionParametersDynamic,
+        Instance: &TransmissionParametersDynamic {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -16178,6 +21193,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"EngineInstanceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -16186,6 +21210,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TransmissionGear",
+            GolangType:"GearStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 6,
@@ -16194,6 +21227,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -16202,6 +21244,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:100,
+            Id: "OilPressure",
+            GolangType:"*units.Pressure",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.5532e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -16210,6 +21261,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "OilTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -16218,6 +21278,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DiscreteStatus1",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -16226,6 +21295,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved7",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -16236,6 +21314,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeTripParametersVessel,
+        Instance: &TripParametersVessel {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -16244,6 +21323,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "TimeToEmpty",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -16252,6 +21340,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "DistanceToEmpty",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -16260,6 +21357,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "EstimatedFuelRemaining",
+            GolangType:"*units.Volume",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -16268,6 +21374,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "TripRunTime",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -16278,6 +21393,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeTripParametersEngine,
+        Instance: &TripParametersEngine {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -16286,6 +21402,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"EngineInstanceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -16294,6 +21419,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "TripFuelUsed",
+            GolangType:"*units.Volume",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -16302,6 +21436,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "FuelRateAverage",
+            GolangType:"*units.Flow",
+            Signed: true,
+            RangeMin: -3276.7,
+            RangeMax: 3276.4,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -16310,6 +21453,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "FuelRateEconomy",
+            GolangType:"*units.Flow",
+            Signed: true,
+            RangeMin: -3276.7,
+            RangeMax: 3276.4,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -16318,6 +21470,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "InstantaneousFuelEconomy",
+            GolangType:"*units.Flow",
+            Signed: true,
+            RangeMin: -3276.7,
+            RangeMax: 3276.4,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -16328,6 +21489,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeEngineParametersStatic,
+        Instance: &EngineParametersStatic {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -16336,6 +21498,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"EngineInstanceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -16344,6 +21515,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.25,
+            Id: "RatedEngineSpeed",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 16383,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 0,
@@ -16352,6 +21532,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Vin",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 0,
@@ -16360,6 +21549,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SoftwareId",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -16370,6 +21568,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeLoadControllerConnectionStateControl,
+        Instance: &LoadControllerConnectionStateControl {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -16378,6 +21577,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SequenceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -16386,6 +21594,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ConnectionId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -16394,6 +21611,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "State",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -16402,6 +21628,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Status",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -16410,6 +21645,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "OperationalStatusControl",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -16418,6 +21662,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "PwmDutyCycle",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -16426,6 +21679,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Timeon",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -16434,6 +21696,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Timeoff",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -16444,6 +21715,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeBinarySwitchBankStatus,
+        Instance: &BinarySwitchBankStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -16452,6 +21724,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -16460,6 +21741,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator1",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -16468,6 +21758,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator2",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -16476,6 +21775,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator3",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -16484,6 +21792,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator4",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -16492,6 +21809,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator5",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 2,
@@ -16500,6 +21826,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator6",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 2,
@@ -16508,6 +21843,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator7",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 2,
@@ -16516,6 +21860,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator8",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 2,
@@ -16524,6 +21877,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator9",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 2,
@@ -16532,6 +21894,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator10",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 2,
@@ -16540,6 +21911,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator11",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 2,
@@ -16548,6 +21928,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator12",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 2,
@@ -16556,6 +21945,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator13",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 2,
@@ -16564,6 +21962,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator14",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 2,
@@ -16572,6 +21979,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator15",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 2,
@@ -16580,6 +21996,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator16",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 2,
@@ -16588,6 +22013,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator17",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         19: { 
             BitLength: 2,
@@ -16596,6 +22030,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator18",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 19,
             },
         20: { 
             BitLength: 2,
@@ -16604,6 +22047,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator19",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 20,
             },
         21: { 
             BitLength: 2,
@@ -16612,6 +22064,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator20",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 21,
             },
         22: { 
             BitLength: 2,
@@ -16620,6 +22081,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator21",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 22,
             },
         23: { 
             BitLength: 2,
@@ -16628,6 +22098,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator22",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 23,
             },
         24: { 
             BitLength: 2,
@@ -16636,6 +22115,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator23",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 24,
             },
         25: { 
             BitLength: 2,
@@ -16644,6 +22132,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator24",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 25,
             },
         26: { 
             BitLength: 2,
@@ -16652,6 +22149,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator25",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 26,
             },
         27: { 
             BitLength: 2,
@@ -16660,6 +22166,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator26",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 27,
             },
         28: { 
             BitLength: 2,
@@ -16668,6 +22183,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator27",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 28,
             },
         29: { 
             BitLength: 2,
@@ -16676,6 +22200,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Indicator28",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 29,
             },
         },
     },
@@ -16686,6 +22219,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeSwitchBankControl,
+        Instance: &SwitchBankControl {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -16694,6 +22228,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -16702,6 +22245,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch1",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -16710,6 +22262,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch2",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -16718,6 +22279,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch3",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -16726,6 +22296,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch4",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -16734,6 +22313,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch5",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 2,
@@ -16742,6 +22330,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch6",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 2,
@@ -16750,6 +22347,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch7",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 2,
@@ -16758,6 +22364,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch8",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 2,
@@ -16766,6 +22381,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch9",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 2,
@@ -16774,6 +22398,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch10",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 2,
@@ -16782,6 +22415,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch11",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 2,
@@ -16790,6 +22432,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch12",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 2,
@@ -16798,6 +22449,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch13",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 2,
@@ -16806,6 +22466,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch14",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 2,
@@ -16814,6 +22483,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch15",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 2,
@@ -16822,6 +22500,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch16",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 2,
@@ -16830,6 +22517,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch17",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         19: { 
             BitLength: 2,
@@ -16838,6 +22534,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch18",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 19,
             },
         20: { 
             BitLength: 2,
@@ -16846,6 +22551,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch19",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 20,
             },
         21: { 
             BitLength: 2,
@@ -16854,6 +22568,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch20",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 21,
             },
         22: { 
             BitLength: 2,
@@ -16862,6 +22585,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch21",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 22,
             },
         23: { 
             BitLength: 2,
@@ -16870,6 +22602,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch22",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 23,
             },
         24: { 
             BitLength: 2,
@@ -16878,6 +22619,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch23",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 24,
             },
         25: { 
             BitLength: 2,
@@ -16886,6 +22636,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch24",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 25,
             },
         26: { 
             BitLength: 2,
@@ -16894,6 +22653,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch25",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 26,
             },
         27: { 
             BitLength: 2,
@@ -16902,6 +22670,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch26",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 27,
             },
         28: { 
             BitLength: 2,
@@ -16910,6 +22687,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch27",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 28,
             },
         29: { 
             BitLength: 2,
@@ -16918,6 +22704,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Switch28",
+            GolangType:"OffOnControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 29,
             },
         },
     },
@@ -16928,6 +22723,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAcInputStatus,
+        Instance: &AcInputStatus {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -16936,6 +22733,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -16944,6 +22750,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfLines",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -16952,6 +22767,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Line",
+            GolangType:"AcLineConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -16960,6 +22784,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Acceptability",
+            GolangType:"AcceptabilityConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 4,
@@ -16968,6 +22801,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -16976,6 +22818,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Voltage",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -16984,6 +22835,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Current",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -16992,6 +22852,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Frequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -17000,6 +22869,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "BreakerSize",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 32,
@@ -17008,6 +22886,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RealPower",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 32,
@@ -17016,6 +22903,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReactivePower",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 8,
@@ -17024,6 +22920,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "PowerFactor",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -1,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -17034,6 +22939,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAcOutputStatus,
+        Instance: &AcOutputStatus {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17042,6 +22949,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17050,6 +22966,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfLines",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -17058,6 +22983,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Line",
+            GolangType:"LineConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 3,
@@ -17066,6 +23000,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Waveform",
+            GolangType:"WaveformConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 3,
@@ -17074,6 +23017,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -17082,6 +23034,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Voltage",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -17090,6 +23051,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Current",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -17098,6 +23068,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Frequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -17106,6 +23085,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "BreakerSize",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 32,
@@ -17114,6 +23102,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RealPower",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 32,
@@ -17122,6 +23119,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReactivePower",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 8,
@@ -17130,6 +23136,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "PowerFactor",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -1,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -17140,6 +23155,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeFluidLevel,
+        Instance: &FluidLevel {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 4,
@@ -17148,6 +23164,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 4,
@@ -17156,6 +23181,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Type",
+            GolangType:"TankTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -17164,6 +23198,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.004,
+            Id: "Level",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -131.068,
+            RangeMax: 131.056,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -17172,6 +23215,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Capacity",
+            GolangType:"*units.Volume",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -17180,6 +23232,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -17190,6 +23251,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeDcDetailedStatus,
+        Instance: &DcDetailedStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17198,6 +23260,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17206,6 +23277,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -17214,6 +23294,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DcType",
+            GolangType:"DcSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -17222,6 +23311,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StateOfCharge",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -17230,6 +23328,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StateOfHealth",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -17238,6 +23345,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:60,
+            Id: "TimeRemaining",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.93192e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -17246,6 +23362,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "RippleVoltage",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65.532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -17254,6 +23379,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RemainingCapacity",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -17264,6 +23398,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeChargerStatus,
+        Instance: &ChargerStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17272,6 +23407,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17280,6 +23424,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "BatteryInstance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 4,
@@ -17288,6 +23441,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "OperatingState",
+            GolangType:"ChargerStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 4,
@@ -17296,6 +23458,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ChargeMode",
+            GolangType:"ChargerModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -17304,6 +23475,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Enabled",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -17312,6 +23492,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "EqualizationPending",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 4,
@@ -17320,6 +23509,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -17328,6 +23526,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:60,
+            Id: "EqualizationTimeRemaining",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.93192e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -17338,6 +23545,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeBatteryStatus,
+        Instance: &BatteryStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17346,6 +23554,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -17354,6 +23571,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Voltage",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -327.67,
+            RangeMax: 327.64,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -17362,6 +23588,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Current",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3276.7,
+            RangeMax: 3276.4,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -17370,6 +23605,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Temperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -17378,6 +23622,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -17388,6 +23641,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeInverterStatus,
+        Instance: &InverterStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17396,6 +23650,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17404,6 +23667,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AcInstance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -17412,6 +23684,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DcInstance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 4,
@@ -17420,6 +23701,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "OperatingState",
+            GolangType:"InverterStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -17428,6 +23718,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "InverterEnable",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -17436,6 +23735,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -17446,6 +23754,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeAcPowerCurrentPhaseA,
+        Instance: &AcPowerCurrentPhaseA {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17454,6 +23763,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17462,6 +23780,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ConnectionNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -17470,6 +23797,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "AcRmsCurrent",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -17478,6 +23814,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Power",
+            GolangType:"*int32",
+            Signed: true,
+            RangeMin: -2.147483647e+09,
+            RangeMax: 2.147483644e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -17488,6 +23833,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeAcPowerCurrentPhaseB,
+        Instance: &AcPowerCurrentPhaseB {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17496,6 +23842,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17504,6 +23859,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ConnectionNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -17512,6 +23876,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "AcRmsCurrent",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -17520,6 +23893,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Power",
+            GolangType:"*int32",
+            Signed: true,
+            RangeMin: -2.147483647e+09,
+            RangeMax: 2.147483644e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -17530,6 +23912,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeAcPowerCurrentPhaseC,
+        Instance: &AcPowerCurrentPhaseC {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17538,6 +23921,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17546,6 +23938,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ConnectionNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -17554,6 +23955,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "AcRmsCurrent",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -17562,6 +23972,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Power",
+            GolangType:"*int32",
+            Signed: true,
+            RangeMin: -2.147483647e+09,
+            RangeMax: 2.147483644e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -17572,6 +23991,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeAcVoltageFrequencyPhaseA,
+        Instance: &AcVoltageFrequencyPhaseA {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17580,6 +24000,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17588,6 +24017,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ConnectionNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -17596,6 +24034,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "AcVoltageLineToNeutral",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -17604,6 +24051,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "AcVoltageLineToLine",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -17612,6 +24068,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Frequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -17622,6 +24087,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeAcVoltageFrequencyPhaseB,
+        Instance: &AcVoltageFrequencyPhaseB {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17630,6 +24096,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17638,6 +24113,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ConnectionNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -17646,6 +24130,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "AcVoltageLineToNeutral",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -17654,6 +24147,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "AcVoltageLineToLine",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -17662,6 +24164,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Frequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -17672,6 +24183,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeAcVoltageFrequencyPhaseC,
+        Instance: &AcVoltageFrequencyPhaseC {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17680,6 +24192,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17688,6 +24209,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ConnectionNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -17696,6 +24226,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "AcVoltageLineToNeutral",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -17704,6 +24243,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "AcVoltageLineToLine",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -17712,6 +24260,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Frequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -17722,6 +24279,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeConverterStatus,
+        Instance: &ConverterStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17730,6 +24288,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17738,6 +24305,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ConnectionNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -17746,6 +24322,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "OperatingState",
+            GolangType:"ConverterStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -17754,6 +24339,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TemperatureState",
+            GolangType:"GoodWarningErrorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -17762,6 +24356,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "OverloadState",
+            GolangType:"GoodWarningErrorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -17770,6 +24373,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "LowDcVoltageState",
+            GolangType:"GoodWarningErrorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 2,
@@ -17778,6 +24390,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RippleState",
+            GolangType:"GoodWarningErrorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 32,
@@ -17786,6 +24407,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -17796,6 +24426,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeDcVoltageCurrent,
+        Instance: &DcVoltageCurrent {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17804,6 +24435,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17812,6 +24452,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ConnectionNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -17820,6 +24469,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "DcVoltage",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 24,
@@ -17828,6 +24486,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "DcCurrent",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -83886.07,
+            RangeMax: 83886.04,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -17836,6 +24503,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -17846,6 +24522,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeLeewayAngle,
+        Instance: &LeewayAngle {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17854,6 +24531,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -17862,6 +24548,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "LeewayAngle",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 40,
@@ -17870,6 +24565,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         },
     },
@@ -17880,6 +24584,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeThrusterControlStatus,
+        Instance: &ThrusterControlStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17888,6 +24593,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -17896,6 +24610,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Identifier",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 4,
@@ -17904,6 +24627,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DirectionControl",
+            GolangType:"ThrusterDirectionControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -17912,6 +24644,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PowerEnabled",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -17920,6 +24661,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RetractControl",
+            GolangType:"ThrusterRetractControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -17928,6 +24678,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SpeedControl",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -17936,6 +24695,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BITLOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ControlEvents",
+            GolangType:"ThrusterControlEventsConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -17944,6 +24712,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.005,
+            Id: "CommandTimeout",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.26,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -17952,6 +24729,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "AzimuthControl",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -17962,6 +24748,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeThrusterInformation,
+        Instance: &ThrusterInformation {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -17970,6 +24757,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Identifier",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 4,
@@ -17978,6 +24774,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MotorType",
+            GolangType:"ThrusterMotorTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 4,
@@ -17986,6 +24791,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -17994,6 +24808,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "PowerRating",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -18002,6 +24825,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "MaximumTemperatureRating",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -18010,6 +24842,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.25,
+            Id: "MaximumRotationalSpeed",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 16383,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -18020,6 +24861,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeThrusterMotorStatus,
+        Instance: &ThrusterMotorStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -18028,6 +24870,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -18036,6 +24887,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Identifier",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -18044,6 +24904,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BITLOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MotorEvents",
+            GolangType:"ThrusterMotorEventsConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -18052,6 +24921,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Current",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -18060,6 +24938,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Temperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -18068,6 +24955,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:60,
+            Id: "OperatingTime",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.93192e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -18078,6 +24974,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeSpeed,
+        Instance: &Speed {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -18086,6 +24983,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -18094,6 +25000,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "SpeedWaterReferenced",
+            GolangType:"*units.Velocity",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -18102,6 +25017,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "SpeedGroundReferenced",
+            GolangType:"*units.Velocity",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -18110,6 +25034,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SpeedWaterReferencedType",
+            GolangType:"WaterReferenceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 4,
@@ -18118,6 +25051,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SpeedDirection",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 12,
@@ -18126,6 +25068,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -18136,6 +25087,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeWaterDepth,
+        Instance: &WaterDepth {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -18144,6 +25096,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -18152,6 +25113,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Depth",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -18160,6 +25130,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "Offset",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -32.767,
+            RangeMax: 32.764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -18168,6 +25147,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:10,
+            Id: "Range",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2520,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -18178,6 +25166,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeDistanceLog,
+        Instance: &DistanceLog {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -18186,6 +25175,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Date",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -18194,6 +25192,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Time",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -18202,6 +25209,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Log",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -18210,6 +25226,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "TripLog",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         },
     },
@@ -18220,6 +25245,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeWindlassControlStatus,
+        Instance: &WindlassControlStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -18228,6 +25254,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -18236,6 +25271,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "WindlassId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -18244,6 +25288,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WindlassDirectionControl",
+            GolangType:"WindlassDirectionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -18252,6 +25305,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AnchorDockingControl",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -18260,6 +25322,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SpeedControlType",
+            GolangType:"SpeedTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -18268,6 +25339,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -18276,6 +25356,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SpeedControl",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 2,
@@ -18284,6 +25373,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PowerEnable",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 2,
@@ -18292,6 +25390,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MechanicalLock",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 2,
@@ -18300,6 +25407,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DeckAndAnchorWash",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 2,
@@ -18308,6 +25424,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AnchorLight",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 8,
@@ -18316,6 +25441,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.005,
+            Id: "CommandTimeout",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.26,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 4,
@@ -18324,6 +25458,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BITLOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WindlassControlEvents",
+            GolangType:"WindlassControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 15,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 12,
@@ -18332,6 +25475,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved14",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         },
     },
@@ -18342,6 +25494,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeAnchorWindlassOperatingStatus,
+        Instance: &AnchorWindlassOperatingStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -18350,6 +25503,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -18358,6 +25520,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "WindlassId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -18366,6 +25537,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WindlassDirectionControl",
+            GolangType:"WindlassDirectionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -18374,6 +25554,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WindlassMotionStatus",
+            GolangType:"WindlassMotionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -18382,6 +25571,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RodeTypeStatus",
+            GolangType:"RodeTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -18390,6 +25588,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -18398,6 +25605,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "RodeCounterValue",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -18406,6 +25622,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "WindlassLineSpeed",
+            GolangType:"*units.Velocity",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 2,
@@ -18414,6 +25639,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AnchorDockingStatus",
+            GolangType:"DockingStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 6,
@@ -18422,6 +25656,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BITLOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WindlassOperatingEvents",
+            GolangType:"WindlassOperationConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 63,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         },
     },
@@ -18432,6 +25675,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeAnchorWindlassMonitoringStatus,
+        Instance: &AnchorWindlassMonitoringStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -18440,6 +25684,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -18448,6 +25701,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "WindlassId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -18456,6 +25718,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BITLOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WindlassMonitoringEvents",
+            GolangType:"WindlassMonitoringConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -18464,6 +25735,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.2,
+            Id: "ControllerVoltage",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 50.4,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -18472,6 +25752,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "MotorCurrent",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -18480,6 +25769,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:60,
+            Id: "TotalMotorTime",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3.93192e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -18488,6 +25786,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -18498,6 +25805,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodePositionRapidUpdate,
+        Instance: &PositionRapidUpdate {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -18506,6 +25814,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "Latitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: -90,
+            DomainMax: 90, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -18514,6 +25831,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "Longitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: -180,
+            DomainMax: 180, 
+            Match: -1,
+            Order: 2,
             },
         },
     },
@@ -18524,6 +25850,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeCogSogRapidUpdate,
+        Instance: &CogSogRapidUpdate {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -18532,6 +25859,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -18540,6 +25876,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "CogReference",
+            GolangType:"DirectionReferenceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 6,
@@ -18548,6 +25893,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -18556,6 +25910,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Cog",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -18564,6 +25927,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Sog",
+            GolangType:"*units.Velocity",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -18572,6 +25944,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -18582,6 +25963,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeGnssPositionData,
+        Instance: &GnssPositionData {},
+        Repeating1CountField: 15,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -18590,6 +25973,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -18598,6 +25990,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Date",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -18606,6 +26007,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Time",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 64,
@@ -18614,6 +26024,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-16,
+            Id: "Latitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: -90,
+            DomainMax: 90, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 64,
@@ -18622,6 +26041,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-16,
+            Id: "Longitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: -180,
+            DomainMax: 180, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 64,
@@ -18630,6 +26058,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-06,
+            Id: "Altitude",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -9.22337203685478e+12,
+            RangeMax: 9.22337203685478e+12,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 4,
@@ -18638,6 +26075,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "GnssType",
+            GolangType:"GnsConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 4,
@@ -18646,6 +26092,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Method",
+            GolangType:"GnsMethodConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 2,
@@ -18654,6 +26109,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Integrity",
+            GolangType:"GnsIntegrityConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 6,
@@ -18662,6 +26126,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 8,
@@ -18670,6 +26143,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfSvs",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 16,
@@ -18678,6 +26160,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Hdop",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -327.67,
+            RangeMax: 327.64,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 16,
@@ -18686,6 +26177,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Pdop",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -327.67,
+            RangeMax: 327.64,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 32,
@@ -18694,6 +26194,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "GeoidalSeparation",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -2.147483647e+07,
+            RangeMax: 2.147483644e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 8,
@@ -18702,6 +26211,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReferenceStations",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 4,
@@ -18710,6 +26228,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ReferenceStationType",
+            GolangType:"GnsConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 12,
@@ -18718,6 +26245,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReferenceStationId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4092,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 16,
@@ -18726,6 +26262,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "AgeOfDgnssCorrections",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         },
     },
@@ -18736,6 +26281,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeTimeDate,
+        Instance: &TimeDate {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -18744,6 +26290,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Date",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -18752,6 +26307,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Time",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -18760,6 +26324,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:60,
+            Id: "LocalOffset",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -1.96602e+06,
+            RangeMax: 1.96584e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         },
     },
@@ -18770,6 +26343,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAisClassAPositionReport,
+        Instance: &AisClassAPositionReport {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 6,
@@ -18778,6 +26352,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MessageId",
+            GolangType:"AisMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -18786,6 +26369,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RepeatIndicator",
+            GolangType:"RepeatIndicatorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -18794,6 +26386,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "UserId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -18802,6 +26403,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "Longitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: -180,
+            DomainMax: 180, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -18810,6 +26420,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "Latitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: -90,
+            DomainMax: 90, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 1,
@@ -18818,6 +26437,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PositionAccuracy",
+            GolangType:"PositionAccuracyConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 1,
@@ -18826,6 +26454,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Raim",
+            GolangType:"RaimFlagConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 6,
@@ -18834,6 +26471,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TimeStamp",
+            GolangType:"TimeStampConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 63,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -18842,6 +26488,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Cog",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 16,
@@ -18850,6 +26505,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Sog",
+            GolangType:"*units.Velocity",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 19,
@@ -18858,6 +26522,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "CommunicationState",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 5,
@@ -18866,6 +26539,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisTransceiverInformation",
+            GolangType:"AisTransceiverConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 16,
@@ -18874,6 +26556,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Heading",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 16,
@@ -18882,6 +26573,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:3.125e-05,
+            Id: "RateOfTurn",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -1.02396875,
+            RangeMax: 1.023875,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 4,
@@ -18890,6 +26590,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "NavStatus",
+            GolangType:"NavStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 14,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 2,
@@ -18898,6 +26607,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SpecialManeuverIndicator",
+            GolangType:"AisSpecialManeuverConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 2,
@@ -18906,6 +26624,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 3,
@@ -18914,6 +26641,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Spare18",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         19: { 
             BitLength: 5,
@@ -18922,6 +26658,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved19",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 19,
             },
         20: { 
             BitLength: 8,
@@ -18930,6 +26675,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SequenceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 20,
             },
         },
     },
@@ -18940,6 +26694,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAisClassBPositionReport,
+        Instance: &AisClassBPositionReport {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 6,
@@ -18948,6 +26703,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MessageId",
+            GolangType:"AisMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -18956,6 +26720,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RepeatIndicator",
+            GolangType:"RepeatIndicatorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -18964,6 +26737,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "UserId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -18972,6 +26754,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "Longitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: -180,
+            DomainMax: 180, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -18980,6 +26771,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "Latitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: -90,
+            DomainMax: 90, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 1,
@@ -18988,6 +26788,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PositionAccuracy",
+            GolangType:"PositionAccuracyConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 1,
@@ -18996,6 +26805,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Raim",
+            GolangType:"RaimFlagConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 6,
@@ -19004,6 +26822,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TimeStamp",
+            GolangType:"TimeStampConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 63,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -19012,6 +26839,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Cog",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 16,
@@ -19020,6 +26856,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Sog",
+            GolangType:"*units.Velocity",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 19,
@@ -19028,6 +26873,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "CommunicationState",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 5,
@@ -19036,6 +26890,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisTransceiverInformation",
+            GolangType:"AisTransceiverConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 16,
@@ -19044,6 +26907,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Heading",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 8,
@@ -19052,6 +26924,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RegionalApplication",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 2,
@@ -19060,6 +26941,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RegionalApplicationB",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 1,
@@ -19068,6 +26958,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "UnitType",
+            GolangType:"AisTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 1,
@@ -19076,6 +26975,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "IntegratedDisplay",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 1,
@@ -19084,6 +26992,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Dsc",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         19: { 
             BitLength: 1,
@@ -19092,6 +27009,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Band",
+            GolangType:"AisBandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 19,
             },
         20: { 
             BitLength: 1,
@@ -19100,6 +27026,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "CanHandleMsg22",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 20,
             },
         21: { 
             BitLength: 1,
@@ -19108,6 +27043,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisMode",
+            GolangType:"AisModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 21,
             },
         22: { 
             BitLength: 1,
@@ -19116,6 +27060,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisCommunicationState",
+            GolangType:"AisCommunicationStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 22,
             },
         23: { 
             BitLength: 15,
@@ -19124,6 +27077,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 23,
             },
         },
     },
@@ -19134,6 +27096,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAisAidsToNavigationAtonReport,
+        Instance: &AisAidsToNavigationAtonReport {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 6,
@@ -19142,6 +27105,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MessageId",
+            GolangType:"AisMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -19150,6 +27122,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RepeatIndicator",
+            GolangType:"RepeatIndicatorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -19158,6 +27139,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "UserId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -19166,6 +27156,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "Longitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: -180,
+            DomainMax: 180, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -19174,6 +27173,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "Latitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: -90,
+            DomainMax: 90, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 1,
@@ -19182,6 +27190,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PositionAccuracy",
+            GolangType:"PositionAccuracyConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 1,
@@ -19190,6 +27207,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Raim",
+            GolangType:"RaimFlagConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 6,
@@ -19198,6 +27224,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TimeStamp",
+            GolangType:"TimeStampConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 63,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -19206,6 +27241,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "LengthDiameter",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 16,
@@ -19214,6 +27258,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "BeamDiameter",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 16,
@@ -19222,6 +27275,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "PositionReferenceFromStarboardEdge",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 16,
@@ -19230,6 +27292,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "PositionReferenceFromTrueNorthFacingEdge",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 5,
@@ -19238,6 +27309,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AtonType",
+            GolangType:"AtonTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 31,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 1,
@@ -19246,6 +27326,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "OffPositionIndicator",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 1,
@@ -19254,6 +27343,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "VirtualAtonFlag",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 1,
@@ -19262,6 +27360,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AssignedModeFlag",
+            GolangType:"AisAssignedModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 1,
@@ -19270,6 +27377,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Spare",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 4,
@@ -19278,6 +27394,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PositionFixingDeviceType",
+            GolangType:"PositionFixDeviceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         19: { 
             BitLength: 3,
@@ -19286,6 +27411,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved19",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 19,
             },
         20: { 
             BitLength: 8,
@@ -19294,6 +27428,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AtonStatus",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 20,
             },
         21: { 
             BitLength: 5,
@@ -19302,6 +27445,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisTransceiverInformation",
+            GolangType:"AisTransceiverConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 21,
             },
         22: { 
             BitLength: 3,
@@ -19310,6 +27462,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved22",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 22,
             },
         23: { 
             BitLength: 0,
@@ -19318,6 +27479,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AtonName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 23,
             },
         },
     },
@@ -19328,6 +27498,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeDatum,
+        Instance: &Datum {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -19336,6 +27507,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "LocalDatum",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -19344,6 +27524,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "DeltaLatitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -19352,6 +27541,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "DeltaLongitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -19360,6 +27558,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "DeltaAltitude",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -2.147483647e+07,
+            RangeMax: 2.147483644e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -19368,6 +27575,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ReferenceDatum",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -19378,6 +27594,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeUserDatum,
+        Instance: &UserDatum {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -19386,6 +27603,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "DeltaX",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -2.147483647e+07,
+            RangeMax: 2.147483644e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -19394,6 +27620,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "DeltaY",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -2.147483647e+07,
+            RangeMax: 2.147483644e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -19402,6 +27637,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "DeltaZ",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -2.147483647e+07,
+            RangeMax: 2.147483644e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -19410,6 +27654,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FLOAT",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RotationInX",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -19418,6 +27671,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FLOAT",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RotationInY",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -19426,6 +27688,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FLOAT",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RotationInZ",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -19434,6 +27705,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FLOAT",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Scale",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.40282346638529e+38,
+            RangeMax: 3.40282346638529e+38,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 32,
@@ -19442,6 +27722,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "EllipsoidSemiMajorAxis",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -2.147483647e+07,
+            RangeMax: 2.147483644e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 32,
@@ -19450,6 +27739,15 @@ var pgnList = []PgnInfo{
             CanboatType: "FLOAT",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "EllipsoidFlatteningInverse",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.40282346638529e+38,
+            RangeMax: 3.40282346638529e+38,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 32,
@@ -19458,6 +27756,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DatumName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         },
     },
@@ -19468,6 +27775,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeCrossTrackError,
+        Instance: &CrossTrackError {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -19476,6 +27784,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 4,
@@ -19484,6 +27801,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "XteMode",
+            GolangType:"ResidualModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -19492,6 +27818,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -19500,6 +27835,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "NavigationTerminated",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -19508,6 +27852,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Xte",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -2.147483647e+07,
+            RangeMax: 2.147483644e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -19516,6 +27869,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -19526,6 +27888,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeNavigationData,
+        Instance: &NavigationData {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -19534,6 +27897,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -19542,6 +27914,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "DistanceToWaypoint",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -19550,6 +27931,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "CourseBearingReference",
+            GolangType:"DirectionReferenceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -19558,6 +27948,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "PerpendicularCrossed",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -19566,6 +27965,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ArrivalCircleEntered",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -19574,6 +27982,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "CalculationType",
+            GolangType:"BearingModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -19582,6 +27999,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "EtaTime",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -19590,6 +28016,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "EtaDate",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -19598,6 +28033,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "BearingOriginToDestinationWaypoint",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 16,
@@ -19606,6 +28050,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "BearingPositionToDestinationWaypoint",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 32,
@@ -19614,6 +28067,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "OriginWaypointNumber",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 32,
@@ -19622,6 +28084,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DestinationWaypointNumber",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 32,
@@ -19630,6 +28101,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "DestinationLatitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 32,
@@ -19638,6 +28118,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "DestinationLongitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 16,
@@ -19646,6 +28135,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "WaypointClosingVelocity",
+            GolangType:"*units.Velocity",
+            Signed: true,
+            RangeMin: -327.67,
+            RangeMax: 327.64,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         },
     },
@@ -19656,6 +28154,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeNavigationRouteWpInformation,
+        Instance: &NavigationRouteWpInformation {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -19664,6 +28164,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartRps",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -19672,6 +28181,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -19680,6 +28198,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -19688,6 +28215,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 3,
@@ -19696,6 +28232,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "NavigationDirectionInRoute",
+            GolangType:"DirectionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -19704,6 +28249,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SupplementaryRouteWpDataAvailable",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 3,
@@ -19712,6 +28266,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 0,
@@ -19720,6 +28283,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RouteName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 8,
@@ -19728,6 +28300,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved9",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 16,
@@ -19736,6 +28317,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "WpId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 0,
@@ -19744,6 +28334,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WpName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 32,
@@ -19752,6 +28351,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "WpLatitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 32,
@@ -19760,6 +28368,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "WpLongitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         },
     },
@@ -19770,6 +28387,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGnssDops,
+        Instance: &GnssDops {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -19778,6 +28396,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 3,
@@ -19786,6 +28413,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DesiredMode",
+            GolangType:"GnssModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -19794,6 +28430,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ActualMode",
+            GolangType:"GnssModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -19802,6 +28447,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -19810,6 +28464,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Hdop",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -327.67,
+            RangeMax: 327.64,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -19818,6 +28481,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Vdop",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -327.67,
+            RangeMax: 327.64,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -19826,6 +28498,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Tdop",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -327.67,
+            RangeMax: 327.64,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -19836,6 +28517,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeGnssSatsInView,
+        Instance: &GnssSatsInView {},
+        Repeating1CountField: 4,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -19844,6 +28527,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -19852,6 +28544,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RangeResidualMode",
+            GolangType:"RangeResidualModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 6,
@@ -19860,6 +28561,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -19868,6 +28578,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SatsInView",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -19876,6 +28595,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Prn",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -19884,6 +28612,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Elevation",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -3.1415926,
+            RangeMax: 3.1415926,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -19892,6 +28629,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Azimuth",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -19900,6 +28646,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Snr",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -327.67,
+            RangeMax: 327.64,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 32,
@@ -19908,6 +28663,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-05,
+            Id: "RangeResiduals",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -21474.83647,
+            RangeMax: 21474.83644,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 4,
@@ -19916,6 +28680,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Status",
+            GolangType:"SatelliteStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 4,
@@ -19924,6 +28697,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved11",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         },
     },
@@ -19934,6 +28716,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGnssRaimSettings,
+        Instance: &GnssRaimSettings {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -19942,6 +28725,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "RadialPositionErrorMaximumThreshold",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -19950,6 +28742,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ProbabilityOfFalseAlarm",
+            GolangType:"*int8",
+            Signed: true,
+            RangeMin: -127,
+            RangeMax: 124,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -19958,6 +28759,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ProbabilityOfMissedDetection",
+            GolangType:"*int8",
+            Signed: true,
+            RangeMin: -127,
+            RangeMax: 124,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -19966,6 +28776,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "PseudorangeResidualFilteringTimeConstant",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -19974,6 +28793,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -19984,6 +28812,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeGnssPseudorangeErrorStatistics,
+        Instance: &GnssPseudorangeErrorStatistics {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -19992,6 +28821,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -20000,6 +28838,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "RmsStdDevOfRangeInputs",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -20008,6 +28855,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "StdDevOfMajorErrorEllipse",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -20016,6 +28872,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "StdDevOfMinorErrorEllipse",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -20024,6 +28889,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "OrientationOfErrorEllipse",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -20032,6 +28906,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "StdDevLatError",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -20040,6 +28923,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "StdDevLonError",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -20048,6 +28940,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "StdDevAltError",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -20058,6 +28959,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeDgnssCorrections,
+        Instance: &DgnssCorrections {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -20066,6 +28968,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 12,
@@ -20074,6 +28985,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReferenceStationId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4092,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 4,
@@ -20082,6 +29002,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ReferenceStationType",
+            GolangType:"GnsConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -20090,6 +29019,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "TimeOfCorrections",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 4,
@@ -20098,6 +29036,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "StationHealth",
+            GolangType:"StationHealthConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 4,
@@ -20106,6 +29053,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -20114,6 +29070,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SatelliteId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 32,
@@ -20122,6 +29087,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Prc",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -214748.3647,
+            RangeMax: 214748.3644,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -20130,6 +29104,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "Rrc",
+            GolangType:"*units.Velocity",
+            Signed: true,
+            RangeMin: -3.2767,
+            RangeMax: 3.2764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 16,
@@ -20138,6 +29121,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Udre",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 8,
@@ -20146,6 +29138,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Iod",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         },
     },
@@ -20156,6 +29157,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeGnssDifferentialCorrectionReceiverInterface,
+        Instance: &GnssDifferentialCorrectionReceiverInterface {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -20164,6 +29166,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Channel",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -20172,6 +29183,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:10,
+            Id: "Frequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+10,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 5,
@@ -20180,6 +29200,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SerialInterfaceBitRate",
+            GolangType:"SerialBitRateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 3,
@@ -20188,6 +29217,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SerialInterfaceDetectionMode",
+            GolangType:"SerialDetectionModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 4,
@@ -20196,6 +29234,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DifferentialSource",
+            GolangType:"DifferentialSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 4,
@@ -20204,6 +29251,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DifferentialOperationMode",
+            GolangType:"DifferentialModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -20212,6 +29268,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -20222,6 +29287,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeGnssDifferentialCorrectionReceiverSignal,
+        Instance: &GnssDifferentialCorrectionReceiverSignal {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -20230,6 +29296,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -20238,6 +29313,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Channel",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -20246,6 +29330,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "SignalStrength",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -2.147483647e+07,
+            RangeMax: 2.147483644e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -20254,6 +29347,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "SignalSnr",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -327.67,
+            RangeMax: 327.64,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -20262,6 +29364,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:10,
+            Id: "Frequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+10,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 4,
@@ -20270,6 +29381,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "StationType",
+            GolangType:"GnsConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 12,
@@ -20278,6 +29398,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ReferenceStationId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4092,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 5,
@@ -20286,6 +29415,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DifferentialSignalBitRate",
+            GolangType:"SerialBitRateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 3,
@@ -20294,6 +29432,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DifferentialSignalDetectionMode",
+            GolangType:"SerialDetectionModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 2,
@@ -20302,6 +29449,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "UsedAsCorrectionSource",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 2,
@@ -20310,6 +29466,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 4,
@@ -20318,6 +29483,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DifferentialSource",
+            GolangType:"DifferentialSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 16,
@@ -20326,6 +29500,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "TimeSinceLastSatDifferentialSync",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 16,
@@ -20334,6 +29517,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SatelliteServiceIdNo",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         },
     },
@@ -20344,6 +29536,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeGlonassAlmanacData,
+        Instance: &GlonassAlmanacData {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -20352,6 +29545,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Prn",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -20360,6 +29562,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Na",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -20368,6 +29579,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 1,
@@ -20376,6 +29596,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Cna",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 5,
@@ -20384,6 +29613,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Hna",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -20392,6 +29630,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "EpsilonNa",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -20400,6 +29647,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DeltatnaDot",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -20408,6 +29664,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "OmegaNa",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 24,
@@ -20416,6 +29681,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DeltaTna",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.6777212e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 24,
@@ -20424,6 +29698,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Tna",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.6777212e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 24,
@@ -20432,6 +29715,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LambdaNa",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.6777212e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 24,
@@ -20440,6 +29732,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DeltaIna",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1.6777212e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 28,
@@ -20448,6 +29749,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "TauCa",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2.68435452e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 12,
@@ -20456,6 +29766,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "TauNa",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4092,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         },
     },
@@ -20466,6 +29785,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAisClassAStaticAndVoyageRelatedData,
+        Instance: &AisClassAStaticAndVoyageRelatedData {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 6,
@@ -20474,6 +29794,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MessageId",
+            GolangType:"AisMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -20482,6 +29811,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RepeatIndicator",
+            GolangType:"RepeatIndicatorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -20490,6 +29828,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "UserId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -20498,6 +29845,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ImoNumber",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 56,
@@ -20506,6 +29862,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Callsign",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 160,
@@ -20514,6 +29879,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Name",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -20522,6 +29896,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TypeOfShip",
+            GolangType:"ShipTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -20530,6 +29913,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Length",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -20538,6 +29930,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Beam",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 16,
@@ -20546,6 +29947,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "PositionReferenceFromStarboard",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 16,
@@ -20554,6 +29964,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "PositionReferenceFromBow",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 16,
@@ -20562,6 +29981,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "EtaDate",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 32,
@@ -20570,6 +29998,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "EtaTime",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 16,
@@ -20578,6 +30015,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Draft",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 160,
@@ -20586,6 +30032,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Destination",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 2,
@@ -20594,6 +30049,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisVersionIndicator",
+            GolangType:"AisVersionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 4,
@@ -20602,6 +30066,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "GnssType",
+            GolangType:"PositionFixDeviceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 1,
@@ -20610,6 +30083,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Dte",
+            GolangType:"AvailableConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         19: { 
             BitLength: 1,
@@ -20618,6 +30100,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 19,
             },
         20: { 
             BitLength: 5,
@@ -20626,6 +30117,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisTransceiverInformation",
+            GolangType:"AisTransceiverConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 20,
             },
         21: { 
             BitLength: 3,
@@ -20634,6 +30134,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved21",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 21,
             },
         },
     },
@@ -20644,6 +30153,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAisAddressedBinaryMessage,
+        Instance: &AisAddressedBinaryMessage {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 6,
@@ -20652,6 +30162,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MessageId",
+            GolangType:"AisMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -20660,6 +30179,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RepeatIndicator",
+            GolangType:"RepeatIndicatorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -20668,6 +30196,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 1,
@@ -20676,6 +30213,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 5,
@@ -20684,6 +30230,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisTransceiverInformation",
+            GolangType:"AisTransceiverConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -20692,6 +30247,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SequenceNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -20700,6 +30264,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DestinationId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 6,
@@ -20708,6 +30281,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved8",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 1,
@@ -20716,6 +30298,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RetransmitFlag",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 1,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 1,
@@ -20724,6 +30315,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved10",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 16,
@@ -20732,6 +30332,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfBitsInBinaryDataField",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 1680, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 0,
@@ -20740,6 +30349,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "BinaryData",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -20750,6 +30368,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAisAcknowledge,
+        Instance: &AisAcknowledge {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 6,
@@ -20758,6 +30377,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MessageId",
+            GolangType:"AisMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -20766,6 +30394,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RepeatIndicator",
+            GolangType:"RepeatIndicatorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -20774,6 +30411,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 1,
@@ -20782,6 +30428,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 5,
@@ -20790,6 +30445,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisTransceiverInformation",
+            GolangType:"AisTransceiverConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -20798,6 +30462,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Spare6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -20806,6 +30479,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DestinationId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 2,
@@ -20814,6 +30496,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SequenceNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 6,
@@ -20822,6 +30513,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved9",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -20832,6 +30532,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAisBinaryBroadcastMessage,
+        Instance: &AisBinaryBroadcastMessage {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 6,
@@ -20840,6 +30541,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MessageId",
+            GolangType:"AisMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -20848,6 +30558,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RepeatIndicator",
+            GolangType:"RepeatIndicatorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -20856,6 +30575,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 1,
@@ -20864,6 +30592,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 5,
@@ -20872,6 +30609,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisTransceiverInformation",
+            GolangType:"AisTransceiverConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -20880,6 +30626,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Spare6",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -20888,6 +30643,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfBitsInBinaryDataField",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 1720, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 0,
@@ -20896,6 +30660,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "BinaryData",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -20906,6 +30679,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRadioFrequencyModePower,
+        Instance: &RadioFrequencyModePower {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 32,
@@ -20914,6 +30688,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:10,
+            Id: "RxFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+10,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 32,
@@ -20922,6 +30705,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:10,
+            Id: "TxFrequency",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+10,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 48,
@@ -20930,6 +30722,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RadioChannel",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -20938,6 +30739,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "TxPower",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -20946,6 +30756,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Mode",
+            GolangType:"TelephoneModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -20954,6 +30773,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ChannelBandwidth",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -20964,6 +30792,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAisClassBStaticDataMsg24PartA,
+        Instance: &AisClassBStaticDataMsg24PartA {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 6,
@@ -20972,6 +30801,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MessageId",
+            GolangType:"AisMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -20980,6 +30818,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RepeatIndicator",
+            GolangType:"RepeatIndicatorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -20988,6 +30835,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "UserId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 160,
@@ -20996,6 +30852,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Name",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 5,
@@ -21004,6 +30869,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisTransceiverInformation",
+            GolangType:"AisTransceiverConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 3,
@@ -21012,6 +30886,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -21020,6 +30903,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SequenceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -21030,6 +30922,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeAisClassBStaticDataMsg24PartB,
+        Instance: &AisClassBStaticDataMsg24PartB {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 6,
@@ -21038,6 +30931,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "MessageId",
+            GolangType:"AisMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -21046,6 +30948,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RepeatIndicator",
+            GolangType:"RepeatIndicatorConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 3,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 32,
@@ -21054,6 +30965,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "UserId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -21062,6 +30982,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TypeOfShip",
+            GolangType:"ShipTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 56,
@@ -21070,6 +30999,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "VendorId",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 56,
@@ -21078,6 +31016,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_FIX",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Callsign",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -21086,6 +31033,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Length",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -21094,6 +31050,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Beam",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -21102,6 +31067,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "PositionReferenceFromStarboard",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 16,
@@ -21110,6 +31084,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "PositionReferenceFromBow",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 32,
@@ -21118,6 +31101,15 @@ var pgnList = []PgnInfo{
             CanboatType: "MMSI",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "MothershipUserId",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 2e+06,
+            RangeMax: 9.99999999e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 2,
@@ -21126,6 +31118,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 2,
@@ -21134,6 +31135,15 @@ var pgnList = []PgnInfo{
             CanboatType: "SPARE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Spare13",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 4,
@@ -21142,6 +31152,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "GnssType",
+            GolangType:"PositionFixDeviceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 5,
@@ -21150,6 +31169,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "AisTransceiverInformation",
+            GolangType:"AisTransceiverConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 29,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 3,
@@ -21158,6 +31186,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved16",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 8,
@@ -21166,6 +31203,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SequenceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         },
     },
@@ -21176,6 +31222,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceDatabaseList,
+        Instance: &RouteAndWpServiceDatabaseList {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21184,6 +31232,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartDatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21192,6 +31249,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -21200,6 +31266,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfDatabasesAvailable",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -21208,6 +31283,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 0,
@@ -21216,6 +31300,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "DatabaseName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -21224,6 +31317,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "DatabaseTimestamp",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -21232,6 +31334,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseDatestamp",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 4,
@@ -21240,6 +31351,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WpPositionResolution",
+            GolangType:"WpPositionResolutionConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 4,
@@ -21248,6 +31368,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 16,
@@ -21256,6 +31385,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfRoutesInDatabase",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 32,
@@ -21264,6 +31402,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfWpsInDatabase",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 32,
@@ -21272,6 +31419,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfBytesInDatabase",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -21282,6 +31438,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceRouteList,
+        Instance: &RouteAndWpServiceRouteList {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21290,6 +31448,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartRouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21298,6 +31465,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -21306,6 +31482,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfRoutesInDatabase",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -21314,6 +31499,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -21322,6 +31516,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 0,
@@ -21330,6 +31533,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RouteName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 2,
@@ -21338,6 +31550,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 2,
@@ -21346,6 +31567,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WpIdentificationMethod",
+            GolangType:"WpIdentificationMethodConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 4,
@@ -21354,6 +31584,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RouteStatus",
+            GolangType:"WpRouteStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -21364,6 +31603,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceRouteWpListAttributes,
+        Instance: &RouteAndWpServiceRouteWpListAttributes {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21372,6 +31612,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21380,6 +31629,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 0,
@@ -21388,6 +31646,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RouteWpListName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -21396,6 +31663,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "RouteWpListTimestamp",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -21404,6 +31680,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RouteWpListDatestamp",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -21412,6 +31697,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BITLOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ChangeAtLastTimestamp",
+            GolangType:"WpChangeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -21420,6 +31714,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfWpsInTheRouteWpList",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -21428,6 +31731,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BITLOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "CriticalSupplementaryParameters",
+            GolangType:"WpCriticalParametersConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 2,
@@ -21436,6 +31748,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "NavigationMethod",
+            GolangType:"WpNavigationMethodConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 2,
@@ -21444,6 +31765,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WpIdentificationMethod",
+            GolangType:"WpIdentificationMethodConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 4,
@@ -21452,6 +31782,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RouteStatus",
+            GolangType:"WpRouteStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 16,
@@ -21460,6 +31799,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "XteLimitForTheRoute",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -32767,
+            RangeMax: 32764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -21470,6 +31818,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceRouteWpNamePosition,
+        Instance: &RouteAndWpServiceRouteWpNamePosition {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21478,6 +31828,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartRps",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21486,6 +31845,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -21494,6 +31862,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfWpsInTheRouteWpList",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -21502,6 +31879,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -21510,6 +31896,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -21518,6 +31913,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "WpId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -21526,6 +31930,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WpName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 32,
@@ -21534,6 +31947,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "WpLatitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 32,
@@ -21542,6 +31964,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "WpLongitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -21552,6 +31983,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceRouteWpName,
+        Instance: &RouteAndWpServiceRouteWpName {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21560,6 +31993,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartRps",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21568,6 +32010,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -21576,6 +32027,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfWpsInTheRouteWpList",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -21584,6 +32044,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -21592,6 +32061,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -21600,6 +32078,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "WpId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -21608,6 +32095,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WpName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -21618,6 +32114,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceXteLimitNavigationMethod,
+        Instance: &RouteAndWpServiceXteLimitNavigationMethod {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21626,6 +32124,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartRps",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21634,6 +32141,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -21642,6 +32158,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfWpsWithASpecificXteLimitOrNavMethod",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -21650,6 +32175,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -21658,6 +32192,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -21666,6 +32209,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Rps",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -21674,6 +32226,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "XteLimitInTheLegAfterWp",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -32767,
+            RangeMax: 32764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 2,
@@ -21682,6 +32243,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "NavMethodInTheLegAfterWp",
+            GolangType:"WpNavigationMethodConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 6,
@@ -21690,6 +32260,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -21700,6 +32279,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceWpComment,
+        Instance: &RouteAndWpServiceWpComment {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21708,6 +32289,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21716,6 +32306,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -21724,6 +32323,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfWpsWithComments",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -21732,6 +32340,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -21740,6 +32357,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -21748,6 +32374,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "WpIdRps",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -21756,6 +32391,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Comment",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -21766,6 +32410,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceRouteComment,
+        Instance: &RouteAndWpServiceRouteComment {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21774,6 +32420,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartRouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21782,6 +32437,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -21790,6 +32454,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfRoutesWithComments",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -21798,6 +32471,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -21806,6 +32488,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 0,
@@ -21814,6 +32505,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Comment",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -21824,6 +32524,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceDatabaseComment,
+        Instance: &RouteAndWpServiceDatabaseComment {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21832,6 +32534,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartDatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21840,6 +32551,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -21848,6 +32568,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfDatabasesWithComments",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -21856,6 +32585,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 0,
@@ -21864,6 +32602,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Comment",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -21874,6 +32621,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceRadiusOfTurn,
+        Instance: &RouteAndWpServiceRadiusOfTurn {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21882,6 +32631,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartRps",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21890,6 +32648,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -21898,6 +32665,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfWpsWithASpecificRadiusOfTurn",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -21906,6 +32682,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -21914,6 +32699,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RouteId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -21922,6 +32716,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Rps",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -21930,6 +32733,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RadiusOfTurn",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -32767,
+            RangeMax: 32764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -21940,6 +32752,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeRouteAndWpServiceWpListWpNamePosition,
+        Instance: &RouteAndWpServiceWpListWpNamePosition {},
+        Repeating1CountField: 2,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -21948,6 +32762,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartWpId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -21956,6 +32779,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Nitems",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -21964,6 +32796,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "NumberOfValidWpsInTheWpList",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -21972,6 +32813,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "DatabaseId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -21980,6 +32830,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -21988,6 +32847,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "WpId",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -21996,6 +32864,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WpName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 32,
@@ -22004,6 +32881,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "WpLatitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 32,
@@ -22012,6 +32898,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "WpLongitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -22022,6 +32917,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeWindData,
+        Instance: &WindData {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -22030,6 +32926,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -22038,6 +32943,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "WindSpeed",
+            GolangType:"*units.Velocity",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -22046,6 +32960,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "WindAngle",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.2831852,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 3,
@@ -22054,6 +32977,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reference",
+            GolangType:"WindReferenceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 21,
@@ -22062,6 +32994,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -22072,6 +33013,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeEnvironmentalParametersObsolete,
+        Instance: &EnvironmentalParametersObsolete {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -22080,6 +33022,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -22088,6 +33039,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "WaterTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -22096,6 +33056,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "OutsideAmbientAirTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -22104,6 +33073,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:100,
+            Id: "AtmosphericPressure",
+            GolangType:"*units.Pressure",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.5532e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -22112,6 +33090,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -22122,6 +33109,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeEnvironmentalParameters,
+        Instance: &EnvironmentalParameters {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -22130,6 +33118,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 6,
@@ -22138,6 +33135,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TemperatureSource",
+            GolangType:"TemperatureSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -22146,6 +33152,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "HumiditySource",
+            GolangType:"HumiditySourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -22154,6 +33169,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "Temperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -22162,6 +33186,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.004,
+            Id: "Humidity",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -131.068,
+            RangeMax: 131.056,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -22170,6 +33203,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:100,
+            Id: "AtmosphericPressure",
+            GolangType:"*units.Pressure",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.5532e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -22180,6 +33222,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeTemperature,
+        Instance: &Temperature {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -22188,6 +33231,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -22196,6 +33248,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -22204,6 +33265,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Source",
+            GolangType:"TemperatureSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -22212,6 +33282,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "ActualTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -22220,6 +33299,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "SetTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -22228,6 +33316,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -22238,6 +33335,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeHumidity,
+        Instance: &Humidity {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -22246,6 +33344,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -22254,6 +33361,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -22262,6 +33378,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Source",
+            GolangType:"HumiditySourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -22270,6 +33395,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.004,
+            Id: "ActualHumidity",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -131.068,
+            RangeMax: 131.056,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -22278,6 +33412,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.004,
+            Id: "SetHumidity",
+            GolangType:"*float32",
+            Signed: true,
+            RangeMin: -131.068,
+            RangeMax: 131.056,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -22286,6 +33429,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -22296,6 +33448,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeActualPressure,
+        Instance: &ActualPressure {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -22304,6 +33457,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -22312,6 +33474,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -22320,6 +33491,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Source",
+            GolangType:"PressureSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -22328,6 +33508,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Pressure",
+            GolangType:"*units.Pressure",
+            Signed: true,
+            RangeMin: -2.147483647e+08,
+            RangeMax: 2.147483644e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -22336,6 +33525,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -22346,6 +33544,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeSetPressure,
+        Instance: &SetPressure {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -22354,6 +33553,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -22362,6 +33570,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -22370,6 +33587,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Source",
+            GolangType:"PressureSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 32,
@@ -22378,6 +33604,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "Pressure",
+            GolangType:"*units.Pressure",
+            Signed: true,
+            RangeMin: -2.147483647e+08,
+            RangeMax: 2.147483644e+08,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -22386,6 +33621,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -22396,6 +33640,7 @@ var pgnList = []PgnInfo{
         Fast: false,
         ManId: 0,
         Decoder: DecodeTemperatureExtendedRange,
+        Instance: &TemperatureExtendedRange {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 8,
@@ -22404,6 +33649,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 8,
@@ -22412,6 +33666,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 8,
@@ -22420,6 +33683,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Source",
+            GolangType:"TemperatureSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 24,
@@ -22428,6 +33700,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "Temperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 16777.212,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -22436,6 +33717,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "SetTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -22446,6 +33736,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeTideStationData,
+        Instance: &TideStationData {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 4,
@@ -22454,6 +33745,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Mode",
+            GolangType:"ResidualModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -22462,6 +33762,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TideTendency",
+            GolangType:"TideConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -22470,6 +33779,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -22478,6 +33796,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "MeasurementDate",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -22486,6 +33813,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "MeasurementTime",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -22494,6 +33830,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "StationLatitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -90,
+            RangeMax: 90,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -22502,6 +33847,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1e-07,
+            Id: "StationLongitude",
+            GolangType:"*float64",
+            Signed: true,
+            RangeMin: -180,
+            RangeMax: 180,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -22510,6 +33864,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "TideLevel",
+            GolangType:"*units.Distance",
+            Signed: true,
+            RangeMin: -32.767,
+            RangeMax: 32.764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -22518,6 +33881,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "TideLevelStandardDeviation",
+            GolangType:"*units.Distance",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 0,
@@ -22526,6 +33898,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "StationId",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 0,
@@ -22534,6 +33915,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LAU",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "StationName",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         },
     },
@@ -22544,6 +33934,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeWatermakerInputSettingAndStatus,
+        Instance: &WatermakerInputSettingAndStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 6,
@@ -22552,6 +33943,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "WatermakerOperatingState",
+            GolangType:"WatermakerStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 61,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -22560,6 +33960,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ProductionStartStop",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 2,
@@ -22568,6 +33977,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "RinseStartStop",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 2,
@@ -22576,6 +33994,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "LowPressurePumpStatus",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 2,
@@ -22584,6 +34011,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "HighPressurePumpStatus",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 2,
@@ -22592,6 +34028,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "EmergencyStop",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 2,
@@ -22600,6 +34045,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ProductSolenoidValveStatus",
+            GolangType:"OkWarningConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 2,
@@ -22608,6 +34062,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "FlushModeStatus",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 2,
@@ -22616,6 +34079,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SalinityStatus",
+            GolangType:"OkWarningConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 2,
@@ -22624,6 +34096,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SensorStatus",
+            GolangType:"OkWarningConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 2,
@@ -22632,6 +34113,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "OilChangeIndicatorStatus",
+            GolangType:"OkWarningConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 2,
@@ -22640,6 +34130,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "FilterStatus",
+            GolangType:"OkWarningConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         13: { 
             BitLength: 2,
@@ -22648,6 +34147,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SystemStatus",
+            GolangType:"OkWarningConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 13,
             },
         14: { 
             BitLength: 2,
@@ -22656,6 +34164,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 14,
             },
         15: { 
             BitLength: 16,
@@ -22664,6 +34181,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Salinity",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 15,
             },
         16: { 
             BitLength: 16,
@@ -22672,6 +34198,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.01,
+            Id: "ProductWaterTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 655.32,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 16,
             },
         17: { 
             BitLength: 16,
@@ -22680,6 +34215,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:100,
+            Id: "PreFilterPressure",
+            GolangType:"*units.Pressure",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.5532e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 17,
             },
         18: { 
             BitLength: 16,
@@ -22688,6 +34232,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:100,
+            Id: "PostFilterPressure",
+            GolangType:"*units.Pressure",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.5532e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 18,
             },
         19: { 
             BitLength: 16,
@@ -22696,6 +34249,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1000,
+            Id: "FeedPressure",
+            GolangType:"*units.Pressure",
+            Signed: true,
+            RangeMin: -3.2767e+07,
+            RangeMax: 3.2764e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 19,
             },
         20: { 
             BitLength: 16,
@@ -22704,6 +34266,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1000,
+            Id: "SystemHighPressure",
+            GolangType:"*units.Pressure",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6.5532e+07,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 20,
             },
         21: { 
             BitLength: 16,
@@ -22712,6 +34283,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "ProductWaterFlow",
+            GolangType:"*units.Flow",
+            Signed: true,
+            RangeMin: -3276.7,
+            RangeMax: 3276.4,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 21,
             },
         22: { 
             BitLength: 16,
@@ -22720,6 +34300,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "BrineWaterFlow",
+            GolangType:"*units.Flow",
+            Signed: true,
+            RangeMin: -3276.7,
+            RangeMax: 3276.4,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 22,
             },
         23: { 
             BitLength: 32,
@@ -22728,6 +34317,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "RunTime",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 23,
             },
         },
     },
@@ -22738,6 +34336,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 0,
         Decoder: DecodeVesselSpeedComponents,
+        Instance: &VesselSpeedComponents {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 16,
@@ -22746,6 +34345,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "LongitudinalSpeedWaterReferenced",
+            GolangType:"*units.Velocity",
+            Signed: true,
+            RangeMin: -32.767,
+            RangeMax: 32.764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 1,
             },
         2: { 
             BitLength: 16,
@@ -22754,6 +34362,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "TransverseSpeedWaterReferenced",
+            GolangType:"*units.Velocity",
+            Signed: true,
+            RangeMin: -32.767,
+            RangeMax: 32.764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 16,
@@ -22762,6 +34379,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "LongitudinalSpeedGroundReferenced",
+            GolangType:"*units.Velocity",
+            Signed: true,
+            RangeMin: -32.767,
+            RangeMax: 32.764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -22770,6 +34396,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "TransverseSpeedGroundReferenced",
+            GolangType:"*units.Velocity",
+            Signed: true,
+            RangeMin: -32.767,
+            RangeMax: 32.764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -22778,6 +34413,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "SternSpeedWaterReferenced",
+            GolangType:"*units.Velocity",
+            Signed: true,
+            RangeMin: -32.767,
+            RangeMax: 32.764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -22786,6 +34430,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "SternSpeedGroundReferenced",
+            GolangType:"*units.Velocity",
+            Signed: true,
+            RangeMin: -32.767,
+            RangeMax: 32.764,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -22796,6 +34449,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 275,
         Decoder: DecodeSonichubVolume,
+        Instance: &SonichubVolume {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -22805,6 +34459,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 275,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -22813,6 +34475,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -22822,6 +34493,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -22830,6 +34509,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved4",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -22839,6 +34527,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 24,
+            Id: "ProprietaryId",
+            GolangType:"SonichubCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -22847,6 +34543,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Control",
+            GolangType:"SonichubControlConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -22855,6 +34560,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -22863,6 +34577,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Level",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -22873,6 +34596,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionVersions,
+        Instance: &FusionVersions {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -22882,6 +34606,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -22890,6 +34622,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -22899,6 +34640,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -22908,6 +34657,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32769,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -22916,6 +34673,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "HwVersionMajor",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -22924,6 +34690,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "HwVersionMinor",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -22932,6 +34707,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SwVersionMajor",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -22940,6 +34724,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SwVersionMinor",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 8,
@@ -22948,6 +34741,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "BuildNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -22958,6 +34760,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSource,
+        Instance: &FusionSource {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -22967,6 +34770,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -22975,6 +34786,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -22984,6 +34804,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -22993,6 +34821,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32770,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23001,6 +34837,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -23009,6 +34854,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "CurrentSourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -23017,6 +34871,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SourceType",
+            GolangType:"FusionSourceTypeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -23025,6 +34888,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Flags",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 0,
@@ -23033,6 +34905,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Source",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -23043,6 +34924,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSourceCount,
+        Instance: &FusionSourceCount {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23052,6 +34934,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23060,6 +34950,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23069,6 +34968,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23078,6 +34985,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32771,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23086,6 +35001,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceCount",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -23096,6 +35020,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionMedia,
+        Instance: &FusionMedia {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23105,6 +35030,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23113,6 +35046,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23122,6 +35064,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23131,6 +35081,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32772,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23139,6 +35097,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -23147,6 +35114,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Flags",
+            GolangType:"FusionPlayStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -23155,6 +35131,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Track",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 32,
@@ -23163,6 +35148,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "TrackCount",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 32,
@@ -23171,6 +35165,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "Length",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 32,
@@ -23179,6 +35182,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "PositionInTrack",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+06,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         },
     },
@@ -23189,6 +35201,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionTrackName,
+        Instance: &FusionTrackName {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23198,6 +35211,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23206,6 +35227,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23215,6 +35245,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23224,6 +35262,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32773,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23232,6 +35278,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -23240,6 +35295,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Index",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -23248,6 +35312,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Track",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -23258,6 +35331,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionArtistName,
+        Instance: &FusionArtistName {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23267,6 +35341,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23275,6 +35357,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23284,6 +35375,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23293,6 +35392,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32774,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23301,6 +35408,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -23309,6 +35425,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Index",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -23317,6 +35442,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Artist",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -23327,6 +35461,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionAlbumName,
+        Instance: &FusionAlbumName {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23336,6 +35471,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23344,6 +35487,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23353,6 +35505,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23362,6 +35522,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32775,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23370,6 +35538,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -23378,6 +35555,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Index",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -23386,6 +35572,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Album",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -23396,6 +35591,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionDeviceName,
+        Instance: &FusionDeviceName {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23405,6 +35601,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23413,6 +35617,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23422,6 +35635,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23431,6 +35652,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32801,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 0,
@@ -23439,6 +35668,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Name",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -23449,6 +35687,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionZoneName,
+        Instance: &FusionZoneName {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23458,6 +35697,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23466,6 +35713,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23475,6 +35731,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23484,6 +35748,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32813,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23492,6 +35764,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Number",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 0,
@@ -23500,6 +35781,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Name",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -23510,6 +35800,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionTrackPosition,
+        Instance: &FusionTrackPosition {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23519,6 +35810,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23527,6 +35826,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23536,6 +35844,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23545,6 +35861,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32777,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23553,6 +35877,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 24,
@@ -23561,6 +35894,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:0.001,
+            Id: "Progress",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 16777.212,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -23571,6 +35913,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionTuner,
+        Instance: &FusionTuner {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23580,6 +35923,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23588,6 +35939,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23597,6 +35957,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23606,6 +35974,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32779,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23614,6 +35990,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"FusionRadioSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -23622,6 +36007,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Scanning",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -23630,6 +36024,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Frequency",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -23638,6 +36041,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SignalStrength",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 0,
@@ -23646,6 +36058,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Track",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -23656,6 +36077,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionMarineTuner,
+        Instance: &FusionMarineTuner {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23665,6 +36087,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23673,6 +36103,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23682,6 +36121,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23691,6 +36138,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32780,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23699,6 +36154,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -23707,6 +36171,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Channel",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -23715,6 +36188,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SignalStrength",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 0,
@@ -23723,6 +36205,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Name",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -23733,6 +36224,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionMarineSquelch,
+        Instance: &FusionMarineSquelch {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23742,6 +36234,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23750,6 +36250,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23759,6 +36268,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23768,6 +36285,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32781,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23776,6 +36301,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -23784,6 +36318,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Squelch",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -23794,6 +36337,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionMarineScanMode,
+        Instance: &FusionMarineScanMode {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23803,6 +36347,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23811,6 +36363,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23820,6 +36381,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23829,6 +36398,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32782,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23837,6 +36414,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -23845,6 +36431,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Scan",
+            GolangType:"YesNoConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -23855,6 +36450,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionMenuItem,
+        Instance: &FusionMenuItem {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23864,6 +36460,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23872,6 +36476,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23881,6 +36494,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23890,6 +36511,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32785,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23898,6 +36527,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -23906,6 +36544,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ItemIndex",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -23914,6 +36561,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Flags",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -23922,6 +36578,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "LockId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 0,
@@ -23930,6 +36595,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Text",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -23940,6 +36614,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionAuxGain,
+        Instance: &FusionAuxGain {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -23949,6 +36624,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -23957,6 +36640,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -23966,6 +36658,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -23975,6 +36675,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32787,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -23983,6 +36691,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -23991,6 +36708,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Gain",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -24001,6 +36727,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionUsbRepeatStatus,
+        Instance: &FusionUsbRepeatStatus {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24010,6 +36737,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24018,6 +36753,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24027,6 +36771,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24036,6 +36788,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32788,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -24045,6 +36805,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 9,
+            Id: "Id",
+            GolangType:"FusionSettingConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -24053,6 +36821,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Status",
+            GolangType:"FusionRepeatStatusConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -24063,6 +36840,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSetting,
+        Instance: &FusionSetting {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24072,6 +36850,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24080,6 +36866,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24089,6 +36884,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24098,6 +36901,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32788,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -24106,6 +36917,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Id",
+            GolangType:"FusionSettingConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -24114,6 +36934,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Value",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -24124,6 +36953,8 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSettings,
+        Instance: &FusionSettings {},
+        Repeating1CountField: 5,
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24133,6 +36964,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24141,6 +36980,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24150,6 +36998,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24159,6 +37015,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32789,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 32,
@@ -24167,6 +37031,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Count",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 32,
@@ -24175,6 +37048,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Id",
+            GolangType:"FusionSettingConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -24183,6 +37065,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Value",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -24193,6 +37084,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionMute,
+        Instance: &FusionMute {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24202,6 +37094,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24210,6 +37110,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24219,6 +37128,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24228,6 +37145,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32791,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -24236,6 +37161,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Mute",
+            GolangType:"FusionMuteCommandConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -24246,6 +37180,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionBalance,
+        Instance: &FusionBalance {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24255,6 +37190,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24263,6 +37206,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24272,6 +37224,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24281,6 +37241,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32792,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -24289,6 +37257,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -24297,6 +37274,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Value",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -24307,6 +37293,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionLowPassFilter,
+        Instance: &FusionLowPassFilter {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24316,6 +37303,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24324,6 +37319,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24333,6 +37337,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24342,6 +37354,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32793,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -24350,6 +37370,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -24358,6 +37387,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Filter",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -24368,6 +37406,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSublevels,
+        Instance: &FusionSublevels {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24377,6 +37416,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24385,6 +37432,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24394,6 +37450,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24403,6 +37467,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32794,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -24411,6 +37483,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone1",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -24419,6 +37500,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone2",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -24427,6 +37517,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone3",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -24435,6 +37534,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone4",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -24445,6 +37553,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionEq,
+        Instance: &FusionEq {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24454,6 +37563,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24462,6 +37579,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24471,6 +37597,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24480,6 +37614,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32795,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -24488,6 +37630,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -24496,6 +37647,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Bass",
+            GolangType:"*int8",
+            Signed: true,
+            RangeMin: -127,
+            RangeMax: 124,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -24504,6 +37664,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Mid",
+            GolangType:"*int8",
+            Signed: true,
+            RangeMin: -127,
+            RangeMax: 124,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -24512,6 +37681,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Treble",
+            GolangType:"*int8",
+            Signed: true,
+            RangeMin: -127,
+            RangeMax: 124,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -24522,6 +37700,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionVolumeLimits,
+        Instance: &FusionVolumeLimits {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24531,6 +37710,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24539,6 +37726,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24548,6 +37744,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24557,6 +37761,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32796,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -24565,6 +37777,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone1VolumeLimit",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -24573,6 +37794,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone2VolumeLimit",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -24581,6 +37811,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone3VolumeLimit",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -24589,6 +37828,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone4VolumeLimit",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -24599,6 +37847,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionVolumes,
+        Instance: &FusionVolumes {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24608,6 +37857,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24616,6 +37873,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24625,6 +37891,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24634,6 +37908,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32797,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -24642,6 +37924,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone1",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -24650,6 +37941,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone2",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -24658,6 +37958,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone3",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 8,
@@ -24666,6 +37975,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone4",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -24676,6 +37994,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionCapabilities,
+        Instance: &FusionCapabilities {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24685,6 +38004,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24693,6 +38020,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24702,6 +38038,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24711,6 +38055,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32798,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 16,
@@ -24719,6 +38071,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone1",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -24727,6 +38088,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone2",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -24735,6 +38105,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone3",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -24743,6 +38122,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone4",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 16,
@@ -24751,6 +38139,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Global",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -24761,6 +38158,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionLineLevelControl,
+        Instance: &FusionLineLevelControl {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24770,6 +38168,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24778,6 +38184,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24787,6 +38202,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24796,6 +38219,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32799,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -24804,6 +38235,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Zone",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -24812,6 +38252,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Control",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -24822,6 +38271,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionPowerState,
+        Instance: &FusionPowerState {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24831,6 +38281,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24839,6 +38297,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24848,6 +38315,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24857,6 +38332,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32800,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -24865,6 +38348,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "State",
+            GolangType:"FusionPowerStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         },
     },
@@ -24875,6 +38367,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSiriusxm,
+        Instance: &FusionSiriusxm {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24884,6 +38377,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24892,6 +38393,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24901,6 +38411,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24910,6 +38428,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32802,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -24918,6 +38444,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -24926,6 +38461,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "ComState",
+            GolangType:"FusionSiriusComStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 8,
@@ -24934,6 +38478,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Alert",
+            GolangType:"FusionSiriusComStateConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 255,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -24942,6 +38495,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AdvisoryChannel",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 8,
@@ -24950,6 +38512,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "TuningMode",
+            GolangType:"FusionSiriusTuningModeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         },
     },
@@ -24960,6 +38531,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSiriusxmChannel,
+        Instance: &FusionSiriusxmChannel {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -24969,6 +38541,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -24977,6 +38557,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -24986,6 +38575,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -24995,6 +38592,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32804,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -25003,6 +38608,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -25011,6 +38625,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ChannelNumber",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -25019,6 +38642,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Channel",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -25029,6 +38661,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSiriusxmTitle,
+        Instance: &FusionSiriusxmTitle {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -25038,6 +38671,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -25046,6 +38687,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -25055,6 +38705,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -25064,6 +38722,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32805,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -25072,6 +38738,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -25080,6 +38755,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Channel",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -25088,6 +38772,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Title",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -25098,6 +38791,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSiriusxmArtist,
+        Instance: &FusionSiriusxmArtist {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -25107,6 +38801,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -25115,6 +38817,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -25124,6 +38835,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -25133,6 +38852,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32806,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -25141,6 +38868,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -25149,6 +38885,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Channel",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -25157,6 +38902,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Artist",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -25167,6 +38921,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSiriusxmContentInfo,
+        Instance: &FusionSiriusxmContentInfo {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -25176,6 +38931,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -25184,6 +38947,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -25193,6 +38965,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -25202,6 +38982,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32807,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -25210,6 +38998,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -25218,6 +39015,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Channel",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -25226,6 +39032,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Genre",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -25236,6 +39051,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSiriusxmCategory,
+        Instance: &FusionSiriusxmCategory {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -25245,6 +39061,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -25253,6 +39077,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -25262,6 +39095,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -25271,6 +39112,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32808,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -25279,6 +39128,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -25287,6 +39145,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Channel",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -25295,6 +39162,15 @@ var pgnList = []PgnInfo{
             CanboatType: "STRING_LZ",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Name",
+            GolangType:"string",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -25305,6 +39181,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSiriusxmSignal,
+        Instance: &FusionSiriusxmSignal {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -25314,6 +39191,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -25322,6 +39207,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -25331,6 +39225,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -25340,6 +39242,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32809,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -25348,6 +39258,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -25356,6 +39275,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Signal",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -25366,6 +39294,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 419,
         Decoder: DecodeFusionSiriusxmPresets,
+        Instance: &FusionSiriusxmPresets {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -25375,6 +39304,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 419,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -25383,6 +39320,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -25392,6 +39338,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 16,
@@ -25401,6 +39355,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 32812,
+            Id: "MessageId",
+            GolangType:"FusionStatusMessageIdConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -25409,6 +39371,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "SourceId",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -25417,6 +39388,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Count",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 0,
@@ -25425,6 +39405,15 @@ var pgnList = []PgnInfo{
             CanboatType: "BINARY",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Values",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         },
     },
@@ -25435,6 +39424,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 137,
         Decoder: DecodeMaretronProprietaryTemperatureHighRange,
+        Instance: &MaretronProprietaryTemperatureHighRange {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -25444,6 +39434,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -25452,6 +39450,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -25461,6 +39468,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -25469,6 +39484,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Sid",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -25477,6 +39501,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 8,
@@ -25485,6 +39518,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Source",
+            GolangType:"TemperatureSourceConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 16,
@@ -25493,6 +39535,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "ActualTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 16,
@@ -25501,6 +39552,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:0.1,
+            Id: "SetTemperature",
+            GolangType:"*units.Temperature",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6553.2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         },
     },
@@ -25511,6 +39571,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 381,
         Decoder: DecodeBGKeyValueData,
+        Instance: &BGKeyValueData {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -25520,6 +39581,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 381,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -25528,6 +39597,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -25537,6 +39615,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 12,
@@ -25545,6 +39631,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DYNAMIC_FIELD_KEY",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Key",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4092,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 4,
@@ -25553,6 +39648,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DYNAMIC_FIELD_LENGTH",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Length",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 13,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 0,
@@ -25561,6 +39665,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DYNAMIC_FIELD_VALUE",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Value",
+            GolangType:"[]uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         },
     },
@@ -25571,6 +39684,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 137,
         Decoder: DecodeMaretronSwitchStatusCounter,
+        Instance: &MaretronSwitchStatusCounter {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -25580,6 +39694,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -25588,6 +39710,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -25597,6 +39728,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -25605,6 +39744,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -25613,6 +39761,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "IndicatorNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -25621,6 +39778,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartDate",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -25629,6 +39795,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "StartTime",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 32,
@@ -25637,6 +39812,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "OffCounter",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 32,
@@ -25645,6 +39829,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "OnCounter",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 32,
@@ -25653,6 +39846,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "ErrorCounter",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 2,
@@ -25661,6 +39863,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SwitchStatus",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 6,
@@ -25669,6 +39880,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved12",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -25679,6 +39899,7 @@ var pgnList = []PgnInfo{
         Fast: true,
         ManId: 137,
         Decoder: DecodeMaretronSwitchStatusTimer,
+        Instance: &MaretronSwitchStatusTimer {},
         Fields: map[int]*FieldDescriptor{
         1: { 
             BitLength: 11,
@@ -25688,6 +39909,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 137,
+            Id: "ManufacturerCode",
+            GolangType:"ManufacturerCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2044,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 1,
             },
         2: { 
             BitLength: 2,
@@ -25696,6 +39925,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 2,
             },
         3: { 
             BitLength: 3,
@@ -25705,6 +39943,14 @@ var pgnList = []PgnInfo{
             ReservedValuesCount: 0,
             Resolution:1,
             Match: 4,
+            Id: "IndustryCode",
+            GolangType:"IndustryCodeConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 6,
+            DomainMin: 0,
+            DomainMax: 0,
+            Order: 3,
             },
         4: { 
             BitLength: 8,
@@ -25713,6 +39959,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "Instance",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 4,
             },
         5: { 
             BitLength: 8,
@@ -25721,6 +39976,15 @@ var pgnList = []PgnInfo{
             CanboatType: "NUMBER",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "IndicatorNumber",
+            GolangType:"*uint8",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 252,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 5,
             },
         6: { 
             BitLength: 16,
@@ -25729,6 +39993,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DATE",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "StartDate",
+            GolangType:"*uint16",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 65532,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 6,
             },
         7: { 
             BitLength: 32,
@@ -25737,6 +40010,15 @@ var pgnList = []PgnInfo{
             CanboatType: "TIME",
             ReservedValuesCount: 2,
             Resolution:0.0001,
+            Id: "StartTime",
+            GolangType:"*float32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 86401,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 7,
             },
         8: { 
             BitLength: 32,
@@ -25745,6 +40027,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AccumulatedOffPeriod",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 8,
             },
         9: { 
             BitLength: 32,
@@ -25753,6 +40044,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AccumulatedOnPeriod",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 9,
             },
         10: { 
             BitLength: 32,
@@ -25761,6 +40061,15 @@ var pgnList = []PgnInfo{
             CanboatType: "DURATION",
             ReservedValuesCount: 2,
             Resolution:1,
+            Id: "AccumulatedErrorPeriod",
+            GolangType:"*uint32",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 4.294967292e+09,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 10,
             },
         11: { 
             BitLength: 2,
@@ -25769,6 +40078,15 @@ var pgnList = []PgnInfo{
             CanboatType: "LOOKUP",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "SwitchStatus",
+            GolangType:"OffOnConst",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 2,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 11,
             },
         12: { 
             BitLength: 6,
@@ -25777,6 +40095,15 @@ var pgnList = []PgnInfo{
             CanboatType: "RESERVED",
             ReservedValuesCount: 0,
             Resolution:1,
+            Id: "Reserved12",
+            GolangType:"",
+            Signed: false,
+            RangeMin: 0,
+            RangeMax: 0,
+            DomainMin: 0,
+            DomainMax: 0, 
+            Match: -1,
+            Order: 12,
             },
         },
     },
@@ -25833,6 +40160,18 @@ func (p IsoAcknowledgement) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 59392
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -25860,6 +40199,18 @@ func (p IsoRequest) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 59904
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -25897,6 +40248,18 @@ func (p IsoTransportProtocolDataTransfer) Encode(stream *DataStream) (*MessageIn
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 60160
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -25967,6 +40330,18 @@ func (p IsoTransportProtocolConnectionManagementRequestToSend) Encode(stream *Da
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 60416
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26032,6 +40407,18 @@ func (p IsoTransportProtocolConnectionManagementClearToSend) Encode(stream *Data
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 60416
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26097,6 +40484,18 @@ func (p IsoTransportProtocolConnectionManagementEndOfMessage) Encode(stream *Dat
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 60416
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26162,6 +40561,18 @@ func (p IsoTransportProtocolConnectionManagementBroadcastAnnounce) Encode(stream
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 60416
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26217,6 +40628,18 @@ func (p IsoTransportProtocolConnectionManagementAbort) Encode(stream *DataStream
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 60416
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26329,6 +40752,18 @@ func (p IsoAddressClaim) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 60928
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26381,6 +40816,18 @@ func (p Bus1PhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65001
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26433,6 +40880,18 @@ func (p Bus1PhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65002
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26485,6 +40944,18 @@ func (p Bus1PhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65003
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26537,6 +41008,18 @@ func (p UtilityPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65006
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26574,6 +41057,18 @@ func (p UtilityPhaseCAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65007
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26631,6 +41126,18 @@ func (p UtilityPhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65008
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26683,6 +41190,18 @@ func (p UtilityPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65009
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26720,6 +41239,18 @@ func (p UtilityPhaseBAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65010
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26777,6 +41308,18 @@ func (p UtilityPhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65011
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26829,6 +41372,18 @@ func (p UtilityPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65012
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26866,6 +41421,18 @@ func (p UtilityPhaseAAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65013
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26923,6 +41490,18 @@ func (p UtilityPhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInfo
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65014
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -26975,6 +41554,18 @@ func (p UtilityTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65015
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27012,6 +41603,18 @@ func (p UtilityTotalAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65016
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27069,6 +41672,18 @@ func (p UtilityAverageBasicAcQuantities) Encode(stream *DataStream) (*MessageInf
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65017
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27121,6 +41736,18 @@ func (p GeneratorPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInfo
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65019
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27158,6 +41785,18 @@ func (p GeneratorPhaseCAcPower) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65020
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27215,6 +41854,18 @@ func (p GeneratorPhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageIn
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65021
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27267,6 +41918,18 @@ func (p GeneratorPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInfo
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65022
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27304,6 +41967,18 @@ func (p GeneratorPhaseBAcPower) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65023
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27361,6 +42036,18 @@ func (p GeneratorPhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageIn
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65024
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27413,6 +42100,18 @@ func (p GeneratorPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInfo
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65025
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27450,6 +42149,18 @@ func (p GeneratorPhaseAAcPower) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65026
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27507,6 +42218,18 @@ func (p GeneratorPhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageIn
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65027
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27559,6 +42282,18 @@ func (p GeneratorTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65028
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27596,6 +42331,18 @@ func (p GeneratorTotalAcPower) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65029
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27653,6 +42400,18 @@ func (p GeneratorAverageBasicAcQuantities) Encode(stream *DataStream) (*MessageI
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65030
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27770,6 +42529,18 @@ func (p IsoCommandedAddress) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65240
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27853,6 +42624,18 @@ func (p MaretronProprietaryDcBreakerCurrent) Encode(stream *DataStream) (*Messag
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65284
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27916,6 +42699,18 @@ func (p AirmarBootStateAcknowledgment) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65285
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -27989,6 +42784,18 @@ func (p LowranceTemperature) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65285
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -28042,6 +42849,18 @@ func (p AirmarBootStateRequest) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65286
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -28125,6 +42944,18 @@ func (p AirmarAccessLevel) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65287
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -28211,6 +43042,18 @@ func (p SimnetDeviceStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65305
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -28287,6 +43130,18 @@ func (p SimnetDeviceStatusRequest) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65305
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -28373,6 +43228,18 @@ func (p SimnetPilotMode) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65305
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -28449,6 +43316,18 @@ func (p SimnetDeviceModeRequest) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65305
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -28532,6 +43411,18 @@ func (p SeatalkPilotLockedHeading) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65360
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -28605,6 +43496,18 @@ func (p SeatalkSilenceAlarm) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65361
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -28688,6 +43591,18 @@ func (p AirmarSpeedPulseCount) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65409
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type NmeaRequestGroupFunctionRepeating1 struct {
@@ -28821,6 +43736,18 @@ func (p NmeaRequestGroupFunction) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126208
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p NmeaRequestGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -28965,6 +43892,18 @@ func (p NmeaCommandGroupFunction) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126208
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p NmeaCommandGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -29105,6 +44044,18 @@ func (p NmeaAcknowledgeGroupFunction) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126208
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p NmeaAcknowledgeGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -29318,6 +44269,18 @@ func (p NmeaReadFieldsReplyGroupFunction) Encode(stream *DataStream) (*MessageIn
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126208
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p NmeaReadFieldsReplyGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -29552,6 +44515,18 @@ func (p NmeaWriteFieldsGroupFunction) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126208
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p NmeaWriteFieldsGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -29786,6 +44761,18 @@ func (p NmeaWriteFieldsReplyGroupFunction) Encode(stream *DataStream) (*MessageI
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126208
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p NmeaWriteFieldsReplyGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -29881,6 +44868,18 @@ func (p PgnListTransmitAndReceive) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126464
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p PgnListTransmitAndReceive) encodeRepeating1(stream *DataStream) error {
@@ -29975,6 +44974,18 @@ func (p FusionMediaControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -30066,6 +45077,18 @@ func (p FusionSiriusControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -30127,6 +45150,18 @@ func (p FusionRequestStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -30198,6 +45233,18 @@ func (p FusionSetSource) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -30269,6 +45316,18 @@ func (p FusionSetMute) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -30350,6 +45409,18 @@ func (p FusionSetZoneVolume) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -30451,6 +45522,18 @@ func (p FusionSetAllVolumes) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -30542,6 +45625,18 @@ func (p AirmarAttitudeOffset) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -30618,6 +45713,18 @@ func (p AirmarSimulateMode) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -30694,6 +45801,18 @@ func (p AirmarCalibrateDepth) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type AirmarCalibrateSpeedRepeating1 struct {
@@ -30808,6 +45927,18 @@ func (p AirmarCalibrateSpeed) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p AirmarCalibrateSpeed) encodeRepeating1(stream *DataStream) error {
@@ -30911,6 +46042,18 @@ func (p AirmarCalibrateTemperature) Encode(stream *DataStream) (*MessageInfo, er
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -31000,6 +46143,18 @@ func (p AirmarSpeedFilterNone) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -31099,6 +46254,18 @@ func (p AirmarSpeedFilterIir) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -31188,6 +46355,18 @@ func (p AirmarTemperatureFilterNone) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -31287,6 +46466,18 @@ func (p AirmarTemperatureFilterIir) Encode(stream *DataStream) (*MessageInfo, er
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -31363,6 +46554,18 @@ func (p AirmarNmea2000Options) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -31457,6 +46660,18 @@ func (p MaretronDeviationCalibrationResponse) Encode(stream *DataStream) (*Messa
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -31545,6 +46760,18 @@ func (p MaretronSlaveResponse) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -31767,6 +46994,18 @@ func (p Alert) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126983
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -31899,6 +47138,18 @@ func (p AlertResponse) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126984
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32036,6 +47287,18 @@ func (p AlertText) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126985
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32098,6 +47361,18 @@ func (p SystemTime) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126992
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32170,6 +47445,18 @@ func (p Heartbeat) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126993
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32267,6 +47554,18 @@ func (p ProductInformation) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126996
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32314,6 +47613,18 @@ func (p ConfigurationInformation) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126998
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32491,6 +47802,18 @@ func (p ManOverboardNotification) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127233
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32683,6 +48006,18 @@ func (p HeadingTrackControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127237
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32750,6 +48085,18 @@ func (p Rudder) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127245
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32822,6 +48169,18 @@ func (p VesselHeading) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127250
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32864,6 +48223,18 @@ func (p RateOfTurn) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127251
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32926,6 +48297,18 @@ func (p Attitude) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127257
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -32993,6 +48376,18 @@ func (p MagneticVariation) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127258
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -33055,6 +48450,18 @@ func (p EngineParametersRapidUpdate) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127488
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -33207,6 +48614,18 @@ func (p EngineParametersDynamic) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127489
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -33284,6 +48703,18 @@ func (p TransmissionParametersDynamic) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127493
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -33341,6 +48772,18 @@ func (p TripParametersVessel) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127496
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -33408,6 +48851,18 @@ func (p TripParametersEngine) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127497
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -33465,6 +48920,18 @@ func (p EngineParametersStatic) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127498
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -33562,6 +49029,18 @@ func (p LoadControllerConnectionStateControl) Encode(stream *DataStream) (*Messa
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127500
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -33869,6 +49348,18 @@ func (p BinarySwitchBankStatus) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127501
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -34176,6 +49667,18 @@ func (p SwitchBankControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127502
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type AcInputStatusRepeating1 struct {
@@ -34299,6 +49802,18 @@ func (p AcInputStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127503
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p AcInputStatus) encodeRepeating1(stream *DataStream) error {
@@ -34471,6 +49986,18 @@ func (p AcOutputStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127504
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p AcOutputStatus) encodeRepeating1(stream *DataStream) error {
@@ -34582,6 +50109,18 @@ func (p FluidLevel) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127505
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -34679,6 +50218,18 @@ func (p DcDetailedStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127506
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -34771,6 +50322,18 @@ func (p ChargerStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127507
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -34838,6 +50401,18 @@ func (p BatteryStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127508
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -34910,6 +50485,18 @@ func (p InverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127509
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -34967,6 +50554,18 @@ func (p AcPowerCurrentPhaseA) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127744
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35024,6 +50623,18 @@ func (p AcPowerCurrentPhaseB) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127745
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35081,6 +50692,18 @@ func (p AcPowerCurrentPhaseC) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127746
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35148,6 +50771,18 @@ func (p AcVoltageFrequencyPhaseA) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127747
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35215,6 +50850,18 @@ func (p AcVoltageFrequencyPhaseB) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127748
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35282,6 +50929,18 @@ func (p AcVoltageFrequencyPhaseC) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127749
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35374,6 +51033,18 @@ func (p ConverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127750
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35436,6 +51107,18 @@ func (p DcVoltageCurrent) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127751
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35478,6 +51161,18 @@ func (p LeewayAngle) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 128000
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35585,6 +51280,18 @@ func (p ThrusterControlStatus) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 128006
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35657,6 +51364,18 @@ func (p ThrusterInformation) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 128007
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35734,6 +51453,18 @@ func (p ThrusterMotorStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 128008
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35806,6 +51537,18 @@ func (p Speed) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 128259
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35863,6 +51606,18 @@ func (p WaterDepth) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 128267
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -35920,6 +51675,18 @@ func (p DistanceLog) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 128275
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -36067,6 +51834,18 @@ func (p WindlassControlStatus) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 128776
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -36179,6 +51958,18 @@ func (p AnchorWindlassOperatingStatus) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 128777
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -36261,6 +52052,18 @@ func (p AnchorWindlassMonitoringStatus) Encode(stream *DataStream) (*MessageInfo
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 128778
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -36298,6 +52101,18 @@ func (p PositionRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129025
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -36365,6 +52180,18 @@ func (p CogSogRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129026
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type GnssPositionDataRepeating1 struct {
@@ -36576,6 +52403,18 @@ func (p GnssPositionData) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129029
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p GnssPositionData) encodeRepeating1(stream *DataStream) error {
@@ -36644,6 +52483,18 @@ func (p TimeDate) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129033
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -36846,6 +52697,18 @@ func (p AisClassAPositionReport) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129038
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -37078,6 +52941,18 @@ func (p AisClassBPositionReport) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129039
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -37310,6 +53185,18 @@ func (p AisAidsToNavigationAtonReport) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129041
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -37377,6 +53264,18 @@ func (p Datum) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129044
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -37494,6 +53393,18 @@ func (p UserDatum) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129045
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -37561,6 +53472,18 @@ func (p CrossTrackError) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129283
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -37728,6 +53651,18 @@ func (p NavigationData) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129284
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type NavigationRouteWpInformationRepeating1 struct {
@@ -37880,6 +53815,18 @@ func (p NavigationRouteWpInformation) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129285
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p NavigationRouteWpInformation) encodeRepeating1(stream *DataStream) error {
@@ -37987,6 +53934,18 @@ func (p GnssDops) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129539
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type GnssSatsInViewRepeating1 struct {
@@ -38107,6 +54066,18 @@ func (p GnssSatsInView) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129540
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p GnssSatsInView) encodeRepeating1(stream *DataStream) error {
@@ -38206,6 +54177,18 @@ func (p GnssRaimSettings) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129546
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -38303,6 +54286,18 @@ func (p GnssPseudorangeErrorStatistics) Encode(stream *DataStream) (*MessageInfo
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129547
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -38425,6 +54420,18 @@ func (p DgnssCorrections) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129549
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -38507,6 +54514,18 @@ func (p GnssDifferentialCorrectionReceiverInterface) Encode(stream *DataStream) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129550
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -38659,6 +54678,18 @@ func (p GnssDifferentialCorrectionReceiverSignal) Encode(stream *DataStream) (*M
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129551
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -38811,6 +54842,18 @@ func (p GlonassAlmanacData) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129556
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -39028,6 +55071,18 @@ func (p AisClassAStaticAndVoyageRelatedData) Encode(stream *DataStream) (*Messag
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129794
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -39158,6 +55213,18 @@ func (p AisAddressedBinaryMessage) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129795
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type AisAcknowledgeRepeating1 struct {
@@ -39266,6 +55333,18 @@ func (p AisAcknowledge) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129796
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p AisAcknowledge) encodeRepeating1(stream *DataStream) error {
@@ -39382,6 +55461,18 @@ func (p AisBinaryBroadcastMessage) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129797
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -39459,6 +55550,18 @@ func (p RadioFrequencyModePower) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129799
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -39541,6 +55644,18 @@ func (p AisClassBStaticDataMsg24PartA) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129809
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -39713,6 +55828,18 @@ func (p AisClassBStaticDataMsg24PartB) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129810
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type RouteAndWpServiceDatabaseListRepeating1 struct {
@@ -39840,6 +55967,18 @@ func (p RouteAndWpServiceDatabaseList) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130064
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p RouteAndWpServiceDatabaseList) encodeRepeating1(stream *DataStream) error {
@@ -39998,6 +56137,18 @@ func (p RouteAndWpServiceRouteList) Encode(stream *DataStream) (*MessageInfo, er
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130065
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p RouteAndWpServiceRouteList) encodeRepeating1(stream *DataStream) error {
@@ -40164,6 +56315,18 @@ func (p RouteAndWpServiceRouteWpListAttributes) Encode(stream *DataStream) (*Mes
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130066
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type RouteAndWpServiceRouteWpNamePositionRepeating1 struct {
@@ -40286,6 +56449,18 @@ func (p RouteAndWpServiceRouteWpNamePosition) Encode(stream *DataStream) (*Messa
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130067
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p RouteAndWpServiceRouteWpNamePosition) encodeRepeating1(stream *DataStream) error {
@@ -40421,6 +56596,18 @@ func (p RouteAndWpServiceRouteWpName) Encode(stream *DataStream) (*MessageInfo, 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130068
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p RouteAndWpServiceRouteWpName) encodeRepeating1(stream *DataStream) error {
@@ -40547,6 +56734,18 @@ func (p RouteAndWpServiceXteLimitNavigationMethod) Encode(stream *DataStream) (*
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130069
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p RouteAndWpServiceXteLimitNavigationMethod) encodeRepeating1(stream *DataStream) error {
@@ -40690,6 +56889,18 @@ func (p RouteAndWpServiceWpComment) Encode(stream *DataStream) (*MessageInfo, er
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130070
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p RouteAndWpServiceWpComment) encodeRepeating1(stream *DataStream) error {
@@ -40807,6 +57018,18 @@ func (p RouteAndWpServiceRouteComment) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130071
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p RouteAndWpServiceRouteComment) encodeRepeating1(stream *DataStream) error {
@@ -40914,6 +57137,18 @@ func (p RouteAndWpServiceDatabaseComment) Encode(stream *DataStream) (*MessageIn
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130072
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p RouteAndWpServiceDatabaseComment) encodeRepeating1(stream *DataStream) error {
@@ -41041,6 +57276,18 @@ func (p RouteAndWpServiceRadiusOfTurn) Encode(stream *DataStream) (*MessageInfo,
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130073
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p RouteAndWpServiceRadiusOfTurn) encodeRepeating1(stream *DataStream) error {
@@ -41175,6 +57422,18 @@ func (p RouteAndWpServiceWpListWpNamePosition) Encode(stream *DataStream) (*Mess
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130074
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p RouteAndWpServiceWpListWpNamePosition) encodeRepeating1(stream *DataStream) error {
@@ -41262,6 +57521,18 @@ func (p WindData) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130306
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -41324,6 +57595,18 @@ func (p EnvironmentalParametersObsolete) Encode(stream *DataStream) (*MessageInf
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130310
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -41401,6 +57684,18 @@ func (p EnvironmentalParameters) Encode(stream *DataStream) (*MessageInfo, error
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130311
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -41473,6 +57768,18 @@ func (p Temperature) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130312
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -41545,6 +57852,18 @@ func (p Humidity) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130313
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -41607,6 +57926,18 @@ func (p ActualPressure) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130314
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -41669,6 +58000,18 @@ func (p SetPressure) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130315
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -41736,6 +58079,18 @@ func (p TemperatureExtendedRange) Encode(stream *DataStream) (*MessageInfo, erro
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130316
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -41858,6 +58213,18 @@ func (p TideStationData) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130320
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -42100,6 +58467,18 @@ func (p WatermakerInputSettingAndStatus) Encode(stream *DataStream) (*MessageInf
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130567
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -42177,6 +58556,18 @@ func (p VesselSpeedComponents) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130578
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -42273,6 +58664,18 @@ func (p SonichubVolume) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130816
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -42384,6 +58787,18 @@ func (p FusionVersions) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -42495,6 +58910,18 @@ func (p FusionSource) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -42566,6 +58993,18 @@ func (p FusionSourceCount) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -42687,6 +59126,18 @@ func (p FusionMedia) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -42778,6 +59229,18 @@ func (p FusionTrackName) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -42869,6 +59332,18 @@ func (p FusionArtistName) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -42960,6 +59435,18 @@ func (p FusionAlbumName) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43031,6 +59518,18 @@ func (p FusionDeviceName) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43112,6 +59611,18 @@ func (p FusionZoneName) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43193,6 +59704,18 @@ func (p FusionTrackPosition) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43304,6 +59827,18 @@ func (p FusionTuner) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43405,6 +59940,18 @@ func (p FusionMarineTuner) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43486,6 +60033,18 @@ func (p FusionMarineSquelch) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43567,6 +60126,18 @@ func (p FusionMarineScanMode) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43678,6 +60249,18 @@ func (p FusionMenuItem) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43759,6 +60342,18 @@ func (p FusionAuxGain) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43843,6 +60438,18 @@ func (p FusionUsbRepeatStatus) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -43924,6 +60531,18 @@ func (p FusionSetting) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type FusionSettingsRepeating1 struct {
@@ -44038,6 +60657,18 @@ func (p FusionSettings) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p FusionSettings) encodeRepeating1(stream *DataStream) error {
@@ -44126,6 +60757,18 @@ func (p FusionMute) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -44207,6 +60850,18 @@ func (p FusionBalance) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -44288,6 +60943,18 @@ func (p FusionLowPassFilter) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -44389,6 +61056,18 @@ func (p FusionSublevels) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -44490,6 +61169,18 @@ func (p FusionEq) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -44591,6 +61282,18 @@ func (p FusionVolumeLimits) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -44692,6 +61395,18 @@ func (p FusionVolumes) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -44803,6 +61518,18 @@ func (p FusionCapabilities) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -44884,6 +61611,18 @@ func (p FusionLineLevelControl) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -44955,6 +61694,18 @@ func (p FusionPowerState) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -45066,6 +61817,18 @@ func (p FusionSiriusxm) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -45157,6 +61920,18 @@ func (p FusionSiriusxmChannel) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -45248,6 +62023,18 @@ func (p FusionSiriusxmTitle) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -45339,6 +62126,18 @@ func (p FusionSiriusxmArtist) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -45430,6 +62229,18 @@ func (p FusionSiriusxmContentInfo) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -45521,6 +62332,18 @@ func (p FusionSiriusxmCategory) Encode(stream *DataStream) (*MessageInfo, error)
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -45602,6 +62425,18 @@ func (p FusionSiriusxmSignal) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -45701,6 +62536,18 @@ func (p FusionSiriusxmPresets) Encode(stream *DataStream) (*MessageInfo, error) 
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -45799,6 +62646,18 @@ func (p MaretronProprietaryTemperatureHighRange) Encode(stream *DataStream) (*Me
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130823
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 type BGKeyValueDataRepeating1 struct {
@@ -45898,6 +62757,18 @@ func (p BGKeyValueData) Encode(stream *DataStream) (*MessageInfo, error) {
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130824
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 func (p BGKeyValueData) encodeRepeating1(stream *DataStream) error {
@@ -46056,6 +62927,18 @@ func (p MaretronSwitchStatusCounter) Encode(stream *DataStream) (*MessageInfo, e
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130836
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
@@ -46189,6 +63072,18 @@ func (p MaretronSwitchStatusTimer) Encode(stream *DataStream) (*MessageInfo, err
     if err != nil {
         return nil, err
     }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130837
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    if p.Info.TargetId == 0 {
+        p.Info.TargetId = 255  // Default to broadcast
+    }
+    p.Info.Timestamp = time.Now()
+    
     return &p.Info, err
 }
 
