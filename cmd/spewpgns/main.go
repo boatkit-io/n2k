@@ -126,7 +126,7 @@ func sendEngineData(publisher *pgn.Publisher, sourceId uint8, counter float32, l
 	}
 
 	log.Debugf("Sending engine data: RPM=%.1f, Boost=%.1f kPa", rpm, boostPressurePa/1000.0)
-	return publisher.Write(enginePgn)
+	return publisher.Write(&enginePgn)
 }
 
 func sendSpeedData(publisher *pgn.Publisher, sourceId uint8, counter float32, log *logrus.Logger) error {
@@ -153,7 +153,7 @@ func sendSpeedData(publisher *pgn.Publisher, sourceId uint8, counter float32, lo
 	}
 
 	log.Debugf("Sending speed data: %.1f knots (%.2f m/s)", speedKnots, speedMs)
-	return publisher.Write(speedPgn)
+	return publisher.Write(&speedPgn)
 }
 
 func sendPositionData(publisher *pgn.Publisher, sourceId uint8, counter float32, log *logrus.Logger) error {
@@ -181,5 +181,5 @@ func sendPositionData(publisher *pgn.Publisher, sourceId uint8, counter float32,
 	}
 
 	log.Debugf("Sending position data: %.6f, %.6f", latitude, longitude)
-	return publisher.Write(positionPgn)
+	return publisher.Write(&positionPgn)
 }
