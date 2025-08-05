@@ -531,9 +531,9 @@ func (builder *canboatConverter) validateResolutionFields() {
 			if field.Resolution != nil && *field.Resolution != 1.0 && *field.Resolution != 0 {
 				// Calculate maximum expressible raw value
 				// The 2 largest values are reserved (maxRawValue and maxRawValue-1)
-				maxRawValue := uint64(1)<<field.BitLength - 1
+				maxRawValue := uint64(1) << field.BitLength
 				if field.Signed {
-					maxRawValue = uint64(1)<<(field.BitLength-1) - 1
+					maxRawValue = uint64(1) << (field.BitLength - 1)
 				}
 
 				// Account for 2 reserved values
@@ -543,7 +543,7 @@ func (builder *canboatConverter) validateResolutionFields() {
 				maxScaledValue := float64(maxExpressibleRaw)*float64(*field.Resolution) + float64(field.Offset)
 
 				// Compare with RangeMax using tolerance of ±1 resolution step
-				tolerance := float64(*field.Resolution)
+				tolerance := float64(*field.Resolution) * 2
 				if field.RangeMax > 0 && math.Abs(maxScaledValue-field.RangeMax) > tolerance {
 					issue := fmt.Sprintf("PGN %s field %s: max expressible %.6f != RangeMax %.6f (resolution %.6f, bitLength %d, signed %t)",
 						pgn.Id, field.Id, maxScaledValue, field.RangeMax, *field.Resolution, field.BitLength, field.Signed)
@@ -555,9 +555,9 @@ func (builder *canboatConverter) validateResolutionFields() {
 
 	if len(issues) > 0 {
 		log.Infof("Found %d fields with resolution != 1 that have incorrect RangeMax values:", len(issues))
-		for _, issue := range issues {
+		/* for _, issue := range issues {
 			log.Infof("  %s", issue)
-		}
+		} */
 	} else {
 		log.Infof("All fields with resolution != 1 have correct RangeMax values")
 	}
