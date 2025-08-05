@@ -3041,6 +3041,255 @@ func (e DscExpansionDataConst) String() string {
 	}
 }
 
+type SeatalkMessageIdConst uint8
+const (
+	Seatalk1Encoded	SeatalkMessageIdConst = 240
+	Display_2	SeatalkMessageIdConst = 140
+	PilotConfiguration	SeatalkMessageIdConst = 108
+)
+
+func (e SeatalkMessageIdConst) GoString() string {return e.String() }
+func (e SeatalkMessageIdConst) String() string {
+	switch e {
+		case 240:
+			return "Seatalk 1 Encoded"
+		case 140:
+			return "Display"
+		case 108:
+			return "Pilot Configuration"
+	default:
+		return fmt.Sprintf("%s(%d)", "SeatalkMessageIdConst", int(e))
+	}
+}
+
+type SeatalkCommandConst uint8
+const (
+	Seatalk1	SeatalkCommandConst = 129
+	HullType	SeatalkCommandConst = 22
+	AutoTurn	SeatalkCommandConst = 38
+	Settings	SeatalkCommandConst = 12
+)
+
+func (e SeatalkCommandConst) GoString() string {return e.String() }
+func (e SeatalkCommandConst) String() string {
+	switch e {
+		case 129:
+			return "Seatalk1"
+		case 22:
+			return "Hull Type"
+		case 38:
+			return "Auto Turn"
+		case 12:
+			return "Settings"
+	default:
+		return fmt.Sprintf("%s(%d)", "SeatalkCommandConst", int(e))
+	}
+}
+
+type Seatalk1CommandConst uint8
+const (
+	DepthBelowTransducer	Seatalk1CommandConst = 0
+	EquipmentId	Seatalk1CommandConst = 1
+	EngineRpmAndPitch	Seatalk1CommandConst = 5
+	ApparentWindAngle	Seatalk1CommandConst = 16
+	ApparentWindSpeed	Seatalk1CommandConst = 17
+	SpeedThroughWater	Seatalk1CommandConst = 32
+	TripMileage	Seatalk1CommandConst = 33
+	TotalMileage	Seatalk1CommandConst = 34
+	WaterTemperatureSt50	Seatalk1CommandConst = 35
+	DisplayUnitsForMileageSpeed	Seatalk1CommandConst = 36
+	TotalTripLog	Seatalk1CommandConst = 37
+	SpeedThroughWaterWithAverage	Seatalk1CommandConst = 38
+	WaterTemperature	Seatalk1CommandConst = 39
+	SetLampIntensity	Seatalk1CommandConst = 48
+	CancelMobManOverBoardCondition	Seatalk1CommandConst = 54
+	CodelockData	Seatalk1CommandConst = 56
+	LatPosition	Seatalk1CommandConst = 80
+	LonPosition	Seatalk1CommandConst = 81
+	SpeedOverGround	Seatalk1CommandConst = 82
+	CourseOverGroundCog	Seatalk1CommandConst = 83
+	GmtTime	Seatalk1CommandConst = 84
+	TrackKeystrokeOnGpsUnit	Seatalk1CommandConst = 85
+	Date	Seatalk1CommandConst = 86
+	SatInfo	Seatalk1CommandConst = 87
+	LatLonRawUnfiltered	Seatalk1CommandConst = 88
+	SetCountDownTimer	Seatalk1CommandConst = 89
+	IssuedByE80MultifunctionDispla	Seatalk1CommandConst = 97
+	SelectFathomDisplayUnitsForDep	Seatalk1CommandConst = 101
+	WindAlarm	Seatalk1CommandConst = 102
+	AlarmAcknowledgmentKeystroke	Seatalk1CommandConst = 104
+	SecondEquipmentIdDatagram	Seatalk1CommandConst = 108
+	MobManOverBoard	Seatalk1CommandConst = 110
+	KeystrokeOnRaymarineA25006St60	Seatalk1CommandConst = 112
+	SetLampIntensity_2	Seatalk1CommandConst = 128
+	SentByCourseComputerDuringSetu	Seatalk1CommandConst = 129
+	TargetWaypointName	Seatalk1CommandConst = 130
+	SentByCourseComputer	Seatalk1CommandConst = 131
+	CompassHeadingAutopilotCourseA	Seatalk1CommandConst = 132
+	NavigationToWaypointInformatio	Seatalk1CommandConst = 133
+	Keystroke	Seatalk1CommandConst = 134
+	SetResponseLevel	Seatalk1CommandConst = 135
+	AutopilotParameter	Seatalk1CommandConst = 136
+	CompassHeadingSentBySt40Compas	Seatalk1CommandConst = 137
+	DeviceIndentification	Seatalk1CommandConst = 144
+	SetRudderGain	Seatalk1CommandConst = 145
+	SetAutopilotParameter	Seatalk1CommandConst = 146
+	EnterApSetup	Seatalk1CommandConst = 147
+	ReplacesCommand84WhileAutopilo	Seatalk1CommandConst = 149
+	CompassVariation	Seatalk1CommandConst = 153
+	VersionString	Seatalk1CommandConst = 154
+	CompassHeadingAndRudderPositio	Seatalk1CommandConst = 156
+	WaypointDefinition	Seatalk1CommandConst = 158
+	DestinationWaypointInfo	Seatalk1CommandConst = 161
+	ArrivalInfo	Seatalk1CommandConst = 162
+	BroadcastQueryResponseToIdenti	Seatalk1CommandConst = 164
+	GpsAndDgpsInfo	Seatalk1CommandConst = 165
+	UnknownMeaning	Seatalk1CommandConst = 167
+	AlarmOnOffForGuard	Seatalk1CommandConst = 168
+	AlarmOnOffForGuard_2	Seatalk1CommandConst = 171
+)
+
+func (e Seatalk1CommandConst) GoString() string {return e.String() }
+func (e Seatalk1CommandConst) String() string {
+	switch e {
+		case 0:
+			return "Depth Below Transducer"
+		case 1:
+			return "Equipment ID"
+		case 5:
+			return "Engine RPM and PITCH"
+		case 16:
+			return "Apparent Wind Angle"
+		case 17:
+			return "Apparent Wind Speed"
+		case 32:
+			return "Speed through water"
+		case 33:
+			return "Trip Mileage"
+		case 34:
+			return "Total Mileage"
+		case 35:
+			return "Water temperature (ST50)"
+		case 36:
+			return "Display units for Mileage & Speed"
+		case 37:
+			return "Total & Trip Log"
+		case 38:
+			return "Speed through water (with average)"
+		case 39:
+			return "Water temperature"
+		case 48:
+			return "Set lamp Intensity"
+		case 54:
+			return "Cancel MOB (Man Over Board) condition"
+		case 56:
+			return "Codelock data"
+		case 80:
+			return "LAT position"
+		case 81:
+			return "LON position"
+		case 82:
+			return "Speed over Ground"
+		case 83:
+			return "Course over Ground (COG)"
+		case 84:
+			return "GMT-time"
+		case 85:
+			return "TRACK keystroke on GPS unit"
+		case 86:
+			return "Date"
+		case 87:
+			return "Sat Info"
+		case 88:
+			return "LAT/LON (raw unfiltered)"
+		case 89:
+			return "Set Count Down Timer"
+		case 97:
+			return "Issued by E-80 multifunction display at initialization"
+		case 101:
+			return "Select Fathom display units for depth display"
+		case 102:
+			return "Wind alarm"
+		case 104:
+			return "Alarm acknowledgment keystroke"
+		case 108:
+			return "Second equipment-ID datagram"
+		case 110:
+			return "MOB (Man Over Board)"
+		case 112:
+			return "Keystroke on Raymarine A25006 ST60 Maxiview Remote Control"
+		case 128:
+			return "Set Lamp Intensity"
+		case 129:
+			return "Sent by course computer during setup"
+		case 130:
+			return "Target waypoint name"
+		case 131:
+			return "Sent by course computer"
+		case 132:
+			return "Compass heading Autopilot course and Rudder position"
+		case 133:
+			return "Navigation to waypoint information"
+		case 134:
+			return "Keystroke"
+		case 135:
+			return "Set Response level"
+		case 136:
+			return "Autopilot Parameter"
+		case 137:
+			return "Compass heading sent by ST40 compass instrument"
+		case 144:
+			return "Device Indentification"
+		case 145:
+			return "Set Rudder gain"
+		case 146:
+			return "Set Autopilot Parameter"
+		case 147:
+			return "Enter AP-Setup"
+		case 149:
+			return "Replaces command 84 while autopilot is in value setting mode"
+		case 153:
+			return "Compass variation"
+		case 154:
+			return "Version String"
+		case 156:
+			return "Compass heading and Rudder position"
+		case 158:
+			return "Waypoint definition"
+		case 161:
+			return "Destination Waypoint Info"
+		case 162:
+			return "Arrival Info"
+		case 164:
+			return "Broadcast query/response to identify devices"
+		case 165:
+			return "GPS and DGPS Info"
+		case 167:
+			return "Unknown meaning"
+		case 168:
+			return "Alarm ON/OFF for Guard"
+		case 171:
+			return "Alarm ON/OFF for Guard"
+	default:
+		return fmt.Sprintf("%s(%d)", "Seatalk1CommandConst", int(e))
+	}
+}
+
+type Seatalk1AttConst uint8
+const (
+	DepthBelowTransducer_2	Seatalk1AttConst = 0
+)
+
+func (e Seatalk1AttConst) GoString() string {return e.String() }
+func (e Seatalk1AttConst) String() string {
+	switch e {
+		case 0:
+			return "Depth Below Transducer"
+	default:
+		return fmt.Sprintf("%s(%d)", "Seatalk1AttConst", int(e))
+	}
+}
+
 type SeatalkAlarmStatusConst uint8
 const (
 	AlarmConditionNotMet	SeatalkAlarmStatusConst = 0
@@ -3449,7 +3698,7 @@ const (
 	SailSlowTurn	SeatalkPilotHullTypeConst = 1
 	SailCatamaran	SeatalkPilotHullTypeConst = 2
 	PowerSlowTurn	SeatalkPilotHullTypeConst = 3
-	PowerFastTurn	SeatalkPilotHullTypeConst = 5
+	PowerFastTurn	SeatalkPilotHullTypeConst = 4
 	Power	SeatalkPilotHullTypeConst = 8
 )
 
@@ -3464,7 +3713,7 @@ func (e SeatalkPilotHullTypeConst) String() string {
 			return "Sail Catamaran"
 		case 3:
 			return "Power (slow turn)"
-		case 5:
+		case 4:
 			return "Power (fast turn)"
 		case 8:
 			return "Power"
@@ -6553,7 +6802,7 @@ const (
 	MenuLockId	FusionStatusMessageIdConst = 32786
 	AuxGain	FusionStatusMessageIdConst = 32787
 	Setting	FusionStatusMessageIdConst = 32788
-	Settings	FusionStatusMessageIdConst = 32789
+	Settings_2	FusionStatusMessageIdConst = 32789
 	UpdateFirmwareResult	FusionStatusMessageIdConst = 32790
 	Mute	FusionStatusMessageIdConst = 32791
 	Balance	FusionStatusMessageIdConst = 32792
