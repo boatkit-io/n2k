@@ -8,6 +8,13 @@ import (
 // MaxPGNLength is the maximum length of a PGN in bytes
 const MaxPGNLength = 223 // 31*7 + 6
 
+// PgnStruct defines an interface for Pgns that can write their data in the NMEA 2K wire format
+type PgnStruct interface {
+	Encode(*DataStream) (*MessageInfo, error)
+	GetMessageInfo() *MessageInfo
+	SetMessageInfo(*MessageInfo)
+}
+
 // PgnInfoLookup is a map of PGNs to PgnInfo pointers.
 var PgnInfoLookup map[uint32][]*PgnInfo
 

@@ -4,6 +4,7 @@ package pgn
 
 import (
 	"fmt"
+	"reflect"
 	"time"
 	
 	"github.com/boatkit-io/tugboat/pkg/units"
@@ -31,7 +32,6 @@ type PgnInfo struct {
 	ManId ManufacturerCodeConst
 	// Decoder is a function that generates golang data from the messsage data.
 	Decoder func(MessageInfo, *DataStream) (any, error)
-	// Instance is a zero instance of the struct used for testing
 	// Fields is a map of field descriptions needed at runtime to deal with variable pgn fields
 	Fields map[int]*FieldDescriptor
 
@@ -71,6 +71,18 @@ type FieldDescriptor struct {
 	Offset            int64
 	Order             uint8
 	{{end}}
+}
+
+// PGN constants
+{{- range .PGNDoc.PGNs }}
+const {{ .Id }}Pgn = {{ .PGN }}
+{{- end }}
+
+// PgnStructMap maps struct types to PGN numbers
+var PgnStructMap = map[reflect.Type]uint32{
+{{- range .PGNDoc.PGNs }}
+	reflect.TypeOf({{ .Id }}{}): {{ .PGN }},
+{{- end }}
 }
 
 // Spit out global consts
@@ -568,6 +580,16 @@ func (p {{ .Id }}) Encode(stream *DataStream) (*MessageInfo, error) {
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
+}
+
+// GetMessageInfo returns a pointer to the MessageInfo field
+func (p {{ .Id }}) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo field
+func (p *{{ .Id }}) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
 }
 
 {{- if gt .RepeatingFieldSet1StartField 0 }}
