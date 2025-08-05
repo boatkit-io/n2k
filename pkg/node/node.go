@@ -20,13 +20,10 @@ type Node interface {
 	ClaimAddress(preferredAddress uint8) error
 	GetNetworkAddress() uint8
 	IsAddressClaimed() bool
-	GetName() uint64
 	Write(pgnStruct any) error
 	WriteTo(pgnStruct any, destination uint8) error
 	SetDeviceInfo(info DeviceInfo) error
 	SetProductInfo(info ProductInfo)
-	RegisterReceivePGN(structInstance any, handler any) error
-	RegisterTransmitPGN(structInstance any) error
 	SetSupportedPGNs(transmit, receive []uint32)
 	SetHeartbeatInterval(interval time.Duration)
 	EnableHeartbeat(enable bool)
@@ -83,6 +80,7 @@ type node struct {
 	subscriber        Subscriber
 	publisher         Publisher
 	clock             Clock
+	deviceInfo        DeviceInfo
 	productInfo       ProductInfo
 	name              uint64
 	networkAddress    uint8
@@ -105,6 +103,11 @@ type node struct {
 	logger            *logrus.Logger
 }
 
+type toSend struct {
+	pgn  any
+	dest uint8
+}
+
 // NewNode creates a new Node instance with the given dependencies.
 func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) Node {
 	if clock == nil {
@@ -115,11 +118,9 @@ func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) Node {
 		publisher:         publisher,
 		clock:             clock,
 		name:              0,
-		networkAddress:    254,
+		networkAddress:    255,
 		preferredAddress:  128,
 		addressClaimed:    false,
-		receivePGNs:       []uint32{pgn.IsoRequestPgn, pgn.IsoAddressClaimPgn, pgn.IsoCommandedAddressPgn},
-		transmitPGNs:      []uint32{pgn.IsoAddressClaimPgn, pgn.HeartbeatPgn, pgn.ProductInformationPgn, pgn.PgnListTransmitAndReceivePgn},
 		heartbeatEnabled:  false,
 		heartbeatInterval: 60 * time.Second,
 		started:           false,
@@ -159,7 +160,6 @@ func (n *node) Start() error {
 		return fmt.Errorf("node already started")
 	}
 
-	// Subscribe to core PGNs
 	sub, err := n.subscriber.SubscribeToStruct(pgn.IsoRequest{}, n.handleIsoRequest)
 	if err != nil {
 		return fmt.Errorf("failed to subscribe to IsoRequest: %w", err)
@@ -272,12 +272,6 @@ func (n *node) write(pgnStruct any, destination uint8) error {
 	return publisher.Write(pgnStruct)
 }
 
-func (n *node) GetName() uint64 {
-	n.mutex.RLock()
-	defer n.mutex.RUnlock()
-	return n.name
-}
-
 func (n *node) SetDeviceInfo(info DeviceInfo) error {
 	name, err := computeName(info)
 	if err != nil {
@@ -285,6 +279,7 @@ func (n *node) SetDeviceInfo(info DeviceInfo) error {
 	}
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
+	n.deviceInfo = info
 	n.name = name
 	return nil
 }
@@ -300,61 +295,6 @@ func (n *node) SetSupportedPGNs(transmit, receive []uint32) {
 	defer n.mutex.Unlock()
 	n.transmitPGNs = transmit
 	n.receivePGNs = receive
-}
-
-func (n *node) RegisterReceivePGN(structInstance any, handler any) error {
-	n.mutex.Lock()
-	defer n.mutex.Unlock()
-
-	if n.started {
-		return fmt.Errorf("cannot register PGNs after node has started")
-	}
-
-	// Extract PGN number from struct instance
-	pgnNum, err := getPgnNumber(structInstance)
-	if err != nil {
-		return fmt.Errorf("failed to get PGN number: %w", err)
-	}
-
-	// Validate handler signature
-	if err := validateHandlerSignature(structInstance, handler); err != nil {
-		return fmt.Errorf("invalid handler signature: %w", err)
-	}
-
-	// Avoid duplicates
-	if !contains(n.receivePGNs, pgnNum) {
-		n.receivePGNs = append(n.receivePGNs, pgnNum)
-	}
-
-	// Subscribe immediately
-	_, err = n.subscriber.SubscribeToStruct(structInstance, handler)
-	if err != nil {
-		return fmt.Errorf("failed to subscribe to PGN: %w", err)
-	}
-
-	return nil
-}
-
-func (n *node) RegisterTransmitPGN(structInstance any) error {
-	n.mutex.Lock()
-	defer n.mutex.Unlock()
-
-	if n.started {
-		return fmt.Errorf("cannot register PGNs after node has started")
-	}
-
-	// Extract PGN number from struct instance
-	pgnNum, err := getPgnNumber(structInstance)
-	if err != nil {
-		return fmt.Errorf("failed to get PGN number: %w", err)
-	}
-
-	// Avoid duplicates
-	if !contains(n.transmitPGNs, pgnNum) {
-		n.transmitPGNs = append(n.transmitPGNs, pgnNum)
-	}
-
-	return nil
 }
 
 func (n *node) SetHeartbeatInterval(interval time.Duration) {
@@ -378,7 +318,7 @@ func (n *node) enqueuePgn(p any) {
 	}
 }
 
-func (n *node) processIsoRequest(req pgn.IsoRequest) []any {
+func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	n.mutex.RLock()
 	defer n.mutex.RUnlock()
 
@@ -388,14 +328,14 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []any {
 
 	n.logger.Infof("processIsoRequest: processing request for PGN %d from source %d", *req.Pgn, req.Info.SourceId)
 
-	var responses []any
+	var responses []toSend
 
 	switch *req.Pgn {
-	case pgn.ProductInformationPgn:
+	case 126996:
 		version := float32(n.productInfo.NMEA2000Version) / 100.0
 		responsePgn := &pgn.ProductInformation{
 			Info: pgn.MessageInfo{
-				PGN:      pgn.ProductInformationPgn,
+				PGN:      126996,
 				SourceId: n.networkAddress,
 				TargetId: req.Info.SourceId,
 			},
@@ -408,9 +348,9 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []any {
 			CertificationLevel:  pgn.CertificationLevelConst(n.productInfo.CertificationLevel),
 			LoadEquivalency:     &n.productInfo.LoadEquivalency,
 		}
-		responses = append(responses, responsePgn)
+		responses = append(responses, toSend{pgn: responsePgn, dest: req.Info.SourceId})
 
-	case pgn.PgnListTransmitAndReceivePgn:
+	case 126464:
 		txRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(n.transmitPGNs))
 		for i, pgn_num := range n.transmitPGNs {
 			p := pgn_num
@@ -418,14 +358,14 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []any {
 		}
 		txResponse := &pgn.PgnListTransmitAndReceive{
 			Info: pgn.MessageInfo{
-				PGN:      pgn.PgnListTransmitAndReceivePgn,
+				PGN:      126464,
 				SourceId: n.networkAddress,
 				TargetId: req.Info.SourceId,
 			},
 			FunctionCode: pgn.TransmitPgnList,
 			Repeating1:   txRepeating,
 		}
-		responses = append(responses, txResponse)
+		responses = append(responses, toSend{pgn: txResponse, dest: req.Info.SourceId})
 
 		rxRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(n.receivePGNs))
 		for i, pgn_num := range n.receivePGNs {
@@ -434,14 +374,14 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []any {
 		}
 		rxResponse := &pgn.PgnListTransmitAndReceive{
 			Info: pgn.MessageInfo{
-				PGN:      pgn.PgnListTransmitAndReceivePgn,
+				PGN:      126464,
 				SourceId: n.networkAddress,
 				TargetId: req.Info.SourceId,
 			},
 			FunctionCode: pgn.ReceivePgnList,
 			Repeating1:   rxRepeating,
 		}
-		responses = append(responses, rxResponse)
+		responses = append(responses, toSend{pgn: rxResponse, dest: req.Info.SourceId})
 	}
 
 	return responses
@@ -516,34 +456,31 @@ func (n *node) processIsoAddressClaim(claim pgn.IsoAddressClaim) {
 
 func (n *node) sendAddressClaim() {
 	n.mutex.RLock()
-	name := n.name
+	deviceInfoCopy := n.deviceInfo
 	networkAddressCopy := n.networkAddress
 	publisher := n.publisher
 	n.mutex.RUnlock()
 
-	// Convert name back to DeviceInfo for creating claim
-	deviceInfo := convertNameToDeviceInfo(name)
-
 	arbitraryBit := uint8(0)
-	if deviceInfo.ArbitraryAddressCapable {
+	if deviceInfoCopy.ArbitraryAddressCapable {
 		arbitraryBit = 1
 	}
 
 	claim := &pgn.IsoAddressClaim{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.IsoAddressClaimPgn,
+			PGN:      60928,
 			SourceId: networkAddressCopy,
 			TargetId: 255,
 			Priority: 6,
 		},
-		UniqueNumber:            &deviceInfo.UniqueNumber,
-		ManufacturerCode:        deviceInfo.ManufacturerCode,
-		DeviceInstanceLower:     &deviceInfo.DeviceInstanceLower,
-		DeviceInstanceUpper:     &deviceInfo.DeviceInstanceUpper,
-		DeviceFunction:          deviceInfo.DeviceFunction,
-		DeviceClass:             deviceInfo.DeviceClass,
-		SystemInstance:          &deviceInfo.SystemInstance,
-		IndustryGroup:           deviceInfo.IndustryGroup,
+		UniqueNumber:            &deviceInfoCopy.UniqueNumber,
+		ManufacturerCode:        deviceInfoCopy.ManufacturerCode,
+		DeviceInstanceLower:     &deviceInfoCopy.DeviceInstanceLower,
+		DeviceInstanceUpper:     &deviceInfoCopy.DeviceInstanceUpper,
+		DeviceFunction:          deviceInfoCopy.DeviceFunction,
+		DeviceClass:             deviceInfoCopy.DeviceClass,
+		SystemInstance:          &deviceInfoCopy.SystemInstance,
+		IndustryGroup:           deviceInfoCopy.IndustryGroup,
 		ArbitraryAddressCapable: pgn.YesNoConst(arbitraryBit),
 	}
 	n.logger.Infof("sendAddressClaim: sending claim for address %d", networkAddressCopy)
@@ -560,7 +497,7 @@ func (n *node) sendHeartbeat() {
 
 	hb := &pgn.Heartbeat{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.HeartbeatPgn,
+			PGN:      126993,
 			SourceId: networkAddressCopy,
 		},
 		SequenceCounter:  &heartbeatSeqCopy,
@@ -641,10 +578,10 @@ func (n *node) process() {
 				n.logger.Infof("process: pgnIn channel closed")
 				return
 			}
-			var responses []any
+			var toSendList []toSend
 			switch v := p.(type) {
 			case pgn.IsoRequest:
-				responses = n.processIsoRequest(v)
+				toSendList = n.processIsoRequest(v)
 			case pgn.IsoAddressClaim:
 				n.processIsoAddressClaim(v)
 			case pgn.IsoCommandedAddress:
@@ -653,13 +590,18 @@ func (n *node) process() {
 				n.logger.Infof("process: received unhandled PGN type %T", p)
 			}
 
-			if len(responses) > 0 {
+			if len(toSendList) > 0 {
 				n.mutex.RLock()
 				publisher := n.publisher
 				n.mutex.RUnlock()
-				for _, response := range responses {
-					n.logger.Infof("process: sending PGN %+v", response)
-					_ = publisher.Write(response)
+				for _, ts := range toSendList {
+					n.logger.Infof("process: sending PGN %+v to %d", ts.pgn, ts.dest)
+					if ts.dest == 255 {
+						_ = publisher.Write(ts.pgn)
+					} else {
+						// This is a bit of a hack until we have a proper way to send to a specific address
+						//_ = n.WriteTo(ts.pgn, ts.dest)
+					}
 				}
 			}
 
@@ -793,72 +735,32 @@ func computeNameFromCommand(cmd *pgn.IsoCommandedAddress) (uint64, error) {
 	return name, nil
 }
 
-// setMessageInfo uses the PgnStruct interface to set the MessageInfo field.
-// This replaces the reflection-based approach with direct method calls.
+// setMessageInfo uses reflection to set the "Info" field on a PGN struct.
+// This is a helper to avoid repetitive code when sending PGNs.
 func setMessageInfo(s any, source, destination uint8) error {
-	if pgnStruct, ok := s.(pgn.PgnStruct); ok {
-		info := pgnStruct.GetMessageInfo()
-		info.SourceId = source
-		info.TargetId = destination
-		pgnStruct.SetMessageInfo(info)
-		return nil
-	}
-	return fmt.Errorf("expected a PgnStruct, got %T", s)
-}
-
-// getPgnNumber extracts the PGN number from a struct instance using reflection
-func getPgnNumber(structInstance any) (uint32, error) {
-	structType := reflect.TypeOf(structInstance)
-
-	// Look up PGN number in the generated map
-	if pgnNum, exists := pgn.PgnStructMap[structType]; exists {
-		return pgnNum, nil
+	v := reflect.ValueOf(s)
+	if v.Kind() != reflect.Ptr || v.Elem().Kind() != reflect.Struct {
+		return fmt.Errorf("expected a pointer to a struct, got %T", s)
 	}
 
-	return 0, fmt.Errorf("unknown struct type: %v", structType)
-}
-
-// validateHandlerSignature ensures the handler has the correct signature
-func validateHandlerSignature(structInstance any, handler any) error {
-	handlerType := reflect.TypeOf(handler)
-	if handlerType.Kind() != reflect.Func {
-		return fmt.Errorf("handler must be a function")
+	infoField := v.Elem().FieldByName("Info")
+	if !infoField.IsValid() || !infoField.CanSet() {
+		return fmt.Errorf("struct %T does not have an exported 'Info' field", s)
 	}
 
-	if handlerType.NumIn() != 1 {
-		return fmt.Errorf("handler must take exactly one argument")
+	if infoField.Type() != reflect.TypeOf(pgn.MessageInfo{}) {
+		return fmt.Errorf("'Info' field in struct %T is not of type pgn.MessageInfo", s)
 	}
 
-	expectedType := reflect.TypeOf(structInstance)
-	if handlerType.In(0) != expectedType {
-		return fmt.Errorf("handler argument type %v does not match struct type %v",
-			handlerType.In(0), expectedType)
-	}
+	// Get the current MessageInfo
+	info := infoField.Interface().(pgn.MessageInfo)
+
+	// Only update SourceId and TargetId, preserve PGN and Priority
+	info.SourceId = source
+	info.TargetId = destination
+
+	// Set the updated MessageInfo back
+	infoField.Set(reflect.ValueOf(info))
 
 	return nil
-}
-
-// convertNameToDeviceInfo converts a computed NMEA 2000 NAME back to DeviceInfo
-func convertNameToDeviceInfo(name uint64) DeviceInfo {
-	return DeviceInfo{
-		UniqueNumber:            uint32(name & 0x1FFFFF),
-		ManufacturerCode:        pgn.ManufacturerCodeConst((name >> 21) & 0x7FF),
-		DeviceInstanceLower:     uint8((name >> 32) & 0x7),
-		DeviceInstanceUpper:     uint8((name >> 35) & 0x1F),
-		DeviceFunction:          pgn.DeviceFunctionConst((name >> 40) & 0xFF),
-		DeviceClass:             pgn.DeviceClassConst((name >> 49) & 0x7F),
-		SystemInstance:          uint8((name >> 56) & 0xF),
-		IndustryGroup:           pgn.IndustryCodeConst((name >> 60) & 0x7),
-		ArbitraryAddressCapable: (name >> 63) != 0,
-	}
-}
-
-// contains checks if a slice contains a specific value
-func contains(slice []uint32, value uint32) bool {
-	for _, item := range slice {
-		if item == value {
-			return true
-		}
-	}
-	return false
 }
