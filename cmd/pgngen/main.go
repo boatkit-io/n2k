@@ -328,11 +328,14 @@ func getReservedValueCount(field PGNField) int {
 	diff := int(maxExpressibleValue - uint64(field.RangeMax))
 
 	// Return 0, 1, or 2 based on the difference
-	if diff == 0 {
+	switch diff {
+	case 0:
 		return 0
-	} else if diff == 1 {
+	case 1:
 		return 1
-	} else {
+	case 2:
+		return 2
+	default:
 		return 2 // For diff >= 2
 	}
 }
@@ -1033,13 +1036,14 @@ func getManId(p *PGN) int {
 	return 0
 }
 
-// A map for converting leading digits to words.
+// digitToWord is a map for converting leading digits to words.
 var digitToWord = map[string]string{
 	"0": "Zero", "1": "One", "2": "Two", "3": "Three", "4": "Four",
 	"5": "Five", "6": "Six", "7": "Seven", "8": "Eight", "9": "Nine",
 }
 
 // generateConstName creates a Go constant identifier from a display string.
+// It handles leading digits and truncates long names.
 func generateConstName(enumName, text string, value int) string {
 	// Handle leading digit
 	if len(text) > 0 && unicode.IsDigit(rune(text[0])) {

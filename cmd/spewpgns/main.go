@@ -16,6 +16,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// canInterface is the CAN interface name for integration tests.
 var canInterface string
 
 func main() {
@@ -73,6 +74,7 @@ func main() {
 	sendTestPGNs(ctx, publisher, log)
 }
 
+// sendTestPGNs sends a batch of test PGNs.
 func sendTestPGNs(ctx context.Context, publisher pgn.Publisher, log *logrus.Logger) {
 	ticker := time.NewTicker(2 * time.Second)
 	defer ticker.Stop()
@@ -106,6 +108,7 @@ func sendTestPGNs(ctx context.Context, publisher pgn.Publisher, log *logrus.Logg
 	}
 }
 
+// sendEngineData sends an EngineParametersRapidUpdate PGN.
 func sendEngineData(publisher *pgn.Publisher, sourceId uint8, counter float32, log *logrus.Logger) error {
 	// Generate realistic engine RPM (1000-2500 RPM with some variation)
 	rpm := float32(1500.0 + 500.0*math.Sin(float64(counter)*0.1))
@@ -129,6 +132,7 @@ func sendEngineData(publisher *pgn.Publisher, sourceId uint8, counter float32, l
 	return publisher.Write(&enginePgn)
 }
 
+// sendSpeedData sends a Speed PGN.
 func sendSpeedData(publisher *pgn.Publisher, sourceId uint8, counter float32, log *logrus.Logger) error {
 	// Generate realistic boat speeds (5-15 knots)
 	speedKnots := 10.0 + 3.0*math.Sin(float64(counter)*0.15)
@@ -156,6 +160,7 @@ func sendSpeedData(publisher *pgn.Publisher, sourceId uint8, counter float32, lo
 	return publisher.Write(&speedPgn)
 }
 
+// sendPositionData sends a PositionRapidUpdate PGN.
 func sendPositionData(publisher *pgn.Publisher, sourceId uint8, counter float32, log *logrus.Logger) error {
 	// Generate a position that moves in a small circle (simulating boat movement)
 	// Starting position: approximately San Francisco Bay
