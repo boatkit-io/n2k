@@ -5,6 +5,8 @@ import (
 	"math"
 	"reflect"
 
+	"golang.org/x/exp/constraints"
+
 	"github.com/boatkit-io/tugboat/pkg/units"
 )
 
@@ -415,4 +417,103 @@ func (s *DataStream) putNumberRaw(value uint64, bitLength uint16, bitOffset uint
 		}
 	}
 	return nil
+}
+
+// WriteRaw writes a non-scaled integer field using pre-calculated FieldSpec metadata
+func WriteRaw[T constraints.Integer](s *DataStream, value *T, spec *FieldSpec) error {
+	var outVal uint64
+
+	if value == nil {
+		if spec.ReservedCount == 0 {
+			return fmt.Errorf("cannot write nil value to field with no reserved values")
+		}
+		outVal = spec.MissingValue
+	} else {
+		rawValue := uint64(*value)
+
+		// Apply offset for non-scaled fields (subtract offset to get wire value)
+		if spec.Offset != 0 {
+			if spec.IsSigned {
+				signedVal := int64(rawValue)
+				signedVal -= spec.Offset
+				rawValue = uint64(signedVal)
+			} else {
+				rawValue = uint64(int64(rawValue) - spec.Offset)
+			}
+		}
+
+		// Validate against max value if reserved values exist
+		if spec.ReservedCount > 0 && rawValue > spec.MaxRawValue {
+			rawValue = spec.MaxRawValue // Pin to maximum valid value
+		}
+
+		outVal = rawValue
+	}
+
+	return s.putNumberRaw(outVal, spec.BitLength, 0)
+}
+
+// WriteScaled writes a scaled float field using pre-calculated FieldSpec metadata
+func WriteScaled[T constraints.Float](s *DataStream, value *T, spec *FieldSpec) error {
+	if value == nil {
+		if spec.ReservedCount == 0 {
+			return fmt.Errorf("cannot write nil value to field with no reserved values")
+		}
+		return s.putNumberRaw(spec.MissingValue, spec.BitLength, 0)
+	}
+
+	val := float64(*value)
+
+	// Apply domain constraints (clamping)
+	if spec.DomainMax != nil && val > *spec.DomainMax {
+		val = *spec.DomainMax
+	}
+	if spec.DomainMin != nil && val < *spec.DomainMin {
+		val = *spec.DomainMin
+	}
+
+	// First subtract offset
+	val -= float64(spec.Offset)
+
+	// Then apply resolution scaling (divide to convert back to raw)
+	if spec.Resolution != 0 && spec.Resolution != 1.0 {
+		prec := calcPrecision(spec.Resolution)
+		scaledVal := val / spec.Resolution
+		val = roundFloat(scaledVal, prec)
+	}
+
+	// Handle range validation for scaled values
+	var outVal uint64
+	if spec.IsSigned {
+		// For signed fields, handle negative values
+		intVal := int64(val)
+
+		// Validate against max positive value if reserved values exist
+		if spec.ReservedCount > 0 {
+			maxVal := int64(spec.MaxRawValue)
+			minVal := -int64(1 << (spec.BitLength - 1))
+			if intVal > maxVal {
+				intVal = maxVal
+			}
+			if intVal < minVal {
+				intVal = minVal
+			}
+		}
+
+		outVal = uint64(intVal)
+	} else {
+		// For unsigned fields
+		if val < 0 {
+			val = 0
+		}
+
+		outVal = uint64(val)
+
+		// Validate against max value if reserved values exist
+		if spec.ReservedCount > 0 && outVal > spec.MaxRawValue {
+			outVal = spec.MaxRawValue
+		}
+	}
+
+	return s.putNumberRaw(outVal, spec.BitLength, 0)
 }

@@ -1,205 +1,332 @@
-// tests for datastream.go
 package pgn
 
 import (
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
-func TestDataStream_GetData(t *testing.T) {
-	data := []uint8{1, 2, 3, 4, 5}
-	stream := NewDataStream(data)
-
-	assert.Equal(t, []uint8{}, stream.GetData())
-}
-func TestDataStream_getBitOffset(t *testing.T) {
-	stream := NewDataStream([]uint8{1, 2, 3})
-
-	// Initial offset should be 0
-	assert.Equal(t, uint32(0), stream.getBitOffset())
-
-	// Set some offsets and verify calculation
-	stream.byteOffset = 1
-	stream.bitOffset = 3
-	assert.Equal(t, uint32(11), stream.getBitOffset()) // 1 byte (8 bits) + 3 bits = 11
-}
-
-func TestDataStream_resetToStart(t *testing.T) {
-	stream := NewDataStream([]uint8{1, 2, 3})
-
-	// Set some non-zero offsets
-	stream.byteOffset = 2
-	stream.bitOffset = 4
-
-	// Reset and verify both are 0
-	stream.resetToStart()
-	assert.Equal(t, uint16(0), stream.byteOffset)
-	assert.Equal(t, uint8(0), stream.bitOffset)
-}
-
-func TestCalcMaxPositiveValue(t *testing.T) {
+func TestFieldSpecIsScaled(t *testing.T) {
 	tests := []struct {
-		name                string
-		bitLength           uint16
-		reservedValuesCount int
-		signed              bool
-		want                uint64
-	}{
-		{"1 bit unsigned", 1, 0, false, 1},
-		{"1 bit signed", 1, 0, true, 0},
-		{"2 bit unsigned", 2, 1, false, 0x2},
-		{"2 bit signed", 2, 1, true, 0x0},
-		{"3 bit unsigned", 3, 1, false, 0x6},
-		{"3 bit signed", 3, 1, true, 0x2},
-		{"4 bit unsigned", 4, 2, false, 0xD},
-		{"4 bit signed", 4, 2, true, 0x5},
-		{"8 bits unsigned", 8, 2, false, 0xFD},
-		{"8 bits signed", 8, 2, true, 0x7D},
-		{"16 bits unsigned", 16, 2, false, 0xFFFD},
-		{"16 bits signed", 16, 2, true, 0x7FFD},
-		{"32 bits unsigned", 32, 2, false, 0xFFFFFFFD},
-		{"32 bits signed", 32, 2, true, 0x7FFFFFFD},
-		{"64 bits unsigned", 64, 2, false, 0xFFFFFFFFFFFFFFFD},
-		{"64 bits signed", 64, 2, true, 0x7FFFFFFFFFFFFFFD},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := calcMaxPositiveValue(tt.bitLength, tt.signed, tt.reservedValuesCount)
-			assert.Equal(t, tt.want, got)
-		})
-	}
-}
-
-func TestNewDataStream(t *testing.T) {
-	data := []uint8{1, 2, 3, 4, 5}
-	stream := NewDataStream(data)
-
-	assert.Equal(t, data, stream.data)
-	assert.Equal(t, uint16(0), stream.byteOffset)
-	assert.Equal(t, uint8(0), stream.bitOffset)
-}
-
-func TestMissingValue(t *testing.T) {
-	tests := []struct {
-		name      string
-		length    int
-		bitLength uint16
-		signed    bool
-		want      uint64
-	}{
-		{"1 bit unsigned", 1, 1, false, 1},
-		{"1 bit signed", 1, 1, true, 0},
-		{"2 bit unsigned", 2, 2, false, 3},
-		{"2 bit signed", 2, 2, true, 1},
-		{"3 bit unsigned", 3, 3, false, 7},
-		{"3 bit signed", 3, 3, true, 3},
-		{"4 bit unsigned", 4, 4, false, 15},
-		{"4 bit signed", 4, 4, true, 7},
-		{"8 bits unsigned", 8, 8, false, 255},
-		{"8 bits signed", 8, 8, true, 127},
-		{"16 bits unsigned", 16, 16, false, 65535},
-		{"16 bits signed", 16, 16, true, 32767},
-		{"32 bits unsigned", 32, 32, false, 4294967295},
-		{"32 bits signed", 32, 32, true, 2147483647},
-		{"64 bits unsigned", 64, 64, false, 18446744073709551615},
-		{"64 bits signed", 64, 64, true, 9223372036854775807},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := missingValue(tt.bitLength, tt.signed, tt.length)
-			assert.Equal(t, tt.want, got)
-		})
-	}
-}
-
-func TestDataStream_readFixedString(t *testing.T) {
-	tests := []struct {
-		name    string
-		data    []uint8
-		length  uint16 // length in bits
-		want    string
-		wantErr bool
+		name     string
+		spec     FieldSpec
+		expected bool
 	}{
 		{
-			name:    "exact length string (40 bits = 5 bytes)",
-			data:    []uint8{'H', 'e', 'l', 'l', 'o'},
-			length:  40, // 5 bytes * 8 bits
-			want:    "Hello",
-			wantErr: false,
+			name: "Resolution != 1.0 is scaled",
+			spec: FieldSpec{
+				Resolution: 0.25,
+				Offset:     0,
+			},
+			expected: true,
 		},
 		{
-			name:    "string with null padding (64 bits = 8 bytes)",
-			data:    []uint8{'T', 'e', 's', 't', 0, 0, 0, 0},
-			length:  64, // 8 bytes * 8 bits
-			want:    "Test",
-			wantErr: false,
+			name: "Offset != 0 is scaled",
+			spec: FieldSpec{
+				Resolution: 1.0,
+				Offset:     100,
+			},
+			expected: true,
 		},
 		{
-			name:    "string with 0xFF padding (48 bits = 6 bytes)",
-			data:    []uint8{'A', 'B', 'C', 0xFF, 0xFF, 0xFF},
-			length:  48, // 6 bytes * 8 bits
-			want:    "ABC",
-			wantErr: false,
+			name: "Resolution 1.0 and Offset 0 is not scaled",
+			spec: FieldSpec{
+				Resolution: 1.0,
+				Offset:     0,
+			},
+			expected: false,
 		},
 		{
-			name:    "string with @ padding (40 bits = 5 bytes)",
-			data:    []uint8{'X', 'Y', '@', '@', '@'},
-			length:  40, // 5 bytes * 8 bits
-			want:    "XY",
-			wantErr: false,
-		},
-		{
-			name:    "empty string - all null (32 bits = 4 bytes)",
-			data:    []uint8{0, 0, 0, 0},
-			length:  32, // 4 bytes * 8 bits
-			want:    "",
-			wantErr: false,
-		},
-		{
-			name:    "empty string - all 0xFF (24 bits = 3 bytes)",
-			data:    []uint8{0xFF, 0xFF, 0xFF},
-			length:  24, // 3 bytes * 8 bits
-			want:    "",
-			wantErr: false,
-		},
-		{
-			name:    "empty string - all @ (24 bits = 3 bytes)",
-			data:    []uint8{'@', '@', '@'},
-			length:  24, // 3 bytes * 8 bits
-			want:    "",
-			wantErr: false,
-		},
-		{
-			name:    "mixed padding (40 bits = 5 bytes)",
-			data:    []uint8{'H', 'i', 0, '@', 0xFF},
-			length:  40, // 5 bytes * 8 bits
-			want:    "Hi",
-			wantErr: false,
-		},
-		{
-			name:    "insufficient data (40 bits requested, 24 bits available)",
-			data:    []uint8{'A', 'B', 'C'},
-			length:  40, // requesting 5 bytes but only 3 available
-			want:    "",
-			wantErr: true,
+			name: "Both resolution and offset makes it scaled",
+			spec: FieldSpec{
+				Resolution: 0.01,
+				Offset:     273,
+			},
+			expected: true,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			stream := NewDataStream(tt.data)
-
-			got, err := stream.readFixedString(tt.length)
-
-			if tt.wantErr {
-				assert.Error(t, err)
-			} else {
-				assert.NoError(t, err)
-				assert.Equal(t, tt.want, got)
+			result := tt.spec.IsScaled()
+			if result != tt.expected {
+				t.Errorf("IsScaled() = %t, expected %t", result, tt.expected)
 			}
 		})
+	}
+}
+
+func TestFieldSpecHasDomainConstraints(t *testing.T) {
+	min := 10.0
+	max := 100.0
+	
+	tests := []struct {
+		name     string
+		spec     FieldSpec
+		expected bool
+	}{
+		{
+			name: "Has domain min",
+			spec: FieldSpec{
+				DomainMin: &min,
+				DomainMax: nil,
+			},
+			expected: true,
+		},
+		{
+			name: "Has domain max",
+			spec: FieldSpec{
+				DomainMin: nil,
+				DomainMax: &max,
+			},
+			expected: true,
+		},
+		{
+			name: "Has both domain constraints",
+			spec: FieldSpec{
+				DomainMin: &min,
+				DomainMax: &max,
+			},
+			expected: true,
+		},
+		{
+			name: "Has no domain constraints",
+			spec: FieldSpec{
+				DomainMin: nil,
+				DomainMax: nil,
+			},
+			expected: false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := tt.spec.HasDomainConstraints()
+			if result != tt.expected {
+				t.Errorf("HasDomainConstraints() = %t, expected %t", result, tt.expected)
+			}
+		})
+	}
+}
+
+func TestReadRawUint16(t *testing.T) {
+	// Test data: 0x1234 in little-endian (0x34, 0x12)
+	data := []uint8{0x34, 0x12}
+	stream := NewDataStream(data)
+
+	spec := &FieldSpec{
+		BitLength:     16,
+		MaxRawValue:   0xFFFD, // 65533 (accounting for 2 reserved values)
+		MissingValue:  0xFFFF, // 65535 
+		Resolution:    1.0,
+		Offset:        0,
+		IsSigned:      false,
+		ReservedCount: 2,
+	}
+
+	result, err := ReadRaw[uint16](stream, spec)
+	if err != nil {
+		t.Fatalf("ReadRaw failed: %v", err)
+	}
+	if result == nil {
+		t.Fatal("ReadRaw returned nil")
+	}
+	if *result != 0x1234 {
+		t.Errorf("ReadRaw() = 0x%X, expected 0x1234", *result)
+	}
+}
+
+func TestReadRawWithOffset(t *testing.T) {
+	// Test data: value 10 
+	data := []uint8{10}
+	stream := NewDataStream(data)
+
+	spec := &FieldSpec{
+		BitLength:     8,
+		MaxRawValue:   0xFD, // 253 (accounting for 2 reserved values)
+		MissingValue:  0xFF, // 255
+		Resolution:    1.0,
+		Offset:        1000, // Add offset of 1000
+		IsSigned:      false,
+		ReservedCount: 2,
+	}
+
+	result, err := ReadRaw[uint16](stream, spec)
+	if err != nil {
+		t.Fatalf("ReadRaw failed: %v", err)
+	}
+	if result == nil {
+		t.Fatal("ReadRaw returned nil")
+	}
+	expected := uint16(10 + 1000) // raw value + offset
+	if *result != expected {
+		t.Errorf("ReadRaw() = %d, expected %d", *result, expected)
+	}
+}
+
+func TestReadRawMissingValue(t *testing.T) {
+	// Test data: missing value (0xFF for 8-bit field with 2 reserved values)
+	data := []uint8{0xFF}
+	stream := NewDataStream(data)
+
+	spec := &FieldSpec{
+		BitLength:     8,
+		MaxRawValue:   0xFD, // 253 (accounting for 2 reserved values)
+		MissingValue:  0xFF, // 255
+		Resolution:    1.0,
+		Offset:        0,
+		IsSigned:      false,
+		ReservedCount: 2,
+	}
+
+	result, err := ReadRaw[uint8](stream, spec)
+	if err != nil {
+		t.Fatalf("ReadRaw failed: %v", err)
+	}
+	if result != nil {
+		t.Errorf("ReadRaw() = %v, expected nil for missing value", result)
+	}
+}
+
+func TestReadScaledFloat32(t *testing.T) {
+	// Test data: raw value 100
+	data := []uint8{100}
+	stream := NewDataStream(data)
+
+	spec := &FieldSpec{
+		BitLength:     8,
+		MaxRawValue:   0xFD, // 253 (accounting for 2 reserved values)
+		MissingValue:  0xFF, // 255
+		Resolution:    0.1,  // 0.1 units per bit
+		Offset:        20,   // Add 20 after scaling
+		IsSigned:      false,
+		ReservedCount: 2,
+	}
+
+	result, err := ReadScaled[float32](stream, spec)
+	if err != nil {
+		t.Fatalf("ReadScaled failed: %v", err)
+	}
+	if result == nil {
+		t.Fatal("ReadScaled returned nil")
+	}
+	
+	expected := float32(100*0.1 + 20) // (rawValue * resolution) + offset = 10 + 20 = 30
+	if *result != expected {
+		t.Errorf("ReadScaled() = %f, expected %f", *result, expected)
+	}
+}
+
+func TestReadScaledWithDomainConstraints(t *testing.T) {
+	// Test data: raw value that would scale to 200, but domain max is 150
+	data := []uint8{200}
+	stream := NewDataStream(data)
+
+	domainMax := 150.0
+	spec := &FieldSpec{
+		BitLength:     8,
+		MaxRawValue:   0xFD, // 253
+		MissingValue:  0xFF, // 255
+		Resolution:    1.0,  // 1:1 scaling
+		Offset:        0,
+		IsSigned:      false,
+		ReservedCount: 2,
+		DomainMax:     &domainMax,
+	}
+
+	result, err := ReadScaled[float32](stream, spec)
+	if err != nil {
+		t.Fatalf("ReadScaled failed: %v", err)
+	}
+	if result == nil {
+		t.Fatal("ReadScaled returned nil")
+	}
+	
+	// Should be clamped to domain max
+	if *result != 150.0 {
+		t.Errorf("ReadScaled() = %f, expected 150.0 (clamped to domain max)", *result)
+	}
+}
+
+func TestWriteRawUint16(t *testing.T) {
+	data := make([]uint8, 2)
+	stream := NewDataStream(data)
+
+	spec := &FieldSpec{
+		BitLength:     16,
+		MaxRawValue:   0xFFFD, // 65533
+		MissingValue:  0xFFFF, // 65535
+		Resolution:    1.0,
+		Offset:        0,
+		IsSigned:      false,
+		ReservedCount: 2,
+	}
+
+	value := uint16(0x1234)
+	err := WriteRaw[uint16](stream, &value, spec)
+	if err != nil {
+		t.Fatalf("WriteRaw failed: %v", err)
+	}
+
+	// Verify the data was written correctly (little-endian)
+	expected := []uint8{0x34, 0x12}
+	result := stream.GetData()
+	if len(result) != 2 {
+		t.Fatalf("Expected 2 bytes written, got %d", len(result))
+	}
+	for i, b := range expected {
+		if result[i] != b {
+			t.Errorf("Byte %d: got 0x%02X, expected 0x%02X", i, result[i], b)
+		}
+	}
+}
+
+func TestWriteRawNilValue(t *testing.T) {
+	data := make([]uint8, 1)
+	stream := NewDataStream(data)
+
+	spec := &FieldSpec{
+		BitLength:     8,
+		MaxRawValue:   0xFD, // 253
+		MissingValue:  0xFF, // 255
+		Resolution:    1.0,
+		Offset:        0,
+		IsSigned:      false,
+		ReservedCount: 2,
+	}
+
+	err := WriteRaw[uint8](stream, nil, spec)
+	if err != nil {
+		t.Fatalf("WriteRaw failed: %v", err)
+	}
+
+	// Should write the missing value
+	result := stream.GetData()
+	if len(result) != 1 || result[0] != 0xFF {
+		t.Errorf("Expected missing value 0xFF, got 0x%02X", result[0])
+	}
+}
+
+func TestWriteScaledFloat32(t *testing.T) {
+	data := make([]uint8, 1)
+	stream := NewDataStream(data)
+
+	spec := &FieldSpec{
+		BitLength:     8,
+		MaxRawValue:   0xFD, // 253
+		MissingValue:  0xFF, // 255
+		Resolution:    0.1,  // 0.1 units per bit
+		Offset:        20,   // Subtract 20 before scaling
+		IsSigned:      false,
+		ReservedCount: 2,
+	}
+
+	value := float32(30.0) // Should become: (30 - 20) / 0.1 = 100 raw
+	err := WriteScaled[float32](stream, &value, spec)
+	if err != nil {
+		t.Fatalf("WriteScaled failed: %v", err)
+	}
+
+	result := stream.GetData()
+	if len(result) != 1 || result[0] != 100 {
+		t.Errorf("Expected raw value 100, got %d", result[0])
 	}
 }

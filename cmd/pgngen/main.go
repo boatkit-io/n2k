@@ -321,8 +321,59 @@ func calcMaxRawValue(field PGNField) uint64 {
 	return maxRawVal
 }
 
+// calcMaxValidRawValue calculates the maximum valid raw value accounting for reserved values
+func calcMaxValidRawValue(field PGNField) uint64 {
+	if field.BitLength == 0 || !reservedNumericType(field.FieldType) {
+		return 0
+	}
+
+	reservedCount := getReservedValueCount(field)
+	maxRaw := calcMaxRawValue(field)
+
+	if reservedCount > 0 {
+		maxRaw -= uint64(reservedCount)
+	}
+
+	return maxRaw
+}
+
+// calcMissingValue calculates the sentinel value representing missing (nil) data
+func calcMissingValue(field PGNField) uint64 {
+	reservedCount := getReservedValueCount(field)
+	if reservedCount == 0 {
+		// No reserved values means we can't represent missing - return 0 as safe default
+		return 0
+	}
+
+	missing := uint64(0xFFFFFFFFFFFFFFFF)
+	missing >>= 64 - field.BitLength // the largest value representable in length of field if unsigned
+	if field.Signed {                // high bit set means it's negative, so maximum positive value is 1 bit shorter
+		missing >>= 1 // missing flag is max positive value; negative value has high bit set
+	}
+	return missing
+}
+
+// calcInvalidValue calculates the sentinel value representing invalid data (if applicable)
+func calcInvalidValue(field PGNField) uint64 {
+	reservedCount := getReservedValueCount(field)
+	if reservedCount < 2 {
+		// Only one reserved value, so invalid == missing
+		return calcMissingValue(field)
+	}
+
+	// Invalid value is missing value minus 1
+	return calcMissingValue(field) - 1
+}
+
+// needsScaling returns true if the field requires resolution/offset processing
+func needsScaling(field PGNField) bool {
+	hasResolution := field.Resolution != nil && *field.Resolution != 1.0
+	hasOffset := field.Offset != 0
+	return hasResolution || hasOffset
+}
+
 // getReservedValueCount returns the number of reserved values at the top of a field's range.
-// It uses RangeMax from canboat.json if available, otherwise it uses the default logic.
+// This is based purely on NMEA 2000 protocol standards, not domain constraints.
 // Used by template.
 func getReservedValueCount(field PGNField) uint8 {
 	if !reservedNumericType(field.FieldType) {
@@ -333,34 +384,14 @@ func getReservedValueCount(field PGNField) uint8 {
 		return 0
 	}
 
-	// Calculate the maximum expressible value for this field
-	maxRawValue := calcMaxRawValue(field)
-	resolution := 1.0
-
-	if field.Resolution == nil {
-		resolution = float64(*field.Resolution)
-	}
-	maxValue := float64(maxRawValue)*resolution + float64(field.Offset)
-	log.Infof("field: %s maxRawValue: %d maxValue: %f RangeMax: %f", field.Id, maxRawValue, maxValue, field.RangeMax)
-
-	// If RangeMax is not set or equals maxExpressibleValue, return 0
-	if field.RangeMax <= 0 || uint64(field.RangeMax) == maxRawValue {
-		return 0
-	}
-
-	// Calculate the difference between maxExpressibleValue and RangeMax
-	diff := int(maxRawValue - uint64(field.RangeMax))
-
-	// Return 0, 1, or 2 based on the difference
-	switch diff {
-	case 0:
-		return 0
-	case 1:
-		return 1
-	case 2:
-		return 2
-	default:
-		return 2 // For diff >= 2
+	// Use NMEA 2000 standard logic:
+	// - Most fields reserve 1-2 values for "missing" and "invalid"
+	// - Length >= 4 bits typically reserves 2 values
+	// - Length < 4 bits typically reserves 1 value
+	if field.BitLength >= 4 {
+		return 2 // Reserve top 2 values (missing=0xFF..FF, invalid=0xFF..FE)
+	} else {
+		return 1 // Reserve top 1 value (missing=max value)
 	}
 }
 
