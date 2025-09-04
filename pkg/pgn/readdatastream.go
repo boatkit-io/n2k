@@ -46,23 +46,6 @@ func (s *DataStream) readLookupField(bitLength uint16) (uint64, error) {
 
 // readSignedResolution method reads the specified length of data, scales it, and returns as a *float32.
 func (s *DataStream) readSignedResolution(length uint16, resolution float32, offset int32, reservedValuesCount int) (*float32, error) {
-	// For 32-bit fields, handle as IEEE 754 float if no resolution/offset
-	if length == 32 && resolution == 1 && offset == 0 {
-		val, err := s.getNumberRaw(length)
-		if err != nil {
-			return nil, err
-		}
-
-		// Only check for missing value if there are reserved values
-		if reservedValuesCount > 0 {
-			if val == missingValue(length, true, reservedValuesCount) {
-				return nil, nil
-			}
-		}
-
-		result := math.Float32frombits(uint32(val))
-		return &result, nil
-	}
 
 	// Otherwise handle as scaled integer
 	val, err := s.getSignedNullableNumber(length, reservedValuesCount)
@@ -620,13 +603,13 @@ func (s *DataStream) getSignedNullableNumber(bitLength uint16, reservedValuesCou
 		return nil, nil
 	}
 
-	// Check if negative (max bit set)
-	mask := uint64(1 << (bitLength - 1))
-	if (*v & mask) > 0 {
-		*v ^= mask
-		vi := -int64(mask) + int64(*v)
-		return &vi, nil
+	// Sign extend if negative
+	signBit := uint64(1) << (bitLength - 1)
+	if (*v&signBit) != 0 && bitLength < 64 {
+		mask := uint64(math.MaxUint64) << bitLength
+		*v |= mask
 	}
+
 	vi := int64(*v)
 	return &vi, nil
 }

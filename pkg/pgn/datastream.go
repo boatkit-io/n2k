@@ -2,9 +2,9 @@ package pgn
 
 import "math"
 
-// DataStream instances provide methods to read data types from a stream.
-// byteOffset and bitOffset combine to act as the read "cursor".
-// The low level read functions update the cursor.
+// DataStream instances provide methods to read/write data types to/from a stream.
+// byteOffset and bitOffset combine to act as the "read/write cursor".
+// The low level read/write functions update the cursor.
 type DataStream struct {
 	data []uint8
 
@@ -31,7 +31,7 @@ func (s *DataStream) getBitOffset() uint32 {
 	return uint32(s.byteOffset)*8 + uint32(s.bitOffset)
 }
 
-// resetToStart method resets the stream. Commented out since its currently unused.
+// resetToStart method resets the stream. Used for testing.
 func (s *DataStream) resetToStart() {
 	s.byteOffset = 0
 	s.bitOffset = 0
@@ -45,6 +45,7 @@ func (s *DataStream) remainingLength() uint16 {
 
 // calcMaxPositiveValue calculates the maximum value that can be represented
 // with a given length of signed or unsigned contents.
+// reservedValuesCount is the number of reserved values for the field. Valid values are 0-2.
 func calcMaxPositiveValue(bitLength uint16, signed bool, reservedValuesCount int) uint64 {
 	// calculate maximum valid value
 	maxVal := uint64(0xFFFFFFFFFFFFFFFF)
@@ -55,6 +56,9 @@ func calcMaxPositiveValue(bitLength uint16, signed bool, reservedValuesCount int
 	}
 
 	if reservedValuesCount > 0 {
+		if reservedValuesCount > 2 {
+			reservedValuesCount = 2
+		}
 		maxVal -= uint64(reservedValuesCount)
 	}
 

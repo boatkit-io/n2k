@@ -302,12 +302,6 @@ func (s *DataStream) writeSignedResolution64(value *float64, length uint16, reso
 		return s.putNumberRaw(missingValue(length, true, reservedValuesCount), length, bitOffset)
 	}
 
-	// For 32-bit fields, preserve IEEE 754 float bit pattern if no resolution/offset
-	if length == 32 && resolution == 1 && offset == 0 {
-		bits := math.Float32bits(float32(*value))
-		return s.putNumberRaw(uint64(bits), length, bitOffset)
-	}
-
 	val := *value
 
 	// First subtract offset
@@ -324,8 +318,8 @@ func (s *DataStream) writeSignedResolution64(value *float64, length uint16, reso
 	// For 32-bit fields, check for overflow before conversion
 	if length == 32 {
 		if val >= 0 {
-			if val > float64(math.MaxInt32-2) {
-				val = float64(math.MaxInt32 - 2) // Leave room for reserved values
+			if val > float64(math.MaxInt32-reservedValuesCount) {
+				val = float64(math.MaxInt32 - reservedValuesCount) // Leave room for reserved values
 			}
 		} else {
 			if val < float64(math.MinInt32) {
@@ -334,6 +328,15 @@ func (s *DataStream) writeSignedResolution64(value *float64, length uint16, reso
 		}
 		intVal := int32(val)
 		return s.putNumberRaw(uint64(intVal), length, bitOffset)
+	}
+
+	maxVal := calcMaxPositiveValue(length, true, reservedValuesCount)
+	if val > float64(maxVal) {
+		val = float64(maxVal)
+	}
+	minVal := -int64(1 << (length - 1))
+	if val < float64(minVal) {
+		val = float64(minVal)
 	}
 
 	return s.putNumberRaw(uint64(int64(val)), length, bitOffset)

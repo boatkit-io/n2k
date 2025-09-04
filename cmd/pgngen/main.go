@@ -298,34 +298,58 @@ func (conv *canboatConverter) write() {
 	}
 }
 
+// reservedNumericType returns true if the field type has reserved values.
+func reservedNumericType(fieldType string) bool {
+	// MMSI should be treated as string
+	// DECIMAL is BCD, but no reserved values are specified
+	return fieldType == "NUMBER" || fieldType == "DATE" || fieldType == "TIME" || fieldType == "PGN" || fieldType == "ISO_NAME" || fieldType == "DURATION" || fieldType == "DYNAMIC_FIELD_KEY" || fieldType == "DYNAMIC_FIELD_LENGTH"
+}
+
+// calcMaxRawValue calculates the maximum raw value for a field.
+func calcMaxRawValue(field PGNField) uint64 {
+	if field.BitLength == 0 { // only possible if no bitLength is specified in canboat.json
+		return 0
+	}
+	if !reservedNumericType(field.FieldType) {
+		return 0
+	}
+	maxRawVal := uint64(0xFFFFFFFFFFFFFFFF)
+	maxRawVal >>= 64 - field.BitLength // the largest value representable in length of field
+	if field.Signed {                  // high bit set means it's negative, so maximum positive value is 1 bit shorter
+		maxRawVal >>= 1 // clears the high bit since we need the maximum positive value
+	}
+	return maxRawVal
+}
+
 // getReservedValueCount returns the number of reserved values at the top of a field's range.
 // It uses RangeMax from canboat.json if available, otherwise it uses the default logic.
 // Used by template.
-func getReservedValueCount(field PGNField) int {
-	switch field.FieldType {
-	case "NUMBER", "DATE", "TIME", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
-		// These can be considered numeric types that might have reserved values.
-	default:
-		return 0 // Other types like STRING, BINARY, LOOKUP don't use this mechanism.
+func getReservedValueCount(field PGNField) uint8 {
+	if !reservedNumericType(field.FieldType) {
+		return 0
 	}
 
-	if field.BitLength == 0 {
+	if field.BitLength == 0 { // only possible if no bitLength is specified in canboat.json
 		return 0
 	}
 
 	// Calculate the maximum expressible value for this field
-	maxExpressibleValue := (uint64(1) << field.BitLength) - 1
-	if field.Signed {
-		maxExpressibleValue = (uint64(1) << (field.BitLength - 1)) - 1
+	maxRawValue := calcMaxRawValue(field)
+	resolution := 1.0
+
+	if field.Resolution == nil {
+		resolution = float64(*field.Resolution)
 	}
+	maxValue := float64(maxRawValue)*resolution + float64(field.Offset)
+	log.Infof("field: %s maxRawValue: %d maxValue: %f RangeMax: %f", field.Id, maxRawValue, maxValue, field.RangeMax)
 
 	// If RangeMax is not set or equals maxExpressibleValue, return 0
-	if field.RangeMax <= 0 || uint64(field.RangeMax) == maxExpressibleValue {
+	if field.RangeMax <= 0 || uint64(field.RangeMax) == maxRawValue {
 		return 0
 	}
 
 	// Calculate the difference between maxExpressibleValue and RangeMax
-	diff := int(maxExpressibleValue - uint64(field.RangeMax))
+	diff := int(maxRawValue - uint64(field.RangeMax))
 
 	// Return 0, 1, or 2 based on the difference
 	switch diff {

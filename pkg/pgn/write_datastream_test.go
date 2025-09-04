@@ -1,6 +1,7 @@
 package pgn
 
 import (
+	"math"
 	"testing"
 
 	"github.com/boatkit-io/tugboat/pkg/units"
@@ -256,12 +257,12 @@ func TestWriteSignedResolutionRoundTrip(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			// Write the value
 			stream := NewDataStream(make([]uint8, 32))
-			err := stream.writeSignedResolution64(&tt.value, tt.length, float64(tt.resolution), 0, int64(tt.offset), 0)
+			err := stream.writeSignedResolution64(&tt.value, tt.length, float64(tt.resolution), 0, int64(tt.offset), 2)
 			assert.NoError(t, err)
 
 			// Read it back
 			stream.resetToStart()
-			result, err := stream.readSignedResolution(tt.length, tt.resolution, tt.offset, 0)
+			result, err := stream.readSignedResolution(tt.length, tt.resolution, tt.offset, 2)
 			assert.NoError(t, err)
 			assert.NotNil(t, result)
 
@@ -315,8 +316,8 @@ func TestSignedResolutionRoundTrip(t *testing.T) {
 			length:     32,
 			resolution: 1.0,
 			offset:     0,
-			expected:   float32(-3.4028234663852886e+38),
-			tolerance:  1e+32,
+			expected:   float32(math.MinInt32),
+			tolerance:  1.0,
 		},
 		{
 			name:       "Test maximum float32",
@@ -324,8 +325,8 @@ func TestSignedResolutionRoundTrip(t *testing.T) {
 			length:     32,
 			resolution: 1.0,
 			offset:     0,
-			expected:   float32(3.4028234663852886e+38),
-			tolerance:  1e+32,
+			expected:   float32(math.MaxInt32 - 2),
+			tolerance:  1.0,
 		},
 		{
 			name:       "Test near minimum float32",
@@ -333,8 +334,8 @@ func TestSignedResolutionRoundTrip(t *testing.T) {
 			length:     32,
 			resolution: 1.0,
 			offset:     0,
-			expected:   float32(-3.4028e+38),
-			tolerance:  1e+32,
+			expected:   float32(math.MinInt32),
+			tolerance:  1.0,
 		},
 		{
 			name:       "Test near maximum float32",
@@ -342,8 +343,8 @@ func TestSignedResolutionRoundTrip(t *testing.T) {
 			length:     32,
 			resolution: 1.0,
 			offset:     0,
-			expected:   float32(3.4028e+38),
-			tolerance:  1e+32,
+			expected:   float32(math.MaxInt32 - 2),
+			tolerance:  1.0,
 		},
 	}
 
@@ -351,12 +352,12 @@ func TestSignedResolutionRoundTrip(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			// Write the value
 			stream := NewDataStream(make([]uint8, 32))
-			err := stream.writeSignedResolution64(&tt.value, tt.length, float64(tt.resolution), 0, int64(tt.offset), 0)
+			err := stream.writeSignedResolution64(&tt.value, tt.length, float64(tt.resolution), 0, int64(tt.offset), 2)
 			assert.NoError(t, err)
 
 			// Read it back
 			stream.resetToStart()
-			result, err := stream.readSignedResolution(tt.length, tt.resolution, tt.offset, 0)
+			result, err := stream.readSignedResolution(tt.length, tt.resolution, tt.offset, 2)
 			assert.NoError(t, err)
 			assert.NotNil(t, result)
 
