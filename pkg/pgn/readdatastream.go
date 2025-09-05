@@ -371,7 +371,12 @@ func (s *DataStream) readInt8(bitLength uint16, reservedValuesCount int) (*int8,
 
 // readFloat32 method reads and returns a *float32
 func (s *DataStream) readFloat32() (*float32, error) {
-	return s.readSignedResolution(32, 1, 0, 0)
+	val, err := s.readUInt32(32, 0)
+	if err != nil {
+		return nil, err
+	}
+	floatVal := math.Float32frombits(*val)
+	return &floatVal, nil
 }
 
 // readBinaryData method reads the specified length of data and returns it in a uint8 slice
@@ -526,8 +531,16 @@ func (s *DataStream) readFixedString(bitLength uint16) (string, error) {
 // Except that a bunch of it seems wrong... their examples reference MSB ordering of things but it appears
 // to really be LSB, the way that would make sense...
 func (s *DataStream) getNumberRaw(bitLength uint16) (uint64, error) {
-	var ret uint64
+	// Check if we have enough bits remaining in the stream before starting
+	// Use the same calculation as remainingLength() method
+	totalBitsInStream := len(s.data) * 8
+	bitsConsumed := int(s.byteOffset)*8 + int(s.bitOffset)
+	bitsRemaining := totalBitsInStream - bitsConsumed
+	if int(bitLength) > bitsRemaining {
+		return 0, fmt.Errorf("reading %d bits off end of pgn (remaining: %d bits)", bitLength, bitsRemaining)
+	}
 
+	var ret uint64
 	outBitOffset := 0
 
 	for bitLength > 0 {

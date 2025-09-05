@@ -17,3 +17,11 @@ type UnknownPGN struct {
 func (p *UnknownPGN) Encode(stream *DataStream) (*MessageInfo, error) {
 	return &p.Info, nil
 }
+
+func (p *UnknownPGN) GetMessageInfo() *MessageInfo {
+	return &p.Info
+}
+
+func (p *UnknownPGN) SetMessageInfo(info *MessageInfo) {
+	p.Info = *info
+}

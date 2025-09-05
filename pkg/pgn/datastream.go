@@ -136,6 +136,9 @@ func roundFloat32(val float32, precision uint8) float32 {
 
 // ReadRaw reads a non-scaled integer field using pre-calculated FieldSpec metadata
 func ReadRaw[T constraints.Integer](s *DataStream, spec *FieldSpec) (*T, error) {
+	if spec == nil {
+		return nil, fmt.Errorf("FieldSpec is nil")
+	}
 	if spec.BitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength exceeds 64 bits", spec.BitLength)
 	}
@@ -187,6 +190,9 @@ func ReadRaw[T constraints.Integer](s *DataStream, spec *FieldSpec) (*T, error) 
 
 // ReadScaled reads a scaled float field using pre-calculated FieldSpec metadata
 func ReadScaled[T constraints.Float](s *DataStream, spec *FieldSpec) (*T, error) {
+	if spec == nil {
+		return nil, fmt.Errorf("FieldSpec is nil")
+	}
 	if spec.BitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength exceeds 64 bits", spec.BitLength)
 	}

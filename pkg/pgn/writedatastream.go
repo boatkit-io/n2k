@@ -275,8 +275,16 @@ func (s *DataStream) writeUnit(value any, length uint16, resolution float32, bit
 
 // writeFloat32 writes the specified length of value at the specified offset
 func (s *DataStream) writeFloat32(value *float32, bitLength uint16, bitOffset uint16, reservedValuesCount int) error {
-
-	return s.writeSignedResolution32(value, bitLength, 1, bitOffset, 0, reservedValuesCount)
+	// This is called for fields with canboat type FLOAT.
+	// These fields use IEEE 754 32-bit floating point bits and have no reserved values.
+	if bitLength != 32 {
+		return fmt.Errorf("attempt to write float32 with bitLength != 32")
+	}
+	if reservedValuesCount != 0 {
+		return fmt.Errorf("attempt to write float32 with reservedValuesCount != 0")
+	}
+	val := math.Float32bits(*value)
+	return s.writeUint32(&val, bitLength, bitOffset, reservedValuesCount)
 }
 
 // writeFloat64 writes the specified length of value at the specified offset

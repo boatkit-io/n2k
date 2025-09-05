@@ -34,6 +34,8 @@ type PgnInfo struct {
 	Decoder func(MessageInfo, *DataStream) (any, error)
 	// Fields is a map of field descriptions needed at runtime to deal with variable pgn fields
 	Fields map[int]*FieldDescriptor
+	// FieldSpecs contains pre-calculated metadata for optimized read/write operations
+	FieldSpecs map[string]*FieldSpec
 
     {{- if $forDebug}}
 	// The following fields are used for testing only.
@@ -77,6 +79,7 @@ type FieldDescriptor struct {
 {{- range .PGNDoc.PGNs }}
 const {{ .Id }}Pgn = {{ .PGN }}
 {{- end }}
+
 
 // PgnStructMap maps struct types to PGN numbers
 var PgnStructMap = map[reflect.Type]uint32{
@@ -197,7 +200,7 @@ var unseenList = []PgnInfo{
     }
 
     // Encode returns an error for partial variants
-    func (p {{ .Id }}Partial) Encode(stream *DataStream) (*MessageInfo, error) {
+    func (p *{{ .Id }}Partial) Encode(stream *DataStream) (*MessageInfo, error) {
         return nil, fmt.Errorf("cannot encode partial variant of {{ .Id }} - use {{ .Id }} for encoding")
     }
 {{- end }}
@@ -205,25 +208,25 @@ var unseenList = []PgnInfo{
 
 var PgnList = pgnList
 var pgnList = []PgnInfo{
-{{- range .PGNDoc.PGNs }}
+{{- range $pgn := .PGNDoc.PGNs }}
     {
-        Id: "{{ .Id }}",
-        PGN: {{ .PGN }},
-        Description: {{ quote .Description }},
-        Fast: {{ if eq .Type "Fast" }}true{{ else }}false{{ end }},
-        ManId: {{ matchManufacturer . }},
-        Decoder: Decode{{ .Id }},
+        Id: "{{ $pgn.Id }}",
+        PGN: {{ $pgn.PGN }},
+        Description: {{ quote $pgn.Description }},
+        Fast: {{ if eq $pgn.Type "Fast" }}true{{ else }}false{{ end }},
+        ManId: {{ matchManufacturer $pgn }},
+        Decoder: Decode{{ $pgn.Id }},
         {{- if $forDebug }}
-        Instance: &{{ .Id }} {},
-        {{- if .RepeatingFieldSet1CountField }}
-        Repeating1CountField: {{ .RepeatingFieldSet1CountField }},
+        Instance: &{{ $pgn.Id }} {},
+        {{- if $pgn.RepeatingFieldSet1CountField }}
+        Repeating1CountField: {{ $pgn.RepeatingFieldSet1CountField }},
         {{- end }}
-        {{- if .RepeatingFieldSet2CountField }}
-        Repeating2CountField: {{ .RepeatingFieldSet2CountField }},
+        {{- if $pgn.RepeatingFieldSet2CountField }}
+        Repeating2CountField: {{ $pgn.RepeatingFieldSet2CountField }},
         {{- end }}
         {{- end }}
         Fields: map[int]*FieldDescriptor{
-        {{- range .AllFields }}
+        {{- range $pgn.AllFields }}
         {{ .Order }}: { 
             BitLength: {{ .BitLength }},
             BitOffset: {{ .BitOffset }},
@@ -259,6 +262,14 @@ var pgnList = []PgnInfo{
             Order: {{ .Order }},
             {{- end }}
             },
+        {{- end }}
+        },
+        FieldSpecs: map[string]*FieldSpec{
+        {{- range $field := $pgn.Fields }}
+        {{- $spec := generateFieldSpecConstant $pgn $field }}
+        {{- if ne $spec "" }}
+            "{{ $field.Id }}": {{ $spec }},
+        {{- end }}
         {{- end }}
         },
     },
@@ -420,7 +431,6 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
         {{- end -}}
     {{- end }}
 
-    i := 0
     for {
         {{- if $hasRepeat1Dynamic }}
         var valueLength uint16
@@ -449,22 +459,28 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
         {{- end }}
         {{- end }}
         val.Repeating1 = append(val.Repeating1, rep)
+        repeat1Count--
         if int(repeat1Count) == 0 {
-            if stream.isEOF() {
-                return val, nil
-            }
-        } else {
-            i++
-            if i == int(repeat1Count) {
-                break
+            break
             }
         }
-    }
+
     {{- end }}
-    {{- if $repeat2 }}
+    {{- if not $repeat2 }}
+    if stream.isEOF() {
+        return val, nil
+    } else {
+        return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-Repeating1, ran out of parameters but data remains")
+    }
+    {{- else }}
+
     {{- if gt $pgn.RepeatingFieldSet2CountField 0 }}
         if repeat2Count == 0 {
-            return val, nil
+            if stream.isEOF() {
+                return val, nil
+            } else {
+                return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-Repeating1, ran out of parameters but data remains")
+            }
         }
     {{- end }}
 
@@ -476,7 +492,6 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
     {{- end }}
 
     val.Repeating2 = make([]{{ .Id }}Repeating2, 0)
-    i = 0
     for {
         {{- if $hasRepeat2Dynamic }}
         var valueLength uint16
@@ -505,23 +520,20 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
         {{- end }}
     {{- end }}
         val.Repeating2 = append(val.Repeating2, rep)
+        repeat2Count--
         if int(repeat2Count) == 0 {
             if stream.isEOF() {
                 return val, nil
+            } else {
+                return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-Repeating2, ran out of parameters but data remains")
             }
-        } else {
-            i++
-            if i == int(repeat2Count) {
-                break
-            }
-        }
+        } 
     }
     {{- end }}
-    return val, nil
 }
 
 // Encode implementation for complete variant
-func (p {{ .Id }}) Encode(stream *DataStream) (*MessageInfo, error) {
+func (p *{{ .Id }}) Encode(stream *DataStream) (*MessageInfo, error) {
     var err error
 	{{- $bitLengthFieldOrder :=  $pgn.BitLengthField }}
 	{{- if  $bitLengthFieldOrder }}
@@ -574,16 +586,13 @@ func (p {{ .Id }}) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.Priority == 0 {
         p.Info.Priority = 3  // Default priority
     }
-    if p.Info.TargetId == 0 {
-        p.Info.TargetId = 255  // Default to broadcast
-    }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
 }
 
 // GetMessageInfo returns a pointer to the MessageInfo field
-func (p {{ .Id }}) GetMessageInfo() *MessageInfo {
+func (p *{{ .Id }}) GetMessageInfo() *MessageInfo {
     return &p.Info
 }
 

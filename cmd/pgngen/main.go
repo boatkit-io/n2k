@@ -258,18 +258,19 @@ func (conv *canboatConverter) write() {
 		panic(err)
 	} else {
 		t := template.Must(template.New("pgninfo").Funcs(sprig.TxtFuncMap()).Funcs(template.FuncMap{
-			"convertFieldType":      convertFieldType,
-			"getFieldSerializer":    getFieldSerializer,
-			"getFieldDeserializer":  getFieldDeserializer,
-			"fieldByteCount":        fieldByteCount,
-			"concat":                func(strs ...string) string { return strings.Join(strs, "") },
-			"toNumber":              toNumber,
-			"isPointerFieldType":    isPointerFieldType,
-			"constSize":             constSize,
-			"subtract":              func(x, y uint8) uint8 { return x - y },
-			"matchManufacturer":     matchManufacturer,
-			"makeIndirectMap":       makeIndirectMap,
-			"getReservedValueCount": getReservedValueCount,
+			"convertFieldType":          convertFieldType,
+			"getFieldSerializer":        getFieldSerializer,
+			"getFieldDeserializer":      getFieldDeserializer,
+			"fieldByteCount":            fieldByteCount,
+			"concat":                    func(strs ...string) string { return strings.Join(strs, "") },
+			"toNumber":                  toNumber,
+			"isPointerFieldType":        isPointerFieldType,
+			"constSize":                 constSize,
+			"subtract":                  func(x, y uint8) uint8 { return x - y },
+			"matchManufacturer":         matchManufacturer,
+			"makeIndirectMap":           makeIndirectMap,
+			"getReservedValueCount":     getReservedValueCount,
+			"generateFieldSpecConstant": generateFieldSpecConstant,
 			"derefOrZero": func(v *uint64) uint64 {
 				if v == nil {
 					return 0
@@ -370,6 +371,44 @@ func needsScaling(field PGNField) bool {
 	hasResolution := field.Resolution != nil && *field.Resolution != 1.0
 	hasOffset := field.Offset != 0
 	return hasResolution || hasOffset
+}
+
+// generateFieldSpecConstant creates a FieldSpec constant definition
+func generateFieldSpecConstant(pgn PGN, field PGNField) string {
+	if !reservedNumericType(field.FieldType) {
+		return "" // Only generate specs for numeric/float fields
+	}
+
+	reservedCount := getReservedValueCount(field)
+	maxRawValue := calcMaxValidRawValue(field)
+	missingValue := calcMissingValue(field)
+
+	resolution := 1.0
+	if field.Resolution != nil {
+		resolution = float64(*field.Resolution)
+	}
+
+	// Handle domain constraints if available
+	domainMin := "nil"
+	domainMax := "nil"
+	if field.DomainMin > 0 {
+		domainMin = fmt.Sprintf("&[]float64{%g}[0]", field.DomainMin)
+	}
+	if field.DomainMax > 0 {
+		domainMax = fmt.Sprintf("&[]float64{%g}[0]", field.DomainMax)
+	}
+
+	return fmt.Sprintf(`&FieldSpec{
+		BitLength:     %d,
+		MaxRawValue:   0x%X,
+		MissingValue:  0x%X,
+		Resolution:    %g,
+		Offset:        %d,
+		IsSigned:      %t,
+		ReservedCount: %d,
+		DomainMin:     %s,
+		DomainMax:     %s,
+	}`, field.BitLength, maxRawValue, missingValue, resolution, field.Offset, field.Signed, reservedCount, domainMin, domainMax)
 }
 
 // getReservedValueCount returns the number of reserved values at the top of a field's range.
@@ -905,34 +944,41 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 	case "FIELD_INDEX":
 		return [2]string{fmt.Sprintf("stream.readUInt8(%d, %d)", field.BitLength, reservedCount), ""}
 	case "NUMBER", "TIME", "DATE", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
+		specRef := fmt.Sprintf("GetPgnInfo(%d).FieldSpecs[\"%s\"]", pgn.PGN, field.Id)
 		var outerVal string
-		if field.Signed {
-			switch {
-			case field.Resolution != nil && *field.Resolution <= resolution64BitCutoff:
-				outerVal = fmt.Sprintf("stream.readSignedResolution64Override(%d, %g, %d)", field.BitLength, *field.Resolution, reservedCount)
-			case field.Resolution != nil && *field.Resolution != 1.0, field.Offset != 0:
-				outerVal = fmt.Sprintf("stream.readSignedResolution(%d, %g, %d, %d)", field.BitLength, *field.Resolution, field.Offset, reservedCount)
-			case field.BitLength > 32:
-				outerVal = fmt.Sprintf("stream.readInt64(%d, %d)", field.BitLength, reservedCount)
-			case field.BitLength > 16:
-				outerVal = fmt.Sprintf("stream.readInt32(%d, %d)", field.BitLength, reservedCount)
-			case field.BitLength > 8:
-				outerVal = fmt.Sprintf("stream.readInt16(%d, %d)", field.BitLength, reservedCount)
-			default:
-				outerVal = fmt.Sprintf("stream.readInt8(%d, %d)", field.BitLength, reservedCount)
+
+		if needsScaling(field) {
+			// Use ReadScaled for fields that need resolution/offset processing
+			// Choose float64 for high-precision fields, float32 for others (matches struct field types)
+			floatType := "float32"
+			if field.Resolution != nil && *field.Resolution <= resolution64BitCutoff {
+				floatType = "float64"
 			}
+			outerVal = fmt.Sprintf("ReadScaled[%s](stream, %s)", floatType, specRef)
 		} else {
-			switch {
-			case field.Resolution != nil && *field.Resolution != 1.0:
-				outerVal = fmt.Sprintf("stream.readUnsignedResolution(%d, %g, %d, %d)", field.BitLength, *field.Resolution, field.Offset, reservedCount)
-			case field.BitLength > 32:
-				outerVal = fmt.Sprintf("stream.readUInt64(%d, %d)", field.BitLength, reservedCount)
-			case field.BitLength > 16:
-				outerVal = fmt.Sprintf("stream.readUInt32(%d, %d)", field.BitLength, reservedCount)
-			case field.BitLength > 8:
-				outerVal = fmt.Sprintf("stream.readUInt16(%d, %d)", field.BitLength, reservedCount)
-			default:
-				outerVal = fmt.Sprintf("stream.readUInt8(%d, %d)", field.BitLength, reservedCount)
+			// Use ReadRaw for non-scaled fields
+			if field.Signed {
+				switch {
+				case field.BitLength > 32:
+					outerVal = fmt.Sprintf("ReadRaw[int64](stream, %s)", specRef)
+				case field.BitLength > 16:
+					outerVal = fmt.Sprintf("ReadRaw[int32](stream, %s)", specRef)
+				case field.BitLength > 8:
+					outerVal = fmt.Sprintf("ReadRaw[int16](stream, %s)", specRef)
+				default:
+					outerVal = fmt.Sprintf("ReadRaw[int8](stream, %s)", specRef)
+				}
+			} else {
+				switch {
+				case field.BitLength > 32:
+					outerVal = fmt.Sprintf("ReadRaw[uint64](stream, %s)", specRef)
+				case field.BitLength > 16:
+					outerVal = fmt.Sprintf("ReadRaw[uint32](stream, %s)", specRef)
+				case field.BitLength > 8:
+					outerVal = fmt.Sprintf("ReadRaw[uint16](stream, %s)", specRef)
+				default:
+					outerVal = fmt.Sprintf("ReadRaw[uint8](stream, %s)", specRef)
+				}
 			}
 		}
 

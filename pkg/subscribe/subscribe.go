@@ -151,7 +151,18 @@ func (s *SubscribeManager) HandleStruct(p any) {
 
 	s.subMutex.Unlock()
 
-	callWith := []reflect.Value{pv}
+	// Create a pointer to the struct value for callbacks
+	var callWith []reflect.Value
+	if pv.CanAddr() {
+		// If the value is addressable, use its address
+		callWith = []reflect.Value{pv.Addr()}
+	} else {
+		// If not addressable, create a new pointer and copy the value
+		ptrValue := reflect.New(pv.Type())
+		ptrValue.Elem().Set(pv)
+		callWith = []reflect.Value{ptrValue}
+	}
+
 	for _, t := range callList {
 		t.Call(callWith)
 	}
@@ -178,6 +189,7 @@ func (s *SubscribeManager) SubscribeToStruct(t any, callback any) (SubscriptionI
 
 // SubscribeToAllStructs registers a subscription to all structs.
 // It validates the callback is a func with an any argument.
+// Note: callbacks now receive pointers to structs, not struct values.
 func (s *SubscribeManager) SubscribeToAllStructs(callback any) (SubscriptionId, error) {
 	ce := reflect.ValueOf(callback)
 	if ce.Kind() != reflect.Func {
