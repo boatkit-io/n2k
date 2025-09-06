@@ -147,95 +147,110 @@ func Discriminate{{ $pgn.Id }}(data []uint8) (*PgnInfo, error) {
 ### 2.1 File Structure
 
 ```
-pkg/pgn/
-├── client/                    # Client API (generated)
-│   ├── types.go              # PGN struct definitions
-│   ├── enums.go              # Enum types and constants
-│   ├── subscribe.go          # Subscription interfaces
-│   └── write.go              # Write interfaces
-├── runtime/                  # Runtime implementation (generated)
-│   ├── pgninfo.go           # PgnInfo, FieldSpecs
-│   ├── decoders.go          # Decoder functions
-│   ├── encoders.go          # Encoder functions
-│   ├── discriminators.go    # Discriminator functions
-│   └── fieldspecs.go        # FieldSpec definitions
-├── datastream.go            # Core DataStream (hand-written)
-├── messageinfo.go           # MessageInfo (hand-written)
-└── pgninfo.go              # Lookup maps and utilities (hand-written)
+pkg/
+├── n2k/                      # Main public API
+│   ├── types.go             # PGN structs, MessageInfo, enums (from client/)
+│   ├── interfaces.go        # PgnStruct, PgnWriter, etc.
+│   ├── pipeline.go          # NewPipeline(), UpdatePipeline()
+│   └── subscribe.go         # Public subscription interface
+├── endpoint/                 # Endpoint implementations (public)
+│   ├── socketcanendpoint/
+│   ├── usbcanendpoint/
+│   └── n2kfileendpoint/
+└── internal/
+    ├── pgn/                 # PGN implementation (generated)
+    │   ├── decoders.go      # Decoder functions
+    │   ├── encoders.go      # Encoder functions
+    │   ├── discriminators.go # Discriminator functions
+    │   ├── fieldspecs.go    # FieldSpec definitions
+    │   └── pgninfo.go       # PgnInfo, FieldSpecs
+    ├── adapter/             # Frame adapters (internal)
+    ├── packet/              # Packet processing (internal)
+    ├── subscribe/           # Subscription implementation (internal)
+    └── datastream.go        # Core DataStream (hand-written)
 ```
 
-### 2.2 Client API Components
+### 2.2 Public API Components
 
-#### types.go
+#### n2k/types.go
 - PGN struct definitions
-- Repeating field structs
-- Partial structs for PGN 126208
-
-#### enums.go
+- MessageInfo
 - All enum types and constants
 - String methods for enums
-- Lookup maps
 
-#### subscribe.go
-- Subscription interfaces
+#### n2k/interfaces.go
+- PgnStruct interface
+- PgnWriter interface
+- Endpoint interface
+- MessageHandler interface
+
+#### n2k/pipeline.go
+- NewPipeline() function
+- UpdatePipeline() function
+- Pipeline management
+
+#### n2k/subscribe.go
+- Public subscription interface
 - Event handling types
 
-#### write.go
-- Write interfaces
-- Encoding helper functions
+#### endpoint/*/
+- SocketCAN endpoint implementation
+- USBCAN endpoint implementation
+- N2K file endpoint implementation
 
-### 2.3 Runtime Components
+### 2.3 Internal Components
 
-#### pgninfo.go
+#### internal/pgn/
 - PgnInfo struct definitions
 - PgnInfoLookup maps
-- Utility functions
-
-#### decoders.go
 - All decoder functions
-- Decode{PGN_ID} functions
-
-#### encoders.go
 - All encoder functions
-- Encode methods for structs
-
-#### discriminators.go
 - Discriminator functions
+- FieldSpec definitions
 - Match field specifications
 - Variant matching logic
 
-#### fieldspecs.go
-- FieldSpec definitions
-- FieldSpec generation utilities
+#### internal/adapter/
+- Frame adapters (internal)
+
+#### internal/packet/
+- Packet processing (internal)
+
+#### internal/subscribe/
+- Subscription implementation (internal)
+
+#### internal/datastream.go
+- Core DataStream implementation
 
 ### 2.4 Template Modifications
 
 #### Split Template Files
 ```
 cmd/pgngen/templates/
-├── client/
+├── n2k/
 │   ├── types.go.tmpl
-│   ├── enums.go.tmpl
-│   ├── subscribe.go.tmpl
-│   └── write.go.tmpl
-└── runtime/
-    ├── pgninfo.go.tmpl
-    ├── decoders.go.tmpl
-    ├── encoders.go.tmpl
-    ├── discriminators.go.tmpl
-    └── fieldspecs.go.tmpl
+│   ├── interfaces.go.tmpl
+│   ├── pipeline.go.tmpl
+│   └── subscribe.go.tmpl
+└── internal/
+    └── pgn/
+        ├── pgninfo.go.tmpl
+        ├── decoders.go.tmpl
+        ├── encoders.go.tmpl
+        ├── discriminators.go.tmpl
+        └── fieldspecs.go.tmpl
 ```
 
 #### Build Process Updates
 ```go
 // cmd/pgngen/main.go
-func generateClientAPI(pgnDoc *PGNDocument) error {
-    // Generate client API files
+func generatePublicAPI(pgnDoc *PGNDocument) error {
+    // Generate public API files
     templates := []string{
-        "client/types.go.tmpl",
-        "client/enums.go.tmpl", 
-        "client/subscribe.go.tmpl",
-        "client/write.go.tmpl",
+        "n2k/types.go.tmpl",
+        "n2k/interfaces.go.tmpl", 
+        "n2k/pipeline.go.tmpl",
+        "n2k/subscribe.go.tmpl",
     }
     
     for _, template := range templates {
@@ -246,14 +261,14 @@ func generateClientAPI(pgnDoc *PGNDocument) error {
     return nil
 }
 
-func generateRuntime(pgnDoc *PGNDocument) error {
-    // Generate runtime files
+func generateInternalPGN(pgnDoc *PGNDocument) error {
+    // Generate internal PGN implementation files
     templates := []string{
-        "runtime/pgninfo.go.tmpl",
-        "runtime/decoders.go.tmpl",
-        "runtime/encoders.go.tmpl", 
-        "runtime/discriminators.go.tmpl",
-        "runtime/fieldspecs.go.tmpl",
+        "internal/pgn/pgninfo.go.tmpl",
+        "internal/pgn/decoders.go.tmpl",
+        "internal/pgn/encoders.go.tmpl", 
+        "internal/pgn/discriminators.go.tmpl",
+        "internal/pgn/fieldspecs.go.tmpl",
     }
     
     for _, template := range templates {
@@ -265,12 +280,58 @@ func generateRuntime(pgnDoc *PGNDocument) error {
 }
 ```
 
-## 3. Implementation Phases
+## 3. Usage Patterns
+
+### 3.1 Client Service Usage
+```go
+// Client service constructs pipeline and switches endpoints
+package main
+
+import (
+    "github.com/boatkit-io/n2k/pkg/n2k"
+    "github.com/boatkit-io/n2k/pkg/endpoint/socketcanendpoint"
+    "github.com/boatkit-io/n2k/pkg/endpoint/usbcanendpoint"
+)
+
+func main() {
+    // Create pipeline with initial endpoint
+    pipeline := n2k.NewPipeline(socketcanendpoint.NewSocketCANEndpoint(log, "can0"))
+    
+    // Switch endpoints as needed
+    pipeline.UpdatePipeline(usbcanendpoint.NewUSBCANEndpoint(log, device))
+    
+    // Start pipeline
+    go pipeline.Run(ctx)
+}
+```
+
+### 3.2 Client Package Usage
+```go
+// Other client packages only import n2k for types
+package other
+
+import (
+    "github.com/boatkit-io/n2k/pkg/n2k"
+)
+
+func processPGN(vh n2k.VesselHeading) {
+    // Process PGN data
+}
+```
+
+### 3.3 Benefits of This Structure
+- **Minimal public surface**: Only `n2k` package and `endpoint` packages are public
+- **Clean separation**: Client packages only import `n2k` for types
+- **Hidden complexity**: All implementation details are internal
+- **Simple API**: Just pipeline management and endpoint switching
+- **Flexible endpoints**: Can switch between different endpoint types
+
+## 4. Implementation Phases
 
 ### Phase 1: Foundation
-- [ ] Create new file structure
-- [ ] Split existing template into client/runtime templates
-- [ ] Update build process to generate separate files
+- [x] Create new file structure
+- [x] Split existing template into client/runtime templates
+- [x] Update build process to generate separate files
 - [ ] Verify existing functionality still works
 
 ### Phase 2: Discriminator System
