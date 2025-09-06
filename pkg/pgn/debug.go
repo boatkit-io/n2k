@@ -7,9 +7,27 @@ import (
 )
 
 // DebugDumpPGN uses reflection to generate a readable description of the input PGN struct.
+// Handles both struct values and pointers to structs (as returned by subscribe).
 func DebugDumpPGN(p any) string {
+	vp := reflect.ValueOf(p)
 	tp := reflect.TypeOf(p)
-	return tp.Name() + ": " + strings.Join(dumpFields(p), ", ")
+
+	// If it's a pointer, dereference it
+	if tp.Kind() == reflect.Ptr {
+		if vp.IsNil() {
+			return "nil"
+		}
+		vp = vp.Elem()
+		tp = tp.Elem()
+	}
+
+	// Get the type name, handling both direct structs and pointers
+	typeName := tp.Name()
+	if typeName == "" {
+		typeName = tp.String()
+	}
+
+	return typeName + ": " + strings.Join(dumpFields(vp.Interface()), ", ")
 }
 
 // dumpFields dumps each field of the struct.

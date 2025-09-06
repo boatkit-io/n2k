@@ -1,10 +1,7 @@
 package pgn
 
 import (
-	"fmt"
 	"math"
-
-	"golang.org/x/exp/constraints"
 )
 
 // FieldSpec contains pre-calculated metadata for efficient field read/write operations.
@@ -21,6 +18,10 @@ type FieldSpec struct {
 	// Domain constraints (meaningful value range) - optional validation/clamping
 	DomainMin *float64 // Minimum meaningful value (nil = no constraint)
 	DomainMax *float64 // Maximum meaningful value (nil = no constraint)
+
+	// Additional fields from FieldDescriptor (used at runtime)
+	BitLengthVariable bool   // Used in readVariableData()
+	CanboatType       string // Used in readVariableData() for STRING_LAU check
 }
 
 // IsScaled returns true if this field requires resolution/offset processing
@@ -96,21 +97,6 @@ func calcMaxPositiveValue(bitLength uint16, signed bool, reservedValuesCount int
 	return maxVal
 }
 
-// missingValue calculates the value representing a missing (nil) wire value
-func missingValue(bitLength uint16, signed bool, reservedValuesCount int) uint64 {
-	if reservedValuesCount == 0 {
-		// No reserved values means we can't represent missing - return 0 as a safe default
-		return 0
-	}
-
-	missing := uint64(0xFFFFFFFFFFFFFFFF)
-	missing >>= 64 - bitLength // the largest value representable in length of field if unsigned
-	if signed {                // high bit set means it's negative, so maximum positive value is 1 bit shorter
-		missing >>= 1 // missing flag is max positive value; negative value has high bit set
-	}
-	return missing
-}
-
 // calcPrecision calculates the resulting precision of applying a given resolution to a given value
 func calcPrecision(resolution float64) uint8 {
 	precision := resolution
@@ -126,137 +112,4 @@ func calcPrecision(resolution float64) uint8 {
 func roundFloat(val float64, precision uint8) float64 {
 	ratio := math.Pow(10, float64(precision))
 	return math.Round(val*ratio) / ratio
-}
-
-// roundFloat32 rounds a float32 to the specified precision
-func roundFloat32(val float32, precision uint8) float32 {
-	ratio := math.Pow(10, float64(precision))
-	return float32(math.Round(float64(val)*ratio) / ratio)
-}
-
-// ReadRaw reads a non-scaled integer field using pre-calculated FieldSpec metadata
-func ReadRaw[T constraints.Integer](s *DataStream, spec *FieldSpec) (*T, error) {
-	if spec == nil {
-		return nil, fmt.Errorf("FieldSpec is nil")
-	}
-	if spec.BitLength > 64 {
-		return nil, fmt.Errorf("requested %d bitLength exceeds 64 bits", spec.BitLength)
-	}
-
-	var rawValue uint64
-	var err error
-
-	if spec.ReservedCount == 0 {
-		// No reserved values - all bit patterns are valid, never return nil
-		rawValue, err = s.getNumberRaw(spec.BitLength)
-		if err != nil {
-			return nil, err
-		}
-	} else {
-		// Has reserved values - use nullable logic
-		v, err := s.getNullableNumberRaw(spec.BitLength, spec.IsSigned, int(spec.ReservedCount))
-		if err != nil {
-			return nil, err
-		}
-		if v == nil {
-			return nil, nil
-		}
-		rawValue = *v
-	}
-
-	// Apply offset for non-scaled fields
-	if spec.Offset != 0 {
-		if spec.IsSigned {
-			signedVal := int64(rawValue)
-			signedVal += spec.Offset
-			rawValue = uint64(signedVal)
-		} else {
-			rawValue = uint64(int64(rawValue) + spec.Offset)
-		}
-	}
-
-	// Handle signed conversion if needed
-	if spec.IsSigned && spec.BitLength < 64 {
-		if (rawValue & (1 << (spec.BitLength - 1))) != 0 {
-			// Negative number - sign extend
-			mask := uint64(0xFFFFFFFFFFFFFFFF) << spec.BitLength
-			rawValue |= mask
-		}
-	}
-
-	result := T(rawValue)
-	return &result, nil
-}
-
-// ReadScaled reads a scaled float field using pre-calculated FieldSpec metadata
-func ReadScaled[T constraints.Float](s *DataStream, spec *FieldSpec) (*T, error) {
-	if spec == nil {
-		return nil, fmt.Errorf("FieldSpec is nil")
-	}
-	if spec.BitLength > 64 {
-		return nil, fmt.Errorf("requested %d bitLength exceeds 64 bits", spec.BitLength)
-	}
-
-	var val float64
-
-	if spec.ReservedCount == 0 {
-		// No reserved values - read raw value
-		v, err := s.getNumberRaw(spec.BitLength)
-		if err != nil {
-			return nil, err
-		}
-
-		if spec.IsSigned {
-			// Handle signed conversion
-			if spec.BitLength < 64 && (v&(1<<(spec.BitLength-1))) != 0 {
-				mask := uint64(0xFFFFFFFFFFFFFFFF) << spec.BitLength
-				v |= mask
-			}
-			val = float64(int64(v))
-		} else {
-			// Unsigned value
-			val = float64(v)
-		}
-	} else {
-		// Has reserved values - use nullable logic
-		if spec.IsSigned {
-			rawValue, err := s.getSignedNullableNumber(spec.BitLength, int(spec.ReservedCount))
-			if err != nil {
-				return nil, err
-			}
-			if rawValue == nil {
-				return nil, nil
-			}
-			val = float64(*rawValue)
-		} else {
-			rawValue, err := s.getUnsignedNullableNumber(spec.BitLength, int(spec.ReservedCount))
-			if err != nil {
-				return nil, err
-			}
-			if rawValue == nil {
-				return nil, nil
-			}
-			val = float64(*rawValue)
-		}
-	}
-
-	// Apply resolution scaling first
-	if spec.Resolution != 0 && spec.Resolution != 1.0 {
-		prec := calcPrecision(spec.Resolution)
-		val = roundFloat(val*spec.Resolution, prec)
-	}
-
-	// Then add offset
-	val += float64(spec.Offset)
-
-	// Apply domain constraints if specified
-	if spec.DomainMax != nil && val > *spec.DomainMax {
-		val = *spec.DomainMax
-	}
-	if spec.DomainMin != nil && val < *spec.DomainMin {
-		val = *spec.DomainMin
-	}
-
-	result := T(val)
-	return &result, nil
 }

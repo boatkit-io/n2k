@@ -57,7 +57,7 @@ func TestFieldSpecIsScaled(t *testing.T) {
 func TestFieldSpecHasDomainConstraints(t *testing.T) {
 	min := 10.0
 	max := 100.0
-	
+
 	tests := []struct {
 		name     string
 		spec     FieldSpec
@@ -115,7 +115,7 @@ func TestReadRawUint16(t *testing.T) {
 	spec := &FieldSpec{
 		BitLength:     16,
 		MaxRawValue:   0xFFFD, // 65533 (accounting for 2 reserved values)
-		MissingValue:  0xFFFF, // 65535 
+		MissingValue:  0xFFFF, // 65535
 		Resolution:    1.0,
 		Offset:        0,
 		IsSigned:      false,
@@ -135,7 +135,7 @@ func TestReadRawUint16(t *testing.T) {
 }
 
 func TestReadRawWithOffset(t *testing.T) {
-	// Test data: value 10 
+	// Test data: value 10
 	data := []uint8{10}
 	stream := NewDataStream(data)
 
@@ -208,7 +208,7 @@ func TestReadScaledFloat32(t *testing.T) {
 	if result == nil {
 		t.Fatal("ReadScaled returned nil")
 	}
-	
+
 	expected := float32(100*0.1 + 20) // (rawValue * resolution) + offset = 10 + 20 = 30
 	if *result != expected {
 		t.Errorf("ReadScaled() = %f, expected %f", *result, expected)
@@ -239,7 +239,7 @@ func TestReadScaledWithDomainConstraints(t *testing.T) {
 	if result == nil {
 		t.Fatal("ReadScaled returned nil")
 	}
-	
+
 	// Should be clamped to domain max
 	if *result != 150.0 {
 		t.Errorf("ReadScaled() = %f, expected 150.0 (clamped to domain max)", *result)
@@ -261,7 +261,7 @@ func TestWriteRawUint16(t *testing.T) {
 	}
 
 	value := uint16(0x1234)
-	err := WriteRaw[uint16](stream, &value, spec)
+	err := WriteRaw(stream, &value, spec)
 	if err != nil {
 		t.Fatalf("WriteRaw failed: %v", err)
 	}
@@ -320,7 +320,7 @@ func TestWriteScaledFloat32(t *testing.T) {
 	}
 
 	value := float32(30.0) // Should become: (30 - 20) / 0.1 = 100 raw
-	err := WriteScaled[float32](stream, &value, spec)
+	err := WriteScaled(stream, &value, spec)
 	if err != nil {
 		t.Fatalf("WriteScaled failed: %v", err)
 	}

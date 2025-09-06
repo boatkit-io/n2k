@@ -129,7 +129,7 @@
             "program": "${workspaceFolder}/cmd/replay",
             "args": [
                 "--rawReplayFile",
-                "${workspaceFolder}/basic-consolidated.raw",
+                "${workspaceFolder}/n2kreplays/raw/basic.raw",
                 "--writeRaw",
                 "--dumpPgns",
                 "--rawOutFile",

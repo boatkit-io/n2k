@@ -13,6 +13,7 @@ type PgnStruct interface {
 	Encode(*DataStream) (*MessageInfo, error)
 	GetMessageInfo() *MessageInfo
 	SetMessageInfo(*MessageInfo)
+	GetFieldSpec(fieldName string) *FieldSpec
 }
 
 // PgnInfoLookup is a map of PGNs to PgnInfo pointers.

@@ -271,6 +271,8 @@ func (conv *canboatConverter) write() {
 			"makeIndirectMap":           makeIndirectMap,
 			"getReservedValueCount":     getReservedValueCount,
 			"generateFieldSpecConstant": generateFieldSpecConstant,
+			"getMaxRawValue":            calcMaxRawValue,
+			"getMissingValue":           calcMissingValue,
 			"derefOrZero": func(v *uint64) uint64 {
 				if v == nil {
 					return 0
@@ -683,6 +685,33 @@ func isPointerFieldType(field PGNField) bool {
 	return strings.HasPrefix(convertFieldType(field), "*")
 }
 
+// getRawTypeString returns the appropriate type string for WriteRaw based on bit length and signedness
+func getRawTypeString(bitLength uint16, signed bool) string {
+	if signed {
+		switch {
+		case bitLength > 32:
+			return "int64"
+		case bitLength > 16:
+			return "int32"
+		case bitLength > 8:
+			return "int16"
+		default:
+			return "int8"
+		}
+	} else {
+		switch {
+		case bitLength > 32:
+			return "uint64"
+		case bitLength > 16:
+			return "uint32"
+		case bitLength > 8:
+			return "uint16"
+		default:
+			return "uint8"
+		}
+	}
+}
+
 // toNumber converts its input to an integer.
 // Used by template.
 func toNumber(str string) int {
@@ -812,16 +841,20 @@ func convertFieldType(field PGNField) string {
 	}
 }
 
-// getFieldSerializer returns a string that when evaluated writes its value into the output stream.
+// getFieldSerializer returns a string that when evaluates its value into the output stream.
 // Used by template
-func getFieldSerializer(field PGNField, substruct string) string {
+func getFieldSerializer(pgn PGN, field PGNField, substruct string) string {
 	var outstr, pre, value, post string
 	var isUnit bool
 	reservedCount := getReservedValueCount(field)
+
+	// Generate FieldSpec reference for numeric fields
+	specRef := fmt.Sprintf("p.GetFieldSpec(\"%s\")", field.Id)
+
 	if field.Unit != "" { // set conv to invoke conversion to default type
 		unitType, _ := getUnitType(field.Unit)
 		if isUnit = unitType != ""; isUnit {
-			return fmt.Sprintf("err = stream.writeUnit(p."+substruct+"%s, %d, %f, %d, %d, %t, 2)", field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset, field.Signed)
+			return fmt.Sprintf("err = stream.writeUnit(p."+substruct+"%s, %s)", field.Id, specRef)
 		}
 	}
 	switch field.FieldType {
@@ -832,56 +865,28 @@ func getFieldSerializer(field PGNField, substruct string) string {
 	case "LOOKUP", "BITLOOKUP", "INDIRECT_LOOKUP", "FIELDTYPE_LOOKUP":
 		outstr = fmt.Sprintf("err = stream.putNumberRaw(uint64(p."+substruct+"%s), %d, %d)", field.Id, field.BitLength, field.BitOffset)
 	case "NUMBER", "TIME", "DATE", "MMSI", "FIELD_INDEX", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH", "DURATION", "PGN", "ISO_NAME":
-		if field.Signed {
-			switch {
-			case field.Resolution != nil && (*field.Resolution != 1.0 || isUnit), field.Offset != 0:
-				size := "32"
-				if *field.Resolution <= resolution64BitCutoff {
-					size = "64"
-				}
-				pre = fmt.Sprintf("err = stream.writeSignedResolution%s(", size)
-				if len(value) == 0 {
-					if !isPointerFieldType(field) {
-						value = "&"
-					}
-					value += "p." + substruct + "%s"
-				}
-				post = ", %d, %g, %d, %d, %d)"
-				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset, reservedCount)
-			case field.BitLength > 32:
-				outstr = fmt.Sprintf("err = stream.writeInt64(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
-			case field.BitLength > 16:
-				outstr = fmt.Sprintf("err = stream.writeInt32(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
-			case field.BitLength > 8:
-				outstr = fmt.Sprintf("err = stream.writeInt16(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
-			default:
-				outstr = fmt.Sprintf("err = stream.writeInt8(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
+		if field.Resolution != nil && (*field.Resolution != 1.0 || isUnit) || field.Offset != 0 {
+			// Use WriteScaled for fields that need resolution/offset processing
+			//floatType := "float32"
+			//if field.Resolution != nil && *field.Resolution <= resolution64BitCutoff {
+			//	floatType = "float64"
+			//}
+			pre = "err = WriteScaled(stream, "
+			if !isPointerFieldType(field) {
+				value = "&"
 			}
+			value += "p." + substruct + "%s"
+			post = fmt.Sprintf(", %s)", specRef)
+			outstr = fmt.Sprintf(pre+value+post, field.Id)
 		} else {
-			switch {
-			case field.Resolution != nil && (*field.Resolution != 1.0 || isUnit):
-				size := "32"
-				if *field.Resolution <= resolution64BitCutoff {
-					size = "64"
-				}
-				pre = fmt.Sprintf("err = stream.writeUnsignedResolution%s(", size)
-				if len(value) == 0 {
-					if !isPointerFieldType(field) {
-						value = "&"
-					}
-					value += "p." + substruct + "%s"
-				}
-				post = ", %d, %g, %d, %d, %d)"
-				outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, *field.Resolution, field.BitOffset, field.Offset, reservedCount)
-			case field.BitLength > 32:
-				outstr = fmt.Sprintf("err = stream.writeUint64(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
-			case field.BitLength > 16:
-				outstr = fmt.Sprintf("err = stream.writeUint32(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
-			case field.BitLength > 8:
-				outstr = fmt.Sprintf("err = stream.writeUint16(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
-			default:
-				outstr = fmt.Sprintf("err = stream.writeUint8(p."+substruct+"%s, %d, %d, %d)", field.Id, field.BitLength, field.BitOffset, reservedCount)
+			// Use WriteRaw for non-scaled fields
+			//typeStr := getRawTypeString(field.BitLength, field.Signed)
+			fieldRef := "p." + substruct + "%s"
+			if !isPointerFieldType(field) {
+				fieldRef = "&" + fieldRef
 			}
+			outstr = fmt.Sprintf("err = WriteRaw(stream, %s, %s)", fieldRef, specRef)
+			outstr = fmt.Sprintf(outstr, field.Id)
 		}
 	case "FLOAT":
 		if field.BitLength > 32 {
@@ -918,7 +923,6 @@ func getFieldSerializer(field PGNField, substruct string) string {
 // getFieldDeserializer returns a string that when evaluated returns its value from the input stream.
 // Used by template.
 func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
-	reservedCount := getReservedValueCount(field)
 
 	switch field.FieldType {
 	case "LOOKUP":
@@ -942,9 +946,10 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName + "(v)"}
 	case "FIELD_INDEX":
-		return [2]string{fmt.Sprintf("stream.readUInt8(%d, %d)", field.BitLength, reservedCount), ""}
+		specRef := fmt.Sprintf("val.GetFieldSpec(\"%s\")", field.Id)
+		return [2]string{fmt.Sprintf("ReadRaw[uint8](stream, %s)", specRef), ""}
 	case "NUMBER", "TIME", "DATE", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
-		specRef := fmt.Sprintf("GetPgnInfo(%d).FieldSpecs[\"%s\"]", pgn.PGN, field.Id)
+		specRef := fmt.Sprintf("val.GetFieldSpec(\"%s\")", field.Id)
 		var outerVal string
 
 		if needsScaling(field) {
@@ -957,29 +962,8 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 			outerVal = fmt.Sprintf("ReadScaled[%s](stream, %s)", floatType, specRef)
 		} else {
 			// Use ReadRaw for non-scaled fields
-			if field.Signed {
-				switch {
-				case field.BitLength > 32:
-					outerVal = fmt.Sprintf("ReadRaw[int64](stream, %s)", specRef)
-				case field.BitLength > 16:
-					outerVal = fmt.Sprintf("ReadRaw[int32](stream, %s)", specRef)
-				case field.BitLength > 8:
-					outerVal = fmt.Sprintf("ReadRaw[int16](stream, %s)", specRef)
-				default:
-					outerVal = fmt.Sprintf("ReadRaw[int8](stream, %s)", specRef)
-				}
-			} else {
-				switch {
-				case field.BitLength > 32:
-					outerVal = fmt.Sprintf("ReadRaw[uint64](stream, %s)", specRef)
-				case field.BitLength > 16:
-					outerVal = fmt.Sprintf("ReadRaw[uint32](stream, %s)", specRef)
-				case field.BitLength > 8:
-					outerVal = fmt.Sprintf("ReadRaw[uint16](stream, %s)", specRef)
-				default:
-					outerVal = fmt.Sprintf("ReadRaw[uint8](stream, %s)", specRef)
-				}
-			}
+			typeStr := getRawTypeString(field.BitLength, field.Signed)
+			outerVal = fmt.Sprintf("ReadRaw[%s](stream, %s)", typeStr, specRef)
 		}
 
 		unitConv := ""
@@ -1010,7 +994,8 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 		}
 		return [2]string{"stream.readBinaryData(binaryLength)", ""}
 	case "VARIABLE":
-		return [2]string{"stream.readVariableData(*val.Pgn, fieldIndex)", ""}
+		specRef := fmt.Sprintf("val.GetFieldSpec(\"%s\")", field.Id)
+		return [2]string{fmt.Sprintf("stream.readVariableDataWithSpec(%s)", specRef), ""}
 	case "DYNAMIC_FIELD_VALUE":
 		return [2]string{"stream.readBinaryData(valueLength)", ""}
 	default:

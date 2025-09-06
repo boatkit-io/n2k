@@ -328,9 +328,6 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
     {{- if $repeat2 }}
     var repeat2Count uint16 = 0
     {{- end }}
-   {{- if and (eq .PGN 126208) (gt $repeat1 1) }}
-    var fieldIndex uint8
-    {{- end }}
     {{- $binaryLengthField :=  $pgn.BitLengthField }}
     {{- if  $binaryLengthField }}
         var binaryLength uint16 = 0
@@ -371,11 +368,6 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
         }
     {{ end }}
 
-        {{- if  (eq $field.FieldType "FIELD_INDEX") }}
-        if v != nil {
-            fieldIndex = uint8(*v)
-        }
-        {{- end }}
         {{- if not (isNil .Match) }}
         {{- if ne (int .Match) -1 }}
         {{- if isPointerFieldType $field }}
@@ -445,11 +437,6 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
         } else {
             rep.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
-        {{- if eq .FieldType "FIELD_INDEX" }}
-            if v != nil {
-                fieldIndex = *v
-            }
-        {{- end }}
         {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
             if v != nil {
                 valueLength = uint16(*v) * 8
@@ -506,11 +493,6 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
             return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
         } else {
             rep.{{- .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
-        {{- if and (eq $pgn.RepeatingFieldSet2CountField 2) (eq .FieldType "FIELD_INDEX") }}
-            if v != nil {
-                fieldIndex = *v
-            }
-        {{- end }}
         {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
             if v != nil {
                 valueLength = uint16(*v) * 8
@@ -559,7 +541,7 @@ func (p *{{ .Id }}) Encode(stream *DataStream) (*MessageInfo, error) {
         valueLength = uint16(*p.{{ .Id }}) * 8
     }
     {{- end }}
-    {{- $func := getFieldSerializer $field "" }}
+    {{- $func := getFieldSerializer $pgn $field "" }}
     {{- if ne $func "" }}
     {{ $func }}
     if err != nil {
@@ -601,6 +583,40 @@ func (p *{{ .Id }}) SetMessageInfo(info *MessageInfo) {
     p.Info = *info
 }
 
+// GetFieldSpec returns the FieldSpec for the specified field name
+func (p *{{ .Id }}) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    {{- range $field := .AllFields }}
+    {{- if and (ne $field.FieldType "RESERVED") (ne $field.FieldType "SPARE") }}
+    case "{{ $field.Id }}":
+        return &FieldSpec{
+            BitLength: {{ $field.BitLength }},
+            MaxRawValue: {{ getMaxRawValue $field }},
+            MissingValue: {{ getMissingValue $field }},
+            Resolution: {{ if $field.Resolution }}{{ $field.Resolution }}{{ else }}1.0{{ end }},
+            Offset: {{ $field.Offset }},
+            IsSigned: {{ $field.Signed }},
+            ReservedCount: {{ getReservedValueCount $field }},
+            {{- if $field.BitLengthVariable }}
+            BitLengthVariable: true,
+            {{- else }}
+            BitLengthVariable: false,
+            {{- end }}
+            CanboatType: "{{ $field.FieldType }}",
+            {{- if $field.DomainMin }}
+            DomainMin: func() *float64 { v := float64({{ $field.DomainMin }}); return &v }(),
+            {{- end }}
+            {{- if $field.DomainMax }}
+            DomainMax: func() *float64 { v := float64({{ $field.DomainMax }}); return &v }(),
+            {{- end }}
+        }
+    {{- end }}
+    {{- end }}
+    default:
+        return nil
+    }
+}
+
 {{- if gt .RepeatingFieldSet1StartField 0 }}
 func (p {{ .Id }}) encodeRepeating1(stream *DataStream) error {
      var err error
@@ -621,7 +637,7 @@ func (p {{ .Id }}) encodeRepeating1(stream *DataStream) error {
 			valueLength = uint16(*p.Repeating1[index].{{.Id}}) * 8
 		}
 		{{- end }}
-        {{- $func := getFieldSerializer . "Repeating1[index]." }}
+        {{- $func := getFieldSerializer $pgn . "Repeating1[index]." }}
         {{- if ne $func "" }}
         {{ $func }}
         if err != nil {
@@ -655,7 +671,7 @@ func (p {{ .Id }}) encodeRepeating2(stream *DataStream) error {
             valueLength = uint16(*p.Repeating2[index].{{.Id}}) * 8
         }
         {{- end }}
-       	{{- $func := getFieldSerializer . $substruct }}
+       	{{- $func := getFieldSerializer $pgn . $substruct }}
         {{- if ne $func "" }}
         {{ $func }}
         if err != nil {
