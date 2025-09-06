@@ -254,51 +254,115 @@ func (conv *canboatConverter) filter() {
 
 // write outputs the pgninfo_generated.go file. Most of the work occurs in the template.
 func (conv *canboatConverter) write() {
-	if f, err := os.Create(filepath.Join("pkg", "pgn", "pgninfo_generated.go")); err != nil {
+	// Create output directories
+	clientDir := filepath.Join("pkg", "pgn", "client")
+	runtimeDir := filepath.Join("pkg", "pgn", "runtime")
+
+	if err := os.MkdirAll(clientDir, 0755); err != nil {
 		panic(err)
-	} else {
-		t := template.Must(template.New("pgninfo").Funcs(sprig.TxtFuncMap()).Funcs(template.FuncMap{
-			"convertFieldType":          convertFieldType,
-			"getFieldSerializer":        getFieldSerializer,
-			"getFieldDeserializer":      getFieldDeserializer,
-			"fieldByteCount":            fieldByteCount,
-			"concat":                    func(strs ...string) string { return strings.Join(strs, "") },
-			"toNumber":                  toNumber,
-			"isPointerFieldType":        isPointerFieldType,
-			"constSize":                 constSize,
-			"subtract":                  func(x, y uint8) uint8 { return x - y },
-			"matchManufacturer":         matchManufacturer,
-			"makeIndirectMap":           makeIndirectMap,
-			"getReservedValueCount":     getReservedValueCount,
-			"generateFieldSpecConstant": generateFieldSpecConstant,
-			"getMaxRawValue":            calcMaxRawValue,
-			"getMissingValue":           calcMissingValue,
-			"derefOrZero": func(v *uint64) uint64 {
-				if v == nil {
-					return 0
-				} else {
-					return *v
-				}
-			},
-			"derefInt": func(ip *int) int { return *ip },
-			"isNil":    func(fp *int) bool { return fp == nil },
-			"contains": func(in, substr string) bool { return strings.Contains(in, substr) },
-		}).Parse(pgninfoTemplate))
+	}
+	if err := os.MkdirAll(runtimeDir, 0755); err != nil {
+		panic(err)
+	}
 
-		templateData := struct {
-			PGNDoc   any
-			ForDebug bool
-		}{
-			PGNDoc: conv,
-		}
+	// Template function map
+	funcMap := template.FuncMap{
+		"convertFieldType":          convertFieldType,
+		"getFieldSerializer":        getFieldSerializer,
+		"getFieldDeserializer":      getFieldDeserializer,
+		"fieldByteCount":            fieldByteCount,
+		"concat":                    func(strs ...string) string { return strings.Join(strs, "") },
+		"toNumber":                  toNumber,
+		"isPointerFieldType":        isPointerFieldType,
+		"constSize":                 constSize,
+		"subtract":                  func(x, y uint8) uint8 { return x - y },
+		"matchManufacturer":         matchManufacturer,
+		"makeIndirectMap":           makeIndirectMap,
+		"getReservedValueCount":     getReservedValueCount,
+		"generateFieldSpecConstant": generateFieldSpecConstant,
+		"getMaxRawValue":            calcMaxRawValue,
+		"getMissingValue":           calcMissingValue,
+		"derefOrZero": func(v *uint64) uint64 {
+			if v == nil {
+				return 0
+			} else {
+				return *v
+			}
+		},
+		"derefInt":            func(ip *int) int { return *ip },
+		"isNil":               func(fp *int) bool { return fp == nil },
+		"contains":            func(in, substr string) bool { return strings.Contains(in, substr) },
+		"hasMultipleVariants": hasMultipleVariants,
+		"getVariantsForPgn":   getVariantsForPgn,
+	}
 
-		if err := t.Execute(f, templateData); err != nil {
+	// Template data
+	templateData := struct {
+		PGNDoc   any
+		ForDebug bool
+	}{
+		PGNDoc: conv,
+	}
+
+	// Generate client API files
+	clientTemplates := map[string]string{
+		"types.go":     "client/types.go.tmpl",
+		"enums.go":     "client/enums.go.tmpl",
+		"subscribe.go": "client/subscribe.go.tmpl",
+		"write.go":     "client/write.go.tmpl",
+	}
+
+	for filename, templatePath := range clientTemplates {
+		if err := conv.generateFile(filepath.Join(clientDir, filename), templatePath, funcMap, templateData); err != nil {
 			panic(err)
 		}
-		if err := f.Close(); err != nil {
-			log.WithError(err).Error("failed to close generated file")
+	}
+
+	// Generate runtime files
+	runtimeTemplates := map[string]string{
+		"pgninfo.go":        "runtime/pgninfo.go.tmpl",
+		"decoders.go":       "runtime/decoders.go.tmpl",
+		"encoders.go":       "runtime/encoders.go.tmpl",
+		"discriminators.go": "runtime/discriminators.go.tmpl",
+		"fieldspecs.go":     "runtime/fieldspecs.go.tmpl",
+	}
+
+	for filename, templatePath := range runtimeTemplates {
+		if err := conv.generateFile(filepath.Join(runtimeDir, filename), templatePath, funcMap, templateData); err != nil {
+			panic(err)
 		}
 	}
+
+	// Keep the original single file for backward compatibility during transition
+	if err := conv.generateFile(filepath.Join("pkg", "pgn", "pgninfo_generated.go"), "pgninfo.go.tmpl", funcMap, templateData); err != nil {
+		panic(err)
+	}
+}
+
+// generateFile generates a single file from a template
+func (conv *canboatConverter) generateFile(outputPath, templatePath string, funcMap template.FuncMap, data interface{}) error {
+	// Read template file
+	templateContent, err := os.ReadFile(filepath.Join("cmd", "pgngen", "templates", templatePath))
+	if err != nil {
+		return err
+	}
+
+	// Create template
+	t := template.Must(template.New(templatePath).Funcs(sprig.TxtFuncMap()).Funcs(funcMap).Parse(string(templateContent)))
+
+	// Create output file
+	f, err := os.Create(outputPath)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	// Execute template
+	if err := t.Execute(f, data); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 // reservedNumericType returns true if the field type has reserved values.
@@ -1206,4 +1270,18 @@ func isProprietaryPGN(pgn uint32) bool {
 	}
 
 	return false
+}
+
+// hasMultipleVariants checks if a PGN has multiple variants
+func hasMultipleVariants(pgn PGN) bool {
+	// This will be implemented to check if PGN has multiple variants
+	// For now, return false - will be updated when we implement the discriminator logic
+	return false
+}
+
+// getVariantsForPgn returns all variants for a PGN
+func getVariantsForPgn(pgn PGN) []PGN {
+	// This will be implemented to return variants for a PGN
+	// For now, return empty slice - will be updated when we implement the discriminator logic
+	return []PGN{}
 }
