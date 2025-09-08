@@ -7,11 +7,12 @@ import (
 	"os"
 	"time"
 
-	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
+	"github.com/boatkit-io/n2k/internal/adapter/canadapter"
+	"github.com/boatkit-io/n2k/internal/pgn"
+	"github.com/boatkit-io/n2k/internal/pkt"
+	"github.com/boatkit-io/n2k/internal/subscribe"
 	"github.com/boatkit-io/n2k/pkg/endpoint/socketcanendpoint"
-	"github.com/boatkit-io/n2k/pkg/pgn"
-	"github.com/boatkit-io/n2k/pkg/pkt"
-	"github.com/boatkit-io/n2k/pkg/subscribe"
+	"github.com/boatkit-io/n2k/pkg/n2k"
 	"github.com/boatkit-io/tugboat/pkg/units"
 	"github.com/sirupsen/logrus"
 )
@@ -54,7 +55,7 @@ func main() {
 
 	// 2. Create a PGN dumper to see all traffic
 	_, err := subs.SubscribeToAllStructs(func(p any) {
-		log.Infof("PGN DUMP: %s", pgn.DebugDumpPGN(p))
+		log.Infof("PGN DUMP: %s", n2k.DebugDumpPGN(p))
 	})
 	if err != nil {
 		log.Fatalf("failed to subscribe to all structs: %v", err)
@@ -118,7 +119,6 @@ func sendEngineData(publisher *pgn.Publisher, sourceId uint8, counter float32, l
 
 	enginePgn := pgn.EngineParametersRapidUpdate{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.EngineParametersRapidUpdatePgn,
 			SourceId: sourceId,
 			TargetId: 255, // Broadcast
 		},
@@ -145,7 +145,6 @@ func sendSpeedData(publisher *pgn.Publisher, sourceId uint8, counter float32, lo
 
 	speedPgn := pgn.Speed{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.SpeedPgn,
 			SourceId: sourceId,
 			TargetId: 255, // Broadcast
 		},

@@ -4,7 +4,6 @@ package pgn
 
 import (
 	"fmt"
-	"reflect"
 )
 
 // PgnInfo instances describe known NMEA 2000 messages.
@@ -20,7 +19,7 @@ type PgnInfo struct {
 	// ManId identifies the Manufacturer for Proprietary PGNs
 	ManId ManufacturerCodeConst
 	// Decoder is a function that generates golang data from the messsage data.
-	Decoder func(client.MessageInfo, *DataStream) (any, error)
+	Decoder func(MessageInfo, *DataStream) (any, error)
 	// Fields is a map of field descriptions needed at runtime to deal with variable pgn fields
 	Fields map[int]*FieldDescriptor
 	// FieldSpecs contains pre-calculated metadata for optimized read/write operations

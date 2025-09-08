@@ -88,8 +88,8 @@ func TestWritePgn(t *testing.T) {
 	mmsi := uint32(123456789)
 	p := ManOverboardNotification{
 		Info: MessageInfo{
-			Source: 12,
-			PGN:    129702,
+			SourceId: 12,
+			PGN:      129702,
 		},
 		Sid:                nil,
 		MobEmitterId:       nil,
@@ -111,6 +111,7 @@ func TestWritePgn(t *testing.T) {
 	}
 	stream := NewDataStream(make([]uint8, 223))
 	info, err := p.Encode(stream)
+	assert.NoError(t, err)
 	var ok bool
 	_, ok = interface{}(&p).(PgnStruct)
 	assert.True(t, ok)

@@ -37,8 +37,22 @@ func NewN2kService(ep endpoint.Endpoint) *N2kService {
 		endpoint:   ep,
 		adapter:    adapter,
 		subscriber: subscriber,
-		publisher:  pub,
+		publisher:  &pub,
 	}
+}
+
+func (s *N2kService) SubscribeToStruct(t any, callback any) (uint, error) {
+	id, err := s.subscriber.SubscribeToStruct(t, callback)
+	return uint(id), err
+}
+
+func (s *N2kService) SubscribeToAllStructs(callback any) (uint, error) {
+	id, err := s.subscriber.SubscribeToAllStructs(callback)
+	return uint(id), err
+}
+
+func (s *N2kService) Unsubscribe(id uint) error {
+	return s.subscriber.Unsubscribe(subscribe.SubscriptionId(id))
 }
 
 // Write sends a PGN struct to the bus

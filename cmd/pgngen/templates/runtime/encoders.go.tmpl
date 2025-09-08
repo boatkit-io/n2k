@@ -9,8 +9,8 @@ import (
 {{- range .PGNDoc.PGNs }}
 {{- $pgn := . }}
 
-// Encode{{ $pgn.Id }} encodes a {{ $pgn.Id }} struct to NMEA 2000 wire format
-func Encode{{ $pgn.Id }}(p *{{ $pgn.Id }}, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a {{ $pgn.Id }} struct to NMEA 2000 wire format
+func (p *{{ $pgn.Id }}) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
 	{{- $bitLengthFieldOrder :=  $pgn.BitLengthField }}
 	{{- if  $bitLengthFieldOrder }}
@@ -69,8 +69,8 @@ func Encode{{ $pgn.Id }}(p *{{ $pgn.Id }}, stream *DataStream) (*MessageInfo, er
 }
 
 {{- if eq .PGN 126208 }}
-// Encode{{ $pgn.Id }}Partial returns an error for partial variants
-func Encode{{ $pgn.Id }}Partial(p *{{ $pgn.Id }}Partial, stream *DataStream) (*MessageInfo, error) {
+// Encode returns an error for partial variants
+func (p *{{ $pgn.Id }}Partial) Encode(stream *DataStream) (*MessageInfo, error) {
 	return nil, fmt.Errorf("cannot encode partial variant of {{ $pgn.Id }} - use {{ $pgn.Id }} for encoding")
 }
 {{- end }}

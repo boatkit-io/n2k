@@ -334,7 +334,7 @@ func (s *DataStream) getSignedNullableNumber(bitLength uint16, reservedValuesCou
 }
 
 // readVariableDataWithSpec method reads and returns variable data using FieldSpec
-func (s *DataStream) readVariableDataWithSpec(spec *FieldSpec) ([]uint8, error) {
+/* func (s *DataStream) readVariableDataWithSpec(spec *FieldSpec) ([]uint8, error) {
 	if spec == nil {
 		return nil, fmt.Errorf("FieldSpec is nil")
 	}
@@ -351,7 +351,7 @@ func (s *DataStream) readVariableDataWithSpec(spec *FieldSpec) ([]uint8, error) 
 
 	len := (spec.BitLength + 7) &^ 0x7
 	return s.readBinaryData(len)
-}
+} */
 
 // ReadRaw reads a non-scaled integer field using pre-calculated FieldSpec metadata
 func ReadRaw[T constraints.Integer](s *DataStream, spec *FieldSpec) (*T, error) {

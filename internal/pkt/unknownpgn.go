@@ -18,10 +18,6 @@ func buildUnknownPGN(p *Packet) pgn.UnknownPGN {
 	if pgn.IsProprietaryPGN(ret.Info.PGN) {
 		if p.Manufacturer != 0 {
 			ret.ManufacturerCode = p.Manufacturer
-		} else {
-			// Proprietary-range PGNS all are required to have the manufacturer code/industry code for the first
-			// 2 bytes of the packet, so pull those out for info display and later debugging.
-			ret.ManufacturerCode, ret.IndustryCode, _ = pgn.GetProprietaryInfo(p.Data)
 		}
 	}
 	ret.WasUnseen = pgn.SearchUnseenList(ret.Info.PGN)

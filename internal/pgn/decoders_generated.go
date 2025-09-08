@@ -9130,6 +9130,7 @@ func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *Dat
 }
 func DecodeBGKeyValueData(Info MessageInfo, stream *DataStream) (any, error) {
     
+    var valueLength uint16 = 0
     var val BGKeyValueData
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {

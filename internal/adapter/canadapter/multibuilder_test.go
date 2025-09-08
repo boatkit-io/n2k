@@ -5,7 +5,6 @@ import (
 	"testing"
 
 	"github.com/boatkit-io/n2k/internal/converter"
-	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/internal/pkt"
 	"github.com/brutella/can"
 	"github.com/sirupsen/logrus"
@@ -73,7 +72,7 @@ func TestMultiOutofOrder(t *testing.T) {
 			t.Fatalf("Error parsing raw line: %v", err)
 		}
 		for _, frame := range frames {
-			pInfo := pgn.NewMessageInfo(frame)
+			pInfo := ExtractMessageInfo(frame)
 			p := pkt.NewPacket(pInfo, frame.Data[:])
 			m.Add(p)
 			if p.Complete {
@@ -98,7 +97,7 @@ func TestBigPacket(t *testing.T) {
 			t.Fatalf("Error parsing raw line: %v", err)
 		}
 		for _, frame := range frames {
-			pInfo := pgn.NewMessageInfo(frame)
+			pInfo := ExtractMessageInfo(frame)
 			p = pkt.NewPacket(pInfo, frame.Data[:])
 			m.Add(p)
 		}
@@ -110,7 +109,7 @@ func TestFastPacket(t *testing.T) {
 	m := NewMultiBuilder(log)
 
 	// test fast packet that's actually Complete in single-frame
-	pInfo := pgn.NewMessageInfo(&can.Frame{ID: converter.CanIdFromData(130820, 10, 1, 0), Length: 8})
+	pInfo := ExtractMessageInfo(&can.Frame{ID: converter.CanIdFromData(130820, 10, 1, 0), Length: 8})
 	data := []uint8{160, 5, 163, 153, 32, 128, 1, 255}
 	p := pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -119,7 +118,7 @@ func TestFastPacket(t *testing.T) {
 
 	// we allow out of order frames
 	m = NewMultiBuilder(log)
-	p = pkt.NewPacket(pgn.NewMessageInfo(&can.Frame{ID: converter.CanIdFromData(130820, 10, 1, 0), Length: 8}), []uint8{161, 5, 163, 153, 32, 128, 1, 255})
+	p = pkt.NewPacket(ExtractMessageInfo(&can.Frame{ID: converter.CanIdFromData(130820, 10, 1, 0), Length: 8}), []uint8{161, 5, 163, 153, 32, 128, 1, 255})
 	m.Add(p)
 	assert.False(t, p.Complete)
 	assert.NotNil(t, m.sequences[10])
@@ -133,7 +132,7 @@ func TestFastPacket(t *testing.T) {
 	// not much of a test) might be a fast variant, but it's a weak heuristic.
 	// Instead we'll return each packet as unknown.
 	m = NewMultiBuilder(log)
-	pInfo = pgn.NewMessageInfo(&can.Frame{ID: 0x09F20183})
+	pInfo = ExtractMessageInfo(&can.Frame{ID: 0x09F20183})
 	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)

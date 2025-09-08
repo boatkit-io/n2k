@@ -40,11 +40,11 @@ func (s *DataStream) resetToStart() {
 }
 
 // remainingLength returns the number of bits remaining in the stream
-func (s *DataStream) remainingLength() uint16 {
+/* func (s *DataStream) remainingLength() uint16 {
 	totalBits := len(s.data)*8 - (int(s.byteOffset)*8 + int(s.bitOffset))
 	return uint16(totalBits)
 }
-
+*/
 // calcMaxPositiveValue calculates the maximum value that can be represented
 // with a given length of signed or unsigned contents.
 // reservedValuesCount is the number of reserved values for the field. Valid values are 0-2.

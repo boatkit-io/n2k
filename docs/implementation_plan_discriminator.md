@@ -69,7 +69,6 @@ type Packet struct {
 #### Enhanced AddDecoders Method
 ```go
 func (p *Packet) AddDecoders() {
-    p.GetManCode()
     
     if p.Discriminator != nil {
         // Use discriminator for PGNs with multiple variants

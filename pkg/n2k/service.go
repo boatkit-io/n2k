@@ -5,6 +5,7 @@ import (
 	"context"
 
 	"github.com/boatkit-io/n2k/internal/n2kInternal"
+	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
 )
 
@@ -21,8 +22,8 @@ func NewN2kService(ep endpoint.Endpoint) *N2kService {
 }
 
 // Write sends a PGN struct to the bus
-func (s *N2kService) Write(pgnStruct PgnStruct) error {
-	return s.impl.Write(pgnStruct)
+func (s *N2kService) Write(pgnStruct any) error {
+	return s.impl.Write(pgnStruct.(pgn.PgnStruct))
 }
 
 // Start begins processing messages from the endpoint

@@ -151,19 +151,38 @@ func (s *SubscribeManager) HandleStruct(p any) {
 
 	s.subMutex.Unlock()
 
-	// Create a pointer to the struct value for callbacks
-	var callWith []reflect.Value
-	if pv.CanAddr() {
-		// If the value is addressable, use its address
-		callWith = []reflect.Value{pv.Addr()}
-	} else {
-		// If not addressable, create a new pointer and copy the value
-		ptrValue := reflect.New(pv.Type())
-		ptrValue.Elem().Set(pv)
-		callWith = []reflect.Value{ptrValue}
-	}
-
+	// Call each callback with the appropriate value type
 	for _, t := range callList {
+		// Check what type the callback expects
+		funcType := t.Type()
+		if funcType.NumIn() == 0 {
+			continue // Skip callbacks with no parameters
+		}
+
+		paramType := funcType.In(0)
+		var callWith []reflect.Value
+
+		if paramType.Kind() == reflect.Ptr && paramType.Elem() == pv.Type() {
+			// Callback expects a pointer to the struct
+			if pv.CanAddr() {
+				callWith = []reflect.Value{pv.Addr()}
+			} else {
+				ptrValue := reflect.New(pv.Type())
+				ptrValue.Elem().Set(pv)
+				callWith = []reflect.Value{ptrValue}
+			}
+		} else if paramType == pv.Type() {
+			// Callback expects the struct value directly
+			callWith = []reflect.Value{pv}
+		} else if paramType.Kind() == reflect.Interface {
+			// Callback expects an interface (like 'any')
+			// Pass the struct value directly
+			callWith = []reflect.Value{pv}
+		} else {
+			// Type mismatch, skip this callback
+			continue
+		}
+
 		t.Call(callWith)
 	}
 }

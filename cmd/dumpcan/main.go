@@ -8,11 +8,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
+	"github.com/boatkit-io/n2k/internal/adapter/canadapter"
+	"github.com/boatkit-io/n2k/internal/pkt"
+	"github.com/boatkit-io/n2k/internal/subscribe"
 	"github.com/boatkit-io/n2k/pkg/endpoint/socketcanendpoint"
-	"github.com/boatkit-io/n2k/pkg/pgn"
-	"github.com/boatkit-io/n2k/pkg/pkt"
-	"github.com/boatkit-io/n2k/pkg/subscribe"
+	"github.com/boatkit-io/n2k/pkg/n2k"
 	"github.com/sirupsen/logrus"
 )
 
@@ -63,7 +63,7 @@ func main() {
 
 	// Subscribe to all PGNs and dump them to stdout
 	_, err := subs.SubscribeToAllStructs(func(p any) {
-		fmt.Printf("%s\n", pgn.DebugDumpPGN(p))
+		fmt.Printf("%s\n", n2k.DebugDumpPGN(p))
 	})
 	if err != nil {
 		log.Errorf("failed to subscribe to all structs: %v", err)
@@ -81,4 +81,4 @@ func main() {
 	// Wait for context cancellation (from signal handler)
 	<-ctx.Done()
 	log.Info("Shutdown complete")
-} 
+}

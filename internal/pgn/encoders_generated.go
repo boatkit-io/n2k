@@ -6,8 +6,8 @@ import (
 	"time"
 )
 
-// EncodeIsoAcknowledgement encodes a IsoAcknowledgement struct to NMEA 2000 wire format
-func EncodeIsoAcknowledgement(p *IsoAcknowledgement, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a IsoAcknowledgement struct to NMEA 2000 wire format
+func (p *IsoAcknowledgement) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.Control), 8, 0)
     if err != nil {
@@ -37,8 +37,8 @@ func EncodeIsoAcknowledgement(p *IsoAcknowledgement, stream *DataStream) (*Messa
     return &p.Info, err
 }
 
-// EncodeIsoRequest encodes a IsoRequest struct to NMEA 2000 wire format
-func EncodeIsoRequest(p *IsoRequest, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a IsoRequest struct to NMEA 2000 wire format
+func (p *IsoRequest) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Pgn, p.GetFieldSpec("Pgn"))
     if err != nil {
@@ -56,8 +56,8 @@ func EncodeIsoRequest(p *IsoRequest, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeIsoTransportProtocolDataTransfer encodes a IsoTransportProtocolDataTransfer struct to NMEA 2000 wire format
-func EncodeIsoTransportProtocolDataTransfer(p *IsoTransportProtocolDataTransfer, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a IsoTransportProtocolDataTransfer struct to NMEA 2000 wire format
+func (p *IsoTransportProtocolDataTransfer) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -79,8 +79,8 @@ func EncodeIsoTransportProtocolDataTransfer(p *IsoTransportProtocolDataTransfer,
     return &p.Info, err
 }
 
-// EncodeIsoTransportProtocolConnectionManagementRequestToSend encodes a IsoTransportProtocolConnectionManagementRequestToSend struct to NMEA 2000 wire format
-func EncodeIsoTransportProtocolConnectionManagementRequestToSend(p *IsoTransportProtocolConnectionManagementRequestToSend, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a IsoTransportProtocolConnectionManagementRequestToSend struct to NMEA 2000 wire format
+func (p *IsoTransportProtocolConnectionManagementRequestToSend) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.GroupFunctionCode), 8, 0)
     if err != nil {
@@ -114,8 +114,8 @@ func EncodeIsoTransportProtocolConnectionManagementRequestToSend(p *IsoTransport
     return &p.Info, err
 }
 
-// EncodeIsoTransportProtocolConnectionManagementClearToSend encodes a IsoTransportProtocolConnectionManagementClearToSend struct to NMEA 2000 wire format
-func EncodeIsoTransportProtocolConnectionManagementClearToSend(p *IsoTransportProtocolConnectionManagementClearToSend, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a IsoTransportProtocolConnectionManagementClearToSend struct to NMEA 2000 wire format
+func (p *IsoTransportProtocolConnectionManagementClearToSend) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.GroupFunctionCode), 8, 0)
     if err != nil {
@@ -149,8 +149,8 @@ func EncodeIsoTransportProtocolConnectionManagementClearToSend(p *IsoTransportPr
     return &p.Info, err
 }
 
-// EncodeIsoTransportProtocolConnectionManagementEndOfMessage encodes a IsoTransportProtocolConnectionManagementEndOfMessage struct to NMEA 2000 wire format
-func EncodeIsoTransportProtocolConnectionManagementEndOfMessage(p *IsoTransportProtocolConnectionManagementEndOfMessage, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a IsoTransportProtocolConnectionManagementEndOfMessage struct to NMEA 2000 wire format
+func (p *IsoTransportProtocolConnectionManagementEndOfMessage) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.GroupFunctionCode), 8, 0)
     if err != nil {
@@ -184,8 +184,8 @@ func EncodeIsoTransportProtocolConnectionManagementEndOfMessage(p *IsoTransportP
     return &p.Info, err
 }
 
-// EncodeIsoTransportProtocolConnectionManagementBroadcastAnnounce encodes a IsoTransportProtocolConnectionManagementBroadcastAnnounce struct to NMEA 2000 wire format
-func EncodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(p *IsoTransportProtocolConnectionManagementBroadcastAnnounce, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a IsoTransportProtocolConnectionManagementBroadcastAnnounce struct to NMEA 2000 wire format
+func (p *IsoTransportProtocolConnectionManagementBroadcastAnnounce) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.GroupFunctionCode), 8, 0)
     if err != nil {
@@ -219,8 +219,8 @@ func EncodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(p *IsoTrans
     return &p.Info, err
 }
 
-// EncodeIsoTransportProtocolConnectionManagementAbort encodes a IsoTransportProtocolConnectionManagementAbort struct to NMEA 2000 wire format
-func EncodeIsoTransportProtocolConnectionManagementAbort(p *IsoTransportProtocolConnectionManagementAbort, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a IsoTransportProtocolConnectionManagementAbort struct to NMEA 2000 wire format
+func (p *IsoTransportProtocolConnectionManagementAbort) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.GroupFunctionCode), 8, 0)
     if err != nil {
@@ -250,8 +250,8 @@ func EncodeIsoTransportProtocolConnectionManagementAbort(p *IsoTransportProtocol
     return &p.Info, err
 }
 
-// EncodeIsoAddressClaim encodes a IsoAddressClaim struct to NMEA 2000 wire format
-func EncodeIsoAddressClaim(p *IsoAddressClaim, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a IsoAddressClaim struct to NMEA 2000 wire format
+func (p *IsoAddressClaim) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.UniqueNumber, p.GetFieldSpec("UniqueNumber"))
     if err != nil {
@@ -305,8 +305,8 @@ func EncodeIsoAddressClaim(p *IsoAddressClaim, stream *DataStream) (*MessageInfo
     return &p.Info, err
 }
 
-// EncodeBus1PhaseCBasicAcQuantities encodes a Bus1PhaseCBasicAcQuantities struct to NMEA 2000 wire format
-func EncodeBus1PhaseCBasicAcQuantities(p *Bus1PhaseCBasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Bus1PhaseCBasicAcQuantities struct to NMEA 2000 wire format
+func (p *Bus1PhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -336,8 +336,8 @@ func EncodeBus1PhaseCBasicAcQuantities(p *Bus1PhaseCBasicAcQuantities, stream *D
     return &p.Info, err
 }
 
-// EncodeBus1PhaseBBasicAcQuantities encodes a Bus1PhaseBBasicAcQuantities struct to NMEA 2000 wire format
-func EncodeBus1PhaseBBasicAcQuantities(p *Bus1PhaseBBasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Bus1PhaseBBasicAcQuantities struct to NMEA 2000 wire format
+func (p *Bus1PhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -367,8 +367,8 @@ func EncodeBus1PhaseBBasicAcQuantities(p *Bus1PhaseBBasicAcQuantities, stream *D
     return &p.Info, err
 }
 
-// EncodeBus1PhaseABasicAcQuantities encodes a Bus1PhaseABasicAcQuantities struct to NMEA 2000 wire format
-func EncodeBus1PhaseABasicAcQuantities(p *Bus1PhaseABasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Bus1PhaseABasicAcQuantities struct to NMEA 2000 wire format
+func (p *Bus1PhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -398,8 +398,8 @@ func EncodeBus1PhaseABasicAcQuantities(p *Bus1PhaseABasicAcQuantities, stream *D
     return &p.Info, err
 }
 
-// EncodeUtilityPhaseCAcReactivePower encodes a UtilityPhaseCAcReactivePower struct to NMEA 2000 wire format
-func EncodeUtilityPhaseCAcReactivePower(p *UtilityPhaseCAcReactivePower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityPhaseCAcReactivePower struct to NMEA 2000 wire format
+func (p *UtilityPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
@@ -429,8 +429,8 @@ func EncodeUtilityPhaseCAcReactivePower(p *UtilityPhaseCAcReactivePower, stream 
     return &p.Info, err
 }
 
-// EncodeUtilityPhaseCAcPower encodes a UtilityPhaseCAcPower struct to NMEA 2000 wire format
-func EncodeUtilityPhaseCAcPower(p *UtilityPhaseCAcPower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityPhaseCAcPower struct to NMEA 2000 wire format
+func (p *UtilityPhaseCAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
@@ -452,8 +452,8 @@ func EncodeUtilityPhaseCAcPower(p *UtilityPhaseCAcPower, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeUtilityPhaseCBasicAcQuantities encodes a UtilityPhaseCBasicAcQuantities struct to NMEA 2000 wire format
-func EncodeUtilityPhaseCBasicAcQuantities(p *UtilityPhaseCBasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityPhaseCBasicAcQuantities struct to NMEA 2000 wire format
+func (p *UtilityPhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -483,8 +483,8 @@ func EncodeUtilityPhaseCBasicAcQuantities(p *UtilityPhaseCBasicAcQuantities, str
     return &p.Info, err
 }
 
-// EncodeUtilityPhaseBAcReactivePower encodes a UtilityPhaseBAcReactivePower struct to NMEA 2000 wire format
-func EncodeUtilityPhaseBAcReactivePower(p *UtilityPhaseBAcReactivePower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityPhaseBAcReactivePower struct to NMEA 2000 wire format
+func (p *UtilityPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
@@ -514,8 +514,8 @@ func EncodeUtilityPhaseBAcReactivePower(p *UtilityPhaseBAcReactivePower, stream 
     return &p.Info, err
 }
 
-// EncodeUtilityPhaseBAcPower encodes a UtilityPhaseBAcPower struct to NMEA 2000 wire format
-func EncodeUtilityPhaseBAcPower(p *UtilityPhaseBAcPower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityPhaseBAcPower struct to NMEA 2000 wire format
+func (p *UtilityPhaseBAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
@@ -537,8 +537,8 @@ func EncodeUtilityPhaseBAcPower(p *UtilityPhaseBAcPower, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeUtilityPhaseBBasicAcQuantities encodes a UtilityPhaseBBasicAcQuantities struct to NMEA 2000 wire format
-func EncodeUtilityPhaseBBasicAcQuantities(p *UtilityPhaseBBasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityPhaseBBasicAcQuantities struct to NMEA 2000 wire format
+func (p *UtilityPhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -568,8 +568,8 @@ func EncodeUtilityPhaseBBasicAcQuantities(p *UtilityPhaseBBasicAcQuantities, str
     return &p.Info, err
 }
 
-// EncodeUtilityPhaseAAcReactivePower encodes a UtilityPhaseAAcReactivePower struct to NMEA 2000 wire format
-func EncodeUtilityPhaseAAcReactivePower(p *UtilityPhaseAAcReactivePower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityPhaseAAcReactivePower struct to NMEA 2000 wire format
+func (p *UtilityPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
@@ -599,8 +599,8 @@ func EncodeUtilityPhaseAAcReactivePower(p *UtilityPhaseAAcReactivePower, stream 
     return &p.Info, err
 }
 
-// EncodeUtilityPhaseAAcPower encodes a UtilityPhaseAAcPower struct to NMEA 2000 wire format
-func EncodeUtilityPhaseAAcPower(p *UtilityPhaseAAcPower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityPhaseAAcPower struct to NMEA 2000 wire format
+func (p *UtilityPhaseAAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
@@ -622,8 +622,8 @@ func EncodeUtilityPhaseAAcPower(p *UtilityPhaseAAcPower, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeUtilityPhaseABasicAcQuantities encodes a UtilityPhaseABasicAcQuantities struct to NMEA 2000 wire format
-func EncodeUtilityPhaseABasicAcQuantities(p *UtilityPhaseABasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityPhaseABasicAcQuantities struct to NMEA 2000 wire format
+func (p *UtilityPhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -653,8 +653,8 @@ func EncodeUtilityPhaseABasicAcQuantities(p *UtilityPhaseABasicAcQuantities, str
     return &p.Info, err
 }
 
-// EncodeUtilityTotalAcReactivePower encodes a UtilityTotalAcReactivePower struct to NMEA 2000 wire format
-func EncodeUtilityTotalAcReactivePower(p *UtilityTotalAcReactivePower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityTotalAcReactivePower struct to NMEA 2000 wire format
+func (p *UtilityTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
@@ -684,8 +684,8 @@ func EncodeUtilityTotalAcReactivePower(p *UtilityTotalAcReactivePower, stream *D
     return &p.Info, err
 }
 
-// EncodeUtilityTotalAcPower encodes a UtilityTotalAcPower struct to NMEA 2000 wire format
-func EncodeUtilityTotalAcPower(p *UtilityTotalAcPower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityTotalAcPower struct to NMEA 2000 wire format
+func (p *UtilityTotalAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
@@ -707,8 +707,8 @@ func EncodeUtilityTotalAcPower(p *UtilityTotalAcPower, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeUtilityAverageBasicAcQuantities encodes a UtilityAverageBasicAcQuantities struct to NMEA 2000 wire format
-func EncodeUtilityAverageBasicAcQuantities(p *UtilityAverageBasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UtilityAverageBasicAcQuantities struct to NMEA 2000 wire format
+func (p *UtilityAverageBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -738,8 +738,8 @@ func EncodeUtilityAverageBasicAcQuantities(p *UtilityAverageBasicAcQuantities, s
     return &p.Info, err
 }
 
-// EncodeGeneratorPhaseCAcReactivePower encodes a GeneratorPhaseCAcReactivePower struct to NMEA 2000 wire format
-func EncodeGeneratorPhaseCAcReactivePower(p *GeneratorPhaseCAcReactivePower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorPhaseCAcReactivePower struct to NMEA 2000 wire format
+func (p *GeneratorPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
@@ -769,8 +769,8 @@ func EncodeGeneratorPhaseCAcReactivePower(p *GeneratorPhaseCAcReactivePower, str
     return &p.Info, err
 }
 
-// EncodeGeneratorPhaseCAcPower encodes a GeneratorPhaseCAcPower struct to NMEA 2000 wire format
-func EncodeGeneratorPhaseCAcPower(p *GeneratorPhaseCAcPower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorPhaseCAcPower struct to NMEA 2000 wire format
+func (p *GeneratorPhaseCAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
@@ -792,8 +792,8 @@ func EncodeGeneratorPhaseCAcPower(p *GeneratorPhaseCAcPower, stream *DataStream)
     return &p.Info, err
 }
 
-// EncodeGeneratorPhaseCBasicAcQuantities encodes a GeneratorPhaseCBasicAcQuantities struct to NMEA 2000 wire format
-func EncodeGeneratorPhaseCBasicAcQuantities(p *GeneratorPhaseCBasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorPhaseCBasicAcQuantities struct to NMEA 2000 wire format
+func (p *GeneratorPhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -823,8 +823,8 @@ func EncodeGeneratorPhaseCBasicAcQuantities(p *GeneratorPhaseCBasicAcQuantities,
     return &p.Info, err
 }
 
-// EncodeGeneratorPhaseBAcReactivePower encodes a GeneratorPhaseBAcReactivePower struct to NMEA 2000 wire format
-func EncodeGeneratorPhaseBAcReactivePower(p *GeneratorPhaseBAcReactivePower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorPhaseBAcReactivePower struct to NMEA 2000 wire format
+func (p *GeneratorPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
@@ -854,8 +854,8 @@ func EncodeGeneratorPhaseBAcReactivePower(p *GeneratorPhaseBAcReactivePower, str
     return &p.Info, err
 }
 
-// EncodeGeneratorPhaseBAcPower encodes a GeneratorPhaseBAcPower struct to NMEA 2000 wire format
-func EncodeGeneratorPhaseBAcPower(p *GeneratorPhaseBAcPower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorPhaseBAcPower struct to NMEA 2000 wire format
+func (p *GeneratorPhaseBAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
@@ -877,8 +877,8 @@ func EncodeGeneratorPhaseBAcPower(p *GeneratorPhaseBAcPower, stream *DataStream)
     return &p.Info, err
 }
 
-// EncodeGeneratorPhaseBBasicAcQuantities encodes a GeneratorPhaseBBasicAcQuantities struct to NMEA 2000 wire format
-func EncodeGeneratorPhaseBBasicAcQuantities(p *GeneratorPhaseBBasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorPhaseBBasicAcQuantities struct to NMEA 2000 wire format
+func (p *GeneratorPhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -908,8 +908,8 @@ func EncodeGeneratorPhaseBBasicAcQuantities(p *GeneratorPhaseBBasicAcQuantities,
     return &p.Info, err
 }
 
-// EncodeGeneratorPhaseAAcReactivePower encodes a GeneratorPhaseAAcReactivePower struct to NMEA 2000 wire format
-func EncodeGeneratorPhaseAAcReactivePower(p *GeneratorPhaseAAcReactivePower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorPhaseAAcReactivePower struct to NMEA 2000 wire format
+func (p *GeneratorPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
@@ -939,8 +939,8 @@ func EncodeGeneratorPhaseAAcReactivePower(p *GeneratorPhaseAAcReactivePower, str
     return &p.Info, err
 }
 
-// EncodeGeneratorPhaseAAcPower encodes a GeneratorPhaseAAcPower struct to NMEA 2000 wire format
-func EncodeGeneratorPhaseAAcPower(p *GeneratorPhaseAAcPower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorPhaseAAcPower struct to NMEA 2000 wire format
+func (p *GeneratorPhaseAAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
@@ -962,8 +962,8 @@ func EncodeGeneratorPhaseAAcPower(p *GeneratorPhaseAAcPower, stream *DataStream)
     return &p.Info, err
 }
 
-// EncodeGeneratorPhaseABasicAcQuantities encodes a GeneratorPhaseABasicAcQuantities struct to NMEA 2000 wire format
-func EncodeGeneratorPhaseABasicAcQuantities(p *GeneratorPhaseABasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorPhaseABasicAcQuantities struct to NMEA 2000 wire format
+func (p *GeneratorPhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -993,8 +993,8 @@ func EncodeGeneratorPhaseABasicAcQuantities(p *GeneratorPhaseABasicAcQuantities,
     return &p.Info, err
 }
 
-// EncodeGeneratorTotalAcReactivePower encodes a GeneratorTotalAcReactivePower struct to NMEA 2000 wire format
-func EncodeGeneratorTotalAcReactivePower(p *GeneratorTotalAcReactivePower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorTotalAcReactivePower struct to NMEA 2000 wire format
+func (p *GeneratorTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
@@ -1024,8 +1024,8 @@ func EncodeGeneratorTotalAcReactivePower(p *GeneratorTotalAcReactivePower, strea
     return &p.Info, err
 }
 
-// EncodeGeneratorTotalAcPower encodes a GeneratorTotalAcPower struct to NMEA 2000 wire format
-func EncodeGeneratorTotalAcPower(p *GeneratorTotalAcPower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorTotalAcPower struct to NMEA 2000 wire format
+func (p *GeneratorTotalAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
@@ -1047,8 +1047,8 @@ func EncodeGeneratorTotalAcPower(p *GeneratorTotalAcPower, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeGeneratorAverageBasicAcQuantities encodes a GeneratorAverageBasicAcQuantities struct to NMEA 2000 wire format
-func EncodeGeneratorAverageBasicAcQuantities(p *GeneratorAverageBasicAcQuantities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GeneratorAverageBasicAcQuantities struct to NMEA 2000 wire format
+func (p *GeneratorAverageBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.LineLineAcRmsVoltage, p.GetFieldSpec("LineLineAcRmsVoltage"))
     if err != nil {
@@ -1078,8 +1078,8 @@ func EncodeGeneratorAverageBasicAcQuantities(p *GeneratorAverageBasicAcQuantitie
     return &p.Info, err
 }
 
-// EncodeIsoCommandedAddress encodes a IsoCommandedAddress struct to NMEA 2000 wire format
-func EncodeIsoCommandedAddress(p *IsoCommandedAddress, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a IsoCommandedAddress struct to NMEA 2000 wire format
+func (p *IsoCommandedAddress) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.writeBinary(p.UniqueNumber, 21, 0 )
     if err != nil {
@@ -1137,8 +1137,8 @@ func EncodeIsoCommandedAddress(p *IsoCommandedAddress, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeMaretronProprietaryDcBreakerCurrent encodes a MaretronProprietaryDcBreakerCurrent struct to NMEA 2000 wire format
-func EncodeMaretronProprietaryDcBreakerCurrent(p *MaretronProprietaryDcBreakerCurrent, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a MaretronProprietaryDcBreakerCurrent struct to NMEA 2000 wire format
+func (p *MaretronProprietaryDcBreakerCurrent) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1180,8 +1180,8 @@ func EncodeMaretronProprietaryDcBreakerCurrent(p *MaretronProprietaryDcBreakerCu
     return &p.Info, err
 }
 
-// EncodeAirmarBootStateAcknowledgment encodes a AirmarBootStateAcknowledgment struct to NMEA 2000 wire format
-func EncodeAirmarBootStateAcknowledgment(p *AirmarBootStateAcknowledgment, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarBootStateAcknowledgment struct to NMEA 2000 wire format
+func (p *AirmarBootStateAcknowledgment) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1215,8 +1215,8 @@ func EncodeAirmarBootStateAcknowledgment(p *AirmarBootStateAcknowledgment, strea
     return &p.Info, err
 }
 
-// EncodeLowranceTemperature encodes a LowranceTemperature struct to NMEA 2000 wire format
-func EncodeLowranceTemperature(p *LowranceTemperature, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a LowranceTemperature struct to NMEA 2000 wire format
+func (p *LowranceTemperature) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1254,8 +1254,8 @@ func EncodeLowranceTemperature(p *LowranceTemperature, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeAirmarBootStateRequest encodes a AirmarBootStateRequest struct to NMEA 2000 wire format
-func EncodeAirmarBootStateRequest(p *AirmarBootStateRequest, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarBootStateRequest struct to NMEA 2000 wire format
+func (p *AirmarBootStateRequest) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1285,8 +1285,8 @@ func EncodeAirmarBootStateRequest(p *AirmarBootStateRequest, stream *DataStream)
     return &p.Info, err
 }
 
-// EncodeAirmarAccessLevel encodes a AirmarAccessLevel struct to NMEA 2000 wire format
-func EncodeAirmarAccessLevel(p *AirmarAccessLevel, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarAccessLevel struct to NMEA 2000 wire format
+func (p *AirmarAccessLevel) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1328,8 +1328,8 @@ func EncodeAirmarAccessLevel(p *AirmarAccessLevel, stream *DataStream) (*Message
     return &p.Info, err
 }
 
-// EncodeSimnetDeviceStatus encodes a SimnetDeviceStatus struct to NMEA 2000 wire format
-func EncodeSimnetDeviceStatus(p *SimnetDeviceStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a SimnetDeviceStatus struct to NMEA 2000 wire format
+func (p *SimnetDeviceStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1371,8 +1371,8 @@ func EncodeSimnetDeviceStatus(p *SimnetDeviceStatus, stream *DataStream) (*Messa
     return &p.Info, err
 }
 
-// EncodeSimnetDeviceStatusRequest encodes a SimnetDeviceStatusRequest struct to NMEA 2000 wire format
-func EncodeSimnetDeviceStatusRequest(p *SimnetDeviceStatusRequest, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a SimnetDeviceStatusRequest struct to NMEA 2000 wire format
+func (p *SimnetDeviceStatusRequest) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1410,8 +1410,8 @@ func EncodeSimnetDeviceStatusRequest(p *SimnetDeviceStatusRequest, stream *DataS
     return &p.Info, err
 }
 
-// EncodeSimnetPilotMode encodes a SimnetPilotMode struct to NMEA 2000 wire format
-func EncodeSimnetPilotMode(p *SimnetPilotMode, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a SimnetPilotMode struct to NMEA 2000 wire format
+func (p *SimnetPilotMode) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1453,8 +1453,8 @@ func EncodeSimnetPilotMode(p *SimnetPilotMode, stream *DataStream) (*MessageInfo
     return &p.Info, err
 }
 
-// EncodeSimnetDeviceModeRequest encodes a SimnetDeviceModeRequest struct to NMEA 2000 wire format
-func EncodeSimnetDeviceModeRequest(p *SimnetDeviceModeRequest, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a SimnetDeviceModeRequest struct to NMEA 2000 wire format
+func (p *SimnetDeviceModeRequest) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1492,8 +1492,8 @@ func EncodeSimnetDeviceModeRequest(p *SimnetDeviceModeRequest, stream *DataStrea
     return &p.Info, err
 }
 
-// EncodeSeatalkPilotLockedHeading encodes a SeatalkPilotLockedHeading struct to NMEA 2000 wire format
-func EncodeSeatalkPilotLockedHeading(p *SeatalkPilotLockedHeading, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a SeatalkPilotLockedHeading struct to NMEA 2000 wire format
+func (p *SeatalkPilotLockedHeading) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1535,8 +1535,8 @@ func EncodeSeatalkPilotLockedHeading(p *SeatalkPilotLockedHeading, stream *DataS
     return &p.Info, err
 }
 
-// EncodeSeatalkSilenceAlarm encodes a SeatalkSilenceAlarm struct to NMEA 2000 wire format
-func EncodeSeatalkSilenceAlarm(p *SeatalkSilenceAlarm, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a SeatalkSilenceAlarm struct to NMEA 2000 wire format
+func (p *SeatalkSilenceAlarm) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1574,8 +1574,8 @@ func EncodeSeatalkSilenceAlarm(p *SeatalkSilenceAlarm, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeAirmarSpeedPulseCount encodes a AirmarSpeedPulseCount struct to NMEA 2000 wire format
-func EncodeAirmarSpeedPulseCount(p *AirmarSpeedPulseCount, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarSpeedPulseCount struct to NMEA 2000 wire format
+func (p *AirmarSpeedPulseCount) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -1617,8 +1617,8 @@ func EncodeAirmarSpeedPulseCount(p *AirmarSpeedPulseCount, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeNmeaRequestGroupFunction encodes a NmeaRequestGroupFunction struct to NMEA 2000 wire format
-func EncodeNmeaRequestGroupFunction(p *NmeaRequestGroupFunction, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a NmeaRequestGroupFunction struct to NMEA 2000 wire format
+func (p *NmeaRequestGroupFunction) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
     if err != nil {
@@ -1655,8 +1655,8 @@ func EncodeNmeaRequestGroupFunction(p *NmeaRequestGroupFunction, stream *DataStr
     
     return &p.Info, err
 }
-// EncodeNmeaRequestGroupFunctionPartial returns an error for partial variants
-func EncodeNmeaRequestGroupFunctionPartial(p *NmeaRequestGroupFunctionPartial, stream *DataStream) (*MessageInfo, error) {
+// Encode returns an error for partial variants
+func (p *NmeaRequestGroupFunctionPartial) Encode(stream *DataStream) (*MessageInfo, error) {
 	return nil, fmt.Errorf("cannot encode partial variant of NmeaRequestGroupFunction - use NmeaRequestGroupFunction for encoding")
 }
 func (p *NmeaRequestGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -1677,8 +1677,8 @@ func (p *NmeaRequestGroupFunction) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeNmeaCommandGroupFunction encodes a NmeaCommandGroupFunction struct to NMEA 2000 wire format
-func EncodeNmeaCommandGroupFunction(p *NmeaCommandGroupFunction, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a NmeaCommandGroupFunction struct to NMEA 2000 wire format
+func (p *NmeaCommandGroupFunction) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
     if err != nil {
@@ -1715,8 +1715,8 @@ func EncodeNmeaCommandGroupFunction(p *NmeaCommandGroupFunction, stream *DataStr
     
     return &p.Info, err
 }
-// EncodeNmeaCommandGroupFunctionPartial returns an error for partial variants
-func EncodeNmeaCommandGroupFunctionPartial(p *NmeaCommandGroupFunctionPartial, stream *DataStream) (*MessageInfo, error) {
+// Encode returns an error for partial variants
+func (p *NmeaCommandGroupFunctionPartial) Encode(stream *DataStream) (*MessageInfo, error) {
 	return nil, fmt.Errorf("cannot encode partial variant of NmeaCommandGroupFunction - use NmeaCommandGroupFunction for encoding")
 }
 func (p *NmeaCommandGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -1737,8 +1737,8 @@ func (p *NmeaCommandGroupFunction) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeNmeaAcknowledgeGroupFunction encodes a NmeaAcknowledgeGroupFunction struct to NMEA 2000 wire format
-func EncodeNmeaAcknowledgeGroupFunction(p *NmeaAcknowledgeGroupFunction, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a NmeaAcknowledgeGroupFunction struct to NMEA 2000 wire format
+func (p *NmeaAcknowledgeGroupFunction) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
     if err != nil {
@@ -1775,8 +1775,8 @@ func EncodeNmeaAcknowledgeGroupFunction(p *NmeaAcknowledgeGroupFunction, stream 
     
     return &p.Info, err
 }
-// EncodeNmeaAcknowledgeGroupFunctionPartial returns an error for partial variants
-func EncodeNmeaAcknowledgeGroupFunctionPartial(p *NmeaAcknowledgeGroupFunctionPartial, stream *DataStream) (*MessageInfo, error) {
+// Encode returns an error for partial variants
+func (p *NmeaAcknowledgeGroupFunctionPartial) Encode(stream *DataStream) (*MessageInfo, error) {
 	return nil, fmt.Errorf("cannot encode partial variant of NmeaAcknowledgeGroupFunction - use NmeaAcknowledgeGroupFunction for encoding")
 }
 func (p *NmeaAcknowledgeGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -1793,8 +1793,8 @@ func (p *NmeaAcknowledgeGroupFunction) encodeRepeating1(stream *DataStream) erro
     return nil
 }
 
-// EncodeNmeaReadFieldsReplyGroupFunction encodes a NmeaReadFieldsReplyGroupFunction struct to NMEA 2000 wire format
-func EncodeNmeaReadFieldsReplyGroupFunction(p *NmeaReadFieldsReplyGroupFunction, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a NmeaReadFieldsReplyGroupFunction struct to NMEA 2000 wire format
+func (p *NmeaReadFieldsReplyGroupFunction) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
     if err != nil {
@@ -1847,8 +1847,8 @@ func EncodeNmeaReadFieldsReplyGroupFunction(p *NmeaReadFieldsReplyGroupFunction,
     
     return &p.Info, err
 }
-// EncodeNmeaReadFieldsReplyGroupFunctionPartial returns an error for partial variants
-func EncodeNmeaReadFieldsReplyGroupFunctionPartial(p *NmeaReadFieldsReplyGroupFunctionPartial, stream *DataStream) (*MessageInfo, error) {
+// Encode returns an error for partial variants
+func (p *NmeaReadFieldsReplyGroupFunctionPartial) Encode(stream *DataStream) (*MessageInfo, error) {
 	return nil, fmt.Errorf("cannot encode partial variant of NmeaReadFieldsReplyGroupFunction - use NmeaReadFieldsReplyGroupFunction for encoding")
 }
 func (p *NmeaReadFieldsReplyGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -1886,8 +1886,8 @@ func (p *NmeaReadFieldsReplyGroupFunction) encodeRepeating2(stream *DataStream) 
     return nil
 }
 
-// EncodeNmeaWriteFieldsGroupFunction encodes a NmeaWriteFieldsGroupFunction struct to NMEA 2000 wire format
-func EncodeNmeaWriteFieldsGroupFunction(p *NmeaWriteFieldsGroupFunction, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a NmeaWriteFieldsGroupFunction struct to NMEA 2000 wire format
+func (p *NmeaWriteFieldsGroupFunction) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
     if err != nil {
@@ -1940,8 +1940,8 @@ func EncodeNmeaWriteFieldsGroupFunction(p *NmeaWriteFieldsGroupFunction, stream 
     
     return &p.Info, err
 }
-// EncodeNmeaWriteFieldsGroupFunctionPartial returns an error for partial variants
-func EncodeNmeaWriteFieldsGroupFunctionPartial(p *NmeaWriteFieldsGroupFunctionPartial, stream *DataStream) (*MessageInfo, error) {
+// Encode returns an error for partial variants
+func (p *NmeaWriteFieldsGroupFunctionPartial) Encode(stream *DataStream) (*MessageInfo, error) {
 	return nil, fmt.Errorf("cannot encode partial variant of NmeaWriteFieldsGroupFunction - use NmeaWriteFieldsGroupFunction for encoding")
 }
 func (p *NmeaWriteFieldsGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -1979,8 +1979,8 @@ func (p *NmeaWriteFieldsGroupFunction) encodeRepeating2(stream *DataStream) erro
     return nil
 }
 
-// EncodeNmeaWriteFieldsReplyGroupFunction encodes a NmeaWriteFieldsReplyGroupFunction struct to NMEA 2000 wire format
-func EncodeNmeaWriteFieldsReplyGroupFunction(p *NmeaWriteFieldsReplyGroupFunction, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a NmeaWriteFieldsReplyGroupFunction struct to NMEA 2000 wire format
+func (p *NmeaWriteFieldsReplyGroupFunction) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
     if err != nil {
@@ -2033,8 +2033,8 @@ func EncodeNmeaWriteFieldsReplyGroupFunction(p *NmeaWriteFieldsReplyGroupFunctio
     
     return &p.Info, err
 }
-// EncodeNmeaWriteFieldsReplyGroupFunctionPartial returns an error for partial variants
-func EncodeNmeaWriteFieldsReplyGroupFunctionPartial(p *NmeaWriteFieldsReplyGroupFunctionPartial, stream *DataStream) (*MessageInfo, error) {
+// Encode returns an error for partial variants
+func (p *NmeaWriteFieldsReplyGroupFunctionPartial) Encode(stream *DataStream) (*MessageInfo, error) {
 	return nil, fmt.Errorf("cannot encode partial variant of NmeaWriteFieldsReplyGroupFunction - use NmeaWriteFieldsReplyGroupFunction for encoding")
 }
 func (p *NmeaWriteFieldsReplyGroupFunction) encodeRepeating1(stream *DataStream) error {
@@ -2072,8 +2072,8 @@ func (p *NmeaWriteFieldsReplyGroupFunction) encodeRepeating2(stream *DataStream)
     return nil
 }
 
-// EncodePgnListTransmitAndReceive encodes a PgnListTransmitAndReceive struct to NMEA 2000 wire format
-func EncodePgnListTransmitAndReceive(p *PgnListTransmitAndReceive, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a PgnListTransmitAndReceive struct to NMEA 2000 wire format
+func (p *PgnListTransmitAndReceive) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.FunctionCode), 8, 0)
     if err != nil {
@@ -2108,8 +2108,8 @@ func (p *PgnListTransmitAndReceive) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeFusionMediaControl encodes a FusionMediaControl struct to NMEA 2000 wire format
-func EncodeFusionMediaControl(p *FusionMediaControl, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionMediaControl struct to NMEA 2000 wire format
+func (p *FusionMediaControl) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2147,8 +2147,8 @@ func EncodeFusionMediaControl(p *FusionMediaControl, stream *DataStream) (*Messa
     return &p.Info, err
 }
 
-// EncodeFusionSiriusControl encodes a FusionSiriusControl struct to NMEA 2000 wire format
-func EncodeFusionSiriusControl(p *FusionSiriusControl, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSiriusControl struct to NMEA 2000 wire format
+func (p *FusionSiriusControl) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2190,8 +2190,8 @@ func EncodeFusionSiriusControl(p *FusionSiriusControl, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeFusionRequestStatus encodes a FusionRequestStatus struct to NMEA 2000 wire format
-func EncodeFusionRequestStatus(p *FusionRequestStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionRequestStatus struct to NMEA 2000 wire format
+func (p *FusionRequestStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2221,8 +2221,8 @@ func EncodeFusionRequestStatus(p *FusionRequestStatus, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeFusionSetSource encodes a FusionSetSource struct to NMEA 2000 wire format
-func EncodeFusionSetSource(p *FusionSetSource, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSetSource struct to NMEA 2000 wire format
+func (p *FusionSetSource) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2256,8 +2256,8 @@ func EncodeFusionSetSource(p *FusionSetSource, stream *DataStream) (*MessageInfo
     return &p.Info, err
 }
 
-// EncodeFusionSetMute encodes a FusionSetMute struct to NMEA 2000 wire format
-func EncodeFusionSetMute(p *FusionSetMute, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSetMute struct to NMEA 2000 wire format
+func (p *FusionSetMute) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2291,8 +2291,8 @@ func EncodeFusionSetMute(p *FusionSetMute, stream *DataStream) (*MessageInfo, er
     return &p.Info, err
 }
 
-// EncodeFusionSetZoneVolume encodes a FusionSetZoneVolume struct to NMEA 2000 wire format
-func EncodeFusionSetZoneVolume(p *FusionSetZoneVolume, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSetZoneVolume struct to NMEA 2000 wire format
+func (p *FusionSetZoneVolume) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2330,8 +2330,8 @@ func EncodeFusionSetZoneVolume(p *FusionSetZoneVolume, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeFusionSetAllVolumes encodes a FusionSetAllVolumes struct to NMEA 2000 wire format
-func EncodeFusionSetAllVolumes(p *FusionSetAllVolumes, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSetAllVolumes struct to NMEA 2000 wire format
+func (p *FusionSetAllVolumes) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2377,8 +2377,8 @@ func EncodeFusionSetAllVolumes(p *FusionSetAllVolumes, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeAirmarAttitudeOffset encodes a AirmarAttitudeOffset struct to NMEA 2000 wire format
-func EncodeAirmarAttitudeOffset(p *AirmarAttitudeOffset, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarAttitudeOffset struct to NMEA 2000 wire format
+func (p *AirmarAttitudeOffset) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2420,8 +2420,8 @@ func EncodeAirmarAttitudeOffset(p *AirmarAttitudeOffset, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeAirmarSimulateMode encodes a AirmarSimulateMode struct to NMEA 2000 wire format
-func EncodeAirmarSimulateMode(p *AirmarSimulateMode, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarSimulateMode struct to NMEA 2000 wire format
+func (p *AirmarSimulateMode) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2459,8 +2459,8 @@ func EncodeAirmarSimulateMode(p *AirmarSimulateMode, stream *DataStream) (*Messa
     return &p.Info, err
 }
 
-// EncodeAirmarCalibrateDepth encodes a AirmarCalibrateDepth struct to NMEA 2000 wire format
-func EncodeAirmarCalibrateDepth(p *AirmarCalibrateDepth, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarCalibrateDepth struct to NMEA 2000 wire format
+func (p *AirmarCalibrateDepth) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2498,8 +2498,8 @@ func EncodeAirmarCalibrateDepth(p *AirmarCalibrateDepth, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeAirmarCalibrateSpeed encodes a AirmarCalibrateSpeed struct to NMEA 2000 wire format
-func EncodeAirmarCalibrateSpeed(p *AirmarCalibrateSpeed, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarCalibrateSpeed struct to NMEA 2000 wire format
+func (p *AirmarCalibrateSpeed) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2554,8 +2554,8 @@ func (p *AirmarCalibrateSpeed) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeAirmarCalibrateTemperature encodes a AirmarCalibrateTemperature struct to NMEA 2000 wire format
-func EncodeAirmarCalibrateTemperature(p *AirmarCalibrateTemperature, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarCalibrateTemperature struct to NMEA 2000 wire format
+func (p *AirmarCalibrateTemperature) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2597,8 +2597,8 @@ func EncodeAirmarCalibrateTemperature(p *AirmarCalibrateTemperature, stream *Dat
     return &p.Info, err
 }
 
-// EncodeAirmarSpeedFilterNone encodes a AirmarSpeedFilterNone struct to NMEA 2000 wire format
-func EncodeAirmarSpeedFilterNone(p *AirmarSpeedFilterNone, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarSpeedFilterNone struct to NMEA 2000 wire format
+func (p *AirmarSpeedFilterNone) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2640,98 +2640,8 @@ func EncodeAirmarSpeedFilterNone(p *AirmarSpeedFilterNone, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeAirmarSpeedFilterIir encodes a AirmarSpeedFilterIir struct to NMEA 2000 wire format
-func EncodeAirmarSpeedFilterIir(p *AirmarSpeedFilterIir, stream *DataStream) (*MessageInfo, error) {
-	var err error
-    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.writeReserved(2, 11)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.FilterType, p.GetFieldSpec("FilterType"))
-    if err != nil {
-        return nil, err
-    }
-    err = stream.writeReserved(4, 28)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteScaled(stream, p.SampleInterval, p.GetFieldSpec("SampleInterval"))
-    if err != nil {
-        return nil, err
-    }
-    err = WriteScaled(stream, p.FilterDuration, p.GetFieldSpec("FilterDuration"))
-    if err != nil {
-        return nil, err
-    }
-    // Set defaults in Info if not already set
-    if p.Info.PGN == 0 {
-        p.Info.PGN = 126720
-    }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
-    p.Info.Timestamp = time.Now()
-    
-    return &p.Info, err
-}
-
-// EncodeAirmarTemperatureFilterNone encodes a AirmarTemperatureFilterNone struct to NMEA 2000 wire format
-func EncodeAirmarTemperatureFilterNone(p *AirmarTemperatureFilterNone, stream *DataStream) (*MessageInfo, error) {
-	var err error
-    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.writeReserved(2, 11)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.FilterType, p.GetFieldSpec("FilterType"))
-    if err != nil {
-        return nil, err
-    }
-    err = stream.writeReserved(4, 28)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteScaled(stream, p.SampleInterval, p.GetFieldSpec("SampleInterval"))
-    if err != nil {
-        return nil, err
-    }
-    // Set defaults in Info if not already set
-    if p.Info.PGN == 0 {
-        p.Info.PGN = 126720
-    }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
-    p.Info.Timestamp = time.Now()
-    
-    return &p.Info, err
-}
-
-// EncodeAirmarTemperatureFilterIir encodes a AirmarTemperatureFilterIir struct to NMEA 2000 wire format
-func EncodeAirmarTemperatureFilterIir(p *AirmarTemperatureFilterIir, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarSpeedFilterIir struct to NMEA 2000 wire format
+func (p *AirmarSpeedFilterIir) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2777,8 +2687,98 @@ func EncodeAirmarTemperatureFilterIir(p *AirmarTemperatureFilterIir, stream *Dat
     return &p.Info, err
 }
 
-// EncodeAirmarNmea2000Options encodes a AirmarNmea2000Options struct to NMEA 2000 wire format
-func EncodeAirmarNmea2000Options(p *AirmarNmea2000Options, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AirmarTemperatureFilterNone struct to NMEA 2000 wire format
+func (p *AirmarTemperatureFilterNone) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FilterType, p.GetFieldSpec("FilterType"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(4, 28)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.SampleInterval, p.GetFieldSpec("SampleInterval"))
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a AirmarTemperatureFilterIir struct to NMEA 2000 wire format
+func (p *AirmarTemperatureFilterIir) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.ProprietaryId), 8, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FilterType, p.GetFieldSpec("FilterType"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(4, 28)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.SampleInterval, p.GetFieldSpec("SampleInterval"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.FilterDuration, p.GetFieldSpec("FilterDuration"))
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    if p.Info.Priority == 0 {
+        p.Info.Priority = 3  // Default priority
+    }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a AirmarNmea2000Options struct to NMEA 2000 wire format
+func (p *AirmarNmea2000Options) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2816,8 +2816,8 @@ func EncodeAirmarNmea2000Options(p *AirmarNmea2000Options, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeMaretronDeviationCalibrationResponse encodes a MaretronDeviationCalibrationResponse struct to NMEA 2000 wire format
-func EncodeMaretronDeviationCalibrationResponse(p *MaretronDeviationCalibrationResponse, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a MaretronDeviationCalibrationResponse struct to NMEA 2000 wire format
+func (p *MaretronDeviationCalibrationResponse) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2859,8 +2859,8 @@ func EncodeMaretronDeviationCalibrationResponse(p *MaretronDeviationCalibrationR
     return &p.Info, err
 }
 
-// EncodeMaretronSlaveResponse encodes a MaretronSlaveResponse struct to NMEA 2000 wire format
-func EncodeMaretronSlaveResponse(p *MaretronSlaveResponse, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a MaretronSlaveResponse struct to NMEA 2000 wire format
+func (p *MaretronSlaveResponse) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -2902,8 +2902,8 @@ func EncodeMaretronSlaveResponse(p *MaretronSlaveResponse, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeAlert encodes a Alert struct to NMEA 2000 wire format
-func EncodeAlert(p *Alert, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Alert struct to NMEA 2000 wire format
+func (p *Alert) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.AlertType), 4, 0)
     if err != nil {
@@ -3001,8 +3001,8 @@ func EncodeAlert(p *Alert, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeAlertResponse encodes a AlertResponse struct to NMEA 2000 wire format
-func EncodeAlertResponse(p *AlertResponse, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AlertResponse struct to NMEA 2000 wire format
+func (p *AlertResponse) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.AlertType), 4, 0)
     if err != nil {
@@ -3064,8 +3064,8 @@ func EncodeAlertResponse(p *AlertResponse, stream *DataStream) (*MessageInfo, er
     return &p.Info, err
 }
 
-// EncodeAlertText encodes a AlertText struct to NMEA 2000 wire format
-func EncodeAlertText(p *AlertText, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AlertText struct to NMEA 2000 wire format
+func (p *AlertText) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.AlertType), 4, 0)
     if err != nil {
@@ -3127,8 +3127,8 @@ func EncodeAlertText(p *AlertText, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeSystemTime encodes a SystemTime struct to NMEA 2000 wire format
-func EncodeSystemTime(p *SystemTime, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a SystemTime struct to NMEA 2000 wire format
+func (p *SystemTime) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -3162,8 +3162,8 @@ func EncodeSystemTime(p *SystemTime, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeHeartbeat encodes a Heartbeat struct to NMEA 2000 wire format
-func EncodeHeartbeat(p *Heartbeat, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Heartbeat struct to NMEA 2000 wire format
+func (p *Heartbeat) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.DataTransmitOffset, p.GetFieldSpec("DataTransmitOffset"))
     if err != nil {
@@ -3201,8 +3201,8 @@ func EncodeHeartbeat(p *Heartbeat, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeProductInformation encodes a ProductInformation struct to NMEA 2000 wire format
-func EncodeProductInformation(p *ProductInformation, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a ProductInformation struct to NMEA 2000 wire format
+func (p *ProductInformation) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.Nmea2000Version, p.GetFieldSpec("Nmea2000Version"))
     if err != nil {
@@ -3248,8 +3248,8 @@ func EncodeProductInformation(p *ProductInformation, stream *DataStream) (*Messa
     return &p.Info, err
 }
 
-// EncodeConfigurationInformation encodes a ConfigurationInformation struct to NMEA 2000 wire format
-func EncodeConfigurationInformation(p *ConfigurationInformation, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a ConfigurationInformation struct to NMEA 2000 wire format
+func (p *ConfigurationInformation) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.writeStringLau(p.InstallationDescription1, 0 )
     if err != nil {
@@ -3275,8 +3275,8 @@ func EncodeConfigurationInformation(p *ConfigurationInformation, stream *DataStr
     return &p.Info, err
 }
 
-// EncodeManOverboardNotification encodes a ManOverboardNotification struct to NMEA 2000 wire format
-func EncodeManOverboardNotification(p *ManOverboardNotification, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a ManOverboardNotification struct to NMEA 2000 wire format
+func (p *ManOverboardNotification) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -3362,8 +3362,8 @@ func EncodeManOverboardNotification(p *ManOverboardNotification, stream *DataStr
     return &p.Info, err
 }
 
-// EncodeHeadingTrackControl encodes a HeadingTrackControl struct to NMEA 2000 wire format
-func EncodeHeadingTrackControl(p *HeadingTrackControl, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a HeadingTrackControl struct to NMEA 2000 wire format
+func (p *HeadingTrackControl) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.RudderLimitExceeded), 2, 0)
     if err != nil {
@@ -3449,8 +3449,8 @@ func EncodeHeadingTrackControl(p *HeadingTrackControl, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeRudder encodes a Rudder struct to NMEA 2000 wire format
-func EncodeRudder(p *Rudder, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Rudder struct to NMEA 2000 wire format
+func (p *Rudder) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
     if err != nil {
@@ -3488,8 +3488,8 @@ func EncodeRudder(p *Rudder, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeVesselHeading encodes a VesselHeading struct to NMEA 2000 wire format
-func EncodeVesselHeading(p *VesselHeading, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a VesselHeading struct to NMEA 2000 wire format
+func (p *VesselHeading) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -3527,8 +3527,8 @@ func EncodeVesselHeading(p *VesselHeading, stream *DataStream) (*MessageInfo, er
     return &p.Info, err
 }
 
-// EncodeRateOfTurn encodes a RateOfTurn struct to NMEA 2000 wire format
-func EncodeRateOfTurn(p *RateOfTurn, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RateOfTurn struct to NMEA 2000 wire format
+func (p *RateOfTurn) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -3554,8 +3554,8 @@ func EncodeRateOfTurn(p *RateOfTurn, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeAttitude encodes a Attitude struct to NMEA 2000 wire format
-func EncodeAttitude(p *Attitude, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Attitude struct to NMEA 2000 wire format
+func (p *Attitude) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -3589,8 +3589,8 @@ func EncodeAttitude(p *Attitude, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeMagneticVariation encodes a MagneticVariation struct to NMEA 2000 wire format
-func EncodeMagneticVariation(p *MagneticVariation, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a MagneticVariation struct to NMEA 2000 wire format
+func (p *MagneticVariation) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -3628,8 +3628,8 @@ func EncodeMagneticVariation(p *MagneticVariation, stream *DataStream) (*Message
     return &p.Info, err
 }
 
-// EncodeEngineParametersRapidUpdate encodes a EngineParametersRapidUpdate struct to NMEA 2000 wire format
-func EncodeEngineParametersRapidUpdate(p *EngineParametersRapidUpdate, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a EngineParametersRapidUpdate struct to NMEA 2000 wire format
+func (p *EngineParametersRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.Instance), 8, 0)
     if err != nil {
@@ -3663,8 +3663,8 @@ func EncodeEngineParametersRapidUpdate(p *EngineParametersRapidUpdate, stream *D
     return &p.Info, err
 }
 
-// EncodeEngineParametersDynamic encodes a EngineParametersDynamic struct to NMEA 2000 wire format
-func EncodeEngineParametersDynamic(p *EngineParametersDynamic, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a EngineParametersDynamic struct to NMEA 2000 wire format
+func (p *EngineParametersDynamic) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.Instance), 8, 0)
     if err != nil {
@@ -3734,8 +3734,8 @@ func EncodeEngineParametersDynamic(p *EngineParametersDynamic, stream *DataStrea
     return &p.Info, err
 }
 
-// EncodeTransmissionParametersDynamic encodes a TransmissionParametersDynamic struct to NMEA 2000 wire format
-func EncodeTransmissionParametersDynamic(p *TransmissionParametersDynamic, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a TransmissionParametersDynamic struct to NMEA 2000 wire format
+func (p *TransmissionParametersDynamic) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.Instance), 8, 0)
     if err != nil {
@@ -3777,8 +3777,8 @@ func EncodeTransmissionParametersDynamic(p *TransmissionParametersDynamic, strea
     return &p.Info, err
 }
 
-// EncodeTripParametersVessel encodes a TripParametersVessel struct to NMEA 2000 wire format
-func EncodeTripParametersVessel(p *TripParametersVessel, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a TripParametersVessel struct to NMEA 2000 wire format
+func (p *TripParametersVessel) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.TimeToEmpty, p.GetFieldSpec("TimeToEmpty"))
     if err != nil {
@@ -3808,8 +3808,8 @@ func EncodeTripParametersVessel(p *TripParametersVessel, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeTripParametersEngine encodes a TripParametersEngine struct to NMEA 2000 wire format
-func EncodeTripParametersEngine(p *TripParametersEngine, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a TripParametersEngine struct to NMEA 2000 wire format
+func (p *TripParametersEngine) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.Instance), 8, 0)
     if err != nil {
@@ -3843,8 +3843,8 @@ func EncodeTripParametersEngine(p *TripParametersEngine, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeEngineParametersStatic encodes a EngineParametersStatic struct to NMEA 2000 wire format
-func EncodeEngineParametersStatic(p *EngineParametersStatic, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a EngineParametersStatic struct to NMEA 2000 wire format
+func (p *EngineParametersStatic) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.Instance), 8, 0)
     if err != nil {
@@ -3874,8 +3874,8 @@ func EncodeEngineParametersStatic(p *EngineParametersStatic, stream *DataStream)
     return &p.Info, err
 }
 
-// EncodeLoadControllerConnectionStateControl encodes a LoadControllerConnectionStateControl struct to NMEA 2000 wire format
-func EncodeLoadControllerConnectionStateControl(p *LoadControllerConnectionStateControl, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a LoadControllerConnectionStateControl struct to NMEA 2000 wire format
+func (p *LoadControllerConnectionStateControl) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.SequenceId, p.GetFieldSpec("SequenceId"))
     if err != nil {
@@ -3921,8 +3921,8 @@ func EncodeLoadControllerConnectionStateControl(p *LoadControllerConnectionState
     return &p.Info, err
 }
 
-// EncodeBinarySwitchBankStatus encodes a BinarySwitchBankStatus struct to NMEA 2000 wire format
-func EncodeBinarySwitchBankStatus(p *BinarySwitchBankStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a BinarySwitchBankStatus struct to NMEA 2000 wire format
+func (p *BinarySwitchBankStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
     if err != nil {
@@ -4052,8 +4052,8 @@ func EncodeBinarySwitchBankStatus(p *BinarySwitchBankStatus, stream *DataStream)
     return &p.Info, err
 }
 
-// EncodeSwitchBankControl encodes a SwitchBankControl struct to NMEA 2000 wire format
-func EncodeSwitchBankControl(p *SwitchBankControl, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a SwitchBankControl struct to NMEA 2000 wire format
+func (p *SwitchBankControl) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
     if err != nil {
@@ -4183,8 +4183,8 @@ func EncodeSwitchBankControl(p *SwitchBankControl, stream *DataStream) (*Message
     return &p.Info, err
 }
 
-// EncodeAcInputStatus encodes a AcInputStatus struct to NMEA 2000 wire format
-func EncodeAcInputStatus(p *AcInputStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AcInputStatus struct to NMEA 2000 wire format
+func (p *AcInputStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
     if err != nil {
@@ -4259,8 +4259,8 @@ func (p *AcInputStatus) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeAcOutputStatus encodes a AcOutputStatus struct to NMEA 2000 wire format
-func EncodeAcOutputStatus(p *AcOutputStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AcOutputStatus struct to NMEA 2000 wire format
+func (p *AcOutputStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
     if err != nil {
@@ -4335,8 +4335,8 @@ func (p *AcOutputStatus) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeFluidLevel encodes a FluidLevel struct to NMEA 2000 wire format
-func EncodeFluidLevel(p *FluidLevel, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FluidLevel struct to NMEA 2000 wire format
+func (p *FluidLevel) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
     if err != nil {
@@ -4370,8 +4370,8 @@ func EncodeFluidLevel(p *FluidLevel, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeDcDetailedStatus encodes a DcDetailedStatus struct to NMEA 2000 wire format
-func EncodeDcDetailedStatus(p *DcDetailedStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a DcDetailedStatus struct to NMEA 2000 wire format
+func (p *DcDetailedStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -4417,8 +4417,8 @@ func EncodeDcDetailedStatus(p *DcDetailedStatus, stream *DataStream) (*MessageIn
     return &p.Info, err
 }
 
-// EncodeChargerStatus encodes a ChargerStatus struct to NMEA 2000 wire format
-func EncodeChargerStatus(p *ChargerStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a ChargerStatus struct to NMEA 2000 wire format
+func (p *ChargerStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
     if err != nil {
@@ -4464,8 +4464,8 @@ func EncodeChargerStatus(p *ChargerStatus, stream *DataStream) (*MessageInfo, er
     return &p.Info, err
 }
 
-// EncodeBatteryStatus encodes a BatteryStatus struct to NMEA 2000 wire format
-func EncodeBatteryStatus(p *BatteryStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a BatteryStatus struct to NMEA 2000 wire format
+func (p *BatteryStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
     if err != nil {
@@ -4499,8 +4499,8 @@ func EncodeBatteryStatus(p *BatteryStatus, stream *DataStream) (*MessageInfo, er
     return &p.Info, err
 }
 
-// EncodeInverterStatus encodes a InverterStatus struct to NMEA 2000 wire format
-func EncodeInverterStatus(p *InverterStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a InverterStatus struct to NMEA 2000 wire format
+func (p *InverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
     if err != nil {
@@ -4538,8 +4538,8 @@ func EncodeInverterStatus(p *InverterStatus, stream *DataStream) (*MessageInfo, 
     return &p.Info, err
 }
 
-// EncodeAcPowerCurrentPhaseA encodes a AcPowerCurrentPhaseA struct to NMEA 2000 wire format
-func EncodeAcPowerCurrentPhaseA(p *AcPowerCurrentPhaseA, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AcPowerCurrentPhaseA struct to NMEA 2000 wire format
+func (p *AcPowerCurrentPhaseA) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -4569,8 +4569,8 @@ func EncodeAcPowerCurrentPhaseA(p *AcPowerCurrentPhaseA, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeAcPowerCurrentPhaseB encodes a AcPowerCurrentPhaseB struct to NMEA 2000 wire format
-func EncodeAcPowerCurrentPhaseB(p *AcPowerCurrentPhaseB, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AcPowerCurrentPhaseB struct to NMEA 2000 wire format
+func (p *AcPowerCurrentPhaseB) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -4600,8 +4600,8 @@ func EncodeAcPowerCurrentPhaseB(p *AcPowerCurrentPhaseB, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeAcPowerCurrentPhaseC encodes a AcPowerCurrentPhaseC struct to NMEA 2000 wire format
-func EncodeAcPowerCurrentPhaseC(p *AcPowerCurrentPhaseC, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AcPowerCurrentPhaseC struct to NMEA 2000 wire format
+func (p *AcPowerCurrentPhaseC) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -4631,8 +4631,8 @@ func EncodeAcPowerCurrentPhaseC(p *AcPowerCurrentPhaseC, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeAcVoltageFrequencyPhaseA encodes a AcVoltageFrequencyPhaseA struct to NMEA 2000 wire format
-func EncodeAcVoltageFrequencyPhaseA(p *AcVoltageFrequencyPhaseA, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AcVoltageFrequencyPhaseA struct to NMEA 2000 wire format
+func (p *AcVoltageFrequencyPhaseA) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -4666,8 +4666,8 @@ func EncodeAcVoltageFrequencyPhaseA(p *AcVoltageFrequencyPhaseA, stream *DataStr
     return &p.Info, err
 }
 
-// EncodeAcVoltageFrequencyPhaseB encodes a AcVoltageFrequencyPhaseB struct to NMEA 2000 wire format
-func EncodeAcVoltageFrequencyPhaseB(p *AcVoltageFrequencyPhaseB, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AcVoltageFrequencyPhaseB struct to NMEA 2000 wire format
+func (p *AcVoltageFrequencyPhaseB) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -4701,8 +4701,8 @@ func EncodeAcVoltageFrequencyPhaseB(p *AcVoltageFrequencyPhaseB, stream *DataStr
     return &p.Info, err
 }
 
-// EncodeAcVoltageFrequencyPhaseC encodes a AcVoltageFrequencyPhaseC struct to NMEA 2000 wire format
-func EncodeAcVoltageFrequencyPhaseC(p *AcVoltageFrequencyPhaseC, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AcVoltageFrequencyPhaseC struct to NMEA 2000 wire format
+func (p *AcVoltageFrequencyPhaseC) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -4736,8 +4736,8 @@ func EncodeAcVoltageFrequencyPhaseC(p *AcVoltageFrequencyPhaseC, stream *DataStr
     return &p.Info, err
 }
 
-// EncodeConverterStatus encodes a ConverterStatus struct to NMEA 2000 wire format
-func EncodeConverterStatus(p *ConverterStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a ConverterStatus struct to NMEA 2000 wire format
+func (p *ConverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.writeBinary(p.Sid, 8, 0 )
     if err != nil {
@@ -4783,8 +4783,8 @@ func EncodeConverterStatus(p *ConverterStatus, stream *DataStream) (*MessageInfo
     return &p.Info, err
 }
 
-// EncodeDcVoltageCurrent encodes a DcVoltageCurrent struct to NMEA 2000 wire format
-func EncodeDcVoltageCurrent(p *DcVoltageCurrent, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a DcVoltageCurrent struct to NMEA 2000 wire format
+func (p *DcVoltageCurrent) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.writeBinary(p.Sid, 8, 0 )
     if err != nil {
@@ -4818,8 +4818,8 @@ func EncodeDcVoltageCurrent(p *DcVoltageCurrent, stream *DataStream) (*MessageIn
     return &p.Info, err
 }
 
-// EncodeLeewayAngle encodes a LeewayAngle struct to NMEA 2000 wire format
-func EncodeLeewayAngle(p *LeewayAngle, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a LeewayAngle struct to NMEA 2000 wire format
+func (p *LeewayAngle) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -4845,8 +4845,8 @@ func EncodeLeewayAngle(p *LeewayAngle, stream *DataStream) (*MessageInfo, error)
     return &p.Info, err
 }
 
-// EncodeThrusterControlStatus encodes a ThrusterControlStatus struct to NMEA 2000 wire format
-func EncodeThrusterControlStatus(p *ThrusterControlStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a ThrusterControlStatus struct to NMEA 2000 wire format
+func (p *ThrusterControlStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -4896,8 +4896,8 @@ func EncodeThrusterControlStatus(p *ThrusterControlStatus, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeThrusterInformation encodes a ThrusterInformation struct to NMEA 2000 wire format
-func EncodeThrusterInformation(p *ThrusterInformation, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a ThrusterInformation struct to NMEA 2000 wire format
+func (p *ThrusterInformation) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Identifier, p.GetFieldSpec("Identifier"))
     if err != nil {
@@ -4935,8 +4935,8 @@ func EncodeThrusterInformation(p *ThrusterInformation, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeThrusterMotorStatus encodes a ThrusterMotorStatus struct to NMEA 2000 wire format
-func EncodeThrusterMotorStatus(p *ThrusterMotorStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a ThrusterMotorStatus struct to NMEA 2000 wire format
+func (p *ThrusterMotorStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -4974,8 +4974,8 @@ func EncodeThrusterMotorStatus(p *ThrusterMotorStatus, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeSpeed encodes a Speed struct to NMEA 2000 wire format
-func EncodeSpeed(p *Speed, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Speed struct to NMEA 2000 wire format
+func (p *Speed) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -5013,8 +5013,8 @@ func EncodeSpeed(p *Speed, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeWaterDepth encodes a WaterDepth struct to NMEA 2000 wire format
-func EncodeWaterDepth(p *WaterDepth, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a WaterDepth struct to NMEA 2000 wire format
+func (p *WaterDepth) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -5044,8 +5044,8 @@ func EncodeWaterDepth(p *WaterDepth, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeDistanceLog encodes a DistanceLog struct to NMEA 2000 wire format
-func EncodeDistanceLog(p *DistanceLog, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a DistanceLog struct to NMEA 2000 wire format
+func (p *DistanceLog) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Date, p.GetFieldSpec("Date"))
     if err != nil {
@@ -5075,8 +5075,8 @@ func EncodeDistanceLog(p *DistanceLog, stream *DataStream) (*MessageInfo, error)
     return &p.Info, err
 }
 
-// EncodeWindlassControlStatus encodes a WindlassControlStatus struct to NMEA 2000 wire format
-func EncodeWindlassControlStatus(p *WindlassControlStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a WindlassControlStatus struct to NMEA 2000 wire format
+func (p *WindlassControlStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -5146,8 +5146,8 @@ func EncodeWindlassControlStatus(p *WindlassControlStatus, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeAnchorWindlassOperatingStatus encodes a AnchorWindlassOperatingStatus struct to NMEA 2000 wire format
-func EncodeAnchorWindlassOperatingStatus(p *AnchorWindlassOperatingStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AnchorWindlassOperatingStatus struct to NMEA 2000 wire format
+func (p *AnchorWindlassOperatingStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -5201,8 +5201,8 @@ func EncodeAnchorWindlassOperatingStatus(p *AnchorWindlassOperatingStatus, strea
     return &p.Info, err
 }
 
-// EncodeAnchorWindlassMonitoringStatus encodes a AnchorWindlassMonitoringStatus struct to NMEA 2000 wire format
-func EncodeAnchorWindlassMonitoringStatus(p *AnchorWindlassMonitoringStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AnchorWindlassMonitoringStatus struct to NMEA 2000 wire format
+func (p *AnchorWindlassMonitoringStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -5244,8 +5244,8 @@ func EncodeAnchorWindlassMonitoringStatus(p *AnchorWindlassMonitoringStatus, str
     return &p.Info, err
 }
 
-// EncodePositionRapidUpdate encodes a PositionRapidUpdate struct to NMEA 2000 wire format
-func EncodePositionRapidUpdate(p *PositionRapidUpdate, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a PositionRapidUpdate struct to NMEA 2000 wire format
+func (p *PositionRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.Latitude, p.GetFieldSpec("Latitude"))
     if err != nil {
@@ -5267,8 +5267,8 @@ func EncodePositionRapidUpdate(p *PositionRapidUpdate, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeCogSogRapidUpdate encodes a CogSogRapidUpdate struct to NMEA 2000 wire format
-func EncodeCogSogRapidUpdate(p *CogSogRapidUpdate, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a CogSogRapidUpdate struct to NMEA 2000 wire format
+func (p *CogSogRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -5306,8 +5306,8 @@ func EncodeCogSogRapidUpdate(p *CogSogRapidUpdate, stream *DataStream) (*Message
     return &p.Info, err
 }
 
-// EncodeGnssPositionData encodes a GnssPositionData struct to NMEA 2000 wire format
-func EncodeGnssPositionData(p *GnssPositionData, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GnssPositionData struct to NMEA 2000 wire format
+func (p *GnssPositionData) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -5406,8 +5406,8 @@ func (p *GnssPositionData) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeTimeDate encodes a TimeDate struct to NMEA 2000 wire format
-func EncodeTimeDate(p *TimeDate, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a TimeDate struct to NMEA 2000 wire format
+func (p *TimeDate) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Date, p.GetFieldSpec("Date"))
     if err != nil {
@@ -5433,8 +5433,8 @@ func EncodeTimeDate(p *TimeDate, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeAisClassAPositionReport encodes a AisClassAPositionReport struct to NMEA 2000 wire format
-func EncodeAisClassAPositionReport(p *AisClassAPositionReport, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AisClassAPositionReport struct to NMEA 2000 wire format
+func (p *AisClassAPositionReport) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
     if err != nil {
@@ -5528,8 +5528,8 @@ func EncodeAisClassAPositionReport(p *AisClassAPositionReport, stream *DataStrea
     return &p.Info, err
 }
 
-// EncodeAisClassBPositionReport encodes a AisClassBPositionReport struct to NMEA 2000 wire format
-func EncodeAisClassBPositionReport(p *AisClassBPositionReport, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AisClassBPositionReport struct to NMEA 2000 wire format
+func (p *AisClassBPositionReport) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
     if err != nil {
@@ -5635,8 +5635,8 @@ func EncodeAisClassBPositionReport(p *AisClassBPositionReport, stream *DataStrea
     return &p.Info, err
 }
 
-// EncodeAisAidsToNavigationAtonReport encodes a AisAidsToNavigationAtonReport struct to NMEA 2000 wire format
-func EncodeAisAidsToNavigationAtonReport(p *AisAidsToNavigationAtonReport, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AisAidsToNavigationAtonReport struct to NMEA 2000 wire format
+func (p *AisAidsToNavigationAtonReport) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
     if err != nil {
@@ -5742,8 +5742,8 @@ func EncodeAisAidsToNavigationAtonReport(p *AisAidsToNavigationAtonReport, strea
     return &p.Info, err
 }
 
-// EncodeDatum encodes a Datum struct to NMEA 2000 wire format
-func EncodeDatum(p *Datum, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Datum struct to NMEA 2000 wire format
+func (p *Datum) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.writeStringFix([]uint8(p.LocalDatum), 32, 0 )
     if err != nil {
@@ -5777,8 +5777,8 @@ func EncodeDatum(p *Datum, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeUserDatum encodes a UserDatum struct to NMEA 2000 wire format
-func EncodeUserDatum(p *UserDatum, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a UserDatum struct to NMEA 2000 wire format
+func (p *UserDatum) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.writeUnit(p.DeltaX, p.GetFieldSpec("DeltaX"))
     if err != nil {
@@ -5832,8 +5832,8 @@ func EncodeUserDatum(p *UserDatum, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeCrossTrackError encodes a CrossTrackError struct to NMEA 2000 wire format
-func EncodeCrossTrackError(p *CrossTrackError, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a CrossTrackError struct to NMEA 2000 wire format
+func (p *CrossTrackError) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -5871,8 +5871,8 @@ func EncodeCrossTrackError(p *CrossTrackError, stream *DataStream) (*MessageInfo
     return &p.Info, err
 }
 
-// EncodeNavigationData encodes a NavigationData struct to NMEA 2000 wire format
-func EncodeNavigationData(p *NavigationData, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a NavigationData struct to NMEA 2000 wire format
+func (p *NavigationData) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -5946,8 +5946,8 @@ func EncodeNavigationData(p *NavigationData, stream *DataStream) (*MessageInfo, 
     return &p.Info, err
 }
 
-// EncodeNavigationRouteWpInformation encodes a NavigationRouteWpInformation struct to NMEA 2000 wire format
-func EncodeNavigationRouteWpInformation(p *NavigationRouteWpInformation, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a NavigationRouteWpInformation struct to NMEA 2000 wire format
+func (p *NavigationRouteWpInformation) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartRps, p.GetFieldSpec("StartRps"))
     if err != nil {
@@ -6026,8 +6026,8 @@ func (p *NavigationRouteWpInformation) encodeRepeating1(stream *DataStream) erro
     return nil
 }
 
-// EncodeGnssDops encodes a GnssDops struct to NMEA 2000 wire format
-func EncodeGnssDops(p *GnssDops, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GnssDops struct to NMEA 2000 wire format
+func (p *GnssDops) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -6069,8 +6069,8 @@ func EncodeGnssDops(p *GnssDops, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeGnssSatsInView encodes a GnssSatsInView struct to NMEA 2000 wire format
-func EncodeGnssSatsInView(p *GnssSatsInView, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GnssSatsInView struct to NMEA 2000 wire format
+func (p *GnssSatsInView) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -6141,8 +6141,8 @@ func (p *GnssSatsInView) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeGnssRaimSettings encodes a GnssRaimSettings struct to NMEA 2000 wire format
-func EncodeGnssRaimSettings(p *GnssRaimSettings, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GnssRaimSettings struct to NMEA 2000 wire format
+func (p *GnssRaimSettings) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.writeUnit(p.RadialPositionErrorMaximumThreshold, p.GetFieldSpec("RadialPositionErrorMaximumThreshold"))
     if err != nil {
@@ -6176,8 +6176,8 @@ func EncodeGnssRaimSettings(p *GnssRaimSettings, stream *DataStream) (*MessageIn
     return &p.Info, err
 }
 
-// EncodeGnssPseudorangeErrorStatistics encodes a GnssPseudorangeErrorStatistics struct to NMEA 2000 wire format
-func EncodeGnssPseudorangeErrorStatistics(p *GnssPseudorangeErrorStatistics, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GnssPseudorangeErrorStatistics struct to NMEA 2000 wire format
+func (p *GnssPseudorangeErrorStatistics) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -6223,8 +6223,8 @@ func EncodeGnssPseudorangeErrorStatistics(p *GnssPseudorangeErrorStatistics, str
     return &p.Info, err
 }
 
-// EncodeDgnssCorrections encodes a DgnssCorrections struct to NMEA 2000 wire format
-func EncodeDgnssCorrections(p *DgnssCorrections, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a DgnssCorrections struct to NMEA 2000 wire format
+func (p *DgnssCorrections) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -6282,8 +6282,8 @@ func EncodeDgnssCorrections(p *DgnssCorrections, stream *DataStream) (*MessageIn
     return &p.Info, err
 }
 
-// EncodeGnssDifferentialCorrectionReceiverInterface encodes a GnssDifferentialCorrectionReceiverInterface struct to NMEA 2000 wire format
-func EncodeGnssDifferentialCorrectionReceiverInterface(p *GnssDifferentialCorrectionReceiverInterface, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GnssDifferentialCorrectionReceiverInterface struct to NMEA 2000 wire format
+func (p *GnssDifferentialCorrectionReceiverInterface) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Channel, p.GetFieldSpec("Channel"))
     if err != nil {
@@ -6325,8 +6325,8 @@ func EncodeGnssDifferentialCorrectionReceiverInterface(p *GnssDifferentialCorrec
     return &p.Info, err
 }
 
-// EncodeGnssDifferentialCorrectionReceiverSignal encodes a GnssDifferentialCorrectionReceiverSignal struct to NMEA 2000 wire format
-func EncodeGnssDifferentialCorrectionReceiverSignal(p *GnssDifferentialCorrectionReceiverSignal, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GnssDifferentialCorrectionReceiverSignal struct to NMEA 2000 wire format
+func (p *GnssDifferentialCorrectionReceiverSignal) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -6396,8 +6396,8 @@ func EncodeGnssDifferentialCorrectionReceiverSignal(p *GnssDifferentialCorrectio
     return &p.Info, err
 }
 
-// EncodeGlonassAlmanacData encodes a GlonassAlmanacData struct to NMEA 2000 wire format
-func EncodeGlonassAlmanacData(p *GlonassAlmanacData, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a GlonassAlmanacData struct to NMEA 2000 wire format
+func (p *GlonassAlmanacData) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Prn, p.GetFieldSpec("Prn"))
     if err != nil {
@@ -6467,8 +6467,8 @@ func EncodeGlonassAlmanacData(p *GlonassAlmanacData, stream *DataStream) (*Messa
     return &p.Info, err
 }
 
-// EncodeAisClassAStaticAndVoyageRelatedData encodes a AisClassAStaticAndVoyageRelatedData struct to NMEA 2000 wire format
-func EncodeAisClassAStaticAndVoyageRelatedData(p *AisClassAStaticAndVoyageRelatedData, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AisClassAStaticAndVoyageRelatedData struct to NMEA 2000 wire format
+func (p *AisClassAStaticAndVoyageRelatedData) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
     if err != nil {
@@ -6566,8 +6566,8 @@ func EncodeAisClassAStaticAndVoyageRelatedData(p *AisClassAStaticAndVoyageRelate
     return &p.Info, err
 }
 
-// EncodeAisAddressedBinaryMessage encodes a AisAddressedBinaryMessage struct to NMEA 2000 wire format
-func EncodeAisAddressedBinaryMessage(p *AisAddressedBinaryMessage, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AisAddressedBinaryMessage struct to NMEA 2000 wire format
+func (p *AisAddressedBinaryMessage) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
 		var binaryLength uint16
 		if p.NumberOfBitsInBinaryDataField != nil {
@@ -6633,8 +6633,8 @@ func EncodeAisAddressedBinaryMessage(p *AisAddressedBinaryMessage, stream *DataS
     return &p.Info, err
 }
 
-// EncodeAisAcknowledge encodes a AisAcknowledge struct to NMEA 2000 wire format
-func EncodeAisAcknowledge(p *AisAcknowledge, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AisAcknowledge struct to NMEA 2000 wire format
+func (p *AisAcknowledge) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
     if err != nil {
@@ -6697,8 +6697,8 @@ func (p *AisAcknowledge) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeAisBinaryBroadcastMessage encodes a AisBinaryBroadcastMessage struct to NMEA 2000 wire format
-func EncodeAisBinaryBroadcastMessage(p *AisBinaryBroadcastMessage, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AisBinaryBroadcastMessage struct to NMEA 2000 wire format
+func (p *AisBinaryBroadcastMessage) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
 		var binaryLength uint16
 		if p.NumberOfBitsInBinaryDataField != nil {
@@ -6748,8 +6748,8 @@ func EncodeAisBinaryBroadcastMessage(p *AisBinaryBroadcastMessage, stream *DataS
     return &p.Info, err
 }
 
-// EncodeRadioFrequencyModePower encodes a RadioFrequencyModePower struct to NMEA 2000 wire format
-func EncodeRadioFrequencyModePower(p *RadioFrequencyModePower, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RadioFrequencyModePower struct to NMEA 2000 wire format
+func (p *RadioFrequencyModePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteScaled(stream, p.RxFrequency, p.GetFieldSpec("RxFrequency"))
     if err != nil {
@@ -6787,8 +6787,8 @@ func EncodeRadioFrequencyModePower(p *RadioFrequencyModePower, stream *DataStrea
     return &p.Info, err
 }
 
-// EncodeAisClassBStaticDataMsg24PartA encodes a AisClassBStaticDataMsg24PartA struct to NMEA 2000 wire format
-func EncodeAisClassBStaticDataMsg24PartA(p *AisClassBStaticDataMsg24PartA, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AisClassBStaticDataMsg24PartA struct to NMEA 2000 wire format
+func (p *AisClassBStaticDataMsg24PartA) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
     if err != nil {
@@ -6830,8 +6830,8 @@ func EncodeAisClassBStaticDataMsg24PartA(p *AisClassBStaticDataMsg24PartA, strea
     return &p.Info, err
 }
 
-// EncodeAisClassBStaticDataMsg24PartB encodes a AisClassBStaticDataMsg24PartB struct to NMEA 2000 wire format
-func EncodeAisClassBStaticDataMsg24PartB(p *AisClassBStaticDataMsg24PartB, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a AisClassBStaticDataMsg24PartB struct to NMEA 2000 wire format
+func (p *AisClassBStaticDataMsg24PartB) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
     if err != nil {
@@ -6913,8 +6913,8 @@ func EncodeAisClassBStaticDataMsg24PartB(p *AisClassBStaticDataMsg24PartB, strea
     return &p.Info, err
 }
 
-// EncodeRouteAndWpServiceDatabaseList encodes a RouteAndWpServiceDatabaseList struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceDatabaseList(p *RouteAndWpServiceDatabaseList, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceDatabaseList struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceDatabaseList) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartDatabaseId, p.GetFieldSpec("StartDatabaseId"))
     if err != nil {
@@ -6989,8 +6989,8 @@ func (p *RouteAndWpServiceDatabaseList) encodeRepeating1(stream *DataStream) err
     return nil
 }
 
-// EncodeRouteAndWpServiceRouteList encodes a RouteAndWpServiceRouteList struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceRouteList(p *RouteAndWpServiceRouteList, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceRouteList struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceRouteList) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartRouteId, p.GetFieldSpec("StartRouteId"))
     if err != nil {
@@ -7053,8 +7053,8 @@ func (p *RouteAndWpServiceRouteList) encodeRepeating1(stream *DataStream) error 
     return nil
 }
 
-// EncodeRouteAndWpServiceRouteWpListAttributes encodes a RouteAndWpServiceRouteWpListAttributes struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceRouteWpListAttributes(p *RouteAndWpServiceRouteWpListAttributes, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceRouteWpListAttributes struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceRouteWpListAttributes) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.DatabaseId, p.GetFieldSpec("DatabaseId"))
     if err != nil {
@@ -7116,8 +7116,8 @@ func EncodeRouteAndWpServiceRouteWpListAttributes(p *RouteAndWpServiceRouteWpLis
     return &p.Info, err
 }
 
-// EncodeRouteAndWpServiceRouteWpNamePosition encodes a RouteAndWpServiceRouteWpNamePosition struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceRouteWpNamePosition(p *RouteAndWpServiceRouteWpNamePosition, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceRouteWpNamePosition struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceRouteWpNamePosition) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartRps, p.GetFieldSpec("StartRps"))
     if err != nil {
@@ -7180,8 +7180,8 @@ func (p *RouteAndWpServiceRouteWpNamePosition) encodeRepeating1(stream *DataStre
     return nil
 }
 
-// EncodeRouteAndWpServiceRouteWpName encodes a RouteAndWpServiceRouteWpName struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceRouteWpName(p *RouteAndWpServiceRouteWpName, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceRouteWpName struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceRouteWpName) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartRps, p.GetFieldSpec("StartRps"))
     if err != nil {
@@ -7236,8 +7236,8 @@ func (p *RouteAndWpServiceRouteWpName) encodeRepeating1(stream *DataStream) erro
     return nil
 }
 
-// EncodeRouteAndWpServiceXteLimitNavigationMethod encodes a RouteAndWpServiceXteLimitNavigationMethod struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceXteLimitNavigationMethod(p *RouteAndWpServiceXteLimitNavigationMethod, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceXteLimitNavigationMethod struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceXteLimitNavigationMethod) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartRps, p.GetFieldSpec("StartRps"))
     if err != nil {
@@ -7300,8 +7300,8 @@ func (p *RouteAndWpServiceXteLimitNavigationMethod) encodeRepeating1(stream *Dat
     return nil
 }
 
-// EncodeRouteAndWpServiceWpComment encodes a RouteAndWpServiceWpComment struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceWpComment(p *RouteAndWpServiceWpComment, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceWpComment struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceWpComment) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartId, p.GetFieldSpec("StartId"))
     if err != nil {
@@ -7356,8 +7356,8 @@ func (p *RouteAndWpServiceWpComment) encodeRepeating1(stream *DataStream) error 
     return nil
 }
 
-// EncodeRouteAndWpServiceRouteComment encodes a RouteAndWpServiceRouteComment struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceRouteComment(p *RouteAndWpServiceRouteComment, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceRouteComment struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceRouteComment) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartRouteId, p.GetFieldSpec("StartRouteId"))
     if err != nil {
@@ -7408,8 +7408,8 @@ func (p *RouteAndWpServiceRouteComment) encodeRepeating1(stream *DataStream) err
     return nil
 }
 
-// EncodeRouteAndWpServiceDatabaseComment encodes a RouteAndWpServiceDatabaseComment struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceDatabaseComment(p *RouteAndWpServiceDatabaseComment, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceDatabaseComment struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceDatabaseComment) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartDatabaseId, p.GetFieldSpec("StartDatabaseId"))
     if err != nil {
@@ -7456,8 +7456,8 @@ func (p *RouteAndWpServiceDatabaseComment) encodeRepeating1(stream *DataStream) 
     return nil
 }
 
-// EncodeRouteAndWpServiceRadiusOfTurn encodes a RouteAndWpServiceRadiusOfTurn struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceRadiusOfTurn(p *RouteAndWpServiceRadiusOfTurn, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceRadiusOfTurn struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceRadiusOfTurn) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartRps, p.GetFieldSpec("StartRps"))
     if err != nil {
@@ -7512,8 +7512,8 @@ func (p *RouteAndWpServiceRadiusOfTurn) encodeRepeating1(stream *DataStream) err
     return nil
 }
 
-// EncodeRouteAndWpServiceWpListWpNamePosition encodes a RouteAndWpServiceWpListWpNamePosition struct to NMEA 2000 wire format
-func EncodeRouteAndWpServiceWpListWpNamePosition(p *RouteAndWpServiceWpListWpNamePosition, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a RouteAndWpServiceWpListWpNamePosition struct to NMEA 2000 wire format
+func (p *RouteAndWpServiceWpListWpNamePosition) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.StartWpId, p.GetFieldSpec("StartWpId"))
     if err != nil {
@@ -7576,8 +7576,8 @@ func (p *RouteAndWpServiceWpListWpNamePosition) encodeRepeating1(stream *DataStr
     return nil
 }
 
-// EncodeWindData encodes a WindData struct to NMEA 2000 wire format
-func EncodeWindData(p *WindData, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a WindData struct to NMEA 2000 wire format
+func (p *WindData) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -7611,8 +7611,8 @@ func EncodeWindData(p *WindData, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeEnvironmentalParametersObsolete encodes a EnvironmentalParametersObsolete struct to NMEA 2000 wire format
-func EncodeEnvironmentalParametersObsolete(p *EnvironmentalParametersObsolete, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a EnvironmentalParametersObsolete struct to NMEA 2000 wire format
+func (p *EnvironmentalParametersObsolete) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -7646,8 +7646,8 @@ func EncodeEnvironmentalParametersObsolete(p *EnvironmentalParametersObsolete, s
     return &p.Info, err
 }
 
-// EncodeEnvironmentalParameters encodes a EnvironmentalParameters struct to NMEA 2000 wire format
-func EncodeEnvironmentalParameters(p *EnvironmentalParameters, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a EnvironmentalParameters struct to NMEA 2000 wire format
+func (p *EnvironmentalParameters) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -7685,8 +7685,8 @@ func EncodeEnvironmentalParameters(p *EnvironmentalParameters, stream *DataStrea
     return &p.Info, err
 }
 
-// EncodeTemperature encodes a Temperature struct to NMEA 2000 wire format
-func EncodeTemperature(p *Temperature, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Temperature struct to NMEA 2000 wire format
+func (p *Temperature) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -7724,8 +7724,8 @@ func EncodeTemperature(p *Temperature, stream *DataStream) (*MessageInfo, error)
     return &p.Info, err
 }
 
-// EncodeHumidity encodes a Humidity struct to NMEA 2000 wire format
-func EncodeHumidity(p *Humidity, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a Humidity struct to NMEA 2000 wire format
+func (p *Humidity) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -7763,8 +7763,8 @@ func EncodeHumidity(p *Humidity, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeActualPressure encodes a ActualPressure struct to NMEA 2000 wire format
-func EncodeActualPressure(p *ActualPressure, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a ActualPressure struct to NMEA 2000 wire format
+func (p *ActualPressure) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -7798,8 +7798,8 @@ func EncodeActualPressure(p *ActualPressure, stream *DataStream) (*MessageInfo, 
     return &p.Info, err
 }
 
-// EncodeSetPressure encodes a SetPressure struct to NMEA 2000 wire format
-func EncodeSetPressure(p *SetPressure, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a SetPressure struct to NMEA 2000 wire format
+func (p *SetPressure) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -7833,8 +7833,8 @@ func EncodeSetPressure(p *SetPressure, stream *DataStream) (*MessageInfo, error)
     return &p.Info, err
 }
 
-// EncodeTemperatureExtendedRange encodes a TemperatureExtendedRange struct to NMEA 2000 wire format
-func EncodeTemperatureExtendedRange(p *TemperatureExtendedRange, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a TemperatureExtendedRange struct to NMEA 2000 wire format
+func (p *TemperatureExtendedRange) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
@@ -7868,8 +7868,8 @@ func EncodeTemperatureExtendedRange(p *TemperatureExtendedRange, stream *DataStr
     return &p.Info, err
 }
 
-// EncodeTideStationData encodes a TideStationData struct to NMEA 2000 wire format
-func EncodeTideStationData(p *TideStationData, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a TideStationData struct to NMEA 2000 wire format
+func (p *TideStationData) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.Mode), 4, 0)
     if err != nil {
@@ -7927,8 +7927,8 @@ func EncodeTideStationData(p *TideStationData, stream *DataStream) (*MessageInfo
     return &p.Info, err
 }
 
-// EncodeWatermakerInputSettingAndStatus encodes a WatermakerInputSettingAndStatus struct to NMEA 2000 wire format
-func EncodeWatermakerInputSettingAndStatus(p *WatermakerInputSettingAndStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a WatermakerInputSettingAndStatus struct to NMEA 2000 wire format
+func (p *WatermakerInputSettingAndStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.WatermakerOperatingState), 6, 0)
     if err != nil {
@@ -8034,8 +8034,8 @@ func EncodeWatermakerInputSettingAndStatus(p *WatermakerInputSettingAndStatus, s
     return &p.Info, err
 }
 
-// EncodeVesselSpeedComponents encodes a VesselSpeedComponents struct to NMEA 2000 wire format
-func EncodeVesselSpeedComponents(p *VesselSpeedComponents, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a VesselSpeedComponents struct to NMEA 2000 wire format
+func (p *VesselSpeedComponents) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.writeUnit(p.LongitudinalSpeedWaterReferenced, p.GetFieldSpec("LongitudinalSpeedWaterReferenced"))
     if err != nil {
@@ -8073,8 +8073,8 @@ func EncodeVesselSpeedComponents(p *VesselSpeedComponents, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeSonichubVolume encodes a SonichubVolume struct to NMEA 2000 wire format
-func EncodeSonichubVolume(p *SonichubVolume, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a SonichubVolume struct to NMEA 2000 wire format
+func (p *SonichubVolume) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8120,8 +8120,8 @@ func EncodeSonichubVolume(p *SonichubVolume, stream *DataStream) (*MessageInfo, 
     return &p.Info, err
 }
 
-// EncodeFusionVersions encodes a FusionVersions struct to NMEA 2000 wire format
-func EncodeFusionVersions(p *FusionVersions, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionVersions struct to NMEA 2000 wire format
+func (p *FusionVersions) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8171,8 +8171,8 @@ func EncodeFusionVersions(p *FusionVersions, stream *DataStream) (*MessageInfo, 
     return &p.Info, err
 }
 
-// EncodeFusionSource encodes a FusionSource struct to NMEA 2000 wire format
-func EncodeFusionSource(p *FusionSource, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSource struct to NMEA 2000 wire format
+func (p *FusionSource) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8222,8 +8222,8 @@ func EncodeFusionSource(p *FusionSource, stream *DataStream) (*MessageInfo, erro
     return &p.Info, err
 }
 
-// EncodeFusionSourceCount encodes a FusionSourceCount struct to NMEA 2000 wire format
-func EncodeFusionSourceCount(p *FusionSourceCount, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSourceCount struct to NMEA 2000 wire format
+func (p *FusionSourceCount) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8257,8 +8257,8 @@ func EncodeFusionSourceCount(p *FusionSourceCount, stream *DataStream) (*Message
     return &p.Info, err
 }
 
-// EncodeFusionMedia encodes a FusionMedia struct to NMEA 2000 wire format
-func EncodeFusionMedia(p *FusionMedia, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionMedia struct to NMEA 2000 wire format
+func (p *FusionMedia) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8312,8 +8312,8 @@ func EncodeFusionMedia(p *FusionMedia, stream *DataStream) (*MessageInfo, error)
     return &p.Info, err
 }
 
-// EncodeFusionTrackName encodes a FusionTrackName struct to NMEA 2000 wire format
-func EncodeFusionTrackName(p *FusionTrackName, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionTrackName struct to NMEA 2000 wire format
+func (p *FusionTrackName) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8355,8 +8355,8 @@ func EncodeFusionTrackName(p *FusionTrackName, stream *DataStream) (*MessageInfo
     return &p.Info, err
 }
 
-// EncodeFusionArtistName encodes a FusionArtistName struct to NMEA 2000 wire format
-func EncodeFusionArtistName(p *FusionArtistName, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionArtistName struct to NMEA 2000 wire format
+func (p *FusionArtistName) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8398,8 +8398,8 @@ func EncodeFusionArtistName(p *FusionArtistName, stream *DataStream) (*MessageIn
     return &p.Info, err
 }
 
-// EncodeFusionAlbumName encodes a FusionAlbumName struct to NMEA 2000 wire format
-func EncodeFusionAlbumName(p *FusionAlbumName, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionAlbumName struct to NMEA 2000 wire format
+func (p *FusionAlbumName) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8441,8 +8441,8 @@ func EncodeFusionAlbumName(p *FusionAlbumName, stream *DataStream) (*MessageInfo
     return &p.Info, err
 }
 
-// EncodeFusionDeviceName encodes a FusionDeviceName struct to NMEA 2000 wire format
-func EncodeFusionDeviceName(p *FusionDeviceName, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionDeviceName struct to NMEA 2000 wire format
+func (p *FusionDeviceName) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8476,8 +8476,8 @@ func EncodeFusionDeviceName(p *FusionDeviceName, stream *DataStream) (*MessageIn
     return &p.Info, err
 }
 
-// EncodeFusionZoneName encodes a FusionZoneName struct to NMEA 2000 wire format
-func EncodeFusionZoneName(p *FusionZoneName, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionZoneName struct to NMEA 2000 wire format
+func (p *FusionZoneName) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8515,8 +8515,8 @@ func EncodeFusionZoneName(p *FusionZoneName, stream *DataStream) (*MessageInfo, 
     return &p.Info, err
 }
 
-// EncodeFusionTrackPosition encodes a FusionTrackPosition struct to NMEA 2000 wire format
-func EncodeFusionTrackPosition(p *FusionTrackPosition, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionTrackPosition struct to NMEA 2000 wire format
+func (p *FusionTrackPosition) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8554,8 +8554,8 @@ func EncodeFusionTrackPosition(p *FusionTrackPosition, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeFusionTuner encodes a FusionTuner struct to NMEA 2000 wire format
-func EncodeFusionTuner(p *FusionTuner, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionTuner struct to NMEA 2000 wire format
+func (p *FusionTuner) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8605,8 +8605,8 @@ func EncodeFusionTuner(p *FusionTuner, stream *DataStream) (*MessageInfo, error)
     return &p.Info, err
 }
 
-// EncodeFusionMarineTuner encodes a FusionMarineTuner struct to NMEA 2000 wire format
-func EncodeFusionMarineTuner(p *FusionMarineTuner, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionMarineTuner struct to NMEA 2000 wire format
+func (p *FusionMarineTuner) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8652,8 +8652,8 @@ func EncodeFusionMarineTuner(p *FusionMarineTuner, stream *DataStream) (*Message
     return &p.Info, err
 }
 
-// EncodeFusionMarineSquelch encodes a FusionMarineSquelch struct to NMEA 2000 wire format
-func EncodeFusionMarineSquelch(p *FusionMarineSquelch, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionMarineSquelch struct to NMEA 2000 wire format
+func (p *FusionMarineSquelch) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8691,8 +8691,8 @@ func EncodeFusionMarineSquelch(p *FusionMarineSquelch, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeFusionMarineScanMode encodes a FusionMarineScanMode struct to NMEA 2000 wire format
-func EncodeFusionMarineScanMode(p *FusionMarineScanMode, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionMarineScanMode struct to NMEA 2000 wire format
+func (p *FusionMarineScanMode) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8730,8 +8730,8 @@ func EncodeFusionMarineScanMode(p *FusionMarineScanMode, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeFusionMenuItem encodes a FusionMenuItem struct to NMEA 2000 wire format
-func EncodeFusionMenuItem(p *FusionMenuItem, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionMenuItem struct to NMEA 2000 wire format
+func (p *FusionMenuItem) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8781,8 +8781,8 @@ func EncodeFusionMenuItem(p *FusionMenuItem, stream *DataStream) (*MessageInfo, 
     return &p.Info, err
 }
 
-// EncodeFusionAuxGain encodes a FusionAuxGain struct to NMEA 2000 wire format
-func EncodeFusionAuxGain(p *FusionAuxGain, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionAuxGain struct to NMEA 2000 wire format
+func (p *FusionAuxGain) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8820,8 +8820,8 @@ func EncodeFusionAuxGain(p *FusionAuxGain, stream *DataStream) (*MessageInfo, er
     return &p.Info, err
 }
 
-// EncodeFusionUsbRepeatStatus encodes a FusionUsbRepeatStatus struct to NMEA 2000 wire format
-func EncodeFusionUsbRepeatStatus(p *FusionUsbRepeatStatus, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionUsbRepeatStatus struct to NMEA 2000 wire format
+func (p *FusionUsbRepeatStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8859,8 +8859,8 @@ func EncodeFusionUsbRepeatStatus(p *FusionUsbRepeatStatus, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeFusionSetting encodes a FusionSetting struct to NMEA 2000 wire format
-func EncodeFusionSetting(p *FusionSetting, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSetting struct to NMEA 2000 wire format
+func (p *FusionSetting) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8898,8 +8898,8 @@ func EncodeFusionSetting(p *FusionSetting, stream *DataStream) (*MessageInfo, er
     return &p.Info, err
 }
 
-// EncodeFusionSettings encodes a FusionSettings struct to NMEA 2000 wire format
-func EncodeFusionSettings(p *FusionSettings, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSettings struct to NMEA 2000 wire format
+func (p *FusionSettings) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8954,8 +8954,8 @@ func (p *FusionSettings) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeFusionMute encodes a FusionMute struct to NMEA 2000 wire format
-func EncodeFusionMute(p *FusionMute, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionMute struct to NMEA 2000 wire format
+func (p *FusionMute) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8989,8 +8989,8 @@ func EncodeFusionMute(p *FusionMute, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeFusionBalance encodes a FusionBalance struct to NMEA 2000 wire format
-func EncodeFusionBalance(p *FusionBalance, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionBalance struct to NMEA 2000 wire format
+func (p *FusionBalance) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9028,8 +9028,8 @@ func EncodeFusionBalance(p *FusionBalance, stream *DataStream) (*MessageInfo, er
     return &p.Info, err
 }
 
-// EncodeFusionLowPassFilter encodes a FusionLowPassFilter struct to NMEA 2000 wire format
-func EncodeFusionLowPassFilter(p *FusionLowPassFilter, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionLowPassFilter struct to NMEA 2000 wire format
+func (p *FusionLowPassFilter) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9067,8 +9067,8 @@ func EncodeFusionLowPassFilter(p *FusionLowPassFilter, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeFusionSublevels encodes a FusionSublevels struct to NMEA 2000 wire format
-func EncodeFusionSublevels(p *FusionSublevels, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSublevels struct to NMEA 2000 wire format
+func (p *FusionSublevels) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9114,8 +9114,8 @@ func EncodeFusionSublevels(p *FusionSublevels, stream *DataStream) (*MessageInfo
     return &p.Info, err
 }
 
-// EncodeFusionEq encodes a FusionEq struct to NMEA 2000 wire format
-func EncodeFusionEq(p *FusionEq, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionEq struct to NMEA 2000 wire format
+func (p *FusionEq) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9161,8 +9161,8 @@ func EncodeFusionEq(p *FusionEq, stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
-// EncodeFusionVolumeLimits encodes a FusionVolumeLimits struct to NMEA 2000 wire format
-func EncodeFusionVolumeLimits(p *FusionVolumeLimits, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionVolumeLimits struct to NMEA 2000 wire format
+func (p *FusionVolumeLimits) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9208,8 +9208,8 @@ func EncodeFusionVolumeLimits(p *FusionVolumeLimits, stream *DataStream) (*Messa
     return &p.Info, err
 }
 
-// EncodeFusionVolumes encodes a FusionVolumes struct to NMEA 2000 wire format
-func EncodeFusionVolumes(p *FusionVolumes, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionVolumes struct to NMEA 2000 wire format
+func (p *FusionVolumes) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9255,8 +9255,8 @@ func EncodeFusionVolumes(p *FusionVolumes, stream *DataStream) (*MessageInfo, er
     return &p.Info, err
 }
 
-// EncodeFusionCapabilities encodes a FusionCapabilities struct to NMEA 2000 wire format
-func EncodeFusionCapabilities(p *FusionCapabilities, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionCapabilities struct to NMEA 2000 wire format
+func (p *FusionCapabilities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9306,8 +9306,8 @@ func EncodeFusionCapabilities(p *FusionCapabilities, stream *DataStream) (*Messa
     return &p.Info, err
 }
 
-// EncodeFusionLineLevelControl encodes a FusionLineLevelControl struct to NMEA 2000 wire format
-func EncodeFusionLineLevelControl(p *FusionLineLevelControl, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionLineLevelControl struct to NMEA 2000 wire format
+func (p *FusionLineLevelControl) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9345,8 +9345,8 @@ func EncodeFusionLineLevelControl(p *FusionLineLevelControl, stream *DataStream)
     return &p.Info, err
 }
 
-// EncodeFusionPowerState encodes a FusionPowerState struct to NMEA 2000 wire format
-func EncodeFusionPowerState(p *FusionPowerState, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionPowerState struct to NMEA 2000 wire format
+func (p *FusionPowerState) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9380,8 +9380,8 @@ func EncodeFusionPowerState(p *FusionPowerState, stream *DataStream) (*MessageIn
     return &p.Info, err
 }
 
-// EncodeFusionSiriusxm encodes a FusionSiriusxm struct to NMEA 2000 wire format
-func EncodeFusionSiriusxm(p *FusionSiriusxm, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSiriusxm struct to NMEA 2000 wire format
+func (p *FusionSiriusxm) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9431,8 +9431,8 @@ func EncodeFusionSiriusxm(p *FusionSiriusxm, stream *DataStream) (*MessageInfo, 
     return &p.Info, err
 }
 
-// EncodeFusionSiriusxmChannel encodes a FusionSiriusxmChannel struct to NMEA 2000 wire format
-func EncodeFusionSiriusxmChannel(p *FusionSiriusxmChannel, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSiriusxmChannel struct to NMEA 2000 wire format
+func (p *FusionSiriusxmChannel) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9474,8 +9474,8 @@ func EncodeFusionSiriusxmChannel(p *FusionSiriusxmChannel, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeFusionSiriusxmTitle encodes a FusionSiriusxmTitle struct to NMEA 2000 wire format
-func EncodeFusionSiriusxmTitle(p *FusionSiriusxmTitle, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSiriusxmTitle struct to NMEA 2000 wire format
+func (p *FusionSiriusxmTitle) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9517,8 +9517,8 @@ func EncodeFusionSiriusxmTitle(p *FusionSiriusxmTitle, stream *DataStream) (*Mes
     return &p.Info, err
 }
 
-// EncodeFusionSiriusxmArtist encodes a FusionSiriusxmArtist struct to NMEA 2000 wire format
-func EncodeFusionSiriusxmArtist(p *FusionSiriusxmArtist, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSiriusxmArtist struct to NMEA 2000 wire format
+func (p *FusionSiriusxmArtist) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9560,8 +9560,8 @@ func EncodeFusionSiriusxmArtist(p *FusionSiriusxmArtist, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeFusionSiriusxmContentInfo encodes a FusionSiriusxmContentInfo struct to NMEA 2000 wire format
-func EncodeFusionSiriusxmContentInfo(p *FusionSiriusxmContentInfo, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSiriusxmContentInfo struct to NMEA 2000 wire format
+func (p *FusionSiriusxmContentInfo) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9603,8 +9603,8 @@ func EncodeFusionSiriusxmContentInfo(p *FusionSiriusxmContentInfo, stream *DataS
     return &p.Info, err
 }
 
-// EncodeFusionSiriusxmCategory encodes a FusionSiriusxmCategory struct to NMEA 2000 wire format
-func EncodeFusionSiriusxmCategory(p *FusionSiriusxmCategory, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSiriusxmCategory struct to NMEA 2000 wire format
+func (p *FusionSiriusxmCategory) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9646,8 +9646,8 @@ func EncodeFusionSiriusxmCategory(p *FusionSiriusxmCategory, stream *DataStream)
     return &p.Info, err
 }
 
-// EncodeFusionSiriusxmSignal encodes a FusionSiriusxmSignal struct to NMEA 2000 wire format
-func EncodeFusionSiriusxmSignal(p *FusionSiriusxmSignal, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSiriusxmSignal struct to NMEA 2000 wire format
+func (p *FusionSiriusxmSignal) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9685,8 +9685,8 @@ func EncodeFusionSiriusxmSignal(p *FusionSiriusxmSignal, stream *DataStream) (*M
     return &p.Info, err
 }
 
-// EncodeFusionSiriusxmPresets encodes a FusionSiriusxmPresets struct to NMEA 2000 wire format
-func EncodeFusionSiriusxmPresets(p *FusionSiriusxmPresets, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a FusionSiriusxmPresets struct to NMEA 2000 wire format
+func (p *FusionSiriusxmPresets) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
 		var binaryLength uint16
 		if p.Count != nil {
@@ -9732,8 +9732,8 @@ func EncodeFusionSiriusxmPresets(p *FusionSiriusxmPresets, stream *DataStream) (
     return &p.Info, err
 }
 
-// EncodeMaretronProprietaryTemperatureHighRange encodes a MaretronProprietaryTemperatureHighRange struct to NMEA 2000 wire format
-func EncodeMaretronProprietaryTemperatureHighRange(p *MaretronProprietaryTemperatureHighRange, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a MaretronProprietaryTemperatureHighRange struct to NMEA 2000 wire format
+func (p *MaretronProprietaryTemperatureHighRange) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9779,8 +9779,8 @@ func EncodeMaretronProprietaryTemperatureHighRange(p *MaretronProprietaryTempera
     return &p.Info, err
 }
 
-// EncodeBGKeyValueData encodes a BGKeyValueData struct to NMEA 2000 wire format
-func EncodeBGKeyValueData(p *BGKeyValueData, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a BGKeyValueData struct to NMEA 2000 wire format
+func (p *BGKeyValueData) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9835,8 +9835,8 @@ func (p *BGKeyValueData) encodeRepeating1(stream *DataStream) error {
     return nil
 }
 
-// EncodeMaretronSwitchStatusCounter encodes a MaretronSwitchStatusCounter struct to NMEA 2000 wire format
-func EncodeMaretronSwitchStatusCounter(p *MaretronSwitchStatusCounter, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a MaretronSwitchStatusCounter struct to NMEA 2000 wire format
+func (p *MaretronSwitchStatusCounter) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -9898,8 +9898,8 @@ func EncodeMaretronSwitchStatusCounter(p *MaretronSwitchStatusCounter, stream *D
     return &p.Info, err
 }
 
-// EncodeMaretronSwitchStatusTimer encodes a MaretronSwitchStatusTimer struct to NMEA 2000 wire format
-func EncodeMaretronSwitchStatusTimer(p *MaretronSwitchStatusTimer, stream *DataStream) (*MessageInfo, error) {
+// Encode encodes a MaretronSwitchStatusTimer struct to NMEA 2000 wire format
+func (p *MaretronSwitchStatusTimer) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {

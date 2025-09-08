@@ -4,7 +4,7 @@ package endpoint
 import (
 	"context"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
+	"github.com/boatkit-io/n2k/internal/adapter"
 	"github.com/brutella/can"
 )
 

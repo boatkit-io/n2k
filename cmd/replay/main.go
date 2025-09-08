@@ -10,12 +10,13 @@ import (
 
 	//	"time"
 
-	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
+	"github.com/boatkit-io/n2k/internal/adapter/canadapter"
+	"github.com/boatkit-io/n2k/internal/pgn"
+	"github.com/boatkit-io/n2k/internal/pkt"
+	"github.com/boatkit-io/n2k/internal/subscribe"
 	"github.com/boatkit-io/n2k/pkg/endpoint/n2kfileendpoint"
 	"github.com/boatkit-io/n2k/pkg/endpoint/rawendpoint"
-	"github.com/boatkit-io/n2k/pkg/pgn"
-	"github.com/boatkit-io/n2k/pkg/pkt"
-	"github.com/boatkit-io/n2k/pkg/subscribe"
+	"github.com/boatkit-io/n2k/pkg/n2k"
 
 	//	"github.com/boatkit-io/n2k/pkg/subscribe"
 
@@ -72,7 +73,7 @@ func main() {
 		if dumpPgns {
 			index := 0
 			_, _ = subs.SubscribeToAllStructs(func(p any) {
-				log.Infof("Handling PGN: %s", pgn.DebugDumpPGN(p))
+				log.Infof("Handling PGN: %s", n2k.DebugDumpPGN(p))
 				index++
 			})
 		}

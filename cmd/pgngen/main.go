@@ -317,6 +317,7 @@ func (conv *canboatConverter) write() {
 	internalTemplates := map[string]string{
 		"types_generated.go":          "runtime/types.go.tmpl",
 		"enums_generated.go":          "runtime/enums.go.tmpl",
+		"consts_generated.go":         "runtime/consts.go.tmpl",
 		"methods_generated.go":        "runtime/methods.go.tmpl",
 		"pgninfo_generated.go":        "runtime/pgninfo.go.tmpl",
 		"decoders_generated.go":       "runtime/decoders.go.tmpl",
@@ -335,8 +336,9 @@ func (conv *canboatConverter) write() {
 
 	// Generate public API type aliases
 	publicTemplates := map[string]string{
-		"types_generated.go": "public/types.go.tmpl",
-		"enums_generated.go": "public/enums.go.tmpl",
+		"types_generated.go":  "public/types.go.tmpl",
+		"enums_generated.go":  "public/enums.go.tmpl",
+		"consts_generated.go": "public/consts.go.tmpl",
 	}
 
 	for filename, templatePath := range publicTemplates {
@@ -432,18 +434,6 @@ func calcMissingValue(field PGNField) uint64 {
 		missing >>= 1 // missing flag is max positive value; negative value has high bit set
 	}
 	return missing
-}
-
-// calcInvalidValue calculates the sentinel value representing invalid data (if applicable)
-func calcInvalidValue(field PGNField) uint64 {
-	reservedCount := getReservedValueCount(field)
-	if reservedCount < 2 {
-		// Only one reserved value, so invalid == missing
-		return calcMissingValue(field)
-	}
-
-	// Invalid value is missing value minus 1
-	return calcMissingValue(field) - 1
 }
 
 // needsScaling returns true if the field requires resolution/offset processing
@@ -1311,7 +1301,7 @@ type DecoderConfig struct {
 
 func getDecoderConfig(pgn PGN) DecoderConfig {
 	dynamicLengthField := uint8(0)
-	for _, field := range pgn.Fields {
+	for _, field := range pgn.AllFields {
 		if field.FieldType == "DYNAMIC_FIELD_LENGTH" {
 			dynamicLengthField = field.Order
 		}

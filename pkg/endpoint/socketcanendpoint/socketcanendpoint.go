@@ -4,7 +4,7 @@ package socketcanendpoint
 import (
 	"context"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
+	"github.com/boatkit-io/n2k/internal/adapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/boatkit-io/tugboat/pkg/canbus"
 	"github.com/brutella/can"

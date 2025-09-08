@@ -9,10 +9,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
-	"github.com/boatkit-io/n2k/pkg/converter"
-	"github.com/boatkit-io/n2k/pkg/pgn"
-	"github.com/boatkit-io/n2k/pkg/pkt"
+	"github.com/boatkit-io/n2k/internal/adapter/canadapter"
+	"github.com/boatkit-io/n2k/internal/converter"
+	"github.com/boatkit-io/n2k/internal/pgn"
+	"github.com/boatkit-io/n2k/internal/pkt"
 	"github.com/brutella/can"
 	"github.com/sirupsen/logrus"
 )

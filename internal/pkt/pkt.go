@@ -102,19 +102,10 @@ func (p *Packet) UnknownPGN() pgn.UnknownPGN {
 
 // AddDecoders filters candidate decoders when the manufacturer of a proprietary messasge doesn't match.
 func (p *Packet) AddDecoders() {
-	p.GetManCode() // sets p.Manufacturer
 	for _, d := range p.Candidates {
 		if p.Proprietary && p.Manufacturer != d.ManId {
 			continue
 		}
 		p.Decoders = append(p.Decoders, d.Decoder)
-	}
-}
-
-// GetManCode sets the Manufacturer for proprietary PGNs.
-func (p *Packet) GetManCode() {
-	m, _, err := pgn.GetProprietaryInfo(p.Data)
-	if err == nil {
-		p.Manufacturer = m
 	}
 }
