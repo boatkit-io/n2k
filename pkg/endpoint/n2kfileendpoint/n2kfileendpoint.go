@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
+	"github.com/boatkit-io/n2k/internal/adapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/brutella/can"
 	"github.com/pkg/errors"

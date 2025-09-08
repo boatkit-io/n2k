@@ -254,14 +254,20 @@ func (conv *canboatConverter) filter() {
 
 // write outputs the pgninfo_generated.go file. Most of the work occurs in the template.
 func (conv *canboatConverter) write() {
-	// Create output directories
-	clientDir := filepath.Join("pkg", "pgn", "client")
-	runtimeDir := filepath.Join("pkg", "pgn", "runtime")
-
-	if err := os.MkdirAll(clientDir, 0755); err != nil {
+	// Get the project root directory
+	projectRoot, err := filepath.Abs(".")
+	if err != nil {
 		panic(err)
 	}
-	if err := os.MkdirAll(runtimeDir, 0755); err != nil {
+
+	// Create output directories
+	internalPGNDir := filepath.Join(projectRoot, "internal", "pgn")
+	publicN2kDir := filepath.Join(projectRoot, "pkg", "n2k")
+
+	if err := os.MkdirAll(internalPGNDir, 0755); err != nil {
+		panic(err)
+	}
+	if err := os.MkdirAll(publicN2kDir, 0755); err != nil {
 		panic(err)
 	}
 
@@ -282,6 +288,8 @@ func (conv *canboatConverter) write() {
 		"generateFieldSpecConstant": generateFieldSpecConstant,
 		"getMaxRawValue":            calcMaxRawValue,
 		"getMissingValue":           calcMissingValue,
+		"calcMaxValidRawValue":      calcMaxValidRawValue,
+		"calcMissingValue":          calcMissingValue,
 		"derefOrZero": func(v *uint64) uint64 {
 			if v == nil {
 				return 0
@@ -294,6 +302,7 @@ func (conv *canboatConverter) write() {
 		"contains":            func(in, substr string) bool { return strings.Contains(in, substr) },
 		"hasMultipleVariants": hasMultipleVariants,
 		"getVariantsForPgn":   getVariantsForPgn,
+		"getDecoderConfig":    getDecoderConfig,
 	}
 
 	// Template data
@@ -304,45 +313,48 @@ func (conv *canboatConverter) write() {
 		PGNDoc: conv,
 	}
 
-	// Generate client API files
-	clientTemplates := map[string]string{
-		"types.go":     "client/types.go.tmpl",
-		"enums.go":     "client/enums.go.tmpl",
-		"subscribe.go": "client/subscribe.go.tmpl",
-		"write.go":     "client/write.go.tmpl",
+	// Generate internal PGN files
+	internalTemplates := map[string]string{
+		"types_generated.go":          "runtime/types.go.tmpl",
+		"enums_generated.go":          "runtime/enums.go.tmpl",
+		"methods_generated.go":        "runtime/methods.go.tmpl",
+		"pgninfo_generated.go":        "runtime/pgninfo.go.tmpl",
+		"decoders_generated.go":       "runtime/decoders.go.tmpl",
+		"encoders_generated.go":       "runtime/encoders.go.tmpl",
+		"discriminators_generated.go": "runtime/discriminators.go.tmpl",
+		"fieldspecs_generated.go":     "runtime/fieldspecs.go.tmpl",
 	}
 
-	for filename, templatePath := range clientTemplates {
-		if err := conv.generateFile(filepath.Join(clientDir, filename), templatePath, funcMap, templateData); err != nil {
+	for filename, templatePath := range internalTemplates {
+		fmt.Printf("Generating internal file: %s from template: %s\n", filename, templatePath)
+		if err := conv.generateFile(filepath.Join(internalPGNDir, filename), templatePath, funcMap, templateData); err != nil {
+			fmt.Printf("Error generating %s: %v\n", filename, err)
 			panic(err)
 		}
 	}
 
-	// Generate runtime files
-	runtimeTemplates := map[string]string{
-		"pgninfo.go":        "runtime/pgninfo.go.tmpl",
-		"decoders.go":       "runtime/decoders.go.tmpl",
-		"encoders.go":       "runtime/encoders.go.tmpl",
-		"discriminators.go": "runtime/discriminators.go.tmpl",
-		"fieldspecs.go":     "runtime/fieldspecs.go.tmpl",
+	// Generate public API type aliases
+	publicTemplates := map[string]string{
+		"types_generated.go": "public/types.go.tmpl",
+		"enums_generated.go": "public/enums.go.tmpl",
 	}
 
-	for filename, templatePath := range runtimeTemplates {
-		if err := conv.generateFile(filepath.Join(runtimeDir, filename), templatePath, funcMap, templateData); err != nil {
+	for filename, templatePath := range publicTemplates {
+		fmt.Printf("Generating public file: %s from template: %s\n", filename, templatePath)
+		if err := conv.generateFile(filepath.Join(publicN2kDir, filename), templatePath, funcMap, templateData); err != nil {
+			fmt.Printf("Error generating %s: %v\n", filename, err)
 			panic(err)
 		}
 	}
 
-	// Keep the original single file for backward compatibility during transition
-	if err := conv.generateFile(filepath.Join("pkg", "pgn", "pgninfo_generated.go"), "pgninfo.go.tmpl", funcMap, templateData); err != nil {
-		panic(err)
-	}
 }
 
 // generateFile generates a single file from a template
 func (conv *canboatConverter) generateFile(outputPath, templatePath string, funcMap template.FuncMap, data interface{}) error {
+	templateFullPath := filepath.Join("cmd/pgngen/templates", templatePath)
+	fmt.Printf("  Reading template: %s\n", templateFullPath)
 	// Read template file
-	templateContent, err := os.ReadFile(filepath.Join("cmd", "pgngen", "templates", templatePath))
+	templateContent, err := os.ReadFile(templateFullPath)
 	if err != nil {
 		return err
 	}
@@ -350,6 +362,7 @@ func (conv *canboatConverter) generateFile(outputPath, templatePath string, func
 	// Create template
 	t := template.Must(template.New(templatePath).Funcs(sprig.TxtFuncMap()).Funcs(funcMap).Parse(string(templateContent)))
 
+	fmt.Printf("  Creating output file: %s\n", outputPath)
 	// Create output file
 	f, err := os.Create(outputPath)
 	if err != nil {
@@ -362,6 +375,7 @@ func (conv *canboatConverter) generateFile(outputPath, templatePath string, func
 		return err
 	}
 
+	fmt.Printf("  Successfully generated: %s\n", outputPath)
 	return nil
 }
 
@@ -1284,4 +1298,30 @@ func getVariantsForPgn(pgn PGN) []PGN {
 	// This will be implemented to return variants for a PGN
 	// For now, return empty slice - will be updated when we implement the discriminator logic
 	return []PGN{}
+}
+
+type DecoderConfig struct {
+	Repeat1            bool
+	Repeat2            bool
+	Repeat1CountField  uint8
+	Repeat2CountField  uint8
+	BitLengthField     uint8
+	DynamicLengthField uint8
+}
+
+func getDecoderConfig(pgn PGN) DecoderConfig {
+	dynamicLengthField := uint8(0)
+	for _, field := range pgn.Fields {
+		if field.FieldType == "DYNAMIC_FIELD_LENGTH" {
+			dynamicLengthField = field.Order
+		}
+	}
+	return DecoderConfig{
+		Repeat1:            pgn.RepeatingFieldSet1Size > 0,
+		Repeat2:            pgn.RepeatingFieldSet2Size > 0,
+		Repeat1CountField:  pgn.RepeatingFieldSet1CountField,
+		Repeat2CountField:  pgn.RepeatingFieldSet2CountField,
+		BitLengthField:     pgn.BitLengthField,
+		DynamicLengthField: dynamicLengthField,
+	}
 }

@@ -3,7 +3,7 @@ package integration
 import (
 	"testing"
 
-	"github.com/boatkit-io/n2k/pkg/pgn"
+	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

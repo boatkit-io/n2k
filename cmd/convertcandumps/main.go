@@ -38,7 +38,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/boatkit-io/n2k/pkg/pgn"
+	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/brutella/can"
 
 	//	"github.com/Masterminds/sprig/v3"

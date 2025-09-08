@@ -10,6 +10,14 @@ import (
 	"github.com/boatkit-io/tugboat/pkg/units"
 )
 
+func nullableUnit[T any, U any, V float32|uint16|int16|uint32](u U, v *V, newer func(u U, v float32) T) *T {
+	if v == nil {
+		return nil
+	}
+	ov := newer(u, float32(*v))
+	return &ov
+}
+
 // PgnInfo instances describe known NMEA 2000 messages.
 type PgnInfo struct {
 	// Id needed to distinguish pgns with KeyValue fields
