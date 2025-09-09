@@ -38,6 +38,7 @@ func (p *{{ .Id }}) GetFieldSpec(fieldName string) *FieldSpec {
         {{- end }}
         return &FieldSpec{
             BitLength: {{ .BitLength }},
+            BitOffset: {{ .BitOffset }},
             MaxRawValue: {{ $maxRawValue }},
             MissingValue: {{ $missingValue }},
             Resolution: {{ $resolution }},

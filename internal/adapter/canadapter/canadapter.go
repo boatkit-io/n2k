@@ -67,14 +67,13 @@ func (c *CANAdapter) HandleMessage(message adapter.Message) {
 			return
 		}
 
-		if pkt.Fast {
+		if pgn.IsFast(pkt.Info.PGN) {
 			c.multi.Add(pkt)
 		} else {
 			pkt.Complete = true
 		}
 
 		if pkt.Complete {
-			pkt.AddDecoders()
 			c.packetReady(pkt)
 		}
 	default:

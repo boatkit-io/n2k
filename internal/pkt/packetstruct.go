@@ -28,27 +28,24 @@ func (ps *PacketStruct) SetOutput(sh StructHandler) {
 
 // HandlePacket is how you tell PacketStruct to start processing a new packet into a PGN
 func (ps *PacketStruct) HandlePacket(pkt Packet) {
-	if len(pkt.Decoders) > 0 {
-		// call frame decoders, send valid return on.
-		for _, decoder := range pkt.Decoders {
-			stream := pgn.NewDataStream(pkt.Data)
-			ret, err := decoder(pkt.Info, stream)
-			if err != nil {
-				pkt.ParseErrors = append(pkt.ParseErrors, err)
-				continue
-			} else {
-				ps.pgnReady(ret)
-				return
-			}
-		}
-
-		// no decoder succeeded
+	// Find the appropriate decoder using the discriminator system
+	stream := pgn.NewDataStream(pkt.Data)
+	decoder, err := pgn.FindDecoder(pkt.Info.PGN, stream)
+	if err != nil {
+		pkt.ParseErrors = append(pkt.ParseErrors, fmt.Errorf("no matching decoder for PGN %d: %w", pkt.Info.PGN, err))
 		ps.pgnReady(pkt.UnknownPGN())
-	} else {
-		// No valid decoder, so send on an UnknownPGN.
-		pkt.ParseErrors = append(pkt.ParseErrors, fmt.Errorf("no matching decoder"))
-		ps.pgnReady(pkt.UnknownPGN())
+		return
 	}
+
+	// Decode the packet using the found decoder
+	ret, err := decoder(pkt.Info, stream)
+	if err != nil {
+		pkt.ParseErrors = append(pkt.ParseErrors, err)
+		ps.pgnReady(pkt.UnknownPGN())
+		return
+	}
+
+	ps.pgnReady(ret)
 }
 
 // pgnReady is a helper to call when a PGN is ready to run it through the handler

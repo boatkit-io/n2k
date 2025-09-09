@@ -133,13 +133,6 @@ func SearchUnseenList(pgn uint32) bool {
 	return UnseenLookup[pgn] != nil
 }
 
-// IsFast returns true if the specified PGN is Fast
-func IsFast(pgn uint32) bool {
-	if pi, piKnown := PgnInfoLookup[pgn]; piKnown {
-		return pi[0].Fast
-	}
-	return false // should never be called with an invalid PGN, but avoid a panic
-}
 
 // GetPgnInfo returns the first PgnInfo for a given PGN, or nil if not found
 func GetPgnInfo(pgn uint32) *PgnInfo {

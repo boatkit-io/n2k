@@ -21,53 +21,15 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// decodeFuncs maps PGN struct names to their decode functions
-var decodeFuncs map[string]interface{}
-
 // pgnCount represents a PGN type and its count
 type pgnCount struct {
 	name  string
 	count int
 }
 
-func init() {
-	decodeFuncs = make(map[string]interface{})
-	for _, pgnInfo := range pgn.PgnList {
-		// Skip NMEA types as they're handled differently
-		/* if strings.HasPrefix(pgnInfo.Id, "Nmea") {
-			continue
-		} */
-
-		typeName := pgnInfo.Id
-		decodeFuncs[typeName] = pgnInfo.Decoder
-	}
-}
-
-// findDecodeFunc finds the appropriate Decode function for a given PGN struct
-func findDecodeFunc(pgnStruct pgn.PgnStruct) (reflect.Value, error) {
-	pgnType := reflect.TypeOf(pgnStruct)
-
-	// If it's a pointer, get the underlying type
-	if pgnType.Kind() == reflect.Ptr {
-		pgnType = pgnType.Elem()
-	}
-
-	typeName := pgnType.String()
-	if idx := strings.LastIndex(typeName, "."); idx >= 0 {
-		typeName = typeName[idx+1:]
-	}
-
-	fn, ok := decodeFuncs[typeName]
-	if !ok {
-		return reflect.Value{}, fmt.Errorf("decode function not found for type %s", typeName)
-	}
-
-	return reflect.ValueOf(fn), nil
-}
-
 func TestPGNSerializationFromN2K(t *testing.T) {
 	// Get path to test data file
-	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/n2k", "susterrana2020Test.n2k")
+	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/integration", "susterrana2020Test.n2k")
 
 	// Setup the file endpoint
 	ca := canadapter.NewCANAdapter(logrus.New())
@@ -127,28 +89,21 @@ func TestPGNSerializationFromN2K(t *testing.T) {
 		// Trim stream data to actual length and reset position
 		inStream := pgn.NewDataStream(stream.GetData())
 
-		// Find and call the appropriate decode function
-		decodeFunc, err := findDecodeFunc(pgnStruct)
+		// Use the discriminator system to find and call the appropriate decode function
+		decoder, err := pgn.FindDecoder(info.PGN, inStream)
 		assert.NoError(t, err)
 		if err != nil {
+			fmt.Printf("While finding decoder for %T (PGN %d), got error: %v\n", pgnStruct, info.PGN, err)
 			return
 		}
 
 		// Call the decode function with the MessageInfo and DataStream
-		results := decodeFunc.Call([]reflect.Value{
-			reflect.ValueOf(*info),
-			reflect.ValueOf(inStream),
-		})
-
-		// Check for error from decode function
-		if !results[1].IsNil() {
-			assert.NoError(t, results[1].Interface().(error))
-			fmt.Printf("While decoding %T, got error: %v\n", pgnStruct, results[1].Interface().(error))
+		decoded, err := decoder(*info, inStream)
+		if err != nil {
+			assert.NoError(t, err)
+			fmt.Printf("While decoding %T, got error: %v\n", pgnStruct, err)
 			return
 		}
-
-		// Get the decoded PGN struct
-		decoded := results[0].Interface()
 
 		// Compare original and decoded PGNs
 		// Since the original is a pointer and decoded is a value, dereference the original

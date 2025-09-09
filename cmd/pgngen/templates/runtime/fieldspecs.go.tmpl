@@ -5,6 +5,7 @@ package pgn
 // This eliminates runtime calculations and provides a lightweight alternative to FieldDescriptor.
 type FieldSpec struct {
 	BitLength     uint16  // Field bit length
+	BitOffset     uint16  // Bit offset in the datastream for this field
 	MaxRawValue   uint64  // Pre-calculated maximum valid raw value (accounting for reserved values)
 	MissingValue  uint64  // Pre-calculated sentinel value for nil/missing data
 	Resolution    float64 // Scaling factor (1.0 = no scaling)

@@ -14,13 +14,29 @@ func buildUnknownPGN(p *Packet) pgn.UnknownPGN {
 		Data:   p.Data,
 		Reason: fmt.Errorf("%s", mergeErrorStrings(p.ParseErrors)),
 	}
-
 	if pgn.IsProprietaryPGN(ret.Info.PGN) {
-		if p.Manufacturer != 0 {
-			ret.ManufacturerCode = p.Manufacturer
+		// read manufacturer code from data
+		if len(p.Data) > 2 {
+			// create a datastream from the data
+			ds := pgn.NewDataStream(p.Data)
+			// generate a fieldspec for the manufacturer code
+			fs := pgn.FieldSpec{
+				BitLength:         11,
+				BitOffset:         0,
+				BitLengthVariable: false,
+				CanboatType:       "ManufacturerCode",
+			}
+			// read manufacturer code from data
+			manufacturerCode, err := pgn.ReadRaw[pgn.ManufacturerCodeConst](ds, &fs)
+			if err != nil {
+				ret.Reason = err
+			}
+			ret.ManufacturerCode = *manufacturerCode
+			// read manufacturer code from data
+			ret.ManufacturerCode = *manufacturerCode
 		}
 	}
-	ret.WasUnseen = pgn.SearchUnseenList(ret.Info.PGN)
+
 	return ret
 }
 

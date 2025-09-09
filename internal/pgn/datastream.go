@@ -39,6 +39,17 @@ func (s *DataStream) resetToStart() {
 	s.bitOffset = 0
 }
 
+// Position returns the current bit position in the stream
+func (s *DataStream) Position() uint16 {
+	return uint16(s.getBitOffset())
+}
+
+// SetPosition sets the stream position to the specified bit offset
+func (s *DataStream) SetPosition(bitOffset uint16) {
+	s.byteOffset = bitOffset / 8
+	s.bitOffset = uint8(bitOffset % 8)
+}
+
 // remainingLength returns the number of bits remaining in the stream
 /* func (s *DataStream) remainingLength() uint16 {
 	totalBits := len(s.data)*8 - (int(s.byteOffset)*8 + int(s.bitOffset))

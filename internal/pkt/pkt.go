@@ -25,9 +25,6 @@ type Packet struct {
 	// Data is (when complete) the data payload for a PGN, ready to decode.
 	Data []uint8
 
-	// Fast (when complete) indicates if matching pgn variants are all fast or all slow.
-	Fast bool
-
 	// SeqId (for fast packets) is the sequence identifier that connects partial packets.
 	SeqId uint8
 
@@ -40,17 +37,6 @@ type Packet struct {
 	// Complete is true for single messages and for fast messages when all packets have been received.
 	Complete bool
 
-	// Manufacturer is the Manufacturer ID (for fast messages only)
-	Manufacturer pgn.ManufacturerCodeConst
-
-	// Candidates is a list of possible decoders for this PGN
-	Candidates []*pgn.PgnInfo
-
-	// Decoders reduces the list of candidate decoders to those that match the complete Packet.
-	// We eliminate possible matches with different Manufacturer IDs.
-	// And fast decoders for single packets (and vice versa).
-	Decoders []func(pgn.MessageInfo, *pgn.DataStream) (any, error)
-
 	// ParseErrors track errors in processing the input (we might try multiple decoders)
 	ParseErrors []error
 }
@@ -62,13 +48,6 @@ func NewPacket(info pgn.MessageInfo, data []byte) *Packet {
 	p.Info = info
 	if p.Valid() {
 		p.Proprietary = pgn.IsProprietaryPGN(p.Info.PGN)
-		p.Candidates = pgn.PgnInfoLookup[p.Info.PGN]
-		if len(p.Candidates) == 0 {
-			// not found, an unknown PGN
-			p.ParseErrors = append(p.ParseErrors, fmt.Errorf("no data for pgn"))
-		} else {
-			p.Fast = p.Candidates[0].Fast // pgns variants are always all fast or all single, so any match works.
-		}
 	}
 	return &p
 }
@@ -98,14 +77,4 @@ func (p *Packet) GetSeqFrame() {
 // UnknownPGN creates a new instance of UnknownPGN.
 func (p *Packet) UnknownPGN() pgn.UnknownPGN {
 	return buildUnknownPGN(p)
-}
-
-// AddDecoders filters candidate decoders when the manufacturer of a proprietary messasge doesn't match.
-func (p *Packet) AddDecoders() {
-	for _, d := range p.Candidates {
-		if p.Proprietary && p.Manufacturer != d.ManId {
-			continue
-		}
-		p.Decoders = append(p.Decoders, d.Decoder)
-	}
 }

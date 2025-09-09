@@ -26,6 +26,7 @@ func (p *IsoAcknowledgement) GetFieldSpec(fieldName string) *FieldSpec {
     case "Control":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -40,6 +41,7 @@ func (p *IsoAcknowledgement) GetFieldSpec(fieldName string) *FieldSpec {
     case "GroupFunction":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -54,6 +56,7 @@ func (p *IsoAcknowledgement) GetFieldSpec(fieldName string) *FieldSpec {
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 40,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -86,6 +89,7 @@ func (p *IsoRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 0,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -118,6 +122,7 @@ func (p *IsoTransportProtocolDataTransfer) GetFieldSpec(fieldName string) *Field
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -132,6 +137,7 @@ func (p *IsoTransportProtocolDataTransfer) GetFieldSpec(fieldName string) *Field
     case "Data":
         return &FieldSpec{
             BitLength: 56,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -164,6 +170,7 @@ func (p *IsoTransportProtocolConnectionManagementRequestToSend) GetFieldSpec(fie
     case "GroupFunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -178,6 +185,7 @@ func (p *IsoTransportProtocolConnectionManagementRequestToSend) GetFieldSpec(fie
     case "MessageSize":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -192,6 +200,7 @@ func (p *IsoTransportProtocolConnectionManagementRequestToSend) GetFieldSpec(fie
     case "Packets":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -206,6 +215,7 @@ func (p *IsoTransportProtocolConnectionManagementRequestToSend) GetFieldSpec(fie
     case "PacketsReply":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -220,6 +230,7 @@ func (p *IsoTransportProtocolConnectionManagementRequestToSend) GetFieldSpec(fie
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 40,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -252,6 +263,7 @@ func (p *IsoTransportProtocolConnectionManagementClearToSend) GetFieldSpec(field
     case "GroupFunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -266,6 +278,7 @@ func (p *IsoTransportProtocolConnectionManagementClearToSend) GetFieldSpec(field
     case "MaxPackets":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -280,6 +293,7 @@ func (p *IsoTransportProtocolConnectionManagementClearToSend) GetFieldSpec(field
     case "NextSid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -294,6 +308,7 @@ func (p *IsoTransportProtocolConnectionManagementClearToSend) GetFieldSpec(field
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 40,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -326,6 +341,7 @@ func (p *IsoTransportProtocolConnectionManagementEndOfMessage) GetFieldSpec(fiel
     case "GroupFunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -340,6 +356,7 @@ func (p *IsoTransportProtocolConnectionManagementEndOfMessage) GetFieldSpec(fiel
     case "TotalMessageSize":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -354,6 +371,7 @@ func (p *IsoTransportProtocolConnectionManagementEndOfMessage) GetFieldSpec(fiel
     case "TotalNumberOfFramesReceived":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -368,6 +386,7 @@ func (p *IsoTransportProtocolConnectionManagementEndOfMessage) GetFieldSpec(fiel
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 40,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -400,6 +419,7 @@ func (p *IsoTransportProtocolConnectionManagementBroadcastAnnounce) GetFieldSpec
     case "GroupFunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -414,6 +434,7 @@ func (p *IsoTransportProtocolConnectionManagementBroadcastAnnounce) GetFieldSpec
     case "MessageSize":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -428,6 +449,7 @@ func (p *IsoTransportProtocolConnectionManagementBroadcastAnnounce) GetFieldSpec
     case "Packets":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -442,6 +464,7 @@ func (p *IsoTransportProtocolConnectionManagementBroadcastAnnounce) GetFieldSpec
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 40,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -474,6 +497,7 @@ func (p *IsoTransportProtocolConnectionManagementAbort) GetFieldSpec(fieldName s
     case "GroupFunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -488,6 +512,7 @@ func (p *IsoTransportProtocolConnectionManagementAbort) GetFieldSpec(fieldName s
     case "Reason":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -502,6 +527,7 @@ func (p *IsoTransportProtocolConnectionManagementAbort) GetFieldSpec(fieldName s
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 40,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -534,6 +560,7 @@ func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
     case "UniqueNumber":
         return &FieldSpec{
             BitLength: 21,
+            BitOffset: 0,
             MaxRawValue: 2097149,
             MissingValue: 2097151,
             Resolution: 1,
@@ -548,6 +575,7 @@ func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 21,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -562,6 +590,7 @@ func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeviceInstanceLower":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 32,
             MaxRawValue: 6,
             MissingValue: 7,
             Resolution: 1,
@@ -576,6 +605,7 @@ func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeviceInstanceUpper":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 35,
             MaxRawValue: 29,
             MissingValue: 31,
             Resolution: 1,
@@ -590,6 +620,7 @@ func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeviceFunction":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -604,6 +635,7 @@ func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeviceClass":
         return &FieldSpec{
             BitLength: 7,
+            BitOffset: 49,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -618,6 +650,7 @@ func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
     case "SystemInstance":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 56,
             MaxRawValue: 13,
             MissingValue: 15,
             Resolution: 1,
@@ -632,6 +665,7 @@ func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryGroup":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 60,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -646,6 +680,7 @@ func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
     case "ArbitraryAddressCapable":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 63,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -678,6 +713,7 @@ func (p *Bus1PhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec 
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -692,6 +728,7 @@ func (p *Bus1PhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec 
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -706,6 +743,7 @@ func (p *Bus1PhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec 
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -738,6 +776,7 @@ func (p *Bus1PhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec 
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -752,6 +791,7 @@ func (p *Bus1PhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec 
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -766,6 +806,7 @@ func (p *Bus1PhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec 
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -798,6 +839,7 @@ func (p *Bus1PhaseABasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec 
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -812,6 +854,7 @@ func (p *Bus1PhaseABasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec 
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -826,6 +869,7 @@ func (p *Bus1PhaseABasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec 
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -858,6 +902,7 @@ func (p *UtilityPhaseCAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec
     case "ReactivePower":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -872,6 +917,7 @@ func (p *UtilityPhaseCAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec
     case "PowerFactor":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 6.10352e-05,
@@ -886,6 +932,7 @@ func (p *UtilityPhaseCAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec
     case "PowerFactorLagging":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -918,6 +965,7 @@ func (p *UtilityPhaseCAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "RealPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -932,6 +980,7 @@ func (p *UtilityPhaseCAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "ApparentPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -964,6 +1013,7 @@ func (p *UtilityPhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -978,6 +1028,7 @@ func (p *UtilityPhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -992,6 +1043,7 @@ func (p *UtilityPhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -1006,6 +1058,7 @@ func (p *UtilityPhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1038,6 +1091,7 @@ func (p *UtilityPhaseBAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec
     case "ReactivePower":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1052,6 +1106,7 @@ func (p *UtilityPhaseBAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec
     case "PowerFactor":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 6.10352e-05,
@@ -1066,6 +1121,7 @@ func (p *UtilityPhaseBAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec
     case "PowerFactorLagging":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -1098,6 +1154,7 @@ func (p *UtilityPhaseBAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "RealPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1112,6 +1169,7 @@ func (p *UtilityPhaseBAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "ApparentPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1144,6 +1202,7 @@ func (p *UtilityPhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1158,6 +1217,7 @@ func (p *UtilityPhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1172,6 +1232,7 @@ func (p *UtilityPhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -1186,6 +1247,7 @@ func (p *UtilityPhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1218,6 +1280,7 @@ func (p *UtilityPhaseAAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec
     case "ReactivePower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1232,6 +1295,7 @@ func (p *UtilityPhaseAAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec
     case "PowerFactor":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 6.10352e-05,
@@ -1246,6 +1310,7 @@ func (p *UtilityPhaseAAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec
     case "PowerFactorLagging":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -1278,6 +1343,7 @@ func (p *UtilityPhaseAAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "RealPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1292,6 +1358,7 @@ func (p *UtilityPhaseAAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "ApparentPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1324,6 +1391,7 @@ func (p *UtilityPhaseABasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1338,6 +1406,7 @@ func (p *UtilityPhaseABasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1352,6 +1421,7 @@ func (p *UtilityPhaseABasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -1366,6 +1436,7 @@ func (p *UtilityPhaseABasicAcQuantities) GetFieldSpec(fieldName string) *FieldSp
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1398,6 +1469,7 @@ func (p *UtilityTotalAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec 
     case "ReactivePower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1412,6 +1484,7 @@ func (p *UtilityTotalAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec 
     case "PowerFactor":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 6.10352e-05,
@@ -1426,6 +1499,7 @@ func (p *UtilityTotalAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec 
     case "PowerFactorLagging":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -1458,6 +1532,7 @@ func (p *UtilityTotalAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "RealPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1472,6 +1547,7 @@ func (p *UtilityTotalAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "ApparentPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1504,6 +1580,7 @@ func (p *UtilityAverageBasicAcQuantities) GetFieldSpec(fieldName string) *FieldS
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1518,6 +1595,7 @@ func (p *UtilityAverageBasicAcQuantities) GetFieldSpec(fieldName string) *FieldS
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1532,6 +1610,7 @@ func (p *UtilityAverageBasicAcQuantities) GetFieldSpec(fieldName string) *FieldS
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -1546,6 +1625,7 @@ func (p *UtilityAverageBasicAcQuantities) GetFieldSpec(fieldName string) *FieldS
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1578,6 +1658,7 @@ func (p *GeneratorPhaseCAcReactivePower) GetFieldSpec(fieldName string) *FieldSp
     case "ReactivePower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1592,6 +1673,7 @@ func (p *GeneratorPhaseCAcReactivePower) GetFieldSpec(fieldName string) *FieldSp
     case "PowerFactor":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 6.10352e-05,
@@ -1606,6 +1688,7 @@ func (p *GeneratorPhaseCAcReactivePower) GetFieldSpec(fieldName string) *FieldSp
     case "PowerFactorLagging":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -1638,6 +1721,7 @@ func (p *GeneratorPhaseCAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "RealPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1652,6 +1736,7 @@ func (p *GeneratorPhaseCAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "ApparentPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1684,6 +1769,7 @@ func (p *GeneratorPhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1698,6 +1784,7 @@ func (p *GeneratorPhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1712,6 +1799,7 @@ func (p *GeneratorPhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -1726,6 +1814,7 @@ func (p *GeneratorPhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1758,6 +1847,7 @@ func (p *GeneratorPhaseBAcReactivePower) GetFieldSpec(fieldName string) *FieldSp
     case "ReactivePower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1772,6 +1862,7 @@ func (p *GeneratorPhaseBAcReactivePower) GetFieldSpec(fieldName string) *FieldSp
     case "PowerFactor":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 6.10352e-05,
@@ -1786,6 +1877,7 @@ func (p *GeneratorPhaseBAcReactivePower) GetFieldSpec(fieldName string) *FieldSp
     case "PowerFactorLagging":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -1818,6 +1910,7 @@ func (p *GeneratorPhaseBAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "RealPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1832,6 +1925,7 @@ func (p *GeneratorPhaseBAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "ApparentPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1864,6 +1958,7 @@ func (p *GeneratorPhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1878,6 +1973,7 @@ func (p *GeneratorPhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1892,6 +1988,7 @@ func (p *GeneratorPhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -1906,6 +2003,7 @@ func (p *GeneratorPhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -1938,6 +2036,7 @@ func (p *GeneratorPhaseAAcReactivePower) GetFieldSpec(fieldName string) *FieldSp
     case "ReactivePower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -1952,6 +2051,7 @@ func (p *GeneratorPhaseAAcReactivePower) GetFieldSpec(fieldName string) *FieldSp
     case "PowerFactor":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 6.10352e-05,
@@ -1966,6 +2066,7 @@ func (p *GeneratorPhaseAAcReactivePower) GetFieldSpec(fieldName string) *FieldSp
     case "PowerFactorLagging":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -1998,6 +2099,7 @@ func (p *GeneratorPhaseAAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "RealPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -2012,6 +2114,7 @@ func (p *GeneratorPhaseAAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "ApparentPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -2044,6 +2147,7 @@ func (p *GeneratorPhaseABasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -2058,6 +2162,7 @@ func (p *GeneratorPhaseABasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -2072,6 +2177,7 @@ func (p *GeneratorPhaseABasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -2086,6 +2192,7 @@ func (p *GeneratorPhaseABasicAcQuantities) GetFieldSpec(fieldName string) *Field
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -2118,6 +2225,7 @@ func (p *GeneratorTotalAcReactivePower) GetFieldSpec(fieldName string) *FieldSpe
     case "ReactivePower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -2132,6 +2240,7 @@ func (p *GeneratorTotalAcReactivePower) GetFieldSpec(fieldName string) *FieldSpe
     case "PowerFactor":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 6.10352e-05,
@@ -2146,6 +2255,7 @@ func (p *GeneratorTotalAcReactivePower) GetFieldSpec(fieldName string) *FieldSpe
     case "PowerFactorLagging":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2178,6 +2288,7 @@ func (p *GeneratorTotalAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "RealPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -2192,6 +2303,7 @@ func (p *GeneratorTotalAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     case "ApparentPower":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -2224,6 +2336,7 @@ func (p *GeneratorAverageBasicAcQuantities) GetFieldSpec(fieldName string) *Fiel
     case "LineLineAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -2238,6 +2351,7 @@ func (p *GeneratorAverageBasicAcQuantities) GetFieldSpec(fieldName string) *Fiel
     case "LineNeutralAcRmsVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -2252,6 +2366,7 @@ func (p *GeneratorAverageBasicAcQuantities) GetFieldSpec(fieldName string) *Fiel
     case "AcFrequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0078125,
@@ -2266,6 +2381,7 @@ func (p *GeneratorAverageBasicAcQuantities) GetFieldSpec(fieldName string) *Fiel
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -2298,6 +2414,7 @@ func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
     case "UniqueNumber":
         return &FieldSpec{
             BitLength: 21,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2312,6 +2429,7 @@ func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 21,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2326,6 +2444,7 @@ func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeviceInstanceLower":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 32,
             MaxRawValue: 6,
             MissingValue: 7,
             Resolution: 1,
@@ -2340,6 +2459,7 @@ func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeviceInstanceUpper":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 35,
             MaxRawValue: 29,
             MissingValue: 31,
             Resolution: 1,
@@ -2354,6 +2474,7 @@ func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeviceFunction":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2368,6 +2489,7 @@ func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeviceClass":
         return &FieldSpec{
             BitLength: 7,
+            BitOffset: 49,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2382,6 +2504,7 @@ func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
     case "SystemInstance":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 56,
             MaxRawValue: 13,
             MissingValue: 15,
             Resolution: 1,
@@ -2396,6 +2519,7 @@ func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 60,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2410,6 +2534,7 @@ func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
     case "NewSourceAddress":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 64,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -2442,6 +2567,7 @@ func (p *MaretronProprietaryDcBreakerCurrent) GetFieldSpec(fieldName string) *Fi
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2456,6 +2582,7 @@ func (p *MaretronProprietaryDcBreakerCurrent) GetFieldSpec(fieldName string) *Fi
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2470,6 +2597,7 @@ func (p *MaretronProprietaryDcBreakerCurrent) GetFieldSpec(fieldName string) *Fi
     case "BankInstance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -2484,6 +2612,7 @@ func (p *MaretronProprietaryDcBreakerCurrent) GetFieldSpec(fieldName string) *Fi
     case "IndicatorNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -2498,6 +2627,7 @@ func (p *MaretronProprietaryDcBreakerCurrent) GetFieldSpec(fieldName string) *Fi
     case "BreakerCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -2530,6 +2660,7 @@ func (p *AirmarBootStateAcknowledgment) GetFieldSpec(fieldName string) *FieldSpe
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2544,6 +2675,7 @@ func (p *AirmarBootStateAcknowledgment) GetFieldSpec(fieldName string) *FieldSpe
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2558,6 +2690,7 @@ func (p *AirmarBootStateAcknowledgment) GetFieldSpec(fieldName string) *FieldSpe
     case "BootState":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2590,6 +2723,7 @@ func (p *LowranceTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2604,6 +2738,7 @@ func (p *LowranceTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2618,6 +2753,7 @@ func (p *LowranceTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "TemperatureSource":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2632,6 +2768,7 @@ func (p *LowranceTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "ActualTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -2664,6 +2801,7 @@ func (p *AirmarBootStateRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2678,6 +2816,7 @@ func (p *AirmarBootStateRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2710,6 +2849,7 @@ func (p *AirmarAccessLevel) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2724,6 +2864,7 @@ func (p *AirmarAccessLevel) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2738,6 +2879,7 @@ func (p *AirmarAccessLevel) GetFieldSpec(fieldName string) *FieldSpec {
     case "FormatCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -2752,6 +2894,7 @@ func (p *AirmarAccessLevel) GetFieldSpec(fieldName string) *FieldSpec {
     case "AccessLevel":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2766,6 +2909,7 @@ func (p *AirmarAccessLevel) GetFieldSpec(fieldName string) *FieldSpec {
     case "AccessSeedKey":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -2798,6 +2942,7 @@ func (p *SimnetDeviceStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2812,6 +2957,7 @@ func (p *SimnetDeviceStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2826,6 +2972,7 @@ func (p *SimnetDeviceStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Model":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2840,6 +2987,7 @@ func (p *SimnetDeviceStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Report":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2854,6 +3002,7 @@ func (p *SimnetDeviceStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Status":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2886,6 +3035,7 @@ func (p *SimnetDeviceStatusRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2900,6 +3050,7 @@ func (p *SimnetDeviceStatusRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2914,6 +3065,7 @@ func (p *SimnetDeviceStatusRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "Model":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2928,6 +3080,7 @@ func (p *SimnetDeviceStatusRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "Report":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2960,6 +3113,7 @@ func (p *SimnetPilotMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2974,6 +3128,7 @@ func (p *SimnetPilotMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -2988,6 +3143,7 @@ func (p *SimnetPilotMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "Model":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3002,6 +3158,7 @@ func (p *SimnetPilotMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "Report":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3016,6 +3173,7 @@ func (p *SimnetPilotMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "Mode":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3048,6 +3206,7 @@ func (p *SimnetDeviceModeRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3062,6 +3221,7 @@ func (p *SimnetDeviceModeRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3076,6 +3236,7 @@ func (p *SimnetDeviceModeRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "Model":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3090,6 +3251,7 @@ func (p *SimnetDeviceModeRequest) GetFieldSpec(fieldName string) *FieldSpec {
     case "Report":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3122,6 +3284,7 @@ func (p *SeatalkPilotLockedHeading) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3136,6 +3299,7 @@ func (p *SeatalkPilotLockedHeading) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3150,6 +3314,7 @@ func (p *SeatalkPilotLockedHeading) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3164,6 +3329,7 @@ func (p *SeatalkPilotLockedHeading) GetFieldSpec(fieldName string) *FieldSpec {
     case "TargetHeadingTrue":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -3178,6 +3344,7 @@ func (p *SeatalkPilotLockedHeading) GetFieldSpec(fieldName string) *FieldSpec {
     case "TargetHeadingMagnetic":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -3210,6 +3377,7 @@ func (p *SeatalkSilenceAlarm) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3224,6 +3392,7 @@ func (p *SeatalkSilenceAlarm) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3238,6 +3407,7 @@ func (p *SeatalkSilenceAlarm) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlarmId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3252,6 +3422,7 @@ func (p *SeatalkSilenceAlarm) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlarmGroup":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3284,6 +3455,7 @@ func (p *AirmarSpeedPulseCount) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3298,6 +3470,7 @@ func (p *AirmarSpeedPulseCount) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3312,6 +3485,7 @@ func (p *AirmarSpeedPulseCount) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3326,6 +3500,7 @@ func (p *AirmarSpeedPulseCount) GetFieldSpec(fieldName string) *FieldSpec {
     case "DurationOfInterval":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.001,
@@ -3340,6 +3515,7 @@ func (p *AirmarSpeedPulseCount) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfPulsesReceived":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -3372,6 +3548,7 @@ func (p *NmeaRequestGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     case "FunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3386,6 +3563,7 @@ func (p *NmeaRequestGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 8,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -3400,6 +3578,7 @@ func (p *NmeaRequestGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     case "TransmissionInterval":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.001,
@@ -3414,6 +3593,7 @@ func (p *NmeaRequestGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     case "TransmissionIntervalOffset":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 64,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -3428,6 +3608,7 @@ func (p *NmeaRequestGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfParameters":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 80,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3460,6 +3641,7 @@ func (p *NmeaCommandGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     case "FunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3474,6 +3656,7 @@ func (p *NmeaCommandGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 8,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -3488,6 +3671,7 @@ func (p *NmeaCommandGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     case "Priority":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3502,6 +3686,7 @@ func (p *NmeaCommandGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfParameters":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3534,6 +3719,7 @@ func (p *NmeaAcknowledgeGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "FunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3548,6 +3734,7 @@ func (p *NmeaAcknowledgeGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 8,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -3562,6 +3749,7 @@ func (p *NmeaAcknowledgeGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "PgnErrorCode":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3576,6 +3764,7 @@ func (p *NmeaAcknowledgeGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "TransmissionIntervalPriorityErrorCode":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 36,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3590,6 +3779,7 @@ func (p *NmeaAcknowledgeGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "NumberOfParameters":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3622,6 +3812,7 @@ func (p *NmeaReadFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Field
     case "FunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3636,6 +3827,7 @@ func (p *NmeaReadFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Field
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 8,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -3650,6 +3842,7 @@ func (p *NmeaReadFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Field
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3664,6 +3857,7 @@ func (p *NmeaReadFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Field
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3678,6 +3872,7 @@ func (p *NmeaReadFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Field
     case "UniqueId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3692,6 +3887,7 @@ func (p *NmeaReadFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Field
     case "NumberOfSelectionPairs":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3706,6 +3902,7 @@ func (p *NmeaReadFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Field
     case "NumberOfParameters":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3738,6 +3935,7 @@ func (p *NmeaWriteFieldsGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "FunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3752,6 +3950,7 @@ func (p *NmeaWriteFieldsGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 8,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -3766,6 +3965,7 @@ func (p *NmeaWriteFieldsGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3780,6 +3980,7 @@ func (p *NmeaWriteFieldsGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3794,6 +3995,7 @@ func (p *NmeaWriteFieldsGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "UniqueId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3808,6 +4010,7 @@ func (p *NmeaWriteFieldsGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "NumberOfSelectionPairs":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3822,6 +4025,7 @@ func (p *NmeaWriteFieldsGroupFunction) GetFieldSpec(fieldName string) *FieldSpec
     case "NumberOfParameters":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3854,6 +4058,7 @@ func (p *NmeaWriteFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Fiel
     case "FunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3868,6 +4073,7 @@ func (p *NmeaWriteFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Fiel
     case "Pgn":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 8,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -3882,6 +4088,7 @@ func (p *NmeaWriteFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Fiel
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3896,6 +4103,7 @@ func (p *NmeaWriteFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Fiel
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -3910,6 +4118,7 @@ func (p *NmeaWriteFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Fiel
     case "UniqueId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3924,6 +4133,7 @@ func (p *NmeaWriteFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Fiel
     case "NumberOfSelectionPairs":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3938,6 +4148,7 @@ func (p *NmeaWriteFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *Fiel
     case "NumberOfParameters":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -3970,6 +4181,7 @@ func (p *PgnListTransmitAndReceive) GetFieldSpec(fieldName string) *FieldSpec {
     case "FunctionCode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4002,6 +4214,7 @@ func (p *FusionMediaControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4016,6 +4229,7 @@ func (p *FusionMediaControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4030,6 +4244,7 @@ func (p *FusionMediaControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4044,6 +4259,7 @@ func (p *FusionMediaControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -4058,6 +4274,7 @@ func (p *FusionMediaControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Command":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4090,6 +4307,7 @@ func (p *FusionSiriusControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4104,6 +4322,7 @@ func (p *FusionSiriusControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4118,6 +4337,7 @@ func (p *FusionSiriusControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4132,6 +4352,7 @@ func (p *FusionSiriusControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -4146,6 +4367,7 @@ func (p *FusionSiriusControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Command":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4160,6 +4382,7 @@ func (p *FusionSiriusControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Data":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -4192,6 +4415,7 @@ func (p *FusionRequestStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4206,6 +4430,7 @@ func (p *FusionRequestStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4220,6 +4445,7 @@ func (p *FusionRequestStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4252,6 +4478,7 @@ func (p *FusionSetSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4266,6 +4493,7 @@ func (p *FusionSetSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4280,6 +4508,7 @@ func (p *FusionSetSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4294,6 +4523,7 @@ func (p *FusionSetSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -4326,6 +4556,7 @@ func (p *FusionSetMute) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4340,6 +4571,7 @@ func (p *FusionSetMute) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4354,6 +4586,7 @@ func (p *FusionSetMute) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4368,6 +4601,7 @@ func (p *FusionSetMute) GetFieldSpec(fieldName string) *FieldSpec {
     case "Command":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4400,6 +4634,7 @@ func (p *FusionSetZoneVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4414,6 +4649,7 @@ func (p *FusionSetZoneVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4428,6 +4664,7 @@ func (p *FusionSetZoneVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4442,6 +4679,7 @@ func (p *FusionSetZoneVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -4456,6 +4694,7 @@ func (p *FusionSetZoneVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "Volume":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -4488,6 +4727,7 @@ func (p *FusionSetAllVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4502,6 +4742,7 @@ func (p *FusionSetAllVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4516,6 +4757,7 @@ func (p *FusionSetAllVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4530,6 +4772,7 @@ func (p *FusionSetAllVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone1":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -4544,6 +4787,7 @@ func (p *FusionSetAllVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone2":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -4558,6 +4802,7 @@ func (p *FusionSetAllVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone3":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -4572,6 +4817,7 @@ func (p *FusionSetAllVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone4":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -4604,6 +4850,7 @@ func (p *AirmarAttitudeOffset) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4618,6 +4865,7 @@ func (p *AirmarAttitudeOffset) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4632,6 +4880,7 @@ func (p *AirmarAttitudeOffset) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4646,6 +4895,7 @@ func (p *AirmarAttitudeOffset) GetFieldSpec(fieldName string) *FieldSpec {
     case "AzimuthOffset":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -4660,6 +4910,7 @@ func (p *AirmarAttitudeOffset) GetFieldSpec(fieldName string) *FieldSpec {
     case "PitchOffset":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -4674,6 +4925,7 @@ func (p *AirmarAttitudeOffset) GetFieldSpec(fieldName string) *FieldSpec {
     case "RollOffset":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 56,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -4706,6 +4958,7 @@ func (p *AirmarSimulateMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4720,6 +4973,7 @@ func (p *AirmarSimulateMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4734,6 +4988,7 @@ func (p *AirmarSimulateMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4748,6 +5003,7 @@ func (p *AirmarSimulateMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "SimulateMode":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4780,6 +5036,7 @@ func (p *AirmarCalibrateDepth) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4794,6 +5051,7 @@ func (p *AirmarCalibrateDepth) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4808,6 +5066,7 @@ func (p *AirmarCalibrateDepth) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4822,6 +5081,7 @@ func (p *AirmarCalibrateDepth) GetFieldSpec(fieldName string) *FieldSpec {
     case "SpeedOfSoundMode":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -4854,6 +5114,7 @@ func (p *AirmarCalibrateSpeed) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4868,6 +5129,7 @@ func (p *AirmarCalibrateSpeed) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4882,6 +5144,7 @@ func (p *AirmarCalibrateSpeed) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4896,6 +5159,7 @@ func (p *AirmarCalibrateSpeed) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfPairsOfDataPoints":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -4928,6 +5192,7 @@ func (p *AirmarCalibrateTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4942,6 +5207,7 @@ func (p *AirmarCalibrateTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4956,6 +5222,7 @@ func (p *AirmarCalibrateTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4970,6 +5237,7 @@ func (p *AirmarCalibrateTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "TemperatureInstance":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -4984,6 +5252,7 @@ func (p *AirmarCalibrateTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "TemperatureOffset":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.001,
@@ -5016,6 +5285,7 @@ func (p *AirmarSpeedFilterNone) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5030,6 +5300,7 @@ func (p *AirmarSpeedFilterNone) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5044,6 +5315,7 @@ func (p *AirmarSpeedFilterNone) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5058,6 +5330,7 @@ func (p *AirmarSpeedFilterNone) GetFieldSpec(fieldName string) *FieldSpec {
     case "FilterType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 24,
             MaxRawValue: 13,
             MissingValue: 15,
             Resolution: 1,
@@ -5072,6 +5345,7 @@ func (p *AirmarSpeedFilterNone) GetFieldSpec(fieldName string) *FieldSpec {
     case "SampleInterval":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -5104,6 +5378,7 @@ func (p *AirmarSpeedFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5118,6 +5393,7 @@ func (p *AirmarSpeedFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5132,6 +5408,7 @@ func (p *AirmarSpeedFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5146,6 +5423,7 @@ func (p *AirmarSpeedFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "FilterType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 24,
             MaxRawValue: 13,
             MissingValue: 15,
             Resolution: 1,
@@ -5160,6 +5438,7 @@ func (p *AirmarSpeedFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "SampleInterval":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -5174,6 +5453,7 @@ func (p *AirmarSpeedFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "FilterDuration":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -5206,6 +5486,7 @@ func (p *AirmarTemperatureFilterNone) GetFieldSpec(fieldName string) *FieldSpec 
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5220,6 +5501,7 @@ func (p *AirmarTemperatureFilterNone) GetFieldSpec(fieldName string) *FieldSpec 
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5234,6 +5516,7 @@ func (p *AirmarTemperatureFilterNone) GetFieldSpec(fieldName string) *FieldSpec 
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5248,6 +5531,7 @@ func (p *AirmarTemperatureFilterNone) GetFieldSpec(fieldName string) *FieldSpec 
     case "FilterType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 24,
             MaxRawValue: 13,
             MissingValue: 15,
             Resolution: 1,
@@ -5262,6 +5546,7 @@ func (p *AirmarTemperatureFilterNone) GetFieldSpec(fieldName string) *FieldSpec 
     case "SampleInterval":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -5294,6 +5579,7 @@ func (p *AirmarTemperatureFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5308,6 +5594,7 @@ func (p *AirmarTemperatureFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5322,6 +5609,7 @@ func (p *AirmarTemperatureFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5336,6 +5624,7 @@ func (p *AirmarTemperatureFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "FilterType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 24,
             MaxRawValue: 13,
             MissingValue: 15,
             Resolution: 1,
@@ -5350,6 +5639,7 @@ func (p *AirmarTemperatureFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "SampleInterval":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -5364,6 +5654,7 @@ func (p *AirmarTemperatureFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     case "FilterDuration":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -5396,6 +5687,7 @@ func (p *AirmarNmea2000Options) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5410,6 +5702,7 @@ func (p *AirmarNmea2000Options) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5424,6 +5717,7 @@ func (p *AirmarNmea2000Options) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5438,6 +5732,7 @@ func (p *AirmarNmea2000Options) GetFieldSpec(fieldName string) *FieldSpec {
     case "TransmissionInterval":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5470,6 +5765,7 @@ func (p *MaretronDeviationCalibrationResponse) GetFieldSpec(fieldName string) *F
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5484,6 +5780,7 @@ func (p *MaretronDeviationCalibrationResponse) GetFieldSpec(fieldName string) *F
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5498,6 +5795,7 @@ func (p *MaretronDeviationCalibrationResponse) GetFieldSpec(fieldName string) *F
     case "ProductCode":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5512,6 +5810,7 @@ func (p *MaretronDeviationCalibrationResponse) GetFieldSpec(fieldName string) *F
     case "SoftwareCode":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5526,6 +5825,7 @@ func (p *MaretronDeviationCalibrationResponse) GetFieldSpec(fieldName string) *F
     case "Command":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5540,6 +5840,7 @@ func (p *MaretronDeviationCalibrationResponse) GetFieldSpec(fieldName string) *F
     case "Status":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5572,6 +5873,7 @@ func (p *MaretronSlaveResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5586,6 +5888,7 @@ func (p *MaretronSlaveResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5600,6 +5903,7 @@ func (p *MaretronSlaveResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProductCode":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -5614,6 +5918,7 @@ func (p *MaretronSlaveResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "SoftwareCode":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -5628,6 +5933,7 @@ func (p *MaretronSlaveResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "Command":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -5642,6 +5948,7 @@ func (p *MaretronSlaveResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "Status":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -5674,6 +5981,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5688,6 +5996,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertCategory":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 4,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5702,6 +6011,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertSystem":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -5716,6 +6026,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertSubSystem":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -5730,6 +6041,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -5744,6 +6056,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "DataSourceNetworkIdName":
         return &FieldSpec{
             BitLength: 64,
+            BitOffset: 40,
             MaxRawValue: 18446744073709551613,
             MissingValue: 18446744073709551615,
             Resolution: 1,
@@ -5758,6 +6071,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "DataSourceInstance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 104,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -5772,6 +6086,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "DataSourceIndexSource":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 112,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -5786,6 +6101,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertOccurrenceNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 120,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -5800,6 +6116,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "TemporarySilenceStatus":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 128,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5814,6 +6131,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcknowledgeStatus":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 129,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5828,6 +6146,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "EscalationStatus":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 130,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5842,6 +6161,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "TemporarySilenceSupport":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 131,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5856,6 +6176,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcknowledgeSupport":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 132,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5870,6 +6191,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "EscalationSupport":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 133,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5884,6 +6206,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcknowledgeSourceNetworkIdName":
         return &FieldSpec{
             BitLength: 64,
+            BitOffset: 136,
             MaxRawValue: 18446744073709551613,
             MissingValue: 18446744073709551615,
             Resolution: 1,
@@ -5898,6 +6221,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "TriggerCondition":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 200,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5912,6 +6236,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "ThresholdStatus":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 204,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5926,6 +6251,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertPriority":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 208,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -5940,6 +6266,7 @@ func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertState":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 216,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5972,6 +6299,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -5986,6 +6314,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertCategory":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 4,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6000,6 +6329,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertSystem":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6014,6 +6344,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertSubSystem":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6028,6 +6359,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -6042,6 +6374,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "DataSourceNetworkIdName":
         return &FieldSpec{
             BitLength: 64,
+            BitOffset: 40,
             MaxRawValue: 18446744073709551613,
             MissingValue: 18446744073709551615,
             Resolution: 1,
@@ -6056,6 +6389,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "DataSourceInstance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 104,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6070,6 +6404,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "DataSourceIndexSource":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 112,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6084,6 +6419,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertOccurrenceNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 120,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6098,6 +6434,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcknowledgeSourceNetworkIdName":
         return &FieldSpec{
             BitLength: 64,
+            BitOffset: 128,
             MaxRawValue: 18446744073709551613,
             MissingValue: 18446744073709551615,
             Resolution: 1,
@@ -6112,6 +6449,7 @@ func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     case "ResponseCommand":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 192,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6144,6 +6482,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6158,6 +6497,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertCategory":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 4,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6172,6 +6512,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertSystem":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6186,6 +6527,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertSubSystem":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6200,6 +6542,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -6214,6 +6557,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "DataSourceNetworkIdName":
         return &FieldSpec{
             BitLength: 64,
+            BitOffset: 40,
             MaxRawValue: 18446744073709551613,
             MissingValue: 18446744073709551615,
             Resolution: 1,
@@ -6228,6 +6572,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "DataSourceInstance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 104,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6242,6 +6587,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "DataSourceIndexSource":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 112,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6256,6 +6602,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertOccurrenceNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 120,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6270,6 +6617,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "LanguageId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 128,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6284,6 +6632,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertTextDescription":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 136,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6298,6 +6647,7 @@ func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlertLocationTextDescription":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6330,6 +6680,7 @@ func (p *SystemTime) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6344,6 +6695,7 @@ func (p *SystemTime) GetFieldSpec(fieldName string) *FieldSpec {
     case "Source":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6358,6 +6710,7 @@ func (p *SystemTime) GetFieldSpec(fieldName string) *FieldSpec {
     case "Date":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -6372,6 +6725,7 @@ func (p *SystemTime) GetFieldSpec(fieldName string) *FieldSpec {
     case "Time":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -6404,6 +6758,7 @@ func (p *Heartbeat) GetFieldSpec(fieldName string) *FieldSpec {
     case "DataTransmitOffset":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -6418,6 +6773,7 @@ func (p *Heartbeat) GetFieldSpec(fieldName string) *FieldSpec {
     case "SequenceCounter":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6432,6 +6788,7 @@ func (p *Heartbeat) GetFieldSpec(fieldName string) *FieldSpec {
     case "Controller1State":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6446,6 +6803,7 @@ func (p *Heartbeat) GetFieldSpec(fieldName string) *FieldSpec {
     case "Controller2State":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 26,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6460,6 +6818,7 @@ func (p *Heartbeat) GetFieldSpec(fieldName string) *FieldSpec {
     case "EquipmentStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 28,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6492,6 +6851,7 @@ func (p *ProductInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "Nmea2000Version":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.001,
@@ -6506,6 +6866,7 @@ func (p *ProductInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProductCode":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -6520,6 +6881,7 @@ func (p *ProductInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "ModelId":
         return &FieldSpec{
             BitLength: 256,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6534,6 +6896,7 @@ func (p *ProductInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "SoftwareVersionCode":
         return &FieldSpec{
             BitLength: 256,
+            BitOffset: 288,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6548,6 +6911,7 @@ func (p *ProductInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "ModelVersion":
         return &FieldSpec{
             BitLength: 256,
+            BitOffset: 544,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6562,6 +6926,7 @@ func (p *ProductInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "ModelSerialCode":
         return &FieldSpec{
             BitLength: 256,
+            BitOffset: 800,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6576,6 +6941,7 @@ func (p *ProductInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "CertificationLevel":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 1056,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6590,6 +6956,7 @@ func (p *ProductInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "LoadEquivalency":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 1064,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6622,6 +6989,7 @@ func (p *ConfigurationInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "InstallationDescription1":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6636,6 +7004,7 @@ func (p *ConfigurationInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "InstallationDescription2":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6650,6 +7019,7 @@ func (p *ConfigurationInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerInformation":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6682,6 +7052,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -6696,6 +7067,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "MobEmitterId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -6710,6 +7082,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManOverboardStatus":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6724,6 +7097,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "ActivationTime":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 48,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -6738,6 +7112,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "PositionSource":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 80,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6752,6 +7127,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "PositionDate":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 88,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -6766,6 +7142,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "PositionTime":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 104,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -6780,6 +7157,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "Latitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 136,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -6794,6 +7172,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "Longitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 168,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -6808,6 +7187,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "CogReference":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 200,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6822,6 +7202,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "Cog":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 208,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -6836,6 +7217,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sog":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 224,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -6850,6 +7232,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "MmsiOfVesselOfOrigin":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 240,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6864,6 +7247,7 @@ func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     case "MobEmitterBatteryLowStatus":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 272,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6896,6 +7280,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "RudderLimitExceeded":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6910,6 +7295,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "OffHeadingLimitExceeded":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 2,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6924,6 +7310,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "OffTrackLimitExceeded":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 4,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6938,6 +7325,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Override":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6952,6 +7340,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "SteeringMode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6966,6 +7355,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "TurnMode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 11,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6980,6 +7370,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "HeadingReference":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 14,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -6994,6 +7385,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "CommandedRudderDirection":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 21,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7008,6 +7400,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "CommandedRudderAngle":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -7022,6 +7415,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "HeadingToSteerCourse":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -7036,6 +7430,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Track":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 56,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -7050,6 +7445,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "RudderLimit":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 72,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -7064,6 +7460,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "OffHeadingLimit":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 88,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -7078,6 +7475,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "RadiusOfTurnOrder":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 104,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 1,
@@ -7092,6 +7490,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "RateOfTurnOrder":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 120,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 3.125e-05,
@@ -7106,6 +7505,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "OffTrackLimit":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 136,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 1,
@@ -7120,6 +7520,7 @@ func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "VesselHeading":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 152,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -7152,6 +7553,7 @@ func (p *Rudder) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -7166,6 +7568,7 @@ func (p *Rudder) GetFieldSpec(fieldName string) *FieldSpec {
     case "DirectionOrder":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7180,6 +7583,7 @@ func (p *Rudder) GetFieldSpec(fieldName string) *FieldSpec {
     case "AngleOrder":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -7194,6 +7598,7 @@ func (p *Rudder) GetFieldSpec(fieldName string) *FieldSpec {
     case "Position":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -7226,6 +7631,7 @@ func (p *VesselHeading) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -7240,6 +7646,7 @@ func (p *VesselHeading) GetFieldSpec(fieldName string) *FieldSpec {
     case "Heading":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -7254,6 +7661,7 @@ func (p *VesselHeading) GetFieldSpec(fieldName string) *FieldSpec {
     case "Deviation":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -7268,6 +7676,7 @@ func (p *VesselHeading) GetFieldSpec(fieldName string) *FieldSpec {
     case "Variation":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -7282,6 +7691,7 @@ func (p *VesselHeading) GetFieldSpec(fieldName string) *FieldSpec {
     case "Reference":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7314,6 +7724,7 @@ func (p *RateOfTurn) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -7328,6 +7739,7 @@ func (p *RateOfTurn) GetFieldSpec(fieldName string) *FieldSpec {
     case "Rate":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 3.125e-08,
@@ -7360,6 +7772,7 @@ func (p *Attitude) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -7374,6 +7787,7 @@ func (p *Attitude) GetFieldSpec(fieldName string) *FieldSpec {
     case "Yaw":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -7388,6 +7802,7 @@ func (p *Attitude) GetFieldSpec(fieldName string) *FieldSpec {
     case "Pitch":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -7402,6 +7817,7 @@ func (p *Attitude) GetFieldSpec(fieldName string) *FieldSpec {
     case "Roll":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -7434,6 +7850,7 @@ func (p *MagneticVariation) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -7448,6 +7865,7 @@ func (p *MagneticVariation) GetFieldSpec(fieldName string) *FieldSpec {
     case "Source":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7462,6 +7880,7 @@ func (p *MagneticVariation) GetFieldSpec(fieldName string) *FieldSpec {
     case "AgeOfService":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -7476,6 +7895,7 @@ func (p *MagneticVariation) GetFieldSpec(fieldName string) *FieldSpec {
     case "Variation":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -7508,6 +7928,7 @@ func (p *EngineParametersRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec 
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7522,6 +7943,7 @@ func (p *EngineParametersRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec 
     case "Speed":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.25,
@@ -7536,6 +7958,7 @@ func (p *EngineParametersRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec 
     case "BoostPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 100,
@@ -7550,6 +7973,7 @@ func (p *EngineParametersRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec 
     case "TiltTrim":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 125,
             MissingValue: 127,
             Resolution: 1,
@@ -7582,6 +8006,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7596,6 +8021,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "OilPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 100,
@@ -7610,6 +8036,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "OilTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -7624,6 +8051,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "Temperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -7638,6 +8066,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "AlternatorPotential":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 56,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.01,
@@ -7652,6 +8081,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "FuelRate":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 72,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.1,
@@ -7666,6 +8096,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "TotalEngineHours":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 88,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -7680,6 +8111,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "CoolantPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 120,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 100,
@@ -7694,6 +8126,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "FuelPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 136,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1000,
@@ -7708,6 +8141,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "DiscreteStatus1":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 160,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7722,6 +8156,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "DiscreteStatus2":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 176,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7736,6 +8171,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "EngineLoad":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 192,
             MaxRawValue: 125,
             MissingValue: 127,
             Resolution: 1,
@@ -7750,6 +8186,7 @@ func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     case "EngineTorque":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 200,
             MaxRawValue: 125,
             MissingValue: 127,
             Resolution: 1,
@@ -7782,6 +8219,7 @@ func (p *TransmissionParametersDynamic) GetFieldSpec(fieldName string) *FieldSpe
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7796,6 +8234,7 @@ func (p *TransmissionParametersDynamic) GetFieldSpec(fieldName string) *FieldSpe
     case "TransmissionGear":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7810,6 +8249,7 @@ func (p *TransmissionParametersDynamic) GetFieldSpec(fieldName string) *FieldSpe
     case "OilPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 100,
@@ -7824,6 +8264,7 @@ func (p *TransmissionParametersDynamic) GetFieldSpec(fieldName string) *FieldSpe
     case "OilTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -7838,6 +8279,7 @@ func (p *TransmissionParametersDynamic) GetFieldSpec(fieldName string) *FieldSpe
     case "DiscreteStatus1":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -7870,6 +8312,7 @@ func (p *TripParametersVessel) GetFieldSpec(fieldName string) *FieldSpec {
     case "TimeToEmpty":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.001,
@@ -7884,6 +8327,7 @@ func (p *TripParametersVessel) GetFieldSpec(fieldName string) *FieldSpec {
     case "DistanceToEmpty":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.01,
@@ -7898,6 +8342,7 @@ func (p *TripParametersVessel) GetFieldSpec(fieldName string) *FieldSpec {
     case "EstimatedFuelRemaining":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 64,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -7912,6 +8357,7 @@ func (p *TripParametersVessel) GetFieldSpec(fieldName string) *FieldSpec {
     case "TripRunTime":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 80,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.001,
@@ -7944,6 +8390,7 @@ func (p *TripParametersEngine) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -7958,6 +8405,7 @@ func (p *TripParametersEngine) GetFieldSpec(fieldName string) *FieldSpec {
     case "TripFuelUsed":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -7972,6 +8420,7 @@ func (p *TripParametersEngine) GetFieldSpec(fieldName string) *FieldSpec {
     case "FuelRateAverage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.1,
@@ -7986,6 +8435,7 @@ func (p *TripParametersEngine) GetFieldSpec(fieldName string) *FieldSpec {
     case "FuelRateEconomy":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.1,
@@ -8000,6 +8450,7 @@ func (p *TripParametersEngine) GetFieldSpec(fieldName string) *FieldSpec {
     case "InstantaneousFuelEconomy":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 56,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.1,
@@ -8032,6 +8483,7 @@ func (p *EngineParametersStatic) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8046,6 +8498,7 @@ func (p *EngineParametersStatic) GetFieldSpec(fieldName string) *FieldSpec {
     case "RatedEngineSpeed":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.25,
@@ -8060,6 +8513,7 @@ func (p *EngineParametersStatic) GetFieldSpec(fieldName string) *FieldSpec {
     case "Vin":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8074,6 +8528,7 @@ func (p *EngineParametersStatic) GetFieldSpec(fieldName string) *FieldSpec {
     case "SoftwareId":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8106,6 +8561,7 @@ func (p *LoadControllerConnectionStateControl) GetFieldSpec(fieldName string) *F
     case "SequenceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -8120,6 +8576,7 @@ func (p *LoadControllerConnectionStateControl) GetFieldSpec(fieldName string) *F
     case "ConnectionId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -8134,6 +8591,7 @@ func (p *LoadControllerConnectionStateControl) GetFieldSpec(fieldName string) *F
     case "State":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -8148,6 +8606,7 @@ func (p *LoadControllerConnectionStateControl) GetFieldSpec(fieldName string) *F
     case "Status":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -8162,6 +8621,7 @@ func (p *LoadControllerConnectionStateControl) GetFieldSpec(fieldName string) *F
     case "OperationalStatusControl":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -8176,6 +8636,7 @@ func (p *LoadControllerConnectionStateControl) GetFieldSpec(fieldName string) *F
     case "PwmDutyCycle":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -8190,6 +8651,7 @@ func (p *LoadControllerConnectionStateControl) GetFieldSpec(fieldName string) *F
     case "Timeon":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -8204,6 +8666,7 @@ func (p *LoadControllerConnectionStateControl) GetFieldSpec(fieldName string) *F
     case "Timeoff":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -8236,6 +8699,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -8250,6 +8714,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator1":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8264,6 +8729,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator2":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 10,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8278,6 +8744,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator3":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 12,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8292,6 +8759,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator4":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 14,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8306,6 +8774,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator5":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8320,6 +8789,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator6":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 18,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8334,6 +8804,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator7":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 20,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8348,6 +8819,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator8":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 22,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8362,6 +8834,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator9":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8376,6 +8849,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator10":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 26,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8390,6 +8864,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator11":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 28,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8404,6 +8879,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator12":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 30,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8418,6 +8894,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator13":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8432,6 +8909,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator14":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 34,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8446,6 +8924,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator15":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 36,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8460,6 +8939,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator16":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 38,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8474,6 +8954,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator17":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8488,6 +8969,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator18":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 42,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8502,6 +8984,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator19":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 44,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8516,6 +8999,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator20":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 46,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8530,6 +9014,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator21":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8544,6 +9029,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator22":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 50,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8558,6 +9044,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator23":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 52,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8572,6 +9059,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator24":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 54,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8586,6 +9074,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator25":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8600,6 +9089,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator26":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 58,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8614,6 +9104,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator27":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 60,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8628,6 +9119,7 @@ func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Indicator28":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 62,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8660,6 +9152,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -8674,6 +9167,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch1":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8688,6 +9182,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch2":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 10,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8702,6 +9197,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch3":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 12,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8716,6 +9212,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch4":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 14,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8730,6 +9227,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch5":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8744,6 +9242,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch6":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 18,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8758,6 +9257,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch7":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 20,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8772,6 +9272,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch8":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 22,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8786,6 +9287,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch9":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8800,6 +9302,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch10":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 26,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8814,6 +9317,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch11":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 28,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8828,6 +9332,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch12":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 30,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8842,6 +9347,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch13":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8856,6 +9362,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch14":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 34,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8870,6 +9377,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch15":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 36,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8884,6 +9392,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch16":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 38,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8898,6 +9407,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch17":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8912,6 +9422,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch18":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 42,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8926,6 +9437,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch19":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 44,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8940,6 +9452,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch20":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 46,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8954,6 +9467,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch21":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8968,6 +9482,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch22":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 50,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8982,6 +9497,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch23":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 52,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -8996,6 +9512,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch24":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 54,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9010,6 +9527,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch25":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9024,6 +9542,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch26":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 58,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9038,6 +9557,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch27":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 60,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9052,6 +9572,7 @@ func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Switch28":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 62,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9084,6 +9605,7 @@ func (p *AcInputStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9098,6 +9620,7 @@ func (p *AcInputStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfLines":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9130,6 +9653,7 @@ func (p *AcOutputStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9144,6 +9668,7 @@ func (p *AcOutputStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfLines":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9176,6 +9701,7 @@ func (p *FluidLevel) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 0,
             MaxRawValue: 13,
             MissingValue: 15,
             Resolution: 1,
@@ -9190,6 +9716,7 @@ func (p *FluidLevel) GetFieldSpec(fieldName string) *FieldSpec {
     case "Type":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 4,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9204,6 +9731,7 @@ func (p *FluidLevel) GetFieldSpec(fieldName string) *FieldSpec {
     case "Level":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.004,
@@ -9218,6 +9746,7 @@ func (p *FluidLevel) GetFieldSpec(fieldName string) *FieldSpec {
     case "Capacity":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 24,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.1,
@@ -9250,6 +9779,7 @@ func (p *DcDetailedStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9264,6 +9794,7 @@ func (p *DcDetailedStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9278,6 +9809,7 @@ func (p *DcDetailedStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "DcType":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9292,6 +9824,7 @@ func (p *DcDetailedStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "StateOfCharge":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9306,6 +9839,7 @@ func (p *DcDetailedStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "StateOfHealth":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9320,6 +9854,7 @@ func (p *DcDetailedStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "TimeRemaining":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 60,
@@ -9334,6 +9869,7 @@ func (p *DcDetailedStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "RippleVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 56,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.001,
@@ -9348,6 +9884,7 @@ func (p *DcDetailedStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "RemainingCapacity":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 72,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -9380,6 +9917,7 @@ func (p *ChargerStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9394,6 +9932,7 @@ func (p *ChargerStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "BatteryInstance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9408,6 +9947,7 @@ func (p *ChargerStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "OperatingState":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9422,6 +9962,7 @@ func (p *ChargerStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "ChargeMode":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 20,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9436,6 +9977,7 @@ func (p *ChargerStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Enabled":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9450,6 +9992,7 @@ func (p *ChargerStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "EqualizationPending":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 26,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9464,6 +10007,7 @@ func (p *ChargerStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "EqualizationTimeRemaining":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 60,
@@ -9496,6 +10040,7 @@ func (p *BatteryStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9510,6 +10055,7 @@ func (p *BatteryStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Voltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.01,
@@ -9524,6 +10070,7 @@ func (p *BatteryStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Current":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.1,
@@ -9538,6 +10085,7 @@ func (p *BatteryStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Temperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -9552,6 +10100,7 @@ func (p *BatteryStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9584,6 +10133,7 @@ func (p *InverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9598,6 +10148,7 @@ func (p *InverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcInstance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9612,6 +10163,7 @@ func (p *InverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "DcInstance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9626,6 +10178,7 @@ func (p *InverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "OperatingState":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9640,6 +10193,7 @@ func (p *InverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "InverterEnable":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 28,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -9672,6 +10226,7 @@ func (p *AcPowerCurrentPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9686,6 +10241,7 @@ func (p *AcPowerCurrentPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     case "ConnectionNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9700,6 +10256,7 @@ func (p *AcPowerCurrentPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -9714,6 +10271,7 @@ func (p *AcPowerCurrentPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     case "Power":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -9746,6 +10304,7 @@ func (p *AcPowerCurrentPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9760,6 +10319,7 @@ func (p *AcPowerCurrentPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     case "ConnectionNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9774,6 +10334,7 @@ func (p *AcPowerCurrentPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -9788,6 +10349,7 @@ func (p *AcPowerCurrentPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     case "Power":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -9820,6 +10382,7 @@ func (p *AcPowerCurrentPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9834,6 +10397,7 @@ func (p *AcPowerCurrentPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     case "ConnectionNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9848,6 +10412,7 @@ func (p *AcPowerCurrentPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcRmsCurrent":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -9862,6 +10427,7 @@ func (p *AcPowerCurrentPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     case "Power":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1,
@@ -9894,6 +10460,7 @@ func (p *AcVoltageFrequencyPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9908,6 +10475,7 @@ func (p *AcVoltageFrequencyPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     case "ConnectionNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9922,6 +10490,7 @@ func (p *AcVoltageFrequencyPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcVoltageLineToNeutral":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -9936,6 +10505,7 @@ func (p *AcVoltageFrequencyPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcVoltageLineToLine":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -9950,6 +10520,7 @@ func (p *AcVoltageFrequencyPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     case "Frequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -9982,6 +10553,7 @@ func (p *AcVoltageFrequencyPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -9996,6 +10568,7 @@ func (p *AcVoltageFrequencyPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     case "ConnectionNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10010,6 +10583,7 @@ func (p *AcVoltageFrequencyPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcVoltageLineToNeutral":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -10024,6 +10598,7 @@ func (p *AcVoltageFrequencyPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcVoltageLineToLine":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -10038,6 +10613,7 @@ func (p *AcVoltageFrequencyPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     case "Frequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -10070,6 +10646,7 @@ func (p *AcVoltageFrequencyPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10084,6 +10661,7 @@ func (p *AcVoltageFrequencyPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     case "ConnectionNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10098,6 +10676,7 @@ func (p *AcVoltageFrequencyPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcVoltageLineToNeutral":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -10112,6 +10691,7 @@ func (p *AcVoltageFrequencyPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     case "AcVoltageLineToLine":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -10126,6 +10706,7 @@ func (p *AcVoltageFrequencyPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     case "Frequency":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -10158,6 +10739,7 @@ func (p *ConverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10172,6 +10754,7 @@ func (p *ConverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "ConnectionNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10186,6 +10769,7 @@ func (p *ConverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "OperatingState":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10200,6 +10784,7 @@ func (p *ConverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "TemperatureState":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10214,6 +10799,7 @@ func (p *ConverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "OverloadState":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 26,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10228,6 +10814,7 @@ func (p *ConverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "LowDcVoltageState":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 28,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10242,6 +10829,7 @@ func (p *ConverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "RippleState":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 30,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10274,6 +10862,7 @@ func (p *DcVoltageCurrent) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10288,6 +10877,7 @@ func (p *DcVoltageCurrent) GetFieldSpec(fieldName string) *FieldSpec {
     case "ConnectionNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10302,6 +10892,7 @@ func (p *DcVoltageCurrent) GetFieldSpec(fieldName string) *FieldSpec {
     case "DcVoltage":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -10316,6 +10907,7 @@ func (p *DcVoltageCurrent) GetFieldSpec(fieldName string) *FieldSpec {
     case "DcCurrent":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 32,
             MaxRawValue: 8388605,
             MissingValue: 8388607,
             Resolution: 0.01,
@@ -10348,6 +10940,7 @@ func (p *LeewayAngle) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10362,6 +10955,7 @@ func (p *LeewayAngle) GetFieldSpec(fieldName string) *FieldSpec {
     case "LeewayAngle":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -10394,6 +10988,7 @@ func (p *ThrusterControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10408,6 +11003,7 @@ func (p *ThrusterControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Identifier":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10422,6 +11018,7 @@ func (p *ThrusterControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "DirectionControl":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10436,6 +11033,7 @@ func (p *ThrusterControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "PowerEnabled":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 20,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10450,6 +11048,7 @@ func (p *ThrusterControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "RetractControl":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 22,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10464,6 +11063,7 @@ func (p *ThrusterControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "SpeedControl":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10478,6 +11078,7 @@ func (p *ThrusterControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "ControlEvents":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10492,6 +11093,7 @@ func (p *ThrusterControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "CommandTimeout":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 0.005,
@@ -10506,6 +11108,7 @@ func (p *ThrusterControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "AzimuthControl":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -10538,6 +11141,7 @@ func (p *ThrusterInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "Identifier":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10552,6 +11156,7 @@ func (p *ThrusterInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "MotorType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10566,6 +11171,7 @@ func (p *ThrusterInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "PowerRating":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -10580,6 +11186,7 @@ func (p *ThrusterInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "MaximumTemperatureRating":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -10594,6 +11201,7 @@ func (p *ThrusterInformation) GetFieldSpec(fieldName string) *FieldSpec {
     case "MaximumRotationalSpeed":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.25,
@@ -10626,6 +11234,7 @@ func (p *ThrusterMotorStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10640,6 +11249,7 @@ func (p *ThrusterMotorStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Identifier":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10654,6 +11264,7 @@ func (p *ThrusterMotorStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "MotorEvents":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10668,6 +11279,7 @@ func (p *ThrusterMotorStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Current":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10682,6 +11294,7 @@ func (p *ThrusterMotorStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Temperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -10696,6 +11309,7 @@ func (p *ThrusterMotorStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "OperatingTime":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 60,
@@ -10728,6 +11342,7 @@ func (p *Speed) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10742,6 +11357,7 @@ func (p *Speed) GetFieldSpec(fieldName string) *FieldSpec {
     case "SpeedWaterReferenced":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -10756,6 +11372,7 @@ func (p *Speed) GetFieldSpec(fieldName string) *FieldSpec {
     case "SpeedGroundReferenced":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -10770,6 +11387,7 @@ func (p *Speed) GetFieldSpec(fieldName string) *FieldSpec {
     case "SpeedWaterReferencedType":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -10784,6 +11402,7 @@ func (p *Speed) GetFieldSpec(fieldName string) *FieldSpec {
     case "SpeedDirection":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 48,
             MaxRawValue: 13,
             MissingValue: 15,
             Resolution: 1,
@@ -10816,6 +11435,7 @@ func (p *WaterDepth) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10830,6 +11450,7 @@ func (p *WaterDepth) GetFieldSpec(fieldName string) *FieldSpec {
     case "Depth":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.01,
@@ -10844,6 +11465,7 @@ func (p *WaterDepth) GetFieldSpec(fieldName string) *FieldSpec {
     case "Offset":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.001,
@@ -10858,6 +11480,7 @@ func (p *WaterDepth) GetFieldSpec(fieldName string) *FieldSpec {
     case "Range":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 10,
@@ -10890,6 +11513,7 @@ func (p *DistanceLog) GetFieldSpec(fieldName string) *FieldSpec {
     case "Date":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -10904,6 +11528,7 @@ func (p *DistanceLog) GetFieldSpec(fieldName string) *FieldSpec {
     case "Time":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 16,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -10918,6 +11543,7 @@ func (p *DistanceLog) GetFieldSpec(fieldName string) *FieldSpec {
     case "Log":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 48,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -10932,6 +11558,7 @@ func (p *DistanceLog) GetFieldSpec(fieldName string) *FieldSpec {
     case "TripLog":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 80,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -10964,6 +11591,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10978,6 +11606,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "WindlassId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -10992,6 +11621,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "WindlassDirectionControl":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11006,6 +11636,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "AnchorDockingControl":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 18,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11020,6 +11651,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "SpeedControlType":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 20,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11034,6 +11666,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "SpeedControl":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11048,6 +11681,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "PowerEnable":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11062,6 +11696,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "MechanicalLock":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 34,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11076,6 +11711,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeckAndAnchorWash":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 36,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11090,6 +11726,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "AnchorLight":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 38,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11104,6 +11741,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "CommandTimeout":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 0.005,
@@ -11118,6 +11756,7 @@ func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "WindlassControlEvents":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11150,6 +11789,7 @@ func (p *AnchorWindlassOperatingStatus) GetFieldSpec(fieldName string) *FieldSpe
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -11164,6 +11804,7 @@ func (p *AnchorWindlassOperatingStatus) GetFieldSpec(fieldName string) *FieldSpe
     case "WindlassId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -11178,6 +11819,7 @@ func (p *AnchorWindlassOperatingStatus) GetFieldSpec(fieldName string) *FieldSpe
     case "WindlassDirectionControl":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11192,6 +11834,7 @@ func (p *AnchorWindlassOperatingStatus) GetFieldSpec(fieldName string) *FieldSpe
     case "WindlassMotionStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 18,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11206,6 +11849,7 @@ func (p *AnchorWindlassOperatingStatus) GetFieldSpec(fieldName string) *FieldSpe
     case "RodeTypeStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 20,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11220,6 +11864,7 @@ func (p *AnchorWindlassOperatingStatus) GetFieldSpec(fieldName string) *FieldSpe
     case "RodeCounterValue":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -11234,6 +11879,7 @@ func (p *AnchorWindlassOperatingStatus) GetFieldSpec(fieldName string) *FieldSpe
     case "WindlassLineSpeed":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -11248,6 +11894,7 @@ func (p *AnchorWindlassOperatingStatus) GetFieldSpec(fieldName string) *FieldSpe
     case "AnchorDockingStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11262,6 +11909,7 @@ func (p *AnchorWindlassOperatingStatus) GetFieldSpec(fieldName string) *FieldSpe
     case "WindlassOperatingEvents":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 58,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11294,6 +11942,7 @@ func (p *AnchorWindlassMonitoringStatus) GetFieldSpec(fieldName string) *FieldSp
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -11308,6 +11957,7 @@ func (p *AnchorWindlassMonitoringStatus) GetFieldSpec(fieldName string) *FieldSp
     case "WindlassId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -11322,6 +11972,7 @@ func (p *AnchorWindlassMonitoringStatus) GetFieldSpec(fieldName string) *FieldSp
     case "WindlassMonitoringEvents":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11336,6 +11987,7 @@ func (p *AnchorWindlassMonitoringStatus) GetFieldSpec(fieldName string) *FieldSp
     case "ControllerVoltage":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 0.2,
@@ -11350,6 +12002,7 @@ func (p *AnchorWindlassMonitoringStatus) GetFieldSpec(fieldName string) *FieldSp
     case "MotorCurrent":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -11364,6 +12017,7 @@ func (p *AnchorWindlassMonitoringStatus) GetFieldSpec(fieldName string) *FieldSp
     case "TotalMotorTime":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 60,
@@ -11396,6 +12050,7 @@ func (p *PositionRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec {
     case "Latitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -11410,6 +12065,7 @@ func (p *PositionRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec {
     case "Longitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -11442,6 +12098,7 @@ func (p *CogSogRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -11456,6 +12113,7 @@ func (p *CogSogRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec {
     case "CogReference":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11470,6 +12128,7 @@ func (p *CogSogRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec {
     case "Cog":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -11484,6 +12143,7 @@ func (p *CogSogRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sog":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -11516,6 +12176,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -11530,6 +12191,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Date":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -11544,6 +12206,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Time":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 24,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -11558,6 +12221,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Latitude":
         return &FieldSpec{
             BitLength: 64,
+            BitOffset: 56,
             MaxRawValue: 9223372036854775805,
             MissingValue: 9223372036854775807,
             Resolution: 1e-16,
@@ -11572,6 +12236,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Longitude":
         return &FieldSpec{
             BitLength: 64,
+            BitOffset: 120,
             MaxRawValue: 9223372036854775805,
             MissingValue: 9223372036854775807,
             Resolution: 1e-16,
@@ -11586,6 +12251,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Altitude":
         return &FieldSpec{
             BitLength: 64,
+            BitOffset: 184,
             MaxRawValue: 9223372036854775805,
             MissingValue: 9223372036854775807,
             Resolution: 1e-06,
@@ -11600,6 +12266,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "GnssType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 248,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11614,6 +12281,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Method":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 252,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11628,6 +12296,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Integrity":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 256,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11642,6 +12311,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfSvs":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 264,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -11656,6 +12326,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Hdop":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 272,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.01,
@@ -11670,6 +12341,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Pdop":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 288,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.01,
@@ -11684,6 +12356,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "GeoidalSeparation":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 304,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.01,
@@ -11698,6 +12371,7 @@ func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     case "ReferenceStations":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 336,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -11730,6 +12404,7 @@ func (p *TimeDate) GetFieldSpec(fieldName string) *FieldSpec {
     case "Date":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -11744,6 +12419,7 @@ func (p *TimeDate) GetFieldSpec(fieldName string) *FieldSpec {
     case "Time":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 16,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -11758,6 +12434,7 @@ func (p *TimeDate) GetFieldSpec(fieldName string) *FieldSpec {
     case "LocalOffset":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 60,
@@ -11790,6 +12467,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11804,6 +12482,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "RepeatIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11818,6 +12497,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "UserId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11832,6 +12512,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Longitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 40,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -11846,6 +12527,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Latitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 72,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -11860,6 +12542,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "PositionAccuracy":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 104,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11874,6 +12557,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Raim":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 105,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11888,6 +12572,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "TimeStamp":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 106,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11902,6 +12587,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Cog":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 112,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -11916,6 +12602,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sog":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 128,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -11930,6 +12617,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "CommunicationState":
         return &FieldSpec{
             BitLength: 19,
+            BitOffset: 144,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11944,6 +12632,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "AisTransceiverInformation":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 163,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -11958,6 +12647,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Heading":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 168,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -11972,6 +12662,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "RateOfTurn":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 184,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 3.125e-05,
@@ -11986,6 +12677,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "NavStatus":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 200,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12000,6 +12692,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "SpecialManeuverIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 204,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12014,6 +12707,7 @@ func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "SequenceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 216,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -12046,6 +12740,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12060,6 +12755,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "RepeatIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12074,6 +12770,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "UserId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12088,6 +12785,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Longitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 40,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -12102,6 +12800,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Latitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 72,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -12116,6 +12815,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "PositionAccuracy":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 104,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12130,6 +12830,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Raim":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 105,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12144,6 +12845,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "TimeStamp":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 106,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12158,6 +12860,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Cog":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 112,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -12172,6 +12875,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sog":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 128,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -12186,6 +12890,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "CommunicationState":
         return &FieldSpec{
             BitLength: 19,
+            BitOffset: 144,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12200,6 +12905,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "AisTransceiverInformation":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 163,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12214,6 +12920,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Heading":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 168,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -12228,6 +12935,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "UnitType":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 194,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12242,6 +12950,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "IntegratedDisplay":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 195,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12256,6 +12965,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Dsc":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 196,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12270,6 +12980,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "Band":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 197,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12284,6 +12995,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "CanHandleMsg22":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 198,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12298,6 +13010,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "AisMode":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 199,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12312,6 +13025,7 @@ func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     case "AisCommunicationState":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 200,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12344,6 +13058,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "MessageId":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12358,6 +13073,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "RepeatIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12372,6 +13088,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "UserId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12386,6 +13103,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "Longitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 40,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -12400,6 +13118,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "Latitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 72,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -12414,6 +13133,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "PositionAccuracy":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 104,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12428,6 +13148,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "Raim":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 105,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12442,6 +13163,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "TimeStamp":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 106,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12456,6 +13178,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "LengthDiameter":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 112,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -12470,6 +13193,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "BeamDiameter":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 128,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -12484,6 +13208,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "PositionReferenceFromStarboardEdge":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 144,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -12498,6 +13223,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "PositionReferenceFromTrueNorthFacingEdge":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 160,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -12512,6 +13238,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "AtonType":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 176,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12526,6 +13253,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "OffPositionIndicator":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 181,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12540,6 +13268,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "VirtualAtonFlag":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 182,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12554,6 +13283,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "AssignedModeFlag":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 183,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12568,6 +13298,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "PositionFixingDeviceType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 185,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12582,6 +13313,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "AtonStatus":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 192,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12596,6 +13328,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "AisTransceiverInformation":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 200,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12610,6 +13343,7 @@ func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpe
     case "AtonName":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 208,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12642,6 +13376,7 @@ func (p *Datum) GetFieldSpec(fieldName string) *FieldSpec {
     case "LocalDatum":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12656,6 +13391,7 @@ func (p *Datum) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeltaLatitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -12670,6 +13406,7 @@ func (p *Datum) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeltaLongitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 64,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -12684,6 +13421,7 @@ func (p *Datum) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeltaAltitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 96,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.01,
@@ -12698,6 +13436,7 @@ func (p *Datum) GetFieldSpec(fieldName string) *FieldSpec {
     case "ReferenceDatum":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 128,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12730,6 +13469,7 @@ func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeltaX":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.01,
@@ -12744,6 +13484,7 @@ func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeltaY":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.01,
@@ -12758,6 +13499,7 @@ func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeltaZ":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 64,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.01,
@@ -12772,6 +13514,7 @@ func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     case "RotationInX":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 96,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12786,6 +13529,7 @@ func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     case "RotationInY":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 128,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12800,6 +13544,7 @@ func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     case "RotationInZ":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 160,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12814,6 +13559,7 @@ func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     case "Scale":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 192,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12828,6 +13574,7 @@ func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     case "EllipsoidSemiMajorAxis":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 224,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.01,
@@ -12842,6 +13589,7 @@ func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     case "EllipsoidFlatteningInverse":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 256,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12856,6 +13604,7 @@ func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     case "DatumName":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 288,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12888,6 +13637,7 @@ func (p *CrossTrackError) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -12902,6 +13652,7 @@ func (p *CrossTrackError) GetFieldSpec(fieldName string) *FieldSpec {
     case "XteMode":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12916,6 +13667,7 @@ func (p *CrossTrackError) GetFieldSpec(fieldName string) *FieldSpec {
     case "NavigationTerminated":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 14,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -12930,6 +13682,7 @@ func (p *CrossTrackError) GetFieldSpec(fieldName string) *FieldSpec {
     case "Xte":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 16,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.01,
@@ -12962,6 +13715,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -12976,6 +13730,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "DistanceToWaypoint":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.01,
@@ -12990,6 +13745,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "CourseBearingReference":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13004,6 +13760,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "PerpendicularCrossed":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 42,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13018,6 +13775,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "ArrivalCircleEntered":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 44,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13032,6 +13790,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "CalculationType":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 46,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13046,6 +13805,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "EtaTime":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 48,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -13060,6 +13820,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "EtaDate":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 80,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -13074,6 +13835,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "BearingOriginToDestinationWaypoint":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 96,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -13088,6 +13850,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "BearingPositionToDestinationWaypoint":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 112,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -13102,6 +13865,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "OriginWaypointNumber":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 128,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -13116,6 +13880,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "DestinationWaypointNumber":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 160,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -13130,6 +13895,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "DestinationLatitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 192,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -13144,6 +13910,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "DestinationLongitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 224,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -13158,6 +13925,7 @@ func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "WaypointClosingVelocity":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 256,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.01,
@@ -13190,6 +13958,7 @@ func (p *NavigationRouteWpInformation) GetFieldSpec(fieldName string) *FieldSpec
     case "StartRps":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -13204,6 +13973,7 @@ func (p *NavigationRouteWpInformation) GetFieldSpec(fieldName string) *FieldSpec
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -13218,6 +13988,7 @@ func (p *NavigationRouteWpInformation) GetFieldSpec(fieldName string) *FieldSpec
     case "DatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -13232,6 +14003,7 @@ func (p *NavigationRouteWpInformation) GetFieldSpec(fieldName string) *FieldSpec
     case "RouteId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -13246,6 +14018,7 @@ func (p *NavigationRouteWpInformation) GetFieldSpec(fieldName string) *FieldSpec
     case "NavigationDirectionInRoute":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 64,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13260,6 +14033,7 @@ func (p *NavigationRouteWpInformation) GetFieldSpec(fieldName string) *FieldSpec
     case "SupplementaryRouteWpDataAvailable":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 67,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13274,6 +14048,7 @@ func (p *NavigationRouteWpInformation) GetFieldSpec(fieldName string) *FieldSpec
     case "RouteName":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 72,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13306,6 +14081,7 @@ func (p *GnssDops) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -13320,6 +14096,7 @@ func (p *GnssDops) GetFieldSpec(fieldName string) *FieldSpec {
     case "DesiredMode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13334,6 +14111,7 @@ func (p *GnssDops) GetFieldSpec(fieldName string) *FieldSpec {
     case "ActualMode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 11,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13348,6 +14126,7 @@ func (p *GnssDops) GetFieldSpec(fieldName string) *FieldSpec {
     case "Hdop":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.01,
@@ -13362,6 +14141,7 @@ func (p *GnssDops) GetFieldSpec(fieldName string) *FieldSpec {
     case "Vdop":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.01,
@@ -13376,6 +14156,7 @@ func (p *GnssDops) GetFieldSpec(fieldName string) *FieldSpec {
     case "Tdop":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.01,
@@ -13408,6 +14189,7 @@ func (p *GnssSatsInView) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -13422,6 +14204,7 @@ func (p *GnssSatsInView) GetFieldSpec(fieldName string) *FieldSpec {
     case "RangeResidualMode":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13436,6 +14219,7 @@ func (p *GnssSatsInView) GetFieldSpec(fieldName string) *FieldSpec {
     case "SatsInView":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -13468,6 +14252,7 @@ func (p *GnssRaimSettings) GetFieldSpec(fieldName string) *FieldSpec {
     case "RadialPositionErrorMaximumThreshold":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -13482,6 +14267,7 @@ func (p *GnssRaimSettings) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProbabilityOfFalseAlarm":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 125,
             MissingValue: 127,
             Resolution: 1,
@@ -13496,6 +14282,7 @@ func (p *GnssRaimSettings) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProbabilityOfMissedDetection":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 125,
             MissingValue: 127,
             Resolution: 1,
@@ -13510,6 +14297,7 @@ func (p *GnssRaimSettings) GetFieldSpec(fieldName string) *FieldSpec {
     case "PseudorangeResidualFilteringTimeConstant":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -13542,6 +14330,7 @@ func (p *GnssPseudorangeErrorStatistics) GetFieldSpec(fieldName string) *FieldSp
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -13556,6 +14345,7 @@ func (p *GnssPseudorangeErrorStatistics) GetFieldSpec(fieldName string) *FieldSp
     case "RmsStdDevOfRangeInputs":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -13570,6 +14360,7 @@ func (p *GnssPseudorangeErrorStatistics) GetFieldSpec(fieldName string) *FieldSp
     case "StdDevOfMajorErrorEllipse":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -13584,6 +14375,7 @@ func (p *GnssPseudorangeErrorStatistics) GetFieldSpec(fieldName string) *FieldSp
     case "StdDevOfMinorErrorEllipse":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -13598,6 +14390,7 @@ func (p *GnssPseudorangeErrorStatistics) GetFieldSpec(fieldName string) *FieldSp
     case "OrientationOfErrorEllipse":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 56,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -13612,6 +14405,7 @@ func (p *GnssPseudorangeErrorStatistics) GetFieldSpec(fieldName string) *FieldSp
     case "StdDevLatError":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 72,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -13626,6 +14420,7 @@ func (p *GnssPseudorangeErrorStatistics) GetFieldSpec(fieldName string) *FieldSp
     case "StdDevLonError":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 88,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -13640,6 +14435,7 @@ func (p *GnssPseudorangeErrorStatistics) GetFieldSpec(fieldName string) *FieldSp
     case "StdDevAltError":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 104,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -13672,6 +14468,7 @@ func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -13686,6 +14483,7 @@ func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     case "ReferenceStationId":
         return &FieldSpec{
             BitLength: 12,
+            BitOffset: 8,
             MaxRawValue: 4093,
             MissingValue: 4095,
             Resolution: 1,
@@ -13700,6 +14498,7 @@ func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     case "ReferenceStationType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 20,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13714,6 +14513,7 @@ func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     case "TimeOfCorrections":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -13728,6 +14528,7 @@ func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     case "StationHealth":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13742,6 +14543,7 @@ func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     case "SatelliteId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -13756,6 +14558,7 @@ func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     case "Prc":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 56,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.0001,
@@ -13770,6 +14573,7 @@ func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     case "Rrc":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 88,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.0001,
@@ -13784,6 +14588,7 @@ func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     case "Udre":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 104,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -13798,6 +14603,7 @@ func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     case "Iod":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 120,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -13830,6 +14636,7 @@ func (p *GnssDifferentialCorrectionReceiverInterface) GetFieldSpec(fieldName str
     case "Channel":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -13844,6 +14651,7 @@ func (p *GnssDifferentialCorrectionReceiverInterface) GetFieldSpec(fieldName str
     case "Frequency":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 10,
@@ -13858,6 +14666,7 @@ func (p *GnssDifferentialCorrectionReceiverInterface) GetFieldSpec(fieldName str
     case "SerialInterfaceBitRate":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13872,6 +14681,7 @@ func (p *GnssDifferentialCorrectionReceiverInterface) GetFieldSpec(fieldName str
     case "SerialInterfaceDetectionMode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 45,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13886,6 +14696,7 @@ func (p *GnssDifferentialCorrectionReceiverInterface) GetFieldSpec(fieldName str
     case "DifferentialSource":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13900,6 +14711,7 @@ func (p *GnssDifferentialCorrectionReceiverInterface) GetFieldSpec(fieldName str
     case "DifferentialOperationMode":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 52,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -13932,6 +14744,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -13946,6 +14759,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "Channel":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -13960,6 +14774,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "SignalStrength":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 16,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.01,
@@ -13974,6 +14789,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "SignalSnr":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.01,
@@ -13988,6 +14804,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "Frequency":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 64,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 10,
@@ -14002,6 +14819,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "StationType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 96,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14016,6 +14834,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "ReferenceStationId":
         return &FieldSpec{
             BitLength: 12,
+            BitOffset: 100,
             MaxRawValue: 4093,
             MissingValue: 4095,
             Resolution: 1,
@@ -14030,6 +14849,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "DifferentialSignalBitRate":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 112,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14044,6 +14864,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "DifferentialSignalDetectionMode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 117,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14058,6 +14879,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "UsedAsCorrectionSource":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 120,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14072,6 +14894,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "DifferentialSource":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 124,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14086,6 +14909,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "TimeSinceLastSatDifferentialSync":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 128,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -14100,6 +14924,7 @@ func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string
     case "SatelliteServiceIdNo":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 144,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -14132,6 +14957,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Prn":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -14146,6 +14972,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Na":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -14160,6 +14987,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Cna":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 26,
             MaxRawValue: 0,
             MissingValue: 1,
             Resolution: 1,
@@ -14174,6 +15002,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Hna":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 27,
             MaxRawValue: 29,
             MissingValue: 31,
             Resolution: 1,
@@ -14188,6 +15017,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "EpsilonNa":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -14202,6 +15032,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeltatnaDot":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -14216,6 +15047,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "OmegaNa":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 56,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -14230,6 +15062,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeltaTna":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 72,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -14244,6 +15077,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Tna":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 96,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -14258,6 +15092,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "LambdaNa":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 120,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -14272,6 +15107,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "DeltaIna":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 144,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 1,
@@ -14286,6 +15122,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "TauCa":
         return &FieldSpec{
             BitLength: 28,
+            BitOffset: 168,
             MaxRawValue: 268435453,
             MissingValue: 268435455,
             Resolution: 1,
@@ -14300,6 +15137,7 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     case "TauNa":
         return &FieldSpec{
             BitLength: 12,
+            BitOffset: 196,
             MaxRawValue: 4093,
             MissingValue: 4095,
             Resolution: 1,
@@ -14332,6 +15170,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "MessageId":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14346,6 +15185,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "RepeatIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14360,6 +15200,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "UserId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14374,6 +15215,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "ImoNumber":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 40,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -14388,6 +15230,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "Callsign":
         return &FieldSpec{
             BitLength: 56,
+            BitOffset: 72,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14402,6 +15245,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "Name":
         return &FieldSpec{
             BitLength: 160,
+            BitOffset: 128,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14416,6 +15260,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "TypeOfShip":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 288,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14430,6 +15275,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "Length":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 296,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -14444,6 +15290,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "Beam":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 312,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -14458,6 +15305,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "PositionReferenceFromStarboard":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 328,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -14472,6 +15320,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "PositionReferenceFromBow":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 344,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -14486,6 +15335,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "EtaDate":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 360,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -14500,6 +15350,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "EtaTime":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 376,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -14514,6 +15365,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "Draft":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 408,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -14528,6 +15380,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "Destination":
         return &FieldSpec{
             BitLength: 160,
+            BitOffset: 424,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14542,6 +15395,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "AisVersionIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 584,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14556,6 +15410,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "GnssType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 586,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14570,6 +15425,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "Dte":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 590,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14584,6 +15440,7 @@ func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *Fi
     case "AisTransceiverInformation":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 592,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14616,6 +15473,7 @@ func (p *AisAddressedBinaryMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14630,6 +15488,7 @@ func (p *AisAddressedBinaryMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "RepeatIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14644,6 +15503,7 @@ func (p *AisAddressedBinaryMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14658,6 +15518,7 @@ func (p *AisAddressedBinaryMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "AisTransceiverInformation":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 41,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14672,6 +15533,7 @@ func (p *AisAddressedBinaryMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "SequenceNumber":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 46,
             MaxRawValue: 2,
             MissingValue: 3,
             Resolution: 1,
@@ -14686,6 +15548,7 @@ func (p *AisAddressedBinaryMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "DestinationId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14700,6 +15563,7 @@ func (p *AisAddressedBinaryMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "RetransmitFlag":
         return &FieldSpec{
             BitLength: 1,
+            BitOffset: 86,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14714,6 +15578,7 @@ func (p *AisAddressedBinaryMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfBitsInBinaryDataField":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 88,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -14728,6 +15593,7 @@ func (p *AisAddressedBinaryMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "BinaryData":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 104,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14760,6 +15626,7 @@ func (p *AisAcknowledge) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14774,6 +15641,7 @@ func (p *AisAcknowledge) GetFieldSpec(fieldName string) *FieldSpec {
     case "RepeatIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14788,6 +15656,7 @@ func (p *AisAcknowledge) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14802,6 +15671,7 @@ func (p *AisAcknowledge) GetFieldSpec(fieldName string) *FieldSpec {
     case "AisTransceiverInformation":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 41,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14834,6 +15704,7 @@ func (p *AisBinaryBroadcastMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14848,6 +15719,7 @@ func (p *AisBinaryBroadcastMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "RepeatIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14862,6 +15734,7 @@ func (p *AisBinaryBroadcastMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14876,6 +15749,7 @@ func (p *AisBinaryBroadcastMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "AisTransceiverInformation":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 41,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14890,6 +15764,7 @@ func (p *AisBinaryBroadcastMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfBitsInBinaryDataField":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -14904,6 +15779,7 @@ func (p *AisBinaryBroadcastMessage) GetFieldSpec(fieldName string) *FieldSpec {
     case "BinaryData":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 64,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14936,6 +15812,7 @@ func (p *RadioFrequencyModePower) GetFieldSpec(fieldName string) *FieldSpec {
     case "RxFrequency":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 10,
@@ -14950,6 +15827,7 @@ func (p *RadioFrequencyModePower) GetFieldSpec(fieldName string) *FieldSpec {
     case "TxFrequency":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 10,
@@ -14964,6 +15842,7 @@ func (p *RadioFrequencyModePower) GetFieldSpec(fieldName string) *FieldSpec {
     case "RadioChannel":
         return &FieldSpec{
             BitLength: 48,
+            BitOffset: 64,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -14978,6 +15857,7 @@ func (p *RadioFrequencyModePower) GetFieldSpec(fieldName string) *FieldSpec {
     case "TxPower":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 112,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -14992,6 +15872,7 @@ func (p *RadioFrequencyModePower) GetFieldSpec(fieldName string) *FieldSpec {
     case "Mode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 128,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15006,6 +15887,7 @@ func (p *RadioFrequencyModePower) GetFieldSpec(fieldName string) *FieldSpec {
     case "ChannelBandwidth":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 136,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15038,6 +15920,7 @@ func (p *AisClassBStaticDataMsg24PartA) GetFieldSpec(fieldName string) *FieldSpe
     case "MessageId":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15052,6 +15935,7 @@ func (p *AisClassBStaticDataMsg24PartA) GetFieldSpec(fieldName string) *FieldSpe
     case "RepeatIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15066,6 +15950,7 @@ func (p *AisClassBStaticDataMsg24PartA) GetFieldSpec(fieldName string) *FieldSpe
     case "UserId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15080,6 +15965,7 @@ func (p *AisClassBStaticDataMsg24PartA) GetFieldSpec(fieldName string) *FieldSpe
     case "Name":
         return &FieldSpec{
             BitLength: 160,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15094,6 +15980,7 @@ func (p *AisClassBStaticDataMsg24PartA) GetFieldSpec(fieldName string) *FieldSpe
     case "AisTransceiverInformation":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 200,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15108,6 +15995,7 @@ func (p *AisClassBStaticDataMsg24PartA) GetFieldSpec(fieldName string) *FieldSpe
     case "SequenceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 208,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -15140,6 +16028,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "MessageId":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15154,6 +16043,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "RepeatIndicator":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15168,6 +16058,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "UserId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15182,6 +16073,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "TypeOfShip":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15196,6 +16088,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "VendorId":
         return &FieldSpec{
             BitLength: 56,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15210,6 +16103,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "Callsign":
         return &FieldSpec{
             BitLength: 56,
+            BitOffset: 104,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15224,6 +16118,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "Length":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 160,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -15238,6 +16133,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "Beam":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 176,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -15252,6 +16148,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "PositionReferenceFromStarboard":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 192,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -15266,6 +16163,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "PositionReferenceFromBow":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 208,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -15280,6 +16178,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "MothershipUserId":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 224,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15294,6 +16193,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "GnssType":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 260,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15308,6 +16208,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "AisTransceiverInformation":
         return &FieldSpec{
             BitLength: 5,
+            BitOffset: 264,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15322,6 +16223,7 @@ func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpe
     case "SequenceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 272,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -15354,6 +16256,7 @@ func (p *RouteAndWpServiceDatabaseList) GetFieldSpec(fieldName string) *FieldSpe
     case "StartDatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15368,6 +16271,7 @@ func (p *RouteAndWpServiceDatabaseList) GetFieldSpec(fieldName string) *FieldSpe
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15382,6 +16286,7 @@ func (p *RouteAndWpServiceDatabaseList) GetFieldSpec(fieldName string) *FieldSpe
     case "NumberOfDatabasesAvailable":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15414,6 +16319,7 @@ func (p *RouteAndWpServiceRouteList) GetFieldSpec(fieldName string) *FieldSpec {
     case "StartRouteId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15428,6 +16334,7 @@ func (p *RouteAndWpServiceRouteList) GetFieldSpec(fieldName string) *FieldSpec {
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15442,6 +16349,7 @@ func (p *RouteAndWpServiceRouteList) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfRoutesInDatabase":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15456,6 +16364,7 @@ func (p *RouteAndWpServiceRouteList) GetFieldSpec(fieldName string) *FieldSpec {
     case "DatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15488,6 +16397,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "DatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15502,6 +16412,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "RouteId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15516,6 +16427,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "RouteWpListName":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15530,6 +16442,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "RouteWpListTimestamp":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 0,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -15544,6 +16457,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "RouteWpListDatestamp":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15558,6 +16472,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "ChangeAtLastTimestamp":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15572,6 +16487,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "NumberOfWpsInTheRouteWpList":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15586,6 +16502,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "CriticalSupplementaryParameters":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15600,6 +16517,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "NavigationMethod":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15614,6 +16532,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "WpIdentificationMethod":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15628,6 +16547,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "RouteStatus":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -15642,6 +16562,7 @@ func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) 
     case "XteLimitForTheRoute":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 1,
@@ -15674,6 +16595,7 @@ func (p *RouteAndWpServiceRouteWpNamePosition) GetFieldSpec(fieldName string) *F
     case "StartRps":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15688,6 +16610,7 @@ func (p *RouteAndWpServiceRouteWpNamePosition) GetFieldSpec(fieldName string) *F
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15702,6 +16625,7 @@ func (p *RouteAndWpServiceRouteWpNamePosition) GetFieldSpec(fieldName string) *F
     case "NumberOfWpsInTheRouteWpList":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15716,6 +16640,7 @@ func (p *RouteAndWpServiceRouteWpNamePosition) GetFieldSpec(fieldName string) *F
     case "DatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15730,6 +16655,7 @@ func (p *RouteAndWpServiceRouteWpNamePosition) GetFieldSpec(fieldName string) *F
     case "RouteId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 64,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15762,6 +16688,7 @@ func (p *RouteAndWpServiceRouteWpName) GetFieldSpec(fieldName string) *FieldSpec
     case "StartRps":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15776,6 +16703,7 @@ func (p *RouteAndWpServiceRouteWpName) GetFieldSpec(fieldName string) *FieldSpec
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15790,6 +16718,7 @@ func (p *RouteAndWpServiceRouteWpName) GetFieldSpec(fieldName string) *FieldSpec
     case "NumberOfWpsInTheRouteWpList":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15804,6 +16733,7 @@ func (p *RouteAndWpServiceRouteWpName) GetFieldSpec(fieldName string) *FieldSpec
     case "DatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15818,6 +16748,7 @@ func (p *RouteAndWpServiceRouteWpName) GetFieldSpec(fieldName string) *FieldSpec
     case "RouteId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 64,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15850,6 +16781,7 @@ func (p *RouteAndWpServiceXteLimitNavigationMethod) GetFieldSpec(fieldName strin
     case "StartRps":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15864,6 +16796,7 @@ func (p *RouteAndWpServiceXteLimitNavigationMethod) GetFieldSpec(fieldName strin
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15878,6 +16811,7 @@ func (p *RouteAndWpServiceXteLimitNavigationMethod) GetFieldSpec(fieldName strin
     case "NumberOfWpsWithASpecificXteLimitOrNavMethod":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15910,6 +16844,7 @@ func (p *RouteAndWpServiceWpComment) GetFieldSpec(fieldName string) *FieldSpec {
     case "StartId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15924,6 +16859,7 @@ func (p *RouteAndWpServiceWpComment) GetFieldSpec(fieldName string) *FieldSpec {
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15938,6 +16874,7 @@ func (p *RouteAndWpServiceWpComment) GetFieldSpec(fieldName string) *FieldSpec {
     case "NumberOfWpsWithComments":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15952,6 +16889,7 @@ func (p *RouteAndWpServiceWpComment) GetFieldSpec(fieldName string) *FieldSpec {
     case "DatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15966,6 +16904,7 @@ func (p *RouteAndWpServiceWpComment) GetFieldSpec(fieldName string) *FieldSpec {
     case "RouteId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 64,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -15998,6 +16937,7 @@ func (p *RouteAndWpServiceRouteComment) GetFieldSpec(fieldName string) *FieldSpe
     case "StartRouteId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16012,6 +16952,7 @@ func (p *RouteAndWpServiceRouteComment) GetFieldSpec(fieldName string) *FieldSpe
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16026,6 +16967,7 @@ func (p *RouteAndWpServiceRouteComment) GetFieldSpec(fieldName string) *FieldSpe
     case "NumberOfRoutesWithComments":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16040,6 +16982,7 @@ func (p *RouteAndWpServiceRouteComment) GetFieldSpec(fieldName string) *FieldSpe
     case "DatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16072,6 +17015,7 @@ func (p *RouteAndWpServiceDatabaseComment) GetFieldSpec(fieldName string) *Field
     case "StartDatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16086,6 +17030,7 @@ func (p *RouteAndWpServiceDatabaseComment) GetFieldSpec(fieldName string) *Field
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16100,6 +17045,7 @@ func (p *RouteAndWpServiceDatabaseComment) GetFieldSpec(fieldName string) *Field
     case "NumberOfDatabasesWithComments":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16132,6 +17078,7 @@ func (p *RouteAndWpServiceRadiusOfTurn) GetFieldSpec(fieldName string) *FieldSpe
     case "StartRps":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16146,6 +17093,7 @@ func (p *RouteAndWpServiceRadiusOfTurn) GetFieldSpec(fieldName string) *FieldSpe
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16160,6 +17108,7 @@ func (p *RouteAndWpServiceRadiusOfTurn) GetFieldSpec(fieldName string) *FieldSpe
     case "NumberOfWpsWithASpecificRadiusOfTurn":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16174,6 +17123,7 @@ func (p *RouteAndWpServiceRadiusOfTurn) GetFieldSpec(fieldName string) *FieldSpe
     case "DatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16188,6 +17138,7 @@ func (p *RouteAndWpServiceRadiusOfTurn) GetFieldSpec(fieldName string) *FieldSpe
     case "RouteId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 64,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16220,6 +17171,7 @@ func (p *RouteAndWpServiceWpListWpNamePosition) GetFieldSpec(fieldName string) *
     case "StartWpId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16234,6 +17186,7 @@ func (p *RouteAndWpServiceWpListWpNamePosition) GetFieldSpec(fieldName string) *
     case "Nitems":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16248,6 +17201,7 @@ func (p *RouteAndWpServiceWpListWpNamePosition) GetFieldSpec(fieldName string) *
     case "NumberOfValidWpsInTheWpList":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16262,6 +17216,7 @@ func (p *RouteAndWpServiceWpListWpNamePosition) GetFieldSpec(fieldName string) *
     case "DatabaseId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16294,6 +17249,7 @@ func (p *WindData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16308,6 +17264,7 @@ func (p *WindData) GetFieldSpec(fieldName string) *FieldSpec {
     case "WindSpeed":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -16322,6 +17279,7 @@ func (p *WindData) GetFieldSpec(fieldName string) *FieldSpec {
     case "WindAngle":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.0001,
@@ -16336,6 +17294,7 @@ func (p *WindData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Reference":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -16368,6 +17327,7 @@ func (p *EnvironmentalParametersObsolete) GetFieldSpec(fieldName string) *FieldS
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16382,6 +17342,7 @@ func (p *EnvironmentalParametersObsolete) GetFieldSpec(fieldName string) *FieldS
     case "WaterTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -16396,6 +17357,7 @@ func (p *EnvironmentalParametersObsolete) GetFieldSpec(fieldName string) *FieldS
     case "OutsideAmbientAirTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -16410,6 +17372,7 @@ func (p *EnvironmentalParametersObsolete) GetFieldSpec(fieldName string) *FieldS
     case "AtmosphericPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 100,
@@ -16442,6 +17405,7 @@ func (p *EnvironmentalParameters) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16456,6 +17420,7 @@ func (p *EnvironmentalParameters) GetFieldSpec(fieldName string) *FieldSpec {
     case "TemperatureSource":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -16470,6 +17435,7 @@ func (p *EnvironmentalParameters) GetFieldSpec(fieldName string) *FieldSpec {
     case "HumiditySource":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 14,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -16484,6 +17450,7 @@ func (p *EnvironmentalParameters) GetFieldSpec(fieldName string) *FieldSpec {
     case "Temperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -16498,6 +17465,7 @@ func (p *EnvironmentalParameters) GetFieldSpec(fieldName string) *FieldSpec {
     case "Humidity":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.004,
@@ -16512,6 +17480,7 @@ func (p *EnvironmentalParameters) GetFieldSpec(fieldName string) *FieldSpec {
     case "AtmosphericPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 100,
@@ -16544,6 +17513,7 @@ func (p *Temperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16558,6 +17528,7 @@ func (p *Temperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16572,6 +17543,7 @@ func (p *Temperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "Source":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -16586,6 +17558,7 @@ func (p *Temperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "ActualTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -16600,6 +17573,7 @@ func (p *Temperature) GetFieldSpec(fieldName string) *FieldSpec {
     case "SetTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -16632,6 +17606,7 @@ func (p *Humidity) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16646,6 +17621,7 @@ func (p *Humidity) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16660,6 +17636,7 @@ func (p *Humidity) GetFieldSpec(fieldName string) *FieldSpec {
     case "Source":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -16674,6 +17651,7 @@ func (p *Humidity) GetFieldSpec(fieldName string) *FieldSpec {
     case "ActualHumidity":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 24,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.004,
@@ -16688,6 +17666,7 @@ func (p *Humidity) GetFieldSpec(fieldName string) *FieldSpec {
     case "SetHumidity":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.004,
@@ -16720,6 +17699,7 @@ func (p *ActualPressure) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16734,6 +17714,7 @@ func (p *ActualPressure) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16748,6 +17729,7 @@ func (p *ActualPressure) GetFieldSpec(fieldName string) *FieldSpec {
     case "Source":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -16762,6 +17744,7 @@ func (p *ActualPressure) GetFieldSpec(fieldName string) *FieldSpec {
     case "Pressure":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 24,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.1,
@@ -16794,6 +17777,7 @@ func (p *SetPressure) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16808,6 +17792,7 @@ func (p *SetPressure) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16822,6 +17807,7 @@ func (p *SetPressure) GetFieldSpec(fieldName string) *FieldSpec {
     case "Source":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -16836,6 +17822,7 @@ func (p *SetPressure) GetFieldSpec(fieldName string) *FieldSpec {
     case "Pressure":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 24,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 0.1,
@@ -16868,6 +17855,7 @@ func (p *TemperatureExtendedRange) GetFieldSpec(fieldName string) *FieldSpec {
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 0,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16882,6 +17870,7 @@ func (p *TemperatureExtendedRange) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 8,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -16896,6 +17885,7 @@ func (p *TemperatureExtendedRange) GetFieldSpec(fieldName string) *FieldSpec {
     case "Source":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -16910,6 +17900,7 @@ func (p *TemperatureExtendedRange) GetFieldSpec(fieldName string) *FieldSpec {
     case "Temperature":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 24,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 0.001,
@@ -16924,6 +17915,7 @@ func (p *TemperatureExtendedRange) GetFieldSpec(fieldName string) *FieldSpec {
     case "SetTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -16956,6 +17948,7 @@ func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "Mode":
         return &FieldSpec{
             BitLength: 4,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -16970,6 +17963,7 @@ func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "TideTendency":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 4,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -16984,6 +17978,7 @@ func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "MeasurementDate":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 8,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -16998,6 +17993,7 @@ func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "MeasurementTime":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 24,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -17012,6 +18008,7 @@ func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "StationLatitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 56,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -17026,6 +18023,7 @@ func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "StationLongitude":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 88,
             MaxRawValue: 2147483645,
             MissingValue: 2147483647,
             Resolution: 1e-07,
@@ -17040,6 +18038,7 @@ func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "TideLevel":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 120,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.001,
@@ -17054,6 +18053,7 @@ func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "TideLevelStandardDeviation":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 136,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -17068,6 +18068,7 @@ func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "StationId":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 152,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17082,6 +18083,7 @@ func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     case "StationName":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17114,6 +18116,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "WatermakerOperatingState":
         return &FieldSpec{
             BitLength: 6,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17128,6 +18131,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "ProductionStartStop":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 6,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17142,6 +18146,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "RinseStartStop":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 8,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17156,6 +18161,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "LowPressurePumpStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 10,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17170,6 +18176,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "HighPressurePumpStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 12,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17184,6 +18191,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "EmergencyStop":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 14,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17198,6 +18206,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "ProductSolenoidValveStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17212,6 +18221,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "FlushModeStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 18,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17226,6 +18236,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "SalinityStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 20,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17240,6 +18251,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "SensorStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 22,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17254,6 +18266,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "OilChangeIndicatorStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17268,6 +18281,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "FilterStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 26,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17282,6 +18296,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "SystemStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 28,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17296,6 +18311,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "Salinity":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -17310,6 +18326,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "ProductWaterTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.01,
@@ -17324,6 +18341,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "PreFilterPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 64,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 100,
@@ -17338,6 +18356,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "PostFilterPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 80,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 100,
@@ -17352,6 +18371,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "FeedPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 96,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 1000,
@@ -17366,6 +18386,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "SystemHighPressure":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 112,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1000,
@@ -17380,6 +18401,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "ProductWaterFlow":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 128,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.1,
@@ -17394,6 +18416,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "BrineWaterFlow":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 144,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.1,
@@ -17408,6 +18431,7 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
     case "RunTime":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 160,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -17440,6 +18464,7 @@ func (p *VesselSpeedComponents) GetFieldSpec(fieldName string) *FieldSpec {
     case "LongitudinalSpeedWaterReferenced":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 0,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.001,
@@ -17454,6 +18479,7 @@ func (p *VesselSpeedComponents) GetFieldSpec(fieldName string) *FieldSpec {
     case "TransverseSpeedWaterReferenced":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.001,
@@ -17468,6 +18494,7 @@ func (p *VesselSpeedComponents) GetFieldSpec(fieldName string) *FieldSpec {
     case "LongitudinalSpeedGroundReferenced":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.001,
@@ -17482,6 +18509,7 @@ func (p *VesselSpeedComponents) GetFieldSpec(fieldName string) *FieldSpec {
     case "TransverseSpeedGroundReferenced":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.001,
@@ -17496,6 +18524,7 @@ func (p *VesselSpeedComponents) GetFieldSpec(fieldName string) *FieldSpec {
     case "SternSpeedWaterReferenced":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 64,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.001,
@@ -17510,6 +18539,7 @@ func (p *VesselSpeedComponents) GetFieldSpec(fieldName string) *FieldSpec {
     case "SternSpeedGroundReferenced":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 80,
             MaxRawValue: 32765,
             MissingValue: 32767,
             Resolution: 0.001,
@@ -17542,6 +18572,7 @@ func (p *SonichubVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17556,6 +18587,7 @@ func (p *SonichubVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17570,6 +18602,7 @@ func (p *SonichubVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "ProprietaryId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17584,6 +18617,7 @@ func (p *SonichubVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "Control":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17598,6 +18632,7 @@ func (p *SonichubVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -17612,6 +18647,7 @@ func (p *SonichubVolume) GetFieldSpec(fieldName string) *FieldSpec {
     case "Level":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -17644,6 +18680,7 @@ func (p *FusionVersions) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17658,6 +18695,7 @@ func (p *FusionVersions) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17672,6 +18710,7 @@ func (p *FusionVersions) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17686,6 +18725,7 @@ func (p *FusionVersions) GetFieldSpec(fieldName string) *FieldSpec {
     case "HwVersionMajor":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -17700,6 +18740,7 @@ func (p *FusionVersions) GetFieldSpec(fieldName string) *FieldSpec {
     case "HwVersionMinor":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -17714,6 +18755,7 @@ func (p *FusionVersions) GetFieldSpec(fieldName string) *FieldSpec {
     case "SwVersionMajor":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 64,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -17728,6 +18770,7 @@ func (p *FusionVersions) GetFieldSpec(fieldName string) *FieldSpec {
     case "SwVersionMinor":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 72,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -17742,6 +18785,7 @@ func (p *FusionVersions) GetFieldSpec(fieldName string) *FieldSpec {
     case "BuildNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 80,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -17774,6 +18818,7 @@ func (p *FusionSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17788,6 +18833,7 @@ func (p *FusionSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17802,6 +18848,7 @@ func (p *FusionSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17816,6 +18863,7 @@ func (p *FusionSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -17830,6 +18878,7 @@ func (p *FusionSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "CurrentSourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -17844,6 +18893,7 @@ func (p *FusionSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceType":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17858,6 +18908,7 @@ func (p *FusionSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "Flags":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -17872,6 +18923,7 @@ func (p *FusionSource) GetFieldSpec(fieldName string) *FieldSpec {
     case "Source":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 64,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17904,6 +18956,7 @@ func (p *FusionSourceCount) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17918,6 +18971,7 @@ func (p *FusionSourceCount) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17932,6 +18986,7 @@ func (p *FusionSourceCount) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17946,6 +19001,7 @@ func (p *FusionSourceCount) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceCount":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -17978,6 +19034,7 @@ func (p *FusionMedia) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -17992,6 +19049,7 @@ func (p *FusionMedia) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18006,6 +19064,7 @@ func (p *FusionMedia) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18020,6 +19079,7 @@ func (p *FusionMedia) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18034,6 +19094,7 @@ func (p *FusionMedia) GetFieldSpec(fieldName string) *FieldSpec {
     case "Flags":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18048,6 +19109,7 @@ func (p *FusionMedia) GetFieldSpec(fieldName string) *FieldSpec {
     case "Track":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 56,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -18062,6 +19124,7 @@ func (p *FusionMedia) GetFieldSpec(fieldName string) *FieldSpec {
     case "TrackCount":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 88,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -18076,6 +19139,7 @@ func (p *FusionMedia) GetFieldSpec(fieldName string) *FieldSpec {
     case "Length":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 120,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.001,
@@ -18090,6 +19154,7 @@ func (p *FusionMedia) GetFieldSpec(fieldName string) *FieldSpec {
     case "PositionInTrack":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 152,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.001,
@@ -18122,6 +19187,7 @@ func (p *FusionTrackName) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18136,6 +19202,7 @@ func (p *FusionTrackName) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18150,6 +19217,7 @@ func (p *FusionTrackName) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18164,6 +19232,7 @@ func (p *FusionTrackName) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18178,6 +19247,7 @@ func (p *FusionTrackName) GetFieldSpec(fieldName string) *FieldSpec {
     case "Index":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 40,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -18192,6 +19262,7 @@ func (p *FusionTrackName) GetFieldSpec(fieldName string) *FieldSpec {
     case "Track":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 72,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18224,6 +19295,7 @@ func (p *FusionArtistName) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18238,6 +19310,7 @@ func (p *FusionArtistName) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18252,6 +19325,7 @@ func (p *FusionArtistName) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18266,6 +19340,7 @@ func (p *FusionArtistName) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18280,6 +19355,7 @@ func (p *FusionArtistName) GetFieldSpec(fieldName string) *FieldSpec {
     case "Index":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 40,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -18294,6 +19370,7 @@ func (p *FusionArtistName) GetFieldSpec(fieldName string) *FieldSpec {
     case "Artist":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 72,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18326,6 +19403,7 @@ func (p *FusionAlbumName) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18340,6 +19418,7 @@ func (p *FusionAlbumName) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18354,6 +19433,7 @@ func (p *FusionAlbumName) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18368,6 +19448,7 @@ func (p *FusionAlbumName) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18382,6 +19463,7 @@ func (p *FusionAlbumName) GetFieldSpec(fieldName string) *FieldSpec {
     case "Index":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 40,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -18396,6 +19478,7 @@ func (p *FusionAlbumName) GetFieldSpec(fieldName string) *FieldSpec {
     case "Album":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 72,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18428,6 +19511,7 @@ func (p *FusionDeviceName) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18442,6 +19526,7 @@ func (p *FusionDeviceName) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18456,6 +19541,7 @@ func (p *FusionDeviceName) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18470,6 +19556,7 @@ func (p *FusionDeviceName) GetFieldSpec(fieldName string) *FieldSpec {
     case "Name":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18502,6 +19589,7 @@ func (p *FusionZoneName) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18516,6 +19604,7 @@ func (p *FusionZoneName) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18530,6 +19619,7 @@ func (p *FusionZoneName) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18544,6 +19634,7 @@ func (p *FusionZoneName) GetFieldSpec(fieldName string) *FieldSpec {
     case "Number":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18558,6 +19649,7 @@ func (p *FusionZoneName) GetFieldSpec(fieldName string) *FieldSpec {
     case "Name":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18590,6 +19682,7 @@ func (p *FusionTrackPosition) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18604,6 +19697,7 @@ func (p *FusionTrackPosition) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18618,6 +19712,7 @@ func (p *FusionTrackPosition) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18632,6 +19727,7 @@ func (p *FusionTrackPosition) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18646,6 +19742,7 @@ func (p *FusionTrackPosition) GetFieldSpec(fieldName string) *FieldSpec {
     case "Progress":
         return &FieldSpec{
             BitLength: 24,
+            BitOffset: 40,
             MaxRawValue: 16777213,
             MissingValue: 16777215,
             Resolution: 0.001,
@@ -18678,6 +19775,7 @@ func (p *FusionTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18692,6 +19790,7 @@ func (p *FusionTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18706,6 +19805,7 @@ func (p *FusionTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18720,6 +19820,7 @@ func (p *FusionTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18734,6 +19835,7 @@ func (p *FusionTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "Scanning":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18748,6 +19850,7 @@ func (p *FusionTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "Frequency":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 48,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -18762,6 +19865,7 @@ func (p *FusionTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "SignalStrength":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 80,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18776,6 +19880,7 @@ func (p *FusionTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "Track":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 88,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18808,6 +19913,7 @@ func (p *FusionMarineTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18822,6 +19928,7 @@ func (p *FusionMarineTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18836,6 +19943,7 @@ func (p *FusionMarineTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18850,6 +19958,7 @@ func (p *FusionMarineTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18864,6 +19973,7 @@ func (p *FusionMarineTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "Channel":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18878,6 +19988,7 @@ func (p *FusionMarineTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "SignalStrength":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18892,6 +20003,7 @@ func (p *FusionMarineTuner) GetFieldSpec(fieldName string) *FieldSpec {
     case "Name":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18924,6 +20036,7 @@ func (p *FusionMarineSquelch) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18938,6 +20051,7 @@ func (p *FusionMarineSquelch) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18952,6 +20066,7 @@ func (p *FusionMarineSquelch) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -18966,6 +20081,7 @@ func (p *FusionMarineSquelch) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -18980,6 +20096,7 @@ func (p *FusionMarineSquelch) GetFieldSpec(fieldName string) *FieldSpec {
     case "Squelch":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19012,6 +20129,7 @@ func (p *FusionMarineScanMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19026,6 +20144,7 @@ func (p *FusionMarineScanMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19040,6 +20159,7 @@ func (p *FusionMarineScanMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19054,6 +20174,7 @@ func (p *FusionMarineScanMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19068,6 +20189,7 @@ func (p *FusionMarineScanMode) GetFieldSpec(fieldName string) *FieldSpec {
     case "Scan":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19100,6 +20222,7 @@ func (p *FusionMenuItem) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19114,6 +20237,7 @@ func (p *FusionMenuItem) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19128,6 +20252,7 @@ func (p *FusionMenuItem) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19142,6 +20267,7 @@ func (p *FusionMenuItem) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19156,6 +20282,7 @@ func (p *FusionMenuItem) GetFieldSpec(fieldName string) *FieldSpec {
     case "ItemIndex":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 40,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -19170,6 +20297,7 @@ func (p *FusionMenuItem) GetFieldSpec(fieldName string) *FieldSpec {
     case "Flags":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 72,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19184,6 +20312,7 @@ func (p *FusionMenuItem) GetFieldSpec(fieldName string) *FieldSpec {
     case "LockId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 80,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19198,6 +20327,7 @@ func (p *FusionMenuItem) GetFieldSpec(fieldName string) *FieldSpec {
     case "Text":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 88,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19230,6 +20360,7 @@ func (p *FusionAuxGain) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19244,6 +20375,7 @@ func (p *FusionAuxGain) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19258,6 +20390,7 @@ func (p *FusionAuxGain) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19272,6 +20405,7 @@ func (p *FusionAuxGain) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19286,6 +20420,7 @@ func (p *FusionAuxGain) GetFieldSpec(fieldName string) *FieldSpec {
     case "Gain":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19318,6 +20453,7 @@ func (p *FusionUsbRepeatStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19332,6 +20468,7 @@ func (p *FusionUsbRepeatStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19346,6 +20483,7 @@ func (p *FusionUsbRepeatStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19360,6 +20498,7 @@ func (p *FusionUsbRepeatStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Id":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19374,6 +20513,7 @@ func (p *FusionUsbRepeatStatus) GetFieldSpec(fieldName string) *FieldSpec {
     case "Status":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 64,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19406,6 +20546,7 @@ func (p *FusionSetting) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19420,6 +20561,7 @@ func (p *FusionSetting) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19434,6 +20576,7 @@ func (p *FusionSetting) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19448,6 +20591,7 @@ func (p *FusionSetting) GetFieldSpec(fieldName string) *FieldSpec {
     case "Id":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19462,6 +20606,7 @@ func (p *FusionSetting) GetFieldSpec(fieldName string) *FieldSpec {
     case "Value":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 64,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -19494,6 +20639,7 @@ func (p *FusionSettings) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19508,6 +20654,7 @@ func (p *FusionSettings) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19522,6 +20669,7 @@ func (p *FusionSettings) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19536,6 +20684,7 @@ func (p *FusionSettings) GetFieldSpec(fieldName string) *FieldSpec {
     case "Count":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 32,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -19568,6 +20717,7 @@ func (p *FusionMute) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19582,6 +20732,7 @@ func (p *FusionMute) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19596,6 +20747,7 @@ func (p *FusionMute) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19610,6 +20762,7 @@ func (p *FusionMute) GetFieldSpec(fieldName string) *FieldSpec {
     case "Mute":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19642,6 +20795,7 @@ func (p *FusionBalance) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19656,6 +20810,7 @@ func (p *FusionBalance) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19670,6 +20825,7 @@ func (p *FusionBalance) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19684,6 +20840,7 @@ func (p *FusionBalance) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19698,6 +20855,7 @@ func (p *FusionBalance) GetFieldSpec(fieldName string) *FieldSpec {
     case "Value":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19730,6 +20888,7 @@ func (p *FusionLowPassFilter) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19744,6 +20903,7 @@ func (p *FusionLowPassFilter) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19758,6 +20918,7 @@ func (p *FusionLowPassFilter) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19772,6 +20933,7 @@ func (p *FusionLowPassFilter) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19786,6 +20948,7 @@ func (p *FusionLowPassFilter) GetFieldSpec(fieldName string) *FieldSpec {
     case "Filter":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19818,6 +20981,7 @@ func (p *FusionSublevels) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19832,6 +20996,7 @@ func (p *FusionSublevels) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19846,6 +21011,7 @@ func (p *FusionSublevels) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19860,6 +21026,7 @@ func (p *FusionSublevels) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone1":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19874,6 +21041,7 @@ func (p *FusionSublevels) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone2":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19888,6 +21056,7 @@ func (p *FusionSublevels) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone3":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19902,6 +21071,7 @@ func (p *FusionSublevels) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone4":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19934,6 +21104,7 @@ func (p *FusionEq) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19948,6 +21119,7 @@ func (p *FusionEq) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19962,6 +21134,7 @@ func (p *FusionEq) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -19976,6 +21149,7 @@ func (p *FusionEq) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -19990,6 +21164,7 @@ func (p *FusionEq) GetFieldSpec(fieldName string) *FieldSpec {
     case "Bass":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 125,
             MissingValue: 127,
             Resolution: 1,
@@ -20004,6 +21179,7 @@ func (p *FusionEq) GetFieldSpec(fieldName string) *FieldSpec {
     case "Mid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 125,
             MissingValue: 127,
             Resolution: 1,
@@ -20018,6 +21194,7 @@ func (p *FusionEq) GetFieldSpec(fieldName string) *FieldSpec {
     case "Treble":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 125,
             MissingValue: 127,
             Resolution: 1,
@@ -20050,6 +21227,7 @@ func (p *FusionVolumeLimits) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20064,6 +21242,7 @@ func (p *FusionVolumeLimits) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20078,6 +21257,7 @@ func (p *FusionVolumeLimits) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20092,6 +21272,7 @@ func (p *FusionVolumeLimits) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone1VolumeLimit":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20106,6 +21287,7 @@ func (p *FusionVolumeLimits) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone2VolumeLimit":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20120,6 +21302,7 @@ func (p *FusionVolumeLimits) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone3VolumeLimit":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20134,6 +21317,7 @@ func (p *FusionVolumeLimits) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone4VolumeLimit":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20166,6 +21350,7 @@ func (p *FusionVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20180,6 +21365,7 @@ func (p *FusionVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20194,6 +21380,7 @@ func (p *FusionVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20208,6 +21395,7 @@ func (p *FusionVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone1":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20222,6 +21410,7 @@ func (p *FusionVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone2":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20236,6 +21425,7 @@ func (p *FusionVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone3":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20250,6 +21440,7 @@ func (p *FusionVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone4":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 56,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20282,6 +21473,7 @@ func (p *FusionCapabilities) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20296,6 +21488,7 @@ func (p *FusionCapabilities) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20310,6 +21503,7 @@ func (p *FusionCapabilities) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20324,6 +21518,7 @@ func (p *FusionCapabilities) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone1":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -20338,6 +21533,7 @@ func (p *FusionCapabilities) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone2":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 48,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -20352,6 +21548,7 @@ func (p *FusionCapabilities) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone3":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 64,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -20366,6 +21563,7 @@ func (p *FusionCapabilities) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone4":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 80,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -20380,6 +21578,7 @@ func (p *FusionCapabilities) GetFieldSpec(fieldName string) *FieldSpec {
     case "Global":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 96,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -20412,6 +21611,7 @@ func (p *FusionLineLevelControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20426,6 +21626,7 @@ func (p *FusionLineLevelControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20440,6 +21641,7 @@ func (p *FusionLineLevelControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20454,6 +21656,7 @@ func (p *FusionLineLevelControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Zone":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20468,6 +21671,7 @@ func (p *FusionLineLevelControl) GetFieldSpec(fieldName string) *FieldSpec {
     case "Control":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20500,6 +21704,7 @@ func (p *FusionPowerState) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20514,6 +21719,7 @@ func (p *FusionPowerState) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20528,6 +21734,7 @@ func (p *FusionPowerState) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20542,6 +21749,7 @@ func (p *FusionPowerState) GetFieldSpec(fieldName string) *FieldSpec {
     case "State":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20574,6 +21782,7 @@ func (p *FusionSiriusxm) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20588,6 +21797,7 @@ func (p *FusionSiriusxm) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20602,6 +21812,7 @@ func (p *FusionSiriusxm) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20616,6 +21827,7 @@ func (p *FusionSiriusxm) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20630,6 +21842,7 @@ func (p *FusionSiriusxm) GetFieldSpec(fieldName string) *FieldSpec {
     case "ComState":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20644,6 +21857,7 @@ func (p *FusionSiriusxm) GetFieldSpec(fieldName string) *FieldSpec {
     case "Alert":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20658,6 +21872,7 @@ func (p *FusionSiriusxm) GetFieldSpec(fieldName string) *FieldSpec {
     case "AdvisoryChannel":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 56,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -20672,6 +21887,7 @@ func (p *FusionSiriusxm) GetFieldSpec(fieldName string) *FieldSpec {
     case "TuningMode":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 72,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20704,6 +21920,7 @@ func (p *FusionSiriusxmChannel) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20718,6 +21935,7 @@ func (p *FusionSiriusxmChannel) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20732,6 +21950,7 @@ func (p *FusionSiriusxmChannel) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20746,6 +21965,7 @@ func (p *FusionSiriusxmChannel) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20760,6 +21980,7 @@ func (p *FusionSiriusxmChannel) GetFieldSpec(fieldName string) *FieldSpec {
     case "ChannelNumber":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -20774,6 +21995,7 @@ func (p *FusionSiriusxmChannel) GetFieldSpec(fieldName string) *FieldSpec {
     case "Channel":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20806,6 +22028,7 @@ func (p *FusionSiriusxmTitle) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20820,6 +22043,7 @@ func (p *FusionSiriusxmTitle) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20834,6 +22058,7 @@ func (p *FusionSiriusxmTitle) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20848,6 +22073,7 @@ func (p *FusionSiriusxmTitle) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20862,6 +22088,7 @@ func (p *FusionSiriusxmTitle) GetFieldSpec(fieldName string) *FieldSpec {
     case "Channel":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -20876,6 +22103,7 @@ func (p *FusionSiriusxmTitle) GetFieldSpec(fieldName string) *FieldSpec {
     case "Title":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20908,6 +22136,7 @@ func (p *FusionSiriusxmArtist) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20922,6 +22151,7 @@ func (p *FusionSiriusxmArtist) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20936,6 +22166,7 @@ func (p *FusionSiriusxmArtist) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -20950,6 +22181,7 @@ func (p *FusionSiriusxmArtist) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -20964,6 +22196,7 @@ func (p *FusionSiriusxmArtist) GetFieldSpec(fieldName string) *FieldSpec {
     case "Channel":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -20978,6 +22211,7 @@ func (p *FusionSiriusxmArtist) GetFieldSpec(fieldName string) *FieldSpec {
     case "Artist":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21010,6 +22244,7 @@ func (p *FusionSiriusxmContentInfo) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21024,6 +22259,7 @@ func (p *FusionSiriusxmContentInfo) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21038,6 +22274,7 @@ func (p *FusionSiriusxmContentInfo) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21052,6 +22289,7 @@ func (p *FusionSiriusxmContentInfo) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21066,6 +22304,7 @@ func (p *FusionSiriusxmContentInfo) GetFieldSpec(fieldName string) *FieldSpec {
     case "Channel":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -21080,6 +22319,7 @@ func (p *FusionSiriusxmContentInfo) GetFieldSpec(fieldName string) *FieldSpec {
     case "Genre":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21112,6 +22352,7 @@ func (p *FusionSiriusxmCategory) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21126,6 +22367,7 @@ func (p *FusionSiriusxmCategory) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21140,6 +22382,7 @@ func (p *FusionSiriusxmCategory) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21154,6 +22397,7 @@ func (p *FusionSiriusxmCategory) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21168,6 +22412,7 @@ func (p *FusionSiriusxmCategory) GetFieldSpec(fieldName string) *FieldSpec {
     case "Channel":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -21182,6 +22427,7 @@ func (p *FusionSiriusxmCategory) GetFieldSpec(fieldName string) *FieldSpec {
     case "Name":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 56,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21214,6 +22460,7 @@ func (p *FusionSiriusxmSignal) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21228,6 +22475,7 @@ func (p *FusionSiriusxmSignal) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21242,6 +22490,7 @@ func (p *FusionSiriusxmSignal) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21256,6 +22505,7 @@ func (p *FusionSiriusxmSignal) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21270,6 +22520,7 @@ func (p *FusionSiriusxmSignal) GetFieldSpec(fieldName string) *FieldSpec {
     case "Signal":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21302,6 +22553,7 @@ func (p *FusionSiriusxmPresets) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21316,6 +22568,7 @@ func (p *FusionSiriusxmPresets) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21330,6 +22583,7 @@ func (p *FusionSiriusxmPresets) GetFieldSpec(fieldName string) *FieldSpec {
     case "MessageId":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 16,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21344,6 +22598,7 @@ func (p *FusionSiriusxmPresets) GetFieldSpec(fieldName string) *FieldSpec {
     case "SourceId":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21358,6 +22613,7 @@ func (p *FusionSiriusxmPresets) GetFieldSpec(fieldName string) *FieldSpec {
     case "Count":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 40,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21372,6 +22628,7 @@ func (p *FusionSiriusxmPresets) GetFieldSpec(fieldName string) *FieldSpec {
     case "Values":
         return &FieldSpec{
             BitLength: 0,
+            BitOffset: 48,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21404,6 +22661,7 @@ func (p *MaretronProprietaryTemperatureHighRange) GetFieldSpec(fieldName string)
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21418,6 +22676,7 @@ func (p *MaretronProprietaryTemperatureHighRange) GetFieldSpec(fieldName string)
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21432,6 +22691,7 @@ func (p *MaretronProprietaryTemperatureHighRange) GetFieldSpec(fieldName string)
     case "Sid":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21446,6 +22706,7 @@ func (p *MaretronProprietaryTemperatureHighRange) GetFieldSpec(fieldName string)
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21460,6 +22721,7 @@ func (p *MaretronProprietaryTemperatureHighRange) GetFieldSpec(fieldName string)
     case "Source":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 32,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21474,6 +22736,7 @@ func (p *MaretronProprietaryTemperatureHighRange) GetFieldSpec(fieldName string)
     case "ActualTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 40,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -21488,6 +22751,7 @@ func (p *MaretronProprietaryTemperatureHighRange) GetFieldSpec(fieldName string)
     case "SetTemperature":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 56,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 0.1,
@@ -21520,6 +22784,7 @@ func (p *BGKeyValueData) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21534,6 +22799,7 @@ func (p *BGKeyValueData) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21566,6 +22832,7 @@ func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec 
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21580,6 +22847,7 @@ func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec 
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21594,6 +22862,7 @@ func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec 
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21608,6 +22877,7 @@ func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec 
     case "IndicatorNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21622,6 +22892,7 @@ func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec 
     case "StartDate":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -21636,6 +22907,7 @@ func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec 
     case "StartTime":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 48,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -21650,6 +22922,7 @@ func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec 
     case "OffCounter":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 80,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -21664,6 +22937,7 @@ func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec 
     case "OnCounter":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 112,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -21678,6 +22952,7 @@ func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec 
     case "ErrorCounter":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 144,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -21692,6 +22967,7 @@ func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec 
     case "SwitchStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 176,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21724,6 +23000,7 @@ func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     case "ManufacturerCode":
         return &FieldSpec{
             BitLength: 11,
+            BitOffset: 0,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21738,6 +23015,7 @@ func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndustryCode":
         return &FieldSpec{
             BitLength: 3,
+            BitOffset: 13,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
@@ -21752,6 +23030,7 @@ func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     case "Instance":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 16,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21766,6 +23045,7 @@ func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     case "IndicatorNumber":
         return &FieldSpec{
             BitLength: 8,
+            BitOffset: 24,
             MaxRawValue: 253,
             MissingValue: 255,
             Resolution: 1,
@@ -21780,6 +23060,7 @@ func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     case "StartDate":
         return &FieldSpec{
             BitLength: 16,
+            BitOffset: 32,
             MaxRawValue: 65533,
             MissingValue: 65535,
             Resolution: 1,
@@ -21794,6 +23075,7 @@ func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     case "StartTime":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 48,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 0.0001,
@@ -21808,6 +23090,7 @@ func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     case "AccumulatedOffPeriod":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 80,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -21822,6 +23105,7 @@ func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     case "AccumulatedOnPeriod":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 112,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -21836,6 +23120,7 @@ func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     case "AccumulatedErrorPeriod":
         return &FieldSpec{
             BitLength: 32,
+            BitOffset: 144,
             MaxRawValue: 4294967293,
             MissingValue: 4294967295,
             Resolution: 1,
@@ -21850,6 +23135,7 @@ func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     case "SwitchStatus":
         return &FieldSpec{
             BitLength: 2,
+            BitOffset: 176,
             MaxRawValue: 0,
             MissingValue: 0,
             Resolution: 1,
