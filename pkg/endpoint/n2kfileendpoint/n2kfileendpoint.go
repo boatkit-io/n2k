@@ -119,6 +119,18 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 	return nil
 }
 
+// Close closes the endpoint
+func (n *N2kFileEndpoint) Close() error {
+	// For file endpoints, there's nothing to close
+	return nil
+}
+
+// WriteFrame writes a CAN frame to the endpoint
+func (n *N2kFileEndpoint) WriteFrame(frame can.Frame) {
+	// For file endpoints, we don't support writing frames
+	// This is a read-only endpoint
+}
+
 // frameReady is a helper to handle passing completed frames to the handler
 func (n *N2kFileEndpoint) frameReady(frame adapter.Message) {
 	if n.handler != nil {

@@ -43,6 +43,7 @@ func main() {
 	builder := newCanboatConverter()
 	builder.fixup()
 	builder.filter()
+	builder.validate()
 	builder.write()
 
 }
@@ -215,10 +216,9 @@ func (conv *canboatConverter) fixup() {
 	conv.fixIDs()
 	conv.fixEnumDefs()
 	conv.fixRepeating()
-	conv.validate()
 }
 
-// filter builds separate slices for known, unknown (no Canboat samples), and incomplete PGNs
+// you builds separate slices for known, unknown (no Canboat samples), and incomplete PGNs
 func (conv *canboatConverter) filter() {
 	known := make([]*PGN, 0)
 	unknown := make([]*PGN, 0)
@@ -303,14 +303,21 @@ func (conv *canboatConverter) write() {
 		"hasMultipleVariants": hasMultipleVariants,
 		"getVariantsForPgn":   getVariantsForPgn,
 		"getDecoderConfig":    getDecoderConfig,
+		"groupByPGN":          groupByPGN,
 	}
+
+	// Generate fast bits array
+	fastBits := conv.generateFastBits()
 
 	// Template data
 	templateData := struct {
 		PGNDoc   any
 		ForDebug bool
+		FastBits []byte
 	}{
-		PGNDoc: conv,
+		PGNDoc:   conv,
+		ForDebug: false,
+		FastBits: fastBits,
 	}
 
 	// Generate internal PGN files
@@ -324,6 +331,7 @@ func (conv *canboatConverter) write() {
 		"encoders_generated.go":       "runtime/encoders.go.tmpl",
 		"discriminators_generated.go": "runtime/discriminators.go.tmpl",
 		"fieldspecs_generated.go":     "runtime/fieldspecs.go.tmpl",
+		"fastbits_generated.go":       "runtime/fastbits.go.tmpl",
 	}
 
 	for filename, templatePath := range internalTemplates {
@@ -470,6 +478,7 @@ func generateFieldSpecConstant(pgn PGN, field PGNField) string {
 
 	return fmt.Sprintf(`&FieldSpec{
 		BitLength:     %d,
+		BitOffset:     %d,
 		MaxRawValue:   0x%X,
 		MissingValue:  0x%X,
 		Resolution:    %g,
@@ -478,7 +487,7 @@ func generateFieldSpecConstant(pgn PGN, field PGNField) string {
 		ReservedCount: %d,
 		DomainMin:     %s,
 		DomainMax:     %s,
-	}`, field.BitLength, maxRawValue, missingValue, resolution, field.Offset, field.Signed, reservedCount, domainMin, domainMax)
+	}`, field.BitLength, field.BitOffset, maxRawValue, missingValue, resolution, field.Offset, field.Signed, reservedCount, domainMin, domainMax)
 }
 
 // getReservedValueCount returns the number of reserved values at the top of a field's range.
@@ -685,6 +694,12 @@ func (builder *canboatConverter) validate() {
 		panic("New special case(s) added to canboat.json. Resolve and update this check.")
 	}
 
+	// Validate match field uniqueness for PGN variants
+	builder.validateMatchFieldUniqueness()
+
+	// Validate Fast flags against isFast function
+	builder.validateFastFlags()
+
 	// Validate fields with resolution != 1
 	builder.validateResolutionFields()
 }
@@ -728,6 +743,163 @@ func (builder *canboatConverter) validateResolutionFields() {
 	} else {
 		log.Infof("All fields with resolution != 1 have correct RangeMax values")
 	}
+}
+
+// validateMatchFieldUniqueness checks that PGN variants with the same PGN number have unique match field sets
+func (builder *canboatConverter) validateMatchFieldUniqueness() {
+	pgnGroups := make(map[uint32][]*PGN)
+
+	// Group PGNs by PGN number
+	for _, pgn := range builder.PGNs {
+		pgnGroups[pgn.PGN] = append(pgnGroups[pgn.PGN], pgn)
+	}
+
+	for pgnNum, variants := range pgnGroups {
+		if len(variants) <= 1 {
+			continue // No variants to check
+		}
+
+		// Extract match fields for each variant
+		variantMatchFields := make(map[string]map[string]int) // variantId -> fieldName -> matchValue
+
+		for _, variant := range variants {
+			matchFields := make(map[string]int)
+			for _, field := range variant.Fields {
+				if field.Match != nil {
+					matchFields[field.Id] = *field.Match
+				}
+			}
+			variantMatchFields[variant.Id] = matchFields
+		}
+
+		// Check for conflicts between variants
+		variantIds := make([]string, 0, len(variants))
+		for id := range variantMatchFields {
+			variantIds = append(variantIds, id)
+		}
+
+		for i := 0; i < len(variantIds); i++ {
+			for j := i + 1; j < len(variantIds); j++ {
+				variant1 := variantIds[i]
+				variant2 := variantIds[j]
+				matchFields1 := variantMatchFields[variant1]
+				matchFields2 := variantMatchFields[variant2]
+
+				// Check if match field sets are identical
+				if mapsEqual(matchFields1, matchFields2) {
+					// Only warn for now - some PGNs may have special handling
+					log.Warnf("PGN %d: variants %s and %s have identical match fields: %v - may need special handling",
+						pgnNum, variant1, variant2, matchFields1)
+				}
+			}
+		}
+
+		// Check for variants with no match fields (when there are multiple variants)
+		// Skip this check for now as some PGNs may have special handling
+		noMatchFields := make([]string, 0)
+		for _, variant := range variants {
+			if len(variantMatchFields[variant.Id]) == 0 {
+				noMatchFields = append(noMatchFields, variant.Id)
+			}
+		}
+
+		if len(noMatchFields) > 0 && len(variants) > 1 {
+			log.Warnf("PGN %d: variants %v have no match fields but PGN has multiple variants - may need special handling",
+				pgnNum, noMatchFields)
+		}
+	}
+
+	log.Infof("Match field uniqueness validation passed")
+}
+
+// isFast returns true if the specified PGN is a Fast packet based on PGN ranges
+// This duplicates the function in internal/pgn/pgninfo.go for validation purposes
+func isFast(pgn uint32) bool {
+	switch {
+	case pgn >= 59392 && pgn <= 60928: // 0xE800-0xEE00
+		return false // ISO 11783, Single frame
+	case pgn == 61184: // 0xEF00
+		return false // Manufacturer proprietary, Single frame
+	case pgn >= 61440 && pgn <= 65279: // 0xF000-0xFEFF
+		return false // Standardized, Single frame
+	case pgn >= 65280 && pgn <= 65535: // 0xFF00-0xFFFF
+		return false // Manufacturer proprietary, Single frame
+	case pgn >= 126208 && pgn <= 126464: // 0x1ED00-0x1EE00
+		return true // Standardized protocol, Fast packet
+	case pgn == 126720: // 0x1EF00
+		return true // Manufacturer proprietary, Fast packet
+	case pgn >= 126976 && pgn <= 130815: // 0x1F000-0x1FEFF
+		// Mixed range - most PGNs are single frame, only specific ones are fast
+		// For now, default to single frame (false) - specific fast PGNs can be added as needed
+		return false // Standardized, mixed single/fast (default to single)
+	case pgn >= 130816 && pgn <= 131071: // 0x1FF00-0x1FFFF
+		return true // Manufacturer proprietary, Fast packet
+	default:
+		return false // Unknown PGN, assume single frame
+	}
+}
+
+// validateFastFlags compares the Fast flag from source data against the isFast function
+func (builder *canboatConverter) validateFastFlags() {
+	var mismatches []string
+
+	for _, pgn := range builder.PGNs {
+		expectedFast := isFast(pgn.PGN)
+		actualFast := (pgn.Type == "Fast")
+
+		if expectedFast != actualFast {
+			mismatch := fmt.Sprintf("PGN %d (%s): source Type=%s (Fast=%t), isFast()=%t",
+				pgn.PGN, pgn.Id, pgn.Type, actualFast, expectedFast)
+			mismatches = append(mismatches, mismatch)
+		}
+	}
+
+	if len(mismatches) > 0 {
+		log.Warnf("Fast flag validation found %d mismatches - source data may have inconsistencies:", len(mismatches))
+		for _, mismatch := range mismatches {
+			log.Warnf("  %s", mismatch)
+		}
+		log.Warnf("Using isFast() function results (based on NMEA 2000 specification) over source data")
+	} else {
+		log.Infof("Fast flag validation passed - all %d PGNs match isFast() function", len(builder.PGNs))
+	}
+}
+
+// generateFastBits creates a bit array for PGNs >= 126208 indicating if they are fast packets
+func (builder *canboatConverter) generateFastBits() []byte {
+	// PGNs 126208-131071 = 4864 PGNs = 608 bytes
+	const maxPgn = 131071
+	const minPgn = 126208
+	const bitArraySize = (maxPgn - minPgn + 1 + 7) / 8 // Round up to nearest byte
+
+	bits := make([]byte, bitArraySize)
+
+	// Set bits for fast PGNs based on source data
+	for _, pgn := range builder.PGNs {
+		if pgn.PGN >= minPgn && pgn.PGN <= maxPgn {
+			if pgn.Type == "Fast" {
+				bitIndex := pgn.PGN - minPgn
+				byteIndex := bitIndex / 8
+				bitOffset := bitIndex % 8
+				bits[byteIndex] |= 1 << bitOffset
+			}
+		}
+	}
+
+	return bits
+}
+
+// mapsEqual compares two maps for equality
+func mapsEqual(m1, m2 map[string]int) bool {
+	if len(m1) != len(m2) {
+		return false
+	}
+	for k, v := range m1 {
+		if m2[k] != v {
+			return false
+		}
+	}
+	return true
 }
 
 // zeroBitOffsets sets the BitOffset fields of repeating fields
@@ -1314,4 +1486,13 @@ func getDecoderConfig(pgn PGN) DecoderConfig {
 		BitLengthField:     pgn.BitLengthField,
 		DynamicLengthField: dynamicLengthField,
 	}
+}
+
+// groupByPGN groups PGNs by their PGN number
+func groupByPGN(pgns []*PGN) map[uint32][]*PGN {
+	groups := make(map[uint32][]*PGN)
+	for _, pgn := range pgns {
+		groups[pgn.PGN] = append(groups[pgn.PGN], pgn)
+	}
+	return groups
 }

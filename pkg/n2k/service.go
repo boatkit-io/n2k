@@ -35,3 +35,8 @@ func (s *N2kService) Start(ctx context.Context) error {
 func (s *N2kService) Stop() error {
 	return s.impl.Stop()
 }
+
+// UpdateEndpoint updates the endpoint used by the service
+func (s *N2kService) UpdateEndpoint(ep endpoint.Endpoint) error {
+	return s.impl.UpdateEndpoint(ep)
+}

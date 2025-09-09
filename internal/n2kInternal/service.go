@@ -69,3 +69,19 @@ func (s *N2kService) Start(ctx context.Context) error {
 func (s *N2kService) Stop() error {
 	return s.endpoint.Close()
 }
+
+// UpdateEndpoint updates the endpoint used by the service
+func (s *N2kService) UpdateEndpoint(ep endpoint.Endpoint) error {
+	// Close the current endpoint if it's running
+	if err := s.endpoint.Close(); err != nil {
+		return err
+	}
+
+	// Set the new endpoint
+	s.endpoint = ep
+
+	// Connect the new endpoint to the adapter
+	s.endpoint.SetOutput(s.adapter)
+
+	return nil
+}
