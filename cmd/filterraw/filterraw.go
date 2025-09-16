@@ -126,12 +126,6 @@ func shouldProcessPGN(pgnNum uint32, opts FilterOptions) bool {
 	if opts.SpecificPGN != 0 {
 		return pgnNum == opts.SpecificPGN
 	}
-	if opts.Unseen {
-		return pgn.UnseenLookup[pgnNum] != nil
-	}
-	if opts.Unknown {
-		return pgn.PgnInfoLookup[pgnNum] == nil
-	}
 	return true
 }
 

@@ -90,6 +90,14 @@ func (r *RawEndpoint) WriteFrame(frame can.Frame) {
 
 }
 
+// Close closes the endpoint
+func (r *RawEndpoint) Close() error {
+	if r.file != nil {
+		return r.file.Close()
+	}
+	return nil
+}
+
 // Run method opens the specified log file and kicks off a goroutine that sends frames to the handler
 func (r *RawFileEndpoint) Run(ctx context.Context) error {
 	file, err := os.Open(r.inFilePath)
@@ -158,4 +166,15 @@ func (r *RawFileEndpoint) frameReady(frame adapter.Message) {
 // SetOutput sets the output struct for handling when a message is ready
 func (r *RawFileEndpoint) SetOutput(mh endpoint.MessageHandler) {
 	r.handler = mh
+}
+
+// Close closes the endpoint
+func (r *RawFileEndpoint) Close() error {
+	// RawFileEndpoint doesn't maintain persistent connections, so nothing to close
+	return nil
+}
+
+// WriteFrame is not implemented for RawFileEndpoint as it's read-only
+func (r *RawFileEndpoint) WriteFrame(frame can.Frame) {
+	// RawFileEndpoint is read-only, so this is a no-op
 }

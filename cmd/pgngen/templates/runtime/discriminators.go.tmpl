@@ -54,8 +54,8 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 {{- end }}
 }
 
-// findDecoder finds the appropriate decoder for a PGN based on match field values
-func findDecoder(stream *DataStream, pgn uint32) (func(MessageInfo, *DataStream) (any, error), error) {
+// FindDecoder finds the appropriate decoder for a PGN based on match field values
+func FindDecoder(stream *DataStream, pgn uint32) (func(MessageInfo, *DataStream) (any, error), error) {
 	discriminators, exists := PgnDiscriminatorMap[pgn]
 	if !exists {
 		return nil, fmt.Errorf("no decoder found for PGN %d", pgn)

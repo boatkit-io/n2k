@@ -11,6 +11,7 @@ import (
 	"github.com/boatkit-io/n2k/internal/converter"
 	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/internal/pkt"
+	"github.com/boatkit-io/n2k/pkg/endpoint"
 )
 
 // CANAdapter instances on input read canbus frames from its input and outputs complete Packets.
@@ -20,7 +21,7 @@ type CANAdapter struct {
 	log   *logrus.Logger
 
 	handler     PacketHandler
-	frameWriter FrameWriter
+	frameWriter endpoint.Endpoint
 	seqIdMap    map[uint8]map[uint32]uint8 //sourceID:PGN:last used sequenceID
 }
 
@@ -44,7 +45,7 @@ func NewCANAdapter(log *logrus.Logger) *CANAdapter {
 }
 
 // SetWriter assigns the argument to the frameWriter field
-func (c *CANAdapter) SetWriter(writer FrameWriter) {
+func (c *CANAdapter) SetWriter(writer endpoint.Endpoint) {
 	c.frameWriter = writer
 }
 
@@ -91,7 +92,13 @@ func (c *CANAdapter) packetReady(pkt *pkt.Packet) {
 // WritePgn generates one or more frames from its input and writes them to its configured endpoint.
 func (c *CANAdapter) WritePgn(info pgn.MessageInfo, data []uint8) error {
 	var err error
-	canId := converter.CanIdFromData(info.PGN, info.SourceId, info.TargetId, info.Priority)
+	canIdData := converter.CanIdData{
+		PGN:         info.PGN,
+		SourceId:    info.SourceId,
+		Priority:    info.Priority,
+		Destination: info.TargetId,
+	}
+	canId := converter.CanIdFromStruct(canIdData)
 	if pgn.IsFast((info.PGN)) {
 		err = c.sendFast(info.SourceId, info.PGN, canId, data)
 	} else {
@@ -157,7 +164,10 @@ func (c *CANAdapter) sendFast(sourceId uint8, pgn uint32, canId uint32, data []u
 				}
 				// invoke endpoint handler
 				if c.frameWriter != nil {
+					c.log.Debugf("Writing CAN frame: ID=0x%X, Length=%d, Data=%02X", frame.ID, frame.Length, frame.Data[:frame.Length])
 					c.frameWriter.WriteFrame(frame)
+				} else {
+					c.log.Warn("frameWriter is nil, cannot write frame")
 				}
 				offset = 0
 				if index >= total {

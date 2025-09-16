@@ -9,3 +9,11 @@ import (
 {{- range .PGNDoc.Enums }}
 type {{ .Name }} = pgn.{{ .Name }}
 {{- end }}
+
+// Re-export all enum constants from internal package
+{{- range .PGNDoc.Enums }}
+{{- $name := .Name }}
+{{- range .Values }}
+const {{ .Name }} = pgn.{{ .Name }}
+{{- end }}
+{{- end }}

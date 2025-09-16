@@ -28,6 +28,8 @@ func NewSocketCANEndpoint(log *logrus.Logger, canInterfaceName string) endpoint.
 		log: log,
 	}
 
+	// vcan interfaces are now supported with the modified tugboat package
+
 	channelOpts := canbus.SocketCANChannelOptions{
 		InterfaceName:  canInterfaceName,
 		BitRate:        250000,

@@ -39,6 +39,8 @@ Usage: `dumpcan -iface <interface_name>`
 
 The command will run until terminated with Ctrl+C or SIGTERM.
 
+**Note**: Virtual CAN interfaces (vcan) are now supported with the modified tugboat package. See [docs/vcan-limitations.md](docs/vcan-limitations.md) for details.
+
 ## Processing Overview
 
 See the source to replay as an example of the intended use model.

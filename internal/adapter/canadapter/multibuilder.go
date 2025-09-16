@@ -1,6 +1,8 @@
 package canadapter
 
 import (
+	"sync"
+
 	"github.com/sirupsen/logrus"
 
 	"github.com/boatkit-io/n2k/internal/pkt"
@@ -16,6 +18,7 @@ import (
 type MultiBuilder struct {
 	log       *logrus.Logger
 	sequences map[uint8]map[uint32]map[uint8]*sequence
+	mutex     sync.RWMutex
 }
 
 // NewMultiBuilder creates a new instance.
@@ -34,12 +37,17 @@ func (m *MultiBuilder) Add(p *pkt.Packet) {
 	seq := m.SeqFor(p)
 	seq.add(p)
 	if seq.complete(p) {
+		m.mutex.Lock()
 		delete(m.sequences[p.Info.SourceId][p.Info.PGN], p.SeqId)
+		m.mutex.Unlock()
 	}
 }
 
 // SeqFor method returns the sequence for the specified packet, creating it it needed.
 func (m *MultiBuilder) SeqFor(p *pkt.Packet) *sequence {
+	m.mutex.Lock()
+	defer m.mutex.Unlock()
+	
 	if _, t := m.sequences[p.Info.SourceId]; !t {
 		m.sequences[p.Info.SourceId] = make(map[uint32]map[uint8]*sequence)
 	}

@@ -33,11 +33,6 @@ const MaxPGNLength = 223 // 31*7 + 6
 // log provides standard logging capability to the program.
 var log = logrus.StandardLogger()
 
-// pgninfoTemplate is the template used to generate the output file.
-//
-//go:embed templates/pgninfo.go.tmpl
-var pgninfoTemplate string
-
 func main() {
 	fmt.Println("Entered Main")
 	builder := newCanboatConverter()
@@ -326,7 +321,6 @@ func (conv *canboatConverter) write() {
 		"enums_generated.go":          "runtime/enums.go.tmpl",
 		"consts_generated.go":         "runtime/consts.go.tmpl",
 		"methods_generated.go":        "runtime/methods.go.tmpl",
-		"pgninfo_generated.go":        "runtime/pgninfo.go.tmpl",
 		"decoders_generated.go":       "runtime/decoders.go.tmpl",
 		"encoders_generated.go":       "runtime/encoders.go.tmpl",
 		"discriminators_generated.go": "runtime/discriminators.go.tmpl",

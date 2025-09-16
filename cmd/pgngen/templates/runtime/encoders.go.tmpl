@@ -60,9 +60,10 @@ func (p *{{ $pgn.Id }}) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = {{ .PGN }}
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err

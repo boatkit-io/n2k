@@ -163,6 +163,17 @@
             ]
         },
         {
+            "name": "Debug spew",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/spewpgns",
+            "args": [
+                "-iface=vcan0",
+            ],
+            "showLog": true
+        },
+      {
             "name": "Debug canwriter (basic)",
             "type": "go",
             "request": "launch",

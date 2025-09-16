@@ -8,9 +8,6 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/boatkit-io/n2k/internal/adapter/canadapter"
-	"github.com/boatkit-io/n2k/internal/pkt"
-	"github.com/boatkit-io/n2k/internal/subscribe"
 	"github.com/boatkit-io/n2k/pkg/endpoint/socketcanendpoint"
 	"github.com/boatkit-io/n2k/pkg/n2k"
 	"github.com/sirupsen/logrus"
@@ -35,7 +32,7 @@ func main() {
 	}
 
 	log := logrus.StandardLogger()
-	log.SetLevel(logrus.ErrorLevel) // Only show errors, not info messages
+	log.SetLevel(logrus.DebugLevel) // Show info messages for better debugging
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -50,19 +47,20 @@ func main() {
 	}()
 
 	// Build the pipeline
-	subs := subscribe.New()
-	adapter := canadapter.NewCANAdapter(log)
-	packetStruct := pkt.NewPacketStruct()
 	endpoint := socketcanendpoint.NewSocketCANEndpoint(log, canInterface)
 
 	// Wire it all up
-	endpoint.SetOutput(adapter)
-	adapter.SetOutput(packetStruct)
-	packetStruct.SetOutput(subs)
-	adapter.SetWriter(endpoint)
+	bus := n2k.NewN2kService(endpoint, log)
+
+	// Start the pipeline
+	if err := bus.Start(ctx); err != nil {
+		log.Errorf("n2k service exited with error: %v", err)
+		exitCode = 1
+		return
+	}
 
 	// Subscribe to all PGNs and dump them to stdout
-	_, err := subs.SubscribeToAllStructs(func(p any) {
+	_, err := bus.SubscribeToAllStructs(func(p any) {
 		fmt.Printf("%s\n", n2k.DebugDumpPGN(p))
 	})
 	if err != nil {
@@ -71,14 +69,9 @@ func main() {
 		return
 	}
 
-	// Start the pipeline
-	go func() {
-		if err := endpoint.Run(ctx); err != nil {
-			log.Errorf("endpoint exited with error: %v", err)
-		}
-	}()
-
 	// Wait for context cancellation (from signal handler)
 	<-ctx.Done()
+	log.Info("Shutting down...")
+	bus.Stop()
 	log.Info("Shutdown complete")
 }

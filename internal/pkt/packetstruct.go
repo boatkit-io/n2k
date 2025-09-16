@@ -30,7 +30,7 @@ func (ps *PacketStruct) SetOutput(sh StructHandler) {
 func (ps *PacketStruct) HandlePacket(pkt Packet) {
 	// Find the appropriate decoder using the discriminator system
 	stream := pgn.NewDataStream(pkt.Data)
-	decoder, err := pgn.FindDecoder(pkt.Info.PGN, stream)
+	decoder, err := pgn.FindDecoder(stream, pkt.Info.PGN)
 	if err != nil {
 		pkt.ParseErrors = append(pkt.ParseErrors, fmt.Errorf("no matching decoder for PGN %d: %w", pkt.Info.PGN, err))
 		ps.pgnReady(pkt.UnknownPGN())

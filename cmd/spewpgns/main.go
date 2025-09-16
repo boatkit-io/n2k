@@ -3,137 +3,127 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"math"
 	"os"
-	"time"
+	"os/signal"
+	"syscall"
 
-	"github.com/boatkit-io/n2k/internal/adapter/canadapter"
-	"github.com/boatkit-io/n2k/internal/pgn"
-	"github.com/boatkit-io/n2k/internal/pkt"
-	"github.com/boatkit-io/n2k/internal/subscribe"
 	"github.com/boatkit-io/n2k/pkg/endpoint/socketcanendpoint"
 	"github.com/boatkit-io/n2k/pkg/n2k"
 	"github.com/boatkit-io/tugboat/pkg/units"
+
+	//	"github.com/boatkit-io/tugboat/pkg/units"
 	"github.com/sirupsen/logrus"
 )
 
 // canInterface is the CAN interface name for integration tests.
-var canInterface string
+var bus *n2k.N2kService
 
 func main() {
-	flag.StringVar(&canInterface, "iface", "", "CAN interface name for integration tests")
+	var canInterface string
+	flag.StringVar(&canInterface, "iface", "", "CAN interface name (required)")
 	flag.Parse()
 
-	// Also check environment variable
 	if canInterface == "" {
-		canInterface = os.Getenv("IFACE")
+		fmt.Fprintf(os.Stderr, "Error: -iface flag is required\n")
+		fmt.Fprintf(os.Stderr, "Usage: %s -iface <interface_name>\n", os.Args[0])
+		os.Exit(1)
 	}
 
-	if canInterface == "" {
-		logrus.Fatal("CAN interface not specified. Use -iface flag or IFACE environment variable")
-	}
-
-	log := logrus.StandardLogger()
-	log.SetLevel(logrus.InfoLevel)
+	log := logrus.New()
+	log.SetLevel(logrus.DebugLevel) // Enable debug logging
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	// 1. Build the pipeline
-	subs := subscribe.New()
-	adapter := canadapter.NewCANAdapter(log)
-	publisher := pgn.NewPublisher(adapter)
-	packetStruct := pkt.NewPacketStruct()
+	// Set up signal handling for graceful shutdown
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
+	go func() {
+		<-sigChan
+		log.Info("Received shutdown signal, stopping...")
+		cancel()
+	}()
 
+	// Create SocketCANEndpoint
 	endpoint := socketcanendpoint.NewSocketCANEndpoint(log, canInterface)
-
-	// Wire it all up
-	endpoint.SetOutput(adapter)
-	adapter.SetOutput(packetStruct)
-	packetStruct.SetOutput(subs)
-	adapter.SetWriter(endpoint)
+	bus = n2k.NewN2kService(endpoint, log)
+	bus.Start(ctx)
 
 	// 2. Create a PGN dumper to see all traffic
-	_, err := subs.SubscribeToAllStructs(func(p any) {
+	_, err := bus.SubscribeToAllStructs(func(p any) {
 		log.Infof("PGN DUMP: %s", n2k.DebugDumpPGN(p))
 	})
 	if err != nil {
 		log.Fatalf("failed to subscribe to all structs: %v", err)
 	}
 
-	// 3. Start the pipeline
-	go func() {
-		if err := endpoint.Run(ctx); err != nil {
-			log.Errorf("endpoint exited with error: %v", err)
-		}
-	}()
-	time.Sleep(100 * time.Millisecond)
-	log.Infof("Pipeline started on interface %s", canInterface)
-
-	// 4. Generate and send PGNs
+	// Give the channel time to start up
 	log.Infof("Starting to send test PGNs...")
-	sendTestPGNs(ctx, publisher, log)
+
+	sendTestPGNs(log)
+
+	// Wait for context cancellation
+	<-ctx.Done()
+	log.Info("Shutting down...")
+	bus.Stop()
 }
 
 // sendTestPGNs sends a batch of test PGNs.
-func sendTestPGNs(ctx context.Context, publisher pgn.Publisher, log *logrus.Logger) {
-	ticker := time.NewTicker(2 * time.Second)
-	defer ticker.Stop()
+func sendTestPGNs(log *logrus.Logger) {
 
 	sourceId := uint8(254) // Use reserved address for nodes unable to claim an address
 	var counter float32 = 0
 
-	for {
-		select {
-		case <-ctx.Done():
-			log.Infof("Context cancelled, stopping PGN generation")
-			return
-		case <-ticker.C:
-			counter++
-
-			// Generate and send different types of PGNs
-			if err := sendEngineData(&publisher, sourceId, counter, log); err != nil {
-				log.Errorf("Failed to send engine data: %v", err)
-			}
-
-			if err := sendSpeedData(&publisher, sourceId, counter, log); err != nil {
-				log.Errorf("Failed to send speed data: %v", err)
-			}
-
-			if err := sendPositionData(&publisher, sourceId, counter, log); err != nil {
-				log.Errorf("Failed to send position data: %v", err)
-			}
-
-			log.Infof("Sent test PGNs batch %d", int(counter))
-		}
+	// Generate and send different types of PGNs
+	if err := sendEngineData(sourceId, counter, log); err != nil {
+		log.Errorf("Failed to send engine data: %v", err)
 	}
+
+	if err := sendSpeedData(sourceId, counter, log); err != nil {
+		log.Errorf("Failed to send speed data: %v", err)
+	}
+
+	if err := sendPositionData(sourceId, counter, log); err != nil {
+		log.Errorf("Failed to send position data: %v", err)
+	}
+	if err := sendEngineInfo(sourceId, counter, log); err != nil {
+		log.Errorf("Failed to send ebgine data: %v", err)
+
+	}
+
+	log.Infof("Sent test PGNs batch %d", int(counter))
+
 }
 
 // sendEngineData sends an EngineParametersRapidUpdate PGN.
-func sendEngineData(publisher *pgn.Publisher, sourceId uint8, counter float32, log *logrus.Logger) error {
+
+func sendEngineData(sourceId uint8, counter float32, log *logrus.Logger) error {
 	// Generate realistic engine RPM (1000-2500 RPM with some variation)
 	rpm := float32(1500.0 + 500.0*math.Sin(float64(counter)*0.1))
 	// Boost pressure in Pascal (150 kPa = 150000 Pa)
 	boostPressurePa := float32(150000.0 + 30000.0*math.Sin(float64(counter)*0.2))
 	boostPressure := units.NewPressure(units.Pa, boostPressurePa)
 
-	enginePgn := pgn.EngineParametersRapidUpdate{
-		Info: pgn.MessageInfo{
+	enginePgn := n2k.EngineParametersRapidUpdate{
+		Info: n2k.MessageInfo{
 			SourceId: sourceId,
 			TargetId: 255, // Broadcast
 		},
-		Instance:      pgn.SingleEngineOrDualEnginePort,
+		Instance:      n2k.EngineInstanceConst(1),
 		Speed:         &rpm,
 		BoostPressure: &boostPressure,
 		TiltTrim:      nil, // Not applicable for this test
 	}
 
 	log.Debugf("Sending engine data: RPM=%.1f, Boost=%.1f kPa", rpm, boostPressurePa/1000.0)
-	return publisher.Write(&enginePgn)
+	return bus.Write(&enginePgn)
 }
 
 // sendSpeedData sends a Speed PGN.
-func sendSpeedData(publisher *pgn.Publisher, sourceId uint8, counter float32, log *logrus.Logger) error {
+
+func sendSpeedData(sourceId uint8, counter float32, log *logrus.Logger) error {
 	// Generate realistic boat speeds (5-15 knots)
 	speedKnots := 10.0 + 3.0*math.Sin(float64(counter)*0.15)
 	speedMs := float32(speedKnots * 0.514444) // Convert knots to m/s
@@ -143,24 +133,51 @@ func sendSpeedData(publisher *pgn.Publisher, sourceId uint8, counter float32, lo
 	sid := uint8(1)
 	direction := uint8(0) // Forward
 
-	speedPgn := pgn.Speed{
-		Info: pgn.MessageInfo{
+	speedPgn := n2k.Speed{
+		Info: n2k.MessageInfo{
 			SourceId: sourceId,
+			Priority: 0,   // Explicitly set priority to 0
 			TargetId: 255, // Broadcast
 		},
 		Sid:                      &sid,
 		SpeedWaterReferenced:     &waterSpeed,
 		SpeedGroundReferenced:    &groundSpeed,
-		SpeedWaterReferencedType: pgn.PaddleWheel,
+		SpeedWaterReferencedType: n2k.PaddleWheel,
 		SpeedDirection:           &direction,
 	}
 
 	log.Debugf("Sending speed data: %.1f knots (%.2f m/s)", speedKnots, speedMs)
-	return publisher.Write(&speedPgn)
+	return bus.Write(&speedPgn)
+}
+
+func sendEngineInfo(sourceId uint8, counter float32, log *logrus.Logger) error {
+	log.Info("Testing single frame PGN...")
+	info1 := n2k.MessageInfo{
+		PGN:      n2k.EngineParametersRapidUpdatePgn, // Engine Parameters Rapid Update
+		SourceId: sourceId,
+		TargetId: 0x0,
+		Priority: 0x3,
+	}
+	rpm := float32(1600)
+	p := n2k.EngineParametersRapidUpdate{
+		Info:     info1,
+		Instance: n2k.SingleEngineOrDualEnginePort,
+		Speed:    &rpm,
+	}
+
+	log.Debugf("Writing single frame PGN: PGN=0x%X, SourceId=0x%X", info1.PGN, info1.SourceId)
+	err := bus.Write(&p)
+	if err != nil {
+		log.Errorf("Failed to write single frame PGN: %v", err)
+	} else {
+		log.Info("Successfully wrote single frame PGN")
+	}
+	counter++
+	return err
 }
 
 // sendPositionData sends a PositionRapidUpdate PGN.
-func sendPositionData(publisher *pgn.Publisher, sourceId uint8, counter float32, log *logrus.Logger) error {
+func sendPositionData(sourceId uint8, counter float32, log *logrus.Logger) error {
 	// Generate a position that moves in a small circle (simulating boat movement)
 	// Starting position: approximately San Francisco Bay
 	baseLat := 37.7749
@@ -174,16 +191,18 @@ func sendPositionData(publisher *pgn.Publisher, sourceId uint8, counter float32,
 	latitude := baseLat + deltaLat
 	longitude := baseLon + deltaLon
 
-	positionPgn := pgn.PositionRapidUpdate{
-		Info: pgn.MessageInfo{
-			PGN:      pgn.PositionRapidUpdatePgn,
+	positionPgn := n2k.PositionRapidUpdate{
+		Info: n2k.MessageInfo{
+			PGN:      n2k.PositionRapidUpdatePgn,
 			SourceId: sourceId,
-			TargetId: 255, // Broadcast
+			TargetId: 0, // Broadcast
+			Priority: 0x3,
 		},
 		Latitude:  &latitude,
 		Longitude: &longitude,
 	}
 
 	log.Debugf("Sending position data: %.6f, %.6f", latitude, longitude)
-	return publisher.Write(&positionPgn)
+	bus.Write(&positionPgn)
+	return nil
 }

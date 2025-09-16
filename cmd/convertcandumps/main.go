@@ -524,26 +524,7 @@ func (r *rawFmt) outputConsolidatedSequence(sequence []packet) {
 // isFastPGN determines if a PGN uses fast packet format using the PGN lookup tables
 func (r *rawFmt) isFastPGN(pgnNum uint32) bool {
 	// First check the main PGN list
-	if pgnInfos, exists := pgn.PgnInfoLookup[pgnNum]; exists && len(pgnInfos) > 0 {
-		// Use the first variant's Fast flag (all variants for a PGN are consistently fast or single)
-		return pgnInfos[0].Fast
-	}
-
-	// Check the unseen list for defined but uncaptured PGNs
-	if pgnInfos, exists := pgn.UnseenLookup[pgnNum]; exists && len(pgnInfos) > 0 {
-		return pgnInfos[0].Fast
-	}
-
-	// Unknown PGN - log it and default to single frame (safer assumption)
-	log.Warnf("Unknown PGN %d encountered during fast packet detection - treating as single frame", pgnNum)
-
-	// For proprietary PGNs in known fast ranges, assume fast
-	if (pgnNum >= 0x1EF00 && pgnNum <= 0x1EFFF) || // 126720-126975: proprietary PDU1 fast
-		(pgnNum >= 0x1FF00 && pgnNum <= 0x1FFFF) { // 130816-131071: proprietary PDU2 fast
-		return true
-	}
-
-	return false
+	return pgn.IsFast(pgnNum)
 }
 
 // consolidateFastGroup reconstructs the original data from a fast packet sequence

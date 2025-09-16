@@ -132,14 +132,23 @@ func min(a, b int) int {
 	return b
 }
 
+// CanIdData represents the data needed to construct a CAN ID
+type CanIdData struct {
+	PGN         uint32
+	SourceId    uint8
+	Priority    uint8
+	Destination uint8
+}
+
 // CanIdFromData returns an encoded ID from its inputs.
 func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8) uint32 {
 	// Handle destination encoding based on PDU format
 	pduFormat := uint8((pgn & 0xFF00) >> 8)
-	if pduFormat < 240 && destination != 255 {
-		// This is a targeted packet, encode destination in lower 8 bits of PGN
+	if pduFormat < 240 {
+		// PDU1 format: always encode destination in lower 8 bits of PGN
 		pgn = (pgn & 0xFFF00) | uint32(destination)
 	}
+	// PDU2 format: destination is always global (255), don't encode it
 
 	// Build the base CAN ID: Priority(3) + Reserved(1) + PGN(18) + Source(8)
 	canId := uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26)
@@ -149,6 +158,31 @@ func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8
 	canId |= 0x80000000 // MaskEff from brutella/can constants
 
 	return canId
+}
+
+// CanIdFromStruct returns an encoded ID from a CanIdData struct.
+func CanIdFromStruct(data CanIdData) uint32 {
+	return CanIdFromData(data.PGN, data.SourceId, data.Priority, data.Destination)
+}
+
+// CanIdFromDataWithValidation returns an encoded ID from its inputs with validation.
+// Returns an error if a PDU2 PGN is specified with a destination other than 0 or 255.
+func CanIdFromDataWithValidation(pgn uint32, sourceId uint8, priority uint8, destination uint8) (uint32, error) {
+	pduFormat := uint8((pgn & 0xFF00) >> 8)
+	if pduFormat >= 240 {
+		// PDU2 format: destination must be 0 or 255
+		if destination != 0 && destination != 255 {
+			return 0, fmt.Errorf("PDU2 PGN %d requires destination to be 0 or 255, got %d", pgn, destination)
+		}
+	}
+
+	return CanIdFromData(pgn, sourceId, priority, destination), nil
+}
+
+// CanIdFromStructWithValidation returns an encoded ID from a CanIdData struct with validation.
+// Returns an error if a PDU2 PGN is specified with a destination other than 0 or 255.
+func CanIdFromStructWithValidation(data CanIdData) (uint32, error) {
+	return CanIdFromDataWithValidation(data.PGN, data.SourceId, data.Priority, data.Destination)
 }
 
 // FrameHeader defines a structure to capture the RAW defined information comprising a CAN Frame ID
@@ -172,12 +206,14 @@ func DecodeCanId(id uint32) FrameHeader {
 
 	pduFormat := uint8((r.PGN & 0xFF00) >> 8)
 	if pduFormat < 240 {
-		// This is a targeted packet, and the lower PS has the address
+		// PDU1 format: extract destination from lower 8 bits
 		r.TargetId = uint8(r.PGN & 0xFF)
 		r.PGN &= 0xFFF00
+	} else {
+		// PDU2 format: destination is always global
+		r.TargetId = 255
 	}
 	return r
-
 }
 
 // RawFromCanFrame returns a string in RAW format encoding the frame
