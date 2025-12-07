@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/boatkit-io/n2k/internal/converter"
+	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/internal/pkt"
 	"github.com/brutella/can"
 	"github.com/sirupsen/logrus"
@@ -137,7 +138,9 @@ func TestFastPacket(t *testing.T) {
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
 	assert.False(t, p.Complete)
-	assert.Equal(t, 1, len(p.Candidates))
+	stream := pgn.NewDataStream(p.Data)
+	_, err := pgn.FindDecoder(stream, p.Info.PGN)
+	assert.Nil(t, err)
 	data = []uint8{0x61, 0x86, 0x0A, 0x05, 0x80, 0x00, 0x58, 0xE8}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -176,7 +179,9 @@ func TestFastPacket(t *testing.T) {
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
 	assert.False(t, p.Complete)
-	assert.Equal(t, 1, len(p.Candidates))
+	stream = pgn.NewDataStream(p.Data)
+	_, err = pgn.FindDecoder(stream, p.Info.PGN)
+	assert.Nil(t, err)
 	data = []uint8{0x64, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x7F, 0xFF}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -202,7 +207,9 @@ func TestFastPacket(t *testing.T) {
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
 	assert.False(t, p.Complete)
-	assert.Equal(t, 1, len(p.Candidates))
+	stream = pgn.NewDataStream(p.Data)
+	_, err = pgn.FindDecoder(stream, p.Info.PGN)
+	assert.Nil(t, err)
 	data = []uint8{0x64, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x7F, 0xFF}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -232,7 +239,9 @@ func TestFastPacket(t *testing.T) {
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
 	assert.False(t, p.Complete)
-	assert.Equal(t, 1, len(p.Candidates))
+	stream = pgn.NewDataStream(p.Data)
+	_, err = pgn.FindDecoder(stream, p.Info.PGN)
+	assert.Nil(t, err)
 	data = []uint8{0x64, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x7F, 0xFF}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)

@@ -29,7 +29,7 @@ type pgnCount struct {
 
 func TestPGNSerializationFromN2K(t *testing.T) {
 	// Get path to test data file
-	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/integration", "susterrana2020Test.n2k")
+	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/integration", "susterrana2020.n2k")
 
 	// Setup the file endpoint
 	ca := canadapter.NewCANAdapter(logrus.New())
@@ -90,7 +90,7 @@ func TestPGNSerializationFromN2K(t *testing.T) {
 		inStream := pgn.NewDataStream(stream.GetData())
 
 		// Use the discriminator system to find and call the appropriate decode function
-		decoder, err := pgn.FindDecoder(info.PGN, inStream)
+		decoder, err := pgn.FindDecoder(inStream, info.PGN)
 		assert.NoError(t, err)
 		if err != nil {
 			fmt.Printf("While finding decoder for %T (PGN %d), got error: %v\n", pgnStruct, info.PGN, err)

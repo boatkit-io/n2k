@@ -5733,12 +5733,15 @@ default:
 }
 type SimnetApEventsConst uint8
 const (
+	FollowNonFollow	SimnetApEventsConst = 2
 	Standby_3	SimnetApEventsConst = 6
-	AutoMode	SimnetApEventsConst = 9
+	HeadingMode	SimnetApEventsConst = 9
 	NavMode	SimnetApEventsConst = 10
+	NoDriftMode	SimnetApEventsConst = 12
 	NonFollowUpMode	SimnetApEventsConst = 13
 	FollowUpMode	SimnetApEventsConst = 14
 	WindMode	SimnetApEventsConst = 15
+	Tack	SimnetApEventsConst = 17
 	SquareTurn	SimnetApEventsConst = 18
 	CTurn	SimnetApEventsConst = 19
 	UTurn	SimnetApEventsConst = 20
@@ -5755,18 +5758,24 @@ const (
 func (e SimnetApEventsConst) GoString() string {return e.String() }
 func (e SimnetApEventsConst) String() string {
 	switch e {
+		case 2:
+			return "Follow/Non Follow"
 		case 6:
 			return "Standby"
 		case 9:
-			return "Auto mode"
+			return "Heading mode"
 		case 10:
 			return "Nav mode"
+		case 12:
+			return "No Drift mode"
 		case 13:
 			return "Non Follow Up mode"
 		case 14:
 			return "Follow Up mode"
 		case 15:
 			return "Wind mode"
+		case 17:
+			return "Tack"
 		case 18:
 			return "Square (Turn)"
 		case 19:
@@ -5816,10 +5825,28 @@ default:
 		return fmt.Sprintf("SimnetDirectionConst(%d)", uint8(e))
 	}
 }
+type SimnetApCommandTypeConst uint8
+const (
+	FollowUp	SimnetApCommandTypeConst = 2
+	ApCommand_2	SimnetApCommandTypeConst = 10
+)
+
+func (e SimnetApCommandTypeConst) GoString() string {return e.String() }
+func (e SimnetApCommandTypeConst) String() string {
+	switch e {
+		case 2:
+			return "Follow Up"
+		case 10:
+			return "AP Command"
+default:
+		return fmt.Sprintf("SimnetApCommandTypeConst(%d)", uint8(e))
+	}
+}
 type SimnetAlarmConst uint8
 const (
 	LowBoatSpeed	SimnetAlarmConst = 57
-	WindDataMissing	SimnetAlarmConst = 58
+	NoAutopilotComputer	SimnetAlarmConst = 56
+	NavDataMissing	SimnetAlarmConst = 58
 )
 
 func (e SimnetAlarmConst) GoString() string {return e.String() }
@@ -5827,8 +5854,10 @@ func (e SimnetAlarmConst) String() string {
 	switch e {
 		case 57:
 			return "Low boat speed"
+		case 56:
+			return "No autopilot computer"
 		case 58:
-			return "Wind data missing"
+			return "Nav data missing"
 default:
 		return fmt.Sprintf("SimnetAlarmConst(%d)", uint8(e))
 	}
@@ -9447,7 +9476,7 @@ type SimnetAlertBitfieldConst uint16
 const (
 	NoGpsFix	SimnetAlertBitfieldConst = 0
 	NoActiveAutopilotControlUnit	SimnetAlertBitfieldConst = 2
-	NoAutopilotComputer	SimnetAlertBitfieldConst = 4
+	NoAutopilotComputer_2	SimnetAlertBitfieldConst = 4
 	ApClutchOverload	SimnetAlertBitfieldConst = 6
 	ApClutchDisengaged	SimnetAlertBitfieldConst = 8
 	RudderControllerFault	SimnetAlertBitfieldConst = 10

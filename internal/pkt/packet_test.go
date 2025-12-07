@@ -34,8 +34,9 @@ func TestNewPacket(t *testing.T) {
 	assert.Equal(t, uint8(7), p.Info.SourceId)
 	assert.Equal(t, uint8(1), p.Info.Priority)
 	assert.Equal(t, 0, len(p.ParseErrors))
-	assert.Equal(t, 1, len(p.Candidates))
-	assert.True(t, p.Fast)
+	stream := pgn.NewDataStream(p.Data)
+	_, err := pgn.FindDecoder(stream, p.Info.PGN)
+	assert.Nil(t, err)
 }
 
 func TestFilterSlow(t *testing.T) {
@@ -46,9 +47,10 @@ func TestFilterSlow(t *testing.T) {
 		TargetId: 0,
 	}
 	p := NewPacket(pInfo, []uint8{(381 & 0xFF), (381 >> 8) | (4 << 5), 3, 4, 5, 0xFF, 0xFF, 0xFF})
-	p.AddDecoders()
+	stream := pgn.NewDataStream(p.Data)
+	_, err := pgn.FindDecoder(stream, p.Info.PGN)
+	assert.Nil(t, err)
 	assert.Equal(t, 0, len(p.ParseErrors))
-	assert.Equal(t, 1, len(p.Decoders))
 	pInfo = pgn.MessageInfo{
 		PGN:      130824,
 		SourceId: 10,
@@ -56,9 +58,9 @@ func TestFilterSlow(t *testing.T) {
 		TargetId: 0,
 	}
 	p = NewPacket(pInfo, []uint8{(380 & 0xFF), (381 >> 8) | (4 << 5), 3, 4, 5, 0xFF, 0xFF, 0xFF})
-	p.AddDecoders()
-	// assert.Equal(t, 1, len(p.ParseErrors)) p.decode() now handles the no decoders error
-	assert.Equal(t, 0, len(p.Decoders))
+	stream = pgn.NewDataStream(p.Data)
+	_, err = pgn.FindDecoder(stream, p.Info.PGN)
+	assert.NotNil(t, err)
 }
 
 func TestFilterFast(t *testing.T) {
@@ -71,9 +73,10 @@ func TestFilterFast(t *testing.T) {
 	p := NewPacket(pInfo, []uint8{160, 5, (135 & 0xFF), (13 >> 8) | (4 << 5), 32, 128, 1, 255})
 	p.Data = p.Data[2:] // normally happens in sequence.complete()
 	p.Complete = true   // normally these 2 calls would happen by invoking b.process()
-	p.AddDecoders()
+	stream := pgn.NewDataStream(p.Data)
+	_, err := pgn.FindDecoder(stream, p.Info.PGN)
+	assert.Nil(t, err)
 	assert.Equal(t, 0, len(p.ParseErrors))
-	assert.Equal(t, 10, len(p.Decoders)) // 10 pgns 126720 manufacturer airmar(135)
 }
 
 func TestBroadcast(t *testing.T) {

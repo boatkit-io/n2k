@@ -410,7 +410,7 @@ func (r *rawFmt) processPacketsConsolidated() {
 
 	for _, pkt := range r.packets {
 		// Check if this is a fast packet PGN
-		if r.isFastPGN(pkt.pgn) && len(pkt.frame.Data) >= 1 {
+		if pgn.IsFast(pkt.pgn) && len(pkt.frame.Data) >= 1 {
 			packetSeqId := (pkt.frame.Data[0] >> 5) & 0x07
 			frameNum := pkt.frame.Data[0] & 0x1F
 
@@ -521,12 +521,15 @@ func (r *rawFmt) outputConsolidatedSequence(sequence []packet) {
 	}
 }
 
+<<<<<<< Updated upstream
 // isFastPGN determines if a PGN uses fast packet format using the PGN lookup tables
 func (r *rawFmt) isFastPGN(pgnNum uint32) bool {
 	// First check the main PGN list
 	return pgn.IsFast(pgnNum)
 }
 
+=======
+>>>>>>> Stashed changes
 // consolidateFastGroup reconstructs the original data from a fast packet sequence
 func (r *rawFmt) consolidateFastGroup(packetGroup []packet) ([]uint8, int) {
 	if len(packetGroup) == 0 {

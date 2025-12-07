@@ -161,6 +161,7 @@ type SimnetTimeFormatConst = pgn.SimnetTimeFormatConst
 type SimnetBacklightLevelConst = pgn.SimnetBacklightLevelConst
 type SimnetApEventsConst = pgn.SimnetApEventsConst
 type SimnetDirectionConst = pgn.SimnetDirectionConst
+type SimnetApCommandTypeConst = pgn.SimnetApCommandTypeConst
 type SimnetAlarmConst = pgn.SimnetAlarmConst
 type FusionMessageIdConst = pgn.FusionMessageIdConst
 type FusionPlayStatusConst = pgn.FusionPlayStatusConst

@@ -89,11 +89,6 @@ func init() {
 	}
 }
 
-// IsProprietaryPGN returns true if its argument is in one of the proprietary ranges.
-func IsProprietaryPGN(pgn uint32) bool {
-	// Proprietary PGN ranges: 0xEF00-0xEFFF and 0x10000-0x1FFFF
-	return (pgn >= 0xEF00 && pgn <= 0xEFFF) || (pgn >= 0x10000 && pgn <= 0x1FFFF)
-}
 
 // GetFieldDescriptor returns the FieldDescriptor for the specified PGN variant.
 func GetFieldDescriptor(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint8) (*FieldDescriptor, error) {
