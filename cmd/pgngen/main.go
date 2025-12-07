@@ -248,6 +248,7 @@ func (conv *canboatConverter) filter() {
 }
 
 // write outputs the generated files. Most of the work occurs in the templates.
+// write outputs the generated files. Most of the work occurs in the templates.
 func (conv *canboatConverter) write() {
 	// Get the project root directory
 	projectRoot, err := filepath.Abs(".")
@@ -264,6 +265,9 @@ func (conv *canboatConverter) write() {
 		panic(err)
 	}
 	if err := os.MkdirAll(publicN2kDir, 0755); err != nil {
+		panic(err)
+	}
+	if err := os.MkdirAll(filterrawDir, 0755); err != nil {
 		panic(err)
 	}
 	if err := os.MkdirAll(filterrawDir, 0755); err != nil {
@@ -321,18 +325,11 @@ func (conv *canboatConverter) write() {
 
 	// Generate internal PGN files
 	internalTemplates := map[string]string{
-<<<<<<< Updated upstream
-		"types_generated.go":          "runtime/types.go.tmpl",
-		"enums_generated.go":          "runtime/enums.go.tmpl",
-		"consts_generated.go":         "runtime/consts.go.tmpl",
-		"methods_generated.go":        "runtime/methods.go.tmpl",
-=======
 		"types_generated.go":   "runtime/types.go.tmpl",
 		"enums_generated.go":   "runtime/enums.go.tmpl",
 		"consts_generated.go":  "runtime/consts.go.tmpl",
 		"methods_generated.go": "runtime/methods.go.tmpl",
 		// "pgninfo_generated.go":        "runtime/pgninfo.go.tmpl", // Moved to cmd/filterraw
->>>>>>> Stashed changes
 		"decoders_generated.go":       "runtime/decoders.go.tmpl",
 		"encoders_generated.go":       "runtime/encoders.go.tmpl",
 		"discriminators_generated.go": "runtime/discriminators.go.tmpl",
@@ -354,6 +351,19 @@ func (conv *canboatConverter) write() {
 	}
 
 	for filename, templatePath := range filterrawTemplates {
+		fmt.Printf("Generating filterraw file: %s from template: %s\n", filename, templatePath)
+		if err := conv.generateFile(filepath.Join(filterrawDir, filename), templatePath, funcMap, templateData); err != nil {
+			fmt.Printf("Error generating %s: %v\n", filename, err)
+			panic(err)
+		}
+	}
+
+	// Generate filterraw files
+	pgnDataTemplates := map[string]string{
+		"pgn_data.go": "filterraw/pgn_data.go.tmpl",
+	}
+
+	for filename, templatePath := range pgnDataTemplates {
 		fmt.Printf("Generating filterraw file: %s from template: %s\n", filename, templatePath)
 		if err := conv.generateFile(filepath.Join(filterrawDir, filename), templatePath, funcMap, templateData); err != nil {
 			fmt.Printf("Error generating %s: %v\n", filename, err)

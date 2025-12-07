@@ -29,9 +29,10 @@ func (p *IsoAcknowledgement) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 59392
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -48,9 +49,10 @@ func (p *IsoRequest) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 59904
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -71,9 +73,10 @@ func (p *IsoTransportProtocolDataTransfer) Encode(stream *DataStream) (*MessageI
     if p.Info.PGN == 0 {
         p.Info.PGN = 60160
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -106,9 +109,10 @@ func (p *IsoTransportProtocolConnectionManagementRequestToSend) Encode(stream *D
     if p.Info.PGN == 0 {
         p.Info.PGN = 60416
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -141,9 +145,10 @@ func (p *IsoTransportProtocolConnectionManagementClearToSend) Encode(stream *Dat
     if p.Info.PGN == 0 {
         p.Info.PGN = 60416
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -176,9 +181,10 @@ func (p *IsoTransportProtocolConnectionManagementEndOfMessage) Encode(stream *Da
     if p.Info.PGN == 0 {
         p.Info.PGN = 60416
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -211,9 +217,10 @@ func (p *IsoTransportProtocolConnectionManagementBroadcastAnnounce) Encode(strea
     if p.Info.PGN == 0 {
         p.Info.PGN = 60416
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -242,9 +249,10 @@ func (p *IsoTransportProtocolConnectionManagementAbort) Encode(stream *DataStrea
     if p.Info.PGN == 0 {
         p.Info.PGN = 60416
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -297,9 +305,10 @@ func (p *IsoAddressClaim) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 60928
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -328,9 +337,10 @@ func (p *Bus1PhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, 
     if p.Info.PGN == 0 {
         p.Info.PGN = 65001
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -359,9 +369,10 @@ func (p *Bus1PhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, 
     if p.Info.PGN == 0 {
         p.Info.PGN = 65002
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -390,9 +401,10 @@ func (p *Bus1PhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, 
     if p.Info.PGN == 0 {
         p.Info.PGN = 65003
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -421,9 +433,10 @@ func (p *UtilityPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInfo,
     if p.Info.PGN == 0 {
         p.Info.PGN = 65006
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -444,9 +457,10 @@ func (p *UtilityPhaseCAcPower) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 65007
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -475,9 +489,10 @@ func (p *UtilityPhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInf
     if p.Info.PGN == 0 {
         p.Info.PGN = 65008
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -506,9 +521,10 @@ func (p *UtilityPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInfo,
     if p.Info.PGN == 0 {
         p.Info.PGN = 65009
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -529,9 +545,10 @@ func (p *UtilityPhaseBAcPower) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 65010
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -560,9 +577,10 @@ func (p *UtilityPhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInf
     if p.Info.PGN == 0 {
         p.Info.PGN = 65011
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -591,9 +609,10 @@ func (p *UtilityPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInfo,
     if p.Info.PGN == 0 {
         p.Info.PGN = 65012
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -614,9 +633,10 @@ func (p *UtilityPhaseAAcPower) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 65013
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -645,9 +665,10 @@ func (p *UtilityPhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInf
     if p.Info.PGN == 0 {
         p.Info.PGN = 65014
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -676,9 +697,10 @@ func (p *UtilityTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo, 
     if p.Info.PGN == 0 {
         p.Info.PGN = 65015
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -699,9 +721,10 @@ func (p *UtilityTotalAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 65016
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -730,9 +753,10 @@ func (p *UtilityAverageBasicAcQuantities) Encode(stream *DataStream) (*MessageIn
     if p.Info.PGN == 0 {
         p.Info.PGN = 65017
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -761,9 +785,10 @@ func (p *GeneratorPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInf
     if p.Info.PGN == 0 {
         p.Info.PGN = 65019
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -784,9 +809,10 @@ func (p *GeneratorPhaseCAcPower) Encode(stream *DataStream) (*MessageInfo, error
     if p.Info.PGN == 0 {
         p.Info.PGN = 65020
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -815,9 +841,10 @@ func (p *GeneratorPhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageI
     if p.Info.PGN == 0 {
         p.Info.PGN = 65021
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -846,9 +873,10 @@ func (p *GeneratorPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInf
     if p.Info.PGN == 0 {
         p.Info.PGN = 65022
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -869,9 +897,10 @@ func (p *GeneratorPhaseBAcPower) Encode(stream *DataStream) (*MessageInfo, error
     if p.Info.PGN == 0 {
         p.Info.PGN = 65023
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -900,9 +929,10 @@ func (p *GeneratorPhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageI
     if p.Info.PGN == 0 {
         p.Info.PGN = 65024
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -931,9 +961,10 @@ func (p *GeneratorPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInf
     if p.Info.PGN == 0 {
         p.Info.PGN = 65025
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -954,9 +985,10 @@ func (p *GeneratorPhaseAAcPower) Encode(stream *DataStream) (*MessageInfo, error
     if p.Info.PGN == 0 {
         p.Info.PGN = 65026
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -985,9 +1017,10 @@ func (p *GeneratorPhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageI
     if p.Info.PGN == 0 {
         p.Info.PGN = 65027
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1016,9 +1049,10 @@ func (p *GeneratorTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo
     if p.Info.PGN == 0 {
         p.Info.PGN = 65028
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1039,9 +1073,10 @@ func (p *GeneratorTotalAcPower) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 65029
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1070,9 +1105,10 @@ func (p *GeneratorAverageBasicAcQuantities) Encode(stream *DataStream) (*Message
     if p.Info.PGN == 0 {
         p.Info.PGN = 65030
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1129,9 +1165,10 @@ func (p *IsoCommandedAddress) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 65240
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1172,9 +1209,10 @@ func (p *MaretronProprietaryDcBreakerCurrent) Encode(stream *DataStream) (*Messa
     if p.Info.PGN == 0 {
         p.Info.PGN = 65284
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1207,9 +1245,10 @@ func (p *AirmarBootStateAcknowledgment) Encode(stream *DataStream) (*MessageInfo
     if p.Info.PGN == 0 {
         p.Info.PGN = 65285
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1246,9 +1285,10 @@ func (p *LowranceTemperature) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 65285
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1277,9 +1317,10 @@ func (p *AirmarBootStateRequest) Encode(stream *DataStream) (*MessageInfo, error
     if p.Info.PGN == 0 {
         p.Info.PGN = 65286
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1320,9 +1361,10 @@ func (p *AirmarAccessLevel) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 65287
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1363,9 +1405,10 @@ func (p *SimnetDeviceStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 65305
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1402,9 +1445,10 @@ func (p *SimnetDeviceStatusRequest) Encode(stream *DataStream) (*MessageInfo, er
     if p.Info.PGN == 0 {
         p.Info.PGN = 65305
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1445,9 +1489,10 @@ func (p *SimnetPilotMode) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 65305
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1484,9 +1529,10 @@ func (p *SimnetDeviceModeRequest) Encode(stream *DataStream) (*MessageInfo, erro
     if p.Info.PGN == 0 {
         p.Info.PGN = 65305
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1527,9 +1573,10 @@ func (p *SeatalkPilotLockedHeading) Encode(stream *DataStream) (*MessageInfo, er
     if p.Info.PGN == 0 {
         p.Info.PGN = 65360
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1566,9 +1613,10 @@ func (p *SeatalkSilenceAlarm) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 65361
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1609,9 +1657,10 @@ func (p *AirmarSpeedPulseCount) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 65409
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1648,9 +1697,10 @@ func (p *NmeaRequestGroupFunction) Encode(stream *DataStream) (*MessageInfo, err
     if p.Info.PGN == 0 {
         p.Info.PGN = 126208
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1708,9 +1758,10 @@ func (p *NmeaCommandGroupFunction) Encode(stream *DataStream) (*MessageInfo, err
     if p.Info.PGN == 0 {
         p.Info.PGN = 126208
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1768,9 +1819,10 @@ func (p *NmeaAcknowledgeGroupFunction) Encode(stream *DataStream) (*MessageInfo,
     if p.Info.PGN == 0 {
         p.Info.PGN = 126208
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1840,9 +1892,10 @@ func (p *NmeaReadFieldsReplyGroupFunction) Encode(stream *DataStream) (*MessageI
     if p.Info.PGN == 0 {
         p.Info.PGN = 126208
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -1933,9 +1986,10 @@ func (p *NmeaWriteFieldsGroupFunction) Encode(stream *DataStream) (*MessageInfo,
     if p.Info.PGN == 0 {
         p.Info.PGN = 126208
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2026,9 +2080,10 @@ func (p *NmeaWriteFieldsReplyGroupFunction) Encode(stream *DataStream) (*Message
     if p.Info.PGN == 0 {
         p.Info.PGN = 126208
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2087,9 +2142,10 @@ func (p *PgnListTransmitAndReceive) Encode(stream *DataStream) (*MessageInfo, er
     if p.Info.PGN == 0 {
         p.Info.PGN = 126464
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2139,9 +2195,10 @@ func (p *FusionMediaControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2182,9 +2239,10 @@ func (p *FusionSiriusControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2213,9 +2271,10 @@ func (p *FusionRequestStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2248,9 +2307,10 @@ func (p *FusionSetSource) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2283,9 +2343,10 @@ func (p *FusionSetMute) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2322,9 +2383,10 @@ func (p *FusionSetZoneVolume) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2369,9 +2431,10 @@ func (p *FusionSetAllVolumes) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2412,9 +2475,10 @@ func (p *AirmarAttitudeOffset) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2451,9 +2515,10 @@ func (p *AirmarSimulateMode) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2490,9 +2555,10 @@ func (p *AirmarCalibrateDepth) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2529,9 +2595,10 @@ func (p *AirmarCalibrateSpeed) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2589,9 +2656,10 @@ func (p *AirmarCalibrateTemperature) Encode(stream *DataStream) (*MessageInfo, e
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2632,9 +2700,10 @@ func (p *AirmarSpeedFilterNone) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2679,9 +2748,10 @@ func (p *AirmarSpeedFilterIir) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2722,9 +2792,10 @@ func (p *AirmarTemperatureFilterNone) Encode(stream *DataStream) (*MessageInfo, 
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2769,9 +2840,10 @@ func (p *AirmarTemperatureFilterIir) Encode(stream *DataStream) (*MessageInfo, e
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2808,9 +2880,10 @@ func (p *AirmarNmea2000Options) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2851,9 +2924,10 @@ func (p *MaretronDeviationCalibrationResponse) Encode(stream *DataStream) (*Mess
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2894,9 +2968,10 @@ func (p *MaretronSlaveResponse) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 126720
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -2993,9 +3068,10 @@ func (p *Alert) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126983
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3056,9 +3132,10 @@ func (p *AlertResponse) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126984
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3119,9 +3196,10 @@ func (p *AlertText) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126985
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3154,9 +3232,10 @@ func (p *SystemTime) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126992
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3193,9 +3272,10 @@ func (p *Heartbeat) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126993
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3240,9 +3320,10 @@ func (p *ProductInformation) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 126996
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3267,9 +3348,10 @@ func (p *ConfigurationInformation) Encode(stream *DataStream) (*MessageInfo, err
     if p.Info.PGN == 0 {
         p.Info.PGN = 126998
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3354,9 +3436,10 @@ func (p *ManOverboardNotification) Encode(stream *DataStream) (*MessageInfo, err
     if p.Info.PGN == 0 {
         p.Info.PGN = 127233
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3441,9 +3524,10 @@ func (p *HeadingTrackControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127237
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3480,9 +3564,10 @@ func (p *Rudder) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127245
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3519,9 +3604,10 @@ func (p *VesselHeading) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127250
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3546,9 +3632,10 @@ func (p *RateOfTurn) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127251
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3581,9 +3668,10 @@ func (p *Attitude) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127257
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3620,9 +3708,10 @@ func (p *MagneticVariation) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127258
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3655,9 +3744,10 @@ func (p *EngineParametersRapidUpdate) Encode(stream *DataStream) (*MessageInfo, 
     if p.Info.PGN == 0 {
         p.Info.PGN = 127488
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3726,9 +3816,10 @@ func (p *EngineParametersDynamic) Encode(stream *DataStream) (*MessageInfo, erro
     if p.Info.PGN == 0 {
         p.Info.PGN = 127489
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3769,9 +3860,10 @@ func (p *TransmissionParametersDynamic) Encode(stream *DataStream) (*MessageInfo
     if p.Info.PGN == 0 {
         p.Info.PGN = 127493
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3800,9 +3892,10 @@ func (p *TripParametersVessel) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 127496
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3835,9 +3928,10 @@ func (p *TripParametersEngine) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 127497
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3866,9 +3960,10 @@ func (p *EngineParametersStatic) Encode(stream *DataStream) (*MessageInfo, error
     if p.Info.PGN == 0 {
         p.Info.PGN = 127498
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -3913,9 +4008,10 @@ func (p *LoadControllerConnectionStateControl) Encode(stream *DataStream) (*Mess
     if p.Info.PGN == 0 {
         p.Info.PGN = 127500
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4044,9 +4140,10 @@ func (p *BinarySwitchBankStatus) Encode(stream *DataStream) (*MessageInfo, error
     if p.Info.PGN == 0 {
         p.Info.PGN = 127501
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4175,9 +4272,10 @@ func (p *SwitchBankControl) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127502
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4202,9 +4300,10 @@ func (p *AcInputStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127503
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4278,9 +4377,10 @@ func (p *AcOutputStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127504
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4362,9 +4462,10 @@ func (p *FluidLevel) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127505
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4409,9 +4510,10 @@ func (p *DcDetailedStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127506
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4456,9 +4558,10 @@ func (p *ChargerStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127507
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4491,9 +4594,10 @@ func (p *BatteryStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127508
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4530,9 +4634,10 @@ func (p *InverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127509
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4561,9 +4666,10 @@ func (p *AcPowerCurrentPhaseA) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 127744
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4592,9 +4698,10 @@ func (p *AcPowerCurrentPhaseB) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 127745
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4623,9 +4730,10 @@ func (p *AcPowerCurrentPhaseC) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 127746
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4658,9 +4766,10 @@ func (p *AcVoltageFrequencyPhaseA) Encode(stream *DataStream) (*MessageInfo, err
     if p.Info.PGN == 0 {
         p.Info.PGN = 127747
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4693,9 +4802,10 @@ func (p *AcVoltageFrequencyPhaseB) Encode(stream *DataStream) (*MessageInfo, err
     if p.Info.PGN == 0 {
         p.Info.PGN = 127748
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4728,9 +4838,10 @@ func (p *AcVoltageFrequencyPhaseC) Encode(stream *DataStream) (*MessageInfo, err
     if p.Info.PGN == 0 {
         p.Info.PGN = 127749
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4775,9 +4886,10 @@ func (p *ConverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127750
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4810,9 +4922,10 @@ func (p *DcVoltageCurrent) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 127751
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4837,9 +4950,10 @@ func (p *LeewayAngle) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 128000
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4888,9 +5002,10 @@ func (p *ThrusterControlStatus) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 128006
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4927,9 +5042,10 @@ func (p *ThrusterInformation) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 128007
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -4966,9 +5082,10 @@ func (p *ThrusterMotorStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 128008
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5005,9 +5122,10 @@ func (p *Speed) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 128259
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5036,9 +5154,10 @@ func (p *WaterDepth) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 128267
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5067,9 +5186,10 @@ func (p *DistanceLog) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 128275
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5138,9 +5258,10 @@ func (p *WindlassControlStatus) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 128776
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5193,9 +5314,10 @@ func (p *AnchorWindlassOperatingStatus) Encode(stream *DataStream) (*MessageInfo
     if p.Info.PGN == 0 {
         p.Info.PGN = 128777
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5236,9 +5358,10 @@ func (p *AnchorWindlassMonitoringStatus) Encode(stream *DataStream) (*MessageInf
     if p.Info.PGN == 0 {
         p.Info.PGN = 128778
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5259,9 +5382,10 @@ func (p *PositionRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129025
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5298,9 +5422,10 @@ func (p *CogSogRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129026
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5377,9 +5502,10 @@ func (p *GnssPositionData) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129029
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5425,9 +5551,10 @@ func (p *TimeDate) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129033
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5520,9 +5647,10 @@ func (p *AisClassAPositionReport) Encode(stream *DataStream) (*MessageInfo, erro
     if p.Info.PGN == 0 {
         p.Info.PGN = 129038
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5627,9 +5755,10 @@ func (p *AisClassBPositionReport) Encode(stream *DataStream) (*MessageInfo, erro
     if p.Info.PGN == 0 {
         p.Info.PGN = 129039
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5734,9 +5863,10 @@ func (p *AisAidsToNavigationAtonReport) Encode(stream *DataStream) (*MessageInfo
     if p.Info.PGN == 0 {
         p.Info.PGN = 129041
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5769,9 +5899,10 @@ func (p *Datum) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129044
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5824,9 +5955,10 @@ func (p *UserDatum) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129045
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5863,9 +5995,10 @@ func (p *CrossTrackError) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129283
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5938,9 +6071,10 @@ func (p *NavigationData) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129284
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -5993,9 +6127,10 @@ func (p *NavigationRouteWpInformation) Encode(stream *DataStream) (*MessageInfo,
     if p.Info.PGN == 0 {
         p.Info.PGN = 129285
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6061,9 +6196,10 @@ func (p *GnssDops) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129539
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6096,9 +6232,10 @@ func (p *GnssSatsInView) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129540
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6168,9 +6305,10 @@ func (p *GnssRaimSettings) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129546
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6215,9 +6353,10 @@ func (p *GnssPseudorangeErrorStatistics) Encode(stream *DataStream) (*MessageInf
     if p.Info.PGN == 0 {
         p.Info.PGN = 129547
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6274,9 +6413,10 @@ func (p *DgnssCorrections) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129549
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6317,9 +6457,10 @@ func (p *GnssDifferentialCorrectionReceiverInterface) Encode(stream *DataStream)
     if p.Info.PGN == 0 {
         p.Info.PGN = 129550
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6388,9 +6529,10 @@ func (p *GnssDifferentialCorrectionReceiverSignal) Encode(stream *DataStream) (*
     if p.Info.PGN == 0 {
         p.Info.PGN = 129551
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6459,9 +6601,10 @@ func (p *GlonassAlmanacData) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129556
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6558,9 +6701,10 @@ func (p *AisClassAStaticAndVoyageRelatedData) Encode(stream *DataStream) (*Messa
     if p.Info.PGN == 0 {
         p.Info.PGN = 129794
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6625,9 +6769,10 @@ func (p *AisAddressedBinaryMessage) Encode(stream *DataStream) (*MessageInfo, er
     if p.Info.PGN == 0 {
         p.Info.PGN = 129795
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6668,9 +6813,10 @@ func (p *AisAcknowledge) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 129796
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6740,9 +6886,10 @@ func (p *AisBinaryBroadcastMessage) Encode(stream *DataStream) (*MessageInfo, er
     if p.Info.PGN == 0 {
         p.Info.PGN = 129797
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6779,9 +6926,10 @@ func (p *RadioFrequencyModePower) Encode(stream *DataStream) (*MessageInfo, erro
     if p.Info.PGN == 0 {
         p.Info.PGN = 129799
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6822,9 +6970,10 @@ func (p *AisClassBStaticDataMsg24PartA) Encode(stream *DataStream) (*MessageInfo
     if p.Info.PGN == 0 {
         p.Info.PGN = 129809
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6905,9 +7054,10 @@ func (p *AisClassBStaticDataMsg24PartB) Encode(stream *DataStream) (*MessageInfo
     if p.Info.PGN == 0 {
         p.Info.PGN = 129810
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -6936,9 +7086,10 @@ func (p *RouteAndWpServiceDatabaseList) Encode(stream *DataStream) (*MessageInfo
     if p.Info.PGN == 0 {
         p.Info.PGN = 130064
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7016,9 +7167,10 @@ func (p *RouteAndWpServiceRouteList) Encode(stream *DataStream) (*MessageInfo, e
     if p.Info.PGN == 0 {
         p.Info.PGN = 130065
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7108,9 +7260,10 @@ func (p *RouteAndWpServiceRouteWpListAttributes) Encode(stream *DataStream) (*Me
     if p.Info.PGN == 0 {
         p.Info.PGN = 130066
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7147,9 +7300,10 @@ func (p *RouteAndWpServiceRouteWpNamePosition) Encode(stream *DataStream) (*Mess
     if p.Info.PGN == 0 {
         p.Info.PGN = 130067
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7211,9 +7365,10 @@ func (p *RouteAndWpServiceRouteWpName) Encode(stream *DataStream) (*MessageInfo,
     if p.Info.PGN == 0 {
         p.Info.PGN = 130068
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7259,9 +7414,10 @@ func (p *RouteAndWpServiceXteLimitNavigationMethod) Encode(stream *DataStream) (
     if p.Info.PGN == 0 {
         p.Info.PGN = 130069
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7331,9 +7487,10 @@ func (p *RouteAndWpServiceWpComment) Encode(stream *DataStream) (*MessageInfo, e
     if p.Info.PGN == 0 {
         p.Info.PGN = 130070
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7383,9 +7540,10 @@ func (p *RouteAndWpServiceRouteComment) Encode(stream *DataStream) (*MessageInfo
     if p.Info.PGN == 0 {
         p.Info.PGN = 130071
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7431,9 +7589,10 @@ func (p *RouteAndWpServiceDatabaseComment) Encode(stream *DataStream) (*MessageI
     if p.Info.PGN == 0 {
         p.Info.PGN = 130072
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7487,9 +7646,10 @@ func (p *RouteAndWpServiceRadiusOfTurn) Encode(stream *DataStream) (*MessageInfo
     if p.Info.PGN == 0 {
         p.Info.PGN = 130073
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7543,9 +7703,10 @@ func (p *RouteAndWpServiceWpListWpNamePosition) Encode(stream *DataStream) (*Mes
     if p.Info.PGN == 0 {
         p.Info.PGN = 130074
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7603,9 +7764,10 @@ func (p *WindData) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130306
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7638,9 +7800,10 @@ func (p *EnvironmentalParametersObsolete) Encode(stream *DataStream) (*MessageIn
     if p.Info.PGN == 0 {
         p.Info.PGN = 130310
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7677,9 +7840,10 @@ func (p *EnvironmentalParameters) Encode(stream *DataStream) (*MessageInfo, erro
     if p.Info.PGN == 0 {
         p.Info.PGN = 130311
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7716,9 +7880,10 @@ func (p *Temperature) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130312
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7755,9 +7920,10 @@ func (p *Humidity) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130313
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7790,9 +7956,10 @@ func (p *ActualPressure) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130314
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7825,9 +7992,10 @@ func (p *SetPressure) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130315
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7860,9 +8028,10 @@ func (p *TemperatureExtendedRange) Encode(stream *DataStream) (*MessageInfo, err
     if p.Info.PGN == 0 {
         p.Info.PGN = 130316
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -7919,9 +8088,10 @@ func (p *TideStationData) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130320
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8026,9 +8196,10 @@ func (p *WatermakerInputSettingAndStatus) Encode(stream *DataStream) (*MessageIn
     if p.Info.PGN == 0 {
         p.Info.PGN = 130567
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8065,9 +8236,10 @@ func (p *VesselSpeedComponents) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 130578
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8112,9 +8284,10 @@ func (p *SonichubVolume) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130816
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8163,9 +8336,10 @@ func (p *FusionVersions) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8214,9 +8388,10 @@ func (p *FusionSource) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8249,9 +8424,10 @@ func (p *FusionSourceCount) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8304,9 +8480,10 @@ func (p *FusionMedia) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8347,9 +8524,10 @@ func (p *FusionTrackName) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8390,9 +8568,10 @@ func (p *FusionArtistName) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8433,9 +8612,10 @@ func (p *FusionAlbumName) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8468,9 +8648,10 @@ func (p *FusionDeviceName) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8507,9 +8688,10 @@ func (p *FusionZoneName) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8546,9 +8728,10 @@ func (p *FusionTrackPosition) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8597,9 +8780,10 @@ func (p *FusionTuner) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8644,9 +8828,10 @@ func (p *FusionMarineTuner) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8683,9 +8868,10 @@ func (p *FusionMarineSquelch) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8722,9 +8908,10 @@ func (p *FusionMarineScanMode) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8773,9 +8960,10 @@ func (p *FusionMenuItem) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8812,9 +9000,10 @@ func (p *FusionAuxGain) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8851,9 +9040,10 @@ func (p *FusionUsbRepeatStatus) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8890,9 +9080,10 @@ func (p *FusionSetting) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8929,9 +9120,10 @@ func (p *FusionSettings) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -8981,9 +9173,10 @@ func (p *FusionMute) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9020,9 +9213,10 @@ func (p *FusionBalance) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9059,9 +9253,10 @@ func (p *FusionLowPassFilter) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9106,9 +9301,10 @@ func (p *FusionSublevels) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9153,9 +9349,10 @@ func (p *FusionEq) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9200,9 +9397,10 @@ func (p *FusionVolumeLimits) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9247,9 +9445,10 @@ func (p *FusionVolumes) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9298,9 +9497,10 @@ func (p *FusionCapabilities) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9337,9 +9537,10 @@ func (p *FusionLineLevelControl) Encode(stream *DataStream) (*MessageInfo, error
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9372,9 +9573,10 @@ func (p *FusionPowerState) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9423,9 +9625,10 @@ func (p *FusionSiriusxm) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9466,9 +9669,10 @@ func (p *FusionSiriusxmChannel) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9509,9 +9713,10 @@ func (p *FusionSiriusxmTitle) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9552,9 +9757,10 @@ func (p *FusionSiriusxmArtist) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9595,9 +9801,10 @@ func (p *FusionSiriusxmContentInfo) Encode(stream *DataStream) (*MessageInfo, er
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9638,9 +9845,10 @@ func (p *FusionSiriusxmCategory) Encode(stream *DataStream) (*MessageInfo, error
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9677,9 +9885,10 @@ func (p *FusionSiriusxmSignal) Encode(stream *DataStream) (*MessageInfo, error) 
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9724,9 +9933,10 @@ func (p *FusionSiriusxmPresets) Encode(stream *DataStream) (*MessageInfo, error)
     if p.Info.PGN == 0 {
         p.Info.PGN = 130820
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9771,9 +9981,10 @@ func (p *MaretronProprietaryTemperatureHighRange) Encode(stream *DataStream) (*M
     if p.Info.PGN == 0 {
         p.Info.PGN = 130823
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9802,9 +10013,10 @@ func (p *BGKeyValueData) Encode(stream *DataStream) (*MessageInfo, error) {
     if p.Info.PGN == 0 {
         p.Info.PGN = 130824
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9890,9 +10102,10 @@ func (p *MaretronSwitchStatusCounter) Encode(stream *DataStream) (*MessageInfo, 
     if p.Info.PGN == 0 {
         p.Info.PGN = 130836
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err
@@ -9953,9 +10166,10 @@ func (p *MaretronSwitchStatusTimer) Encode(stream *DataStream) (*MessageInfo, er
     if p.Info.PGN == 0 {
         p.Info.PGN = 130837
     }
-    if p.Info.Priority == 0 {
-        p.Info.Priority = 3  // Default priority
-    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
     p.Info.Timestamp = time.Now()
     
     return &p.Info, err

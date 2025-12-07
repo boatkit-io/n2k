@@ -11,7 +11,7 @@ The canboat project includes and references valuable documentation for potential
 
 ### pgngen
 
-The pgngen command processes the current canboat.json file (accessed at https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json) and generates the file pgninfo_generated.go (github.com/boatkit-io/n2k/pkg/pgn/pgn_generated.go). The generated file provides constants, data types, and decoder functions used to create strongly typed golang data structures for interacting with NMEA 2000 devices.
+The pgngen command processes the current canboat.json file (accessed at https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json) and generates Go code for interacting with NMEA 2000 devices. It produces public types and constants in `pkg/n2k` and internal runtime implementation details in `internal/pgn`.
 
 The command takes no arguments. It caches the canboat.json file in the local file system for an hour to avoid generating unnecessary load on the server and network.
 

@@ -2,12 +2,19 @@
 
 This document will be updated whenever changes are made to the main branch of this project.
 
-### 2025-01-03
-Release v0.0.3
-- Added ability to write PGNs
-- Reordered change log to be in reverse chronological order
-- Switched to using mise for building the project
-- Added debug and release builds to mise.toml
+### 2025-12-07
+Release v0.3.0
+- Added ability to write PGNs.
+- Major refactoring to separate public API from internal runtime implementation.
+  - Public types are now in `pkg/n2k`.
+  - Internal logic moved to `internal/pgn`.
+- Added support for PGN discriminators to handle variants more accurately.
+- Updated `pgngen` to generate split client/runtime code.
+- Added support for Virtual CAN (vcan) interfaces.
+- Switched to using mise for building the project.
+- Added debug and release builds to mise.toml.
+- Improved PGN handling in conversion and filtering processes.
+
 
 ### 2023-10-07
 Release v0.0.2

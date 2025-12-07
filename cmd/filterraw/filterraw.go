@@ -126,15 +126,6 @@ func shouldProcessPGN(pgnNum uint32, opts FilterOptions) bool {
 	if opts.SpecificPGN != 0 {
 		return pgnNum == opts.SpecificPGN
 	}
-<<<<<<< Updated upstream
-=======
-	if opts.Unseen {
-		return UnseenPGNs[pgnNum]
-	}
-	if opts.Unknown {
-		return !KnownPGNs[pgnNum]
-	}
->>>>>>> Stashed changes
 	return true
 }
 

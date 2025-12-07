@@ -23,7 +23,7 @@ func TestN2kServiceIntegration(t *testing.T) {
 	ep := n2kfileendpoint.NewN2kFileEndpoint(testFile, log)
 
 	// Create N2kService using the public interface
-	service := n2k.NewN2kService(ep)
+	service := n2k.NewN2kService(ep, log)
 
 	// Track processed messages
 	var messageCount int
@@ -75,7 +75,7 @@ func TestN2kServiceWithSubscription(t *testing.T) {
 	ep := n2kfileendpoint.NewN2kFileEndpoint(testFile, log)
 
 	// Create N2kService using the public interface
-	service := n2k.NewN2kService(ep)
+	service := n2k.NewN2kService(ep, log)
 
 	// Start the service
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
@@ -117,7 +117,7 @@ func TestN2kServiceWrite(t *testing.T) {
 	ep := n2kfileendpoint.NewN2kFileEndpoint(testFile, log)
 
 	// Create N2kService using the public interface
-	service := n2k.NewN2kService(ep)
+	service := n2k.NewN2kService(ep, log)
 
 	// Test that we can call Write without error (even if it doesn't do much in this context)
 	// Note: This would need a proper PGN struct to test fully
@@ -139,7 +139,7 @@ func TestN2kServiceUpdateEndpoint(t *testing.T) {
 	ep1 := n2kfileendpoint.NewN2kFileEndpoint(testFile, log)
 
 	// Create N2kService using the public interface
-	service := n2k.NewN2kService(ep1)
+	service := n2k.NewN2kService(ep1, log)
 
 	// Test updating the endpoint
 	ep2 := n2kfileendpoint.NewN2kFileEndpoint(testFile, log)
@@ -179,7 +179,7 @@ func TestN2kServiceUpdateEndpointWhileRunning(t *testing.T) {
 	ep1 := n2kfileendpoint.NewN2kFileEndpoint(testFile, log)
 
 	// Create N2kService using the public interface
-	service := n2k.NewN2kService(ep1)
+	service := n2k.NewN2kService(ep1, log)
 
 	// Start the service
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
