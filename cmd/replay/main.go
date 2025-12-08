@@ -155,6 +155,8 @@ func main() {
 
 	// Stop the bus and exit
 	log.Info("Shutting down...")
-	bus.Stop()
+	if err := bus.Stop(); err != nil {
+		log.Errorf("Error stopping bus: %v", err)
+	}
 	log.Info("Shutdown complete")
 }

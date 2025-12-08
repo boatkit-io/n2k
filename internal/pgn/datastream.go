@@ -56,9 +56,8 @@ func (s *DataStream) SetPosition(bitOffset uint16) {
 	return uint16(totalBits)
 }
 */
-// calcMaxPositiveValue calculates the maximum value that can be represented
-// with a given length of signed or unsigned contents.
-// reservedValuesCount is the number of reserved values for the field. Valid values are 0-2.
+
+// calcMaxPositiveValue calculates the maximum value that can be represented with a given length of signed or unsigned contents. reservedValuesCount is the number of reserved values for the field. Valid values are 0-2.
 func calcMaxPositiveValue(bitLength uint16, signed bool, reservedValuesCount int) uint64 {
 	// calculate maximum valid value
 	maxVal := uint64(0xFFFFFFFFFFFFFFFF)

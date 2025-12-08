@@ -1,5 +1,7 @@
+// Package pgn provides PGN (Parameter Group Number) parsing and encoding functionality for NMEA 2000 messages.
 package pgn
 
+// MaxPGNLength is the maximum length in bytes for a PGN data payload.
 const MaxPGNLength = 223
 
 // fastPgnBits is generated in fastbits_generated.go

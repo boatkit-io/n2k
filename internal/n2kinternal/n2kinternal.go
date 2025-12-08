@@ -1,5 +1,5 @@
-// Package internal provides the internal implementation of the N2K service
-package n2kInternal
+// Package n2kinternal provides the internal implementation of the N2K service.
+package n2kinternal
 
 import (
 	"context"
@@ -45,16 +45,19 @@ func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger) *N2kService {
 	}
 }
 
+// SubscribeToStruct subscribes to a specific PGN struct type and calls the callback when messages of that type are received.
 func (s *N2kService) SubscribeToStruct(t any, callback any) (uint, error) {
 	id, err := s.subscriber.SubscribeToStruct(t, callback)
 	return uint(id), err
 }
 
+// SubscribeToAllStructs subscribes to all PGN struct types and calls the callback when any message is received.
 func (s *N2kService) SubscribeToAllStructs(callback any) (uint, error) {
 	id, err := s.subscriber.SubscribeToAllStructs(callback)
 	return uint(id), err
 }
 
+// Unsubscribe removes a subscription by its ID.
 func (s *N2kService) Unsubscribe(id uint) error {
 	return s.subscriber.Unsubscribe(subscribe.SubscriptionId(id))
 }

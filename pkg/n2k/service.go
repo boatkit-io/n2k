@@ -4,7 +4,7 @@ package n2k
 import (
 	"context"
 
-	"github.com/boatkit-io/n2k/internal/n2kInternal"
+	"github.com/boatkit-io/n2k/internal/n2kinternal"
 	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/sirupsen/logrus"
@@ -12,13 +12,13 @@ import (
 
 // N2kService provides the main public API for NMEA 2000 operations
 type N2kService struct {
-	impl *n2kInternal.N2kService
+	impl *n2kinternal.N2kService
 }
 
 // NewN2kService creates a new N2K service with the specified endpoint
 func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger) *N2kService {
 	return &N2kService{
-		impl: n2kInternal.NewN2kService(ep, log),
+		impl: n2kinternal.NewN2kService(ep, log),
 	}
 }
 
@@ -42,14 +42,17 @@ func (s *N2kService) UpdateEndpoint(ep endpoint.Endpoint) error {
 	return s.impl.UpdateEndpoint(ep)
 }
 
+// SubscribeToAllStructs subscribes to all PGN struct types and calls the callback when any message is received.
 func (s *N2kService) SubscribeToAllStructs(callback any) (uint, error) {
 	return s.impl.SubscribeToAllStructs(callback)
 }
 
+// SubscribeToStruct subscribes to a specific PGN struct type and calls the callback when messages of that type are received.
 func (s *N2kService) SubscribeToStruct(t any, callback any) (uint, error) {
 	return s.impl.SubscribeToStruct(t, callback)
 }
 
+// Unsubscribe removes a subscription by its ID.
 func (s *N2kService) Unsubscribe(id uint) error {
 	return s.impl.Unsubscribe(id)
 }

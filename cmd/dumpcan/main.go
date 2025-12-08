@@ -72,6 +72,8 @@ func main() {
 	// Wait for context cancellation (from signal handler)
 	<-ctx.Done()
 	log.Info("Shutting down...")
-	bus.Stop()
+	if err := bus.Stop(); err != nil {
+		log.Errorf("Error stopping bus: %v", err)
+	}
 	log.Info("Shutdown complete")
 }

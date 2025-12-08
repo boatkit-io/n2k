@@ -37,7 +37,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to open CAN interface %s: %v", *iface, err)
 	}
-	defer bus.Disconnect()
+	defer func() {
+		if err := bus.Disconnect(); err != nil {
+			log.Printf("Error disconnecting from CAN interface: %v", err)
+		}
+	}()
 
 	logrus.Infof("Opened CAN interface %s", *iface)
 	logrus.Infof("Sending %d frames with %v interval", *count, *interval)

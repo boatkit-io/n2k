@@ -213,7 +213,7 @@ func (conv *canboatConverter) fixup() {
 	conv.fixRepeating()
 }
 
-// you builds separate slices for known, unknown (no Canboat samples), and incomplete PGNs
+// filter builds separate slices for known, unknown (no Canboat samples), and incomplete PGNs.
 func (conv *canboatConverter) filter() {
 	known := make([]*PGN, 0)
 	unknown := make([]*PGN, 0)
@@ -407,7 +407,11 @@ func (conv *canboatConverter) generateFile(outputPath, templatePath string, func
 	if err != nil {
 		return err
 	}
-	defer f.Close()
+	defer func() {
+		if err := f.Close(); err != nil {
+			fmt.Printf("Error closing file: %v\n", err)
+		}
+	}()
 
 	// Execute template
 	if err := t.Execute(f, data); err != nil {
@@ -1491,6 +1495,7 @@ func getVariantsForPgn(pgn PGN) []PGN {
 	return []PGN{}
 }
 
+// DecoderConfig contains configuration for decoding PGN fields with repeating groups and dynamic lengths.
 type DecoderConfig struct {
 	Repeat1            bool
 	Repeat2            bool
@@ -1500,6 +1505,7 @@ type DecoderConfig struct {
 	DynamicLengthField uint8
 }
 
+// getDecoderConfig extracts decoder configuration from a PGN definition.
 func getDecoderConfig(pgn PGN) DecoderConfig {
 	dynamicLengthField := uint8(0)
 	for _, field := range pgn.AllFields {

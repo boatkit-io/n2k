@@ -43,7 +43,9 @@ func main() {
 	// Create SocketCANEndpoint
 	endpoint := socketcanendpoint.NewSocketCANEndpoint(log, canInterface)
 	bus := n2k.NewN2kService(endpoint, log)
-	bus.Start(ctx)
+	if err := bus.Start(ctx); err != nil {
+		log.Fatalf("Failed to start bus: %v", err)
+	}
 
 	/* 	// Create CANAdapter
 	   	adapter := canadapter.NewCANAdapter(log)

@@ -17,7 +17,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-// canInterface is the CAN interface name for integration tests.
+// bus is the N2K service instance for sending and receiving PGNs.
 var bus *n2k.N2kService
 
 func main() {
@@ -49,7 +49,9 @@ func main() {
 	// Create SocketCANEndpoint
 	endpoint := socketcanendpoint.NewSocketCANEndpoint(log, canInterface)
 	bus = n2k.NewN2kService(endpoint, log)
-	bus.Start(ctx)
+	if err := bus.Start(ctx); err != nil {
+		log.Fatalf("Failed to start bus: %v", err)
+	}
 
 	// 2. Create a PGN dumper to see all traffic
 	_, err := bus.SubscribeToAllStructs(func(p any) {
@@ -67,7 +69,9 @@ func main() {
 	// Wait for context cancellation
 	<-ctx.Done()
 	log.Info("Shutting down...")
-	bus.Stop()
+	if err := bus.Stop(); err != nil {
+		log.Errorf("Error stopping bus: %v", err)
+	}
 }
 
 // sendTestPGNs sends a batch of test PGNs.
@@ -98,7 +102,6 @@ func sendTestPGNs(log *logrus.Logger) {
 }
 
 // sendEngineData sends an EngineParametersRapidUpdate PGN.
-
 func sendEngineData(sourceId uint8, counter float32, log *logrus.Logger) error {
 	// Generate realistic engine RPM (1000-2500 RPM with some variation)
 	rpm := float32(1500.0 + 500.0*math.Sin(float64(counter)*0.1))
@@ -122,7 +125,6 @@ func sendEngineData(sourceId uint8, counter float32, log *logrus.Logger) error {
 }
 
 // sendSpeedData sends a Speed PGN.
-
 func sendSpeedData(sourceId uint8, counter float32, log *logrus.Logger) error {
 	// Generate realistic boat speeds (5-15 knots)
 	speedKnots := 10.0 + 3.0*math.Sin(float64(counter)*0.15)
@@ -150,6 +152,7 @@ func sendSpeedData(sourceId uint8, counter float32, log *logrus.Logger) error {
 	return bus.Write(&speedPgn)
 }
 
+// sendEngineInfo sends a single frame EngineParametersRapidUpdate PGN for testing.
 func sendEngineInfo(sourceId uint8, counter float32, log *logrus.Logger) error {
 	log.Info("Testing single frame PGN...")
 	info1 := n2k.MessageInfo{
@@ -172,7 +175,6 @@ func sendEngineInfo(sourceId uint8, counter float32, log *logrus.Logger) error {
 	} else {
 		log.Info("Successfully wrote single frame PGN")
 	}
-	counter++
 	return err
 }
 
@@ -203,6 +205,8 @@ func sendPositionData(sourceId uint8, counter float32, log *logrus.Logger) error
 	}
 
 	log.Debugf("Sending position data: %.6f, %.6f", latitude, longitude)
-	bus.Write(&positionPgn)
+	if err := bus.Write(&positionPgn); err != nil {
+		return err
+	}
 	return nil
 }
