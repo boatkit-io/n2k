@@ -1,0 +1,245 @@
+- physicalQuantity: ANGLE
+  unit: deg
+  signed: true
+  min: -3276.7
+  max: 3276.4
+- physicalQuantity: ANGLE
+  unit: rad
+  signed: false
+  min: 0
+  max: 6.2831852
+- physicalQuantity: ANGLE
+  unit: rad
+  signed: true
+  min: -3.1415926
+  max: 3.1415926
+- physicalQuantity: ANGULAR_VELOCITY
+  unit: rad/s
+  signed: false
+  min: 0  // override canboat's null value
+  max: 6.2831852 // override canboat's null value
+- physicalQuantity: ANGULAR_VELOCITY
+  unit: rad/s
+  signed: true
+  min: -1.02396875
+  max: 1.02390625 // overrride canboat's incorrect value based on 3 reserved values
+- physicalQuantity: ANGULAR_VELOCITY
+  unit: rpm
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: CONCENTRATION
+  unit: ppm
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: DATE
+  unit: d
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: DISTANCE
+  unit: m
+  signed: false
+  min: 0
+  max: null
+- physicalQuantity: DISTANCE
+  unit: m
+  signed: true
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: DURATION
+  unit: s
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: DURATION
+  unit: s
+  signed: true
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: ELECTRICAL_APPARENT_POWER
+  unit: VA
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: ELECTRICAL_APPARENT_POWER
+  unit: VA
+  signed: true
+  min: -2e+09
+  max: 2.294967292e+09
+- physicalQuantity: ELECTRICAL_CHARGE
+  unit: Ah
+  signed: false
+  min: 0
+  max: 65532
+- physicalQuantity: ELECTRICAL_CHARGE
+  unit: C
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: ELECTRICAL_CURRENT
+  unit: A
+  signed: false
+  min: 0
+  max: 65532
+- physicalQuantity: ELECTRICAL_CURRENT
+  unit: A
+  signed: true
+  min: -3276.7
+  max: 3276.4
+- physicalQuantity: ELECTRICAL_ENERGY
+  unit: kWh
+  signed: false
+  min: 0
+  max: 4.294967292e+09
+- physicalQuantity: ELECTRICAL_POWER
+  unit: W
+  signed: false
+  min: 0
+  max: 4.294967292e+09
+- physicalQuantity: ELECTRICAL_POWER
+  unit: W
+  signed: true
+  min: -2e+09
+  max: 2.294967292e+09
+- physicalQuantity: ELECTRICAL_REACTIVE_POWER
+  unit: VAR
+  signed: false
+  min: 0
+  max: 65532
+- physicalQuantity: ELECTRICAL_REACTIVE_POWER
+  unit: VAR
+  signed: true
+  min: -2e+09
+  max: 2.294967292e+09
+- physicalQuantity: FREQUENCY
+  unit: Hz
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: GEOGRAPHICAL_LATITUDE
+  unit: deg
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: GEOGRAPHICAL_LATITUDE
+  unit: deg
+  signed: true
+  min: -90
+  max: 90
+- physicalQuantity: GEOGRAPHICAL_LONGITUDE
+  unit: deg
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: GEOGRAPHICAL_LONGITUDE
+  unit: deg
+  signed: true
+  min: -180
+  max: 180
+- physicalQuantity: LENGTH
+  unit: m
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: MAGNETIC_FIELD
+  unit: T
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: MAGNETIC_FIELD
+  unit: T
+  signed: true
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: POTENTIAL_DIFFERENCE
+  unit: V
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: POTENTIAL_DIFFERENCE
+  unit: V
+  signed: true
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: POWER_FACTOR
+  unit: Cos Phi
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: PRESSURE
+  unit: Pa
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: PRESSURE
+  unit: Pa
+  signed: true
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: PRESSURE_RATE
+  unit: Pa/hr
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: PRESSURE_RATE
+  unit: Pa/hr
+  signed: true
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: SIGNAL_STRENGTH
+  unit: dB
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: SIGNAL_STRENGTH
+  unit: dB
+  signed: true
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: SIGNAL_TO_NOISE_RATIO
+  unit: dB
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: SIGNAL_TO_NOISE_RATIO
+  unit: dB
+  signed: true
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: SPEED
+  unit: m/s
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: SPEED
+  unit: m/s
+  signed: true
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: TEMPERATURE
+  unit: K
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: TIME
+  unit: s
+  signed: false
+  min: 0
+  max: 86401
+- physicalQuantity: VOLUME
+  unit: L
+  signed: false
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range
+- physicalQuantity: VOLUMETRIC_FLOW
+  unit: L/h
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: VOLUMETRIC_FLOW
+  unit: L/h
+  signed: true
+  min: null // override canboat's value based on expressible range
+  max: null // override canboat's value based on expressible range

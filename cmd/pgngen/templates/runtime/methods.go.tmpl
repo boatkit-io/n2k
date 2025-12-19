@@ -26,38 +26,10 @@ func (p *{{ .Id }}) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *{{ .Id }}) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    {{- range $pgn.Fields }}
-    {{- if and (ne .FieldType "RESERVED") (ne .FieldType "SPARE") }}
+    {{- range $pgn.AllFields }}
+    {{- if needsFieldSpec . }}
     case "{{ .Id }}":
-        {{- $reservedCount := getReservedValueCount . }}
-        {{- $maxRawValue := calcMaxValidRawValue . }}
-        {{- $missingValue := calcMissingValue . }}
-        {{- $resolution := 1.0 }}
-        {{- if .Resolution }}
-        {{- $resolution = .Resolution }}
-        {{- end }}
-        return &FieldSpec{
-            BitLength: {{ .BitLength }},
-            BitOffset: {{ .BitOffset }},
-            MaxRawValue: {{ $maxRawValue }},
-            MissingValue: {{ $missingValue }},
-            Resolution: {{ $resolution }},
-            Offset: {{ .Offset }},
-            IsSigned: {{ .Signed }},
-            ReservedCount: {{ $reservedCount }},
-            {{- if ne .DomainMin 0.0 }}
-            DomainMin: func() *float64 { v := float64({{ .DomainMin }}); return &v }(),
-            {{- else }}
-            DomainMin: nil,
-            {{- end }}
-            {{- if ne .DomainMax 0.0 }}
-            DomainMax: func() *float64 { v := float64({{ .DomainMax }}); return &v }(),
-            {{- else }}
-            DomainMax: nil,
-            {{- end }}
-            BitLengthVariable: {{ .BitLengthVariable }},
-            CanboatType: "{{ .FieldType }}",
-        }
+        return &fieldSpec_{{ $pgn.Id }}_{{ .Id }}
     {{- end }}
     {{- end }}
     default:

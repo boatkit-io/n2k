@@ -23,51 +23,10 @@ func (p *IsoAcknowledgement) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *IsoAcknowledgement) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "Control":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "GroupFunction":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoAcknowledgement_GroupFunction
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 40,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
+        return &fieldSpec_IsoAcknowledgement_Pgn
     default:
         return nil
     }
@@ -87,20 +46,7 @@ func (p *IsoRequest) SetMessageInfo(info *MessageInfo) {
 func (p *IsoRequest) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 0,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
+        return &fieldSpec_IsoRequest_Pgn
     default:
         return nil
     }
@@ -120,35 +66,7 @@ func (p *IsoTransportProtocolDataTransfer) SetMessageInfo(info *MessageInfo) {
 func (p *IsoTransportProtocolDataTransfer) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Data":
-        return &FieldSpec{
-            BitLength: 56,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BINARY",
-        }
+        return &fieldSpec_IsoTransportProtocolDataTransfer_Sid
     default:
         return nil
     }
@@ -168,80 +86,15 @@ func (p *IsoTransportProtocolConnectionManagementRequestToSend) SetMessageInfo(i
 func (p *IsoTransportProtocolConnectionManagementRequestToSend) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "GroupFunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_GroupFunctionCode
     case "MessageSize":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_MessageSize
     case "Packets":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_Packets
     case "PacketsReply":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_PacketsReply
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 40,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_Pgn
     default:
         return nil
     }
@@ -261,65 +114,13 @@ func (p *IsoTransportProtocolConnectionManagementClearToSend) SetMessageInfo(inf
 func (p *IsoTransportProtocolConnectionManagementClearToSend) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "GroupFunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_GroupFunctionCode
     case "MaxPackets":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_MaxPackets
     case "NextSid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_NextSid
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 40,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_Pgn
     default:
         return nil
     }
@@ -339,65 +140,13 @@ func (p *IsoTransportProtocolConnectionManagementEndOfMessage) SetMessageInfo(in
 func (p *IsoTransportProtocolConnectionManagementEndOfMessage) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "GroupFunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_GroupFunctionCode
     case "TotalMessageSize":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_TotalMessageSize
     case "TotalNumberOfFramesReceived":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_TotalNumberOfFramesReceived
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 40,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_Pgn
     default:
         return nil
     }
@@ -417,65 +166,13 @@ func (p *IsoTransportProtocolConnectionManagementBroadcastAnnounce) SetMessageIn
 func (p *IsoTransportProtocolConnectionManagementBroadcastAnnounce) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "GroupFunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_GroupFunctionCode
     case "MessageSize":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_MessageSize
     case "Packets":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_Packets
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 40,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_Pgn
     default:
         return nil
     }
@@ -495,50 +192,9 @@ func (p *IsoTransportProtocolConnectionManagementAbort) SetMessageInfo(info *Mes
 func (p *IsoTransportProtocolConnectionManagementAbort) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "GroupFunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Reason":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BINARY",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementAbort_GroupFunctionCode
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 40,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
+        return &fieldSpec_IsoTransportProtocolConnectionManagementAbort_Pgn
     default:
         return nil
     }
@@ -558,140 +214,13 @@ func (p *IsoAddressClaim) SetMessageInfo(info *MessageInfo) {
 func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "UniqueNumber":
-        return &FieldSpec{
-            BitLength: 21,
-            BitOffset: 0,
-            MaxRawValue: 2097149,
-            MissingValue: 2097151,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 21,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_IsoAddressClaim_UniqueNumber
     case "DeviceInstanceLower":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 32,
-            MaxRawValue: 6,
-            MissingValue: 7,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 1,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoAddressClaim_DeviceInstanceLower
     case "DeviceInstanceUpper":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 35,
-            MaxRawValue: 29,
-            MissingValue: 31,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "DeviceFunction":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "INDIRECT_LOOKUP",
-        }
-    case "DeviceClass":
-        return &FieldSpec{
-            BitLength: 7,
-            BitOffset: 49,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_IsoAddressClaim_DeviceInstanceUpper
     case "SystemInstance":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 56,
-            MaxRawValue: 13,
-            MissingValue: 15,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "IndustryGroup":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 60,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "ArbitraryAddressCapable":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 63,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_IsoAddressClaim_SystemInstance
     default:
         return nil
     }
@@ -711,50 +240,11 @@ func (p *Bus1PhaseCBasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *Bus1PhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Bus1PhaseCBasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Bus1PhaseCBasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Bus1PhaseCBasicAcQuantities_AcFrequency
     default:
         return nil
     }
@@ -774,50 +264,11 @@ func (p *Bus1PhaseBBasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *Bus1PhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Bus1PhaseBBasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Bus1PhaseBBasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Bus1PhaseBBasicAcQuantities_AcFrequency
     default:
         return nil
     }
@@ -837,50 +288,11 @@ func (p *Bus1PhaseABasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *Bus1PhaseABasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Bus1PhaseABasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Bus1PhaseABasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Bus1PhaseABasicAcQuantities_AcFrequency
     default:
         return nil
     }
@@ -900,50 +312,9 @@ func (p *UtilityPhaseCAcReactivePower) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityPhaseCAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ReactivePower":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseCAcReactivePower_ReactivePower
     case "PowerFactor":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 6.10352e-05,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PowerFactorLagging":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_UtilityPhaseCAcReactivePower_PowerFactor
     default:
         return nil
     }
@@ -963,35 +334,9 @@ func (p *UtilityPhaseCAcPower) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityPhaseCAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "RealPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseCAcPower_RealPower
     case "ApparentPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseCAcPower_ApparentPower
     default:
         return nil
     }
@@ -1011,65 +356,13 @@ func (p *UtilityPhaseCBasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityPhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseCBasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseCBasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseCBasicAcQuantities_AcFrequency
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseCBasicAcQuantities_AcRmsCurrent
     default:
         return nil
     }
@@ -1089,50 +382,9 @@ func (p *UtilityPhaseBAcReactivePower) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityPhaseBAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ReactivePower":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseBAcReactivePower_ReactivePower
     case "PowerFactor":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 6.10352e-05,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PowerFactorLagging":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_UtilityPhaseBAcReactivePower_PowerFactor
     default:
         return nil
     }
@@ -1152,35 +404,9 @@ func (p *UtilityPhaseBAcPower) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityPhaseBAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "RealPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseBAcPower_RealPower
     case "ApparentPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseBAcPower_ApparentPower
     default:
         return nil
     }
@@ -1200,65 +426,13 @@ func (p *UtilityPhaseBBasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityPhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseBBasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseBBasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseBBasicAcQuantities_AcFrequency
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseBBasicAcQuantities_AcRmsCurrent
     default:
         return nil
     }
@@ -1278,50 +452,9 @@ func (p *UtilityPhaseAAcReactivePower) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityPhaseAAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ReactivePower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseAAcReactivePower_ReactivePower
     case "PowerFactor":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 6.10352e-05,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PowerFactorLagging":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_UtilityPhaseAAcReactivePower_PowerFactor
     default:
         return nil
     }
@@ -1341,35 +474,9 @@ func (p *UtilityPhaseAAcPower) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityPhaseAAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "RealPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseAAcPower_RealPower
     case "ApparentPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseAAcPower_ApparentPower
     default:
         return nil
     }
@@ -1389,65 +496,13 @@ func (p *UtilityPhaseABasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityPhaseABasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseABasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseABasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseABasicAcQuantities_AcFrequency
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityPhaseABasicAcQuantities_AcRmsCurrent
     default:
         return nil
     }
@@ -1467,50 +522,9 @@ func (p *UtilityTotalAcReactivePower) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityTotalAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ReactivePower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityTotalAcReactivePower_ReactivePower
     case "PowerFactor":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 6.10352e-05,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PowerFactorLagging":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_UtilityTotalAcReactivePower_PowerFactor
     default:
         return nil
     }
@@ -1530,35 +544,9 @@ func (p *UtilityTotalAcPower) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityTotalAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "RealPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityTotalAcPower_RealPower
     case "ApparentPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityTotalAcPower_ApparentPower
     default:
         return nil
     }
@@ -1578,65 +566,13 @@ func (p *UtilityAverageBasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *UtilityAverageBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityAverageBasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityAverageBasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityAverageBasicAcQuantities_AcFrequency
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UtilityAverageBasicAcQuantities_AcRmsCurrent
     default:
         return nil
     }
@@ -1656,50 +592,9 @@ func (p *GeneratorPhaseCAcReactivePower) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorPhaseCAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ReactivePower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseCAcReactivePower_ReactivePower
     case "PowerFactor":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 6.10352e-05,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PowerFactorLagging":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_GeneratorPhaseCAcReactivePower_PowerFactor
     default:
         return nil
     }
@@ -1719,35 +614,9 @@ func (p *GeneratorPhaseCAcPower) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorPhaseCAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "RealPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseCAcPower_RealPower
     case "ApparentPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseCAcPower_ApparentPower
     default:
         return nil
     }
@@ -1767,65 +636,13 @@ func (p *GeneratorPhaseCBasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorPhaseCBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseCBasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseCBasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseCBasicAcQuantities_AcFrequency
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseCBasicAcQuantities_AcRmsCurrent
     default:
         return nil
     }
@@ -1845,50 +662,9 @@ func (p *GeneratorPhaseBAcReactivePower) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorPhaseBAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ReactivePower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseBAcReactivePower_ReactivePower
     case "PowerFactor":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 6.10352e-05,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PowerFactorLagging":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_GeneratorPhaseBAcReactivePower_PowerFactor
     default:
         return nil
     }
@@ -1908,35 +684,9 @@ func (p *GeneratorPhaseBAcPower) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorPhaseBAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "RealPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseBAcPower_RealPower
     case "ApparentPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseBAcPower_ApparentPower
     default:
         return nil
     }
@@ -1956,65 +706,13 @@ func (p *GeneratorPhaseBBasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorPhaseBBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseBBasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseBBasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseBBasicAcQuantities_AcFrequency
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseBBasicAcQuantities_AcRmsCurrent
     default:
         return nil
     }
@@ -2034,50 +732,9 @@ func (p *GeneratorPhaseAAcReactivePower) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorPhaseAAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ReactivePower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseAAcReactivePower_ReactivePower
     case "PowerFactor":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 6.10352e-05,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PowerFactorLagging":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_GeneratorPhaseAAcReactivePower_PowerFactor
     default:
         return nil
     }
@@ -2097,35 +754,9 @@ func (p *GeneratorPhaseAAcPower) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorPhaseAAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "RealPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseAAcPower_RealPower
     case "ApparentPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseAAcPower_ApparentPower
     default:
         return nil
     }
@@ -2145,65 +776,13 @@ func (p *GeneratorPhaseABasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorPhaseABasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseABasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseABasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseABasicAcQuantities_AcFrequency
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorPhaseABasicAcQuantities_AcRmsCurrent
     default:
         return nil
     }
@@ -2223,50 +802,9 @@ func (p *GeneratorTotalAcReactivePower) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorTotalAcReactivePower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ReactivePower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorTotalAcReactivePower_ReactivePower
     case "PowerFactor":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 6.10352e-05,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PowerFactorLagging":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_GeneratorTotalAcReactivePower_PowerFactor
     default:
         return nil
     }
@@ -2286,35 +824,9 @@ func (p *GeneratorTotalAcPower) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorTotalAcPower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "RealPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorTotalAcPower_RealPower
     case "ApparentPower":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: -2000000000,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorTotalAcPower_ApparentPower
     default:
         return nil
     }
@@ -2334,65 +846,13 @@ func (p *GeneratorAverageBasicAcQuantities) SetMessageInfo(info *MessageInfo) {
 func (p *GeneratorAverageBasicAcQuantities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LineLineAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorAverageBasicAcQuantities_LineLineAcRmsVoltage
     case "LineNeutralAcRmsVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorAverageBasicAcQuantities_LineNeutralAcRmsVoltage
     case "AcFrequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0078125,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorAverageBasicAcQuantities_AcFrequency
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GeneratorAverageBasicAcQuantities_AcRmsCurrent
     default:
         return nil
     }
@@ -2411,141 +871,14 @@ func (p *IsoCommandedAddress) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "UniqueNumber":
-        return &FieldSpec{
-            BitLength: 21,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BINARY",
-        }
-    case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 21,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "DeviceInstanceLower":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 32,
-            MaxRawValue: 6,
-            MissingValue: 7,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 1,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoCommandedAddress_DeviceInstanceLower
     case "DeviceInstanceUpper":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 35,
-            MaxRawValue: 29,
-            MissingValue: 31,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "DeviceFunction":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "INDIRECT_LOOKUP",
-        }
-    case "DeviceClass":
-        return &FieldSpec{
-            BitLength: 7,
-            BitOffset: 49,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_IsoCommandedAddress_DeviceInstanceUpper
     case "SystemInstance":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 56,
-            MaxRawValue: 13,
-            MissingValue: 15,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 60,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_IsoCommandedAddress_SystemInstance
     case "NewSourceAddress":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 64,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_IsoCommandedAddress_NewSourceAddress
     default:
         return nil
     }
@@ -2565,80 +898,15 @@ func (p *MaretronProprietaryDcBreakerCurrent) SetMessageInfo(info *MessageInfo) 
 func (p *MaretronProprietaryDcBreakerCurrent) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronProprietaryDcBreakerCurrent_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronProprietaryDcBreakerCurrent_IndustryCode
     case "BankInstance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronProprietaryDcBreakerCurrent_BankInstance
     case "IndicatorNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronProprietaryDcBreakerCurrent_IndicatorNumber
     case "BreakerCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronProprietaryDcBreakerCurrent_BreakerCurrent
     default:
         return nil
     }
@@ -2658,50 +926,9 @@ func (p *AirmarBootStateAcknowledgment) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarBootStateAcknowledgment) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarBootStateAcknowledgment_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "BootState":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarBootStateAcknowledgment_IndustryCode
     default:
         return nil
     }
@@ -2721,65 +948,11 @@ func (p *LowranceTemperature) SetMessageInfo(info *MessageInfo) {
 func (p *LowranceTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_LowranceTemperature_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TemperatureSource":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_LowranceTemperature_IndustryCode
     case "ActualTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LowranceTemperature_ActualTemperature
     default:
         return nil
     }
@@ -2799,35 +972,9 @@ func (p *AirmarBootStateRequest) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarBootStateRequest) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarBootStateRequest_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarBootStateRequest_IndustryCode
     default:
         return nil
     }
@@ -2847,80 +994,13 @@ func (p *AirmarAccessLevel) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarAccessLevel) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarAccessLevel_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarAccessLevel_IndustryCode
     case "FormatCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "AccessLevel":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarAccessLevel_FormatCode
     case "AccessSeedKey":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarAccessLevel_AccessSeedKey
     default:
         return nil
     }
@@ -2940,80 +1020,11 @@ func (p *SimnetDeviceStatus) SetMessageInfo(info *MessageInfo) {
 func (p *SimnetDeviceStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetDeviceStatus_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Model":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetDeviceStatus_IndustryCode
     case "Report":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Status":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetDeviceStatus_Report
     default:
         return nil
     }
@@ -3033,65 +1044,11 @@ func (p *SimnetDeviceStatusRequest) SetMessageInfo(info *MessageInfo) {
 func (p *SimnetDeviceStatusRequest) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetDeviceStatusRequest_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Model":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetDeviceStatusRequest_IndustryCode
     case "Report":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetDeviceStatusRequest_Report
     default:
         return nil
     }
@@ -3111,80 +1068,11 @@ func (p *SimnetPilotMode) SetMessageInfo(info *MessageInfo) {
 func (p *SimnetPilotMode) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetPilotMode_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Model":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetPilotMode_IndustryCode
     case "Report":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Mode":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BITLOOKUP",
-        }
+        return &fieldSpec_SimnetPilotMode_Report
     default:
         return nil
     }
@@ -3204,65 +1092,11 @@ func (p *SimnetDeviceModeRequest) SetMessageInfo(info *MessageInfo) {
 func (p *SimnetDeviceModeRequest) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetDeviceModeRequest_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Model":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetDeviceModeRequest_IndustryCode
     case "Report":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SimnetDeviceModeRequest_Report
     default:
         return nil
     }
@@ -3282,80 +1116,13 @@ func (p *SeatalkPilotLockedHeading) SetMessageInfo(info *MessageInfo) {
 func (p *SeatalkPilotLockedHeading) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SeatalkPilotLockedHeading_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BINARY",
-        }
+        return &fieldSpec_SeatalkPilotLockedHeading_IndustryCode
     case "TargetHeadingTrue":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_SeatalkPilotLockedHeading_TargetHeadingTrue
     case "TargetHeadingMagnetic":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_SeatalkPilotLockedHeading_TargetHeadingMagnetic
     default:
         return nil
     }
@@ -3375,65 +1142,9 @@ func (p *SeatalkSilenceAlarm) SetMessageInfo(info *MessageInfo) {
 func (p *SeatalkSilenceAlarm) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SeatalkSilenceAlarm_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AlarmId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AlarmGroup":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SeatalkSilenceAlarm_IndustryCode
     default:
         return nil
     }
@@ -3453,80 +1164,15 @@ func (p *AirmarSpeedPulseCount) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarSpeedPulseCount) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSpeedPulseCount_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSpeedPulseCount_IndustryCode
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarSpeedPulseCount_Sid
     case "DurationOfInterval":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_AirmarSpeedPulseCount_DurationOfInterval
     case "NumberOfPulsesReceived":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarSpeedPulseCount_NumberOfPulsesReceived
     default:
         return nil
     }
@@ -3546,80 +1192,19 @@ func (p *NmeaRequestGroupFunction) SetMessageInfo(info *MessageInfo) {
 func (p *NmeaRequestGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "FunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaRequestGroupFunction_FunctionCode
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 8,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
+        return &fieldSpec_NmeaRequestGroupFunction_Pgn
     case "TransmissionInterval":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_NmeaRequestGroupFunction_TransmissionInterval
     case "TransmissionIntervalOffset":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 64,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_NmeaRequestGroupFunction_TransmissionIntervalOffset
     case "NumberOfParameters":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 80,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaRequestGroupFunction_NumberOfParameters
+    case "Parameter":
+        return &fieldSpec_NmeaRequestGroupFunction_Parameter
+    case "Value":
+        return &fieldSpec_NmeaRequestGroupFunction_Value
     default:
         return nil
     }
@@ -3639,65 +1224,15 @@ func (p *NmeaCommandGroupFunction) SetMessageInfo(info *MessageInfo) {
 func (p *NmeaCommandGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "FunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaCommandGroupFunction_FunctionCode
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 8,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
-    case "Priority":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaCommandGroupFunction_Pgn
     case "NumberOfParameters":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaCommandGroupFunction_NumberOfParameters
+    case "Parameter":
+        return &fieldSpec_NmeaCommandGroupFunction_Parameter
+    case "Value":
+        return &fieldSpec_NmeaCommandGroupFunction_Value
     default:
         return nil
     }
@@ -3717,80 +1252,11 @@ func (p *NmeaAcknowledgeGroupFunction) SetMessageInfo(info *MessageInfo) {
 func (p *NmeaAcknowledgeGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "FunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaAcknowledgeGroupFunction_FunctionCode
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 8,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
-    case "PgnErrorCode":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TransmissionIntervalPriorityErrorCode":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 36,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaAcknowledgeGroupFunction_Pgn
     case "NumberOfParameters":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaAcknowledgeGroupFunction_NumberOfParameters
     default:
         return nil
     }
@@ -3810,110 +1276,23 @@ func (p *NmeaReadFieldsReplyGroupFunction) SetMessageInfo(info *MessageInfo) {
 func (p *NmeaReadFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "FunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaReadFieldsReplyGroupFunction_FunctionCode
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 8,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
-    case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaReadFieldsReplyGroupFunction_Pgn
     case "UniqueId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaReadFieldsReplyGroupFunction_UniqueId
     case "NumberOfSelectionPairs":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaReadFieldsReplyGroupFunction_NumberOfSelectionPairs
     case "NumberOfParameters":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaReadFieldsReplyGroupFunction_NumberOfParameters
+    case "SelectionParameter":
+        return &fieldSpec_NmeaReadFieldsReplyGroupFunction_SelectionParameter
+    case "SelectionValue":
+        return &fieldSpec_NmeaReadFieldsReplyGroupFunction_SelectionValue
+    case "Parameter":
+        return &fieldSpec_NmeaReadFieldsReplyGroupFunction_Parameter
+    case "Value":
+        return &fieldSpec_NmeaReadFieldsReplyGroupFunction_Value
     default:
         return nil
     }
@@ -3933,110 +1312,23 @@ func (p *NmeaWriteFieldsGroupFunction) SetMessageInfo(info *MessageInfo) {
 func (p *NmeaWriteFieldsGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "FunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaWriteFieldsGroupFunction_FunctionCode
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 8,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
-    case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaWriteFieldsGroupFunction_Pgn
     case "UniqueId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaWriteFieldsGroupFunction_UniqueId
     case "NumberOfSelectionPairs":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaWriteFieldsGroupFunction_NumberOfSelectionPairs
     case "NumberOfParameters":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaWriteFieldsGroupFunction_NumberOfParameters
+    case "SelectionParameter":
+        return &fieldSpec_NmeaWriteFieldsGroupFunction_SelectionParameter
+    case "SelectionValue":
+        return &fieldSpec_NmeaWriteFieldsGroupFunction_SelectionValue
+    case "Parameter":
+        return &fieldSpec_NmeaWriteFieldsGroupFunction_Parameter
+    case "Value":
+        return &fieldSpec_NmeaWriteFieldsGroupFunction_Value
     default:
         return nil
     }
@@ -4056,110 +1348,23 @@ func (p *NmeaWriteFieldsReplyGroupFunction) SetMessageInfo(info *MessageInfo) {
 func (p *NmeaWriteFieldsReplyGroupFunction) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "FunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaWriteFieldsReplyGroupFunction_FunctionCode
     case "Pgn":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 8,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "PGN",
-        }
-    case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NmeaWriteFieldsReplyGroupFunction_Pgn
     case "UniqueId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaWriteFieldsReplyGroupFunction_UniqueId
     case "NumberOfSelectionPairs":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaWriteFieldsReplyGroupFunction_NumberOfSelectionPairs
     case "NumberOfParameters":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NmeaWriteFieldsReplyGroupFunction_NumberOfParameters
+    case "SelectionParameter":
+        return &fieldSpec_NmeaWriteFieldsReplyGroupFunction_SelectionParameter
+    case "SelectionValue":
+        return &fieldSpec_NmeaWriteFieldsReplyGroupFunction_SelectionValue
+    case "Parameter":
+        return &fieldSpec_NmeaWriteFieldsReplyGroupFunction_Parameter
+    case "Value":
+        return &fieldSpec_NmeaWriteFieldsReplyGroupFunction_Value
     default:
         return nil
     }
@@ -4178,21 +1383,8 @@ func (p *PgnListTransmitAndReceive) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *PgnListTransmitAndReceive) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "FunctionCode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+    case "Pgn":
+        return &fieldSpec_PgnListTransmitAndReceive_Pgn
     default:
         return nil
     }
@@ -4212,80 +1404,13 @@ func (p *FusionMediaControl) SetMessageInfo(info *MessageInfo) {
 func (p *FusionMediaControl) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMediaControl_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMediaControl_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMediaControl_ProprietaryId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Command":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMediaControl_SourceId
     default:
         return nil
     }
@@ -4305,95 +1430,15 @@ func (p *FusionSiriusControl) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSiriusControl) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusControl_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusControl_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusControl_ProprietaryId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Command":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusControl_SourceId
     case "Data":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSiriusControl_Data
     default:
         return nil
     }
@@ -4413,50 +1458,11 @@ func (p *FusionRequestStatus) SetMessageInfo(info *MessageInfo) {
 func (p *FusionRequestStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionRequestStatus_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionRequestStatus_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionRequestStatus_ProprietaryId
     default:
         return nil
     }
@@ -4476,65 +1482,13 @@ func (p *FusionSetSource) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSetSource) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetSource_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetSource_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetSource_ProprietaryId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSetSource_SourceId
     default:
         return nil
     }
@@ -4554,65 +1508,11 @@ func (p *FusionSetMute) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSetMute) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetMute_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetMute_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Command":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetMute_ProprietaryId
     default:
         return nil
     }
@@ -4632,80 +1532,15 @@ func (p *FusionSetZoneVolume) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSetZoneVolume) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetZoneVolume_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetZoneVolume_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetZoneVolume_ProprietaryId
     case "Zone":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSetZoneVolume_Zone
     case "Volume":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSetZoneVolume_Volume
     default:
         return nil
     }
@@ -4725,110 +1560,19 @@ func (p *FusionSetAllVolumes) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSetAllVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetAllVolumes_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetAllVolumes_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetAllVolumes_ProprietaryId
     case "Zone1":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSetAllVolumes_Zone1
     case "Zone2":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSetAllVolumes_Zone2
     case "Zone3":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSetAllVolumes_Zone3
     case "Zone4":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSetAllVolumes_Zone4
     default:
         return nil
     }
@@ -4848,95 +1592,17 @@ func (p *AirmarAttitudeOffset) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarAttitudeOffset) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarAttitudeOffset_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarAttitudeOffset_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarAttitudeOffset_ProprietaryId
     case "AzimuthOffset":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarAttitudeOffset_AzimuthOffset
     case "PitchOffset":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarAttitudeOffset_PitchOffset
     case "RollOffset":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 56,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarAttitudeOffset_RollOffset
     default:
         return nil
     }
@@ -4956,65 +1622,11 @@ func (p *AirmarSimulateMode) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarSimulateMode) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSimulateMode_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSimulateMode_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SimulateMode":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSimulateMode_ProprietaryId
     default:
         return nil
     }
@@ -5034,65 +1646,13 @@ func (p *AirmarCalibrateDepth) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarCalibrateDepth) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarCalibrateDepth_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarCalibrateDepth_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarCalibrateDepth_ProprietaryId
     case "SpeedOfSoundMode":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarCalibrateDepth_SpeedOfSoundMode
     default:
         return nil
     }
@@ -5112,65 +1672,17 @@ func (p *AirmarCalibrateSpeed) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarCalibrateSpeed) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarCalibrateSpeed_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarCalibrateSpeed_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarCalibrateSpeed_ProprietaryId
     case "NumberOfPairsOfDataPoints":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarCalibrateSpeed_NumberOfPairsOfDataPoints
+    case "InputFrequency":
+        return &fieldSpec_AirmarCalibrateSpeed_InputFrequency
+    case "OutputSpeed":
+        return &fieldSpec_AirmarCalibrateSpeed_OutputSpeed
     default:
         return nil
     }
@@ -5190,80 +1702,13 @@ func (p *AirmarCalibrateTemperature) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarCalibrateTemperature) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarCalibrateTemperature_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarCalibrateTemperature_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TemperatureInstance":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarCalibrateTemperature_ProprietaryId
     case "TemperatureOffset":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarCalibrateTemperature_TemperatureOffset
     default:
         return nil
     }
@@ -5283,80 +1728,15 @@ func (p *AirmarSpeedFilterNone) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarSpeedFilterNone) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSpeedFilterNone_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSpeedFilterNone_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSpeedFilterNone_ProprietaryId
     case "FilterType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 24,
-            MaxRawValue: 13,
-            MissingValue: 15,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarSpeedFilterNone_FilterType
     case "SampleInterval":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_AirmarSpeedFilterNone_SampleInterval
     default:
         return nil
     }
@@ -5376,95 +1756,17 @@ func (p *AirmarSpeedFilterIir) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarSpeedFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSpeedFilterIir_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSpeedFilterIir_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarSpeedFilterIir_ProprietaryId
     case "FilterType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 24,
-            MaxRawValue: 13,
-            MissingValue: 15,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarSpeedFilterIir_FilterType
     case "SampleInterval":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_AirmarSpeedFilterIir_SampleInterval
     case "FilterDuration":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_AirmarSpeedFilterIir_FilterDuration
     default:
         return nil
     }
@@ -5484,80 +1786,15 @@ func (p *AirmarTemperatureFilterNone) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarTemperatureFilterNone) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarTemperatureFilterNone_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarTemperatureFilterNone_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarTemperatureFilterNone_ProprietaryId
     case "FilterType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 24,
-            MaxRawValue: 13,
-            MissingValue: 15,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarTemperatureFilterNone_FilterType
     case "SampleInterval":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_AirmarTemperatureFilterNone_SampleInterval
     default:
         return nil
     }
@@ -5577,95 +1814,17 @@ func (p *AirmarTemperatureFilterIir) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarTemperatureFilterIir) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarTemperatureFilterIir_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarTemperatureFilterIir_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarTemperatureFilterIir_ProprietaryId
     case "FilterType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 24,
-            MaxRawValue: 13,
-            MissingValue: 15,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AirmarTemperatureFilterIir_FilterType
     case "SampleInterval":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_AirmarTemperatureFilterIir_SampleInterval
     case "FilterDuration":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_AirmarTemperatureFilterIir_FilterDuration
     default:
         return nil
     }
@@ -5685,65 +1844,11 @@ func (p *AirmarNmea2000Options) SetMessageInfo(info *MessageInfo) {
 func (p *AirmarNmea2000Options) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarNmea2000Options_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarNmea2000Options_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TransmissionInterval":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AirmarNmea2000Options_ProprietaryId
     default:
         return nil
     }
@@ -5763,95 +1868,13 @@ func (p *MaretronDeviationCalibrationResponse) SetMessageInfo(info *MessageInfo)
 func (p *MaretronDeviationCalibrationResponse) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronDeviationCalibrationResponse_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "ProductCode":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronDeviationCalibrationResponse_IndustryCode
     case "SoftwareCode":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronDeviationCalibrationResponse_SoftwareCode
     case "Command":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Status":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronDeviationCalibrationResponse_Command
     default:
         return nil
     }
@@ -5871,95 +1894,17 @@ func (p *MaretronSlaveResponse) SetMessageInfo(info *MessageInfo) {
 func (p *MaretronSlaveResponse) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronSlaveResponse_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronSlaveResponse_IndustryCode
     case "ProductCode":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronSlaveResponse_ProductCode
     case "SoftwareCode":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronSlaveResponse_SoftwareCode
     case "Command":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronSlaveResponse_Command
     case "Status":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronSlaveResponse_Status
     default:
         return nil
     }
@@ -5978,306 +1923,24 @@ func (p *Alert) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *Alert) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "AlertType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AlertCategory":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 4,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "AlertSystem":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Alert_AlertSystem
     case "AlertSubSystem":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Alert_AlertSubSystem
     case "AlertId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Alert_AlertId
     case "DataSourceNetworkIdName":
-        return &FieldSpec{
-            BitLength: 64,
-            BitOffset: 40,
-            MaxRawValue: 18446744073709551613,
-            MissingValue: 18446744073709551615,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "ISO_NAME",
-        }
+        return &fieldSpec_Alert_DataSourceNetworkIdName
     case "DataSourceInstance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 104,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Alert_DataSourceInstance
     case "DataSourceIndexSource":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 112,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Alert_DataSourceIndexSource
     case "AlertOccurrenceNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 120,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "TemporarySilenceStatus":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 128,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AcknowledgeStatus":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 129,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "EscalationStatus":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 130,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TemporarySilenceSupport":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 131,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AcknowledgeSupport":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 132,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "EscalationSupport":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 133,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_Alert_AlertOccurrenceNumber
     case "AcknowledgeSourceNetworkIdName":
-        return &FieldSpec{
-            BitLength: 64,
-            BitOffset: 136,
-            MaxRawValue: 18446744073709551613,
-            MissingValue: 18446744073709551615,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "ISO_NAME",
-        }
-    case "TriggerCondition":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 200,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "ThresholdStatus":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 204,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_Alert_AcknowledgeSourceNetworkIdName
     case "AlertPriority":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 208,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "AlertState":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 216,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_Alert_AlertPriority
     default:
         return nil
     }
@@ -6296,171 +1959,22 @@ func (p *AlertResponse) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AlertResponse) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "AlertType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AlertCategory":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 4,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "AlertSystem":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertResponse_AlertSystem
     case "AlertSubSystem":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertResponse_AlertSubSystem
     case "AlertId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertResponse_AlertId
     case "DataSourceNetworkIdName":
-        return &FieldSpec{
-            BitLength: 64,
-            BitOffset: 40,
-            MaxRawValue: 18446744073709551613,
-            MissingValue: 18446744073709551615,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "ISO_NAME",
-        }
+        return &fieldSpec_AlertResponse_DataSourceNetworkIdName
     case "DataSourceInstance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 104,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertResponse_DataSourceInstance
     case "DataSourceIndexSource":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 112,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertResponse_DataSourceIndexSource
     case "AlertOccurrenceNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 120,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertResponse_AlertOccurrenceNumber
     case "AcknowledgeSourceNetworkIdName":
-        return &FieldSpec{
-            BitLength: 64,
-            BitOffset: 128,
-            MaxRawValue: 18446744073709551613,
-            MissingValue: 18446744073709551615,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "ISO_NAME",
-        }
-    case "ResponseCommand":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 192,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AlertResponse_AcknowledgeSourceNetworkIdName
     default:
         return nil
     }
@@ -6479,186 +1993,20 @@ func (p *AlertText) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AlertText) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "AlertType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AlertCategory":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 4,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "AlertSystem":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertText_AlertSystem
     case "AlertSubSystem":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertText_AlertSubSystem
     case "AlertId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertText_AlertId
     case "DataSourceNetworkIdName":
-        return &FieldSpec{
-            BitLength: 64,
-            BitOffset: 40,
-            MaxRawValue: 18446744073709551613,
-            MissingValue: 18446744073709551615,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "ISO_NAME",
-        }
+        return &fieldSpec_AlertText_DataSourceNetworkIdName
     case "DataSourceInstance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 104,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertText_DataSourceInstance
     case "DataSourceIndexSource":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 112,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AlertText_DataSourceIndexSource
     case "AlertOccurrenceNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 120,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "LanguageId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 128,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AlertTextDescription":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 136,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
-    case "AlertLocationTextDescription":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
+        return &fieldSpec_AlertText_AlertOccurrenceNumber
     default:
         return nil
     }
@@ -6678,65 +2026,11 @@ func (p *SystemTime) SetMessageInfo(info *MessageInfo) {
 func (p *SystemTime) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Source":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SystemTime_Sid
     case "Date":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_SystemTime_Date
     case "Time":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_SystemTime_Time
     default:
         return nil
     }
@@ -6756,80 +2050,9 @@ func (p *Heartbeat) SetMessageInfo(info *MessageInfo) {
 func (p *Heartbeat) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "DataTransmitOffset":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_Heartbeat_DataTransmitOffset
     case "SequenceCounter":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Controller1State":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Controller2State":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 26,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "EquipmentStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 28,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_Heartbeat_SequenceCounter
     default:
         return nil
     }
@@ -6849,125 +2072,11 @@ func (p *ProductInformation) SetMessageInfo(info *MessageInfo) {
 func (p *ProductInformation) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Nmea2000Version":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ProductInformation_Nmea2000Version
     case "ProductCode":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "ModelId":
-        return &FieldSpec{
-            BitLength: 256,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
-    case "SoftwareVersionCode":
-        return &FieldSpec{
-            BitLength: 256,
-            BitOffset: 288,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
-    case "ModelVersion":
-        return &FieldSpec{
-            BitLength: 256,
-            BitOffset: 544,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
-    case "ModelSerialCode":
-        return &FieldSpec{
-            BitLength: 256,
-            BitOffset: 800,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
-    case "CertificationLevel":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 1056,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_ProductInformation_ProductCode
     case "LoadEquivalency":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 1064,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ProductInformation_LoadEquivalency
     default:
         return nil
     }
@@ -6986,51 +2095,6 @@ func (p *ConfigurationInformation) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *ConfigurationInformation) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "InstallationDescription1":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
-    case "InstallationDescription2":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
-    case "ManufacturerInformation":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
     default:
         return nil
     }
@@ -7050,215 +2114,25 @@ func (p *ManOverboardNotification) SetMessageInfo(info *MessageInfo) {
 func (p *ManOverboardNotification) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ManOverboardNotification_Sid
     case "MobEmitterId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "ManOverboardStatus":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_ManOverboardNotification_MobEmitterId
     case "ActivationTime":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 48,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
-    case "PositionSource":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 80,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_ManOverboardNotification_ActivationTime
     case "PositionDate":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 88,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_ManOverboardNotification_PositionDate
     case "PositionTime":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 104,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_ManOverboardNotification_PositionTime
     case "Latitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 136,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-90); return &v }(),
-            DomainMax: func() *float64 { v := float64(90); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ManOverboardNotification_Latitude
     case "Longitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 168,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-180); return &v }(),
-            DomainMax: func() *float64 { v := float64(180); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "CogReference":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 200,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_ManOverboardNotification_Longitude
     case "Cog":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 208,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ManOverboardNotification_Cog
     case "Sog":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 224,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ManOverboardNotification_Sog
     case "MmsiOfVesselOfOrigin":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 240,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
-    case "MobEmitterBatteryLowStatus":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 272,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_ManOverboardNotification_MmsiOfVesselOfOrigin
     default:
         return nil
     }
@@ -7277,261 +2151,24 @@ func (p *HeadingTrackControl) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *HeadingTrackControl) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "RudderLimitExceeded":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "OffHeadingLimitExceeded":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 2,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "OffTrackLimitExceeded":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 4,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Override":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SteeringMode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TurnMode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 11,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "HeadingReference":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 14,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "CommandedRudderDirection":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 21,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "CommandedRudderAngle":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_HeadingTrackControl_CommandedRudderAngle
     case "HeadingToSteerCourse":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_HeadingTrackControl_HeadingToSteerCourse
     case "Track":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 56,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_HeadingTrackControl_Track
     case "RudderLimit":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 72,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_HeadingTrackControl_RudderLimit
     case "OffHeadingLimit":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 88,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_HeadingTrackControl_OffHeadingLimit
     case "RadiusOfTurnOrder":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 104,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_HeadingTrackControl_RadiusOfTurnOrder
     case "RateOfTurnOrder":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 120,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 3.125e-05,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_HeadingTrackControl_RateOfTurnOrder
     case "OffTrackLimit":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 136,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_HeadingTrackControl_OffTrackLimit
     case "VesselHeading":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 152,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_HeadingTrackControl_VesselHeading
     default:
         return nil
     }
@@ -7551,65 +2188,11 @@ func (p *Rudder) SetMessageInfo(info *MessageInfo) {
 func (p *Rudder) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "DirectionOrder":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_Rudder_Instance
     case "AngleOrder":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Rudder_AngleOrder
     case "Position":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Rudder_Position
     default:
         return nil
     }
@@ -7629,80 +2212,13 @@ func (p *VesselHeading) SetMessageInfo(info *MessageInfo) {
 func (p *VesselHeading) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_VesselHeading_Sid
     case "Heading":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_VesselHeading_Heading
     case "Deviation":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_VesselHeading_Deviation
     case "Variation":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Reference":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_VesselHeading_Variation
     default:
         return nil
     }
@@ -7722,35 +2238,9 @@ func (p *RateOfTurn) SetMessageInfo(info *MessageInfo) {
 func (p *RateOfTurn) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RateOfTurn_Sid
     case "Rate":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 3.125e-08,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RateOfTurn_Rate
     default:
         return nil
     }
@@ -7770,65 +2260,13 @@ func (p *Attitude) SetMessageInfo(info *MessageInfo) {
 func (p *Attitude) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Attitude_Sid
     case "Yaw":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Attitude_Yaw
     case "Pitch":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Attitude_Pitch
     case "Roll":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Attitude_Roll
     default:
         return nil
     }
@@ -7848,65 +2286,11 @@ func (p *MagneticVariation) SetMessageInfo(info *MessageInfo) {
 func (p *MagneticVariation) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Source":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MagneticVariation_Sid
     case "AgeOfService":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_MagneticVariation_AgeOfService
     case "Variation":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MagneticVariation_Variation
     default:
         return nil
     }
@@ -7925,66 +2309,12 @@ func (p *EngineParametersRapidUpdate) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *EngineParametersRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "Speed":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.25,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersRapidUpdate_Speed
     case "BoostPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 100,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersRapidUpdate_BoostPressure
     case "TiltTrim":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 125,
-            MissingValue: 127,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersRapidUpdate_TiltTrim
     default:
         return nil
     }
@@ -8003,201 +2333,26 @@ func (p *EngineParametersDynamic) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *EngineParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "OilPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 100,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersDynamic_OilPressure
     case "OilTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersDynamic_OilTemperature
     case "Temperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersDynamic_Temperature
     case "AlternatorPotential":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 56,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersDynamic_AlternatorPotential
     case "FuelRate":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 72,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersDynamic_FuelRate
     case "TotalEngineHours":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 88,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_EngineParametersDynamic_TotalEngineHours
     case "CoolantPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 120,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 100,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersDynamic_CoolantPressure
     case "FuelPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 136,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1000,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "DiscreteStatus1":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 160,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BITLOOKUP",
-        }
-    case "DiscreteStatus2":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 176,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BITLOOKUP",
-        }
+        return &fieldSpec_EngineParametersDynamic_FuelPressure
     case "EngineLoad":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 192,
-            MaxRawValue: 125,
-            MissingValue: 127,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersDynamic_EngineLoad
     case "EngineTorque":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 200,
-            MaxRawValue: 125,
-            MissingValue: 127,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EngineParametersDynamic_EngineTorque
     default:
         return nil
     }
@@ -8216,81 +2371,12 @@ func (p *TransmissionParametersDynamic) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *TransmissionParametersDynamic) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TransmissionGear":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "OilPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 100,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TransmissionParametersDynamic_OilPressure
     case "OilTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TransmissionParametersDynamic_OilTemperature
     case "DiscreteStatus1":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TransmissionParametersDynamic_DiscreteStatus1
     default:
         return nil
     }
@@ -8310,65 +2396,13 @@ func (p *TripParametersVessel) SetMessageInfo(info *MessageInfo) {
 func (p *TripParametersVessel) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "TimeToEmpty":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_TripParametersVessel_TimeToEmpty
     case "DistanceToEmpty":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TripParametersVessel_DistanceToEmpty
     case "EstimatedFuelRemaining":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 64,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TripParametersVessel_EstimatedFuelRemaining
     case "TripRunTime":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 80,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_TripParametersVessel_TripRunTime
     default:
         return nil
     }
@@ -8387,81 +2421,14 @@ func (p *TripParametersEngine) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *TripParametersEngine) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "TripFuelUsed":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TripParametersEngine_TripFuelUsed
     case "FuelRateAverage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TripParametersEngine_FuelRateAverage
     case "FuelRateEconomy":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TripParametersEngine_FuelRateEconomy
     case "InstantaneousFuelEconomy":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 56,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TripParametersEngine_InstantaneousFuelEconomy
     default:
         return nil
     }
@@ -8480,66 +2447,8 @@ func (p *EngineParametersStatic) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *EngineParametersStatic) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "RatedEngineSpeed":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.25,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Vin":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
-    case "SoftwareId":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
+        return &fieldSpec_EngineParametersStatic_RatedEngineSpeed
     default:
         return nil
     }
@@ -8559,125 +2468,21 @@ func (p *LoadControllerConnectionStateControl) SetMessageInfo(info *MessageInfo)
 func (p *LoadControllerConnectionStateControl) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "SequenceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LoadControllerConnectionStateControl_SequenceId
     case "ConnectionId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LoadControllerConnectionStateControl_ConnectionId
     case "State":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LoadControllerConnectionStateControl_State
     case "Status":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LoadControllerConnectionStateControl_Status
     case "OperationalStatusControl":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LoadControllerConnectionStateControl_OperationalStatusControl
     case "PwmDutyCycle":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LoadControllerConnectionStateControl_PwmDutyCycle
     case "Timeon":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LoadControllerConnectionStateControl_Timeon
     case "Timeoff":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LoadControllerConnectionStateControl_Timeoff
     default:
         return nil
     }
@@ -8697,440 +2502,7 @@ func (p *BinarySwitchBankStatus) SetMessageInfo(info *MessageInfo) {
 func (p *BinarySwitchBankStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Indicator1":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator2":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 10,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator3":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 12,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator4":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 14,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator5":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator6":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 18,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator7":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 20,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator8":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 22,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator9":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator10":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 26,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator11":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 28,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator12":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 30,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator13":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator14":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 34,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator15":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 36,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator16":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 38,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator17":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator18":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 42,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator19":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 44,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator20":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 46,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator21":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator22":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 50,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator23":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 52,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator24":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 54,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator25":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator26":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 58,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator27":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 60,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Indicator28":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 62,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_BinarySwitchBankStatus_Instance
     default:
         return nil
     }
@@ -9150,440 +2522,7 @@ func (p *SwitchBankControl) SetMessageInfo(info *MessageInfo) {
 func (p *SwitchBankControl) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Switch1":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch2":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 10,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch3":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 12,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch4":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 14,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch5":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch6":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 18,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch7":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 20,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch8":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 22,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch9":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch10":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 26,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch11":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 28,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch12":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 30,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch13":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch14":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 34,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch15":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 36,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch16":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 38,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch17":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch18":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 42,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch19":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 44,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch20":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 46,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch21":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch22":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 50,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch23":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 52,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch24":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 54,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch25":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch26":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 58,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch27":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 60,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Switch28":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 62,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SwitchBankControl_Instance
     default:
         return nil
     }
@@ -9603,35 +2542,23 @@ func (p *AcInputStatus) SetMessageInfo(info *MessageInfo) {
 func (p *AcInputStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcInputStatus_Instance
     case "NumberOfLines":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcInputStatus_NumberOfLines
+    case "Voltage":
+        return &fieldSpec_AcInputStatus_Voltage
+    case "Current":
+        return &fieldSpec_AcInputStatus_Current
+    case "Frequency":
+        return &fieldSpec_AcInputStatus_Frequency
+    case "BreakerSize":
+        return &fieldSpec_AcInputStatus_BreakerSize
+    case "RealPower":
+        return &fieldSpec_AcInputStatus_RealPower
+    case "ReactivePower":
+        return &fieldSpec_AcInputStatus_ReactivePower
+    case "PowerFactor":
+        return &fieldSpec_AcInputStatus_PowerFactor
     default:
         return nil
     }
@@ -9651,35 +2578,23 @@ func (p *AcOutputStatus) SetMessageInfo(info *MessageInfo) {
 func (p *AcOutputStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcOutputStatus_Instance
     case "NumberOfLines":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcOutputStatus_NumberOfLines
+    case "Voltage":
+        return &fieldSpec_AcOutputStatus_Voltage
+    case "Current":
+        return &fieldSpec_AcOutputStatus_Current
+    case "Frequency":
+        return &fieldSpec_AcOutputStatus_Frequency
+    case "BreakerSize":
+        return &fieldSpec_AcOutputStatus_BreakerSize
+    case "RealPower":
+        return &fieldSpec_AcOutputStatus_RealPower
+    case "ReactivePower":
+        return &fieldSpec_AcOutputStatus_ReactivePower
+    case "PowerFactor":
+        return &fieldSpec_AcOutputStatus_PowerFactor
     default:
         return nil
     }
@@ -9699,65 +2614,11 @@ func (p *FluidLevel) SetMessageInfo(info *MessageInfo) {
 func (p *FluidLevel) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Instance":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 0,
-            MaxRawValue: 13,
-            MissingValue: 15,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Type":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 4,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FluidLevel_Instance
     case "Level":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.004,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FluidLevel_Level
     case "Capacity":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 24,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FluidLevel_Capacity
     default:
         return nil
     }
@@ -9777,125 +2638,19 @@ func (p *DcDetailedStatus) SetMessageInfo(info *MessageInfo) {
 func (p *DcDetailedStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DcDetailedStatus_Sid
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "DcType":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_DcDetailedStatus_Instance
     case "StateOfCharge":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DcDetailedStatus_StateOfCharge
     case "StateOfHealth":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DcDetailedStatus_StateOfHealth
     case "TimeRemaining":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 60,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_DcDetailedStatus_TimeRemaining
     case "RippleVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 56,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DcDetailedStatus_RippleVoltage
     case "RemainingCapacity":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 72,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DcDetailedStatus_RemainingCapacity
     default:
         return nil
     }
@@ -9915,110 +2670,11 @@ func (p *ChargerStatus) SetMessageInfo(info *MessageInfo) {
 func (p *ChargerStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ChargerStatus_Instance
     case "BatteryInstance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "OperatingState":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "ChargeMode":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 20,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Enabled":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "EqualizationPending":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 26,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_ChargerStatus_BatteryInstance
     case "EqualizationTimeRemaining":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 60,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_ChargerStatus_EqualizationTimeRemaining
     default:
         return nil
     }
@@ -10038,80 +2694,15 @@ func (p *BatteryStatus) SetMessageInfo(info *MessageInfo) {
 func (p *BatteryStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_BatteryStatus_Instance
     case "Voltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_BatteryStatus_Voltage
     case "Current":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_BatteryStatus_Current
     case "Temperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_BatteryStatus_Temperature
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_BatteryStatus_Sid
     default:
         return nil
     }
@@ -10131,80 +2722,11 @@ func (p *InverterStatus) SetMessageInfo(info *MessageInfo) {
 func (p *InverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_InverterStatus_Instance
     case "AcInstance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_InverterStatus_AcInstance
     case "DcInstance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "OperatingState":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "InverterEnable":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 28,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_InverterStatus_DcInstance
     default:
         return nil
     }
@@ -10224,65 +2746,13 @@ func (p *AcPowerCurrentPhaseA) SetMessageInfo(info *MessageInfo) {
 func (p *AcPowerCurrentPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseA_Sid
     case "ConnectionNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseA_ConnectionNumber
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseA_AcRmsCurrent
     case "Power":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseA_Power
     default:
         return nil
     }
@@ -10302,65 +2772,13 @@ func (p *AcPowerCurrentPhaseB) SetMessageInfo(info *MessageInfo) {
 func (p *AcPowerCurrentPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseB_Sid
     case "ConnectionNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseB_ConnectionNumber
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseB_AcRmsCurrent
     case "Power":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseB_Power
     default:
         return nil
     }
@@ -10380,65 +2798,13 @@ func (p *AcPowerCurrentPhaseC) SetMessageInfo(info *MessageInfo) {
 func (p *AcPowerCurrentPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseC_Sid
     case "ConnectionNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseC_ConnectionNumber
     case "AcRmsCurrent":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseC_AcRmsCurrent
     case "Power":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcPowerCurrentPhaseC_Power
     default:
         return nil
     }
@@ -10458,80 +2824,15 @@ func (p *AcVoltageFrequencyPhaseA) SetMessageInfo(info *MessageInfo) {
 func (p *AcVoltageFrequencyPhaseA) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseA_Sid
     case "ConnectionNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseA_ConnectionNumber
     case "AcVoltageLineToNeutral":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseA_AcVoltageLineToNeutral
     case "AcVoltageLineToLine":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseA_AcVoltageLineToLine
     case "Frequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseA_Frequency
     default:
         return nil
     }
@@ -10551,80 +2852,15 @@ func (p *AcVoltageFrequencyPhaseB) SetMessageInfo(info *MessageInfo) {
 func (p *AcVoltageFrequencyPhaseB) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseB_Sid
     case "ConnectionNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseB_ConnectionNumber
     case "AcVoltageLineToNeutral":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseB_AcVoltageLineToNeutral
     case "AcVoltageLineToLine":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseB_AcVoltageLineToLine
     case "Frequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseB_Frequency
     default:
         return nil
     }
@@ -10644,80 +2880,15 @@ func (p *AcVoltageFrequencyPhaseC) SetMessageInfo(info *MessageInfo) {
 func (p *AcVoltageFrequencyPhaseC) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseC_Sid
     case "ConnectionNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseC_ConnectionNumber
     case "AcVoltageLineToNeutral":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseC_AcVoltageLineToNeutral
     case "AcVoltageLineToLine":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseC_AcVoltageLineToLine
     case "Frequency":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AcVoltageFrequencyPhaseC_Frequency
     default:
         return nil
     }
@@ -10736,111 +2907,8 @@ func (p *ConverterStatus) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *ConverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BINARY",
-        }
     case "ConnectionNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "OperatingState":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TemperatureState":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "OverloadState":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 26,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "LowDcVoltageState":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 28,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RippleState":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 30,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_ConverterStatus_ConnectionNumber
     default:
         return nil
     }
@@ -10859,66 +2927,12 @@ func (p *DcVoltageCurrent) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *DcVoltageCurrent) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BINARY",
-        }
     case "ConnectionNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DcVoltageCurrent_ConnectionNumber
     case "DcVoltage":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DcVoltageCurrent_DcVoltage
     case "DcCurrent":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 32,
-            MaxRawValue: 8388605,
-            MissingValue: 8388607,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DcVoltageCurrent_DcCurrent
     default:
         return nil
     }
@@ -10938,35 +2952,9 @@ func (p *LeewayAngle) SetMessageInfo(info *MessageInfo) {
 func (p *LeewayAngle) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LeewayAngle_Sid
     case "LeewayAngle":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_LeewayAngle_LeewayAngle
     default:
         return nil
     }
@@ -10986,140 +2974,15 @@ func (p *ThrusterControlStatus) SetMessageInfo(info *MessageInfo) {
 func (p *ThrusterControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ThrusterControlStatus_Sid
     case "Identifier":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "DirectionControl":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "PowerEnabled":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 20,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RetractControl":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 22,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_ThrusterControlStatus_Identifier
     case "SpeedControl":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "ControlEvents":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BITLOOKUP",
-        }
+        return &fieldSpec_ThrusterControlStatus_SpeedControl
     case "CommandTimeout":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 0.005,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_ThrusterControlStatus_CommandTimeout
     case "AzimuthControl":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ThrusterControlStatus_AzimuthControl
     default:
         return nil
     }
@@ -11139,80 +3002,13 @@ func (p *ThrusterInformation) SetMessageInfo(info *MessageInfo) {
 func (p *ThrusterInformation) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Identifier":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "MotorType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_ThrusterInformation_Identifier
     case "PowerRating":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ThrusterInformation_PowerRating
     case "MaximumTemperatureRating":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ThrusterInformation_MaximumTemperatureRating
     case "MaximumRotationalSpeed":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.25,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ThrusterInformation_MaximumRotationalSpeed
     default:
         return nil
     }
@@ -11232,95 +3028,15 @@ func (p *ThrusterMotorStatus) SetMessageInfo(info *MessageInfo) {
 func (p *ThrusterMotorStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ThrusterMotorStatus_Sid
     case "Identifier":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "MotorEvents":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BITLOOKUP",
-        }
+        return &fieldSpec_ThrusterMotorStatus_Identifier
     case "Current":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ThrusterMotorStatus_Current
     case "Temperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ThrusterMotorStatus_Temperature
     case "OperatingTime":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 60,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_ThrusterMotorStatus_OperatingTime
     default:
         return nil
     }
@@ -11340,80 +3056,13 @@ func (p *Speed) SetMessageInfo(info *MessageInfo) {
 func (p *Speed) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Speed_Sid
     case "SpeedWaterReferenced":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Speed_SpeedWaterReferenced
     case "SpeedGroundReferenced":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "SpeedWaterReferencedType":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_Speed_SpeedGroundReferenced
     case "SpeedDirection":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 48,
-            MaxRawValue: 13,
-            MissingValue: 15,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Speed_SpeedDirection
     default:
         return nil
     }
@@ -11433,65 +3082,13 @@ func (p *WaterDepth) SetMessageInfo(info *MessageInfo) {
 func (p *WaterDepth) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WaterDepth_Sid
     case "Depth":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WaterDepth_Depth
     case "Offset":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WaterDepth_Offset
     case "Range":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 10,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WaterDepth_Range
     default:
         return nil
     }
@@ -11511,65 +3108,13 @@ func (p *DistanceLog) SetMessageInfo(info *MessageInfo) {
 func (p *DistanceLog) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Date":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_DistanceLog_Date
     case "Time":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 16,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_DistanceLog_Time
     case "Log":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 48,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DistanceLog_Log
     case "TripLog":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 80,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DistanceLog_TripLog
     default:
         return nil
     }
@@ -11589,185 +3134,11 @@ func (p *WindlassControlStatus) SetMessageInfo(info *MessageInfo) {
 func (p *WindlassControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WindlassControlStatus_Sid
     case "WindlassId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "WindlassDirectionControl":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AnchorDockingControl":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 18,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SpeedControlType":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 20,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SpeedControl":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BINARY",
-        }
-    case "PowerEnable":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "MechanicalLock":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 34,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "DeckAndAnchorWash":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 36,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AnchorLight":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 38,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_WindlassControlStatus_WindlassId
     case "CommandTimeout":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 0.005,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
-    case "WindlassControlEvents":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BITLOOKUP",
-        }
+        return &fieldSpec_WindlassControlStatus_CommandTimeout
     default:
         return nil
     }
@@ -11787,140 +3158,13 @@ func (p *AnchorWindlassOperatingStatus) SetMessageInfo(info *MessageInfo) {
 func (p *AnchorWindlassOperatingStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AnchorWindlassOperatingStatus_Sid
     case "WindlassId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "WindlassDirectionControl":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "WindlassMotionStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 18,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RodeTypeStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 20,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AnchorWindlassOperatingStatus_WindlassId
     case "RodeCounterValue":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AnchorWindlassOperatingStatus_RodeCounterValue
     case "WindlassLineSpeed":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "AnchorDockingStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "WindlassOperatingEvents":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 58,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BITLOOKUP",
-        }
+        return &fieldSpec_AnchorWindlassOperatingStatus_WindlassLineSpeed
     default:
         return nil
     }
@@ -11940,95 +3184,15 @@ func (p *AnchorWindlassMonitoringStatus) SetMessageInfo(info *MessageInfo) {
 func (p *AnchorWindlassMonitoringStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AnchorWindlassMonitoringStatus_Sid
     case "WindlassId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "WindlassMonitoringEvents":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BITLOOKUP",
-        }
+        return &fieldSpec_AnchorWindlassMonitoringStatus_WindlassId
     case "ControllerVoltage":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 0.2,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AnchorWindlassMonitoringStatus_ControllerVoltage
     case "MotorCurrent":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AnchorWindlassMonitoringStatus_MotorCurrent
     case "TotalMotorTime":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 60,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_AnchorWindlassMonitoringStatus_TotalMotorTime
     default:
         return nil
     }
@@ -12048,35 +3212,9 @@ func (p *PositionRapidUpdate) SetMessageInfo(info *MessageInfo) {
 func (p *PositionRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Latitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-90); return &v }(),
-            DomainMax: func() *float64 { v := float64(90); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_PositionRapidUpdate_Latitude
     case "Longitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-180); return &v }(),
-            DomainMax: func() *float64 { v := float64(180); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_PositionRapidUpdate_Longitude
     default:
         return nil
     }
@@ -12096,65 +3234,11 @@ func (p *CogSogRapidUpdate) SetMessageInfo(info *MessageInfo) {
 func (p *CogSogRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "CogReference":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_CogSogRapidUpdate_Sid
     case "Cog":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_CogSogRapidUpdate_Cog
     case "Sog":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_CogSogRapidUpdate_Sog
     default:
         return nil
     }
@@ -12174,215 +3258,31 @@ func (p *GnssPositionData) SetMessageInfo(info *MessageInfo) {
 func (p *GnssPositionData) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPositionData_Sid
     case "Date":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_GnssPositionData_Date
     case "Time":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 24,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_GnssPositionData_Time
     case "Latitude":
-        return &FieldSpec{
-            BitLength: 64,
-            BitOffset: 56,
-            MaxRawValue: 9223372036854775805,
-            MissingValue: 9223372036854775807,
-            Resolution: 1e-16,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-90); return &v }(),
-            DomainMax: func() *float64 { v := float64(90); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPositionData_Latitude
     case "Longitude":
-        return &FieldSpec{
-            BitLength: 64,
-            BitOffset: 120,
-            MaxRawValue: 9223372036854775805,
-            MissingValue: 9223372036854775807,
-            Resolution: 1e-16,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-180); return &v }(),
-            DomainMax: func() *float64 { v := float64(180); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPositionData_Longitude
     case "Altitude":
-        return &FieldSpec{
-            BitLength: 64,
-            BitOffset: 184,
-            MaxRawValue: 9223372036854775805,
-            MissingValue: 9223372036854775807,
-            Resolution: 1e-06,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "GnssType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 248,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Method":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 252,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Integrity":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 256,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_GnssPositionData_Altitude
     case "NumberOfSvs":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 264,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPositionData_NumberOfSvs
     case "Hdop":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 272,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPositionData_Hdop
     case "Pdop":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 288,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPositionData_Pdop
     case "GeoidalSeparation":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 304,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPositionData_GeoidalSeparation
     case "ReferenceStations":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 336,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPositionData_ReferenceStations
+    case "ReferenceStationId":
+        return &fieldSpec_GnssPositionData_ReferenceStationId
+    case "AgeOfDgnssCorrections":
+        return &fieldSpec_GnssPositionData_AgeOfDgnssCorrections
     default:
         return nil
     }
@@ -12402,50 +3302,11 @@ func (p *TimeDate) SetMessageInfo(info *MessageInfo) {
 func (p *TimeDate) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Date":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_TimeDate_Date
     case "Time":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 16,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_TimeDate_Time
     case "LocalOffset":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 60,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_TimeDate_LocalOffset
     default:
         return nil
     }
@@ -12464,261 +3325,22 @@ func (p *AisClassAPositionReport) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AisClassAPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "MessageId":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RepeatIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "UserId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
+        return &fieldSpec_AisClassAPositionReport_UserId
     case "Longitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 40,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-180); return &v }(),
-            DomainMax: func() *float64 { v := float64(180); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassAPositionReport_Longitude
     case "Latitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 72,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-90); return &v }(),
-            DomainMax: func() *float64 { v := float64(90); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PositionAccuracy":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 104,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Raim":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 105,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TimeStamp":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 106,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisClassAPositionReport_Latitude
     case "Cog":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 112,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassAPositionReport_Cog
     case "Sog":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 128,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "CommunicationState":
-        return &FieldSpec{
-            BitLength: 19,
-            BitOffset: 144,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BINARY",
-        }
-    case "AisTransceiverInformation":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 163,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisClassAPositionReport_Sog
     case "Heading":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 168,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassAPositionReport_Heading
     case "RateOfTurn":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 184,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 3.125e-05,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "NavStatus":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 200,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SpecialManeuverIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 204,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisClassAPositionReport_RateOfTurn
     case "SequenceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 216,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassAPositionReport_SequenceId
     default:
         return nil
     }
@@ -12737,306 +3359,18 @@ func (p *AisClassBPositionReport) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AisClassBPositionReport) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "MessageId":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RepeatIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "UserId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
+        return &fieldSpec_AisClassBPositionReport_UserId
     case "Longitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 40,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-180); return &v }(),
-            DomainMax: func() *float64 { v := float64(180); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassBPositionReport_Longitude
     case "Latitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 72,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-90); return &v }(),
-            DomainMax: func() *float64 { v := float64(90); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PositionAccuracy":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 104,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Raim":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 105,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TimeStamp":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 106,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisClassBPositionReport_Latitude
     case "Cog":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 112,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassBPositionReport_Cog
     case "Sog":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 128,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "CommunicationState":
-        return &FieldSpec{
-            BitLength: 19,
-            BitOffset: 144,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BINARY",
-        }
-    case "AisTransceiverInformation":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 163,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisClassBPositionReport_Sog
     case "Heading":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 168,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "UnitType":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 194,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "IntegratedDisplay":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 195,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Dsc":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 196,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Band":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 197,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "CanHandleMsg22":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 198,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AisMode":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 199,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AisCommunicationState":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 200,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisClassBPositionReport_Heading
     default:
         return nil
     }
@@ -13055,306 +3389,20 @@ func (p *AisAidsToNavigationAtonReport) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AisAidsToNavigationAtonReport) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "MessageId":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RepeatIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "UserId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
+        return &fieldSpec_AisAidsToNavigationAtonReport_UserId
     case "Longitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 40,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-180); return &v }(),
-            DomainMax: func() *float64 { v := float64(180); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisAidsToNavigationAtonReport_Longitude
     case "Latitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 72,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: func() *float64 { v := float64(-90); return &v }(),
-            DomainMax: func() *float64 { v := float64(90); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "PositionAccuracy":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 104,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Raim":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 105,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TimeStamp":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 106,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisAidsToNavigationAtonReport_Latitude
     case "LengthDiameter":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 112,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisAidsToNavigationAtonReport_LengthDiameter
     case "BeamDiameter":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 128,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisAidsToNavigationAtonReport_BeamDiameter
     case "PositionReferenceFromStarboardEdge":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 144,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisAidsToNavigationAtonReport_PositionReferenceFromStarboardEdge
     case "PositionReferenceFromTrueNorthFacingEdge":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 160,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "AtonType":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 176,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "OffPositionIndicator":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 181,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "VirtualAtonFlag":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 182,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AssignedModeFlag":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 183,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "PositionFixingDeviceType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 185,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AtonStatus":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 192,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BINARY",
-        }
-    case "AisTransceiverInformation":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 200,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AtonName":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 208,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
+        return &fieldSpec_AisAidsToNavigationAtonReport_PositionReferenceFromTrueNorthFacingEdge
     default:
         return nil
     }
@@ -13373,81 +3421,12 @@ func (p *Datum) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *Datum) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "LocalDatum":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
     case "DeltaLatitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Datum_DeltaLatitude
     case "DeltaLongitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 64,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Datum_DeltaLongitude
     case "DeltaAltitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 96,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "ReferenceDatum":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 128,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
+        return &fieldSpec_Datum_DeltaAltitude
     default:
         return nil
     }
@@ -13467,155 +3446,13 @@ func (p *UserDatum) SetMessageInfo(info *MessageInfo) {
 func (p *UserDatum) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "DeltaX":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UserDatum_DeltaX
     case "DeltaY":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_UserDatum_DeltaY
     case "DeltaZ":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 64,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "RotationInX":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 96,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "FLOAT",
-        }
-    case "RotationInY":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 128,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "FLOAT",
-        }
-    case "RotationInZ":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 160,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "FLOAT",
-        }
-    case "Scale":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 192,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "FLOAT",
-        }
+        return &fieldSpec_UserDatum_DeltaZ
     case "EllipsoidSemiMajorAxis":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 224,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "EllipsoidFlatteningInverse":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 256,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "FLOAT",
-        }
-    case "DatumName":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 288,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
+        return &fieldSpec_UserDatum_EllipsoidSemiMajorAxis
     default:
         return nil
     }
@@ -13635,65 +3472,9 @@ func (p *CrossTrackError) SetMessageInfo(info *MessageInfo) {
 func (p *CrossTrackError) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "XteMode":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "NavigationTerminated":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 14,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_CrossTrackError_Sid
     case "Xte":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 16,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_CrossTrackError_Xte
     default:
         return nil
     }
@@ -13713,230 +3494,27 @@ func (p *NavigationData) SetMessageInfo(info *MessageInfo) {
 func (p *NavigationData) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationData_Sid
     case "DistanceToWaypoint":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "CourseBearingReference":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "PerpendicularCrossed":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 42,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "ArrivalCircleEntered":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 44,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "CalculationType":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 46,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_NavigationData_DistanceToWaypoint
     case "EtaTime":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 48,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_NavigationData_EtaTime
     case "EtaDate":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 80,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_NavigationData_EtaDate
     case "BearingOriginToDestinationWaypoint":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 96,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationData_BearingOriginToDestinationWaypoint
     case "BearingPositionToDestinationWaypoint":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 112,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationData_BearingPositionToDestinationWaypoint
     case "OriginWaypointNumber":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 128,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationData_OriginWaypointNumber
     case "DestinationWaypointNumber":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 160,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationData_DestinationWaypointNumber
     case "DestinationLatitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 192,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationData_DestinationLatitude
     case "DestinationLongitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 224,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationData_DestinationLongitude
     case "WaypointClosingVelocity":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 256,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationData_WaypointClosingVelocity
     default:
         return nil
     }
@@ -13956,110 +3534,19 @@ func (p *NavigationRouteWpInformation) SetMessageInfo(info *MessageInfo) {
 func (p *NavigationRouteWpInformation) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartRps":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationRouteWpInformation_StartRps
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationRouteWpInformation_Nitems
     case "DatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_NavigationRouteWpInformation_DatabaseId
     case "RouteId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "NavigationDirectionInRoute":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 64,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SupplementaryRouteWpDataAvailable":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 67,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RouteName":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 72,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
+        return &fieldSpec_NavigationRouteWpInformation_RouteId
+    case "WpId":
+        return &fieldSpec_NavigationRouteWpInformation_WpId
+    case "WpLatitude":
+        return &fieldSpec_NavigationRouteWpInformation_WpLatitude
+    case "WpLongitude":
+        return &fieldSpec_NavigationRouteWpInformation_WpLongitude
     default:
         return nil
     }
@@ -14079,95 +3566,13 @@ func (p *GnssDops) SetMessageInfo(info *MessageInfo) {
 func (p *GnssDops) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "DesiredMode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "ActualMode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 11,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_GnssDops_Sid
     case "Hdop":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssDops_Hdop
     case "Vdop":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssDops_Vdop
     case "Tdop":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssDops_Tdop
     default:
         return nil
     }
@@ -14187,50 +3592,19 @@ func (p *GnssSatsInView) SetMessageInfo(info *MessageInfo) {
 func (p *GnssSatsInView) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "RangeResidualMode":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_GnssSatsInView_Sid
     case "SatsInView":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssSatsInView_SatsInView
+    case "Prn":
+        return &fieldSpec_GnssSatsInView_Prn
+    case "Elevation":
+        return &fieldSpec_GnssSatsInView_Elevation
+    case "Azimuth":
+        return &fieldSpec_GnssSatsInView_Azimuth
+    case "Snr":
+        return &fieldSpec_GnssSatsInView_Snr
+    case "RangeResiduals":
+        return &fieldSpec_GnssSatsInView_RangeResiduals
     default:
         return nil
     }
@@ -14250,65 +3624,13 @@ func (p *GnssRaimSettings) SetMessageInfo(info *MessageInfo) {
 func (p *GnssRaimSettings) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "RadialPositionErrorMaximumThreshold":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssRaimSettings_RadialPositionErrorMaximumThreshold
     case "ProbabilityOfFalseAlarm":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 125,
-            MissingValue: 127,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssRaimSettings_ProbabilityOfFalseAlarm
     case "ProbabilityOfMissedDetection":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 125,
-            MissingValue: 127,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssRaimSettings_ProbabilityOfMissedDetection
     case "PseudorangeResidualFilteringTimeConstant":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_GnssRaimSettings_PseudorangeResidualFilteringTimeConstant
     default:
         return nil
     }
@@ -14328,125 +3650,21 @@ func (p *GnssPseudorangeErrorStatistics) SetMessageInfo(info *MessageInfo) {
 func (p *GnssPseudorangeErrorStatistics) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPseudorangeErrorStatistics_Sid
     case "RmsStdDevOfRangeInputs":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPseudorangeErrorStatistics_RmsStdDevOfRangeInputs
     case "StdDevOfMajorErrorEllipse":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPseudorangeErrorStatistics_StdDevOfMajorErrorEllipse
     case "StdDevOfMinorErrorEllipse":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPseudorangeErrorStatistics_StdDevOfMinorErrorEllipse
     case "OrientationOfErrorEllipse":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 56,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPseudorangeErrorStatistics_OrientationOfErrorEllipse
     case "StdDevLatError":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 72,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPseudorangeErrorStatistics_StdDevLatError
     case "StdDevLonError":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 88,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPseudorangeErrorStatistics_StdDevLonError
     case "StdDevAltError":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 104,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssPseudorangeErrorStatistics_StdDevAltError
     default:
         return nil
     }
@@ -14466,155 +3684,21 @@ func (p *DgnssCorrections) SetMessageInfo(info *MessageInfo) {
 func (p *DgnssCorrections) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DgnssCorrections_Sid
     case "ReferenceStationId":
-        return &FieldSpec{
-            BitLength: 12,
-            BitOffset: 8,
-            MaxRawValue: 4093,
-            MissingValue: 4095,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "ReferenceStationType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 20,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_DgnssCorrections_ReferenceStationId
     case "TimeOfCorrections":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
-    case "StationHealth":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_DgnssCorrections_TimeOfCorrections
     case "SatelliteId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DgnssCorrections_SatelliteId
     case "Prc":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 56,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DgnssCorrections_Prc
     case "Rrc":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 88,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DgnssCorrections_Rrc
     case "Udre":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 104,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DgnssCorrections_Udre
     case "Iod":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 120,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_DgnssCorrections_Iod
     default:
         return nil
     }
@@ -14634,95 +3718,9 @@ func (p *GnssDifferentialCorrectionReceiverInterface) SetMessageInfo(info *Messa
 func (p *GnssDifferentialCorrectionReceiverInterface) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Channel":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssDifferentialCorrectionReceiverInterface_Channel
     case "Frequency":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 10,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "SerialInterfaceBitRate":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SerialInterfaceDetectionMode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 45,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "DifferentialSource":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "DifferentialOperationMode":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 52,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_GnssDifferentialCorrectionReceiverInterface_Frequency
     default:
         return nil
     }
@@ -14742,200 +3740,21 @@ func (p *GnssDifferentialCorrectionReceiverSignal) SetMessageInfo(info *MessageI
 func (p *GnssDifferentialCorrectionReceiverSignal) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssDifferentialCorrectionReceiverSignal_Sid
     case "Channel":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssDifferentialCorrectionReceiverSignal_Channel
     case "SignalStrength":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 16,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssDifferentialCorrectionReceiverSignal_SignalStrength
     case "SignalSnr":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssDifferentialCorrectionReceiverSignal_SignalSnr
     case "Frequency":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 64,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 10,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "StationType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 96,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_GnssDifferentialCorrectionReceiverSignal_Frequency
     case "ReferenceStationId":
-        return &FieldSpec{
-            BitLength: 12,
-            BitOffset: 100,
-            MaxRawValue: 4093,
-            MissingValue: 4095,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "DifferentialSignalBitRate":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 112,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "DifferentialSignalDetectionMode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 117,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "UsedAsCorrectionSource":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 120,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "DifferentialSource":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 124,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_GnssDifferentialCorrectionReceiverSignal_ReferenceStationId
     case "TimeSinceLastSatDifferentialSync":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 128,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_GnssDifferentialCorrectionReceiverSignal_TimeSinceLastSatDifferentialSync
     case "SatelliteServiceIdNo":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 144,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GnssDifferentialCorrectionReceiverSignal_SatelliteServiceIdNo
     default:
         return nil
     }
@@ -14955,200 +3774,31 @@ func (p *GlonassAlmanacData) SetMessageInfo(info *MessageInfo) {
 func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Prn":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_Prn
     case "Na":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_Na
     case "Cna":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 26,
-            MaxRawValue: 0,
-            MissingValue: 1,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 1,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_Cna
     case "Hna":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 27,
-            MaxRawValue: 29,
-            MissingValue: 31,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_Hna
     case "EpsilonNa":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_EpsilonNa
     case "DeltatnaDot":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_DeltatnaDot
     case "OmegaNa":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 56,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_OmegaNa
     case "DeltaTna":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 72,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_DeltaTna
     case "Tna":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 96,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_Tna
     case "LambdaNa":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 120,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_LambdaNa
     case "DeltaIna":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 144,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_DeltaIna
     case "TauCa":
-        return &FieldSpec{
-            BitLength: 28,
-            BitOffset: 168,
-            MaxRawValue: 268435453,
-            MissingValue: 268435455,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_TauCa
     case "TauNa":
-        return &FieldSpec{
-            BitLength: 12,
-            BitOffset: 196,
-            MaxRawValue: 4093,
-            MissingValue: 4095,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_GlonassAlmanacData_TauNa
     default:
         return nil
     }
@@ -15167,291 +3817,24 @@ func (p *AisClassAStaticAndVoyageRelatedData) SetMessageInfo(info *MessageInfo) 
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AisClassAStaticAndVoyageRelatedData) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "MessageId":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RepeatIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "UserId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
+        return &fieldSpec_AisClassAStaticAndVoyageRelatedData_UserId
     case "ImoNumber":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 40,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Callsign":
-        return &FieldSpec{
-            BitLength: 56,
-            BitOffset: 72,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
-    case "Name":
-        return &FieldSpec{
-            BitLength: 160,
-            BitOffset: 128,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
-    case "TypeOfShip":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 288,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisClassAStaticAndVoyageRelatedData_ImoNumber
     case "Length":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 296,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassAStaticAndVoyageRelatedData_Length
     case "Beam":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 312,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassAStaticAndVoyageRelatedData_Beam
     case "PositionReferenceFromStarboard":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 328,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassAStaticAndVoyageRelatedData_PositionReferenceFromStarboard
     case "PositionReferenceFromBow":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 344,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassAStaticAndVoyageRelatedData_PositionReferenceFromBow
     case "EtaDate":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 360,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_AisClassAStaticAndVoyageRelatedData_EtaDate
     case "EtaTime":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 376,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_AisClassAStaticAndVoyageRelatedData_EtaTime
     case "Draft":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 408,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Destination":
-        return &FieldSpec{
-            BitLength: 160,
-            BitOffset: 424,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
-    case "AisVersionIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 584,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "GnssType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 586,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Dte":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 590,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AisTransceiverInformation":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 592,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisClassAStaticAndVoyageRelatedData_Draft
     default:
         return nil
     }
@@ -15470,141 +3853,14 @@ func (p *AisAddressedBinaryMessage) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AisAddressedBinaryMessage) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "MessageId":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RepeatIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
-    case "AisTransceiverInformation":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 41,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisAddressedBinaryMessage_SourceId
     case "SequenceNumber":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 46,
-            MaxRawValue: 2,
-            MissingValue: 3,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 1,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisAddressedBinaryMessage_SequenceNumber
     case "DestinationId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
-    case "RetransmitFlag":
-        return &FieldSpec{
-            BitLength: 1,
-            BitOffset: 86,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisAddressedBinaryMessage_DestinationId
     case "NumberOfBitsInBinaryDataField":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 88,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: func() *float64 { v := float64(1680); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "BinaryData":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 104,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "BINARY",
-        }
+        return &fieldSpec_AisAddressedBinaryMessage_NumberOfBitsInBinaryDataField
     default:
         return nil
     }
@@ -15623,66 +3879,12 @@ func (p *AisAcknowledge) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AisAcknowledge) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "MessageId":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RepeatIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
-    case "AisTransceiverInformation":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 41,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisAcknowledge_SourceId
+    case "DestinationId":
+        return &fieldSpec_AisAcknowledge_DestinationId
+    case "SequenceNumber":
+        return &fieldSpec_AisAcknowledge_SequenceNumber
     default:
         return nil
     }
@@ -15701,96 +3903,10 @@ func (p *AisBinaryBroadcastMessage) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AisBinaryBroadcastMessage) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "MessageId":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RepeatIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
-    case "AisTransceiverInformation":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 41,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisBinaryBroadcastMessage_SourceId
     case "NumberOfBitsInBinaryDataField":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: func() *float64 { v := float64(1720); return &v }(),
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "BinaryData":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 64,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "BINARY",
-        }
+        return &fieldSpec_AisBinaryBroadcastMessage_NumberOfBitsInBinaryDataField
     default:
         return nil
     }
@@ -15810,95 +3926,13 @@ func (p *RadioFrequencyModePower) SetMessageInfo(info *MessageInfo) {
 func (p *RadioFrequencyModePower) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "RxFrequency":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 10,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RadioFrequencyModePower_RxFrequency
     case "TxFrequency":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 10,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "RadioChannel":
-        return &FieldSpec{
-            BitLength: 48,
-            BitOffset: 64,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
+        return &fieldSpec_RadioFrequencyModePower_TxFrequency
     case "TxPower":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 112,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Mode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 128,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_RadioFrequencyModePower_TxPower
     case "ChannelBandwidth":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 136,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RadioFrequencyModePower_ChannelBandwidth
     default:
         return nil
     }
@@ -15917,96 +3951,10 @@ func (p *AisClassBStaticDataMsg24PartA) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AisClassBStaticDataMsg24PartA) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "MessageId":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RepeatIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "UserId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
-    case "Name":
-        return &FieldSpec{
-            BitLength: 160,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
-    case "AisTransceiverInformation":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 200,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisClassBStaticDataMsg24PartA_UserId
     case "SequenceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 208,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassBStaticDataMsg24PartA_SequenceId
     default:
         return nil
     }
@@ -16025,216 +3973,20 @@ func (p *AisClassBStaticDataMsg24PartB) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *AisClassBStaticDataMsg24PartB) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "MessageId":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RepeatIndicator":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "UserId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
-    case "TypeOfShip":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "VendorId":
-        return &FieldSpec{
-            BitLength: 56,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
-    case "Callsign":
-        return &FieldSpec{
-            BitLength: 56,
-            BitOffset: 104,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "STRING_FIX",
-        }
+        return &fieldSpec_AisClassBStaticDataMsg24PartB_UserId
     case "Length":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 160,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassBStaticDataMsg24PartB_Length
     case "Beam":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 176,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassBStaticDataMsg24PartB_Beam
     case "PositionReferenceFromStarboard":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 192,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassBStaticDataMsg24PartB_PositionReferenceFromStarboard
     case "PositionReferenceFromBow":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 208,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassBStaticDataMsg24PartB_PositionReferenceFromBow
     case "MothershipUserId":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 224,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "MMSI",
-        }
-    case "GnssType":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 260,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "AisTransceiverInformation":
-        return &FieldSpec{
-            BitLength: 5,
-            BitOffset: 264,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_AisClassBStaticDataMsg24PartB_MothershipUserId
     case "SequenceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 272,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_AisClassBStaticDataMsg24PartB_SequenceId
     default:
         return nil
     }
@@ -16254,50 +4006,23 @@ func (p *RouteAndWpServiceDatabaseList) SetMessageInfo(info *MessageInfo) {
 func (p *RouteAndWpServiceDatabaseList) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartDatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceDatabaseList_StartDatabaseId
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceDatabaseList_Nitems
     case "NumberOfDatabasesAvailable":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceDatabaseList_NumberOfDatabasesAvailable
+    case "DatabaseId":
+        return &fieldSpec_RouteAndWpServiceDatabaseList_DatabaseId
+    case "DatabaseTimestamp":
+        return &fieldSpec_RouteAndWpServiceDatabaseList_DatabaseTimestamp
+    case "DatabaseDatestamp":
+        return &fieldSpec_RouteAndWpServiceDatabaseList_DatabaseDatestamp
+    case "NumberOfRoutesInDatabase":
+        return &fieldSpec_RouteAndWpServiceDatabaseList_NumberOfRoutesInDatabase
+    case "NumberOfWpsInDatabase":
+        return &fieldSpec_RouteAndWpServiceDatabaseList_NumberOfWpsInDatabase
+    case "NumberOfBytesInDatabase":
+        return &fieldSpec_RouteAndWpServiceDatabaseList_NumberOfBytesInDatabase
     default:
         return nil
     }
@@ -16317,65 +4042,15 @@ func (p *RouteAndWpServiceRouteList) SetMessageInfo(info *MessageInfo) {
 func (p *RouteAndWpServiceRouteList) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartRouteId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteList_StartRouteId
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteList_Nitems
     case "NumberOfRoutesInDatabase":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteList_NumberOfRoutesInDatabase
     case "DatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteList_DatabaseId
+    case "RouteId":
+        return &fieldSpec_RouteAndWpServiceRouteList_RouteId
     default:
         return nil
     }
@@ -16395,185 +4070,17 @@ func (p *RouteAndWpServiceRouteWpListAttributes) SetMessageInfo(info *MessageInf
 func (p *RouteAndWpServiceRouteWpListAttributes) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "DatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpListAttributes_DatabaseId
     case "RouteId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "RouteWpListName":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteId
     case "RouteWpListTimestamp":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 0,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteWpListTimestamp
     case "RouteWpListDatestamp":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
-    case "ChangeAtLastTimestamp":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BITLOOKUP",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteWpListDatestamp
     case "NumberOfWpsInTheRouteWpList":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "CriticalSupplementaryParameters":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "BITLOOKUP",
-        }
-    case "NavigationMethod":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "WpIdentificationMethod":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RouteStatus":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpListAttributes_NumberOfWpsInTheRouteWpList
     case "XteLimitForTheRoute":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpListAttributes_XteLimitForTheRoute
     default:
         return nil
     }
@@ -16593,80 +4100,21 @@ func (p *RouteAndWpServiceRouteWpNamePosition) SetMessageInfo(info *MessageInfo)
 func (p *RouteAndWpServiceRouteWpNamePosition) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartRps":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpNamePosition_StartRps
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpNamePosition_Nitems
     case "NumberOfWpsInTheRouteWpList":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpNamePosition_NumberOfWpsInTheRouteWpList
     case "DatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpNamePosition_DatabaseId
     case "RouteId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 64,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpNamePosition_RouteId
+    case "WpId":
+        return &fieldSpec_RouteAndWpServiceRouteWpNamePosition_WpId
+    case "WpLatitude":
+        return &fieldSpec_RouteAndWpServiceRouteWpNamePosition_WpLatitude
+    case "WpLongitude":
+        return &fieldSpec_RouteAndWpServiceRouteWpNamePosition_WpLongitude
     default:
         return nil
     }
@@ -16686,80 +4134,17 @@ func (p *RouteAndWpServiceRouteWpName) SetMessageInfo(info *MessageInfo) {
 func (p *RouteAndWpServiceRouteWpName) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartRps":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpName_StartRps
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpName_Nitems
     case "NumberOfWpsInTheRouteWpList":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpName_NumberOfWpsInTheRouteWpList
     case "DatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpName_DatabaseId
     case "RouteId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 64,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteWpName_RouteId
+    case "WpId":
+        return &fieldSpec_RouteAndWpServiceRouteWpName_WpId
     default:
         return nil
     }
@@ -16779,50 +4164,19 @@ func (p *RouteAndWpServiceXteLimitNavigationMethod) SetMessageInfo(info *Message
 func (p *RouteAndWpServiceXteLimitNavigationMethod) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartRps":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_StartRps
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_Nitems
     case "NumberOfWpsWithASpecificXteLimitOrNavMethod":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_NumberOfWpsWithASpecificXteLimitOrNavMethod
+    case "DatabaseId":
+        return &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_DatabaseId
+    case "RouteId":
+        return &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_RouteId
+    case "Rps":
+        return &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_Rps
+    case "XteLimitInTheLegAfterWp":
+        return &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_XteLimitInTheLegAfterWp
     default:
         return nil
     }
@@ -16842,80 +4196,17 @@ func (p *RouteAndWpServiceWpComment) SetMessageInfo(info *MessageInfo) {
 func (p *RouteAndWpServiceWpComment) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceWpComment_StartId
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceWpComment_Nitems
     case "NumberOfWpsWithComments":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceWpComment_NumberOfWpsWithComments
     case "DatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceWpComment_DatabaseId
     case "RouteId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 64,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceWpComment_RouteId
+    case "WpIdRps":
+        return &fieldSpec_RouteAndWpServiceWpComment_WpIdRps
     default:
         return nil
     }
@@ -16935,65 +4226,15 @@ func (p *RouteAndWpServiceRouteComment) SetMessageInfo(info *MessageInfo) {
 func (p *RouteAndWpServiceRouteComment) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartRouteId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteComment_StartRouteId
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteComment_Nitems
     case "NumberOfRoutesWithComments":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteComment_NumberOfRoutesWithComments
     case "DatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRouteComment_DatabaseId
+    case "RouteId":
+        return &fieldSpec_RouteAndWpServiceRouteComment_RouteId
     default:
         return nil
     }
@@ -17013,50 +4254,13 @@ func (p *RouteAndWpServiceDatabaseComment) SetMessageInfo(info *MessageInfo) {
 func (p *RouteAndWpServiceDatabaseComment) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartDatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceDatabaseComment_StartDatabaseId
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceDatabaseComment_Nitems
     case "NumberOfDatabasesWithComments":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceDatabaseComment_NumberOfDatabasesWithComments
+    case "DatabaseId":
+        return &fieldSpec_RouteAndWpServiceDatabaseComment_DatabaseId
     default:
         return nil
     }
@@ -17076,80 +4280,19 @@ func (p *RouteAndWpServiceRadiusOfTurn) SetMessageInfo(info *MessageInfo) {
 func (p *RouteAndWpServiceRadiusOfTurn) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartRps":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRadiusOfTurn_StartRps
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRadiusOfTurn_Nitems
     case "NumberOfWpsWithASpecificRadiusOfTurn":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRadiusOfTurn_NumberOfWpsWithASpecificRadiusOfTurn
     case "DatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRadiusOfTurn_DatabaseId
     case "RouteId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 64,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceRadiusOfTurn_RouteId
+    case "Rps":
+        return &fieldSpec_RouteAndWpServiceRadiusOfTurn_Rps
+    case "RadiusOfTurn":
+        return &fieldSpec_RouteAndWpServiceRadiusOfTurn_RadiusOfTurn
     default:
         return nil
     }
@@ -17169,65 +4312,19 @@ func (p *RouteAndWpServiceWpListWpNamePosition) SetMessageInfo(info *MessageInfo
 func (p *RouteAndWpServiceWpListWpNamePosition) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "StartWpId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceWpListWpNamePosition_StartWpId
     case "Nitems":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceWpListWpNamePosition_Nitems
     case "NumberOfValidWpsInTheWpList":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceWpListWpNamePosition_NumberOfValidWpsInTheWpList
     case "DatabaseId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_RouteAndWpServiceWpListWpNamePosition_DatabaseId
+    case "WpId":
+        return &fieldSpec_RouteAndWpServiceWpListWpNamePosition_WpId
+    case "WpLatitude":
+        return &fieldSpec_RouteAndWpServiceWpListWpNamePosition_WpLatitude
+    case "WpLongitude":
+        return &fieldSpec_RouteAndWpServiceWpListWpNamePosition_WpLongitude
     default:
         return nil
     }
@@ -17247,65 +4344,11 @@ func (p *WindData) SetMessageInfo(info *MessageInfo) {
 func (p *WindData) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WindData_Sid
     case "WindSpeed":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WindData_WindSpeed
     case "WindAngle":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Reference":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_WindData_WindAngle
     default:
         return nil
     }
@@ -17325,65 +4368,13 @@ func (p *EnvironmentalParametersObsolete) SetMessageInfo(info *MessageInfo) {
 func (p *EnvironmentalParametersObsolete) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EnvironmentalParametersObsolete_Sid
     case "WaterTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EnvironmentalParametersObsolete_WaterTemperature
     case "OutsideAmbientAirTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EnvironmentalParametersObsolete_OutsideAmbientAirTemperature
     case "AtmosphericPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 100,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EnvironmentalParametersObsolete_AtmosphericPressure
     default:
         return nil
     }
@@ -17403,95 +4394,13 @@ func (p *EnvironmentalParameters) SetMessageInfo(info *MessageInfo) {
 func (p *EnvironmentalParameters) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "TemperatureSource":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "HumiditySource":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 14,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_EnvironmentalParameters_Sid
     case "Temperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EnvironmentalParameters_Temperature
     case "Humidity":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.004,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EnvironmentalParameters_Humidity
     case "AtmosphericPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 100,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_EnvironmentalParameters_AtmosphericPressure
     default:
         return nil
     }
@@ -17511,80 +4420,13 @@ func (p *Temperature) SetMessageInfo(info *MessageInfo) {
 func (p *Temperature) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Temperature_Sid
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Source":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_Temperature_Instance
     case "ActualTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Temperature_ActualTemperature
     case "SetTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Temperature_SetTemperature
     default:
         return nil
     }
@@ -17604,80 +4446,13 @@ func (p *Humidity) SetMessageInfo(info *MessageInfo) {
 func (p *Humidity) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Humidity_Sid
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Source":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_Humidity_Instance
     case "ActualHumidity":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 24,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.004,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Humidity_ActualHumidity
     case "SetHumidity":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.004,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_Humidity_SetHumidity
     default:
         return nil
     }
@@ -17697,65 +4472,11 @@ func (p *ActualPressure) SetMessageInfo(info *MessageInfo) {
 func (p *ActualPressure) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ActualPressure_Sid
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Source":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_ActualPressure_Instance
     case "Pressure":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 24,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_ActualPressure_Pressure
     default:
         return nil
     }
@@ -17775,65 +4496,11 @@ func (p *SetPressure) SetMessageInfo(info *MessageInfo) {
 func (p *SetPressure) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_SetPressure_Sid
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Source":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SetPressure_Instance
     case "Pressure":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 24,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_SetPressure_Pressure
     default:
         return nil
     }
@@ -17853,80 +4520,13 @@ func (p *TemperatureExtendedRange) SetMessageInfo(info *MessageInfo) {
 func (p *TemperatureExtendedRange) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 0,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TemperatureExtendedRange_Sid
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 8,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Source":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_TemperatureExtendedRange_Instance
     case "Temperature":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 24,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TemperatureExtendedRange_Temperature
     case "SetTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TemperatureExtendedRange_SetTemperature
     default:
         return nil
     }
@@ -17945,156 +4545,18 @@ func (p *TideStationData) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *TideStationData) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "Mode":
-        return &FieldSpec{
-            BitLength: 4,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "TideTendency":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 4,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "MeasurementDate":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 8,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_TideStationData_MeasurementDate
     case "MeasurementTime":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 24,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_TideStationData_MeasurementTime
     case "StationLatitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 56,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TideStationData_StationLatitude
     case "StationLongitude":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 88,
-            MaxRawValue: 2147483645,
-            MissingValue: 2147483647,
-            Resolution: 1e-07,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TideStationData_StationLongitude
     case "TideLevel":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 120,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_TideStationData_TideLevel
     case "TideLevelStandardDeviation":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 136,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "StationId":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 152,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
-    case "StationName":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LAU",
-        }
+        return &fieldSpec_TideStationData_TideLevelStandardDeviation
     default:
         return nil
     }
@@ -18113,336 +4575,24 @@ func (p *WatermakerInputSettingAndStatus) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
-    case "WatermakerOperatingState":
-        return &FieldSpec{
-            BitLength: 6,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "ProductionStartStop":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 6,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "RinseStartStop":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 8,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "LowPressurePumpStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 10,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "HighPressurePumpStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 12,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "EmergencyStop":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 14,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "ProductSolenoidValveStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "FlushModeStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 18,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SalinityStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 20,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SensorStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 22,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "OilChangeIndicatorStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "FilterStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 26,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SystemStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 28,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
     case "Salinity":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WatermakerInputSettingAndStatus_Salinity
     case "ProductWaterTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.01,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WatermakerInputSettingAndStatus_ProductWaterTemperature
     case "PreFilterPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 64,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 100,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WatermakerInputSettingAndStatus_PreFilterPressure
     case "PostFilterPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 80,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 100,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WatermakerInputSettingAndStatus_PostFilterPressure
     case "FeedPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 96,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 1000,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WatermakerInputSettingAndStatus_FeedPressure
     case "SystemHighPressure":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 112,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1000,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WatermakerInputSettingAndStatus_SystemHighPressure
     case "ProductWaterFlow":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 128,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WatermakerInputSettingAndStatus_ProductWaterFlow
     case "BrineWaterFlow":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 144,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_WatermakerInputSettingAndStatus_BrineWaterFlow
     case "RunTime":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 160,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_WatermakerInputSettingAndStatus_RunTime
     default:
         return nil
     }
@@ -18462,95 +4612,17 @@ func (p *VesselSpeedComponents) SetMessageInfo(info *MessageInfo) {
 func (p *VesselSpeedComponents) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "LongitudinalSpeedWaterReferenced":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 0,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_VesselSpeedComponents_LongitudinalSpeedWaterReferenced
     case "TransverseSpeedWaterReferenced":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_VesselSpeedComponents_TransverseSpeedWaterReferenced
     case "LongitudinalSpeedGroundReferenced":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_VesselSpeedComponents_LongitudinalSpeedGroundReferenced
     case "TransverseSpeedGroundReferenced":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_VesselSpeedComponents_TransverseSpeedGroundReferenced
     case "SternSpeedWaterReferenced":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 64,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_VesselSpeedComponents_SternSpeedWaterReferenced
     case "SternSpeedGroundReferenced":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 80,
-            MaxRawValue: 32765,
-            MissingValue: 32767,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_VesselSpeedComponents_SternSpeedGroundReferenced
     default:
         return nil
     }
@@ -18570,95 +4642,15 @@ func (p *SonichubVolume) SetMessageInfo(info *MessageInfo) {
 func (p *SonichubVolume) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SonichubVolume_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SonichubVolume_IndustryCode
     case "ProprietaryId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Control":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_SonichubVolume_ProprietaryId
     case "Zone":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_SonichubVolume_Zone
     case "Level":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_SonichubVolume_Level
     default:
         return nil
     }
@@ -18678,125 +4670,21 @@ func (p *FusionVersions) SetMessageInfo(info *MessageInfo) {
 func (p *FusionVersions) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionVersions_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionVersions_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionVersions_MessageId
     case "HwVersionMajor":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVersions_HwVersionMajor
     case "HwVersionMinor":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVersions_HwVersionMinor
     case "SwVersionMajor":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 64,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVersions_SwVersionMajor
     case "SwVersionMinor":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 72,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVersions_SwVersionMinor
     case "BuildNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 80,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVersions_BuildNumber
     default:
         return nil
     }
@@ -18816,125 +4704,17 @@ func (p *FusionSource) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSource) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSource_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSource_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSource_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSource_SourceId
     case "CurrentSourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "SourceType":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSource_CurrentSourceId
     case "Flags":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Source":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 64,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionSource_Flags
     default:
         return nil
     }
@@ -18954,65 +4734,13 @@ func (p *FusionSourceCount) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSourceCount) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSourceCount_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSourceCount_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSourceCount_MessageId
     case "SourceCount":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSourceCount_SourceCount
     default:
         return nil
     }
@@ -19032,140 +4760,21 @@ func (p *FusionMedia) SetMessageInfo(info *MessageInfo) {
 func (p *FusionMedia) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMedia_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMedia_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMedia_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Flags":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMedia_SourceId
     case "Track":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 56,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionMedia_Track
     case "TrackCount":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 88,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionMedia_TrackCount
     case "Length":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 120,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_FusionMedia_Length
     case "PositionInTrack":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 152,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_FusionMedia_PositionInTrack
     default:
         return nil
     }
@@ -19185,95 +4794,15 @@ func (p *FusionTrackName) SetMessageInfo(info *MessageInfo) {
 func (p *FusionTrackName) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionTrackName_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionTrackName_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionTrackName_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionTrackName_SourceId
     case "Index":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 40,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Track":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 72,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionTrackName_Index
     default:
         return nil
     }
@@ -19293,95 +4822,15 @@ func (p *FusionArtistName) SetMessageInfo(info *MessageInfo) {
 func (p *FusionArtistName) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionArtistName_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionArtistName_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionArtistName_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionArtistName_SourceId
     case "Index":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 40,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Artist":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 72,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionArtistName_Index
     default:
         return nil
     }
@@ -19401,95 +4850,15 @@ func (p *FusionAlbumName) SetMessageInfo(info *MessageInfo) {
 func (p *FusionAlbumName) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionAlbumName_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionAlbumName_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionAlbumName_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionAlbumName_SourceId
     case "Index":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 40,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Album":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 72,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionAlbumName_Index
     default:
         return nil
     }
@@ -19509,65 +4878,11 @@ func (p *FusionDeviceName) SetMessageInfo(info *MessageInfo) {
 func (p *FusionDeviceName) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionDeviceName_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionDeviceName_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Name":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionDeviceName_MessageId
     default:
         return nil
     }
@@ -19587,80 +4902,13 @@ func (p *FusionZoneName) SetMessageInfo(info *MessageInfo) {
 func (p *FusionZoneName) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionZoneName_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionZoneName_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionZoneName_MessageId
     case "Number":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Name":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionZoneName_Number
     default:
         return nil
     }
@@ -19680,80 +4928,15 @@ func (p *FusionTrackPosition) SetMessageInfo(info *MessageInfo) {
 func (p *FusionTrackPosition) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionTrackPosition_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionTrackPosition_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionTrackPosition_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionTrackPosition_SourceId
     case "Progress":
-        return &FieldSpec{
-            BitLength: 24,
-            BitOffset: 40,
-            MaxRawValue: 16777213,
-            MissingValue: 16777215,
-            Resolution: 0.001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_FusionTrackPosition_Progress
     default:
         return nil
     }
@@ -19773,125 +4956,17 @@ func (p *FusionTuner) SetMessageInfo(info *MessageInfo) {
 func (p *FusionTuner) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionTuner_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionTuner_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionTuner_MessageId
     case "Scanning":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionTuner_Scanning
     case "Frequency":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 48,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionTuner_Frequency
     case "SignalStrength":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 80,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Track":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 88,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionTuner_SignalStrength
     default:
         return nil
     }
@@ -19911,110 +4986,17 @@ func (p *FusionMarineTuner) SetMessageInfo(info *MessageInfo) {
 func (p *FusionMarineTuner) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMarineTuner_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMarineTuner_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMarineTuner_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionMarineTuner_SourceId
     case "Channel":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionMarineTuner_Channel
     case "SignalStrength":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Name":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionMarineTuner_SignalStrength
     default:
         return nil
     }
@@ -20034,80 +5016,15 @@ func (p *FusionMarineSquelch) SetMessageInfo(info *MessageInfo) {
 func (p *FusionMarineSquelch) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMarineSquelch_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMarineSquelch_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMarineSquelch_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionMarineSquelch_SourceId
     case "Squelch":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionMarineSquelch_Squelch
     default:
         return nil
     }
@@ -20127,80 +5044,13 @@ func (p *FusionMarineScanMode) SetMessageInfo(info *MessageInfo) {
 func (p *FusionMarineScanMode) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMarineScanMode_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMarineScanMode_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMarineScanMode_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Scan":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMarineScanMode_SourceId
     default:
         return nil
     }
@@ -20220,125 +5070,19 @@ func (p *FusionMenuItem) SetMessageInfo(info *MessageInfo) {
 func (p *FusionMenuItem) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMenuItem_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMenuItem_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMenuItem_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionMenuItem_SourceId
     case "ItemIndex":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 40,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionMenuItem_ItemIndex
     case "Flags":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 72,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionMenuItem_Flags
     case "LockId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 80,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Text":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 88,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionMenuItem_LockId
     default:
         return nil
     }
@@ -20358,80 +5102,15 @@ func (p *FusionAuxGain) SetMessageInfo(info *MessageInfo) {
 func (p *FusionAuxGain) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionAuxGain_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionAuxGain_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionAuxGain_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionAuxGain_SourceId
     case "Gain":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionAuxGain_Gain
     default:
         return nil
     }
@@ -20451,80 +5130,13 @@ func (p *FusionUsbRepeatStatus) SetMessageInfo(info *MessageInfo) {
 func (p *FusionUsbRepeatStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionUsbRepeatStatus_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionUsbRepeatStatus_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionUsbRepeatStatus_MessageId
     case "Id":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Status":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 64,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionUsbRepeatStatus_Id
     default:
         return nil
     }
@@ -20544,80 +5156,13 @@ func (p *FusionSetting) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSetting) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetting_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetting_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Id":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSetting_MessageId
     case "Value":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 64,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSetting_Value
     default:
         return nil
     }
@@ -20637,65 +5182,15 @@ func (p *FusionSettings) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSettings) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSettings_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSettings_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSettings_MessageId
     case "Count":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 32,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSettings_Count
+    case "Value":
+        return &fieldSpec_FusionSettings_Value
     default:
         return nil
     }
@@ -20715,65 +5210,11 @@ func (p *FusionMute) SetMessageInfo(info *MessageInfo) {
 func (p *FusionMute) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMute_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMute_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Mute":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionMute_MessageId
     default:
         return nil
     }
@@ -20793,80 +5234,15 @@ func (p *FusionBalance) SetMessageInfo(info *MessageInfo) {
 func (p *FusionBalance) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionBalance_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionBalance_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionBalance_MessageId
     case "Zone":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionBalance_Zone
     case "Value":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionBalance_Value
     default:
         return nil
     }
@@ -20886,80 +5262,15 @@ func (p *FusionLowPassFilter) SetMessageInfo(info *MessageInfo) {
 func (p *FusionLowPassFilter) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionLowPassFilter_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionLowPassFilter_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionLowPassFilter_MessageId
     case "Zone":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionLowPassFilter_Zone
     case "Filter":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionLowPassFilter_Filter
     default:
         return nil
     }
@@ -20979,110 +5290,19 @@ func (p *FusionSublevels) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSublevels) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSublevels_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSublevels_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSublevels_MessageId
     case "Zone1":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSublevels_Zone1
     case "Zone2":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSublevels_Zone2
     case "Zone3":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSublevels_Zone3
     case "Zone4":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSublevels_Zone4
     default:
         return nil
     }
@@ -21102,110 +5322,19 @@ func (p *FusionEq) SetMessageInfo(info *MessageInfo) {
 func (p *FusionEq) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionEq_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionEq_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionEq_MessageId
     case "Zone":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionEq_Zone
     case "Bass":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 125,
-            MissingValue: 127,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionEq_Bass
     case "Mid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 125,
-            MissingValue: 127,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionEq_Mid
     case "Treble":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 125,
-            MissingValue: 127,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: true,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionEq_Treble
     default:
         return nil
     }
@@ -21225,110 +5354,19 @@ func (p *FusionVolumeLimits) SetMessageInfo(info *MessageInfo) {
 func (p *FusionVolumeLimits) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionVolumeLimits_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionVolumeLimits_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionVolumeLimits_MessageId
     case "Zone1VolumeLimit":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVolumeLimits_Zone1VolumeLimit
     case "Zone2VolumeLimit":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVolumeLimits_Zone2VolumeLimit
     case "Zone3VolumeLimit":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVolumeLimits_Zone3VolumeLimit
     case "Zone4VolumeLimit":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVolumeLimits_Zone4VolumeLimit
     default:
         return nil
     }
@@ -21348,110 +5386,19 @@ func (p *FusionVolumes) SetMessageInfo(info *MessageInfo) {
 func (p *FusionVolumes) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionVolumes_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionVolumes_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionVolumes_MessageId
     case "Zone1":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVolumes_Zone1
     case "Zone2":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVolumes_Zone2
     case "Zone3":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVolumes_Zone3
     case "Zone4":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 56,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionVolumes_Zone4
     default:
         return nil
     }
@@ -21471,125 +5418,21 @@ func (p *FusionCapabilities) SetMessageInfo(info *MessageInfo) {
 func (p *FusionCapabilities) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionCapabilities_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionCapabilities_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionCapabilities_MessageId
     case "Zone1":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionCapabilities_Zone1
     case "Zone2":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 48,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionCapabilities_Zone2
     case "Zone3":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 64,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionCapabilities_Zone3
     case "Zone4":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 80,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionCapabilities_Zone4
     case "Global":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 96,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionCapabilities_Global
     default:
         return nil
     }
@@ -21609,80 +5452,15 @@ func (p *FusionLineLevelControl) SetMessageInfo(info *MessageInfo) {
 func (p *FusionLineLevelControl) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionLineLevelControl_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionLineLevelControl_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionLineLevelControl_MessageId
     case "Zone":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionLineLevelControl_Zone
     case "Control":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionLineLevelControl_Control
     default:
         return nil
     }
@@ -21702,65 +5480,11 @@ func (p *FusionPowerState) SetMessageInfo(info *MessageInfo) {
 func (p *FusionPowerState) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionPowerState_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionPowerState_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "State":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionPowerState_MessageId
     default:
         return nil
     }
@@ -21780,125 +5504,15 @@ func (p *FusionSiriusxm) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSiriusxm) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxm_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxm_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxm_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "ComState":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
-    case "Alert":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxm_SourceId
     case "AdvisoryChannel":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 56,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "TuningMode":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 72,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxm_AdvisoryChannel
     default:
         return nil
     }
@@ -21918,95 +5532,15 @@ func (p *FusionSiriusxmChannel) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSiriusxmChannel) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmChannel_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmChannel_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmChannel_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSiriusxmChannel_SourceId
     case "ChannelNumber":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Channel":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionSiriusxmChannel_ChannelNumber
     default:
         return nil
     }
@@ -22026,95 +5560,15 @@ func (p *FusionSiriusxmTitle) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSiriusxmTitle) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmTitle_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmTitle_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmTitle_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSiriusxmTitle_SourceId
     case "Channel":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Title":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionSiriusxmTitle_Channel
     default:
         return nil
     }
@@ -22134,95 +5588,15 @@ func (p *FusionSiriusxmArtist) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSiriusxmArtist) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmArtist_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmArtist_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmArtist_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSiriusxmArtist_SourceId
     case "Channel":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Artist":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionSiriusxmArtist_Channel
     default:
         return nil
     }
@@ -22242,95 +5616,15 @@ func (p *FusionSiriusxmContentInfo) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSiriusxmContentInfo) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmContentInfo_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmContentInfo_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmContentInfo_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSiriusxmContentInfo_SourceId
     case "Channel":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Genre":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionSiriusxmContentInfo_Channel
     default:
         return nil
     }
@@ -22350,95 +5644,15 @@ func (p *FusionSiriusxmCategory) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSiriusxmCategory) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmCategory_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmCategory_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmCategory_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSiriusxmCategory_SourceId
     case "Channel":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Name":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 56,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "STRING_LZ",
-        }
+        return &fieldSpec_FusionSiriusxmCategory_Channel
     default:
         return nil
     }
@@ -22458,80 +5672,15 @@ func (p *FusionSiriusxmSignal) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSiriusxmSignal) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmSignal_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmSignal_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmSignal_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSiriusxmSignal_SourceId
     case "Signal":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSiriusxmSignal_Signal
     default:
         return nil
     }
@@ -22551,95 +5700,15 @@ func (p *FusionSiriusxmPresets) SetMessageInfo(info *MessageInfo) {
 func (p *FusionSiriusxmPresets) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmPresets_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmPresets_IndustryCode
     case "MessageId":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 16,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_FusionSiriusxmPresets_MessageId
     case "SourceId":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_FusionSiriusxmPresets_SourceId
     case "Count":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 40,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Values":
-        return &FieldSpec{
-            BitLength: 0,
-            BitOffset: 48,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: true,
-            CanboatType: "BINARY",
-        }
+        return &fieldSpec_FusionSiriusxmPresets_Count
     default:
         return nil
     }
@@ -22659,110 +5728,17 @@ func (p *MaretronProprietaryTemperatureHighRange) SetMessageInfo(info *MessageIn
 func (p *MaretronProprietaryTemperatureHighRange) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronProprietaryTemperatureHighRange_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronProprietaryTemperatureHighRange_IndustryCode
     case "Sid":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronProprietaryTemperatureHighRange_Sid
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "Source":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 32,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronProprietaryTemperatureHighRange_Instance
     case "ActualTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 40,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronProprietaryTemperatureHighRange_ActualTemperature
     case "SetTemperature":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 56,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 0.1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronProprietaryTemperatureHighRange_SetTemperature
     default:
         return nil
     }
@@ -22782,35 +5758,13 @@ func (p *BGKeyValueData) SetMessageInfo(info *MessageInfo) {
 func (p *BGKeyValueData) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_BGKeyValueData_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_BGKeyValueData_IndustryCode
+    case "Key":
+        return &fieldSpec_BGKeyValueData_Key
+    case "Length":
+        return &fieldSpec_BGKeyValueData_Length
     default:
         return nil
     }
@@ -22830,155 +5784,23 @@ func (p *MaretronSwitchStatusCounter) SetMessageInfo(info *MessageInfo) {
 func (p *MaretronSwitchStatusCounter) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronSwitchStatusCounter_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronSwitchStatusCounter_IndustryCode
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronSwitchStatusCounter_Instance
     case "IndicatorNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronSwitchStatusCounter_IndicatorNumber
     case "StartDate":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_MaretronSwitchStatusCounter_StartDate
     case "StartTime":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 48,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_MaretronSwitchStatusCounter_StartTime
     case "OffCounter":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 80,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronSwitchStatusCounter_OffCounter
     case "OnCounter":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 112,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronSwitchStatusCounter_OnCounter
     case "ErrorCounter":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 144,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
-    case "SwitchStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 176,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronSwitchStatusCounter_ErrorCounter
     default:
         return nil
     }
@@ -22998,155 +5820,23 @@ func (p *MaretronSwitchStatusTimer) SetMessageInfo(info *MessageInfo) {
 func (p *MaretronSwitchStatusTimer) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
     case "ManufacturerCode":
-        return &FieldSpec{
-            BitLength: 11,
-            BitOffset: 0,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronSwitchStatusTimer_ManufacturerCode
     case "IndustryCode":
-        return &FieldSpec{
-            BitLength: 3,
-            BitOffset: 13,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronSwitchStatusTimer_IndustryCode
     case "Instance":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 16,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronSwitchStatusTimer_Instance
     case "IndicatorNumber":
-        return &FieldSpec{
-            BitLength: 8,
-            BitOffset: 24,
-            MaxRawValue: 253,
-            MissingValue: 255,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "NUMBER",
-        }
+        return &fieldSpec_MaretronSwitchStatusTimer_IndicatorNumber
     case "StartDate":
-        return &FieldSpec{
-            BitLength: 16,
-            BitOffset: 32,
-            MaxRawValue: 65533,
-            MissingValue: 65535,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DATE",
-        }
+        return &fieldSpec_MaretronSwitchStatusTimer_StartDate
     case "StartTime":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 48,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 0.0001,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "TIME",
-        }
+        return &fieldSpec_MaretronSwitchStatusTimer_StartTime
     case "AccumulatedOffPeriod":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 80,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_MaretronSwitchStatusTimer_AccumulatedOffPeriod
     case "AccumulatedOnPeriod":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 112,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
+        return &fieldSpec_MaretronSwitchStatusTimer_AccumulatedOnPeriod
     case "AccumulatedErrorPeriod":
-        return &FieldSpec{
-            BitLength: 32,
-            BitOffset: 144,
-            MaxRawValue: 4294967293,
-            MissingValue: 4294967295,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 2,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "DURATION",
-        }
-    case "SwitchStatus":
-        return &FieldSpec{
-            BitLength: 2,
-            BitOffset: 176,
-            MaxRawValue: 0,
-            MissingValue: 0,
-            Resolution: 1,
-            Offset: 0,
-            IsSigned: false,
-            ReservedCount: 0,
-            DomainMin: nil,
-            DomainMax: nil,
-            BitLengthVariable: false,
-            CanboatType: "LOOKUP",
-        }
+        return &fieldSpec_MaretronSwitchStatusTimer_AccumulatedErrorPeriod
     default:
         return nil
     }

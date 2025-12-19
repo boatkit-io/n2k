@@ -19,7 +19,6 @@ type FieldSpec struct {
 
 	// Additional fields from FieldDescriptor (used at runtime)
 	BitLengthVariable bool   // Used in readVariableData()
-	CanboatType       string // Used in readVariableData() for STRING_LAU check
 }
 
 // IsScaled returns true if this field requires resolution/offset processing

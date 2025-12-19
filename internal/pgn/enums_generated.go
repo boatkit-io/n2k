@@ -8218,97 +8218,78 @@ type SimnetKeyValueConst uint16
 var SimnetKeyValueConstMap = map[int]FieldSpec{0: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	41: {
 		BitLength: 0,
 		Resolution: 60,
-		CanboatType: "DURATION",
 		},
 	260: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	264: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	516: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	517: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	520: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	768: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	1024: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	1800: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	4863: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "LOOKUP",
 		},
 	5160: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "LOOKUP",
 		},
 	5161: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "LOOKUP",
 		},
 	9983: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "LOOKUP",
 		},
 	11524: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	22296: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	32789: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "BITLOOKUP",
 		},
 	44079: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "LOOKUP",
 		},
 	55087: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "NUMBER",
 		},
 	 
 }
@@ -8317,772 +8298,618 @@ type BandgKeyValueConst uint16
 var BandgKeyValueConstMap = map[int]FieldSpec{0: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "NUMBER",
 		},
 	11: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	16: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	17: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	18: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	19: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	20: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	21: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	22: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	23: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	24: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	25: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	26: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	27: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	28: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	29: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	30: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	31: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	50: {
 		BitLength: 0,
 		Resolution: 0.1,
-		CanboatType: "NUMBER",
 		},
 	52: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	53: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	56: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	57: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	58: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	59: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	60: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	64: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	65: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	77: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	79: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	80: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	81: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	83: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	85: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	86: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	89: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	100: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "NUMBER",
 		},
 	102: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	103: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	104: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	105: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	109: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	111: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	113: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	117: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "DURATION",
 		},
 	124: {
 		BitLength: 0,
 		Resolution: 0.1,
-		CanboatType: "NUMBER",
 		},
 	125: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	126: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	127: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	129: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	130: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	131: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	132: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	135: {
 		BitLength: 0,
 		Resolution: 100,
-		CanboatType: "NUMBER",
 		},
 	152: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	154: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	155: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	156: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	157: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	158: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	163: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "NUMBER",
 		},
 	164: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "NUMBER",
 		},
 	185: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	186: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	194: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	195: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	199: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	205: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	207: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	211: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	233: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	235: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	239: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	240: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	241: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	242: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	243: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	244: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	245: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	246: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	247: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	248: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	256: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "DURATION",
 		},
 	258: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	259: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	260: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "DURATION",
 		},
 	261: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	262: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "DURATION",
 		},
 	265: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "DURATION",
 		},
 	270: {
 		BitLength: 0,
 		Resolution: 1e-07,
-		CanboatType: "NUMBER",
 		},
 	271: {
 		BitLength: 0,
 		Resolution: 1e-07,
-		CanboatType: "NUMBER",
 		},
 	272: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	273: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	274: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	275: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	280: {
 		BitLength: 0,
 		Resolution: 0.1,
-		CanboatType: "NUMBER",
 		},
 	281: {
 		BitLength: 0,
 		Resolution: 0.1,
-		CanboatType: "NUMBER",
 		},
 	282: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	283: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	284: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	285: {
 		BitLength: 0,
 		Resolution: 0.1,
-		CanboatType: "NUMBER",
 		},
 	286: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	287: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	288: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	289: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	290: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	291: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	292: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	293: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	294: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	296: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	297: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	298: {
 		BitLength: 0,
 		Resolution: 0.001,
-		CanboatType: "NUMBER",
 		},
 	301: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	302: {
 		BitLength: 0,
 		Resolution: 0.1,
-		CanboatType: "NUMBER",
 		},
 	305: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	306: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	307: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	308: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	309: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	310: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	311: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	312: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	313: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	314: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	315: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "NUMBER",
 		},
 	316: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "NUMBER",
 		},
 	317: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	318: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	319: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	320: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	321: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	322: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	323: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	324: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	325: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	326: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	327: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	328: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	329: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	330: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	331: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	332: {
 		BitLength: 0,
 		Resolution: 0.01,
-		CanboatType: "NUMBER",
 		},
 	336: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	337: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	338: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	380: {
 		BitLength: 0,
 		Resolution: 0,
-		CanboatType: "NUMBER",
 		},
 	381: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	382: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	383: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	384: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	385: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	386: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	387: {
 		BitLength: 0,
 		Resolution: 0.0001,
-		CanboatType: "NUMBER",
 		},
 	 
 }

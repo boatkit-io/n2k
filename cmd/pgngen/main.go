@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "embed"
+	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -60,6 +61,10 @@ type canboatConverter struct {
 	PGNs           []*PGN
 	NeverSeenPGNs  []*PGN
 	IncompletePGNS []*PGN
+
+	// Derived domain range data seeded from canboat and curated overrides
+	domainRanges      map[domainKey]domainRange
+	domainDiagnostics domainDiagnostics
 }
 
 // PhysicalUnit, defined in Canboat.json, defines the units used by Canboat.
@@ -173,11 +178,12 @@ type PGNField struct {
 	Offset                   int64
 	RangeMin                 float64
 	RangeMax                 float64
-	DomainMin                float64
-	DomainMax                float64
+	DomainMin                *float64
+	DomainMax                *float64
 	Match                    *int
 	Signed                   bool
 	Unit                     string
+	PhysicalQuantity         string `json:"PhysicalQuantity"`
 	LookupName               string `json:"LookupEnumeration"`
 	BitLookupName            string `json:"LookupBitEnumeration"`
 	IndirectLookupName       string `json:"LookupIndirectEnumeration"`
@@ -208,6 +214,7 @@ func (conv *canboatConverter) init() {
 
 // fixup massages the imported data (details in the routines it invokes).
 func (conv *canboatConverter) fixup() {
+	conv.buildDomainRanges()
 	conv.fixIDs()
 	conv.fixEnumDefs()
 	conv.fixRepeating()
@@ -300,13 +307,32 @@ func (conv *canboatConverter) write() {
 				return *v
 			}
 		},
-		"derefInt":            func(ip *int) int { return *ip },
-		"isNil":               func(fp *int) bool { return fp == nil },
+		"derefInt":   func(ip *int) int { return *ip },
+		"isNil":      func(fp *int) bool { return fp == nil },
+		"hasFloat64": func(fp *float64) bool { return fp != nil },
+		"derefFloat64": func(fp *float64) float64 {
+			if fp == nil {
+				return 0
+			}
+			return *fp
+		},
 		"contains":            func(in, substr string) bool { return strings.Contains(in, substr) },
 		"hasMultipleVariants": hasMultipleVariants,
 		"getVariantsForPgn":   getVariantsForPgn,
 		"getDecoderConfig":    getDecoderConfig,
 		"groupByPGN":          groupByPGN,
+		"needsFieldSpec": func(field PGNField) bool {
+			if reservedNumericType(field.FieldType) {
+				return true
+			}
+			if field.FieldType == "MMSI" {
+				return true
+			}
+			if field.FieldType == "FIELD_INDEX" || field.FieldType == "VARIABLE" {
+				return true
+			}
+			return field.Match != nil
+		},
 	}
 
 	// Generate fast bits array
@@ -334,6 +360,7 @@ func (conv *canboatConverter) write() {
 		"encoders_generated.go":       "runtime/encoders.go.tmpl",
 		"discriminators_generated.go": "runtime/discriminators.go.tmpl",
 		"fieldspecs_generated.go":     "runtime/fieldspecs.go.tmpl",
+		"fieldspec_vars_generated.go": "runtime/fieldspec_vars.go.tmpl",
 		"fastbits_generated.go":       "runtime/fastbits.go.tmpl",
 	}
 
@@ -351,19 +378,6 @@ func (conv *canboatConverter) write() {
 	}
 
 	for filename, templatePath := range filterrawTemplates {
-		fmt.Printf("Generating filterraw file: %s from template: %s\n", filename, templatePath)
-		if err := conv.generateFile(filepath.Join(filterrawDir, filename), templatePath, funcMap, templateData); err != nil {
-			fmt.Printf("Error generating %s: %v\n", filename, err)
-			panic(err)
-		}
-	}
-
-	// Generate filterraw files
-	pgnDataTemplates := map[string]string{
-		"pgn_data.go": "filterraw/pgn_data.go.tmpl",
-	}
-
-	for filename, templatePath := range pgnDataTemplates {
 		fmt.Printf("Generating filterraw file: %s from template: %s\n", filename, templatePath)
 		if err := conv.generateFile(filepath.Join(filterrawDir, filename), templatePath, funcMap, templateData); err != nil {
 			fmt.Printf("Error generating %s: %v\n", filename, err)
@@ -484,12 +498,8 @@ func needsScaling(field PGNField) bool {
 	return hasResolution || hasOffset
 }
 
-// generateFieldSpecConstant creates a FieldSpec constant definition
-func generateFieldSpecConstant(pgn PGN, field PGNField) string {
-	if !reservedNumericType(field.FieldType) {
-		return "" // Only generate specs for numeric/float fields
-	}
-
+// generateFieldSpecConstant creates a FieldSpec struct literal
+func generateFieldSpecConstant(field PGNField) string {
 	reservedCount := getReservedValueCount(field)
 	maxRawValue := calcMaxValidRawValue(field)
 	missingValue := calcMissingValue(field)
@@ -502,25 +512,26 @@ func generateFieldSpecConstant(pgn PGN, field PGNField) string {
 	// Handle domain constraints if available
 	domainMin := "nil"
 	domainMax := "nil"
-	if field.DomainMin > 0 {
-		domainMin = fmt.Sprintf("&[]float64{%g}[0]", field.DomainMin)
+	if field.DomainMin != nil {
+		domainMin = fmt.Sprintf("&[]float64{%g}[0]", *field.DomainMin)
 	}
-	if field.DomainMax > 0 {
-		domainMax = fmt.Sprintf("&[]float64{%g}[0]", field.DomainMax)
+	if field.DomainMax != nil {
+		domainMax = fmt.Sprintf("&[]float64{%g}[0]", *field.DomainMax)
 	}
 
-	return fmt.Sprintf(`&FieldSpec{
-		BitLength:     %d,
-		BitOffset:     %d,
-		MaxRawValue:   0x%X,
-		MissingValue:  0x%X,
-		Resolution:    %g,
-		Offset:        %d,
-		IsSigned:      %t,
-		ReservedCount: %d,
-		DomainMin:     %s,
-		DomainMax:     %s,
-	}`, field.BitLength, field.BitOffset, maxRawValue, missingValue, resolution, field.Offset, field.Signed, reservedCount, domainMin, domainMax)
+	return fmt.Sprintf(`FieldSpec{
+		BitLength:         %d,
+		BitOffset:         %d,
+		MaxRawValue:       0x%X,
+		MissingValue:      0x%X,
+		Resolution:        %g,
+		Offset:            %d,
+		IsSigned:          %t,
+		ReservedCount:     %d,
+		DomainMin:         %s,
+		DomainMax:         %s,
+		BitLengthVariable: %t,
+	}`, field.BitLength, field.BitOffset, maxRawValue, missingValue, resolution, field.Offset, field.Signed, reservedCount, domainMin, domainMax, field.BitLengthVariable)
 }
 
 // getReservedValueCount returns the number of reserved values at the top of a field's range.
@@ -558,7 +569,7 @@ func (conv *canboatConverter) fixIDs() {
 			panic("PGN ID not unique: " + conv.PGNs[i].Id)
 		}
 		for j := range conv.PGNs[i].Fields {
-			fixField(&conv.PGNs[i].Fields[j], *fieldDeDuper)
+			conv.fixField(&conv.PGNs[i].Fields[j], *fieldDeDuper)
 			// For variable length fields, the length of such a field is passed
 			// in another field. When we find such a field we keep the value in
 			// the PGN so it can be used by the decoder for that PGN.
@@ -569,24 +580,8 @@ func (conv *canboatConverter) fixIDs() {
 	}
 }
 
-// fixDomainLimits adds domain limits to fields that have them
-func fixDomainLimits(field *PGNField) {
-	// For specific fields, add domain-specific validation
-	switch field.Id {
-	case "Latitude":
-		field.DomainMin = float64(-90.0)
-		field.DomainMax = float64(90.0)
-	case "Longitude":
-		field.DomainMin = float64(-180.0)
-		field.DomainMax = float64(180.0)
-	case "NumberOfBitsInBinaryDataField":
-		field.DomainMin = float64(0.0)
-		field.DomainMax = float64(MaxPGNLength*8) - float64(field.BitOffset+field.BitLength) // following binary data field starts at bitOffset+bitLength
-	}
-}
-
 // fixField capitializes Id's first char, assures field name is unique, and forces lookup names.
-func fixField(field *PGNField, dedup DeDuper) {
+func (conv *canboatConverter) fixField(field *PGNField, dedup DeDuper) {
 	field.Id = capitalizeFirstChar(field.Id)
 	if len(field.FieldTypeLookupName) > 0 {
 		convertToConst(&field.FieldTypeLookupName)
@@ -606,7 +601,7 @@ func fixField(field *PGNField, dedup DeDuper) {
 	if len(field.IndirectLookupName) > 0 {
 		convertToConst(&field.IndirectLookupName)
 	}
-	fixDomainLimits(field)
+	conv.fixDomainLimits(field)
 }
 
 // fixRepeating identifies the range of repeating fields and extracts them to their own slice(s).
@@ -730,11 +725,14 @@ func (builder *canboatConverter) validate() {
 	// Validate match field uniqueness for PGN variants
 	builder.validateMatchFieldUniqueness()
 
-	// Validate Fast flags against isFast function
-	builder.validateFastFlags()
+	// Validate Fast flags against isFast function (skipped for now)
+	// builder.validateFastFlags()
 
 	// Validate fields with resolution != 1
 	builder.validateResolutionFields()
+
+	// Validate min/max values against calculated values
+	builder.validateMinMaxValues()
 }
 
 // validateResolutionFields checks if fields with resolution != 1 have correct RangeMax values
@@ -776,6 +774,227 @@ func (builder *canboatConverter) validateResolutionFields() {
 	} else {
 		log.Infof("All fields with resolution != 1 have correct RangeMax values")
 	}
+}
+
+// getCanboatReservedValueCount returns the number of reserved values as canboat might calculate them.
+// This includes a potential bug where fields >= 8 bits reserve 3 values instead of 2.
+func getCanboatReservedValueCount(field PGNField) uint8 {
+	if !reservedNumericType(field.FieldType) {
+		return 0
+	}
+
+	if field.BitLength == 0 {
+		return 0
+	}
+
+	// Canboat's logic (potentially buggy):
+	// - Length >= 8 bits reserves 3 values
+	// - Length >= 4 bits but < 8 bits reserves 2 values
+	// - Length < 4 bits reserves 1 value
+	if field.BitLength >= 8 {
+		return 3
+	} else if field.BitLength >= 4 {
+		return 2
+	} else {
+		return 1
+	}
+}
+
+// validateMinMaxValues checks if fields have RangeMin/RangeMax values that differ from calculated values
+// and writes the results to a CSV file for analysis
+func (builder *canboatConverter) validateMinMaxValues() {
+	// Create CSV file
+	csvFile, err := os.Create("range_min_max_discrepancies.csv")
+	if err != nil {
+		log.WithError(err).Error("Failed to create CSV file")
+		return
+	}
+	defer func() {
+		if err := csvFile.Close(); err != nil {
+			log.WithError(err).Warn("Failed to close CSV file")
+		}
+	}()
+
+	writer := csv.NewWriter(csvFile)
+	defer writer.Flush()
+
+	// Write CSV header
+	header := []string{
+		"PGN",
+		"PGN_ID",
+		"Field_ID",
+		"Field_Name",
+		"Unit",
+		"FieldType",
+		"RangeMin",
+		"RangeMax",
+		"CalcMin",
+		"CalcMax",
+		"CalcMaxCanboat",
+		"MinDiff",
+		"MaxDiff",
+		"MaxDiffCanboat",
+		"BitLength",
+		"Signed",
+		"Resolution",
+		"Offset",
+		"ReservedCount",
+		"ReservedCountCanboat",
+		"HasOffset",
+		"HasScaling",
+		"ExplainedByCanboatBug",
+		"Category",
+	}
+	if err := writer.Write(header); err != nil {
+		log.WithError(err).Error("Failed to write CSV header")
+		return
+	}
+
+	var totalChecked int
+	var totalDiscrepancies int
+	var explainedByCanboatBug int
+
+	for _, pgn := range builder.PGNs {
+		// Check all field slices
+		allFieldSlices := [][]PGNField{
+			pgn.Fields,
+			pgn.FieldsRepeating1,
+			pgn.FieldsRepeating2,
+		}
+
+		for _, fields := range allFieldSlices {
+			for _, field := range fields {
+				// Skip if both RangeMin and RangeMax are 0 (undefined)
+				if field.RangeMin == 0 && field.RangeMax == 0 {
+					continue
+				}
+
+				// Skip non-numeric fields or fields with 0 bit length
+				if !reservedNumericType(field.FieldType) || field.BitLength == 0 {
+					continue
+				}
+
+				totalChecked++
+
+				// Get resolution (default to 1.0 if nil)
+				resolution := 1.0
+				if field.Resolution != nil {
+					resolution = float64(*field.Resolution)
+				}
+
+				// Calculate theoretical maximum using our logic (correct NMEA 2000 standard)
+				maxRaw := calcMaxValidRawValue(field)
+				calcMax := float64(maxRaw)*resolution + float64(field.Offset)
+
+				// Calculate theoretical maximum using canboat's logic (potentially buggy)
+				maxRawCanboat := calcMaxRawValue(field)
+				canboatReservedCount := getCanboatReservedValueCount(field)
+				reservedCount := getReservedValueCount(field)
+				if canboatReservedCount > 0 {
+					maxRawCanboat -= uint64(canboatReservedCount)
+				}
+				calcMaxCanboat := float64(maxRawCanboat)*resolution + float64(field.Offset)
+
+				// Calculate theoretical minimum
+				var calcMin float64
+				if field.Signed {
+					// For signed: minimum is -(2^(bits-1))
+					// Use uint64 for shift to avoid overflow, then convert
+					minRawUint := uint64(1) << (field.BitLength - 1)
+					minRaw := -int64(minRawUint)
+					calcMin = float64(minRaw)*resolution + float64(field.Offset)
+				} else {
+					// For unsigned: minimum is 0
+					calcMin = float64(field.Offset)
+				}
+
+				// Use tolerance based on resolution (0.5 * resolution, or 0.0001 if resolution is 0)
+				tolerance := 0.5 * resolution
+				if tolerance == 0 {
+					tolerance = 0.0001
+				}
+
+				// Calculate differences
+				minDiff := 0.0
+				if field.RangeMin != 0 {
+					minDiff = math.Abs(calcMin - field.RangeMin)
+				}
+
+				maxDiff := 0.0
+				if field.RangeMax != 0 {
+					maxDiff = math.Abs(calcMax - field.RangeMax)
+				}
+
+				maxDiffCanboat := 0.0
+				if field.RangeMax != 0 {
+					maxDiffCanboat = math.Abs(calcMaxCanboat - field.RangeMax)
+				}
+
+				// Determine if this is a discrepancy
+				hasMinDiscrepancy := field.RangeMin != 0 && minDiff > tolerance
+				hasMaxDiscrepancy := field.RangeMax != 0 && maxDiff > tolerance
+				explainedByBug := field.RangeMax != 0 && maxDiff > tolerance && maxDiffCanboat <= tolerance
+
+				if hasMinDiscrepancy || hasMaxDiscrepancy {
+					totalDiscrepancies++
+					if explainedByBug {
+						explainedByCanboatBug++
+					}
+				}
+
+				// Determine category hints
+				category := ""
+				if hasMinDiscrepancy || hasMaxDiscrepancy {
+					if explainedByBug {
+						category = "CanboatBug"
+					} else if field.Offset != 0 {
+						category = "OffsetRelated"
+					} else if field.Unit == "K" && field.RangeMin == 0 {
+						category = "PhysicalConstraint" // Temperature 0-bounded
+					} else if resolution != 1.0 && (minDiff < resolution*10 || maxDiff < resolution*10) {
+						category = "ScalingCalculation"
+					} else {
+						category = "Unknown"
+					}
+				}
+
+				// Write row for all fields with RangeMin or RangeMax defined
+				row := []string{
+					strconv.FormatUint(uint64(pgn.PGN), 10),
+					pgn.Id,
+					field.Id,
+					field.Name,
+					field.Unit,
+					field.FieldType,
+					strconv.FormatFloat(field.RangeMin, 'f', 6, 64),
+					strconv.FormatFloat(field.RangeMax, 'f', 6, 64),
+					strconv.FormatFloat(calcMin, 'f', 6, 64),
+					strconv.FormatFloat(calcMax, 'f', 6, 64),
+					strconv.FormatFloat(calcMaxCanboat, 'f', 6, 64),
+					strconv.FormatFloat(minDiff, 'f', 6, 64),
+					strconv.FormatFloat(maxDiff, 'f', 6, 64),
+					strconv.FormatFloat(maxDiffCanboat, 'f', 6, 64),
+					strconv.FormatUint(uint64(field.BitLength), 10),
+					strconv.FormatBool(field.Signed),
+					strconv.FormatFloat(resolution, 'f', 6, 64),
+					strconv.FormatInt(field.Offset, 10),
+					strconv.FormatUint(uint64(reservedCount), 10),
+					strconv.FormatUint(uint64(canboatReservedCount), 10),
+					strconv.FormatBool(field.Offset != 0),
+					strconv.FormatBool(resolution != 1.0),
+					strconv.FormatBool(explainedByBug),
+					category,
+				}
+				if err := writer.Write(row); err != nil {
+					log.WithError(err).Error("Failed to write CSV row")
+					return
+				}
+			}
+		}
+	}
+
+	log.Infof("Wrote range_min_max_discrepancies.csv with %d fields checked", totalChecked)
+	log.Infof("Found %d fields with discrepancies (%d explained by canboat bug)", totalDiscrepancies, explainedByCanboatBug)
 }
 
 // validateMatchFieldUniqueness checks that PGN variants with the same PGN number have unique match field sets
@@ -845,7 +1064,7 @@ func (builder *canboatConverter) validateMatchFieldUniqueness() {
 	log.Infof("Match field uniqueness validation passed")
 }
 
-// isFast returns true if the specified PGN is a Fast packet based on PGN ranges
+/* // isFast returns true if the specified PGN is a Fast packet based on PGN ranges
 // This duplicates the function in internal/pgn/pgninfo.go for validation purposes
 func isFast(pgn uint32) bool {
 	switch {
@@ -870,9 +1089,9 @@ func isFast(pgn uint32) bool {
 	default:
 		return false // Unknown PGN, assume single frame
 	}
-}
+} */
 
-// validateFastFlags compares the Fast flag from source data against the isFast function
+/* // validateFastFlags compares the Fast flag from source data against the isFast function
 func (builder *canboatConverter) validateFastFlags() {
 	var mismatches []string
 
@@ -896,7 +1115,7 @@ func (builder *canboatConverter) validateFastFlags() {
 	} else {
 		log.Infof("Fast flag validation passed - all %d PGNs match isFast() function", len(builder.PGNs))
 	}
-}
+} */
 
 // generateFastBits creates a bit array for PGNs >= 126208 indicating if they are fast packets
 func (builder *canboatConverter) generateFastBits() []byte {

@@ -41,7 +41,6 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 						IsSigned: {{ $field.Signed }},
 						ReservedCount: {{ getReservedValueCount $field }},
 						BitLengthVariable: {{ $field.BitLengthVariable }},
-						CanboatType: "{{ $field.FieldType }}",
 					},
 					MatchValue: {{ $field.Match }},
 				},

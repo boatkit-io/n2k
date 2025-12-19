@@ -279,42 +279,31 @@ func (s *DataStream) getNumberRaw(bitLength uint16) (uint64, error) {
 }
 
 // getNullableNumberRaw method reads the specified length and returns a *uint64, or nil if missing or invalid.
-// NMEA uses the maximum positive value to indicate a value is missing
-// and that value minus 1 to indicate the value isn't valid (a bad sensor is used as the example)
-// if the value's length is <4 it only uses the maximum positive value as a flag.
-// In this routine, if the value is signed and negative we return it as is
-// we then calculate the maximum positive value the length allows (shifted down by 1 bit if signed).
-// we decrease that by 2 if > 4 length, and 1 for length 2 and 3
-// if the received value is greater than that value we return nil.
-func (s *DataStream) getNullableNumberRaw(bitLength uint16, signed bool, reservedValuesCount int) (*uint64, error) {
-	v, err := s.getNumberRaw(bitLength)
+// It uses the pre-calculated MaxRawValue from FieldSpec to determine validity.
+func (s *DataStream) getNullableNumberRaw(spec *FieldSpec) (*uint64, error) {
+	v, err := s.getNumberRaw(spec.BitLength)
 	if err != nil {
 		return nil, err
 	}
 
-	if signed {
-		mask := uint64(1 << (bitLength - 1))
+	if spec.IsSigned {
+		mask := uint64(1 << (spec.BitLength - 1))
 		if (v & mask) > 0 { // negative signed number, so smaller than maxint, so just return
 			return &v, nil
 		}
 	}
 
-	maxValue := calcMaxPositiveValue(bitLength, signed, reservedValuesCount)
-	if v > maxValue { // either missing or invalid. We'll return nil either way
+	// Use pre-calculated MaxRawValue instead of runtime calculation
+	if v > spec.MaxRawValue { // either missing or invalid. We'll return nil either way
 		return nil, nil
 	}
 
 	return &v, nil
 }
 
-// getUnsignedNullableNumber method returns a *uint64 or nil if null
-func (s *DataStream) getUnsignedNullableNumber(bitLength uint16, reservedValuesCount int) (*uint64, error) {
-	return s.getNullableNumberRaw(bitLength, false, reservedValuesCount)
-}
-
 // getSignedNullableNumber method returns a *int64 or nil if null
-func (s *DataStream) getSignedNullableNumber(bitLength uint16, reservedValuesCount int) (*int64, error) {
-	v, err := s.getNullableNumberRaw(bitLength, true, reservedValuesCount)
+func (s *DataStream) getSignedNullableNumber(spec *FieldSpec) (*int64, error) {
+	v, err := s.getNullableNumberRaw(spec)
 	if err != nil {
 		return nil, err
 	}
@@ -323,9 +312,9 @@ func (s *DataStream) getSignedNullableNumber(bitLength uint16, reservedValuesCou
 	}
 
 	// Sign extend if negative
-	signBit := uint64(1) << (bitLength - 1)
-	if (*v&signBit) != 0 && bitLength < 64 {
-		mask := uint64(math.MaxUint64) << bitLength
+	signBit := uint64(1) << (spec.BitLength - 1)
+	if (*v&signBit) != 0 && spec.BitLength < 64 {
+		mask := uint64(math.MaxUint64) << spec.BitLength
 		*v |= mask
 	}
 
@@ -373,7 +362,7 @@ func ReadRaw[T constraints.Integer](s *DataStream, spec *FieldSpec) (*T, error) 
 		}
 	} else {
 		// Has reserved values - use nullable logic
-		v, err := s.getNullableNumberRaw(spec.BitLength, spec.IsSigned, int(spec.ReservedCount))
+		v, err := s.getNullableNumberRaw(spec)
 		if err != nil {
 			return nil, err
 		}
@@ -439,7 +428,7 @@ func ReadScaled[T constraints.Float](s *DataStream, spec *FieldSpec) (*T, error)
 	} else {
 		// Has reserved values - use nullable logic
 		if spec.IsSigned {
-			rawValue, err := s.getSignedNullableNumber(spec.BitLength, int(spec.ReservedCount))
+			rawValue, err := s.getSignedNullableNumber(spec)
 			if err != nil {
 				return nil, err
 			}
@@ -448,7 +437,7 @@ func ReadScaled[T constraints.Float](s *DataStream, spec *FieldSpec) (*T, error)
 			}
 			val = float64(*rawValue)
 		} else {
-			rawValue, err := s.getUnsignedNullableNumber(spec.BitLength, int(spec.ReservedCount))
+			rawValue, err := s.getNullableNumberRaw(spec)
 			if err != nil {
 				return nil, err
 			}

@@ -7,9 +7,9 @@ import (
 // Test data for helper function validation
 func TestGetReservedValueCount(t *testing.T) {
 	tests := []struct {
-		name      string
-		field     PGNField
-		expected  uint8
+		name     string
+		field    PGNField
+		expected uint8
 	}{
 		{
 			name: "Short field (3 bits) reserves 1 value",
@@ -219,7 +219,7 @@ func TestCalcMissingValue(t *testing.T) {
 func TestNeedsScaling(t *testing.T) {
 	resolution1 := float32(1.0)
 	resolution025 := float32(0.25)
-	
+
 	tests := []struct {
 		name     string
 		field    PGNField
@@ -274,5 +274,28 @@ func TestNeedsScaling(t *testing.T) {
 				t.Errorf("needsScaling() = %t, expected %t", result, tt.expected)
 			}
 		})
+	}
+}
+
+func TestFixDomainLimitsUsesMappingAndFallbacks(t *testing.T) {
+	conv := &canboatConverter{
+		domainRanges: map[domainKey]domainRange{
+			{PhysicalQuantity: "TIME", Unit: "s"}: {
+				Min: float64Ptr(0),
+				Max: float64Ptr(10),
+			},
+		},
+	}
+
+	field := PGNField{Id: "Time", PhysicalQuantity: "TIME", Unit: "s"}
+	conv.fixDomainLimits(&field)
+	if field.DomainMin == nil || *field.DomainMin != 0 || field.DomainMax == nil || *field.DomainMax != 10 {
+		t.Fatalf("expected mapping applied to Time field, got min=%v max=%v", field.DomainMin, field.DomainMax)
+	}
+
+	lat := PGNField{Id: "Latitude"}
+	conv.fixDomainLimits(&lat)
+	if lat.DomainMin == nil || *lat.DomainMin != -90 || lat.DomainMax == nil || *lat.DomainMax != 90 {
+		t.Fatalf("expected latitude fallback range, got min=%v max=%v", lat.DomainMin, lat.DomainMax)
 	}
 }

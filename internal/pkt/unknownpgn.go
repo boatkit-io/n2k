@@ -24,7 +24,6 @@ func buildUnknownPGN(p *Packet) pgn.UnknownPGN {
 				BitLength:         11,
 				BitOffset:         0,
 				BitLengthVariable: false,
-				CanboatType:       "ManufacturerCode",
 			}
 			// read manufacturer code from data
 			manufacturerCode, err := pgn.ReadRaw[pgn.ManufacturerCodeConst](ds, &fs)
