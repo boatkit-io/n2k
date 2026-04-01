@@ -1,6 +1,6 @@
 module github.com/boatkit-io/n2k
 
-go 1.22
+go 1.25.0
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
@@ -11,7 +11,7 @@ require (
 	github.com/schollz/progressbar/v3 v3.14.4
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.9.0
-	golang.org/x/text v0.17.0
+	golang.org/x/text v0.35.0
 )
 
 require (
