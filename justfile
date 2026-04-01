@@ -2,10 +2,6 @@
 default:
     @just --list
 
-# build all binaries locally
-build:
-    go build -v -o bin/ ./cmd/...
-
 # run all tests
 test:
     go test ./...
@@ -33,15 +29,6 @@ vet:
 # run golangci-lint
 lint:
     golangci-lint run ./...
-
-# run code generation
-codegen:
-    go run ./cmd/pgngen/main.go ./cmd/pgngen/deduper.go
-
-# remove build artifacts
-clean:
-    rm -rf bin
-    go clean ./...
 
 # tidy go modules
 tidy:
