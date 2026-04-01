@@ -1,5 +1,3 @@
-bin
-
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -7,15 +5,47 @@ bin
 *.so
 *.dylib
 
-# Test binary, built with `go test -c`
+# Editor files
+*.swp
+*~
+\#*\#
+.idea/*
+TAGS
+*.sublime-project
+*.sublime-workspace
+.\#*
+.dir-locals.el
+
+# Test binary, build with "go test -c"
 *.test
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# Log files
+*.log
 
-canboatjson.cache
+# Releases and other binaries
+bin/
+dist/
+.dist/
 
+# Don't. Commit. Vendor. Or other package manager dep directories
 node_modules
+vendor
+
+# macOS
+.DS_Store
+
+# Task local state
+.task
+
+# VSCode debugger launch configs
+launch.json
+
+# Currently a build artifact
+CHANGELOG.md
+
+## <<Stencil::Block(custom)>>
+
+## <</Stencil::Block>>

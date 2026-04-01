@@ -2,6 +2,7 @@ package canadapter
 
 import (
 	"fmt"
+
 	"github.com/boatkit-io/n2k/pkg/pkt"
 	"github.com/sirupsen/logrus"
 )

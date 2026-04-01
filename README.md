@@ -1,4 +1,5 @@
 # Golang NMEA 2000 Library
+
 ## boatkit-io/n2k
 
 boatkit-io/n2k comprises packages (and associated tools) supporting the exchange of NMEA 2000 messages across a range of transports. Client go code can send and receive strongly typed [go](https://go.dev) data structures, with the library translating to/from a stream of NMEA 2000 messages. (The current implementation reads but doesn't write.)
@@ -19,13 +20,12 @@ The command takes no arguments. It caches the canboat.json file in the local fil
 
 The convertcandumps command converts between a number of NMEA 2000 message representations produced (and sometimes consumed) by NMEA gateways. It reads these formats:
 
- .ydr files, described in Appendix E of https://www.yachtd.com/downloads/ydwg02.pdf.
- .raw files, formats are described at https://github.com/canboat/canboat/wiki/analyzer.
- .CAN files, format described in https://www.yachtd.com/downloads/CANVIEW.zip/CANView.pdf.
- .n2k files, output of linux candump with delta timestamps
+.ydr files, described in Appendix E of https://www.yachtd.com/downloads/ydwg02.pdf.
+.raw files, formats are described at https://github.com/canboat/canboat/wiki/analyzer.
+.CAN files, format described in https://www.yachtd.com/downloads/CANVIEW.zip/CANView.pdf.
+.n2k files, output of linux candump with delta timestamps
 
- It writes .n2k and plain .raw files.
-
+It writes .n2k and plain .raw files.
 
 ### replay
 
@@ -46,20 +46,18 @@ The endpoint passes new message frames to the adapter through its input function
 Responsible for generating a "packet" from frames received through its input function, and passes complete packets on through its output function. The packet is an intermediate format used by subsequent processors.
 
 This adapter can access a number of helper functions:
+
 - is the PGN known (defined in canboat)?
-- is it Proprietary? 
+- is it Proprietary?
 - is it Fast or Single?
 
 ### Packet to Struct Adapter
 
 Receives packet through its input function, decodes it, and passes the resulting Go struct (or an UnknownPGN if it fails to decode the packet) on through its output function.
 
-### Subscribe 
+### Subscribe
 
 Subscribe is a separate package that manages subscribers and distributes go structs (in this case n2k-related) to them.
-
-
-
 
 ## Build instructions
 
@@ -71,9 +69,9 @@ See [changelog](./changelog.md)
 
 ## Related Projects
 
-* [canboat](https://github.com/canboat/canboat) An open source collection of command line tools and data relevant to NMEA 2000 boat networks
-* tbd
+- [canboat](https://github.com/canboat/canboat) An open source collection of command line tools and data relevant to NMEA 2000 boat networks
+- tbd
 
 ## License
-[n2k license](./LICENSE)
 
+[n2k license](./LICENSE)
