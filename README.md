@@ -65,7 +65,7 @@ To be provided
 
 ## Version History
 
-See [changelog](./changelog.md)
+See [releases](/releases)
 
 ## Related Projects
 
