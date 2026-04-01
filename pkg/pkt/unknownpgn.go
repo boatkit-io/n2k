@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/boatkit-io/n2k/pkg/pgn"
+	"github.com/open-ships/n2k/pkg/pgn"
 )
 
 // buildUnknownPGN returns an UnknownPGN with its Reason field set to the merged errors generated.

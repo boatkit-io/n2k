@@ -3,7 +3,7 @@ package pkt
 import (
 	"fmt"
 
-	"github.com/boatkit-io/n2k/pkg/pgn"
+	"github.com/open-ships/n2k/pkg/pgn"
 )
 
 // StructHandler is an interface for a handler of the output of a PacketStruct

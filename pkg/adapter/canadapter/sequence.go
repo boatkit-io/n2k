@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/boatkit-io/n2k/pkg/pkt"
+	"github.com/open-ships/n2k/pkg/pkt"
 )
 
 // MaxFrameNum is the maximum frame number in a multipart NMEA message.

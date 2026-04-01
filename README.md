@@ -1,7 +1,7 @@
-# Golang NMEA 2000 Library
-## boatkit-io/n2k
+# Golang NMEA 2000 (N2k) Library
+## open-ships/n2k
 
-boatkit-io/n2k comprises packages (and associated tools) supporting the exchange of NMEA 2000 messages across a range of transports. Client go code can send and receive strongly typed [go](https://go.dev) data structures, with the library translating to/from a stream of NMEA 2000 messages. (The current implementation reads but doesn't write.)
+open-ships/n2k comprises packages (and associated tools) supporting the exchange of NMEA 2000 messages across a range of transports. Client go code can send and receive strongly typed [go](https://go.dev) data structures, with the library translating to/from a stream of NMEA 2000 messages. (The current implementation reads but doesn't write.)
 
 [NMEA 2000](https://www.nmea.org/content/STANDARDS/NMEA_2000) is a proprietary industry standard for inter-connecting marine electronic devices. This project leverages the great work of the [canboat](https://github.com/canboat/canboat) open-source project that has "reverse engineered the NMEA 2000 database by network observation and assembling data from public sources."
 
@@ -11,7 +11,7 @@ The canboat project includes and references valuable documentation for potential
 
 ### pgngen
 
-The pgngen command processes the current canboat.json file (accessed at https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json) and generates the file pgninfo_generated.go (github.com/boatkit-io/n2k/pkg/pgn/pgn_generated.go). The generated file provides constants, data types, and decoder functions used to create strongly typed golang data structures for interacting with NMEA 2000 devices.
+The pgngen command processes the current canboat.json file (accessed at https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json) and generates the file pgninfo_generated.go (github.com/open-ships/n2k/pkg/pgn/pgn_generated.go). The generated file provides constants, data types, and decoder functions used to create strongly typed golang data structures for interacting with NMEA 2000 devices.
 
 The command takes no arguments. It caches the canboat.json file in the local file system for an hour to avoid generating unnecessary load on the server and network.
 

@@ -1,7 +1,7 @@
 package canadapter
 
 import (
-	"github.com/boatkit-io/n2k/pkg/pkt"
+	"github.com/open-ships/n2k/pkg/pkt"
 )
 
 // MultiBuilder assembles a sequence of packets into a comple Packet.

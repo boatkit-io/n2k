@@ -1,4 +1,7 @@
-## Change Log for boatkit-io/n2k
+## Change Log for open-ships/n2k
+
+
+## (Prior) Change Log for boatkit-io/n2k
 
 This document will be updated whenever changes are made to the main branch of this project.
 

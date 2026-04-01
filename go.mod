@@ -1,4 +1,4 @@
-module github.com/boatkit-io/n2k
+module github.com/open-ships/n2k
 
 go 1.25
 

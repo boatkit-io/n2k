@@ -4,7 +4,7 @@ package endpoint
 import (
 	"context"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
+	"github.com/open-ships/n2k/pkg/adapter"
 )
 
 // Endpoint declares the interface for endpoints.

@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
-	"github.com/boatkit-io/n2k/pkg/canbus"
-	"github.com/boatkit-io/n2k/pkg/endpoint"
+	"github.com/open-ships/n2k/pkg/adapter"
+	"github.com/open-ships/n2k/pkg/canbus"
+	"github.com/open-ships/n2k/pkg/endpoint"
 	"github.com/brutella/can"
 )
 

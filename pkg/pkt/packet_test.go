@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/boatkit-io/n2k/pkg/pgn"
+	"github.com/open-ships/n2k/pkg/pgn"
 )
 
 func TestValid(t *testing.T) {

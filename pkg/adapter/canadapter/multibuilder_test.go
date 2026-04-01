@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/boatkit-io/n2k/pkg/pkt"
+	"github.com/open-ships/n2k/pkg/pkt"
 	"github.com/brutella/can"
 	"github.com/stretchr/testify/assert"
 )

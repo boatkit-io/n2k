@@ -7,8 +7,8 @@ import (
 
 	"github.com/brutella/can"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
-	"github.com/boatkit-io/n2k/pkg/pkt"
+	"github.com/open-ships/n2k/pkg/adapter"
+	"github.com/open-ships/n2k/pkg/pkt"
 )
 
 // CANAdapter instances read canbus frames from its input and outputs complete Packets.
