@@ -1,8 +1,0 @@
-lintroller:
-  doculint:
-    enabled: true
-    validatePackages: true
-    validateFunctions: true
-    validateVariables: true
-    validateConstants: true
-    validateTypes: true

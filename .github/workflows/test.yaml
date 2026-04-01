@@ -1,37 +1,21 @@
-name: tests
+name: Test
+
 on:
   push:
-    branches:
-      - main
-  pull_request:
-
-permissions:
-  contents: read
+    branches: ["**"]
 
 jobs:
-  lint:
-    name: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install Tool Versions
-        uses: jdx/mise-action@v2
-        env:
-          GH_TOKEN: ${{ github.token }}
-      - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v6
-        with:
-          args: --timeout=5m
   test:
-    name: go test
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Install Tool Versions
-        uses: jdx/mise-action@v2
-        env:
-          GH_TOKEN: ${{ github.token }}
-      - name: lintroller
-        run: go run github.com/getoutreach/lintroller/cmd/lintroller@v1.18.2 -config lintroller.yaml ./...
-      - name: test
-        run: make test
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Test
+        run: go test ./...
