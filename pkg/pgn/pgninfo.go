@@ -225,7 +225,10 @@ func GetFieldDescriptor(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint
 	return nil, fmt.Errorf("PGN not found")
 }
 
-// SearchUnseenList returns true if the PGN has no Canboat samples.
+// SearchUnseenList returns true if the given PGN number appears in the unseen list,
+// meaning it is defined in the canboat database but has never been observed in real
+// CAN bus log files. Unseen PGNs have generated decoders but may be less reliable
+// because their field layouts have not been validated against actual device output.
 func SearchUnseenList(pgn uint32) bool {
 	return UnseenLookup[pgn] != nil
 }
