@@ -3,27 +3,26 @@ package usbcanendpoint
 
 import (
 	"context"
+	"fmt"
+	"log/slog"
 
 	"github.com/boatkit-io/n2k/pkg/adapter"
+	"github.com/boatkit-io/n2k/pkg/canbus"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
-	"github.com/boatkit-io/tugboat/pkg/canbus"
 	"github.com/brutella/can"
-	"github.com/pkg/errors"
-
-	"github.com/sirupsen/logrus"
 )
 
 // USBCANEndpoint is an endpoint backed by a USBCAN interface, pulling down CAN frames
 type USBCANEndpoint struct {
-	log *logrus.Logger
+	log *slog.Logger
 
 	channel canbus.Interface
 
 	handler endpoint.MessageHandler
 }
 
-// NewUSBCANEndpoint builds a new SocketCANEndpoint for the given CAN interface name
-func NewUSBCANEndpoint(log *logrus.Logger, serialPortName string) endpoint.Endpoint {
+// NewUSBCANEndpoint builds a new USBCANEndpoint for the given serial port name
+func NewUSBCANEndpoint(log *slog.Logger, serialPortName string) endpoint.Endpoint {
 	c := USBCANEndpoint{
 		log: log,
 	}
@@ -54,18 +53,8 @@ func (c *USBCANEndpoint) SetOutput(mh endpoint.MessageHandler) {
 // Close will stop the endpoint from processing further frames
 func (c *USBCANEndpoint) Close() error {
 	if c.channel != nil {
-		var errs []error
-
 		if err := c.channel.Close(); err != nil {
-			errs = append(errs, errors.Wrap(err, "closing n2k canbus channel"))
-		}
-
-		if len(errs) > 0 {
-			err := errs[0]
-			for i := 1; i < len(errs); i++ {
-				err = errors.Wrap(err, errs[i].Error())
-			}
-			return err
+			return fmt.Errorf("closing n2k canbus channel: %w", err)
 		}
 	}
 

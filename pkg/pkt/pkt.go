@@ -3,7 +3,7 @@ package pkt
 
 import (
 	"fmt"
-	// "github.com/sirupsen/logrus"
+
 	"github.com/boatkit-io/n2k/pkg/pgn"
 )
 

@@ -2,8 +2,10 @@
 package canadapter
 
 import (
+	"fmt"
+	"log/slog"
+
 	"github.com/brutella/can"
-	"github.com/sirupsen/logrus"
 
 	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/pkt"
@@ -12,7 +14,6 @@ import (
 // CANAdapter instances read canbus frames from its input and outputs complete Packets.
 type CANAdapter struct {
 	multi *MultiBuilder // combines multiple frames into a complete Packet.
-	log   *logrus.Logger
 
 	handler PacketHandler
 }
@@ -23,10 +24,9 @@ type PacketHandler interface {
 }
 
 // NewCANAdapter instantiates a new CanAdapter
-func NewCANAdapter(log *logrus.Logger) *CANAdapter {
+func NewCANAdapter() *CANAdapter {
 	return &CANAdapter{
-		multi: NewMultiBuilder(log),
-		log:   log,
+		multi: NewMultiBuilder(),
 	}
 }
 
@@ -60,7 +60,7 @@ func (c *CANAdapter) HandleMessage(message adapter.Message) {
 			c.packetReady(packet)
 		}
 	default:
-		c.log.Warnf("CanAdapter expected *can.Frame, received: %T", f)
+		slog.Warn(fmt.Sprintf("CanAdapter expected *can.Frame, received: %T", f))
 	}
 }
 

@@ -20,9 +20,10 @@ import (
 	"time"
 	"unicode"
 
+	"log/slog"
+
 	"github.com/Masterminds/sprig/v3"
 	"github.com/schollz/progressbar/v3"
-	"github.com/sirupsen/logrus"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 )
@@ -30,8 +31,6 @@ import (
 // resolution64BitCutoff is a heuristic for a cutoff to jump from float32 -> float64 for uint32->float conversion
 const resolution64BitCutoff = 0.0000001
 
-// log provides standard logging capability to the program.
-var log = logrus.StandardLogger()
 
 // pgninfoTemplate is the template used to generate the output file.
 //
@@ -196,13 +195,13 @@ func (conv *canboatConverter) init() {
 	raw, _ := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json")
 	err := json.Unmarshal(raw, conv)
 	if err != nil {
-		log.Info(err)
+		slog.Info("error unmarshaling canboat json", "error", err)
 	}
-	log.Infof("Initially Parsed Lookup enums: %d", len(conv.Enums))
-	log.Infof("Initially Parsed IndirectLookup enums: %d", len(conv.IndirectEnums))
-	log.Infof("Initially Parsed BitLookup enums: %d", len(conv.BitEnums))
-	log.Infof("Initially Parsed FieldTypeLookup enums: %d", len(conv.FieldTypeEnums))
-	log.Infof("Parsed pgns: %d", len(conv.PGNs))
+	slog.Info("initially parsed lookup enums", "count", len(conv.Enums))
+	slog.Info("initially parsed indirect lookup enums", "count", len(conv.IndirectEnums))
+	slog.Info("initially parsed bit lookup enums", "count", len(conv.BitEnums))
+	slog.Info("initially parsed field type lookup enums", "count", len(conv.FieldTypeEnums))
+	slog.Info("parsed pgns", "count", len(conv.PGNs))
 }
 
 // fixup massages the imported data (details in the routines it invokes).
@@ -244,7 +243,7 @@ func (conv *canboatConverter) filter() {
 	conv.PGNs = known
 	conv.NeverSeenPGNs = unknown
 	conv.IncompletePGNS = incomplete
-	log.Infof("After filtering, known: %d, unknown: %d, incomplete: %d", len(conv.PGNs), len(conv.NeverSeenPGNs), len(conv.IncompletePGNS))
+	slog.Info("after filtering", "known", len(conv.PGNs), "unknown", len(conv.NeverSeenPGNs), "incomplete", len(conv.IncompletePGNS))
 }
 
 // write outputs the pgninfo_generated.go file. Most of the work occurs in the template.
@@ -312,7 +311,7 @@ func fixupField(field *PGNField, dedup DeDuper) {
 		convertToConst(&field.FieldTypeLookupName)
 	}
 	if field.FieldType == "LOOKUP" && len(field.LookupName) == 0 {
-		log.Infof("Lookup without Enumeration Name: " + field.Id)
+		slog.Info("lookup without enumeration name", "fieldId", field.Id)
 	}
 	if firstTime, _ := dedup.unique(field.Id); !firstTime {
 		panic("field ID not unique: " + field.Id)
@@ -431,7 +430,7 @@ func (builder *canboatConverter) validate() {
 		}
 		if fast > 0 && single > 0 {
 			specials++
-			log.Infof("PGN: %d has %d fast and %d single instances\n", pi[0].PGN, fast, single)
+			slog.Info("PGN has mixed fast and single instances", "pgn", pi[0].PGN, "fast", fast, "single", single)
 		}
 	}
 	if specials > 0 {
@@ -495,7 +494,7 @@ func fieldByteCount(field PGNField) uint16 {
 	return uint16(math.Ceil((float64(field.BitLength) + float64(field.BitOffset)) / 8))
 }
 
-// getUnitType maps the canboat units into our tugboat unit library's categories/types
+// getUnitType maps the canboat units into our unit library's categories/types
 func getUnitType(unitName string) (string, string) {
 	switch unitName {
 	case "m":
@@ -718,7 +717,7 @@ func cacheFromWeb(name, url string) (string, error) {
 	var cachedName = name + ".cache"
 	fstat, err := os.Stat(cachedName)
 	if err != nil || time.Since(fstat.ModTime()) > cacheDuration {
-		log.Infof("Downloading source data...")
+		slog.Info("downloading source data...")
 
 		req, _ := http.NewRequest("GET", url, nil)
 		resp, err := http.DefaultClient.Do(req)
@@ -737,7 +736,7 @@ func cacheFromWeb(name, url string) (string, error) {
 
 		f.Close()
 	} else {
-		log.Infof(fmt.Sprintf("Using cached file %s", name))
+		slog.Info("using cached file", "name", name)
 	}
 	return cachedName, nil
 }
@@ -777,7 +776,7 @@ func getManId(p *PGN) int {
 			if field.Match != nil {
 				return *field.Match
 			} else {
-				log.Infof("Proprietary PGN %d does not match on ManufacturerCode", p.PGN)
+				slog.Info("proprietary PGN does not match on ManufacturerCode", "pgn", p.PGN)
 				return 0
 			}
 		}

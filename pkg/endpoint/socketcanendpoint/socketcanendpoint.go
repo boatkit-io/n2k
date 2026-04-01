@@ -3,19 +3,18 @@ package socketcanendpoint
 
 import (
 	"context"
+	"fmt"
+	"log/slog"
 
 	"github.com/boatkit-io/n2k/pkg/adapter"
+	"github.com/boatkit-io/n2k/pkg/canbus"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
-	"github.com/boatkit-io/tugboat/pkg/canbus"
 	"github.com/brutella/can"
-	"github.com/pkg/errors"
-
-	"github.com/sirupsen/logrus"
 )
 
 // SocketCANEndpoint is an endpoint backed by a live SocketCAN interface, pulling down CAN frames
 type SocketCANEndpoint struct {
-	log *logrus.Logger
+	log *slog.Logger
 
 	channel canbus.Interface
 
@@ -23,7 +22,7 @@ type SocketCANEndpoint struct {
 }
 
 // NewSocketCANEndpoint builds a new SocketCANEndpoint for the given CAN interface name
-func NewSocketCANEndpoint(log *logrus.Logger, canInterfaceName string) endpoint.Endpoint {
+func NewSocketCANEndpoint(log *slog.Logger, canInterfaceName string) endpoint.Endpoint {
 	c := SocketCANEndpoint{
 		log: log,
 	}
@@ -53,18 +52,8 @@ func (c *SocketCANEndpoint) SetOutput(mh endpoint.MessageHandler) {
 // Close will stop the endpoint from processing further frames
 func (c *SocketCANEndpoint) Close() error {
 	if c.channel != nil {
-		var errs []error
-
 		if err := c.channel.Close(); err != nil {
-			errs = append(errs, errors.Wrap(err, "closing n2k canbus channel"))
-		}
-
-		if len(errs) > 0 {
-			err := errs[0]
-			for i := 1; i < len(errs); i++ {
-				err = errors.Wrap(err, errs[i].Error())
-			}
-			return err
+			return fmt.Errorf("closing n2k canbus channel: %w", err)
 		}
 	}
 

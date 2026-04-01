@@ -1,8 +1,6 @@
 package canadapter
 
 import (
-	"github.com/sirupsen/logrus"
-
 	"github.com/boatkit-io/n2k/pkg/pkt"
 )
 
@@ -14,14 +12,12 @@ import (
 // sequence ids are 0-7, so each source|PGN can have 8 sequences in simultaneous transmission
 // sequences map[sourceid]map[pgn]map[SeqId]sequence
 type MultiBuilder struct {
-	log       *logrus.Logger
 	sequences map[uint8]map[uint32]map[uint8]*sequence
 }
 
 // NewMultiBuilder creates a new instance.
-func NewMultiBuilder(log *logrus.Logger) *MultiBuilder {
+func NewMultiBuilder() *MultiBuilder {
 	mBuilder := MultiBuilder{
-		log:       log,
 		sequences: make(map[uint8]map[uint32]map[uint8]*sequence),
 	}
 	return &mBuilder
@@ -48,9 +44,7 @@ func (m *MultiBuilder) SeqFor(p *pkt.Packet) *sequence {
 	}
 	seq := m.sequences[p.Info.SourceId][p.Info.PGN][p.SeqId]
 	if seq == nil {
-		seq = &sequence{
-			log: m.log,
-		}
+		seq = &sequence{}
 		m.sequences[p.Info.SourceId][p.Info.PGN][p.SeqId] = seq
 	}
 	return seq
