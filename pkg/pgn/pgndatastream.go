@@ -433,7 +433,16 @@ func (s *PGNDataStream) readStringWithLength() (string, error) {
 	return string(arr), nil
 }
 
-// readFixedString method reads a string of fixed length.
+// readFixedString reads a fixed-width string field of exactly bitLength bits.
+// After reading the raw bytes, padding characters are stripped from the end.
+// NMEA 2000 devices use three different padding conventions:
+//   - NUL (0x00): standard C-string terminator
+//   - 0xFF: "data not available" fill byte
+//   - '@': legacy padding character used by some older devices
+//
+// The string is truncated at the first occurrence of any of these pad characters.
+// This means a string cannot legitimately contain '@' or 0xFF as content -- an
+// acceptable limitation given typical marine device naming conventions.
 func (s *PGNDataStream) readFixedString(bitLength uint16) (string, error) {
 	arr, err := s.readBinaryData(bitLength)
 	if err != nil {
@@ -441,7 +450,7 @@ func (s *PGNDataStream) readFixedString(bitLength uint16) (string, error) {
 	}
 	str := string(arr)
 
-	// String may be padded on end by 0, "@", or 0xFF, cull appropriately
+	// Truncate at the first padding character found (NUL, 0xFF, or '@').
 	i := strings.IndexByte(str, 0)
 	if i != -1 {
 		str = str[:i]
@@ -458,35 +467,52 @@ func (s *PGNDataStream) readFixedString(bitLength uint16) (string, error) {
 	return str, nil
 }
 
-// getNumberRaw method reads up to 64 bits from the stream and returns it as a uint64.
-// Took notes from:
-// https://github.com/canboat/canboat/blob/732371ada8b0c6f33652c3ab61f0856abfd9e076/analyzer/pgn.c#L253
-// Except that a bunch of it seems wrong... their examples reference MSB ordering of things but it appears
-// to really be LSB, the way that would make sense...
+// getNumberRaw is the lowest-level read primitive. It extracts up to 64 bits from the
+// stream at the current cursor position, returning them as a uint64 in little-endian
+// bit order. The cursor is advanced by exactly bitLength bits.
+//
+// Algorithm: the loop processes one "chunk" per iteration, where each chunk is the
+// remaining bits within the current source byte (from bitOffset to end-of-byte).
+// Steps per iteration:
+//  1. Determine how many bits to grab: min(bits remaining in current byte, bits still needed).
+//  2. Right-shift the current byte to discard already-consumed low bits (bitOffset).
+//  3. Mask off the high bits we don't want (if grabbing fewer than 8 bits).
+//  4. OR the extracted bits into the result at the correct output position (outBitOffset).
+//  5. Advance both the stream cursor and the output position.
+//
+// Reference: loosely based on canboat/canboat pgn.c, but corrected for true LSB-first
+// byte ordering as observed on real CAN bus traffic.
 func (s *PGNDataStream) getNumberRaw(bitLength uint16) (uint64, error) {
 	var ret uint64
 
-	outBitOffset := 0
+	outBitOffset := 0 // tracks where in the output uint64 to place the next chunk
 
 	for bitLength > 0 {
 		if int(s.byteOffset) >= len(s.data) {
 			return 0, fmt.Errorf("reading byte(%d) off end of pgn (len:%d)", s.byteOffset, len(s.data))
 		}
 
+		// How many bits remain in the current source byte from the current bit position.
 		bitsToGrab := 8 - s.bitOffset
 		if bitLength < uint16(bitsToGrab) {
 			bitsToGrab = uint8(bitLength)
 		}
 
+		// Extract bits from the current byte:
+		// 1. Shift right to drop the already-consumed low bits.
 		b := s.data[s.byteOffset]
 		b >>= s.bitOffset
+		// 2. Mask to keep only the bits we want (when grabbing fewer than a full byte).
 		if bitsToGrab < 8 {
 			mask := uint8(0xFF >> uint8(8-bitsToGrab))
 			b &= mask
 		}
+		// 3. Place the extracted bits at the correct position in the output value.
 		ret |= uint64(b) << uint64(outBitOffset)
 		outBitOffset += int(bitsToGrab)
 		bitLength -= uint16(bitsToGrab)
+
+		// Advance the stream cursor.
 		s.bitOffset += bitsToGrab
 		if s.bitOffset >= 8 {
 			s.bitOffset -= 8
@@ -497,14 +523,22 @@ func (s *PGNDataStream) getNumberRaw(bitLength uint16) (uint64, error) {
 	return ret, nil
 }
 
-// getNullableNumberRaw method reads the specified length and returns a *uint64, or nil if maxvalue.
+// getNullableNumberRaw reads bitLength bits and applies NMEA 2000 null detection.
+// In the NMEA 2000 encoding, a field's maximum representable value means "data not available":
+//   - For unsigned fields: all bits set (e.g., 0xFF for 8-bit, 0xFFFF for 16-bit)
+//   - For signed fields: the positive maximum (e.g., 0x7F for 8-bit, 0x7FFF for 16-bit)
+//
+// When the raw value matches the null sentinel, this method returns (nil, nil) instead of
+// a value pointer, allowing callers to distinguish "no data" from valid data.
 func (s *PGNDataStream) getNullableNumberRaw(bitLength uint16, signed bool) (*uint64, error) {
 	v, err := s.getNumberRaw(bitLength)
 	if err != nil {
 		return nil, err
 	}
 
-	// Check for max value -> nil
+	// Compute the null sentinel: start with all 64 bits set, then shift right to keep
+	// only the bits that fit in the field width. For signed fields, shift one more bit
+	// to get the positive maximum (the sign bit is excluded from the sentinel).
 	maxVal := uint64(0xFFFFFFFFFFFFFFFF)
 	maxVal >>= 64 - bitLength
 	if signed {
@@ -517,12 +551,21 @@ func (s *PGNDataStream) getNullableNumberRaw(bitLength uint16, signed bool) (*ui
 	return &v, nil
 }
 
-// getUnsignedNullableNumber method returns a *uint64 or nil if null
+// getUnsignedNullableNumber reads an unsigned integer with null detection.
+// Returns nil when the field contains the unsigned null sentinel (all bits set).
 func (s *PGNDataStream) getUnsignedNullableNumber(bitLength uint16) (*uint64, error) {
 	return s.getNullableNumberRaw(bitLength, false)
 }
 
-// getSignedNullableNumber method returns a *int64 or nil if null
+// getSignedNullableNumber reads a signed two's-complement integer with null detection.
+// Returns nil when the field contains the signed null sentinel (positive max value).
+//
+// Sign extension works by checking the sign bit (the highest bit of the field):
+//   - If the sign bit is clear, the value is non-negative and returned as-is.
+//   - If the sign bit is set, the value is negative. The sign bit is stripped via XOR,
+//     and the result is computed as: -(2^(bitLength-1)) + remaining_bits.
+//     This is equivalent to standard two's-complement interpretation but avoids
+//     overflow issues with Go's uint64-to-int64 conversion for arbitrary bit widths.
 func (s *PGNDataStream) getSignedNullableNumber(bitLength uint16) (*int64, error) {
 	v, err := s.getNullableNumberRaw(bitLength, true)
 	if err != nil {
@@ -532,18 +575,28 @@ func (s *PGNDataStream) getSignedNullableNumber(bitLength uint16) (*int64, error
 		return nil, nil
 	}
 
-	// Check if negative (max bit set)
+	// Check the sign bit (most significant bit of the field).
 	mask := uint64(1 << (bitLength - 1))
 	if *v&mask > 0 {
+		// Negative value: strip the sign bit, then compute the two's-complement result.
+		// Example for 8-bit -44: raw=0xD4, mask=0x80, *v^mask=0x54=84, result=-128+84=-44.
 		*v ^= mask
 		vi := -int64(mask) + int64(*v)
 		return &vi, nil
 	}
+	// Non-negative: safe to cast directly.
 	vi := int64(*v)
 	return &vi, nil
 }
 
-// readVariableData method reads and returns the value of pgn.fieldIndex as a byte array
+// readVariableData reads a field whose length or encoding depends on its type descriptor.
+// It looks up the FieldDescriptor for the given PGN, manufacturer ID, and field index,
+// then dispatches to the appropriate reader:
+//   - For variable-length STRING_LAU fields: uses readStringWithLengthAndControl
+//   - For all other fields: reads BitLength bits (rounded up to a byte boundary) as raw binary
+//
+// This method is used by generated decoders for "KeyValue" style PGNs where the field
+// type is determined at runtime rather than at code-generation time.
 func (s *PGNDataStream) readVariableData(pgn uint32, manID ManufacturerCodeConst, fieldIndex uint8) ([]uint8, error) {
 	field, err := GetFieldDescriptor(pgn, manID, fieldIndex)
 	if err == nil {
@@ -556,6 +609,7 @@ func (s *PGNDataStream) readVariableData(pgn uint32, manID ManufacturerCodeConst
 				return []uint8(str), nil
 			}
 		}
+		// Round BitLength up to the nearest byte boundary using bit-clear of the low 3 bits.
 		len := (field.BitLength + 7) &^ 0x7
 		return s.readBinaryData(len)
 	} else {

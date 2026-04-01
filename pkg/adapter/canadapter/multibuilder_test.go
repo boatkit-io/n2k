@@ -9,6 +9,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// testData contains a real-world captured multi-frame fast-packet sequence for PGN 129540
+// (GNSS Satellites in View). This is a large message spanning 32 CAN frames from source 22
+// with sequence ID 1 (0x20 = seqId=1, frameNum=0). The expected payload length is 0xDB = 219
+// bytes. This tests the MultiBuilder's ability to handle large, many-frame sequences.
 var testData = `
 2022-12-20T04:14:09Z,6,129540,22,255,8,20,db,3c,ff,12,1a,d1,15
 2022-12-20T04:14:09Z,6,129540,22,255,8,21,fd,86,24,13,00,00,00
@@ -60,6 +64,11 @@ var testData = `
 `
 */
 
+// TestBigPacket verifies that the MultiBuilder can assemble a large real-world fast-packet
+// sequence (PGN 129540, GNSS Satellites in View) spanning 32 CAN frames. The test parses
+// the testData capture line by line, feeding each frame to the MultiBuilder. After the last
+// frame, the final packet should be marked Complete, indicating successful assembly of
+// all 219 bytes declared in frame 0.
 func TestBigPacket(t *testing.T) {
 
 	m := NewMultiBuilder()
@@ -77,10 +86,31 @@ func TestBigPacket(t *testing.T) {
 	assert.True(t, p.Complete)
 }
 
+// TestFastPacket is a comprehensive test of the MultiBuilder that covers several scenarios:
+//
+// 1. Single-frame fast packet: A fast-packet PGN (130820) whose entire payload (5 bytes)
+//    fits in frame 0. The packet should be immediately Complete after a single Add() call.
+//
+// 2. Out-of-order initial frame: Sending frame 1 before frame 0. The sequence should not
+//    be complete, and the sequence entry should exist in the MultiBuilder's map.
+//
+// 3. Multi-frame in-order assembly: Sending frames 0-4 in order for a 32-byte payload.
+//    The packet should be Complete after frame 4 with exactly 32 bytes of data.
+//
+// 4. Multi-frame out-of-order assembly: Sending frame 0, then frames in non-sequential
+//    order (0, 3, 1, 2, 4). Frame 0 must still come first, but subsequent frames can
+//    arrive in any order. The assembled data should be identical to the in-order case.
+//
+// 5. Duplicate frame detection and reset: Sending a duplicate continuation frame (frame 1
+//    twice) triggers a sequence reset. After the reset, the sequence is incomplete and
+//    cannot be assembled because it's missing frames. The packet should NOT be Complete
+//    and its data should differ from the correctly assembled version.
 func TestFastPacket(t *testing.T) {
 	m := NewMultiBuilder()
 
-	// test fast packet that's actually Complete in single-frame
+	// --- Scenario 1: Single-frame fast packet ---
+	// PGN 130820 with payload length 5 fits entirely in frame 0.
+	// Byte 0 = 0xa0: seqId=5, frameNum=0. Byte 1 = 5: expected length.
 	pInfo := NewPacketInfo(&can.Frame{ID: CanIdFromData(130820, 10, 1, 0), Length: 8})
 	data := []uint8{160, 5, 163, 153, 32, 128, 1, 255}
 	p := pkt.NewPacket(pInfo, data)
@@ -88,7 +118,10 @@ func TestFastPacket(t *testing.T) {
 	assert.True(t, p.Complete)
 	assert.True(t, p.Valid())
 
-	// we allow out of order frames
+	// --- Scenario 2: Out-of-order initial frame ---
+	// Sending frame 1 (0xa1 = seqId=5, frameNum=1) before frame 0. The MultiBuilder should
+	// accept it but the sequence won't be complete. Verify the sequence exists in the map
+	// under source=10, pgn=130820, seqId=5.
 	m = NewMultiBuilder()
 	p = pkt.NewPacket(NewPacketInfo(&can.Frame{ID: CanIdFromData(130820, 10, 1, 0), Length: 8}), []uint8{161, 5, 163, 153, 32, 128, 1, 255})
 	m.Add(p)
@@ -97,12 +130,11 @@ func TestFastPacket(t *testing.T) {
 	assert.NotNil(t, m.sequences[10])
 	assert.NotNil(t, m.sequences[10][130820][5])
 
-	// test misc multi frame packet
-	// Note we only build multi frames for known PGNs.
-	// We only know a PGN is multi frame if it's known. We can guess
-	// that an unknown pgn with a frame 0 and a valid length byte (0-223, so
-	// not much of a test) might be a fast variant, but it's a weak heuristic.
-	// Instead we'll return each packet as unknown.
+	// --- Scenario 3: Multi-frame in-order assembly ---
+	// Test a 5-frame sequence for PGN 130820 (using CAN ID 0x09F20183).
+	// Frame 0 declares 32 bytes expected (0x20). The sequence completes after frame 4.
+	// Note: We only build multi frames for known PGNs. Unknown PGNs return as individual
+	// UnknownPGN packets since we can't reliably detect fast-packet for unknown PGNs.
 	m = NewMultiBuilder()
 	pInfo = NewPacketInfo(&can.Frame{ID: 0x09F20183})
 	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
@@ -127,11 +159,13 @@ func TestFastPacket(t *testing.T) {
 	m.Add(p)
 	assert.True(t, p.Complete)
 	assert.Equal(t, 32, len(p.Data))
-	comp := p.Data // used in next test for out of order
+	comp := p.Data // Save assembled data for comparison in later tests.
 
-	// test misc multi frame packet out of order
+	// --- Scenario 4: Multi-frame out-of-order assembly ---
+	// Same 5 frames but sent as: 0, 3, 1, 2, 4 (frame 0 must still be first).
+	// The assembled data should be identical to the in-order case.
 	m = NewMultiBuilder()
-	// zero must be first!
+	// Frame 0 must be first!
 	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -156,7 +190,7 @@ func TestFastPacket(t *testing.T) {
 	assert.Equal(t, 32, len(p.Data))
 	assert.Equal(t, comp, p.Data)
 
-	// test misc multi frame packet out of order
+	// --- Another out-of-order test (same order, verifying reproducibility) ---
 	m = NewMultiBuilder()
 	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
@@ -182,7 +216,10 @@ func TestFastPacket(t *testing.T) {
 	assert.Equal(t, 32, len(p.Data))
 	assert.Equal(t, comp, p.Data)
 
-	// test that receiving a duplicate frame resets the sequence
+	// --- Scenario 5: Duplicate frame detection and reset ---
+	// Send frames 0, 3, 1, then frame 1 again (duplicate). The duplicate triggers a reset.
+	// After the reset, send frames 2 and 4. Because frames 0-1 are missing (lost in reset),
+	// the packet cannot complete. Verify it's NOT complete and differs from correct assembly.
 	m = NewMultiBuilder()
 	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
@@ -196,10 +233,11 @@ func TestFastPacket(t *testing.T) {
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
 	assert.False(t, p.Complete)
+	// Duplicate frame 1 -- triggers sequence reset.
 	data = []uint8{0x61, 0x86, 0x0A, 0x05, 0x80, 0x00, 0x58, 0xE8}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
-	// duplicate, so sequence should reset, and after "completing" the packet will remain inComplete
+	// After reset, sequence is incomplete. Continue with remaining frames.
 	data = []uint8{0x62, 0x55, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x7F}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -208,6 +246,7 @@ func TestFastPacket(t *testing.T) {
 	data = []uint8{0x64, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x7F, 0xFF}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
+	// Packet should NOT be complete because the reset lost frames 0 and 3.
 	assert.False(t, p.Complete)
 	assert.NotEqual(t, 32, len(p.Data))
 	assert.NotEqual(t, comp, p.Data)

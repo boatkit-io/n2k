@@ -8,6 +8,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// TestMapBitRate_ValidRates verifies that every supported CAN bitrate correctly maps
+// to its expected protocol byte code. The USB-CAN Analyzer protocol assigns a unique
+// byte value for each supported bitrate (e.g., 250000 bps -> 0x05).
 func TestMapBitRate_ValidRates(t *testing.T) {
 	tests := []struct {
 		rate     int
@@ -33,6 +36,9 @@ func TestMapBitRate_ValidRates(t *testing.T) {
 	}
 }
 
+// TestMapBitRate_InvalidRate verifies that unsupported bitrate values return an error.
+// The USB-CAN device only supports a fixed set of bitrates, so arbitrary values
+// (including zero, negative, and values close to but not matching supported rates) must fail.
 func TestMapBitRate_InvalidRate(t *testing.T) {
 	invalidRates := []int{0, 1, 9999, 300000, 999999, -1}
 	for _, rate := range invalidRates {
@@ -41,28 +47,34 @@ func TestMapBitRate_InvalidRate(t *testing.T) {
 	}
 }
 
+// TestCalcChecksum verifies the 8-bit additive checksum used in USB-CAN settings frames.
+// The checksum sums bytes in a given range and naturally wraps around at 256 (byte overflow).
 func TestCalcChecksum(t *testing.T) {
-	// Simple known sum
+	// Simple known sum: 0x01+0x02+0x03+0x04 = 0x0A
 	buf := []byte{0x00, 0x01, 0x02, 0x03, 0x04, 0x05}
 	cs := calcChecksum(buf, 1, 4) // sum of 0x01+0x02+0x03+0x04 = 0x0A
 	assert.Equal(t, byte(0x0A), cs)
 
-	// All zeros
+	// All zeros: checksum of all-zero bytes is zero.
 	buf = []byte{0x00, 0x00, 0x00, 0x00}
 	cs = calcChecksum(buf, 0, 4)
 	assert.Equal(t, byte(0x00), cs)
 
-	// Overflow wraps around (byte arithmetic)
+	// Overflow wraps around: 0xFF + 0x01 = 0x100, but as a byte it wraps to 0x00.
+	// This verifies the checksum correctly uses natural byte overflow behavior.
 	buf = []byte{0xFF, 0x01}
 	cs = calcChecksum(buf, 0, 2) // 0xFF + 0x01 = 0x00 (overflow)
 	assert.Equal(t, byte(0x00), cs)
 
-	// Single byte
+	// Single byte: checksum of one byte is just that byte itself.
 	buf = []byte{0x42}
 	cs = calcChecksum(buf, 0, 1)
 	assert.Equal(t, byte(0x42), cs)
 }
 
+// newTestChannel creates a USBCANChannel for testing with a no-op logger and a FrameHandler
+// that appends received frames to a slice. Returns the channel and a pointer to the received
+// frames slice so tests can inspect what the parser dispatched.
 func newTestChannel() (*USBCANChannel, *[]can.Frame) {
 	received := &[]can.Frame{}
 	ch := NewUSBCANChannel(slog.Default(), USBCANChannelOptions{
@@ -73,6 +85,8 @@ func newTestChannel() (*USBCANChannel, *[]can.Frame) {
 	return ch.(*USBCANChannel), received
 }
 
+// TestParseFrames_EmptyBuffer verifies that an empty buffer produces no frames and no errors.
+// This is the base case for the parser -- it should be a no-op when there's nothing to parse.
 func TestParseFrames_EmptyBuffer(t *testing.T) {
 	usbChan, received := newTestChannel()
 	buf := []byte{}
@@ -82,6 +96,14 @@ func TestParseFrames_EmptyBuffer(t *testing.T) {
 	assert.Equal(t, 0, len(buf))
 }
 
+// TestParseFrames_StandardDataFrame verifies parsing of a complete standard (11-bit ID) data frame.
+//
+// Standard data frame wire format:
+//   - 0xAA: start-of-frame
+//   - 0xC0 | dataLen: info byte (bits[7:6]=0b11 for data frame, bits[3:0]=data length)
+//   - 2 bytes: CAN ID in little-endian (low byte first)
+//   - N bytes: data payload
+//   - 0x55: end-of-frame
 func TestParseFrames_StandardDataFrame(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -107,6 +129,17 @@ func TestParseFrames_StandardDataFrame(t *testing.T) {
 	assert.Equal(t, 0, len(buf), "buffer should be consumed")
 }
 
+// TestParseFrames_ExtendedDataFrame verifies parsing of a complete extended (29-bit ID) data frame.
+//
+// Extended data frame wire format:
+//   - 0xAA: start-of-frame
+//   - 0xE0 | dataLen: info byte (bits[7:6]=0b11, bit[5]=1 for extended, bits[3:0]=data length)
+//   - 4 bytes: CAN ID in little-endian
+//   - N bytes: data payload
+//   - 0x55: end-of-frame
+//
+// NMEA 2000 always uses extended 29-bit CAN IDs, so this is the most common frame type
+// for marine network traffic.
 func TestParseFrames_ExtendedDataFrame(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -130,6 +163,8 @@ func TestParseFrames_ExtendedDataFrame(t *testing.T) {
 	assert.Equal(t, 0, len(buf))
 }
 
+// TestParseFrames_ExtendedDataFrame_8Bytes verifies parsing an extended frame with the maximum
+// CAN payload size of 8 bytes. CAN 2.0 frames can carry at most 8 bytes of data.
 func TestParseFrames_ExtendedDataFrame_8Bytes(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -153,6 +188,9 @@ func TestParseFrames_ExtendedDataFrame_8Bytes(t *testing.T) {
 	}
 }
 
+// TestParseFrames_CommandFrame verifies that 20-byte command frames (0xAA 0x55 + 18 bytes)
+// are consumed from the buffer but do NOT produce any can.Frame output.
+// Command frames are device responses/status messages, not CAN bus traffic.
 func TestParseFrames_CommandFrame(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -170,13 +208,16 @@ func TestParseFrames_CommandFrame(t *testing.T) {
 	assert.Equal(t, 0, len(buf), "Buffer should be consumed after command frame")
 }
 
+// TestParseFrames_ErrorRecovery_SkipToNextAA verifies that the parser can recover from
+// garbage bytes at the start of the buffer by scanning forward to find the next 0xAA
+// start-of-frame marker and successfully parsing the valid frame that follows.
 func TestParseFrames_ErrorRecovery_SkipToNextAA(t *testing.T) {
 	usbChan, received := newTestChannel()
 
 	// Garbage bytes followed by a valid standard frame
 	dataLen := byte(1)
 	buf := []byte{
-		0x00, 0x01, 0x02, // garbage
+		0x00, 0x01, 0x02, // garbage (no 0xAA here)
 		0xAA,
 		0xC0 | dataLen, // standard frame, 1 byte of data
 		0x10, 0x00,     // ID = 0x0010
@@ -190,6 +231,9 @@ func TestParseFrames_ErrorRecovery_SkipToNextAA(t *testing.T) {
 	assert.Equal(t, byte(0xFF), (*received)[0].Data[0])
 }
 
+// TestParseFrames_ErrorRecovery_NoAA verifies that when the buffer contains no 0xAA byte
+// at all, the entire buffer is discarded. This handles completely corrupted data where
+// there is no valid frame start marker to resynchronize on.
 func TestParseFrames_ErrorRecovery_NoAA(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -201,6 +245,9 @@ func TestParseFrames_ErrorRecovery_NoAA(t *testing.T) {
 	assert.Equal(t, 0, len(buf), "Buffer should be cleared when no 0xAA found")
 }
 
+// TestParseFrames_BadEndByte verifies that a data frame with an incorrect end byte
+// (anything other than 0x55) is rejected and the buffer is cleared. The parser cannot
+// reliably determine frame boundaries after a bad end byte, so it discards everything.
 func TestParseFrames_BadEndByte(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -219,6 +266,9 @@ func TestParseFrames_BadEndByte(t *testing.T) {
 	assert.Equal(t, 0, len(buf), "Buffer should be cleared on bad end byte")
 }
 
+// TestParseFrames_IncompleteFrame_TooShort verifies that when only the start byte (0xAA)
+// is in the buffer (not enough to determine frame type), the parser leaves the data in
+// the buffer and returns without error, waiting for more bytes to arrive.
 func TestParseFrames_IncompleteFrame_TooShort(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -230,6 +280,9 @@ func TestParseFrames_IncompleteFrame_TooShort(t *testing.T) {
 	assert.Equal(t, 1, len(buf), "Incomplete frame should remain in buffer")
 }
 
+// TestParseFrames_IncompleteStandardFrame verifies that a standard frame header with
+// insufficient data bytes is left in the buffer for later completion. The parser
+// knows how many bytes to expect from the info byte but won't consume until all arrive.
 func TestParseFrames_IncompleteStandardFrame(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -246,6 +299,9 @@ func TestParseFrames_IncompleteStandardFrame(t *testing.T) {
 	assert.Equal(t, 4, len(buf), "Incomplete frame should remain in buffer")
 }
 
+// TestParseFrames_IncompleteExtendedFrame verifies the same incomplete-frame behavior for
+// extended frames, which have a 4-byte ID field instead of 2. The parser should retain
+// the partial data and wait for the rest of the frame to arrive.
 func TestParseFrames_IncompleteExtendedFrame(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -262,6 +318,9 @@ func TestParseFrames_IncompleteExtendedFrame(t *testing.T) {
 	assert.Equal(t, 6, len(buf), "Incomplete frame should remain in buffer")
 }
 
+// TestParseFrames_IncompleteCommandFrame verifies that an incomplete command frame
+// (fewer than 20 bytes starting with 0xAA 0x55) is left in the buffer.
+// Command frames are always exactly 20 bytes long.
 func TestParseFrames_IncompleteCommandFrame(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -275,14 +334,17 @@ func TestParseFrames_IncompleteCommandFrame(t *testing.T) {
 	assert.Equal(t, 10, len(buf), "Incomplete command frame should remain in buffer")
 }
 
+// TestParseFrames_MultipleFrames verifies that when the buffer contains multiple
+// complete frames back-to-back, all of them are parsed and dispatched in order.
+// This simulates the common case where a single serial read returns multiple frames.
 func TestParseFrames_MultipleFrames(t *testing.T) {
 	usbChan, received := newTestChannel()
 
 	// Two standard frames back to back
 	buf := []byte{
-		// Frame 1: ID=0x0001, 1 data byte
+		// Frame 1: ID=0x0001, 1 data byte (0x11)
 		0xAA, 0xC0 | 1, 0x01, 0x00, 0x11, 0x55,
-		// Frame 2: ID=0x0002, 2 data bytes
+		// Frame 2: ID=0x0002, 2 data bytes (0x22, 0x33)
 		0xAA, 0xC0 | 2, 0x02, 0x00, 0x22, 0x33, 0x55,
 	}
 	err := usbChan.parseFrames(&buf)
@@ -296,6 +358,10 @@ func TestParseFrames_MultipleFrames(t *testing.T) {
 	assert.Equal(t, 0, len(buf))
 }
 
+// TestParseFrames_UnknownFrameType verifies that a frame with an unrecognized type
+// (second byte doesn't match command 0x55 and bits[7:6] are not 0b11 for data)
+// causes the entire buffer to be discarded. The parser cannot interpret the frame
+// structure, so it clears the buffer to avoid infinite loops.
 func TestParseFrames_UnknownFrameType(t *testing.T) {
 	usbChan, received := newTestChannel()
 
@@ -308,6 +374,9 @@ func TestParseFrames_UnknownFrameType(t *testing.T) {
 	assert.Equal(t, 0, len(buf), "Unknown frame type should clear buffer")
 }
 
+// TestParseFrames_ZeroLengthDataFrame verifies parsing a valid data frame with zero
+// data bytes. While unusual, CAN frames with no data payload are valid -- the frame
+// still has an ID and the end byte marker. This can occur with RTR (remote request) frames.
 func TestParseFrames_ZeroLengthDataFrame(t *testing.T) {
 	usbChan, received := newTestChannel()
 
