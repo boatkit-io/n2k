@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package pkt
 
 import (
@@ -26,7 +33,10 @@ func (ps *PacketStruct) SetOutput(sh StructHandler) {
 	ps.handler = sh
 }
 
-// HandlePacket is how you tell PacketStruct to start processing a new packet into a PGN
+// HandlePacket is how you tell PacketStruct to start processing a new
+// packet into a PGN
+//
+//nolint:gocritic // Why: Breaking change to change.
 func (ps *PacketStruct) HandlePacket(pkt Packet) {
 	if len(pkt.Decoders) > 0 {
 		// call frame decoders, send valid return on.
@@ -36,10 +46,10 @@ func (ps *PacketStruct) HandlePacket(pkt Packet) {
 			if err != nil {
 				pkt.ParseErrors = append(pkt.ParseErrors, err)
 				continue
-			} else {
-				ps.pgnReady(ret)
-				return
 			}
+
+			ps.pgnReady(ret)
+			return
 		}
 
 		// no decoder succeeded

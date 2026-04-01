@@ -1,4 +1,12 @@
-// Package canadapter implements the adapter interface for n2k endpoints.
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package canadapter implements the adapter interface for n2k
+// endpoints.
 package canadapter
 
 import (

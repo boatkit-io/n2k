@@ -18,7 +18,7 @@ linters:
         - style
     goheader:
       template: |-
-        Copyright (C) {{ MOD_YEAR }} n2k contributors
+        Copyright (C) {{ MOD_YEAR }} Boatkit
 
         This work is licensed under the terms of the MIT license. For a copy,
         see <https://opensource.org/licenses/MIT>.
@@ -77,6 +77,11 @@ linters:
         text: 'Error return value of `(.*\.Close|fmt\.F.*)` is not checked'
       - path: '(.+)\.go$'
         text: "G104: Errors unhandled" # Duplicates errcheck.
+
+      ### DEVIATION: Temporarily while we determine if we want to export
+      ### "sequence" or not.
+      - path: '(.+)\.go$'
+        text: 'unexported-return: exported method (.*) returns unexported type \*canadapter.sequence, which can be annoying to use'
 
 # formatter settings
 formatters:

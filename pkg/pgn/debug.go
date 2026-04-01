@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package pgn
 
 import (
@@ -41,7 +48,7 @@ func dumpFields(p any) []string {
 				fieldStrs = append(fieldStrs, fmt.Sprintf("%s: [%s]", tf.Name, strings.Join(strI, ", ")))
 			} else {
 				vStr := ""
-				switch tf.Type.Kind() {
+				switch tf.Type.Kind() { //nolint:exhaustive // Why: see default.
 				case reflect.String:
 					vStr = vf.String()
 				case reflect.Pointer:

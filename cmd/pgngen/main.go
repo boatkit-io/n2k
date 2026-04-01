@@ -1,4 +1,11 @@
-// Command pgngen generates the file pgninfo_generated.go.
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package main implements pgngen which generates the file pgninfo_generated.go.
 // The generated file provides go declarations and functions to assist conversion from
 // strongly typed go structures and NMEA 2000 frames.
 package main
@@ -12,7 +19,6 @@ import (
 	"path/filepath"
 	"strconv"
 
-	//	"math"
 	"net/http"
 	"os"
 	"strings"
@@ -44,12 +50,12 @@ func main() {
 	builder.fixup()
 	builder.filter()
 	builder.write()
-
 }
 
 // canboatConverter is inflated from the json file canboat.json.
 // The data is massaged and used to generate the output file.
-// We filter PGNs that have never been seen into a separate list. If one is encountered we'll log it and its data, and return an UnknownPGN to
+// We filter PGNs that have never been seen into a separate list. If one
+// is encountered we'll log it and its data, and return an UnknownPGN to
 // allow processing to continue.
 type canboatConverter struct {
 	Comment        string
@@ -135,7 +141,8 @@ type EnumFieldType struct {
 
 // PGN is the core data structure describing a NMEA message.
 type PGN struct {
-	PGN                          uint32
+	PGN uint32
+	//nolint:revive // Why: Needs to be this way.
 	Id                           string
 	Description                  string
 	Explanation                  string
@@ -161,7 +168,8 @@ type PGN struct {
 
 // PGNField describes an individual field in a PGN.
 type PGNField struct {
-	Order                    uint8
+	Order uint8
+	//nolint:revive // Why: Needs to be this way.
 	Id                       string
 	Name                     string
 	Description              string
@@ -192,34 +200,37 @@ func newCanboatConverter() *canboatConverter {
 }
 
 // init initializes a canboatConverter from canboat.json.
-func (conv *canboatConverter) init() {
-	raw, _ := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json")
-	err := json.Unmarshal(raw, conv)
+func (builder *canboatConverter) init() {
+	raw, err := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json")
 	if err != nil {
 		log.Info(err)
 	}
-	log.Infof("Initially Parsed Lookup enums: %d", len(conv.Enums))
-	log.Infof("Initially Parsed IndirectLookup enums: %d", len(conv.IndirectEnums))
-	log.Infof("Initially Parsed BitLookup enums: %d", len(conv.BitEnums))
-	log.Infof("Initially Parsed FieldTypeLookup enums: %d", len(conv.FieldTypeEnums))
-	log.Infof("Parsed pgns: %d", len(conv.PGNs))
+
+	if err := json.Unmarshal(raw, builder); err != nil {
+		log.Info(err)
+	}
+	log.Infof("Initially Parsed Lookup enums: %d", len(builder.Enums))
+	log.Infof("Initially Parsed IndirectLookup enums: %d", len(builder.IndirectEnums))
+	log.Infof("Initially Parsed BitLookup enums: %d", len(builder.BitEnums))
+	log.Infof("Initially Parsed FieldTypeLookup enums: %d", len(builder.FieldTypeEnums))
+	log.Infof("Parsed pgns: %d", len(builder.PGNs))
 }
 
 // fixup massages the imported data (details in the routines it invokes).
-func (conv *canboatConverter) fixup() {
-	conv.fixIDs()
-	conv.fixEnumDefs()
-	conv.fixRepeating()
-	conv.validate()
+func (builder *canboatConverter) fixup() {
+	builder.fixIDs()
+	builder.fixEnumDefs()
+	builder.fixRepeating()
+	builder.validate()
 }
 
 // filter builds separate slices for known, unknown (no Canboat samples), and incomplete PGNs
-func (conv *canboatConverter) filter() {
+func (builder *canboatConverter) filter() {
 	known := make([]*PGN, 0)
 	unknown := make([]*PGN, 0)
 	incomplete := make([]*PGN, 0)
 	var keep bool
-	for _, pgn := range conv.PGNs {
+	for _, pgn := range builder.PGNs {
 		keep = true
 		if !pgn.Complete {
 			switch len(pgn.Missing) {
@@ -241,65 +252,63 @@ func (conv *canboatConverter) filter() {
 			known = append(known, pgn)
 		}
 	}
-	conv.PGNs = known
-	conv.NeverSeenPGNs = unknown
-	conv.IncompletePGNS = incomplete
-	log.Infof("After filtering, known: %d, unknown: %d, incomplete: %d", len(conv.PGNs), len(conv.NeverSeenPGNs), len(conv.IncompletePGNS))
+	builder.PGNs = known
+	builder.NeverSeenPGNs = unknown
+	builder.IncompletePGNS = incomplete
+	log.Infof("After filtering, known: %d, unknown: %d, incomplete: %d",
+		len(builder.PGNs), len(builder.NeverSeenPGNs), len(builder.IncompletePGNS))
 }
 
 // write outputs the pgninfo_generated.go file. Most of the work occurs in the template.
-func (conv *canboatConverter) write() {
-	if f, err := os.Create(filepath.Join("pkg", "pgn", "pgninfo_generated.go")); err != nil {
+func (builder *canboatConverter) write() {
+	f, err := os.Create(filepath.Join("pkg", "pgn", "pgninfo_generated.go"))
+	if err != nil {
 		panic(err)
-	} else {
-		t := template.Must(template.New("pgninfo").Funcs(sprig.TxtFuncMap()).Funcs(template.FuncMap{
-			"convertFieldType":     convertFieldType,
-			"getFieldDeserializer": getFieldDeserializer,
-			"fieldByteCount":       fieldByteCount,
-			"concat":               func(strs ...string) string { return strings.Join(strs, "") },
-			"toNumber":             toNumber,
-			"toVarName":            toVarName,
-			"isPointerFieldType":   isPointerFieldType,
-			"constSize":            constSize,
-			"subtract":             func(x, y uint8) uint8 { return x - y },
-			"matchManufacturer":    matchManufacturer,
-			"makeIndirectMap":      makeIndirectMap,
-			"derefInt":             func(ip *int) int { return *ip },
-			"isNil":                func(fp *int) bool { return fp == nil },
-			"contains":             func(in, substr string) bool { return strings.Contains(in, substr) },
-		}).Parse(pgninfoTemplate))
+	}
+	defer f.Close()
 
-		templateData := struct {
-			PGNDoc any
-		}{
-			PGNDoc: conv,
-		}
+	t := template.Must(template.New("pgninfo").Funcs(sprig.TxtFuncMap()).Funcs(template.FuncMap{
+		"convertFieldType":     convertFieldType,
+		"getFieldDeserializer": getFieldDeserializer,
+		"fieldByteCount":       fieldByteCount,
+		"concat":               func(strs ...string) string { return strings.Join(strs, "") },
+		"toNumber":             toNumber,
+		"toVarName":            toVarName,
+		"isPointerFieldType":   isPointerFieldType,
+		"constSize":            constSize,
+		"subtract":             func(x, y uint8) uint8 { return x - y },
+		"matchManufacturer":    matchManufacturer,
+		"makeIndirectMap":      makeIndirectMap,
+		"derefInt":             func(ip *int) int { return *ip },
+		"isNil":                func(fp *int) bool { return fp == nil },
+		"contains":             strings.Contains,
+	}).Parse(pgninfoTemplate))
 
-		if err := t.Execute(f, templateData); err != nil {
-			panic(err)
-		}
-		f.Close()
+	if err := t.Execute(f, map[string]any{
+		"PGNDoc": builder,
+	}); err != nil {
+		panic(err)
 	}
 }
 
 // fixIDs uppercases the first letter of PGN Ids and assures names are unique.
 // It then invokes a function to fixup each field.
-func (conv *canboatConverter) fixIDs() {
+func (builder *canboatConverter) fixIDs() {
 	pgnDeDuper := NewDeDuper()
-	for i := range conv.PGNs {
+	for i := range builder.PGNs {
 		fieldDeDuper := NewDeDuper()
 		// Capitalize first letter of the Ids (currently lowercase)
-		conv.PGNs[i].Id = capitalizeFirstChar(conv.PGNs[i].Id)
-		if firstTime, _ := pgnDeDuper.unique(conv.PGNs[i].Id); !firstTime {
-			panic("PGN ID not unique: " + conv.PGNs[i].Id)
+		builder.PGNs[i].Id = capitalizeFirstChar(builder.PGNs[i].Id)
+		if firstTime, _ := pgnDeDuper.unique(builder.PGNs[i].Id); !firstTime {
+			panic("PGN ID not unique: " + builder.PGNs[i].Id)
 		}
-		for j := range conv.PGNs[i].Fields {
-			fixupField(&conv.PGNs[i].Fields[j], *fieldDeDuper)
+		for j := range builder.PGNs[i].Fields {
+			fixupField(&builder.PGNs[i].Fields[j], *fieldDeDuper)
 			// For variable length fields, the length of such a field is passed
 			// in another field. When we find such a field we keep the value in
 			// the PGN so it can be used by the decoder for that PGN.
-			if conv.PGNs[i].Fields[j].BitLengthField != 0 {
-				conv.PGNs[i].BitLengthField = conv.PGNs[i].Fields[j].BitLengthField
+			if builder.PGNs[i].Fields[j].BitLengthField != 0 {
+				builder.PGNs[i].BitLengthField = builder.PGNs[i].Fields[j].BitLengthField
 			}
 		}
 	}
@@ -308,22 +317,22 @@ func (conv *canboatConverter) fixIDs() {
 // fixupField capitializes Id's first char, assures field name is unique, and forces lookup names.
 func fixupField(field *PGNField, dedup DeDuper) {
 	field.Id = capitalizeFirstChar(field.Id)
-	if len(field.FieldTypeLookupName) > 0 {
+	if field.FieldTypeLookupName != "" {
 		convertToConst(&field.FieldTypeLookupName)
 	}
-	if field.FieldType == "LOOKUP" && len(field.LookupName) == 0 {
-		log.Infof("Lookup without Enumeration Name: " + field.Id)
+	if field.FieldType == "LOOKUP" && field.LookupName == "" {
+		log.Infof("%s", "Lookup without Enumeration Name: "+field.Id)
 	}
 	if firstTime, _ := dedup.unique(field.Id); !firstTime {
 		panic("field ID not unique: " + field.Id)
 	}
-	if len(field.LookupName) > 0 {
+	if field.LookupName != "" {
 		convertToConst(&field.LookupName)
 	}
-	if len(field.BitLookupName) > 0 {
+	if field.BitLookupName != "" {
 		convertToConst(&field.BitLookupName)
 	}
-	if len(field.IndirectLookupName) > 0 {
+	if field.IndirectLookupName != "" {
 		convertToConst(&field.IndirectLookupName)
 	}
 }
@@ -397,7 +406,7 @@ func (builder *canboatConverter) validate() {
 	pgns := make(map[uint32][]*PGN)
 	for i := range builder.PGNs {
 		if pgns[builder.PGNs[i].PGN] == nil {
-			pgns[builder.PGNs[i].PGN] = make([](*PGN), 0)
+			pgns[builder.PGNs[i].PGN] = make([]*PGN, 0)
 		}
 		pgns[builder.PGNs[i].PGN] = append(pgns[builder.PGNs[i].PGN], builder.PGNs[i])
 	}
@@ -406,27 +415,26 @@ func (builder *canboatConverter) validate() {
 		if len(pi) == 1 {
 			continue
 		}
-		//		fmt.Printf("%d: has %d entries\n", pi[0].PGN, len(pi))
+
 		for _, p := range pi {
 			if !isProprietaryPGN(p.PGN) {
 				continue
 			}
-			manIds := make(map[int]string) //manId[]"Fast" or "Single"
-			manId := getManId(p)
+			manIDs := make(map[int]string) // manId[]"Fast" or "Single"
+			manID := getManID(p)
 			if p.Type == "Fast" {
 				fast++
-				if manIds[manId] == "Single" {
+				if manIDs[manID] == "Single" {
 					panic("same manId both single and fast for pgn:" + p.Id)
-				} else {
-					manIds[manId] = "Fast"
 				}
+				manIDs[manID] = "Fast"
 			} else {
 				single++
-				if manIds[manId] == "Fast" {
+				if manIDs[manID] == "Fast" {
 					panic("same manId both single and fast for pgn:" + p.Id)
-				} else {
-					manIds[manId] = "Single"
 				}
+
+				manIDs[manID] = "Single"
 			}
 		}
 		if fast > 0 && single > 0 {
@@ -441,7 +449,11 @@ func (builder *canboatConverter) validate() {
 
 // varNameReplacer points to a function that changes various substrings with values legal in golang identifiers.
 // Used by toVarName (and so by template).
-var varNameReplacer = strings.NewReplacer(" ", "", "/", "", "+1", "Plus1", "-1", "Minus1", "+", "", "-", "", "(", "", ")", "", "#", "", ".", "", ":", "", "%", "Percent", "&", "And", ",", "")
+var varNameReplacer = strings.NewReplacer(
+	" ", "", "/", "", "+1", "Plus1", "-1", "Minus1", "+",
+	"", "-", "", "(", "", ")", "", "#", "", ".", "", ":",
+	"", "%", "Percent", "&", "And", ",", "",
+)
 
 // varDeDuper is used to assure a variable name is unique.
 // Used by toVarName (and so by template).
@@ -450,7 +462,7 @@ var varDeDuper = NewDeDuper()
 // toVarName massages its input to a legal golang identifier.
 // Used by template.
 func toVarName(str string) string {
-	str = strings.Title(str) //nolint:staticcheck
+	str = strings.Title(str) //nolint:staticcheck // Why: Refactor
 	str = varNameReplacer.Replace(str)
 	_, str = varDeDuper.unique(str)
 	return str
@@ -458,7 +470,7 @@ func toVarName(str string) string {
 
 // isPointerFieldType returns true if the underlying type of a field is a pointer.
 // Used by template.
-func isPointerFieldType(field PGNField) bool {
+func isPointerFieldType(field *PGNField) bool {
 	return strings.HasPrefix(convertFieldType(field), "*")
 }
 
@@ -474,28 +486,29 @@ func toNumber(str string) int {
 
 // constSize returns (as a string) the smallest uint needed to represent the const.
 // Used by template.
-func constSize(max int) string {
-
+func constSize(i int) string {
 	switch {
-	case max < 256:
+	case i < 256:
 		return "uint8"
-	case max < 65536:
+	case i < 65536:
 		return "uint16"
-	case max < 4294967296:
+	case i < 4294967296:
 		return "uinit32"
 	default:
 		return "uint64"
-
 	}
 }
 
 // fieldByteCount calculates the number of bytes required to read to extract a field's value.
 // Used by template.
-func fieldByteCount(field PGNField) uint16 {
+func fieldByteCount(field *PGNField) uint16 {
 	return uint16(math.Ceil((float64(field.BitLength) + float64(field.BitOffset)) / 8))
 }
 
-// getUnitType maps the canboat units into our tugboat unit library's categories/types
+// getUnitType maps the canboat units into our tugboat unit library's
+// categories/types.
+//
+//nolint:gocritic // Why: Not needed.
 func getUnitType(unitName string) (string, string) {
 	switch unitName {
 	case "m":
@@ -523,9 +536,8 @@ func getUnitType(unitName string) (string, string) {
 // convertFieldType returns a string describing the golang type for a PGN field.
 // used by template.
 // for lookups the name of the lookup is returned.
-func convertFieldType(field PGNField) string {
+func convertFieldType(field *PGNField) string {
 	switch field.FieldType {
-
 	// assert DATE is resolution 1, unsigned
 	// assert PhysicalQuantity PRESSURE, TEMPERATURE have FieldType NUMBER
 
@@ -587,9 +599,11 @@ func convertFieldType(field PGNField) string {
 	}
 }
 
-// getFieldDeserializer returns a string that when evaluated returns its value from the input stream.
-// Used by template.
-func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
+// getFieldDeserializer returns a string that when evaluated returns its
+// value from the input stream. Used by template.
+//
+//nolint:gocyclo // Why: Refactor.
+func getFieldDeserializer(_ *PGN, field *PGNField) [2]string {
 	switch field.FieldType {
 	case "LOOKUP":
 		if field.BitLength > 32 {
@@ -683,8 +697,9 @@ func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
 
 // matchManufacturer returns the required Match value of the Manufacturer Code as a string.
 // Used by template.
-func matchManufacturer(pgn PGN) string {
-	for _, field := range pgn.Fields {
+func matchManufacturer(pgn *PGN) string {
+	for i := range pgn.Fields {
+		field := &pgn.Fields[i]
 		if field.Id == "ManufacturerCode" {
 			if field.Match != nil {
 				return strconv.Itoa(*field.Match)
@@ -720,24 +735,33 @@ func cacheFromWeb(name, url string) (string, error) {
 	if err != nil || time.Since(fstat.ModTime()) > cacheDuration {
 		log.Infof("Downloading source data...")
 
-		req, _ := http.NewRequest("GET", url, nil)
+		req, err := http.NewRequest("GET", url, http.NoBody)
+		if err != nil {
+			return cachedName, err
+		}
 		resp, err := http.DefaultClient.Do(req)
 		if err != nil {
 			return cachedName, err
 		}
 		defer resp.Body.Close()
 
-		f, _ := os.OpenFile(cachedName, os.O_CREATE|os.O_WRONLY, 0644)
+		//nolint:gosec // Why: Acceptable.
+		f, err := os.OpenFile(cachedName, os.O_CREATE|os.O_WRONLY, 0o644)
+		if err != nil {
+			return cachedName, err
+		}
+		defer f.Close()
 
 		bar := progressbar.DefaultBytes(
 			resp.ContentLength,
 			fmt.Sprintf("Downloading %s", name),
 		)
-		_, _ = io.Copy(io.MultiWriter(f, bar), resp.Body)
-
-		f.Close()
+		_, err = io.Copy(io.MultiWriter(f, bar), resp.Body)
+		if err != nil {
+			return cachedName, err
+		}
 	} else {
-		log.Infof(fmt.Sprintf("Using cached file %s", name))
+		log.Infof("%s", fmt.Sprintf("Using cached file %s", name))
 	}
 	return cachedName, nil
 }
@@ -748,11 +772,14 @@ func loadCachedWebContent(name, url string) ([]byte, error) {
 	if err != nil {
 		panic(err)
 	}
+
+	//nolint:gosec // Why: Acceptable.
 	f, err := os.Open(cachedName)
 	if err != nil {
 		panic(err)
 	}
 	defer f.Close()
+
 	cacheContent, err := io.ReadAll(f)
 	if err != nil {
 		panic(err)
@@ -771,15 +798,16 @@ func capitalizeFirstChar(raw string) string {
 
 // getManId returns the required Manufacturer Code ID for the defined PGN.
 // Only call on Proprietary PGNs!
-func getManId(p *PGN) int {
-	for _, field := range p.Fields {
+func getManID(p *PGN) int {
+	for i := range p.Fields {
+		field := &p.Fields[i]
 		if field.Id == "ManufacturerCode" {
 			if field.Match != nil {
 				return *field.Match
-			} else {
-				log.Infof("Proprietary PGN %d does not match on ManufacturerCode", p.PGN)
-				return 0
 			}
+
+			log.Infof("Proprietary PGN %d does not match on ManufacturerCode", p.PGN)
+			return 0
 		}
 	}
 	return 0
@@ -809,21 +837,22 @@ func convertToConst(name *string) {
 // Duplicated from n2k/pgninfo.go. Could export it there and use it here, but
 // we're generating a source file for that package, so a bootstrapping problem...
 func isProprietaryPGN(pgn uint32) bool {
-	if pgn >= 0x0EF00 && pgn <= 0x0EFFF {
+	switch {
+	case pgn >= 0x0EF00 && pgn <= 0x0EFFF:
 		// proprietary PDU1 (addressed) single-frame range 0EF00 to 0xEFFF (61184 - 61439) messages.
 		// Addressed means that you send it to specific node on the bus. This you can easily use for responding,
 		// since you know the sender. For sender it is bit more complicate since your device address may change
 		// due to address claiming. There is N2kDeviceList module for handling devices on bus and find them by
 		// "NAME" (= 64 bit value set by SetDeviceInformation ).
 		return true
-	} else if pgn >= 0x0FF00 && pgn <= 0x0FFFF {
+	case pgn >= 0x0FF00 && pgn <= 0x0FFFF:
 		// proprietary PDU2 (non addressed) single-frame range 0xFF00 to 0xFFFF (65280 - 65535).
 		// Non addressed means that destination wil be 255 (=broadcast) so any cabable device can handle it.
 		return true
-	} else if pgn >= 0x1EF00 && pgn <= 0x1EFFF {
+	case pgn >= 0x1EF00 && pgn <= 0x1EFFF:
 		// proprietary PDU1 (addressed) fast-packet PGN range 0x1EF00 to 0x1EFFF (126720 - 126975)
 		return true
-	} else if pgn >= 0x1FF00 && pgn <= 0x1FFFF {
+	case pgn >= 0x1FF00 && pgn <= 0x1FFFF:
 		// proprietary PDU2 (non addressed) fast packet range 0x1FF00 to 0x1FFFF (130816 - 131071)
 		return true
 	}

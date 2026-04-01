@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 /*
 Convertcandumps reads, converts, and writes NMEA 2000 dump files.
 Supports accessing input through a URL (with local caching) or local file.
@@ -28,18 +35,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-
-	//	"math"
-
-	"strconv"
-
-	//	"math"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
 	"github.com/brutella/can"
-	//	"github.com/Masterminds/sprig/v3"
 	"github.com/schollz/progressbar/v3"
 	"github.com/sirupsen/logrus"
 )
@@ -47,9 +48,9 @@ import (
 // log provides access to logging functionality.
 var log = logrus.StandardLogger()
 
-// seqId is used as the sequence ID when breaking up a logged packet with data length > 8.
+// seqID is used as the sequence ID when breaking up a logged packet with data length > 8.
 // See the documentation of makeFastPackets for more detail.
-var seqId uint8
+var seqID uint8
 
 // packet is an unpacked representation of NMEA 2000 frame with context
 type packet struct {
@@ -136,7 +137,7 @@ func main() {
 	flag.BoolVar(&groupPGNs, "groupPGNs", false, "Group messages by PGN (raw output only")
 	flag.Parse()
 
-	var content []byte = make([]byte, 0)
+	var content = make([]byte, 0)
 	var inVar genericFmt
 	var outVar genericFmt
 	var err error
@@ -180,15 +181,15 @@ func main() {
 	default:
 		panic("don't recognize dump file of type: " + outputFormat)
 	}
-	if len(url) > 0 {
-		if len(inputPath) > 0 {
+	if url == "" {
+		if inputPath != "" {
 			panic("Choose one of: url or inputPath")
 		}
 		content, err = loadCachedWebContent("dump.cache", url)
 		if err != nil {
 			panic(err)
 		}
-	} else if len(inputPath) > 0 {
+	} else if inputPath != "" {
 		content, err = loadLocalFile(inputPath)
 		if err != nil {
 			panic(err)
@@ -236,7 +237,7 @@ func (y *ydrFmt) processContents() {
 	lines := strings.Split(content, "\r\n")
 	for _, line := range lines {
 		pkt := packet{canDead: "can1"}
-		if (len(line) == 0) || strings.HasPrefix(line, "#") || strings.Compare(line, "\n") == 0 {
+		if line == "" || strings.HasPrefix(line, "#") || line == "\n" {
 			continue
 		}
 		// 14:44:58.309 R 15FD0C2C 44 00 0E C1 76 04 FF FF
@@ -284,7 +285,13 @@ func (y *ydrFmt) processContents() {
 // processPackets generates a line of content for each packet
 func (y *ydrFmt) processPackets() {
 	for _, paket := range y.packets {
-		line := fmt.Sprintf("%s,%d,%d,%d,%d,%d,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n", paket.time.Format("2006-01-02T15:04:05Z"), paket.priority, paket.pgn, paket.source, paket.destination, paket.frame.Length, paket.frame.Data[0], paket.frame.Data[1], paket.frame.Data[2], paket.frame.Data[3], paket.frame.Data[4], paket.frame.Data[5], paket.frame.Data[6], paket.frame.Data[7])
+		line := fmt.Sprintf(
+			"%s,%d,%d,%d,%d,%d,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n",
+			paket.time.Format("2006-01-02T15:04:05Z"), paket.priority, paket.pgn,
+			paket.source, paket.destination, paket.frame.Length, paket.frame.Data[0],
+			paket.frame.Data[1], paket.frame.Data[2], paket.frame.Data[3], paket.frame.Data[4],
+			paket.frame.Data[5], paket.frame.Data[6], paket.frame.Data[7],
+		)
 		y.contents = append(y.contents, line...)
 	}
 }
@@ -316,6 +323,8 @@ func (r *rawFmt) setGrouping(on bool) {
 
 // processContents generates a packet for each input line.
 // If the line has >8 bytes of data it generates a sequence of packets.
+//
+//nolint:errcheck,gosec // Why: Needs a whole refactor.
 func (r *rawFmt) processContents() {
 	var result []packet
 	var baseTime time.Time
@@ -323,7 +332,7 @@ func (r *rawFmt) processContents() {
 	lines := strings.Split(content, "\n")
 	for _, line := range lines {
 		pkt := packet{canDead: "can1"}
-		if (len(line) == 0) || strings.HasPrefix(line, "#") || strings.Compare(line, "\n") == 0 {
+		if line == "" || strings.HasPrefix(line, "#") || line == "\n" {
 			continue
 		}
 		elems := strings.Split(line, ",")
@@ -351,7 +360,7 @@ func (r *rawFmt) processContents() {
 		pgn, _ := strconv.ParseUint(elems[2], 10, 32)
 		source, _ := strconv.ParseUint(elems[3], 10, 8)
 		destination, _ := strconv.ParseUint(elems[4], 10, 8)
-		pkt.frame.ID = uint32(endcodeCanFrameID(uint64(pgn), uint64(priority), uint64(source), uint64(destination)))
+		pkt.frame.ID = uint32(endcodeCanFrameID(pgn, priority, source, destination))
 		length, _ := strconv.ParseUint(elems[5], 10, 8)
 		if length > 8 {
 			result = append(result, makeFastPackets(pkt, elems[6:])...)
@@ -373,7 +382,13 @@ func (r *rawFmt) processContents() {
 // processPackets generates a line of content for each packet.
 func (r *rawFmt) processPackets() {
 	for _, paket := range r.packets {
-		line := fmt.Sprintf("%s,%d,%d,%d,%d,%d,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n", paket.time.Format("2006-01-02T15:04:05Z"), paket.priority, paket.pgn, paket.source, paket.destination, paket.frame.Length, paket.frame.Data[0], paket.frame.Data[1], paket.frame.Data[2], paket.frame.Data[3], paket.frame.Data[4], paket.frame.Data[5], paket.frame.Data[6], paket.frame.Data[7])
+		line := fmt.Sprintf(
+			"%s,%d,%d,%d,%d,%d,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n",
+			paket.time.Format("2006-01-02T15:04:05Z"), paket.priority, paket.pgn,
+			paket.source, paket.destination, paket.frame.Length, paket.frame.Data[0],
+			paket.frame.Data[1], paket.frame.Data[2], paket.frame.Data[3], paket.frame.Data[4],
+			paket.frame.Data[5], paket.frame.Data[6], paket.frame.Data[7],
+		)
 		r.contents = append(r.contents, line...)
 	}
 }
@@ -411,7 +426,12 @@ func (n *n2kFmt) processContents() {
 	content := string(n.contents)
 	lines := strings.Split(content, "\n")
 	for _, line := range lines {
-		_, err := fmt.Sscanf(line, " (%f)  %s  %8X   [%d]  %X %X %X %X %X %X %X %X", &result.timeDelta, &result.canDead, &result.frame.ID, &result.frame.Length, &result.frame.Data[0], &result.frame.Data[1], &result.frame.Data[2], &result.frame.Data[3], &result.frame.Data[4], &result.frame.Data[5], &result.frame.Data[6], &result.frame.Data[7])
+		_, err := fmt.Sscanf(line,
+			" (%f)  %s  %8X   [%d]  %X %X %X %X %X %X %X %X",
+			&result.timeDelta, &result.canDead, &result.frame.ID, &result.frame.Length,
+			&result.frame.Data[0], &result.frame.Data[1], &result.frame.Data[2], &result.frame.Data[3],
+			&result.frame.Data[4], &result.frame.Data[5], &result.frame.Data[6], &result.frame.Data[7],
+		)
 		if err != nil {
 			panic(err)
 		}
@@ -423,13 +443,17 @@ func (n *n2kFmt) processContents() {
 	if n.grouping {
 		n.packets = group(n.packets)
 	}
-
 }
 
 // processPackets generates a line of content for each packet
 func (n *n2kFmt) processPackets() {
 	for _, paket := range n.packets {
-		line := fmt.Sprintf(" (%f)	%s	%08X	[%d]  %02x %02x %02x %02x %02x %02x %02x %02x\n", paket.timeDelta, paket.canDead, paket.frame.ID, paket.frame.Length, paket.frame.Data[0], paket.frame.Data[1], paket.frame.Data[2], paket.frame.Data[3], paket.frame.Data[4], paket.frame.Data[5], paket.frame.Data[6], paket.frame.Data[7])
+		line := fmt.Sprintf(
+			" (%f)	%s	%08X	[%d]  %02x %02x %02x %02x %02x %02x %02x %02x\n",
+			paket.timeDelta, paket.canDead, paket.frame.ID, paket.frame.Length, paket.frame.Data[0],
+			paket.frame.Data[1], paket.frame.Data[2], paket.frame.Data[3], paket.frame.Data[4], paket.frame.Data[5],
+			paket.frame.Data[6], paket.frame.Data[7],
+		)
 		n.contents = append(n.contents, line...)
 	}
 }
@@ -465,22 +489,19 @@ func (c *canFmt) processContents() {
 	baseTime := time.Now()
 	var baseMinutes, baseMillis uint16
 	content := c.contents
-	for {
-		if len(content) < 16 { // invariant is len(content) MOD 16 == 0
-			break
-		} else {
-			buf := content[:16]
-			content = content[16:]
-			paket, err := toPacket(buf, &baseMinutes, &baseMillis)
-			if err != nil {
-				continue // probably a service record
-			}
-			paket.decodeCanFrameID()
-			baseTime = baseTime.Add(time.Duration(paket.timeDelta))
-			paket.time = baseTime
-			c.packets = append(c.packets, paket)
+	for len(content) < 1 { // invariant is len(content) MOD 16 == 0
+		buf := content[:16]
+		content = content[16:]
+		paket, err := toPacket(buf, &baseMinutes, &baseMillis)
+		if err != nil {
+			continue // probably a service record
 		}
+		paket.decodeCanFrameID()
+		baseTime = baseTime.Add(time.Duration(paket.timeDelta))
+		paket.time = baseTime
+		c.packets = append(c.packets, paket)
 	}
+
 	if c.grouping {
 		c.packets = group(c.packets)
 	}
@@ -492,7 +513,7 @@ func (c *canFmt) processPackets() {
 }
 
 // toPacket generates a packet from a CAN format byte slice.
-func toPacket(line []byte, baseMinutes *uint16, baseMillis *uint16) (packet, error) {
+func toPacket(line []byte, baseMinutes, baseMillis *uint16) (packet, error) {
 	result := packet{}
 	header := getuint16(line)
 	if header&0x8000 != 0 {
@@ -544,16 +565,18 @@ func getuint32(buf []byte) uint32 {
 // Some log formats write all of the data for such packets on a single line.
 // The NMEA 2000 wire protocol transmits such data as a series of frames.
 // This function returns an equivalent series of packets.
-// Described at https://canboat.github.io/canboat/canboat.html, heading "Packet Framing"
+// Described at https://canboat.github.io/canboat/canboat.html, heading
+// "Packet Framing"
+//
+//nolint:errcheck // Why: needs a refactor
 func makeFastPackets(paket packet, data []string) []packet {
-
 	result := []packet{}
-	seqFrameNum := uint8(seqId << 5)
+	seqFrameNum := seqID << 5
 	length := len(data)
 	next := paket
 	next.frame.Length = 8
 	next.frame.Data[0] = seqFrameNum
-	next.frame.Data[1] = uint8(length)
+	next.frame.Data[1] = uint8(length) //nolint:gosec // Why: Acceptable.
 	for i := 0; i < 6; i++ {
 		b, _ := strconv.ParseUint(data[i], 16, 8)
 		next.frame.Data[i+2] = uint8(b)
@@ -577,9 +600,9 @@ func makeFastPackets(paket packet, data []string) []packet {
 			break
 		}
 	}
-	seqId++        // so we'll use a different sequence ID for the next set of continuation packets
-	if seqId > 7 { // sequence ID range is 0-7
-		seqId = 0
+	seqID++        // so we'll use a different sequence ID for the next set of continuation packets
+	if seqID > 7 { // sequence ID range is 0-7
+		seqID = 0
 	}
 	return result
 }
@@ -602,6 +625,7 @@ func group(in []packet) []packet {
 
 // loadLocalFile returns a byte slice containing the contents of the specified file.
 func loadLocalFile(path string) ([]byte, error) {
+	//nolint:gosec // Why: Acceptable.
 	f, err := os.Open(path)
 	if err != nil {
 		panic(err)
@@ -616,16 +640,16 @@ func loadLocalFile(path string) ([]byte, error) {
 
 // writeDumpFile writes the specified byte slice into the specified file.
 func writeDumpFile(out []byte, path, fType string) {
-	if f, err := os.Create(path + "." + fType); err != nil {
+	//nolint:gosec // Why: Acceptable.
+	f, err := os.Create(path + "." + fType)
+	if err != nil {
 		panic(err)
-	} else {
-		defer f.Close()
-		_, err := f.Write(out)
-		if err != nil {
-			panic(err)
-		}
 	}
+	defer f.Close()
 
+	if _, err := f.Write(out); err != nil {
+		panic(err)
+	}
 }
 
 // cacheFromWeb returns the name of a cached file containing data returned from a URL.
@@ -639,24 +663,33 @@ func cacheFromWeb(name, url string) (string, error) {
 	if err != nil || time.Since(fstat.ModTime()) > cacheDuration {
 		log.Infof("Downloading source data...")
 
-		req, _ := http.NewRequest("GET", url, nil)
+		req, err := http.NewRequest("GET", url, http.NoBody)
+		if err != nil {
+			return cachedName, err
+		}
 		resp, err := http.DefaultClient.Do(req)
 		if err != nil {
 			return cachedName, err
 		}
 		defer resp.Body.Close()
 
-		f, _ := os.OpenFile(cachedName, os.O_CREATE|os.O_WRONLY, 0644)
+		//nolint:gosec // Why: Acceptable.
+		f, err := os.OpenFile(cachedName, os.O_CREATE|os.O_WRONLY, 0o644)
+		if err != nil {
+			return cachedName, err
+		}
+		defer f.Close()
 
 		bar := progressbar.DefaultBytes(
 			resp.ContentLength,
 			fmt.Sprintf("Downloading %s\n", name),
 		)
-		_, _ = io.Copy(io.MultiWriter(f, bar), resp.Body)
 
-		f.Close()
+		if _, err := io.Copy(io.MultiWriter(f, bar), resp.Body); err != nil {
+			return cachedName, err
+		}
 	} else {
-		log.Infof(fmt.Sprintf("Using cached file %s\n", name))
+		log.Infof("%s", fmt.Sprintf("Using cached file %s\n", name))
 	}
 	return cachedName, nil
 }
@@ -666,11 +699,11 @@ func cacheFromWeb(name, url string) (string, error) {
 func loadCachedWebContent(name, url string) ([]byte, error) {
 	cachedName, err := cacheFromWeb(name, url)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	cacheContent, err := loadLocalFile(cachedName)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	return cacheContent, nil
 }
@@ -692,7 +725,6 @@ func (p *packet) decodeCanFrameID() {
 // endcodeCanFrameID encodes its arguments into the canbus/NMEA 2000 wire format.
 // Described at https://canboat.github.io/canboat/canboat.html.
 func endcodeCanFrameID(pgn, priority, source, destination uint64) uint64 {
-
 	if destination != 255 {
 		// This is a targeted packet, and the lower PS has the address
 		pgn |= destination
