@@ -1,0 +1,19 @@
+{
+	"go.lintTool": "golangci-lint-v2",
+	"go.useLanguageServer": true,
+	"go.formatFlags": ["fmt", "--stdin"],
+	"go.formatTool": "custom",
+	"go.alternateTools": {
+		"golangci-lint-v2": "golangci-lint",
+		"customFormatter": "golangci-lint"
+	},
+	"files.trimTrailingWhitespace": true,
+	"editor.formatOnSave": true,
+	"shellcheck.customArgs": ["-P", "SCRIPTDIR", "-x"],
+	"[markdown]": {
+		"editor.defaultFormatter": "dprint.dprint"
+	},
+	"[yaml]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	}
+}

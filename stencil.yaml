@@ -1,0 +1,7 @@
+name: n2k
+arguments:
+  org: boatkit-io
+  library: true
+  license: MIT
+modules:
+  - name: go.rgst.io/rgst-io/stencil-golang
