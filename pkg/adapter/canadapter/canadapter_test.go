@@ -3,10 +3,8 @@ package canadapter
 import (
 	"testing"
 
-	"github.com/boatkit-io/n2k/pkg/pgn"
-	"github.com/boatkit-io/n2k/pkg/pkt"
-
-	//	"github.com/sirupsen/logrus"
+	"github.com/open-ships/n2k/pkg/pgn"
+	"github.com/open-ships/n2k/pkg/pkt"
 	"github.com/stretchr/testify/assert"
 )
 

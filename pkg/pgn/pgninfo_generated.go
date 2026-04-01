@@ -5,7 +5,7 @@ package pgn
 import (
 	"fmt"
 	
-	"github.com/boatkit-io/tugboat/pkg/units"
+	"github.com/open-ships/n2k/pkg/units"
 )
 
 func nullableUnit[T any, U any, V float32|uint16|int16|uint32](u U, v *V, newer func(u U, v float32) T) *T {

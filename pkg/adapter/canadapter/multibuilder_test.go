@@ -4,13 +4,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/boatkit-io/n2k/pkg/pkt"
+	"github.com/open-ships/n2k/pkg/pkt"
 	"github.com/brutella/can"
-	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )
-
-var log = logrus.StandardLogger()
 
 var testData = `
 2022-12-20T04:14:09Z,6,129540,22,255,8,20,db,3c,ff,12,1a,d1,15
@@ -65,7 +62,7 @@ var testData = `
 
 func TestBigPacket(t *testing.T) {
 
-	m := NewMultiBuilder(log)
+	m := NewMultiBuilder()
 	var p *pkt.Packet
 	lines := strings.Split(testData, "\n")
 	for _, line := range lines {
@@ -81,7 +78,7 @@ func TestBigPacket(t *testing.T) {
 }
 
 func TestFastPacket(t *testing.T) {
-	m := NewMultiBuilder(log)
+	m := NewMultiBuilder()
 
 	// test fast packet that's actually Complete in single-frame
 	pInfo := NewPacketInfo(&can.Frame{ID: CanIdFromData(130820, 10, 1, 0), Length: 8})
@@ -92,7 +89,7 @@ func TestFastPacket(t *testing.T) {
 	assert.True(t, p.Valid())
 
 	// we allow out of order frames
-	m = NewMultiBuilder(log)
+	m = NewMultiBuilder()
 	p = pkt.NewPacket(NewPacketInfo(&can.Frame{ID: CanIdFromData(130820, 10, 1, 0), Length: 8}), []uint8{161, 5, 163, 153, 32, 128, 1, 255})
 	m.Add(p)
 	assert.False(t, p.Complete)
@@ -106,7 +103,7 @@ func TestFastPacket(t *testing.T) {
 	// that an unknown pgn with a frame 0 and a valid length byte (0-223, so
 	// not much of a test) might be a fast variant, but it's a weak heuristic.
 	// Instead we'll return each packet as unknown.
-	m = NewMultiBuilder(log)
+	m = NewMultiBuilder()
 	pInfo = NewPacketInfo(&can.Frame{ID: 0x09F20183})
 	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
@@ -133,7 +130,7 @@ func TestFastPacket(t *testing.T) {
 	comp := p.Data // used in next test for out of order
 
 	// test misc multi frame packet out of order
-	m = NewMultiBuilder(log)
+	m = NewMultiBuilder()
 	// zero must be first!
 	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
@@ -160,7 +157,7 @@ func TestFastPacket(t *testing.T) {
 	assert.Equal(t, comp, p.Data)
 
 	// test misc multi frame packet out of order
-	m = NewMultiBuilder(log)
+	m = NewMultiBuilder()
 	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -186,7 +183,7 @@ func TestFastPacket(t *testing.T) {
 	assert.Equal(t, comp, p.Data)
 
 	// test that receiving a duplicate frame resets the sequence
-	m = NewMultiBuilder(log)
+	m = NewMultiBuilder()
 	data = []uint8{0x60, 0x20, 0x00, 0x10, 0x13, 0x80, 0x0C, 0x70}
 	p = pkt.NewPacket(pInfo, data)
 	m.Add(p)

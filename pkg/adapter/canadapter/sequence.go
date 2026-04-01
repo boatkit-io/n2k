@@ -2,8 +2,9 @@ package canadapter
 
 import (
 	"fmt"
-	"github.com/boatkit-io/n2k/pkg/pkt"
-	"github.com/sirupsen/logrus"
+	"log/slog"
+
+	"github.com/open-ships/n2k/pkg/pkt"
 )
 
 // MaxFrameNum is the maximum frame number in a multipart NMEA message.
@@ -22,7 +23,6 @@ const MaxFrameNum = 31
 // The frame number is 5 bits, so 0-31.
 // Sequence frame 0 must be received first; others can be received in any order.
 type sequence struct {
-	log      *logrus.Logger
 	zero     *pkt.Packet // packet 0 of sequence
 	expected uint8
 	received uint8
@@ -36,7 +36,7 @@ type sequence struct {
 func (s *sequence) add(p *pkt.Packet) {
 	if p.FrameNum == 0 {
 		if s.zero != nil { // we've received frame zero for a new sequence before completing the previous one.
-			s.log.Debug("Fast sequence duplicate frame zero detected. Resetting")
+			slog.Debug("Fast sequence duplicate frame zero detected. Resetting")
 			s.reset() // so we toss the old one and start anew
 		}
 		s.zero = p
@@ -45,11 +45,12 @@ func (s *sequence) add(p *pkt.Packet) {
 		s.received += 6
 	} else {
 		if s.zero == nil { // we've received a subsequent frame before getting the first one
-			s.log.Debugf("Fast sequence received subsequent frame before zero frame. Resetting")
-			s.log.Debugf("Source: %d PGN: %d Sequence #: %d FrameNum #: %d", p.Info.SourceId, p.Info.PGN, p.SeqId, p.FrameNum)
+			slog.Debug("fast sequence received subsequent frame before zero frame, resetting",
+				"source", p.Info.SourceId, "pgn", p.Info.PGN, "seqId", p.SeqId, "frameNum", p.FrameNum)
 			s.reset()
 		} else if s.contents[p.FrameNum] != nil { // uh-oh, we've already seen this frame
-			s.log.Debugf("Fast sequence received duplicate frame. Resetting Source: %d PGN: %d Sequence #: %d FrameNum #: %d, resetting sequence", p.Info.SourceId, p.Info.PGN, p.SeqId, p.FrameNum)
+			slog.Debug("fast sequence received duplicate frame, resetting sequence",
+				"source", p.Info.SourceId, "pgn", p.Info.PGN, "seqId", p.SeqId, "frameNum", p.FrameNum)
 			s.reset()
 		} else {
 			s.contents[p.FrameNum] = p.Data[1:]

@@ -1,11 +1,10 @@
-name: Test
+name: Lint
 
 on:
-  push:
-    branches: ["**"]
+  pull_request:
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,5 +16,7 @@ jobs:
         with:
           go-version-file: go.mod
 
-      - name: Test
-        run: go test ./...
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest

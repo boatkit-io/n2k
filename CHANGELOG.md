@@ -1,4 +1,21 @@
-## Change Log for boatkit-io/n2k
+## Change Log for open-ships/n2k
+
+### 2026-03-31
+Major housekeeping to simplify the repo and move fully under the open-ships org.
+
+- Removed mage build system; replaced Makefile with a justfile using plain go commands
+- Removed lintroller and its configuration
+- Removed renovate, package.json, package-lock.json, and .releaserc.yaml
+- Replaced semantic-release with date-based tagging (matching beacon's release process)
+- Simplified CI: single test workflow using `go test`, release triggers on successful test run
+- Removed `cmd/convertcandumps` and `cmd/replay` (and `pkg/endpoint/n2kfileendpoint`)
+- Inlined `tugboat/pkg/canbus` and `tugboat/pkg/units` into this repo, removing the tugboat dependency
+- Replaced `sirupsen/logrus` with `log/slog` throughout
+- Upgraded to Go 1.25
+- Changed module path from `github.com/boatkit-io/n2k` to `github.com/open-ships/n2k`
+- Removed `.tool-versions`
+
+## (Prior) Change Log for boatkit-io/n2k
 
 This document will be updated whenever changes are made to the main branch of this project.
 
