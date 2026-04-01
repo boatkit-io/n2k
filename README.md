@@ -1,4 +1,8 @@
 # Golang NMEA 2000 (N2k) Library
+
+[![Tests](https://github.com/open-ships/n2k/actions/workflows/test.yaml/badge.svg)](https://github.com/open-ships/n2k/actions/workflows/test.yaml)
+[![Go version](https://img.shields.io/github/go-mod/go-version/open-ships/n2k)](go.mod)
+
 ## open-ships/n2k
 
 open-ships/n2k comprises packages (and associated tools) supporting the exchange of NMEA 2000 messages across a range of transports. Client go code can receive strongly typed [go](https://go.dev) data structures, with the library translating from a stream of NMEA 2000 messages.
