@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 // Package n2kfileendpoint provides reads n2k log files and sends canbus frames to a channel.
 // To use it connect its output channel to a canadapter instance.
 package n2kfileendpoint
@@ -67,7 +74,7 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 		// Sample line:
 		// (010.139585)  can1  08FF0401   [8]  AC 98 21 FC 5E FD 64 FF
 		line := scanner.Text()
-		if len(line) == 0 {
+		if line == "'" {
 			continue
 		}
 		var frame can.Frame
@@ -85,11 +92,7 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 			}
 		}
 		// Pause until the timeDelta has expired, so this all replays in "real-time" (relative to start, obvs)
-		for {
-			if canceled {
-				break
-			}
-
+		for !canceled {
 			curDelta := time.Since(startTime).Seconds()
 			nextTime := timeDelta - float32(curDelta)
 			// Make sure we wait at most 0.5 seconds to gracefully quit as needed

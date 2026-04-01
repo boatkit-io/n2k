@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package canadapter
 
 import (
@@ -38,7 +45,8 @@ func (m *MultiBuilder) Add(p *pkt.Packet) {
 	}
 }
 
-// SeqFor method returns the sequence for the specified packet, creating it it needed.
+// SeqFor method returns the sequence for the specified packet, creating
+// it it needed.
 func (m *MultiBuilder) SeqFor(p *pkt.Packet) *sequence {
 	if _, t := m.sequences[p.Info.SourceId]; !t {
 		m.sequences[p.Info.SourceId] = make(map[uint32]map[uint8]*sequence)

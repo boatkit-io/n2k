@@ -6,6 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+//nolint:lll // Why: test cases
 func TestDecoding(t *testing.T) {
 	info := MessageInfo{}
 

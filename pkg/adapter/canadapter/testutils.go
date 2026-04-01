@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package canadapter
 
 import (
@@ -7,7 +14,9 @@ import (
 	"github.com/brutella/can"
 )
 
-// CanFrameFromRaw parses an input string into a can.Frame.
+// CanFrameFromRaw parses an input string into a [can.Frame].
+//
+//nolint:errcheck // Why: Needs error return later.
 func CanFrameFromRaw(in string) can.Frame {
 	elems := strings.Split(in, ",")
 	priority, _ := strconv.ParseUint(elems[1], 10, 8)
@@ -30,6 +39,15 @@ func CanFrameFromRaw(in string) can.Frame {
 }
 
 // CanIdFromData returns an encoded ID from its inputs.
-func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8) uint32 {
-	return uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26) | uint32(destination)
+//
+// Deprecated: Use [CanIDFromData] instead.
+//
+//nolint:revive // Why: Deprecated.
+func CanIdFromData(pgn uint32, sourceId, priority, destination uint8) uint32 {
+	return CanIDFromData(pgn, sourceId, priority, destination)
+}
+
+// CanIDFromData returns an encoded ID from its inputs.
+func CanIDFromData(pgn uint32, sourceID, priority, destination uint8) uint32 {
+	return uint32(sourceID) | (pgn << 8) | (uint32(priority) << 26) | uint32(destination)
 }
