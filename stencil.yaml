@@ -2,6 +2,7 @@ name: n2k
 arguments:
   org: boatkit-io
   library: true
+  # We have binaries, but we don't publish them.
   license: MIT
 modules:
   - name: go.rgst.io/rgst-io/stencil-golang
