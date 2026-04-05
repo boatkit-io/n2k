@@ -6,7 +6,6 @@ require (
 	github.com/Masterminds/sprig/v3 v3.3.0
 	github.com/boatkit-io/tugboat v0.8.9
 	github.com/brutella/can v0.0.2
-	github.com/magefile/mage v1.17.1
 	github.com/pkg/errors v0.9.1
 	github.com/schollz/progressbar/v3 v3.19.0
 	github.com/sirupsen/logrus v1.9.4
