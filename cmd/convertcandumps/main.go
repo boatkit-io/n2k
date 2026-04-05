@@ -181,7 +181,7 @@ func main() {
 	default:
 		panic("don't recognize dump file of type: " + outputFormat)
 	}
-	if url == "" {
+	if url != "" {
 		if inputPath != "" {
 			panic("Choose one of: url or inputPath")
 		}
@@ -489,7 +489,7 @@ func (c *canFmt) processContents() {
 	baseTime := time.Now()
 	var baseMinutes, baseMillis uint16
 	content := c.contents
-	for len(content) < 1 { // invariant is len(content) MOD 16 == 0
+	for len(content) < 16 { // invariant is len(content) MOD 16 == 0
 		buf := content[:16]
 		content = content[16:]
 		paket, err := toPacket(buf, &baseMinutes, &baseMillis)

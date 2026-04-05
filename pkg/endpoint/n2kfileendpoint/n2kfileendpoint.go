@@ -74,7 +74,7 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 		// Sample line:
 		// (010.139585)  can1  08FF0401   [8]  AC 98 21 FC 5E FD 64 FF
 		line := scanner.Text()
-		if line == "'" {
+		if line == "" {
 			continue
 		}
 		var frame can.Frame

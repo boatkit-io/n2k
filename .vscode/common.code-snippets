@@ -3,7 +3,7 @@
     "description": "Inserts a copyright header",
     "prefix": ["license", "copy", "copyright"],
 		"body": [
-			"// Copyright (C) ${CURRENT_YEAR} Boatkit",
+			"// Copyright (C) ${CURRENT_YEAR} Boatkit, LLC",
 			"//",
 			"// This work is licensed under the terms of the MIT license. For a copy,",
 			"// see <https://opensource.org/licenses/MIT>.",
