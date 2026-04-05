@@ -1,0 +1,50 @@
+[tool_alias]
+dprint = "github:dprint/dprint"
+
+# Default versions of tools, to update these, set [tools.override]
+[tools]
+dprint = "latest"
+golang = "1.26.1"
+golangci-lint = "2.11.4"
+goreleaser = "latest"
+gotestsum = "1.13.0"
+shfmt = "latest"
+
+[tasks.build]
+description = "Build a binary for the current platform/architecture"
+run = "go build -trimpath -o ./bin/ -v ./cmd/..."
+
+[tasks.changelog]
+description = "Generate a changelog for the current version"
+outputs = ["CHANGELOG.md"]
+run = ["git-cliff --config .cliff.toml --output CHANGELOG.md"]
+tools.git-cliff = "latest"
+
+[tasks.fmt]
+alias = "format"
+description = "Format code"
+run = [
+	"go mod tidy",
+	"golangci-lint fmt",
+	"shfmt -w .",
+	"dprint fmt '**/*.{json,yaml,yml,md,jsonschema.json}'",
+]
+
+[tasks.lint]
+description = "Run linters"
+run = "golangci-lint run"
+
+[tasks.next-version]
+description = """Get the version number that would be released if a release was ran right now.
+Pass --rc to get the next release candidate version.
+"""
+run = ["./.github/scripts/get-next-version.sh"]
+tools.svu = "latest"
+
+[tasks.test]
+description = "Run tests"
+run = "gotestsum"
+
+## <<Stencil::Block(custom)>>
+
+## <</Stencil::Block>>

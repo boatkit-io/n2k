@@ -1,4 +1,12 @@
-// Package pkt converts input messages to an intermediate (Packet) form, and outputs equivalent golang structs.
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package pkt converts input messages to an intermediate (Packet) form,
+// and outputs equivalent golang structs.
 package pkt
 
 import (
@@ -16,7 +24,10 @@ import (
 // Gateway to Endpoint (various representations)
 // Endpoint to Adapter (various Message implentations)
 // Packet (Adapter intermediate format) <--- this type
-// Golang datatypes for each known PGN, or UnknownPGN (output from Adapter)
+// Golang datatypes for each known PGN, or UnknownPGN (output from
+// Adapter)
+//
+//nolint:revive // Why: Breaking change to refactor.
 type Packet struct {
 	// Info provides (for known PGNs), the generic description of the PGN derived from canboat.json.
 	Info pgn.MessageInfo
@@ -91,7 +102,6 @@ func (p *Packet) Valid() bool {
 func (p *Packet) GetSeqFrame() {
 	p.SeqId = (p.Data[0] & 0xE0) >> 5
 	p.FrameNum = p.Data[0] & 0x1F
-
 }
 
 // UnknownPGN creates a new instance of UnknownPGN.

@@ -1,0 +1,6 @@
+go*.sum linguist-generated
+stencil.lock linguist-generated
+
+## <<Stencil::Block(custom)>>
+
+## <</Stencil::Block>>

@@ -1,3 +1,11 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+//nolint:gosec,unparam // Why: Needs a refactor.
 package pgn
 
 import (
@@ -9,6 +17,8 @@ import (
 // PGNDataStream instances provide methods to read data types from a stream.
 // byteOffset and bitOffset combine to act as the read "cursor".
 // The low level read functions update the cursor.
+//
+//nolint:revive // Why: Breaking change to refactor.
 type PGNDataStream struct {
 	data []uint8
 
@@ -203,7 +213,7 @@ func (s *PGNDataStream) readInt64(bitLength uint16) (*int64, error) {
 	if v == nil {
 		return nil, nil
 	}
-	vo := int64(*v)
+	vo := *v
 	return &vo, nil
 }
 
@@ -328,21 +338,23 @@ func (s *PGNDataStream) readBinaryData(bitLength uint16) ([]uint8, error) {
 // String has a terminating zero.
 // Length incudes the len/control bytes.
 //
-//	        "Name":"STRING_LAU",
+//	  "Name":"STRING_LAU",
 //		"Description":"A varying length string containing double or single byte codepoints encoded with a length byte and terminating zero.",
 //		"EncodingDescription":"The length of the string is determined by a starting length byte. The 2nd byte contains 0 for UNICODE or 1 for ASCII.",
 //		"Comment":"It is unclear what character sets are allowed/supported. For single byte, assume ASCII. For UNICODE, assume UTF-16, but this has not been seen in the wild yet.",
 //
 // Conflicts with this comment:
-// Control 0 = ASCII, nonzero = UTF8 -- TBD how to address this in the future
+// Control 0 = ASCII, nonzero = UTF8 -- TBD how to address this in the
+// future
+//
+//nolint:lll // Why: Example.
 func (s *PGNDataStream) readStringWithLengthAndControl() (string, error) {
 	lc, err := s.readBinaryData(16)
 	if err != nil {
 		return "", err
 	}
-	len := (uint16(lc[0]) - 2) * 8 // remove length and control bytes, leaves chars with terminating 0
-	// control := lc[1]
-	arr, err := s.readBinaryData(len)
+	length := (uint16(lc[0]) - 2) * 8 // remove length and control bytes, leaves chars with terminating 0
+	arr, err := s.readBinaryData(length)
 	if err != nil {
 		return "", err
 	}
@@ -354,14 +366,14 @@ func (s *PGNDataStream) readStringWithLengthAndControl() (string, error) {
 // String has a terminating zero
 // Length does not seem to include length byte here
 func (s *PGNDataStream) readStringWithLength() (string, error) {
-	len, err := s.readUInt8(8)
+	length, err := s.readUInt8(8)
 	if err != nil {
 		return "", err
 	}
-	if len == nil {
+	if length == nil {
 		return "", fmt.Errorf("null length in ReadStringWithLength")
 	}
-	arr, err := s.readBinaryData(uint16(*len * 8))
+	arr, err := s.readBinaryData(uint16(*length * 8))
 	if err != nil {
 		return "", err
 	}
@@ -416,7 +428,7 @@ func (s *PGNDataStream) getNumberRaw(bitLength uint16) (uint64, error) {
 		b := s.data[s.byteOffset]
 		b >>= s.bitOffset
 		if bitsToGrab < 8 {
-			mask := uint8(0xFF >> uint8(8-bitsToGrab))
+			mask := uint8(0xFF >> (8 - bitsToGrab))
 			b &= mask
 		}
 		ret |= uint64(b) << uint64(outBitOffset)
@@ -491,9 +503,9 @@ func (s *PGNDataStream) readVariableData(pgn uint32, manID ManufacturerCodeConst
 				return []uint8(str), nil
 			}
 		}
-		len := (field.BitLength + 7) &^ 0x7
-		return s.readBinaryData(len)
-	} else {
-		return nil, err
+		length := (field.BitLength + 7) &^ 0x7
+		return s.readBinaryData(length)
 	}
+
+	return nil, err
 }

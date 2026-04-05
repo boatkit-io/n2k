@@ -6,7 +6,6 @@ import (
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/n2k/pkg/pkt"
 
-	//	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )
 

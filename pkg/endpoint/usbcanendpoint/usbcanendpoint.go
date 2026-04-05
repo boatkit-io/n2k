@@ -1,4 +1,12 @@
-// Package usbcanendpoint contains the USBCANEndpoint struct described below
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package usbcanendpoint contains the USBCANEndpoint struct described
+// below
 package usbcanendpoint
 
 import (

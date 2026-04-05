@@ -1,13 +1,18 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package main implements the replay CLI for replaying PGNs.
 package main
 
 import (
-	//	"context"
 	"context"
 	"flag"
 	"os"
 	"strings"
-
-	//	"time"
 
 	"github.com/boatkit-io/n2k/pkg/adapter/canadapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint/n2kfileendpoint"
@@ -37,18 +42,20 @@ func main() {
 	subs := subscribe.New()
 	go func() {
 		if dumpPgns {
-			_, _ = subs.SubscribeToAllStructs(func(p any) {
+			var err error
+			_, err = subs.SubscribeToAllStructs(func(p any) {
 				log.Infof("Handling PGN: %s", pgn.DebugDumpPGN(p))
 			})
+			if err != nil {
+				log.WithError(err).Error("failed")
+			}
 		}
 	}()
 
 	ps := pkt.NewPacketStruct()
 	ps.SetOutput(subs)
 
-	//	ctx, cancel := context.WithCancel(context.Background())
-	//	defer cancel()
-	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
+	if replayFile != "" && strings.HasSuffix(replayFile, ".n2k") {
 		ca := canadapter.NewCANAdapter(log)
 		ca.SetOutput(ps)
 

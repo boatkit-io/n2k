@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+version: 2
+project_name: n2k
+report_sizes: true
+metadata:
+  mod_timestamp: "{{ .CommitTimestamp }}"
+builds:
+  - skip: true
+archives:
+  - formats:
+      - none
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
+changelog:
+  use: git
+release:
+  prerelease: "auto"
+  footer: |-
+    **Full Changelog**: https://github.com/boatkit-io/n2k/compare/{{ .PreviousTag }}...{{ .Tag }}
+
+## <<Stencil::Block(extraReleaseOpts)>>
+
+## <</Stencil::Block>>
