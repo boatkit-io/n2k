@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package main
 
 import (
@@ -19,6 +26,8 @@ func NewDeDuper() *DeDuper {
 
 // unique returns true if the name is encountered for the first time
 // if false the name has "_"+ incrementing digit(s) appended
+//
+//nolint:gocritic // Why: Not needed.
 func (deduper *DeDuper) unique(name string) (bool, string) {
 	firstTime := true
 	count, found := deduper.used[name]

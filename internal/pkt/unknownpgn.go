@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package pkt
 
 import (
@@ -7,7 +14,10 @@ import (
 	"github.com/boatkit-io/n2k/internal/pgn"
 )
 
-// buildUnknownPGN returns an UnknownPGN with its Reason field set to the merged errors generated.
+// buildUnknownPGN returns an UnknownPGN with its Reason field set to
+// the merged errors generated.
+//
+//nolint:errcheck // Why: needs a refactor
 func buildUnknownPGN(p *Packet) pgn.UnknownPGN {
 	ret := pgn.UnknownPGN{
 		Info:   p.Info,

@@ -85,12 +85,11 @@ func TestMultiOutofOrder(t *testing.T) {
 }
 
 func TestBigPacket(t *testing.T) {
-
 	m := NewMultiBuilder(log)
 	var p *pkt.Packet
 	lines := strings.Split(testData, "\n")
 	for _, line := range lines {
-		if len(line) == 0 {
+		if line == "" {
 			continue
 		}
 		frames, err := converter.CanFrameFromRaw(line)

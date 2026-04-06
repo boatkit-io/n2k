@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 // Package subscribe manages subscriptions to all or specific go structs.
 package subscribe
 
@@ -7,7 +14,10 @@ import (
 	"sync"
 )
 
-// SubscribeManager maintains lists of subscribers to specific or all structs.
+// SubscribeManager maintains lists of subscribers to specific or all
+// structs.
+//
+//nolint:revive // Why: Breaking change to refactor.
 type SubscribeManager struct {
 	subMutex sync.Mutex
 	// tracked subs by subscriber
@@ -20,9 +30,14 @@ type SubscribeManager struct {
 }
 
 // SubscriptionId identifies a specific subscriber.
+//
+//nolint:revive // Why: Breaking change to refactor.
 type SubscriptionId uint
 
-// trackedSub connects a  subscriber with a function that fulfills a specific subscription.
+// trackedSub connects a  subscriber with a function that fulfills a
+// specific subscription.
+//
+//nolint:revive // Why: Breaking change to refactor.
 type trackedSub struct {
 	subId      SubscriptionId
 	structName string
@@ -69,6 +84,8 @@ func (s *SubscribeManager) addSubscription(structName string, callback any) (Sub
 }
 
 // Unsubscribe cancels a subscription.
+//
+//nolint:revive // Why: Breaking change to refactor.
 func (s *SubscribeManager) Unsubscribe(subId SubscriptionId) error {
 	s.subMutex.Lock()
 	defer s.subMutex.Unlock()
@@ -188,8 +205,11 @@ func (s *SubscribeManager) HandleStruct(p any) {
 }
 
 // SubscribeToStruct registers a subscription to the specified struct.
-// It validates the callback is a function with a matching argument type.
-func (s *SubscribeManager) SubscribeToStruct(t any, callback any) (SubscriptionId, error) {
+// It validates the callback is a function with a matching argument
+// type.
+//
+//nolint:revive // Why: Breaking change to refactor.
+func (s *SubscribeManager) SubscribeToStruct(t, callback any) (SubscriptionId, error) {
 	e := reflect.ValueOf(t)
 	if e.Kind() != reflect.Struct {
 		return 0, fmt.Errorf("subscribeToPgn called with non-struct type: %+v", e.Kind())
@@ -200,7 +220,10 @@ func (s *SubscribeManager) SubscribeToStruct(t any, callback any) (SubscriptionI
 		return 0, fmt.Errorf("subscribeToPgn called with non-func callback: %+v", ce.Kind())
 	}
 	if ce.Type().In(0) != e.Type() {
-		return 0, fmt.Errorf("subscribeToPgn called with callback type (%+v) not matching passed type (%+v)", ce.Type().In(0).Name(), e.Type().Name())
+		return 0, fmt.Errorf(
+			"subscribeToPgn called with callback type (%+v) not matching passed type (%+v)",
+			ce.Type().In(0).Name(), e.Type().Name(),
+		)
 	}
 
 	return s.addSubscription(e.Type().Name(), callback)

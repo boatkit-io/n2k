@@ -1,4 +1,12 @@
-// Package endpoint declares an interface. Create a type satisfying it to support a new gateway or log file format.
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package endpoint declares an interface. Create a type satisfying it
+// to support a new gateway or log file format.
 package endpoint
 
 import (
