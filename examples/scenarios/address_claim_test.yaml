@@ -6,18 +6,27 @@ version: "1.0"
 test_config:
   duration: "30s"
   node_id: 50
-  capture_pgns: [60928]  # ISO Address Claim
-  
+  capture_pgns: [60928] # ISO Address Claim
+
 # Network triggers and responses
 response_triggers:
   - name: "address_conflict"
     description: "Simulate another device claiming the same address"
-    match_pgn: 60928      # ISO Address Claim
-    match_target: 255     # Broadcast
+    match_pgn: 60928 # ISO Address Claim
+    match_target: 255 # Broadcast
     response_pgn: 60928
-    response_source: 75   # Conflicting device
+    response_source: 75 # Conflicting device
     response_target: 255
-    response_data: [0x15, 0x00, 0x00, 0x00, 0x80, 0x8D, 0xC0, 0x09]  # Lower priority NAME
+    response_data: [
+      0x15,
+      0x00,
+      0x00,
+      0x00,
+      0x80,
+      0x8D,
+      0xC0,
+      0x09,
+    ] # Lower priority NAME
     response_delay: "2s"
     trigger_once: true
 
@@ -27,12 +36,12 @@ test_phases:
     start_time: "0s"
     duration: "5s"
     description: "Node should claim its preferred address"
-    
+
   - name: "conflict_injection"
     start_time: "5s"
     duration: "10s"
     description: "Inject conflicting address claim"
-    
+
   - name: "resolution"
     start_time: "15s"
     duration: "15s"
@@ -48,25 +57,25 @@ assertions:
     max_count: 1
     time_window: "5s"
     description: "Initial address claim should be sent"
-    
+
   - type: "trigger_activated"
     trigger_name: "address_conflict"
     expected_count: 1
     description: "Address conflict trigger should activate once"
-    
+
   - type: "message_sent"
     pgn: 60928
-    source: 51  # Expected new address after conflict
+    source: 51 # Expected new address after conflict
     target: 255
     min_count: 1
     time_window: "30s"
     description: "New address claim should be sent after conflict"
-    
+
   - type: "address_claimed"
     expected_address: 51
     timeout: "25s"
     description: "Node should end up with address 51"
-    
+
   - type: "message_sequence"
     sequence:
       - pgn: 60928
@@ -83,16 +92,16 @@ scenarios:
   - name: "address_claim_test"
     description: "Test address claiming with conflict resolution"
     node_type: "test_node"
-    
+
     triggers:
       - type: "request"
         pgn: 60928
         response: "address_conflict_response"
-    
+
     responses:
       address_conflict_response:
         type: "data"
         pgn: 60928
         priority: 6
-        data: "15,00,00,00,80,8d,c0,09"  # Lower priority NAME
-        delay: "2s" 
+        data: "15,00,00,00,80,8d,c0,09" # Lower priority NAME
+        delay: "2s"

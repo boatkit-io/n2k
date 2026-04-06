@@ -55,7 +55,7 @@ func (m *MultiBuilder) Add(p *pkt.Packet) {
 func (m *MultiBuilder) SeqFor(p *pkt.Packet) *sequence {
 	m.mutex.Lock()
 	defer m.mutex.Unlock()
-	
+
 	if _, t := m.sequences[p.Info.SourceId]; !t {
 		m.sequences[p.Info.SourceId] = make(map[uint32]map[uint8]*sequence)
 	}

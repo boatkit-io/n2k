@@ -1865,6 +1865,7 @@ const (
 	Wmm2010	MagneticVariationConst = 6
 	Wmm2015	MagneticVariationConst = 7
 	Wmm2020	MagneticVariationConst = 8
+	Wmm2025	MagneticVariationConst = 9
 )
 
 func (e MagneticVariationConst) GoString() string {return e.String() }
@@ -1888,6 +1889,8 @@ func (e MagneticVariationConst) String() string {
 			return "WMM 2015"
 		case 8:
 			return "WMM 2020"
+		case 9:
+			return "WMM 2025"
 default:
 		return fmt.Sprintf("MagneticVariationConst(%d)", uint8(e))
 	}
@@ -7931,6 +7934,14 @@ type MaretronProductCodeConst uint16
 const (
 	Ssc200	MaretronProductCodeConst = 434
 	Ssc300	MaretronProductCodeConst = 2686
+	Tla100	MaretronProductCodeConst = 2781
+	Nbe100	MaretronProductCodeConst = 3979
+	Rim100	MaretronProductCodeConst = 4078
+	Alm100	MaretronProductCodeConst = 8165
+	Tmp100	MaretronProductCodeConst = 20067
+	Dcr100	MaretronProductCodeConst = 22585
+	Sim100	MaretronProductCodeConst = 23603
+	Acm100	MaretronProductCodeConst = 26493
 )
 
 func (e MaretronProductCodeConst) GoString() string {return e.String() }
@@ -7940,8 +7951,101 @@ func (e MaretronProductCodeConst) String() string {
 			return "SSC200"
 		case 2686:
 			return "SSC300"
+		case 2781:
+			return "TLA100"
+		case 3979:
+			return "NBE100"
+		case 4078:
+			return "RIM100"
+		case 8165:
+			return "ALM100"
+		case 20067:
+			return "TMP100"
+		case 22585:
+			return "DCR100"
+		case 23603:
+			return "SIM100"
+		case 26493:
+			return "ACM100"
 default:
 		return fmt.Sprintf("MaretronProductCodeConst(%d)", uint16(e))
+	}
+}
+type MaretronOpcodeConst uint8
+const (
+	ReadAll	MaretronOpcodeConst = 0
+	WriteRegister	MaretronOpcodeConst = 1
+	ReadConfig	MaretronOpcodeConst = 2
+	WriteConfig	MaretronOpcodeConst = 3
+	Calibrate	MaretronOpcodeConst = 4
+	ClearCalibration	MaretronOpcodeConst = 5
+	Status_2	MaretronOpcodeConst = 6
+	ClearStatus	MaretronOpcodeConst = 7
+	ResetFactoryDefault	MaretronOpcodeConst = 8
+	Debug	MaretronOpcodeConst = 9
+	WriteInstance	MaretronOpcodeConst = 16
+	ReadInstance	MaretronOpcodeConst = 17
+	WriteLabel	MaretronOpcodeConst = 32
+	ReadLabel	MaretronOpcodeConst = 33
+	WriteSwitchConfig	MaretronOpcodeConst = 48
+	ReadSwitchConfig	MaretronOpcodeConst = 49
+	WriteAlertConfig	MaretronOpcodeConst = 64
+	ReadAlertConfig	MaretronOpcodeConst = 65
+	WriteChannelConfig	MaretronOpcodeConst = 80
+	ReadChannelConfig	MaretronOpcodeConst = 81
+	ReadChannelConfigExtended	MaretronOpcodeConst = 86
+	WriteChannelConfigExtended	MaretronOpcodeConst = 87
+)
+
+func (e MaretronOpcodeConst) GoString() string {return e.String() }
+func (e MaretronOpcodeConst) String() string {
+	switch e {
+		case 0:
+			return "Read All"
+		case 1:
+			return "Write Register"
+		case 2:
+			return "Read Config"
+		case 3:
+			return "Write Config"
+		case 4:
+			return "Calibrate"
+		case 5:
+			return "Clear Calibration"
+		case 6:
+			return "Status"
+		case 7:
+			return "Clear Status"
+		case 8:
+			return "Reset Factory Default"
+		case 9:
+			return "Debug"
+		case 16:
+			return "Write Instance"
+		case 17:
+			return "Read Instance"
+		case 32:
+			return "Write Label"
+		case 33:
+			return "Read Label"
+		case 48:
+			return "Write Switch Config"
+		case 49:
+			return "Read Switch Config"
+		case 64:
+			return "Write Alert Config"
+		case 65:
+			return "Read Alert Config"
+		case 80:
+			return "Write Channel Config"
+		case 81:
+			return "Read Channel Config"
+		case 86:
+			return "Read Channel Config Extended"
+		case 87:
+			return "Write Channel Config Extended"
+default:
+		return fmt.Sprintf("MaretronOpcodeConst(%d)", uint8(e))
 	}
 }
 type MaretronSoftwareCodeConst uint16

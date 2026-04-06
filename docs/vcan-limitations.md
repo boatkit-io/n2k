@@ -17,6 +17,7 @@ bin/spewpgns -iface vcan0
 ## Implementation
 
 The tugboat package has been modified to handle vcan interfaces properly by:
+
 - Accepting "vcan" as a valid link type
 - Handling vcan interfaces as GenericLink instead of Can links
 - Skipping bitrate configuration for vcan interfaces (not applicable)
@@ -27,6 +28,7 @@ The tugboat package has been modified to handle vcan interfaces properly by:
 ### 1. Use Real CAN Hardware
 
 The most reliable solution is to use actual CAN hardware:
+
 - USB-CAN adapters
 - PCIe CAN cards
 - Embedded CAN controllers
@@ -34,6 +36,7 @@ The most reliable solution is to use actual CAN hardware:
 ### 2. Use Alternative Virtual CAN Implementations
 
 Instead of vcan, consider:
+
 - **slcan**: Serial line CAN interface
 - **can-utils**: Provides various CAN tools
 - **candump/cansend**: For testing and development
@@ -90,4 +93,4 @@ go run cmd/testvcan/main.go -iface <interface_name>
 
 - Consider updating the `tugboat` package when vcan support is added
 - Implement a custom CAN interface wrapper that supports vcan
-- Add better error messages and fallback options in the codebase 
+- Add better error messages and fallback options in the codebase

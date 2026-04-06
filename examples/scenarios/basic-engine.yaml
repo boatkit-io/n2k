@@ -6,62 +6,62 @@ scenarios:
   - name: "engine_running"
     description: "Engine running at various RPM levels"
     node_type: "engine"
-    
+
     triggers:
       # Respond to engine RPM requests
       - type: "request"
-        pgn: 127488  # Engine Parameters - Rapid Update
+        pgn: 127488 # Engine Parameters - Rapid Update
         response: "engine_rpm_response"
-      
+
       # Respond to engine temperature requests
       - type: "request"
-        pgn: 127489  # Engine Parameters - Dynamic
+        pgn: 127489 # Engine Parameters - Dynamic
         response: "engine_temp_response"
-      
+
       # Respond to product information requests
-      - type: "request" 
-        pgn: 126996  # Product Information
+      - type: "request"
+        pgn: 126996 # Product Information
         response: "product_info"
-    
+
     responses:
       engine_rpm_response:
         type: "data"
         pgn: 127488
         priority: 3
-        data: "01,64,1a,40,ff,ff,ff,ff"  # RPM ~1600, valid engine instance
-      
+        data: "01,64,1a,40,ff,ff,ff,ff" # RPM ~1600, valid engine instance
+
       engine_temp_response:
         type: "data"
         pgn: 127489
         priority: 3
-        data: "01,50,5f,ff,ff,ff,ff,ff"  # Engine temp ~80°C
-      
+        data: "01,50,5f,ff,ff,ff,ff,ff" # Engine temp ~80°C
+
       product_info:
         type: "data"
         pgn: 126996
         priority: 6
         data: "00,83,04,4e,32,4b,20,45,6e,67,69,6e,65,20,53,69,6d,75,6c,61,74,6f,72,00,31,2e,30,2e,30,00,31,32,33,34,35,36,37,38,39,30,31,32,33,34,35,36,00,ff,ff"
         # Product info: "N2K Engine Simulator", version "1.0.0", serial "1234567890123456"
-    
+
     defaults:
       heartbeat:
         enabled: true
         interval: "1s"
         pgn: 127488
-        data: "01,64,1a,40,ff,ff,ff,ff"  # Send RPM every second
+        data: "01,64,1a,40,ff,ff,ff,ff" # Send RPM every second
 
   - name: "engine_alarm"
     description: "Engine with high temperature alarm condition"
     node_type: "engine"
-    
+
     triggers:
       - type: "request"
         pgn: 127489
         response: "high_temp_alarm"
-    
+
     responses:
       high_temp_alarm:
         type: "data"
         pgn: 127489
-        priority: 2  # Higher priority for alarm
-        data: "01,ff,ff,b4,00,ff,ff,ff"  # Very high temp ~180°C 
+        priority: 2 # Higher priority for alarm
+        data: "01,ff,ff,b4,00,ff,ff,ff" # Very high temp ~180°C

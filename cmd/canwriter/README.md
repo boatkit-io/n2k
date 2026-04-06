@@ -22,31 +22,37 @@ A command-line tool for writing streams of CAN frames to a CAN bus interface usi
 ## Examples
 
 ### Basic Usage - Send 10 frames with incrementing data
+
 ```bash
 ./bin/canwriter
 ```
 
 ### Send to specific interface with custom timing
+
 ```bash
 ./bin/canwriter -iface can1 -count 20 -interval 50ms
 ```
 
 ### Send NMEA 2000 compatible frames
+
 ```bash
 ./bin/canwriter -pattern nmea -pgn 127488 -source 110 -count 5
 ```
 
 ### Send with custom base ID (hex format)
+
 ```bash
 ./bin/canwriter -baseid 0x1CFFFFFF -pattern fixed -count 3
 ```
 
 ### Random data pattern with verbose logging
+
 ```bash
 ./bin/canwriter -pattern random -verbose -interval 200ms
 ```
 
 ### High-frequency burst test
+
 ```bash
 ./bin/canwriter -count 100 -interval 10ms -pattern increment
 ```
@@ -54,18 +60,22 @@ A command-line tool for writing streams of CAN frames to a CAN bus interface usi
 ## Data Patterns
 
 ### increment (default)
+
 - Frame counter, test patterns, timestamp, and calculated values
 - Useful for testing frame ordering and timing
 
 ### random
+
 - Pseudo-random data based on time and index
 - Good for stress testing and bandwidth verification
 
 ### fixed
+
 - Fixed test pattern (0xDEADBEEF, 0xCAFEBABE)
 - Useful for protocol testing and debugging
 
 ### nmea
+
 - NMEA 2000 compatible frame format
 - Proper PGN-based frame IDs with realistic marine data
 - Simulates engine RPM, temperature, and other sensor data
@@ -117,4 +127,4 @@ Sent frame 1: ID=0x18EF0064, Data=[00006400FF00FFFF]
 Sent frame 2: ID=0x18EF0064, Data=[0164000001FF0002FFFF]
 Sent frame 3: ID=0x18EF0064, Data=[025802FF04FFFFFF]
 INFO[0000] Successfully sent 3/3 frames
-``` 
+```

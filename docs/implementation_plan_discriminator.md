@@ -10,12 +10,14 @@ This document outlines the implementation plan for two major improvements to the
 ## Problem Statement
 
 ### Current Issues
+
 - Multiple decoder attempts for PGNs with variants cause performance overhead
 - Match values exist in field definitions but are only used during decoding validation
 - All generated code is in a single file, mixing client API and runtime concerns
 - FieldDescriptors are generated but only FieldSpecs are used at runtime
 
 ### Goals
+
 - Eliminate multiple decoder attempts through efficient pre-filtering
 - Leverage match values for variant discrimination at generation time
 - Separate client API from runtime implementation
@@ -34,6 +36,7 @@ Packet Data → Discriminator → Selected Decoder → Parsed Struct
 ### 1.2 Generated Components
 
 #### Discriminator Types
+
 ```go
 // Generated discriminator for PGNs with multiple variants
 type PgnDiscriminator struct {
@@ -48,6 +51,7 @@ type MatchFieldSpec struct {
 ```
 
 #### Discriminator Functions
+
 ```go
 // Generated for each PGN with multiple variants
 func DiscriminatePgn{PGN_ID}(data []uint8) (*PgnInfo, error)
@@ -57,6 +61,7 @@ func matchesVariant(stream *DataStream, matchSpecs []MatchFieldSpec) bool
 ### 1.3 Integration Points
 
 #### Packet Struct Updates
+
 ```go
 type Packet struct {
     // ... existing fields ...
@@ -67,6 +72,7 @@ type Packet struct {
 ```
 
 #### Enhanced AddDecoders Method
+
 ```go
 func (p *Packet) AddDecoders() {
     
@@ -91,6 +97,7 @@ func (p *Packet) AddDecoders() {
 ### 1.4 Template Generation
 
 #### Template Helper Functions
+
 ```go
 // Check if PGN has multiple variants
 func hasMultipleVariants(pgn PGN) bool {
@@ -104,6 +111,7 @@ func getVariantsForPgn(pgn PGN) []PgnInfo {
 ```
 
 #### Discriminator Generation Template
+
 ```go
 {{- range $pgn := .PGNDoc.PGNs }}
 {{- if hasMultipleVariants $pgn }}
@@ -172,27 +180,32 @@ pkg/
 ### 2.2 Public API Components
 
 #### n2k/types.go
+
 - PGN struct definitions
 - MessageInfo
 - All enum types and constants
 - String methods for enums
 
 #### n2k/interfaces.go
+
 - PgnStruct interface
 - PgnWriter interface
 - Endpoint interface
 - MessageHandler interface
 
 #### n2k/pipeline.go
+
 - NewPipeline() function
 - UpdatePipeline() function
 - Pipeline management
 
 #### n2k/subscribe.go
+
 - Public subscription interface
 - Event handling types
 
 #### endpoint/*/
+
 - SocketCAN endpoint implementation
 - USBCAN endpoint implementation
 - N2K file endpoint implementation
@@ -200,6 +213,7 @@ pkg/
 ### 2.3 Internal Components
 
 #### internal/pgn/
+
 - PgnInfo struct definitions
 - PgnInfoLookup maps
 - All decoder functions
@@ -210,20 +224,25 @@ pkg/
 - Variant matching logic
 
 #### internal/adapter/
+
 - Frame adapters (internal)
 
 #### internal/packet/
+
 - Packet processing (internal)
 
 #### internal/subscribe/
+
 - Subscription implementation (internal)
 
 #### internal/datastream.go
+
 - Core DataStream implementation
 
 ### 2.4 Template Modifications
 
 #### Split Template Files
+
 ```
 cmd/pgngen/templates/
 ├── n2k/
@@ -241,6 +260,7 @@ cmd/pgngen/templates/
 ```
 
 #### Build Process Updates
+
 ```go
 // cmd/pgngen/main.go
 func generatePublicAPI(pgnDoc *PGNDocument) error {
@@ -282,6 +302,7 @@ func generateInternalPGN(pgnDoc *PGNDocument) error {
 ## 3. Usage Patterns
 
 ### 3.1 Client Service Usage
+
 ```go
 // Client service constructs pipeline and switches endpoints
 package main
@@ -305,6 +326,7 @@ func main() {
 ```
 
 ### 3.2 Client Package Usage
+
 ```go
 // Other client packages only import n2k for types
 package other
@@ -319,6 +341,7 @@ func processPGN(vh n2k.VesselHeading) {
 ```
 
 ### 3.3 Benefits of This Structure
+
 - **Minimal public surface**: Only `n2k` package and `endpoint` packages are public
 - **Clean separation**: Client packages only import `n2k` for types
 - **Hidden complexity**: All implementation details are internal
@@ -328,29 +351,34 @@ func processPGN(vh n2k.VesselHeading) {
 ## 4. Implementation Phases
 
 ### Phase 1: Foundation
+
 - [x] Create new file structure
 - [x] Split existing template into client/runtime templates
 - [x] Update build process to generate separate files
 - [ ] Verify existing functionality still works
 
 ### Phase 2: Discriminator System
+
 - [ ] Add discriminator types to runtime
 - [ ] Implement discriminator generation template
 - [ ] Add discriminator lookup to PgnInfoLookup
 - [ ] Update Packet struct with discriminator field
 
 ### Phase 3: Integration
+
 - [ ] Update AddDecoders to use discriminators
 - [ ] Add fallback logic for discriminator failures
 - [ ] Update NewPacket to set discriminator
 
 ### Phase 4: Testing and Validation
+
 - [ ] Create tests for match value uniqueness
 - [ ] Add discriminator performance tests
 - [ ] Verify all PGN variants work correctly
 - [ ] Benchmark performance improvements
 
 ### Phase 5: Cleanup
+
 - [ ] Remove unused FieldDescriptor generation
 - [ ] Clean up old template code
 - [ ] Update documentation
@@ -359,6 +387,7 @@ func processPGN(vh n2k.VesselHeading) {
 ## 4. Testing Strategy
 
 ### 4.1 Match Value Uniqueness Test
+
 ```go
 func TestMatchValueUniqueness(t *testing.T) {
     for pgn, variants := range pgn.PgnInfoLookup {
@@ -379,6 +408,7 @@ func TestMatchValueUniqueness(t *testing.T) {
 ```
 
 ### 4.2 Discriminator Performance Test
+
 ```go
 func BenchmarkDiscriminator(b *testing.B) {
     // Test discriminator performance vs multiple decoder attempts
@@ -407,11 +437,13 @@ func BenchmarkDiscriminator(b *testing.B) {
 ## 5. Migration Strategy
 
 ### 5.1 Backward Compatibility
+
 - Maintain existing API during transition
 - Gradual migration of internal components
 - Deprecation warnings for old patterns
 
 ### 5.2 Rollout Plan
+
 1. Implement discriminator system alongside existing code
 2. Add feature flags to enable/disable discriminators
 3. Gradual rollout with performance monitoring
@@ -420,16 +452,19 @@ func BenchmarkDiscriminator(b *testing.B) {
 ## 6. Success Metrics
 
 ### 6.1 Performance Improvements
+
 - Reduction in decoder attempts for multi-variant PGNs
 - Faster packet processing overall
 - Lower CPU usage during high-throughput scenarios
 
 ### 6.2 Code Quality
+
 - Cleaner separation of concerns
 - Reduced generated code size
 - Better maintainability
 
 ### 6.3 Developer Experience
+
 - Clearer API boundaries
 - Better error messages
 - Improved debugging capabilities
@@ -437,11 +472,13 @@ func BenchmarkDiscriminator(b *testing.B) {
 ## 7. Risk Mitigation
 
 ### 7.1 Technical Risks
+
 - **Discriminator failures**: Fallback to existing logic
 - **Template complexity**: Incremental implementation
 - **Performance regression**: Comprehensive benchmarking
 
 ### 7.2 Mitigation Strategies
+
 - Extensive testing with real N2K data
 - Gradual rollout with monitoring
 - Rollback plan if issues arise
@@ -450,16 +487,19 @@ func BenchmarkDiscriminator(b *testing.B) {
 ## 8. Future Enhancements
 
 ### 8.1 Advanced Discrimination
+
 - Field ordering optimization
 - Early termination strategies
 - Caching of discriminator results
 
 ### 8.2 Client API Improvements
+
 - Type-safe subscription interfaces
 - Builder patterns for complex messages
 - Validation helpers
 
 ### 8.3 Runtime Optimizations
+
 - JIT compilation of discriminators
 - Memory pool for DataStream objects
 - Parallel processing support
