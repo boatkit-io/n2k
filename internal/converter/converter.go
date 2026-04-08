@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 // Package converter provides routines that convert between various text
 // data formats and Can frames.
 package converter
@@ -44,7 +51,7 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 		return nil, fmt.Errorf("invalid raw format: data length exceeds available bytes")
 	}
 
-	id := CanIdFromData(uint32(pgn), uint8(source), uint8(priority), uint8(destination))
+	id := CanIDFromData(uint32(pgn), uint8(source), uint8(priority), uint8(destination))
 
 	// TO DO: if this is a fast PGN, we need to handle it differently
 	// those must always be formatted as a fast frame, even if it's only 6 bytes (sequence/frame number, length, 6 bytes of data)
@@ -70,7 +77,7 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 	dataIndex := 6 // Start of data in elems
 
 	// Use sequence ID 0 for now (will be overridden by RawFileEndpoint)
-	seqId := uint8(0)
+	seqID := uint8(0)
 
 	// First frame (frame 0)
 	firstFrame := &can.Frame{
@@ -78,12 +85,12 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 		Length: 8,
 	}
 	// First byte: (sequenceId << 5) | frameNumber
-	firstFrame.Data[0] = (seqId << 5) // Frame 0
+	firstFrame.Data[0] = (seqID << 5) // Frame 0
 	// Second byte: total data length
 	firstFrame.Data[1] = uint8(length)
 
 	// Copy up to 6 bytes of data
-	for i := 0; i < min(6, remainingBytes); i++ {
+	for i := 0; i < minInt(6, remainingBytes); i++ {
 		b, err := strconv.ParseUint(elems[dataIndex+i], 16, 8)
 		if err != nil {
 			return nil, fmt.Errorf("invalid data byte at position %d: %w", i, err)
@@ -103,10 +110,10 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 			Length: 8,
 		}
 		// First byte: (sequenceId << 5) | frameNumber
-		frame.Data[0] = (seqId << 5) | (frameNum & 0x1F)
+		frame.Data[0] = (seqID << 5) | (frameNum & 0x1F)
 
 		// Copy up to 7 bytes of data (no length byte in continuation frames)
-		bytesToCopy := min(7, remainingBytes)
+		bytesToCopy := minInt(7, remainingBytes)
 		for i := 0; i < bytesToCopy; i++ {
 			b, err := strconv.ParseUint(elems[dataIndex+i], 16, 8)
 			if err != nil {
@@ -124,24 +131,24 @@ func CanFrameFromRaw(in string) ([]*can.Frame, error) {
 	return frames, nil
 }
 
-// min returns the minimum of two integers
-func min(a, b int) int {
+// minInt returns the minimum of two integers.
+func minInt(a, b int) int {
 	if a < b {
 		return a
 	}
 	return b
 }
 
-// CanIdData represents the data needed to construct a CAN ID
-type CanIdData struct {
+// CanIDData represents the data needed to construct a CAN ID.
+type CanIDData struct {
 	PGN         uint32
-	SourceId    uint8
+	SourceID    uint8
 	Priority    uint8
 	Destination uint8
 }
 
-// CanIdFromData returns an encoded ID from its inputs.
-func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8) uint32 {
+// CanIDFromData returns an encoded ID from its inputs.
+func CanIDFromData(pgn uint32, sourceID, priority, destination uint8) uint32 {
 	// Handle destination encoding based on PDU format
 	pduFormat := uint8((pgn & 0xFF00) >> 8)
 	if pduFormat < 240 {
@@ -151,23 +158,23 @@ func CanIdFromData(pgn uint32, sourceId uint8, priority uint8, destination uint8
 	// PDU2 format: destination is always global (255), don't encode it
 
 	// Build the base CAN ID: Priority(3) + Reserved(1) + PGN(18) + Source(8)
-	canId := uint32(sourceId) | (pgn << 8) | (uint32(priority) << 26)
+	canID := uint32(sourceID) | (pgn << 8) | (uint32(priority) << 26)
 
 	// Set the Extended Frame Format (EFF) bit (bit 31) for 29-bit CAN ID
 	// This is required for NMEA 2000 which uses extended CAN IDs
-	canId |= 0x80000000 // MaskEff from brutella/can constants
+	canID |= 0x80000000 // MaskEff from brutella/can constants
 
-	return canId
+	return canID
 }
 
-// CanIdFromStruct returns an encoded ID from a CanIdData struct.
-func CanIdFromStruct(data CanIdData) uint32 {
-	return CanIdFromData(data.PGN, data.SourceId, data.Priority, data.Destination)
+// CanIDFromStruct returns an encoded ID from a CanIDData struct.
+func CanIDFromStruct(data CanIDData) uint32 {
+	return CanIDFromData(data.PGN, data.SourceID, data.Priority, data.Destination)
 }
 
-// CanIdFromDataWithValidation returns an encoded ID from its inputs with validation.
+// CanIDFromDataWithValidation returns an encoded ID from its inputs with validation.
 // Returns an error if a PDU2 PGN is specified with a destination other than 0 or 255.
-func CanIdFromDataWithValidation(pgn uint32, sourceId uint8, priority uint8, destination uint8) (uint32, error) {
+func CanIDFromDataWithValidation(pgn uint32, sourceID, priority, destination uint8) (uint32, error) {
 	pduFormat := uint8((pgn & 0xFF00) >> 8)
 	if pduFormat >= 240 {
 		// PDU2 format: destination must be 0 or 255
@@ -176,30 +183,30 @@ func CanIdFromDataWithValidation(pgn uint32, sourceId uint8, priority uint8, des
 		}
 	}
 
-	return CanIdFromData(pgn, sourceId, priority, destination), nil
+	return CanIDFromData(pgn, sourceID, priority, destination), nil
 }
 
-// CanIdFromStructWithValidation returns an encoded ID from a CanIdData struct with validation.
+// CanIDFromStructWithValidation returns an encoded ID from a CanIDData struct with validation.
 // Returns an error if a PDU2 PGN is specified with a destination other than 0 or 255.
-func CanIdFromStructWithValidation(data CanIdData) (uint32, error) {
-	return CanIdFromDataWithValidation(data.PGN, data.SourceId, data.Priority, data.Destination)
+func CanIDFromStructWithValidation(data CanIDData) (uint32, error) {
+	return CanIDFromDataWithValidation(data.PGN, data.SourceID, data.Priority, data.Destination)
 }
 
 // FrameHeader defines a structure to capture the RAW defined information comprising a CAN Frame ID
 // and the recorded timestamp
 type FrameHeader struct {
 	TimeStamp time.Time
-	SourceId  uint8
+	SourceID  uint8
 	PGN       uint32
 	Priority  uint8
-	TargetId  uint8
+	TargetID  uint8
 }
 
-// DecodeCanId returns a frame header extracted from frame.Id
-func DecodeCanId(id uint32) FrameHeader {
+// DecodeCanID returns a frame header extracted from frame.Id.
+func DecodeCanID(id uint32) FrameHeader {
 	r := FrameHeader{
 		TimeStamp: time.Now(),
-		SourceId:  uint8(id & 0xFF),
+		SourceID:  uint8(id & 0xFF),
 		PGN:       (id & 0x3FFFF00) >> 8,
 		Priority:  uint8((id & 0x1C000000) >> 26),
 	}
@@ -207,18 +214,20 @@ func DecodeCanId(id uint32) FrameHeader {
 	pduFormat := uint8((r.PGN & 0xFF00) >> 8)
 	if pduFormat < 240 {
 		// PDU1 format: extract destination from lower 8 bits
-		r.TargetId = uint8(r.PGN & 0xFF)
+		r.TargetID = uint8(r.PGN & 0xFF)
 		r.PGN &= 0xFFF00
 	} else {
 		// PDU2 format: destination is always global
-		r.TargetId = 255
+		r.TargetID = 255
 	}
 	return r
 }
 
-// RawFromCanFrame returns a string in RAW format encoding the frame
+// RawFromCanFrame returns a string in RAW format encoding the frame.
 func RawFromCanFrame(f can.Frame) string {
-	h := DecodeCanId(f.ID)
-	return fmt.Sprintf("%s,%d,%d,%d,%d,%d,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n", h.TimeStamp.Format("2006-01-02T15:04:05Z"), h.Priority, h.PGN, h.SourceId, h.TargetId, f.Length, f.Data[0], f.Data[1], f.Data[2], f.Data[3], f.Data[4], f.Data[5], f.Data[6], f.Data[7])
-
+	h := DecodeCanID(f.ID)
+	return fmt.Sprintf("%s,%d,%d,%d,%d,%d,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n",
+		h.TimeStamp.Format("2006-01-02T15:04:05Z"),
+		h.Priority, h.PGN, h.SourceID, h.TargetID, f.Length,
+		f.Data[0], f.Data[1], f.Data[2], f.Data[3], f.Data[4], f.Data[5], f.Data[6], f.Data[7])
 }

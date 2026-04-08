@@ -10,9 +10,72 @@ goreleaser = "latest"
 gotestsum = "1.13.0"
 shfmt = "latest"
 
+# --- Codegen pipeline (mise sources/outputs) ------------------------------------
+# Normal practice: list inputs in `sources` and artifacts in `outputs`. A task is
+# skipped when every output exists and is newer than every source (like Make).
+# Chain steps with `depends` so prerequisites run first.
+#
+# Limits: switching PGNGEN_DEBUG changes the pgngen binary semantics but not always
+# mtimes in a way that forces codegen—use `mise run -f codegen` after toggling.
+# See: https://mise.jdx.dev/tasks/toml-tasks.html#sources-outputs
+
+# Compile the pgngen CLI only.
+[tasks.build-pgngen]
+env = { "CGO_ENABLED" = "0" }
+description = "Build the pgngen binary to ./bin/pgngen (honors PGNGEN_DEBUG)"
+sources = ["cmd/pgngen/**/*.go", "go.mod", "go.sum"]
+outputs = ["bin/pgngen"]
+run = """
+if [ "${PGNGEN_DEBUG:-0}" = "1" ]; then
+  go build -trimpath -tags=pgngen_debug -o ./bin/pgngen ./cmd/pgngen
+else
+  go build -trimpath -o ./bin/pgngen ./cmd/pgngen
+fi
+"""
+
+# Run pgngen after build-pgngen is up to date.
+[tasks.codegen]
+alias = "pgngen"
+depends = ["build-pgngen"]
+env = { "CGO_ENABLED" = "0" }
+description = "Run pgngen (skipped when outputs are newer than sources + binary)"
+sources = [
+	"bin/pgngen",
+	"cmd/pgngen/**/*.go",
+	"cmd/pgngen/templates/**/*.tmpl",
+	"cmd/pgngen/domain_ranges.yaml",
+	"cmd/pgngen/domain_ranges.generated.yaml",
+]
+outputs = [
+	"internal/pgn/*_generated.go",
+	"cmd/filterraw/pgn_data.go",
+	"pkg/n2k/*_generated.go",
+]
+run = "./bin/pgngen"
+
 [tasks.build]
-description = "Build a binary for the current platform/architecture"
-run = "go build -trimpath -o ./bin/ -v ./cmd/..."
+depends = ["codegen"]
+env = { "CGO_ENABLED" = "0" }
+description = "codegen (if stale) then build all commands under ./cmd/..."
+run = """
+if [ "${PGNGEN_DEBUG:-0}" = "1" ]; then
+  go build -trimpath -tags=pgngen_debug -o ./bin/ -v ./cmd/...
+else
+  go build -trimpath -o ./bin/ -v ./cmd/...
+fi
+"""
+
+[tasks.buildcover]
+depends = ["codegen"]
+env = { "CGO_ENABLED" = "0" }
+description = "codegen (if stale) then build all commands with coverage"
+run = """
+if [ "${PGNGEN_DEBUG:-0}" = "1" ]; then
+  go build -trimpath -tags=pgngen_debug -cover -o ./bincover/ -v ./cmd/...
+else
+  go build -trimpath -cover -o ./bincover/ -v ./cmd/...
+fi
+"""
 
 [tasks.changelog]
 description = "Generate a changelog for the current version"
@@ -44,6 +107,28 @@ tools.svu = "latest"
 [tasks.test]
 description = "Run tests"
 run = "gotestsum"
+
+[tasks.test-debug]
+description = "Run tests with pgngen debug enabled"
+run = "PGNGEN_DEBUG=1 go test -tags=pgngen_debug ./..."
+
+[tasks.build-debug]
+description = "Force full codegen with PGNGEN_DEBUG=1, then build"
+run = """
+set -e
+export PGNGEN_DEBUG=1
+mise run -f codegen
+mise run build
+"""
+
+[tasks.build-release]
+description = "Force full codegen with PGNGEN_DEBUG=0, then build"
+run = """
+set -e
+export PGNGEN_DEBUG=0
+mise run -f codegen
+mise run build
+"""
 
 ## <<Stencil::Block(custom)>>
 

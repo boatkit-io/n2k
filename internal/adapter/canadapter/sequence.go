@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package canadapter
 
 import (
@@ -45,14 +52,18 @@ func (s *sequence) add(p *pkt.Packet) {
 		s.contents[p.FrameNum] = p.Data[2:]
 		s.received += 6
 	} else {
-		if s.zero == nil { // we've received a subsequent frame before getting the first one
+		switch {
+		case s.zero == nil: // we've received a subsequent frame before getting the first one
 			s.log.Debugf("Fast sequence received subsequent frame before zero frame. Resetting")
 			s.log.Debugf("Source: %d PGN: %d Sequence #: %d FrameNum #: %d", p.Info.SourceId, p.Info.PGN, p.SeqId, p.FrameNum)
 			s.reset()
-		} else if s.contents[p.FrameNum] != nil { // uh-oh, we've already seen this frame
-			s.log.Debugf("Fast sequence received duplicate frame. Resetting Source: %d PGN: %d Sequence #: %d FrameNum #: %d, resetting sequence", p.Info.SourceId, p.Info.PGN, p.SeqId, p.FrameNum)
+		case s.contents[p.FrameNum] != nil: // uh-oh, we've already seen this frame
+			s.log.Debugf(
+				"Fast sequence received duplicate frame. Resetting Source: %d PGN: %d Sequence #: %d FrameNum #: %d, resetting sequence",
+				p.Info.SourceId, p.Info.PGN, p.SeqId, p.FrameNum,
+			)
 			s.reset()
-		} else {
+		default:
 			s.contents[p.FrameNum] = p.Data[1:]
 			s.received += 7
 		}
@@ -67,15 +78,15 @@ func (s *sequence) complete(p *pkt.Packet) bool {
 		if s.received >= s.expected {
 			//  consolidate Data
 			results := make([]uint8, 0)
-			for i, d := range s.contents {
+			for i := range &s.contents {
+				d := s.contents[i]
 				if d == nil { // don't allow sparse nodes
 					p.ParseErrors = append(p.ParseErrors, fmt.Errorf("sparse Data in multi"))
 					return true
-				} else {
-					results = append(results, s.contents[i]...)
-					if len(results) >= int(s.expected) {
-						break
-					}
+				}
+				results = append(results, d...)
+				if len(results) >= int(s.expected) {
+					break
 				}
 			}
 			results = results[:s.expected]

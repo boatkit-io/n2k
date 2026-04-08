@@ -3,7 +3,6 @@ package integration
 import (
 	"context"
 	"fmt"
-	"path/filepath"
 	"testing"
 	"time"
 
@@ -14,9 +13,12 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// Fixed path to checked-in replay data (see n2kreplays/integration).
+const testReplaySusterrana2020 = "/home/russ/dev/n2k/n2kreplays/integration/susterrana2020.n2k"
+
 func TestN2kServiceIntegration(t *testing.T) {
 	// Get path to test data file
-	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/integration", "susterrana2020.n2k")
+	testFile := testReplaySusterrana2020
 
 	// Create the n2kfileendpoint
 	log := logrus.New()
@@ -68,7 +70,7 @@ func TestN2kServiceIntegration(t *testing.T) {
 
 func TestN2kServiceWithSubscription(t *testing.T) {
 	// Get path to test data file
-	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/integration", "susterrana2020.n2k")
+	testFile := testReplaySusterrana2020
 
 	// Create the n2kfileendpoint
 	log := logrus.New()
@@ -110,7 +112,7 @@ func TestN2kServiceWithSubscription(t *testing.T) {
 func TestN2kServiceWrite(t *testing.T) {
 	// Create a mock endpoint for testing write functionality
 	// For this test, we'll use a file endpoint but focus on the write capability
-	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/integration", "susterrana2020.n2k")
+	testFile := testReplaySusterrana2020
 
 	// Create the n2kfileendpoint
 	log := logrus.New()
@@ -132,7 +134,7 @@ func TestN2kServiceWrite(t *testing.T) {
 
 func TestN2kServiceUpdateEndpoint(t *testing.T) {
 	// Get path to test data file
-	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/integration", "susterrana2020.n2k")
+	testFile := testReplaySusterrana2020
 
 	// Create the initial n2kfileendpoint
 	log := logrus.New()
@@ -172,7 +174,7 @@ func TestN2kServiceUpdateEndpoint(t *testing.T) {
 
 func TestN2kServiceUpdateEndpointWhileRunning(t *testing.T) {
 	// Get path to test data file
-	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/integration", "susterrana2020.n2k")
+	testFile := testReplaySusterrana2020
 
 	// Create the initial n2kfileendpoint
 	log := logrus.New()

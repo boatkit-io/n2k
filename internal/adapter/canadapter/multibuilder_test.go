@@ -65,7 +65,7 @@ func TestMultiOutofOrder(t *testing.T) {
 	count := 0
 	lines := strings.Split(testData2, "\n")
 	for _, line := range lines {
-		if len(line) == 0 {
+		if line == "" {
 			continue
 		}
 		frames, err := converter.CanFrameFromRaw(line)
@@ -109,7 +109,7 @@ func TestFastPacket(t *testing.T) {
 	m := NewMultiBuilder(log)
 
 	// test fast packet that's actually Complete in single-frame
-	pInfo := ExtractMessageInfo(&can.Frame{ID: converter.CanIdFromData(130820, 10, 1, 0), Length: 8})
+	pInfo := ExtractMessageInfo(&can.Frame{ID: converter.CanIDFromData(130820, 10, 1, 0), Length: 8})
 	data := []uint8{160, 5, 163, 153, 32, 128, 1, 255}
 	p := pkt.NewPacket(pInfo, data)
 	m.Add(p)
@@ -118,7 +118,10 @@ func TestFastPacket(t *testing.T) {
 
 	// we allow out of order frames
 	m = NewMultiBuilder(log)
-	p = pkt.NewPacket(ExtractMessageInfo(&can.Frame{ID: converter.CanIdFromData(130820, 10, 1, 0), Length: 8}), []uint8{161, 5, 163, 153, 32, 128, 1, 255})
+	p = pkt.NewPacket(
+		ExtractMessageInfo(&can.Frame{ID: converter.CanIDFromData(130820, 10, 1, 0), Length: 8}),
+		[]uint8{161, 5, 163, 153, 32, 128, 1, 255},
+	)
 	m.Add(p)
 	assert.False(t, p.Complete)
 	assert.NotNil(t, m.sequences[10])

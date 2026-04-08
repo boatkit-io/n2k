@@ -1,3 +1,11 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package main generates NMEA 2000 PGN decoders and related Go sources from Canboat JSON.
 package main
 
 import (
@@ -41,7 +49,6 @@ func main() {
 	builder.filter()
 	builder.validate()
 	builder.write()
-
 }
 
 // canboatConverter is inflated from the json file canboat.json.
@@ -200,9 +207,9 @@ func newCanboatConverter() *canboatConverter {
 
 // init initializes a canboatConverter from canboat.json.
 func (conv *canboatConverter) init() {
-	raw, _ := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json")
-	err := json.Unmarshal(raw, conv)
-	if err != nil {
+	raw := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json")
+
+	if err := json.Unmarshal(raw, conv); err != nil {
 		log.Info(err)
 	}
 	log.Infof("Initially Parsed Lookup enums: %d", len(conv.Enums))
@@ -277,9 +284,6 @@ func (conv *canboatConverter) write() {
 	if err := os.MkdirAll(filterrawDir, 0755); err != nil {
 		panic(err)
 	}
-	if err := os.MkdirAll(filterrawDir, 0755); err != nil {
-		panic(err)
-	}
 
 	// Template function map
 	funcMap := template.FuncMap{
@@ -316,11 +320,9 @@ func (conv *canboatConverter) write() {
 			}
 			return *fp
 		},
-		"contains":            func(in, substr string) bool { return strings.Contains(in, substr) },
-		"hasMultipleVariants": hasMultipleVariants,
-		"getVariantsForPgn":   getVariantsForPgn,
-		"getDecoderConfig":    getDecoderConfig,
-		"groupByPGN":          groupByPGN,
+		"contains":         strings.Contains,
+		"getDecoderConfig": getDecoderConfig,
+		"groupByPGN":       groupByPGN,
 		"needsFieldSpec": func(field PGNField) bool {
 			if reservedNumericType(field.FieldType) {
 				return true
@@ -399,7 +401,6 @@ func (conv *canboatConverter) write() {
 			panic(err)
 		}
 	}
-
 }
 
 // generateFile generates a single file from a template
@@ -444,7 +445,7 @@ func reservedNumericType(fieldType string) bool {
 }
 
 // calcMaxRawValue calculates the maximum raw value for a field.
-func calcMaxRawValue(field PGNField) uint64 {
+func calcMaxRawValue(field *PGNField) uint64 {
 	if field.BitLength == 0 { // only possible if no bitLength is specified in canboat.json
 		return 0
 	}
@@ -460,7 +461,7 @@ func calcMaxRawValue(field PGNField) uint64 {
 }
 
 // calcMaxValidRawValue calculates the maximum valid raw value accounting for reserved values
-func calcMaxValidRawValue(field PGNField) uint64 {
+func calcMaxValidRawValue(field *PGNField) uint64 {
 	if field.BitLength == 0 || !reservedNumericType(field.FieldType) {
 		return 0
 	}
@@ -476,7 +477,7 @@ func calcMaxValidRawValue(field PGNField) uint64 {
 }
 
 // calcMissingValue calculates the sentinel value representing missing (nil) data
-func calcMissingValue(field PGNField) uint64 {
+func calcMissingValue(field *PGNField) uint64 {
 	reservedCount := getReservedValueCount(field)
 	if reservedCount == 0 {
 		// No reserved values means we can't represent missing - return 0 as safe default
@@ -492,14 +493,14 @@ func calcMissingValue(field PGNField) uint64 {
 }
 
 // needsScaling returns true if the field requires resolution/offset processing
-func needsScaling(field PGNField) bool {
+func needsScaling(field *PGNField) bool {
 	hasResolution := field.Resolution != nil && *field.Resolution != 1.0
 	hasOffset := field.Offset != 0
 	return hasResolution || hasOffset
 }
 
 // generateFieldSpecConstant creates a FieldSpec struct literal
-func generateFieldSpecConstant(field PGNField) string {
+func generateFieldSpecConstant(field *PGNField) string {
 	reservedCount := getReservedValueCount(field)
 	maxRawValue := calcMaxValidRawValue(field)
 	missingValue := calcMissingValue(field)
@@ -537,7 +538,7 @@ func generateFieldSpecConstant(field PGNField) string {
 // getReservedValueCount returns the number of reserved values at the top of a field's range.
 // This is based purely on NMEA 2000 protocol standards, not domain constraints.
 // Used by template.
-func getReservedValueCount(field PGNField) uint8 {
+func getReservedValueCount(field *PGNField) uint8 {
 	if !reservedNumericType(field.FieldType) {
 		return 0
 	}
@@ -626,7 +627,6 @@ func (builder *canboatConverter) fixRepeating() {
 		}
 	}
 	builder.zeroBitOffsets()
-
 }
 
 // fixEnumDefs checks that enum names are unique and makes them legal golang identifiers.
@@ -695,7 +695,7 @@ func (builder *canboatConverter) validate() {
 			if !isProprietaryPGN(p.PGN) {
 				continue
 			}
-			manIds := make(map[int]string) //manId[]"Fast" or "Single"
+			manIds := make(map[int]string) // manId[]"Fast" or "Single"
 			manId := getManId(p)
 			if p.Type == "Fast" {
 				fast++
@@ -802,6 +802,8 @@ func getCanboatReservedValueCount(field PGNField) uint8 {
 
 // validateMinMaxValues checks if fields have RangeMin/RangeMax values that differ from calculated values
 // and writes the results to a CSV file for analysis
+//
+//nolint:gocyclo // Why: domain/range validation is inherently branchy.
 func (builder *canboatConverter) validateMinMaxValues() {
 	// Create CSV file
 	csvFile, err := os.Create("range_min_max_discrepancies.csv")
@@ -883,13 +885,13 @@ func (builder *canboatConverter) validateMinMaxValues() {
 				}
 
 				// Calculate theoretical maximum using our logic (correct NMEA 2000 standard)
-				maxRaw := calcMaxValidRawValue(field)
+				maxRaw := calcMaxValidRawValue(&field)
 				calcMax := float64(maxRaw)*resolution + float64(field.Offset)
 
 				// Calculate theoretical maximum using canboat's logic (potentially buggy)
-				maxRawCanboat := calcMaxRawValue(field)
+				maxRawCanboat := calcMaxRawValue(&field)
 				canboatReservedCount := getCanboatReservedValueCount(field)
-				reservedCount := getReservedValueCount(field)
+				reservedCount := getReservedValueCount(&field)
 				if canboatReservedCount > 0 {
 					maxRawCanboat -= uint64(canboatReservedCount)
 				}
@@ -1173,7 +1175,7 @@ func (builder *canboatConverter) zeroBitOffsets() {
 
 // isPointerFieldType returns true if the underlying type of a field is a pointer.
 // Used by template.
-func isPointerFieldType(field PGNField) bool {
+func isPointerFieldType(field *PGNField) bool {
 	return strings.HasPrefix(convertFieldType(field), "*")
 }
 
@@ -1217,7 +1219,6 @@ func toNumber(str string) int {
 // constSize returns (as a string) the smallest uint needed to represent the const.
 // Used by template.
 func constSize(max int) string {
-
 	switch {
 	case max < 256:
 		return "uint8"
@@ -1227,7 +1228,6 @@ func constSize(max int) string {
 		return "uint32"
 	default:
 		return "uint64"
-
 	}
 }
 
@@ -1265,9 +1265,8 @@ func getUnitType(unitName string) (string, string) {
 // convertFieldType returns a string describing the golang type for a PGN field.
 // used by template.
 // for lookups the name of the lookup is returned.
-func convertFieldType(field PGNField) string {
+func convertFieldType(field *PGNField) string {
 	switch field.FieldType {
-
 	// assert DATE is resolution 1, unsigned
 	// assert PhysicalQuantity PRESSURE, TEMPERATURE have FieldType NUMBER
 
@@ -1297,7 +1296,6 @@ func convertFieldType(field PGNField) string {
 		}
 		if field.Offset != 0 {
 			return "*float32"
-
 		}
 
 		var baseType string
@@ -1335,7 +1333,7 @@ func convertFieldType(field PGNField) string {
 
 // getFieldSerializer returns a string that when evaluates its value into the output stream.
 // Used by template
-func getFieldSerializer(pgn PGN, field PGNField, substruct string) string {
+func getFieldSerializer(pgn PGN, field *PGNField, substruct string) string {
 	var outstr, pre, value, post string
 	var isUnit bool
 	reservedCount := getReservedValueCount(field)
@@ -1359,8 +1357,8 @@ func getFieldSerializer(pgn PGN, field PGNField, substruct string) string {
 	case "NUMBER", "TIME", "DATE", "MMSI", "FIELD_INDEX", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH", "DURATION", "PGN", "ISO_NAME":
 		if field.Resolution != nil && (*field.Resolution != 1.0 || isUnit) || field.Offset != 0 {
 			// Use WriteScaled for fields that need resolution/offset processing
-			//floatType := "float32"
-			//if field.Resolution != nil && *field.Resolution <= resolution64BitCutoff {
+			// floatType := "float32"
+			// if field.Resolution != nil && *field.Resolution <= resolution64BitCutoff {
 			//	floatType = "float64"
 			//}
 			pre = "err = WriteScaled(stream, "
@@ -1372,7 +1370,7 @@ func getFieldSerializer(pgn PGN, field PGNField, substruct string) string {
 			outstr = fmt.Sprintf(pre+value+post, field.Id)
 		} else {
 			// Use WriteRaw for non-scaled fields
-			//typeStr := getRawTypeString(field.BitLength, field.Signed)
+			// typeStr := getRawTypeString(field.BitLength, field.Signed)
 			fieldRef := "p." + substruct + "%s"
 			if !isPointerFieldType(field) {
 				fieldRef = "&" + fieldRef
@@ -1414,8 +1412,9 @@ func getFieldSerializer(pgn PGN, field PGNField, substruct string) string {
 
 // getFieldDeserializer returns a string that when evaluated returns its value from the input stream.
 // Used by template.
-func getFieldDeserializer(pgn PGN, field PGNField) [2]string {
-
+//
+//nolint:gocyclo // Why: one switch per field type for generated deserializer names.
+func getFieldDeserializer(pgn PGN, field *PGNField) [2]string {
 	switch field.FieldType {
 	case "LOOKUP":
 		if field.BitLength > 32 {
@@ -1534,7 +1533,10 @@ func cacheFromWeb(name, url string) (string, error) {
 	if err != nil || time.Since(fstat.ModTime()) > cacheDuration {
 		log.Infof("Downloading source data...")
 
-		req, _ := http.NewRequest("GET", url, nil)
+		req, err := http.NewRequest("GET", url, http.NoBody)
+		if err != nil {
+			return cachedName, err
+		}
 		resp, err := http.DefaultClient.Do(req)
 		if err != nil {
 			return cachedName, err
@@ -1568,7 +1570,7 @@ func cacheFromWeb(name, url string) (string, error) {
 }
 
 // loadCachedWebContent updates the cache contents and returns it as a byte slice.
-func loadCachedWebContent(name, url string) ([]byte, error) {
+func loadCachedWebContent(name, url string) []byte {
 	cachedName, err := cacheFromWeb(name, url)
 	if err != nil {
 		panic(err)
@@ -1586,7 +1588,7 @@ func loadCachedWebContent(name, url string) ([]byte, error) {
 	if err != nil {
 		panic(err)
 	}
-	return cacheContent, nil
+	return cacheContent
 }
 
 // capitalizeFirstChar forces the first character to upper case and converts "1st" to "First".
@@ -1698,20 +1700,6 @@ func isProprietaryPGN(pgn uint32) bool {
 	}
 
 	return false
-}
-
-// hasMultipleVariants checks if a PGN has multiple variants
-func hasMultipleVariants(pgn PGN) bool {
-	// This will be implemented to check if PGN has multiple variants
-	// For now, return false - will be updated when we implement the discriminator logic
-	return false
-}
-
-// getVariantsForPgn returns all variants for a PGN
-func getVariantsForPgn(pgn PGN) []PGN {
-	// This will be implemented to return variants for a PGN
-	// For now, return empty slice - will be updated when we implement the discriminator logic
-	return []PGN{}
 }
 
 // DecoderConfig contains configuration for decoding PGN fields with repeating groups and dynamic lengths.

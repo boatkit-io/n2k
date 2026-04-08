@@ -1,3 +1,11 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package main exercises the N2K service with a SocketCAN endpoint.
 package main
 
 import (
@@ -44,7 +52,9 @@ func main() {
 	endpoint := socketcanendpoint.NewSocketCANEndpoint(log, canInterface)
 	bus := n2k.NewN2kService(endpoint, log)
 	if err := bus.Start(ctx); err != nil {
-		log.Fatalf("Failed to start bus: %v", err)
+		cancel()
+		log.Errorf("Failed to start bus: %v", err)
+		os.Exit(1) //nolint:gocritic // exitAfterDefer: cancel() runs before exit
 	}
 
 	/* 	// Create CANAdapter
@@ -93,5 +103,4 @@ func main() {
 	}
 
 	time.Sleep(100 * time.Millisecond)
-
 }

@@ -56,6 +56,12 @@ linters:
 
   # Excluding configuration per-path, per-linter, per-text and per-source
   exclusions:
+    # Skip files that match https://go.dev/s/generatedcode (strict). pgngen emits this header;
+    # do not fix lints by editing outputs—change templates or cmd/pgngen instead.
+    generated: strict
+    # Same header, non-standard filename (no _generated suffix).
+    paths:
+      - cmd/filterraw/pgn_data\.go$
     rules:
       # We allow error shadowing
       - path: '(.+)\.go$'
@@ -83,8 +89,63 @@ linters:
       - path: '(.+)\.go$'
         text: 'unexported-return: exported method (.*) returns unexported type \*canadapter.sequence, which can be annoying to use'
 
-# formatter settings
+      # NMEA/bit-field and protocol code: width conversions are intentional.
+      - path: ^(internal/pgn|internal/converter|internal/adapter|cmd/(convertcandumps|filterraw|pgngen|canwriter))/.+\.go$
+        linters: [gosec]
+        text: 'G115'
+      # Cache and generated path I/O in pgngen (non-security-sensitive paths).
+      - path: ^cmd/pgngen/domain_ranges\.go$
+        linters: [gosec]
+        text: 'G30[146]'
+      # Replay/diagnostic file cache permissions.
+      - path: ^cmd/convertcandumps/main\.go$
+        linters: [gosec]
+        text: 'G302'
+      # Test/diagnostic endpoint: non-crypto PRNG is acceptable.
+      - path: ^pkg/endpoint/rawendpoint/rawendpoint\.go$
+        linters: [gosec]
+        text: 'G404'
+      - path: ^pkg/endpoint/rawendpoint/rawendpoint\.go$
+        linters: [gosec]
+        text: 'G115'
+      # pgngen output dirs under the repo; 0755 is intentional for tooling.
+      - path: ^cmd/pgngen/main\.go$
+        linters: [gosec]
+        text: 'G301'
+      # User-supplied paths for convertcandumps I/O.
+      - path: ^cmd/convertcandumps/main\.go$
+        linters: [gosec]
+        text: 'G304'
+      # pgngen reads templates from paths under cmd/pgngen/templates.
+      - path: ^cmd/pgngen/main\.go$
+        linters: [gosec]
+        text: 'G304'
+      # cmd/pgngen/main.go is a large code generator; gocritic/revive style checks are noisy here
+      # (JSON-driven identifiers, large validation tables).
+      - path: ^cmd/pgngen/main\.go$
+        linters: [gocritic, revive]
+      # pgngen cache file in cwd; relaxed permissions for developer workflow.
+      - path: ^cmd/pgngen/main\.go$
+        linters: [gosec]
+        text: 'G302'
+      # Raw endpoint writes user-chosen output path.
+      - path: ^pkg/endpoint/rawendpoint/rawendpoint\.go$
+        linters: [gosec]
+        text: 'G304'
+      # Renaming exported types would break importers (historical names).
+      - path: '(.+)\.go$'
+        linters: [revive]
+        text: 'exported: type name will be used as'
+      # cmd/pgngen and domain table helpers: line length is secondary to readability.
+      - path: ^cmd/pgngen/(main|domain_ranges.*)\.go$
+        linters: [lll]
+
+# formatter settings — do not rewrite pgngen outputs; change templates and re-run pgngen.
 formatters:
   enable:
     - gofmt
     - goimports
+  exclusions:
+    generated: strict
+    paths:
+      - cmd/filterraw/pgn_data\.go$

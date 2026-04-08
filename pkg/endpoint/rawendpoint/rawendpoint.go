@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 // Package rawendpoint turns CAN frames written to pgn.Writer into RAW format and saves them to a file.
 package rawendpoint
 
@@ -42,7 +49,6 @@ func NewRawEndpoint(outFilePath string, log *logrus.Logger) *RawEndpoint {
 		} else {
 			retval.file = file
 		}
-
 	}
 	return &retval
 }
@@ -82,12 +88,12 @@ func (r *RawEndpoint) SetOutput(mh endpoint.MessageHandler) {
 func (r *RawEndpoint) WriteFrame(frame can.Frame) {
 	outStr := converter.RawFromCanFrame(frame)
 	if r.file != nil {
-		_, _ = r.file.WriteString(outStr)
+		if _, err := r.file.WriteString(outStr); err != nil {
+			r.log.WithError(err).Error("failed to write raw frame")
+		}
 	} else {
 		r.log.Info(outStr)
-
 	}
-
 }
 
 // Close closes the endpoint
@@ -125,7 +131,7 @@ func (r *RawFileEndpoint) Run(ctx context.Context) error {
 		}
 
 		line := scanner.Text()
-		if len(line) == 0 {
+		if line == "" {
 			continue
 		}
 
@@ -175,6 +181,6 @@ func (r *RawFileEndpoint) Close() error {
 }
 
 // WriteFrame is not implemented for RawFileEndpoint as it's read-only
-func (r *RawFileEndpoint) WriteFrame(frame can.Frame) {
+func (r *RawFileEndpoint) WriteFrame(_ can.Frame) {
 	// RawFileEndpoint is read-only, so this is a no-op
 }

@@ -133,7 +133,7 @@ func (n *N2kFileEndpoint) Close() error {
 }
 
 // WriteFrame writes a CAN frame to the endpoint
-func (n *N2kFileEndpoint) WriteFrame(frame can.Frame) {
+func (n *N2kFileEndpoint) WriteFrame(_ can.Frame) {
 	// For file endpoints, we don't support writing frames
 	// This is a read-only endpoint
 }

@@ -49,7 +49,7 @@ func TestNumerics(t *testing.T) {
 	for _, tst := range uintTests {
 		p := NewDataStream(tst.data)
 		if tst.offset > 0 {
-			_ = p.skipBits(uint16(tst.offset))
+			_ = p.skipBits(tst.offset)
 		}
 		v, err := p.getNumberRaw(tst.length)
 		assert.NoError(t, err)
@@ -74,7 +74,7 @@ func TestNumerics(t *testing.T) {
 	for _, tst := range bdTests {
 		p := NewDataStream(tst.data)
 		if tst.offset > 0 {
-			_ = p.skipBits(uint16(tst.offset))
+			_ = p.skipBits(tst.offset)
 		}
 		v, err := p.readBinaryData(tst.length)
 		if tst.errExpected {
@@ -145,7 +145,6 @@ func TestDataStream_readStringWithLengthAndControl(t *testing.T) {
 
 			if tt.expectedError != nil {
 				assert.Error(t, err)
-				//				assert.Equal(t, tt.expectedError, err)
 			} else {
 				assert.NoError(t, err)
 				assert.Equal(t, tt.expectedStr, str)

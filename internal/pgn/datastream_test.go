@@ -55,8 +55,8 @@ func TestFieldSpecIsScaled(t *testing.T) {
 }
 
 func TestFieldSpecHasDomainConstraints(t *testing.T) {
-	min := 10.0
-	max := 100.0
+	domainMin := 10.0
+	domainMax := 100.0
 
 	tests := []struct {
 		name     string
@@ -66,7 +66,7 @@ func TestFieldSpecHasDomainConstraints(t *testing.T) {
 		{
 			name: "Has domain min",
 			spec: FieldSpec{
-				DomainMin: &min,
+				DomainMin: &domainMin,
 				DomainMax: nil,
 			},
 			expected: true,
@@ -75,15 +75,15 @@ func TestFieldSpecHasDomainConstraints(t *testing.T) {
 			name: "Has domain max",
 			spec: FieldSpec{
 				DomainMin: nil,
-				DomainMax: &max,
+				DomainMax: &domainMax,
 			},
 			expected: true,
 		},
 		{
 			name: "Has both domain constraints",
 			spec: FieldSpec{
-				DomainMin: &min,
-				DomainMax: &max,
+				DomainMin: &domainMin,
+				DomainMax: &domainMax,
 			},
 			expected: true,
 		},
@@ -331,8 +331,11 @@ func TestWriteScaledFloat32(t *testing.T) {
 	}
 }
 
-// calcMaxPositiveValue calculates the maximum value that can be represented with a given length of signed or unsigned contents. reservedValuesCount is the number of reserved values for the field. Valid values are 0-2.
-func calcMaxPositiveValue(bitLength uint16, signed bool, reservedValuesCount int) uint64 {
+// calcMaxPositiveValue calculates the maximum value that can be represented with a given length of signed or unsigned contents.
+// Up to two reserved values are subtracted (canboat convention).
+func calcMaxPositiveValue(bitLength uint16, signed bool) uint64 {
+	const reservedValuesCount = 2
+
 	// calculate maximum valid value
 	maxVal := uint64(0xFFFFFFFFFFFFFFFF)
 
@@ -341,12 +344,7 @@ func calcMaxPositiveValue(bitLength uint16, signed bool, reservedValuesCount int
 		maxVal >>= 1 // we know it's a positive value, so safe for us to check.
 	}
 
-	if reservedValuesCount > 0 {
-		if reservedValuesCount > 2 {
-			reservedValuesCount = 2
-		}
-		maxVal -= uint64(reservedValuesCount)
-	}
+	maxVal -= uint64(reservedValuesCount)
 
 	return maxVal
 }

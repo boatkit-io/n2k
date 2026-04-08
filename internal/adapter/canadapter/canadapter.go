@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 // Package canadapter implements the adapter interface for n2k endpoints.
 package canadapter
 
@@ -22,7 +29,7 @@ type CANAdapter struct {
 
 	handler     PacketHandler
 	frameWriter endpoint.Endpoint
-	seqIdMap    map[uint8]map[uint32]uint8 //sourceID:PGN:last used sequenceID
+	seqIDMap    map[uint8]map[uint32]uint8 //sourceID:PGN:last used sequenceID
 }
 
 // PacketHandler is an interface for the output handler for a CANAdapter
@@ -40,7 +47,7 @@ func NewCANAdapter(log *logrus.Logger) *CANAdapter {
 	return &CANAdapter{
 		multi:    NewMultiBuilder(log),
 		log:      log,
-		seqIdMap: make(map[uint8]map[uint32]uint8), //SourceId, PGN, most recently used sequenceId
+		seqIDMap: make(map[uint8]map[uint32]uint8), // SourceID, PGN, most recently used sequenceId
 	}
 }
 
@@ -59,23 +66,23 @@ func (c *CANAdapter) HandleMessage(message adapter.Message) {
 	switch f := message.(type) {
 	case *can.Frame:
 		pInfo := ExtractMessageInfo(f)
-		pkt := pkt.NewPacket(pInfo, f.Data[:])
+		p := pkt.NewPacket(pInfo, f.Data[:])
 
 		// https://endige.com/2050/nmea-2000-pgns-deciphered/
 
-		if len(pkt.ParseErrors) > 0 {
-			c.packetReady(pkt)
+		if len(p.ParseErrors) > 0 {
+			c.packetReady(p)
 			return
 		}
 
-		if pgn.IsFast(pkt.Info.PGN) {
-			c.multi.Add(pkt)
+		if pgn.IsFast(p.Info.PGN) {
+			c.multi.Add(p)
 		} else {
-			pkt.Complete = true
+			p.Complete = true
 		}
 
-		if pkt.Complete {
-			c.packetReady(pkt)
+		if p.Complete {
+			c.packetReady(p)
 		}
 	default:
 		c.log.Warnf("CanAdapter expected *can.Frame, received: %T", f)
@@ -83,26 +90,26 @@ func (c *CANAdapter) HandleMessage(message adapter.Message) {
 }
 
 // packetReady is a helper for fanning out completed packets to the handler
-func (c *CANAdapter) packetReady(pkt *pkt.Packet) {
+func (c *CANAdapter) packetReady(p *pkt.Packet) {
 	if c.handler != nil {
-		c.handler.HandlePacket(*pkt)
+		c.handler.HandlePacket(*p)
 	}
 }
 
 // WritePgn generates one or more frames from its input and writes them to its configured endpoint.
 func (c *CANAdapter) WritePgn(info pgn.MessageInfo, data []uint8) error {
 	var err error
-	canIdData := converter.CanIdData{
+	canIDData := converter.CanIDData{
 		PGN:         info.PGN,
-		SourceId:    info.SourceId,
+		SourceID:    info.SourceId,
 		Priority:    info.Priority,
 		Destination: info.TargetId,
 	}
-	canId := converter.CanIdFromStruct(canIdData)
+	canID := converter.CanIDFromStruct(canIDData)
 	if pgn.IsFast((info.PGN)) {
-		err = c.sendFast(info.SourceId, info.PGN, canId, data)
+		err = c.sendFast(info.SourceId, info.PGN, canID, data)
 	} else {
-		err = c.sendSingle(canId, data)
+		err = c.sendSingle(canID, data)
 	}
 	return err
 }
@@ -113,8 +120,8 @@ func calcFramesRequired(length int) int {
 	if length < 7 {
 		count++
 	} else {
-		count += int((length - 6) / 7)
-		if length-6%7 > 0 {
+		count += (length - 6) / 7
+		if (length-6)%7 > 0 {
 			count++
 		}
 	}
@@ -123,26 +130,26 @@ func calcFramesRequired(length int) int {
 
 // sendFast breaks the data up into the required number of packets, provides a sequenceID,
 // and passes the resulting frames on.
-func (c *CANAdapter) sendFast(sourceId uint8, pgn uint32, canId uint32, data []uint8) error {
+func (c *CANAdapter) sendFast(sourceID uint8, pgnNum, canID uint32, data []uint8) error {
 	var buffer [8]uint8
 	total := len(data)
 	framesRequired := calcFramesRequired(total)
 	if framesRequired > MaxFrameNum {
 		return fmt.Errorf("exceeds maximum data length for Fast PGN (223): %d", total)
 	}
-	if _, t := c.seqIdMap[sourceId]; !t {
-		c.seqIdMap[sourceId] = make(map[uint32]uint8)
+	if _, t := c.seqIDMap[sourceID]; !t {
+		c.seqIDMap[sourceID] = make(map[uint32]uint8)
 	}
-	if _, t := c.seqIdMap[sourceId][pgn]; !t {
-		c.seqIdMap[sourceId][pgn] = 0
+	if _, t := c.seqIDMap[sourceID][pgnNum]; !t {
+		c.seqIDMap[sourceID][pgnNum] = 0
 	}
-	seqId := c.seqIdMap[sourceId][pgn]
-	nextId := (seqId + 1) % 7
-	c.seqIdMap[sourceId][pgn] = nextId
+	seqID := c.seqIDMap[sourceID][pgnNum]
+	nextID := (seqID + 1) % 7
+	c.seqIDMap[sourceID][pgnNum] = nextID
 	index := 0
-	for frameNum := 0; frameNum <= int(framesRequired); frameNum++ {
+	for frameNum := 0; frameNum <= framesRequired; frameNum++ {
 		offset := 0
-		buffer[offset] = seqId<<5 | uint8(frameNum)
+		buffer[offset] = seqID<<5 | uint8(frameNum)
 		offset++
 		if frameNum == 0 {
 			buffer[offset] = uint8(total)
@@ -158,7 +165,7 @@ func (c *CANAdapter) sendFast(sourceId uint8, pgn uint32, canId uint32, data []u
 			offset++
 			if offset == can.MaxFrameDataLength {
 				frame := can.Frame{
-					ID:     canId,
+					ID:     canID,
 					Length: uint8(can.MaxFrameDataLength),
 					Data:   buffer,
 				}
@@ -184,13 +191,13 @@ func (c *CANAdapter) sendFast(sourceId uint8, pgn uint32, canId uint32, data []u
 }
 
 // sendSingle creates a CAN frame for the message and sends it on.
-func (c *CANAdapter) sendSingle(canId uint32, data []uint8) error {
+func (c *CANAdapter) sendSingle(canID uint32, data []uint8) error {
 	length := len(data)
 	if length > 8 {
 		return fmt.Errorf("attempt to send single PGN with data length %d; max is 8", length)
 	}
 	frame := can.Frame{
-		ID:     canId,
+		ID:     canID,
 		Length: uint8(length),
 	}
 	copy(frame.Data[:], data)
@@ -208,11 +215,11 @@ func (c *CANAdapter) sendSingle(canId uint32, data []uint8) error {
 
 // ExtractMessageInfo extracts MessageInfo from a CAN frame
 func ExtractMessageInfo(message *can.Frame) pgn.MessageInfo {
-	h := converter.DecodeCanId(message.ID)
+	h := converter.DecodeCanID(message.ID)
 	return pgn.MessageInfo{
 		PGN:      h.PGN,
-		SourceId: h.SourceId,
-		TargetId: h.TargetId,
+		SourceId: h.SourceID,
+		TargetId: h.TargetID,
 		Priority: h.Priority,
 	}
 }

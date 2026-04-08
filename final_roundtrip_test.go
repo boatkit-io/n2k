@@ -13,7 +13,7 @@ func main() {
 	testCases := []struct {
 		name        string
 		pgn         uint32
-		sourceId    uint8
+		sourceID    uint8
 		priority    uint8
 		destination uint8
 	}{
@@ -29,15 +29,15 @@ func main() {
 
 	for _, tc := range testCases {
 		// Encode
-		canId := converter.CanIdFromData(tc.pgn, tc.sourceId, tc.priority, tc.destination)
+		canID := converter.CanIDFromData(tc.pgn, tc.sourceID, tc.priority, tc.destination)
 
 		// Decode
-		header := converter.DecodeCanId(canId)
+		header := converter.DecodeCanID(canID)
 
 		// Check round-trip
 		success := true
-		if header.SourceId != tc.sourceId {
-			fmt.Printf("❌ %s: SourceId mismatch (got %d, want %d)\n", tc.name, header.SourceId, tc.sourceId)
+		if header.SourceID != tc.sourceID {
+			fmt.Printf("❌ %s: SourceID mismatch (got %d, want %d)\n", tc.name, header.SourceID, tc.sourceID)
 			success = false
 		}
 		if header.Priority != tc.priority {
@@ -49,14 +49,14 @@ func main() {
 			success = false
 		}
 
-		// For PDU2 format, TargetId should always be 255 regardless of input destination
+		// For PDU2 format, TargetID should always be 255 regardless of input destination
 		pduFormat := uint8((tc.pgn & 0xFF00) >> 8)
-		expectedTargetId := tc.destination
+		expectedTargetID := tc.destination
 		if pduFormat >= 240 {
-			expectedTargetId = 255
+			expectedTargetID = 255
 		}
-		if header.TargetId != expectedTargetId {
-			fmt.Printf("❌ %s: TargetId mismatch (got %d, want %d)\n", tc.name, header.TargetId, expectedTargetId)
+		if header.TargetID != expectedTargetID {
+			fmt.Printf("❌ %s: TargetID mismatch (got %d, want %d)\n", tc.name, header.TargetID, expectedTargetID)
 			success = false
 		}
 
@@ -68,14 +68,14 @@ func main() {
 	fmt.Println("\n=== Validation Test ===")
 
 	// Test validation
-	_, err := converter.CanIdFromDataWithValidation(pgn.HeartbeatPgn, 238, 3, 50)
+	_, err := converter.CanIDFromDataWithValidation(pgn.HeartbeatPgn, 238, 3, 50)
 	if err != nil {
 		fmt.Printf("✅ Validation correctly rejected PDU2 with invalid destination: %v\n", err)
 	} else {
 		fmt.Printf("❌ Validation should have rejected PDU2 with invalid destination\n")
 	}
 
-	_, err = converter.CanIdFromDataWithValidation(pgn.HeartbeatPgn, 238, 3, 255)
+	_, err = converter.CanIDFromDataWithValidation(pgn.HeartbeatPgn, 238, 3, 255)
 	if err == nil {
 		fmt.Printf("✅ Validation correctly allowed PDU2 with valid destination\n")
 	} else {

@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package main
 
 import (
@@ -14,6 +21,7 @@ import (
 	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/internal/pkt"
 	"github.com/brutella/can"
+	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
 
@@ -45,15 +53,15 @@ func FilterRawFile(opts FilterOptions) {
 
 	for {
 		record, err := reader.Read()
-		if err == io.EOF {
-			break
-		}
 		if err != nil {
-			fmt.Printf("Error reading record: %v\n", err)
+			if errors.Is(err, io.EOF) {
+				break
+			}
+			log.WithError(err).Errorf("error reading record")
 			continue
 		}
-
 		if len(record) < 7 {
+			log.Errorf("record has less than 7 fields")
 			continue
 		}
 
@@ -68,7 +76,7 @@ func FilterRawFile(opts FilterOptions) {
 			continue
 		}
 
-		sourceId, err := strconv.ParseUint(record[3], 10, 8)
+		sourceID, err := strconv.ParseUint(record[3], 10, 8)
 		if err != nil {
 			continue
 		}
@@ -98,7 +106,7 @@ func FilterRawFile(opts FilterOptions) {
 		p := &pkt.Packet{
 			Info: pgn.MessageInfo{
 				PGN:      uint32(pgnNum),
-				SourceId: uint8(sourceId),
+				SourceId: uint8(sourceID),
 			},
 			Data: data,
 		}
@@ -108,10 +116,10 @@ func FilterRawFile(opts FilterOptions) {
 			processPacket(p)
 		} else {
 			// Plain format (need to reconstruct)
-			seqId := (data[0] >> 5) & 0x07
+			seqID := (data[0] >> 5) & 0x07
 			frameNum := data[0] & 0x1F
-			p.SeqId = uint8(seqId)
-			p.FrameNum = uint8(frameNum)
+			p.SeqId = seqID
+			p.FrameNum = frameNum
 
 			builder.Add(p)
 			if p.Complete {
@@ -133,7 +141,7 @@ func shouldProcessPGN(pgnNum uint32, opts FilterOptions) bool {
 func processPacket(p *pkt.Packet) {
 	// Create a CAN frame from the packet
 	frame := can.Frame{
-		ID:     converter.CanIdFromData(p.Info.PGN, p.Info.SourceId, 2, 255), // using priority 2 and broadcast address
+		ID:     converter.CanIDFromData(p.Info.PGN, p.Info.SourceId, 2, 255), // using priority 2 and broadcast address
 		Length: uint8(len(p.Data)),
 		Data:   [8]uint8{},
 	}

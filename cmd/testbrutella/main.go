@@ -1,3 +1,11 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package main is a small harness for the brutella/can bus API.
 package main
 
 import (
@@ -42,7 +50,9 @@ func main() {
 	// Create bus directly using brutella/can
 	bus, err := can.NewBusForInterfaceWithName(canInterface)
 	if err != nil {
-		log.Fatalf("Failed to create bus: %v", err)
+		cancel()
+		log.Errorf("Failed to create bus: %v", err)
+		os.Exit(1) //nolint:gocritic // exitAfterDefer: cancel() runs before exit
 	}
 
 	// Set up message handler

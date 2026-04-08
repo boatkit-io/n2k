@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 /*
 Filterraw reads a .raw format NMEA 2000 dump file and filters its contents based on PGN.
 Supports filtering for:

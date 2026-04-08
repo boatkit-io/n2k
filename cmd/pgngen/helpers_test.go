@@ -55,7 +55,7 @@ func TestGetReservedValueCount(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := getReservedValueCount(tt.field)
+			result := getReservedValueCount(&tt.field)
 			if result != tt.expected {
 				t.Errorf("getReservedValueCount() = %d, expected %d", result, tt.expected)
 			}
@@ -118,7 +118,7 @@ func TestCalcMaxRawValue(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := calcMaxRawValue(tt.field)
+			result := calcMaxRawValue(&tt.field)
 			if result != tt.expected {
 				t.Errorf("calcMaxRawValue() = 0x%X, expected 0x%X", result, tt.expected)
 			}
@@ -157,13 +157,13 @@ func TestCalcMaxValidRawValue(t *testing.T) {
 				FieldType: "NUMBER",
 				Signed:    true,
 			},
-			expected: 0x7FFD, // 32767 - 2 = 32765
+			expected: 0x7FFD, // 32765
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := calcMaxValidRawValue(tt.field)
+			result := calcMaxValidRawValue(&tt.field)
 			if result != tt.expected {
 				t.Errorf("calcMaxValidRawValue() = 0x%X, expected 0x%X", result, tt.expected)
 			}
@@ -208,7 +208,7 @@ func TestCalcMissingValue(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := calcMissingValue(tt.field)
+			result := calcMissingValue(&tt.field)
 			if result != tt.expected {
 				t.Errorf("calcMissingValue() = 0x%X, expected 0x%X", result, tt.expected)
 			}
@@ -269,7 +269,7 @@ func TestNeedsScaling(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := needsScaling(tt.field)
+			result := needsScaling(&tt.field)
 			if result != tt.expected {
 				t.Errorf("needsScaling() = %t, expected %t", result, tt.expected)
 			}

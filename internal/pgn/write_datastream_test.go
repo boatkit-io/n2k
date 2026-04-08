@@ -75,7 +75,7 @@ func TestWriteNumerics(t *testing.T) {
 	p = NewDataStream(make([]uint8, 223))
 	offset := uint16(0)
 	for _, tst := range bdTests {
-		err := p.writeBinary(tst.data, uint16(tst.length), offset)
+		err := p.writeBinary(tst.data, tst.length, offset)
 		offset += tst.length
 		assert.NoError(t, err)
 		for i := range tst.exp {
@@ -265,7 +265,7 @@ func TestWriteSignedResolutionRoundTrip(t *testing.T) {
 				Offset:        int64(tt.offset),
 				IsSigned:      true,
 				ReservedCount: 2,
-				MaxRawValue:   calcMaxPositiveValue(tt.length, true, 2),
+				MaxRawValue:   calcMaxPositiveValue(tt.length, true),
 			}
 			err := WriteScaled(stream, &tt.value, spec)
 			assert.NoError(t, err)
@@ -368,7 +368,7 @@ func TestSignedResolutionRoundTrip(t *testing.T) {
 				Offset:        int64(tt.offset),
 				IsSigned:      true,
 				ReservedCount: 2,
-				MaxRawValue:   calcMaxPositiveValue(tt.length, true, 2),
+				MaxRawValue:   calcMaxPositiveValue(tt.length, true),
 			}
 			err := WriteScaled(stream, &tt.value, spec)
 			assert.NoError(t, err)
@@ -443,16 +443,15 @@ func TestWriteUint8RoundTrip(t *testing.T) {
 			spec := &FieldSpec{
 				BitLength:     tt.length,
 				ReservedCount: 2,
-				MaxRawValue:   calcMaxPositiveValue(tt.length, false, 2),
+				MaxRawValue:   calcMaxPositiveValue(tt.length, false),
 				MissingValue:  0xFF,
 			}
 			err := WriteRaw(stream, tt.value, spec)
 			if tt.err {
 				assert.Error(t, err)
 				return
-			} else {
-				assert.NoError(t, err)
 			}
+			assert.NoError(t, err)
 
 			stream.resetToStart()
 			result, err := ReadRaw[uint8](stream, spec)
@@ -534,16 +533,15 @@ func TestWriteInt16(t *testing.T) {
 				BitLength:     tt.length,
 				IsSigned:      true,
 				ReservedCount: 2,
-				MaxRawValue:   calcMaxPositiveValue(tt.length, true, 2),
+				MaxRawValue:   calcMaxPositiveValue(tt.length, true),
 				MissingValue:  0x7FFF,
 			}
 			err := WriteRaw(stream, tt.value, spec)
 			if tt.err {
 				assert.Error(t, err)
 				return
-			} else {
-				assert.NoError(t, err)
 			}
+			assert.NoError(t, err)
 
 			stream.resetToStart()
 			result, err := ReadRaw[int16](stream, spec)
@@ -670,7 +668,7 @@ func TestWriteUnit(t *testing.T) {
 				Offset:        tt.offset,
 				IsSigned:      tt.signed,
 				ReservedCount: 2,
-				MaxRawValue:   calcMaxPositiveValue(tt.length, tt.signed, 2),
+				MaxRawValue:   calcMaxPositiveValue(tt.length, tt.signed),
 				MissingValue:  uint64(1<<(tt.length-1) - 1), // Max positive value
 			}
 
@@ -706,22 +704,12 @@ func TestWriteUnit(t *testing.T) {
 			// Read it back using ReadScaled
 			stream.resetToStart()
 			var result float64
-			if tt.signed {
-				val, err := ReadScaled[float32](stream, spec)
-				assert.NoError(t, err)
-				if val == nil {
-					result = float64(0xFFFE)
-				} else {
-					result = float64(*val)
-				}
+			val, err := ReadScaled[float32](stream, spec)
+			assert.NoError(t, err)
+			if val == nil {
+				result = float64(0xFFFE)
 			} else {
-				val, err := ReadScaled[float32](stream, spec)
-				assert.NoError(t, err)
-				if val == nil {
-					result = float64(0xFFFE)
-				} else {
-					result = float64(*val)
-				}
+				result = float64(*val)
 			}
 
 			// Compare with reasonable tolerance for floating point
@@ -845,16 +833,15 @@ func TestWriteInt32(t *testing.T) {
 				BitLength:     tt.length,
 				IsSigned:      true,
 				ReservedCount: 2,
-				MaxRawValue:   calcMaxPositiveValue(tt.length, true, 2),
+				MaxRawValue:   calcMaxPositiveValue(tt.length, true),
 				MissingValue:  uint64(1<<(tt.length-1) - 1), // Max positive value
 			}
 			err := WriteRaw(stream, tt.value, spec)
 			if tt.err {
 				assert.Error(t, err)
 				return
-			} else {
-				assert.NoError(t, err)
 			}
+			assert.NoError(t, err)
 
 			stream.resetToStart()
 			result, err := ReadRaw[int32](stream, spec)
@@ -960,9 +947,8 @@ func TestWriteStringFixedLength(t *testing.T) {
 			if tt.err {
 				assert.Error(t, err)
 				return
-			} else {
-				assert.NoError(t, err)
 			}
+			assert.NoError(t, err)
 		})
 	}
 }
@@ -1015,7 +1001,7 @@ func TestWriteRawSignExtensionFix(t *testing.T) {
 				BitLength:     tt.bitLength,
 				IsSigned:      true,
 				ReservedCount: 2,
-				MaxRawValue:   calcMaxPositiveValue(tt.bitLength, true, 2),
+				MaxRawValue:   calcMaxPositiveValue(tt.bitLength, true),
 				MissingValue:  uint64(1<<(tt.bitLength-1) - 1), // Max positive value
 			}
 

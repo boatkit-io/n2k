@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package main
 
 import (
@@ -138,7 +145,7 @@ func (conv *canboatConverter) deriveBaselineDomainRanges() map[domainKey]domainR
 					return float64Ptr(field.RangeMin)
 				}(),
 			}
-			if !isCanboatMaxExpressible(field) && field.RangeMax != 0 {
+			if !isCanboatMaxExpressible(&field) && field.RangeMax != 0 {
 				candidate.Max = float64Ptr(field.RangeMax)
 			}
 
@@ -224,7 +231,7 @@ func float64PtrsEqual(a, b *float64) bool {
 
 // isCanboatMaxExpressible detects cases where canboat's RangeMax is just the max-expressible (or the known canboat bug variant) scaled by resolution.
 // These should be treated as unknown (nil) so a curated/domain value can replace them.
-func isCanboatMaxExpressible(field PGNField) bool {
+func isCanboatMaxExpressible(field *PGNField) bool {
 	if !reservedNumericType(field.FieldType) {
 		return false
 	}
@@ -299,7 +306,7 @@ func writeDomainRangesYAML(path string, table map[domainKey]domainRange) error {
 			return nil
 		}
 	}
-	return os.WriteFile(path, data, 0644)
+	return os.WriteFile(path, data, 0o644)
 }
 
 // readDomainRangesYAML parses a YAML domain table from path.
@@ -425,7 +432,7 @@ func ensureDir(path string) {
 	if path == "" {
 		return
 	}
-	if err := os.MkdirAll(path, 0755); err != nil {
+	if err := os.MkdirAll(path, 0o755); err != nil {
 		log.Fatalf("failed to create directory %s: %v", path, err)
 	}
 }

@@ -29,7 +29,7 @@ type pgnCount struct {
 
 func TestPGNSerializationFromN2K(t *testing.T) {
 	// Get path to test data file
-	testFile := filepath.Join("/home/russ/dev/n2k/n2kreplays/integration", "susterrana2020.n2k")
+	testFile := testReplaySusterrana2020
 
 	// Setup the file endpoint
 	ca := canadapter.NewCANAdapter(logrus.New())
@@ -37,7 +37,6 @@ func TestPGNSerializationFromN2K(t *testing.T) {
 
 	// Create subscriber
 	subs := subscribe.New()
-	//	pub := pgn.NewPublisher(ca)
 	ps := pkt.NewPacketStruct()
 	ps.SetOutput(subs)
 	ca.SetOutput(ps)

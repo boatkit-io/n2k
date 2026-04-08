@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package pgn
 
 import (
@@ -118,8 +125,8 @@ func (s *DataStream) readBinaryData(bitLength uint16) ([]uint8, error) {
 //
 //	        "Name":"STRING_LAU",
 //		"Description":"A varying length string containing double or single byte codepoints encoded with a length byte and terminating zero.",
-//		"EncodingDescription":"The length of the string is determined by a starting length byte. The 2nd byte contains 0 for UNICODE or 1 for ASCII.",
-//		"Comment":"It is unclear what character sets are allowed/supported. For single byte, assume ASCII. For UNICODE, assume UTF-16, but this has not been seen in the wild yet.",
+//		"EncodingDescription": (length byte, then 0=UNICODE / 1=ASCII — see canboat schema).
+//		"Comment": (character set details omitted; see canboat).
 //
 // Conflicts with this comment:
 func (s *DataStream) readStringWithLengthAndControl() (string, error) {
@@ -134,7 +141,6 @@ func (s *DataStream) readStringWithLengthAndControl() (string, error) {
 		return "", nil
 	}
 	length := (uint16(lc[0]) - 2) * 8 // remove length and control bytes, calculate bitLength for remaining chars with terminating 0
-	// control := lc[1]
 	arr, err := s.readBinaryData(length)
 	if err != nil {
 		return "", err
@@ -150,9 +156,8 @@ func (s *DataStream) readStringWithLengthAndControl() (string, error) {
 		}
 		runes := utf16.Decode(a16)
 		return string(runes), nil
-	} else {
-		return string(arr), nil
 	}
+	return string(arr), nil
 }
 
 // readStringWithLength method reads a string with leading length byte
@@ -161,6 +166,8 @@ func (s *DataStream) readStringWithLengthAndControl() (string, error) {
 // The first byte contains the string length (not including the length byte or terminating zero).
 // If bitLength is 0, reads to end of stream. Otherwise, reads up to bitLength bits.
 // String has a terminating zero; we remove it.
+//
+//nolint:unparam // Why: bitLength is generated; decoders currently pass 0.
 func (s *DataStream) readStringWithLength(bitLength uint16) (string, error) {
 	// Read the length byte first
 	lengthByte, err := s.readBinaryData(8) // Read 1 byte for length
@@ -171,7 +178,7 @@ func (s *DataStream) readStringWithLength(bitLength uint16) (string, error) {
 		return "", fmt.Errorf("no data available for string length byte")
 	}
 
-	strLen := uint8(lengthByte[0])
+	strLen := lengthByte[0]
 	if strLen == 0 {
 		return "", nil // Empty string
 	}
@@ -262,7 +269,7 @@ func (s *DataStream) getNumberRaw(bitLength uint16) (uint64, error) {
 		b := s.data[s.byteOffset]
 		b >>= s.bitOffset
 		if bitsToGrab < 8 {
-			mask := uint8(0xFF >> uint8(8-bitsToGrab))
+			mask := uint8(0xFF >> (8 - bitsToGrab))
 			b &= mask
 		}
 		ret |= uint64(b) << uint64(outBitOffset)

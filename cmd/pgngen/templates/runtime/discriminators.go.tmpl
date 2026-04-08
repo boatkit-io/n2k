@@ -88,39 +88,3 @@ func matchesVariant(stream *DataStream, matchSpecs []MatchFieldSpec) bool {
 	}
 	return true
 }
-
-{{- range $pgn := .PGNDoc.PGNs }}
-{{- if hasMultipleVariants $pgn }}
-// Generated discriminator for {{ $pgn.Id }}
-var pgn{{ $pgn.Id }}Discriminators = []PgnDiscriminator{
-{{- range $variant := getVariantsForPgn $pgn }}
-	{
-		Decoder: Decode{{ $variant.Id }},
-		MatchSpecs: []MatchFieldSpec{
-{{- range $field := $variant.Fields }}
-{{- if $field.Match }}
-			{
-				FieldSpec: GetPgnInfo({{ $variant.PGN }}).FieldSpecs["{{ $field.Id }}"],
-				MatchValue: {{ $field.Match }},
-			},
-{{- end }}
-{{- end }}
-		},
-	},
-{{- end }}
-}
-
-// Discriminate{{ $pgn.Id }} selects the correct decoder for PGN {{ $pgn.PGN }} based on match field values
-func Discriminate{{ $pgn.Id }}(data []uint8) (*PgnInfo, error) {
-	stream := NewDataStream(data)
-	
-	for _, discriminator := range pgn{{ $pgn.Id }}Discriminators {
-		if matchesVariant(stream, discriminator.MatchSpecs) {
-			return discriminator.PgnInfo, nil
-		}
-	}
-	
-	return nil, fmt.Errorf("no matching variant found for PGN {{ $pgn.PGN }}")
-}
-{{- end }}
-{{- end }}

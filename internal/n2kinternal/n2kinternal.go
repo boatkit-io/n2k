@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 // Package n2kinternal provides the internal implementation of the N2K service.
 package n2kinternal
 
@@ -46,7 +53,7 @@ func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger) *N2kService {
 }
 
 // SubscribeToStruct subscribes to a specific PGN struct type and calls the callback when messages of that type are received.
-func (s *N2kService) SubscribeToStruct(t any, callback any) (uint, error) {
+func (s *N2kService) SubscribeToStruct(t, callback any) (uint, error) {
 	id, err := s.subscriber.SubscribeToStruct(t, callback)
 	return uint(id), err
 }

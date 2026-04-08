@@ -1,3 +1,11 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package main replays NMEA 2000 log files through the n2k service.
 package main
 
 import (
@@ -65,15 +73,15 @@ func main() {
 	}()
 
 	// Create the appropriate endpoint
-	var endpoint endpoint.Endpoint
-	if len(replayFile) > 0 && strings.HasSuffix(replayFile, ".n2k") {
-		endpoint = n2kfileendpoint.NewN2kFileEndpoint(replayFile, log)
-	} else if len(rawReplayFile) > 0 {
-		endpoint = rawendpoint.NewRawFileEndpoint(rawReplayFile, log)
+	var ep endpoint.Endpoint
+	if replayFile != "" && strings.HasSuffix(replayFile, ".n2k") {
+		ep = n2kfileendpoint.NewN2kFileEndpoint(replayFile, log)
+	} else if rawReplayFile != "" {
+		ep = rawendpoint.NewRawFileEndpoint(rawReplayFile, log)
 	}
 
 	// Create n2k service
-	bus := n2k.NewN2kService(endpoint, log)
+	bus := n2k.NewN2kService(ep, log)
 
 	// Start the service to set up the processing pipeline
 	if err := bus.Start(ctx); err != nil {
@@ -123,7 +131,7 @@ func main() {
 	}
 
 	// Run the endpoint directly to process the file
-	if err := endpoint.Run(ctx); err != nil {
+	if err := ep.Run(ctx); err != nil {
 		log.Errorf("endpoint run error: %v", err)
 		exitCode = 1
 		return

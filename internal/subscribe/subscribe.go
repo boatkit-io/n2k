@@ -179,7 +179,8 @@ func (s *SubscribeManager) HandleStruct(p any) {
 		paramType := funcType.In(0)
 		var callWith []reflect.Value
 
-		if paramType.Kind() == reflect.Ptr && paramType.Elem() == pv.Type() {
+		switch {
+		case paramType.Kind() == reflect.Ptr && paramType.Elem() == pv.Type():
 			// Callback expects a pointer to the struct
 			if pv.CanAddr() {
 				callWith = []reflect.Value{pv.Addr()}
@@ -188,15 +189,13 @@ func (s *SubscribeManager) HandleStruct(p any) {
 				ptrValue.Elem().Set(pv)
 				callWith = []reflect.Value{ptrValue}
 			}
-		} else if paramType == pv.Type() {
+		case paramType == pv.Type():
 			// Callback expects the struct value directly
 			callWith = []reflect.Value{pv}
-		} else if paramType.Kind() == reflect.Interface {
+		case paramType.Kind() == reflect.Interface:
 			// Callback expects an interface (like 'any')
-			// Pass the struct value directly
 			callWith = []reflect.Value{pv}
-		} else {
-			// Type mismatch, skip this callback
+		default:
 			continue
 		}
 

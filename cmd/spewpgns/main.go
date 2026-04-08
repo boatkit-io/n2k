@@ -1,3 +1,11 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package main sends sample NMEA 2000 PGNs on a SocketCAN interface.
 package main
 
 import (
@@ -13,7 +21,6 @@ import (
 	"github.com/boatkit-io/n2k/pkg/n2k"
 	"github.com/boatkit-io/tugboat/pkg/units"
 
-	//	"github.com/boatkit-io/tugboat/pkg/units"
 	"github.com/sirupsen/logrus"
 )
 
@@ -50,7 +57,9 @@ func main() {
 	endpoint := socketcanendpoint.NewSocketCANEndpoint(log, canInterface)
 	bus = n2k.NewN2kService(endpoint, log)
 	if err := bus.Start(ctx); err != nil {
-		log.Fatalf("Failed to start bus: %v", err)
+		cancel()
+		log.Errorf("Failed to start bus: %v", err)
+		os.Exit(1) //nolint:gocritic // exitAfterDefer: cancel() runs before exit
 	}
 
 	// 2. Create a PGN dumper to see all traffic
@@ -58,7 +67,9 @@ func main() {
 		log.Infof("PGN DUMP: %s", n2k.DebugDumpPGN(p))
 	})
 	if err != nil {
-		log.Fatalf("failed to subscribe to all structs: %v", err)
+		cancel()
+		log.Errorf("failed to subscribe to all structs: %v", err)
+		os.Exit(1) //nolint:gocritic // exitAfterDefer: cancel() runs before exit
 	}
 
 	// Give the channel time to start up
@@ -76,33 +87,30 @@ func main() {
 
 // sendTestPGNs sends a batch of test PGNs.
 func sendTestPGNs(log *logrus.Logger) {
-
-	sourceId := uint8(254) // Use reserved address for nodes unable to claim an address
-	var counter float32 = 0
+	sourceID := uint8(254) // Use reserved address for nodes unable to claim an address
+	var counter float32
 
 	// Generate and send different types of PGNs
-	if err := sendEngineData(sourceId, counter, log); err != nil {
+	if err := sendEngineData(sourceID, counter, log); err != nil {
 		log.Errorf("Failed to send engine data: %v", err)
 	}
 
-	if err := sendSpeedData(sourceId, counter, log); err != nil {
+	if err := sendSpeedData(sourceID, counter, log); err != nil {
 		log.Errorf("Failed to send speed data: %v", err)
 	}
 
-	if err := sendPositionData(sourceId, counter, log); err != nil {
+	if err := sendPositionData(sourceID, counter, log); err != nil {
 		log.Errorf("Failed to send position data: %v", err)
 	}
-	if err := sendEngineInfo(sourceId, counter, log); err != nil {
+	if err := sendEngineInfo(sourceID, log); err != nil {
 		log.Errorf("Failed to send ebgine data: %v", err)
-
 	}
 
 	log.Infof("Sent test PGNs batch %d", int(counter))
-
 }
 
 // sendEngineData sends an EngineParametersRapidUpdate PGN.
-func sendEngineData(sourceId uint8, counter float32, log *logrus.Logger) error {
+func sendEngineData(sourceID uint8, counter float32, log *logrus.Logger) error {
 	// Generate realistic engine RPM (1000-2500 RPM with some variation)
 	rpm := float32(1500.0 + 500.0*math.Sin(float64(counter)*0.1))
 	// Boost pressure in Pascal (150 kPa = 150000 Pa)
@@ -111,7 +119,7 @@ func sendEngineData(sourceId uint8, counter float32, log *logrus.Logger) error {
 
 	enginePgn := n2k.EngineParametersRapidUpdate{
 		Info: n2k.MessageInfo{
-			SourceId: sourceId,
+			SourceId: sourceID,
 			TargetId: 255, // Broadcast
 		},
 		Instance:      n2k.EngineInstanceConst(1),
@@ -125,7 +133,7 @@ func sendEngineData(sourceId uint8, counter float32, log *logrus.Logger) error {
 }
 
 // sendSpeedData sends a Speed PGN.
-func sendSpeedData(sourceId uint8, counter float32, log *logrus.Logger) error {
+func sendSpeedData(sourceID uint8, counter float32, log *logrus.Logger) error {
 	// Generate realistic boat speeds (5-15 knots)
 	speedKnots := 10.0 + 3.0*math.Sin(float64(counter)*0.15)
 	speedMs := float32(speedKnots * 0.514444) // Convert knots to m/s
@@ -137,7 +145,7 @@ func sendSpeedData(sourceId uint8, counter float32, log *logrus.Logger) error {
 
 	speedPgn := n2k.Speed{
 		Info: n2k.MessageInfo{
-			SourceId: sourceId,
+			SourceId: sourceID,
 			Priority: 0,   // Explicitly set priority to 0
 			TargetId: 255, // Broadcast
 		},
@@ -153,11 +161,11 @@ func sendSpeedData(sourceId uint8, counter float32, log *logrus.Logger) error {
 }
 
 // sendEngineInfo sends a single frame EngineParametersRapidUpdate PGN for testing.
-func sendEngineInfo(sourceId uint8, counter float32, log *logrus.Logger) error {
+func sendEngineInfo(sourceID uint8, log *logrus.Logger) error {
 	log.Info("Testing single frame PGN...")
 	info1 := n2k.MessageInfo{
 		PGN:      n2k.EngineParametersRapidUpdatePgn, // Engine Parameters Rapid Update
-		SourceId: sourceId,
+		SourceId: sourceID,
 		TargetId: 0x0,
 		Priority: 0x3,
 	}
@@ -179,7 +187,7 @@ func sendEngineInfo(sourceId uint8, counter float32, log *logrus.Logger) error {
 }
 
 // sendPositionData sends a PositionRapidUpdate PGN.
-func sendPositionData(sourceId uint8, counter float32, log *logrus.Logger) error {
+func sendPositionData(sourceID uint8, counter float32, log *logrus.Logger) error {
 	// Generate a position that moves in a small circle (simulating boat movement)
 	// Starting position: approximately San Francisco Bay
 	baseLat := 37.7749
@@ -196,7 +204,7 @@ func sendPositionData(sourceId uint8, counter float32, log *logrus.Logger) error
 	positionPgn := n2k.PositionRapidUpdate{
 		Info: n2k.MessageInfo{
 			PGN:      n2k.PositionRapidUpdatePgn,
-			SourceId: sourceId,
+			SourceId: sourceID,
 			TargetId: 0, // Broadcast
 			Priority: 0x3,
 		},

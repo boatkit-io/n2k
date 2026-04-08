@@ -1,3 +1,10 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
 package pgn
 
 import (
@@ -11,19 +18,19 @@ import (
 )
 
 // writeReserved fills the specified number of bits at the specified offset with 1s
-func (s *DataStream) writeReserved(bitLength uint16, bitOffset uint16) error {
+func (s *DataStream) writeReserved(bitLength, bitOffset uint16) error {
 	return s.putNumberRaw(0xFFFFFFFFFFFFFFFF, bitLength, bitOffset)
 }
 
 // writeSpare fills the specified number of bits at the specified offset with 0s
-func (s *DataStream) writeSpare(bitLength uint16, bitOffset uint16) error {
+func (s *DataStream) writeSpare(bitLength, bitOffset uint16) error {
 	return s.putNumberRaw(0, bitLength, bitOffset)
 }
 
 // writeStringLau writes the specified length of value at the specified offset
 func (s *DataStream) writeStringLau(value string, bitOffset uint16) error {
 	var out []uint8
-	if len(value) == 0 {
+	if value == "" {
 		out = []uint8{0x2, 0x1} // we'll encode as UTF8
 	} else {
 		out = []uint8{
@@ -36,15 +43,17 @@ func (s *DataStream) writeStringLau(value string, bitOffset uint16) error {
 	return s.writeBinary(out, length, bitOffset)
 }
 
-// writeStringWithLength writes the specified length of value at the specified offset
-func (s *DataStream) writeStringWithLength(value string, bitLength uint16, bitOffset uint16) error {
+// writeStringWithLength writes the specified length of value at the specified offset.
+//
+//nolint:unparam // bitLength is fixed by generated encoders (often 0); kept for symmetry with FieldSpec.
+func (s *DataStream) writeStringWithLength(value string, bitLength, bitOffset uint16) error {
 	length := uint8(len(value)) + 1 //  string length plus terminator
 	fieldLength := uint8(bitLength / 8)
 	if length+1 > fieldLength { // field must contain the length byte, the string, and the terminator
 		return fmt.Errorf("attempt to write string with length longer than field's length")
 	}
 	out := make([]uint8, fieldLength) // allocate the field's length, filled with zeros
-	out[0] = uint8(length)
+	out[0] = length
 	for i := range value {
 		out[i+1] = value[i]
 	}
@@ -53,17 +62,16 @@ func (s *DataStream) writeStringWithLength(value string, bitLength uint16, bitOf
 
 // writeStringFix writes the fixed string, first padding its length as necessary.
 // padding has been seen as "@", 0x00, and 0xff. we use the latter.
-func (s *DataStream) writeStringFix(value []uint8, bitLength uint16, bitOffset uint16) error {
+func (s *DataStream) writeStringFix(value []uint8, bitLength, bitOffset uint16) error {
 	byteCount := bitLength / 8
 	for i := len(value); i < int(byteCount); i++ {
 		value = append(value, 0xff)
 	}
 	return s.writeBinary(value, bitLength, bitOffset)
-
 }
 
 // writeBinary writes the specified length of value at the specified offset
-func (s *DataStream) writeBinary(value []uint8, bitLength uint16, bitOffset uint16) error {
+func (s *DataStream) writeBinary(value []uint8, bitLength, bitOffset uint16) error {
 	var numBytes uint16
 	if s.getBitOffset() != uint32(bitOffset) && bitOffset != 0 { // bitOffset == 0 can mean we don't know the offset, sadly
 		return fmt.Errorf("attempt to write field at wrong offset in writeBinary: %d, %d", s.getBitOffset(), bitOffset)
@@ -112,6 +120,7 @@ func checkNilInterface(i interface{}) bool {
 	if !iv.IsValid() {
 		return true
 	}
+	//nolint:exhaustive // Why: Only Ptr, Slice, Map, Func, Interface may be nil; every other Kind is never nil.
 	switch iv.Kind() {
 	case reflect.Ptr, reflect.Slice, reflect.Map, reflect.Func, reflect.Interface:
 		return iv.IsNil()
@@ -150,8 +159,10 @@ func (s *DataStream) writeUnit(value any, spec *FieldSpec) error {
 	return WriteScaled(s, &canboatValue, spec)
 }
 
-// writeFloat32 writes the specified length of value at the specified offset
-func (s *DataStream) writeFloat32(value *float32, bitLength uint16, bitOffset uint16, reservedValuesCount int) error {
+// writeFloat32 writes the specified length of value at the specified offset.
+//
+//nolint:unparam // Parameters mirror other writers; floats are always 32-bit with no reserved band in generated code.
+func (s *DataStream) writeFloat32(value *float32, bitLength, bitOffset uint16, reservedValuesCount int) error {
 	// This is called for fields with canboat type FLOAT.
 	// These fields use IEEE 754 32-bit floating point bits and have no reserved values.
 	if bitLength != 32 {
@@ -172,7 +183,7 @@ func (s *DataStream) writeFloat32(value *float32, bitLength uint16, bitOffset ui
 
 // putNumberRaw method writes up to 64 bits to the stream from a uint64 argument.
 // Cribbed the getNumberRaw function
-func (s *DataStream) putNumberRaw(value uint64, bitLength uint16, bitOffset uint16) error {
+func (s *DataStream) putNumberRaw(value uint64, bitLength, bitOffset uint16) error {
 	if s.getBitOffset() != uint32(bitOffset) && bitOffset != 0 { // bitOffset == 0 can mean we don't know the offset, sadly
 		return fmt.Errorf("attempt to write field at wrong offset in putNumberRaw: %d, %d", s.getBitOffset(), bitOffset)
 	}
@@ -189,14 +200,14 @@ func (s *DataStream) putNumberRaw(value uint64, bitLength uint16, bitOffset uint
 			bitsToWrite = uint8(bitLength)
 		}
 
-		mask := uint8(0xFF >> uint8(8-bitsToWrite))
+		mask := uint8(0xFF >> (8 - bitsToWrite))
 		outByte := uint8(value) & mask
 		if bitsToWrite <= bitsLeft {
 			outByte <<= (startBit)
 		}
 
 		value >>= uint64(bitsToWrite)
-		s.data[s.byteOffset] |= uint8(outByte)
+		s.data[s.byteOffset] |= outByte
 		bitLength -= uint16(bitsToWrite)
 		s.bitOffset += bitsToWrite
 		if s.bitOffset >= 8 {

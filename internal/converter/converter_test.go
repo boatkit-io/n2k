@@ -6,11 +6,11 @@ import (
 	"github.com/boatkit-io/n2k/internal/pgn"
 )
 
-func TestCanIdFromData(t *testing.T) {
+func TestCanIDFromData(t *testing.T) {
 	tests := []struct {
 		name        string
 		pgn         uint32
-		sourceId    uint8
+		sourceID    uint8
 		priority    uint8
 		destination uint8
 		expected    uint32
@@ -18,7 +18,7 @@ func TestCanIdFromData(t *testing.T) {
 		{
 			name:        "Address Claim PGN",
 			pgn:         60928,
-			sourceId:    110,
+			sourceID:    110,
 			priority:    6,
 			destination: 255,
 			expected:    2565799790, // 0x98EEFF6E (PDU1 format, destination 255 encoded)
@@ -26,7 +26,7 @@ func TestCanIdFromData(t *testing.T) {
 		{
 			name:        "Heartbeat PGN",
 			pgn:         126993,
-			sourceId:    238,
+			sourceID:    238,
 			priority:    3,
 			destination: 255,
 			expected:    2381320686, // 0x8DF011EE
@@ -34,7 +34,7 @@ func TestCanIdFromData(t *testing.T) {
 		{
 			name:        "Targeted PGN",
 			pgn:         59904, // PDU1 format (0xEA00)
-			sourceId:    100,
+			sourceID:    100,
 			priority:    2,
 			destination: 50,
 			expected:    2297049700, // 0x88EA3264
@@ -42,7 +42,7 @@ func TestCanIdFromData(t *testing.T) {
 		{
 			name:        "Zero values",
 			pgn:         0,
-			sourceId:    0,
+			sourceID:    0,
 			priority:    0,
 			destination: 255,
 			expected:    2147548928, // 0x8000FF00 (PDU1 format, destination 255 encoded)
@@ -50,7 +50,7 @@ func TestCanIdFromData(t *testing.T) {
 		{
 			name:        "Max priority",
 			pgn:         126993,
-			sourceId:    255,
+			sourceID:    255,
 			priority:    7,
 			destination: 255,
 			expected:    2649756159, // 0x9DF011FF
@@ -59,16 +59,16 @@ func TestCanIdFromData(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := CanIdFromData(tt.pgn, tt.sourceId, tt.priority, tt.destination)
+			result := CanIDFromData(tt.pgn, tt.sourceID, tt.priority, tt.destination)
 			if result != tt.expected {
-				t.Errorf("CanIdFromData(%d, %d, %d, %d) = 0x%X, want 0x%X",
-					tt.pgn, tt.sourceId, tt.priority, tt.destination, result, tt.expected)
+				t.Errorf("CanIDFromData(%d, %d, %d, %d) = 0x%X, want 0x%X",
+					tt.pgn, tt.sourceID, tt.priority, tt.destination, result, tt.expected)
 			}
 		})
 	}
 }
 
-func TestDecodeCanId(t *testing.T) {
+func TestDecodeCanID(t *testing.T) {
 	tests := []struct {
 		name     string
 		id       uint32
@@ -78,83 +78,83 @@ func TestDecodeCanId(t *testing.T) {
 			name: "Address Claim PGN",
 			id:   2565799790, // 0x98EEFF6E - actual CAN ID for PGN 60928, source 110, priority 6, dest 255
 			expected: FrameHeader{
-				SourceId: 110,
+				SourceID: 110,
 				PGN:      pgn.IsoAddressClaimPgn,
 				Priority: 6,
-				TargetId: 255, // PDU1 format - TargetId extracted from PGN
+				TargetID: 255, // PDU1 format - TargetID extracted from PGN
 			},
 		},
 		{
 			name: "Heartbeat PGN",
 			id:   233837038, // 0xDF011EE
 			expected: FrameHeader{
-				SourceId: 238,
+				SourceID: 238,
 				PGN:      126993,
 				Priority: 3,
-				TargetId: 255, // PDU2 format - TargetId always 255
+				TargetID: 255, // PDU2 format - TargetID always 255
 			},
 		},
 		{
 			name: "Targeted PGN",
 			id:   149566052, // 0x8EA3264
 			expected: FrameHeader{
-				SourceId: 100,
+				SourceID: 100,
 				PGN:      59904,
 				Priority: 2,
-				TargetId: 50, // PDU1 format - TargetId extracted from PGN
+				TargetID: 50, // PDU1 format - TargetID extracted from PGN
 			},
 		},
 		{
 			name: "Zero ID",
 			id:   0,
 			expected: FrameHeader{
-				SourceId: 0,
+				SourceID: 0,
 				PGN:      0,
 				Priority: 0,
-				TargetId: 0, // PDU1 format with PGN=0, TargetId=0
+				TargetID: 0, // PDU1 format with PGN=0, TargetID=0
 			},
 		},
 		{
 			name: "Max priority",
 			id:   502272511, // 0x1DF011FF
 			expected: FrameHeader{
-				SourceId: 255,
+				SourceID: 255,
 				PGN:      126993,
 				Priority: 7,
-				TargetId: 255, // PDU2 format - TargetId always 255
+				TargetID: 255, // PDU2 format - TargetID always 255
 			},
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := DecodeCanId(tt.id)
+			result := DecodeCanID(tt.id)
 			// Don't compare TimeStamp as it's set to time.Now()
-			if result.SourceId != tt.expected.SourceId {
-				t.Errorf("DecodeCanId(0x%X).SourceId = %d, want %d",
-					tt.id, result.SourceId, tt.expected.SourceId)
+			if result.SourceID != tt.expected.SourceID {
+				t.Errorf("DecodeCanID(0x%X).SourceID = %d, want %d",
+					tt.id, result.SourceID, tt.expected.SourceID)
 			}
 			if result.PGN != tt.expected.PGN {
-				t.Errorf("DecodeCanId(0x%X).PGN = %d, want %d",
+				t.Errorf("DecodeCanID(0x%X).PGN = %d, want %d",
 					tt.id, result.PGN, tt.expected.PGN)
 			}
 			if result.Priority != tt.expected.Priority {
-				t.Errorf("DecodeCanId(0x%X).Priority = %d, want %d",
+				t.Errorf("DecodeCanID(0x%X).Priority = %d, want %d",
 					tt.id, result.Priority, tt.expected.Priority)
 			}
-			if result.TargetId != tt.expected.TargetId {
-				t.Errorf("DecodeCanId(0x%X).TargetId = %d, want %d",
-					tt.id, result.TargetId, tt.expected.TargetId)
+			if result.TargetID != tt.expected.TargetID {
+				t.Errorf("DecodeCanID(0x%X).TargetID = %d, want %d",
+					tt.id, result.TargetID, tt.expected.TargetID)
 			}
 		})
 	}
 }
 
-func TestCanIdFromDataAndDecodeCanIdRoundTrip(t *testing.T) {
+func TestCanIDFromDataAndDecodeCanIDRoundTrip(t *testing.T) {
 	tests := []struct {
 		name        string
 		pgn         uint32
-		sourceId    uint8
+		sourceID    uint8
 		priority    uint8
 		destination uint8
 		expectError bool
@@ -179,7 +179,7 @@ func TestCanIdFromDataAndDecodeCanIdRoundTrip(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			// Test with validation
-			canId, err := CanIdFromDataWithValidation(tt.pgn, tt.sourceId, tt.priority, tt.destination)
+			canID, err := CanIDFromDataWithValidation(tt.pgn, tt.sourceID, tt.priority, tt.destination)
 			if tt.expectError {
 				if err == nil {
 					t.Errorf("Expected error for PDU2 PGN with invalid destination, got none")
@@ -192,11 +192,11 @@ func TestCanIdFromDataAndDecodeCanIdRoundTrip(t *testing.T) {
 			}
 
 			// Decode
-			header := DecodeCanId(canId)
+			header := DecodeCanID(canID)
 
 			// Verify round trip - all values should match exactly
-			if header.SourceId != tt.sourceId {
-				t.Errorf("SourceId mismatch: got %d, want %d", header.SourceId, tt.sourceId)
+			if header.SourceID != tt.sourceID {
+				t.Errorf("SourceID mismatch: got %d, want %d", header.SourceID, tt.sourceID)
 			}
 			if header.Priority != tt.priority {
 				t.Errorf("Priority mismatch: got %d, want %d", header.Priority, tt.priority)
@@ -205,28 +205,28 @@ func TestCanIdFromDataAndDecodeCanIdRoundTrip(t *testing.T) {
 				t.Errorf("PGN mismatch: got %d, want %d", header.PGN, tt.pgn)
 			}
 
-			// For PDU2 format, TargetId should always be 255 regardless of input destination
+			// For PDU2 format, TargetID should always be 255 regardless of input destination
 			pduFormat := uint8((tt.pgn & 0xFF00) >> 8)
-			expectedTargetId := tt.destination
+			expectedTargetID := tt.destination
 			if pduFormat >= 240 {
-				expectedTargetId = 255
+				expectedTargetID = 255
 			}
-			if header.TargetId != expectedTargetId {
-				t.Errorf("TargetId mismatch: got %d, want %d", header.TargetId, expectedTargetId)
+			if header.TargetID != expectedTargetID {
+				t.Errorf("TargetID mismatch: got %d, want %d", header.TargetID, expectedTargetID)
 			}
 		})
 	}
 }
 
-func TestCanIdFromDataWithoutValidation(t *testing.T) {
+func TestCanIDFromDataWithoutValidation(t *testing.T) {
 	tests := []struct {
 		name        string
 		pgn         uint32
-		sourceId    uint8
+		sourceID    uint8
 		priority    uint8
 		destination uint8
 	}{
-		// Test that CanIdFromData still works without validation
+		// Test that CanIDFromData still works without validation
 		{"Heartbeat PDU2 with invalid destination (no validation)", pgn.HeartbeatPgn, 238, 3, 50},
 		{"VesselHeading PDU2 with invalid destination (no validation)", pgn.VesselHeadingPgn, 200, 2, 25},
 	}
@@ -234,12 +234,12 @@ func TestCanIdFromDataWithoutValidation(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			// This should not error, but the round-trip behavior may be unexpected
-			canId := CanIdFromData(tt.pgn, tt.sourceId, tt.priority, tt.destination)
-			header := DecodeCanId(canId)
+			canID := CanIDFromData(tt.pgn, tt.sourceID, tt.priority, tt.destination)
+			header := DecodeCanID(canID)
 
-			// For PDU2, TargetId should always be 255 regardless of input destination
-			if header.TargetId != 255 {
-				t.Errorf("PDU2 TargetId should be 255, got %d", header.TargetId)
+			// For PDU2, TargetID should always be 255 regardless of input destination
+			if header.TargetID != 255 {
+				t.Errorf("PDU2 TargetID should be 255, got %d", header.TargetID)
 			}
 		})
 	}
@@ -249,7 +249,7 @@ func TestPriorityHandling(t *testing.T) {
 	tests := []struct {
 		name        string
 		pgn         uint32
-		sourceId    uint8
+		sourceID    uint8
 		priority    uint8
 		destination uint8
 	}{
@@ -277,10 +277,10 @@ func TestPriorityHandling(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			// Encode
-			canId := CanIdFromData(tt.pgn, tt.sourceId, tt.priority, tt.destination)
+			canID := CanIDFromData(tt.pgn, tt.sourceID, tt.priority, tt.destination)
 
 			// Decode
-			header := DecodeCanId(canId)
+			header := DecodeCanID(canID)
 
 			// Check priority round-trip
 			if header.Priority != tt.priority {
@@ -288,7 +288,7 @@ func TestPriorityHandling(t *testing.T) {
 			}
 
 			// Verify priority is in correct bit position in CAN ID
-			expectedPriorityBits := (canId & 0x1C000000) >> 26
+			expectedPriorityBits := (canID & 0x1C000000) >> 26
 			if expectedPriorityBits != uint32(tt.priority) {
 				t.Errorf("Priority bits in CAN ID incorrect: got %d, want %d", expectedPriorityBits, tt.priority)
 			}
@@ -315,8 +315,8 @@ func TestPriorityMasking(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			canId := CanIdFromData(pgn.HeartbeatPgn, 200, tt.priority, 255)
-			header := DecodeCanId(canId)
+			canID := CanIDFromData(pgn.HeartbeatPgn, 200, tt.priority, 255)
+			header := DecodeCanID(canID)
 
 			if header.Priority != tt.expected {
 				t.Errorf("Priority masking failed: got %d, want %d", header.Priority, tt.expected)
@@ -325,32 +325,32 @@ func TestPriorityMasking(t *testing.T) {
 	}
 }
 
-func TestCanIdFromStruct(t *testing.T) {
+func TestCanIDFromStruct(t *testing.T) {
 	tests := []struct {
 		name     string
-		data     CanIdData
+		data     CanIDData
 		expected uint32
 	}{
 		{
 			"Address Claim PGN",
-			CanIdData{PGN: pgn.IsoAddressClaimPgn, SourceId: 110, Priority: 6, Destination: 255},
-			0x98EEFF6E, // Same as TestCanIdFromData
+			CanIDData{PGN: pgn.IsoAddressClaimPgn, SourceID: 110, Priority: 6, Destination: 255},
+			0x98EEFF6E, // Same as TestCanIDFromData
 		},
 		{
 			"Speed PGN (PDU2)",
-			CanIdData{PGN: pgn.SpeedPgn, SourceId: 238, Priority: 3, Destination: 255},
+			CanIDData{PGN: pgn.SpeedPgn, SourceID: 238, Priority: 3, Destination: 255},
 			0x8DF503EE, // Speed PGN with source 238, priority 3, destination 255
 		},
 		{
 			"Zero values",
-			CanIdData{PGN: 0, SourceId: 0, Priority: 0, Destination: 0},
-			0x80000000, // Same as TestCanIdFromData
+			CanIDData{PGN: 0, SourceID: 0, Priority: 0, Destination: 0},
+			0x80000000, // Same as TestCanIDFromData
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := CanIdFromStruct(tt.data)
+			result := CanIDFromStruct(tt.data)
 			if result != tt.expected {
 				t.Errorf("expected 0x%08X, got 0x%08X", tt.expected, result)
 			}
@@ -358,37 +358,37 @@ func TestCanIdFromStruct(t *testing.T) {
 	}
 }
 
-func TestCanIdFromStructWithValidation(t *testing.T) {
+func TestCanIDFromStructWithValidation(t *testing.T) {
 	tests := []struct {
 		name        string
-		data        CanIdData
+		data        CanIDData
 		expectError bool
 	}{
 		{
 			"Valid PDU1 with specific destination",
-			CanIdData{PGN: pgn.IsoAcknowledgementPgn, SourceId: 100, Priority: 3, Destination: 200},
+			CanIDData{PGN: pgn.IsoAcknowledgementPgn, SourceID: 100, Priority: 3, Destination: 200},
 			false,
 		},
 		{
 			"Valid PDU2 with global destination",
-			CanIdData{PGN: pgn.HeartbeatPgn, SourceId: 100, Priority: 3, Destination: 255},
+			CanIDData{PGN: pgn.HeartbeatPgn, SourceID: 100, Priority: 3, Destination: 255},
 			false,
 		},
 		{
 			"Valid PDU2 with zero destination",
-			CanIdData{PGN: pgn.HeartbeatPgn, SourceId: 100, Priority: 3, Destination: 0},
+			CanIDData{PGN: pgn.HeartbeatPgn, SourceID: 100, Priority: 3, Destination: 0},
 			false,
 		},
 		{
 			"Invalid PDU2 with specific destination",
-			CanIdData{PGN: pgn.HeartbeatPgn, SourceId: 100, Priority: 3, Destination: 200},
+			CanIDData{PGN: pgn.HeartbeatPgn, SourceID: 100, Priority: 3, Destination: 200},
 			true,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			_, err := CanIdFromStructWithValidation(tt.data)
+			_, err := CanIDFromStructWithValidation(tt.data)
 			if tt.expectError && err == nil {
 				t.Error("expected error but got none")
 			}
