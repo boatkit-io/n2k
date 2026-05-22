@@ -65,6 +65,8 @@ var {{ .Name  }}Map = map[int]FieldDescriptor{
 		Name: "{{ .Name }}",
 		CanboatType: "{{ .FieldType }}",
 		Resolution: {{ .Resolution }},
+		Offset: 0,
+		HasOffset: false,
 		Unit: "{{ .Unit }}",
 		BitLength: {{ .BitLength }},
 		BitLookupName: "{{ .BitLookupName }}",
@@ -76,7 +78,7 @@ var {{ .Name  }}Map = map[int]FieldDescriptor{
 {{- range .PGNDoc.BitEnums }}
 {{- $name := .Name  }}
 
-type {{ $name }} uint16
+type {{ $name }} uint64
 const (
 {{- range .EnumBitValues }}
 	{{ toVarName .Label }}	{{ $name }} = {{ .Bit }}
@@ -134,6 +136,12 @@ var pgnList = []PgnInfo{
 			{{- else -}}
 			1
 			{{- end }},
+			Offset: {{- if .Offset -}}
+			{{ .Offset }}
+			{{- else -}}
+			0
+			{{- end }},
+			HasOffset: {{ if .Offset }}true{{ else }}false{{ end }},
 			Signed: {{ .Signed }},
 			},
 		{{- end }}
@@ -252,7 +260,7 @@ func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (any, error) {
 			manufacturer = ManufacturerCodeConst(*v)
 		}
 	{{- end }}
-	{{- if and $isKeyValue (eq $field.Name "MinLength") }}
+	{{- if and $isKeyValue (or (eq $field.Name "MinLength") (eq $field.FieldType "DYNAMIC_FIELD_LENGTH")) }}
 		if v != nil {
 			valueLength = uint16(*v) * 8
 		}
@@ -288,7 +296,7 @@ func {{ $funcName }}(Info MessageInfo, stream *PGNDataStream) (any, error) {
 				fieldIndex = *v
 			}
 		{{- end }}
-		{{- if and $isKeyValue (eq .Name "Length") }}
+		{{- if and $isKeyValue (or (eq .Name "Length") (eq .FieldType "DYNAMIC_FIELD_LENGTH")) }}
 			if v != nil {
 				valueLength = uint16(*v) * 8
 			}

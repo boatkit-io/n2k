@@ -36,4 +36,15 @@ func TestDecoding(t *testing.T) {
 	assert.NotNil(t, longDecode.TimeRemaining)
 	assert.Nil(t, longDecode.RippleVoltage)
 	assert.NotNil(t, longDecode.RemainingCapacity)
+
+	acPowerRaw, err := DecodeUtilityPhaseAAcPower(info, NewPgnDataStream([]uint8{0x4d, 0x94, 0x35, 0x77, 0x66, 0x94, 0x35, 0x77}))
+	assert.NoError(t, err)
+	acPower := acPowerRaw.(UtilityPhaseAAcPower)
+	assert.Equal(t, int32(77), *acPower.RealPower)
+	assert.Equal(t, int32(102), *acPower.ApparentPower)
+
+	realPowerField, err := GetFieldDescriptor(65013, 0, 1)
+	assert.NoError(t, err)
+	assert.True(t, realPowerField.HasOffset)
+	assert.Equal(t, int64(-2000000000), realPowerField.Offset)
 }

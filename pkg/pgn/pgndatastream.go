@@ -14,6 +14,11 @@ import (
 	"strings"
 )
 
+const (
+	maxInt64 = int64(1<<63 - 1)
+	minInt64 = -maxInt64 - 1
+)
+
 // PGNDataStream instances provide methods to read data types from a stream.
 // byteOffset and bitOffset combine to act as the read "cursor".
 // The low level read functions update the cursor.
@@ -82,8 +87,8 @@ func (s *PGNDataStream) readLookupField(bitLength uint16) (uint64, error) {
 	return v, nil
 }
 
-// readSignedResolution method reads the specified length of data, scales it, and returns as a *float32.
-func (s *PGNDataStream) readSignedResolution(bitLength uint16, multiplyBy float32) (*float32, error) {
+// readSignedResolution method reads signed data, scales it, applies a canboat offset, and returns a *float32.
+func (s *PGNDataStream) readSignedResolution(bitLength uint16, multiplyBy float32, offset int64) (*float32, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadSignedResolution", bitLength)
 	}
@@ -95,12 +100,12 @@ func (s *PGNDataStream) readSignedResolution(bitLength uint16, multiplyBy float3
 	if v == nil {
 		return nil, nil
 	}
-	vo := float32(*v) * multiplyBy
+	vo := float32(*v)*multiplyBy + float32(offset)
 	return &vo, nil
 }
 
-// readSignedResolution64Override method reads the specified length of data, scales it, and returns as a *float64.
-func (s *PGNDataStream) readSignedResolution64Override(bitLength uint16, multiplyBy float64) (*float64, error) {
+// readSignedResolution64Override method reads signed data, scales it, applies a canboat offset, and returns as a *float64.
+func (s *PGNDataStream) readSignedResolution64Override(bitLength uint16, multiplyBy float64, offset int64) (*float64, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadSignedResolution", bitLength)
 	}
@@ -112,12 +117,12 @@ func (s *PGNDataStream) readSignedResolution64Override(bitLength uint16, multipl
 	if v == nil {
 		return nil, nil
 	}
-	vo := float64(*v) * multiplyBy
+	vo := float64(*v)*multiplyBy + float64(offset)
 	return &vo, nil
 }
 
-// readUnsignedResolution method reads the specified data as an unsigned number and scales it.
-func (s *PGNDataStream) readUnsignedResolution(bitLength uint16, multiplyBy float32) (*float32, error) {
+// readUnsignedResolution method reads unsigned data, scales it, applies a canboat offset, and returns a *float32.
+func (s *PGNDataStream) readUnsignedResolution(bitLength uint16, multiplyBy float32, offset int64) (*float32, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUnsignedResolution", bitLength)
 	}
@@ -129,12 +134,12 @@ func (s *PGNDataStream) readUnsignedResolution(bitLength uint16, multiplyBy floa
 	if v == nil {
 		return nil, nil
 	}
-	vo := float32(*v) * multiplyBy
+	vo := float32(*v)*multiplyBy + float32(offset)
 	return &vo, nil
 }
 
-// readUInt64 method reads and returns *uint64
-func (s *PGNDataStream) readUInt64(bitLength uint16) (*uint64, error) {
+// readUInt64 method reads and returns *uint64 after applying a canboat offset.
+func (s *PGNDataStream) readUInt64(bitLength uint16, offset int64) (*uint64, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt64", bitLength)
 	}
@@ -146,11 +151,15 @@ func (s *PGNDataStream) readUInt64(bitLength uint16) (*uint64, error) {
 	if v == nil {
 		return nil, nil
 	}
-	return v, nil
+	vo, err := applyUnsignedOffset(*v, offset)
+	if err != nil {
+		return nil, err
+	}
+	return &vo, nil
 }
 
-// readUInt32 method reads and returns a *uint32
-func (s *PGNDataStream) readUInt32(bitLength uint16) (*uint32, error) {
+// readUInt32 method reads and returns a *uint32 after applying a canboat offset.
+func (s *PGNDataStream) readUInt32(bitLength uint16, offset int64) (*uint32, error) {
 	if bitLength > 32 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt32", bitLength)
 	}
@@ -162,12 +171,19 @@ func (s *PGNDataStream) readUInt32(bitLength uint16) (*uint32, error) {
 	if v == nil {
 		return nil, nil
 	}
-	vo := uint32(*v)
+	withOffset, err := applyUnsignedOffset(*v, offset)
+	if err != nil {
+		return nil, err
+	}
+	if withOffset > uint64(^uint32(0)) {
+		return nil, fmt.Errorf("offset uint32 value overflow: %d", withOffset)
+	}
+	vo := uint32(withOffset)
 	return &vo, nil
 }
 
-// readUInt16 method reads and returns a *uint16
-func (s *PGNDataStream) readUInt16(bitLength uint16) (*uint16, error) {
+// readUInt16 method reads and returns a *uint16 after applying a canboat offset.
+func (s *PGNDataStream) readUInt16(bitLength uint16, offset int64) (*uint16, error) {
 	if bitLength > 16 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt16", bitLength)
 	}
@@ -179,12 +195,19 @@ func (s *PGNDataStream) readUInt16(bitLength uint16) (*uint16, error) {
 	if v == nil {
 		return nil, nil
 	}
-	vo := uint16(*v)
+	withOffset, err := applyUnsignedOffset(*v, offset)
+	if err != nil {
+		return nil, err
+	}
+	if withOffset > uint64(^uint16(0)) {
+		return nil, fmt.Errorf("offset uint16 value overflow: %d", withOffset)
+	}
+	vo := uint16(withOffset)
 	return &vo, nil
 }
 
-// readUInt8 method reads and returns a *uint8
-func (s *PGNDataStream) readUInt8(bitLength uint16) (*uint8, error) {
+// readUInt8 method reads and returns a *uint8 after applying a canboat offset.
+func (s *PGNDataStream) readUInt8(bitLength uint16, offset int64) (*uint8, error) {
 	if bitLength > 8 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadUInt8", bitLength)
 	}
@@ -196,12 +219,19 @@ func (s *PGNDataStream) readUInt8(bitLength uint16) (*uint8, error) {
 	if v == nil {
 		return nil, nil
 	}
-	vo := uint8(*v)
+	withOffset, err := applyUnsignedOffset(*v, offset)
+	if err != nil {
+		return nil, err
+	}
+	if withOffset > uint64(^uint8(0)) {
+		return nil, fmt.Errorf("offset uint8 value overflow: %d", withOffset)
+	}
+	vo := uint8(withOffset)
 	return &vo, nil
 }
 
-// readInt64 method reads and returns a *int64
-func (s *PGNDataStream) readInt64(bitLength uint16) (*int64, error) {
+// readInt64 method reads and returns a *int64 after applying a canboat offset.
+func (s *PGNDataStream) readInt64(bitLength uint16, offset int64) (*int64, error) {
 	if bitLength > 64 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt64", bitLength)
 	}
@@ -213,12 +243,15 @@ func (s *PGNDataStream) readInt64(bitLength uint16) (*int64, error) {
 	if v == nil {
 		return nil, nil
 	}
-	vo := *v
+	vo, err := applySignedOffset(*v, offset)
+	if err != nil {
+		return nil, err
+	}
 	return &vo, nil
 }
 
-// readInt32 method reads and returns a *int32
-func (s *PGNDataStream) readInt32(bitLength uint16) (*int32, error) {
+// readInt32 method reads and returns a *int32 after applying a canboat offset.
+func (s *PGNDataStream) readInt32(bitLength uint16, offset int64) (*int32, error) {
 	if bitLength > 32 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt32", bitLength)
 	}
@@ -230,12 +263,19 @@ func (s *PGNDataStream) readInt32(bitLength uint16) (*int32, error) {
 	if v == nil {
 		return nil, nil
 	}
-	vo := int32(*v)
+	withOffset, err := applySignedOffset(*v, offset)
+	if err != nil {
+		return nil, err
+	}
+	if withOffset > int64(^uint32(0)>>1) || withOffset < -int64(^uint32(0)>>1)-1 {
+		return nil, fmt.Errorf("offset int32 value overflow: %d", withOffset)
+	}
+	vo := int32(withOffset)
 	return &vo, nil
 }
 
-// readInt16 method reads and returns a *int16
-func (s *PGNDataStream) readInt16(bitLength uint16) (*int16, error) {
+// readInt16 method reads and returns a *int16 after applying a canboat offset.
+func (s *PGNDataStream) readInt16(bitLength uint16, offset int64) (*int16, error) {
 	if bitLength > 16 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt16", bitLength)
 	}
@@ -247,12 +287,19 @@ func (s *PGNDataStream) readInt16(bitLength uint16) (*int16, error) {
 	if v == nil {
 		return nil, nil
 	}
-	vo := int16(*v)
+	withOffset, err := applySignedOffset(*v, offset)
+	if err != nil {
+		return nil, err
+	}
+	if withOffset > int64(^uint16(0)>>1) || withOffset < -int64(^uint16(0)>>1)-1 {
+		return nil, fmt.Errorf("offset int16 value overflow: %d", withOffset)
+	}
+	vo := int16(withOffset)
 	return &vo, nil
 }
 
-// readInt8 method reads and returns a *int8
-func (s *PGNDataStream) readInt8(bitLength uint16) (*int8, error) {
+// readInt8 method reads and returns a *int8 after applying a canboat offset.
+func (s *PGNDataStream) readInt8(bitLength uint16, offset int64) (*int8, error) {
 	if bitLength > 8 {
 		return nil, fmt.Errorf("requested %d bitLength in ReadInt8", bitLength)
 	}
@@ -264,13 +311,44 @@ func (s *PGNDataStream) readInt8(bitLength uint16) (*int8, error) {
 	if v == nil {
 		return nil, nil
 	}
-	vo := int8(*v)
+	withOffset, err := applySignedOffset(*v, offset)
+	if err != nil {
+		return nil, err
+	}
+	if withOffset > int64(^uint8(0)>>1) || withOffset < -int64(^uint8(0)>>1)-1 {
+		return nil, fmt.Errorf("offset int8 value overflow: %d", withOffset)
+	}
+	vo := int8(withOffset)
 	return &vo, nil
+}
+
+func applySignedOffset(value, offset int64) (int64, error) {
+	if offset > 0 && value > maxInt64-offset {
+		return 0, fmt.Errorf("signed offset overflow: %d + %d", value, offset)
+	}
+	if offset < 0 && value < minInt64-offset {
+		return 0, fmt.Errorf("signed offset underflow: %d + %d", value, offset)
+	}
+	return value + offset, nil
+}
+
+func applyUnsignedOffset(value uint64, offset int64) (uint64, error) {
+	if offset < 0 {
+		magnitude := uint64(-(offset + 1)) + 1
+		if value < magnitude {
+			return 0, fmt.Errorf("unsigned offset underflow: %d + %d", value, offset)
+		}
+		return value - magnitude, nil
+	}
+	if value > ^uint64(0)-uint64(offset) {
+		return 0, fmt.Errorf("unsigned offset overflow: %d + %d", value, offset)
+	}
+	return value + uint64(offset), nil
 }
 
 // readFloat32 method reads and returns a *float32
 func (s *PGNDataStream) readFloat32() (*float32, error) {
-	v, err := s.readUInt32(32)
+	v, err := s.readUInt32(32, 0)
 	if err != nil {
 		return nil, err
 	}
@@ -366,7 +444,7 @@ func (s *PGNDataStream) readStringWithLengthAndControl() (string, error) {
 // String has a terminating zero
 // Length does not seem to include length byte here
 func (s *PGNDataStream) readStringWithLength() (string, error) {
-	length, err := s.readUInt8(8)
+	length, err := s.readUInt8(8, 0)
 	if err != nil {
 		return "", err
 	}

@@ -172,7 +172,7 @@ type PGNField struct {
 	//nolint:revive // Why: Needs to be this way.
 	Id                       string
 	Name                     string
-	Description              string
+	Description              any
 	BitLength                uint16
 	BitLengthVariable        bool
 	BitLengthField           uint8
@@ -180,6 +180,7 @@ type PGNField struct {
 	BitStart                 uint8
 	FieldType                string
 	Resolution               *float32
+	Offset                   *int64
 	RangeMin                 float32
 	RangeMax                 float32
 	Match                    *int
@@ -298,7 +299,7 @@ func (builder *canboatConverter) fixIDs() {
 	for i := range builder.PGNs {
 		fieldDeDuper := NewDeDuper()
 		// Capitalize first letter of the Ids (currently lowercase)
-		builder.PGNs[i].Id = capitalizeFirstChar(builder.PGNs[i].Id)
+		builder.PGNs[i].Id = cleanIdentifier(capitalizeFirstChar(builder.PGNs[i].Id))
 		if firstTime, _ := pgnDeDuper.unique(builder.PGNs[i].Id); !firstTime {
 			panic("PGN ID not unique: " + builder.PGNs[i].Id)
 		}
@@ -316,7 +317,7 @@ func (builder *canboatConverter) fixIDs() {
 
 // fixupField capitializes Id's first char, assures field name is unique, and forces lookup names.
 func fixupField(field *PGNField, dedup DeDuper) {
-	field.Id = capitalizeFirstChar(field.Id)
+	field.Id = cleanIdentifier(capitalizeFirstChar(field.Id))
 	if field.FieldTypeLookupName != "" {
 		convertToConst(&field.FieldTypeLookupName)
 	}
@@ -464,7 +465,23 @@ var varDeDuper = NewDeDuper()
 func toVarName(str string) string {
 	str = strings.Title(str) //nolint:staticcheck // Why: Refactor
 	str = varNameReplacer.Replace(str)
+	str = cleanIdentifier(str)
 	_, str = varDeDuper.unique(str)
+	return str
+}
+
+func cleanIdentifier(str string) string {
+	var cleaned strings.Builder
+	for _, r := range str {
+		if unicode.IsLetter(r) || unicode.IsDigit(r) {
+			cleaned.WriteRune(r)
+		}
+	}
+	str = cleaned.String()
+	if str == "" {
+		str = "Value"
+	}
+	forceFirstLetter(&str)
 	return str
 }
 
@@ -472,6 +489,13 @@ func toVarName(str string) string {
 // Used by template.
 func isPointerFieldType(field *PGNField) bool {
 	return strings.HasPrefix(convertFieldType(field), "*")
+}
+
+func fieldOffset(field *PGNField) int64 {
+	if field.Offset == nil {
+		return 0
+	}
+	return *field.Offset
 }
 
 // toNumber converts its input to an integer.
@@ -493,7 +517,7 @@ func constSize(i int) string {
 	case i < 65536:
 		return "uint16"
 	case i < 4294967296:
-		return "uinit32"
+		return "uint32"
 	default:
 		return "uint64"
 	}
@@ -551,7 +575,7 @@ func convertFieldType(field *PGNField) string {
 		return field.FieldTypeLookupName
 	case "FIELD_INDEX":
 		return "*uint8"
-	case "NUMBER", "DATE", "TIME", "MMSI":
+	case "NUMBER", "DATE", "TIME", "MMSI", "PGN", "DURATION", "ISO_NAME", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
 		// If it has a unit, use that
 		unitType, _ := getUnitType(field.Unit)
 		if unitType != "" {
@@ -590,7 +614,7 @@ func convertFieldType(field *PGNField) string {
 			return "*float64"
 		}
 		return "*float32"
-	case "DECIMAL", "BINARY", "KEY_VALUE", "VARIABLE":
+	case "DECIMAL", "BINARY", "KEY_VALUE", "VARIABLE", "DYNAMIC_FIELD_VALUE":
 		return "[]uint8"
 	case "STRING_FIX", "STRING_VAR", "STRING_LZ", "STRING_LAU":
 		return "string"
@@ -611,9 +635,6 @@ func getFieldDeserializer(_ *PGN, field *PGNField) [2]string {
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.LookupName + "(v)"}
 	case "BITLOOKUP":
-		if field.BitLength > 32 {
-			panic("No deserializer for BITLOOKUP with bitlength > 32")
-		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.BitLookupName + "(v)"}
 	case "INDIRECT_LOOKUP":
 		if field.BitLength > 32 {
@@ -626,36 +647,37 @@ func getFieldDeserializer(_ *PGN, field *PGNField) [2]string {
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName + "(v)"}
 	case "FIELD_INDEX":
-		return [2]string{fmt.Sprintf("stream.readUInt8(%d)", field.BitLength), ""}
-	case "NUMBER", "TIME", "DATE", "MMSI":
+		return [2]string{fmt.Sprintf("stream.readUInt8(%d, 0)", field.BitLength), ""}
+	case "NUMBER", "TIME", "DATE", "MMSI", "PGN", "DURATION", "ISO_NAME", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
 		var outerVal string
+		offset := fieldOffset(field)
 		if field.Signed {
 			switch {
 			case field.Resolution != nil && *field.Resolution <= resolution64BitCutoff:
-				outerVal = fmt.Sprintf("stream.readSignedResolution64Override(%d, %g)", field.BitLength, *field.Resolution)
+				outerVal = fmt.Sprintf("stream.readSignedResolution64Override(%d, %g, %d)", field.BitLength, *field.Resolution, offset)
 			case field.Resolution != nil && *field.Resolution != 1.0:
-				outerVal = fmt.Sprintf("stream.readSignedResolution(%d, %g)", field.BitLength, *field.Resolution)
+				outerVal = fmt.Sprintf("stream.readSignedResolution(%d, %g, %d)", field.BitLength, *field.Resolution, offset)
 			case field.BitLength > 32:
-				outerVal = fmt.Sprintf("stream.readInt64(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt64(%d, %d)", field.BitLength, offset)
 			case field.BitLength > 16:
-				outerVal = fmt.Sprintf("stream.readInt32(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt32(%d, %d)", field.BitLength, offset)
 			case field.BitLength > 8:
-				outerVal = fmt.Sprintf("stream.readInt16(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt16(%d, %d)", field.BitLength, offset)
 			default:
-				outerVal = fmt.Sprintf("stream.readInt8(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readInt8(%d, %d)", field.BitLength, offset)
 			}
 		} else {
 			switch {
 			case field.Resolution != nil && *field.Resolution != 1.0:
-				outerVal = fmt.Sprintf("stream.readUnsignedResolution(%d, %g)", field.BitLength, *field.Resolution)
+				outerVal = fmt.Sprintf("stream.readUnsignedResolution(%d, %g, %d)", field.BitLength, *field.Resolution, offset)
 			case field.BitLength > 32:
-				outerVal = fmt.Sprintf("stream.readUInt64(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt64(%d, %d)", field.BitLength, offset)
 			case field.BitLength > 16:
-				outerVal = fmt.Sprintf("stream.readUInt32(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt32(%d, %d)", field.BitLength, offset)
 			case field.BitLength > 8:
-				outerVal = fmt.Sprintf("stream.readUInt16(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt16(%d, %d)", field.BitLength, offset)
 			default:
-				outerVal = fmt.Sprintf("stream.readUInt8(%d)", field.BitLength)
+				outerVal = fmt.Sprintf("stream.readUInt8(%d, %d)", field.BitLength, offset)
 			}
 		}
 
@@ -689,6 +711,8 @@ func getFieldDeserializer(_ *PGN, field *PGNField) [2]string {
 	case "VARIABLE":
 		return [2]string{"stream.readVariableData(*val.Pgn, manufacturer, fieldIndex)", ""}
 	case "KEY_VALUE":
+		return [2]string{"stream.readBinaryData(valueLength)", ""}
+	case "DYNAMIC_FIELD_VALUE":
 		return [2]string{"stream.readBinaryData(valueLength)", ""}
 	default:
 		panic("No deserializer for type: " + field.FieldType)

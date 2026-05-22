@@ -44,6 +44,8 @@ type FieldDescriptor struct {
 	CanboatType       string
 	GolangType        string
 	Resolution        float32
+	Offset            int64
+	HasOffset         bool
 	Signed            bool
 	Unit              string
 	BitLookupName     string
