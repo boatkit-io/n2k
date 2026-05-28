@@ -492,11 +492,10 @@ func calcMissingValue(field *PGNField) uint64 {
 	return missing
 }
 
-// needsScaling returns true if the field requires resolution/offset processing
+// needsScaling returns true if the field requires fractional resolution processing.
+// Offset-only fields (resolution == 1) keep integer types and use ReadRaw/WriteRaw.
 func needsScaling(field *PGNField) bool {
-	hasResolution := field.Resolution != nil && *field.Resolution != 1.0
-	hasOffset := field.Offset != 0
-	return hasResolution || hasOffset
+	return field.Resolution != nil && *field.Resolution != 1.0
 }
 
 // generateFieldSpecConstant creates a FieldSpec struct literal
@@ -1294,9 +1293,6 @@ func convertFieldType(field *PGNField) string {
 			}
 			return "*float32"
 		}
-		if field.Offset != 0 {
-			return "*float32"
-		}
 
 		var baseType string
 		switch {
@@ -1355,8 +1351,8 @@ func getFieldSerializer(pgn PGN, field *PGNField, substruct string) string {
 	case "LOOKUP", "BITLOOKUP", "INDIRECT_LOOKUP", "FIELDTYPE_LOOKUP":
 		outstr = fmt.Sprintf("err = stream.putNumberRaw(uint64(p."+substruct+"%s), %d, %d)", field.Id, field.BitLength, field.BitOffset)
 	case "NUMBER", "TIME", "DATE", "MMSI", "FIELD_INDEX", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH", "DURATION", "PGN", "ISO_NAME":
-		if field.Resolution != nil && (*field.Resolution != 1.0 || isUnit) || field.Offset != 0 {
-			// Use WriteScaled for fields that need resolution/offset processing
+		if needsScaling(field) || isUnit {
+			// Use WriteScaled for fields that need fractional resolution processing
 			// floatType := "float32"
 			// if field.Resolution != nil && *field.Resolution <= resolution64BitCutoff {
 			//	floatType = "float64"

@@ -9,7 +9,7 @@ type FieldSpec struct {
 	MaxRawValue   uint64  // Pre-calculated maximum valid raw value (accounting for reserved values)
 	MissingValue  uint64  // Pre-calculated sentinel value for nil/missing data
 	Resolution    float64 // Scaling factor (1.0 = no scaling)
-	Offset        int64   // Applied after scaling: scaledValue = (rawValue * resolution) + offset
+	Offset        int64   // Added after resolution scaling; integer fields (resolution 1) use ReadRaw/WriteRaw
 	IsSigned      bool    // Signed vs unsigned interpretation
 	ReservedCount uint8   // Number of reserved values at top of range (0-2)
 
@@ -21,9 +21,9 @@ type FieldSpec struct {
 	BitLengthVariable bool   // Used in readVariableData()
 }
 
-// IsScaled returns true if this field requires resolution/offset processing
+// IsScaled returns true if this field requires fractional resolution processing.
 func (fs FieldSpec) IsScaled() bool {
-	return fs.Resolution != 0 && fs.Resolution != 1.0 || fs.Offset != 0
+	return fs.Resolution != 0 && fs.Resolution != 1.0
 }
 
 // HasDomainConstraints returns true if domain min/max constraints are specified

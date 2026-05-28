@@ -146,6 +146,55 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 	},
+	61184: {
+		{
+			Decoder: DecodeCarlingBreakerCommand,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 176,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 8,
+						BitOffset: 16,
+						MaxRawValue: 253,
+						MissingValue: 255,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 2,
+						BitLengthVariable: false,
+					},
+					MatchValue: 2,
+				},
+			},
+		},
+	},
 	65001: {
 		{
 			Decoder: DecodeBus1PhaseCBasicAcQuantities,
@@ -339,6 +388,41 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 		{
 			Decoder: DecodeIsoCommandedAddress,
 			MatchSpecs: []MatchFieldSpec{
+			},
+		},
+	},
+	65282: {
+		{
+			Decoder: DecodeMaretronNumberOfChannels,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 137,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
 			},
 		},
 	},
@@ -2094,6 +2178,27 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 	},
+	127510: {
+		{
+			Decoder: DecodeChargerConfigurationStatus,
+			MatchSpecs: []MatchFieldSpec{
+			},
+		},
+	},
+	127511: {
+		{
+			Decoder: DecodeInverterConfigurationStatus,
+			MatchSpecs: []MatchFieldSpec{
+			},
+		},
+	},
+	127513: {
+		{
+			Decoder: DecodeBatteryConfigurationStatus,
+			MatchSpecs: []MatchFieldSpec{
+			},
+		},
+	},
 	127744: {
 		{
 			Decoder: DecodeAcPowerCurrentPhaseA,
@@ -2304,6 +2409,27 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 	},
+	129291: {
+		{
+			Decoder: DecodeSetDriftRapidUpdate,
+			MatchSpecs: []MatchFieldSpec{
+			},
+		},
+	},
+	129301: {
+		{
+			Decoder: DecodeNavigationRouteTimeToFromMark,
+			MatchSpecs: []MatchFieldSpec{
+			},
+		},
+	},
+	129538: {
+		{
+			Decoder: DecodeGnssControlStatus,
+			MatchSpecs: []MatchFieldSpec{
+			},
+		},
+	},
 	129539: {
 		{
 			Decoder: DecodeGnssDops,
@@ -2356,6 +2482,13 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	129556: {
 		{
 			Decoder: DecodeGlonassAlmanacData,
+			MatchSpecs: []MatchFieldSpec{
+			},
+		},
+	},
+	129793: {
+		{
+			Decoder: DecodeAisUtcAndDateReport,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -2556,6 +2689,20 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 	},
+	130576: {
+		{
+			Decoder: DecodeSmallCraftStatus,
+			MatchSpecs: []MatchFieldSpec{
+			},
+		},
+	},
+	130577: {
+		{
+			Decoder: DecodeDirectionData,
+			MatchSpecs: []MatchFieldSpec{
+			},
+		},
+	},
 	130578: {
 		{
 			Decoder: DecodeVesselSpeedComponents,
@@ -2608,6 +2755,74 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 						BitLengthVariable: false,
 					},
 					MatchValue: 24,
+				},
+			},
+		},
+		{
+			Decoder: DecodeBepMarineCzoneZcfBusDistribution,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 295,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+			},
+		},
+	},
+	130818: {
+		{
+			Decoder: DecodeMaretronLabel,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 137,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
 				},
 			},
 		},
@@ -4419,6 +4634,76 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 						BitLengthVariable: false,
 					},
 					MatchValue: 381,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+			},
+		},
+	},
+	130825: {
+		{
+			Decoder: DecodeMaretronDataInstanceChannelCorrelation,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 137,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+			},
+		},
+	},
+	130826: {
+		{
+			Decoder: DecodeMaretronSwitchIndicatorStatus,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 137,
 				},
 				{
 					FieldSpec: &FieldSpec{

@@ -19,12 +19,12 @@ func TestFieldSpecIsScaled(t *testing.T) {
 			expected: true,
 		},
 		{
-			name: "Offset != 0 is scaled",
+			name: "Offset != 0 with resolution 1 is not scaled",
 			spec: FieldSpec{
 				Resolution: 1.0,
 				Offset:     100,
 			},
-			expected: true,
+			expected: false,
 		},
 		{
 			name: "Resolution 1.0 and Offset 0 is not scaled",

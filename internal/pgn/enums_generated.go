@@ -89,18 +89,18 @@ const (
 	Nobletec	ManufacturerCodeConst = 193
 	MysticValleyCommunications	ManufacturerCodeConst = 198
 	Actia	ManufacturerCodeConst = 199
-	HondaMarine_2	ManufacturerCodeConst = 200
+	HondaMarine2	ManufacturerCodeConst = 200
 	DisenosYTechnologia	ManufacturerCodeConst = 201
 	DigitalSwitchingSystems	ManufacturerCodeConst = 211
 	XintexAtena	ManufacturerCodeConst = 215
 	EmmiNetworkSl	ManufacturerCodeConst = 224
-	HondaMarine_3	ManufacturerCodeConst = 225
+	HondaMarine3	ManufacturerCodeConst = 225
 	Zf	ManufacturerCodeConst = 228
 	Garmin	ManufacturerCodeConst = 229
 	YachtMonitoringSolutions	ManufacturerCodeConst = 233
 	SailormadeMarineTelemetryTetra	ManufacturerCodeConst = 235
 	Eride	ManufacturerCodeConst = 243
-	HondaMarine_4	ManufacturerCodeConst = 250
+	HondaMarine4	ManufacturerCodeConst = 250
 	HondaMotorCompanyLtd	ManufacturerCodeConst = 257
 	Groco	ManufacturerCodeConst = 272
 	Actisense	ManufacturerCodeConst = 273
@@ -109,7 +109,7 @@ const (
 	HamiltonJet	ManufacturerCodeConst = 283
 	SeaRecovery	ManufacturerCodeConst = 285
 	CoelmoSrlItaly	ManufacturerCodeConst = 286
-	BepMarine_2	ManufacturerCodeConst = 295
+	BepMarine2	ManufacturerCodeConst = 295
 	EmpirBus	ManufacturerCodeConst = 304
 	Novatel	ManufacturerCodeConst = 305
 	SleipnerMotorAs	ManufacturerCodeConst = 306
@@ -154,7 +154,7 @@ const (
 	SiTexMarineElectronics	ManufacturerCodeConst = 470
 	SeaCrossMarineAb	ManufacturerCodeConst = 471
 	GmeAkaStandardCommunicationsPt	ManufacturerCodeConst = 475
-	HumminbirdMarineElectronics_2	ManufacturerCodeConst = 476
+	HumminbirdMarineElectronics2	ManufacturerCodeConst = 476
 	OceanSatBv	ManufacturerCodeConst = 478
 	ChetcoDigitialInstruments	ManufacturerCodeConst = 481
 	Watcheye	ManufacturerCodeConst = 493
@@ -187,7 +187,7 @@ const (
 	BavariaYacts	ManufacturerCodeConst = 637
 	DiverseYachtServices	ManufacturerCodeConst = 641
 	WemaUsaDbaKus	ManufacturerCodeConst = 644
-	Garmin_2	ManufacturerCodeConst = 645
+	Garmin2	ManufacturerCodeConst = 645
 	ShenzhenJiuzhouHimunication	ManufacturerCodeConst = 658
 	RockfordCorp	ManufacturerCodeConst = 688
 	HarmanInternational	ManufacturerCodeConst = 699
@@ -242,6 +242,7 @@ const (
 	KobeltManufacturingCoLtd	ManufacturerCodeConst = 981
 	BlueOceanIot	ManufacturerCodeConst = 992
 	XentaSystems	ManufacturerCodeConst = 997
+	SignalK	ManufacturerCodeConst = 999
 	UltraflexSpa	ManufacturerCodeConst = 1004
 	LintestSmartboat	ManufacturerCodeConst = 1008
 	Soundmax	ManufacturerCodeConst = 1011
@@ -413,7 +414,7 @@ func (e ManufacturerCodeConst) String() string {
 		case 199:
 			return "Actia"
 		case 200:
-			return "Honda Marine"
+			return "Honda Marine 2"
 		case 201:
 			return "Disenos Y Technologia"
 		case 211:
@@ -423,7 +424,7 @@ func (e ManufacturerCodeConst) String() string {
 		case 224:
 			return "EMMI NETWORK S.L."
 		case 225:
-			return "Honda Marine"
+			return "Honda Marine 3"
 		case 228:
 			return "ZF"
 		case 229:
@@ -435,7 +436,7 @@ func (e ManufacturerCodeConst) String() string {
 		case 243:
 			return "Eride"
 		case 250:
-			return "Honda Marine"
+			return "Honda Marine 4"
 		case 257:
 			return "Honda Motor Company LTD"
 		case 272:
@@ -453,7 +454,7 @@ func (e ManufacturerCodeConst) String() string {
 		case 286:
 			return "Coelmo SRL Italy"
 		case 295:
-			return "BEP Marine"
+			return "BEP Marine 2"
 		case 304:
 			return "Empir Bus"
 		case 305:
@@ -543,7 +544,7 @@ func (e ManufacturerCodeConst) String() string {
 		case 475:
 			return "GME aka Standard Communications Pty LTD"
 		case 476:
-			return "Humminbird Marine Electronics"
+			return "Humminbird Marine Electronics 2"
 		case 478:
 			return "Ocean Sat BV"
 		case 481:
@@ -609,7 +610,7 @@ func (e ManufacturerCodeConst) String() string {
 		case 644:
 			return "Wema U.S.A dba KUS"
 		case 645:
-			return "Garmin"
+			return "Garmin 2"
 		case 658:
 			return "Shenzhen Jiuzhou Himunication"
 		case 688:
@@ -718,6 +719,8 @@ func (e ManufacturerCodeConst) String() string {
 			return "Blue Ocean IOT"
 		case 997:
 			return "Xenta Systems"
+		case 999:
+			return "Signal K"
 		case 1004:
 			return "Ultraflex SpA"
 		case 1008:
@@ -2543,6 +2546,28 @@ const (
 	HullType	SeatalkCommandConst = 22
 	AutoTurn	SeatalkCommandConst = 38
 	Settings	SeatalkCommandConst = 12
+	RudderLimit	SeatalkCommandConst = 2
+	RudderDamping	SeatalkCommandConst = 3
+	RudderOffset	SeatalkCommandConst = 4
+	ReverseRudderReference	SeatalkCommandConst = 6
+	CruiseSpeed	SeatalkCommandConst = 8
+	PowerSteerMode	SeatalkCommandConst = 11
+	WindType	SeatalkCommandConst = 15
+	AutoTurn_2	SeatalkCommandConst = 17
+	CalibrationLock	SeatalkCommandConst = 18
+	GybeInhibit	SeatalkCommandConst = 20
+	CompassOffset	SeatalkCommandConst = 21
+	DriveType	SeatalkCommandConst = 23
+	ResponseLevel	SeatalkCommandConst = 25
+	MaxCompassDeviation	SeatalkCommandConst = 26
+	HardOverTime	SeatalkCommandConst = 27
+	DebugLevel	SeatalkCommandConst = 29
+	CompassLock	SeatalkCommandConst = 33
+	SpeedInput	SeatalkCommandConst = 34
+	CompassLinearisationProgress	SeatalkCommandConst = 35
+	AcuDebugLevel	SeatalkCommandConst = 36
+	WindShiftAlarm	SeatalkCommandConst = 37
+	AutoTurnTimeout	SeatalkCommandConst = 39
 )
 
 func (e SeatalkCommandConst) GoString() string {return e.String() }
@@ -2556,6 +2581,50 @@ func (e SeatalkCommandConst) String() string {
 			return "Auto Turn"
 		case 12:
 			return "Settings"
+		case 2:
+			return "Rudder Limit"
+		case 3:
+			return "Rudder Damping"
+		case 4:
+			return "Rudder Offset"
+		case 6:
+			return "Reverse Rudder Reference"
+		case 8:
+			return "Cruise Speed"
+		case 11:
+			return "Power Steer Mode"
+		case 15:
+			return "Wind Type"
+		case 17:
+			return "Auto Turn"
+		case 18:
+			return "Calibration Lock"
+		case 20:
+			return "Gybe Inhibit"
+		case 21:
+			return "Compass Offset"
+		case 23:
+			return "Drive Type"
+		case 25:
+			return "Response Level"
+		case 26:
+			return "Max Compass Deviation"
+		case 27:
+			return "Hard Over Time"
+		case 29:
+			return "Debug Level"
+		case 33:
+			return "Compass Lock"
+		case 34:
+			return "Speed Input"
+		case 35:
+			return "Compass Linearisation Progress"
+		case 36:
+			return "ACU Debug Level"
+		case 37:
+			return "Wind Shift Alarm"
+		case 39:
+			return "Auto Turn Timeout"
 default:
 		return fmt.Sprintf("SeatalkCommandConst(%d)", uint8(e))
 	}
@@ -7933,15 +8002,34 @@ default:
 type MaretronProductCodeConst uint16
 const (
 	Ssc200	MaretronProductCodeConst = 434
+	Sms100	MaretronProductCodeConst = 1047
+	Mbb200c	MaretronProductCodeConst = 1151
+	Dst110	MaretronProductCodeConst = 1534
+	Gps100	MaretronProductCodeConst = 1776
+	Clm100	MaretronProductCodeConst = 2606
 	Ssc300	MaretronProductCodeConst = 2686
 	Tla100	MaretronProductCodeConst = 2781
+	Gps200	MaretronProductCodeConst = 3373
+	Dst100	MaretronProductCodeConst = 3563
+	Ffm100	MaretronProductCodeConst = 3637
 	Nbe100	MaretronProductCodeConst = 3979
+	Raa100	MaretronProductCodeConst = 4018
 	Rim100	MaretronProductCodeConst = 4078
+	J2k100	MaretronProductCodeConst = 4319
 	Alm100	MaretronProductCodeConst = 8165
+	Ipg100	MaretronProductCodeConst = 9339
+	Dcm100	MaretronProductCodeConst = 9375
+	Ems100	MaretronProductCodeConst = 9845
+	Clmd16	MaretronProductCodeConst = 12337
+	Dsm250	MaretronProductCodeConst = 16434
 	Tmp100	MaretronProductCodeConst = 20067
+	Dsm150	MaretronProductCodeConst = 20298
+	Fpm100	MaretronProductCodeConst = 21703
 	Dcr100	MaretronProductCodeConst = 22585
 	Sim100	MaretronProductCodeConst = 23603
 	Acm100	MaretronProductCodeConst = 26493
+	Mbb300c	MaretronProductCodeConst = 27244
+	Mconnect	MaretronProductCodeConst = 28077
 )
 
 func (e MaretronProductCodeConst) GoString() string {return e.String() }
@@ -7949,24 +8037,62 @@ func (e MaretronProductCodeConst) String() string {
 	switch e {
 		case 434:
 			return "SSC200"
+		case 1047:
+			return "SMS100"
+		case 1151:
+			return "MBB200C"
+		case 1534:
+			return "DST110"
+		case 1776:
+			return "GPS100"
+		case 2606:
+			return "CLM100"
 		case 2686:
 			return "SSC300"
 		case 2781:
 			return "TLA100"
+		case 3373:
+			return "GPS200"
+		case 3563:
+			return "DST100"
+		case 3637:
+			return "FFM100"
 		case 3979:
 			return "NBE100"
+		case 4018:
+			return "RAA100"
 		case 4078:
 			return "RIM100"
+		case 4319:
+			return "J2K100"
 		case 8165:
 			return "ALM100"
+		case 9339:
+			return "IPG100"
+		case 9375:
+			return "DCM100"
+		case 9845:
+			return "EMS100"
+		case 12337:
+			return "CLMD16"
+		case 16434:
+			return "DSM250"
 		case 20067:
 			return "TMP100"
+		case 20298:
+			return "DSM150"
+		case 21703:
+			return "FPM100"
 		case 22585:
 			return "DCR100"
 		case 23603:
 			return "SIM100"
 		case 26493:
 			return "ACM100"
+		case 27244:
+			return "MBB300C"
+		case 28077:
+			return "MConnect"
 default:
 		return fmt.Sprintf("MaretronProductCodeConst(%d)", uint16(e))
 	}
@@ -8510,6 +8636,10 @@ var BandgKeyValueConstMap = map[int]FieldSpec{0: {
 	65: {
 		BitLength: 0,
 		Resolution: 0.01,
+		},
+	73: {
+		BitLength: 0,
+		Resolution: 0.0001,
 		},
 	77: {
 		BitLength: 0,
@@ -9426,7 +9556,7 @@ const (
 	ApOffCourse	SimnetAlertBitfieldConst = 36
 	HighDriveTemperature	SimnetAlertBitfieldConst = 38
 	DriveInhibit	SimnetAlertBitfieldConst = 40
-	RudderLimit	SimnetAlertBitfieldConst = 42
+	RudderLimit_2	SimnetAlertBitfieldConst = 42
 	DriveComputerMissing	SimnetAlertBitfieldConst = 44
 	DriveReadyMissing	SimnetAlertBitfieldConst = 46
 	EvcComError	SimnetAlertBitfieldConst = 48

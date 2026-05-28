@@ -90,6 +90,17 @@ type IsoAddressClaim struct {
 	IndustryGroup IndustryCodeConst
 	ArbitraryAddressCapable YesNoConst
 }
+type CarlingBreakerCommand struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageType *uint8
+	BreakerMapping1 *uint8
+	BreakerMapping2 *uint8
+	BreakerMapping3 *uint8
+	BreakerCommand *uint8
+	DimValue *uint8
+}
 type Bus1PhaseCBasicAcQuantities struct {
 	Info MessageInfo
 	LineLineAcRmsVoltage *uint16
@@ -116,8 +127,8 @@ type UtilityPhaseCAcReactivePower struct {
 }
 type UtilityPhaseCAcPower struct {
 	Info MessageInfo
-	RealPower *float32
-	ApparentPower *float32
+	RealPower *int32
+	ApparentPower *int32
 }
 type UtilityPhaseCBasicAcQuantities struct {
 	Info MessageInfo
@@ -134,8 +145,8 @@ type UtilityPhaseBAcReactivePower struct {
 }
 type UtilityPhaseBAcPower struct {
 	Info MessageInfo
-	RealPower *float32
-	ApparentPower *float32
+	RealPower *int32
+	ApparentPower *int32
 }
 type UtilityPhaseBBasicAcQuantities struct {
 	Info MessageInfo
@@ -146,14 +157,14 @@ type UtilityPhaseBBasicAcQuantities struct {
 }
 type UtilityPhaseAAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *float32
+	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
 type UtilityPhaseAAcPower struct {
 	Info MessageInfo
-	RealPower *float32
-	ApparentPower *float32
+	RealPower *int32
+	ApparentPower *int32
 }
 type UtilityPhaseABasicAcQuantities struct {
 	Info MessageInfo
@@ -164,14 +175,14 @@ type UtilityPhaseABasicAcQuantities struct {
 }
 type UtilityTotalAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *float32
+	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
 type UtilityTotalAcPower struct {
 	Info MessageInfo
-	RealPower *float32
-	ApparentPower *float32
+	RealPower *int32
+	ApparentPower *int32
 }
 type UtilityAverageBasicAcQuantities struct {
 	Info MessageInfo
@@ -182,14 +193,14 @@ type UtilityAverageBasicAcQuantities struct {
 }
 type GeneratorPhaseCAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *float32
+	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
 type GeneratorPhaseCAcPower struct {
 	Info MessageInfo
-	RealPower *float32
-	ApparentPower *float32
+	RealPower *int32
+	ApparentPower *int32
 }
 type GeneratorPhaseCBasicAcQuantities struct {
 	Info MessageInfo
@@ -200,14 +211,14 @@ type GeneratorPhaseCBasicAcQuantities struct {
 }
 type GeneratorPhaseBAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *float32
+	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
 type GeneratorPhaseBAcPower struct {
 	Info MessageInfo
-	RealPower *float32
-	ApparentPower *float32
+	RealPower *int32
+	ApparentPower *int32
 }
 type GeneratorPhaseBBasicAcQuantities struct {
 	Info MessageInfo
@@ -218,14 +229,14 @@ type GeneratorPhaseBBasicAcQuantities struct {
 }
 type GeneratorPhaseAAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *float32
+	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
 type GeneratorPhaseAAcPower struct {
 	Info MessageInfo
-	RealPower *float32
-	ApparentPower *float32
+	RealPower *int32
+	ApparentPower *int32
 }
 type GeneratorPhaseABasicAcQuantities struct {
 	Info MessageInfo
@@ -236,14 +247,14 @@ type GeneratorPhaseABasicAcQuantities struct {
 }
 type GeneratorTotalAcReactivePower struct {
 	Info MessageInfo
-	ReactivePower *float32
+	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
 type GeneratorTotalAcPower struct {
 	Info MessageInfo
-	RealPower *float32
-	ApparentPower *float32
+	RealPower *int32
+	ApparentPower *int32
 }
 type GeneratorAverageBasicAcQuantities struct {
 	Info MessageInfo
@@ -263,6 +274,13 @@ type IsoCommandedAddress struct {
 	SystemInstance *uint8
 	IndustryCode IndustryCodeConst
 	NewSourceAddress *uint8
+}
+type MaretronNumberOfChannels struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Pgn *uint32
+	NumberOfChannels *uint8
 }
 type MaretronProprietaryDcBreakerCurrent struct {
 	Info MessageInfo
@@ -332,7 +350,7 @@ type SeatalkPilotLockedHeading struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Sid []uint8
+	Sid *uint8
 	TargetHeadingTrue *float32
 	TargetHeadingMagnetic *float32
 }
@@ -974,6 +992,42 @@ type InverterStatus struct {
 	OperatingState InverterStateConst
 	InverterEnable OffOnConst
 }
+type ChargerConfigurationStatus struct {
+	Info MessageInfo
+	Instance *uint8
+	BatteryInstance *uint8
+	ChargerEnableDisable OffOnConst
+	ChargeCurrentLimit *uint8
+	ChargingAlgorithm ChargingAlgorithmConst
+	ChargerMode ChargerModeConst
+	EstimatedTemperature DeviceTempStateConst
+	EqualizeOneTimeEnableDisable OffOnConst
+	OverChargeEnableDisable OffOnConst
+	EqualizeTime *float32
+}
+type InverterConfigurationStatus struct {
+	Info MessageInfo
+	Instance *uint8
+	AcInstance *uint8
+	DcInstance *uint8
+	InverterEnableDisable OffOnConst
+	InverterMode InverterModeConst
+	LoadSenseEnableDisable OffOnConst
+	LoadSensePowerThreshold *uint16
+	LoadSenseInterval *float32
+}
+type BatteryConfigurationStatus struct {
+	Info MessageInfo
+	Instance *uint8
+	BatteryType BatteryTypeConst
+	SupportsEqualization YesNoConst
+	NominalVoltage BatteryVoltageConst
+	Chemistry BatteryChemistryConst
+	Capacity *uint16
+	TemperatureCoefficient *int8
+	PeukertExponent *float32
+	ChargeEfficiencyFactor *int8
+}
 type AcPowerCurrentPhaseA struct {
 	Info MessageInfo
 	Sid *uint8
@@ -1021,7 +1075,7 @@ type AcVoltageFrequencyPhaseC struct {
 }
 type ConverterStatus struct {
 	Info MessageInfo
-	Sid []uint8
+	Sid *uint8
 	ConnectionNumber *uint8
 	OperatingState ConverterStateConst
 	TemperatureState GoodWarningErrorConst
@@ -1031,7 +1085,7 @@ type ConverterStatus struct {
 }
 type DcVoltageCurrent struct {
 	Info MessageInfo
-	Sid []uint8
+	Sid *uint8
 	ConnectionNumber *uint8
 	DcVoltage *float32
 	DcCurrent *float32
@@ -1298,6 +1352,33 @@ type NavigationRouteWpInformationRepeating1 struct {
 	WpLatitude *float64
 	WpLongitude *float64
 }
+type SetDriftRapidUpdate struct {
+	Info MessageInfo
+	Sid *uint8
+	SetReference DirectionReferenceConst
+	Set *float32
+	Drift *units.Velocity
+}
+type NavigationRouteTimeToFromMark struct {
+	Info MessageInfo
+	Sid *uint8
+	TimeToMark *float32
+	MarkType MarkTypeConst
+	MarkId *uint32
+}
+type GnssControlStatus struct {
+	Info MessageInfo
+	SvElevationMask *float32
+	PdopMask *float32
+	PdopSwitch *float32
+	SnrMask *float32
+	GnssModeDesired GnssModeConst
+	DgnssModeDesired DgnssModeConst
+	PositionVelocityFilter YesNoConst
+	MaxCorrectionAge *float32
+	AntennaAltitudeFor2dMode *units.Distance
+	UseAntennaAltitudeFor2dMode YesNoConst
+}
 type GnssDops struct {
 	Info MessageInfo
 	Sid *uint8
@@ -1393,6 +1474,21 @@ type GlonassAlmanacData struct {
 	DeltaIna *uint32
 	TauCa *uint32
 	TauNa *uint16
+}
+type AisUtcAndDateReport struct {
+	Info MessageInfo
+	MessageId AisMessageIdConst
+	RepeatIndicator RepeatIndicatorConst
+	UserId *uint32
+	Longitude *float64
+	Latitude *float64
+	PositionAccuracy PositionAccuracyConst
+	Raim RaimFlagConst
+	PositionTime *float32
+	CommunicationState []uint8
+	AisTransceiverInformation AisTransceiverConst
+	PositionDate *uint16
+	GnssType PositionFixDeviceConst
 }
 type AisClassAStaticAndVoyageRelatedData struct {
 	Info MessageInfo
@@ -1734,6 +1830,23 @@ type WatermakerInputSettingAndStatus struct {
 	BrineWaterFlow *units.Flow
 	RunTime *uint32
 }
+type SmallCraftStatus struct {
+	Info MessageInfo
+	PortTrimTab *int8
+	StarboardTrimTab *int8
+}
+type DirectionData struct {
+	Info MessageInfo
+	DataMode ResidualModeConst
+	CogReference DirectionReferenceConst
+	Sid *uint8
+	Cog *float32
+	Sog *units.Velocity
+	Heading *float32
+	SpeedThroughWater *units.Velocity
+	Set *float32
+	Drift *units.Velocity
+}
 type VesselSpeedComponents struct {
 	Info MessageInfo
 	LongitudinalSpeedWaterReferenced *units.Velocity
@@ -1751,6 +1864,24 @@ type SonichubVolume struct {
 	Control SonichubControlConst
 	Zone *uint8
 	Level *uint8
+}
+type BepMarineCzoneZcfBusDistribution struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ChunkIndex *uint16
+	Flag *uint8
+	Data []uint8
+}
+type MaretronLabel struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Instance *uint8
+	DataSource *uint8
+	DataIndicator *uint8
+	Label string
+	HardwareChannel *uint8
 }
 type FusionVersions struct {
 	Info MessageInfo
@@ -2109,6 +2240,27 @@ type BGKeyValueDataRepeating1 struct {
 	Key *uint16
 	Length *uint8
 	Value []uint8
+}
+type MaretronDataInstanceChannelCorrelation struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Pgn *uint32
+	HardwareChannel *uint8
+	Instance *uint8
+	DataSource *uint8
+	DataIndicator *uint8
+}
+type MaretronSwitchIndicatorStatus struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	IndicatorBankInstance *uint8
+	NumberOfStatusFields *uint8
+	Repeating1 []MaretronSwitchIndicatorStatusRepeating1
+}
+type MaretronSwitchIndicatorStatusRepeating1 struct {
+	IndicatorStatus *uint8
 }
 type MaretronSwitchStatusCounter struct {
 	Info MessageInfo

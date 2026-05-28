@@ -349,6 +349,38 @@ func (s *DataStream) getSignedNullableNumber(spec *FieldSpec) (*int64, error) {
 	return s.readBinaryData(len)
 } */
 
+func signExtendInt64(rawValue uint64, bitLength uint16) int64 {
+	if bitLength < 64 && (rawValue&(1<<(bitLength-1))) != 0 {
+		mask := uint64(0xFFFFFFFFFFFFFFFF) << bitLength
+		rawValue |= mask
+	}
+	return int64(rawValue)
+}
+
+func applySignedOffset(value, offset int64) (int64, error) {
+	if offset > 0 && value > math.MaxInt64-offset {
+		return 0, fmt.Errorf("signed offset overflow: %d + %d", value, offset)
+	}
+	if offset < 0 && value < math.MinInt64-offset {
+		return 0, fmt.Errorf("signed offset underflow: %d + %d", value, offset)
+	}
+	return value + offset, nil
+}
+
+func applyUnsignedOffset(value uint64, offset int64) (uint64, error) {
+	if offset < 0 {
+		magnitude := uint64(-(offset + 1)) + 1
+		if value < magnitude {
+			return 0, fmt.Errorf("unsigned offset underflow: %d + %d", value, offset)
+		}
+		return value - magnitude, nil
+	}
+	if value > ^uint64(0)-uint64(offset) {
+		return 0, fmt.Errorf("unsigned offset overflow: %d + %d", value, offset)
+	}
+	return value + uint64(offset), nil
+}
+
 // ReadRaw reads a non-scaled integer field using pre-calculated FieldSpec metadata
 func ReadRaw[T constraints.Integer](s *DataStream, spec *FieldSpec) (*T, error) {
 	if spec == nil {
@@ -358,17 +390,44 @@ func ReadRaw[T constraints.Integer](s *DataStream, spec *FieldSpec) (*T, error) 
 		return nil, fmt.Errorf("requested %d bitLength exceeds 64 bits", spec.BitLength)
 	}
 
+	if spec.IsSigned {
+		var signedVal int64
+		if spec.ReservedCount == 0 {
+			rawValue, err := s.getNumberRaw(spec.BitLength)
+			if err != nil {
+				return nil, err
+			}
+			signedVal = signExtendInt64(rawValue, spec.BitLength)
+		} else {
+			v, err := s.getSignedNullableNumber(spec)
+			if err != nil {
+				return nil, err
+			}
+			if v == nil {
+				return nil, nil
+			}
+			signedVal = *v
+		}
+		if spec.Offset != 0 {
+			var err error
+			signedVal, err = applySignedOffset(signedVal, spec.Offset)
+			if err != nil {
+				return nil, err
+			}
+		}
+		result := T(signedVal)
+		return &result, nil
+	}
+
 	var rawValue uint64
 	var err error
 
 	if spec.ReservedCount == 0 {
-		// No reserved values - all bit patterns are valid, never return nil
 		rawValue, err = s.getNumberRaw(spec.BitLength)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		// Has reserved values - use nullable logic
 		v, err := s.getNullableNumberRaw(spec)
 		if err != nil {
 			return nil, err
@@ -379,23 +438,10 @@ func ReadRaw[T constraints.Integer](s *DataStream, spec *FieldSpec) (*T, error) 
 		rawValue = *v
 	}
 
-	// Apply offset for non-scaled fields
 	if spec.Offset != 0 {
-		if spec.IsSigned {
-			signedVal := int64(rawValue)
-			signedVal += spec.Offset
-			rawValue = uint64(signedVal)
-		} else {
-			rawValue = uint64(int64(rawValue) + spec.Offset)
-		}
-	}
-
-	// Handle signed conversion if needed
-	if spec.IsSigned && spec.BitLength < 64 {
-		if (rawValue & (1 << (spec.BitLength - 1))) != 0 {
-			// Negative number - sign extend
-			mask := uint64(0xFFFFFFFFFFFFFFFF) << spec.BitLength
-			rawValue |= mask
+		rawValue, err = applyUnsignedOffset(rawValue, spec.Offset)
+		if err != nil {
+			return nil, err
 		}
 	}
 

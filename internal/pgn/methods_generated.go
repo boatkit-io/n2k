@@ -227,6 +227,40 @@ func (p *IsoAddressClaim) GetFieldSpec(fieldName string) *FieldSpec {
 }
 
 // GetMessageInfo returns the MessageInfo for this PGN
+func (p *CarlingBreakerCommand) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *CarlingBreakerCommand) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *CarlingBreakerCommand) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "ManufacturerCode":
+        return &fieldSpec_CarlingBreakerCommand_ManufacturerCode
+    case "IndustryCode":
+        return &fieldSpec_CarlingBreakerCommand_IndustryCode
+    case "MessageType":
+        return &fieldSpec_CarlingBreakerCommand_MessageType
+    case "BreakerMapping1":
+        return &fieldSpec_CarlingBreakerCommand_BreakerMapping1
+    case "BreakerMapping2":
+        return &fieldSpec_CarlingBreakerCommand_BreakerMapping2
+    case "BreakerMapping3":
+        return &fieldSpec_CarlingBreakerCommand_BreakerMapping3
+    case "BreakerCommand":
+        return &fieldSpec_CarlingBreakerCommand_BreakerCommand
+    case "DimValue":
+        return &fieldSpec_CarlingBreakerCommand_DimValue
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
 func (p *Bus1PhaseCBasicAcQuantities) GetMessageInfo() *MessageInfo {
     return &p.Info
 }
@@ -885,6 +919,32 @@ func (p *IsoCommandedAddress) GetFieldSpec(fieldName string) *FieldSpec {
 }
 
 // GetMessageInfo returns the MessageInfo for this PGN
+func (p *MaretronNumberOfChannels) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *MaretronNumberOfChannels) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *MaretronNumberOfChannels) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "ManufacturerCode":
+        return &fieldSpec_MaretronNumberOfChannels_ManufacturerCode
+    case "IndustryCode":
+        return &fieldSpec_MaretronNumberOfChannels_IndustryCode
+    case "Pgn":
+        return &fieldSpec_MaretronNumberOfChannels_Pgn
+    case "NumberOfChannels":
+        return &fieldSpec_MaretronNumberOfChannels_NumberOfChannels
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
 func (p *MaretronProprietaryDcBreakerCurrent) GetMessageInfo() *MessageInfo {
     return &p.Info
 }
@@ -1119,6 +1179,8 @@ func (p *SeatalkPilotLockedHeading) GetFieldSpec(fieldName string) *FieldSpec {
         return &fieldSpec_SeatalkPilotLockedHeading_ManufacturerCode
     case "IndustryCode":
         return &fieldSpec_SeatalkPilotLockedHeading_IndustryCode
+    case "Sid":
+        return &fieldSpec_SeatalkPilotLockedHeading_Sid
     case "TargetHeadingTrue":
         return &fieldSpec_SeatalkPilotLockedHeading_TargetHeadingTrue
     case "TargetHeadingMagnetic":
@@ -2733,6 +2795,88 @@ func (p *InverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
 }
 
 // GetMessageInfo returns the MessageInfo for this PGN
+func (p *ChargerConfigurationStatus) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *ChargerConfigurationStatus) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *ChargerConfigurationStatus) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "Instance":
+        return &fieldSpec_ChargerConfigurationStatus_Instance
+    case "BatteryInstance":
+        return &fieldSpec_ChargerConfigurationStatus_BatteryInstance
+    case "ChargeCurrentLimit":
+        return &fieldSpec_ChargerConfigurationStatus_ChargeCurrentLimit
+    case "EqualizeTime":
+        return &fieldSpec_ChargerConfigurationStatus_EqualizeTime
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
+func (p *InverterConfigurationStatus) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *InverterConfigurationStatus) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *InverterConfigurationStatus) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "Instance":
+        return &fieldSpec_InverterConfigurationStatus_Instance
+    case "AcInstance":
+        return &fieldSpec_InverterConfigurationStatus_AcInstance
+    case "DcInstance":
+        return &fieldSpec_InverterConfigurationStatus_DcInstance
+    case "LoadSensePowerThreshold":
+        return &fieldSpec_InverterConfigurationStatus_LoadSensePowerThreshold
+    case "LoadSenseInterval":
+        return &fieldSpec_InverterConfigurationStatus_LoadSenseInterval
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
+func (p *BatteryConfigurationStatus) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *BatteryConfigurationStatus) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *BatteryConfigurationStatus) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "Instance":
+        return &fieldSpec_BatteryConfigurationStatus_Instance
+    case "Capacity":
+        return &fieldSpec_BatteryConfigurationStatus_Capacity
+    case "TemperatureCoefficient":
+        return &fieldSpec_BatteryConfigurationStatus_TemperatureCoefficient
+    case "PeukertExponent":
+        return &fieldSpec_BatteryConfigurationStatus_PeukertExponent
+    case "ChargeEfficiencyFactor":
+        return &fieldSpec_BatteryConfigurationStatus_ChargeEfficiencyFactor
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
 func (p *AcPowerCurrentPhaseA) GetMessageInfo() *MessageInfo {
     return &p.Info
 }
@@ -2907,6 +3051,8 @@ func (p *ConverterStatus) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *ConverterStatus) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
+    case "Sid":
+        return &fieldSpec_ConverterStatus_Sid
     case "ConnectionNumber":
         return &fieldSpec_ConverterStatus_ConnectionNumber
     default:
@@ -2927,6 +3073,8 @@ func (p *DcVoltageCurrent) SetMessageInfo(info *MessageInfo) {
 // GetFieldSpec returns the FieldSpec for the given field name
 func (p *DcVoltageCurrent) GetFieldSpec(fieldName string) *FieldSpec {
     switch fieldName {
+    case "Sid":
+        return &fieldSpec_DcVoltageCurrent_Sid
     case "ConnectionNumber":
         return &fieldSpec_DcVoltageCurrent_ConnectionNumber
     case "DcVoltage":
@@ -3553,6 +3701,84 @@ func (p *NavigationRouteWpInformation) GetFieldSpec(fieldName string) *FieldSpec
 }
 
 // GetMessageInfo returns the MessageInfo for this PGN
+func (p *SetDriftRapidUpdate) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *SetDriftRapidUpdate) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *SetDriftRapidUpdate) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "Sid":
+        return &fieldSpec_SetDriftRapidUpdate_Sid
+    case "Set":
+        return &fieldSpec_SetDriftRapidUpdate_Set
+    case "Drift":
+        return &fieldSpec_SetDriftRapidUpdate_Drift
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
+func (p *NavigationRouteTimeToFromMark) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *NavigationRouteTimeToFromMark) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *NavigationRouteTimeToFromMark) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "Sid":
+        return &fieldSpec_NavigationRouteTimeToFromMark_Sid
+    case "TimeToMark":
+        return &fieldSpec_NavigationRouteTimeToFromMark_TimeToMark
+    case "MarkId":
+        return &fieldSpec_NavigationRouteTimeToFromMark_MarkId
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
+func (p *GnssControlStatus) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *GnssControlStatus) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *GnssControlStatus) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "SvElevationMask":
+        return &fieldSpec_GnssControlStatus_SvElevationMask
+    case "PdopMask":
+        return &fieldSpec_GnssControlStatus_PdopMask
+    case "PdopSwitch":
+        return &fieldSpec_GnssControlStatus_PdopSwitch
+    case "SnrMask":
+        return &fieldSpec_GnssControlStatus_SnrMask
+    case "MaxCorrectionAge":
+        return &fieldSpec_GnssControlStatus_MaxCorrectionAge
+    case "AntennaAltitudeFor2dMode":
+        return &fieldSpec_GnssControlStatus_AntennaAltitudeFor2dMode
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
 func (p *GnssDops) GetMessageInfo() *MessageInfo {
     return &p.Info
 }
@@ -3799,6 +4025,34 @@ func (p *GlonassAlmanacData) GetFieldSpec(fieldName string) *FieldSpec {
         return &fieldSpec_GlonassAlmanacData_TauCa
     case "TauNa":
         return &fieldSpec_GlonassAlmanacData_TauNa
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
+func (p *AisUtcAndDateReport) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *AisUtcAndDateReport) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *AisUtcAndDateReport) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "UserId":
+        return &fieldSpec_AisUtcAndDateReport_UserId
+    case "Longitude":
+        return &fieldSpec_AisUtcAndDateReport_Longitude
+    case "Latitude":
+        return &fieldSpec_AisUtcAndDateReport_Latitude
+    case "PositionTime":
+        return &fieldSpec_AisUtcAndDateReport_PositionTime
+    case "PositionDate":
+        return &fieldSpec_AisUtcAndDateReport_PositionDate
     default:
         return nil
     }
@@ -4599,6 +4853,60 @@ func (p *WatermakerInputSettingAndStatus) GetFieldSpec(fieldName string) *FieldS
 }
 
 // GetMessageInfo returns the MessageInfo for this PGN
+func (p *SmallCraftStatus) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *SmallCraftStatus) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *SmallCraftStatus) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "PortTrimTab":
+        return &fieldSpec_SmallCraftStatus_PortTrimTab
+    case "StarboardTrimTab":
+        return &fieldSpec_SmallCraftStatus_StarboardTrimTab
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
+func (p *DirectionData) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *DirectionData) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *DirectionData) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "Sid":
+        return &fieldSpec_DirectionData_Sid
+    case "Cog":
+        return &fieldSpec_DirectionData_Cog
+    case "Sog":
+        return &fieldSpec_DirectionData_Sog
+    case "Heading":
+        return &fieldSpec_DirectionData_Heading
+    case "SpeedThroughWater":
+        return &fieldSpec_DirectionData_SpeedThroughWater
+    case "Set":
+        return &fieldSpec_DirectionData_Set
+    case "Drift":
+        return &fieldSpec_DirectionData_Drift
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
 func (p *VesselSpeedComponents) GetMessageInfo() *MessageInfo {
     return &p.Info
 }
@@ -4651,6 +4959,62 @@ func (p *SonichubVolume) GetFieldSpec(fieldName string) *FieldSpec {
         return &fieldSpec_SonichubVolume_Zone
     case "Level":
         return &fieldSpec_SonichubVolume_Level
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
+func (p *BepMarineCzoneZcfBusDistribution) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *BepMarineCzoneZcfBusDistribution) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *BepMarineCzoneZcfBusDistribution) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "ManufacturerCode":
+        return &fieldSpec_BepMarineCzoneZcfBusDistribution_ManufacturerCode
+    case "IndustryCode":
+        return &fieldSpec_BepMarineCzoneZcfBusDistribution_IndustryCode
+    case "ChunkIndex":
+        return &fieldSpec_BepMarineCzoneZcfBusDistribution_ChunkIndex
+    case "Flag":
+        return &fieldSpec_BepMarineCzoneZcfBusDistribution_Flag
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
+func (p *MaretronLabel) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *MaretronLabel) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *MaretronLabel) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "ManufacturerCode":
+        return &fieldSpec_MaretronLabel_ManufacturerCode
+    case "IndustryCode":
+        return &fieldSpec_MaretronLabel_IndustryCode
+    case "Instance":
+        return &fieldSpec_MaretronLabel_Instance
+    case "DataSource":
+        return &fieldSpec_MaretronLabel_DataSource
+    case "DataIndicator":
+        return &fieldSpec_MaretronLabel_DataIndicator
+    case "HardwareChannel":
+        return &fieldSpec_MaretronLabel_HardwareChannel
     default:
         return nil
     }
@@ -5765,6 +6129,66 @@ func (p *BGKeyValueData) GetFieldSpec(fieldName string) *FieldSpec {
         return &fieldSpec_BGKeyValueData_Key
     case "Length":
         return &fieldSpec_BGKeyValueData_Length
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
+func (p *MaretronDataInstanceChannelCorrelation) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *MaretronDataInstanceChannelCorrelation) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *MaretronDataInstanceChannelCorrelation) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "ManufacturerCode":
+        return &fieldSpec_MaretronDataInstanceChannelCorrelation_ManufacturerCode
+    case "IndustryCode":
+        return &fieldSpec_MaretronDataInstanceChannelCorrelation_IndustryCode
+    case "Pgn":
+        return &fieldSpec_MaretronDataInstanceChannelCorrelation_Pgn
+    case "HardwareChannel":
+        return &fieldSpec_MaretronDataInstanceChannelCorrelation_HardwareChannel
+    case "Instance":
+        return &fieldSpec_MaretronDataInstanceChannelCorrelation_Instance
+    case "DataSource":
+        return &fieldSpec_MaretronDataInstanceChannelCorrelation_DataSource
+    case "DataIndicator":
+        return &fieldSpec_MaretronDataInstanceChannelCorrelation_DataIndicator
+    default:
+        return nil
+    }
+}
+
+// GetMessageInfo returns the MessageInfo for this PGN
+func (p *MaretronSwitchIndicatorStatus) GetMessageInfo() *MessageInfo {
+    return &p.Info
+}
+
+// SetMessageInfo sets the MessageInfo for this PGN
+func (p *MaretronSwitchIndicatorStatus) SetMessageInfo(info *MessageInfo) {
+    p.Info = *info
+}
+
+// GetFieldSpec returns the FieldSpec for the given field name
+func (p *MaretronSwitchIndicatorStatus) GetFieldSpec(fieldName string) *FieldSpec {
+    switch fieldName {
+    case "ManufacturerCode":
+        return &fieldSpec_MaretronSwitchIndicatorStatus_ManufacturerCode
+    case "IndustryCode":
+        return &fieldSpec_MaretronSwitchIndicatorStatus_IndustryCode
+    case "IndicatorBankInstance":
+        return &fieldSpec_MaretronSwitchIndicatorStatus_IndicatorBankInstance
+    case "NumberOfStatusFields":
+        return &fieldSpec_MaretronSwitchIndicatorStatus_NumberOfStatusFields
+    case "IndicatorStatus":
+        return &fieldSpec_MaretronSwitchIndicatorStatus_IndicatorStatus
     default:
         return nil
     }

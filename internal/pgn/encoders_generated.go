@@ -314,6 +314,62 @@ func (p *IsoAddressClaim) Encode(stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
+// Encode encodes a CarlingBreakerCommand struct to NMEA 2000 wire format
+func (p *CarlingBreakerCommand) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.MessageType, p.GetFieldSpec("MessageType"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.BreakerMapping1, p.GetFieldSpec("BreakerMapping1"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.BreakerMapping2, p.GetFieldSpec("BreakerMapping2"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(5, 40)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.BreakerMapping3, p.GetFieldSpec("BreakerMapping3"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.BreakerCommand, p.GetFieldSpec("BreakerCommand"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.DimValue, p.GetFieldSpec("DimValue"))
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 61184
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
 // Encode encodes a Bus1PhaseCBasicAcQuantities struct to NMEA 2000 wire format
 func (p *Bus1PhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
@@ -445,11 +501,11 @@ func (p *UtilityPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInfo,
 // Encode encodes a UtilityPhaseCAcPower struct to NMEA 2000 wire format
 func (p *UtilityPhaseCAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
+    err = WriteRaw(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
+    err = WriteRaw(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
     if err != nil {
         return nil, err
     }
@@ -533,11 +589,11 @@ func (p *UtilityPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInfo,
 // Encode encodes a UtilityPhaseBAcPower struct to NMEA 2000 wire format
 func (p *UtilityPhaseBAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
+    err = WriteRaw(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
+    err = WriteRaw(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
     if err != nil {
         return nil, err
     }
@@ -589,7 +645,7 @@ func (p *UtilityPhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageInf
 // Encode encodes a UtilityPhaseAAcReactivePower struct to NMEA 2000 wire format
 func (p *UtilityPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
+    err = WriteRaw(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
         return nil, err
     }
@@ -621,11 +677,11 @@ func (p *UtilityPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInfo,
 // Encode encodes a UtilityPhaseAAcPower struct to NMEA 2000 wire format
 func (p *UtilityPhaseAAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
+    err = WriteRaw(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
+    err = WriteRaw(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
     if err != nil {
         return nil, err
     }
@@ -677,7 +733,7 @@ func (p *UtilityPhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageInf
 // Encode encodes a UtilityTotalAcReactivePower struct to NMEA 2000 wire format
 func (p *UtilityTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
+    err = WriteRaw(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
         return nil, err
     }
@@ -709,11 +765,11 @@ func (p *UtilityTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo, 
 // Encode encodes a UtilityTotalAcPower struct to NMEA 2000 wire format
 func (p *UtilityTotalAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
+    err = WriteRaw(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
+    err = WriteRaw(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
     if err != nil {
         return nil, err
     }
@@ -765,7 +821,7 @@ func (p *UtilityAverageBasicAcQuantities) Encode(stream *DataStream) (*MessageIn
 // Encode encodes a GeneratorPhaseCAcReactivePower struct to NMEA 2000 wire format
 func (p *GeneratorPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
+    err = WriteRaw(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
         return nil, err
     }
@@ -797,11 +853,11 @@ func (p *GeneratorPhaseCAcReactivePower) Encode(stream *DataStream) (*MessageInf
 // Encode encodes a GeneratorPhaseCAcPower struct to NMEA 2000 wire format
 func (p *GeneratorPhaseCAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
+    err = WriteRaw(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
+    err = WriteRaw(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
     if err != nil {
         return nil, err
     }
@@ -853,7 +909,7 @@ func (p *GeneratorPhaseCBasicAcQuantities) Encode(stream *DataStream) (*MessageI
 // Encode encodes a GeneratorPhaseBAcReactivePower struct to NMEA 2000 wire format
 func (p *GeneratorPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
+    err = WriteRaw(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
         return nil, err
     }
@@ -885,11 +941,11 @@ func (p *GeneratorPhaseBAcReactivePower) Encode(stream *DataStream) (*MessageInf
 // Encode encodes a GeneratorPhaseBAcPower struct to NMEA 2000 wire format
 func (p *GeneratorPhaseBAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
+    err = WriteRaw(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
+    err = WriteRaw(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
     if err != nil {
         return nil, err
     }
@@ -941,7 +997,7 @@ func (p *GeneratorPhaseBBasicAcQuantities) Encode(stream *DataStream) (*MessageI
 // Encode encodes a GeneratorPhaseAAcReactivePower struct to NMEA 2000 wire format
 func (p *GeneratorPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
+    err = WriteRaw(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
         return nil, err
     }
@@ -973,11 +1029,11 @@ func (p *GeneratorPhaseAAcReactivePower) Encode(stream *DataStream) (*MessageInf
 // Encode encodes a GeneratorPhaseAAcPower struct to NMEA 2000 wire format
 func (p *GeneratorPhaseAAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
+    err = WriteRaw(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
+    err = WriteRaw(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
     if err != nil {
         return nil, err
     }
@@ -1029,7 +1085,7 @@ func (p *GeneratorPhaseABasicAcQuantities) Encode(stream *DataStream) (*MessageI
 // Encode encodes a GeneratorTotalAcReactivePower struct to NMEA 2000 wire format
 func (p *GeneratorTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
+    err = WriteRaw(stream, p.ReactivePower, p.GetFieldSpec("ReactivePower"))
     if err != nil {
         return nil, err
     }
@@ -1061,11 +1117,11 @@ func (p *GeneratorTotalAcReactivePower) Encode(stream *DataStream) (*MessageInfo
 // Encode encodes a GeneratorTotalAcPower struct to NMEA 2000 wire format
 func (p *GeneratorTotalAcPower) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.RealPower, p.GetFieldSpec("RealPower"))
+    err = WriteRaw(stream, p.RealPower, p.GetFieldSpec("RealPower"))
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
+    err = WriteRaw(stream, p.ApparentPower, p.GetFieldSpec("ApparentPower"))
     if err != nil {
         return nil, err
     }
@@ -1164,6 +1220,46 @@ func (p *IsoCommandedAddress) Encode(stream *DataStream) (*MessageInfo, error) {
     // Set defaults in Info if not already set
     if p.Info.PGN == 0 {
         p.Info.PGN = 65240
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a MaretronNumberOfChannels struct to NMEA 2000 wire format
+func (p *MaretronNumberOfChannels) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Pgn, p.GetFieldSpec("Pgn"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.NumberOfChannels, p.GetFieldSpec("NumberOfChannels"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(16, 48)
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65282
     }
     // Note: Priority is not automatically set to default to allow explicit priority 0
     // if p.Info.Priority == 0 {
@@ -1553,7 +1649,7 @@ func (p *SeatalkPilotLockedHeading) Encode(stream *DataStream) (*MessageInfo, er
     if err != nil {
         return nil, err
     }
-    err = stream.writeBinary(p.Sid, 8, 16 )
+    err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
         return nil, err
     }
@@ -4643,6 +4739,170 @@ func (p *InverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
     return &p.Info, err
 }
 
+// Encode encodes a ChargerConfigurationStatus struct to NMEA 2000 wire format
+func (p *ChargerConfigurationStatus) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.BatteryInstance, p.GetFieldSpec("BatteryInstance"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.ChargerEnableDisable), 2, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(6, 18)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ChargeCurrentLimit, p.GetFieldSpec("ChargeCurrentLimit"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.ChargingAlgorithm), 4, 32)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.ChargerMode), 4, 36)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.EstimatedTemperature), 4, 40)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.EqualizeOneTimeEnableDisable), 2, 44)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.OverChargeEnableDisable), 2, 46)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.EqualizeTime, p.GetFieldSpec("EqualizeTime"))
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127510
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a InverterConfigurationStatus struct to NMEA 2000 wire format
+func (p *InverterConfigurationStatus) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.AcInstance, p.GetFieldSpec("AcInstance"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.DcInstance, p.GetFieldSpec("DcInstance"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.InverterEnableDisable), 2, 24)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.InverterMode), 4, 26)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.LoadSenseEnableDisable), 2, 30)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.LoadSensePowerThreshold, p.GetFieldSpec("LoadSensePowerThreshold"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.LoadSenseInterval, p.GetFieldSpec("LoadSenseInterval"))
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127511
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a BatteryConfigurationStatus struct to NMEA 2000 wire format
+func (p *BatteryConfigurationStatus) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.BatteryType), 4, 8)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SupportsEqualization), 2, 12)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 14)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.NominalVoltage), 4, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Chemistry), 4, 20)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Capacity, p.GetFieldSpec("Capacity"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.TemperatureCoefficient, p.GetFieldSpec("TemperatureCoefficient"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.PeukertExponent, p.GetFieldSpec("PeukertExponent"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ChargeEfficiencyFactor, p.GetFieldSpec("ChargeEfficiencyFactor"))
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 127513
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
 // Encode encodes a AcPowerCurrentPhaseA struct to NMEA 2000 wire format
 func (p *AcPowerCurrentPhaseA) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
@@ -4850,7 +5110,7 @@ func (p *AcVoltageFrequencyPhaseC) Encode(stream *DataStream) (*MessageInfo, err
 // Encode encodes a ConverterStatus struct to NMEA 2000 wire format
 func (p *ConverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = stream.writeBinary(p.Sid, 8, 0 )
+    err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
         return nil, err
     }
@@ -4898,7 +5158,7 @@ func (p *ConverterStatus) Encode(stream *DataStream) (*MessageInfo, error) {
 // Encode encodes a DcVoltageCurrent struct to NMEA 2000 wire format
 func (p *DcVoltageCurrent) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
-    err = stream.writeBinary(p.Sid, 8, 0 )
+    err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
     if err != nil {
         return nil, err
     }
@@ -6161,6 +6421,142 @@ func (p *NavigationRouteWpInformation) encodeRepeating1(stream *DataStream) erro
     return nil
 }
 
+// Encode encodes a SetDriftRapidUpdate struct to NMEA 2000 wire format
+func (p *SetDriftRapidUpdate) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SetReference), 2, 8)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(6, 10)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.Set, p.GetFieldSpec("Set"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeUnit(p.Drift, p.GetFieldSpec("Drift"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(16, 48)
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129291
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a NavigationRouteTimeToFromMark struct to NMEA 2000 wire format
+func (p *NavigationRouteTimeToFromMark) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.TimeToMark, p.GetFieldSpec("TimeToMark"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.MarkType), 4, 40)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(4, 44)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.MarkId, p.GetFieldSpec("MarkId"))
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129301
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a GnssControlStatus struct to NMEA 2000 wire format
+func (p *GnssControlStatus) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = WriteScaled(stream, p.SvElevationMask, p.GetFieldSpec("SvElevationMask"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.PdopMask, p.GetFieldSpec("PdopMask"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.PdopSwitch, p.GetFieldSpec("PdopSwitch"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.SnrMask, p.GetFieldSpec("SnrMask"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.GnssModeDesired), 3, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.DgnssModeDesired), 3, 67)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.PositionVelocityFilter), 2, 70)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.MaxCorrectionAge, p.GetFieldSpec("MaxCorrectionAge"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeUnit(p.AntennaAltitudeFor2dMode, p.GetFieldSpec("AntennaAltitudeFor2dMode"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.UseAntennaAltitudeFor2dMode), 2, 120)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(6, 122)
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129538
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
 // Encode encodes a GnssDops struct to NMEA 2000 wire format
 func (p *GnssDops) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
@@ -6600,6 +6996,78 @@ func (p *GlonassAlmanacData) Encode(stream *DataStream) (*MessageInfo, error) {
     // Set defaults in Info if not already set
     if p.Info.PGN == 0 {
         p.Info.PGN = 129556
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a AisUtcAndDateReport struct to NMEA 2000 wire format
+func (p *AisUtcAndDateReport) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.MessageId), 6, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.RepeatIndicator), 2, 6)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.UserId, p.GetFieldSpec("UserId"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.Longitude, p.GetFieldSpec("Longitude"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.Latitude, p.GetFieldSpec("Latitude"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.PositionAccuracy), 1, 104)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Raim), 1, 105)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(6, 106)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.PositionTime, p.GetFieldSpec("PositionTime"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeBinary(p.CommunicationState, 19, 144 )
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.AisTransceiverInformation), 5, 163)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.PositionDate, p.GetFieldSpec("PositionDate"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(4, 184)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.GnssType), 4, 188)
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 129793
     }
     // Note: Priority is not automatically set to default to allow explicit priority 0
     // if p.Info.Priority == 0 {
@@ -8205,6 +8673,90 @@ func (p *WatermakerInputSettingAndStatus) Encode(stream *DataStream) (*MessageIn
     return &p.Info, err
 }
 
+// Encode encodes a SmallCraftStatus struct to NMEA 2000 wire format
+func (p *SmallCraftStatus) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = WriteRaw(stream, p.PortTrimTab, p.GetFieldSpec("PortTrimTab"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.StarboardTrimTab, p.GetFieldSpec("StarboardTrimTab"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(48, 16)
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130576
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a DirectionData struct to NMEA 2000 wire format
+func (p *DirectionData) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.DataMode), 4, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.CogReference), 2, 4)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 6)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Sid, p.GetFieldSpec("Sid"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.Cog, p.GetFieldSpec("Cog"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeUnit(p.Sog, p.GetFieldSpec("Sog"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.Heading, p.GetFieldSpec("Heading"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeUnit(p.SpeedThroughWater, p.GetFieldSpec("SpeedThroughWater"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.Set, p.GetFieldSpec("Set"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeUnit(p.Drift, p.GetFieldSpec("Drift"))
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130577
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
 // Encode encodes a VesselSpeedComponents struct to NMEA 2000 wire format
 func (p *VesselSpeedComponents) Encode(stream *DataStream) (*MessageInfo, error) {
 	var err error
@@ -8283,6 +8835,98 @@ func (p *SonichubVolume) Encode(stream *DataStream) (*MessageInfo, error) {
     // Set defaults in Info if not already set
     if p.Info.PGN == 0 {
         p.Info.PGN = 130816
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a BepMarineCzoneZcfBusDistribution struct to NMEA 2000 wire format
+func (p *BepMarineCzoneZcfBusDistribution) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ChunkIndex, p.GetFieldSpec("ChunkIndex"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Flag, p.GetFieldSpec("Flag"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(144, 40)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeBinary(p.Data, 1600, 184 )
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130816
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a MaretronLabel struct to NMEA 2000 wire format
+func (p *MaretronLabel) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.DataSource, p.GetFieldSpec("DataSource"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.DataIndicator, p.GetFieldSpec("DataIndicator"))
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeStringLau(p.Label, 40 )
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.HardwareChannel, p.GetFieldSpec("HardwareChannel"))
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130818
     }
     // Note: Priority is not automatically set to default to allow explicit priority 0
     // if p.Info.Priority == 0 {
@@ -10040,6 +10684,107 @@ func (p *BGKeyValueData) encodeRepeating1(stream *DataStream) error {
             return err
         }
         err = stream.writeBinary(p.Repeating1[index].Value, valueLength, 0)
+        if err != nil {
+            return err
+        }
+    }
+    return nil
+}
+
+// Encode encodes a MaretronDataInstanceChannelCorrelation struct to NMEA 2000 wire format
+func (p *MaretronDataInstanceChannelCorrelation) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Pgn, p.GetFieldSpec("Pgn"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.HardwareChannel, p.GetFieldSpec("HardwareChannel"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Instance, p.GetFieldSpec("Instance"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.DataSource, p.GetFieldSpec("DataSource"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.DataIndicator, p.GetFieldSpec("DataIndicator"))
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130825
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+
+// Encode encodes a MaretronSwitchIndicatorStatus struct to NMEA 2000 wire format
+func (p *MaretronSwitchIndicatorStatus) Encode(stream *DataStream) (*MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.IndicatorBankInstance, p.GetFieldSpec("IndicatorBankInstance"))
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.NumberOfStatusFields, p.GetFieldSpec("NumberOfStatusFields"))
+    if err != nil {
+        return nil, err
+    }
+    err = p.encodeRepeating1(stream)
+    if err != nil {
+        return nil, err
+    }
+    // Set defaults in Info if not already set
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130826
+    }
+    // Note: Priority is not automatically set to default to allow explicit priority 0
+    // if p.Info.Priority == 0 {
+    //     p.Info.Priority = 3  // Default priority
+    // }
+    p.Info.Timestamp = time.Now()
+    
+    return &p.Info, err
+}
+func (p *MaretronSwitchIndicatorStatus) encodeRepeating1(stream *DataStream) error {
+     var err error
+	if len(p.Repeating1) == 0 {
+		return nil
+	}
+    for index, _ := range p.Repeating1 {
+        err = WriteRaw(stream, p.Repeating1[index].IndicatorStatus, p.GetFieldSpec("IndicatorStatus"))
         if err != nil {
             return err
         }

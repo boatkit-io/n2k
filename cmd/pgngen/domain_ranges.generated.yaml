@@ -13,6 +13,11 @@
   signed: true
   min: -3.1415926
   max: 3.1415926
+- physicalQuantity: ANGLE
+  unit: semi-circle
+  signed: true
+  min: -0.0624980926513672
+  max: null
 - physicalQuantity: ANGULAR_VELOCITY
   unit: rad/s
   signed: false
@@ -28,15 +33,55 @@
   signed: false
   min: null
   max: null
+- physicalQuantity: ANGULAR_VELOCITY
+  unit: semi-circle/s
+  signed: true
+  min: -1.19205651571974e-07
+  max: null
 - physicalQuantity: CONCENTRATION
   unit: ppm
   signed: false
   min: null
   max: null
+- physicalQuantity: CONCENTRATION
+  unit: ppm
+  signed: true
+  min: -3.40282346638529e+38
+  max: 3.40282346638529e+38
+- physicalQuantity: CONCENTRATION
+  unit: ppt
+  signed: true
+  min: -3.40282346638529e+38
+  max: 3.40282346638529e+38
 - physicalQuantity: DATE
   unit: d
   signed: false
   min: null
+  max: null
+- physicalQuantity: DIMENSIONLESS_RATIO
+  unit: '%'
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: DIMENSIONLESS_RATIO
+  unit: '%'
+  signed: true
+  min: -127
+  max: null
+- physicalQuantity: DIMENSIONLESS_RATIO
+  unit: m/m
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: DIMENSIONLESS_RATIO
+  unit: ratio
+  signed: false
+  min: null
+  max: null
+- physicalQuantity: DIMENSIONLESS_RATIO
+  unit: s/s
+  signed: true
+  min: -3.72165231965482e-09
   max: null
 - physicalQuantity: DISTANCE
   unit: m
@@ -218,6 +263,11 @@
   signed: true
   min: -327.67
   max: null
+- physicalQuantity: SQUARE_ROOT_LENGTH
+  unit: sqrt(m)
+  signed: false
+  min: null
+  max: 8191.998046875
 - physicalQuantity: TEMPERATURE
   unit: K
   signed: false

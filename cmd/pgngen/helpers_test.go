@@ -234,12 +234,12 @@ func TestNeedsScaling(t *testing.T) {
 			expected: true,
 		},
 		{
-			name: "Field with offset needs scaling",
+			name: "Field with offset only does not need scaling",
 			field: PGNField{
 				Resolution: &resolution1,
 				Offset:     100,
 			},
-			expected: true,
+			expected: false,
 		},
 		{
 			name: "Field with resolution 1.0 and no offset doesn't need scaling",
