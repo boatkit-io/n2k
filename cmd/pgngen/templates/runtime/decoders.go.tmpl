@@ -4,6 +4,7 @@ package pgn
 import (
 	"fmt"
     "github.com/boatkit-io/tugboat/pkg/units"
+	publicpgn "github.com/boatkit-io/n2k/pkg/pgn"
 )
 
 func nullableUnit[T any, U any, V float32|uint16|int16|uint32](u U, v *V, newer func(u U, v float32) T) *T {
@@ -19,7 +20,7 @@ func nullableUnit[T any, U any, V float32|uint16|int16|uint32](u U, v *V, newer 
 {{- $pgn := . }}
 
 {{- $funcName := concat "Decode" .Id }}
-func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
+func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     {{- if eq $pgn.PGN 126208 }}
     return nil, fmt.Errorf("PGN 126208 is not supported")
     }
@@ -38,7 +39,7 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
     {{- if $config.DynamicLengthField }}
     var valueLength uint16 = 0
     {{- end }}
-    var val {{ .Id }}
+    var val publicpgn.{{ .Id }}
     val.Info = Info
 
     {{- range $idx, $field := $pgn.Fields }}
@@ -82,7 +83,7 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
     
     {{- if $config.Repeat1 }}
     // decode repeating fields
-     val.Repeating1 = make([]{{ .Id }}Repeating1, 0)
+     val.Repeating1 = make([]publicpgn.{{ .Id }}Repeating1, 0)
      {{- if gt $config.Repeat1CountField 0 }}
      if repeat1Count == 0 {
         return val, nil
@@ -93,7 +94,7 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
     }
     {{- end }}
     for {
-        var rep {{ .Id }}Repeating1
+        var rep publicpgn.{{ .Id }}Repeating1
         {{- range $pgn.FieldsRepeating1 }}
         {{- if eq .FieldType "RESERVED" }}
         stream.skipBits({{ .BitLength }})
@@ -121,7 +122,7 @@ func {{ $funcName }}(Info MessageInfo, stream *DataStream) (any, error) {
    }
     {{- end }}
     {{- if $config.Repeat2 }}
-    val.Repeating2 = make([]{{ .Id }}Repeating2, 0)
+    val.Repeating2 = make([]publicpgn.{{ .Id }}Repeating2, 0)
     {{- if gt $config.Repeat2CountField 0 }}
     if repeat2Count == 0 {
         return val, nil

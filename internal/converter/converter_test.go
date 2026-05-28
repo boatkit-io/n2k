@@ -3,7 +3,7 @@ package converter
 import (
 	"testing"
 
-	"github.com/boatkit-io/n2k/internal/pgn"
+	"github.com/boatkit-io/n2k/pkg/pgn"
 )
 
 func TestCanIDFromData(t *testing.T) {

@@ -4,6 +4,7 @@ import (
 	"math"
 	"testing"
 
+	publicpgn "github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/tugboat/pkg/units"
 	"github.com/stretchr/testify/assert"
 )
@@ -86,35 +87,32 @@ func TestWriteNumerics(t *testing.T) {
 
 func TestWritePgn(t *testing.T) {
 	mmsi := uint32(123456789)
-	p := ManOverboardNotification{
-		Info: MessageInfo{
+	p := publicpgn.ManOverboardNotification{
+		Info: publicpgn.MessageInfo{
 			SourceId: 12,
 			PGN:      129702,
 		},
 		Sid:                nil,
 		MobEmitterId:       nil,
-		ManOverboardStatus: MobStatusConst(1),
+		ManOverboardStatus: publicpgn.MobStatusConst(1),
 		ActivationTime:     nil,
-		PositionSource:     MobPositionSourceConst(3),
+		PositionSource:     publicpgn.MobPositionSourceConst(3),
 		PositionDate:       nil,
 		PositionTime:       nil,
 		Latitude:           nil,
 		Longitude:          nil,
-		CogReference:       DirectionReferenceConst(2),
+		CogReference:       publicpgn.DirectionReferenceConst(2),
 		Cog:                nil,
 		Sog: &units.Velocity{
 			Unit:  1,
 			Value: 8,
 		},
 		MmsiOfVesselOfOrigin:       &mmsi,
-		MobEmitterBatteryLowStatus: LowBatteryConst(1),
+		MobEmitterBatteryLowStatus: publicpgn.LowBatteryConst(1),
 	}
 	stream := NewDataStream(make([]uint8, 223))
-	info, err := p.Encode(stream)
+	info, err := EncodeManOverboardNotification(&p, stream)
 	assert.NoError(t, err)
-	var ok bool
-	_, ok = interface{}(&p).(PgnStruct)
-	assert.True(t, ok)
 	assert.Equal(t, info.PGN, uint32(129702))
 	assert.Nil(t, err)
 }

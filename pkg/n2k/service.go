@@ -12,8 +12,8 @@ import (
 	"context"
 
 	"github.com/boatkit-io/n2k/internal/n2kinternal"
-	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
+	"github.com/brutella/can"
 	"github.com/sirupsen/logrus"
 )
 
@@ -31,7 +31,7 @@ func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger) *N2kService {
 
 // Write sends a PGN struct to the bus
 func (s *N2kService) Write(pgnStruct any) error {
-	return s.impl.Write(pgnStruct.(pgn.PgnStruct))
+	return s.impl.Write(pgnStruct)
 }
 
 // Start begins processing messages from the endpoint
@@ -62,4 +62,14 @@ func (s *N2kService) SubscribeToStruct(t, callback any) (uint, error) {
 // Unsubscribe removes a subscription by its ID.
 func (s *N2kService) Unsubscribe(id uint) error {
 	return s.impl.Unsubscribe(id)
+}
+
+// SetReceivedCANFrameHook registers a callback invoked for each live CAN frame before decode.
+func (s *N2kService) SetReceivedCANFrameHook(fn func(*can.Frame)) {
+	s.impl.SetReceivedCANFrameHook(fn)
+}
+
+// HandleReplayCANFrame feeds a captured CAN frame into the shared decode pipeline.
+func (s *N2kService) HandleReplayCANFrame(frame *can.Frame) error {
+	return s.impl.HandleReplayCANFrame(frame)
 }

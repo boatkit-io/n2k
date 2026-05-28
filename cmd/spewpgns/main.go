@@ -19,6 +19,7 @@ import (
 
 	"github.com/boatkit-io/n2k/pkg/endpoint/socketcanendpoint"
 	"github.com/boatkit-io/n2k/pkg/n2k"
+	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/tugboat/pkg/units"
 
 	"github.com/sirupsen/logrus"
@@ -117,12 +118,12 @@ func sendEngineData(sourceID uint8, counter float32, log *logrus.Logger) error {
 	boostPressurePa := float32(150000.0 + 30000.0*math.Sin(float64(counter)*0.2))
 	boostPressure := units.NewPressure(units.Pa, boostPressurePa)
 
-	enginePgn := n2k.EngineParametersRapidUpdate{
-		Info: n2k.MessageInfo{
+	enginePgn := pgn.EngineParametersRapidUpdate{
+		Info: pgn.MessageInfo{
 			SourceId: sourceID,
 			TargetId: 255, // Broadcast
 		},
-		Instance:      n2k.EngineInstanceConst(1),
+		Instance:      pgn.EngineInstanceConst(1),
 		Speed:         &rpm,
 		BoostPressure: &boostPressure,
 		TiltTrim:      nil, // Not applicable for this test
@@ -143,8 +144,8 @@ func sendSpeedData(sourceID uint8, counter float32, log *logrus.Logger) error {
 	sid := uint8(1)
 	direction := uint8(0) // Forward
 
-	speedPgn := n2k.Speed{
-		Info: n2k.MessageInfo{
+	speedPgn := pgn.Speed{
+		Info: pgn.MessageInfo{
 			SourceId: sourceID,
 			Priority: 0,   // Explicitly set priority to 0
 			TargetId: 255, // Broadcast
@@ -152,7 +153,7 @@ func sendSpeedData(sourceID uint8, counter float32, log *logrus.Logger) error {
 		Sid:                      &sid,
 		SpeedWaterReferenced:     &waterSpeed,
 		SpeedGroundReferenced:    &groundSpeed,
-		SpeedWaterReferencedType: n2k.PaddleWheel,
+		SpeedWaterReferencedType: pgn.PaddleWheel,
 		SpeedDirection:           &direction,
 	}
 
@@ -163,16 +164,16 @@ func sendSpeedData(sourceID uint8, counter float32, log *logrus.Logger) error {
 // sendEngineInfo sends a single frame EngineParametersRapidUpdate PGN for testing.
 func sendEngineInfo(sourceID uint8, log *logrus.Logger) error {
 	log.Info("Testing single frame PGN...")
-	info1 := n2k.MessageInfo{
-		PGN:      n2k.EngineParametersRapidUpdatePgn, // Engine Parameters Rapid Update
+	info1 := pgn.MessageInfo{
+		PGN:      pgn.EngineParametersRapidUpdatePgn, // Engine Parameters Rapid Update
 		SourceId: sourceID,
 		TargetId: 0x0,
 		Priority: 0x3,
 	}
 	rpm := float32(1600)
-	p := n2k.EngineParametersRapidUpdate{
+	p := pgn.EngineParametersRapidUpdate{
 		Info:     info1,
-		Instance: n2k.SingleEngineOrDualEnginePort,
+		Instance: pgn.SingleEngineOrDualEnginePort,
 		Speed:    &rpm,
 	}
 
@@ -201,9 +202,9 @@ func sendPositionData(sourceID uint8, counter float32, log *logrus.Logger) error
 	latitude := baseLat + deltaLat
 	longitude := baseLon + deltaLon
 
-	positionPgn := n2k.PositionRapidUpdate{
-		Info: n2k.MessageInfo{
-			PGN:      n2k.PositionRapidUpdatePgn,
+	positionPgn := pgn.PositionRapidUpdate{
+		Info: pgn.MessageInfo{
+			PGN:      pgn.PositionRapidUpdatePgn,
 			SourceId: sourceID,
 			TargetId: 0, // Broadcast
 			Priority: 0x3,

@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/boatkit-io/n2k/internal/converter"
-	"github.com/boatkit-io/n2k/internal/pgn"
+	"github.com/boatkit-io/n2k/pkg/pgn"
 )
 
 func main() {

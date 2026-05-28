@@ -6,6 +6,7 @@ import (
 	"github.com/boatkit-io/n2k/internal/converter"
 	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/internal/pkt"
+	publicpgn "github.com/boatkit-io/n2k/pkg/pgn"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -21,7 +22,7 @@ func TestPgn127501(t *testing.T) {
 	assert.Nil(t, err)
 	ret, err := decoder(p.Info, stream)
 	assert.Nil(t, err)
-	assert.IsType(t, pgn.BinarySwitchBankStatus{}, ret)
+	assert.IsType(t, publicpgn.BinarySwitchBankStatus{}, ret)
 }
 
 func TestPgn127501Write(t *testing.T) {
@@ -35,7 +36,7 @@ func TestPgn127501Write(t *testing.T) {
 	assert.Nil(t, err)
 	ret, err := decoder(p.Info, stream)
 	assert.Nil(t, err)
-	assert.IsType(t, pgn.BinarySwitchBankStatus{}, ret)
+	assert.IsType(t, publicpgn.BinarySwitchBankStatus{}, ret)
 }
 
 // TestRawToDataStream was removed as redundant to more comprehensive testing in tests/integration/pgn_serialization_test.go

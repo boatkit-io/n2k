@@ -3,11 +3,14 @@ package integration
 import (
 	"context"
 	"fmt"
+	"os"
 	"testing"
 	"time"
 
+	"github.com/boatkit-io/n2k/internal/converter"
 	"github.com/boatkit-io/n2k/pkg/endpoint/n2kfileendpoint"
 	"github.com/boatkit-io/n2k/pkg/n2k"
+	"github.com/brutella/can"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -123,9 +126,7 @@ func TestN2kServiceWrite(t *testing.T) {
 
 	// Test that we can call Write without error (even if it doesn't do much in this context)
 	// Note: This would need a proper PGN struct to test fully
-	// We'll test with a simple struct that implements PgnStruct interface
 	// For now, just test that the service can be created and stopped
-	// The actual Write functionality would need a proper PGN struct
 
 	// Stop the service
 	err := service.Stop()
@@ -213,4 +214,50 @@ func TestN2kServiceUpdateEndpointWhileRunning(t *testing.T) {
 	// Stop the service
 	stopErr := service.Stop()
 	assert.NoError(t, stopErr, "Stop should not return error")
+}
+
+func TestN2kServiceHandleReplayCANFrame(t *testing.T) {
+	log := logrus.New()
+	ep := n2kfileendpoint.NewN2kFileEndpoint(testReplaySusterrana2020, log)
+	service := n2k.NewN2kService(ep, log)
+
+	var messageCount int
+	_, err := service.SubscribeToAllStructs(func(_ any) {
+		messageCount++
+	})
+	require.NoError(t, err)
+
+	// PGN 127501 frame from canadapter_test
+	frames, err := converter.CanFrameFromRaw("2023-01-21T00:04:17Z,3,127501,224,0,8,00,03,c0,ff,ff,ff,ff,ff")
+	require.NoError(t, err)
+	require.Len(t, frames, 1)
+
+	require.NoError(t, service.HandleReplayCANFrame(frames[0]))
+	assert.Equal(t, 1, messageCount)
+}
+
+func TestN2kServiceReceivedCANFrameHook(t *testing.T) {
+	if _, err := os.Stat(testReplaySusterrana2020); err != nil {
+		t.Skipf("replay file not available: %v", err)
+	}
+
+	log := logrus.New()
+	ep := n2kfileendpoint.NewN2kFileEndpoint(testReplaySusterrana2020, log)
+	service := n2k.NewN2kService(ep, log)
+
+	var hookCount int
+	service.SetReceivedCANFrameHook(func(_ *can.Frame) {
+		hookCount++
+	})
+
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	go func() {
+		_ = service.Start(ctx)
+	}()
+	time.Sleep(50 * time.Millisecond)
+
+	require.NoError(t, ep.Run(ctx))
+	assert.Greater(t, hookCount, 0, "hook should receive live frames from endpoint")
 }

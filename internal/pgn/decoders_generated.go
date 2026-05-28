@@ -4,6 +4,7 @@ package pgn
 import (
 	"fmt"
     "github.com/boatkit-io/tugboat/pkg/units"
+	publicpgn "github.com/boatkit-io/n2k/pkg/pgn"
 )
 
 func nullableUnit[T any, U any, V float32|uint16|int16|uint32](u U, v *V, newer func(u U, v float32) T) *T {
@@ -13,22 +14,22 @@ func nullableUnit[T any, U any, V float32|uint16|int16|uint32](u U, v *V, newer 
 	ov := newer(u, float32(*v))
 	return &ov
 }
-func DecodeIsoAcknowledgement(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeIsoAcknowledgement(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val IsoAcknowledgement
+    var val publicpgn.IsoAcknowledgement
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAcknowledgement-Control: %w", err)
     } else {
-        val.Control = IsoControlConst(v)
+        val.Control = publicpgn.IsoControlConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("GroupFunction")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoAcknowledgement_GroupFunction); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAcknowledgement-GroupFunction: %w", err)
     } else {
         val.GroupFunction = v
     }
     stream.skipBits(24)
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Pgn")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_IsoAcknowledgement_Pgn); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAcknowledgement-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -36,11 +37,11 @@ func DecodeIsoAcknowledgement(Info MessageInfo, stream *DataStream) (any, error)
 
     return val, nil
 }
-func DecodeIsoRequest(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeIsoRequest(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val IsoRequest
+    var val publicpgn.IsoRequest
     val.Info = Info
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Pgn")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_IsoRequest_Pgn); err != nil {
         return nil, fmt.Errorf("parse failed for IsoRequest-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -48,11 +49,11 @@ func DecodeIsoRequest(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeIsoTransportProtocolDataTransfer(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeIsoTransportProtocolDataTransfer(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val IsoTransportProtocolDataTransfer
+    var val publicpgn.IsoTransportProtocolDataTransfer
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoTransportProtocolDataTransfer_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolDataTransfer-Sid: %w", err)
     } else {
         val.Sid = v
@@ -65,34 +66,34 @@ func DecodeIsoTransportProtocolDataTransfer(Info MessageInfo, stream *DataStream
 
     return val, nil
 }
-func DecodeIsoTransportProtocolConnectionManagementRequestToSend(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeIsoTransportProtocolConnectionManagementRequestToSend(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val IsoTransportProtocolConnectionManagementRequestToSend
+    var val publicpgn.IsoTransportProtocolConnectionManagementRequestToSend
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-GroupFunctionCode: %w", err)
     } else {
-        val.GroupFunctionCode = IsoCommandConst(v)
+        val.GroupFunctionCode = publicpgn.IsoCommandConst(v)
         if v != 16 {
             return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementRequestToSend-GroupFunctionCode: Expected %d != %d", 16, v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("MessageSize")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_MessageSize); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-MessageSize: %w", err)
     } else {
         val.MessageSize = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Packets")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_Packets); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-Packets: %w", err)
     } else {
         val.Packets = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("PacketsReply")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_PacketsReply); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-PacketsReply: %w", err)
     } else {
         val.PacketsReply = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Pgn")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_Pgn); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementRequestToSend-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -100,30 +101,30 @@ func DecodeIsoTransportProtocolConnectionManagementRequestToSend(Info MessageInf
 
     return val, nil
 }
-func DecodeIsoTransportProtocolConnectionManagementClearToSend(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeIsoTransportProtocolConnectionManagementClearToSend(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val IsoTransportProtocolConnectionManagementClearToSend
+    var val publicpgn.IsoTransportProtocolConnectionManagementClearToSend
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-GroupFunctionCode: %w", err)
     } else {
-        val.GroupFunctionCode = IsoCommandConst(v)
+        val.GroupFunctionCode = publicpgn.IsoCommandConst(v)
         if v != 17 {
             return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementClearToSend-GroupFunctionCode: Expected %d != %d", 17, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("MaxPackets")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_MaxPackets); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-MaxPackets: %w", err)
     } else {
         val.MaxPackets = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("NextSid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_NextSid); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-NextSid: %w", err)
     } else {
         val.NextSid = v
     }
     stream.skipBits(16)
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Pgn")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_Pgn); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementClearToSend-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -131,30 +132,30 @@ func DecodeIsoTransportProtocolConnectionManagementClearToSend(Info MessageInfo,
 
     return val, nil
 }
-func DecodeIsoTransportProtocolConnectionManagementEndOfMessage(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeIsoTransportProtocolConnectionManagementEndOfMessage(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val IsoTransportProtocolConnectionManagementEndOfMessage
+    var val publicpgn.IsoTransportProtocolConnectionManagementEndOfMessage
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-GroupFunctionCode: %w", err)
     } else {
-        val.GroupFunctionCode = IsoCommandConst(v)
+        val.GroupFunctionCode = publicpgn.IsoCommandConst(v)
         if v != 19 {
             return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementEndOfMessage-GroupFunctionCode: Expected %d != %d", 19, v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("TotalMessageSize")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_TotalMessageSize); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-TotalMessageSize: %w", err)
     } else {
         val.TotalMessageSize = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("TotalNumberOfFramesReceived")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_TotalNumberOfFramesReceived); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-TotalNumberOfFramesReceived: %w", err)
     } else {
         val.TotalNumberOfFramesReceived = v
     }
     stream.skipBits(8)
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Pgn")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_Pgn); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementEndOfMessage-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -162,30 +163,30 @@ func DecodeIsoTransportProtocolConnectionManagementEndOfMessage(Info MessageInfo
 
     return val, nil
 }
-func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val IsoTransportProtocolConnectionManagementBroadcastAnnounce
+    var val publicpgn.IsoTransportProtocolConnectionManagementBroadcastAnnounce
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-GroupFunctionCode: %w", err)
     } else {
-        val.GroupFunctionCode = IsoCommandConst(v)
+        val.GroupFunctionCode = publicpgn.IsoCommandConst(v)
         if v != 32 {
             return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-GroupFunctionCode: Expected %d != %d", 32, v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("MessageSize")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_MessageSize); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-MessageSize: %w", err)
     } else {
         val.MessageSize = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Packets")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_Packets); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-Packets: %w", err)
     } else {
         val.Packets = v
     }
     stream.skipBits(8)
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Pgn")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_Pgn); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementBroadcastAnnounce-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -193,14 +194,14 @@ func DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(Info Messag
 
     return val, nil
 }
-func DecodeIsoTransportProtocolConnectionManagementAbort(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeIsoTransportProtocolConnectionManagementAbort(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val IsoTransportProtocolConnectionManagementAbort
+    var val publicpgn.IsoTransportProtocolConnectionManagementAbort
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementAbort-GroupFunctionCode: %w", err)
     } else {
-        val.GroupFunctionCode = IsoCommandConst(v)
+        val.GroupFunctionCode = publicpgn.IsoCommandConst(v)
         if v != 255 {
             return nil, fmt.Errorf("match failed for IsoTransportProtocolConnectionManagementAbort-GroupFunctionCode: Expected %d != %d", 255, v)
         }
@@ -211,7 +212,7 @@ func DecodeIsoTransportProtocolConnectionManagementAbort(Info MessageInfo, strea
         val.Reason = v
     }
     stream.skipBits(24)
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Pgn")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_IsoTransportProtocolConnectionManagementAbort_Pgn); err != nil {
         return nil, fmt.Errorf("parse failed for IsoTransportProtocolConnectionManagementAbort-Pgn: %w", err)
     } else {
         val.Pgn = v
@@ -219,11 +220,11 @@ func DecodeIsoTransportProtocolConnectionManagementAbort(Info MessageInfo, strea
 
     return val, nil
 }
-func DecodeIsoAddressClaim(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeIsoAddressClaim(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val IsoAddressClaim
+    var val publicpgn.IsoAddressClaim
     val.Info = Info
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("UniqueNumber")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_IsoAddressClaim_UniqueNumber); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-UniqueNumber: %w", err)
     } else {
         val.UniqueNumber = v
@@ -231,14 +232,14 @@ func DecodeIsoAddressClaim(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DeviceInstanceLower")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoAddressClaim_DeviceInstanceLower); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-DeviceInstanceLower: %w", err)
     } else {
         val.DeviceInstanceLower = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DeviceInstanceUpper")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoAddressClaim_DeviceInstanceUpper); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-DeviceInstanceUpper: %w", err)
     } else {
         val.DeviceInstanceUpper = v
@@ -246,15 +247,15 @@ func DecodeIsoAddressClaim(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-DeviceFunction: %w", err)
     } else {
-        val.DeviceFunction = DeviceFunctionConst(v)
+        val.DeviceFunction = publicpgn.DeviceFunctionConst(v)
     }
     stream.skipBits(1)
     if v, err := stream.readLookupField(7); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-DeviceClass: %w", err)
     } else {
-        val.DeviceClass = DeviceClassConst(v)
+        val.DeviceClass = publicpgn.DeviceClassConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SystemInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoAddressClaim_SystemInstance); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-SystemInstance: %w", err)
     } else {
         val.SystemInstance = v
@@ -262,24 +263,24 @@ func DecodeIsoAddressClaim(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-IndustryGroup: %w", err)
     } else {
-        val.IndustryGroup = IndustryCodeConst(v)
+        val.IndustryGroup = publicpgn.IndustryCodeConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for IsoAddressClaim-ArbitraryAddressCapable: %w", err)
     } else {
-        val.ArbitraryAddressCapable = YesNoConst(v)
+        val.ArbitraryAddressCapable = publicpgn.YesNoConst(v)
     }
 
     return val, nil
 }
-func DecodeCarlingBreakerCommand(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeCarlingBreakerCommand(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val CarlingBreakerCommand
+    var val publicpgn.CarlingBreakerCommand
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for CarlingBreakerCommand-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 176 {
             return nil, fmt.Errorf("match failed for CarlingBreakerCommand-ManufacturerCode: Expected %d != %d", 176, v)
         }
@@ -288,12 +289,12 @@ func DecodeCarlingBreakerCommand(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for CarlingBreakerCommand-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for CarlingBreakerCommand-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("MessageType")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_CarlingBreakerCommand_MessageType); err != nil {
         return nil, fmt.Errorf("parse failed for CarlingBreakerCommand-MessageType: %w", err)
     } else {
         val.MessageType = v
@@ -301,28 +302,28 @@ func DecodeCarlingBreakerCommand(Info MessageInfo, stream *DataStream) (any, err
             return nil, fmt.Errorf("match failed for CarlingBreakerCommand-MessageType: Expected %d != %d", 2, *v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("BreakerMapping1")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_CarlingBreakerCommand_BreakerMapping1); err != nil {
         return nil, fmt.Errorf("parse failed for CarlingBreakerCommand-BreakerMapping1: %w", err)
     } else {
         val.BreakerMapping1 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("BreakerMapping2")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_CarlingBreakerCommand_BreakerMapping2); err != nil {
         return nil, fmt.Errorf("parse failed for CarlingBreakerCommand-BreakerMapping2: %w", err)
     } else {
         val.BreakerMapping2 = v
     }
     stream.skipBits(5)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("BreakerMapping3")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_CarlingBreakerCommand_BreakerMapping3); err != nil {
         return nil, fmt.Errorf("parse failed for CarlingBreakerCommand-BreakerMapping3: %w", err)
     } else {
         val.BreakerMapping3 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("BreakerCommand")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_CarlingBreakerCommand_BreakerCommand); err != nil {
         return nil, fmt.Errorf("parse failed for CarlingBreakerCommand-BreakerCommand: %w", err)
     } else {
         val.BreakerCommand = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DimValue")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_CarlingBreakerCommand_DimValue); err != nil {
         return nil, fmt.Errorf("parse failed for CarlingBreakerCommand-DimValue: %w", err)
     } else {
         val.DimValue = v
@@ -330,21 +331,21 @@ func DecodeCarlingBreakerCommand(Info MessageInfo, stream *DataStream) (any, err
 
     return val, nil
 }
-func DecodeBus1PhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeBus1PhaseCBasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Bus1PhaseCBasicAcQuantities
+    var val publicpgn.Bus1PhaseCBasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_Bus1PhaseCBasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseCBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_Bus1PhaseCBasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseCBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Bus1PhaseCBasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseCBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
@@ -353,21 +354,21 @@ func DecodeBus1PhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) (an
 
     return val, nil
 }
-func DecodeBus1PhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeBus1PhaseBBasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Bus1PhaseBBasicAcQuantities
+    var val publicpgn.Bus1PhaseBBasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_Bus1PhaseBBasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseBBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_Bus1PhaseBBasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseBBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Bus1PhaseBBasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseBBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
@@ -376,21 +377,21 @@ func DecodeBus1PhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) (an
 
     return val, nil
 }
-func DecodeBus1PhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeBus1PhaseABasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Bus1PhaseABasicAcQuantities
+    var val publicpgn.Bus1PhaseABasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_Bus1PhaseABasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseABasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_Bus1PhaseABasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseABasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Bus1PhaseABasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for Bus1PhaseABasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
@@ -399,16 +400,16 @@ func DecodeBus1PhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) (an
 
     return val, nil
 }
-func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityPhaseCAcReactivePower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityPhaseCAcReactivePower
+    var val publicpgn.UtilityPhaseCAcReactivePower
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("ReactivePower")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseCAcReactivePower_ReactivePower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PowerFactor")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UtilityPhaseCAcReactivePower_PowerFactor); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -416,22 +417,22 @@ func DecodeUtilityPhaseCAcReactivePower(Info MessageInfo, stream *DataStream) (a
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCAcReactivePower-PowerFactorLagging: %w", err)
     } else {
-        val.PowerFactorLagging = PowerFactorConst(v)
+        val.PowerFactorLagging = publicpgn.PowerFactorConst(v)
     }
     stream.skipBits(30)
 
     return val, nil
 }
-func DecodeUtilityPhaseCAcPower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityPhaseCAcPower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityPhaseCAcPower
+    var val publicpgn.UtilityPhaseCAcPower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("RealPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_UtilityPhaseCAcPower_RealPower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ApparentPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_UtilityPhaseCAcPower_ApparentPower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -439,26 +440,26 @@ func DecodeUtilityPhaseCAcPower(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeUtilityPhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityPhaseCBasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityPhaseCBasicAcQuantities
+    var val publicpgn.UtilityPhaseCBasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseCBasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseCBasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UtilityPhaseCBasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseCBasicAcQuantities_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseCBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -466,16 +467,16 @@ func DecodeUtilityPhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) 
 
     return val, nil
 }
-func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityPhaseBAcReactivePower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityPhaseBAcReactivePower
+    var val publicpgn.UtilityPhaseBAcReactivePower
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("ReactivePower")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseBAcReactivePower_ReactivePower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PowerFactor")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UtilityPhaseBAcReactivePower_PowerFactor); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -483,22 +484,22 @@ func DecodeUtilityPhaseBAcReactivePower(Info MessageInfo, stream *DataStream) (a
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBAcReactivePower-PowerFactorLagging: %w", err)
     } else {
-        val.PowerFactorLagging = PowerFactorConst(v)
+        val.PowerFactorLagging = publicpgn.PowerFactorConst(v)
     }
     stream.skipBits(30)
 
     return val, nil
 }
-func DecodeUtilityPhaseBAcPower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityPhaseBAcPower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityPhaseBAcPower
+    var val publicpgn.UtilityPhaseBAcPower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("RealPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_UtilityPhaseBAcPower_RealPower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ApparentPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_UtilityPhaseBAcPower_ApparentPower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -506,26 +507,26 @@ func DecodeUtilityPhaseBAcPower(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeUtilityPhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityPhaseBBasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityPhaseBBasicAcQuantities
+    var val publicpgn.UtilityPhaseBBasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseBBasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseBBasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UtilityPhaseBBasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseBBasicAcQuantities_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseBBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -533,16 +534,16 @@ func DecodeUtilityPhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) 
 
     return val, nil
 }
-func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityPhaseAAcReactivePower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityPhaseAAcReactivePower
+    var val publicpgn.UtilityPhaseAAcReactivePower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ReactivePower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_UtilityPhaseAAcReactivePower_ReactivePower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseAAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PowerFactor")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UtilityPhaseAAcReactivePower_PowerFactor); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseAAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -550,22 +551,22 @@ func DecodeUtilityPhaseAAcReactivePower(Info MessageInfo, stream *DataStream) (a
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseAAcReactivePower-PowerFactorLagging: %w", err)
     } else {
-        val.PowerFactorLagging = PowerFactorConst(v)
+        val.PowerFactorLagging = publicpgn.PowerFactorConst(v)
     }
     stream.skipBits(14)
 
     return val, nil
 }
-func DecodeUtilityPhaseAAcPower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityPhaseAAcPower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityPhaseAAcPower
+    var val publicpgn.UtilityPhaseAAcPower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("RealPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_UtilityPhaseAAcPower_RealPower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseAAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ApparentPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_UtilityPhaseAAcPower_ApparentPower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseAAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -573,26 +574,26 @@ func DecodeUtilityPhaseAAcPower(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeUtilityPhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityPhaseABasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityPhaseABasicAcQuantities
+    var val publicpgn.UtilityPhaseABasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseABasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseABasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UtilityPhaseABasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityPhaseABasicAcQuantities_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityPhaseABasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -600,16 +601,16 @@ func DecodeUtilityPhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) 
 
     return val, nil
 }
-func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityTotalAcReactivePower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityTotalAcReactivePower
+    var val publicpgn.UtilityTotalAcReactivePower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ReactivePower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_UtilityTotalAcReactivePower_ReactivePower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityTotalAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PowerFactor")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UtilityTotalAcReactivePower_PowerFactor); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityTotalAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -617,22 +618,22 @@ func DecodeUtilityTotalAcReactivePower(Info MessageInfo, stream *DataStream) (an
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityTotalAcReactivePower-PowerFactorLagging: %w", err)
     } else {
-        val.PowerFactorLagging = PowerFactorConst(v)
+        val.PowerFactorLagging = publicpgn.PowerFactorConst(v)
     }
     stream.skipBits(14)
 
     return val, nil
 }
-func DecodeUtilityTotalAcPower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityTotalAcPower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityTotalAcPower
+    var val publicpgn.UtilityTotalAcPower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("RealPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_UtilityTotalAcPower_RealPower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityTotalAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ApparentPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_UtilityTotalAcPower_ApparentPower); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityTotalAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -640,26 +641,26 @@ func DecodeUtilityTotalAcPower(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeUtilityAverageBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUtilityAverageBasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UtilityAverageBasicAcQuantities
+    var val publicpgn.UtilityAverageBasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityAverageBasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityAverageBasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UtilityAverageBasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_UtilityAverageBasicAcQuantities_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for UtilityAverageBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -667,16 +668,16 @@ func DecodeUtilityAverageBasicAcQuantities(Info MessageInfo, stream *DataStream)
 
     return val, nil
 }
-func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorPhaseCAcReactivePower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorPhaseCAcReactivePower
+    var val publicpgn.GeneratorPhaseCAcReactivePower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ReactivePower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorPhaseCAcReactivePower_ReactivePower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PowerFactor")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GeneratorPhaseCAcReactivePower_PowerFactor); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -684,22 +685,22 @@ func DecodeGeneratorPhaseCAcReactivePower(Info MessageInfo, stream *DataStream) 
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcReactivePower-PowerFactorLagging: %w", err)
     } else {
-        val.PowerFactorLagging = PowerFactorConst(v)
+        val.PowerFactorLagging = publicpgn.PowerFactorConst(v)
     }
     stream.skipBits(14)
 
     return val, nil
 }
-func DecodeGeneratorPhaseCAcPower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorPhaseCAcPower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorPhaseCAcPower
+    var val publicpgn.GeneratorPhaseCAcPower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("RealPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorPhaseCAcPower_RealPower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ApparentPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorPhaseCAcPower_ApparentPower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -707,26 +708,26 @@ func DecodeGeneratorPhaseCAcPower(Info MessageInfo, stream *DataStream) (any, er
 
     return val, nil
 }
-func DecodeGeneratorPhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorPhaseCBasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorPhaseCBasicAcQuantities
+    var val publicpgn.GeneratorPhaseCBasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorPhaseCBasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorPhaseCBasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GeneratorPhaseCBasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorPhaseCBasicAcQuantities_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseCBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -734,16 +735,16 @@ func DecodeGeneratorPhaseCBasicAcQuantities(Info MessageInfo, stream *DataStream
 
     return val, nil
 }
-func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorPhaseBAcReactivePower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorPhaseBAcReactivePower
+    var val publicpgn.GeneratorPhaseBAcReactivePower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ReactivePower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorPhaseBAcReactivePower_ReactivePower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PowerFactor")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GeneratorPhaseBAcReactivePower_PowerFactor); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -751,22 +752,22 @@ func DecodeGeneratorPhaseBAcReactivePower(Info MessageInfo, stream *DataStream) 
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcReactivePower-PowerFactorLagging: %w", err)
     } else {
-        val.PowerFactorLagging = PowerFactorConst(v)
+        val.PowerFactorLagging = publicpgn.PowerFactorConst(v)
     }
     stream.skipBits(14)
 
     return val, nil
 }
-func DecodeGeneratorPhaseBAcPower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorPhaseBAcPower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorPhaseBAcPower
+    var val publicpgn.GeneratorPhaseBAcPower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("RealPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorPhaseBAcPower_RealPower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ApparentPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorPhaseBAcPower_ApparentPower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -774,26 +775,26 @@ func DecodeGeneratorPhaseBAcPower(Info MessageInfo, stream *DataStream) (any, er
 
     return val, nil
 }
-func DecodeGeneratorPhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorPhaseBBasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorPhaseBBasicAcQuantities
+    var val publicpgn.GeneratorPhaseBBasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorPhaseBBasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorPhaseBBasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GeneratorPhaseBBasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorPhaseBBasicAcQuantities_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseBBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -801,16 +802,16 @@ func DecodeGeneratorPhaseBBasicAcQuantities(Info MessageInfo, stream *DataStream
 
     return val, nil
 }
-func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorPhaseAAcReactivePower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorPhaseAAcReactivePower
+    var val publicpgn.GeneratorPhaseAAcReactivePower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ReactivePower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorPhaseAAcReactivePower_ReactivePower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PowerFactor")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GeneratorPhaseAAcReactivePower_PowerFactor); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -818,22 +819,22 @@ func DecodeGeneratorPhaseAAcReactivePower(Info MessageInfo, stream *DataStream) 
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcReactivePower-PowerFactorLagging: %w", err)
     } else {
-        val.PowerFactorLagging = PowerFactorConst(v)
+        val.PowerFactorLagging = publicpgn.PowerFactorConst(v)
     }
     stream.skipBits(14)
 
     return val, nil
 }
-func DecodeGeneratorPhaseAAcPower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorPhaseAAcPower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorPhaseAAcPower
+    var val publicpgn.GeneratorPhaseAAcPower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("RealPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorPhaseAAcPower_RealPower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ApparentPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorPhaseAAcPower_ApparentPower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseAAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -841,26 +842,26 @@ func DecodeGeneratorPhaseAAcPower(Info MessageInfo, stream *DataStream) (any, er
 
     return val, nil
 }
-func DecodeGeneratorPhaseABasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorPhaseABasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorPhaseABasicAcQuantities
+    var val publicpgn.GeneratorPhaseABasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorPhaseABasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorPhaseABasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GeneratorPhaseABasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorPhaseABasicAcQuantities_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorPhaseABasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -868,16 +869,16 @@ func DecodeGeneratorPhaseABasicAcQuantities(Info MessageInfo, stream *DataStream
 
     return val, nil
 }
-func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorTotalAcReactivePower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorTotalAcReactivePower
+    var val publicpgn.GeneratorTotalAcReactivePower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ReactivePower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorTotalAcReactivePower_ReactivePower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorTotalAcReactivePower-ReactivePower: %w", err)
     } else {
         val.ReactivePower = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PowerFactor")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GeneratorTotalAcReactivePower_PowerFactor); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorTotalAcReactivePower-PowerFactor: %w", err)
     } else {
         val.PowerFactor = v
@@ -885,22 +886,22 @@ func DecodeGeneratorTotalAcReactivePower(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorTotalAcReactivePower-PowerFactorLagging: %w", err)
     } else {
-        val.PowerFactorLagging = PowerFactorConst(v)
+        val.PowerFactorLagging = publicpgn.PowerFactorConst(v)
     }
     stream.skipBits(14)
 
     return val, nil
 }
-func DecodeGeneratorTotalAcPower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorTotalAcPower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorTotalAcPower
+    var val publicpgn.GeneratorTotalAcPower
     val.Info = Info
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("RealPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorTotalAcPower_RealPower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorTotalAcPower-RealPower: %w", err)
     } else {
         val.RealPower = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("ApparentPower")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_GeneratorTotalAcPower_ApparentPower); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorTotalAcPower-ApparentPower: %w", err)
     } else {
         val.ApparentPower = v
@@ -908,26 +909,26 @@ func DecodeGeneratorTotalAcPower(Info MessageInfo, stream *DataStream) (any, err
 
     return val, nil
 }
-func DecodeGeneratorAverageBasicAcQuantities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGeneratorAverageBasicAcQuantities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GeneratorAverageBasicAcQuantities
+    var val publicpgn.GeneratorAverageBasicAcQuantities
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineLineAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorAverageBasicAcQuantities_LineLineAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-LineLineAcRmsVoltage: %w", err)
     } else {
         val.LineLineAcRmsVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LineNeutralAcRmsVoltage")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorAverageBasicAcQuantities_LineNeutralAcRmsVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-LineNeutralAcRmsVoltage: %w", err)
     } else {
         val.LineNeutralAcRmsVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GeneratorAverageBasicAcQuantities_AcFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-AcFrequency: %w", err)
     } else {
         val.AcFrequency = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GeneratorAverageBasicAcQuantities_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for GeneratorAverageBasicAcQuantities-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
@@ -935,9 +936,9 @@ func DecodeGeneratorAverageBasicAcQuantities(Info MessageInfo, stream *DataStrea
 
     return val, nil
 }
-func DecodeIsoCommandedAddress(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeIsoCommandedAddress(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val IsoCommandedAddress
+    var val publicpgn.IsoCommandedAddress
     val.Info = Info
     if v, err := stream.readBinaryData(21); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-UniqueNumber: %w", err)
@@ -947,14 +948,14 @@ func DecodeIsoCommandedAddress(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DeviceInstanceLower")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoCommandedAddress_DeviceInstanceLower); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-DeviceInstanceLower: %w", err)
     } else {
         val.DeviceInstanceLower = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DeviceInstanceUpper")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoCommandedAddress_DeviceInstanceUpper); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-DeviceInstanceUpper: %w", err)
     } else {
         val.DeviceInstanceUpper = v
@@ -962,15 +963,15 @@ func DecodeIsoCommandedAddress(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-DeviceFunction: %w", err)
     } else {
-        val.DeviceFunction = DeviceFunctionConst(v)
+        val.DeviceFunction = publicpgn.DeviceFunctionConst(v)
     }
     stream.skipBits(1)
     if v, err := stream.readLookupField(7); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-DeviceClass: %w", err)
     } else {
-        val.DeviceClass = DeviceClassConst(v)
+        val.DeviceClass = publicpgn.DeviceClassConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SystemInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoCommandedAddress_SystemInstance); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-SystemInstance: %w", err)
     } else {
         val.SystemInstance = v
@@ -978,10 +979,10 @@ func DecodeIsoCommandedAddress(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
     }
     stream.skipBits(1)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("NewSourceAddress")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_IsoCommandedAddress_NewSourceAddress); err != nil {
         return nil, fmt.Errorf("parse failed for IsoCommandedAddress-NewSourceAddress: %w", err)
     } else {
         val.NewSourceAddress = v
@@ -989,14 +990,14 @@ func DecodeIsoCommandedAddress(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeMaretronNumberOfChannels(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMaretronNumberOfChannels(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val MaretronNumberOfChannels
+    var val publicpgn.MaretronNumberOfChannels
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronNumberOfChannels-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 137 {
             return nil, fmt.Errorf("match failed for MaretronNumberOfChannels-ManufacturerCode: Expected %d != %d", 137, v)
         }
@@ -1005,17 +1006,17 @@ func DecodeMaretronNumberOfChannels(Info MessageInfo, stream *DataStream) (any, 
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronNumberOfChannels-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for MaretronNumberOfChannels-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Pgn")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_MaretronNumberOfChannels_Pgn); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronNumberOfChannels-Pgn: %w", err)
     } else {
         val.Pgn = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("NumberOfChannels")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronNumberOfChannels_NumberOfChannels); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronNumberOfChannels-NumberOfChannels: %w", err)
     } else {
         val.NumberOfChannels = v
@@ -1024,14 +1025,14 @@ func DecodeMaretronNumberOfChannels(Info MessageInfo, stream *DataStream) (any, 
 
     return val, nil
 }
-func DecodeMaretronProprietaryDcBreakerCurrent(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMaretronProprietaryDcBreakerCurrent(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val MaretronProprietaryDcBreakerCurrent
+    var val publicpgn.MaretronProprietaryDcBreakerCurrent
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 137 {
             return nil, fmt.Errorf("match failed for MaretronProprietaryDcBreakerCurrent-ManufacturerCode: Expected %d != %d", 137, v)
         }
@@ -1040,22 +1041,22 @@ func DecodeMaretronProprietaryDcBreakerCurrent(Info MessageInfo, stream *DataStr
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for MaretronProprietaryDcBreakerCurrent-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("BankInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronProprietaryDcBreakerCurrent_BankInstance); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-BankInstance: %w", err)
     } else {
         val.BankInstance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("IndicatorNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronProprietaryDcBreakerCurrent_IndicatorNumber); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-IndicatorNumber: %w", err)
     } else {
         val.IndicatorNumber = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("BreakerCurrent")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_MaretronProprietaryDcBreakerCurrent_BreakerCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryDcBreakerCurrent-BreakerCurrent: %w", err)
     } else {
         val.BreakerCurrent = v
@@ -1064,14 +1065,14 @@ func DecodeMaretronProprietaryDcBreakerCurrent(Info MessageInfo, stream *DataStr
 
     return val, nil
 }
-func DecodeAirmarBootStateAcknowledgment(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarBootStateAcknowledgment(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarBootStateAcknowledgment
+    var val publicpgn.AirmarBootStateAcknowledgment
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarBootStateAcknowledgment-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarBootStateAcknowledgment-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -1080,7 +1081,7 @@ func DecodeAirmarBootStateAcknowledgment(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarBootStateAcknowledgment-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarBootStateAcknowledgment-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1088,20 +1089,20 @@ func DecodeAirmarBootStateAcknowledgment(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarBootStateAcknowledgment-BootState: %w", err)
     } else {
-        val.BootState = BootStateConst(v)
+        val.BootState = publicpgn.BootStateConst(v)
     }
     stream.skipBits(45)
 
     return val, nil
 }
-func DecodeLowranceTemperature(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeLowranceTemperature(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val LowranceTemperature
+    var val publicpgn.LowranceTemperature
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for LowranceTemperature-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 140 {
             return nil, fmt.Errorf("match failed for LowranceTemperature-ManufacturerCode: Expected %d != %d", 140, v)
         }
@@ -1110,7 +1111,7 @@ func DecodeLowranceTemperature(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for LowranceTemperature-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for LowranceTemperature-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1118,9 +1119,9 @@ func DecodeLowranceTemperature(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for LowranceTemperature-TemperatureSource: %w", err)
     } else {
-        val.TemperatureSource = TemperatureSourceConst(v)
+        val.TemperatureSource = publicpgn.TemperatureSourceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("ActualTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_LowranceTemperature_ActualTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for LowranceTemperature-ActualTemperature: %w", err)
     } else {
         val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -1129,14 +1130,14 @@ func DecodeLowranceTemperature(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeAirmarBootStateRequest(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarBootStateRequest(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarBootStateRequest
+    var val publicpgn.AirmarBootStateRequest
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarBootStateRequest-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarBootStateRequest-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -1145,7 +1146,7 @@ func DecodeAirmarBootStateRequest(Info MessageInfo, stream *DataStream) (any, er
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarBootStateRequest-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarBootStateRequest-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1154,14 +1155,14 @@ func DecodeAirmarBootStateRequest(Info MessageInfo, stream *DataStream) (any, er
 
     return val, nil
 }
-func DecodeAirmarAccessLevel(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarAccessLevel(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarAccessLevel
+    var val publicpgn.AirmarAccessLevel
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAccessLevel-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarAccessLevel-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -1170,12 +1171,12 @@ func DecodeAirmarAccessLevel(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAccessLevel-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarAccessLevel-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("FormatCode")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AirmarAccessLevel_FormatCode); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAccessLevel-FormatCode: %w", err)
     } else {
         val.FormatCode = v
@@ -1183,10 +1184,10 @@ func DecodeAirmarAccessLevel(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAccessLevel-AccessLevel: %w", err)
     } else {
-        val.AccessLevel = AccessLevelConst(v)
+        val.AccessLevel = publicpgn.AccessLevelConst(v)
     }
     stream.skipBits(5)
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("AccessSeedKey")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AirmarAccessLevel_AccessSeedKey); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAccessLevel-AccessSeedKey: %w", err)
     } else {
         val.AccessSeedKey = v
@@ -1194,14 +1195,14 @@ func DecodeAirmarAccessLevel(Info MessageInfo, stream *DataStream) (any, error) 
 
     return val, nil
 }
-func DecodeSimnetDeviceStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSimnetDeviceStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SimnetDeviceStatus
+    var val publicpgn.SimnetDeviceStatus
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceStatus-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 1857 {
             return nil, fmt.Errorf("match failed for SimnetDeviceStatus-ManufacturerCode: Expected %d != %d", 1857, v)
         }
@@ -1210,7 +1211,7 @@ func DecodeSimnetDeviceStatus(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceStatus-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for SimnetDeviceStatus-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1218,12 +1219,12 @@ func DecodeSimnetDeviceStatus(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceStatus-Model: %w", err)
     } else {
-        val.Model = SimnetDeviceModelConst(v)
+        val.Model = publicpgn.SimnetDeviceModelConst(v)
     }
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceStatus-Report: %w", err)
     } else {
-        val.Report = SimnetDeviceReportConst(v)
+        val.Report = publicpgn.SimnetDeviceReportConst(v)
         if v != 2 {
             return nil, fmt.Errorf("match failed for SimnetDeviceStatus-Report: Expected %d != %d", 2, v)
         }
@@ -1231,20 +1232,20 @@ func DecodeSimnetDeviceStatus(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceStatus-Status: %w", err)
     } else {
-        val.Status = SimnetApStatusConst(v)
+        val.Status = publicpgn.SimnetApStatusConst(v)
     }
     stream.skipBits(24)
 
     return val, nil
 }
-func DecodeSimnetDeviceStatusRequest(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSimnetDeviceStatusRequest(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SimnetDeviceStatusRequest
+    var val publicpgn.SimnetDeviceStatusRequest
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceStatusRequest-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 1857 {
             return nil, fmt.Errorf("match failed for SimnetDeviceStatusRequest-ManufacturerCode: Expected %d != %d", 1857, v)
         }
@@ -1253,7 +1254,7 @@ func DecodeSimnetDeviceStatusRequest(Info MessageInfo, stream *DataStream) (any,
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceStatusRequest-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for SimnetDeviceStatusRequest-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1261,12 +1262,12 @@ func DecodeSimnetDeviceStatusRequest(Info MessageInfo, stream *DataStream) (any,
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceStatusRequest-Model: %w", err)
     } else {
-        val.Model = SimnetDeviceModelConst(v)
+        val.Model = publicpgn.SimnetDeviceModelConst(v)
     }
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceStatusRequest-Report: %w", err)
     } else {
-        val.Report = SimnetDeviceReportConst(v)
+        val.Report = publicpgn.SimnetDeviceReportConst(v)
         if v != 3 {
             return nil, fmt.Errorf("match failed for SimnetDeviceStatusRequest-Report: Expected %d != %d", 3, v)
         }
@@ -1275,14 +1276,14 @@ func DecodeSimnetDeviceStatusRequest(Info MessageInfo, stream *DataStream) (any,
 
     return val, nil
 }
-func DecodeSimnetPilotMode(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSimnetPilotMode(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SimnetPilotMode
+    var val publicpgn.SimnetPilotMode
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetPilotMode-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 1857 {
             return nil, fmt.Errorf("match failed for SimnetPilotMode-ManufacturerCode: Expected %d != %d", 1857, v)
         }
@@ -1291,7 +1292,7 @@ func DecodeSimnetPilotMode(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetPilotMode-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for SimnetPilotMode-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1299,12 +1300,12 @@ func DecodeSimnetPilotMode(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetPilotMode-Model: %w", err)
     } else {
-        val.Model = SimnetDeviceModelConst(v)
+        val.Model = publicpgn.SimnetDeviceModelConst(v)
     }
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetPilotMode-Report: %w", err)
     } else {
-        val.Report = SimnetDeviceReportConst(v)
+        val.Report = publicpgn.SimnetDeviceReportConst(v)
         if v != 10 {
             return nil, fmt.Errorf("match failed for SimnetPilotMode-Report: Expected %d != %d", 10, v)
         }
@@ -1312,20 +1313,20 @@ func DecodeSimnetPilotMode(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetPilotMode-Mode: %w", err)
     } else {
-        val.Mode = SimnetApModeBitfieldConst(v)
+        val.Mode = publicpgn.SimnetApModeBitfieldConst(v)
     }
     stream.skipBits(16)
 
     return val, nil
 }
-func DecodeSimnetDeviceModeRequest(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSimnetDeviceModeRequest(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SimnetDeviceModeRequest
+    var val publicpgn.SimnetDeviceModeRequest
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceModeRequest-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 1857 {
             return nil, fmt.Errorf("match failed for SimnetDeviceModeRequest-ManufacturerCode: Expected %d != %d", 1857, v)
         }
@@ -1334,7 +1335,7 @@ func DecodeSimnetDeviceModeRequest(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceModeRequest-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for SimnetDeviceModeRequest-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1342,12 +1343,12 @@ func DecodeSimnetDeviceModeRequest(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceModeRequest-Model: %w", err)
     } else {
-        val.Model = SimnetDeviceModelConst(v)
+        val.Model = publicpgn.SimnetDeviceModelConst(v)
     }
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetDeviceModeRequest-Report: %w", err)
     } else {
-        val.Report = SimnetDeviceReportConst(v)
+        val.Report = publicpgn.SimnetDeviceReportConst(v)
         if v != 11 {
             return nil, fmt.Errorf("match failed for SimnetDeviceModeRequest-Report: Expected %d != %d", 11, v)
         }
@@ -1356,14 +1357,14 @@ func DecodeSimnetDeviceModeRequest(Info MessageInfo, stream *DataStream) (any, e
 
     return val, nil
 }
-func DecodeSeatalkPilotLockedHeading(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSeatalkPilotLockedHeading(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SeatalkPilotLockedHeading
+    var val publicpgn.SeatalkPilotLockedHeading
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 1851 {
             return nil, fmt.Errorf("match failed for SeatalkPilotLockedHeading-ManufacturerCode: Expected %d != %d", 1851, v)
         }
@@ -1372,22 +1373,22 @@ func DecodeSeatalkPilotLockedHeading(Info MessageInfo, stream *DataStream) (any,
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for SeatalkPilotLockedHeading-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SeatalkPilotLockedHeading_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TargetHeadingTrue")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SeatalkPilotLockedHeading_TargetHeadingTrue); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-TargetHeadingTrue: %w", err)
     } else {
         val.TargetHeadingTrue = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TargetHeadingMagnetic")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SeatalkPilotLockedHeading_TargetHeadingMagnetic); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkPilotLockedHeading-TargetHeadingMagnetic: %w", err)
     } else {
         val.TargetHeadingMagnetic = v
@@ -1396,14 +1397,14 @@ func DecodeSeatalkPilotLockedHeading(Info MessageInfo, stream *DataStream) (any,
 
     return val, nil
 }
-func DecodeSeatalkSilenceAlarm(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSeatalkSilenceAlarm(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SeatalkSilenceAlarm
+    var val publicpgn.SeatalkSilenceAlarm
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkSilenceAlarm-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 1851 {
             return nil, fmt.Errorf("match failed for SeatalkSilenceAlarm-ManufacturerCode: Expected %d != %d", 1851, v)
         }
@@ -1412,7 +1413,7 @@ func DecodeSeatalkSilenceAlarm(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkSilenceAlarm-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for SeatalkSilenceAlarm-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1420,25 +1421,25 @@ func DecodeSeatalkSilenceAlarm(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkSilenceAlarm-AlarmId: %w", err)
     } else {
-        val.AlarmId = SeatalkAlarmIdConst(v)
+        val.AlarmId = publicpgn.SeatalkAlarmIdConst(v)
     }
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SeatalkSilenceAlarm-AlarmGroup: %w", err)
     } else {
-        val.AlarmGroup = SeatalkAlarmGroupConst(v)
+        val.AlarmGroup = publicpgn.SeatalkAlarmGroupConst(v)
     }
     stream.skipBits(32)
 
     return val, nil
 }
-func DecodeAirmarSpeedPulseCount(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarSpeedPulseCount(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarSpeedPulseCount
+    var val publicpgn.AirmarSpeedPulseCount
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarSpeedPulseCount-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -1447,22 +1448,22 @@ func DecodeAirmarSpeedPulseCount(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarSpeedPulseCount-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AirmarSpeedPulseCount_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DurationOfInterval")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarSpeedPulseCount_DurationOfInterval); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-DurationOfInterval: %w", err)
     } else {
         val.DurationOfInterval = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfPulsesReceived")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_AirmarSpeedPulseCount_NumberOfPulsesReceived); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedPulseCount-NumberOfPulsesReceived: %w", err)
     } else {
         val.NumberOfPulsesReceived = v
@@ -1471,41 +1472,41 @@ func DecodeAirmarSpeedPulseCount(Info MessageInfo, stream *DataStream) (any, err
 
     return val, nil
 }
-func DecodeNmeaRequestGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeNmeaRequestGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     return nil, fmt.Errorf("PGN 126208 is not supported")
     }
-func DecodeNmeaCommandGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeNmeaCommandGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     return nil, fmt.Errorf("PGN 126208 is not supported")
     }
-func DecodeNmeaAcknowledgeGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeNmeaAcknowledgeGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     return nil, fmt.Errorf("PGN 126208 is not supported")
     }
-func DecodeNmeaReadFieldsReplyGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeNmeaReadFieldsReplyGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     return nil, fmt.Errorf("PGN 126208 is not supported")
     }
-func DecodeNmeaWriteFieldsGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeNmeaWriteFieldsGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     return nil, fmt.Errorf("PGN 126208 is not supported")
     }
-func DecodeNmeaWriteFieldsReplyGroupFunction(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeNmeaWriteFieldsReplyGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     return nil, fmt.Errorf("PGN 126208 is not supported")
     }
-func DecodePgnListTransmitAndReceive(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodePgnListTransmitAndReceive(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val PgnListTransmitAndReceive
+    var val publicpgn.PgnListTransmitAndReceive
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for PgnListTransmitAndReceive-FunctionCode: %w", err)
     } else {
-        val.FunctionCode = PgnListFunctionConst(v)
+        val.FunctionCode = publicpgn.PgnListFunctionConst(v)
     }
     // decode repeating fields
-     val.Repeating1 = make([]PgnListTransmitAndReceiveRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.PgnListTransmitAndReceiveRepeating1, 0)
      if stream.isEOF() {
         return val, nil
     }
     for {
-        var rep PgnListTransmitAndReceiveRepeating1
-        if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Pgn")); err != nil {
+        var rep publicpgn.PgnListTransmitAndReceiveRepeating1
+        if v, err := ReadRaw[uint32](stream, &fieldSpec_PgnListTransmitAndReceive_Pgn); err != nil {
             return nil, fmt.Errorf("parse failed for PgnListTransmitAndReceive-Pgn: %w", err)
         } else {
             rep.Pgn = v
@@ -1518,14 +1519,14 @@ func DecodePgnListTransmitAndReceive(Info MessageInfo, stream *DataStream) (any,
 
     return val, nil
 }
-func DecodeFusionMediaControl(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionMediaControl(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionMediaControl
+    var val publicpgn.FusionMediaControl
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMediaControl-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionMediaControl-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -1534,7 +1535,7 @@ func DecodeFusionMediaControl(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMediaControl-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionMediaControl-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1542,12 +1543,12 @@ func DecodeFusionMediaControl(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMediaControl-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = FusionMessageIdConst(v)
+        val.ProprietaryId = publicpgn.FusionMessageIdConst(v)
         if v != 3 {
             return nil, fmt.Errorf("match failed for FusionMediaControl-ProprietaryId: Expected %d != %d", 3, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMediaControl_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMediaControl-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -1555,19 +1556,19 @@ func DecodeFusionMediaControl(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMediaControl-Command: %w", err)
     } else {
-        val.Command = FusionCommandConst(v)
+        val.Command = publicpgn.FusionCommandConst(v)
     }
 
     return val, nil
 }
-func DecodeFusionSiriusControl(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSiriusControl(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSiriusControl
+    var val publicpgn.FusionSiriusControl
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusControl-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSiriusControl-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -1576,7 +1577,7 @@ func DecodeFusionSiriusControl(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusControl-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSiriusControl-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1584,12 +1585,12 @@ func DecodeFusionSiriusControl(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusControl-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = FusionMessageIdConst(v)
+        val.ProprietaryId = publicpgn.FusionMessageIdConst(v)
         if v != 30 {
             return nil, fmt.Errorf("match failed for FusionSiriusControl-ProprietaryId: Expected %d != %d", 30, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusControl_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusControl-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -1597,9 +1598,9 @@ func DecodeFusionSiriusControl(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusControl-Command: %w", err)
     } else {
-        val.Command = FusionSiriusCommandConst(v)
+        val.Command = publicpgn.FusionSiriusCommandConst(v)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Data")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionSiriusControl_Data); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusControl-Data: %w", err)
     } else {
         val.Data = v
@@ -1607,14 +1608,14 @@ func DecodeFusionSiriusControl(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeFusionRequestStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionRequestStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionRequestStatus
+    var val publicpgn.FusionRequestStatus
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionRequestStatus-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionRequestStatus-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -1623,7 +1624,7 @@ func DecodeFusionRequestStatus(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionRequestStatus-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionRequestStatus-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1631,7 +1632,7 @@ func DecodeFusionRequestStatus(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionRequestStatus-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = FusionMessageIdConst(v)
+        val.ProprietaryId = publicpgn.FusionMessageIdConst(v)
         if v != 1 {
             return nil, fmt.Errorf("match failed for FusionRequestStatus-ProprietaryId: Expected %d != %d", 1, v)
         }
@@ -1639,14 +1640,14 @@ func DecodeFusionRequestStatus(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeFusionSetSource(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSetSource(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSetSource
+    var val publicpgn.FusionSetSource
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetSource-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSetSource-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -1655,7 +1656,7 @@ func DecodeFusionSetSource(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetSource-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSetSource-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1663,12 +1664,12 @@ func DecodeFusionSetSource(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetSource-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = FusionMessageIdConst(v)
+        val.ProprietaryId = publicpgn.FusionMessageIdConst(v)
         if v != 2 {
             return nil, fmt.Errorf("match failed for FusionSetSource-ProprietaryId: Expected %d != %d", 2, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSetSource_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetSource-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -1676,14 +1677,14 @@ func DecodeFusionSetSource(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionSetMute(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSetMute(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSetMute
+    var val publicpgn.FusionSetMute
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetMute-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSetMute-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -1692,7 +1693,7 @@ func DecodeFusionSetMute(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetMute-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSetMute-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1700,7 +1701,7 @@ func DecodeFusionSetMute(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetMute-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = FusionMessageIdConst(v)
+        val.ProprietaryId = publicpgn.FusionMessageIdConst(v)
         if v != 17 {
             return nil, fmt.Errorf("match failed for FusionSetMute-ProprietaryId: Expected %d != %d", 17, v)
         }
@@ -1708,19 +1709,19 @@ func DecodeFusionSetMute(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetMute-Command: %w", err)
     } else {
-        val.Command = FusionMuteCommandConst(v)
+        val.Command = publicpgn.FusionMuteCommandConst(v)
     }
 
     return val, nil
 }
-func DecodeFusionSetZoneVolume(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSetZoneVolume(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSetZoneVolume
+    var val publicpgn.FusionSetZoneVolume
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSetZoneVolume-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -1729,7 +1730,7 @@ func DecodeFusionSetZoneVolume(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSetZoneVolume-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1737,17 +1738,17 @@ func DecodeFusionSetZoneVolume(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = FusionMessageIdConst(v)
+        val.ProprietaryId = publicpgn.FusionMessageIdConst(v)
         if v != 24 {
             return nil, fmt.Errorf("match failed for FusionSetZoneVolume-ProprietaryId: Expected %d != %d", 24, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSetZoneVolume_Zone); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Volume")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSetZoneVolume_Volume); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetZoneVolume-Volume: %w", err)
     } else {
         val.Volume = v
@@ -1755,14 +1756,14 @@ func DecodeFusionSetZoneVolume(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeFusionSetAllVolumes(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSetAllVolumes(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSetAllVolumes
+    var val publicpgn.FusionSetAllVolumes
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSetAllVolumes-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -1771,7 +1772,7 @@ func DecodeFusionSetAllVolumes(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSetAllVolumes-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1779,27 +1780,27 @@ func DecodeFusionSetAllVolumes(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = FusionMessageIdConst(v)
+        val.ProprietaryId = publicpgn.FusionMessageIdConst(v)
         if v != 25 {
             return nil, fmt.Errorf("match failed for FusionSetAllVolumes-ProprietaryId: Expected %d != %d", 25, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone1")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSetAllVolumes_Zone1); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone1: %w", err)
     } else {
         val.Zone1 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone2")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSetAllVolumes_Zone2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone2: %w", err)
     } else {
         val.Zone2 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone3")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSetAllVolumes_Zone3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone3: %w", err)
     } else {
         val.Zone3 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone4")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSetAllVolumes_Zone4); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetAllVolumes-Zone4: %w", err)
     } else {
         val.Zone4 = v
@@ -1807,14 +1808,14 @@ func DecodeFusionSetAllVolumes(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarAttitudeOffset(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarAttitudeOffset
+    var val publicpgn.AirmarAttitudeOffset
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarAttitudeOffset-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -1823,7 +1824,7 @@ func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarAttitudeOffset-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1831,22 +1832,22 @@ func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = AirmarCommandConst(v)
+        val.ProprietaryId = publicpgn.AirmarCommandConst(v)
         if v != 32 {
             return nil, fmt.Errorf("match failed for AirmarAttitudeOffset-ProprietaryId: Expected %d != %d", 32, v)
         }
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AzimuthOffset")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarAttitudeOffset_AzimuthOffset); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-AzimuthOffset: %w", err)
     } else {
         val.AzimuthOffset = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PitchOffset")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarAttitudeOffset_PitchOffset); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-PitchOffset: %w", err)
     } else {
         val.PitchOffset = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RollOffset")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarAttitudeOffset_RollOffset); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarAttitudeOffset-RollOffset: %w", err)
     } else {
         val.RollOffset = v
@@ -1854,14 +1855,14 @@ func DecodeAirmarAttitudeOffset(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeAirmarSimulateMode(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarSimulateMode(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarSimulateMode
+    var val publicpgn.AirmarSimulateMode
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSimulateMode-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarSimulateMode-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -1870,7 +1871,7 @@ func DecodeAirmarSimulateMode(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSimulateMode-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarSimulateMode-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1878,7 +1879,7 @@ func DecodeAirmarSimulateMode(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSimulateMode-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = AirmarCommandConst(v)
+        val.ProprietaryId = publicpgn.AirmarCommandConst(v)
         if v != 35 {
             return nil, fmt.Errorf("match failed for AirmarSimulateMode-ProprietaryId: Expected %d != %d", 35, v)
         }
@@ -1886,20 +1887,20 @@ func DecodeAirmarSimulateMode(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSimulateMode-SimulateMode: %w", err)
     } else {
-        val.SimulateMode = OffOnConst(v)
+        val.SimulateMode = publicpgn.OffOnConst(v)
     }
     stream.skipBits(22)
 
     return val, nil
 }
-func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarCalibrateDepth(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarCalibrateDepth
+    var val publicpgn.AirmarCalibrateDepth
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarCalibrateDepth-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -1908,7 +1909,7 @@ func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarCalibrateDepth-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1916,12 +1917,12 @@ func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = AirmarCommandConst(v)
+        val.ProprietaryId = publicpgn.AirmarCommandConst(v)
         if v != 40 {
             return nil, fmt.Errorf("match failed for AirmarCalibrateDepth-ProprietaryId: Expected %d != %d", 40, v)
         }
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SpeedOfSoundMode")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarCalibrateDepth_SpeedOfSoundMode); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateDepth-SpeedOfSoundMode: %w", err)
     } else {
         val.SpeedOfSoundMode = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -1930,15 +1931,15 @@ func DecodeAirmarCalibrateDepth(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarCalibrateSpeed(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val AirmarCalibrateSpeed
+    var val publicpgn.AirmarCalibrateSpeed
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarCalibrateSpeed-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -1947,7 +1948,7 @@ func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarCalibrateSpeed-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -1955,12 +1956,12 @@ func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = AirmarCommandConst(v)
+        val.ProprietaryId = publicpgn.AirmarCommandConst(v)
         if v != 41 {
             return nil, fmt.Errorf("match failed for AirmarCalibrateSpeed-ProprietaryId: Expected %d != %d", 41, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("NumberOfPairsOfDataPoints")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AirmarCalibrateSpeed_NumberOfPairsOfDataPoints); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-NumberOfPairsOfDataPoints: %w", err)
     } else {
         val.NumberOfPairsOfDataPoints = v
@@ -1969,18 +1970,18 @@ func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *DataStream) (any, erro
         }
     }
     // decode repeating fields
-     val.Repeating1 = make([]AirmarCalibrateSpeedRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.AirmarCalibrateSpeedRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep AirmarCalibrateSpeedRepeating1
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("InputFrequency")); err != nil {
+        var rep publicpgn.AirmarCalibrateSpeedRepeating1
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarCalibrateSpeed_InputFrequency); err != nil {
             return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-InputFrequency: %w", err)
         } else {
             rep.InputFrequency = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("OutputSpeed")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarCalibrateSpeed_OutputSpeed); err != nil {
             return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-OutputSpeed: %w", err)
         } else {
             rep.OutputSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -1994,14 +1995,14 @@ func DecodeAirmarCalibrateSpeed(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarCalibrateTemperature(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarCalibrateTemperature
+    var val publicpgn.AirmarCalibrateTemperature
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarCalibrateTemperature-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -2010,7 +2011,7 @@ func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *DataStream) (any
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarCalibrateTemperature-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -2018,7 +2019,7 @@ func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *DataStream) (any
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = AirmarCommandConst(v)
+        val.ProprietaryId = publicpgn.AirmarCommandConst(v)
         if v != 42 {
             return nil, fmt.Errorf("match failed for AirmarCalibrateTemperature-ProprietaryId: Expected %d != %d", 42, v)
         }
@@ -2026,10 +2027,10 @@ func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *DataStream) (any
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-TemperatureInstance: %w", err)
     } else {
-        val.TemperatureInstance = AirmarTemperatureInstanceConst(v)
+        val.TemperatureInstance = publicpgn.AirmarTemperatureInstanceConst(v)
     }
     stream.skipBits(6)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TemperatureOffset")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarCalibrateTemperature_TemperatureOffset); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarCalibrateTemperature-TemperatureOffset: %w", err)
     } else {
         val.TemperatureOffset = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -2037,14 +2038,14 @@ func DecodeAirmarCalibrateTemperature(Info MessageInfo, stream *DataStream) (any
 
     return val, nil
 }
-func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarSpeedFilterNone(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarSpeedFilterNone
+    var val publicpgn.AirmarSpeedFilterNone
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarSpeedFilterNone-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -2053,7 +2054,7 @@ func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarSpeedFilterNone-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -2061,12 +2062,12 @@ func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = AirmarCommandConst(v)
+        val.ProprietaryId = publicpgn.AirmarCommandConst(v)
         if v != 43 {
             return nil, fmt.Errorf("match failed for AirmarSpeedFilterNone-ProprietaryId: Expected %d != %d", 43, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("FilterType")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AirmarSpeedFilterNone_FilterType); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-FilterType: %w", err)
     } else {
         val.FilterType = v
@@ -2075,7 +2076,7 @@ func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *DataStream) (any, err
         }
     }
     stream.skipBits(4)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SampleInterval")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarSpeedFilterNone_SampleInterval); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterNone-SampleInterval: %w", err)
     } else {
         val.SampleInterval = v
@@ -2083,14 +2084,14 @@ func DecodeAirmarSpeedFilterNone(Info MessageInfo, stream *DataStream) (any, err
 
     return val, nil
 }
-func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarSpeedFilterIir(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarSpeedFilterIir
+    var val publicpgn.AirmarSpeedFilterIir
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarSpeedFilterIir-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -2099,7 +2100,7 @@ func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarSpeedFilterIir-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -2107,12 +2108,12 @@ func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = AirmarCommandConst(v)
+        val.ProprietaryId = publicpgn.AirmarCommandConst(v)
         if v != 43 {
             return nil, fmt.Errorf("match failed for AirmarSpeedFilterIir-ProprietaryId: Expected %d != %d", 43, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("FilterType")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AirmarSpeedFilterIir_FilterType); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-FilterType: %w", err)
     } else {
         val.FilterType = v
@@ -2121,12 +2122,12 @@ func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *DataStream) (any, erro
         }
     }
     stream.skipBits(4)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SampleInterval")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarSpeedFilterIir_SampleInterval); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-SampleInterval: %w", err)
     } else {
         val.SampleInterval = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("FilterDuration")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarSpeedFilterIir_FilterDuration); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarSpeedFilterIir-FilterDuration: %w", err)
     } else {
         val.FilterDuration = v
@@ -2134,14 +2135,14 @@ func DecodeAirmarSpeedFilterIir(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarTemperatureFilterNone(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarTemperatureFilterNone
+    var val publicpgn.AirmarTemperatureFilterNone
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarTemperatureFilterNone-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -2150,7 +2151,7 @@ func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *DataStream) (an
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarTemperatureFilterNone-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -2158,12 +2159,12 @@ func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *DataStream) (an
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = AirmarCommandConst(v)
+        val.ProprietaryId = publicpgn.AirmarCommandConst(v)
         if v != 44 {
             return nil, fmt.Errorf("match failed for AirmarTemperatureFilterNone-ProprietaryId: Expected %d != %d", 44, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("FilterType")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AirmarTemperatureFilterNone_FilterType); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-FilterType: %w", err)
     } else {
         val.FilterType = v
@@ -2172,7 +2173,7 @@ func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *DataStream) (an
         }
     }
     stream.skipBits(4)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SampleInterval")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarTemperatureFilterNone_SampleInterval); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterNone-SampleInterval: %w", err)
     } else {
         val.SampleInterval = v
@@ -2180,14 +2181,14 @@ func DecodeAirmarTemperatureFilterNone(Info MessageInfo, stream *DataStream) (an
 
     return val, nil
 }
-func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarTemperatureFilterIir(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarTemperatureFilterIir
+    var val publicpgn.AirmarTemperatureFilterIir
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarTemperatureFilterIir-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -2196,7 +2197,7 @@ func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *DataStream) (any
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarTemperatureFilterIir-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -2204,12 +2205,12 @@ func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *DataStream) (any
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = AirmarCommandConst(v)
+        val.ProprietaryId = publicpgn.AirmarCommandConst(v)
         if v != 44 {
             return nil, fmt.Errorf("match failed for AirmarTemperatureFilterIir-ProprietaryId: Expected %d != %d", 44, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("FilterType")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AirmarTemperatureFilterIir_FilterType); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-FilterType: %w", err)
     } else {
         val.FilterType = v
@@ -2218,12 +2219,12 @@ func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *DataStream) (any
         }
     }
     stream.skipBits(4)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SampleInterval")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarTemperatureFilterIir_SampleInterval); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-SampleInterval: %w", err)
     } else {
         val.SampleInterval = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("FilterDuration")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarTemperatureFilterIir_FilterDuration); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarTemperatureFilterIir-FilterDuration: %w", err)
     } else {
         val.FilterDuration = v
@@ -2231,14 +2232,14 @@ func DecodeAirmarTemperatureFilterIir(Info MessageInfo, stream *DataStream) (any
 
     return val, nil
 }
-func DecodeAirmarNmea2000Options(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAirmarNmea2000Options(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AirmarNmea2000Options
+    var val publicpgn.AirmarNmea2000Options
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarNmea2000Options-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 135 {
             return nil, fmt.Errorf("match failed for AirmarNmea2000Options-ManufacturerCode: Expected %d != %d", 135, v)
         }
@@ -2247,7 +2248,7 @@ func DecodeAirmarNmea2000Options(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarNmea2000Options-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for AirmarNmea2000Options-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -2255,7 +2256,7 @@ func DecodeAirmarNmea2000Options(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarNmea2000Options-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = AirmarCommandConst(v)
+        val.ProprietaryId = publicpgn.AirmarCommandConst(v)
         if v != 46 {
             return nil, fmt.Errorf("match failed for AirmarNmea2000Options-ProprietaryId: Expected %d != %d", 46, v)
         }
@@ -2263,20 +2264,20 @@ func DecodeAirmarNmea2000Options(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AirmarNmea2000Options-TransmissionInterval: %w", err)
     } else {
-        val.TransmissionInterval = AirmarTransmissionIntervalConst(v)
+        val.TransmissionInterval = publicpgn.AirmarTransmissionIntervalConst(v)
     }
     stream.skipBits(22)
 
     return val, nil
 }
-func DecodeMaretronDeviationCalibrationResponse(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMaretronDeviationCalibrationResponse(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val MaretronDeviationCalibrationResponse
+    var val publicpgn.MaretronDeviationCalibrationResponse
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDeviationCalibrationResponse-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 137 {
             return nil, fmt.Errorf("match failed for MaretronDeviationCalibrationResponse-ManufacturerCode: Expected %d != %d", 137, v)
         }
@@ -2285,7 +2286,7 @@ func DecodeMaretronDeviationCalibrationResponse(Info MessageInfo, stream *DataSt
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDeviationCalibrationResponse-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for MaretronDeviationCalibrationResponse-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -2293,12 +2294,12 @@ func DecodeMaretronDeviationCalibrationResponse(Info MessageInfo, stream *DataSt
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDeviationCalibrationResponse-ProductCode: %w", err)
     } else {
-        val.ProductCode = MaretronProductCodeConst(v)
+        val.ProductCode = publicpgn.MaretronProductCodeConst(v)
     }
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDeviationCalibrationResponse-SoftwareCode: %w", err)
     } else {
-        val.SoftwareCode = MaretronSoftwareCodeConst(v)
+        val.SoftwareCode = publicpgn.MaretronSoftwareCodeConst(v)
         if v != 1 {
             return nil, fmt.Errorf("match failed for MaretronDeviationCalibrationResponse-SoftwareCode: Expected %d != %d", 1, v)
         }
@@ -2306,7 +2307,7 @@ func DecodeMaretronDeviationCalibrationResponse(Info MessageInfo, stream *DataSt
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDeviationCalibrationResponse-Command: %w", err)
     } else {
-        val.Command = MaretronCommandConst(v)
+        val.Command = publicpgn.MaretronCommandConst(v)
         if v != 80 {
             return nil, fmt.Errorf("match failed for MaretronDeviationCalibrationResponse-Command: Expected %d != %d", 80, v)
         }
@@ -2314,19 +2315,19 @@ func DecodeMaretronDeviationCalibrationResponse(Info MessageInfo, stream *DataSt
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDeviationCalibrationResponse-Status: %w", err)
     } else {
-        val.Status = MaretronStatusDeviationConst(v)
+        val.Status = publicpgn.MaretronStatusDeviationConst(v)
     }
 
     return val, nil
 }
-func DecodeMaretronSlaveResponse(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMaretronSlaveResponse(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val MaretronSlaveResponse
+    var val publicpgn.MaretronSlaveResponse
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 137 {
             return nil, fmt.Errorf("match failed for MaretronSlaveResponse-ManufacturerCode: Expected %d != %d", 137, v)
         }
@@ -2335,27 +2336,27 @@ func DecodeMaretronSlaveResponse(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for MaretronSlaveResponse-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("ProductCode")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_MaretronSlaveResponse_ProductCode); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-ProductCode: %w", err)
     } else {
         val.ProductCode = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("SoftwareCode")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_MaretronSlaveResponse_SoftwareCode); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-SoftwareCode: %w", err)
     } else {
         val.SoftwareCode = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Command")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSlaveResponse_Command); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-Command: %w", err)
     } else {
         val.Command = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Status")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSlaveResponse_Status); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSlaveResponse-Status: %w", err)
     } else {
         val.Status = v
@@ -2363,51 +2364,51 @@ func DecodeMaretronSlaveResponse(Info MessageInfo, stream *DataStream) (any, err
 
     return val, nil
 }
-func DecodeAlert(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAlert(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Alert
+    var val publicpgn.Alert
     val.Info = Info
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertType: %w", err)
     } else {
-        val.AlertType = AlertTypeConst(v)
+        val.AlertType = publicpgn.AlertTypeConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertCategory: %w", err)
     } else {
-        val.AlertCategory = AlertCategoryConst(v)
+        val.AlertCategory = publicpgn.AlertCategoryConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AlertSystem")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Alert_AlertSystem); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertSystem: %w", err)
     } else {
         val.AlertSystem = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AlertSubSystem")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Alert_AlertSubSystem); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertSubSystem: %w", err)
     } else {
         val.AlertSubSystem = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AlertId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_Alert_AlertId); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertId: %w", err)
     } else {
         val.AlertId = v
     }
-    if v, err := ReadRaw[uint64](stream, val.GetFieldSpec("DataSourceNetworkIdName")); err != nil {
+    if v, err := ReadRaw[uint64](stream, &fieldSpec_Alert_DataSourceNetworkIdName); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-DataSourceNetworkIdName: %w", err)
     } else {
         val.DataSourceNetworkIdName = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DataSourceInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Alert_DataSourceInstance); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-DataSourceInstance: %w", err)
     } else {
         val.DataSourceInstance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DataSourceIndexSource")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Alert_DataSourceIndexSource); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-DataSourceIndexSource: %w", err)
     } else {
         val.DataSourceIndexSource = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AlertOccurrenceNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Alert_AlertOccurrenceNumber); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertOccurrenceNumber: %w", err)
     } else {
         val.AlertOccurrenceNumber = v
@@ -2415,35 +2416,35 @@ func DecodeAlert(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-TemporarySilenceStatus: %w", err)
     } else {
-        val.TemporarySilenceStatus = YesNoConst(v)
+        val.TemporarySilenceStatus = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AcknowledgeStatus: %w", err)
     } else {
-        val.AcknowledgeStatus = YesNoConst(v)
+        val.AcknowledgeStatus = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-EscalationStatus: %w", err)
     } else {
-        val.EscalationStatus = YesNoConst(v)
+        val.EscalationStatus = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-TemporarySilenceSupport: %w", err)
     } else {
-        val.TemporarySilenceSupport = YesNoConst(v)
+        val.TemporarySilenceSupport = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AcknowledgeSupport: %w", err)
     } else {
-        val.AcknowledgeSupport = YesNoConst(v)
+        val.AcknowledgeSupport = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-EscalationSupport: %w", err)
     } else {
-        val.EscalationSupport = YesNoConst(v)
+        val.EscalationSupport = publicpgn.YesNoConst(v)
     }
     stream.skipBits(2)
-    if v, err := ReadRaw[uint64](stream, val.GetFieldSpec("AcknowledgeSourceNetworkIdName")); err != nil {
+    if v, err := ReadRaw[uint64](stream, &fieldSpec_Alert_AcknowledgeSourceNetworkIdName); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AcknowledgeSourceNetworkIdName: %w", err)
     } else {
         val.AcknowledgeSourceNetworkIdName = v
@@ -2451,14 +2452,14 @@ func DecodeAlert(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-TriggerCondition: %w", err)
     } else {
-        val.TriggerCondition = AlertTriggerConditionConst(v)
+        val.TriggerCondition = publicpgn.AlertTriggerConditionConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-ThresholdStatus: %w", err)
     } else {
-        val.ThresholdStatus = AlertThresholdStatusConst(v)
+        val.ThresholdStatus = publicpgn.AlertThresholdStatusConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AlertPriority")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Alert_AlertPriority); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertPriority: %w", err)
     } else {
         val.AlertPriority = v
@@ -2466,61 +2467,61 @@ func DecodeAlert(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for Alert-AlertState: %w", err)
     } else {
-        val.AlertState = AlertStateConst(v)
+        val.AlertState = publicpgn.AlertStateConst(v)
     }
 
     return val, nil
 }
-func DecodeAlertResponse(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAlertResponse(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AlertResponse
+    var val publicpgn.AlertResponse
     val.Info = Info
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AlertType: %w", err)
     } else {
-        val.AlertType = AlertTypeConst(v)
+        val.AlertType = publicpgn.AlertTypeConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AlertCategory: %w", err)
     } else {
-        val.AlertCategory = AlertCategoryConst(v)
+        val.AlertCategory = publicpgn.AlertCategoryConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AlertSystem")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertResponse_AlertSystem); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AlertSystem: %w", err)
     } else {
         val.AlertSystem = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AlertSubSystem")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertResponse_AlertSubSystem); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AlertSubSystem: %w", err)
     } else {
         val.AlertSubSystem = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AlertId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_AlertResponse_AlertId); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AlertId: %w", err)
     } else {
         val.AlertId = v
     }
-    if v, err := ReadRaw[uint64](stream, val.GetFieldSpec("DataSourceNetworkIdName")); err != nil {
+    if v, err := ReadRaw[uint64](stream, &fieldSpec_AlertResponse_DataSourceNetworkIdName); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-DataSourceNetworkIdName: %w", err)
     } else {
         val.DataSourceNetworkIdName = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DataSourceInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertResponse_DataSourceInstance); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-DataSourceInstance: %w", err)
     } else {
         val.DataSourceInstance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DataSourceIndexSource")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertResponse_DataSourceIndexSource); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-DataSourceIndexSource: %w", err)
     } else {
         val.DataSourceIndexSource = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AlertOccurrenceNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertResponse_AlertOccurrenceNumber); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AlertOccurrenceNumber: %w", err)
     } else {
         val.AlertOccurrenceNumber = v
     }
-    if v, err := ReadRaw[uint64](stream, val.GetFieldSpec("AcknowledgeSourceNetworkIdName")); err != nil {
+    if v, err := ReadRaw[uint64](stream, &fieldSpec_AlertResponse_AcknowledgeSourceNetworkIdName); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-AcknowledgeSourceNetworkIdName: %w", err)
     } else {
         val.AcknowledgeSourceNetworkIdName = v
@@ -2528,57 +2529,57 @@ func DecodeAlertResponse(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AlertResponse-ResponseCommand: %w", err)
     } else {
-        val.ResponseCommand = AlertResponseCommandConst(v)
+        val.ResponseCommand = publicpgn.AlertResponseCommandConst(v)
     }
     stream.skipBits(6)
 
     return val, nil
 }
-func DecodeAlertText(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAlertText(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AlertText
+    var val publicpgn.AlertText
     val.Info = Info
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertType: %w", err)
     } else {
-        val.AlertType = AlertTypeConst(v)
+        val.AlertType = publicpgn.AlertTypeConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertCategory: %w", err)
     } else {
-        val.AlertCategory = AlertCategoryConst(v)
+        val.AlertCategory = publicpgn.AlertCategoryConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AlertSystem")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertText_AlertSystem); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertSystem: %w", err)
     } else {
         val.AlertSystem = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AlertSubSystem")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertText_AlertSubSystem); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertSubSystem: %w", err)
     } else {
         val.AlertSubSystem = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AlertId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_AlertText_AlertId); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertId: %w", err)
     } else {
         val.AlertId = v
     }
-    if v, err := ReadRaw[uint64](stream, val.GetFieldSpec("DataSourceNetworkIdName")); err != nil {
+    if v, err := ReadRaw[uint64](stream, &fieldSpec_AlertText_DataSourceNetworkIdName); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-DataSourceNetworkIdName: %w", err)
     } else {
         val.DataSourceNetworkIdName = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DataSourceInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertText_DataSourceInstance); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-DataSourceInstance: %w", err)
     } else {
         val.DataSourceInstance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DataSourceIndexSource")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertText_DataSourceIndexSource); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-DataSourceIndexSource: %w", err)
     } else {
         val.DataSourceIndexSource = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AlertOccurrenceNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertText_AlertOccurrenceNumber); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertOccurrenceNumber: %w", err)
     } else {
         val.AlertOccurrenceNumber = v
@@ -2586,7 +2587,7 @@ func DecodeAlertText(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-LanguageId: %w", err)
     } else {
-        val.LanguageId = AlertLanguageIdConst(v)
+        val.LanguageId = publicpgn.AlertLanguageIdConst(v)
     }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertTextDescription: %w", err)
@@ -2601,11 +2602,11 @@ func DecodeAlertText(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeSystemTime(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSystemTime(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SystemTime
+    var val publicpgn.SystemTime
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SystemTime_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for SystemTime-Sid: %w", err)
     } else {
         val.Sid = v
@@ -2613,15 +2614,15 @@ func DecodeSystemTime(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for SystemTime-Source: %w", err)
     } else {
-        val.Source = SystemTimeConst(v)
+        val.Source = publicpgn.SystemTimeConst(v)
     }
     stream.skipBits(4)
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Date")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_SystemTime_Date); err != nil {
         return nil, fmt.Errorf("parse failed for SystemTime-Date: %w", err)
     } else {
         val.Date = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Time")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SystemTime_Time); err != nil {
         return nil, fmt.Errorf("parse failed for SystemTime-Time: %w", err)
     } else {
         val.Time = v
@@ -2629,16 +2630,16 @@ func DecodeSystemTime(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeHeartbeat(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeHeartbeat(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Heartbeat
+    var val publicpgn.Heartbeat
     val.Info = Info
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DataTransmitOffset")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Heartbeat_DataTransmitOffset); err != nil {
         return nil, fmt.Errorf("parse failed for Heartbeat-DataTransmitOffset: %w", err)
     } else {
         val.DataTransmitOffset = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SequenceCounter")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Heartbeat_SequenceCounter); err != nil {
         return nil, fmt.Errorf("parse failed for Heartbeat-SequenceCounter: %w", err)
     } else {
         val.SequenceCounter = v
@@ -2646,32 +2647,32 @@ func DecodeHeartbeat(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for Heartbeat-Controller1State: %w", err)
     } else {
-        val.Controller1State = ControllerStateConst(v)
+        val.Controller1State = publicpgn.ControllerStateConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for Heartbeat-Controller2State: %w", err)
     } else {
-        val.Controller2State = ControllerStateConst(v)
+        val.Controller2State = publicpgn.ControllerStateConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for Heartbeat-EquipmentStatus: %w", err)
     } else {
-        val.EquipmentStatus = EquipmentStatusConst(v)
+        val.EquipmentStatus = publicpgn.EquipmentStatusConst(v)
     }
     stream.skipBits(34)
 
     return val, nil
 }
-func DecodeProductInformation(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeProductInformation(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val ProductInformation
+    var val publicpgn.ProductInformation
     val.Info = Info
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Nmea2000Version")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ProductInformation_Nmea2000Version); err != nil {
         return nil, fmt.Errorf("parse failed for ProductInformation-Nmea2000Version: %w", err)
     } else {
         val.Nmea2000Version = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("ProductCode")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_ProductInformation_ProductCode); err != nil {
         return nil, fmt.Errorf("parse failed for ProductInformation-ProductCode: %w", err)
     } else {
         val.ProductCode = v
@@ -2699,9 +2700,9 @@ func DecodeProductInformation(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for ProductInformation-CertificationLevel: %w", err)
     } else {
-        val.CertificationLevel = CertificationLevelConst(v)
+        val.CertificationLevel = publicpgn.CertificationLevelConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("LoadEquivalency")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ProductInformation_LoadEquivalency); err != nil {
         return nil, fmt.Errorf("parse failed for ProductInformation-LoadEquivalency: %w", err)
     } else {
         val.LoadEquivalency = v
@@ -2709,9 +2710,9 @@ func DecodeProductInformation(Info MessageInfo, stream *DataStream) (any, error)
 
     return val, nil
 }
-func DecodeConfigurationInformation(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeConfigurationInformation(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val ConfigurationInformation
+    var val publicpgn.ConfigurationInformation
     val.Info = Info
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for ConfigurationInformation-InstallationDescription1: %w", err)
@@ -2731,16 +2732,16 @@ func DecodeConfigurationInformation(Info MessageInfo, stream *DataStream) (any, 
 
     return val, nil
 }
-func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeManOverboardNotification(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val ManOverboardNotification
+    var val publicpgn.ManOverboardNotification
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ManOverboardNotification_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("MobEmitterId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_ManOverboardNotification_MobEmitterId); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-MobEmitterId: %w", err)
     } else {
         val.MobEmitterId = v
@@ -2748,10 +2749,10 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, 
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-ManOverboardStatus: %w", err)
     } else {
-        val.ManOverboardStatus = MobStatusConst(v)
+        val.ManOverboardStatus = publicpgn.MobStatusConst(v)
     }
     stream.skipBits(5)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("ActivationTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ManOverboardNotification_ActivationTime); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-ActivationTime: %w", err)
     } else {
         val.ActivationTime = v
@@ -2759,25 +2760,25 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, 
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-PositionSource: %w", err)
     } else {
-        val.PositionSource = MobPositionSourceConst(v)
+        val.PositionSource = publicpgn.MobPositionSourceConst(v)
     }
     stream.skipBits(5)
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("PositionDate")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_ManOverboardNotification_PositionDate); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-PositionDate: %w", err)
     } else {
         val.PositionDate = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PositionTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ManOverboardNotification_PositionTime); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-PositionTime: %w", err)
     } else {
         val.PositionTime = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Latitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_ManOverboardNotification_Latitude); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-Latitude: %w", err)
     } else {
         val.Latitude = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Longitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_ManOverboardNotification_Longitude); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-Longitude: %w", err)
     } else {
         val.Longitude = v
@@ -2785,20 +2786,20 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, 
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-CogReference: %w", err)
     } else {
-        val.CogReference = DirectionReferenceConst(v)
+        val.CogReference = publicpgn.DirectionReferenceConst(v)
     }
     stream.skipBits(6)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Cog")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ManOverboardNotification_Cog); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-Cog: %w", err)
     } else {
         val.Cog = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Sog")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ManOverboardNotification_Sog); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-Sog: %w", err)
     } else {
         val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("MmsiOfVesselOfOrigin")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_ManOverboardNotification_MmsiOfVesselOfOrigin); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-MmsiOfVesselOfOrigin: %w", err)
     } else {
         val.MmsiOfVesselOfOrigin = v
@@ -2806,98 +2807,98 @@ func DecodeManOverboardNotification(Info MessageInfo, stream *DataStream) (any, 
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for ManOverboardNotification-MobEmitterBatteryLowStatus: %w", err)
     } else {
-        val.MobEmitterBatteryLowStatus = LowBatteryConst(v)
+        val.MobEmitterBatteryLowStatus = publicpgn.LowBatteryConst(v)
     }
     stream.skipBits(5)
 
     return val, nil
 }
-func DecodeHeadingTrackControl(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeHeadingTrackControl(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val HeadingTrackControl
+    var val publicpgn.HeadingTrackControl
     val.Info = Info
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-RudderLimitExceeded: %w", err)
     } else {
-        val.RudderLimitExceeded = YesNoConst(v)
+        val.RudderLimitExceeded = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffHeadingLimitExceeded: %w", err)
     } else {
-        val.OffHeadingLimitExceeded = YesNoConst(v)
+        val.OffHeadingLimitExceeded = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffTrackLimitExceeded: %w", err)
     } else {
-        val.OffTrackLimitExceeded = YesNoConst(v)
+        val.OffTrackLimitExceeded = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-Override: %w", err)
     } else {
-        val.Override = YesNoConst(v)
+        val.Override = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-SteeringMode: %w", err)
     } else {
-        val.SteeringMode = SteeringModeConst(v)
+        val.SteeringMode = publicpgn.SteeringModeConst(v)
     }
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-TurnMode: %w", err)
     } else {
-        val.TurnMode = TurnModeConst(v)
+        val.TurnMode = publicpgn.TurnModeConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-HeadingReference: %w", err)
     } else {
-        val.HeadingReference = DirectionReferenceConst(v)
+        val.HeadingReference = publicpgn.DirectionReferenceConst(v)
     }
     stream.skipBits(5)
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-CommandedRudderDirection: %w", err)
     } else {
-        val.CommandedRudderDirection = DirectionRudderConst(v)
+        val.CommandedRudderDirection = publicpgn.DirectionRudderConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("CommandedRudderAngle")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_HeadingTrackControl_CommandedRudderAngle); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-CommandedRudderAngle: %w", err)
     } else {
         val.CommandedRudderAngle = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("HeadingToSteerCourse")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_HeadingTrackControl_HeadingToSteerCourse); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-HeadingToSteerCourse: %w", err)
     } else {
         val.HeadingToSteerCourse = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Track")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_HeadingTrackControl_Track); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-Track: %w", err)
     } else {
         val.Track = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RudderLimit")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_HeadingTrackControl_RudderLimit); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-RudderLimit: %w", err)
     } else {
         val.RudderLimit = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("OffHeadingLimit")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_HeadingTrackControl_OffHeadingLimit); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffHeadingLimit: %w", err)
     } else {
         val.OffHeadingLimit = v
     }
-    if v, err := ReadRaw[int16](stream, val.GetFieldSpec("RadiusOfTurnOrder")); err != nil {
+    if v, err := ReadRaw[int16](stream, &fieldSpec_HeadingTrackControl_RadiusOfTurnOrder); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-RadiusOfTurnOrder: %w", err)
     } else {
         val.RadiusOfTurnOrder = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RateOfTurnOrder")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_HeadingTrackControl_RateOfTurnOrder); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-RateOfTurnOrder: %w", err)
     } else {
         val.RateOfTurnOrder = v
     }
-    if v, err := ReadRaw[int16](stream, val.GetFieldSpec("OffTrackLimit")); err != nil {
+    if v, err := ReadRaw[int16](stream, &fieldSpec_HeadingTrackControl_OffTrackLimit); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-OffTrackLimit: %w", err)
     } else {
         val.OffTrackLimit = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("VesselHeading")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_HeadingTrackControl_VesselHeading); err != nil {
         return nil, fmt.Errorf("parse failed for HeadingTrackControl-VesselHeading: %w", err)
     } else {
         val.VesselHeading = v
@@ -2905,11 +2906,11 @@ func DecodeHeadingTrackControl(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeRudder(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRudder(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Rudder
+    var val publicpgn.Rudder
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Rudder_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for Rudder-Instance: %w", err)
     } else {
         val.Instance = v
@@ -2917,15 +2918,15 @@ func DecodeRudder(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for Rudder-DirectionOrder: %w", err)
     } else {
-        val.DirectionOrder = DirectionRudderConst(v)
+        val.DirectionOrder = publicpgn.DirectionRudderConst(v)
     }
     stream.skipBits(5)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AngleOrder")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Rudder_AngleOrder); err != nil {
         return nil, fmt.Errorf("parse failed for Rudder-AngleOrder: %w", err)
     } else {
         val.AngleOrder = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Position")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Rudder_Position); err != nil {
         return nil, fmt.Errorf("parse failed for Rudder-Position: %w", err)
     } else {
         val.Position = v
@@ -2934,26 +2935,26 @@ func DecodeRudder(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeVesselHeading(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeVesselHeading(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val VesselHeading
+    var val publicpgn.VesselHeading
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_VesselHeading_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for VesselHeading-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Heading")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_VesselHeading_Heading); err != nil {
         return nil, fmt.Errorf("parse failed for VesselHeading-Heading: %w", err)
     } else {
         val.Heading = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Deviation")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_VesselHeading_Deviation); err != nil {
         return nil, fmt.Errorf("parse failed for VesselHeading-Deviation: %w", err)
     } else {
         val.Deviation = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Variation")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_VesselHeading_Variation); err != nil {
         return nil, fmt.Errorf("parse failed for VesselHeading-Variation: %w", err)
     } else {
         val.Variation = v
@@ -2961,22 +2962,22 @@ func DecodeVesselHeading(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for VesselHeading-Reference: %w", err)
     } else {
-        val.Reference = DirectionReferenceConst(v)
+        val.Reference = publicpgn.DirectionReferenceConst(v)
     }
     stream.skipBits(6)
 
     return val, nil
 }
-func DecodeRateOfTurn(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRateOfTurn(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val RateOfTurn
+    var val publicpgn.RateOfTurn
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_RateOfTurn_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for RateOfTurn-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Rate")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_RateOfTurn_Rate); err != nil {
         return nil, fmt.Errorf("parse failed for RateOfTurn-Rate: %w", err)
     } else {
         val.Rate = v
@@ -2985,26 +2986,26 @@ func DecodeRateOfTurn(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeAttitude(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAttitude(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Attitude
+    var val publicpgn.Attitude
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Attitude_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for Attitude-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Yaw")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Attitude_Yaw); err != nil {
         return nil, fmt.Errorf("parse failed for Attitude-Yaw: %w", err)
     } else {
         val.Yaw = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Pitch")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Attitude_Pitch); err != nil {
         return nil, fmt.Errorf("parse failed for Attitude-Pitch: %w", err)
     } else {
         val.Pitch = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Roll")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Attitude_Roll); err != nil {
         return nil, fmt.Errorf("parse failed for Attitude-Roll: %w", err)
     } else {
         val.Roll = v
@@ -3013,11 +3014,11 @@ func DecodeAttitude(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeMagneticVariation(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMagneticVariation(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val MagneticVariation
+    var val publicpgn.MagneticVariation
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MagneticVariation_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for MagneticVariation-Sid: %w", err)
     } else {
         val.Sid = v
@@ -3025,15 +3026,15 @@ func DecodeMagneticVariation(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for MagneticVariation-Source: %w", err)
     } else {
-        val.Source = MagneticVariationConst(v)
+        val.Source = publicpgn.MagneticVariationConst(v)
     }
     stream.skipBits(4)
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AgeOfService")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_MagneticVariation_AgeOfService); err != nil {
         return nil, fmt.Errorf("parse failed for MagneticVariation-AgeOfService: %w", err)
     } else {
         val.AgeOfService = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Variation")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_MagneticVariation_Variation); err != nil {
         return nil, fmt.Errorf("parse failed for MagneticVariation-Variation: %w", err)
     } else {
         val.Variation = v
@@ -3042,26 +3043,26 @@ func DecodeMagneticVariation(Info MessageInfo, stream *DataStream) (any, error) 
 
     return val, nil
 }
-func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeEngineParametersRapidUpdate(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val EngineParametersRapidUpdate
+    var val publicpgn.EngineParametersRapidUpdate
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-Instance: %w", err)
     } else {
-        val.Instance = EngineInstanceConst(v)
+        val.Instance = publicpgn.EngineInstanceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Speed")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EngineParametersRapidUpdate_Speed); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-Speed: %w", err)
     } else {
         val.Speed = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("BoostPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EngineParametersRapidUpdate_BoostPressure); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-BoostPressure: %w", err)
     } else {
         val.BoostPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("TiltTrim")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_EngineParametersRapidUpdate_TiltTrim); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersRapidUpdate-TiltTrim: %w", err)
     } else {
         val.TiltTrim = v
@@ -3070,51 +3071,51 @@ func DecodeEngineParametersRapidUpdate(Info MessageInfo, stream *DataStream) (an
 
     return val, nil
 }
-func DecodeEngineParametersDynamic(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeEngineParametersDynamic(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val EngineParametersDynamic
+    var val publicpgn.EngineParametersDynamic
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-Instance: %w", err)
     } else {
-        val.Instance = EngineInstanceConst(v)
+        val.Instance = publicpgn.EngineInstanceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("OilPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EngineParametersDynamic_OilPressure); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-OilPressure: %w", err)
     } else {
         val.OilPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("OilTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EngineParametersDynamic_OilTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-OilTemperature: %w", err)
     } else {
         val.OilTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Temperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EngineParametersDynamic_Temperature); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-Temperature: %w", err)
     } else {
         val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AlternatorPotential")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EngineParametersDynamic_AlternatorPotential); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-AlternatorPotential: %w", err)
     } else {
         val.AlternatorPotential = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("FuelRate")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EngineParametersDynamic_FuelRate); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelRate: %w", err)
     } else {
         val.FuelRate = nullableUnit(units.LitersPerHour, v, units.NewFlow)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("TotalEngineHours")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_EngineParametersDynamic_TotalEngineHours); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-TotalEngineHours: %w", err)
     } else {
         val.TotalEngineHours = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("CoolantPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EngineParametersDynamic_CoolantPressure); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-CoolantPressure: %w", err)
     } else {
         val.CoolantPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("FuelPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EngineParametersDynamic_FuelPressure); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-FuelPressure: %w", err)
     } else {
         val.FuelPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -3123,19 +3124,19 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-DiscreteStatus1: %w", err)
     } else {
-        val.DiscreteStatus1 = EngineStatus1Const(v)
+        val.DiscreteStatus1 = publicpgn.EngineStatus1Const(v)
     }
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-DiscreteStatus2: %w", err)
     } else {
-        val.DiscreteStatus2 = EngineStatus2Const(v)
+        val.DiscreteStatus2 = publicpgn.EngineStatus2Const(v)
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("EngineLoad")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_EngineParametersDynamic_EngineLoad); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-EngineLoad: %w", err)
     } else {
         val.EngineLoad = v
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("EngineTorque")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_EngineParametersDynamic_EngineTorque); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersDynamic-EngineTorque: %w", err)
     } else {
         val.EngineTorque = v
@@ -3143,32 +3144,32 @@ func DecodeEngineParametersDynamic(Info MessageInfo, stream *DataStream) (any, e
 
     return val, nil
 }
-func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeTransmissionParametersDynamic(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val TransmissionParametersDynamic
+    var val publicpgn.TransmissionParametersDynamic
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-Instance: %w", err)
     } else {
-        val.Instance = EngineInstanceConst(v)
+        val.Instance = publicpgn.EngineInstanceConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-TransmissionGear: %w", err)
     } else {
-        val.TransmissionGear = GearStatusConst(v)
+        val.TransmissionGear = publicpgn.GearStatusConst(v)
     }
     stream.skipBits(6)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("OilPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TransmissionParametersDynamic_OilPressure); err != nil {
         return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-OilPressure: %w", err)
     } else {
         val.OilPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("OilTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TransmissionParametersDynamic_OilTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-OilTemperature: %w", err)
     } else {
         val.OilTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DiscreteStatus1")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_TransmissionParametersDynamic_DiscreteStatus1); err != nil {
         return nil, fmt.Errorf("parse failed for TransmissionParametersDynamic-DiscreteStatus1: %w", err)
     } else {
         val.DiscreteStatus1 = v
@@ -3177,26 +3178,26 @@ func DecodeTransmissionParametersDynamic(Info MessageInfo, stream *DataStream) (
 
     return val, nil
 }
-func DecodeTripParametersVessel(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeTripParametersVessel(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val TripParametersVessel
+    var val publicpgn.TripParametersVessel
     val.Info = Info
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TimeToEmpty")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TripParametersVessel_TimeToEmpty); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersVessel-TimeToEmpty: %w", err)
     } else {
         val.TimeToEmpty = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DistanceToEmpty")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TripParametersVessel_DistanceToEmpty); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersVessel-DistanceToEmpty: %w", err)
     } else {
         val.DistanceToEmpty = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("EstimatedFuelRemaining")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_TripParametersVessel_EstimatedFuelRemaining); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersVessel-EstimatedFuelRemaining: %w", err)
     } else {
         val.EstimatedFuelRemaining = nullableUnit(units.Liter, v, units.NewVolume)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TripRunTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TripParametersVessel_TripRunTime); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersVessel-TripRunTime: %w", err)
     } else {
         val.TripRunTime = v
@@ -3204,31 +3205,31 @@ func DecodeTripParametersVessel(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeTripParametersEngine(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeTripParametersEngine(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val TripParametersEngine
+    var val publicpgn.TripParametersEngine
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersEngine-Instance: %w", err)
     } else {
-        val.Instance = EngineInstanceConst(v)
+        val.Instance = publicpgn.EngineInstanceConst(v)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("TripFuelUsed")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_TripParametersEngine_TripFuelUsed); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersEngine-TripFuelUsed: %w", err)
     } else {
         val.TripFuelUsed = nullableUnit(units.Liter, v, units.NewVolume)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("FuelRateAverage")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TripParametersEngine_FuelRateAverage); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateAverage: %w", err)
     } else {
         val.FuelRateAverage = nullableUnit(units.LitersPerHour, v, units.NewFlow)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("FuelRateEconomy")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TripParametersEngine_FuelRateEconomy); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersEngine-FuelRateEconomy: %w", err)
     } else {
         val.FuelRateEconomy = nullableUnit(units.LitersPerHour, v, units.NewFlow)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("InstantaneousFuelEconomy")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TripParametersEngine_InstantaneousFuelEconomy); err != nil {
         return nil, fmt.Errorf("parse failed for TripParametersEngine-InstantaneousFuelEconomy: %w", err)
     } else {
         val.InstantaneousFuelEconomy = nullableUnit(units.LitersPerHour, v, units.NewFlow)
@@ -3236,16 +3237,16 @@ func DecodeTripParametersEngine(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeEngineParametersStatic(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeEngineParametersStatic(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val EngineParametersStatic
+    var val publicpgn.EngineParametersStatic
     val.Info = Info
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersStatic-Instance: %w", err)
     } else {
-        val.Instance = EngineInstanceConst(v)
+        val.Instance = publicpgn.EngineInstanceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RatedEngineSpeed")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EngineParametersStatic_RatedEngineSpeed); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersStatic-RatedEngineSpeed: %w", err)
     } else {
         val.RatedEngineSpeed = v
@@ -3263,46 +3264,46 @@ func DecodeEngineParametersStatic(Info MessageInfo, stream *DataStream) (any, er
 
     return val, nil
 }
-func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeLoadControllerConnectionStateControl(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val LoadControllerConnectionStateControl
+    var val publicpgn.LoadControllerConnectionStateControl
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SequenceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_LoadControllerConnectionStateControl_SequenceId); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-SequenceId: %w", err)
     } else {
         val.SequenceId = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ConnectionId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_LoadControllerConnectionStateControl_ConnectionId); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-ConnectionId: %w", err)
     } else {
         val.ConnectionId = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("State")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_LoadControllerConnectionStateControl_State); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-State: %w", err)
     } else {
         val.State = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Status")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_LoadControllerConnectionStateControl_Status); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Status: %w", err)
     } else {
         val.Status = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("OperationalStatusControl")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_LoadControllerConnectionStateControl_OperationalStatusControl); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-OperationalStatusControl: %w", err)
     } else {
         val.OperationalStatusControl = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("PwmDutyCycle")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_LoadControllerConnectionStateControl_PwmDutyCycle); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-PwmDutyCycle: %w", err)
     } else {
         val.PwmDutyCycle = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Timeon")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_LoadControllerConnectionStateControl_Timeon); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Timeon: %w", err)
     } else {
         val.Timeon = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Timeoff")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_LoadControllerConnectionStateControl_Timeoff); err != nil {
         return nil, fmt.Errorf("parse failed for LoadControllerConnectionStateControl-Timeoff: %w", err)
     } else {
         val.Timeoff = v
@@ -3310,11 +3311,11 @@ func DecodeLoadControllerConnectionStateControl(Info MessageInfo, stream *DataSt
 
     return val, nil
 }
-func DecodeBinarySwitchBankStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeBinarySwitchBankStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val BinarySwitchBankStatus
+    var val publicpgn.BinarySwitchBankStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_BinarySwitchBankStatus_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Instance: %w", err)
     } else {
         val.Instance = v
@@ -3322,151 +3323,151 @@ func DecodeBinarySwitchBankStatus(Info MessageInfo, stream *DataStream) (any, er
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator1: %w", err)
     } else {
-        val.Indicator1 = OffOnConst(v)
+        val.Indicator1 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator2: %w", err)
     } else {
-        val.Indicator2 = OffOnConst(v)
+        val.Indicator2 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator3: %w", err)
     } else {
-        val.Indicator3 = OffOnConst(v)
+        val.Indicator3 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator4: %w", err)
     } else {
-        val.Indicator4 = OffOnConst(v)
+        val.Indicator4 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator5: %w", err)
     } else {
-        val.Indicator5 = OffOnConst(v)
+        val.Indicator5 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator6: %w", err)
     } else {
-        val.Indicator6 = OffOnConst(v)
+        val.Indicator6 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator7: %w", err)
     } else {
-        val.Indicator7 = OffOnConst(v)
+        val.Indicator7 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator8: %w", err)
     } else {
-        val.Indicator8 = OffOnConst(v)
+        val.Indicator8 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator9: %w", err)
     } else {
-        val.Indicator9 = OffOnConst(v)
+        val.Indicator9 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator10: %w", err)
     } else {
-        val.Indicator10 = OffOnConst(v)
+        val.Indicator10 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator11: %w", err)
     } else {
-        val.Indicator11 = OffOnConst(v)
+        val.Indicator11 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator12: %w", err)
     } else {
-        val.Indicator12 = OffOnConst(v)
+        val.Indicator12 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator13: %w", err)
     } else {
-        val.Indicator13 = OffOnConst(v)
+        val.Indicator13 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator14: %w", err)
     } else {
-        val.Indicator14 = OffOnConst(v)
+        val.Indicator14 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator15: %w", err)
     } else {
-        val.Indicator15 = OffOnConst(v)
+        val.Indicator15 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator16: %w", err)
     } else {
-        val.Indicator16 = OffOnConst(v)
+        val.Indicator16 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator17: %w", err)
     } else {
-        val.Indicator17 = OffOnConst(v)
+        val.Indicator17 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator18: %w", err)
     } else {
-        val.Indicator18 = OffOnConst(v)
+        val.Indicator18 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator19: %w", err)
     } else {
-        val.Indicator19 = OffOnConst(v)
+        val.Indicator19 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator20: %w", err)
     } else {
-        val.Indicator20 = OffOnConst(v)
+        val.Indicator20 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator21: %w", err)
     } else {
-        val.Indicator21 = OffOnConst(v)
+        val.Indicator21 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator22: %w", err)
     } else {
-        val.Indicator22 = OffOnConst(v)
+        val.Indicator22 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator23: %w", err)
     } else {
-        val.Indicator23 = OffOnConst(v)
+        val.Indicator23 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator24: %w", err)
     } else {
-        val.Indicator24 = OffOnConst(v)
+        val.Indicator24 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator25: %w", err)
     } else {
-        val.Indicator25 = OffOnConst(v)
+        val.Indicator25 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator26: %w", err)
     } else {
-        val.Indicator26 = OffOnConst(v)
+        val.Indicator26 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator27: %w", err)
     } else {
-        val.Indicator27 = OffOnConst(v)
+        val.Indicator27 = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BinarySwitchBankStatus-Indicator28: %w", err)
     } else {
-        val.Indicator28 = OffOnConst(v)
+        val.Indicator28 = publicpgn.OffOnConst(v)
     }
 
     return val, nil
 }
-func DecodeSwitchBankControl(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSwitchBankControl(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SwitchBankControl
+    var val publicpgn.SwitchBankControl
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SwitchBankControl_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Instance: %w", err)
     } else {
         val.Instance = v
@@ -3474,157 +3475,157 @@ func DecodeSwitchBankControl(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch1: %w", err)
     } else {
-        val.Switch1 = OffOnControlConst(v)
+        val.Switch1 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch2: %w", err)
     } else {
-        val.Switch2 = OffOnControlConst(v)
+        val.Switch2 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch3: %w", err)
     } else {
-        val.Switch3 = OffOnControlConst(v)
+        val.Switch3 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch4: %w", err)
     } else {
-        val.Switch4 = OffOnControlConst(v)
+        val.Switch4 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch5: %w", err)
     } else {
-        val.Switch5 = OffOnControlConst(v)
+        val.Switch5 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch6: %w", err)
     } else {
-        val.Switch6 = OffOnControlConst(v)
+        val.Switch6 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch7: %w", err)
     } else {
-        val.Switch7 = OffOnControlConst(v)
+        val.Switch7 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch8: %w", err)
     } else {
-        val.Switch8 = OffOnControlConst(v)
+        val.Switch8 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch9: %w", err)
     } else {
-        val.Switch9 = OffOnControlConst(v)
+        val.Switch9 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch10: %w", err)
     } else {
-        val.Switch10 = OffOnControlConst(v)
+        val.Switch10 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch11: %w", err)
     } else {
-        val.Switch11 = OffOnControlConst(v)
+        val.Switch11 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch12: %w", err)
     } else {
-        val.Switch12 = OffOnControlConst(v)
+        val.Switch12 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch13: %w", err)
     } else {
-        val.Switch13 = OffOnControlConst(v)
+        val.Switch13 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch14: %w", err)
     } else {
-        val.Switch14 = OffOnControlConst(v)
+        val.Switch14 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch15: %w", err)
     } else {
-        val.Switch15 = OffOnControlConst(v)
+        val.Switch15 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch16: %w", err)
     } else {
-        val.Switch16 = OffOnControlConst(v)
+        val.Switch16 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch17: %w", err)
     } else {
-        val.Switch17 = OffOnControlConst(v)
+        val.Switch17 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch18: %w", err)
     } else {
-        val.Switch18 = OffOnControlConst(v)
+        val.Switch18 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch19: %w", err)
     } else {
-        val.Switch19 = OffOnControlConst(v)
+        val.Switch19 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch20: %w", err)
     } else {
-        val.Switch20 = OffOnControlConst(v)
+        val.Switch20 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch21: %w", err)
     } else {
-        val.Switch21 = OffOnControlConst(v)
+        val.Switch21 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch22: %w", err)
     } else {
-        val.Switch22 = OffOnControlConst(v)
+        val.Switch22 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch23: %w", err)
     } else {
-        val.Switch23 = OffOnControlConst(v)
+        val.Switch23 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch24: %w", err)
     } else {
-        val.Switch24 = OffOnControlConst(v)
+        val.Switch24 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch25: %w", err)
     } else {
-        val.Switch25 = OffOnControlConst(v)
+        val.Switch25 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch26: %w", err)
     } else {
-        val.Switch26 = OffOnControlConst(v)
+        val.Switch26 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch27: %w", err)
     } else {
-        val.Switch27 = OffOnControlConst(v)
+        val.Switch27 = publicpgn.OffOnControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SwitchBankControl-Switch28: %w", err)
     } else {
-        val.Switch28 = OffOnControlConst(v)
+        val.Switch28 = publicpgn.OffOnControlConst(v)
     }
 
     return val, nil
 }
-func DecodeAcInputStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAcInputStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val AcInputStatus
+    var val publicpgn.AcInputStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcInputStatus_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for AcInputStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("NumberOfLines")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcInputStatus_NumberOfLines); err != nil {
         return nil, fmt.Errorf("parse failed for AcInputStatus-NumberOfLines: %w", err)
     } else {
         val.NumberOfLines = v
@@ -3633,54 +3634,54 @@ func DecodeAcInputStatus(Info MessageInfo, stream *DataStream) (any, error) {
         }
     }
     // decode repeating fields
-     val.Repeating1 = make([]AcInputStatusRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.AcInputStatusRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep AcInputStatusRepeating1
+        var rep publicpgn.AcInputStatusRepeating1
         if v, err := stream.readLookupField(2); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-Line: %w", err)
         } else {
-            rep.Line = AcLineConst(v)
+            rep.Line = publicpgn.AcLineConst(v)
         }
         if v, err := stream.readLookupField(2); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-Acceptability: %w", err)
         } else {
-            rep.Acceptability = AcceptabilityConst(v)
+            rep.Acceptability = publicpgn.AcceptabilityConst(v)
         }
         stream.skipBits(4)
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Voltage")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AcInputStatus_Voltage); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-Voltage: %w", err)
         } else {
             rep.Voltage = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Current")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AcInputStatus_Current); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-Current: %w", err)
         } else {
             rep.Current = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Frequency")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AcInputStatus_Frequency); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-Frequency: %w", err)
         } else {
             rep.Frequency = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("BreakerSize")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AcInputStatus_BreakerSize); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-BreakerSize: %w", err)
         } else {
             rep.BreakerSize = v
         }
-        if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("RealPower")); err != nil {
+        if v, err := ReadRaw[uint32](stream, &fieldSpec_AcInputStatus_RealPower); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-RealPower: %w", err)
         } else {
             rep.RealPower = v
         }
-        if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("ReactivePower")); err != nil {
+        if v, err := ReadRaw[uint32](stream, &fieldSpec_AcInputStatus_ReactivePower); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-ReactivePower: %w", err)
         } else {
             rep.ReactivePower = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PowerFactor")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AcInputStatus_PowerFactor); err != nil {
             return nil, fmt.Errorf("parse failed for AcInputStatus-PowerFactor: %w", err)
         } else {
             rep.PowerFactor = v
@@ -3694,17 +3695,17 @@ func DecodeAcInputStatus(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeAcOutputStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAcOutputStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val AcOutputStatus
+    var val publicpgn.AcOutputStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcOutputStatus_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for AcOutputStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("NumberOfLines")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcOutputStatus_NumberOfLines); err != nil {
         return nil, fmt.Errorf("parse failed for AcOutputStatus-NumberOfLines: %w", err)
     } else {
         val.NumberOfLines = v
@@ -3713,54 +3714,54 @@ func DecodeAcOutputStatus(Info MessageInfo, stream *DataStream) (any, error) {
         }
     }
     // decode repeating fields
-     val.Repeating1 = make([]AcOutputStatusRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.AcOutputStatusRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep AcOutputStatusRepeating1
+        var rep publicpgn.AcOutputStatusRepeating1
         if v, err := stream.readLookupField(2); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-Line: %w", err)
         } else {
-            rep.Line = LineConst(v)
+            rep.Line = publicpgn.LineConst(v)
         }
         if v, err := stream.readLookupField(3); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-Waveform: %w", err)
         } else {
-            rep.Waveform = WaveformConst(v)
+            rep.Waveform = publicpgn.WaveformConst(v)
         }
         stream.skipBits(3)
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Voltage")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AcOutputStatus_Voltage); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-Voltage: %w", err)
         } else {
             rep.Voltage = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Current")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AcOutputStatus_Current); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-Current: %w", err)
         } else {
             rep.Current = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Frequency")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AcOutputStatus_Frequency); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-Frequency: %w", err)
         } else {
             rep.Frequency = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("BreakerSize")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AcOutputStatus_BreakerSize); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-BreakerSize: %w", err)
         } else {
             rep.BreakerSize = v
         }
-        if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("RealPower")); err != nil {
+        if v, err := ReadRaw[uint32](stream, &fieldSpec_AcOutputStatus_RealPower); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-RealPower: %w", err)
         } else {
             rep.RealPower = v
         }
-        if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("ReactivePower")); err != nil {
+        if v, err := ReadRaw[uint32](stream, &fieldSpec_AcOutputStatus_ReactivePower); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-ReactivePower: %w", err)
         } else {
             rep.ReactivePower = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PowerFactor")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_AcOutputStatus_PowerFactor); err != nil {
             return nil, fmt.Errorf("parse failed for AcOutputStatus-PowerFactor: %w", err)
         } else {
             rep.PowerFactor = v
@@ -3774,11 +3775,11 @@ func DecodeAcOutputStatus(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFluidLevel(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFluidLevel(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FluidLevel
+    var val publicpgn.FluidLevel
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FluidLevel_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for FluidLevel-Instance: %w", err)
     } else {
         val.Instance = v
@@ -3786,14 +3787,14 @@ func DecodeFluidLevel(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for FluidLevel-Type: %w", err)
     } else {
-        val.Type = TankTypeConst(v)
+        val.Type = publicpgn.TankTypeConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Level")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_FluidLevel_Level); err != nil {
         return nil, fmt.Errorf("parse failed for FluidLevel-Level: %w", err)
     } else {
         val.Level = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Capacity")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_FluidLevel_Capacity); err != nil {
         return nil, fmt.Errorf("parse failed for FluidLevel-Capacity: %w", err)
     } else {
         val.Capacity = nullableUnit(units.Liter, v, units.NewVolume)
@@ -3802,16 +3803,16 @@ func DecodeFluidLevel(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeDcDetailedStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeDcDetailedStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val DcDetailedStatus
+    var val publicpgn.DcDetailedStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_DcDetailedStatus_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_DcDetailedStatus_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-Instance: %w", err)
     } else {
         val.Instance = v
@@ -3819,29 +3820,29 @@ func DecodeDcDetailedStatus(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-DcType: %w", err)
     } else {
-        val.DcType = DcSourceConst(v)
+        val.DcType = publicpgn.DcSourceConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("StateOfCharge")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_DcDetailedStatus_StateOfCharge); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-StateOfCharge: %w", err)
     } else {
         val.StateOfCharge = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("StateOfHealth")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_DcDetailedStatus_StateOfHealth); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-StateOfHealth: %w", err)
     } else {
         val.StateOfHealth = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TimeRemaining")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DcDetailedStatus_TimeRemaining); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-TimeRemaining: %w", err)
     } else {
         val.TimeRemaining = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RippleVoltage")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DcDetailedStatus_RippleVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-RippleVoltage: %w", err)
     } else {
         val.RippleVoltage = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RemainingCapacity")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_DcDetailedStatus_RemainingCapacity); err != nil {
         return nil, fmt.Errorf("parse failed for DcDetailedStatus-RemainingCapacity: %w", err)
     } else {
         val.RemainingCapacity = v
@@ -3849,16 +3850,16 @@ func DecodeDcDetailedStatus(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeChargerStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeChargerStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val ChargerStatus
+    var val publicpgn.ChargerStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ChargerStatus_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("BatteryInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ChargerStatus_BatteryInstance); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerStatus-BatteryInstance: %w", err)
     } else {
         val.BatteryInstance = v
@@ -3866,25 +3867,25 @@ func DecodeChargerStatus(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerStatus-OperatingState: %w", err)
     } else {
-        val.OperatingState = ChargerStateConst(v)
+        val.OperatingState = publicpgn.ChargerStateConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerStatus-ChargeMode: %w", err)
     } else {
-        val.ChargeMode = ChargerModeConst(v)
+        val.ChargeMode = publicpgn.ChargerModeConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerStatus-Enabled: %w", err)
     } else {
-        val.Enabled = OffOnConst(v)
+        val.Enabled = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerStatus-EqualizationPending: %w", err)
     } else {
-        val.EqualizationPending = OffOnConst(v)
+        val.EqualizationPending = publicpgn.OffOnConst(v)
     }
     stream.skipBits(4)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("EqualizationTimeRemaining")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ChargerStatus_EqualizationTimeRemaining); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerStatus-EqualizationTimeRemaining: %w", err)
     } else {
         val.EqualizationTimeRemaining = v
@@ -3892,31 +3893,31 @@ func DecodeChargerStatus(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeBatteryStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeBatteryStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val BatteryStatus
+    var val publicpgn.BatteryStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_BatteryStatus_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Voltage")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_BatteryStatus_Voltage); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryStatus-Voltage: %w", err)
     } else {
         val.Voltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Current")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_BatteryStatus_Current); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryStatus-Current: %w", err)
     } else {
         val.Current = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Temperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_BatteryStatus_Temperature); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryStatus-Temperature: %w", err)
     } else {
         val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_BatteryStatus_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryStatus-Sid: %w", err)
     } else {
         val.Sid = v
@@ -3924,21 +3925,21 @@ func DecodeBatteryStatus(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeInverterStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeInverterStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val InverterStatus
+    var val publicpgn.InverterStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_InverterStatus_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for InverterStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AcInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_InverterStatus_AcInstance); err != nil {
         return nil, fmt.Errorf("parse failed for InverterStatus-AcInstance: %w", err)
     } else {
         val.AcInstance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DcInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_InverterStatus_DcInstance); err != nil {
         return nil, fmt.Errorf("parse failed for InverterStatus-DcInstance: %w", err)
     } else {
         val.DcInstance = v
@@ -3946,27 +3947,27 @@ func DecodeInverterStatus(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for InverterStatus-OperatingState: %w", err)
     } else {
-        val.OperatingState = InverterStateConst(v)
+        val.OperatingState = publicpgn.InverterStateConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for InverterStatus-InverterEnable: %w", err)
     } else {
-        val.InverterEnable = OffOnConst(v)
+        val.InverterEnable = publicpgn.OffOnConst(v)
     }
     stream.skipBits(2)
 
     return val, nil
 }
-func DecodeChargerConfigurationStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeChargerConfigurationStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val ChargerConfigurationStatus
+    var val publicpgn.ChargerConfigurationStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ChargerConfigurationStatus_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("BatteryInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ChargerConfigurationStatus_BatteryInstance); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-BatteryInstance: %w", err)
     } else {
         val.BatteryInstance = v
@@ -3974,10 +3975,10 @@ func DecodeChargerConfigurationStatus(Info MessageInfo, stream *DataStream) (any
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-ChargerEnableDisable: %w", err)
     } else {
-        val.ChargerEnableDisable = OffOnConst(v)
+        val.ChargerEnableDisable = publicpgn.OffOnConst(v)
     }
     stream.skipBits(6)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ChargeCurrentLimit")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ChargerConfigurationStatus_ChargeCurrentLimit); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-ChargeCurrentLimit: %w", err)
     } else {
         val.ChargeCurrentLimit = v
@@ -3985,29 +3986,29 @@ func DecodeChargerConfigurationStatus(Info MessageInfo, stream *DataStream) (any
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-ChargingAlgorithm: %w", err)
     } else {
-        val.ChargingAlgorithm = ChargingAlgorithmConst(v)
+        val.ChargingAlgorithm = publicpgn.ChargingAlgorithmConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-ChargerMode: %w", err)
     } else {
-        val.ChargerMode = ChargerModeConst(v)
+        val.ChargerMode = publicpgn.ChargerModeConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-EstimatedTemperature: %w", err)
     } else {
-        val.EstimatedTemperature = DeviceTempStateConst(v)
+        val.EstimatedTemperature = publicpgn.DeviceTempStateConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-EqualizeOneTimeEnableDisable: %w", err)
     } else {
-        val.EqualizeOneTimeEnableDisable = OffOnConst(v)
+        val.EqualizeOneTimeEnableDisable = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-OverChargeEnableDisable: %w", err)
     } else {
-        val.OverChargeEnableDisable = OffOnConst(v)
+        val.OverChargeEnableDisable = publicpgn.OffOnConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("EqualizeTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ChargerConfigurationStatus_EqualizeTime); err != nil {
         return nil, fmt.Errorf("parse failed for ChargerConfigurationStatus-EqualizeTime: %w", err)
     } else {
         val.EqualizeTime = v
@@ -4015,21 +4016,21 @@ func DecodeChargerConfigurationStatus(Info MessageInfo, stream *DataStream) (any
 
     return val, nil
 }
-func DecodeInverterConfigurationStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeInverterConfigurationStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val InverterConfigurationStatus
+    var val publicpgn.InverterConfigurationStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_InverterConfigurationStatus_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("AcInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_InverterConfigurationStatus_AcInstance); err != nil {
         return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-AcInstance: %w", err)
     } else {
         val.AcInstance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DcInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_InverterConfigurationStatus_DcInstance); err != nil {
         return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-DcInstance: %w", err)
     } else {
         val.DcInstance = v
@@ -4037,24 +4038,24 @@ func DecodeInverterConfigurationStatus(Info MessageInfo, stream *DataStream) (an
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-InverterEnableDisable: %w", err)
     } else {
-        val.InverterEnableDisable = OffOnConst(v)
+        val.InverterEnableDisable = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-InverterMode: %w", err)
     } else {
-        val.InverterMode = InverterModeConst(v)
+        val.InverterMode = publicpgn.InverterModeConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-LoadSenseEnableDisable: %w", err)
     } else {
-        val.LoadSenseEnableDisable = OffOnConst(v)
+        val.LoadSenseEnableDisable = publicpgn.OffOnConst(v)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("LoadSensePowerThreshold")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_InverterConfigurationStatus_LoadSensePowerThreshold); err != nil {
         return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-LoadSensePowerThreshold: %w", err)
     } else {
         val.LoadSensePowerThreshold = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("LoadSenseInterval")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_InverterConfigurationStatus_LoadSenseInterval); err != nil {
         return nil, fmt.Errorf("parse failed for InverterConfigurationStatus-LoadSenseInterval: %w", err)
     } else {
         val.LoadSenseInterval = v
@@ -4062,11 +4063,11 @@ func DecodeInverterConfigurationStatus(Info MessageInfo, stream *DataStream) (an
 
     return val, nil
 }
-func DecodeBatteryConfigurationStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeBatteryConfigurationStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val BatteryConfigurationStatus
+    var val publicpgn.BatteryConfigurationStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_BatteryConfigurationStatus_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-Instance: %w", err)
     } else {
         val.Instance = v
@@ -4074,40 +4075,40 @@ func DecodeBatteryConfigurationStatus(Info MessageInfo, stream *DataStream) (any
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-BatteryType: %w", err)
     } else {
-        val.BatteryType = BatteryTypeConst(v)
+        val.BatteryType = publicpgn.BatteryTypeConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-SupportsEqualization: %w", err)
     } else {
-        val.SupportsEqualization = YesNoConst(v)
+        val.SupportsEqualization = publicpgn.YesNoConst(v)
     }
     stream.skipBits(2)
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-NominalVoltage: %w", err)
     } else {
-        val.NominalVoltage = BatteryVoltageConst(v)
+        val.NominalVoltage = publicpgn.BatteryVoltageConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-Chemistry: %w", err)
     } else {
-        val.Chemistry = BatteryChemistryConst(v)
+        val.Chemistry = publicpgn.BatteryChemistryConst(v)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Capacity")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_BatteryConfigurationStatus_Capacity); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-Capacity: %w", err)
     } else {
         val.Capacity = v
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("TemperatureCoefficient")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_BatteryConfigurationStatus_TemperatureCoefficient); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-TemperatureCoefficient: %w", err)
     } else {
         val.TemperatureCoefficient = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PeukertExponent")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_BatteryConfigurationStatus_PeukertExponent); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-PeukertExponent: %w", err)
     } else {
         val.PeukertExponent = v
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("ChargeEfficiencyFactor")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_BatteryConfigurationStatus_ChargeEfficiencyFactor); err != nil {
         return nil, fmt.Errorf("parse failed for BatteryConfigurationStatus-ChargeEfficiencyFactor: %w", err)
     } else {
         val.ChargeEfficiencyFactor = v
@@ -4115,26 +4116,26 @@ func DecodeBatteryConfigurationStatus(Info MessageInfo, stream *DataStream) (any
 
     return val, nil
 }
-func DecodeAcPowerCurrentPhaseA(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAcPowerCurrentPhaseA(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AcPowerCurrentPhaseA
+    var val publicpgn.AcPowerCurrentPhaseA
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcPowerCurrentPhaseA_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ConnectionNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcPowerCurrentPhaseA_ConnectionNumber); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcPowerCurrentPhaseA_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("Power")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_AcPowerCurrentPhaseA_Power); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseA-Power: %w", err)
     } else {
         val.Power = v
@@ -4142,26 +4143,26 @@ func DecodeAcPowerCurrentPhaseA(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeAcPowerCurrentPhaseB(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAcPowerCurrentPhaseB(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AcPowerCurrentPhaseB
+    var val publicpgn.AcPowerCurrentPhaseB
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcPowerCurrentPhaseB_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ConnectionNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcPowerCurrentPhaseB_ConnectionNumber); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcPowerCurrentPhaseB_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("Power")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_AcPowerCurrentPhaseB_Power); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseB-Power: %w", err)
     } else {
         val.Power = v
@@ -4169,26 +4170,26 @@ func DecodeAcPowerCurrentPhaseB(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeAcPowerCurrentPhaseC(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAcPowerCurrentPhaseC(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AcPowerCurrentPhaseC
+    var val publicpgn.AcPowerCurrentPhaseC
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcPowerCurrentPhaseC_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ConnectionNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcPowerCurrentPhaseC_ConnectionNumber); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcRmsCurrent")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcPowerCurrentPhaseC_AcRmsCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-AcRmsCurrent: %w", err)
     } else {
         val.AcRmsCurrent = v
     }
-    if v, err := ReadRaw[int32](stream, val.GetFieldSpec("Power")); err != nil {
+    if v, err := ReadRaw[int32](stream, &fieldSpec_AcPowerCurrentPhaseC_Power); err != nil {
         return nil, fmt.Errorf("parse failed for AcPowerCurrentPhaseC-Power: %w", err)
     } else {
         val.Power = v
@@ -4196,31 +4197,31 @@ func DecodeAcPowerCurrentPhaseC(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeAcVoltageFrequencyPhaseA(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAcVoltageFrequencyPhaseA(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AcVoltageFrequencyPhaseA
+    var val publicpgn.AcVoltageFrequencyPhaseA
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcVoltageFrequencyPhaseA_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseA-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ConnectionNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcVoltageFrequencyPhaseA_ConnectionNumber); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseA-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcVoltageLineToNeutral")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcVoltageFrequencyPhaseA_AcVoltageLineToNeutral); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseA-AcVoltageLineToNeutral: %w", err)
     } else {
         val.AcVoltageLineToNeutral = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcVoltageLineToLine")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcVoltageFrequencyPhaseA_AcVoltageLineToLine); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseA-AcVoltageLineToLine: %w", err)
     } else {
         val.AcVoltageLineToLine = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Frequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcVoltageFrequencyPhaseA_Frequency); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseA-Frequency: %w", err)
     } else {
         val.Frequency = v
@@ -4228,31 +4229,31 @@ func DecodeAcVoltageFrequencyPhaseA(Info MessageInfo, stream *DataStream) (any, 
 
     return val, nil
 }
-func DecodeAcVoltageFrequencyPhaseB(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAcVoltageFrequencyPhaseB(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AcVoltageFrequencyPhaseB
+    var val publicpgn.AcVoltageFrequencyPhaseB
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcVoltageFrequencyPhaseB_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseB-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ConnectionNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcVoltageFrequencyPhaseB_ConnectionNumber); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseB-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcVoltageLineToNeutral")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcVoltageFrequencyPhaseB_AcVoltageLineToNeutral); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseB-AcVoltageLineToNeutral: %w", err)
     } else {
         val.AcVoltageLineToNeutral = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcVoltageLineToLine")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcVoltageFrequencyPhaseB_AcVoltageLineToLine); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseB-AcVoltageLineToLine: %w", err)
     } else {
         val.AcVoltageLineToLine = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Frequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcVoltageFrequencyPhaseB_Frequency); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseB-Frequency: %w", err)
     } else {
         val.Frequency = v
@@ -4260,31 +4261,31 @@ func DecodeAcVoltageFrequencyPhaseB(Info MessageInfo, stream *DataStream) (any, 
 
     return val, nil
 }
-func DecodeAcVoltageFrequencyPhaseC(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAcVoltageFrequencyPhaseC(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AcVoltageFrequencyPhaseC
+    var val publicpgn.AcVoltageFrequencyPhaseC
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcVoltageFrequencyPhaseC_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseC-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ConnectionNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AcVoltageFrequencyPhaseC_ConnectionNumber); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseC-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcVoltageLineToNeutral")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcVoltageFrequencyPhaseC_AcVoltageLineToNeutral); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseC-AcVoltageLineToNeutral: %w", err)
     } else {
         val.AcVoltageLineToNeutral = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AcVoltageLineToLine")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcVoltageFrequencyPhaseC_AcVoltageLineToLine); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseC-AcVoltageLineToLine: %w", err)
     } else {
         val.AcVoltageLineToLine = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Frequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AcVoltageFrequencyPhaseC_Frequency); err != nil {
         return nil, fmt.Errorf("parse failed for AcVoltageFrequencyPhaseC-Frequency: %w", err)
     } else {
         val.Frequency = v
@@ -4292,16 +4293,16 @@ func DecodeAcVoltageFrequencyPhaseC(Info MessageInfo, stream *DataStream) (any, 
 
     return val, nil
 }
-func DecodeConverterStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeConverterStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val ConverterStatus
+    var val publicpgn.ConverterStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ConverterStatus_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for ConverterStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ConnectionNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ConverterStatus_ConnectionNumber); err != nil {
         return nil, fmt.Errorf("parse failed for ConverterStatus-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
@@ -4309,52 +4310,52 @@ func DecodeConverterStatus(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for ConverterStatus-OperatingState: %w", err)
     } else {
-        val.OperatingState = ConverterStateConst(v)
+        val.OperatingState = publicpgn.ConverterStateConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ConverterStatus-TemperatureState: %w", err)
     } else {
-        val.TemperatureState = GoodWarningErrorConst(v)
+        val.TemperatureState = publicpgn.GoodWarningErrorConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ConverterStatus-OverloadState: %w", err)
     } else {
-        val.OverloadState = GoodWarningErrorConst(v)
+        val.OverloadState = publicpgn.GoodWarningErrorConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ConverterStatus-LowDcVoltageState: %w", err)
     } else {
-        val.LowDcVoltageState = GoodWarningErrorConst(v)
+        val.LowDcVoltageState = publicpgn.GoodWarningErrorConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ConverterStatus-RippleState: %w", err)
     } else {
-        val.RippleState = GoodWarningErrorConst(v)
+        val.RippleState = publicpgn.GoodWarningErrorConst(v)
     }
     stream.skipBits(32)
 
     return val, nil
 }
-func DecodeDcVoltageCurrent(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeDcVoltageCurrent(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val DcVoltageCurrent
+    var val publicpgn.DcVoltageCurrent
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_DcVoltageCurrent_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for DcVoltageCurrent-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ConnectionNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_DcVoltageCurrent_ConnectionNumber); err != nil {
         return nil, fmt.Errorf("parse failed for DcVoltageCurrent-ConnectionNumber: %w", err)
     } else {
         val.ConnectionNumber = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DcVoltage")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DcVoltageCurrent_DcVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for DcVoltageCurrent-DcVoltage: %w", err)
     } else {
         val.DcVoltage = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DcCurrent")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DcVoltageCurrent_DcCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for DcVoltageCurrent-DcCurrent: %w", err)
     } else {
         val.DcCurrent = v
@@ -4363,16 +4364,16 @@ func DecodeDcVoltageCurrent(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeLeewayAngle(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeLeewayAngle(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val LeewayAngle
+    var val publicpgn.LeewayAngle
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_LeewayAngle_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for LeewayAngle-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("LeewayAngle")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_LeewayAngle_LeewayAngle); err != nil {
         return nil, fmt.Errorf("parse failed for LeewayAngle-LeewayAngle: %w", err)
     } else {
         val.LeewayAngle = v
@@ -4381,16 +4382,16 @@ func DecodeLeewayAngle(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeThrusterControlStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeThrusterControlStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val ThrusterControlStatus
+    var val publicpgn.ThrusterControlStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ThrusterControlStatus_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Identifier")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ThrusterControlStatus_Identifier); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-Identifier: %w", err)
     } else {
         val.Identifier = v
@@ -4398,19 +4399,19 @@ func DecodeThrusterControlStatus(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-DirectionControl: %w", err)
     } else {
-        val.DirectionControl = ThrusterDirectionControlConst(v)
+        val.DirectionControl = publicpgn.ThrusterDirectionControlConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-PowerEnabled: %w", err)
     } else {
-        val.PowerEnabled = OffOnConst(v)
+        val.PowerEnabled = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-RetractControl: %w", err)
     } else {
-        val.RetractControl = ThrusterRetractControlConst(v)
+        val.RetractControl = publicpgn.ThrusterRetractControlConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SpeedControl")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ThrusterControlStatus_SpeedControl); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-SpeedControl: %w", err)
     } else {
         val.SpeedControl = v
@@ -4418,14 +4419,14 @@ func DecodeThrusterControlStatus(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-ControlEvents: %w", err)
     } else {
-        val.ControlEvents = ThrusterControlEventsConst(v)
+        val.ControlEvents = publicpgn.ThrusterControlEventsConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("CommandTimeout")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ThrusterControlStatus_CommandTimeout); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-CommandTimeout: %w", err)
     } else {
         val.CommandTimeout = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AzimuthControl")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ThrusterControlStatus_AzimuthControl); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterControlStatus-AzimuthControl: %w", err)
     } else {
         val.AzimuthControl = v
@@ -4433,11 +4434,11 @@ func DecodeThrusterControlStatus(Info MessageInfo, stream *DataStream) (any, err
 
     return val, nil
 }
-func DecodeThrusterInformation(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeThrusterInformation(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val ThrusterInformation
+    var val publicpgn.ThrusterInformation
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Identifier")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ThrusterInformation_Identifier); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterInformation-Identifier: %w", err)
     } else {
         val.Identifier = v
@@ -4445,20 +4446,20 @@ func DecodeThrusterInformation(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterInformation-MotorType: %w", err)
     } else {
-        val.MotorType = ThrusterMotorTypeConst(v)
+        val.MotorType = publicpgn.ThrusterMotorTypeConst(v)
     }
     stream.skipBits(4)
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("PowerRating")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_ThrusterInformation_PowerRating); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterInformation-PowerRating: %w", err)
     } else {
         val.PowerRating = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("MaximumTemperatureRating")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ThrusterInformation_MaximumTemperatureRating); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterInformation-MaximumTemperatureRating: %w", err)
     } else {
         val.MaximumTemperatureRating = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("MaximumRotationalSpeed")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ThrusterInformation_MaximumRotationalSpeed); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterInformation-MaximumRotationalSpeed: %w", err)
     } else {
         val.MaximumRotationalSpeed = v
@@ -4466,16 +4467,16 @@ func DecodeThrusterInformation(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeThrusterMotorStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeThrusterMotorStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val ThrusterMotorStatus
+    var val publicpgn.ThrusterMotorStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ThrusterMotorStatus_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Identifier")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ThrusterMotorStatus_Identifier); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Identifier: %w", err)
     } else {
         val.Identifier = v
@@ -4483,19 +4484,19 @@ func DecodeThrusterMotorStatus(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-MotorEvents: %w", err)
     } else {
-        val.MotorEvents = ThrusterMotorEventsConst(v)
+        val.MotorEvents = publicpgn.ThrusterMotorEventsConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Current")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ThrusterMotorStatus_Current); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Current: %w", err)
     } else {
         val.Current = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Temperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ThrusterMotorStatus_Temperature); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-Temperature: %w", err)
     } else {
         val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("OperatingTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ThrusterMotorStatus_OperatingTime); err != nil {
         return nil, fmt.Errorf("parse failed for ThrusterMotorStatus-OperatingTime: %w", err)
     } else {
         val.OperatingTime = v
@@ -4503,21 +4504,21 @@ func DecodeThrusterMotorStatus(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeSpeed(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSpeed(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Speed
+    var val publicpgn.Speed
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Speed_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for Speed-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SpeedWaterReferenced")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Speed_SpeedWaterReferenced); err != nil {
         return nil, fmt.Errorf("parse failed for Speed-SpeedWaterReferenced: %w", err)
     } else {
         val.SpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SpeedGroundReferenced")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Speed_SpeedGroundReferenced); err != nil {
         return nil, fmt.Errorf("parse failed for Speed-SpeedGroundReferenced: %w", err)
     } else {
         val.SpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -4525,9 +4526,9 @@ func DecodeSpeed(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for Speed-SpeedWaterReferencedType: %w", err)
     } else {
-        val.SpeedWaterReferencedType = WaterReferenceConst(v)
+        val.SpeedWaterReferencedType = publicpgn.WaterReferenceConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SpeedDirection")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Speed_SpeedDirection); err != nil {
         return nil, fmt.Errorf("parse failed for Speed-SpeedDirection: %w", err)
     } else {
         val.SpeedDirection = v
@@ -4536,26 +4537,26 @@ func DecodeSpeed(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeWaterDepth(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeWaterDepth(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val WaterDepth
+    var val publicpgn.WaterDepth
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_WaterDepth_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for WaterDepth-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Depth")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WaterDepth_Depth); err != nil {
         return nil, fmt.Errorf("parse failed for WaterDepth-Depth: %w", err)
     } else {
         val.Depth = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Offset")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WaterDepth_Offset); err != nil {
         return nil, fmt.Errorf("parse failed for WaterDepth-Offset: %w", err)
     } else {
         val.Offset = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Range")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WaterDepth_Range); err != nil {
         return nil, fmt.Errorf("parse failed for WaterDepth-Range: %w", err)
     } else {
         val.Range = nullableUnit(units.Meter, v, units.NewDistance)
@@ -4563,26 +4564,26 @@ func DecodeWaterDepth(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeDistanceLog(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeDistanceLog(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val DistanceLog
+    var val publicpgn.DistanceLog
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Date")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_DistanceLog_Date); err != nil {
         return nil, fmt.Errorf("parse failed for DistanceLog-Date: %w", err)
     } else {
         val.Date = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Time")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DistanceLog_Time); err != nil {
         return nil, fmt.Errorf("parse failed for DistanceLog-Time: %w", err)
     } else {
         val.Time = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Log")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_DistanceLog_Log); err != nil {
         return nil, fmt.Errorf("parse failed for DistanceLog-Log: %w", err)
     } else {
         val.Log = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("TripLog")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_DistanceLog_TripLog); err != nil {
         return nil, fmt.Errorf("parse failed for DistanceLog-TripLog: %w", err)
     } else {
         val.TripLog = nullableUnit(units.Meter, v, units.NewDistance)
@@ -4590,16 +4591,16 @@ func DecodeDistanceLog(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeWindlassControlStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeWindlassControlStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val WindlassControlStatus
+    var val publicpgn.WindlassControlStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_WindlassControlStatus_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("WindlassId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_WindlassControlStatus_WindlassId); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-WindlassId: %w", err)
     } else {
         val.WindlassId = v
@@ -4607,17 +4608,17 @@ func DecodeWindlassControlStatus(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-WindlassDirectionControl: %w", err)
     } else {
-        val.WindlassDirectionControl = WindlassDirectionConst(v)
+        val.WindlassDirectionControl = publicpgn.WindlassDirectionConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-AnchorDockingControl: %w", err)
     } else {
-        val.AnchorDockingControl = OffOnConst(v)
+        val.AnchorDockingControl = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-SpeedControlType: %w", err)
     } else {
-        val.SpeedControlType = SpeedTypeConst(v)
+        val.SpeedControlType = publicpgn.SpeedTypeConst(v)
     }
     stream.skipBits(2)
     if v, err := stream.readBinaryData(8); err != nil {
@@ -4628,24 +4629,24 @@ func DecodeWindlassControlStatus(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-PowerEnable: %w", err)
     } else {
-        val.PowerEnable = OffOnConst(v)
+        val.PowerEnable = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-MechanicalLock: %w", err)
     } else {
-        val.MechanicalLock = OffOnConst(v)
+        val.MechanicalLock = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-DeckAndAnchorWash: %w", err)
     } else {
-        val.DeckAndAnchorWash = OffOnConst(v)
+        val.DeckAndAnchorWash = publicpgn.OffOnConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-AnchorLight: %w", err)
     } else {
-        val.AnchorLight = OffOnConst(v)
+        val.AnchorLight = publicpgn.OffOnConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("CommandTimeout")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WindlassControlStatus_CommandTimeout); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-CommandTimeout: %w", err)
     } else {
         val.CommandTimeout = v
@@ -4653,22 +4654,22 @@ func DecodeWindlassControlStatus(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for WindlassControlStatus-WindlassControlEvents: %w", err)
     } else {
-        val.WindlassControlEvents = WindlassControlConst(v)
+        val.WindlassControlEvents = publicpgn.WindlassControlConst(v)
     }
     stream.skipBits(12)
 
     return val, nil
 }
-func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAnchorWindlassOperatingStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AnchorWindlassOperatingStatus
+    var val publicpgn.AnchorWindlassOperatingStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AnchorWindlassOperatingStatus_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("WindlassId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AnchorWindlassOperatingStatus_WindlassId); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassId: %w", err)
     } else {
         val.WindlassId = v
@@ -4676,25 +4677,25 @@ func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassDirectionControl: %w", err)
     } else {
-        val.WindlassDirectionControl = WindlassDirectionConst(v)
+        val.WindlassDirectionControl = publicpgn.WindlassDirectionConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassMotionStatus: %w", err)
     } else {
-        val.WindlassMotionStatus = WindlassMotionConst(v)
+        val.WindlassMotionStatus = publicpgn.WindlassMotionConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-RodeTypeStatus: %w", err)
     } else {
-        val.RodeTypeStatus = RodeTypeConst(v)
+        val.RodeTypeStatus = publicpgn.RodeTypeConst(v)
     }
     stream.skipBits(2)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RodeCounterValue")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AnchorWindlassOperatingStatus_RodeCounterValue); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-RodeCounterValue: %w", err)
     } else {
         val.RodeCounterValue = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("WindlassLineSpeed")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AnchorWindlassOperatingStatus_WindlassLineSpeed); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassLineSpeed: %w", err)
     } else {
         val.WindlassLineSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -4702,26 +4703,26 @@ func DecodeAnchorWindlassOperatingStatus(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-AnchorDockingStatus: %w", err)
     } else {
-        val.AnchorDockingStatus = DockingStatusConst(v)
+        val.AnchorDockingStatus = publicpgn.DockingStatusConst(v)
     }
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassOperatingStatus-WindlassOperatingEvents: %w", err)
     } else {
-        val.WindlassOperatingEvents = WindlassOperationConst(v)
+        val.WindlassOperatingEvents = publicpgn.WindlassOperationConst(v)
     }
 
     return val, nil
 }
-func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAnchorWindlassMonitoringStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AnchorWindlassMonitoringStatus
+    var val publicpgn.AnchorWindlassMonitoringStatus
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AnchorWindlassMonitoringStatus_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("WindlassId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AnchorWindlassMonitoringStatus_WindlassId); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-WindlassId: %w", err)
     } else {
         val.WindlassId = v
@@ -4729,19 +4730,19 @@ func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *DataStream) 
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-WindlassMonitoringEvents: %w", err)
     } else {
-        val.WindlassMonitoringEvents = WindlassMonitoringConst(v)
+        val.WindlassMonitoringEvents = publicpgn.WindlassMonitoringConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("ControllerVoltage")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AnchorWindlassMonitoringStatus_ControllerVoltage); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-ControllerVoltage: %w", err)
     } else {
         val.ControllerVoltage = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("MotorCurrent")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AnchorWindlassMonitoringStatus_MotorCurrent); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-MotorCurrent: %w", err)
     } else {
         val.MotorCurrent = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TotalMotorTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AnchorWindlassMonitoringStatus_TotalMotorTime); err != nil {
         return nil, fmt.Errorf("parse failed for AnchorWindlassMonitoringStatus-TotalMotorTime: %w", err)
     } else {
         val.TotalMotorTime = v
@@ -4750,16 +4751,16 @@ func DecodeAnchorWindlassMonitoringStatus(Info MessageInfo, stream *DataStream) 
 
     return val, nil
 }
-func DecodePositionRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodePositionRapidUpdate(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val PositionRapidUpdate
+    var val publicpgn.PositionRapidUpdate
     val.Info = Info
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Latitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_PositionRapidUpdate_Latitude); err != nil {
         return nil, fmt.Errorf("parse failed for PositionRapidUpdate-Latitude: %w", err)
     } else {
         val.Latitude = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Longitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_PositionRapidUpdate_Longitude); err != nil {
         return nil, fmt.Errorf("parse failed for PositionRapidUpdate-Longitude: %w", err)
     } else {
         val.Longitude = v
@@ -4767,11 +4768,11 @@ func DecodePositionRapidUpdate(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeCogSogRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeCogSogRapidUpdate(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val CogSogRapidUpdate
+    var val publicpgn.CogSogRapidUpdate
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_CogSogRapidUpdate_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Sid: %w", err)
     } else {
         val.Sid = v
@@ -4779,15 +4780,15 @@ func DecodeCogSogRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-CogReference: %w", err)
     } else {
-        val.CogReference = DirectionReferenceConst(v)
+        val.CogReference = publicpgn.DirectionReferenceConst(v)
     }
     stream.skipBits(6)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Cog")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_CogSogRapidUpdate_Cog); err != nil {
         return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Cog: %w", err)
     } else {
         val.Cog = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Sog")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_CogSogRapidUpdate_Sog); err != nil {
         return nil, fmt.Errorf("parse failed for CogSogRapidUpdate-Sog: %w", err)
     } else {
         val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -4796,37 +4797,37 @@ func DecodeCogSogRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) 
 
     return val, nil
 }
-func DecodeGnssPositionData(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGnssPositionData(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val GnssPositionData
+    var val publicpgn.GnssPositionData
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssPositionData_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Date")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GnssPositionData_Date); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Date: %w", err)
     } else {
         val.Date = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Time")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPositionData_Time); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Time: %w", err)
     } else {
         val.Time = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Latitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_GnssPositionData_Latitude); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Latitude: %w", err)
     } else {
         val.Latitude = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Longitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_GnssPositionData_Longitude); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Longitude: %w", err)
     } else {
         val.Longitude = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Altitude")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPositionData_Altitude); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Altitude: %w", err)
     } else {
         val.Altitude = nullableUnit(units.Meter, v, units.NewDistance)
@@ -4834,40 +4835,40 @@ func DecodeGnssPositionData(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-GnssType: %w", err)
     } else {
-        val.GnssType = GnsConst(v)
+        val.GnssType = publicpgn.GnsConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Method: %w", err)
     } else {
-        val.Method = GnsMethodConst(v)
+        val.Method = publicpgn.GnsMethodConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Integrity: %w", err)
     } else {
-        val.Integrity = GnsIntegrityConst(v)
+        val.Integrity = publicpgn.GnsIntegrityConst(v)
     }
     stream.skipBits(6)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("NumberOfSvs")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssPositionData_NumberOfSvs); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-NumberOfSvs: %w", err)
     } else {
         val.NumberOfSvs = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Hdop")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPositionData_Hdop); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Hdop: %w", err)
     } else {
         val.Hdop = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Pdop")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPositionData_Pdop); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-Pdop: %w", err)
     } else {
         val.Pdop = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("GeoidalSeparation")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPositionData_GeoidalSeparation); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-GeoidalSeparation: %w", err)
     } else {
         val.GeoidalSeparation = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("ReferenceStations")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssPositionData_ReferenceStations); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPositionData-ReferenceStations: %w", err)
     } else {
         val.ReferenceStations = v
@@ -4876,23 +4877,23 @@ func DecodeGnssPositionData(Info MessageInfo, stream *DataStream) (any, error) {
         }
     }
     // decode repeating fields
-     val.Repeating1 = make([]GnssPositionDataRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.GnssPositionDataRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep GnssPositionDataRepeating1
+        var rep publicpgn.GnssPositionDataRepeating1
         if v, err := stream.readLookupField(4); err != nil {
             return nil, fmt.Errorf("parse failed for GnssPositionData-ReferenceStationType: %w", err)
         } else {
-            rep.ReferenceStationType = GnsConst(v)
+            rep.ReferenceStationType = publicpgn.GnsConst(v)
         }
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("ReferenceStationId")); err != nil {
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_GnssPositionData_ReferenceStationId); err != nil {
             return nil, fmt.Errorf("parse failed for GnssPositionData-ReferenceStationId: %w", err)
         } else {
             rep.ReferenceStationId = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AgeOfDgnssCorrections")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPositionData_AgeOfDgnssCorrections); err != nil {
             return nil, fmt.Errorf("parse failed for GnssPositionData-AgeOfDgnssCorrections: %w", err)
         } else {
             rep.AgeOfDgnssCorrections = v
@@ -4906,21 +4907,21 @@ func DecodeGnssPositionData(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeTimeDate(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeTimeDate(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val TimeDate
+    var val publicpgn.TimeDate
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Date")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_TimeDate_Date); err != nil {
         return nil, fmt.Errorf("parse failed for TimeDate-Date: %w", err)
     } else {
         val.Date = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Time")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TimeDate_Time); err != nil {
         return nil, fmt.Errorf("parse failed for TimeDate-Time: %w", err)
     } else {
         val.Time = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("LocalOffset")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TimeDate_LocalOffset); err != nil {
         return nil, fmt.Errorf("parse failed for TimeDate-LocalOffset: %w", err)
     } else {
         val.LocalOffset = v
@@ -4928,31 +4929,31 @@ func DecodeTimeDate(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeAisClassAPositionReport(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAisClassAPositionReport(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AisClassAPositionReport
+    var val publicpgn.AisClassAPositionReport
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-MessageId: %w", err)
     } else {
-        val.MessageId = AisMessageIdConst(v)
+        val.MessageId = publicpgn.AisMessageIdConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-RepeatIndicator: %w", err)
     } else {
-        val.RepeatIndicator = RepeatIndicatorConst(v)
+        val.RepeatIndicator = publicpgn.RepeatIndicatorConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("UserId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisClassAPositionReport_UserId); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-UserId: %w", err)
     } else {
         val.UserId = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Longitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_AisClassAPositionReport_Longitude); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Longitude: %w", err)
     } else {
         val.Longitude = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Latitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_AisClassAPositionReport_Latitude); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Latitude: %w", err)
     } else {
         val.Latitude = v
@@ -4960,24 +4961,24 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-PositionAccuracy: %w", err)
     } else {
-        val.PositionAccuracy = PositionAccuracyConst(v)
+        val.PositionAccuracy = publicpgn.PositionAccuracyConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Raim: %w", err)
     } else {
-        val.Raim = RaimFlagConst(v)
+        val.Raim = publicpgn.RaimFlagConst(v)
     }
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-TimeStamp: %w", err)
     } else {
-        val.TimeStamp = TimeStampConst(v)
+        val.TimeStamp = publicpgn.TimeStampConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Cog")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassAPositionReport_Cog); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Cog: %w", err)
     } else {
         val.Cog = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Sog")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassAPositionReport_Sog); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Sog: %w", err)
     } else {
         val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -4990,14 +4991,14 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-AisTransceiverInformation: %w", err)
     } else {
-        val.AisTransceiverInformation = AisTransceiverConst(v)
+        val.AisTransceiverInformation = publicpgn.AisTransceiverConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Heading")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassAPositionReport_Heading); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-Heading: %w", err)
     } else {
         val.Heading = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RateOfTurn")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassAPositionReport_RateOfTurn); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-RateOfTurn: %w", err)
     } else {
         val.RateOfTurn = v
@@ -5005,17 +5006,17 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-NavStatus: %w", err)
     } else {
-        val.NavStatus = NavStatusConst(v)
+        val.NavStatus = publicpgn.NavStatusConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-SpecialManeuverIndicator: %w", err)
     } else {
-        val.SpecialManeuverIndicator = AisSpecialManeuverConst(v)
+        val.SpecialManeuverIndicator = publicpgn.AisSpecialManeuverConst(v)
     }
     stream.skipBits(2)
     stream.skipBits(3)
     stream.skipBits(5)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SequenceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AisClassAPositionReport_SequenceId); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAPositionReport-SequenceId: %w", err)
     } else {
         val.SequenceId = v
@@ -5023,31 +5024,31 @@ func DecodeAisClassAPositionReport(Info MessageInfo, stream *DataStream) (any, e
 
     return val, nil
 }
-func DecodeAisClassBPositionReport(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAisClassBPositionReport(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AisClassBPositionReport
+    var val publicpgn.AisClassBPositionReport
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-MessageId: %w", err)
     } else {
-        val.MessageId = AisMessageIdConst(v)
+        val.MessageId = publicpgn.AisMessageIdConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-RepeatIndicator: %w", err)
     } else {
-        val.RepeatIndicator = RepeatIndicatorConst(v)
+        val.RepeatIndicator = publicpgn.RepeatIndicatorConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("UserId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisClassBPositionReport_UserId); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-UserId: %w", err)
     } else {
         val.UserId = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Longitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_AisClassBPositionReport_Longitude); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Longitude: %w", err)
     } else {
         val.Longitude = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Latitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_AisClassBPositionReport_Latitude); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Latitude: %w", err)
     } else {
         val.Latitude = v
@@ -5055,24 +5056,24 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-PositionAccuracy: %w", err)
     } else {
-        val.PositionAccuracy = PositionAccuracyConst(v)
+        val.PositionAccuracy = publicpgn.PositionAccuracyConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Raim: %w", err)
     } else {
-        val.Raim = RaimFlagConst(v)
+        val.Raim = publicpgn.RaimFlagConst(v)
     }
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-TimeStamp: %w", err)
     } else {
-        val.TimeStamp = TimeStampConst(v)
+        val.TimeStamp = publicpgn.TimeStampConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Cog")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassBPositionReport_Cog); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Cog: %w", err)
     } else {
         val.Cog = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Sog")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassBPositionReport_Sog); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Sog: %w", err)
     } else {
         val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -5085,9 +5086,9 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-AisTransceiverInformation: %w", err)
     } else {
-        val.AisTransceiverInformation = AisTransceiverConst(v)
+        val.AisTransceiverInformation = publicpgn.AisTransceiverConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Heading")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassBPositionReport_Heading); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Heading: %w", err)
     } else {
         val.Heading = v
@@ -5097,67 +5098,67 @@ func DecodeAisClassBPositionReport(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-UnitType: %w", err)
     } else {
-        val.UnitType = AisTypeConst(v)
+        val.UnitType = publicpgn.AisTypeConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-IntegratedDisplay: %w", err)
     } else {
-        val.IntegratedDisplay = YesNoConst(v)
+        val.IntegratedDisplay = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Dsc: %w", err)
     } else {
-        val.Dsc = YesNoConst(v)
+        val.Dsc = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-Band: %w", err)
     } else {
-        val.Band = AisBandConst(v)
+        val.Band = publicpgn.AisBandConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-CanHandleMsg22: %w", err)
     } else {
-        val.CanHandleMsg22 = YesNoConst(v)
+        val.CanHandleMsg22 = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-AisMode: %w", err)
     } else {
-        val.AisMode = AisModeConst(v)
+        val.AisMode = publicpgn.AisModeConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBPositionReport-AisCommunicationState: %w", err)
     } else {
-        val.AisCommunicationState = AisCommunicationStateConst(v)
+        val.AisCommunicationState = publicpgn.AisCommunicationStateConst(v)
     }
     stream.skipBits(15)
 
     return val, nil
 }
-func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAisAidsToNavigationAtonReport(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AisAidsToNavigationAtonReport
+    var val publicpgn.AisAidsToNavigationAtonReport
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-MessageId: %w", err)
     } else {
-        val.MessageId = AisMessageIdConst(v)
+        val.MessageId = publicpgn.AisMessageIdConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-RepeatIndicator: %w", err)
     } else {
-        val.RepeatIndicator = RepeatIndicatorConst(v)
+        val.RepeatIndicator = publicpgn.RepeatIndicatorConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("UserId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisAidsToNavigationAtonReport_UserId); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-UserId: %w", err)
     } else {
         val.UserId = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Longitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_AisAidsToNavigationAtonReport_Longitude); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-Longitude: %w", err)
     } else {
         val.Longitude = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Latitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_AisAidsToNavigationAtonReport_Latitude); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-Latitude: %w", err)
     } else {
         val.Latitude = v
@@ -5165,34 +5166,34 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionAccuracy: %w", err)
     } else {
-        val.PositionAccuracy = PositionAccuracyConst(v)
+        val.PositionAccuracy = publicpgn.PositionAccuracyConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-Raim: %w", err)
     } else {
-        val.Raim = RaimFlagConst(v)
+        val.Raim = publicpgn.RaimFlagConst(v)
     }
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-TimeStamp: %w", err)
     } else {
-        val.TimeStamp = TimeStampConst(v)
+        val.TimeStamp = publicpgn.TimeStampConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("LengthDiameter")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisAidsToNavigationAtonReport_LengthDiameter); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-LengthDiameter: %w", err)
     } else {
         val.LengthDiameter = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("BeamDiameter")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisAidsToNavigationAtonReport_BeamDiameter); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-BeamDiameter: %w", err)
     } else {
         val.BeamDiameter = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PositionReferenceFromStarboardEdge")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisAidsToNavigationAtonReport_PositionReferenceFromStarboardEdge); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionReferenceFromStarboardEdge: %w", err)
     } else {
         val.PositionReferenceFromStarboardEdge = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PositionReferenceFromTrueNorthFacingEdge")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisAidsToNavigationAtonReport_PositionReferenceFromTrueNorthFacingEdge); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionReferenceFromTrueNorthFacingEdge: %w", err)
     } else {
         val.PositionReferenceFromTrueNorthFacingEdge = nullableUnit(units.Meter, v, units.NewDistance)
@@ -5200,28 +5201,28 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-AtonType: %w", err)
     } else {
-        val.AtonType = AtonTypeConst(v)
+        val.AtonType = publicpgn.AtonTypeConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-OffPositionIndicator: %w", err)
     } else {
-        val.OffPositionIndicator = YesNoConst(v)
+        val.OffPositionIndicator = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-VirtualAtonFlag: %w", err)
     } else {
-        val.VirtualAtonFlag = YesNoConst(v)
+        val.VirtualAtonFlag = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-AssignedModeFlag: %w", err)
     } else {
-        val.AssignedModeFlag = AisAssignedModeConst(v)
+        val.AssignedModeFlag = publicpgn.AisAssignedModeConst(v)
     }
     stream.skipBits(1)
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-PositionFixingDeviceType: %w", err)
     } else {
-        val.PositionFixingDeviceType = PositionFixDeviceConst(v)
+        val.PositionFixingDeviceType = publicpgn.PositionFixDeviceConst(v)
     }
     stream.skipBits(3)
     if v, err := stream.readBinaryData(8); err != nil {
@@ -5232,7 +5233,7 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisAidsToNavigationAtonReport-AisTransceiverInformation: %w", err)
     } else {
-        val.AisTransceiverInformation = AisTransceiverConst(v)
+        val.AisTransceiverInformation = publicpgn.AisTransceiverConst(v)
     }
     stream.skipBits(3)
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
@@ -5243,26 +5244,26 @@ func DecodeAisAidsToNavigationAtonReport(Info MessageInfo, stream *DataStream) (
 
     return val, nil
 }
-func DecodeDatum(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeDatum(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Datum
+    var val publicpgn.Datum
     val.Info = Info
     if v, err := stream.readFixedString(32); err != nil {
         return nil, fmt.Errorf("parse failed for Datum-LocalDatum: %w", err)
     } else {
         val.LocalDatum = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("DeltaLatitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_Datum_DeltaLatitude); err != nil {
         return nil, fmt.Errorf("parse failed for Datum-DeltaLatitude: %w", err)
     } else {
         val.DeltaLatitude = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("DeltaLongitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_Datum_DeltaLongitude); err != nil {
         return nil, fmt.Errorf("parse failed for Datum-DeltaLongitude: %w", err)
     } else {
         val.DeltaLongitude = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DeltaAltitude")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Datum_DeltaAltitude); err != nil {
         return nil, fmt.Errorf("parse failed for Datum-DeltaAltitude: %w", err)
     } else {
         val.DeltaAltitude = nullableUnit(units.Meter, v, units.NewDistance)
@@ -5275,21 +5276,21 @@ func DecodeDatum(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeUserDatum(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeUserDatum(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val UserDatum
+    var val publicpgn.UserDatum
     val.Info = Info
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DeltaX")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UserDatum_DeltaX); err != nil {
         return nil, fmt.Errorf("parse failed for UserDatum-DeltaX: %w", err)
     } else {
         val.DeltaX = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DeltaY")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UserDatum_DeltaY); err != nil {
         return nil, fmt.Errorf("parse failed for UserDatum-DeltaY: %w", err)
     } else {
         val.DeltaY = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DeltaZ")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UserDatum_DeltaZ); err != nil {
         return nil, fmt.Errorf("parse failed for UserDatum-DeltaZ: %w", err)
     } else {
         val.DeltaZ = nullableUnit(units.Meter, v, units.NewDistance)
@@ -5314,7 +5315,7 @@ func DecodeUserDatum(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Scale = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("EllipsoidSemiMajorAxis")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_UserDatum_EllipsoidSemiMajorAxis); err != nil {
         return nil, fmt.Errorf("parse failed for UserDatum-EllipsoidSemiMajorAxis: %w", err)
     } else {
         val.EllipsoidSemiMajorAxis = nullableUnit(units.Meter, v, units.NewDistance)
@@ -5332,11 +5333,11 @@ func DecodeUserDatum(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeCrossTrackError(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeCrossTrackError(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val CrossTrackError
+    var val publicpgn.CrossTrackError
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_CrossTrackError_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for CrossTrackError-Sid: %w", err)
     } else {
         val.Sid = v
@@ -5344,15 +5345,15 @@ func DecodeCrossTrackError(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for CrossTrackError-XteMode: %w", err)
     } else {
-        val.XteMode = ResidualModeConst(v)
+        val.XteMode = publicpgn.ResidualModeConst(v)
     }
     stream.skipBits(2)
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for CrossTrackError-NavigationTerminated: %w", err)
     } else {
-        val.NavigationTerminated = YesNoConst(v)
+        val.NavigationTerminated = publicpgn.YesNoConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Xte")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_CrossTrackError_Xte); err != nil {
         return nil, fmt.Errorf("parse failed for CrossTrackError-Xte: %w", err)
     } else {
         val.Xte = nullableUnit(units.Meter, v, units.NewDistance)
@@ -5361,16 +5362,16 @@ func DecodeCrossTrackError(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeNavigationData(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeNavigationData(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val NavigationData
+    var val publicpgn.NavigationData
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NavigationData_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DistanceToWaypoint")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_NavigationData_DistanceToWaypoint); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-DistanceToWaypoint: %w", err)
     } else {
         val.DistanceToWaypoint = nullableUnit(units.Meter, v, units.NewDistance)
@@ -5378,64 +5379,64 @@ func DecodeNavigationData(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-CourseBearingReference: %w", err)
     } else {
-        val.CourseBearingReference = DirectionReferenceConst(v)
+        val.CourseBearingReference = publicpgn.DirectionReferenceConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-PerpendicularCrossed: %w", err)
     } else {
-        val.PerpendicularCrossed = YesNoConst(v)
+        val.PerpendicularCrossed = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-ArrivalCircleEntered: %w", err)
     } else {
-        val.ArrivalCircleEntered = YesNoConst(v)
+        val.ArrivalCircleEntered = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-CalculationType: %w", err)
     } else {
-        val.CalculationType = BearingModeConst(v)
+        val.CalculationType = publicpgn.BearingModeConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("EtaTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_NavigationData_EtaTime); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-EtaTime: %w", err)
     } else {
         val.EtaTime = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("EtaDate")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_NavigationData_EtaDate); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-EtaDate: %w", err)
     } else {
         val.EtaDate = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("BearingOriginToDestinationWaypoint")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_NavigationData_BearingOriginToDestinationWaypoint); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-BearingOriginToDestinationWaypoint: %w", err)
     } else {
         val.BearingOriginToDestinationWaypoint = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("BearingPositionToDestinationWaypoint")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_NavigationData_BearingPositionToDestinationWaypoint); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-BearingPositionToDestinationWaypoint: %w", err)
     } else {
         val.BearingPositionToDestinationWaypoint = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("OriginWaypointNumber")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_NavigationData_OriginWaypointNumber); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-OriginWaypointNumber: %w", err)
     } else {
         val.OriginWaypointNumber = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("DestinationWaypointNumber")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_NavigationData_DestinationWaypointNumber); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-DestinationWaypointNumber: %w", err)
     } else {
         val.DestinationWaypointNumber = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("DestinationLatitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_NavigationData_DestinationLatitude); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-DestinationLatitude: %w", err)
     } else {
         val.DestinationLatitude = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("DestinationLongitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_NavigationData_DestinationLongitude); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-DestinationLongitude: %w", err)
     } else {
         val.DestinationLongitude = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("WaypointClosingVelocity")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_NavigationData_WaypointClosingVelocity); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationData-WaypointClosingVelocity: %w", err)
     } else {
         val.WaypointClosingVelocity = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -5443,17 +5444,17 @@ func DecodeNavigationData(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeNavigationRouteWpInformation(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val NavigationRouteWpInformation
+    var val publicpgn.NavigationRouteWpInformation
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartRps")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_NavigationRouteWpInformation_StartRps); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-StartRps: %w", err)
     } else {
         val.StartRps = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_NavigationRouteWpInformation_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -5461,12 +5462,12 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (a
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_NavigationRouteWpInformation_DatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RouteId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_NavigationRouteWpInformation_RouteId); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-RouteId: %w", err)
     } else {
         val.RouteId = v
@@ -5474,12 +5475,12 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (a
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-NavigationDirectionInRoute: %w", err)
     } else {
-        val.NavigationDirectionInRoute = DirectionConst(v)
+        val.NavigationDirectionInRoute = publicpgn.DirectionConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-SupplementaryRouteWpDataAvailable: %w", err)
     } else {
-        val.SupplementaryRouteWpDataAvailable = OffOnConst(v)
+        val.SupplementaryRouteWpDataAvailable = publicpgn.OffOnConst(v)
     }
     stream.skipBits(3)
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
@@ -5489,13 +5490,13 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (a
     }
     stream.skipBits(8)
     // decode repeating fields
-     val.Repeating1 = make([]NavigationRouteWpInformationRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.NavigationRouteWpInformationRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep NavigationRouteWpInformationRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("WpId")); err != nil {
+        var rep publicpgn.NavigationRouteWpInformationRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_NavigationRouteWpInformation_WpId); err != nil {
             return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpId: %w", err)
         } else {
             rep.WpId = v
@@ -5505,12 +5506,12 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (a
         } else {
             rep.WpName = v
         }
-        if v, err := ReadScaled[float64](stream, val.GetFieldSpec("WpLatitude")); err != nil {
+        if v, err := ReadScaled[float64](stream, &fieldSpec_NavigationRouteWpInformation_WpLatitude); err != nil {
             return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpLatitude: %w", err)
         } else {
             rep.WpLatitude = v
         }
-        if v, err := ReadScaled[float64](stream, val.GetFieldSpec("WpLongitude")); err != nil {
+        if v, err := ReadScaled[float64](stream, &fieldSpec_NavigationRouteWpInformation_WpLongitude); err != nil {
             return nil, fmt.Errorf("parse failed for NavigationRouteWpInformation-WpLongitude: %w", err)
         } else {
             rep.WpLongitude = v
@@ -5524,11 +5525,11 @@ func DecodeNavigationRouteWpInformation(Info MessageInfo, stream *DataStream) (a
 
     return val, nil
 }
-func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSetDriftRapidUpdate(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SetDriftRapidUpdate
+    var val publicpgn.SetDriftRapidUpdate
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SetDriftRapidUpdate_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-Sid: %w", err)
     } else {
         val.Sid = v
@@ -5536,15 +5537,15 @@ func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-SetReference: %w", err)
     } else {
-        val.SetReference = DirectionReferenceConst(v)
+        val.SetReference = publicpgn.DirectionReferenceConst(v)
     }
     stream.skipBits(6)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Set")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SetDriftRapidUpdate_Set); err != nil {
         return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-Set: %w", err)
     } else {
         val.Set = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Drift")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SetDriftRapidUpdate_Drift); err != nil {
         return nil, fmt.Errorf("parse failed for SetDriftRapidUpdate-Drift: %w", err)
     } else {
         val.Drift = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -5553,16 +5554,16 @@ func DecodeSetDriftRapidUpdate(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeNavigationRouteTimeToFromMark(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeNavigationRouteTimeToFromMark(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val NavigationRouteTimeToFromMark
+    var val publicpgn.NavigationRouteTimeToFromMark
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NavigationRouteTimeToFromMark_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteTimeToFromMark-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TimeToMark")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_NavigationRouteTimeToFromMark_TimeToMark); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteTimeToFromMark-TimeToMark: %w", err)
     } else {
         val.TimeToMark = v
@@ -5570,10 +5571,10 @@ func DecodeNavigationRouteTimeToFromMark(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteTimeToFromMark-MarkType: %w", err)
     } else {
-        val.MarkType = MarkTypeConst(v)
+        val.MarkType = publicpgn.MarkTypeConst(v)
     }
     stream.skipBits(4)
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("MarkId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_NavigationRouteTimeToFromMark_MarkId); err != nil {
         return nil, fmt.Errorf("parse failed for NavigationRouteTimeToFromMark-MarkId: %w", err)
     } else {
         val.MarkId = v
@@ -5581,26 +5582,26 @@ func DecodeNavigationRouteTimeToFromMark(Info MessageInfo, stream *DataStream) (
 
     return val, nil
 }
-func DecodeGnssControlStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGnssControlStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GnssControlStatus
+    var val publicpgn.GnssControlStatus
     val.Info = Info
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SvElevationMask")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssControlStatus_SvElevationMask); err != nil {
         return nil, fmt.Errorf("parse failed for GnssControlStatus-SvElevationMask: %w", err)
     } else {
         val.SvElevationMask = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PdopMask")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssControlStatus_PdopMask); err != nil {
         return nil, fmt.Errorf("parse failed for GnssControlStatus-PdopMask: %w", err)
     } else {
         val.PdopMask = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PdopSwitch")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssControlStatus_PdopSwitch); err != nil {
         return nil, fmt.Errorf("parse failed for GnssControlStatus-PdopSwitch: %w", err)
     } else {
         val.PdopSwitch = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SnrMask")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssControlStatus_SnrMask); err != nil {
         return nil, fmt.Errorf("parse failed for GnssControlStatus-SnrMask: %w", err)
     } else {
         val.SnrMask = v
@@ -5608,24 +5609,24 @@ func DecodeGnssControlStatus(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for GnssControlStatus-GnssModeDesired: %w", err)
     } else {
-        val.GnssModeDesired = GnssModeConst(v)
+        val.GnssModeDesired = publicpgn.GnssModeConst(v)
     }
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for GnssControlStatus-DgnssModeDesired: %w", err)
     } else {
-        val.DgnssModeDesired = DgnssModeConst(v)
+        val.DgnssModeDesired = publicpgn.DgnssModeConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssControlStatus-PositionVelocityFilter: %w", err)
     } else {
-        val.PositionVelocityFilter = YesNoConst(v)
+        val.PositionVelocityFilter = publicpgn.YesNoConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("MaxCorrectionAge")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssControlStatus_MaxCorrectionAge); err != nil {
         return nil, fmt.Errorf("parse failed for GnssControlStatus-MaxCorrectionAge: %w", err)
     } else {
         val.MaxCorrectionAge = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AntennaAltitudeFor2dMode")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssControlStatus_AntennaAltitudeFor2dMode); err != nil {
         return nil, fmt.Errorf("parse failed for GnssControlStatus-AntennaAltitudeFor2dMode: %w", err)
     } else {
         val.AntennaAltitudeFor2dMode = nullableUnit(units.Meter, v, units.NewDistance)
@@ -5633,17 +5634,17 @@ func DecodeGnssControlStatus(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssControlStatus-UseAntennaAltitudeFor2dMode: %w", err)
     } else {
-        val.UseAntennaAltitudeFor2dMode = YesNoConst(v)
+        val.UseAntennaAltitudeFor2dMode = publicpgn.YesNoConst(v)
     }
     stream.skipBits(6)
 
     return val, nil
 }
-func DecodeGnssDops(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGnssDops(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GnssDops
+    var val publicpgn.GnssDops
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssDops_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDops-Sid: %w", err)
     } else {
         val.Sid = v
@@ -5651,25 +5652,25 @@ func DecodeGnssDops(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDops-DesiredMode: %w", err)
     } else {
-        val.DesiredMode = GnssModeConst(v)
+        val.DesiredMode = publicpgn.GnssModeConst(v)
     }
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDops-ActualMode: %w", err)
     } else {
-        val.ActualMode = GnssModeConst(v)
+        val.ActualMode = publicpgn.GnssModeConst(v)
     }
     stream.skipBits(2)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Hdop")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssDops_Hdop); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDops-Hdop: %w", err)
     } else {
         val.Hdop = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Vdop")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssDops_Vdop); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDops-Vdop: %w", err)
     } else {
         val.Vdop = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Tdop")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssDops_Tdop); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDops-Tdop: %w", err)
     } else {
         val.Tdop = v
@@ -5677,12 +5678,12 @@ func DecodeGnssDops(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeGnssSatsInView(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGnssSatsInView(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val GnssSatsInView
+    var val publicpgn.GnssSatsInView
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssSatsInView_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for GnssSatsInView-Sid: %w", err)
     } else {
         val.Sid = v
@@ -5690,10 +5691,10 @@ func DecodeGnssSatsInView(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssSatsInView-RangeResidualMode: %w", err)
     } else {
-        val.RangeResidualMode = RangeResidualModeConst(v)
+        val.RangeResidualMode = publicpgn.RangeResidualModeConst(v)
     }
     stream.skipBits(6)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SatsInView")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssSatsInView_SatsInView); err != nil {
         return nil, fmt.Errorf("parse failed for GnssSatsInView-SatsInView: %w", err)
     } else {
         val.SatsInView = v
@@ -5702,33 +5703,33 @@ func DecodeGnssSatsInView(Info MessageInfo, stream *DataStream) (any, error) {
         }
     }
     // decode repeating fields
-     val.Repeating1 = make([]GnssSatsInViewRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.GnssSatsInViewRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep GnssSatsInViewRepeating1
-        if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Prn")); err != nil {
+        var rep publicpgn.GnssSatsInViewRepeating1
+        if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssSatsInView_Prn); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-Prn: %w", err)
         } else {
             rep.Prn = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Elevation")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_GnssSatsInView_Elevation); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-Elevation: %w", err)
         } else {
             rep.Elevation = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Azimuth")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_GnssSatsInView_Azimuth); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-Azimuth: %w", err)
         } else {
             rep.Azimuth = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Snr")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_GnssSatsInView_Snr); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-Snr: %w", err)
         } else {
             rep.Snr = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RangeResiduals")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_GnssSatsInView_RangeResiduals); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-RangeResiduals: %w", err)
         } else {
             rep.RangeResiduals = nullableUnit(units.Meter, v, units.NewDistance)
@@ -5736,7 +5737,7 @@ func DecodeGnssSatsInView(Info MessageInfo, stream *DataStream) (any, error) {
         if v, err := stream.readLookupField(4); err != nil {
             return nil, fmt.Errorf("parse failed for GnssSatsInView-Status: %w", err)
         } else {
-            rep.Status = SatelliteStatusConst(v)
+            rep.Status = publicpgn.SatelliteStatusConst(v)
         }
         stream.skipBits(4)
         val.Repeating1 = append(val.Repeating1, rep)
@@ -5748,26 +5749,26 @@ func DecodeGnssSatsInView(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeGnssRaimSettings(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGnssRaimSettings(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GnssRaimSettings
+    var val publicpgn.GnssRaimSettings
     val.Info = Info
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RadialPositionErrorMaximumThreshold")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssRaimSettings_RadialPositionErrorMaximumThreshold); err != nil {
         return nil, fmt.Errorf("parse failed for GnssRaimSettings-RadialPositionErrorMaximumThreshold: %w", err)
     } else {
         val.RadialPositionErrorMaximumThreshold = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("ProbabilityOfFalseAlarm")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_GnssRaimSettings_ProbabilityOfFalseAlarm); err != nil {
         return nil, fmt.Errorf("parse failed for GnssRaimSettings-ProbabilityOfFalseAlarm: %w", err)
     } else {
         val.ProbabilityOfFalseAlarm = v
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("ProbabilityOfMissedDetection")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_GnssRaimSettings_ProbabilityOfMissedDetection); err != nil {
         return nil, fmt.Errorf("parse failed for GnssRaimSettings-ProbabilityOfMissedDetection: %w", err)
     } else {
         val.ProbabilityOfMissedDetection = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("PseudorangeResidualFilteringTimeConstant")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GnssRaimSettings_PseudorangeResidualFilteringTimeConstant); err != nil {
         return nil, fmt.Errorf("parse failed for GnssRaimSettings-PseudorangeResidualFilteringTimeConstant: %w", err)
     } else {
         val.PseudorangeResidualFilteringTimeConstant = v
@@ -5776,46 +5777,46 @@ func DecodeGnssRaimSettings(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeGnssPseudorangeErrorStatistics(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGnssPseudorangeErrorStatistics(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GnssPseudorangeErrorStatistics
+    var val publicpgn.GnssPseudorangeErrorStatistics
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssPseudorangeErrorStatistics_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RmsStdDevOfRangeInputs")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPseudorangeErrorStatistics_RmsStdDevOfRangeInputs); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-RmsStdDevOfRangeInputs: %w", err)
     } else {
         val.RmsStdDevOfRangeInputs = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("StdDevOfMajorErrorEllipse")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPseudorangeErrorStatistics_StdDevOfMajorErrorEllipse); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevOfMajorErrorEllipse: %w", err)
     } else {
         val.StdDevOfMajorErrorEllipse = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("StdDevOfMinorErrorEllipse")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPseudorangeErrorStatistics_StdDevOfMinorErrorEllipse); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevOfMinorErrorEllipse: %w", err)
     } else {
         val.StdDevOfMinorErrorEllipse = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("OrientationOfErrorEllipse")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPseudorangeErrorStatistics_OrientationOfErrorEllipse); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-OrientationOfErrorEllipse: %w", err)
     } else {
         val.OrientationOfErrorEllipse = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("StdDevLatError")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPseudorangeErrorStatistics_StdDevLatError); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevLatError: %w", err)
     } else {
         val.StdDevLatError = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("StdDevLonError")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPseudorangeErrorStatistics_StdDevLonError); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevLonError: %w", err)
     } else {
         val.StdDevLonError = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("StdDevAltError")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssPseudorangeErrorStatistics_StdDevAltError); err != nil {
         return nil, fmt.Errorf("parse failed for GnssPseudorangeErrorStatistics-StdDevAltError: %w", err)
     } else {
         val.StdDevAltError = nullableUnit(units.Meter, v, units.NewDistance)
@@ -5823,16 +5824,16 @@ func DecodeGnssPseudorangeErrorStatistics(Info MessageInfo, stream *DataStream) 
 
     return val, nil
 }
-func DecodeDgnssCorrections(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeDgnssCorrections(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val DgnssCorrections
+    var val publicpgn.DgnssCorrections
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_DgnssCorrections_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("ReferenceStationId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_DgnssCorrections_ReferenceStationId); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-ReferenceStationId: %w", err)
     } else {
         val.ReferenceStationId = v
@@ -5840,9 +5841,9 @@ func DecodeDgnssCorrections(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-ReferenceStationType: %w", err)
     } else {
-        val.ReferenceStationType = GnsConst(v)
+        val.ReferenceStationType = publicpgn.GnsConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TimeOfCorrections")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DgnssCorrections_TimeOfCorrections); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-TimeOfCorrections: %w", err)
     } else {
         val.TimeOfCorrections = v
@@ -5850,30 +5851,30 @@ func DecodeDgnssCorrections(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-StationHealth: %w", err)
     } else {
-        val.StationHealth = StationHealthConst(v)
+        val.StationHealth = publicpgn.StationHealthConst(v)
     }
     stream.skipBits(4)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SatelliteId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_DgnssCorrections_SatelliteId); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-SatelliteId: %w", err)
     } else {
         val.SatelliteId = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Prc")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DgnssCorrections_Prc); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-Prc: %w", err)
     } else {
         val.Prc = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Rrc")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DgnssCorrections_Rrc); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-Rrc: %w", err)
     } else {
         val.Rrc = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Udre")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DgnssCorrections_Udre); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-Udre: %w", err)
     } else {
         val.Udre = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Iod")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_DgnssCorrections_Iod); err != nil {
         return nil, fmt.Errorf("parse failed for DgnssCorrections-Iod: %w", err)
     } else {
         val.Iod = v
@@ -5881,16 +5882,16 @@ func DecodeDgnssCorrections(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeGnssDifferentialCorrectionReceiverInterface(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGnssDifferentialCorrectionReceiverInterface(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GnssDifferentialCorrectionReceiverInterface
+    var val publicpgn.GnssDifferentialCorrectionReceiverInterface
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Channel")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssDifferentialCorrectionReceiverInterface_Channel); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-Channel: %w", err)
     } else {
         val.Channel = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Frequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssDifferentialCorrectionReceiverInterface_Frequency); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-Frequency: %w", err)
     } else {
         val.Frequency = v
@@ -5898,52 +5899,52 @@ func DecodeGnssDifferentialCorrectionReceiverInterface(Info MessageInfo, stream 
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-SerialInterfaceBitRate: %w", err)
     } else {
-        val.SerialInterfaceBitRate = SerialBitRateConst(v)
+        val.SerialInterfaceBitRate = publicpgn.SerialBitRateConst(v)
     }
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-SerialInterfaceDetectionMode: %w", err)
     } else {
-        val.SerialInterfaceDetectionMode = SerialDetectionModeConst(v)
+        val.SerialInterfaceDetectionMode = publicpgn.SerialDetectionModeConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-DifferentialSource: %w", err)
     } else {
-        val.DifferentialSource = DifferentialSourceConst(v)
+        val.DifferentialSource = publicpgn.DifferentialSourceConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverInterface-DifferentialOperationMode: %w", err)
     } else {
-        val.DifferentialOperationMode = DifferentialModeConst(v)
+        val.DifferentialOperationMode = publicpgn.DifferentialModeConst(v)
     }
     stream.skipBits(8)
 
     return val, nil
 }
-func DecodeGnssDifferentialCorrectionReceiverSignal(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGnssDifferentialCorrectionReceiverSignal(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GnssDifferentialCorrectionReceiverSignal
+    var val publicpgn.GnssDifferentialCorrectionReceiverSignal
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssDifferentialCorrectionReceiverSignal_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Channel")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GnssDifferentialCorrectionReceiverSignal_Channel); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-Channel: %w", err)
     } else {
         val.Channel = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SignalStrength")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssDifferentialCorrectionReceiverSignal_SignalStrength); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-SignalStrength: %w", err)
     } else {
         val.SignalStrength = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SignalSnr")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssDifferentialCorrectionReceiverSignal_SignalSnr); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-SignalSnr: %w", err)
     } else {
         val.SignalSnr = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Frequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssDifferentialCorrectionReceiverSignal_Frequency); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-Frequency: %w", err)
     } else {
         val.Frequency = v
@@ -5951,9 +5952,9 @@ func DecodeGnssDifferentialCorrectionReceiverSignal(Info MessageInfo, stream *Da
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-StationType: %w", err)
     } else {
-        val.StationType = GnsConst(v)
+        val.StationType = publicpgn.GnsConst(v)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("ReferenceStationId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GnssDifferentialCorrectionReceiverSignal_ReferenceStationId); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-ReferenceStationId: %w", err)
     } else {
         val.ReferenceStationId = v
@@ -5961,30 +5962,30 @@ func DecodeGnssDifferentialCorrectionReceiverSignal(Info MessageInfo, stream *Da
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-DifferentialSignalBitRate: %w", err)
     } else {
-        val.DifferentialSignalBitRate = SerialBitRateConst(v)
+        val.DifferentialSignalBitRate = publicpgn.SerialBitRateConst(v)
     }
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-DifferentialSignalDetectionMode: %w", err)
     } else {
-        val.DifferentialSignalDetectionMode = SerialDetectionModeConst(v)
+        val.DifferentialSignalDetectionMode = publicpgn.SerialDetectionModeConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-UsedAsCorrectionSource: %w", err)
     } else {
-        val.UsedAsCorrectionSource = YesNoConst(v)
+        val.UsedAsCorrectionSource = publicpgn.YesNoConst(v)
     }
     stream.skipBits(2)
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-DifferentialSource: %w", err)
     } else {
-        val.DifferentialSource = DifferentialSourceConst(v)
+        val.DifferentialSource = publicpgn.DifferentialSourceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TimeSinceLastSatDifferentialSync")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_GnssDifferentialCorrectionReceiverSignal_TimeSinceLastSatDifferentialSync); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-TimeSinceLastSatDifferentialSync: %w", err)
     } else {
         val.TimeSinceLastSatDifferentialSync = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("SatelliteServiceIdNo")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GnssDifferentialCorrectionReceiverSignal_SatelliteServiceIdNo); err != nil {
         return nil, fmt.Errorf("parse failed for GnssDifferentialCorrectionReceiverSignal-SatelliteServiceIdNo: %w", err)
     } else {
         val.SatelliteServiceIdNo = v
@@ -5992,72 +5993,72 @@ func DecodeGnssDifferentialCorrectionReceiverSignal(Info MessageInfo, stream *Da
 
     return val, nil
 }
-func DecodeGlonassAlmanacData(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeGlonassAlmanacData(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val GlonassAlmanacData
+    var val publicpgn.GlonassAlmanacData
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Prn")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GlonassAlmanacData_Prn); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Prn: %w", err)
     } else {
         val.Prn = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Na")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GlonassAlmanacData_Na); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Na: %w", err)
     } else {
         val.Na = v
     }
     stream.skipBits(2)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Cna")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GlonassAlmanacData_Cna); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Cna: %w", err)
     } else {
         val.Cna = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Hna")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GlonassAlmanacData_Hna); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Hna: %w", err)
     } else {
         val.Hna = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("EpsilonNa")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GlonassAlmanacData_EpsilonNa); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-EpsilonNa: %w", err)
     } else {
         val.EpsilonNa = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DeltatnaDot")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_GlonassAlmanacData_DeltatnaDot); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-DeltatnaDot: %w", err)
     } else {
         val.DeltatnaDot = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("OmegaNa")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GlonassAlmanacData_OmegaNa); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-OmegaNa: %w", err)
     } else {
         val.OmegaNa = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("DeltaTna")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_GlonassAlmanacData_DeltaTna); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-DeltaTna: %w", err)
     } else {
         val.DeltaTna = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Tna")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_GlonassAlmanacData_Tna); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-Tna: %w", err)
     } else {
         val.Tna = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("LambdaNa")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_GlonassAlmanacData_LambdaNa); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-LambdaNa: %w", err)
     } else {
         val.LambdaNa = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("DeltaIna")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_GlonassAlmanacData_DeltaIna); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-DeltaIna: %w", err)
     } else {
         val.DeltaIna = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("TauCa")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_GlonassAlmanacData_TauCa); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-TauCa: %w", err)
     } else {
         val.TauCa = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("TauNa")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_GlonassAlmanacData_TauNa); err != nil {
         return nil, fmt.Errorf("parse failed for GlonassAlmanacData-TauNa: %w", err)
     } else {
         val.TauNa = v
@@ -6065,31 +6066,31 @@ func DecodeGlonassAlmanacData(Info MessageInfo, stream *DataStream) (any, error)
 
     return val, nil
 }
-func DecodeAisUtcAndDateReport(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAisUtcAndDateReport(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AisUtcAndDateReport
+    var val publicpgn.AisUtcAndDateReport
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-MessageId: %w", err)
     } else {
-        val.MessageId = AisMessageIdConst(v)
+        val.MessageId = publicpgn.AisMessageIdConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-RepeatIndicator: %w", err)
     } else {
-        val.RepeatIndicator = RepeatIndicatorConst(v)
+        val.RepeatIndicator = publicpgn.RepeatIndicatorConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("UserId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisUtcAndDateReport_UserId); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-UserId: %w", err)
     } else {
         val.UserId = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Longitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_AisUtcAndDateReport_Longitude); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-Longitude: %w", err)
     } else {
         val.Longitude = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("Latitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_AisUtcAndDateReport_Latitude); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-Latitude: %w", err)
     } else {
         val.Latitude = v
@@ -6097,15 +6098,15 @@ func DecodeAisUtcAndDateReport(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-PositionAccuracy: %w", err)
     } else {
-        val.PositionAccuracy = PositionAccuracyConst(v)
+        val.PositionAccuracy = publicpgn.PositionAccuracyConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-Raim: %w", err)
     } else {
-        val.Raim = RaimFlagConst(v)
+        val.Raim = publicpgn.RaimFlagConst(v)
     }
     stream.skipBits(6)
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PositionTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisUtcAndDateReport_PositionTime); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-PositionTime: %w", err)
     } else {
         val.PositionTime = v
@@ -6118,9 +6119,9 @@ func DecodeAisUtcAndDateReport(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-AisTransceiverInformation: %w", err)
     } else {
-        val.AisTransceiverInformation = AisTransceiverConst(v)
+        val.AisTransceiverInformation = publicpgn.AisTransceiverConst(v)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("PositionDate")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_AisUtcAndDateReport_PositionDate); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-PositionDate: %w", err)
     } else {
         val.PositionDate = v
@@ -6129,31 +6130,31 @@ func DecodeAisUtcAndDateReport(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for AisUtcAndDateReport-GnssType: %w", err)
     } else {
-        val.GnssType = PositionFixDeviceConst(v)
+        val.GnssType = publicpgn.PositionFixDeviceConst(v)
     }
 
     return val, nil
 }
-func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAisClassAStaticAndVoyageRelatedData(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AisClassAStaticAndVoyageRelatedData
+    var val publicpgn.AisClassAStaticAndVoyageRelatedData
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-MessageId: %w", err)
     } else {
-        val.MessageId = AisMessageIdConst(v)
+        val.MessageId = publicpgn.AisMessageIdConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-RepeatIndicator: %w", err)
     } else {
-        val.RepeatIndicator = RepeatIndicatorConst(v)
+        val.RepeatIndicator = publicpgn.RepeatIndicatorConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("UserId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisClassAStaticAndVoyageRelatedData_UserId); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-UserId: %w", err)
     } else {
         val.UserId = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("ImoNumber")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisClassAStaticAndVoyageRelatedData_ImoNumber); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-ImoNumber: %w", err)
     } else {
         val.ImoNumber = v
@@ -6171,39 +6172,39 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *DataStr
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-TypeOfShip: %w", err)
     } else {
-        val.TypeOfShip = ShipTypeConst(v)
+        val.TypeOfShip = publicpgn.ShipTypeConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Length")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassAStaticAndVoyageRelatedData_Length); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Length: %w", err)
     } else {
         val.Length = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Beam")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassAStaticAndVoyageRelatedData_Beam); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Beam: %w", err)
     } else {
         val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PositionReferenceFromStarboard")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassAStaticAndVoyageRelatedData_PositionReferenceFromStarboard); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-PositionReferenceFromStarboard: %w", err)
     } else {
         val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PositionReferenceFromBow")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassAStaticAndVoyageRelatedData_PositionReferenceFromBow); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-PositionReferenceFromBow: %w", err)
     } else {
         val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("EtaDate")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_AisClassAStaticAndVoyageRelatedData_EtaDate); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-EtaDate: %w", err)
     } else {
         val.EtaDate = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("EtaTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassAStaticAndVoyageRelatedData_EtaTime); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-EtaTime: %w", err)
     } else {
         val.EtaTime = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Draft")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassAStaticAndVoyageRelatedData_Draft); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Draft: %w", err)
     } else {
         val.Draft = nullableUnit(units.Meter, v, units.NewDistance)
@@ -6216,44 +6217,44 @@ func DecodeAisClassAStaticAndVoyageRelatedData(Info MessageInfo, stream *DataStr
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-AisVersionIndicator: %w", err)
     } else {
-        val.AisVersionIndicator = AisVersionConst(v)
+        val.AisVersionIndicator = publicpgn.AisVersionConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-GnssType: %w", err)
     } else {
-        val.GnssType = PositionFixDeviceConst(v)
+        val.GnssType = publicpgn.PositionFixDeviceConst(v)
     }
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-Dte: %w", err)
     } else {
-        val.Dte = AvailableConst(v)
+        val.Dte = publicpgn.AvailableConst(v)
     }
     stream.skipBits(1)
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassAStaticAndVoyageRelatedData-AisTransceiverInformation: %w", err)
     } else {
-        val.AisTransceiverInformation = AisTransceiverConst(v)
+        val.AisTransceiverInformation = publicpgn.AisTransceiverConst(v)
     }
     stream.skipBits(3)
 
     return val, nil
 }
-func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAisAddressedBinaryMessage(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var binaryLength uint16 = 0
-    var val AisAddressedBinaryMessage
+    var val publicpgn.AisAddressedBinaryMessage
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-MessageId: %w", err)
     } else {
-        val.MessageId = AisMessageIdConst(v)
+        val.MessageId = publicpgn.AisMessageIdConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-RepeatIndicator: %w", err)
     } else {
-        val.RepeatIndicator = RepeatIndicatorConst(v)
+        val.RepeatIndicator = publicpgn.RepeatIndicatorConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisAddressedBinaryMessage_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -6262,14 +6263,14 @@ func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *DataStream) (any,
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-AisTransceiverInformation: %w", err)
     } else {
-        val.AisTransceiverInformation = AisTransceiverConst(v)
+        val.AisTransceiverInformation = publicpgn.AisTransceiverConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SequenceNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AisAddressedBinaryMessage_SequenceNumber); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-SequenceNumber: %w", err)
     } else {
         val.SequenceNumber = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("DestinationId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisAddressedBinaryMessage_DestinationId); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-DestinationId: %w", err)
     } else {
         val.DestinationId = v
@@ -6278,10 +6279,10 @@ func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *DataStream) (any,
     if v, err := stream.readLookupField(1); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-RetransmitFlag: %w", err)
     } else {
-        val.RetransmitFlag = YesNoConst(v)
+        val.RetransmitFlag = publicpgn.YesNoConst(v)
     }
     stream.skipBits(1)
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfBitsInBinaryDataField")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_AisAddressedBinaryMessage_NumberOfBitsInBinaryDataField); err != nil {
         return nil, fmt.Errorf("parse failed for AisAddressedBinaryMessage-NumberOfBitsInBinaryDataField: %w", err)
     } else {
         val.NumberOfBitsInBinaryDataField = v
@@ -6297,21 +6298,21 @@ func DecodeAisAddressedBinaryMessage(Info MessageInfo, stream *DataStream) (any,
 
     return val, nil
 }
-func DecodeAisAcknowledge(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAisAcknowledge(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AisAcknowledge
+    var val publicpgn.AisAcknowledge
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisAcknowledge-MessageId: %w", err)
     } else {
-        val.MessageId = AisMessageIdConst(v)
+        val.MessageId = publicpgn.AisMessageIdConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisAcknowledge-RepeatIndicator: %w", err)
     } else {
-        val.RepeatIndicator = RepeatIndicatorConst(v)
+        val.RepeatIndicator = publicpgn.RepeatIndicatorConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisAcknowledge_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for AisAcknowledge-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -6320,22 +6321,22 @@ func DecodeAisAcknowledge(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisAcknowledge-AisTransceiverInformation: %w", err)
     } else {
-        val.AisTransceiverInformation = AisTransceiverConst(v)
+        val.AisTransceiverInformation = publicpgn.AisTransceiverConst(v)
     }
     stream.skipBits(2)
     // decode repeating fields
-     val.Repeating1 = make([]AisAcknowledgeRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.AisAcknowledgeRepeating1, 0)
      if stream.isEOF() {
         return val, nil
     }
     for {
-        var rep AisAcknowledgeRepeating1
-        if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("DestinationId")); err != nil {
+        var rep publicpgn.AisAcknowledgeRepeating1
+        if v, err := ReadRaw[uint32](stream, &fieldSpec_AisAcknowledge_DestinationId); err != nil {
             return nil, fmt.Errorf("parse failed for AisAcknowledge-DestinationId: %w", err)
         } else {
             rep.DestinationId = v
         }
-        if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SequenceNumber")); err != nil {
+        if v, err := ReadRaw[uint8](stream, &fieldSpec_AisAcknowledge_SequenceNumber); err != nil {
             return nil, fmt.Errorf("parse failed for AisAcknowledge-SequenceNumber: %w", err)
         } else {
             rep.SequenceNumber = v
@@ -6349,22 +6350,22 @@ func DecodeAisAcknowledge(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeAisBinaryBroadcastMessage(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAisBinaryBroadcastMessage(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var binaryLength uint16 = 0
-    var val AisBinaryBroadcastMessage
+    var val publicpgn.AisBinaryBroadcastMessage
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-MessageId: %w", err)
     } else {
-        val.MessageId = AisMessageIdConst(v)
+        val.MessageId = publicpgn.AisMessageIdConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-RepeatIndicator: %w", err)
     } else {
-        val.RepeatIndicator = RepeatIndicatorConst(v)
+        val.RepeatIndicator = publicpgn.RepeatIndicatorConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisBinaryBroadcastMessage_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -6373,10 +6374,10 @@ func DecodeAisBinaryBroadcastMessage(Info MessageInfo, stream *DataStream) (any,
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-AisTransceiverInformation: %w", err)
     } else {
-        val.AisTransceiverInformation = AisTransceiverConst(v)
+        val.AisTransceiverInformation = publicpgn.AisTransceiverConst(v)
     }
     stream.skipBits(2)
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfBitsInBinaryDataField")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_AisBinaryBroadcastMessage_NumberOfBitsInBinaryDataField); err != nil {
         return nil, fmt.Errorf("parse failed for AisBinaryBroadcastMessage-NumberOfBitsInBinaryDataField: %w", err)
     } else {
         val.NumberOfBitsInBinaryDataField = v
@@ -6392,16 +6393,16 @@ func DecodeAisBinaryBroadcastMessage(Info MessageInfo, stream *DataStream) (any,
 
     return val, nil
 }
-func DecodeRadioFrequencyModePower(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRadioFrequencyModePower(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val RadioFrequencyModePower
+    var val publicpgn.RadioFrequencyModePower
     val.Info = Info
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RxFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_RadioFrequencyModePower_RxFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-RxFrequency: %w", err)
     } else {
         val.RxFrequency = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TxFrequency")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_RadioFrequencyModePower_TxFrequency); err != nil {
         return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-TxFrequency: %w", err)
     } else {
         val.TxFrequency = v
@@ -6411,7 +6412,7 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *DataStream) (any, e
     } else {
         val.RadioChannel = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("TxPower")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RadioFrequencyModePower_TxPower); err != nil {
         return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-TxPower: %w", err)
     } else {
         val.TxPower = v
@@ -6419,9 +6420,9 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-Mode: %w", err)
     } else {
-        val.Mode = TelephoneModeConst(v)
+        val.Mode = publicpgn.TelephoneModeConst(v)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("ChannelBandwidth")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RadioFrequencyModePower_ChannelBandwidth); err != nil {
         return nil, fmt.Errorf("parse failed for RadioFrequencyModePower-ChannelBandwidth: %w", err)
     } else {
         val.ChannelBandwidth = v
@@ -6429,21 +6430,21 @@ func DecodeRadioFrequencyModePower(Info MessageInfo, stream *DataStream) (any, e
 
     return val, nil
 }
-func DecodeAisClassBStaticDataMsg24PartA(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAisClassBStaticDataMsg24PartA(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AisClassBStaticDataMsg24PartA
+    var val publicpgn.AisClassBStaticDataMsg24PartA
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-MessageId: %w", err)
     } else {
-        val.MessageId = AisMessageIdConst(v)
+        val.MessageId = publicpgn.AisMessageIdConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-RepeatIndicator: %w", err)
     } else {
-        val.RepeatIndicator = RepeatIndicatorConst(v)
+        val.RepeatIndicator = publicpgn.RepeatIndicatorConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("UserId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisClassBStaticDataMsg24PartA_UserId); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-UserId: %w", err)
     } else {
         val.UserId = v
@@ -6456,10 +6457,10 @@ func DecodeAisClassBStaticDataMsg24PartA(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-AisTransceiverInformation: %w", err)
     } else {
-        val.AisTransceiverInformation = AisTransceiverConst(v)
+        val.AisTransceiverInformation = publicpgn.AisTransceiverConst(v)
     }
     stream.skipBits(3)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SequenceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AisClassBStaticDataMsg24PartA_SequenceId); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartA-SequenceId: %w", err)
     } else {
         val.SequenceId = v
@@ -6467,21 +6468,21 @@ func DecodeAisClassBStaticDataMsg24PartA(Info MessageInfo, stream *DataStream) (
 
     return val, nil
 }
-func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeAisClassBStaticDataMsg24PartB(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val AisClassBStaticDataMsg24PartB
+    var val publicpgn.AisClassBStaticDataMsg24PartB
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-MessageId: %w", err)
     } else {
-        val.MessageId = AisMessageIdConst(v)
+        val.MessageId = publicpgn.AisMessageIdConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-RepeatIndicator: %w", err)
     } else {
-        val.RepeatIndicator = RepeatIndicatorConst(v)
+        val.RepeatIndicator = publicpgn.RepeatIndicatorConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("UserId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisClassBStaticDataMsg24PartB_UserId); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-UserId: %w", err)
     } else {
         val.UserId = v
@@ -6489,7 +6490,7 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-TypeOfShip: %w", err)
     } else {
-        val.TypeOfShip = ShipTypeConst(v)
+        val.TypeOfShip = publicpgn.ShipTypeConst(v)
     }
     if v, err := stream.readFixedString(56); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-VendorId: %w", err)
@@ -6501,27 +6502,27 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *DataStream) (
     } else {
         val.Callsign = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Length")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassBStaticDataMsg24PartB_Length); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Length: %w", err)
     } else {
         val.Length = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Beam")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassBStaticDataMsg24PartB_Beam); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-Beam: %w", err)
     } else {
         val.Beam = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PositionReferenceFromStarboard")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassBStaticDataMsg24PartB_PositionReferenceFromStarboard); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-PositionReferenceFromStarboard: %w", err)
     } else {
         val.PositionReferenceFromStarboard = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PositionReferenceFromBow")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_AisClassBStaticDataMsg24PartB_PositionReferenceFromBow); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-PositionReferenceFromBow: %w", err)
     } else {
         val.PositionReferenceFromBow = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("MothershipUserId")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_AisClassBStaticDataMsg24PartB_MothershipUserId); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-MothershipUserId: %w", err)
     } else {
         val.MothershipUserId = v
@@ -6531,15 +6532,15 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-GnssType: %w", err)
     } else {
-        val.GnssType = PositionFixDeviceConst(v)
+        val.GnssType = publicpgn.PositionFixDeviceConst(v)
     }
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-AisTransceiverInformation: %w", err)
     } else {
-        val.AisTransceiverInformation = AisTransceiverConst(v)
+        val.AisTransceiverInformation = publicpgn.AisTransceiverConst(v)
     }
     stream.skipBits(3)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SequenceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AisClassBStaticDataMsg24PartB_SequenceId); err != nil {
         return nil, fmt.Errorf("parse failed for AisClassBStaticDataMsg24PartB-SequenceId: %w", err)
     } else {
         val.SequenceId = v
@@ -6547,17 +6548,17 @@ func DecodeAisClassBStaticDataMsg24PartB(Info MessageInfo, stream *DataStream) (
 
     return val, nil
 }
-func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceDatabaseList(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val RouteAndWpServiceDatabaseList
+    var val publicpgn.RouteAndWpServiceDatabaseList
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartDatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceDatabaseList_StartDatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-StartDatabaseId: %w", err)
     } else {
         val.StartDatabaseId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceDatabaseList_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -6565,19 +6566,19 @@ func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfDatabasesAvailable")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceDatabaseList_NumberOfDatabasesAvailable); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfDatabasesAvailable: %w", err)
     } else {
         val.NumberOfDatabasesAvailable = v
     }
     // decode repeating fields
-     val.Repeating1 = make([]RouteAndWpServiceDatabaseListRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.RouteAndWpServiceDatabaseListRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep RouteAndWpServiceDatabaseListRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+        var rep publicpgn.RouteAndWpServiceDatabaseListRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceDatabaseList_DatabaseId); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-DatabaseId: %w", err)
         } else {
             rep.DatabaseId = v
@@ -6587,12 +6588,12 @@ func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (
         } else {
             rep.DatabaseName = v
         }
-        if v, err := ReadScaled[float32](stream, val.GetFieldSpec("DatabaseTimestamp")); err != nil {
+        if v, err := ReadScaled[float32](stream, &fieldSpec_RouteAndWpServiceDatabaseList_DatabaseTimestamp); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-DatabaseTimestamp: %w", err)
         } else {
             rep.DatabaseTimestamp = v
         }
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseDatestamp")); err != nil {
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceDatabaseList_DatabaseDatestamp); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-DatabaseDatestamp: %w", err)
         } else {
             rep.DatabaseDatestamp = v
@@ -6600,20 +6601,20 @@ func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (
         if v, err := stream.readLookupField(4); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-WpPositionResolution: %w", err)
         } else {
-            rep.WpPositionResolution = WpPositionResolutionConst(v)
+            rep.WpPositionResolution = publicpgn.WpPositionResolutionConst(v)
         }
         stream.skipBits(4)
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfRoutesInDatabase")); err != nil {
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceDatabaseList_NumberOfRoutesInDatabase); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfRoutesInDatabase: %w", err)
         } else {
             rep.NumberOfRoutesInDatabase = v
         }
-        if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("NumberOfWpsInDatabase")); err != nil {
+        if v, err := ReadRaw[uint32](stream, &fieldSpec_RouteAndWpServiceDatabaseList_NumberOfWpsInDatabase); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfWpsInDatabase: %w", err)
         } else {
             rep.NumberOfWpsInDatabase = v
         }
-        if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("NumberOfBytesInDatabase")); err != nil {
+        if v, err := ReadRaw[uint32](stream, &fieldSpec_RouteAndWpServiceDatabaseList_NumberOfBytesInDatabase); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseList-NumberOfBytesInDatabase: %w", err)
         } else {
             rep.NumberOfBytesInDatabase = v
@@ -6627,17 +6628,17 @@ func DecodeRouteAndWpServiceDatabaseList(Info MessageInfo, stream *DataStream) (
 
     return val, nil
 }
-func DecodeRouteAndWpServiceRouteList(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceRouteList(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val RouteAndWpServiceRouteList
+    var val publicpgn.RouteAndWpServiceRouteList
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartRouteId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteList_StartRouteId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-StartRouteId: %w", err)
     } else {
         val.StartRouteId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteList_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -6645,24 +6646,24 @@ func DecodeRouteAndWpServiceRouteList(Info MessageInfo, stream *DataStream) (any
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfRoutesInDatabase")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteList_NumberOfRoutesInDatabase); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-NumberOfRoutesInDatabase: %w", err)
     } else {
         val.NumberOfRoutesInDatabase = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteList_DatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
     // decode repeating fields
-     val.Repeating1 = make([]RouteAndWpServiceRouteListRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.RouteAndWpServiceRouteListRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep RouteAndWpServiceRouteListRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RouteId")); err != nil {
+        var rep publicpgn.RouteAndWpServiceRouteListRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteList_RouteId); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-RouteId: %w", err)
         } else {
             rep.RouteId = v
@@ -6676,12 +6677,12 @@ func DecodeRouteAndWpServiceRouteList(Info MessageInfo, stream *DataStream) (any
         if v, err := stream.readLookupField(2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-WpIdentificationMethod: %w", err)
         } else {
-            rep.WpIdentificationMethod = WpIdentificationMethodConst(v)
+            rep.WpIdentificationMethod = publicpgn.WpIdentificationMethodConst(v)
         }
         if v, err := stream.readLookupField(4); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteList-RouteStatus: %w", err)
         } else {
-            rep.RouteStatus = WpRouteStatusConst(v)
+            rep.RouteStatus = publicpgn.WpRouteStatusConst(v)
         }
         val.Repeating1 = append(val.Repeating1, rep)
         repeat1Count--
@@ -6692,16 +6693,16 @@ func DecodeRouteAndWpServiceRouteList(Info MessageInfo, stream *DataStream) (any
 
     return val, nil
 }
-func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceRouteWpListAttributes(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val RouteAndWpServiceRouteWpListAttributes
+    var val publicpgn.RouteAndWpServiceRouteWpListAttributes
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpListAttributes_DatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RouteId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteId: %w", err)
     } else {
         val.RouteId = v
@@ -6711,12 +6712,12 @@ func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *Data
     } else {
         val.RouteWpListName = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("RouteWpListTimestamp")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteWpListTimestamp); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteWpListTimestamp: %w", err)
     } else {
         val.RouteWpListTimestamp = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RouteWpListDatestamp")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteWpListDatestamp); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteWpListDatestamp: %w", err)
     } else {
         val.RouteWpListDatestamp = v
@@ -6724,9 +6725,9 @@ func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *Data
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-ChangeAtLastTimestamp: %w", err)
     } else {
-        val.ChangeAtLastTimestamp = WpChangeConst(v)
+        val.ChangeAtLastTimestamp = publicpgn.WpChangeConst(v)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfWpsInTheRouteWpList")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpListAttributes_NumberOfWpsInTheRouteWpList); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-NumberOfWpsInTheRouteWpList: %w", err)
     } else {
         val.NumberOfWpsInTheRouteWpList = v
@@ -6734,24 +6735,24 @@ func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *Data
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-CriticalSupplementaryParameters: %w", err)
     } else {
-        val.CriticalSupplementaryParameters = WpCriticalParametersConst(v)
+        val.CriticalSupplementaryParameters = publicpgn.WpCriticalParametersConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-NavigationMethod: %w", err)
     } else {
-        val.NavigationMethod = WpNavigationMethodConst(v)
+        val.NavigationMethod = publicpgn.WpNavigationMethodConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-WpIdentificationMethod: %w", err)
     } else {
-        val.WpIdentificationMethod = WpIdentificationMethodConst(v)
+        val.WpIdentificationMethod = publicpgn.WpIdentificationMethodConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-RouteStatus: %w", err)
     } else {
-        val.RouteStatus = WpRouteStatusConst(v)
+        val.RouteStatus = publicpgn.WpRouteStatusConst(v)
     }
-    if v, err := ReadRaw[int16](stream, val.GetFieldSpec("XteLimitForTheRoute")); err != nil {
+    if v, err := ReadRaw[int16](stream, &fieldSpec_RouteAndWpServiceRouteWpListAttributes_XteLimitForTheRoute); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpListAttributes-XteLimitForTheRoute: %w", err)
     } else {
         val.XteLimitForTheRoute = nullableUnit(units.Meter, v, units.NewDistance)
@@ -6759,17 +6760,17 @@ func DecodeRouteAndWpServiceRouteWpListAttributes(Info MessageInfo, stream *Data
 
     return val, nil
 }
-func DecodeRouteAndWpServiceRouteWpNamePosition(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceRouteWpNamePosition(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val RouteAndWpServiceRouteWpNamePosition
+    var val publicpgn.RouteAndWpServiceRouteWpNamePosition
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartRps")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpNamePosition_StartRps); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-StartRps: %w", err)
     } else {
         val.StartRps = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpNamePosition_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -6777,29 +6778,29 @@ func DecodeRouteAndWpServiceRouteWpNamePosition(Info MessageInfo, stream *DataSt
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfWpsInTheRouteWpList")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpNamePosition_NumberOfWpsInTheRouteWpList); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-NumberOfWpsInTheRouteWpList: %w", err)
     } else {
         val.NumberOfWpsInTheRouteWpList = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpNamePosition_DatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RouteId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpNamePosition_RouteId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-RouteId: %w", err)
     } else {
         val.RouteId = v
     }
     // decode repeating fields
-     val.Repeating1 = make([]RouteAndWpServiceRouteWpNamePositionRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.RouteAndWpServiceRouteWpNamePositionRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep RouteAndWpServiceRouteWpNamePositionRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("WpId")); err != nil {
+        var rep publicpgn.RouteAndWpServiceRouteWpNamePositionRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpNamePosition_WpId); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-WpId: %w", err)
         } else {
             rep.WpId = v
@@ -6809,12 +6810,12 @@ func DecodeRouteAndWpServiceRouteWpNamePosition(Info MessageInfo, stream *DataSt
         } else {
             rep.WpName = v
         }
-        if v, err := ReadScaled[float64](stream, val.GetFieldSpec("WpLatitude")); err != nil {
+        if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWpServiceRouteWpNamePosition_WpLatitude); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-WpLatitude: %w", err)
         } else {
             rep.WpLatitude = v
         }
-        if v, err := ReadScaled[float64](stream, val.GetFieldSpec("WpLongitude")); err != nil {
+        if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWpServiceRouteWpNamePosition_WpLongitude); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpNamePosition-WpLongitude: %w", err)
         } else {
             rep.WpLongitude = v
@@ -6828,17 +6829,17 @@ func DecodeRouteAndWpServiceRouteWpNamePosition(Info MessageInfo, stream *DataSt
 
     return val, nil
 }
-func DecodeRouteAndWpServiceRouteWpName(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceRouteWpName(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val RouteAndWpServiceRouteWpName
+    var val publicpgn.RouteAndWpServiceRouteWpName
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartRps")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpName_StartRps); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-StartRps: %w", err)
     } else {
         val.StartRps = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpName_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -6846,29 +6847,29 @@ func DecodeRouteAndWpServiceRouteWpName(Info MessageInfo, stream *DataStream) (a
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfWpsInTheRouteWpList")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpName_NumberOfWpsInTheRouteWpList); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-NumberOfWpsInTheRouteWpList: %w", err)
     } else {
         val.NumberOfWpsInTheRouteWpList = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpName_DatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RouteId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpName_RouteId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-RouteId: %w", err)
     } else {
         val.RouteId = v
     }
     // decode repeating fields
-     val.Repeating1 = make([]RouteAndWpServiceRouteWpNameRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.RouteAndWpServiceRouteWpNameRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep RouteAndWpServiceRouteWpNameRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("WpId")); err != nil {
+        var rep publicpgn.RouteAndWpServiceRouteWpNameRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteWpName_WpId); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteWpName-WpId: %w", err)
         } else {
             rep.WpId = v
@@ -6887,17 +6888,17 @@ func DecodeRouteAndWpServiceRouteWpName(Info MessageInfo, stream *DataStream) (a
 
     return val, nil
 }
-func DecodeRouteAndWpServiceXteLimitNavigationMethod(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceXteLimitNavigationMethod(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val RouteAndWpServiceXteLimitNavigationMethod
+    var val publicpgn.RouteAndWpServiceXteLimitNavigationMethod
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartRps")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_StartRps); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-StartRps: %w", err)
     } else {
         val.StartRps = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -6905,34 +6906,34 @@ func DecodeRouteAndWpServiceXteLimitNavigationMethod(Info MessageInfo, stream *D
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfWpsWithASpecificXteLimitOrNavMethod")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_NumberOfWpsWithASpecificXteLimitOrNavMethod); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-NumberOfWpsWithASpecificXteLimitOrNavMethod: %w", err)
     } else {
         val.NumberOfWpsWithASpecificXteLimitOrNavMethod = v
     }
     // decode repeating fields
-     val.Repeating1 = make([]RouteAndWpServiceXteLimitNavigationMethodRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.RouteAndWpServiceXteLimitNavigationMethodRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep RouteAndWpServiceXteLimitNavigationMethodRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+        var rep publicpgn.RouteAndWpServiceXteLimitNavigationMethodRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_DatabaseId); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-DatabaseId: %w", err)
         } else {
             rep.DatabaseId = v
         }
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RouteId")); err != nil {
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_RouteId); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-RouteId: %w", err)
         } else {
             rep.RouteId = v
         }
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Rps")); err != nil {
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_Rps); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-Rps: %w", err)
         } else {
             rep.Rps = v
         }
-        if v, err := ReadRaw[int16](stream, val.GetFieldSpec("XteLimitInTheLegAfterWp")); err != nil {
+        if v, err := ReadRaw[int16](stream, &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_XteLimitInTheLegAfterWp); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-XteLimitInTheLegAfterWp: %w", err)
         } else {
             rep.XteLimitInTheLegAfterWp = nullableUnit(units.Meter, v, units.NewDistance)
@@ -6940,7 +6941,7 @@ func DecodeRouteAndWpServiceXteLimitNavigationMethod(Info MessageInfo, stream *D
         if v, err := stream.readLookupField(2); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceXteLimitNavigationMethod-NavMethodInTheLegAfterWp: %w", err)
         } else {
-            rep.NavMethodInTheLegAfterWp = WpNavigationMethodConst(v)
+            rep.NavMethodInTheLegAfterWp = publicpgn.WpNavigationMethodConst(v)
         }
         stream.skipBits(6)
         val.Repeating1 = append(val.Repeating1, rep)
@@ -6952,17 +6953,17 @@ func DecodeRouteAndWpServiceXteLimitNavigationMethod(Info MessageInfo, stream *D
 
     return val, nil
 }
-func DecodeRouteAndWpServiceWpComment(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceWpComment(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val RouteAndWpServiceWpComment
+    var val publicpgn.RouteAndWpServiceWpComment
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpComment_StartId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-StartId: %w", err)
     } else {
         val.StartId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpComment_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -6970,29 +6971,29 @@ func DecodeRouteAndWpServiceWpComment(Info MessageInfo, stream *DataStream) (any
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfWpsWithComments")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpComment_NumberOfWpsWithComments); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-NumberOfWpsWithComments: %w", err)
     } else {
         val.NumberOfWpsWithComments = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpComment_DatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RouteId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpComment_RouteId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-RouteId: %w", err)
     } else {
         val.RouteId = v
     }
     // decode repeating fields
-     val.Repeating1 = make([]RouteAndWpServiceWpCommentRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.RouteAndWpServiceWpCommentRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep RouteAndWpServiceWpCommentRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("WpIdRps")); err != nil {
+        var rep publicpgn.RouteAndWpServiceWpCommentRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpComment_WpIdRps); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpComment-WpIdRps: %w", err)
         } else {
             rep.WpIdRps = v
@@ -7011,17 +7012,17 @@ func DecodeRouteAndWpServiceWpComment(Info MessageInfo, stream *DataStream) (any
 
     return val, nil
 }
-func DecodeRouteAndWpServiceRouteComment(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceRouteComment(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val RouteAndWpServiceRouteComment
+    var val publicpgn.RouteAndWpServiceRouteComment
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartRouteId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteComment_StartRouteId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-StartRouteId: %w", err)
     } else {
         val.StartRouteId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteComment_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -7029,24 +7030,24 @@ func DecodeRouteAndWpServiceRouteComment(Info MessageInfo, stream *DataStream) (
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfRoutesWithComments")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteComment_NumberOfRoutesWithComments); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-NumberOfRoutesWithComments: %w", err)
     } else {
         val.NumberOfRoutesWithComments = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteComment_DatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
     // decode repeating fields
-     val.Repeating1 = make([]RouteAndWpServiceRouteCommentRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.RouteAndWpServiceRouteCommentRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep RouteAndWpServiceRouteCommentRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RouteId")); err != nil {
+        var rep publicpgn.RouteAndWpServiceRouteCommentRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRouteComment_RouteId); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRouteComment-RouteId: %w", err)
         } else {
             rep.RouteId = v
@@ -7065,17 +7066,17 @@ func DecodeRouteAndWpServiceRouteComment(Info MessageInfo, stream *DataStream) (
 
     return val, nil
 }
-func DecodeRouteAndWpServiceDatabaseComment(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceDatabaseComment(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val RouteAndWpServiceDatabaseComment
+    var val publicpgn.RouteAndWpServiceDatabaseComment
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartDatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceDatabaseComment_StartDatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-StartDatabaseId: %w", err)
     } else {
         val.StartDatabaseId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceDatabaseComment_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -7083,19 +7084,19 @@ func DecodeRouteAndWpServiceDatabaseComment(Info MessageInfo, stream *DataStream
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfDatabasesWithComments")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceDatabaseComment_NumberOfDatabasesWithComments); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-NumberOfDatabasesWithComments: %w", err)
     } else {
         val.NumberOfDatabasesWithComments = v
     }
     // decode repeating fields
-     val.Repeating1 = make([]RouteAndWpServiceDatabaseCommentRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.RouteAndWpServiceDatabaseCommentRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep RouteAndWpServiceDatabaseCommentRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+        var rep publicpgn.RouteAndWpServiceDatabaseCommentRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceDatabaseComment_DatabaseId); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceDatabaseComment-DatabaseId: %w", err)
         } else {
             rep.DatabaseId = v
@@ -7114,17 +7115,17 @@ func DecodeRouteAndWpServiceDatabaseComment(Info MessageInfo, stream *DataStream
 
     return val, nil
 }
-func DecodeRouteAndWpServiceRadiusOfTurn(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceRadiusOfTurn(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val RouteAndWpServiceRadiusOfTurn
+    var val publicpgn.RouteAndWpServiceRadiusOfTurn
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartRps")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRadiusOfTurn_StartRps); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-StartRps: %w", err)
     } else {
         val.StartRps = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRadiusOfTurn_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -7132,34 +7133,34 @@ func DecodeRouteAndWpServiceRadiusOfTurn(Info MessageInfo, stream *DataStream) (
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfWpsWithASpecificRadiusOfTurn")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRadiusOfTurn_NumberOfWpsWithASpecificRadiusOfTurn); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-NumberOfWpsWithASpecificRadiusOfTurn: %w", err)
     } else {
         val.NumberOfWpsWithASpecificRadiusOfTurn = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRadiusOfTurn_DatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("RouteId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRadiusOfTurn_RouteId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-RouteId: %w", err)
     } else {
         val.RouteId = v
     }
     // decode repeating fields
-     val.Repeating1 = make([]RouteAndWpServiceRadiusOfTurnRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.RouteAndWpServiceRadiusOfTurnRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep RouteAndWpServiceRadiusOfTurnRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Rps")); err != nil {
+        var rep publicpgn.RouteAndWpServiceRadiusOfTurnRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceRadiusOfTurn_Rps); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-Rps: %w", err)
         } else {
             rep.Rps = v
         }
-        if v, err := ReadRaw[int16](stream, val.GetFieldSpec("RadiusOfTurn")); err != nil {
+        if v, err := ReadRaw[int16](stream, &fieldSpec_RouteAndWpServiceRadiusOfTurn_RadiusOfTurn); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceRadiusOfTurn-RadiusOfTurn: %w", err)
         } else {
             rep.RadiusOfTurn = nullableUnit(units.Meter, v, units.NewDistance)
@@ -7173,17 +7174,17 @@ func DecodeRouteAndWpServiceRadiusOfTurn(Info MessageInfo, stream *DataStream) (
 
     return val, nil
 }
-func DecodeRouteAndWpServiceWpListWpNamePosition(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeRouteAndWpServiceWpListWpNamePosition(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val RouteAndWpServiceWpListWpNamePosition
+    var val publicpgn.RouteAndWpServiceWpListWpNamePosition
     val.Info = Info
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartWpId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpListWpNamePosition_StartWpId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-StartWpId: %w", err)
     } else {
         val.StartWpId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Nitems")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpListWpNamePosition_Nitems); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-Nitems: %w", err)
     } else {
         val.Nitems = v
@@ -7191,25 +7192,25 @@ func DecodeRouteAndWpServiceWpListWpNamePosition(Info MessageInfo, stream *DataS
             repeat1Count = uint16(*v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("NumberOfValidWpsInTheWpList")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpListWpNamePosition_NumberOfValidWpsInTheWpList); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-NumberOfValidWpsInTheWpList: %w", err)
     } else {
         val.NumberOfValidWpsInTheWpList = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("DatabaseId")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpListWpNamePosition_DatabaseId); err != nil {
         return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-DatabaseId: %w", err)
     } else {
         val.DatabaseId = v
     }
     stream.skipBits(16)
     // decode repeating fields
-     val.Repeating1 = make([]RouteAndWpServiceWpListWpNamePositionRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.RouteAndWpServiceWpListWpNamePositionRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep RouteAndWpServiceWpListWpNamePositionRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("WpId")); err != nil {
+        var rep publicpgn.RouteAndWpServiceWpListWpNamePositionRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWpServiceWpListWpNamePosition_WpId); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-WpId: %w", err)
         } else {
             rep.WpId = v
@@ -7219,12 +7220,12 @@ func DecodeRouteAndWpServiceWpListWpNamePosition(Info MessageInfo, stream *DataS
         } else {
             rep.WpName = v
         }
-        if v, err := ReadScaled[float64](stream, val.GetFieldSpec("WpLatitude")); err != nil {
+        if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWpServiceWpListWpNamePosition_WpLatitude); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-WpLatitude: %w", err)
         } else {
             rep.WpLatitude = v
         }
-        if v, err := ReadScaled[float64](stream, val.GetFieldSpec("WpLongitude")); err != nil {
+        if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWpServiceWpListWpNamePosition_WpLongitude); err != nil {
             return nil, fmt.Errorf("parse failed for RouteAndWpServiceWpListWpNamePosition-WpLongitude: %w", err)
         } else {
             rep.WpLongitude = v
@@ -7238,21 +7239,21 @@ func DecodeRouteAndWpServiceWpListWpNamePosition(Info MessageInfo, stream *DataS
 
     return val, nil
 }
-func DecodeWindData(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeWindData(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val WindData
+    var val publicpgn.WindData
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_WindData_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for WindData-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("WindSpeed")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WindData_WindSpeed); err != nil {
         return nil, fmt.Errorf("parse failed for WindData-WindSpeed: %w", err)
     } else {
         val.WindSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("WindAngle")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WindData_WindAngle); err != nil {
         return nil, fmt.Errorf("parse failed for WindData-WindAngle: %w", err)
     } else {
         val.WindAngle = v
@@ -7260,32 +7261,32 @@ func DecodeWindData(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for WindData-Reference: %w", err)
     } else {
-        val.Reference = WindReferenceConst(v)
+        val.Reference = publicpgn.WindReferenceConst(v)
     }
     stream.skipBits(21)
 
     return val, nil
 }
-func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeEnvironmentalParametersObsolete(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val EnvironmentalParametersObsolete
+    var val publicpgn.EnvironmentalParametersObsolete
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_EnvironmentalParametersObsolete_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("WaterTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EnvironmentalParametersObsolete_WaterTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-WaterTemperature: %w", err)
     } else {
         val.WaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("OutsideAmbientAirTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EnvironmentalParametersObsolete_OutsideAmbientAirTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-OutsideAmbientAirTemperature: %w", err)
     } else {
         val.OutsideAmbientAirTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AtmosphericPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EnvironmentalParametersObsolete_AtmosphericPressure); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParametersObsolete-AtmosphericPressure: %w", err)
     } else {
         val.AtmosphericPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -7294,11 +7295,11 @@ func DecodeEnvironmentalParametersObsolete(Info MessageInfo, stream *DataStream)
 
     return val, nil
 }
-func DecodeEnvironmentalParameters(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeEnvironmentalParameters(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val EnvironmentalParameters
+    var val publicpgn.EnvironmentalParameters
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_EnvironmentalParameters_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Sid: %w", err)
     } else {
         val.Sid = v
@@ -7306,24 +7307,24 @@ func DecodeEnvironmentalParameters(Info MessageInfo, stream *DataStream) (any, e
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParameters-TemperatureSource: %w", err)
     } else {
-        val.TemperatureSource = TemperatureSourceConst(v)
+        val.TemperatureSource = publicpgn.TemperatureSourceConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParameters-HumiditySource: %w", err)
     } else {
-        val.HumiditySource = HumiditySourceConst(v)
+        val.HumiditySource = publicpgn.HumiditySourceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Temperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EnvironmentalParameters_Temperature); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Temperature: %w", err)
     } else {
         val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Humidity")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EnvironmentalParameters_Humidity); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParameters-Humidity: %w", err)
     } else {
         val.Humidity = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("AtmosphericPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_EnvironmentalParameters_AtmosphericPressure); err != nil {
         return nil, fmt.Errorf("parse failed for EnvironmentalParameters-AtmosphericPressure: %w", err)
     } else {
         val.AtmosphericPressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -7331,16 +7332,16 @@ func DecodeEnvironmentalParameters(Info MessageInfo, stream *DataStream) (any, e
 
     return val, nil
 }
-func DecodeTemperature(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeTemperature(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Temperature
+    var val publicpgn.Temperature
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Temperature_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for Temperature-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Temperature_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for Temperature-Instance: %w", err)
     } else {
         val.Instance = v
@@ -7348,14 +7349,14 @@ func DecodeTemperature(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for Temperature-Source: %w", err)
     } else {
-        val.Source = TemperatureSourceConst(v)
+        val.Source = publicpgn.TemperatureSourceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("ActualTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Temperature_ActualTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for Temperature-ActualTemperature: %w", err)
     } else {
         val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SetTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Temperature_SetTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for Temperature-SetTemperature: %w", err)
     } else {
         val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -7364,16 +7365,16 @@ func DecodeTemperature(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeHumidity(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeHumidity(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val Humidity
+    var val publicpgn.Humidity
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Humidity_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for Humidity-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_Humidity_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for Humidity-Instance: %w", err)
     } else {
         val.Instance = v
@@ -7381,14 +7382,14 @@ func DecodeHumidity(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for Humidity-Source: %w", err)
     } else {
-        val.Source = HumiditySourceConst(v)
+        val.Source = publicpgn.HumiditySourceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("ActualHumidity")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Humidity_ActualHumidity); err != nil {
         return nil, fmt.Errorf("parse failed for Humidity-ActualHumidity: %w", err)
     } else {
         val.ActualHumidity = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SetHumidity")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_Humidity_SetHumidity); err != nil {
         return nil, fmt.Errorf("parse failed for Humidity-SetHumidity: %w", err)
     } else {
         val.SetHumidity = v
@@ -7397,16 +7398,16 @@ func DecodeHumidity(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeActualPressure(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeActualPressure(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val ActualPressure
+    var val publicpgn.ActualPressure
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ActualPressure_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for ActualPressure-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_ActualPressure_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for ActualPressure-Instance: %w", err)
     } else {
         val.Instance = v
@@ -7414,9 +7415,9 @@ func DecodeActualPressure(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for ActualPressure-Source: %w", err)
     } else {
-        val.Source = PressureSourceConst(v)
+        val.Source = publicpgn.PressureSourceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Pressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_ActualPressure_Pressure); err != nil {
         return nil, fmt.Errorf("parse failed for ActualPressure-Pressure: %w", err)
     } else {
         val.Pressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -7425,16 +7426,16 @@ func DecodeActualPressure(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeSetPressure(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSetPressure(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SetPressure
+    var val publicpgn.SetPressure
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SetPressure_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for SetPressure-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SetPressure_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for SetPressure-Instance: %w", err)
     } else {
         val.Instance = v
@@ -7442,9 +7443,9 @@ func DecodeSetPressure(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SetPressure-Source: %w", err)
     } else {
-        val.Source = PressureSourceConst(v)
+        val.Source = publicpgn.PressureSourceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Pressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SetPressure_Pressure); err != nil {
         return nil, fmt.Errorf("parse failed for SetPressure-Pressure: %w", err)
     } else {
         val.Pressure = nullableUnit(units.Pa, v, units.NewPressure)
@@ -7453,16 +7454,16 @@ func DecodeSetPressure(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeTemperatureExtendedRange(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeTemperatureExtendedRange(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val TemperatureExtendedRange
+    var val publicpgn.TemperatureExtendedRange
     val.Info = Info
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_TemperatureExtendedRange_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_TemperatureExtendedRange_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Instance: %w", err)
     } else {
         val.Instance = v
@@ -7470,14 +7471,14 @@ func DecodeTemperatureExtendedRange(Info MessageInfo, stream *DataStream) (any, 
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Source: %w", err)
     } else {
-        val.Source = TemperatureSourceConst(v)
+        val.Source = publicpgn.TemperatureSourceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Temperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TemperatureExtendedRange_Temperature); err != nil {
         return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-Temperature: %w", err)
     } else {
         val.Temperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SetTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TemperatureExtendedRange_SetTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for TemperatureExtendedRange-SetTemperature: %w", err)
     } else {
         val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -7485,47 +7486,47 @@ func DecodeTemperatureExtendedRange(Info MessageInfo, stream *DataStream) (any, 
 
     return val, nil
 }
-func DecodeTideStationData(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeTideStationData(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val TideStationData
+    var val publicpgn.TideStationData
     val.Info = Info
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-Mode: %w", err)
     } else {
-        val.Mode = ResidualModeConst(v)
+        val.Mode = publicpgn.ResidualModeConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-TideTendency: %w", err)
     } else {
-        val.TideTendency = TideConst(v)
+        val.TideTendency = publicpgn.TideConst(v)
     }
     stream.skipBits(2)
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("MeasurementDate")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_TideStationData_MeasurementDate); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-MeasurementDate: %w", err)
     } else {
         val.MeasurementDate = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("MeasurementTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TideStationData_MeasurementTime); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-MeasurementTime: %w", err)
     } else {
         val.MeasurementTime = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("StationLatitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_TideStationData_StationLatitude); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-StationLatitude: %w", err)
     } else {
         val.StationLatitude = v
     }
-    if v, err := ReadScaled[float64](stream, val.GetFieldSpec("StationLongitude")); err != nil {
+    if v, err := ReadScaled[float64](stream, &fieldSpec_TideStationData_StationLongitude); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-StationLongitude: %w", err)
     } else {
         val.StationLongitude = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TideLevel")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TideStationData_TideLevel); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-TideLevel: %w", err)
     } else {
         val.TideLevel = nullableUnit(units.Meter, v, units.NewDistance)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TideLevelStandardDeviation")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_TideStationData_TideLevelStandardDeviation); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-TideLevelStandardDeviation: %w", err)
     } else {
         val.TideLevelStandardDeviation = nullableUnit(units.Meter, v, units.NewDistance)
@@ -7543,117 +7544,117 @@ func DecodeTideStationData(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeWatermakerInputSettingAndStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val WatermakerInputSettingAndStatus
+    var val publicpgn.WatermakerInputSettingAndStatus
     val.Info = Info
     if v, err := stream.readLookupField(6); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-WatermakerOperatingState: %w", err)
     } else {
-        val.WatermakerOperatingState = WatermakerStateConst(v)
+        val.WatermakerOperatingState = publicpgn.WatermakerStateConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductionStartStop: %w", err)
     } else {
-        val.ProductionStartStop = YesNoConst(v)
+        val.ProductionStartStop = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-RinseStartStop: %w", err)
     } else {
-        val.RinseStartStop = YesNoConst(v)
+        val.RinseStartStop = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-LowPressurePumpStatus: %w", err)
     } else {
-        val.LowPressurePumpStatus = YesNoConst(v)
+        val.LowPressurePumpStatus = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-HighPressurePumpStatus: %w", err)
     } else {
-        val.HighPressurePumpStatus = YesNoConst(v)
+        val.HighPressurePumpStatus = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-EmergencyStop: %w", err)
     } else {
-        val.EmergencyStop = YesNoConst(v)
+        val.EmergencyStop = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductSolenoidValveStatus: %w", err)
     } else {
-        val.ProductSolenoidValveStatus = OkWarningConst(v)
+        val.ProductSolenoidValveStatus = publicpgn.OkWarningConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-FlushModeStatus: %w", err)
     } else {
-        val.FlushModeStatus = YesNoConst(v)
+        val.FlushModeStatus = publicpgn.YesNoConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SalinityStatus: %w", err)
     } else {
-        val.SalinityStatus = OkWarningConst(v)
+        val.SalinityStatus = publicpgn.OkWarningConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SensorStatus: %w", err)
     } else {
-        val.SensorStatus = OkWarningConst(v)
+        val.SensorStatus = publicpgn.OkWarningConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-OilChangeIndicatorStatus: %w", err)
     } else {
-        val.OilChangeIndicatorStatus = OkWarningConst(v)
+        val.OilChangeIndicatorStatus = publicpgn.OkWarningConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-FilterStatus: %w", err)
     } else {
-        val.FilterStatus = OkWarningConst(v)
+        val.FilterStatus = publicpgn.OkWarningConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SystemStatus: %w", err)
     } else {
-        val.SystemStatus = OkWarningConst(v)
+        val.SystemStatus = publicpgn.OkWarningConst(v)
     }
     stream.skipBits(2)
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Salinity")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_WatermakerInputSettingAndStatus_Salinity); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-Salinity: %w", err)
     } else {
         val.Salinity = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("ProductWaterTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WatermakerInputSettingAndStatus_ProductWaterTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterTemperature: %w", err)
     } else {
         val.ProductWaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PreFilterPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WatermakerInputSettingAndStatus_PreFilterPressure); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-PreFilterPressure: %w", err)
     } else {
         val.PreFilterPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PostFilterPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WatermakerInputSettingAndStatus_PostFilterPressure); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-PostFilterPressure: %w", err)
     } else {
         val.PostFilterPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("FeedPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WatermakerInputSettingAndStatus_FeedPressure); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-FeedPressure: %w", err)
     } else {
         val.FeedPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SystemHighPressure")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WatermakerInputSettingAndStatus_SystemHighPressure); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-SystemHighPressure: %w", err)
     } else {
         val.SystemHighPressure = nullableUnit(units.Pa, v, units.NewPressure)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("ProductWaterFlow")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WatermakerInputSettingAndStatus_ProductWaterFlow); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-ProductWaterFlow: %w", err)
     } else {
         val.ProductWaterFlow = nullableUnit(units.LitersPerHour, v, units.NewFlow)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("BrineWaterFlow")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_WatermakerInputSettingAndStatus_BrineWaterFlow); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-BrineWaterFlow: %w", err)
     } else {
         val.BrineWaterFlow = nullableUnit(units.LitersPerHour, v, units.NewFlow)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("RunTime")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_WatermakerInputSettingAndStatus_RunTime); err != nil {
         return nil, fmt.Errorf("parse failed for WatermakerInputSettingAndStatus-RunTime: %w", err)
     } else {
         val.RunTime = v
@@ -7661,16 +7662,16 @@ func DecodeWatermakerInputSettingAndStatus(Info MessageInfo, stream *DataStream)
 
     return val, nil
 }
-func DecodeSmallCraftStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSmallCraftStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SmallCraftStatus
+    var val publicpgn.SmallCraftStatus
     val.Info = Info
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("PortTrimTab")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_SmallCraftStatus_PortTrimTab); err != nil {
         return nil, fmt.Errorf("parse failed for SmallCraftStatus-PortTrimTab: %w", err)
     } else {
         val.PortTrimTab = v
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("StarboardTrimTab")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_SmallCraftStatus_StarboardTrimTab); err != nil {
         return nil, fmt.Errorf("parse failed for SmallCraftStatus-StarboardTrimTab: %w", err)
     } else {
         val.StarboardTrimTab = v
@@ -7679,52 +7680,52 @@ func DecodeSmallCraftStatus(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeDirectionData(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeDirectionData(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val DirectionData
+    var val publicpgn.DirectionData
     val.Info = Info
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for DirectionData-DataMode: %w", err)
     } else {
-        val.DataMode = ResidualModeConst(v)
+        val.DataMode = publicpgn.ResidualModeConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for DirectionData-CogReference: %w", err)
     } else {
-        val.CogReference = DirectionReferenceConst(v)
+        val.CogReference = publicpgn.DirectionReferenceConst(v)
     }
     stream.skipBits(2)
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_DirectionData_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for DirectionData-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Cog")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DirectionData_Cog); err != nil {
         return nil, fmt.Errorf("parse failed for DirectionData-Cog: %w", err)
     } else {
         val.Cog = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Sog")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DirectionData_Sog); err != nil {
         return nil, fmt.Errorf("parse failed for DirectionData-Sog: %w", err)
     } else {
         val.Sog = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Heading")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DirectionData_Heading); err != nil {
         return nil, fmt.Errorf("parse failed for DirectionData-Heading: %w", err)
     } else {
         val.Heading = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SpeedThroughWater")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DirectionData_SpeedThroughWater); err != nil {
         return nil, fmt.Errorf("parse failed for DirectionData-SpeedThroughWater: %w", err)
     } else {
         val.SpeedThroughWater = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Set")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DirectionData_Set); err != nil {
         return nil, fmt.Errorf("parse failed for DirectionData-Set: %w", err)
     } else {
         val.Set = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Drift")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_DirectionData_Drift); err != nil {
         return nil, fmt.Errorf("parse failed for DirectionData-Drift: %w", err)
     } else {
         val.Drift = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -7732,36 +7733,36 @@ func DecodeDirectionData(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeVesselSpeedComponents(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeVesselSpeedComponents(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val VesselSpeedComponents
+    var val publicpgn.VesselSpeedComponents
     val.Info = Info
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("LongitudinalSpeedWaterReferenced")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_VesselSpeedComponents_LongitudinalSpeedWaterReferenced); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-LongitudinalSpeedWaterReferenced: %w", err)
     } else {
         val.LongitudinalSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TransverseSpeedWaterReferenced")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_VesselSpeedComponents_TransverseSpeedWaterReferenced); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-TransverseSpeedWaterReferenced: %w", err)
     } else {
         val.TransverseSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("LongitudinalSpeedGroundReferenced")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_VesselSpeedComponents_LongitudinalSpeedGroundReferenced); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-LongitudinalSpeedGroundReferenced: %w", err)
     } else {
         val.LongitudinalSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("TransverseSpeedGroundReferenced")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_VesselSpeedComponents_TransverseSpeedGroundReferenced); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-TransverseSpeedGroundReferenced: %w", err)
     } else {
         val.TransverseSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SternSpeedWaterReferenced")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_VesselSpeedComponents_SternSpeedWaterReferenced); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-SternSpeedWaterReferenced: %w", err)
     } else {
         val.SternSpeedWaterReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SternSpeedGroundReferenced")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_VesselSpeedComponents_SternSpeedGroundReferenced); err != nil {
         return nil, fmt.Errorf("parse failed for VesselSpeedComponents-SternSpeedGroundReferenced: %w", err)
     } else {
         val.SternSpeedGroundReferenced = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
@@ -7769,14 +7770,14 @@ func DecodeVesselSpeedComponents(Info MessageInfo, stream *DataStream) (any, err
 
     return val, nil
 }
-func DecodeSonichubVolume(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeSonichubVolume(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val SonichubVolume
+    var val publicpgn.SonichubVolume
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for SonichubVolume-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 275 {
             return nil, fmt.Errorf("match failed for SonichubVolume-ManufacturerCode: Expected %d != %d", 275, v)
         }
@@ -7785,7 +7786,7 @@ func DecodeSonichubVolume(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for SonichubVolume-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for SonichubVolume-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -7794,7 +7795,7 @@ func DecodeSonichubVolume(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SonichubVolume-ProprietaryId: %w", err)
     } else {
-        val.ProprietaryId = SonichubCommandConst(v)
+        val.ProprietaryId = publicpgn.SonichubCommandConst(v)
         if v != 24 {
             return nil, fmt.Errorf("match failed for SonichubVolume-ProprietaryId: Expected %d != %d", 24, v)
         }
@@ -7802,14 +7803,14 @@ func DecodeSonichubVolume(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for SonichubVolume-Control: %w", err)
     } else {
-        val.Control = SonichubControlConst(v)
+        val.Control = publicpgn.SonichubControlConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SonichubVolume_Zone); err != nil {
         return nil, fmt.Errorf("parse failed for SonichubVolume-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Level")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SonichubVolume_Level); err != nil {
         return nil, fmt.Errorf("parse failed for SonichubVolume-Level: %w", err)
     } else {
         val.Level = v
@@ -7817,14 +7818,14 @@ func DecodeSonichubVolume(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeBepMarineCzoneZcfBusDistribution(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeBepMarineCzoneZcfBusDistribution(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val BepMarineCzoneZcfBusDistribution
+    var val publicpgn.BepMarineCzoneZcfBusDistribution
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for BepMarineCzoneZcfBusDistribution-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 295 {
             return nil, fmt.Errorf("match failed for BepMarineCzoneZcfBusDistribution-ManufacturerCode: Expected %d != %d", 295, v)
         }
@@ -7833,17 +7834,17 @@ func DecodeBepMarineCzoneZcfBusDistribution(Info MessageInfo, stream *DataStream
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for BepMarineCzoneZcfBusDistribution-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for BepMarineCzoneZcfBusDistribution-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("ChunkIndex")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_BepMarineCzoneZcfBusDistribution_ChunkIndex); err != nil {
         return nil, fmt.Errorf("parse failed for BepMarineCzoneZcfBusDistribution-ChunkIndex: %w", err)
     } else {
         val.ChunkIndex = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Flag")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_BepMarineCzoneZcfBusDistribution_Flag); err != nil {
         return nil, fmt.Errorf("parse failed for BepMarineCzoneZcfBusDistribution-Flag: %w", err)
     } else {
         val.Flag = v
@@ -7857,14 +7858,14 @@ func DecodeBepMarineCzoneZcfBusDistribution(Info MessageInfo, stream *DataStream
 
     return val, nil
 }
-func DecodeMaretronLabel(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMaretronLabel(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val MaretronLabel
+    var val publicpgn.MaretronLabel
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronLabel-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 137 {
             return nil, fmt.Errorf("match failed for MaretronLabel-ManufacturerCode: Expected %d != %d", 137, v)
         }
@@ -7873,22 +7874,22 @@ func DecodeMaretronLabel(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronLabel-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for MaretronLabel-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronLabel_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronLabel-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DataSource")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronLabel_DataSource); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronLabel-DataSource: %w", err)
     } else {
         val.DataSource = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DataIndicator")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronLabel_DataIndicator); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronLabel-DataIndicator: %w", err)
     } else {
         val.DataIndicator = v
@@ -7898,7 +7899,7 @@ func DecodeMaretronLabel(Info MessageInfo, stream *DataStream) (any, error) {
     } else {
         val.Label = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("HardwareChannel")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronLabel_HardwareChannel); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronLabel-HardwareChannel: %w", err)
     } else {
         val.HardwareChannel = v
@@ -7906,14 +7907,14 @@ func DecodeMaretronLabel(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionVersions(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionVersions(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionVersions
+    var val publicpgn.FusionVersions
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionVersions-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -7922,7 +7923,7 @@ func DecodeFusionVersions(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionVersions-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -7930,32 +7931,32 @@ func DecodeFusionVersions(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32769 {
             return nil, fmt.Errorf("match failed for FusionVersions-MessageId: Expected %d != %d", 32769, v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("HwVersionMajor")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionVersions_HwVersionMajor); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-HwVersionMajor: %w", err)
     } else {
         val.HwVersionMajor = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("HwVersionMinor")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionVersions_HwVersionMinor); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-HwVersionMinor: %w", err)
     } else {
         val.HwVersionMinor = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SwVersionMajor")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVersions_SwVersionMajor); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-SwVersionMajor: %w", err)
     } else {
         val.SwVersionMajor = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SwVersionMinor")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVersions_SwVersionMinor); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-SwVersionMinor: %w", err)
     } else {
         val.SwVersionMinor = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("BuildNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVersions_BuildNumber); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVersions-BuildNumber: %w", err)
     } else {
         val.BuildNumber = v
@@ -7963,14 +7964,14 @@ func DecodeFusionVersions(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionSource(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSource(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSource
+    var val publicpgn.FusionSource
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSource-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -7979,7 +7980,7 @@ func DecodeFusionSource(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSource-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -7987,17 +7988,17 @@ func DecodeFusionSource(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32770 {
             return nil, fmt.Errorf("match failed for FusionSource-MessageId: Expected %d != %d", 32770, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSource_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("CurrentSourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSource_CurrentSourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-CurrentSourceId: %w", err)
     } else {
         val.CurrentSourceId = v
@@ -8005,9 +8006,9 @@ func DecodeFusionSource(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-SourceType: %w", err)
     } else {
-        val.SourceType = FusionSourceTypeConst(v)
+        val.SourceType = publicpgn.FusionSourceTypeConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Flags")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSource_Flags); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-Flags: %w", err)
     } else {
         val.Flags = v
@@ -8020,14 +8021,14 @@ func DecodeFusionSource(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionSourceCount(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSourceCount(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSourceCount
+    var val publicpgn.FusionSourceCount
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSourceCount-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSourceCount-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8036,7 +8037,7 @@ func DecodeFusionSourceCount(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSourceCount-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSourceCount-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8044,12 +8045,12 @@ func DecodeFusionSourceCount(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSourceCount-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32771 {
             return nil, fmt.Errorf("match failed for FusionSourceCount-MessageId: Expected %d != %d", 32771, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceCount")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSourceCount_SourceCount); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSourceCount-SourceCount: %w", err)
     } else {
         val.SourceCount = v
@@ -8057,14 +8058,14 @@ func DecodeFusionSourceCount(Info MessageInfo, stream *DataStream) (any, error) 
 
     return val, nil
 }
-func DecodeFusionMedia(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionMedia(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionMedia
+    var val publicpgn.FusionMedia
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionMedia-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8073,7 +8074,7 @@ func DecodeFusionMedia(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionMedia-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8081,12 +8082,12 @@ func DecodeFusionMedia(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32772 {
             return nil, fmt.Errorf("match failed for FusionMedia-MessageId: Expected %d != %d", 32772, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMedia_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -8094,24 +8095,24 @@ func DecodeFusionMedia(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-Flags: %w", err)
     } else {
-        val.Flags = FusionPlayStatusConst(v)
+        val.Flags = publicpgn.FusionPlayStatusConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Track")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMedia_Track); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-Track: %w", err)
     } else {
         val.Track = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("TrackCount")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMedia_TrackCount); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-TrackCount: %w", err)
     } else {
         val.TrackCount = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Length")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_FusionMedia_Length); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-Length: %w", err)
     } else {
         val.Length = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("PositionInTrack")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_FusionMedia_PositionInTrack); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMedia-PositionInTrack: %w", err)
     } else {
         val.PositionInTrack = v
@@ -8119,14 +8120,14 @@ func DecodeFusionMedia(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionTrackName(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionTrackName(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionTrackName
+    var val publicpgn.FusionTrackName
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackName-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionTrackName-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8135,7 +8136,7 @@ func DecodeFusionTrackName(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackName-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionTrackName-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8143,17 +8144,17 @@ func DecodeFusionTrackName(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackName-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32773 {
             return nil, fmt.Errorf("match failed for FusionTrackName-MessageId: Expected %d != %d", 32773, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionTrackName_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackName-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Index")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionTrackName_Index); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackName-Index: %w", err)
     } else {
         val.Index = v
@@ -8166,14 +8167,14 @@ func DecodeFusionTrackName(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionArtistName(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionArtistName(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionArtistName
+    var val publicpgn.FusionArtistName
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionArtistName-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionArtistName-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8182,7 +8183,7 @@ func DecodeFusionArtistName(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionArtistName-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionArtistName-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8190,17 +8191,17 @@ func DecodeFusionArtistName(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionArtistName-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32774 {
             return nil, fmt.Errorf("match failed for FusionArtistName-MessageId: Expected %d != %d", 32774, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionArtistName_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionArtistName-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Index")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionArtistName_Index); err != nil {
         return nil, fmt.Errorf("parse failed for FusionArtistName-Index: %w", err)
     } else {
         val.Index = v
@@ -8213,14 +8214,14 @@ func DecodeFusionArtistName(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionAlbumName(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionAlbumName(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionAlbumName
+    var val publicpgn.FusionAlbumName
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAlbumName-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionAlbumName-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8229,7 +8230,7 @@ func DecodeFusionAlbumName(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAlbumName-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionAlbumName-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8237,17 +8238,17 @@ func DecodeFusionAlbumName(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAlbumName-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32775 {
             return nil, fmt.Errorf("match failed for FusionAlbumName-MessageId: Expected %d != %d", 32775, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionAlbumName_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAlbumName-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Index")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionAlbumName_Index); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAlbumName-Index: %w", err)
     } else {
         val.Index = v
@@ -8260,14 +8261,14 @@ func DecodeFusionAlbumName(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionDeviceName(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionDeviceName(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionDeviceName
+    var val publicpgn.FusionDeviceName
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionDeviceName-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionDeviceName-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8276,7 +8277,7 @@ func DecodeFusionDeviceName(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionDeviceName-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionDeviceName-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8284,7 +8285,7 @@ func DecodeFusionDeviceName(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionDeviceName-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32801 {
             return nil, fmt.Errorf("match failed for FusionDeviceName-MessageId: Expected %d != %d", 32801, v)
         }
@@ -8297,14 +8298,14 @@ func DecodeFusionDeviceName(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionZoneName(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionZoneName(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionZoneName
+    var val publicpgn.FusionZoneName
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionZoneName-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionZoneName-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8313,7 +8314,7 @@ func DecodeFusionZoneName(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionZoneName-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionZoneName-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8321,12 +8322,12 @@ func DecodeFusionZoneName(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionZoneName-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32813 {
             return nil, fmt.Errorf("match failed for FusionZoneName-MessageId: Expected %d != %d", 32813, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Number")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionZoneName_Number); err != nil {
         return nil, fmt.Errorf("parse failed for FusionZoneName-Number: %w", err)
     } else {
         val.Number = v
@@ -8339,14 +8340,14 @@ func DecodeFusionZoneName(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionTrackPosition(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionTrackPosition(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionTrackPosition
+    var val publicpgn.FusionTrackPosition
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackPosition-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionTrackPosition-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8355,7 +8356,7 @@ func DecodeFusionTrackPosition(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackPosition-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionTrackPosition-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8363,17 +8364,17 @@ func DecodeFusionTrackPosition(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackPosition-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32777 {
             return nil, fmt.Errorf("match failed for FusionTrackPosition-MessageId: Expected %d != %d", 32777, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionTrackPosition_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackPosition-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("Progress")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_FusionTrackPosition_Progress); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackPosition-Progress: %w", err)
     } else {
         val.Progress = v
@@ -8381,14 +8382,14 @@ func DecodeFusionTrackPosition(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeFusionTuner(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionTuner(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionTuner
+    var val publicpgn.FusionTuner
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionTuner-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8397,7 +8398,7 @@ func DecodeFusionTuner(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionTuner-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8405,7 +8406,7 @@ func DecodeFusionTuner(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32779 {
             return nil, fmt.Errorf("match failed for FusionTuner-MessageId: Expected %d != %d", 32779, v)
         }
@@ -8413,19 +8414,19 @@ func DecodeFusionTuner(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-SourceId: %w", err)
     } else {
-        val.SourceId = FusionRadioSourceConst(v)
+        val.SourceId = publicpgn.FusionRadioSourceConst(v)
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Scanning")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionTuner_Scanning); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-Scanning: %w", err)
     } else {
         val.Scanning = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Frequency")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionTuner_Frequency); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-Frequency: %w", err)
     } else {
         val.Frequency = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SignalStrength")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionTuner_SignalStrength); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-SignalStrength: %w", err)
     } else {
         val.SignalStrength = v
@@ -8438,14 +8439,14 @@ func DecodeFusionTuner(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionMarineTuner(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionMarineTuner(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionMarineTuner
+    var val publicpgn.FusionMarineTuner
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionMarineTuner-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8454,7 +8455,7 @@ func DecodeFusionMarineTuner(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionMarineTuner-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8462,22 +8463,22 @@ func DecodeFusionMarineTuner(Info MessageInfo, stream *DataStream) (any, error) 
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32780 {
             return nil, fmt.Errorf("match failed for FusionMarineTuner-MessageId: Expected %d != %d", 32780, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMarineTuner_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Channel")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMarineTuner_Channel); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-Channel: %w", err)
     } else {
         val.Channel = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SignalStrength")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMarineTuner_SignalStrength); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-SignalStrength: %w", err)
     } else {
         val.SignalStrength = v
@@ -8490,14 +8491,14 @@ func DecodeFusionMarineTuner(Info MessageInfo, stream *DataStream) (any, error) 
 
     return val, nil
 }
-func DecodeFusionMarineSquelch(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionMarineSquelch(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionMarineSquelch
+    var val publicpgn.FusionMarineSquelch
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineSquelch-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionMarineSquelch-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8506,7 +8507,7 @@ func DecodeFusionMarineSquelch(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineSquelch-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionMarineSquelch-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8514,17 +8515,17 @@ func DecodeFusionMarineSquelch(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineSquelch-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32781 {
             return nil, fmt.Errorf("match failed for FusionMarineSquelch-MessageId: Expected %d != %d", 32781, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMarineSquelch_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineSquelch-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Squelch")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMarineSquelch_Squelch); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineSquelch-Squelch: %w", err)
     } else {
         val.Squelch = v
@@ -8532,14 +8533,14 @@ func DecodeFusionMarineSquelch(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeFusionMarineScanMode(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionMarineScanMode(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionMarineScanMode
+    var val publicpgn.FusionMarineScanMode
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineScanMode-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionMarineScanMode-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8548,7 +8549,7 @@ func DecodeFusionMarineScanMode(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineScanMode-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionMarineScanMode-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8556,12 +8557,12 @@ func DecodeFusionMarineScanMode(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineScanMode-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32782 {
             return nil, fmt.Errorf("match failed for FusionMarineScanMode-MessageId: Expected %d != %d", 32782, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMarineScanMode_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineScanMode-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -8569,19 +8570,19 @@ func DecodeFusionMarineScanMode(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineScanMode-Scan: %w", err)
     } else {
-        val.Scan = YesNoConst(v)
+        val.Scan = publicpgn.YesNoConst(v)
     }
 
     return val, nil
 }
-func DecodeFusionMenuItem(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionMenuItem(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionMenuItem
+    var val publicpgn.FusionMenuItem
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionMenuItem-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8590,7 +8591,7 @@ func DecodeFusionMenuItem(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionMenuItem-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8598,27 +8599,27 @@ func DecodeFusionMenuItem(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32785 {
             return nil, fmt.Errorf("match failed for FusionMenuItem-MessageId: Expected %d != %d", 32785, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuItem_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("ItemIndex")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMenuItem_ItemIndex); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-ItemIndex: %w", err)
     } else {
         val.ItemIndex = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Flags")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuItem_Flags); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-Flags: %w", err)
     } else {
         val.Flags = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("LockId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuItem_LockId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-LockId: %w", err)
     } else {
         val.LockId = v
@@ -8631,14 +8632,14 @@ func DecodeFusionMenuItem(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionAuxGain(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionAuxGain(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionAuxGain
+    var val publicpgn.FusionAuxGain
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAuxGain-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionAuxGain-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8647,7 +8648,7 @@ func DecodeFusionAuxGain(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAuxGain-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionAuxGain-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8655,17 +8656,17 @@ func DecodeFusionAuxGain(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAuxGain-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32787 {
             return nil, fmt.Errorf("match failed for FusionAuxGain-MessageId: Expected %d != %d", 32787, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionAuxGain_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAuxGain-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Gain")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionAuxGain_Gain); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAuxGain-Gain: %w", err)
     } else {
         val.Gain = v
@@ -8673,14 +8674,14 @@ func DecodeFusionAuxGain(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionUsbRepeatStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionUsbRepeatStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionUsbRepeatStatus
+    var val publicpgn.FusionUsbRepeatStatus
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionUsbRepeatStatus-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionUsbRepeatStatus-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8689,7 +8690,7 @@ func DecodeFusionUsbRepeatStatus(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionUsbRepeatStatus-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionUsbRepeatStatus-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8697,7 +8698,7 @@ func DecodeFusionUsbRepeatStatus(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionUsbRepeatStatus-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32788 {
             return nil, fmt.Errorf("match failed for FusionUsbRepeatStatus-MessageId: Expected %d != %d", 32788, v)
         }
@@ -8705,7 +8706,7 @@ func DecodeFusionUsbRepeatStatus(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(32); err != nil {
         return nil, fmt.Errorf("parse failed for FusionUsbRepeatStatus-Id: %w", err)
     } else {
-        val.Id = FusionSettingConst(v)
+        val.Id = publicpgn.FusionSettingConst(v)
         if v != 9 {
             return nil, fmt.Errorf("match failed for FusionUsbRepeatStatus-Id: Expected %d != %d", 9, v)
         }
@@ -8713,19 +8714,19 @@ func DecodeFusionUsbRepeatStatus(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(32); err != nil {
         return nil, fmt.Errorf("parse failed for FusionUsbRepeatStatus-Status: %w", err)
     } else {
-        val.Status = FusionRepeatStatusConst(v)
+        val.Status = publicpgn.FusionRepeatStatusConst(v)
     }
 
     return val, nil
 }
-func DecodeFusionSetting(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSetting(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSetting
+    var val publicpgn.FusionSetting
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetting-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSetting-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8734,7 +8735,7 @@ func DecodeFusionSetting(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetting-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSetting-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8742,7 +8743,7 @@ func DecodeFusionSetting(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetting-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32788 {
             return nil, fmt.Errorf("match failed for FusionSetting-MessageId: Expected %d != %d", 32788, v)
         }
@@ -8750,9 +8751,9 @@ func DecodeFusionSetting(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(32); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetting-Id: %w", err)
     } else {
-        val.Id = FusionSettingConst(v)
+        val.Id = publicpgn.FusionSettingConst(v)
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Value")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionSetting_Value); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSetting-Value: %w", err)
     } else {
         val.Value = v
@@ -8760,15 +8761,15 @@ func DecodeFusionSetting(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionSettings(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSettings(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val FusionSettings
+    var val publicpgn.FusionSettings
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSettings-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSettings-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8777,7 +8778,7 @@ func DecodeFusionSettings(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSettings-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSettings-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8785,12 +8786,12 @@ func DecodeFusionSettings(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSettings-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32789 {
             return nil, fmt.Errorf("match failed for FusionSettings-MessageId: Expected %d != %d", 32789, v)
         }
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Count")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionSettings_Count); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSettings-Count: %w", err)
     } else {
         val.Count = v
@@ -8799,18 +8800,18 @@ func DecodeFusionSettings(Info MessageInfo, stream *DataStream) (any, error) {
         }
     }
     // decode repeating fields
-     val.Repeating1 = make([]FusionSettingsRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.FusionSettingsRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep FusionSettingsRepeating1
+        var rep publicpgn.FusionSettingsRepeating1
         if v, err := stream.readLookupField(32); err != nil {
             return nil, fmt.Errorf("parse failed for FusionSettings-Id: %w", err)
         } else {
-            rep.Id = FusionSettingConst(v)
+            rep.Id = publicpgn.FusionSettingConst(v)
         }
-        if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Value")); err != nil {
+        if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionSettings_Value); err != nil {
             return nil, fmt.Errorf("parse failed for FusionSettings-Value: %w", err)
         } else {
             rep.Value = v
@@ -8824,14 +8825,14 @@ func DecodeFusionSettings(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionMute(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionMute(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionMute
+    var val publicpgn.FusionMute
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMute-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionMute-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8840,7 +8841,7 @@ func DecodeFusionMute(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMute-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionMute-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8848,7 +8849,7 @@ func DecodeFusionMute(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMute-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32791 {
             return nil, fmt.Errorf("match failed for FusionMute-MessageId: Expected %d != %d", 32791, v)
         }
@@ -8856,19 +8857,19 @@ func DecodeFusionMute(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMute-Mute: %w", err)
     } else {
-        val.Mute = FusionMuteCommandConst(v)
+        val.Mute = publicpgn.FusionMuteCommandConst(v)
     }
 
     return val, nil
 }
-func DecodeFusionBalance(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionBalance(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionBalance
+    var val publicpgn.FusionBalance
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionBalance-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionBalance-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8877,7 +8878,7 @@ func DecodeFusionBalance(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionBalance-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionBalance-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8885,17 +8886,17 @@ func DecodeFusionBalance(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionBalance-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32792 {
             return nil, fmt.Errorf("match failed for FusionBalance-MessageId: Expected %d != %d", 32792, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionBalance_Zone); err != nil {
         return nil, fmt.Errorf("parse failed for FusionBalance-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Value")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionBalance_Value); err != nil {
         return nil, fmt.Errorf("parse failed for FusionBalance-Value: %w", err)
     } else {
         val.Value = v
@@ -8903,14 +8904,14 @@ func DecodeFusionBalance(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionLowPassFilter(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionLowPassFilter(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionLowPassFilter
+    var val publicpgn.FusionLowPassFilter
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLowPassFilter-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionLowPassFilter-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8919,7 +8920,7 @@ func DecodeFusionLowPassFilter(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLowPassFilter-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionLowPassFilter-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8927,17 +8928,17 @@ func DecodeFusionLowPassFilter(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLowPassFilter-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32793 {
             return nil, fmt.Errorf("match failed for FusionLowPassFilter-MessageId: Expected %d != %d", 32793, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionLowPassFilter_Zone); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLowPassFilter-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Filter")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionLowPassFilter_Filter); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLowPassFilter-Filter: %w", err)
     } else {
         val.Filter = v
@@ -8945,14 +8946,14 @@ func DecodeFusionLowPassFilter(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeFusionSublevels(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSublevels(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSublevels
+    var val publicpgn.FusionSublevels
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSublevels-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -8961,7 +8962,7 @@ func DecodeFusionSublevels(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSublevels-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -8969,27 +8970,27 @@ func DecodeFusionSublevels(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32794 {
             return nil, fmt.Errorf("match failed for FusionSublevels-MessageId: Expected %d != %d", 32794, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone1")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSublevels_Zone1); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-Zone1: %w", err)
     } else {
         val.Zone1 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone2")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSublevels_Zone2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-Zone2: %w", err)
     } else {
         val.Zone2 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone3")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSublevels_Zone3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-Zone3: %w", err)
     } else {
         val.Zone3 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone4")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSublevels_Zone4); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSublevels-Zone4: %w", err)
     } else {
         val.Zone4 = v
@@ -8997,14 +8998,14 @@ func DecodeFusionSublevels(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionEq(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionEq(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionEq
+    var val publicpgn.FusionEq
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionEq-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9013,7 +9014,7 @@ func DecodeFusionEq(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionEq-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9021,27 +9022,27 @@ func DecodeFusionEq(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32795 {
             return nil, fmt.Errorf("match failed for FusionEq-MessageId: Expected %d != %d", 32795, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionEq_Zone); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("Bass")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_FusionEq_Bass); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-Bass: %w", err)
     } else {
         val.Bass = v
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("Mid")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_FusionEq_Mid); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-Mid: %w", err)
     } else {
         val.Mid = v
     }
-    if v, err := ReadRaw[int8](stream, val.GetFieldSpec("Treble")); err != nil {
+    if v, err := ReadRaw[int8](stream, &fieldSpec_FusionEq_Treble); err != nil {
         return nil, fmt.Errorf("parse failed for FusionEq-Treble: %w", err)
     } else {
         val.Treble = v
@@ -9049,14 +9050,14 @@ func DecodeFusionEq(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionVolumeLimits(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionVolumeLimits(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionVolumeLimits
+    var val publicpgn.FusionVolumeLimits
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionVolumeLimits-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9065,7 +9066,7 @@ func DecodeFusionVolumeLimits(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionVolumeLimits-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9073,27 +9074,27 @@ func DecodeFusionVolumeLimits(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32796 {
             return nil, fmt.Errorf("match failed for FusionVolumeLimits-MessageId: Expected %d != %d", 32796, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone1VolumeLimit")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVolumeLimits_Zone1VolumeLimit); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-Zone1VolumeLimit: %w", err)
     } else {
         val.Zone1VolumeLimit = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone2VolumeLimit")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVolumeLimits_Zone2VolumeLimit); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-Zone2VolumeLimit: %w", err)
     } else {
         val.Zone2VolumeLimit = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone3VolumeLimit")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVolumeLimits_Zone3VolumeLimit); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-Zone3VolumeLimit: %w", err)
     } else {
         val.Zone3VolumeLimit = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone4VolumeLimit")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVolumeLimits_Zone4VolumeLimit); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumeLimits-Zone4VolumeLimit: %w", err)
     } else {
         val.Zone4VolumeLimit = v
@@ -9101,14 +9102,14 @@ func DecodeFusionVolumeLimits(Info MessageInfo, stream *DataStream) (any, error)
 
     return val, nil
 }
-func DecodeFusionVolumes(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionVolumes(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionVolumes
+    var val publicpgn.FusionVolumes
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionVolumes-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9117,7 +9118,7 @@ func DecodeFusionVolumes(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionVolumes-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9125,27 +9126,27 @@ func DecodeFusionVolumes(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32797 {
             return nil, fmt.Errorf("match failed for FusionVolumes-MessageId: Expected %d != %d", 32797, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone1")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVolumes_Zone1); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-Zone1: %w", err)
     } else {
         val.Zone1 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone2")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVolumes_Zone2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-Zone2: %w", err)
     } else {
         val.Zone2 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone3")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVolumes_Zone3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-Zone3: %w", err)
     } else {
         val.Zone3 = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone4")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionVolumes_Zone4); err != nil {
         return nil, fmt.Errorf("parse failed for FusionVolumes-Zone4: %w", err)
     } else {
         val.Zone4 = v
@@ -9153,14 +9154,14 @@ func DecodeFusionVolumes(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeFusionCapabilities(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionCapabilities(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionCapabilities
+    var val publicpgn.FusionCapabilities
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionCapabilities-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9169,7 +9170,7 @@ func DecodeFusionCapabilities(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionCapabilities-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9177,32 +9178,32 @@ func DecodeFusionCapabilities(Info MessageInfo, stream *DataStream) (any, error)
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32798 {
             return nil, fmt.Errorf("match failed for FusionCapabilities-MessageId: Expected %d != %d", 32798, v)
         }
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Zone1")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionCapabilities_Zone1); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-Zone1: %w", err)
     } else {
         val.Zone1 = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Zone2")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionCapabilities_Zone2); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-Zone2: %w", err)
     } else {
         val.Zone2 = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Zone3")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionCapabilities_Zone3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-Zone3: %w", err)
     } else {
         val.Zone3 = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Zone4")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionCapabilities_Zone4); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-Zone4: %w", err)
     } else {
         val.Zone4 = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Global")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionCapabilities_Global); err != nil {
         return nil, fmt.Errorf("parse failed for FusionCapabilities-Global: %w", err)
     } else {
         val.Global = v
@@ -9210,14 +9211,14 @@ func DecodeFusionCapabilities(Info MessageInfo, stream *DataStream) (any, error)
 
     return val, nil
 }
-func DecodeFusionLineLevelControl(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionLineLevelControl(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionLineLevelControl
+    var val publicpgn.FusionLineLevelControl
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLineLevelControl-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionLineLevelControl-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9226,7 +9227,7 @@ func DecodeFusionLineLevelControl(Info MessageInfo, stream *DataStream) (any, er
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLineLevelControl-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionLineLevelControl-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9234,17 +9235,17 @@ func DecodeFusionLineLevelControl(Info MessageInfo, stream *DataStream) (any, er
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLineLevelControl-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32799 {
             return nil, fmt.Errorf("match failed for FusionLineLevelControl-MessageId: Expected %d != %d", 32799, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Zone")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionLineLevelControl_Zone); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLineLevelControl-Zone: %w", err)
     } else {
         val.Zone = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Control")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionLineLevelControl_Control); err != nil {
         return nil, fmt.Errorf("parse failed for FusionLineLevelControl-Control: %w", err)
     } else {
         val.Control = v
@@ -9252,14 +9253,14 @@ func DecodeFusionLineLevelControl(Info MessageInfo, stream *DataStream) (any, er
 
     return val, nil
 }
-func DecodeFusionPowerState(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionPowerState(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionPowerState
+    var val publicpgn.FusionPowerState
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionPowerState-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionPowerState-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9268,7 +9269,7 @@ func DecodeFusionPowerState(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionPowerState-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionPowerState-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9276,7 +9277,7 @@ func DecodeFusionPowerState(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionPowerState-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32800 {
             return nil, fmt.Errorf("match failed for FusionPowerState-MessageId: Expected %d != %d", 32800, v)
         }
@@ -9284,19 +9285,19 @@ func DecodeFusionPowerState(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionPowerState-State: %w", err)
     } else {
-        val.State = FusionPowerStateConst(v)
+        val.State = publicpgn.FusionPowerStateConst(v)
     }
 
     return val, nil
 }
-func DecodeFusionSiriusxm(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSiriusxm(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSiriusxm
+    var val publicpgn.FusionSiriusxm
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxm-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSiriusxm-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9305,7 +9306,7 @@ func DecodeFusionSiriusxm(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxm-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSiriusxm-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9313,12 +9314,12 @@ func DecodeFusionSiriusxm(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxm-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32802 {
             return nil, fmt.Errorf("match failed for FusionSiriusxm-MessageId: Expected %d != %d", 32802, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusxm_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxm-SourceId: %w", err)
     } else {
         val.SourceId = v
@@ -9326,14 +9327,14 @@ func DecodeFusionSiriusxm(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxm-ComState: %w", err)
     } else {
-        val.ComState = FusionSiriusComStateConst(v)
+        val.ComState = publicpgn.FusionSiriusComStateConst(v)
     }
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxm-Alert: %w", err)
     } else {
-        val.Alert = FusionSiriusComStateConst(v)
+        val.Alert = publicpgn.FusionSiriusComStateConst(v)
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("AdvisoryChannel")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionSiriusxm_AdvisoryChannel); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxm-AdvisoryChannel: %w", err)
     } else {
         val.AdvisoryChannel = v
@@ -9341,19 +9342,19 @@ func DecodeFusionSiriusxm(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxm-TuningMode: %w", err)
     } else {
-        val.TuningMode = FusionSiriusTuningModeConst(v)
+        val.TuningMode = publicpgn.FusionSiriusTuningModeConst(v)
     }
 
     return val, nil
 }
-func DecodeFusionSiriusxmChannel(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSiriusxmChannel(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSiriusxmChannel
+    var val publicpgn.FusionSiriusxmChannel
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmChannel-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9362,7 +9363,7 @@ func DecodeFusionSiriusxmChannel(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmChannel-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9370,17 +9371,17 @@ func DecodeFusionSiriusxmChannel(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32804 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmChannel-MessageId: Expected %d != %d", 32804, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusxmChannel_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("ChannelNumber")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionSiriusxmChannel_ChannelNumber); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-ChannelNumber: %w", err)
     } else {
         val.ChannelNumber = v
@@ -9393,14 +9394,14 @@ func DecodeFusionSiriusxmChannel(Info MessageInfo, stream *DataStream) (any, err
 
     return val, nil
 }
-func DecodeFusionSiriusxmTitle(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSiriusxmTitle(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSiriusxmTitle
+    var val publicpgn.FusionSiriusxmTitle
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmTitle-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9409,7 +9410,7 @@ func DecodeFusionSiriusxmTitle(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmTitle-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9417,17 +9418,17 @@ func DecodeFusionSiriusxmTitle(Info MessageInfo, stream *DataStream) (any, error
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32805 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmTitle-MessageId: Expected %d != %d", 32805, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusxmTitle_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Channel")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionSiriusxmTitle_Channel); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-Channel: %w", err)
     } else {
         val.Channel = v
@@ -9440,14 +9441,14 @@ func DecodeFusionSiriusxmTitle(Info MessageInfo, stream *DataStream) (any, error
 
     return val, nil
 }
-func DecodeFusionSiriusxmArtist(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSiriusxmArtist(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSiriusxmArtist
+    var val publicpgn.FusionSiriusxmArtist
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmArtist-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9456,7 +9457,7 @@ func DecodeFusionSiriusxmArtist(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmArtist-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9464,17 +9465,17 @@ func DecodeFusionSiriusxmArtist(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32806 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmArtist-MessageId: Expected %d != %d", 32806, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusxmArtist_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Channel")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionSiriusxmArtist_Channel); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-Channel: %w", err)
     } else {
         val.Channel = v
@@ -9487,14 +9488,14 @@ func DecodeFusionSiriusxmArtist(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeFusionSiriusxmContentInfo(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSiriusxmContentInfo(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSiriusxmContentInfo
+    var val publicpgn.FusionSiriusxmContentInfo
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmContentInfo-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmContentInfo-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9503,7 +9504,7 @@ func DecodeFusionSiriusxmContentInfo(Info MessageInfo, stream *DataStream) (any,
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmContentInfo-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmContentInfo-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9511,17 +9512,17 @@ func DecodeFusionSiriusxmContentInfo(Info MessageInfo, stream *DataStream) (any,
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmContentInfo-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32807 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmContentInfo-MessageId: Expected %d != %d", 32807, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusxmContentInfo_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmContentInfo-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Channel")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionSiriusxmContentInfo_Channel); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmContentInfo-Channel: %w", err)
     } else {
         val.Channel = v
@@ -9534,14 +9535,14 @@ func DecodeFusionSiriusxmContentInfo(Info MessageInfo, stream *DataStream) (any,
 
     return val, nil
 }
-func DecodeFusionSiriusxmCategory(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSiriusxmCategory(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSiriusxmCategory
+    var val publicpgn.FusionSiriusxmCategory
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmCategory-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmCategory-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9550,7 +9551,7 @@ func DecodeFusionSiriusxmCategory(Info MessageInfo, stream *DataStream) (any, er
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmCategory-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmCategory-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9558,17 +9559,17 @@ func DecodeFusionSiriusxmCategory(Info MessageInfo, stream *DataStream) (any, er
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmCategory-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32808 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmCategory-MessageId: Expected %d != %d", 32808, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusxmCategory_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmCategory-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Channel")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_FusionSiriusxmCategory_Channel); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmCategory-Channel: %w", err)
     } else {
         val.Channel = v
@@ -9581,14 +9582,14 @@ func DecodeFusionSiriusxmCategory(Info MessageInfo, stream *DataStream) (any, er
 
     return val, nil
 }
-func DecodeFusionSiriusxmSignal(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSiriusxmSignal(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val FusionSiriusxmSignal
+    var val publicpgn.FusionSiriusxmSignal
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmSignal-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmSignal-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9597,7 +9598,7 @@ func DecodeFusionSiriusxmSignal(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmSignal-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmSignal-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9605,17 +9606,17 @@ func DecodeFusionSiriusxmSignal(Info MessageInfo, stream *DataStream) (any, erro
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmSignal-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32809 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmSignal-MessageId: Expected %d != %d", 32809, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusxmSignal_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmSignal-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Signal")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusxmSignal_Signal); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmSignal-Signal: %w", err)
     } else {
         val.Signal = v
@@ -9623,15 +9624,15 @@ func DecodeFusionSiriusxmSignal(Info MessageInfo, stream *DataStream) (any, erro
 
     return val, nil
 }
-func DecodeFusionSiriusxmPresets(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeFusionSiriusxmPresets(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var binaryLength uint16 = 0
-    var val FusionSiriusxmPresets
+    var val publicpgn.FusionSiriusxmPresets
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmPresets-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 419 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmPresets-ManufacturerCode: Expected %d != %d", 419, v)
         }
@@ -9640,7 +9641,7 @@ func DecodeFusionSiriusxmPresets(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmPresets-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmPresets-IndustryCode: Expected %d != %d", 4, v)
         }
@@ -9648,17 +9649,17 @@ func DecodeFusionSiriusxmPresets(Info MessageInfo, stream *DataStream) (any, err
     if v, err := stream.readLookupField(16); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmPresets-MessageId: %w", err)
     } else {
-        val.MessageId = FusionStatusMessageIdConst(v)
+        val.MessageId = publicpgn.FusionStatusMessageIdConst(v)
         if v != 32812 {
             return nil, fmt.Errorf("match failed for FusionSiriusxmPresets-MessageId: Expected %d != %d", 32812, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("SourceId")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusxmPresets_SourceId); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmPresets-SourceId: %w", err)
     } else {
         val.SourceId = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Count")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionSiriusxmPresets_Count); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmPresets-Count: %w", err)
     } else {
         val.Count = v
@@ -9674,14 +9675,14 @@ func DecodeFusionSiriusxmPresets(Info MessageInfo, stream *DataStream) (any, err
 
     return val, nil
 }
-func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMaretronProprietaryTemperatureHighRange(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val MaretronProprietaryTemperatureHighRange
+    var val publicpgn.MaretronProprietaryTemperatureHighRange
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 137 {
             return nil, fmt.Errorf("match failed for MaretronProprietaryTemperatureHighRange-ManufacturerCode: Expected %d != %d", 137, v)
         }
@@ -9690,17 +9691,17 @@ func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *Dat
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for MaretronProprietaryTemperatureHighRange-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Sid")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronProprietaryTemperatureHighRange_Sid); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-Sid: %w", err)
     } else {
         val.Sid = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronProprietaryTemperatureHighRange_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-Instance: %w", err)
     } else {
         val.Instance = v
@@ -9708,14 +9709,14 @@ func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *Dat
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-Source: %w", err)
     } else {
-        val.Source = TemperatureSourceConst(v)
+        val.Source = publicpgn.TemperatureSourceConst(v)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("ActualTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_MaretronProprietaryTemperatureHighRange_ActualTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-ActualTemperature: %w", err)
     } else {
         val.ActualTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("SetTemperature")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_MaretronProprietaryTemperatureHighRange_SetTemperature); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronProprietaryTemperatureHighRange-SetTemperature: %w", err)
     } else {
         val.SetTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
@@ -9723,15 +9724,15 @@ func DecodeMaretronProprietaryTemperatureHighRange(Info MessageInfo, stream *Dat
 
     return val, nil
 }
-func DecodeBGKeyValueData(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeBGKeyValueData(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var valueLength uint16 = 0
-    var val BGKeyValueData
+    var val publicpgn.BGKeyValueData
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for BGKeyValueData-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 381 {
             return nil, fmt.Errorf("match failed for BGKeyValueData-ManufacturerCode: Expected %d != %d", 381, v)
         }
@@ -9740,24 +9741,24 @@ func DecodeBGKeyValueData(Info MessageInfo, stream *DataStream) (any, error) {
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for BGKeyValueData-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for BGKeyValueData-IndustryCode: Expected %d != %d", 4, v)
         }
     }
     // decode repeating fields
-     val.Repeating1 = make([]BGKeyValueDataRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.BGKeyValueDataRepeating1, 0)
      if stream.isEOF() {
         return val, nil
     }
     for {
-        var rep BGKeyValueDataRepeating1
-        if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("Key")); err != nil {
+        var rep publicpgn.BGKeyValueDataRepeating1
+        if v, err := ReadRaw[uint16](stream, &fieldSpec_BGKeyValueData_Key); err != nil {
             return nil, fmt.Errorf("parse failed for BGKeyValueData-Key: %w", err)
         } else {
             rep.Key = v
         }
-        if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Length")); err != nil {
+        if v, err := ReadRaw[uint8](stream, &fieldSpec_BGKeyValueData_Length); err != nil {
             return nil, fmt.Errorf("parse failed for BGKeyValueData-Length: %w", err)
         } else {
             rep.Length = v
@@ -9775,14 +9776,14 @@ func DecodeBGKeyValueData(Info MessageInfo, stream *DataStream) (any, error) {
 
     return val, nil
 }
-func DecodeMaretronDataInstanceChannelCorrelation(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMaretronDataInstanceChannelCorrelation(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val MaretronDataInstanceChannelCorrelation
+    var val publicpgn.MaretronDataInstanceChannelCorrelation
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDataInstanceChannelCorrelation-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 137 {
             return nil, fmt.Errorf("match failed for MaretronDataInstanceChannelCorrelation-ManufacturerCode: Expected %d != %d", 137, v)
         }
@@ -9791,32 +9792,32 @@ func DecodeMaretronDataInstanceChannelCorrelation(Info MessageInfo, stream *Data
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDataInstanceChannelCorrelation-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for MaretronDataInstanceChannelCorrelation-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("Pgn")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_MaretronDataInstanceChannelCorrelation_Pgn); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDataInstanceChannelCorrelation-Pgn: %w", err)
     } else {
         val.Pgn = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("HardwareChannel")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronDataInstanceChannelCorrelation_HardwareChannel); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDataInstanceChannelCorrelation-HardwareChannel: %w", err)
     } else {
         val.HardwareChannel = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronDataInstanceChannelCorrelation_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDataInstanceChannelCorrelation-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DataSource")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronDataInstanceChannelCorrelation_DataSource); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDataInstanceChannelCorrelation-DataSource: %w", err)
     } else {
         val.DataSource = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("DataIndicator")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronDataInstanceChannelCorrelation_DataIndicator); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronDataInstanceChannelCorrelation-DataIndicator: %w", err)
     } else {
         val.DataIndicator = v
@@ -9824,15 +9825,15 @@ func DecodeMaretronDataInstanceChannelCorrelation(Info MessageInfo, stream *Data
 
     return val, nil
 }
-func DecodeMaretronSwitchIndicatorStatus(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMaretronSwitchIndicatorStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var repeat1Count uint16 = 0
-    var val MaretronSwitchIndicatorStatus
+    var val publicpgn.MaretronSwitchIndicatorStatus
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchIndicatorStatus-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 137 {
             return nil, fmt.Errorf("match failed for MaretronSwitchIndicatorStatus-ManufacturerCode: Expected %d != %d", 137, v)
         }
@@ -9841,17 +9842,17 @@ func DecodeMaretronSwitchIndicatorStatus(Info MessageInfo, stream *DataStream) (
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchIndicatorStatus-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for MaretronSwitchIndicatorStatus-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("IndicatorBankInstance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSwitchIndicatorStatus_IndicatorBankInstance); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchIndicatorStatus-IndicatorBankInstance: %w", err)
     } else {
         val.IndicatorBankInstance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("NumberOfStatusFields")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSwitchIndicatorStatus_NumberOfStatusFields); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchIndicatorStatus-NumberOfStatusFields: %w", err)
     } else {
         val.NumberOfStatusFields = v
@@ -9860,13 +9861,13 @@ func DecodeMaretronSwitchIndicatorStatus(Info MessageInfo, stream *DataStream) (
         }
     }
     // decode repeating fields
-     val.Repeating1 = make([]MaretronSwitchIndicatorStatusRepeating1, 0)
+     val.Repeating1 = make([]publicpgn.MaretronSwitchIndicatorStatusRepeating1, 0)
      if repeat1Count == 0 {
         return val, nil
      }
     for {
-        var rep MaretronSwitchIndicatorStatusRepeating1
-        if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("IndicatorStatus")); err != nil {
+        var rep publicpgn.MaretronSwitchIndicatorStatusRepeating1
+        if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSwitchIndicatorStatus_IndicatorStatus); err != nil {
             return nil, fmt.Errorf("parse failed for MaretronSwitchIndicatorStatus-IndicatorStatus: %w", err)
         } else {
             rep.IndicatorStatus = v
@@ -9880,14 +9881,14 @@ func DecodeMaretronSwitchIndicatorStatus(Info MessageInfo, stream *DataStream) (
 
     return val, nil
 }
-func DecodeMaretronSwitchStatusCounter(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMaretronSwitchStatusCounter(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val MaretronSwitchStatusCounter
+    var val publicpgn.MaretronSwitchStatusCounter
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 137 {
             return nil, fmt.Errorf("match failed for MaretronSwitchStatusCounter-ManufacturerCode: Expected %d != %d", 137, v)
         }
@@ -9896,42 +9897,42 @@ func DecodeMaretronSwitchStatusCounter(Info MessageInfo, stream *DataStream) (an
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for MaretronSwitchStatusCounter-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSwitchStatusCounter_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("IndicatorNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSwitchStatusCounter_IndicatorNumber); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-IndicatorNumber: %w", err)
     } else {
         val.IndicatorNumber = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartDate")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_MaretronSwitchStatusCounter_StartDate); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-StartDate: %w", err)
     } else {
         val.StartDate = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("StartTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_MaretronSwitchStatusCounter_StartTime); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-StartTime: %w", err)
     } else {
         val.StartTime = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("OffCounter")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_MaretronSwitchStatusCounter_OffCounter); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-OffCounter: %w", err)
     } else {
         val.OffCounter = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("OnCounter")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_MaretronSwitchStatusCounter_OnCounter); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-OnCounter: %w", err)
     } else {
         val.OnCounter = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("ErrorCounter")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_MaretronSwitchStatusCounter_ErrorCounter); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-ErrorCounter: %w", err)
     } else {
         val.ErrorCounter = v
@@ -9939,20 +9940,20 @@ func DecodeMaretronSwitchStatusCounter(Info MessageInfo, stream *DataStream) (an
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusCounter-SwitchStatus: %w", err)
     } else {
-        val.SwitchStatus = OffOnConst(v)
+        val.SwitchStatus = publicpgn.OffOnConst(v)
     }
     stream.skipBits(6)
 
     return val, nil
 }
-func DecodeMaretronSwitchStatusTimer(Info MessageInfo, stream *DataStream) (any, error) {
+func DecodeMaretronSwitchStatusTimer(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
-    var val MaretronSwitchStatusTimer
+    var val publicpgn.MaretronSwitchStatusTimer
     val.Info = Info
     if v, err := stream.readLookupField(11); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-ManufacturerCode: %w", err)
     } else {
-        val.ManufacturerCode = ManufacturerCodeConst(v)
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
         if v != 137 {
             return nil, fmt.Errorf("match failed for MaretronSwitchStatusTimer-ManufacturerCode: Expected %d != %d", 137, v)
         }
@@ -9961,42 +9962,42 @@ func DecodeMaretronSwitchStatusTimer(Info MessageInfo, stream *DataStream) (any,
     if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-IndustryCode: %w", err)
     } else {
-        val.IndustryCode = IndustryCodeConst(v)
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
         if v != 4 {
             return nil, fmt.Errorf("match failed for MaretronSwitchStatusTimer-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("Instance")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSwitchStatusTimer_Instance); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-Instance: %w", err)
     } else {
         val.Instance = v
     }
-    if v, err := ReadRaw[uint8](stream, val.GetFieldSpec("IndicatorNumber")); err != nil {
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSwitchStatusTimer_IndicatorNumber); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-IndicatorNumber: %w", err)
     } else {
         val.IndicatorNumber = v
     }
-    if v, err := ReadRaw[uint16](stream, val.GetFieldSpec("StartDate")); err != nil {
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_MaretronSwitchStatusTimer_StartDate); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-StartDate: %w", err)
     } else {
         val.StartDate = v
     }
-    if v, err := ReadScaled[float32](stream, val.GetFieldSpec("StartTime")); err != nil {
+    if v, err := ReadScaled[float32](stream, &fieldSpec_MaretronSwitchStatusTimer_StartTime); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-StartTime: %w", err)
     } else {
         val.StartTime = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("AccumulatedOffPeriod")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_MaretronSwitchStatusTimer_AccumulatedOffPeriod); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-AccumulatedOffPeriod: %w", err)
     } else {
         val.AccumulatedOffPeriod = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("AccumulatedOnPeriod")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_MaretronSwitchStatusTimer_AccumulatedOnPeriod); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-AccumulatedOnPeriod: %w", err)
     } else {
         val.AccumulatedOnPeriod = v
     }
-    if v, err := ReadRaw[uint32](stream, val.GetFieldSpec("AccumulatedErrorPeriod")); err != nil {
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_MaretronSwitchStatusTimer_AccumulatedErrorPeriod); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-AccumulatedErrorPeriod: %w", err)
     } else {
         val.AccumulatedErrorPeriod = v
@@ -10004,7 +10005,7 @@ func DecodeMaretronSwitchStatusTimer(Info MessageInfo, stream *DataStream) (any,
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSwitchStatusTimer-SwitchStatus: %w", err)
     } else {
-        val.SwitchStatus = OffOnConst(v)
+        val.SwitchStatus = publicpgn.OffOnConst(v)
     }
     stream.skipBits(6)
 

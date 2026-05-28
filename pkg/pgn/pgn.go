@@ -5,5 +5,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-// Package n2k provides the public API for NMEA 2000 bus operations.
-package n2k
+// Package pgn provides NMEA 2000 PGN domain types: structs, enums, and constants.
+// Generated types are produced by cmd/pgngen.
+package pgn

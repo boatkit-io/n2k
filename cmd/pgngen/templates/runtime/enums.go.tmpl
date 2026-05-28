@@ -40,18 +40,6 @@ var {{ .Name }}Map = map[int]map[int]string{
 
 {{ end }}
 
-{{- range .PGNDoc.FieldTypeEnums }}
-type {{ .Name }} uint16
-var {{ .Name }}Map = map[int]FieldSpec{
-{{- range .EnumFieldTypeValues -}}
-	{{- .Value }}: {
-		BitLength: {{ .BitLength }},
-		Resolution: {{ .Resolution }},
-		},
-	{{ end }} 
-}
-{{ end }}
-
 {{- range .PGNDoc.BitEnums }}
 {{- $name := .Name  }}
 type {{ $name }} uint16

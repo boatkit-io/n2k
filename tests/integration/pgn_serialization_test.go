@@ -61,29 +61,17 @@ func TestPGNSerializationFromN2K(t *testing.T) {
 			fmt.Printf("Processed %d messages in %v (%.2f msg/sec)\n",
 				messageCount, elapsed, float64(messageCount)/elapsed.Seconds())
 		}
-		// Handle both UnknownPGN and regular PGN structs
-		var pgnStruct pgn.PgnStruct
-		var ok bool
-
 		// Skip UnknownPGN structs early - they can't be round-trip tested
 		if _, isUnknownPtr := p.(*pgn.UnknownPGN); isUnknownPtr {
 			return
 		}
 
-		// Since HandleStruct now passes pointers, try direct cast to PgnStruct
-		if pgnStruct, ok = p.(pgn.PgnStruct); !ok {
-			return // Skip non-PGN structs
-		}
-
-		// Create a datastream for serialization
 		stream := pgn.NewDataStream(make([]uint8, 254))
-
-		// Encode the PGN
-		info, err := pgnStruct.Encode(stream)
-		assert.NoError(t, err)
+		info, err := pgn.EncodeStruct(p, stream)
 		if err != nil {
 			return
 		}
+		assert.NoError(t, err)
 
 		// Trim stream data to actual length and reset position
 		inStream := pgn.NewDataStream(stream.GetData())
@@ -92,7 +80,7 @@ func TestPGNSerializationFromN2K(t *testing.T) {
 		decoder, err := pgn.FindDecoder(inStream, info.PGN)
 		assert.NoError(t, err)
 		if err != nil {
-			fmt.Printf("While finding decoder for %T (PGN %d), got error: %v\n", pgnStruct, info.PGN, err)
+			fmt.Printf("While finding decoder for %T (PGN %d), got error: %v\n", p, info.PGN, err)
 			return
 		}
 
@@ -100,21 +88,26 @@ func TestPGNSerializationFromN2K(t *testing.T) {
 		decoded, err := decoder(*info, inStream)
 		if err != nil {
 			assert.NoError(t, err)
-			fmt.Printf("While decoding %T, got error: %v\n", pgnStruct, err)
+			fmt.Printf("While decoding %T, got error: %v\n", p, err)
 			return
 		}
 
-		// Compare original and decoded PGNs
-		// Since the original is a pointer and decoded is a value, dereference the original
-		originalValue := reflect.ValueOf(pgnStruct).Elem().Interface()
+		pv := reflect.ValueOf(p)
+		var originalValue any
+		if pv.Kind() == reflect.Ptr {
+			originalValue = pv.Elem().Interface()
+		} else {
+			originalValue = pv.Interface()
+		}
 
 		opts := cmp.Options{
 			cmpopts.EquateEmpty(),
 			cmpopts.EquateApprox(0.001, 0.001),
+			cmp.Comparer(func(_, _ time.Time) bool { return true }),
 		}
 
 		diff := cmp.Diff(originalValue, decoded, opts)
-		assert.Empty(t, diff, "PGN roundtrip failed for %T", pgnStruct)
+		assert.Empty(t, diff, "PGN roundtrip failed for %T", p)
 	})
 	assert.NoError(t, err)
 

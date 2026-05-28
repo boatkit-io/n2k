@@ -12,25 +12,32 @@ import (
 	"context"
 	"time"
 
+	"github.com/boatkit-io/n2k/internal/adapter"
 	"github.com/boatkit-io/n2k/internal/adapter/canadapter"
 	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/internal/pkt"
 	"github.com/boatkit-io/n2k/internal/subscribe"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
+	"github.com/brutella/can"
 	"github.com/sirupsen/logrus"
 )
 
 // N2kService provides the internal implementation of N2K operations
 type N2kService struct {
-	endpoint   endpoint.Endpoint
-	adapter    *canadapter.CANAdapter
-	subscriber *subscribe.SubscribeManager
-	publisher  *pgn.Publisher
+	endpoint     endpoint.Endpoint
+	adapter      *canadapter.CANAdapter
+	replayAdapter *canadapter.CANAdapter
+	packetStruct *pkt.PacketStruct
+	subscriber   *subscribe.SubscribeManager
+	publisher    *pgn.Publisher
+	log          *logrus.Logger
+
+	receivedCANFrameHook func(*can.Frame)
 }
 
 // NewN2kService creates a new internal N2K service with the specified endpoint
 func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger) *N2kService {
-	adapter := canadapter.NewCANAdapter(log) // TODO: pass logger
+	adapter := canadapter.NewCANAdapter(log)
 	subscriber := subscribe.New()
 
 	pub := pgn.NewPublisher(adapter)
@@ -38,18 +45,19 @@ func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger) *N2kService {
 	ps.SetOutput(subscriber)
 	adapter.SetOutput(ps)
 
-	// Connect the endpoint to the adapter
-	ep.SetOutput(adapter)
+	s := &N2kService{
+		endpoint:     ep,
+		adapter:      adapter,
+		packetStruct: ps,
+		subscriber:   subscriber,
+		publisher:    &pub,
+		log:          log,
+	}
 
-	// Connect the adapter to the endpoint for writing frames
+	ep.SetOutput(s)
 	adapter.SetWriter(ep)
 
-	return &N2kService{
-		endpoint:   ep,
-		adapter:    adapter,
-		subscriber: subscriber,
-		publisher:  &pub,
-	}
+	return s
 }
 
 // SubscribeToStruct subscribes to a specific PGN struct type and calls the callback when messages of that type are received.
@@ -69,8 +77,33 @@ func (s *N2kService) Unsubscribe(id uint) error {
 	return s.subscriber.Unsubscribe(subscribe.SubscriptionId(id))
 }
 
+// SetReceivedCANFrameHook registers a callback invoked for each live CAN frame before decode.
+// The hook may be called concurrently from the endpoint goroutine.
+func (s *N2kService) SetReceivedCANFrameHook(fn func(*can.Frame)) {
+	s.receivedCANFrameHook = fn
+}
+
+// HandleMessage implements endpoint.MessageHandler for live endpoint traffic.
+func (s *N2kService) HandleMessage(message adapter.Message) {
+	if frame, ok := message.(*can.Frame); ok && s.receivedCANFrameHook != nil {
+		s.receivedCANFrameHook(frame)
+	}
+	s.adapter.HandleMessage(message)
+}
+
+// HandleReplayCANFrame feeds a captured CAN frame through a dedicated adapter into the
+// shared decode pipeline so existing subscribers receive replay traffic alongside live data.
+func (s *N2kService) HandleReplayCANFrame(frame *can.Frame) error {
+	if s.replayAdapter == nil {
+		s.replayAdapter = canadapter.NewCANAdapter(s.log)
+		s.replayAdapter.SetOutput(s.packetStruct)
+	}
+	s.replayAdapter.HandleMessage(frame)
+	return nil
+}
+
 // Write sends a PGN struct to the bus
-func (s *N2kService) Write(pgnStruct pgn.PgnStruct) error {
+func (s *N2kService) Write(pgnStruct any) error {
 	return s.publisher.Write(pgnStruct)
 }
 
@@ -109,8 +142,8 @@ func (s *N2kService) UpdateEndpoint(ep endpoint.Endpoint) error {
 	// Set the new endpoint
 	s.endpoint = ep
 
-	// Connect the new endpoint to the adapter
-	s.endpoint.SetOutput(s.adapter)
+	// Connect the new endpoint to this service
+	s.endpoint.SetOutput(s)
 
 	// Connect the adapter to the new endpoint for writing frames
 	s.adapter.SetWriter(s.endpoint)

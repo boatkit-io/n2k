@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
-	github.com/boatkit-io/tugboat v0.0.0-00010101000000-000000000000
+	github.com/boatkit-io/tugboat v0.8.9
 	github.com/brutella/can v0.0.2
 	github.com/google/go-cmp v0.6.0
 	github.com/pkg/errors v0.9.1
@@ -40,5 +40,3 @@ require (
 	golang.org/x/sys v0.45.0 // indirect
 	golang.org/x/term v0.43.0 // indirect
 )
-
-replace github.com/boatkit-io/tugboat => ../tugboat

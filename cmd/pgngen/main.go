@@ -272,13 +272,13 @@ func (conv *canboatConverter) write() {
 
 	// Create output directories
 	internalPGNDir := filepath.Join(projectRoot, "internal", "pgn")
-	publicN2kDir := filepath.Join(projectRoot, "pkg", "n2k")
+	publicPGNDir := filepath.Join(projectRoot, "pkg", "pgn")
 	filterrawDir := filepath.Join(projectRoot, "cmd", "filterraw")
 
 	if err := os.MkdirAll(internalPGNDir, 0755); err != nil {
 		panic(err)
 	}
-	if err := os.MkdirAll(publicN2kDir, 0755); err != nil {
+	if err := os.MkdirAll(publicPGNDir, 0755); err != nil {
 		panic(err)
 	}
 	if err := os.MkdirAll(filterrawDir, 0755); err != nil {
@@ -351,12 +351,10 @@ func (conv *canboatConverter) write() {
 		FastBits: fastBits,
 	}
 
-	// Generate internal PGN files
+	// Generate internal PGN runtime files
 	internalTemplates := map[string]string{
-		"types_generated.go":   "runtime/types.go.tmpl",
-		"enums_generated.go":   "runtime/enums.go.tmpl",
-		"consts_generated.go":  "runtime/consts.go.tmpl",
-		"methods_generated.go": "runtime/methods.go.tmpl",
+		"encode_dispatch_generated.go": "runtime/encode_dispatch.go.tmpl",
+		"enums_fieldtype_generated.go": "runtime/enums_fieldtype.go.tmpl",
 		// "pgninfo_generated.go":        "runtime/pgninfo.go.tmpl", // Moved to cmd/filterraw
 		"decoders_generated.go":       "runtime/decoders.go.tmpl",
 		"encoders_generated.go":       "runtime/encoders.go.tmpl",
@@ -387,7 +385,7 @@ func (conv *canboatConverter) write() {
 		}
 	}
 
-	// Generate public API type aliases
+	// Generate public domain types
 	publicTemplates := map[string]string{
 		"types_generated.go":  "public/types.go.tmpl",
 		"enums_generated.go":  "public/enums.go.tmpl",
@@ -396,7 +394,7 @@ func (conv *canboatConverter) write() {
 
 	for filename, templatePath := range publicTemplates {
 		fmt.Printf("Generating public file: %s from template: %s\n", filename, templatePath)
-		if err := conv.generateFile(filepath.Join(publicN2kDir, filename), templatePath, funcMap, templateData); err != nil {
+		if err := conv.generateFile(filepath.Join(publicPGNDir, filename), templatePath, funcMap, templateData); err != nil {
 			fmt.Printf("Error generating %s: %v\n", filename, err)
 			panic(err)
 		}
@@ -534,6 +532,11 @@ func generateFieldSpecConstant(field *PGNField) string {
 	}`, field.BitLength, field.BitOffset, maxRawValue, missingValue, resolution, field.Offset, field.Signed, reservedCount, domainMin, domainMax, field.BitLengthVariable)
 }
 
+// fieldSpecRef returns a compile-time reference to a generated FieldSpec variable.
+func fieldSpecRef(pgnID, fieldID string) string {
+	return fmt.Sprintf("&fieldSpec_%s_%s", pgnID, fieldID)
+}
+
 // getReservedValueCount returns the number of reserved values at the top of a field's range.
 // This is based purely on NMEA 2000 protocol standards, not domain constraints.
 // Used by template.
@@ -564,7 +567,7 @@ func (conv *canboatConverter) fixIDs() {
 	for i := range conv.PGNs {
 		fieldDeDuper := NewDeDuper()
 		// Capitalize first letter of the Ids (currently lowercase)
-		conv.PGNs[i].Id = cleanIdentifier(capitalizeFirstChar(conv.PGNs[i].Id))
+		conv.PGNs[i].Id = capitalizeFirstChar(conv.PGNs[i].Id)
 		if firstTime, _ := pgnDeDuper.unique(conv.PGNs[i].Id); !firstTime {
 			panic("PGN ID not unique: " + conv.PGNs[i].Id)
 		}
@@ -582,7 +585,7 @@ func (conv *canboatConverter) fixIDs() {
 
 // fixField capitializes Id's first char, assures field name is unique, and forces lookup names.
 func (conv *canboatConverter) fixField(field *PGNField, dedup DeDuper) {
-	field.Id = cleanIdentifier(capitalizeFirstChar(field.Id))
+	field.Id = capitalizeFirstChar(field.Id)
 	if len(field.FieldTypeLookupName) > 0 {
 		convertToConst(&field.FieldTypeLookupName)
 	}
@@ -1335,7 +1338,7 @@ func getFieldSerializer(pgn PGN, field *PGNField, substruct string) string {
 	reservedCount := getReservedValueCount(field)
 
 	// Generate FieldSpec reference for numeric fields
-	specRef := fmt.Sprintf("p.GetFieldSpec(\"%s\")", field.Id)
+	specRef := fieldSpecRef(pgn.Id, field.Id)
 
 	if field.Unit != "" { // set conv to invoke conversion to default type
 		unitType, _ := getUnitType(field.Unit)
@@ -1416,27 +1419,27 @@ func getFieldDeserializer(pgn PGN, field *PGNField) [2]string {
 		if field.BitLength > 32 {
 			panic("No deserializer for LOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.LookupName + "(v)"}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), "publicpgn." + field.LookupName + "(v)"}
 	case "BITLOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for BITLOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.BitLookupName + "(v)"}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), "publicpgn." + field.BitLookupName + "(v)"}
 	case "INDIRECT_LOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for INDIRECT_LOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.IndirectLookupName + "(v)"}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), "publicpgn." + field.IndirectLookupName + "(v)"}
 	case "FIELDTYPE_LOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for FIELDTYPE_LOOKUP with bitlength > 32")
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName + "(v)"}
 	case "FIELD_INDEX":
-		specRef := fmt.Sprintf("val.GetFieldSpec(\"%s\")", field.Id)
+		specRef := fieldSpecRef(pgn.Id, field.Id)
 		return [2]string{fmt.Sprintf("ReadRaw[uint8](stream, %s)", specRef), ""}
 	case "NUMBER", "TIME", "DATE", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
-		specRef := fmt.Sprintf("val.GetFieldSpec(\"%s\")", field.Id)
+		specRef := fieldSpecRef(pgn.Id, field.Id)
 		var outerVal string
 
 		if needsScaling(field) {
@@ -1481,7 +1484,7 @@ func getFieldDeserializer(pgn PGN, field *PGNField) [2]string {
 		}
 		return [2]string{"stream.readBinaryData(binaryLength)", ""}
 	case "VARIABLE":
-		specRef := fmt.Sprintf("val.GetFieldSpec(\"%s\")", field.Id)
+		specRef := fieldSpecRef(pgn.Id, field.Id)
 		return [2]string{fmt.Sprintf("stream.readVariableDataWithSpec(%s)", specRef), ""}
 	case "DYNAMIC_FIELD_VALUE":
 		return [2]string{"stream.readBinaryData(valueLength)", ""}
@@ -1594,28 +1597,6 @@ func capitalizeFirstChar(raw string) string {
 		title = "First" + title[3:]
 	}
 	return title
-}
-
-func forceFirstLetter(name *string) {
-	current := *name
-	if len(current) > 0 && !unicode.IsLetter(rune(current[0])) {
-		*name = "A" + current
-	}
-}
-
-func cleanIdentifier(str string) string {
-	var cleaned strings.Builder
-	for _, r := range str {
-		if unicode.IsLetter(r) || unicode.IsDigit(r) {
-			cleaned.WriteRune(r)
-		}
-	}
-	str = cleaned.String()
-	if str == "" {
-		str = "Value"
-	}
-	forceFirstLetter(&str)
-	return str
 }
 
 // getManId returns the required Manufacturer Code ID for the defined PGN.

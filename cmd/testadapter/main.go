@@ -19,6 +19,7 @@ import (
 
 	"github.com/boatkit-io/n2k/pkg/endpoint/socketcanendpoint"
 	"github.com/boatkit-io/n2k/pkg/n2k"
+	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/sirupsen/logrus"
 )
 
@@ -81,16 +82,16 @@ func main() {
 
 	// Test 1: Single frame PGN (should work)
 	log.Info("Testing single frame PGN...")
-	info1 := n2k.MessageInfo{
-		PGN:      n2k.EngineParametersRapidUpdatePgn, // Engine Parameters Rapid Update
+	info1 := pgn.MessageInfo{
+		PGN:      pgn.EngineParametersRapidUpdatePgn, // Engine Parameters Rapid Update
 		SourceId: 0xFE,
 		TargetId: 0x0,
 		Priority: 0x3,
 	}
 	rpm := float32(1600)
-	p := n2k.EngineParametersRapidUpdate{
+	p := pgn.EngineParametersRapidUpdate{
 		Info:     info1,
-		Instance: n2k.SingleEngineOrDualEnginePort,
+		Instance: pgn.SingleEngineOrDualEnginePort,
 		Speed:    &rpm,
 	}
 
