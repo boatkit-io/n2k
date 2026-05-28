@@ -564,7 +564,7 @@ func (conv *canboatConverter) fixIDs() {
 	for i := range conv.PGNs {
 		fieldDeDuper := NewDeDuper()
 		// Capitalize first letter of the Ids (currently lowercase)
-		conv.PGNs[i].Id = capitalizeFirstChar(conv.PGNs[i].Id)
+		conv.PGNs[i].Id = cleanIdentifier(capitalizeFirstChar(conv.PGNs[i].Id))
 		if firstTime, _ := pgnDeDuper.unique(conv.PGNs[i].Id); !firstTime {
 			panic("PGN ID not unique: " + conv.PGNs[i].Id)
 		}
@@ -582,7 +582,7 @@ func (conv *canboatConverter) fixIDs() {
 
 // fixField capitializes Id's first char, assures field name is unique, and forces lookup names.
 func (conv *canboatConverter) fixField(field *PGNField, dedup DeDuper) {
-	field.Id = capitalizeFirstChar(field.Id)
+	field.Id = cleanIdentifier(capitalizeFirstChar(field.Id))
 	if len(field.FieldTypeLookupName) > 0 {
 		convertToConst(&field.FieldTypeLookupName)
 	}
@@ -1594,6 +1594,28 @@ func capitalizeFirstChar(raw string) string {
 		title = "First" + title[3:]
 	}
 	return title
+}
+
+func forceFirstLetter(name *string) {
+	current := *name
+	if len(current) > 0 && !unicode.IsLetter(rune(current[0])) {
+		*name = "A" + current
+	}
+}
+
+func cleanIdentifier(str string) string {
+	var cleaned strings.Builder
+	for _, r := range str {
+		if unicode.IsLetter(r) || unicode.IsDigit(r) {
+			cleaned.WriteRune(r)
+		}
+	}
+	str = cleaned.String()
+	if str == "" {
+		str = "Value"
+	}
+	forceFirstLetter(&str)
+	return str
 }
 
 // getManId returns the required Manufacturer Code ID for the defined PGN.
