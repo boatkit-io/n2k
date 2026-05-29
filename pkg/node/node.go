@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/boatkit-io/n2k/pkg/pgn"
-	"github.com/boatkit-io/n2k/pkg/subscribe"
 	"github.com/sirupsen/logrus"
 )
 
@@ -29,10 +28,10 @@ type Node interface {
 	EnableHeartbeat(enable bool)
 }
 
-// Subscriber is an interface that abstracts the subscribe.SubscribeManager for testing.
+// Subscriber is an interface that abstracts bus subscriptions for testing.
 type Subscriber interface {
-	SubscribeToStruct(t any, callback any) (subscribe.SubscriptionId, error)
-	Unsubscribe(subId subscribe.SubscriptionId) error
+	SubscribeToStruct(t any, callback any) (SubscriptionId, error)
+	Unsubscribe(subId SubscriptionId) error
 }
 
 // Publisher is an interface that abstracts the pgn.Publisher for testing.
@@ -96,7 +95,7 @@ type node struct {
 	ctx               context.Context
 	cancel            context.CancelFunc
 	wg                sync.WaitGroup
-	subscriptions     []subscribe.SubscriptionId
+	subscriptions     []SubscriptionId
 	pgnIn             chan any
 	mutex             sync.RWMutex
 	wakeUp            chan struct{}
@@ -124,7 +123,7 @@ func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) Node {
 		heartbeatEnabled:  false,
 		heartbeatInterval: 60 * time.Second,
 		started:           false,
-		subscriptions:     make([]subscribe.SubscriptionId, 0),
+		subscriptions:     make([]SubscriptionId, 0),
 		pgnIn:             make(chan any, 10),
 		mutex:             sync.RWMutex{},
 		wakeUp:            make(chan struct{}, 1),
@@ -197,7 +196,7 @@ func (n *node) Stop() error {
 	for _, sub := range n.subscriptions {
 		_ = n.subscriber.Unsubscribe(sub)
 	}
-	n.subscriptions = make([]subscribe.SubscriptionId, 0)
+	n.subscriptions = make([]SubscriptionId, 0)
 
 	if n.cancel != nil {
 		n.cancel()
@@ -596,12 +595,7 @@ func (n *node) process() {
 				n.mutex.RUnlock()
 				for _, ts := range toSendList {
 					n.logger.Infof("process: sending PGN %+v to %d", ts.pgn, ts.dest)
-					if ts.dest == 255 {
-						_ = publisher.Write(ts.pgn)
-					} else {
-						// This is a bit of a hack until we have a proper way to send to a specific address
-						//_ = n.WriteTo(ts.pgn, ts.dest)
-					}
+					_ = publisher.Write(ts.pgn)
 				}
 			}
 

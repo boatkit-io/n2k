@@ -7,27 +7,26 @@ import (
 	"time"
 
 	"github.com/boatkit-io/n2k/pkg/pgn"
-	"github.com/boatkit-io/n2k/pkg/subscribe"
 )
 
 // mockSubscriber is a mock implementation of the Subscriber interface.
 type mockSubscriber struct {
-	subscriptions map[subscribe.SubscriptionId]bool
+	subscriptions map[SubscriptionId]bool
 	handlers      map[string]any // Store handlers of any func type
-	nextSubId     subscribe.SubscriptionId
+	nextSubId     SubscriptionId
 	wg            sync.WaitGroup
 }
 
 func newMockSubscriber() *mockSubscriber {
 	return &mockSubscriber{
-		subscriptions: make(map[subscribe.SubscriptionId]bool),
+		subscriptions: make(map[SubscriptionId]bool),
 		handlers:      make(map[string]any),
 		nextSubId:     1,
 		wg:            sync.WaitGroup{},
 	}
 }
 
-func (m *mockSubscriber) SubscribeToStruct(t any, callback any) (subscribe.SubscriptionId, error) {
+func (m *mockSubscriber) SubscribeToStruct(t any, callback any) (SubscriptionId, error) {
 	structName := ""
 	switch t.(type) {
 	case pgn.IsoRequest:
@@ -46,7 +45,7 @@ func (m *mockSubscriber) SubscribeToStruct(t any, callback any) (subscribe.Subsc
 	return m.nextSubId - 1, nil
 }
 
-func (m *mockSubscriber) Unsubscribe(subId subscribe.SubscriptionId) error {
+func (m *mockSubscriber) Unsubscribe(subId SubscriptionId) error {
 	if _, ok := m.subscriptions[subId]; !ok {
 		return fmt.Errorf("subscription not found")
 	}
@@ -58,11 +57,11 @@ func (m *mockSubscriber) Unsubscribe(subId subscribe.SubscriptionId) error {
 func (m *mockSubscriber) simulatePGN(pgnStruct any) {
 	var structName string
 	switch pgnStruct.(type) {
-	case *pgn.IsoRequest:
+	case pgn.IsoRequest, *pgn.IsoRequest:
 		structName = "IsoRequest"
-	case *pgn.IsoAddressClaim:
+	case pgn.IsoAddressClaim, *pgn.IsoAddressClaim:
 		structName = "IsoAddressClaim"
-	case *pgn.IsoCommandedAddress:
+	case pgn.IsoCommandedAddress, *pgn.IsoCommandedAddress:
 		structName = "IsoCommandedAddress"
 	default:
 		return
@@ -72,9 +71,12 @@ func (m *mockSubscriber) simulatePGN(pgnStruct any) {
 		m.wg.Add(1)
 		go func() {
 			defer m.wg.Done()
-			// Use reflection to call the handler with the correct type
 			v := reflect.ValueOf(handler)
-			v.Call([]reflect.Value{reflect.ValueOf(pgnStruct)})
+			arg := reflect.ValueOf(pgnStruct)
+			if arg.Kind() == reflect.Ptr {
+				arg = arg.Elem()
+			}
+			v.Call([]reflect.Value{arg})
 		}()
 	}
 }
