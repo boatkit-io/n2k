@@ -14,7 +14,6 @@ import (
 	"github.com/brutella/can"
 	"github.com/sirupsen/logrus"
 
-	"github.com/boatkit-io/n2k/internal/adapter"
 	"github.com/boatkit-io/n2k/internal/converter"
 	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/internal/pkt"
@@ -62,11 +61,10 @@ func (c *CANAdapter) SetOutput(ph PacketHandler) {
 }
 
 // HandleMessage is how you tell CanAdapter to start processing a new message into a packet
-func (c *CANAdapter) HandleMessage(message adapter.Message) {
-	switch f := message.(type) {
-	case *can.Frame:
-		pInfo := ExtractMessageInfo(f)
-		p := pkt.NewPacket(pInfo, f.Data[:])
+func (c *CANAdapter) HandleMessage(message endpoint.Message) {
+	if frame, ok := message.(*can.Frame); ok {
+		pInfo := ExtractMessageInfo(frame)
+		p := pkt.NewPacket(pInfo, frame.Data[:])
 
 		// https://endige.com/2050/nmea-2000-pgns-deciphered/
 
@@ -84,8 +82,8 @@ func (c *CANAdapter) HandleMessage(message adapter.Message) {
 		if p.Complete {
 			c.packetReady(p)
 		}
-	default:
-		c.log.Warnf("CanAdapter expected *can.Frame, received: %T", f)
+	} else {
+		c.log.Warnf("CanAdapter expected *can.Frame, received: %T", message)
 	}
 }
 

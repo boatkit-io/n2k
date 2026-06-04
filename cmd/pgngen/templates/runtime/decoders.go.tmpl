@@ -93,8 +93,15 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
         return val, nil
     }
     {{- end }}
+	{{- $rep1FieldTypes := "" -}}
+	{{- range $pgn.FieldsRepeating1 -}}
+		{{- $rep1FieldTypes = print $rep1FieldTypes .FieldType -}}
+	{{- end }}
     for {
         var rep publicpgn.{{ .Id }}Repeating1
+		{{- if contains $rep1FieldTypes "DYNAMIC_FIELD_LENGTH" }}
+        valueLength = 0
+		{{- end }}
         {{- range $pgn.FieldsRepeating1 }}
         {{- if eq .FieldType "RESERVED" }}
         stream.skipBits({{ .BitLength }})
@@ -104,6 +111,11 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
             return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
         } else {
             rep.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
+            {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
+            if v != nil {
+                valueLength = uint16(*v) * 8
+            }
+            {{- end }}
         }
         {{- end }}
 

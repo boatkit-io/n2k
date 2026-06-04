@@ -18,7 +18,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/boatkit-io/n2k/internal/adapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/brutella/can"
 	"github.com/pkg/errors"
@@ -139,7 +138,7 @@ func (n *N2kFileEndpoint) WriteFrame(_ can.Frame) {
 }
 
 // frameReady is a helper to handle passing completed frames to the handler
-func (n *N2kFileEndpoint) frameReady(frame adapter.Message) {
+func (n *N2kFileEndpoint) frameReady(frame endpoint.Message) {
 	if n.handler != nil {
 		n.handler.HandleMessage(frame)
 	}

@@ -20,7 +20,7 @@ func DebugDumpPGN(p any) string {
 	tp := reflect.TypeOf(p)
 
 	// If it's a pointer, dereference it
-	if tp.Kind() == reflect.Ptr {
+	if tp.Kind() == reflect.Pointer {
 		if vp.IsNil() {
 			return "nil"
 		}

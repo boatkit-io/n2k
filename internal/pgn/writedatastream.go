@@ -120,9 +120,17 @@ func checkNilInterface(i interface{}) bool {
 	if !iv.IsValid() {
 		return true
 	}
-	//nolint:exhaustive // Why: Only Ptr, Slice, Map, Func, Interface may be nil; every other Kind is never nil.
+	//nolint:exhaustive // Why: Only Pointer, Slice, Map, Func, Interface may be nil; every other Kind is never nil.
 	switch iv.Kind() {
-	case reflect.Ptr, reflect.Slice, reflect.Map, reflect.Func, reflect.Interface:
+	case reflect.Pointer:
+		return iv.IsNil()
+	case reflect.Slice:
+		return iv.IsNil()
+	case reflect.Map:
+		return iv.IsNil()
+	case reflect.Func:
+		return iv.IsNil()
+	case reflect.Interface:
 		return iv.IsNil()
 	default:
 		return false

@@ -9753,6 +9753,7 @@ func DecodeBGKeyValueData(Info publicpgn.MessageInfo, stream *DataStream) (any, 
     }
     for {
         var rep publicpgn.BGKeyValueDataRepeating1
+        valueLength = 0
         if v, err := ReadRaw[uint16](stream, &fieldSpec_BGKeyValueData_Key); err != nil {
             return nil, fmt.Errorf("parse failed for BGKeyValueData-Key: %w", err)
         } else {
@@ -9762,6 +9763,9 @@ func DecodeBGKeyValueData(Info publicpgn.MessageInfo, stream *DataStream) (any, 
             return nil, fmt.Errorf("parse failed for BGKeyValueData-Length: %w", err)
         } else {
             rep.Length = v
+            if v != nil {
+                valueLength = uint16(*v) * 8
+            }
         }
         if v, err := stream.readBinaryData(valueLength); err != nil {
             return nil, fmt.Errorf("parse failed for BGKeyValueData-Value: %w", err)

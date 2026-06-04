@@ -9,8 +9,14 @@ package pgn
 
 import publicpgn "github.com/boatkit-io/n2k/pkg/pgn"
 
-// Domain type aliases used by internal runtime packages.
+// MessageInfo is an alias for publicpgn.MessageInfo.
 type MessageInfo = publicpgn.MessageInfo
+
+// UnknownPGN is an alias for publicpgn.UnknownPGN.
 type UnknownPGN = publicpgn.UnknownPGN
+
+// ManufacturerCodeConst is an alias for publicpgn.ManufacturerCodeConst.
 type ManufacturerCodeConst = publicpgn.ManufacturerCodeConst
+
+// IndustryCodeConst is an alias for publicpgn.IndustryCodeConst.
 type IndustryCodeConst = publicpgn.IndustryCodeConst

@@ -12,7 +12,6 @@ import (
 	"context"
 	"time"
 
-	"github.com/boatkit-io/n2k/internal/adapter"
 	"github.com/boatkit-io/n2k/internal/adapter/canadapter"
 	"github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/internal/pkt"
@@ -24,13 +23,13 @@ import (
 
 // N2kService provides the internal implementation of N2K operations
 type N2kService struct {
-	endpoint     endpoint.Endpoint
-	adapter      *canadapter.CANAdapter
+	endpoint      endpoint.Endpoint
+	adapter       *canadapter.CANAdapter
 	replayAdapter *canadapter.CANAdapter
-	packetStruct *pkt.PacketStruct
-	subscriber   *subscribe.SubscribeManager
-	publisher    *pgn.Publisher
-	log          *logrus.Logger
+	packetStruct  *pkt.PacketStruct
+	subscriber    *subscribe.SubscribeManager
+	publisher     *pgn.Publisher
+	log           *logrus.Logger
 
 	receivedCANFrameHook func(*can.Frame)
 }
@@ -84,7 +83,7 @@ func (s *N2kService) SetReceivedCANFrameHook(fn func(*can.Frame)) {
 }
 
 // HandleMessage implements endpoint.MessageHandler for live endpoint traffic.
-func (s *N2kService) HandleMessage(message adapter.Message) {
+func (s *N2kService) HandleMessage(message endpoint.Message) {
 	if frame, ok := message.(*can.Frame); ok && s.receivedCANFrameHook != nil {
 		s.receivedCANFrameHook(frame)
 	}

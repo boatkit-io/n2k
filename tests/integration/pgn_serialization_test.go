@@ -94,7 +94,7 @@ func TestPGNSerializationFromN2K(t *testing.T) {
 
 		pv := reflect.ValueOf(p)
 		var originalValue any
-		if pv.Kind() == reflect.Ptr {
+		if pv.Kind() == reflect.Pointer {
 			originalValue = pv.Elem().Interface()
 		} else {
 			originalValue = pv.Interface()

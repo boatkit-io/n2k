@@ -1676,29 +1676,30 @@ func convertToConst(name *string) {
 }
 
 // isProprietaryPGN evaluates if its input falls into the proprietary PGN ranges.
-// Duplicated from n2k/pgninfo.go. Could export it there and use it here, but
-// we're generating a source file for that package, so a bootstrapping problem...
+// Duplicated from pgn/pgn.go. Could export it there and use it here, but
+// we're generating source files for that package, so a circular dependency problem...
 func isProprietaryPGN(pgn uint32) bool {
-	if pgn >= 0x0EF00 && pgn <= 0x0EFFF {
+	switch {
+	case pgn >= 0x0EF00 && pgn <= 0x0EFFF:
 		// proprietary PDU1 (addressed) single-frame range 0EF00 to 0xEFFF (61184 - 61439) messages.
 		// Addressed means that you send it to specific node on the bus. This you can easily use for responding,
 		// since you know the sender. For sender it is bit more complicate since your device address may change
 		// due to address claiming. There is N2kDeviceList module for handling devices on bus and find them by
 		// "NAME" (= 64 bit value set by SetDeviceInformation ).
 		return true
-	} else if pgn >= 0x0FF00 && pgn <= 0x0FFFF {
+	case pgn >= 0x0FF00 && pgn <= 0x0FFFF:
 		// proprietary PDU2 (non addressed) single-frame range 0xFF00 to 0xFFFF (65280 - 65535).
 		// Non addressed means that destination wil be 255 (=broadcast) so any cabable device can handle it.
 		return true
-	} else if pgn >= 0x1EF00 && pgn <= 0x1EFFF {
+	case pgn >= 0x1EF00 && pgn <= 0x1EFFF:
 		// proprietary PDU1 (addressed) fast-packet PGN range 0x1EF00 to 0x1EFFF (126720 - 126975)
 		return true
-	} else if pgn >= 0x1FF00 && pgn <= 0x1FFFF {
+	case pgn >= 0x1FF00 && pgn <= 0x1FFFF:
 		// proprietary PDU2 (non addressed) fast packet range 0x1FF00 to 0x1FFFF (130816 - 131071)
 		return true
+	default:
+		return false
 	}
-
-	return false
 }
 
 // DecoderConfig contains configuration for decoding PGN fields with repeating groups and dynamic lengths.

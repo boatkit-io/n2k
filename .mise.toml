@@ -49,7 +49,7 @@ sources = [
 outputs = [
 	"internal/pgn/*_generated.go",
 	"cmd/filterraw/pgn_data.go",
-	"pkg/n2k/*_generated.go",
+	"pkg/pgn/*_generated.go",
 ]
 run = "./bin/pgngen"
 

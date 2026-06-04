@@ -15,7 +15,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/boatkit-io/n2k/internal/adapter"
 	"github.com/boatkit-io/n2k/internal/converter"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/brutella/can"
@@ -42,6 +41,7 @@ type RawFileEndpoint struct {
 // NewRawEndpoint creates a new RAW endpoint
 func NewRawEndpoint(outFilePath string, log *logrus.Logger) *RawEndpoint {
 	retval := RawEndpoint{}
+	retval.log = log
 	if outFilePath != "" {
 		file, err := os.Create(outFilePath)
 		if err != nil {
@@ -64,13 +64,7 @@ func NewRawFileEndpoint(file string, log *logrus.Logger) *RawFileEndpoint {
 
 // Run method opens the specified log file and kicks off a goroutine that sends frames to the handler
 func (r *RawEndpoint) Run(ctx context.Context) error {
-	if r.file != nil {
-		defer func() {
-			if err := r.file.Close(); err != nil {
-				r.log.WithError(err).Error("failed to close raw endpoint file")
-			}
-		}()
-	}
+	r.log.Info("starting raw endpoint")
 
 	go func() {
 		<-ctx.Done()
@@ -99,7 +93,10 @@ func (r *RawEndpoint) WriteFrame(frame can.Frame) {
 // Close closes the endpoint
 func (r *RawEndpoint) Close() error {
 	if r.file != nil {
-		return r.file.Close()
+		if err := r.file.Close(); err != nil {
+			return errors.Wrap(err, "failed to close raw endpoint file")
+		}
+		r.file = nil
 	}
 	return nil
 }
@@ -163,7 +160,7 @@ func (r *RawFileEndpoint) Run(ctx context.Context) error {
 }
 
 // frameReady is a helper to handle passing completed frames to the handler
-func (r *RawFileEndpoint) frameReady(frame adapter.Message) {
+func (r *RawFileEndpoint) frameReady(frame endpoint.Message) {
 	if r.handler != nil {
 		r.handler.HandleMessage(frame)
 	}
