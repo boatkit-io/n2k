@@ -72,6 +72,7 @@ type Node interface {
     ClaimAddress(preferredAddress uint8) error
     GetNetworkAddress() uint8
     IsAddressClaimed() bool
+    KnownDevices() []KnownDevice
 
     Write(pgnStruct any) error
     WriteTo(pgnStruct any, destination uint8) error
@@ -90,7 +91,6 @@ Future API additions should be considered for:
 
 - Reading the address-claim state and failure reason.
 - Registering application-level ISO request handlers.
-- Observing the known-device map.
 - Choosing fixed-address versus arbitrary-address retry behavior.
 
 ## Lifecycle
@@ -222,6 +222,10 @@ The map must be updated when address claims are received. If a source address is
 claimed by a different NAME, the old entry must be replaced. Entries may expire
 after a configurable idle period, but expiration must not cause the node to
 forget an address during an active claim wait.
+
+`KnownDevices` returns a sorted snapshot of this map so callers can inspect
+observed devices without mutating node internals. `cmd/nodeintegration` uses
+that snapshot to dump the device list when it changes and before exiting.
 
 ## Required Standard PGN Behavior
 
@@ -482,21 +486,32 @@ Implemented or mostly implemented:
 - ISO Request for Address Claim.
 - Basic PGN list response.
 - Basic commanded-address handling.
+- ISO Acknowledgement subscription and logging.
+- Basic ISO NAK response for unsupported Configuration Information requests.
+- Basic Group Function PGN 126208 request routing and unsupported command NAKs.
+- Automatic inclusion of node-managed PGNs in PGN List.
+- Package-level known-device snapshots, updated from address claims and enriched
+  from observed Product Information and Configuration Information PGNs.
+- Deterministic retry to the next known-free address after losing an address
+  claim when arbitrary addressing is enabled.
 - Heartbeat timer and sequence counter.
 - Write gating until an address is claimed.
 - Identity-before-claim validation.
 
 Missing or incomplete:
 
-- ISO Acknowledgement subscription and response behavior.
-- Configuration Information change handling via group functions.
-- Known-device map.
-- Retry/new-address selection after losing a claim.
+- ISO Acknowledgement handling beyond logging, if callers need state changes or
+  error callbacks from received ACK/NAK PGNs.
+- Configuration Information change handling via Group Function write/command
+  operations.
+- Known-device expiry and configurable idle timeout.
+- No-address-available reporting when all candidate addresses are known claimed.
 - Duplicate-NAME handling.
-- Explicit fixed-address versus arbitrary-address policy.
+- Configurable fixed-address versus arbitrary-address policy beyond the current
+  `DeviceInfo.ArbitraryAddressCapable` behavior.
 - Application ISO request handler routing.
-- Automatic inclusion of node-managed PGNs in PGN List.
-- Group Function PGN 126208 support.
+- Advanced Group Function PGN 126208 support, including transmission interval,
+  priority, and parameter write semantics.
 - Clear transport/fast-packet capability boundary for node-managed PGNs,
   especially documenting ISO transport as conditional rather than mandatory.
 - State/error observability beyond `IsAddressClaimed` and logs.
@@ -533,11 +548,10 @@ Integration tests should verify:
 
 ## Suggested Implementation Order
 
-1. Add state/error observability and identity-before-claim validation.
-2. Add ISO Request for Address Claim and ISO Acknowledgement policy.
-3. Add known-device tracking and address retry.
-4. Add Configuration Information.
-5. Add application ISO request handler routing.
-6. Decide and document the transport/fast-packet ownership boundary, with ISO
+1. Add state/error observability beyond `IsAddressClaimed` and logs.
+2. Add duplicate-NAME handling and no-address-available reporting.
+3. Add Configuration Information writes via Group Function command/write paths.
+4. Add application ISO request handler routing.
+5. Decide and document the transport/fast-packet ownership boundary, with ISO
    transport marked as conditional lower-layer support.
-7. Add Group Function support if required for target interoperability.
+6. Add advanced Group Function support if required for target interoperability.

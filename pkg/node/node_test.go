@@ -210,7 +210,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 	err := n.Start()
 	assert.NoError(t, err)
 	assert.True(t, n.(*node).started)
-	assert.Len(t, sub.subscriptions, 6, "should have 6 subscriptions after start")
+	assert.Len(t, sub.subscriptions, 8, "should have 8 subscriptions after start")
 
 	err = n.Stop()
 	assert.NoError(t, err)
@@ -434,4 +434,124 @@ func TestLifecycleAndResponses(t *testing.T) {
 	})
 
 	_ = n.Stop()
+}
+
+func TestKnownDevices(t *testing.T) {
+	sub := newMockSubscriber()
+	pub := newMockPublisher()
+	n := NewNode(sub, pub, newMockClock())
+
+	err := n.Start()
+	assert.NoError(t, err)
+	defer func() { _ = n.Stop() }()
+
+	uniqueNumber := uint32(42)
+	deviceInstanceLower := uint8(1)
+	deviceInstanceUpper := uint8(2)
+	systemInstance := uint8(3)
+	claim := pgn.IsoAddressClaim{
+		Info:                    pgn.MessageInfo{SourceId: 23},
+		UniqueNumber:            &uniqueNumber,
+		ManufacturerCode:        pgn.Garmin,
+		DeviceInstanceLower:     &deviceInstanceLower,
+		DeviceInstanceUpper:     &deviceInstanceUpper,
+		DeviceFunction:          140,
+		DeviceClass:             pgn.Navigation,
+		SystemInstance:          &systemInstance,
+		IndustryGroup:           pgn.MarineIndustry,
+		ArbitraryAddressCapable: pgn.Yes,
+	}
+	sub.simulatePGN(claim)
+	sub.waitForHandler()
+
+	assert.Eventually(t, func() bool {
+		return len(n.KnownDevices()) == 1
+	}, time.Second, time.Millisecond)
+
+	devices := n.KnownDevices()
+	assert.Equal(t, uint8(23), devices[0].Address)
+	assert.NotZero(t, devices[0].Name)
+	assert.False(t, devices[0].LastSeen.IsZero())
+
+	version := float32(2.1)
+	productCode := uint16(101)
+	loadEquivalency := uint8(1)
+	sub.simulatePGN(pgn.ProductInformation{
+		Info:                pgn.MessageInfo{SourceId: 23},
+		Nmea2000Version:     &version,
+		ProductCode:         &productCode,
+		ModelId:             "Remote",
+		SoftwareVersionCode: "1.2.3",
+		ModelVersion:        "v1",
+		ModelSerialCode:     "SN-remote",
+		CertificationLevel:  pgn.LevelB,
+		LoadEquivalency:     &loadEquivalency,
+	})
+	sub.simulatePGN(pgn.ConfigurationInformation{
+		Info:                     pgn.MessageInfo{SourceId: 23},
+		InstallationDescription1: "helm",
+		InstallationDescription2: "bench",
+		ManufacturerInformation:  "remote maker",
+	})
+	sub.waitForHandler()
+
+	assert.Eventually(t, func() bool {
+		devices = n.KnownDevices()
+		return len(devices) == 1 && devices[0].ProductInfo != nil && devices[0].ConfigInfo != nil
+	}, time.Second, time.Millisecond)
+
+	devices = n.KnownDevices()
+	assert.Equal(t, "Remote", devices[0].ProductInfo.ModelID)
+	assert.Equal(t, "1.2.3", devices[0].ProductInfo.SoftwareVersionCode)
+	assert.Equal(t, "helm", devices[0].ConfigInfo.InstallationDescription1)
+
+	devices[0].ProductInfo.ModelID = "mutated"
+	assert.Equal(t, "Remote", n.KnownDevices()[0].ProductInfo.ModelID)
+}
+
+func TestAddressClaimRetriesNextKnownFreeAddress(t *testing.T) {
+	sub := newMockSubscriber()
+	pub := newMockPublisher()
+	clock := newMockClock()
+	n := NewNode(sub, pub, clock)
+	err := n.SetDeviceInfo(DeviceInfo{
+		UniqueNumber:            100,
+		ManufacturerCode:        pgn.Garmin,
+		DeviceFunction:          140,
+		DeviceClass:             pgn.Navigation,
+		IndustryGroup:           pgn.MarineIndustry,
+		ArbitraryAddressCapable: true,
+	})
+	assert.NoError(t, err)
+	err = n.Start()
+	assert.NoError(t, err)
+	defer func() { _ = n.Stop() }()
+
+	pub.expectWrite()
+	err = n.ClaimAddress(50)
+	assert.NoError(t, err)
+	pub.waitForWrite()
+
+	winningUniqueNumber := uint32(1)
+	pub.expectWrite()
+	sub.simulatePGN(pgn.IsoAddressClaim{
+		Info:                    pgn.MessageInfo{SourceId: 50},
+		UniqueNumber:            &winningUniqueNumber,
+		ManufacturerCode:        pgn.Garmin,
+		DeviceFunction:          140,
+		DeviceClass:             pgn.Navigation,
+		IndustryGroup:           pgn.MarineIndustry,
+		ArbitraryAddressCapable: pgn.Yes,
+	})
+	pub.waitForWrite()
+
+	claim, ok := pub.lastWritten().(*pgn.IsoAddressClaim)
+	assert.True(t, ok)
+	assert.Equal(t, uint8(51), claim.Info.SourceId)
+	assert.Equal(t, uint8(51), n.GetNetworkAddress())
+	assert.False(t, n.IsAddressClaimed())
+
+	clock.Advance()
+	assert.Eventually(t, n.IsAddressClaimed, time.Second, time.Millisecond)
+	assert.Equal(t, uint8(51), n.GetNetworkAddress())
 }

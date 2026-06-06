@@ -3,7 +3,10 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"os"
+	"sort"
+	"strings"
 	"time"
 
 	"github.com/boatkit-io/n2k/pkg/endpoint/socketcanendpoint"
@@ -14,6 +17,127 @@ import (
 )
 
 var canInterface string
+
+type deviceListDumper struct {
+	log         *logrus.Logger
+	node        node.Node
+	localDevice *node.KnownDevice
+	lastDump    string
+}
+
+func newDeviceListDumper(log *logrus.Logger, nodeImpl node.Node) *deviceListDumper {
+	return &deviceListDumper{
+		log:  log,
+		node: nodeImpl,
+	}
+}
+
+func (d *deviceListDumper) setLocalDevice(address uint8, productInfo node.ProductInfo, configurationInfo node.ConfigurationInfo) {
+	d.localDevice = &node.KnownDevice{
+		Address: address,
+		ProductInfo: &node.ProductInfo{
+			NMEA2000Version:     productInfo.NMEA2000Version,
+			ProductCode:         productInfo.ProductCode,
+			ModelID:             productInfo.ModelID,
+			SoftwareVersionCode: productInfo.SoftwareVersionCode,
+			ModelVersion:        productInfo.ModelVersion,
+			ModelSerialCode:     productInfo.ModelSerialCode,
+			CertificationLevel:  productInfo.CertificationLevel,
+			LoadEquivalency:     productInfo.LoadEquivalency,
+		},
+		ConfigInfo: &node.ConfigurationInfo{
+			InstallationDescription1: configurationInfo.InstallationDescription1,
+			InstallationDescription2: configurationInfo.InstallationDescription2,
+			ManufacturerInformation:  configurationInfo.ManufacturerInformation,
+		},
+	}
+}
+
+func (d *deviceListDumper) DumpIfChanged(reason string) {
+	dump := d.render()
+	if dump == d.lastDump {
+		return
+	}
+	d.lastDump = dump
+	d.log.Infof("DEVICE LIST (%s):\n%s", reason, dump)
+}
+
+func (d *deviceListDumper) Dump(reason string) {
+	d.log.Infof("DEVICE LIST (%s):\n%s", reason, d.render())
+}
+
+func (d *deviceListDumper) render() string {
+	devices := d.node.KnownDevices()
+	if d.localDevice != nil {
+		devices = upsertLocalDevice(devices, *d.localDevice)
+	}
+
+	sort.Slice(devices, func(i, j int) bool {
+		return devices[i].Address < devices[j].Address
+	})
+
+	if len(devices) == 0 {
+		return "no devices discovered"
+	}
+
+	lines := make([]string, 0, len(devices))
+	for _, device := range devices {
+		lines = append(lines, formatKnownDevice(device))
+	}
+	return strings.Join(lines, "\n")
+}
+
+func upsertLocalDevice(devices []node.KnownDevice, localDevice node.KnownDevice) []node.KnownDevice {
+	for i := range devices {
+		if devices[i].Address == localDevice.Address {
+			devices[i] = mergeKnownDevice(devices[i], localDevice)
+			return devices
+		}
+	}
+	return append(devices, localDevice)
+}
+
+func mergeKnownDevice(observed, localDevice node.KnownDevice) node.KnownDevice {
+	if observed.ProductInfo == nil {
+		observed.ProductInfo = localDevice.ProductInfo
+	}
+	if observed.ConfigInfo == nil {
+		observed.ConfigInfo = localDevice.ConfigInfo
+	}
+	return observed
+}
+
+func formatKnownDevice(device node.KnownDevice) string {
+	parts := []string{
+		fmt.Sprintf("address=0x%02x(%d)", device.Address, device.Address),
+	}
+	if device.Name != 0 {
+		parts = append(parts, fmt.Sprintf("name=0x%016x", device.Name))
+	}
+	if device.ProductInfo != nil {
+		if device.ProductInfo.ModelID != "" {
+			parts = append(parts, "model="+device.ProductInfo.ModelID)
+		}
+		if device.ProductInfo.ModelSerialCode != "" {
+			parts = append(parts, "serial="+device.ProductInfo.ModelSerialCode)
+		}
+		if device.ProductInfo.SoftwareVersionCode != "" {
+			parts = append(parts, "software="+device.ProductInfo.SoftwareVersionCode)
+		}
+	}
+	if device.ConfigInfo != nil {
+		if device.ConfigInfo.InstallationDescription1 != "" {
+			parts = append(parts, "installation1="+device.ConfigInfo.InstallationDescription1)
+		}
+		if device.ConfigInfo.InstallationDescription2 != "" {
+			parts = append(parts, "installation2="+device.ConfigInfo.InstallationDescription2)
+		}
+		if device.ConfigInfo.ManufacturerInformation != "" {
+			parts = append(parts, "manufacturerInfo="+device.ConfigInfo.ManufacturerInformation)
+		}
+	}
+	return "  - " + strings.Join(parts, ", ")
+}
 
 type staticConfigurationProvider struct {
 	info node.ConfigurationInfo
@@ -64,6 +188,7 @@ func main() {
 	log.Infof("Pipeline started on interface %s", canInterface)
 
 	nodeImpl := node.NewFromService(svc)
+	deviceDumper := newDeviceListDumper(log, nodeImpl)
 
 	deviceInfo := node.DeviceInfo{
 		UniqueNumber:            123456,
@@ -82,7 +207,7 @@ func main() {
 
 	log.Infof("Our device NAME: %x", nodeImpl.GetNetworkAddress())
 
-	nodeImpl.SetProductInfo(node.ProductInfo{
+	productInfo := node.ProductInfo{
 		NMEA2000Version:     2100,
 		ProductCode:         101,
 		ModelID:             "Test Node v1",
@@ -91,13 +216,15 @@ func main() {
 		ModelSerialCode:     "SN-001",
 		CertificationLevel:  1,
 		LoadEquivalency:     1,
-	})
+	}
+	nodeImpl.SetProductInfo(productInfo)
+	configurationInfo := node.ConfigurationInfo{
+		InstallationDescription1: "integration helm",
+		InstallationDescription2: "integration bench",
+		ManufacturerInformation:  "boatkit nodeintegration",
+	}
 	nodeImpl.SetConfigurationProvider(&staticConfigurationProvider{
-		info: node.ConfigurationInfo{
-			InstallationDescription1: "integration helm",
-			InstallationDescription2: "integration bench",
-			ManufacturerInformation:  "boatkit nodeintegration",
-		},
+		info: configurationInfo,
 	})
 	nodeImpl.SetSupportedPGNs(
 		[]uint32{
@@ -131,6 +258,8 @@ func main() {
 		log.Warnf("Address claim conflict occurred, current address: %d", nodeImpl.GetNetworkAddress())
 	}
 	sourceAddress := nodeImpl.GetNetworkAddress()
+	deviceDumper.setLocalDevice(sourceAddress, productInfo, configurationInfo)
+	deviceDumper.DumpIfChanged("changed")
 
 	log.Info("Sending ISO Request for Address Claim (PGN 60928)")
 	isoRequestAddrClaim := &pgn.IsoRequest{
@@ -233,7 +362,18 @@ func main() {
 	}
 
 	log.Info("Running for 30 seconds to observe traffic...")
-	time.Sleep(30 * time.Second)
+	observeDone := time.After(30 * time.Second)
+	observeTicker := time.NewTicker(250 * time.Millisecond)
+	for observing := true; observing; {
+		select {
+		case <-observeTicker.C:
+			deviceDumper.DumpIfChanged("changed")
+		case <-observeDone:
+			observing = false
+		}
+	}
+	observeTicker.Stop()
+	deviceDumper.Dump("final")
 	log.Info("Integration test finished.")
 }
 

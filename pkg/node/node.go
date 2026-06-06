@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"reflect"
+	"sort"
 	"sync"
 	"time"
 
@@ -19,6 +20,7 @@ type Node interface {
 	ClaimAddress(preferredAddress uint8) error
 	GetNetworkAddress() uint8
 	IsAddressClaimed() bool
+	KnownDevices() []KnownDevice
 	Write(pgnStruct any) error
 	WriteTo(pgnStruct any, destination uint8) error
 	SetDeviceInfo(info DeviceInfo) error
@@ -80,6 +82,15 @@ type ConfigurationProvider interface {
 	SetConfigurationInfo(ConfigurationInfo) error
 }
 
+// KnownDevice describes a device observed on the NMEA 2000 network.
+type KnownDevice struct {
+	Address     uint8
+	Name        uint64
+	LastSeen    time.Time
+	ProductInfo *ProductInfo
+	ConfigInfo  *ConfigurationInfo
+}
+
 type addressState uint8
 
 const (
@@ -105,6 +116,7 @@ type node struct {
 	addressState      addressState
 	transmitPGNs      []uint32
 	receivePGNs       []uint32
+	knownDevices      map[uint8]KnownDevice
 	heartbeatEnabled  bool
 	heartbeatInterval time.Duration
 	heartbeatSeq      uint8
@@ -137,6 +149,7 @@ func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) Node {
 		networkAddress:    255,
 		preferredAddress:  128,
 		addressClaimed:    false,
+		knownDevices:      make(map[uint8]KnownDevice),
 		heartbeatEnabled:  false,
 		heartbeatInterval: 60 * time.Second,
 		started:           false,
@@ -181,6 +194,14 @@ func (n *node) handleNmeaCommandGroupFunction(p pgn.NmeaCommandGroupFunction) {
 	n.enqueuePgn(p)
 }
 
+func (n *node) handleProductInformation(p pgn.ProductInformation) {
+	n.enqueuePgn(p)
+}
+
+func (n *node) handleConfigurationInformation(p pgn.ConfigurationInformation) {
+	n.enqueuePgn(p)
+}
+
 func (n *node) Start() error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
@@ -221,6 +242,18 @@ func (n *node) Start() error {
 	sub, err = n.subscriber.SubscribeToStruct(pgn.NmeaCommandGroupFunction{}, n.handleNmeaCommandGroupFunction)
 	if err != nil {
 		return fmt.Errorf("failed to subscribe to NmeaCommandGroupFunction: %w", err)
+	}
+	n.subscriptions = append(n.subscriptions, sub)
+
+	sub, err = n.subscriber.SubscribeToStruct(pgn.ProductInformation{}, n.handleProductInformation)
+	if err != nil {
+		return fmt.Errorf("failed to subscribe to ProductInformation: %w", err)
+	}
+	n.subscriptions = append(n.subscriptions, sub)
+
+	sub, err = n.subscriber.SubscribeToStruct(pgn.ConfigurationInformation{}, n.handleConfigurationInformation)
+	if err != nil {
+		return fmt.Errorf("failed to subscribe to ConfigurationInformation: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
@@ -293,6 +326,30 @@ func (n *node) IsAddressClaimed() bool {
 	n.mutex.RLock()
 	defer n.mutex.RUnlock()
 	return n.addressClaimed
+}
+
+func (n *node) KnownDevices() []KnownDevice {
+	n.mutex.RLock()
+	defer n.mutex.RUnlock()
+
+	devices := make([]KnownDevice, 0, len(n.knownDevices))
+	for _, device := range n.knownDevices {
+		if device.ProductInfo != nil {
+			productInfo := *device.ProductInfo
+			device.ProductInfo = &productInfo
+		}
+		if device.ConfigInfo != nil {
+			configInfo := *device.ConfigInfo
+			device.ConfigInfo = &configInfo
+		}
+		devices = append(devices, device)
+	}
+
+	sort.Slice(devices, func(i, j int) bool {
+		return devices[i].Address < devices[j].Address
+	})
+
+	return devices
 }
 
 func (n *node) Write(pgnStruct any) error {
@@ -606,6 +663,14 @@ func (n *node) processIsoCommandedAddress(cmd pgn.IsoCommandedAddress) {
 }
 
 func (n *node) processIsoAddressClaim(claim pgn.IsoAddressClaim) {
+	incomingName, err := computeNameFromClaim(&claim)
+	if err != nil {
+		n.logger.Infof("processIsoAddressClaim: failed to compute incoming NAME: %v", err)
+		return
+	}
+
+	n.updateKnownDeviceFromClaim(claim, incomingName)
+
 	n.mutex.RLock()
 	currentState := n.addressState
 	currentAddress := n.networkAddress
@@ -626,24 +691,120 @@ func (n *node) processIsoAddressClaim(claim pgn.IsoAddressClaim) {
 		return
 	}
 
-	incomingName, err := computeNameFromClaim(&claim)
-	if err != nil {
-		n.logger.Infof("processIsoAddressClaim: failed to compute incoming NAME: %v", err)
-		return
-	}
-
 	n.logger.Infof("processIsoAddressClaim: comparing NAMEs - incoming: %x, ours: %x",
 		incomingName, currentName)
 
 	if incomingName < currentName {
 		n.logger.Infof("processIsoAddressClaim: incoming NAME has higher priority, yielding address")
 		n.mutex.Lock()
-		n.addressState = stateLost
 		n.addressClaimed = false
+		if n.deviceInfo.ArbitraryAddressCapable {
+			if nextAddress, ok := n.nextAvailableAddressLocked(currentAddress); ok {
+				n.preferredAddress = nextAddress
+				n.addressState = stateClaiming
+				n.logger.Infof("processIsoAddressClaim: retrying address claim with address %d", nextAddress)
+			} else {
+				n.addressState = stateLost
+				n.networkAddress = 255
+				n.logger.Warnf("processIsoAddressClaim: no available address found")
+			}
+		} else {
+			n.addressState = stateLost
+			n.networkAddress = 255
+		}
 		n.mutex.Unlock()
+		select {
+		case n.wakeUp <- struct{}{}:
+		default:
+		}
 	} else {
 		n.logger.Infof("processIsoAddressClaim: our NAME has higher priority, keeping address")
+		n.sendAddressClaim()
 	}
+}
+
+func (n *node) updateKnownDeviceFromClaim(claim pgn.IsoAddressClaim, name uint64) {
+	n.mutex.Lock()
+	defer n.mutex.Unlock()
+
+	device := n.knownDevices[claim.Info.SourceId]
+	if device.Name != name {
+		device = KnownDevice{}
+	}
+	device.Address = claim.Info.SourceId
+	device.Name = name
+	device.LastSeen = time.Now()
+	n.knownDevices[claim.Info.SourceId] = device
+}
+
+func (n *node) updateKnownDeviceFromProductInfo(info pgn.ProductInformation) {
+	n.mutex.Lock()
+	defer n.mutex.Unlock()
+
+	device := n.knownDevices[info.Info.SourceId]
+	device.Address = info.Info.SourceId
+	device.LastSeen = time.Now()
+
+	productCode := uint16(0)
+	if info.ProductCode != nil {
+		productCode = *info.ProductCode
+	}
+	nmea2000Version := uint16(0)
+	if info.Nmea2000Version != nil {
+		nmea2000Version = uint16(*info.Nmea2000Version * 100)
+	}
+	loadEquivalency := uint8(0)
+	if info.LoadEquivalency != nil {
+		loadEquivalency = *info.LoadEquivalency
+	}
+
+	productInfo := ProductInfo{
+		NMEA2000Version:     nmea2000Version,
+		ProductCode:         productCode,
+		ModelID:             info.ModelId,
+		SoftwareVersionCode: info.SoftwareVersionCode,
+		ModelVersion:        info.ModelVersion,
+		ModelSerialCode:     info.ModelSerialCode,
+		CertificationLevel:  uint8(info.CertificationLevel),
+		LoadEquivalency:     loadEquivalency,
+	}
+	device.ProductInfo = &productInfo
+	n.knownDevices[info.Info.SourceId] = device
+}
+
+func (n *node) updateKnownDeviceFromConfigurationInfo(info pgn.ConfigurationInformation) {
+	n.mutex.Lock()
+	defer n.mutex.Unlock()
+
+	device := n.knownDevices[info.Info.SourceId]
+	device.Address = info.Info.SourceId
+	device.LastSeen = time.Now()
+	configInfo := ConfigurationInfo{
+		InstallationDescription1: info.InstallationDescription1,
+		InstallationDescription2: info.InstallationDescription2,
+		ManufacturerInformation:  info.ManufacturerInformation,
+	}
+	device.ConfigInfo = &configInfo
+	n.knownDevices[info.Info.SourceId] = device
+}
+
+func (n *node) nextAvailableAddressLocked(after uint8) (uint8, bool) {
+	claimed := make(map[uint8]struct{}, len(n.knownDevices)+1)
+	for address := range n.knownDevices {
+		if address <= 253 {
+			claimed[address] = struct{}{}
+		}
+	}
+	claimed[after] = struct{}{}
+
+	for i := 1; i <= 254; i++ {
+		candidate := uint8((uint16(after) + uint16(i)) % 254)
+		if _, exists := claimed[candidate]; !exists {
+			return candidate, true
+		}
+	}
+
+	return 0, false
 }
 
 func (n *node) sendAddressClaim() {
@@ -756,6 +917,10 @@ func (n *node) process() {
 		n.mutex.Lock()
 		if n.addressState == stateClaiming {
 			// We are in the process of claiming an address
+			if claimTicker != nil && n.networkAddress != n.preferredAddress {
+				claimTicker.Stop()
+				claimTicker = nil
+			}
 			if claimTicker == nil {
 				claimTicker = n.clock.NewTicker(250 * time.Millisecond)
 				n.networkAddress = n.preferredAddress
@@ -819,6 +984,10 @@ func (n *node) process() {
 				n.processIsoAddressClaim(v)
 			case pgn.IsoCommandedAddress:
 				n.processIsoCommandedAddress(v)
+			case pgn.ProductInformation:
+				n.updateKnownDeviceFromProductInfo(v)
+			case pgn.ConfigurationInformation:
+				n.updateKnownDeviceFromConfigurationInfo(v)
 			default:
 				n.logger.Infof("process: received unhandled PGN type %T", p)
 			}
