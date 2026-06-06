@@ -169,6 +169,10 @@ func (n *node) handleIsoCommandedAddress(p pgn.IsoCommandedAddress) {
 	n.enqueuePgn(p)
 }
 
+func (n *node) handleIsoAcknowledgement(p pgn.IsoAcknowledgement) {
+	n.enqueuePgn(p)
+}
+
 func (n *node) handleNmeaRequestGroupFunction(p pgn.NmeaRequestGroupFunction) {
 	n.enqueuePgn(p)
 }
@@ -199,6 +203,12 @@ func (n *node) Start() error {
 	sub, err = n.subscriber.SubscribeToStruct(pgn.IsoCommandedAddress{}, n.handleIsoCommandedAddress)
 	if err != nil {
 		return fmt.Errorf("failed to subscribe to IsoCommandedAddress: %w", err)
+	}
+	n.subscriptions = append(n.subscriptions, sub)
+
+	sub, err = n.subscriber.SubscribeToStruct(pgn.IsoAcknowledgement{}, n.handleIsoAcknowledgement)
+	if err != nil {
+		return fmt.Errorf("failed to subscribe to IsoAcknowledgement: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
@@ -373,6 +383,7 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	configProvider := n.configProvider
 	transmitPGNs := append([]uint32(nil), n.transmitPGNs...)
 	receivePGNs := append([]uint32(nil), n.receivePGNs...)
+	heartbeatEnabled := n.heartbeatEnabled
 	n.mutex.RUnlock()
 
 	if req.Pgn == nil {
@@ -415,6 +426,9 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 		responses = append(responses, toSend{pgn: responsePgn, dest: req.Info.SourceId})
 
 	case pgn.PgnListTransmitAndReceivePgn:
+		transmitPGNs = managedTransmitPGNs(transmitPGNs, configProvider != nil, heartbeatEnabled)
+		receivePGNs = managedReceivePGNs(receivePGNs)
+
 		txRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(transmitPGNs))
 		for i, pgn_num := range transmitPGNs {
 			p := pgn_num
@@ -472,6 +486,54 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	}
 
 	return responses
+}
+
+func managedTransmitPGNs(configured []uint32, hasConfigurationProvider, heartbeatEnabled bool) []uint32 {
+	managed := []uint32{
+		pgn.IsoAcknowledgementPgn,
+		pgn.IsoAddressClaimPgn,
+		pgn.NmeaAcknowledgeGroupFunctionPgn,
+		pgn.PgnListTransmitAndReceivePgn,
+		pgn.ProductInformationPgn,
+	}
+	if hasConfigurationProvider {
+		managed = append(managed, pgn.ConfigurationInformationPgn)
+	}
+	if heartbeatEnabled {
+		managed = append(managed, pgn.HeartbeatPgn)
+	}
+	return mergePGNs(configured, managed)
+}
+
+func managedReceivePGNs(configured []uint32) []uint32 {
+	return mergePGNs(configured, []uint32{
+		pgn.IsoAcknowledgementPgn,
+		pgn.IsoRequestPgn,
+		pgn.IsoAddressClaimPgn,
+		pgn.IsoCommandedAddressPgn,
+		pgn.NmeaRequestGroupFunctionPgn,
+		pgn.NmeaCommandGroupFunctionPgn,
+	})
+}
+
+func mergePGNs(configured, managed []uint32) []uint32 {
+	seen := make(map[uint32]struct{}, len(configured)+len(managed))
+	merged := make([]uint32, 0, len(configured)+len(managed))
+	for _, p := range configured {
+		if _, ok := seen[p]; ok {
+			continue
+		}
+		seen[p] = struct{}{}
+		merged = append(merged, p)
+	}
+	for _, p := range managed {
+		if _, ok := seen[p]; ok {
+			continue
+		}
+		seen[p] = struct{}{}
+		merged = append(merged, p)
+	}
+	return merged
 }
 
 func (n *node) processNmeaRequestGroupFunction(req pgn.NmeaRequestGroupFunction) []toSend {
@@ -751,6 +813,8 @@ func (n *node) process() {
 				toSendList = n.processNmeaRequestGroupFunction(v)
 			case pgn.NmeaCommandGroupFunction:
 				toSendList = n.processNmeaCommandGroupFunction(v)
+			case pgn.IsoAcknowledgement:
+				n.logger.Infof("process: received ISO acknowledgement for PGN %v", v.Pgn)
 			case pgn.IsoAddressClaim:
 				n.processIsoAddressClaim(v)
 			case pgn.IsoCommandedAddress:

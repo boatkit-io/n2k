@@ -16,6 +16,16 @@ func uint8Ptr(v uint8) *uint8 {
 	return &v
 }
 
+func pgnListValues(list []pgn.PgnListTransmitAndReceiveRepeating1) []uint32 {
+	values := make([]uint32, 0, len(list))
+	for _, item := range list {
+		if item.Pgn != nil {
+			values = append(values, *item.Pgn)
+		}
+	}
+	return values
+}
+
 type mockConfigurationProvider struct {
 	info ConfigurationInfo
 	err  error
@@ -135,6 +145,24 @@ func TestClaimAddressRequiresDeviceInfo(t *testing.T) {
 	assert.Contains(t, err.Error(), "device info has not been set")
 }
 
+func TestManagedTransmitPGNsIncludesConditionalNodePGNs(t *testing.T) {
+	result := managedTransmitPGNs([]uint32{pgn.IsoAddressClaimPgn, 1}, true, true)
+
+	assert.ElementsMatch(t,
+		[]uint32{
+			1,
+			pgn.IsoAcknowledgementPgn,
+			pgn.IsoAddressClaimPgn,
+			pgn.NmeaAcknowledgeGroupFunctionPgn,
+			pgn.PgnListTransmitAndReceivePgn,
+			pgn.ProductInformationPgn,
+			pgn.ConfigurationInformationPgn,
+			pgn.HeartbeatPgn,
+		},
+		result,
+	)
+}
+
 func TestComputeNameFromClaimIncludesArbitraryAddressBit(t *testing.T) {
 	uniqueNumber := uint32(1)
 	deviceInstanceLower := uint8(2)
@@ -182,7 +210,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 	err := n.Start()
 	assert.NoError(t, err)
 	assert.True(t, n.(*node).started)
-	assert.Len(t, sub.subscriptions, 5, "should have 5 subscriptions after start")
+	assert.Len(t, sub.subscriptions, 6, "should have 6 subscriptions after start")
 
 	err = n.Stop()
 	assert.NoError(t, err)
@@ -246,6 +274,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 
 	t.Run("PgnListRequest", func(t *testing.T) {
 		pub.clear()
+		n.SetConfigurationProvider(&mockConfigurationProvider{})
 		n.SetSupportedPGNs([]uint32{1, 2}, []uint32{3, 4})
 
 		requestPgn := &pgn.IsoRequest{
@@ -259,6 +288,37 @@ func TestLifecycleAndResponses(t *testing.T) {
 		pub.waitForWrite()
 
 		assert.Len(t, pub.written, 2)
+		txResponse, ok := pub.written[0].(*pgn.PgnListTransmitAndReceive)
+		assert.True(t, ok)
+		assert.Equal(t, pgn.TransmitPgnList, txResponse.FunctionCode)
+		assert.ElementsMatch(t,
+			[]uint32{
+				1,
+				2,
+				pgn.IsoAcknowledgementPgn,
+				pgn.IsoAddressClaimPgn,
+				pgn.NmeaAcknowledgeGroupFunctionPgn,
+				pgn.PgnListTransmitAndReceivePgn,
+				pgn.ProductInformationPgn,
+				pgn.ConfigurationInformationPgn,
+			},
+			pgnListValues(txResponse.Repeating1),
+		)
+		rxResponse, ok := pub.written[1].(*pgn.PgnListTransmitAndReceive)
+		assert.True(t, ok)
+		assert.Equal(t, pgn.ReceivePgnList, rxResponse.FunctionCode)
+		assert.ElementsMatch(t,
+			[]uint32{
+				3,
+				4,
+				pgn.IsoAcknowledgementPgn,
+				pgn.IsoRequestPgn,
+				pgn.IsoAddressClaimPgn,
+				pgn.IsoCommandedAddressPgn,
+				pgn.NmeaRequestGroupFunctionPgn,
+			},
+			pgnListValues(rxResponse.Repeating1),
+		)
 	})
 
 	t.Run("ConfigurationInfoRequest", func(t *testing.T) {

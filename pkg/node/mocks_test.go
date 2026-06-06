@@ -29,6 +29,8 @@ func newMockSubscriber() *mockSubscriber {
 func (m *mockSubscriber) SubscribeToStruct(t any, callback any) (SubscriptionId, error) {
 	structName := ""
 	switch t.(type) {
+	case pgn.IsoAcknowledgement:
+		structName = "IsoAcknowledgement"
 	case pgn.IsoRequest:
 		structName = "IsoRequest"
 	case pgn.IsoAddressClaim:
@@ -61,6 +63,8 @@ func (m *mockSubscriber) Unsubscribe(subId SubscriptionId) error {
 func (m *mockSubscriber) simulatePGN(pgnStruct any) {
 	var structName string
 	switch pgnStruct.(type) {
+	case pgn.IsoAcknowledgement, *pgn.IsoAcknowledgement:
+		structName = "IsoAcknowledgement"
 	case pgn.IsoRequest, *pgn.IsoRequest:
 		structName = "IsoRequest"
 	case pgn.IsoAddressClaim, *pgn.IsoAddressClaim:
