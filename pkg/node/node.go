@@ -169,6 +169,14 @@ func (n *node) handleIsoCommandedAddress(p pgn.IsoCommandedAddress) {
 	n.enqueuePgn(p)
 }
 
+func (n *node) handleNmeaRequestGroupFunction(p pgn.NmeaRequestGroupFunction) {
+	n.enqueuePgn(p)
+}
+
+func (n *node) handleNmeaCommandGroupFunction(p pgn.NmeaCommandGroupFunction) {
+	n.enqueuePgn(p)
+}
+
 func (n *node) Start() error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
@@ -191,6 +199,18 @@ func (n *node) Start() error {
 	sub, err = n.subscriber.SubscribeToStruct(pgn.IsoCommandedAddress{}, n.handleIsoCommandedAddress)
 	if err != nil {
 		return fmt.Errorf("failed to subscribe to IsoCommandedAddress: %w", err)
+	}
+	n.subscriptions = append(n.subscriptions, sub)
+
+	sub, err = n.subscriber.SubscribeToStruct(pgn.NmeaRequestGroupFunction{}, n.handleNmeaRequestGroupFunction)
+	if err != nil {
+		return fmt.Errorf("failed to subscribe to NmeaRequestGroupFunction: %w", err)
+	}
+	n.subscriptions = append(n.subscriptions, sub)
+
+	sub, err = n.subscriber.SubscribeToStruct(pgn.NmeaCommandGroupFunction{}, n.handleNmeaCommandGroupFunction)
+	if err != nil {
+		return fmt.Errorf("failed to subscribe to NmeaCommandGroupFunction: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
@@ -454,6 +474,49 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	return responses
 }
 
+func (n *node) processNmeaRequestGroupFunction(req pgn.NmeaRequestGroupFunction) []toSend {
+	if req.Pgn == nil {
+		return nil
+	}
+	if req.NumberOfParameters != nil && *req.NumberOfParameters != 0 {
+		return n.processUnsupportedGroupFunction(req.Info, *req.Pgn, pgn.ReadOrWriteNotSupported)
+	}
+
+	return n.processIsoRequest(pgn.IsoRequest{
+		Info: req.Info,
+		Pgn:  req.Pgn,
+	})
+}
+
+func (n *node) processNmeaCommandGroupFunction(cmd pgn.NmeaCommandGroupFunction) []toSend {
+	if cmd.Pgn == nil {
+		return nil
+	}
+	return n.processUnsupportedGroupFunction(cmd.Info, *cmd.Pgn, pgn.ReadOrWriteNotSupported)
+}
+
+func (n *node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPgn uint32, parameterError pgn.ParameterFieldConst) []toSend {
+	n.mutex.RLock()
+	addressClaimed := n.addressClaimed
+	networkAddress := n.networkAddress
+	n.mutex.RUnlock()
+
+	if !addressClaimed {
+		return nil
+	}
+	if info.TargetId != 255 && info.TargetId != networkAddress {
+		return nil
+	}
+	if info.TargetId == 255 {
+		return nil
+	}
+
+	return []toSend{{
+		pgn:  buildNmeaGroupNak(networkAddress, info.SourceId, requestedPgn, parameterError),
+		dest: info.SourceId,
+	}}
+}
+
 func (n *node) processIsoCommandedAddress(cmd pgn.IsoCommandedAddress) {
 	n.mutex.RLock()
 	currentName := n.name
@@ -573,6 +636,24 @@ func buildIsoNak(source, destination uint8, requestedPgn uint32) *pgn.IsoAcknowl
 	}
 }
 
+func buildNmeaGroupNak(source, destination uint8, requestedPgn uint32, parameterError pgn.ParameterFieldConst) *pgn.NmeaAcknowledgeGroupFunction {
+	return &pgn.NmeaAcknowledgeGroupFunction{
+		Info: pgn.MessageInfo{
+			PGN:      pgn.NmeaAcknowledgeGroupFunctionPgn,
+			SourceId: source,
+			TargetId: destination,
+			Priority: 3,
+		},
+		FunctionCode:                          pgn.Acknowledge_4,
+		Pgn:                                   &requestedPgn,
+		PgnErrorCode:                          pgn.PgnNotSupported,
+		TransmissionIntervalPriorityErrorCode: pgn.NotSupported,
+		Repeating1: []pgn.NmeaAcknowledgeGroupFunctionRepeating1{
+			{Parameter: parameterError},
+		},
+	}
+}
+
 func (n *node) sendHeartbeat() {
 	n.mutex.RLock()
 	heartbeatSeqCopy := n.heartbeatSeq
@@ -666,6 +747,10 @@ func (n *node) process() {
 			switch v := p.(type) {
 			case pgn.IsoRequest:
 				toSendList = n.processIsoRequest(v)
+			case pgn.NmeaRequestGroupFunction:
+				toSendList = n.processNmeaRequestGroupFunction(v)
+			case pgn.NmeaCommandGroupFunction:
+				toSendList = n.processNmeaCommandGroupFunction(v)
 			case pgn.IsoAddressClaim:
 				n.processIsoAddressClaim(v)
 			case pgn.IsoCommandedAddress:

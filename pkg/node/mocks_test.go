@@ -35,6 +35,10 @@ func (m *mockSubscriber) SubscribeToStruct(t any, callback any) (SubscriptionId,
 		structName = "IsoAddressClaim"
 	case pgn.IsoCommandedAddress:
 		structName = "IsoCommandedAddress"
+	case pgn.NmeaRequestGroupFunction:
+		structName = "NmeaRequestGroupFunction"
+	case pgn.NmeaCommandGroupFunction:
+		structName = "NmeaCommandGroupFunction"
 	default:
 		return 0, fmt.Errorf("mockSubscriber does not support type %T", t)
 	}
@@ -63,6 +67,10 @@ func (m *mockSubscriber) simulatePGN(pgnStruct any) {
 		structName = "IsoAddressClaim"
 	case pgn.IsoCommandedAddress, *pgn.IsoCommandedAddress:
 		structName = "IsoCommandedAddress"
+	case pgn.NmeaRequestGroupFunction, *pgn.NmeaRequestGroupFunction:
+		structName = "NmeaRequestGroupFunction"
+	case pgn.NmeaCommandGroupFunction, *pgn.NmeaCommandGroupFunction:
+		structName = "NmeaCommandGroupFunction"
 	default:
 		return
 	}

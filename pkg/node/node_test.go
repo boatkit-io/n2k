@@ -182,7 +182,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 	err := n.Start()
 	assert.NoError(t, err)
 	assert.True(t, n.(*node).started)
-	assert.Len(t, sub.subscriptions, 3, "should have 3 subscriptions after start")
+	assert.Len(t, sub.subscriptions, 5, "should have 5 subscriptions after start")
 
 	err = n.Stop()
 	assert.NoError(t, err)
@@ -304,6 +304,64 @@ func TestLifecycleAndResponses(t *testing.T) {
 		assert.True(t, ok)
 		assert.Equal(t, pgn.Nak, response.Control)
 		assert.Equal(t, uint32(pgn.ConfigurationInformationPgn), *response.Pgn)
+	})
+
+	t.Run("NmeaRequestGroupFunctionRoutesToIsoRequestHandling", func(t *testing.T) {
+		pub.clear()
+		productInfo := ProductInfo{ProductCode: 5678, ModelID: "Group"}
+		n.SetProductInfo(productInfo)
+		zeroParameters := uint8(0)
+
+		requestPgn := pgn.NmeaRequestGroupFunction{
+			Info:               pgn.MessageInfo{SourceId: 10, TargetId: 255},
+			FunctionCode:       pgn.Request,
+			Pgn:                uint32Ptr(pgn.ProductInformationPgn),
+			NumberOfParameters: &zeroParameters,
+		}
+		pub.expectWrite()
+		sub.simulatePGN(requestPgn)
+		pub.waitForWrite()
+
+		assert.Len(t, pub.written, 1)
+		response, ok := pub.lastWritten().(*pgn.ProductInformation)
+		assert.True(t, ok)
+		assert.Equal(t, uint16(5678), *response.ProductCode)
+		assert.Equal(t, "Group", response.ModelId)
+	})
+
+	t.Run("UnsupportedDirectedNmeaCommandGroupFunctionNaks", func(t *testing.T) {
+		pub.clear()
+		zeroParameters := uint8(0)
+
+		commandPgn := pgn.NmeaCommandGroupFunction{
+			Info:               pgn.MessageInfo{SourceId: 10, TargetId: 50},
+			FunctionCode:       pgn.Command,
+			Pgn:                uint32Ptr(pgn.ConfigurationInformationPgn),
+			NumberOfParameters: &zeroParameters,
+		}
+		pub.expectWrite()
+		sub.simulatePGN(commandPgn)
+		pub.waitForWrite()
+
+		assert.Len(t, pub.written, 1)
+		response, ok := pub.lastWritten().(*pgn.NmeaAcknowledgeGroupFunction)
+		assert.True(t, ok)
+		assert.Equal(t, pgn.Acknowledge_4, response.FunctionCode)
+		assert.Equal(t, pgn.PgnNotSupported, response.PgnErrorCode)
+		assert.Equal(t, pgn.NotSupported, response.TransmissionIntervalPriorityErrorCode)
+		assert.Equal(t, uint32(pgn.ConfigurationInformationPgn), *response.Pgn)
+		assert.Len(t, response.Repeating1, 1)
+		assert.Equal(t, pgn.ReadOrWriteNotSupported, response.Repeating1[0].Parameter)
+	})
+
+	t.Run("UnsupportedGlobalNmeaCommandGroupFunctionIgnored", func(t *testing.T) {
+		commandPgn := pgn.NmeaCommandGroupFunction{
+			Info:         pgn.MessageInfo{SourceId: 10, TargetId: 255},
+			FunctionCode: pgn.Command,
+			Pgn:          uint32Ptr(pgn.ConfigurationInformationPgn),
+		}
+		responses := n.(*node).processNmeaCommandGroupFunction(commandPgn)
+		assert.Empty(t, responses)
 	})
 
 	t.Run("IgnoresRequestDirectedToAnotherNode", func(t *testing.T) {
