@@ -23,6 +23,7 @@ type Node interface {
 	WriteTo(pgnStruct any, destination uint8) error
 	SetDeviceInfo(info DeviceInfo) error
 	SetProductInfo(info ProductInfo)
+	SetConfigurationProvider(provider ConfigurationProvider)
 	SetSupportedPGNs(transmit, receive []uint32)
 	SetHeartbeatInterval(interval time.Duration)
 	EnableHeartbeat(enable bool)
@@ -65,6 +66,20 @@ type ProductInfo struct {
 	LoadEquivalency     uint8
 }
 
+// ConfigurationInfo contains device-specific configuration metadata.
+type ConfigurationInfo struct {
+	InstallationDescription1 string
+	InstallationDescription2 string
+	ManufacturerInformation  string
+}
+
+// ConfigurationProvider lets device-specific software provide current
+// configuration data and accept or reject configuration updates.
+type ConfigurationProvider interface {
+	GetConfigurationInfo() (ConfigurationInfo, error)
+	SetConfigurationInfo(ConfigurationInfo) error
+}
+
 type addressState uint8
 
 const (
@@ -80,7 +95,9 @@ type node struct {
 	publisher         Publisher
 	clock             Clock
 	deviceInfo        DeviceInfo
+	deviceInfoSet     bool
 	productInfo       ProductInfo
+	configProvider    ConfigurationProvider
 	name              uint64
 	networkAddress    uint8
 	preferredAddress  uint8
@@ -221,6 +238,9 @@ func (n *node) Stop() error {
 func (n *node) ClaimAddress(preferredAddress uint8) error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
+	if !n.deviceInfoSet {
+		return fmt.Errorf("cannot claim address, device info has not been set")
+	}
 	if preferredAddress > 253 {
 		return fmt.Errorf("preferred address %d is out of range (0-253)", preferredAddress)
 	}
@@ -279,6 +299,7 @@ func (n *node) SetDeviceInfo(info DeviceInfo) error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.deviceInfo = info
+	n.deviceInfoSet = true
 	n.name = name
 	return nil
 }
@@ -287,6 +308,12 @@ func (n *node) SetProductInfo(info ProductInfo) {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.productInfo = info
+}
+
+func (n *node) SetConfigurationProvider(provider ConfigurationProvider) {
+	n.mutex.Lock()
+	defer n.mutex.Unlock()
+	n.configProvider = provider
 }
 
 func (n *node) SetSupportedPGNs(transmit, receive []uint32) {
@@ -321,7 +348,12 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	n.mutex.RLock()
 	addressClaimed := n.addressClaimed
 	networkAddress := n.networkAddress
-	defer n.mutex.RUnlock()
+	deviceInfoCopy := n.deviceInfo
+	productInfoCopy := n.productInfo
+	configProvider := n.configProvider
+	transmitPGNs := append([]uint32(nil), n.transmitPGNs...)
+	receivePGNs := append([]uint32(nil), n.receivePGNs...)
+	n.mutex.RUnlock()
 
 	if req.Pgn == nil {
 		return nil
@@ -338,35 +370,40 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	var responses []toSend
 
 	switch *req.Pgn {
+	case pgn.IsoAddressClaimPgn:
+		responses = append(responses, toSend{pgn: buildAddressClaim(deviceInfoCopy, networkAddress), dest: req.Info.SourceId})
+
 	case pgn.ProductInformationPgn:
-		version := float32(n.productInfo.NMEA2000Version) / 100.0
+		version := float32(productInfoCopy.NMEA2000Version) / 100.0
+		productCode := productInfoCopy.ProductCode
+		loadEquivalency := productInfoCopy.LoadEquivalency
 		responsePgn := &pgn.ProductInformation{
 			Info: pgn.MessageInfo{
 				PGN:      pgn.ProductInformationPgn,
-				SourceId: n.networkAddress,
+				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
 			Nmea2000Version:     &version,
-			ProductCode:         &n.productInfo.ProductCode,
-			ModelId:             n.productInfo.ModelID,
-			SoftwareVersionCode: n.productInfo.SoftwareVersionCode,
-			ModelVersion:        n.productInfo.ModelVersion,
-			ModelSerialCode:     n.productInfo.ModelSerialCode,
-			CertificationLevel:  pgn.CertificationLevelConst(n.productInfo.CertificationLevel),
-			LoadEquivalency:     &n.productInfo.LoadEquivalency,
+			ProductCode:         &productCode,
+			ModelId:             productInfoCopy.ModelID,
+			SoftwareVersionCode: productInfoCopy.SoftwareVersionCode,
+			ModelVersion:        productInfoCopy.ModelVersion,
+			ModelSerialCode:     productInfoCopy.ModelSerialCode,
+			CertificationLevel:  pgn.CertificationLevelConst(productInfoCopy.CertificationLevel),
+			LoadEquivalency:     &loadEquivalency,
 		}
 		responses = append(responses, toSend{pgn: responsePgn, dest: req.Info.SourceId})
 
 	case pgn.PgnListTransmitAndReceivePgn:
-		txRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(n.transmitPGNs))
-		for i, pgn_num := range n.transmitPGNs {
+		txRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(transmitPGNs))
+		for i, pgn_num := range transmitPGNs {
 			p := pgn_num
 			txRepeating[i] = pgn.PgnListTransmitAndReceiveRepeating1{Pgn: &p}
 		}
 		txResponse := &pgn.PgnListTransmitAndReceive{
 			Info: pgn.MessageInfo{
 				PGN:      pgn.PgnListTransmitAndReceivePgn,
-				SourceId: n.networkAddress,
+				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
 			FunctionCode: pgn.TransmitPgnList,
@@ -374,21 +411,44 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 		}
 		responses = append(responses, toSend{pgn: txResponse, dest: req.Info.SourceId})
 
-		rxRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(n.receivePGNs))
-		for i, pgn_num := range n.receivePGNs {
+		rxRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(receivePGNs))
+		for i, pgn_num := range receivePGNs {
 			p := pgn_num
 			rxRepeating[i] = pgn.PgnListTransmitAndReceiveRepeating1{Pgn: &p}
 		}
 		rxResponse := &pgn.PgnListTransmitAndReceive{
 			Info: pgn.MessageInfo{
 				PGN:      pgn.PgnListTransmitAndReceivePgn,
-				SourceId: n.networkAddress,
+				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
 			FunctionCode: pgn.ReceivePgnList,
 			Repeating1:   rxRepeating,
 		}
 		responses = append(responses, toSend{pgn: rxResponse, dest: req.Info.SourceId})
+
+	case pgn.ConfigurationInformationPgn:
+		if configProvider == nil {
+			responses = append(responses, toSend{pgn: buildIsoNak(networkAddress, req.Info.SourceId, *req.Pgn), dest: req.Info.SourceId})
+			break
+		}
+		configInfo, err := configProvider.GetConfigurationInfo()
+		if err != nil {
+			n.logger.Errorf("processIsoRequest: failed to get configuration information: %v", err)
+			responses = append(responses, toSend{pgn: buildIsoNak(networkAddress, req.Info.SourceId, *req.Pgn), dest: req.Info.SourceId})
+			break
+		}
+		responsePgn := &pgn.ConfigurationInformation{
+			Info: pgn.MessageInfo{
+				PGN:      pgn.ConfigurationInformationPgn,
+				SourceId: networkAddress,
+				TargetId: req.Info.SourceId,
+			},
+			InstallationDescription1: configInfo.InstallationDescription1,
+			InstallationDescription2: configInfo.InstallationDescription2,
+			ManufacturerInformation:  configInfo.ManufacturerInformation,
+		}
+		responses = append(responses, toSend{pgn: responsePgn, dest: req.Info.SourceId})
 	}
 
 	return responses
@@ -468,31 +528,48 @@ func (n *node) sendAddressClaim() {
 	publisher := n.publisher
 	n.mutex.RUnlock()
 
-	arbitraryBit := uint8(0)
-	if deviceInfoCopy.ArbitraryAddressCapable {
-		arbitraryBit = 1
-	}
-
-	claim := &pgn.IsoAddressClaim{
-		Info: pgn.MessageInfo{
-			PGN:      pgn.IsoAddressClaimPgn,
-			SourceId: networkAddressCopy,
-			TargetId: 255,
-			Priority: 6,
-		},
-		UniqueNumber:            &deviceInfoCopy.UniqueNumber,
-		ManufacturerCode:        deviceInfoCopy.ManufacturerCode,
-		DeviceInstanceLower:     &deviceInfoCopy.DeviceInstanceLower,
-		DeviceInstanceUpper:     &deviceInfoCopy.DeviceInstanceUpper,
-		DeviceFunction:          deviceInfoCopy.DeviceFunction,
-		DeviceClass:             deviceInfoCopy.DeviceClass,
-		SystemInstance:          &deviceInfoCopy.SystemInstance,
-		IndustryGroup:           deviceInfoCopy.IndustryGroup,
-		ArbitraryAddressCapable: pgn.YesNoConst(arbitraryBit),
-	}
+	claim := buildAddressClaim(deviceInfoCopy, networkAddressCopy)
 	n.logger.Infof("sendAddressClaim: sending claim for address %d", networkAddressCopy)
 	if err := publisher.Write(claim); err != nil {
 		n.logger.Errorf("sendAddressClaim: failed to write claim: %v", err)
+	}
+}
+
+func buildAddressClaim(deviceInfo DeviceInfo, networkAddress uint8) *pgn.IsoAddressClaim {
+	arbitraryBit := uint8(0)
+	if deviceInfo.ArbitraryAddressCapable {
+		arbitraryBit = 1
+	}
+
+	return &pgn.IsoAddressClaim{
+		Info: pgn.MessageInfo{
+			PGN:      pgn.IsoAddressClaimPgn,
+			SourceId: networkAddress,
+			TargetId: 255,
+			Priority: 6,
+		},
+		UniqueNumber:            &deviceInfo.UniqueNumber,
+		ManufacturerCode:        deviceInfo.ManufacturerCode,
+		DeviceInstanceLower:     &deviceInfo.DeviceInstanceLower,
+		DeviceInstanceUpper:     &deviceInfo.DeviceInstanceUpper,
+		DeviceFunction:          deviceInfo.DeviceFunction,
+		DeviceClass:             deviceInfo.DeviceClass,
+		SystemInstance:          &deviceInfo.SystemInstance,
+		IndustryGroup:           deviceInfo.IndustryGroup,
+		ArbitraryAddressCapable: pgn.YesNoConst(arbitraryBit),
+	}
+}
+
+func buildIsoNak(source, destination uint8, requestedPgn uint32) *pgn.IsoAcknowledgement {
+	return &pgn.IsoAcknowledgement{
+		Info: pgn.MessageInfo{
+			PGN:      pgn.IsoAcknowledgementPgn,
+			SourceId: source,
+			TargetId: destination,
+			Priority: 6,
+		},
+		Control: pgn.Nak,
+		Pgn:     &requestedPgn,
 	}
 }
 

@@ -21,11 +21,6 @@ func nullableUnit[T any, U any, V float32|uint16|int16|uint32](u U, v *V, newer 
 
 {{- $funcName := concat "Decode" .Id }}
 func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-    {{- if eq $pgn.PGN 126208 }}
-    return nil, fmt.Errorf("PGN 126208 is not supported")
-    }
-    {{- continue }}
-    {{- end }}
     {{ $config := getDecoderConfig  $pgn }}
     {{- if $config.Repeat1CountField }}
     var repeat1Count uint16 = 0
@@ -80,6 +75,25 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
     }
     {{- end }}
    {{- end }}
+
+    {{- if eq $pgn.PGN 126208 }}
+    if val.Pgn != nil && (IsProprietaryPGN(*val.Pgn) || !HasDecoder(*val.Pgn)) {
+        partial := publicpgn.{{ .Id }}Partial{
+            Info: Info,
+            {{- range $pgn.Fields }}
+            {{- if and (ne .FieldType "RESERVED") (ne .FieldType "SPARE") }}
+            {{ .Id }}: val.{{ .Id }},
+            {{- end }}
+            {{- end }}
+        }
+        if v, err := stream.readBinaryData(stream.remainingLength()); err != nil {
+            return nil, fmt.Errorf("failed to read remaining bytes: %w", err)
+        } else {
+            partial.RawData = v
+        }
+        return partial, nil
+    }
+    {{- end }}
     
     {{- if $config.Repeat1 }}
     // decode repeating fields

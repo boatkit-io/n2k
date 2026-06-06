@@ -329,25 +329,15 @@ func (s *DataStream) getSignedNullableNumber(spec *FieldSpec) (*int64, error) {
 	return &vi, nil
 }
 
-// readVariableDataWithSpec method reads and returns variable data using FieldSpec
-/* func (s *DataStream) readVariableDataWithSpec(spec *FieldSpec) ([]uint8, error) {
+// readVariableDataWithSpec method reads and returns variable data using FieldSpec.
+func (s *DataStream) readVariableDataWithSpec(spec *FieldSpec) ([]uint8, error) {
 	if spec == nil {
 		return nil, fmt.Errorf("FieldSpec is nil")
 	}
 
-	if spec.BitLengthVariable {
-		if spec.CanboatType == "STRING_LAU" {
-			str, err := s.readStringWithLengthAndControl()
-			if err != nil {
-				return nil, err
-			}
-			return []uint8(str), nil
-		}
-	}
-
 	len := (spec.BitLength + 7) &^ 0x7
 	return s.readBinaryData(len)
-} */
+}
 
 func signExtendInt64(rawValue uint64, bitLength uint16) int64 {
 	if bitLength < 64 && (rawValue&(1<<(bitLength-1))) != 0 {

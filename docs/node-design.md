@@ -1,381 +1,543 @@
-# NMEA 2000 Node Design Document
+# NMEA 2000 Node Behavior Design
 
-## Overview
+## Purpose
 
-The `Node` package provides a generic NMEA 2000 device implementation that handles the standard behaviors required for any N2K device on the network. It sits above the existing pipeline architecture and provides a high-level abstraction for implementing NMEA 2000 devices.
+`pkg/node` should provide the standard behavior expected from a transmitting
+NMEA 2000 node. Applications should be able to configure identity, product
+metadata, supported PGNs, and application PGN handlers, then rely on the node
+to perform the common network-management work required before sending data.
 
-## Responsibilities
+This document is a behavioral requirements document for `pkg/node`, not a copy
+of the NMEA 2000 standard. It is based on public PGN definitions, observed
+behavior in open-source implementations, and the current package API. When exact
+conformance matters, the official NMEA 2000 and ISO 11783 documents remain the
+authority.
 
-### Maintain map of network devices
+## Scope
 
-Devices make themselves known through ISO Address Claim messages. The parameters combine into a 64 bit ISO_NAME. When we see an address claim we should add the address to a map[string]uint8. If we see a claim of our network address, we should compare the ISO_NAME with ours. If ours is lower, we just send an Address Claim with our new
+The node package is responsible for:
 
-## Required transmitted pgns
-- 593392 (ISO Acknowledgment)
-- 59904 (ISO Request)
-- 60928 (ISO Address Claim)
-- 126464 (PGN List)
-- 126993 (Heartbeat)
-- 126996 (Product Information)
-- 126998 (Configuration Information)
+- Device identity and NAME construction.
+- Address claim lifecycle.
+- Responding to standard management requests.
+- Sending standard metadata/status PGNs.
+- Tracking other devices enough to manage address contention.
+- Providing a safe write API that uses the claimed source address.
+- Exposing lifecycle and state transitions that applications can test.
 
-## Required receive pgns
-- 59392 (ISO Acknowledgement)
-- 59904 (ISO Request)
-- 60928 (ISO Address Claim)
-- 65240 (ISO Commanded Address)
+The node package is not responsible for:
 
-## "Required" but infrequently implemented or used
-- 60160 (ISO Transport Protocol, Data Transfer)
-- 60416 (ISO Transport Protocol, Connection Management)
-- 126208 (NMEA Group Function)
+- CAN frame encoding and decoding.
+- Fast-packet fragmentation/reassembly, except where node behavior depends on
+  the completed PGN.
+- ISO transport protocol segmentation/reassembly.
+- Domain-specific PGN generation such as engine, navigation, tank, or battery
+  data.
 
-## Architecture Integration
+## Sources And Reference Implementations
 
-```
-Application Layer (Device Implementation)
-    ↓
-Node (Generic N2K Device)
-    ↓ (reads via)          ↓ (writes via)
-Subscribe Manager ←--→ Publisher
-    ↓                      ↓
-Converter ←--→ Converter
-    ↓                      ↓
-Adapter ←--→ Adapter
-    ↓                      ↓
-Endpoint
-```
+Public references used for this design:
 
-The Node integrates with the existing pipeline by:
-- Using `subscribe.Manager` to receive PGNs from the network
-- Using `pgn.Publisher` to send PGNs to the network
-- Working with PGN structs (not raw bytes) for type safety
+- CANboat PGN documentation:
+  https://canboat.github.io/canboat/canboat.html
+- ttlappalainen NMEA2000 library documentation and source:
+  https://ttlappalainen.github.io/NMEA2000/
+- open-ships/n2k package documentation:
+  https://pkg.go.dev/github.com/open-ships/n2k
+- Public vendor PGN lists, for example Garmin VHF 315:
+  https://www8.garmin.com/manuals/webhelp/GUID-395B9869-0DCF-4E17-A266-0D9FF08A27DE/EN-US/GUID-8E7A6446-ACB3-477F-9216-5B15325BB783.html
+- NMEA public overview:
+  https://www.nmea.org/nmea-2000.html
 
-## Core Interface
+## Design Principles
+
+- A node must not transmit application PGNs until it has claimed a source
+  address.
+- Address claim behavior must be deterministic and testable.
+- The public API should keep applications out of common management details.
+- The package should preserve existing pipeline boundaries: subscribe to decoded
+  PGN structs, publish decoded PGN structs, and let lower layers handle framing.
+- Missing or unsupported behavior should fail explicitly where possible rather
+  than silently impersonating a complete NMEA 2000 node.
+
+## Public API
+
+The current API is a good starting point:
 
 ```go
 type Node interface {
-    // Lifecycle - explicit control for dynamic reconfiguration
     Start() error
     Stop() error
-    
-    // Address management
+
     ClaimAddress(preferredAddress uint8) error
     GetNetworkAddress() uint8
     IsAddressClaimed() bool
-    
-    // Writing PGNs (idiomatic Go naming)
+
     Write(pgnStruct any) error
     WriteTo(pgnStruct any, destination uint8) error
-    
-    // Configuration
-    SetDeviceInfo(info DeviceInfo) error  // Returns error for invalid NAME
+
+    SetDeviceInfo(info DeviceInfo) error
     SetProductInfo(info ProductInfo)
+    SetConfigurationProvider(provider ConfigurationProvider)
     SetSupportedPGNs(transmit, receive []uint32)
-    
-    // Heartbeat control
+
     SetHeartbeatInterval(interval time.Duration)
     EnableHeartbeat(enable bool)
 }
 ```
 
-## Data Structures
+Future API additions should be considered for:
 
-### Node Structure
+- Reading the address-claim state and failure reason.
+- Registering application-level ISO request handlers.
+- Observing the known-device map.
+- Choosing fixed-address versus arbitrary-address retry behavior.
+
+## Lifecycle
+
+### Start
+
+`Start` must:
+
+- Subscribe to PGNs required for node management.
+- Create the node processing context and goroutine.
+- Be idempotence-safe: calling `Start` on an already-started node returns an
+  error and must not create duplicate subscriptions.
+- If `ClaimAddress` was called before `Start`, begin address claiming after the
+  processing goroutine starts.
+
+Required subscriptions:
+
+- 59392, ISO Acknowledgement.
+- 59904, ISO Request.
+- 60928, ISO Address Claim.
+- 65240, ISO Commanded Address.
+- 126208, NMEA Group Function, once group function support exists.
+
+Transport protocol PGNs 60160 and 60416 are conditional lower-layer
+infrastructure, not required node-management subscriptions. They should be
+handled by the transport layer if ISO transport support exists. If no lower
+layer owns ISO transport, `pkg/node` should document that limitation rather
+than subscribing to transport-control PGNs as if they were ordinary node events.
+
+### Stop
+
+`Stop` must:
+
+- Unsubscribe every subscription created by `Start`.
+- Stop all node-owned timers.
+- Stop the processing goroutine.
+- Reset address state to unclaimed and network address to 255.
+- Leave configured identity, product info, supported PGNs, and heartbeat
+  settings intact so the node can be restarted.
+- Return an error if called when not started.
+
+## Device Identity And NAME
+
+`SetDeviceInfo` must validate field sizes before accepting identity data:
+
+- Unique number: 21 bits.
+- Manufacturer code: 11 bits.
+- Device instance lower: 3 bits.
+- Device instance upper: 5 bits.
+- Device function: 8 bits.
+- Device class: 7 bits.
+- System instance: 4 bits.
+- Industry group: 3 bits.
+- Arbitrary address capable: 1 bit.
+
+The computed 64-bit NAME is used for address arbitration. Lower numeric NAME
+has higher priority. The node must use the same packing when sending address
+claims, handling commanded address, and comparing competing claims.
+
+`SetDeviceInfo` should be required before claiming an address. If it has not
+been called, `ClaimAddress` or `Start` should fail rather than claiming with a
+zero NAME.
+
+## Address Claiming
+
+### Address Values
+
+- 0 through 253 are usable source addresses in the current API.
+- 254 is the null address and must not be claimed.
+- 255 is the global address and must not be used as a source for normal
+  application PGNs.
+
+### Claim Sequence
+
+When `ClaimAddress(preferredAddress)` is called:
+
+1. Validate that the preferred address is claimable.
+2. Set the node state to `claiming`.
+3. Set the tentative network address to the preferred address.
+4. Broadcast ISO Address Claim, PGN 60928, priority 6, target 255.
+5. Listen for competing address claims for the same source address.
+6. After the claim timeout, transition to `claimed` if no higher-priority
+   contender won the address.
+
+The default claim timeout should be configurable. A 250 ms timeout matches common
+open-source behavior; longer timeouts may be useful on busy or bridged networks.
+
+### Contention
+
+When another device claims the node's tentative or claimed address:
+
+- Compute the incoming NAME from PGN 60928.
+- If the incoming NAME is lower than our NAME, the incoming device wins.
+- If our NAME is lower than the incoming NAME, keep the address and immediately
+  broadcast our own address claim.
+- If the NAMEs are equal, treat it as a duplicate identity. The node should
+  surface an error or state transition instead of silently accepting ambiguous
+  identity. If a future implementation intentionally follows the NMEA2000
+  library pattern of changing device instance on duplicate NAME, that behavior
+  must be explicit and configurable.
+
+When the node loses an address:
+
+- If arbitrary addressing is enabled, choose another candidate address and
+  restart the claim sequence.
+- If arbitrary addressing is disabled or no candidate address remains, transition
+  to an address-lost state, set source address to 254 or 255 as appropriate for
+  the lower layer, and reject application writes.
+
+Candidate address selection should avoid addresses currently known to be
+claimed. For automatic selection, prefer deterministic behavior so tests and
+logs are understandable.
+
+### Known Device Map
+
+The node should maintain a map of known devices keyed by source address:
+
 ```go
-type Node struct {
-    // Dependencies
-    subscriber *subscribe.Manager
-    publisher  *pgn.Publisher  // Use existing Publisher
-    
-    // Device identity
-    deviceInfo  DeviceInfo
-    productInfo ProductInfo
-    name        uint64  // Computed NAME field (ISO 11783-5)
-    
-    // Network state
-    networkAddress   uint8
-    preferredAddress uint8
-    addressClaimed   bool
-    
-    // Standard PGN support
-    transmitPGNs []uint32
-    receivePGNs  []uint32
-    
-    // Heartbeat management
-    heartbeatEnabled  bool
-    heartbeatInterval time.Duration
-    heartbeatSeq      uint8
-    heartbeatTicker   *time.Ticker
-    
-    // Lifecycle
-    started bool
-    ctx     context.Context
-    cancel  context.CancelFunc
-    wg      sync.WaitGroup
-    
-    // Subscriptions (for cleanup)
-    subscriptions []subscribe.Subscription
+type KnownDevice struct {
+    Address     uint8
+    Name        uint64
+    LastSeen    time.Time
+    ProductInfo *ProductInfo
+    ConfigInfo  *ConfigurationInfo
 }
 ```
 
-### Device Information
-```go
-type DeviceInfo struct {
-    UniqueNumber         uint32                     // 21 bits max
-    ManufacturerCode     pgn.ManufacturerCodeConst  // 11 bits max
-    DeviceFunction       pgn.DeviceFunctionConst    // 8 bits
-    DeviceClass          pgn.DeviceClassConst       // 7 bits
-    DeviceInstanceLower  uint8                      // 3 bits
-    DeviceInstanceUpper  uint8                      // 5 bits
-    SystemInstance       uint8                      // 4 bits
-    IndustryGroup        pgn.IndustryCodeConst      // 3 bits
-    ArbitraryAddressCapable bool                    // 1 bit
-}
+The map must be updated when address claims are received. If a source address is
+claimed by a different NAME, the old entry must be replaced. Entries may expire
+after a configurable idle period, but expiration must not cause the node to
+forget an address during an active claim wait.
 
-type ProductInfo struct {
-    NMEA2000Version      uint16 // Stored as a scaled integer, e.g., 2100 for v2.100
-    ProductCode          uint16
-    ModelID              string
-    SoftwareVersionCode  string
-    ModelVersion         string
-    ModelSerialCode      string
-    CertificationLevel   uint8
-    LoadEquivalency      uint8
+## Required Standard PGN Behavior
+
+### Transmit
+
+The node should transmit or be able to transmit:
+
+- 59392, ISO Acknowledgement.
+- 59904, ISO Request, when the node API exposes active requests.
+- 60928, ISO Address Claim.
+- 126464, PGN List, in response to requests.
+- 126993, Heartbeat, when enabled.
+- 126996, Product Information, in response to requests.
+- 126998, Configuration Information, in response to requests once configured.
+
+Conditional transport support:
+
+- 60160, ISO Transport Protocol Data Transfer.
+- 60416, ISO Transport Protocol Connection Management.
+
+These PGNs are not required transmitted PGNs for every device implementation.
+They are used only when ISO transport protocol is needed. Many NMEA 2000 devices
+and replays never use them because their traffic is single-frame or fast-packet.
+If ISO transport is implemented below `pkg/node`, the node must advertise
+transport-dependent capabilities only when they are actually available.
+
+### Receive
+
+The node must receive and handle:
+
+- 59392, ISO Acknowledgement.
+- 59904, ISO Request.
+- 60928, ISO Address Claim.
+- 65240, ISO Commanded Address.
+
+The node should receive and handle or delegate:
+
+- 126208, NMEA Group Function.
+
+Conditional lower-layer receive support:
+
+- 60160, ISO Transport Protocol Data Transfer.
+- 60416, ISO Transport Protocol Connection Management.
+
+These are transport PGNs. `pkg/node` should normally see only the reassembled
+application or management PGN, not the transport session frames themselves.
+
+## ISO Request Handling
+
+For PGN 59904, the node must ignore requests when:
+
+- The requested PGN field is absent or invalid.
+- The request is destination-specific and the destination is neither this node's
+  address nor the global address.
+- The node has not claimed an address, except for address-claim behavior that is
+  explicitly allowed during claiming.
+
+Built-in request responses:
+
+- Request for 60928: send ISO Address Claim.
+- Request for 126464: send PGN List for transmit and receive lists.
+- Request for 126996: send Product Information if configured.
+- Request for 126998: send Configuration Information if configured.
+
+For unsupported requests directed at this node, the node should send ISO
+Acknowledgement with a negative acknowledgement or access-denied/control code
+appropriate to the PGN and request type. For global unsupported requests, the
+node may remain silent to avoid unnecessary bus traffic unless the standard
+requires a response for that PGN.
+
+Applications must be able to register handlers for application PGNs. If a
+handler is registered, the node should route matching ISO Requests to it before
+sending a default negative acknowledgement.
+
+## Product Information
+
+`SetProductInfo` configures PGN 126996 responses.
+
+Requirements:
+
+- Product code, model ID, software version, model version, serial code,
+  certification level, and load equivalency must be preserved exactly as
+  configured within generated PGN field constraints.
+- NMEA 2000 version scaling must be documented and consistently converted.
+- Empty product information should either be rejected during configuration or
+  produce an explicit "not configured" response path.
+
+## Configuration Information
+
+The node should support PGN 126998, but the configuration data belongs to the
+device-specific software. `pkg/node` should provide protocol plumbing, request
+routing, and acknowledgement behavior; it should not decide what configuration
+values mean or whether a requested change is valid for a particular device.
+
+Recommended data model:
+
+```go
+type ConfigurationInfo struct {
+    ManufacturerInformation string
+    InstallationDescription1 string
+    InstallationDescription2 string
 }
 ```
 
-## Key Behaviors
+Recommended API shape:
 
-### 1. Address Claiming Process
-- Follows ISO 11783-5 address claiming procedure
-- Lower address numbers have higher priority
-- Monitors for address conflicts and responds appropriately
-- Gracefully handles write-only or replay endpoints
-
-**Algorithm:**
-1. Send `IsoAddressClaim` PGN with device NAME
-2. Monitor network for conflicts (same address)
-3. Compare NAMEs if conflict detected (lower NAME wins)
-4. If we lose, find new address and re-claim
-5. Periodically re-send claim to maintain address
-
-### 2. Standard PGN Handling
-
-The Node automatically subscribes to and handles these standard PGNs:
-
-- **ISO Address Claim (60928)**: Monitor conflicts, respond to challenges
-- **ISO Commanded Address (65240)**: Handle address commands from network manager
-- **ISO Request (59904)**: Route to registered handlers or return appropriate response
-- **Heartbeat (126993)**: Optional periodic transmission
-
-### 3. Built-in Responses
-
-**Product Information (126996):**
-- Responds with configured product details
-- Automatically triggered by ISO Request
-
-**PGN List (126464):**
-- Responds with supported transmit/receive PGN lists
-- Automatically triggered by ISO Request
-
-**Default ISO Request Response:**
-- The `Node` only handles ISO Requests for PGNs it manages directly (e.g., Product Information and PGN List).
-- It is the responsibility of the application developer to subscribe to ISO Requests (PGN 59904) and respond with data or an `IsoAcknowledgement` for all other PGNs their device supports.
-
-### 4. NAME Field Validation
-
-The `SetDeviceInfo()` method validates that all fields fit within their bit limits per ISO 11783-5:
 ```go
-func (d DeviceInfo) ComputeName() (uint64, error) {
-    // Validate field ranges
-    if d.UniqueNumber > 0x1FFFFF {
-        return 0, fmt.Errorf("unique number exceeds 21-bit limit")
-    }
-    // ... other validations
-    
-    // Pack into 64-bit NAME field per ISO 11783-5
-    name := uint64(d.UniqueNumber) |
-           (uint64(d.ManufacturerCode) << 21) |
-           (uint64(d.DeviceInstanceLower) << 32) |
-           // ... continue bit packing per spec
-    
-    return name, nil
+type ConfigurationProvider interface {
+    GetConfigurationInfo() (ConfigurationInfo, error)
+    SetConfigurationInfo(ConfigurationInfo) error
 }
+
+func SetConfigurationProvider(provider ConfigurationProvider)
 ```
 
-## Usage Examples
+At initialization, device-specific software should provide either static
+configuration information or a provider that can read the current values from
+device state. Requests for PGN 126998 should call the provider and return the
+current configuration information.
 
-### Basic Device Setup
-```go
-// Create node with existing pipeline components
-node := NewNode(subscriberManager, publisher)
+Configuration changes must be acted upon by device-specific software. When the
+node receives a supported request/command group function that changes
+configuration information, it should:
 
-// Configure device identity
-deviceInfo := DeviceInfo{
-    UniqueNumber:     12345,
-    ManufacturerCode: pgn.YourManufacturerCode,
-    DeviceFunction:   pgn.EngineFunction,
-    DeviceClass:      pgn.PropulsionClass,
-    DeviceInstanceLower: 0,
-    DeviceInstanceUpper: 0,
-    SystemInstance:   0,
-    IndustryGroup:    pgn.Marine,
-    ArbitraryAddressCapable: true,
-}
-err := node.SetDeviceInfo(deviceInfo)  // Validates NAME
-if err != nil {
-    log.Fatal("Invalid device info:", err)
-}
+1. Decode the requested change into `ConfigurationInfo`.
+2. Call the configured provider or change handler.
+3. Send a positive acknowledgement only if the device-specific handler accepts
+   and applies or persists the change.
+4. Send a negative acknowledgement when no handler is configured, the requested
+   change is invalid, persistence fails, or the device rejects the change.
 
-// Set product information
-node.SetProductInfo(ProductInfo{
-    NMEA2000Version: 2100, // v2.100
-    ProductCode:     1001,
-    ModelID:         "MyEngine v1.0",
-    SoftwareVersionCode: "1.0.0",
-    ModelVersion:    "Rev A",
-    ModelSerialCode: "SN123456",
-    CertificationLevel: 1,
-    LoadEquivalency: 1,
-})
+The node should not mutate cached configuration data before the device-specific
+handler has accepted the change. If a handler is not configured, requests for
+126998 should follow the unsupported or not-available ISO acknowledgement
+policy.
 
-// Configure supported PGNs for PGN List requests
-node.SetSupportedPGNs(
-    []uint32{127488, 127489}, // Transmit: Engine parameters
-    []uint32{126208},         // Receive: NMEA Request Group Function
-)
+Open design question: whether configuration changes should be represented by a
+single read/write provider, separate read and change callbacks, or a more
+general group-function handler. The behavioral requirement is that the device
+application remains the authority for configuration values and side effects.
 
-// Start and claim address
-err = node.ClaimAddress(50)  // Preferred address
-if err != nil {
-    log.Fatal("Address claim failed:", err)
-}
-err = node.Start()
-if err != nil {
-    log.Fatal("Node start failed:", err)
-}
+## PGN List
 
-// Enable heartbeat
-node.SetHeartbeatInterval(60 * time.Second)
-node.EnableHeartbeat(true)
+`SetSupportedPGNs(transmit, receive)` configures PGN 126464 responses.
 
-// Application subscribes to PGNs it needs to handle directly.
-// For example, to handle requests for engine data, the application would
-// subscribe to ISO Request (59904) and implement its own logic.
-subscriberManager.Subscribe(59904, "engine-iso-request-handler", func(p any, source uint8) error {
-    request := p.(*pgn.IsoRequest)
-    if request.RequestedPGN == 127488 {
-        // ... logic to create and send the EngineParametersRapid PGN ...
-        // responsePgn := &pgn.EngineParametersRapid{...}
-        // node.WriteTo(responsePgn, source)
-    }
-    return nil
-})
-```
+Requirements:
 
-### Multiple Device Functions
-```go
-// Different device functions in same application
-engineNode := NewNode(subscriber, publisher)
-engineNode.SetDeviceInfo(DeviceInfo{
-    DeviceFunction: pgn.EngineFunction,
-    // ... other fields
-})
+- Include node-managed PGNs automatically unless the caller explicitly disables
+  automatic management PGNs.
+- Include application transmit and receive PGNs configured by the caller.
+- Send separate transmit and receive list responses.
+- Use transport/fast-packet support if the list is too large for a single
+  packet at the lower layers.
+- Keep the list stable and sorted unless caller order is deliberately preserved.
 
-navigationNode := NewNode(subscriber, publisher)  
-navigationNode.SetDeviceInfo(DeviceInfo{
-    DeviceFunction: pgn.NavigationFunction,
-    // ... other fields
-})
+## Heartbeat
 
-// Each gets its own address
-engineNode.ClaimAddress(50)
-navigationNode.ClaimAddress(51)
+When enabled, heartbeat sends PGN 126993.
 
-engineNode.Start()
-navigationNode.Start()
-```
+Requirements:
 
-### Sending Data
-```go
-// Send engine data periodically
-ticker := time.NewTicker(1 * time.Second)
-go func() {
-    for range ticker.C {
-        engineData := &pgn.EngineParametersRapid{
-            Info: pgn.MessageInfo{
-                PGN:      127488,
-                SourceId: node.GetNetworkAddress(),
-            },
-            EngineInstance: &[]uint8{0}[0],
-            EngineSpeed:    &engine.GetRPM(),
-            // ... other fields
-        }
-        
-        err := node.Write(engineData)  // Broadcast
-        if err != nil {
-            log.Printf("Failed to send engine data: %v", err)
-        }
-    }
-}()
-```
+- Heartbeat must only start after the node has claimed an address.
+- Send an initial heartbeat soon after address claim, then periodically.
+- Default interval should be 60 seconds.
+- Sequence counter increments modulo 256.
+- Controller and equipment states should be configurable or derived from lower
+  layer health in a future implementation. The current default can be
+  error-active and operational.
+- Disabling heartbeat stops the timer without changing other node state.
 
-## Implementation Considerations
+## ISO Commanded Address
 
-### 1. Lifecycle Management
-- **Explicit Start/Stop**: Supports dynamic reconfiguration by allowing restart
-- **Address Revalidation**: On restart, address claiming process runs again
-- **Graceful Shutdown**: Stop() cancels goroutines and cleans up subscriptions
+When receiving PGN 65240:
 
-### 2. Error Handling
-- **Silent Write Failures**: By default, if the endpoint doesn't support writing, operations succeed but do nothing. This behavior can be overridden.
-- **Address Conflicts**: Automatically handled per ISO 11783-5
-- **Invalid Configurations**: `SetDeviceInfo()` validates and returns errors
-- **Configurable Write Errors**: For easier debugging, the Node can be configured to return an error on write operations if the underlying transport fails, rather than failing silently.
+- Ignore the command if the embedded NAME does not match this node.
+- Ignore broadcast/null/new addresses that cannot be claimed.
+- If the command matches this node and requests a different address, update the
+  preferred address and restart address claiming.
+- While re-claiming, reject application writes.
 
-### 3. Thread Safety
-- All public methods are thread-safe
-- Internal state protected by mutexes where needed
-- Goroutines properly managed with context cancellation
+PGN 65240 is commonly transported as a multi-packet message. If lower layers do
+not reassemble it into `pgn.IsoCommandedAddress`, this behavior cannot work and
+the transport gap must be closed first.
 
-### 4. Memory Management
-- Subscriptions tracked and cleaned up on Stop()
-- Timers properly stopped to prevent leaks
-- No persistent connections or resources
+## Write Behavior
 
-### 5. Testing Considerations
-- Interface-based design supports easy mocking
-- Dependencies injected for testability
-- State can be inspected for validation
+`Write` and `WriteTo` must:
 
-## Future Enhancements
+- Return an error if the node has not claimed an address.
+- Set the PGN source address to the claimed node address.
+- Set the destination for destination-specific writes.
+- Preserve caller-specified PGN and priority unless the generated PGN metadata
+  requires a default.
+- Return publisher errors to the caller.
 
-### Deferred Features
-- **Address Contention**: `ForceAddress()` method to actively contend for higher priority addresses
-- **J1939 Transport Protocol**: Support for the connection-based ISO 11783-6 transport protocol (TP.CM/BAM), which is distinct from the already-supported NMEA 2000 fast-packet protocol.
-- **Network Device List**: Track other devices on the network
-- **Configuration Persistence**: Save/load device configuration
+The node should not mutate user PGN structs after a failed write except for
+documented `MessageInfo` source/destination updates.
 
-### Potential Optimizations
-- **PGN Filtering**: Only subscribe to PGNs we actually handle
-- **Batched Writes**: Combine multiple PGNs into single transmission
-- **Priority-based Transmission**: Queue management for different PGN priorities
+## Transport And Fast Packet
 
-### Testing Recommendations
-- **Simulated Clock**: To ensure deterministic and fast test execution, the testing framework should be built around a simulated clock. This allows the test orchestrator to advance time programmatically, removing dependencies on `time.Sleep()` and making timing-related assertions exact and not subject to system load.
+NMEA 2000 uses both fast-packet messages and ISO transport protocol messages.
+Fast packet is much more common in ordinary NMEA 2000 traffic. ISO transport
+protocol, using PGNs 60416 and 60160, appears much less frequently in observed
+candump/replay traffic and may not be supported by many device implementations.
 
-## Dependencies
+`pkg/node` should avoid owning fragmentation. The behavioral requirement is:
 
-### Required Packages
-- `github.com/boatkit-io/n2k/pkg/subscribe` - For receiving PGNs
-- `github.com/boatkit-io/n2k/pkg/pgn` - For PGN encoding/decoding and Publisher
-- `context` - For lifecycle management
-- `sync` - For thread safety
-- `time` - For heartbeat and timers
+- Node request/response behavior must work for management PGNs regardless of
+  whether the encoded PGN is single-frame, fast-packet, or ISO transport.
+- Product Information, Configuration Information, PGN List, and Commanded
+  Address must not be limited by single-frame assumptions.
+- ISO transport support is conditional. If it is unavailable, node must document
+  and expose that limitation instead of advertising unsupported capabilities.
+- `pkg/node` should not treat PGN 60416 responses as expected node-level
+  behavior. Broadcast ISO transport may not have a response, and peer-to-peer
+  RTS/CTS responses only occur when a target device participates in that
+  transport session.
 
-### Integration Points
-- Must work with existing `subscribe.Manager`
-- Must use existing `pgn.Publisher`
-- Must work with generated PGN structs from `pgninfo_generated.go`
-- Should integrate with existing endpoint abstraction 
+## Error Handling And Observability
+
+The node should expose or log:
+
+- Address claim started.
+- Address claim succeeded.
+- Address claim lost.
+- Duplicate NAME detected.
+- No address available.
+- ISO request received and response decision.
+- Standard PGN response write failures.
+- Heartbeat write failures.
+
+Public methods should return errors for caller-controlled failures. Background
+failures should be observable through state, callbacks, logs, or a future event
+channel.
+
+## Thread Safety
+
+All public methods must be safe to call from concurrent goroutines.
+
+Internal requirements:
+
+- Do not hold locks while calling user callbacks or publisher/subscriber
+  methods.
+- Timers must be stopped before being discarded.
+- Stop must wait for the processing goroutine to exit.
+- Subscription callbacks must tolerate shutdown races.
+
+## Current Implementation Gap Analysis
+
+Implemented or mostly implemented:
+
+- Start/stop lifecycle with subscriptions.
+- NAME validation and packing.
+- Basic address claim send and 250 ms claim wait.
+- Basic conflict handling when another lower NAME claims our address.
+- Basic product information response.
+- Basic configuration information response through a device provider.
+- ISO Request for Address Claim.
+- Basic PGN list response.
+- Basic commanded-address handling.
+- Heartbeat timer and sequence counter.
+- Write gating until an address is claimed.
+- Identity-before-claim validation.
+
+Missing or incomplete:
+
+- ISO Acknowledgement subscription and response behavior.
+- Configuration Information change handling via group functions.
+- Known-device map.
+- Retry/new-address selection after losing a claim.
+- Duplicate-NAME handling.
+- Explicit fixed-address versus arbitrary-address policy.
+- Application ISO request handler routing.
+- Automatic inclusion of node-managed PGNs in PGN List.
+- Group Function PGN 126208 support.
+- Clear transport/fast-packet capability boundary for node-managed PGNs,
+  especially documenting ISO transport as conditional rather than mandatory.
+- State/error observability beyond `IsAddressClaimed` and logs.
+
+## Test Requirements
+
+Unit tests should cover:
+
+- NAME packing and validation limits.
+- Start/stop subscription cleanup.
+- Claim success after timeout.
+- Claim before start and start before claim.
+- Losing address to lower NAME.
+- Keeping address against higher NAME and re-broadcasting claim.
+- Duplicate NAME behavior.
+- Arbitrary-address retry and no-address-available failure.
+- Write rejection before claim and during re-claim.
+- MessageInfo source/destination mutation on write.
+- ISO Request filtering by destination.
+- ISO Request responses for 60928, 126464, 126996, and 126998.
+- Unsupported directed request acknowledgement policy.
+- Heartbeat initial send, interval send, disable behavior, and sequence wrap.
+- Commanded address matching and non-matching NAMEs.
+
+Integration tests should verify:
+
+- A node can claim an address on vcan/socketcan.
+- A second node with a lower NAME wins contention.
+- Product Information and PGN List can be requested by another participant.
+- Fast-packet management PGNs are encoded and decoded by the lower pipeline as
+  needed.
+- ISO transport-backed management PGNs are verified only when the lower pipeline
+  advertises ISO transport support.
+
+## Suggested Implementation Order
+
+1. Add state/error observability and identity-before-claim validation.
+2. Add ISO Request for Address Claim and ISO Acknowledgement policy.
+3. Add known-device tracking and address retry.
+4. Add Configuration Information.
+5. Add application ISO request handler routing.
+6. Decide and document the transport/fast-packet ownership boundary, with ISO
+   transport marked as conditional lower-layer support.
+7. Add Group Function support if required for target interoperability.

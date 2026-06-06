@@ -16,6 +16,21 @@ func uint8Ptr(v uint8) *uint8 {
 	return &v
 }
 
+type mockConfigurationProvider struct {
+	info ConfigurationInfo
+	err  error
+	set  []ConfigurationInfo
+}
+
+func (m *mockConfigurationProvider) GetConfigurationInfo() (ConfigurationInfo, error) {
+	return m.info, m.err
+}
+
+func (m *mockConfigurationProvider) SetConfigurationInfo(info ConfigurationInfo) error {
+	m.set = append(m.set, info)
+	return m.err
+}
+
 func TestNewNode(t *testing.T) {
 	n := NewNode(nil, nil, nil).(*node)
 
@@ -37,6 +52,11 @@ func TestSetters(t *testing.T) {
 	productInfo := ProductInfo{ProductCode: 1234, ModelID: "Test"}
 	n.SetProductInfo(productInfo)
 	assert.Equal(t, productInfo, n.productInfo)
+
+	// Test SetConfigurationProvider
+	configProvider := &mockConfigurationProvider{}
+	n.SetConfigurationProvider(configProvider)
+	assert.Equal(t, configProvider, n.configProvider)
 
 	// Test SetSupportedPGNs
 	tx := []uint32{1, 2}
@@ -105,6 +125,14 @@ func TestComputeName(t *testing.T) {
 		err = n.SetDeviceInfo(DeviceInfo{UniqueNumber: 0x2FFFFF})
 		assert.Error(t, err)
 	})
+}
+
+func TestClaimAddressRequiresDeviceInfo(t *testing.T) {
+	n := NewNode(nil, nil, nil)
+
+	err := n.ClaimAddress(50)
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "device info has not been set")
 }
 
 func TestComputeNameFromClaimIncludesArbitraryAddressBit(t *testing.T) {
@@ -198,6 +226,24 @@ func TestLifecycleAndResponses(t *testing.T) {
 		assert.Equal(t, "Test", response.ModelId)
 	})
 
+	t.Run("AddressClaimRequest", func(t *testing.T) {
+		pub.clear()
+
+		requestPgn := pgn.IsoRequest{
+			Info: pgn.MessageInfo{SourceId: 10, TargetId: 255},
+			Pgn:  uint32Ptr(pgn.IsoAddressClaimPgn),
+		}
+		pub.expectWrite()
+		sub.simulatePGN(requestPgn)
+		pub.waitForWrite()
+
+		assert.Len(t, pub.written, 1)
+		response, ok := pub.lastWritten().(*pgn.IsoAddressClaim)
+		assert.True(t, ok)
+		assert.Equal(t, uint8(50), response.Info.SourceId)
+		assert.Equal(t, uint32(1), *response.UniqueNumber)
+	})
+
 	t.Run("PgnListRequest", func(t *testing.T) {
 		pub.clear()
 		n.SetSupportedPGNs([]uint32{1, 2}, []uint32{3, 4})
@@ -213,6 +259,51 @@ func TestLifecycleAndResponses(t *testing.T) {
 		pub.waitForWrite()
 
 		assert.Len(t, pub.written, 2)
+	})
+
+	t.Run("ConfigurationInfoRequest", func(t *testing.T) {
+		pub.clear()
+		n.SetConfigurationProvider(&mockConfigurationProvider{
+			info: ConfigurationInfo{
+				InstallationDescription1: "helm",
+				InstallationDescription2: "port",
+				ManufacturerInformation:  "boatkit",
+			},
+		})
+
+		requestPgn := pgn.IsoRequest{
+			Info: pgn.MessageInfo{SourceId: 10, TargetId: 255},
+			Pgn:  uint32Ptr(pgn.ConfigurationInformationPgn),
+		}
+		pub.expectWrite()
+		sub.simulatePGN(requestPgn)
+		pub.waitForWrite()
+
+		assert.Len(t, pub.written, 1)
+		response, ok := pub.lastWritten().(*pgn.ConfigurationInformation)
+		assert.True(t, ok)
+		assert.Equal(t, "helm", response.InstallationDescription1)
+		assert.Equal(t, "port", response.InstallationDescription2)
+		assert.Equal(t, "boatkit", response.ManufacturerInformation)
+	})
+
+	t.Run("ConfigurationInfoRequestWithoutProviderNaks", func(t *testing.T) {
+		pub.clear()
+		n.SetConfigurationProvider(nil)
+
+		requestPgn := pgn.IsoRequest{
+			Info: pgn.MessageInfo{SourceId: 10, TargetId: 255},
+			Pgn:  uint32Ptr(pgn.ConfigurationInformationPgn),
+		}
+		pub.expectWrite()
+		sub.simulatePGN(requestPgn)
+		pub.waitForWrite()
+
+		assert.Len(t, pub.written, 1)
+		response, ok := pub.lastWritten().(*pgn.IsoAcknowledgement)
+		assert.True(t, ok)
+		assert.Equal(t, pgn.Nak, response.Control)
+		assert.Equal(t, uint32(pgn.ConfigurationInformationPgn), *response.Pgn)
 	})
 
 	t.Run("IgnoresRequestDirectedToAnotherNode", func(t *testing.T) {

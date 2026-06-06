@@ -19,6 +19,14 @@ type MatchFieldSpec struct {
 	MatchValue int
 }
 
+// KnownPGNs contains PGNs that have at least one generated decoder.
+var KnownPGNs = map[uint32]struct{}{
+{{- $pgnGroupsForKnown := groupByPGN .PGNDoc.PGNs }}
+{{- range $pgn, $_ := $pgnGroupsForKnown }}
+	{{ $pgn }}: {},
+{{- end }}
+}
+
 // PgnDiscriminatorMap maps PGN IDs to their discriminators
 var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 {{- $pgnGroups := groupByPGN .PGNDoc.PGNs }}
@@ -51,6 +59,12 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 {{- end }}
 	},
 {{- end }}
+}
+
+// HasDecoder reports whether this runtime has at least one decoder for pgn.
+func HasDecoder(pgn uint32) bool {
+	_, exists := KnownPGNs[pgn]
+	return exists
 }
 
 // FindDecoder finds the appropriate decoder for a PGN based on match field values
