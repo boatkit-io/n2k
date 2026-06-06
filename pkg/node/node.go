@@ -319,9 +319,17 @@ func (n *node) enqueuePgn(p any) {
 
 func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	n.mutex.RLock()
+	addressClaimed := n.addressClaimed
+	networkAddress := n.networkAddress
 	defer n.mutex.RUnlock()
 
 	if req.Pgn == nil {
+		return nil
+	}
+	if !addressClaimed {
+		return nil
+	}
+	if req.Info.TargetId != 255 && req.Info.TargetId != networkAddress {
 		return nil
 	}
 
@@ -330,11 +338,11 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	var responses []toSend
 
 	switch *req.Pgn {
-	case 126996:
+	case pgn.ProductInformationPgn:
 		version := float32(n.productInfo.NMEA2000Version) / 100.0
 		responsePgn := &pgn.ProductInformation{
 			Info: pgn.MessageInfo{
-				PGN:      126996,
+				PGN:      pgn.ProductInformationPgn,
 				SourceId: n.networkAddress,
 				TargetId: req.Info.SourceId,
 			},
@@ -349,7 +357,7 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 		}
 		responses = append(responses, toSend{pgn: responsePgn, dest: req.Info.SourceId})
 
-	case 126464:
+	case pgn.PgnListTransmitAndReceivePgn:
 		txRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(n.transmitPGNs))
 		for i, pgn_num := range n.transmitPGNs {
 			p := pgn_num
@@ -357,7 +365,7 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 		}
 		txResponse := &pgn.PgnListTransmitAndReceive{
 			Info: pgn.MessageInfo{
-				PGN:      126464,
+				PGN:      pgn.PgnListTransmitAndReceivePgn,
 				SourceId: n.networkAddress,
 				TargetId: req.Info.SourceId,
 			},
@@ -373,7 +381,7 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 		}
 		rxResponse := &pgn.PgnListTransmitAndReceive{
 			Info: pgn.MessageInfo{
-				PGN:      126464,
+				PGN:      pgn.PgnListTransmitAndReceivePgn,
 				SourceId: n.networkAddress,
 				TargetId: req.Info.SourceId,
 			},
@@ -467,7 +475,7 @@ func (n *node) sendAddressClaim() {
 
 	claim := &pgn.IsoAddressClaim{
 		Info: pgn.MessageInfo{
-			PGN:      60928,
+			PGN:      pgn.IsoAddressClaimPgn,
 			SourceId: networkAddressCopy,
 			TargetId: 255,
 			Priority: 6,
@@ -496,7 +504,7 @@ func (n *node) sendHeartbeat() {
 
 	hb := &pgn.Heartbeat{
 		Info: pgn.MessageInfo{
-			PGN:      126993,
+			PGN:      pgn.HeartbeatPgn,
 			SourceId: networkAddressCopy,
 		},
 		SequenceCounter:  &heartbeatSeqCopy,
@@ -694,6 +702,9 @@ func computeNameFromClaim(claim *pgn.IsoAddressClaim) (uint64, error) {
 	}
 	if claim.IndustryGroup != 0 {
 		name |= uint64(claim.IndustryGroup) << 60
+	}
+	if claim.ArbitraryAddressCapable == pgn.Yes {
+		name |= 1 << 63
 	}
 	return name, nil
 }

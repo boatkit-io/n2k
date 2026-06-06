@@ -14,24 +14,15 @@ shfmt = "latest"
 # Normal practice: list inputs in `sources` and artifacts in `outputs`. A task is
 # skipped when every output exists and is newer than every source (like Make).
 # Chain steps with `depends` so prerequisites run first.
-#
-# Limits: switching PGNGEN_DEBUG changes the pgngen binary semantics but not always
-# mtimes in a way that forces codegen—use `mise run -f codegen` after toggling.
 # See: https://mise.jdx.dev/tasks/toml-tasks.html#sources-outputs
 
 # Compile the pgngen CLI only.
 [tasks.build-pgngen]
 env = { "CGO_ENABLED" = "0" }
-description = "Build the pgngen binary to ./bin/pgngen (honors PGNGEN_DEBUG)"
+description = "Build the pgngen binary to ./bin/pgngen"
 sources = ["cmd/pgngen/**/*.go", "go.mod", "go.sum"]
 outputs = ["bin/pgngen"]
-run = """
-if [ "${PGNGEN_DEBUG:-0}" = "1" ]; then
-  go build -trimpath -tags=pgngen_debug -o ./bin/pgngen ./cmd/pgngen
-else
-  go build -trimpath -o ./bin/pgngen ./cmd/pgngen
-fi
-"""
+run = "go build -trimpath -o ./bin/pgngen ./cmd/pgngen"
 
 # Run pgngen after build-pgngen is up to date.
 [tasks.codegen]
@@ -57,25 +48,13 @@ run = "./bin/pgngen"
 depends = ["codegen"]
 env = { "CGO_ENABLED" = "0" }
 description = "codegen (if stale) then build all commands under ./cmd/..."
-run = """
-if [ "${PGNGEN_DEBUG:-0}" = "1" ]; then
-  go build -trimpath -tags=pgngen_debug -o ./bin/ -v ./cmd/...
-else
-  go build -trimpath -o ./bin/ -v ./cmd/...
-fi
-"""
+run = "go build -trimpath -o ./bin/ -v ./cmd/..."
 
 [tasks.buildcover]
 depends = ["codegen"]
 env = { "CGO_ENABLED" = "0" }
 description = "codegen (if stale) then build all commands with coverage"
-run = """
-if [ "${PGNGEN_DEBUG:-0}" = "1" ]; then
-  go build -trimpath -tags=pgngen_debug -cover -o ./bincover/ -v ./cmd/...
-else
-  go build -trimpath -cover -o ./bincover/ -v ./cmd/...
-fi
-"""
+run = "go build -trimpath -cover -o ./bincover/ -v ./cmd/..."
 
 [tasks.changelog]
 description = "Generate a changelog for the current version"
@@ -107,28 +86,6 @@ tools.svu = "latest"
 [tasks.test]
 description = "Run tests"
 run = "gotestsum"
-
-[tasks.test-debug]
-description = "Run tests with pgngen debug enabled"
-run = "PGNGEN_DEBUG=1 go test -tags=pgngen_debug ./..."
-
-[tasks.build-debug]
-description = "Force full codegen with PGNGEN_DEBUG=1, then build"
-run = """
-set -e
-export PGNGEN_DEBUG=1
-mise run -f codegen
-mise run build
-"""
-
-[tasks.build-release]
-description = "Force full codegen with PGNGEN_DEBUG=0, then build"
-run = """
-set -e
-export PGNGEN_DEBUG=0
-mise run -f codegen
-mise run build
-"""
 
 ## <<Stencil::Block(custom)>>
 

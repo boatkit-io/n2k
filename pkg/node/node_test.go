@@ -107,6 +107,42 @@ func TestComputeName(t *testing.T) {
 	})
 }
 
+func TestComputeNameFromClaimIncludesArbitraryAddressBit(t *testing.T) {
+	uniqueNumber := uint32(1)
+	deviceInstanceLower := uint8(2)
+	deviceInstanceUpper := uint8(3)
+	systemInstance := uint8(4)
+
+	info := DeviceInfo{
+		UniqueNumber:            uniqueNumber,
+		ManufacturerCode:        pgn.Garmin,
+		DeviceFunction:          130,
+		DeviceClass:             60,
+		DeviceInstanceLower:     deviceInstanceLower,
+		DeviceInstanceUpper:     deviceInstanceUpper,
+		SystemInstance:          systemInstance,
+		IndustryGroup:           pgn.MarineIndustry,
+		ArbitraryAddressCapable: true,
+	}
+	expectedName, err := computeName(info)
+	assert.NoError(t, err)
+
+	claimName, err := computeNameFromClaim(&pgn.IsoAddressClaim{
+		UniqueNumber:            &uniqueNumber,
+		ManufacturerCode:        pgn.Garmin,
+		DeviceFunction:          130,
+		DeviceClass:             60,
+		DeviceInstanceLower:     &deviceInstanceLower,
+		DeviceInstanceUpper:     &deviceInstanceUpper,
+		SystemInstance:          &systemInstance,
+		IndustryGroup:           pgn.MarineIndustry,
+		ArbitraryAddressCapable: pgn.Yes,
+	})
+	assert.NoError(t, err)
+	assert.Equal(t, expectedName, claimName)
+	assert.NotZero(t, claimName&(1<<63))
+}
+
 func TestLifecycleAndResponses(t *testing.T) {
 	// Setup
 	sub := newMockSubscriber()
@@ -148,7 +184,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		n.SetProductInfo(productInfo)
 
 		requestPgn := pgn.IsoRequest{
-			Info: pgn.MessageInfo{SourceId: 10},
+			Info: pgn.MessageInfo{SourceId: 10, TargetId: 255},
 			Pgn:  uint32Ptr(126996),
 		}
 		pub.expectWrite()
@@ -167,7 +203,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		n.SetSupportedPGNs([]uint32{1, 2}, []uint32{3, 4})
 
 		requestPgn := &pgn.IsoRequest{
-			Info: pgn.MessageInfo{SourceId: 20},
+			Info: pgn.MessageInfo{SourceId: 20, TargetId: 255},
 			Pgn:  uint32Ptr(126464),
 		}
 		pub.expectWrite()
@@ -177,6 +213,15 @@ func TestLifecycleAndResponses(t *testing.T) {
 		pub.waitForWrite()
 
 		assert.Len(t, pub.written, 2)
+	})
+
+	t.Run("IgnoresRequestDirectedToAnotherNode", func(t *testing.T) {
+		requestPgn := pgn.IsoRequest{
+			Info: pgn.MessageInfo{SourceId: 10, TargetId: 51},
+			Pgn:  uint32Ptr(126996),
+		}
+		responses := n.(*node).processIsoRequest(requestPgn)
+		assert.Empty(t, responses)
 	})
 
 	_ = n.Stop()

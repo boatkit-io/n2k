@@ -71,8 +71,7 @@ Subscribe is a separate package that manages subscribers and distributes go stru
 
 ## Build instructions
 
-"mise run build-release" builds the project with debug fields removed.
-"mise run build-debug" builds the project with debug fields included.
+Run `mise run build` to regenerate code when needed and build all commands under `./cmd/...`.
 
 ## Version History
 
