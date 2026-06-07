@@ -1,6 +1,7 @@
 package node
 
 import (
+	"sync"
 	"testing"
 	"time"
 
@@ -9,10 +10,6 @@ import (
 )
 
 func uint32Ptr(v uint32) *uint32 {
-	return &v
-}
-
-func uint8Ptr(v uint8) *uint8 {
 	return &v
 }
 
@@ -183,7 +180,7 @@ func TestComputeNameFromClaimIncludesArbitraryAddressBit(t *testing.T) {
 	expectedName, err := computeName(info)
 	assert.NoError(t, err)
 
-	claimName, err := computeNameFromClaim(&pgn.IsoAddressClaim{
+	claimName := computeNameFromClaim(&pgn.IsoAddressClaim{
 		UniqueNumber:            &uniqueNumber,
 		ManufacturerCode:        pgn.Garmin,
 		DeviceFunction:          130,
@@ -194,7 +191,6 @@ func TestComputeNameFromClaimIncludesArbitraryAddressBit(t *testing.T) {
 		IndustryGroup:           pgn.MarineIndustry,
 		ArbitraryAddressCapable: pgn.Yes,
 	})
-	assert.NoError(t, err)
 	assert.Equal(t, expectedName, claimName)
 	assert.NotZero(t, claimName&(1<<63))
 }
@@ -210,7 +206,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 	err := n.Start()
 	assert.NoError(t, err)
 	assert.True(t, n.(*node).started)
-	assert.Len(t, sub.subscriptions, 8, "should have 8 subscriptions after start")
+	assert.Len(t, sub.subscriptions, 9, "should have 9 subscriptions after start")
 
 	err = n.Stop()
 	assert.NoError(t, err)
@@ -420,7 +416,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 			FunctionCode: pgn.Command,
 			Pgn:          uint32Ptr(pgn.ConfigurationInformationPgn),
 		}
-		responses := n.(*node).processNmeaCommandGroupFunction(commandPgn)
+		responses := n.(*node).processNmeaCommandGroupFunction(&commandPgn)
 		assert.Empty(t, responses)
 	})
 
@@ -493,20 +489,158 @@ func TestKnownDevices(t *testing.T) {
 		InstallationDescription2: "bench",
 		ManufacturerInformation:  "remote maker",
 	})
+	sub.simulatePGN(pgn.PgnListTransmitAndReceive{
+		Info:         pgn.MessageInfo{SourceId: 23},
+		FunctionCode: pgn.TransmitPgnList,
+		Repeating1: []pgn.PgnListTransmitAndReceiveRepeating1{
+			{Pgn: uint32Ptr(pgn.IsoAddressClaimPgn)},
+			{Pgn: uint32Ptr(pgn.ProductInformationPgn)},
+		},
+	})
+	sub.simulatePGN(pgn.PgnListTransmitAndReceive{
+		Info:         pgn.MessageInfo{SourceId: 23},
+		FunctionCode: pgn.ReceivePgnList,
+		Repeating1: []pgn.PgnListTransmitAndReceiveRepeating1{
+			{Pgn: uint32Ptr(pgn.IsoRequestPgn)},
+		},
+	})
 	sub.waitForHandler()
 
 	assert.Eventually(t, func() bool {
 		devices = n.KnownDevices()
-		return len(devices) == 1 && devices[0].ProductInfo != nil && devices[0].ConfigInfo != nil
+		return len(devices) == 1 &&
+			devices[0].ProductInfo != nil &&
+			devices[0].ConfigInfo != nil &&
+			len(devices[0].TransmitPGNs) == 2 &&
+			len(devices[0].ReceivePGNs) == 1
 	}, time.Second, time.Millisecond)
 
 	devices = n.KnownDevices()
 	assert.Equal(t, "Remote", devices[0].ProductInfo.ModelID)
 	assert.Equal(t, "1.2.3", devices[0].ProductInfo.SoftwareVersionCode)
 	assert.Equal(t, "helm", devices[0].ConfigInfo.InstallationDescription1)
+	assert.Equal(t, []uint32{pgn.IsoAddressClaimPgn, pgn.ProductInformationPgn}, devices[0].TransmitPGNs)
+	assert.Equal(t, []uint32{pgn.IsoRequestPgn}, devices[0].ReceivePGNs)
 
 	devices[0].ProductInfo.ModelID = "mutated"
+	devices[0].TransmitPGNs[0] = 0
 	assert.Equal(t, "Remote", n.KnownDevices()[0].ProductInfo.ModelID)
+	assert.Equal(t, uint32(pgn.IsoAddressClaimPgn), n.KnownDevices()[0].TransmitPGNs[0])
+}
+
+func TestKnownDevicesTracksNameAcrossAddressChanges(t *testing.T) {
+	sub := newMockSubscriber()
+	pub := newMockPublisher()
+	n := NewNode(sub, pub, newMockClock())
+
+	var changesMu sync.Mutex
+	var changes []DeviceChange
+	subID := n.SubscribeToDeviceChanges(func(change DeviceChange) {
+		changesMu.Lock()
+		defer changesMu.Unlock()
+		changes = append(changes, change)
+	})
+
+	err := n.Start()
+	assert.NoError(t, err)
+	defer func() { _ = n.Stop() }()
+
+	claim := testKnownDeviceClaim(23, 42)
+	sub.simulatePGN(claim)
+	sub.waitForHandler()
+
+	assert.Eventually(t, func() bool {
+		devices := n.KnownDevices()
+		return len(devices) == 1 && devices[0].Address == 23
+	}, time.Second, time.Millisecond)
+
+	claim.Info.SourceId = 24
+	sub.simulatePGN(claim)
+	sub.waitForHandler()
+
+	assert.Eventually(t, func() bool {
+		devices := n.KnownDevices()
+		return len(devices) == 1 && devices[0].Address == 24
+	}, time.Second, time.Millisecond)
+
+	assert.Eventually(t, func() bool {
+		changesMu.Lock()
+		defer changesMu.Unlock()
+		if len(changes) < 2 {
+			return false
+		}
+		last := changes[len(changes)-1]
+		return last.Kind == DeviceChangeAddressChanged &&
+			last.Device.Address == 24 &&
+			last.OldAddress != nil &&
+			*last.OldAddress == 23
+	}, time.Second, time.Millisecond)
+
+	err = n.UnsubscribeDeviceChanges(subID)
+	assert.NoError(t, err)
+	sub.simulatePGN(pgn.ProductInformation{
+		Info:    pgn.MessageInfo{SourceId: 24},
+		ModelId: "No event",
+	})
+	sub.waitForHandler()
+	changesMu.Lock()
+	changeCount := len(changes)
+	changesMu.Unlock()
+	assert.Never(t, func() bool {
+		changesMu.Lock()
+		defer changesMu.Unlock()
+		return len(changes) != changeCount
+	}, 50*time.Millisecond, time.Millisecond)
+}
+
+func TestKnownDevicesMergesPreClaimMetadata(t *testing.T) {
+	sub := newMockSubscriber()
+	pub := newMockPublisher()
+	n := NewNode(sub, pub, newMockClock())
+
+	err := n.Start()
+	assert.NoError(t, err)
+	defer func() { _ = n.Stop() }()
+
+	sub.simulatePGN(pgn.ProductInformation{
+		Info:    pgn.MessageInfo{SourceId: 23},
+		ModelId: "Before Claim",
+	})
+	sub.waitForHandler()
+
+	assert.Eventually(t, func() bool {
+		devices := n.KnownDevices()
+		return len(devices) == 1 && devices[0].Name == 0 && devices[0].ProductInfo != nil
+	}, time.Second, time.Millisecond)
+
+	sub.simulatePGN(testKnownDeviceClaim(23, 42))
+	sub.waitForHandler()
+
+	assert.Eventually(t, func() bool {
+		devices := n.KnownDevices()
+		return len(devices) == 1 &&
+			devices[0].Name != 0 &&
+			devices[0].ProductInfo != nil &&
+			devices[0].ProductInfo.ModelID == "Before Claim"
+	}, time.Second, time.Millisecond)
+}
+
+func testKnownDeviceClaim(sourceID uint8, uniqueNumber uint32) pgn.IsoAddressClaim {
+	deviceInstanceLower := uint8(1)
+	deviceInstanceUpper := uint8(2)
+	systemInstance := uint8(3)
+	return pgn.IsoAddressClaim{
+		Info:                    pgn.MessageInfo{SourceId: sourceID},
+		UniqueNumber:            &uniqueNumber,
+		ManufacturerCode:        pgn.Garmin,
+		DeviceInstanceLower:     &deviceInstanceLower,
+		DeviceInstanceUpper:     &deviceInstanceUpper,
+		DeviceFunction:          140,
+		DeviceClass:             pgn.Navigation,
+		SystemInstance:          &systemInstance,
+		IndustryGroup:           pgn.MarineIndustry,
+		ArbitraryAddressCapable: pgn.Yes,
+	}
 }
 
 func TestAddressClaimRetriesNextKnownFreeAddress(t *testing.T) {

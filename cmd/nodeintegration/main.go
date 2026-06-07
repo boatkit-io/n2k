@@ -1,3 +1,11 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package main provides a SocketCAN integration exerciser for node behavior.
 package main
 
 import (
@@ -32,7 +40,11 @@ func newDeviceListDumper(log *logrus.Logger, nodeImpl node.Node) *deviceListDump
 	}
 }
 
-func (d *deviceListDumper) setLocalDevice(address uint8, productInfo node.ProductInfo, configurationInfo node.ConfigurationInfo) {
+func (d *deviceListDumper) setLocalDevice(
+	address uint8,
+	productInfo *node.ProductInfo,
+	configurationInfo *node.ConfigurationInfo,
+) {
 	d.localDevice = &node.KnownDevice{
 		Address: address,
 		ProductInfo: &node.ProductInfo{
@@ -69,7 +81,7 @@ func (d *deviceListDumper) Dump(reason string) {
 func (d *deviceListDumper) render() string {
 	devices := d.node.KnownDevices()
 	if d.localDevice != nil {
-		devices = upsertLocalDevice(devices, *d.localDevice)
+		devices = upsertLocalDevice(devices, d.localDevice)
 	}
 
 	sort.Slice(devices, func(i, j int) bool {
@@ -81,33 +93,34 @@ func (d *deviceListDumper) render() string {
 	}
 
 	lines := make([]string, 0, len(devices))
-	for _, device := range devices {
-		lines = append(lines, formatKnownDevice(device))
+	for i := range devices {
+		lines = append(lines, formatKnownDevice(&devices[i]))
 	}
 	return strings.Join(lines, "\n")
 }
 
-func upsertLocalDevice(devices []node.KnownDevice, localDevice node.KnownDevice) []node.KnownDevice {
+func upsertLocalDevice(devices []node.KnownDevice, localDevice *node.KnownDevice) []node.KnownDevice {
 	for i := range devices {
 		if devices[i].Address == localDevice.Address {
-			devices[i] = mergeKnownDevice(devices[i], localDevice)
+			devices[i] = mergeKnownDevice(&devices[i], localDevice)
 			return devices
 		}
 	}
-	return append(devices, localDevice)
+	return append(devices, *localDevice)
 }
 
-func mergeKnownDevice(observed, localDevice node.KnownDevice) node.KnownDevice {
-	if observed.ProductInfo == nil {
-		observed.ProductInfo = localDevice.ProductInfo
+func mergeKnownDevice(observed, localDevice *node.KnownDevice) node.KnownDevice {
+	merged := *observed
+	if merged.ProductInfo == nil {
+		merged.ProductInfo = localDevice.ProductInfo
 	}
-	if observed.ConfigInfo == nil {
-		observed.ConfigInfo = localDevice.ConfigInfo
+	if merged.ConfigInfo == nil {
+		merged.ConfigInfo = localDevice.ConfigInfo
 	}
-	return observed
+	return merged
 }
 
-func formatKnownDevice(device node.KnownDevice) string {
+func formatKnownDevice(device *node.KnownDevice) string {
 	parts := []string{
 		fmt.Sprintf("address=0x%02x(%d)", device.Address, device.Address),
 	}
@@ -153,6 +166,12 @@ func (p *staticConfigurationProvider) SetConfigurationInfo(info node.Configurati
 }
 
 func main() {
+	if err := run(); err != nil {
+		logrus.Fatal(err)
+	}
+}
+
+func run() error {
 	flag.StringVar(&canInterface, "iface", "", "CAN interface name for integration tests")
 	flag.Parse()
 
@@ -161,7 +180,7 @@ func main() {
 	}
 
 	if canInterface == "" {
-		logrus.Fatal("CAN interface not specified. Use -iface flag or IFACE environment variable")
+		return fmt.Errorf("CAN interface not specified. Use -iface flag or IFACE environment variable")
 	}
 
 	log := logrus.StandardLogger()
@@ -177,13 +196,17 @@ func main() {
 		log.Infof("PGN DUMP: %s", n2k.DebugDumpPGN(p))
 	})
 	if err != nil {
-		log.Fatalf("failed to subscribe to all structs: %v", err)
+		return fmt.Errorf("failed to subscribe to all structs: %w", err)
 	}
 
 	if err := svc.Start(ctx); err != nil {
-		log.Fatalf("failed to start n2k service: %v", err)
+		return fmt.Errorf("failed to start n2k service: %w", err)
 	}
-	defer svc.Stop()
+	defer func() {
+		if err := svc.Stop(); err != nil {
+			log.Errorf("failed to stop n2k service: %v", err)
+		}
+	}()
 
 	log.Infof("Pipeline started on interface %s", canInterface)
 
@@ -202,7 +225,7 @@ func main() {
 		ArbitraryAddressCapable: true,
 	}
 	if err := nodeImpl.SetDeviceInfo(deviceInfo); err != nil {
-		log.Fatalf("failed to set device info: %v", err)
+		return fmt.Errorf("failed to set device info: %w", err)
 	}
 
 	log.Infof("Our device NAME: %x", nodeImpl.GetNetworkAddress())
@@ -241,12 +264,16 @@ func main() {
 	nodeImpl.EnableHeartbeat(true)
 
 	if err := nodeImpl.Start(); err != nil {
-		log.Fatalf("failed to start node: %v", err)
+		return fmt.Errorf("failed to start node: %w", err)
 	}
-	defer nodeImpl.Stop()
+	defer func() {
+		if err := nodeImpl.Stop(); err != nil {
+			log.Errorf("failed to stop node: %v", err)
+		}
+	}()
 
 	if err := nodeImpl.ClaimAddress(110); err != nil {
-		log.Fatalf("failed to claim address: %v", err)
+		return fmt.Errorf("failed to claim address: %w", err)
 	}
 	log.Info("Node started and address claim initiated for address 110.")
 
@@ -258,7 +285,7 @@ func main() {
 		log.Warnf("Address claim conflict occurred, current address: %d", nodeImpl.GetNetworkAddress())
 	}
 	sourceAddress := nodeImpl.GetNetworkAddress()
-	deviceDumper.setLocalDevice(sourceAddress, productInfo, configurationInfo)
+	deviceDumper.setLocalDevice(sourceAddress, &productInfo, &configurationInfo)
 	deviceDumper.DumpIfChanged("changed")
 
 	log.Info("Sending ISO Request for Address Claim (PGN 60928)")
@@ -375,6 +402,7 @@ func main() {
 	observeTicker.Stop()
 	deviceDumper.Dump("final")
 	log.Info("Integration test finished.")
+	return nil
 }
 
 func ptrUint32(v uint32) *uint32 {

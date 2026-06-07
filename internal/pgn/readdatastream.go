@@ -335,8 +335,8 @@ func (s *DataStream) readVariableDataWithSpec(spec *FieldSpec) ([]uint8, error) 
 		return nil, fmt.Errorf("FieldSpec is nil")
 	}
 
-	len := (spec.BitLength + 7) &^ 0x7
-	return s.readBinaryData(len)
+	byteLen := (spec.BitLength + 7) &^ 0x7
+	return s.readBinaryData(byteLen)
 }
 
 func signExtendInt64(rawValue uint64, bitLength uint16) int64 {

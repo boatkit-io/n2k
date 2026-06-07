@@ -21,7 +21,7 @@ The node package is responsible for:
 - Address claim lifecycle.
 - Responding to standard management requests.
 - Sending standard metadata/status PGNs.
-- Tracking other devices enough to manage address contention.
+- Tracking other devices and current network identity/address state.
 - Providing a safe write API that uses the claimed source address.
 - Exposing lifecycle and state transitions that applications can test.
 
@@ -92,6 +92,7 @@ Future API additions should be considered for:
 - Reading the address-claim state and failure reason.
 - Registering application-level ISO request handlers.
 - Choosing fixed-address versus arbitrary-address retry behavior.
+- Subscribing to node state and observed-device change events.
 
 ## Lifecycle
 
@@ -204,28 +205,99 @@ Candidate address selection should avoid addresses currently known to be
 claimed. For automatic selection, prefer deterministic behavior so tests and
 logs are understandable.
 
-### Known Device Map
+### Network Device Observer
 
-The node should maintain a map of known devices keyed by source address:
+The node is the package-level owner for interpreting standard NMEA 2000
+network-management traffic into current device state. Applications should not
+need to subscribe independently to standard discovery PGNs just to maintain a
+device inventory.
+
+The node should observe and correlate:
+
+- 60928, ISO Address Claim.
+- 126996, Product Information.
+- 126998, Configuration Information.
+- 126464, PGN List transmit and receive responses.
+- Future standard identity/configuration PGNs as support is added.
+
+The node should maintain a current-address map for fast arbitration and lookup,
+and a NAME-indexed device map for stable identity. Source address is network
+state and can change; NAME is the device identity. Devices whose NAME is not yet
+known may be tracked temporarily by source address, then merged into the
+NAME-indexed record when an address claim is observed.
+
+Recommended public snapshot shape:
 
 ```go
 type KnownDevice struct {
-    Address     uint8
-    Name        uint64
-    LastSeen    time.Time
-    ProductInfo *ProductInfo
-    ConfigInfo  *ConfigurationInfo
+    Address      uint8
+    Name         uint64
+    LastSeen     time.Time
+    ProductInfo  *ProductInfo
+    ConfigInfo   *ConfigurationInfo
+    TransmitPGNs []uint32
+    ReceivePGNs  []uint32
 }
 ```
 
-The map must be updated when address claims are received. If a source address is
-claimed by a different NAME, the old entry must be replaced. Entries may expire
-after a configurable idle period, but expiration must not cause the node to
-forget an address during an active claim wait.
+The current-address map must be updated when address claims are received. If a
+source address is claimed by a different NAME, the address must move to the new
+device and the old NAME-indexed record must no longer be considered active at
+that address. If the same NAME later claims a different source address, the
+device record should be retained and its current address updated.
 
 `KnownDevices` returns a sorted snapshot of this map so callers can inspect
 observed devices without mutating node internals. `cmd/nodeintegration` uses
 that snapshot to dump the device list when it changes and before exiting.
+
+Entries may expire or transition to an offline state after a configurable idle
+period, but expiration must not cause the node to forget an address during an
+active claim wait. Whether expired entries remain in `KnownDevices` should be
+explicit API behavior. A current-network snapshot may omit expired devices,
+while a higher-level application store may choose to persist them.
+
+#### Device Change Events
+
+Applications that maintain persistent device inventory need relevant changes
+without duplicating node's PGN subscriptions. The node should expose a
+thread-safe event or subscription API for observed-device changes. The API
+should deliver changes after node has updated its internal maps.
+
+Recommended event shape:
+
+```go
+type DeviceChangeKind int
+
+const (
+    DeviceChangeObserved DeviceChangeKind = iota
+    DeviceChangeAddressChanged
+    DeviceChangeProductInfoChanged
+    DeviceChangeConfigurationInfoChanged
+    DeviceChangePGNListsChanged
+    DeviceChangeExpired
+)
+
+type DeviceChange struct {
+    Kind        DeviceChangeKind
+    Device      KnownDevice
+    OldAddress  *uint8
+    ChangedPGNs []uint32
+}
+```
+
+The exact API may be callback-based or channel-based, but it must:
+
+- Be safe for concurrent callers.
+- Avoid holding node locks while invoking user callbacks.
+- Provide an unsubscribe path.
+- Preserve event ordering per node instance.
+- Allow callers to get an initial snapshot and then subscribe without missing
+  changes, or document a simple reconciliation pattern.
+
+Persistent inventory stores, such as an application-level source/device info
+store, should consume the node snapshot/events and decide what to persist. The
+node should remain the authority for live network state; the application store
+should remain the authority for cached/offline/user-annotated inventory.
 
 ## Required Standard PGN Behavior
 
@@ -505,6 +577,11 @@ Missing or incomplete:
 - Configuration Information change handling via Group Function write/command
   operations.
 - Known-device expiry and configurable idle timeout.
+- NAME-indexed known-device identity with source-address alias updates when a
+  device changes address.
+- Known-device enrichment from observed PGN List transmit/receive responses.
+- Observed-device change event/subscription API for application inventory
+  stores.
 - No-address-available reporting when all candidate addresses are known claimed.
 - Duplicate-NAME handling.
 - Configurable fixed-address versus arbitrary-address policy beyond the current

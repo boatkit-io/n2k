@@ -1,3 +1,11 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package node provides standard NMEA 2000 node behavior.
 package node
 
 import (
@@ -21,10 +29,12 @@ type Node interface {
 	GetNetworkAddress() uint8
 	IsAddressClaimed() bool
 	KnownDevices() []KnownDevice
+	SubscribeToDeviceChanges(callback func(DeviceChange)) SubscriptionID
+	UnsubscribeDeviceChanges(subID SubscriptionID) error
 	Write(pgnStruct any) error
 	WriteTo(pgnStruct any, destination uint8) error
 	SetDeviceInfo(info DeviceInfo) error
-	SetProductInfo(info ProductInfo)
+	SetProductInfo(info ProductInfo) //nolint:gocritic // API accepts value configuration.
 	SetConfigurationProvider(provider ConfigurationProvider)
 	SetSupportedPGNs(transmit, receive []uint32)
 	SetHeartbeatInterval(interval time.Duration)
@@ -33,8 +43,8 @@ type Node interface {
 
 // Subscriber is an interface that abstracts bus subscriptions for testing.
 type Subscriber interface {
-	SubscribeToStruct(t any, callback any) (SubscriptionId, error)
-	Unsubscribe(subId SubscriptionId) error
+	SubscribeToStruct(t, callback any) (SubscriptionID, error)
+	Unsubscribe(subID SubscriptionID) error
 }
 
 // Publisher is an interface that abstracts the pgn.Publisher for testing.
@@ -84,11 +94,39 @@ type ConfigurationProvider interface {
 
 // KnownDevice describes a device observed on the NMEA 2000 network.
 type KnownDevice struct {
-	Address     uint8
-	Name        uint64
-	LastSeen    time.Time
-	ProductInfo *ProductInfo
-	ConfigInfo  *ConfigurationInfo
+	Address      uint8
+	Name         uint64
+	LastSeen     time.Time
+	ProductInfo  *ProductInfo
+	ConfigInfo   *ConfigurationInfo
+	TransmitPGNs []uint32
+	ReceivePGNs  []uint32
+}
+
+// DeviceChangeKind identifies why an observed device changed.
+type DeviceChangeKind int
+
+const (
+	// DeviceChangeObserved indicates a device was observed for the first time.
+	DeviceChangeObserved DeviceChangeKind = iota
+	// DeviceChangeAddressChanged indicates an existing device NAME moved to a different source address.
+	DeviceChangeAddressChanged
+	// DeviceChangeProductInfoChanged indicates observed Product Information changed.
+	DeviceChangeProductInfoChanged
+	// DeviceChangeConfigurationInfoChanged indicates observed Configuration Information changed.
+	DeviceChangeConfigurationInfoChanged
+	// DeviceChangePGNListsChanged indicates observed transmit or receive PGN lists changed.
+	DeviceChangePGNListsChanged
+	// DeviceChangeExpired indicates an observed device expired from current network state.
+	DeviceChangeExpired
+)
+
+// DeviceChange describes a node-observed device state change.
+type DeviceChange struct {
+	Kind        DeviceChangeKind
+	Device      KnownDevice
+	OldAddress  *uint8
+	ChangedPGNs []uint32
 }
 
 type addressState uint8
@@ -102,33 +140,37 @@ const (
 
 // node is the internal implementation of the Node interface.
 type node struct {
-	subscriber        Subscriber
-	publisher         Publisher
-	clock             Clock
-	deviceInfo        DeviceInfo
-	deviceInfoSet     bool
-	productInfo       ProductInfo
-	configProvider    ConfigurationProvider
-	name              uint64
-	networkAddress    uint8
-	preferredAddress  uint8
-	addressClaimed    bool
-	addressState      addressState
-	transmitPGNs      []uint32
-	receivePGNs       []uint32
-	knownDevices      map[uint8]KnownDevice
-	heartbeatEnabled  bool
-	heartbeatInterval time.Duration
-	heartbeatSeq      uint8
-	started           bool
-	ctx               context.Context
-	cancel            context.CancelFunc
-	wg                sync.WaitGroup
-	subscriptions     []SubscriptionId
-	pgnIn             chan any
-	mutex             sync.RWMutex
-	wakeUp            chan struct{}
-	logger            *logrus.Logger
+	subscriber                     Subscriber
+	publisher                      Publisher
+	clock                          Clock
+	deviceInfo                     DeviceInfo
+	deviceInfoSet                  bool
+	productInfo                    ProductInfo
+	configProvider                 ConfigurationProvider
+	name                           uint64
+	networkAddress                 uint8
+	preferredAddress               uint8
+	addressClaimed                 bool
+	addressState                   addressState
+	transmitPGNs                   []uint32
+	receivePGNs                    []uint32
+	knownDevices                   map[uint64]KnownDevice
+	knownDeviceNamesByAddress      map[uint8]uint64
+	unknownKnownDevicesByAddress   map[uint8]KnownDevice
+	deviceChangeSubscribers        map[SubscriptionID]func(DeviceChange)
+	nextDeviceChangeSubscriptionID SubscriptionID
+	heartbeatEnabled               bool
+	heartbeatInterval              time.Duration
+	heartbeatSeq                   uint8
+	started                        bool
+	ctx                            context.Context
+	cancel                         context.CancelFunc
+	wg                             sync.WaitGroup
+	subscriptions                  []SubscriptionID
+	pgnIn                          chan any
+	mutex                          sync.RWMutex
+	wakeUp                         chan struct{}
+	logger                         *logrus.Logger
 }
 
 type toSend struct {
@@ -142,22 +184,26 @@ func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) Node {
 		clock = NewRealClock()
 	}
 	return &node{
-		subscriber:        subscriber,
-		publisher:         publisher,
-		clock:             clock,
-		name:              0,
-		networkAddress:    255,
-		preferredAddress:  128,
-		addressClaimed:    false,
-		knownDevices:      make(map[uint8]KnownDevice),
-		heartbeatEnabled:  false,
-		heartbeatInterval: 60 * time.Second,
-		started:           false,
-		subscriptions:     make([]SubscriptionId, 0),
-		pgnIn:             make(chan any, 10),
-		mutex:             sync.RWMutex{},
-		wakeUp:            make(chan struct{}, 1),
-		logger:            logrus.New(),
+		subscriber:                     subscriber,
+		publisher:                      publisher,
+		clock:                          clock,
+		name:                           0,
+		networkAddress:                 255,
+		preferredAddress:               128,
+		addressClaimed:                 false,
+		knownDevices:                   make(map[uint64]KnownDevice),
+		knownDeviceNamesByAddress:      make(map[uint8]uint64),
+		unknownKnownDevicesByAddress:   make(map[uint8]KnownDevice),
+		deviceChangeSubscribers:        make(map[SubscriptionID]func(DeviceChange)),
+		nextDeviceChangeSubscriptionID: 1,
+		heartbeatEnabled:               false,
+		heartbeatInterval:              60 * time.Second,
+		started:                        false,
+		subscriptions:                  make([]SubscriptionID, 0),
+		pgnIn:                          make(chan any, 10),
+		mutex:                          sync.RWMutex{},
+		wakeUp:                         make(chan struct{}, 1),
+		logger:                         logrus.New(),
 	}
 }
 
@@ -173,12 +219,12 @@ func (n *node) handleIsoRequest(p pgn.IsoRequest) {
 	n.enqueuePgn(p)
 }
 
-func (n *node) handleIsoAddressClaim(p pgn.IsoAddressClaim) {
+func (n *node) handleIsoAddressClaim(p pgn.IsoAddressClaim) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 	n.logger.Infof("handleIsoAddressClaim: received address claim from source %d", p.Info.SourceId)
 	n.enqueuePgn(p)
 }
 
-func (n *node) handleIsoCommandedAddress(p pgn.IsoCommandedAddress) {
+func (n *node) handleIsoCommandedAddress(p pgn.IsoCommandedAddress) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 	n.enqueuePgn(p)
 }
 
@@ -186,19 +232,26 @@ func (n *node) handleIsoAcknowledgement(p pgn.IsoAcknowledgement) {
 	n.enqueuePgn(p)
 }
 
+//nolint:gocritic // Subscriber callbacks must accept value PGNs.
 func (n *node) handleNmeaRequestGroupFunction(p pgn.NmeaRequestGroupFunction) {
 	n.enqueuePgn(p)
 }
 
+//nolint:gocritic // Subscriber callbacks must accept value PGNs.
 func (n *node) handleNmeaCommandGroupFunction(p pgn.NmeaCommandGroupFunction) {
 	n.enqueuePgn(p)
 }
 
-func (n *node) handleProductInformation(p pgn.ProductInformation) {
+func (n *node) handleProductInformation(p pgn.ProductInformation) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 	n.enqueuePgn(p)
 }
 
+//nolint:gocritic // Subscriber callbacks must accept value PGNs.
 func (n *node) handleConfigurationInformation(p pgn.ConfigurationInformation) {
+	n.enqueuePgn(p)
+}
+
+func (n *node) handlePgnListTransmitAndReceive(p pgn.PgnListTransmitAndReceive) {
 	n.enqueuePgn(p)
 }
 
@@ -257,6 +310,12 @@ func (n *node) Start() error {
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
+	sub, err = n.subscriber.SubscribeToStruct(pgn.PgnListTransmitAndReceive{}, n.handlePgnListTransmitAndReceive)
+	if err != nil {
+		return fmt.Errorf("failed to subscribe to PgnListTransmitAndReceive: %w", err)
+	}
+	n.subscriptions = append(n.subscriptions, sub)
+
 	n.ctx, n.cancel = context.WithCancel(context.Background())
 	n.started = true
 
@@ -274,9 +333,11 @@ func (n *node) Stop() error {
 	}
 
 	for _, sub := range n.subscriptions {
-		_ = n.subscriber.Unsubscribe(sub)
+		if err := n.subscriber.Unsubscribe(sub); err != nil {
+			n.logger.Warnf("failed to unsubscribe node subscription %d: %v", sub, err)
+		}
 	}
-	n.subscriptions = make([]SubscriptionId, 0)
+	n.subscriptions = make([]SubscriptionID, 0)
 
 	if n.cancel != nil {
 		n.cancel()
@@ -334,15 +395,13 @@ func (n *node) KnownDevices() []KnownDevice {
 
 	devices := make([]KnownDevice, 0, len(n.knownDevices))
 	for _, device := range n.knownDevices {
-		if device.ProductInfo != nil {
-			productInfo := *device.ProductInfo
-			device.ProductInfo = &productInfo
+		if device.Address > 253 {
+			continue
 		}
-		if device.ConfigInfo != nil {
-			configInfo := *device.ConfigInfo
-			device.ConfigInfo = &configInfo
-		}
-		devices = append(devices, device)
+		devices = append(devices, cloneKnownDevice(&device))
+	}
+	for _, device := range n.unknownKnownDevicesByAddress {
+		devices = append(devices, cloneKnownDevice(&device))
 	}
 
 	sort.Slice(devices, func(i, j int) bool {
@@ -350,6 +409,31 @@ func (n *node) KnownDevices() []KnownDevice {
 	})
 
 	return devices
+}
+
+func (n *node) SubscribeToDeviceChanges(callback func(DeviceChange)) SubscriptionID {
+	if callback == nil {
+		return 0
+	}
+
+	n.mutex.Lock()
+	defer n.mutex.Unlock()
+
+	subID := n.nextDeviceChangeSubscriptionID
+	n.nextDeviceChangeSubscriptionID++
+	n.deviceChangeSubscribers[subID] = callback
+	return subID
+}
+
+func (n *node) UnsubscribeDeviceChanges(subID SubscriptionID) error {
+	n.mutex.Lock()
+	defer n.mutex.Unlock()
+
+	if _, ok := n.deviceChangeSubscribers[subID]; !ok {
+		return fmt.Errorf("device change subscription not found")
+	}
+	delete(n.deviceChangeSubscribers, subID)
+	return nil
 }
 
 func (n *node) Write(pgnStruct any) error {
@@ -391,7 +475,7 @@ func (n *node) SetDeviceInfo(info DeviceInfo) error {
 	return nil
 }
 
-func (n *node) SetProductInfo(info ProductInfo) {
+func (n *node) SetProductInfo(info ProductInfo) { //nolint:gocritic // API accepts value configuration.
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.productInfo = info
@@ -487,8 +571,8 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 		receivePGNs = managedReceivePGNs(receivePGNs)
 
 		txRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(transmitPGNs))
-		for i, pgn_num := range transmitPGNs {
-			p := pgn_num
+		for i, pgnNum := range transmitPGNs {
+			p := pgnNum
 			txRepeating[i] = pgn.PgnListTransmitAndReceiveRepeating1{Pgn: &p}
 		}
 		txResponse := &pgn.PgnListTransmitAndReceive{
@@ -503,8 +587,8 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 		responses = append(responses, toSend{pgn: txResponse, dest: req.Info.SourceId})
 
 		rxRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(receivePGNs))
-		for i, pgn_num := range receivePGNs {
-			p := pgn_num
+		for i, pgnNum := range receivePGNs {
+			p := pgnNum
 			rxRepeating[i] = pgn.PgnListTransmitAndReceiveRepeating1{Pgn: &p}
 		}
 		rxResponse := &pgn.PgnListTransmitAndReceive{
@@ -593,7 +677,7 @@ func mergePGNs(configured, managed []uint32) []uint32 {
 	return merged
 }
 
-func (n *node) processNmeaRequestGroupFunction(req pgn.NmeaRequestGroupFunction) []toSend {
+func (n *node) processNmeaRequestGroupFunction(req *pgn.NmeaRequestGroupFunction) []toSend {
 	if req.Pgn == nil {
 		return nil
 	}
@@ -607,7 +691,7 @@ func (n *node) processNmeaRequestGroupFunction(req pgn.NmeaRequestGroupFunction)
 	})
 }
 
-func (n *node) processNmeaCommandGroupFunction(cmd pgn.NmeaCommandGroupFunction) []toSend {
+func (n *node) processNmeaCommandGroupFunction(cmd *pgn.NmeaCommandGroupFunction) []toSend {
 	if cmd.Pgn == nil {
 		return nil
 	}
@@ -636,15 +720,12 @@ func (n *node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPg
 	}}
 }
 
-func (n *node) processIsoCommandedAddress(cmd pgn.IsoCommandedAddress) {
+func (n *node) processIsoCommandedAddress(cmd *pgn.IsoCommandedAddress) {
 	n.mutex.RLock()
 	currentName := n.name
 	n.mutex.RUnlock()
 
-	cmdName, err := computeNameFromCommand(&cmd)
-	if err != nil {
-		return
-	}
+	cmdName := computeNameFromCommand(cmd)
 
 	ourNameWithoutBit := currentName &^ (1 << 63)
 	if cmdName != ourNameWithoutBit {
@@ -662,13 +743,8 @@ func (n *node) processIsoCommandedAddress(cmd pgn.IsoCommandedAddress) {
 	n.mutex.Unlock()
 }
 
-func (n *node) processIsoAddressClaim(claim pgn.IsoAddressClaim) {
-	incomingName, err := computeNameFromClaim(&claim)
-	if err != nil {
-		n.logger.Infof("processIsoAddressClaim: failed to compute incoming NAME: %v", err)
-		return
-	}
-
+func (n *node) processIsoAddressClaim(claim *pgn.IsoAddressClaim) {
+	incomingName := computeNameFromClaim(claim)
 	n.updateKnownDeviceFromClaim(claim, incomingName)
 
 	n.mutex.RLock()
@@ -723,25 +799,54 @@ func (n *node) processIsoAddressClaim(claim pgn.IsoAddressClaim) {
 	}
 }
 
-func (n *node) updateKnownDeviceFromClaim(claim pgn.IsoAddressClaim, name uint64) {
+func (n *node) updateKnownDeviceFromClaim(claim *pgn.IsoAddressClaim, name uint64) {
+	var changes []DeviceChange
 	n.mutex.Lock()
-	defer n.mutex.Unlock()
 
-	device := n.knownDevices[claim.Info.SourceId]
-	if device.Name != name {
-		device = KnownDevice{}
+	now := time.Now()
+	address := claim.Info.SourceId
+	device := n.knownDevices[name]
+	_, knownName := n.knownDevices[name]
+	oldAddress := device.Address
+	if unknown, ok := n.unknownKnownDevicesByAddress[address]; ok {
+		device = mergeKnownDevice(&device, &unknown)
+		delete(n.unknownKnownDevicesByAddress, address)
 	}
-	device.Address = claim.Info.SourceId
+	if previousName, ok := n.knownDeviceNamesByAddress[address]; ok && previousName != name {
+		previousDevice := n.knownDevices[previousName]
+		previousDevice.Address = 255
+		n.knownDevices[previousName] = previousDevice
+	}
+	if knownName && oldAddress <= 253 && oldAddress != address {
+		delete(n.knownDeviceNamesByAddress, oldAddress)
+	}
+	device.Address = address
 	device.Name = name
-	device.LastSeen = time.Now()
-	n.knownDevices[claim.Info.SourceId] = device
+	device.LastSeen = now
+	n.knownDevices[name] = device
+	n.knownDeviceNamesByAddress[address] = name
+	if !knownName {
+		changes = append(changes, DeviceChange{
+			Kind:   DeviceChangeObserved,
+			Device: cloneKnownDevice(&device),
+		})
+	} else if oldAddress != address {
+		changes = append(changes, DeviceChange{
+			Kind:       DeviceChangeAddressChanged,
+			Device:     cloneKnownDevice(&device),
+			OldAddress: ptrUint8(oldAddress),
+		})
+	}
+	n.mutex.Unlock()
+
+	n.publishDeviceChanges(changes)
 }
 
-func (n *node) updateKnownDeviceFromProductInfo(info pgn.ProductInformation) {
+func (n *node) updateKnownDeviceFromProductInfo(info *pgn.ProductInformation) {
+	var changes []DeviceChange
 	n.mutex.Lock()
-	defer n.mutex.Unlock()
 
-	device := n.knownDevices[info.Info.SourceId]
+	device := n.knownDeviceForAddressLocked(info.Info.SourceId)
 	device.Address = info.Info.SourceId
 	device.LastSeen = time.Now()
 
@@ -768,15 +873,24 @@ func (n *node) updateKnownDeviceFromProductInfo(info pgn.ProductInformation) {
 		CertificationLevel:  uint8(info.CertificationLevel),
 		LoadEquivalency:     loadEquivalency,
 	}
-	device.ProductInfo = &productInfo
-	n.knownDevices[info.Info.SourceId] = device
+	if device.ProductInfo == nil || !reflect.DeepEqual(*device.ProductInfo, productInfo) {
+		device.ProductInfo = &productInfo
+		changes = append(changes, DeviceChange{
+			Kind:   DeviceChangeProductInfoChanged,
+			Device: cloneKnownDevice(&device),
+		})
+	}
+	n.setKnownDeviceForAddressLocked(info.Info.SourceId, &device)
+	n.mutex.Unlock()
+
+	n.publishDeviceChanges(changes)
 }
 
-func (n *node) updateKnownDeviceFromConfigurationInfo(info pgn.ConfigurationInformation) {
+func (n *node) updateKnownDeviceFromConfigurationInfo(info *pgn.ConfigurationInformation) {
+	var changes []DeviceChange
 	n.mutex.Lock()
-	defer n.mutex.Unlock()
 
-	device := n.knownDevices[info.Info.SourceId]
+	device := n.knownDeviceForAddressLocked(info.Info.SourceId)
 	device.Address = info.Info.SourceId
 	device.LastSeen = time.Now()
 	configInfo := ConfigurationInfo{
@@ -784,13 +898,65 @@ func (n *node) updateKnownDeviceFromConfigurationInfo(info pgn.ConfigurationInfo
 		InstallationDescription2: info.InstallationDescription2,
 		ManufacturerInformation:  info.ManufacturerInformation,
 	}
-	device.ConfigInfo = &configInfo
-	n.knownDevices[info.Info.SourceId] = device
+	if device.ConfigInfo == nil || !reflect.DeepEqual(*device.ConfigInfo, configInfo) {
+		device.ConfigInfo = &configInfo
+		changes = append(changes, DeviceChange{
+			Kind:   DeviceChangeConfigurationInfoChanged,
+			Device: cloneKnownDevice(&device),
+		})
+	}
+	n.setKnownDeviceForAddressLocked(info.Info.SourceId, &device)
+	n.mutex.Unlock()
+
+	n.publishDeviceChanges(changes)
+}
+
+func (n *node) updateKnownDeviceFromPgnList(info *pgn.PgnListTransmitAndReceive) {
+	var changes []DeviceChange
+	n.mutex.Lock()
+
+	device := n.knownDeviceForAddressLocked(info.Info.SourceId)
+	device.Address = info.Info.SourceId
+	device.LastSeen = time.Now()
+
+	pgns := knownDevicePGNListValues(info.Repeating1)
+	var changedPGNs []uint32
+	switch info.FunctionCode {
+	case pgn.TransmitPgnList:
+		if !reflect.DeepEqual(device.TransmitPGNs, pgns) {
+			device.TransmitPGNs = pgns
+			changedPGNs = append([]uint32(nil), pgns...)
+		}
+	case pgn.ReceivePgnList:
+		if !reflect.DeepEqual(device.ReceivePGNs, pgns) {
+			device.ReceivePGNs = pgns
+			changedPGNs = append([]uint32(nil), pgns...)
+		}
+	default:
+		n.mutex.Unlock()
+		return
+	}
+	if changedPGNs != nil {
+		changes = append(changes, DeviceChange{
+			Kind:        DeviceChangePGNListsChanged,
+			Device:      cloneKnownDevice(&device),
+			ChangedPGNs: changedPGNs,
+		})
+	}
+	n.setKnownDeviceForAddressLocked(info.Info.SourceId, &device)
+	n.mutex.Unlock()
+
+	n.publishDeviceChanges(changes)
 }
 
 func (n *node) nextAvailableAddressLocked(after uint8) (uint8, bool) {
-	claimed := make(map[uint8]struct{}, len(n.knownDevices)+1)
-	for address := range n.knownDevices {
+	claimed := make(map[uint8]struct{}, len(n.knownDeviceNamesByAddress)+len(n.unknownKnownDevicesByAddress)+1)
+	for address := range n.knownDeviceNamesByAddress {
+		if address <= 253 {
+			claimed[address] = struct{}{}
+		}
+	}
+	for address := range n.unknownKnownDevicesByAddress {
 		if address <= 253 {
 			claimed[address] = struct{}{}
 		}
@@ -805,6 +971,99 @@ func (n *node) nextAvailableAddressLocked(after uint8) (uint8, bool) {
 	}
 
 	return 0, false
+}
+
+func (n *node) knownDeviceForAddressLocked(address uint8) KnownDevice {
+	if name, ok := n.knownDeviceNamesByAddress[address]; ok {
+		return n.knownDevices[name]
+	}
+	if device, ok := n.unknownKnownDevicesByAddress[address]; ok {
+		return device
+	}
+	return KnownDevice{Address: address}
+}
+
+func (n *node) setKnownDeviceForAddressLocked(address uint8, device *KnownDevice) {
+	if device.Name != 0 {
+		n.knownDevices[device.Name] = *device
+		n.knownDeviceNamesByAddress[address] = device.Name
+		delete(n.unknownKnownDevicesByAddress, address)
+		return
+	}
+	n.unknownKnownDevicesByAddress[address] = *device
+}
+
+func mergeKnownDevice(device, overlay *KnownDevice) KnownDevice {
+	ret := *device
+	if device.Address == 0 {
+		ret.Address = overlay.Address
+	}
+	if device.LastSeen.IsZero() || overlay.LastSeen.After(device.LastSeen) {
+		ret.LastSeen = overlay.LastSeen
+	}
+	if device.ProductInfo == nil && overlay.ProductInfo != nil {
+		productInfo := *overlay.ProductInfo
+		ret.ProductInfo = &productInfo
+	}
+	if device.ConfigInfo == nil && overlay.ConfigInfo != nil {
+		configInfo := *overlay.ConfigInfo
+		ret.ConfigInfo = &configInfo
+	}
+	if device.TransmitPGNs == nil && overlay.TransmitPGNs != nil {
+		ret.TransmitPGNs = append([]uint32(nil), overlay.TransmitPGNs...)
+	}
+	if device.ReceivePGNs == nil && overlay.ReceivePGNs != nil {
+		ret.ReceivePGNs = append([]uint32(nil), overlay.ReceivePGNs...)
+	}
+	return ret
+}
+
+func cloneKnownDevice(device *KnownDevice) KnownDevice {
+	ret := *device
+	if ret.ProductInfo != nil {
+		productInfo := *ret.ProductInfo
+		ret.ProductInfo = &productInfo
+	}
+	if ret.ConfigInfo != nil {
+		configInfo := *ret.ConfigInfo
+		ret.ConfigInfo = &configInfo
+	}
+	ret.TransmitPGNs = append([]uint32(nil), ret.TransmitPGNs...)
+	ret.ReceivePGNs = append([]uint32(nil), ret.ReceivePGNs...)
+	return ret
+}
+
+func knownDevicePGNListValues(list []pgn.PgnListTransmitAndReceiveRepeating1) []uint32 {
+	values := make([]uint32, 0, len(list))
+	for _, item := range list {
+		if item.Pgn != nil {
+			values = append(values, *item.Pgn)
+		}
+	}
+	return values
+}
+
+func ptrUint8(v uint8) *uint8 {
+	return &v
+}
+
+func (n *node) publishDeviceChanges(changes []DeviceChange) {
+	if len(changes) == 0 {
+		return
+	}
+
+	n.mutex.RLock()
+	subscribers := make([]func(DeviceChange), 0, len(n.deviceChangeSubscribers))
+	for _, subscriber := range n.deviceChangeSubscribers {
+		subscribers = append(subscribers, subscriber)
+	}
+	n.mutex.RUnlock()
+
+	for i := range changes {
+		for _, subscriber := range subscribers {
+			subscriber(changes[i])
+		}
+	}
 }
 
 func (n *node) sendAddressClaim() {
@@ -859,7 +1118,11 @@ func buildIsoNak(source, destination uint8, requestedPgn uint32) *pgn.IsoAcknowl
 	}
 }
 
-func buildNmeaGroupNak(source, destination uint8, requestedPgn uint32, parameterError pgn.ParameterFieldConst) *pgn.NmeaAcknowledgeGroupFunction {
+func buildNmeaGroupNak(
+	source, destination uint8,
+	requestedPgn uint32,
+	parameterError pgn.ParameterFieldConst,
+) *pgn.NmeaAcknowledgeGroupFunction {
 	return &pgn.NmeaAcknowledgeGroupFunction{
 		Info: pgn.MessageInfo{
 			PGN:      pgn.NmeaAcknowledgeGroupFunctionPgn,
@@ -903,6 +1166,48 @@ func (n *node) sendHeartbeat() {
 	n.mutex.Unlock()
 }
 
+func (n *node) processPGN(p any) []toSend {
+	switch v := p.(type) {
+	case pgn.IsoRequest:
+		return n.processIsoRequest(v)
+	case pgn.NmeaRequestGroupFunction:
+		return n.processNmeaRequestGroupFunction(&v)
+	case pgn.NmeaCommandGroupFunction:
+		return n.processNmeaCommandGroupFunction(&v)
+	case pgn.IsoAcknowledgement:
+		n.logger.Infof("process: received ISO acknowledgement for PGN %v", v.Pgn)
+	case pgn.IsoAddressClaim:
+		n.processIsoAddressClaim(&v)
+	case pgn.IsoCommandedAddress:
+		n.processIsoCommandedAddress(&v)
+	case pgn.ProductInformation:
+		n.updateKnownDeviceFromProductInfo(&v)
+	case pgn.ConfigurationInformation:
+		n.updateKnownDeviceFromConfigurationInfo(&v)
+	case pgn.PgnListTransmitAndReceive:
+		n.updateKnownDeviceFromPgnList(&v)
+	default:
+		n.logger.Infof("process: received unhandled PGN type %T", p)
+	}
+	return nil
+}
+
+func (n *node) sendProcessResponses(toSendList []toSend) {
+	if len(toSendList) == 0 {
+		return
+	}
+
+	n.mutex.RLock()
+	publisher := n.publisher
+	n.mutex.RUnlock()
+	for _, ts := range toSendList {
+		n.logger.Infof("process: sending PGN %+v to %d", ts.pgn, ts.dest)
+		if err := publisher.Write(ts.pgn); err != nil {
+			n.logger.Errorf("process: failed to write PGN %+v to %d: %v", ts.pgn, ts.dest, err)
+		}
+	}
+}
+
 func (n *node) process() {
 	defer n.wg.Done()
 	n.logger.Infof("process: goroutine started")
@@ -926,11 +1231,9 @@ func (n *node) process() {
 				n.networkAddress = n.preferredAddress
 				shouldSendClaim = true
 			}
-		} else {
-			if claimTicker != nil {
-				claimTicker.Stop()
-				claimTicker = nil
-			}
+		} else if claimTicker != nil {
+			claimTicker.Stop()
+			claimTicker = nil
 		}
 
 		if n.heartbeatEnabled && n.addressClaimed {
@@ -938,11 +1241,9 @@ func (n *node) process() {
 				heartbeatTicker = n.clock.NewTicker(n.heartbeatInterval)
 				initialHeartbeat = true
 			}
-		} else {
-			if heartbeatTicker != nil {
-				heartbeatTicker.Stop()
-				heartbeatTicker = nil
-			}
+		} else if heartbeatTicker != nil {
+			heartbeatTicker.Stop()
+			heartbeatTicker = nil
 		}
 		n.mutex.Unlock()
 
@@ -970,37 +1271,7 @@ func (n *node) process() {
 				n.logger.Infof("process: pgnIn channel closed")
 				return
 			}
-			var toSendList []toSend
-			switch v := p.(type) {
-			case pgn.IsoRequest:
-				toSendList = n.processIsoRequest(v)
-			case pgn.NmeaRequestGroupFunction:
-				toSendList = n.processNmeaRequestGroupFunction(v)
-			case pgn.NmeaCommandGroupFunction:
-				toSendList = n.processNmeaCommandGroupFunction(v)
-			case pgn.IsoAcknowledgement:
-				n.logger.Infof("process: received ISO acknowledgement for PGN %v", v.Pgn)
-			case pgn.IsoAddressClaim:
-				n.processIsoAddressClaim(v)
-			case pgn.IsoCommandedAddress:
-				n.processIsoCommandedAddress(v)
-			case pgn.ProductInformation:
-				n.updateKnownDeviceFromProductInfo(v)
-			case pgn.ConfigurationInformation:
-				n.updateKnownDeviceFromConfigurationInfo(v)
-			default:
-				n.logger.Infof("process: received unhandled PGN type %T", p)
-			}
-
-			if len(toSendList) > 0 {
-				n.mutex.RLock()
-				publisher := n.publisher
-				n.mutex.RUnlock()
-				for _, ts := range toSendList {
-					n.logger.Infof("process: sending PGN %+v to %d", ts.pgn, ts.dest)
-					_ = publisher.Write(ts.pgn)
-				}
-			}
+			n.sendProcessResponses(n.processPGN(p))
 
 		case <-claimTick:
 			n.mutex.Lock()
@@ -1071,7 +1342,7 @@ func computeName(d DeviceInfo) (uint64, error) {
 	return name, nil
 }
 
-func computeNameFromClaim(claim *pgn.IsoAddressClaim) (uint64, error) {
+func computeNameFromClaim(claim *pgn.IsoAddressClaim) uint64 {
 	var name uint64
 	if claim.UniqueNumber != nil {
 		name |= uint64(*claim.UniqueNumber)
@@ -1101,10 +1372,10 @@ func computeNameFromClaim(claim *pgn.IsoAddressClaim) (uint64, error) {
 	if claim.ArbitraryAddressCapable == pgn.Yes {
 		name |= 1 << 63
 	}
-	return name, nil
+	return name
 }
 
-func computeNameFromCommand(cmd *pgn.IsoCommandedAddress) (uint64, error) {
+func computeNameFromCommand(cmd *pgn.IsoCommandedAddress) uint64 {
 	var name uint64
 	if len(cmd.UniqueNumber) >= 3 {
 		uniqueNum := uint64(cmd.UniqueNumber[0]) | (uint64(cmd.UniqueNumber[1]) << 8) | (uint64(cmd.UniqueNumber[2]) << 16)
@@ -1132,14 +1403,14 @@ func computeNameFromCommand(cmd *pgn.IsoCommandedAddress) (uint64, error) {
 	if cmd.IndustryCode != 0 {
 		name |= uint64(cmd.IndustryCode) << 60
 	}
-	return name, nil
+	return name
 }
 
 // setMessageInfo uses reflection to set the "Info" field on a PGN struct.
 // This is a helper to avoid repetitive code when sending PGNs.
 func setMessageInfo(s any, source, destination uint8) error {
 	v := reflect.ValueOf(s)
-	if v.Kind() != reflect.Ptr || v.Elem().Kind() != reflect.Struct {
+	if v.Kind() != reflect.Pointer || v.Elem().Kind() != reflect.Struct {
 		return fmt.Errorf("expected a pointer to a struct, got %T", s)
 	}
 

@@ -1,9 +1,17 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package node provides standard NMEA 2000 node behavior.
 package node
 
 import "github.com/boatkit-io/n2k/pkg/n2k"
 
-// SubscriptionId identifies a subscription managed by a Subscriber.
-type SubscriptionId uint
+// SubscriptionID identifies a subscription managed by a Subscriber.
+type SubscriptionID uint
 
 // NewFromService creates a Node backed by the public N2kService API.
 // This is the intended entry point for clients such as goatkit.
@@ -19,13 +27,13 @@ func newN2kServiceSubscriber(svc *n2k.N2kService) *n2kServiceSubscriber {
 	return &n2kServiceSubscriber{svc: svc}
 }
 
-func (s *n2kServiceSubscriber) SubscribeToStruct(t any, callback any) (SubscriptionId, error) {
+func (s *n2kServiceSubscriber) SubscribeToStruct(t, callback any) (SubscriptionID, error) {
 	id, err := s.svc.SubscribeToStruct(t, callback)
-	return SubscriptionId(id), err
+	return SubscriptionID(id), err
 }
 
-func (s *n2kServiceSubscriber) Unsubscribe(subId SubscriptionId) error {
-	return s.svc.Unsubscribe(uint(subId))
+func (s *n2kServiceSubscriber) Unsubscribe(subID SubscriptionID) error {
+	return s.svc.Unsubscribe(uint(subID))
 }
 
 type n2kServicePublisher struct {

@@ -11,22 +11,22 @@ import (
 
 // mockSubscriber is a mock implementation of the Subscriber interface.
 type mockSubscriber struct {
-	subscriptions map[SubscriptionId]bool
+	subscriptions map[SubscriptionID]bool
 	handlers      map[string]any // Store handlers of any func type
-	nextSubId     SubscriptionId
+	nextSubID     SubscriptionID
 	wg            sync.WaitGroup
 }
 
 func newMockSubscriber() *mockSubscriber {
 	return &mockSubscriber{
-		subscriptions: make(map[SubscriptionId]bool),
+		subscriptions: make(map[SubscriptionID]bool),
 		handlers:      make(map[string]any),
-		nextSubId:     1,
+		nextSubID:     1,
 		wg:            sync.WaitGroup{},
 	}
 }
 
-func (m *mockSubscriber) SubscribeToStruct(t any, callback any) (SubscriptionId, error) {
+func (m *mockSubscriber) SubscribeToStruct(t, callback any) (SubscriptionID, error) {
 	structName := ""
 	switch t.(type) {
 	case pgn.IsoAcknowledgement:
@@ -45,21 +45,23 @@ func (m *mockSubscriber) SubscribeToStruct(t any, callback any) (SubscriptionId,
 		structName = "ProductInformation"
 	case pgn.ConfigurationInformation:
 		structName = "ConfigurationInformation"
+	case pgn.PgnListTransmitAndReceive:
+		structName = "PgnListTransmitAndReceive"
 	default:
 		return 0, fmt.Errorf("mockSubscriber does not support type %T", t)
 	}
 
-	m.subscriptions[m.nextSubId] = true
+	m.subscriptions[m.nextSubID] = true
 	m.handlers[structName] = callback
-	m.nextSubId++
-	return m.nextSubId - 1, nil
+	m.nextSubID++
+	return m.nextSubID - 1, nil
 }
 
-func (m *mockSubscriber) Unsubscribe(subId SubscriptionId) error {
-	if _, ok := m.subscriptions[subId]; !ok {
+func (m *mockSubscriber) Unsubscribe(subID SubscriptionID) error {
+	if _, ok := m.subscriptions[subID]; !ok {
 		return fmt.Errorf("subscription not found")
 	}
-	delete(m.subscriptions, subId)
+	delete(m.subscriptions, subID)
 	return nil
 }
 
@@ -83,6 +85,8 @@ func (m *mockSubscriber) simulatePGN(pgnStruct any) {
 		structName = "ProductInformation"
 	case pgn.ConfigurationInformation, *pgn.ConfigurationInformation:
 		structName = "ConfigurationInformation"
+	case pgn.PgnListTransmitAndReceive, *pgn.PgnListTransmitAndReceive:
+		structName = "PgnListTransmitAndReceive"
 	default:
 		return
 	}
@@ -93,7 +97,7 @@ func (m *mockSubscriber) simulatePGN(pgnStruct any) {
 			defer m.wg.Done()
 			v := reflect.ValueOf(handler)
 			arg := reflect.ValueOf(pgnStruct)
-			if arg.Kind() == reflect.Ptr {
+			if arg.Kind() == reflect.Pointer {
 				arg = arg.Elem()
 			}
 			v.Call([]reflect.Value{arg})
@@ -174,7 +178,7 @@ func newMockClock() *mockClock {
 	}
 }
 
-func (mc *mockClock) NewTicker(d time.Duration) Ticker {
+func (mc *mockClock) NewTicker(_ time.Duration) Ticker {
 	ticker := &mockTicker{
 		c:    make(chan time.Time, 1),
 		stop: make(chan struct{}),
