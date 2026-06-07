@@ -14,6 +14,7 @@ import (
 	"fmt"
 	"os"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -25,6 +26,7 @@ import (
 )
 
 var canInterface string
+var claimAddress = node.ReadOnlyAddress
 
 type deviceListDumper struct {
 	log         *logrus.Logger
@@ -173,6 +175,17 @@ func main() {
 
 func run() error {
 	flag.StringVar(&canInterface, "iface", "", "CAN interface name for integration tests")
+	flag.Func("address", "NMEA 2000 address to claim (0-253), or 255 for read-only monitoring", func(value string) error {
+		parsed, err := strconv.ParseUint(value, 0, 8)
+		if err != nil {
+			return fmt.Errorf("invalid address %q: %w", value, err)
+		}
+		if parsed == 254 {
+			return fmt.Errorf("address 254 is the null address and cannot be claimed")
+		}
+		claimAddress = uint8(parsed)
+		return nil
+	})
 	flag.Parse()
 
 	if canInterface == "" {
@@ -272,22 +285,57 @@ func run() error {
 		}
 	}()
 
-	if err := nodeImpl.ClaimAddress(110); err != nil {
+	if err := nodeImpl.ClaimAddress(claimAddress); err != nil {
 		return fmt.Errorf("failed to claim address: %w", err)
 	}
-	log.Info("Node started and address claim initiated for address 110.")
+
+	readOnly := claimAddress == node.ReadOnlyAddress
+	if readOnly {
+		log.Info("Node started in read-only monitoring mode.")
+	} else {
+		log.Infof("Node started and address claim initiated for address %d.", claimAddress)
+	}
 
 	time.Sleep(2 * time.Second)
 
-	if nodeImpl.GetNetworkAddress() == 110 {
-		log.Info("Address 110 successfully claimed")
+	if readOnly {
+		deviceDumper.DumpIfChanged("changed")
+	} else if nodeImpl.GetNetworkAddress() == claimAddress {
+		log.Infof("Address %d successfully claimed", claimAddress)
 	} else {
-		log.Warnf("Address claim conflict occurred, current address: %d", nodeImpl.GetNetworkAddress())
+		log.Warnf("Address claim conflict occurred, requested address: %d, current address: %d",
+			claimAddress, nodeImpl.GetNetworkAddress())
 	}
 	sourceAddress := nodeImpl.GetNetworkAddress()
-	deviceDumper.setLocalDevice(sourceAddress, &productInfo, &configurationInfo)
-	deviceDumper.DumpIfChanged("changed")
+	if !readOnly {
+		deviceDumper.setLocalDevice(sourceAddress, &productInfo, &configurationInfo)
+		deviceDumper.DumpIfChanged("changed")
+	}
 
+	if readOnly {
+		log.Info("Skipping active request PGNs in read-only mode.")
+	} else {
+		sendActiveRequests(log, svc, sourceAddress)
+	}
+
+	log.Info("Running for 30 seconds to observe traffic...")
+	observeDone := time.After(30 * time.Second)
+	observeTicker := time.NewTicker(250 * time.Millisecond)
+	for observing := true; observing; {
+		select {
+		case <-observeTicker.C:
+			deviceDumper.DumpIfChanged("changed")
+		case <-observeDone:
+			observing = false
+		}
+	}
+	observeTicker.Stop()
+	deviceDumper.Dump("final")
+	log.Info("Integration test finished.")
+	return nil
+}
+
+func sendActiveRequests(log *logrus.Logger, svc *n2k.N2kService, sourceAddress uint8) {
 	log.Info("Sending ISO Request for Address Claim (PGN 60928)")
 	isoRequestAddrClaim := &pgn.IsoRequest{
 		Pgn: ptrUint32(pgn.IsoAddressClaimPgn),
@@ -387,22 +435,6 @@ func run() error {
 	if err := svc.Write(nmeaCommandConfigInfo); err != nil {
 		log.Errorf("failed to write NMEA command group function for configuration info: %v", err)
 	}
-
-	log.Info("Running for 30 seconds to observe traffic...")
-	observeDone := time.After(30 * time.Second)
-	observeTicker := time.NewTicker(250 * time.Millisecond)
-	for observing := true; observing; {
-		select {
-		case <-observeTicker.C:
-			deviceDumper.DumpIfChanged("changed")
-		case <-observeDone:
-			observing = false
-		}
-	}
-	observeTicker.Stop()
-	deviceDumper.Dump("final")
-	log.Info("Integration test finished.")
-	return nil
 }
 
 func ptrUint32(v uint32) *uint32 {

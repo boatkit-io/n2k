@@ -47,6 +47,7 @@ func TestNewNode(t *testing.T) {
 	assert.Equal(t, uint8(255), n.networkAddress)
 	assert.Equal(t, uint8(128), n.preferredAddress)
 	assert.False(t, n.addressClaimed)
+	assert.True(t, n.readOnly)
 	assert.False(t, n.heartbeatEnabled)
 	assert.Equal(t, 60*time.Second, n.heartbeatInterval)
 	assert.False(t, n.started)
@@ -140,6 +141,91 @@ func TestClaimAddressRequiresDeviceInfo(t *testing.T) {
 	err := n.ClaimAddress(50)
 	assert.Error(t, err)
 	assert.Contains(t, err.Error(), "device info has not been set")
+}
+
+func TestClaimAddressReadOnly(t *testing.T) {
+	sub := newMockSubscriber()
+	pub := newMockPublisher()
+	n := NewNode(sub, pub, newMockClock())
+
+	err := n.ClaimAddress(ReadOnlyAddress)
+	assert.NoError(t, err)
+	assert.Equal(t, ReadOnlyAddress, n.GetNetworkAddress())
+	assert.False(t, n.IsAddressClaimed())
+	assert.True(t, n.(*node).readOnly)
+
+	err = n.Start()
+	assert.NoError(t, err)
+	defer func() { _ = n.Stop() }()
+
+	time.Sleep(10 * time.Millisecond)
+	assert.Empty(t, pub.written)
+
+	err = n.Write(&pgn.IsoRequest{Pgn: uint32Ptr(pgn.IsoAddressClaimPgn)})
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "node is read-only")
+	assert.Empty(t, pub.written)
+
+	responses := n.(*node).processIsoRequest(pgn.IsoRequest{
+		Info: pgn.MessageInfo{SourceId: 10, TargetId: 255},
+		Pgn:  uint32Ptr(pgn.ProductInformationPgn),
+	})
+	assert.Empty(t, responses)
+
+	sub.simulatePGN(testKnownDeviceClaim(23, 42))
+	sub.waitForHandler()
+	assert.Eventually(t, func() bool {
+		devices := n.KnownDevices()
+		return len(devices) == 1 && devices[0].Address == 23
+	}, time.Second, time.Millisecond)
+	assert.Empty(t, pub.written)
+}
+
+func TestDefaultReadOnlyIgnoresCommandedAddress(t *testing.T) {
+	sub := newMockSubscriber()
+	pub := newMockPublisher()
+	n := NewNode(sub, pub, newMockClock())
+	err := n.SetDeviceInfo(DeviceInfo{UniqueNumber: 1})
+	assert.NoError(t, err)
+
+	err = n.Start()
+	assert.NoError(t, err)
+	defer func() { _ = n.Stop() }()
+
+	cmd := pgn.IsoCommandedAddress{
+		Info:             pgn.MessageInfo{SourceId: 10, TargetId: 255},
+		UniqueNumber:     []uint8{1, 0, 0},
+		NewSourceAddress: ptrUint8(44),
+	}
+	sub.simulatePGN(cmd)
+	sub.waitForHandler()
+
+	time.Sleep(10 * time.Millisecond)
+	assert.False(t, n.IsAddressClaimed())
+	assert.Equal(t, ReadOnlyAddress, n.GetNetworkAddress())
+	assert.Empty(t, pub.written)
+}
+
+func TestClaimAddressZeroRemainsClaimable(t *testing.T) {
+	sub := newMockSubscriber()
+	pub := newMockPublisher()
+	clock := newMockClock()
+	n := NewNode(sub, pub, clock)
+	_ = n.SetDeviceInfo(DeviceInfo{UniqueNumber: 1})
+
+	err := n.Start()
+	assert.NoError(t, err)
+	defer func() { _ = n.Stop() }()
+
+	pub.expectWrite()
+	err = n.ClaimAddress(0)
+	assert.NoError(t, err)
+	pub.waitForWrite()
+
+	clock.Advance()
+	assert.Eventually(t, n.IsAddressClaimed, time.Second, time.Millisecond)
+	assert.Equal(t, uint8(0), n.GetNetworkAddress())
+	assert.False(t, n.(*node).readOnly)
 }
 
 func TestManagedTransmitPGNsIncludesConditionalNodePGNs(t *testing.T) {

@@ -138,6 +138,11 @@ const (
 	stateLost
 )
 
+// ReadOnlyAddress can be passed to ClaimAddress to keep the node in passive
+// monitor mode. A read-only node receives bus traffic and tracks known devices
+// but never writes to the bus or responds to requests.
+const ReadOnlyAddress uint8 = 255
+
 // node is the internal implementation of the Node interface.
 type node struct {
 	subscriber                     Subscriber
@@ -152,6 +157,7 @@ type node struct {
 	preferredAddress               uint8
 	addressClaimed                 bool
 	addressState                   addressState
+	readOnly                       bool
 	transmitPGNs                   []uint32
 	receivePGNs                    []uint32
 	knownDevices                   map[uint64]KnownDevice
@@ -191,6 +197,7 @@ func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) Node {
 		networkAddress:                 255,
 		preferredAddress:               128,
 		addressClaimed:                 false,
+		readOnly:                       true,
 		knownDevices:                   make(map[uint64]KnownDevice),
 		knownDeviceNamesByAddress:      make(map[uint8]uint64),
 		unknownKnownDevicesByAddress:   make(map[uint8]KnownDevice),
@@ -351,6 +358,7 @@ func (n *node) Stop() error {
 	n.addressState = stateUnclaimed
 	n.addressClaimed = false
 	n.networkAddress = 255
+	n.readOnly = true
 	// Reset the context so the node can be restarted.
 	n.ctx = nil
 	n.cancel = nil
@@ -362,6 +370,18 @@ func (n *node) Stop() error {
 func (n *node) ClaimAddress(preferredAddress uint8) error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
+	if preferredAddress == ReadOnlyAddress {
+		n.preferredAddress = preferredAddress
+		n.networkAddress = ReadOnlyAddress
+		n.addressState = stateUnclaimed
+		n.addressClaimed = false
+		n.readOnly = true
+		select {
+		case n.wakeUp <- struct{}{}:
+		default:
+		}
+		return nil
+	}
 	if !n.deviceInfoSet {
 		return fmt.Errorf("cannot claim address, device info has not been set")
 	}
@@ -369,6 +389,7 @@ func (n *node) ClaimAddress(preferredAddress uint8) error {
 		return fmt.Errorf("preferred address %d is out of range (0-253)", preferredAddress)
 	}
 	n.preferredAddress = preferredAddress
+	n.readOnly = false
 	n.addressState = stateClaiming
 	select {
 	case n.wakeUp <- struct{}{}:
@@ -449,8 +470,12 @@ func (n *node) write(pgnStruct any, destination uint8) error {
 	addressClaimed := n.addressClaimed
 	networkAddress := n.networkAddress
 	publisher := n.publisher
+	readOnly := n.readOnly
 	n.mutex.RUnlock()
 
+	if readOnly {
+		return fmt.Errorf("cannot write PGN, node is read-only")
+	}
 	if !addressClaimed {
 		return fmt.Errorf("cannot write PGN, address not claimed")
 	}
@@ -525,9 +550,13 @@ func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	transmitPGNs := append([]uint32(nil), n.transmitPGNs...)
 	receivePGNs := append([]uint32(nil), n.receivePGNs...)
 	heartbeatEnabled := n.heartbeatEnabled
+	readOnly := n.readOnly
 	n.mutex.RUnlock()
 
 	if req.Pgn == nil {
+		return nil
+	}
+	if readOnly {
 		return nil
 	}
 	if !addressClaimed {
@@ -702,8 +731,12 @@ func (n *node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPg
 	n.mutex.RLock()
 	addressClaimed := n.addressClaimed
 	networkAddress := n.networkAddress
+	readOnly := n.readOnly
 	n.mutex.RUnlock()
 
+	if readOnly {
+		return nil
+	}
 	if !addressClaimed {
 		return nil
 	}
@@ -723,7 +756,12 @@ func (n *node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPg
 func (n *node) processIsoCommandedAddress(cmd *pgn.IsoCommandedAddress) {
 	n.mutex.RLock()
 	currentName := n.name
+	readOnly := n.readOnly
 	n.mutex.RUnlock()
+
+	if readOnly {
+		return
+	}
 
 	cmdName := computeNameFromCommand(cmd)
 
@@ -1071,7 +1109,12 @@ func (n *node) sendAddressClaim() {
 	deviceInfoCopy := n.deviceInfo
 	networkAddressCopy := n.networkAddress
 	publisher := n.publisher
+	readOnly := n.readOnly
 	n.mutex.RUnlock()
+
+	if readOnly {
+		return
+	}
 
 	claim := buildAddressClaim(deviceInfoCopy, networkAddressCopy)
 	n.logger.Infof("sendAddressClaim: sending claim for address %d", networkAddressCopy)
@@ -1199,7 +1242,11 @@ func (n *node) sendProcessResponses(toSendList []toSend) {
 
 	n.mutex.RLock()
 	publisher := n.publisher
+	readOnly := n.readOnly
 	n.mutex.RUnlock()
+	if readOnly {
+		return
+	}
 	for _, ts := range toSendList {
 		n.logger.Infof("process: sending PGN %+v to %d", ts.pgn, ts.dest)
 		if err := publisher.Write(ts.pgn); err != nil {
