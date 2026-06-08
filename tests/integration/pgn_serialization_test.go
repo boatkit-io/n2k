@@ -29,7 +29,7 @@ type pgnCount struct {
 
 func TestPGNSerializationFromN2K(t *testing.T) {
 	// Get path to test data file
-	testFile := testReplaySusterrana2020
+	testFile := requireReplayFile(t)
 
 	// Setup the file endpoint
 	ca := canadapter.NewCANAdapter(logrus.New())
@@ -150,10 +150,7 @@ func TestPGNSerializationFromN2K(t *testing.T) {
 
 func TestComprehensivePerformanceProfiling(t *testing.T) {
 	// Get all test files from integration directory
-	integrationDir := "/home/russ/dev/n2k/n2kreplays/integration"
-	files, err := filepath.Glob(filepath.Join(integrationDir, "*.n2k"))
-	assert.NoError(t, err)
-	assert.NotEmpty(t, files, "No .n2k files found in integration directory")
+	files := requireReplayFiles(t)
 
 	fmt.Printf("Found %d test files to profile:\n", len(files))
 	for _, file := range files {

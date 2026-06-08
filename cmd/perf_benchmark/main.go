@@ -10,6 +10,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -28,9 +29,13 @@ func main() {
 	// Disable logging for performance
 	logrus.SetLevel(logrus.ErrorLevel)
 
-	// Get all test files from integration directory
-	// Using absolute path as seen in the test file
-	integrationDir := "/home/russ/dev/n2k/n2kreplays/integration"
+	integrationDir := os.Getenv("N2K_TEST_REPLAY_DIR")
+	if integrationDir == "" {
+		integrationDir = "n2kreplays/integration"
+	}
+	flag.StringVar(&integrationDir, "dir", integrationDir, "directory containing .n2k replay files")
+	flag.Parse()
+
 	files, err := filepath.Glob(filepath.Join(integrationDir, "*.n2k"))
 	if err != nil {
 		fmt.Printf("Error finding files: %v\n", err)
@@ -113,7 +118,10 @@ func main() {
 			fileName, messageCount, elapsed.Seconds(), rate, allocMb, totalAllocMb, sysMb, gcCycles)
 	}
 
+	totalRate := 0.0
+	if totalTime > 0 {
+		totalRate = float64(totalMessages) / totalTime.Seconds()
+	}
 	fmt.Printf("TOTAL,%d,%.4f,%.2f,%.2f,%.2f,%.2f,0\n",
-		totalMessages, totalTime.Seconds(), float64(totalMessages)/totalTime.Seconds(),
-		0.0, float64(totalAllocBytes)/1024/1024, 0.0)
+		totalMessages, totalTime.Seconds(), totalRate, 0.0, float64(totalAllocBytes)/1024/1024, 0.0)
 }

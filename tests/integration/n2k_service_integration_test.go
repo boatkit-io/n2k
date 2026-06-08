@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"path/filepath"
+	"runtime"
 	"testing"
 	"time"
 
@@ -16,12 +18,50 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// Fixed path to checked-in replay data (see n2kreplays/integration).
-const testReplaySusterrana2020 = "/home/russ/dev/n2k/n2kreplays/integration/susterrana2020.n2k"
+const (
+	defaultReplayDir            = "n2kreplays/integration"
+	defaultReplaySusterrana2020 = "susterrana2020.n2k"
+)
+
+func requireReplayFile(t *testing.T) string {
+	t.Helper()
+
+	path := os.Getenv("N2K_TEST_REPLAY")
+	if path == "" {
+		path = filepath.Join(repoRoot(t), defaultReplayDir, defaultReplaySusterrana2020)
+	}
+	if _, err := os.Stat(path); err != nil {
+		t.Skipf("replay file not available: %v", err)
+	}
+	return path
+}
+
+func requireReplayFiles(t *testing.T) []string {
+	t.Helper()
+
+	integrationDir := os.Getenv("N2K_TEST_REPLAY_DIR")
+	if integrationDir == "" {
+		integrationDir = filepath.Join(repoRoot(t), defaultReplayDir)
+	}
+	files, err := filepath.Glob(filepath.Join(integrationDir, "*.n2k"))
+	require.NoError(t, err)
+	if len(files) == 0 {
+		t.Skipf("no replay files available in %s", integrationDir)
+	}
+	return files
+}
+
+func repoRoot(t *testing.T) string {
+	t.Helper()
+
+	_, file, _, ok := runtime.Caller(0)
+	require.True(t, ok, "unable to locate integration test file")
+	return filepath.Clean(filepath.Join(filepath.Dir(file), "..", ".."))
+}
 
 func TestN2kServiceIntegration(t *testing.T) {
 	// Get path to test data file
-	testFile := testReplaySusterrana2020
+	testFile := requireReplayFile(t)
 
 	// Create the n2kfileendpoint
 	log := logrus.New()
@@ -73,7 +113,7 @@ func TestN2kServiceIntegration(t *testing.T) {
 
 func TestN2kServiceWithSubscription(t *testing.T) {
 	// Get path to test data file
-	testFile := testReplaySusterrana2020
+	testFile := requireReplayFile(t)
 
 	// Create the n2kfileendpoint
 	log := logrus.New()
@@ -115,7 +155,7 @@ func TestN2kServiceWithSubscription(t *testing.T) {
 func TestN2kServiceWrite(t *testing.T) {
 	// Create a mock endpoint for testing write functionality
 	// For this test, we'll use a file endpoint but focus on the write capability
-	testFile := testReplaySusterrana2020
+	testFile := requireReplayFile(t)
 
 	// Create the n2kfileendpoint
 	log := logrus.New()
@@ -135,7 +175,7 @@ func TestN2kServiceWrite(t *testing.T) {
 
 func TestN2kServiceUpdateEndpoint(t *testing.T) {
 	// Get path to test data file
-	testFile := testReplaySusterrana2020
+	testFile := requireReplayFile(t)
 
 	// Create the initial n2kfileendpoint
 	log := logrus.New()
@@ -175,7 +215,7 @@ func TestN2kServiceUpdateEndpoint(t *testing.T) {
 
 func TestN2kServiceUpdateEndpointWhileRunning(t *testing.T) {
 	// Get path to test data file
-	testFile := testReplaySusterrana2020
+	testFile := requireReplayFile(t)
 
 	// Create the initial n2kfileendpoint
 	log := logrus.New()
@@ -218,7 +258,7 @@ func TestN2kServiceUpdateEndpointWhileRunning(t *testing.T) {
 
 func TestN2kServiceHandleReplayCANFrame(t *testing.T) {
 	log := logrus.New()
-	ep := n2kfileendpoint.NewN2kFileEndpoint(testReplaySusterrana2020, log)
+	ep := n2kfileendpoint.NewN2kFileEndpoint(requireReplayFile(t), log)
 	service := n2k.NewN2kService(ep, log)
 
 	var messageCount int
@@ -237,12 +277,8 @@ func TestN2kServiceHandleReplayCANFrame(t *testing.T) {
 }
 
 func TestN2kServiceReceivedCANFrameHook(t *testing.T) {
-	if _, err := os.Stat(testReplaySusterrana2020); err != nil {
-		t.Skipf("replay file not available: %v", err)
-	}
-
 	log := logrus.New()
-	ep := n2kfileendpoint.NewN2kFileEndpoint(testReplaySusterrana2020, log)
+	ep := n2kfileendpoint.NewN2kFileEndpoint(requireReplayFile(t), log)
 	service := n2k.NewN2kService(ep, log)
 
 	var hookCount int
