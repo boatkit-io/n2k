@@ -114,14 +114,12 @@ func (c *CANAdapter) WritePgn(info pgn.MessageInfo, data []uint8) error {
 
 // calcFramesRequired calculates the number of CAN frames required to transmit data of the specified length.
 func calcFramesRequired(length int) int {
-	var count int
-	if length < 7 {
+	if length <= 6 {
+		return 0
+	}
+	count := (length - 6) / 7
+	if (length-6)%7 > 0 {
 		count++
-	} else {
-		count += (length - 6) / 7
-		if (length-6)%7 > 0 {
-			count++
-		}
 	}
 	return count
 }

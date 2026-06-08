@@ -179,6 +179,9 @@ func (s *DataStream) writeFloat32(value *float32, bitLength, bitOffset uint16, r
 	if reservedValuesCount != 0 {
 		return fmt.Errorf("attempt to write float32 with reservedValuesCount != 0")
 	}
+	if value == nil {
+		return fmt.Errorf("attempt to write nil float32")
+	}
 	val := math.Float32bits(*value)
 	return s.putNumberRaw(uint64(val), bitLength, bitOffset)
 }

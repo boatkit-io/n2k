@@ -117,6 +117,12 @@ func TestWritePgn(t *testing.T) {
 	assert.Nil(t, err)
 }
 
+func TestWriteFloat32NilReturnsError(t *testing.T) {
+	stream := NewDataStream(make([]uint8, 32))
+	err := stream.writeFloat32(nil, 32, 0, 0)
+	assert.Error(t, err)
+}
+
 // test Binary Round Trip
 func TestBinaryRoundTrip(t *testing.T) {
 	tests := []struct {
