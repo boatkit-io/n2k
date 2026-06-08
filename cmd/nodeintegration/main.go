@@ -30,12 +30,12 @@ var claimAddress = node.ReadOnlyAddress
 
 type deviceListDumper struct {
 	log         *logrus.Logger
-	node        node.Node
+	node        *node.Node
 	localDevice *node.KnownDevice
 	lastDump    string
 }
 
-func newDeviceListDumper(log *logrus.Logger, nodeImpl node.Node) *deviceListDumper {
+func newDeviceListDumper(log *logrus.Logger, nodeImpl *node.Node) *deviceListDumper {
 	return &deviceListDumper{
 		log:  log,
 		node: nodeImpl,
@@ -298,11 +298,12 @@ func run() error {
 
 	time.Sleep(2 * time.Second)
 
-	if readOnly {
+	switch {
+	case readOnly:
 		deviceDumper.DumpIfChanged("changed")
-	} else if nodeImpl.GetNetworkAddress() == claimAddress {
+	case nodeImpl.GetNetworkAddress() == claimAddress:
 		log.Infof("Address %d successfully claimed", claimAddress)
-	} else {
+	default:
 		log.Warnf("Address claim conflict occurred, requested address: %d, current address: %d",
 			claimAddress, nodeImpl.GetNetworkAddress())
 	}

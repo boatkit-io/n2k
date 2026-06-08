@@ -57,9 +57,7 @@ func TestNodeIntegration(t *testing.T) {
 	log.Infof("Pipeline started on interface %s", canInterface)
 
 	nodeImpl := NewFromService(svc)
-	if n, ok := nodeImpl.(*node); ok {
-		n.SetLogger(log)
-	}
+	nodeImpl.SetLogger(log)
 
 	deviceInfo := DeviceInfo{
 		UniqueNumber:            123456,
@@ -76,7 +74,7 @@ func TestNodeIntegration(t *testing.T) {
 		t.Fatalf("failed to set device info: %v", err)
 	}
 
-	log.Infof("Our device NAME: %x", nodeImpl.(*node).name)
+	log.Infof("Our device NAME: %x", nodeImpl.name)
 
 	nodeImpl.SetProductInfo(ProductInfo{
 		NMEA2000Version:     2100,

@@ -65,27 +65,16 @@ Public references used for this design:
 The current API is a good starting point:
 
 ```go
-type Node interface {
-    Start() error
-    Stop() error
+func NewFromService(svc *n2k.N2kService) *Node
+func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) *Node
 
-    ClaimAddress(preferredAddress uint8) error
-    GetNetworkAddress() uint8
-    IsAddressClaimed() bool
-    KnownDevices() []KnownDevice
-
-    Write(pgnStruct any) error
-    WriteTo(pgnStruct any, destination uint8) error
-
-    SetDeviceInfo(info DeviceInfo) error
-    SetProductInfo(info ProductInfo)
-    SetConfigurationProvider(provider ConfigurationProvider)
-    SetSupportedPGNs(transmit, receive []uint32)
-
-    SetHeartbeatInterval(interval time.Duration)
-    EnableHeartbeat(enable bool)
+type Node struct {
+    // unexported fields
 }
 ```
+
+`Node` exposes methods for lifecycle, address claiming, known-device tracking,
+writing node-scoped PGNs, and configuring device identity/product metadata.
 
 Future API additions should be considered for:
 

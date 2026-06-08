@@ -15,7 +15,7 @@ type SubscriptionID uint
 
 // NewFromService creates a Node backed by the public N2kService API.
 // This is the intended entry point for clients such as goatkit.
-func NewFromService(svc *n2k.N2kService) Node {
+func NewFromService(svc *n2k.N2kService) *Node {
 	return NewNode(newN2kServiceSubscriber(svc), newN2kServicePublisher(svc), nil)
 }
 

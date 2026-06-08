@@ -20,27 +20,6 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-// Node represents a generic NMEA 2000 device, handling standard behaviors
-// required for any device on the network.
-type Node interface {
-	Start() error
-	Stop() error
-	ClaimAddress(preferredAddress uint8) error
-	GetNetworkAddress() uint8
-	IsAddressClaimed() bool
-	KnownDevices() []KnownDevice
-	SubscribeToDeviceChanges(callback func(DeviceChange)) SubscriptionID
-	UnsubscribeDeviceChanges(subID SubscriptionID) error
-	Write(pgnStruct any) error
-	WriteTo(pgnStruct any, destination uint8) error
-	SetDeviceInfo(info DeviceInfo) error
-	SetProductInfo(info ProductInfo) //nolint:gocritic // API accepts value configuration.
-	SetConfigurationProvider(provider ConfigurationProvider)
-	SetSupportedPGNs(transmit, receive []uint32)
-	SetHeartbeatInterval(interval time.Duration)
-	EnableHeartbeat(enable bool)
-}
-
 // Subscriber is an interface that abstracts bus subscriptions for testing.
 type Subscriber interface {
 	SubscribeToStruct(t, callback any) (SubscriptionID, error)
@@ -143,8 +122,9 @@ const (
 // but never writes to the bus or responds to requests.
 const ReadOnlyAddress uint8 = 255
 
-// node is the internal implementation of the Node interface.
-type node struct {
+// Node represents a generic NMEA 2000 device, handling standard behaviors
+// required for any device on the network.
+type Node struct {
 	subscriber                     Subscriber
 	publisher                      Publisher
 	clock                          Clock
@@ -185,11 +165,11 @@ type toSend struct {
 }
 
 // NewNode creates a new Node instance with the given dependencies.
-func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) Node {
+func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) *Node {
 	if clock == nil {
 		clock = NewRealClock()
 	}
-	return &node{
+	return &Node{
 		subscriber:                     subscriber,
 		publisher:                      publisher,
 		clock:                          clock,
@@ -215,54 +195,54 @@ func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) Node {
 }
 
 // SetLogger allows overriding the default logger for debugging.
-// This method is not part of the Node interface.
-func (n *node) SetLogger(logger *logrus.Logger) {
+func (n *Node) SetLogger(logger *logrus.Logger) {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.logger = logger
 }
 
-func (n *node) handleIsoRequest(p pgn.IsoRequest) {
+func (n *Node) handleIsoRequest(p pgn.IsoRequest) {
 	n.enqueuePgn(p)
 }
 
-func (n *node) handleIsoAddressClaim(p pgn.IsoAddressClaim) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
+func (n *Node) handleIsoAddressClaim(p pgn.IsoAddressClaim) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 	n.logger.Infof("handleIsoAddressClaim: received address claim from source %d", p.Info.SourceId)
 	n.enqueuePgn(p)
 }
 
-func (n *node) handleIsoCommandedAddress(p pgn.IsoCommandedAddress) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
+func (n *Node) handleIsoCommandedAddress(p pgn.IsoCommandedAddress) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 	n.enqueuePgn(p)
 }
 
-func (n *node) handleIsoAcknowledgement(p pgn.IsoAcknowledgement) {
-	n.enqueuePgn(p)
-}
-
-//nolint:gocritic // Subscriber callbacks must accept value PGNs.
-func (n *node) handleNmeaRequestGroupFunction(p pgn.NmeaRequestGroupFunction) {
+func (n *Node) handleIsoAcknowledgement(p pgn.IsoAcknowledgement) {
 	n.enqueuePgn(p)
 }
 
 //nolint:gocritic // Subscriber callbacks must accept value PGNs.
-func (n *node) handleNmeaCommandGroupFunction(p pgn.NmeaCommandGroupFunction) {
-	n.enqueuePgn(p)
-}
-
-func (n *node) handleProductInformation(p pgn.ProductInformation) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
+func (n *Node) handleNmeaRequestGroupFunction(p pgn.NmeaRequestGroupFunction) {
 	n.enqueuePgn(p)
 }
 
 //nolint:gocritic // Subscriber callbacks must accept value PGNs.
-func (n *node) handleConfigurationInformation(p pgn.ConfigurationInformation) {
+func (n *Node) handleNmeaCommandGroupFunction(p pgn.NmeaCommandGroupFunction) {
 	n.enqueuePgn(p)
 }
 
-func (n *node) handlePgnListTransmitAndReceive(p pgn.PgnListTransmitAndReceive) {
+func (n *Node) handleProductInformation(p pgn.ProductInformation) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 	n.enqueuePgn(p)
 }
 
-func (n *node) Start() error {
+//nolint:gocritic // Subscriber callbacks must accept value PGNs.
+func (n *Node) handleConfigurationInformation(p pgn.ConfigurationInformation) {
+	n.enqueuePgn(p)
+}
+
+func (n *Node) handlePgnListTransmitAndReceive(p pgn.PgnListTransmitAndReceive) {
+	n.enqueuePgn(p)
+}
+
+// Start subscribes to required management PGNs and starts the node processing loop.
+func (n *Node) Start() error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	if n.started {
@@ -332,7 +312,8 @@ func (n *node) Start() error {
 	return nil
 }
 
-func (n *node) Stop() error {
+// Stop unsubscribes from bus traffic and stops the node processing loop.
+func (n *Node) Stop() error {
 	n.mutex.Lock()
 	if !n.started {
 		n.mutex.Unlock()
@@ -367,7 +348,8 @@ func (n *node) Stop() error {
 	return nil
 }
 
-func (n *node) ClaimAddress(preferredAddress uint8) error {
+// ClaimAddress begins claiming preferredAddress or enters read-only mode for ReadOnlyAddress.
+func (n *Node) ClaimAddress(preferredAddress uint8) error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	if preferredAddress == ReadOnlyAddress {
@@ -398,19 +380,22 @@ func (n *node) ClaimAddress(preferredAddress uint8) error {
 	return nil
 }
 
-func (n *node) GetNetworkAddress() uint8 {
+// GetNetworkAddress returns the node's current NMEA 2000 source address.
+func (n *Node) GetNetworkAddress() uint8 {
 	n.mutex.RLock()
 	defer n.mutex.RUnlock()
 	return n.networkAddress
 }
 
-func (n *node) IsAddressClaimed() bool {
+// IsAddressClaimed reports whether the node currently owns its source address.
+func (n *Node) IsAddressClaimed() bool {
 	n.mutex.RLock()
 	defer n.mutex.RUnlock()
 	return n.addressClaimed
 }
 
-func (n *node) KnownDevices() []KnownDevice {
+// KnownDevices returns the devices currently observed by this node.
+func (n *Node) KnownDevices() []KnownDevice {
 	n.mutex.RLock()
 	defer n.mutex.RUnlock()
 
@@ -432,7 +417,8 @@ func (n *node) KnownDevices() []KnownDevice {
 	return devices
 }
 
-func (n *node) SubscribeToDeviceChanges(callback func(DeviceChange)) SubscriptionID {
+// SubscribeToDeviceChanges registers callback for observed device changes.
+func (n *Node) SubscribeToDeviceChanges(callback func(DeviceChange)) SubscriptionID {
 	if callback == nil {
 		return 0
 	}
@@ -446,7 +432,8 @@ func (n *node) SubscribeToDeviceChanges(callback func(DeviceChange)) Subscriptio
 	return subID
 }
 
-func (n *node) UnsubscribeDeviceChanges(subID SubscriptionID) error {
+// UnsubscribeDeviceChanges removes a device-change subscription.
+func (n *Node) UnsubscribeDeviceChanges(subID SubscriptionID) error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 
@@ -457,15 +444,17 @@ func (n *node) UnsubscribeDeviceChanges(subID SubscriptionID) error {
 	return nil
 }
 
-func (n *node) Write(pgnStruct any) error {
+// Write publishes pgnStruct using the node's claimed source address.
+func (n *Node) Write(pgnStruct any) error {
 	return n.write(pgnStruct, 255)
 }
 
-func (n *node) WriteTo(pgnStruct any, destination uint8) error {
+// WriteTo publishes pgnStruct to destination using the node's claimed source address.
+func (n *Node) WriteTo(pgnStruct any, destination uint8) error {
 	return n.write(pgnStruct, destination)
 }
 
-func (n *node) write(pgnStruct any, destination uint8) error {
+func (n *Node) write(pgnStruct any, destination uint8) error {
 	n.mutex.RLock()
 	addressClaimed := n.addressClaimed
 	networkAddress := n.networkAddress
@@ -487,7 +476,8 @@ func (n *node) write(pgnStruct any, destination uint8) error {
 	return publisher.Write(pgnStruct)
 }
 
-func (n *node) SetDeviceInfo(info DeviceInfo) error {
+// SetDeviceInfo configures the fields used to compute this node's NAME.
+func (n *Node) SetDeviceInfo(info DeviceInfo) error {
 	name, err := computeName(info)
 	if err != nil {
 		return fmt.Errorf("failed to compute NAME from device info: %w", err)
@@ -500,38 +490,43 @@ func (n *node) SetDeviceInfo(info DeviceInfo) error {
 	return nil
 }
 
-func (n *node) SetProductInfo(info ProductInfo) { //nolint:gocritic // API accepts value configuration.
+// SetProductInfo configures the product metadata returned for standard requests.
+func (n *Node) SetProductInfo(info ProductInfo) { //nolint:gocritic // API accepts value configuration.
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.productInfo = info
 }
 
-func (n *node) SetConfigurationProvider(provider ConfigurationProvider) {
+// SetConfigurationProvider configures the source for device configuration metadata.
+func (n *Node) SetConfigurationProvider(provider ConfigurationProvider) {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.configProvider = provider
 }
 
-func (n *node) SetSupportedPGNs(transmit, receive []uint32) {
+// SetSupportedPGNs configures the PGN lists reported by this node.
+func (n *Node) SetSupportedPGNs(transmit, receive []uint32) {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.transmitPGNs = transmit
 	n.receivePGNs = receive
 }
 
-func (n *node) SetHeartbeatInterval(interval time.Duration) {
+// SetHeartbeatInterval configures how often enabled heartbeat messages are sent.
+func (n *Node) SetHeartbeatInterval(interval time.Duration) {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.heartbeatInterval = interval
 }
 
-func (n *node) EnableHeartbeat(enable bool) {
+// EnableHeartbeat controls whether this node sends heartbeat messages.
+func (n *Node) EnableHeartbeat(enable bool) {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.heartbeatEnabled = enable
 }
 
-func (n *node) enqueuePgn(p any) {
+func (n *Node) enqueuePgn(p any) {
 	n.logger.Infof("enqueuePgn: received %T", p)
 	select {
 	case n.pgnIn <- p:
@@ -540,7 +535,7 @@ func (n *node) enqueuePgn(p any) {
 	}
 }
 
-func (n *node) processIsoRequest(req pgn.IsoRequest) []toSend {
+func (n *Node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	n.mutex.RLock()
 	addressClaimed := n.addressClaimed
 	networkAddress := n.networkAddress
@@ -706,7 +701,7 @@ func mergePGNs(configured, managed []uint32) []uint32 {
 	return merged
 }
 
-func (n *node) processNmeaRequestGroupFunction(req *pgn.NmeaRequestGroupFunction) []toSend {
+func (n *Node) processNmeaRequestGroupFunction(req *pgn.NmeaRequestGroupFunction) []toSend {
 	if req.Pgn == nil {
 		return nil
 	}
@@ -720,14 +715,14 @@ func (n *node) processNmeaRequestGroupFunction(req *pgn.NmeaRequestGroupFunction
 	})
 }
 
-func (n *node) processNmeaCommandGroupFunction(cmd *pgn.NmeaCommandGroupFunction) []toSend {
+func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NmeaCommandGroupFunction) []toSend {
 	if cmd.Pgn == nil {
 		return nil
 	}
 	return n.processUnsupportedGroupFunction(cmd.Info, *cmd.Pgn, pgn.ReadOrWriteNotSupported)
 }
 
-func (n *node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPgn uint32, parameterError pgn.ParameterFieldConst) []toSend {
+func (n *Node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPgn uint32, parameterError pgn.ParameterFieldConst) []toSend {
 	n.mutex.RLock()
 	addressClaimed := n.addressClaimed
 	networkAddress := n.networkAddress
@@ -753,7 +748,7 @@ func (n *node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPg
 	}}
 }
 
-func (n *node) processIsoCommandedAddress(cmd *pgn.IsoCommandedAddress) {
+func (n *Node) processIsoCommandedAddress(cmd *pgn.IsoCommandedAddress) {
 	n.mutex.RLock()
 	currentName := n.name
 	readOnly := n.readOnly
@@ -781,7 +776,7 @@ func (n *node) processIsoCommandedAddress(cmd *pgn.IsoCommandedAddress) {
 	n.mutex.Unlock()
 }
 
-func (n *node) processIsoAddressClaim(claim *pgn.IsoAddressClaim) {
+func (n *Node) processIsoAddressClaim(claim *pgn.IsoAddressClaim) {
 	incomingName := computeNameFromClaim(claim)
 	n.updateKnownDeviceFromClaim(claim, incomingName)
 
@@ -837,7 +832,7 @@ func (n *node) processIsoAddressClaim(claim *pgn.IsoAddressClaim) {
 	}
 }
 
-func (n *node) updateKnownDeviceFromClaim(claim *pgn.IsoAddressClaim, name uint64) {
+func (n *Node) updateKnownDeviceFromClaim(claim *pgn.IsoAddressClaim, name uint64) {
 	var changes []DeviceChange
 	n.mutex.Lock()
 
@@ -880,7 +875,7 @@ func (n *node) updateKnownDeviceFromClaim(claim *pgn.IsoAddressClaim, name uint6
 	n.publishDeviceChanges(changes)
 }
 
-func (n *node) updateKnownDeviceFromProductInfo(info *pgn.ProductInformation) {
+func (n *Node) updateKnownDeviceFromProductInfo(info *pgn.ProductInformation) {
 	var changes []DeviceChange
 	n.mutex.Lock()
 
@@ -924,7 +919,7 @@ func (n *node) updateKnownDeviceFromProductInfo(info *pgn.ProductInformation) {
 	n.publishDeviceChanges(changes)
 }
 
-func (n *node) updateKnownDeviceFromConfigurationInfo(info *pgn.ConfigurationInformation) {
+func (n *Node) updateKnownDeviceFromConfigurationInfo(info *pgn.ConfigurationInformation) {
 	var changes []DeviceChange
 	n.mutex.Lock()
 
@@ -949,7 +944,7 @@ func (n *node) updateKnownDeviceFromConfigurationInfo(info *pgn.ConfigurationInf
 	n.publishDeviceChanges(changes)
 }
 
-func (n *node) updateKnownDeviceFromPgnList(info *pgn.PgnListTransmitAndReceive) {
+func (n *Node) updateKnownDeviceFromPgnList(info *pgn.PgnListTransmitAndReceive) {
 	var changes []DeviceChange
 	n.mutex.Lock()
 
@@ -987,7 +982,7 @@ func (n *node) updateKnownDeviceFromPgnList(info *pgn.PgnListTransmitAndReceive)
 	n.publishDeviceChanges(changes)
 }
 
-func (n *node) nextAvailableAddressLocked(after uint8) (uint8, bool) {
+func (n *Node) nextAvailableAddressLocked(after uint8) (uint8, bool) {
 	claimed := make(map[uint8]struct{}, len(n.knownDeviceNamesByAddress)+len(n.unknownKnownDevicesByAddress)+1)
 	for address := range n.knownDeviceNamesByAddress {
 		if address <= 253 {
@@ -1011,7 +1006,7 @@ func (n *node) nextAvailableAddressLocked(after uint8) (uint8, bool) {
 	return 0, false
 }
 
-func (n *node) knownDeviceForAddressLocked(address uint8) KnownDevice {
+func (n *Node) knownDeviceForAddressLocked(address uint8) KnownDevice {
 	if name, ok := n.knownDeviceNamesByAddress[address]; ok {
 		return n.knownDevices[name]
 	}
@@ -1021,7 +1016,7 @@ func (n *node) knownDeviceForAddressLocked(address uint8) KnownDevice {
 	return KnownDevice{Address: address}
 }
 
-func (n *node) setKnownDeviceForAddressLocked(address uint8, device *KnownDevice) {
+func (n *Node) setKnownDeviceForAddressLocked(address uint8, device *KnownDevice) {
 	if device.Name != 0 {
 		n.knownDevices[device.Name] = *device
 		n.knownDeviceNamesByAddress[address] = device.Name
@@ -1085,7 +1080,7 @@ func ptrUint8(v uint8) *uint8 {
 	return &v
 }
 
-func (n *node) publishDeviceChanges(changes []DeviceChange) {
+func (n *Node) publishDeviceChanges(changes []DeviceChange) {
 	if len(changes) == 0 {
 		return
 	}
@@ -1104,7 +1099,7 @@ func (n *node) publishDeviceChanges(changes []DeviceChange) {
 	}
 }
 
-func (n *node) sendAddressClaim() {
+func (n *Node) sendAddressClaim() {
 	n.mutex.RLock()
 	deviceInfoCopy := n.deviceInfo
 	networkAddressCopy := n.networkAddress
@@ -1183,7 +1178,7 @@ func buildNmeaGroupNak(
 	}
 }
 
-func (n *node) sendHeartbeat() {
+func (n *Node) sendHeartbeat() {
 	n.mutex.RLock()
 	heartbeatSeqCopy := n.heartbeatSeq
 	networkAddressCopy := n.networkAddress
@@ -1209,7 +1204,7 @@ func (n *node) sendHeartbeat() {
 	n.mutex.Unlock()
 }
 
-func (n *node) processPGN(p any) []toSend {
+func (n *Node) processPGN(p any) []toSend {
 	switch v := p.(type) {
 	case pgn.IsoRequest:
 		return n.processIsoRequest(v)
@@ -1235,7 +1230,7 @@ func (n *node) processPGN(p any) []toSend {
 	return nil
 }
 
-func (n *node) sendProcessResponses(toSendList []toSend) {
+func (n *Node) sendProcessResponses(toSendList []toSend) {
 	if len(toSendList) == 0 {
 		return
 	}
@@ -1255,7 +1250,7 @@ func (n *node) sendProcessResponses(toSendList []toSend) {
 	}
 }
 
-func (n *node) process() {
+func (n *Node) process() {
 	defer n.wg.Done()
 	n.logger.Infof("process: goroutine started")
 	defer n.logger.Infof("process: goroutine stopped")

@@ -39,7 +39,7 @@ func (m *mockConfigurationProvider) SetConfigurationInfo(info ConfigurationInfo)
 }
 
 func TestNewNode(t *testing.T) {
-	n := NewNode(nil, nil, nil).(*node)
+	n := NewNode(nil, nil, nil)
 
 	assert.Nil(t, n.subscriber)
 	assert.Nil(t, n.publisher)
@@ -54,7 +54,7 @@ func TestNewNode(t *testing.T) {
 }
 
 func TestSetters(t *testing.T) {
-	n := NewNode(nil, nil, nil).(*node)
+	n := NewNode(nil, nil, nil)
 
 	// Test SetProductInfo
 	productInfo := ProductInfo{ProductCode: 1234, ModelID: "Test"}
@@ -152,7 +152,7 @@ func TestClaimAddressReadOnly(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, ReadOnlyAddress, n.GetNetworkAddress())
 	assert.False(t, n.IsAddressClaimed())
-	assert.True(t, n.(*node).readOnly)
+	assert.True(t, n.readOnly)
 
 	err = n.Start()
 	assert.NoError(t, err)
@@ -166,7 +166,7 @@ func TestClaimAddressReadOnly(t *testing.T) {
 	assert.Contains(t, err.Error(), "node is read-only")
 	assert.Empty(t, pub.written)
 
-	responses := n.(*node).processIsoRequest(pgn.IsoRequest{
+	responses := n.processIsoRequest(pgn.IsoRequest{
 		Info: pgn.MessageInfo{SourceId: 10, TargetId: 255},
 		Pgn:  uint32Ptr(pgn.ProductInformationPgn),
 	})
@@ -225,7 +225,7 @@ func TestClaimAddressZeroRemainsClaimable(t *testing.T) {
 	clock.Advance()
 	assert.Eventually(t, n.IsAddressClaimed, time.Second, time.Millisecond)
 	assert.Equal(t, uint8(0), n.GetNetworkAddress())
-	assert.False(t, n.(*node).readOnly)
+	assert.False(t, n.readOnly)
 }
 
 func TestManagedTransmitPGNsIncludesConditionalNodePGNs(t *testing.T) {
@@ -291,12 +291,12 @@ func TestLifecycleAndResponses(t *testing.T) {
 
 	err := n.Start()
 	assert.NoError(t, err)
-	assert.True(t, n.(*node).started)
+	assert.True(t, n.started)
 	assert.Len(t, sub.subscriptions, 9, "should have 9 subscriptions after start")
 
 	err = n.Stop()
 	assert.NoError(t, err)
-	assert.False(t, n.(*node).started)
+	assert.False(t, n.started)
 	assert.Len(t, sub.subscriptions, 0, "should have 0 subscriptions after stop")
 
 	// Restart the node for response tests
@@ -502,7 +502,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 			FunctionCode: pgn.Command,
 			Pgn:          uint32Ptr(pgn.ConfigurationInformationPgn),
 		}
-		responses := n.(*node).processNmeaCommandGroupFunction(&commandPgn)
+		responses := n.processNmeaCommandGroupFunction(&commandPgn)
 		assert.Empty(t, responses)
 	})
 
@@ -511,7 +511,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 			Info: pgn.MessageInfo{SourceId: 10, TargetId: 51},
 			Pgn:  uint32Ptr(126996),
 		}
-		responses := n.(*node).processIsoRequest(requestPgn)
+		responses := n.processIsoRequest(requestPgn)
 		assert.Empty(t, responses)
 	})
 
