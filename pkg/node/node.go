@@ -517,6 +517,10 @@ func (n *Node) SetHeartbeatInterval(interval time.Duration) {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.heartbeatInterval = interval
+	select {
+	case n.wakeUp <- struct{}{}:
+	default:
+	}
 }
 
 // EnableHeartbeat controls whether this node sends heartbeat messages.
@@ -524,6 +528,10 @@ func (n *Node) EnableHeartbeat(enable bool) {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	n.heartbeatEnabled = enable
+	select {
+	case n.wakeUp <- struct{}{}:
+	default:
+	}
 }
 
 func (n *Node) enqueuePgn(p any) {

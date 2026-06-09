@@ -51,6 +51,34 @@ func TestDecodeNmeaRequestGroupFunctionKnownTargetReturnsCompleteStruct(t *testi
 	}
 }
 
+func TestDecodeNmeaRequestGroupFunctionKnownTargetConsumesParameterValues(t *testing.T) {
+	rawData := []byte{
+		2, 0x34, 0x12, // ProductInformation.ProductCode: 16 bits
+		1, 0x08, 0x34, // ProductInformation.Nmea2000Version: 16 bits
+	}
+	decoded := decodeGroupFunctionPayload(t, groupFunctionRequestPayload(publicpgn.ProductInformationPgn, 2, rawData))
+
+	request, ok := decoded.(publicpgn.NmeaRequestGroupFunction)
+	if !ok {
+		t.Fatalf("decoded type = %T, want %T", decoded, publicpgn.NmeaRequestGroupFunction{})
+	}
+	if len(request.Repeating1) != 2 {
+		t.Fatalf("decoded repeating fields = %d, want 2", len(request.Repeating1))
+	}
+	if request.Repeating1[0].Parameter == nil || *request.Repeating1[0].Parameter != 2 {
+		t.Fatalf("first parameter = %v, want 2", request.Repeating1[0].Parameter)
+	}
+	if !bytes.Equal(request.Repeating1[0].Value, []byte{0x34, 0x12}) {
+		t.Fatalf("first value = % X, want 34 12", request.Repeating1[0].Value)
+	}
+	if request.Repeating1[1].Parameter == nil || *request.Repeating1[1].Parameter != 1 {
+		t.Fatalf("second parameter = %v, want 1", request.Repeating1[1].Parameter)
+	}
+	if !bytes.Equal(request.Repeating1[1].Value, []byte{0x08, 0x34}) {
+		t.Fatalf("second value = % X, want 08 34", request.Repeating1[1].Value)
+	}
+}
+
 func TestDecodeNmeaRequestGroupFunctionProprietaryTargetReturnsPartial(t *testing.T) {
 	rawData := []byte{0x09, 0xaa, 0xbb}
 	decoded := decodeGroupFunctionPayload(t, groupFunctionRequestPayload(0x1ef00, 1, rawData))

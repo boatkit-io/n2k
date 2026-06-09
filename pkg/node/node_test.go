@@ -228,6 +228,34 @@ func TestClaimAddressZeroRemainsClaimable(t *testing.T) {
 	assert.False(t, n.readOnly)
 }
 
+func TestEnableHeartbeatAfterClaimWakesProcess(t *testing.T) {
+	sub := newMockSubscriber()
+	pub := newMockPublisher()
+	clock := newMockClock()
+	n := NewNode(sub, pub, clock)
+	_ = n.SetDeviceInfo(DeviceInfo{UniqueNumber: 1})
+
+	err := n.Start()
+	assert.NoError(t, err)
+	defer func() { _ = n.Stop() }()
+
+	pub.expectWrite()
+	err = n.ClaimAddress(50)
+	assert.NoError(t, err)
+	pub.waitForWrite()
+
+	clock.Advance()
+	assert.Eventually(t, n.IsAddressClaimed, time.Second, time.Millisecond)
+	pub.clear()
+
+	pub.expectWrite()
+	n.EnableHeartbeat(true)
+	pub.waitForWrite()
+
+	_, ok := pub.lastWritten().(*pgn.Heartbeat)
+	assert.True(t, ok)
+}
+
 func TestManagedTransmitPGNsIncludesConditionalNodePGNs(t *testing.T) {
 	result := managedTransmitPGNs([]uint32{pgn.IsoAddressClaimPgn, 1}, true, true)
 

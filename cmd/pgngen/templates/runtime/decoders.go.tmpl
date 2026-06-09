@@ -121,7 +121,13 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
         stream.skipBits({{ .BitLength }})
         {{- else }}
         {{- $funcs := getFieldDeserializer $pgn . }}
+        {{- if and (eq $pgn.PGN 126208) (eq .Id "Value") }}
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+        {{- else if and (eq $pgn.PGN 126208) (eq .Id "SelectionValue") }}
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+        {{- else }}
         if v, err := {{ index $funcs 0 }}; err != nil {
+        {{- end }}
             return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
         } else {
             rep.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
@@ -131,6 +137,26 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
             }
             {{- end }}
         }
+        {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NmeaRequestGroupFunction") (eq $pgn.Id "NmeaCommandGroupFunction")) (eq .Id "Parameter") }}
+        {{- if eq .Id "Parameter" }}
+        valueSpec := &fieldSpec_{{ $pgn.Id }}_Value
+        parameter := rep.Parameter
+        {{- end }}
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        {{- end }}
+        {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NmeaReadFieldsReplyGroupFunction") (eq $pgn.Id "NmeaWriteFieldsGroupFunction") (eq $pgn.Id "NmeaWriteFieldsReplyGroupFunction")) (eq .Id "SelectionParameter") }}
+        valueSpec := &fieldSpec_{{ $pgn.Id }}_SelectionValue
+        parameter := rep.SelectionParameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        {{- end }}
         {{- end }}
 
     {{- end }}

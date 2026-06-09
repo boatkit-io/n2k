@@ -19,12 +19,48 @@ type MatchFieldSpec struct {
 	MatchValue int
 }
 
+// PgnFieldSpec maps one PGN field order to its generated field spec.
+type PgnFieldSpec struct {
+	FieldOrder uint8
+	FieldSpec  *FieldSpec
+}
+
 // KnownPGNs contains PGNs that have at least one generated decoder.
 var KnownPGNs = map[uint32]struct{}{
 {{- $pgnGroupsForKnown := groupByPGN .PGNDoc.PGNs }}
 {{- range $pgn, $_ := $pgnGroupsForKnown }}
 	{{ $pgn }}: {},
 {{- end }}
+}
+
+// PgnFieldSpecMap maps PGN IDs to their one-based field order specs.
+var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
+{{- $pgnGroupsForFields := groupByPGN .PGNDoc.PGNs }}
+{{- range $pgn, $variants := $pgnGroupsForFields }}
+	{{ $pgn }}: {
+{{- range $variant := $variants }}
+{{- range $field := $variant.Fields }}
+{{- if needsFieldSpec $field }}
+		{FieldOrder: {{ $field.Order }}, FieldSpec: &fieldSpec_{{ $variant.Id }}_{{ $field.Id }}},
+{{- end }}
+{{- end }}
+{{- end }}
+	},
+{{- end }}
+}
+
+// FindFieldSpec returns the field spec for a one-based field order in a PGN.
+func FindFieldSpec(pgn uint32, fieldOrder uint8) (*FieldSpec, bool) {
+	specs, exists := PgnFieldSpecMap[pgn]
+	if !exists {
+		return nil, false
+	}
+	for _, spec := range specs {
+		if spec.FieldOrder == fieldOrder {
+			return spec.FieldSpec, true
+		}
+	}
+	return nil, false
 }
 
 // PgnDiscriminatorMap maps PGN IDs to their discriminators

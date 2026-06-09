@@ -1536,7 +1536,14 @@ func DecodeNmeaRequestGroupFunction(Info publicpgn.MessageInfo, stream *DataStre
         } else {
             rep.Parameter = v
         }
-        if v, err := stream.readVariableDataWithSpec(&fieldSpec_NmeaRequestGroupFunction_Value); err != nil {
+        valueSpec := &fieldSpec_NmeaRequestGroupFunction_Value
+        parameter := rep.Parameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-Value: %w", err)
         } else {
             rep.Value = v
@@ -1609,7 +1616,14 @@ func DecodeNmeaCommandGroupFunction(Info publicpgn.MessageInfo, stream *DataStre
         } else {
             rep.Parameter = v
         }
-        if v, err := stream.readVariableDataWithSpec(&fieldSpec_NmeaCommandGroupFunction_Value); err != nil {
+        valueSpec := &fieldSpec_NmeaCommandGroupFunction_Value
+        parameter := rep.Parameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Value: %w", err)
         } else {
             rep.Value = v
@@ -1774,7 +1788,14 @@ func DecodeNmeaReadFieldsReplyGroupFunction(Info publicpgn.MessageInfo, stream *
         } else {
             rep.SelectionParameter = v
         }
-        if v, err := stream.readVariableDataWithSpec(&fieldSpec_NmeaReadFieldsReplyGroupFunction_SelectionValue); err != nil {
+        valueSpec := &fieldSpec_NmeaReadFieldsReplyGroupFunction_SelectionValue
+        parameter := rep.SelectionParameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-SelectionValue: %w", err)
         } else {
             rep.SelectionValue = v
@@ -1870,7 +1891,14 @@ func DecodeNmeaWriteFieldsGroupFunction(Info publicpgn.MessageInfo, stream *Data
         } else {
             rep.SelectionParameter = v
         }
-        if v, err := stream.readVariableDataWithSpec(&fieldSpec_NmeaWriteFieldsGroupFunction_SelectionValue); err != nil {
+        valueSpec := &fieldSpec_NmeaWriteFieldsGroupFunction_SelectionValue
+        parameter := rep.SelectionParameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-SelectionValue: %w", err)
         } else {
             rep.SelectionValue = v
@@ -1966,7 +1994,14 @@ func DecodeNmeaWriteFieldsReplyGroupFunction(Info publicpgn.MessageInfo, stream 
         } else {
             rep.SelectionParameter = v
         }
-        if v, err := stream.readVariableDataWithSpec(&fieldSpec_NmeaWriteFieldsReplyGroupFunction_SelectionValue); err != nil {
+        valueSpec := &fieldSpec_NmeaWriteFieldsReplyGroupFunction_SelectionValue
+        parameter := rep.SelectionParameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
             return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-SelectionValue: %w", err)
         } else {
             rep.SelectionValue = v
