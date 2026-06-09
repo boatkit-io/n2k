@@ -2,11 +2,9 @@ module github.com/boatkit-io/n2k
 
 go 1.26.3
 
-replace github.com/boatkit-io/tugboat => ../tugboat
-
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
-	github.com/boatkit-io/tugboat v0.8.9
+	github.com/boatkit-io/tugboat v0.9.0
 	github.com/brutella/can v0.0.2
 	github.com/google/go-cmp v0.6.0
 	github.com/pkg/errors v0.9.1

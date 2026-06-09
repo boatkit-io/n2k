@@ -4,11 +4,7 @@ This project can be tested with live CAN hardware, Linux virtual CAN, or replay 
 
 ## Virtual CAN
 
-Linux `vcan` interfaces are supported through the SocketCAN endpoint when using a tugboat version that accepts `vcan` links. The current local development setup uses:
-
-```go
-replace github.com/boatkit-io/tugboat => ../tugboat
-```
+Linux `vcan` interfaces are supported through the SocketCAN endpoint when using tugboat `v0.9.0` or newer.
 
 The SocketCAN path handles `vcan` differently from real CAN:
 
