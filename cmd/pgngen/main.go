@@ -343,11 +343,9 @@ func (conv *canboatConverter) write() {
 	// Template data
 	templateData := struct {
 		PGNDoc   any
-		ForDebug bool
 		FastBits []byte
 	}{
 		PGNDoc:   conv,
-		ForDebug: false,
 		FastBits: fastBits,
 	}
 

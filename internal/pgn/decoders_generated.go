@@ -1473,23 +1473,552 @@ func DecodeAirmarSpeedPulseCount(Info publicpgn.MessageInfo, stream *DataStream)
     return val, nil
 }
 func DecodeNmeaRequestGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-    return nil, fmt.Errorf("PGN 126208 is not supported")
+    
+    var repeat1Count uint16 = 0
+    var val publicpgn.NmeaRequestGroupFunction
+    val.Info = Info
+    if v, err := stream.readLookupField(8); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-FunctionCode: %w", err)
+    } else {
+        val.FunctionCode = publicpgn.GroupFunctionConst(v)
+        if v != 0 {
+            return nil, fmt.Errorf("match failed for NmeaRequestGroupFunction-FunctionCode: Expected %d != %d", 0, v)
+        }
     }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_NmeaRequestGroupFunction_Pgn); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-Pgn: %w", err)
+    } else {
+        val.Pgn = v
+    }
+    if v, err := ReadScaled[float32](stream, &fieldSpec_NmeaRequestGroupFunction_TransmissionInterval); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-TransmissionInterval: %w", err)
+    } else {
+        val.TransmissionInterval = v
+    }
+    if v, err := ReadScaled[float32](stream, &fieldSpec_NmeaRequestGroupFunction_TransmissionIntervalOffset); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-TransmissionIntervalOffset: %w", err)
+    } else {
+        val.TransmissionIntervalOffset = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaRequestGroupFunction_NumberOfParameters); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-NumberOfParameters: %w", err)
+    } else {
+        val.NumberOfParameters = v
+        if v != nil {
+            repeat1Count = uint16(*v)
+        }
+    }
+    if val.Pgn != nil && (IsProprietaryPGN(*val.Pgn) || !HasDecoder(*val.Pgn)) {
+        partial := publicpgn.NmeaRequestGroupFunctionPartial{
+            Info: Info,
+            FunctionCode: val.FunctionCode,
+            Pgn: val.Pgn,
+            TransmissionInterval: val.TransmissionInterval,
+            TransmissionIntervalOffset: val.TransmissionIntervalOffset,
+            NumberOfParameters: val.NumberOfParameters,
+        }
+        if v, err := stream.readBinaryData(stream.remainingLength()); err != nil {
+            return nil, fmt.Errorf("failed to read remaining bytes: %w", err)
+        } else {
+            partial.RawData = v
+        }
+        return partial, nil
+    }
+    // decode repeating fields
+     val.Repeating1 = make([]publicpgn.NmeaRequestGroupFunctionRepeating1, 0)
+     if repeat1Count == 0 {
+        return val, nil
+     }
+    for {
+        var rep publicpgn.NmeaRequestGroupFunctionRepeating1
+        if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaRequestGroupFunction_Parameter); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-Parameter: %w", err)
+        } else {
+            rep.Parameter = v
+        }
+        valueSpec := &fieldSpec_NmeaRequestGroupFunction_Value
+        parameter := rep.Parameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaRequestGroupFunction-Value: %w", err)
+        } else {
+            rep.Value = v
+        }
+        val.Repeating1 = append(val.Repeating1, rep)
+        repeat1Count--
+        if int(repeat1Count) == 0 {
+            break
+        }
+   }
+
+    return val, nil
+}
 func DecodeNmeaCommandGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-    return nil, fmt.Errorf("PGN 126208 is not supported")
+    
+    var repeat1Count uint16 = 0
+    var val publicpgn.NmeaCommandGroupFunction
+    val.Info = Info
+    if v, err := stream.readLookupField(8); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-FunctionCode: %w", err)
+    } else {
+        val.FunctionCode = publicpgn.GroupFunctionConst(v)
+        if v != 1 {
+            return nil, fmt.Errorf("match failed for NmeaCommandGroupFunction-FunctionCode: Expected %d != %d", 1, v)
+        }
     }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_NmeaCommandGroupFunction_Pgn); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Pgn: %w", err)
+    } else {
+        val.Pgn = v
+    }
+    if v, err := stream.readLookupField(4); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Priority: %w", err)
+    } else {
+        val.Priority = publicpgn.PriorityConst(v)
+    }
+    stream.skipBits(4)
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaCommandGroupFunction_NumberOfParameters); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-NumberOfParameters: %w", err)
+    } else {
+        val.NumberOfParameters = v
+        if v != nil {
+            repeat1Count = uint16(*v)
+        }
+    }
+    if val.Pgn != nil && (IsProprietaryPGN(*val.Pgn) || !HasDecoder(*val.Pgn)) {
+        partial := publicpgn.NmeaCommandGroupFunctionPartial{
+            Info: Info,
+            FunctionCode: val.FunctionCode,
+            Pgn: val.Pgn,
+            Priority: val.Priority,
+            NumberOfParameters: val.NumberOfParameters,
+        }
+        if v, err := stream.readBinaryData(stream.remainingLength()); err != nil {
+            return nil, fmt.Errorf("failed to read remaining bytes: %w", err)
+        } else {
+            partial.RawData = v
+        }
+        return partial, nil
+    }
+    // decode repeating fields
+     val.Repeating1 = make([]publicpgn.NmeaCommandGroupFunctionRepeating1, 0)
+     if repeat1Count == 0 {
+        return val, nil
+     }
+    for {
+        var rep publicpgn.NmeaCommandGroupFunctionRepeating1
+        if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaCommandGroupFunction_Parameter); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Parameter: %w", err)
+        } else {
+            rep.Parameter = v
+        }
+        valueSpec := &fieldSpec_NmeaCommandGroupFunction_Value
+        parameter := rep.Parameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaCommandGroupFunction-Value: %w", err)
+        } else {
+            rep.Value = v
+        }
+        val.Repeating1 = append(val.Repeating1, rep)
+        repeat1Count--
+        if int(repeat1Count) == 0 {
+            break
+        }
+   }
+
+    return val, nil
+}
 func DecodeNmeaAcknowledgeGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-    return nil, fmt.Errorf("PGN 126208 is not supported")
+    
+    var repeat1Count uint16 = 0
+    var val publicpgn.NmeaAcknowledgeGroupFunction
+    val.Info = Info
+    if v, err := stream.readLookupField(8); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-FunctionCode: %w", err)
+    } else {
+        val.FunctionCode = publicpgn.GroupFunctionConst(v)
+        if v != 2 {
+            return nil, fmt.Errorf("match failed for NmeaAcknowledgeGroupFunction-FunctionCode: Expected %d != %d", 2, v)
+        }
     }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_NmeaAcknowledgeGroupFunction_Pgn); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-Pgn: %w", err)
+    } else {
+        val.Pgn = v
+    }
+    if v, err := stream.readLookupField(4); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-PgnErrorCode: %w", err)
+    } else {
+        val.PgnErrorCode = publicpgn.PgnErrorCodeConst(v)
+    }
+    if v, err := stream.readLookupField(4); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-TransmissionIntervalPriorityErrorCode: %w", err)
+    } else {
+        val.TransmissionIntervalPriorityErrorCode = publicpgn.TransmissionIntervalConst(v)
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaAcknowledgeGroupFunction_NumberOfParameters); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-NumberOfParameters: %w", err)
+    } else {
+        val.NumberOfParameters = v
+        if v != nil {
+            repeat1Count = uint16(*v)
+        }
+    }
+    if val.Pgn != nil && (IsProprietaryPGN(*val.Pgn) || !HasDecoder(*val.Pgn)) {
+        partial := publicpgn.NmeaAcknowledgeGroupFunctionPartial{
+            Info: Info,
+            FunctionCode: val.FunctionCode,
+            Pgn: val.Pgn,
+            PgnErrorCode: val.PgnErrorCode,
+            TransmissionIntervalPriorityErrorCode: val.TransmissionIntervalPriorityErrorCode,
+            NumberOfParameters: val.NumberOfParameters,
+        }
+        if v, err := stream.readBinaryData(stream.remainingLength()); err != nil {
+            return nil, fmt.Errorf("failed to read remaining bytes: %w", err)
+        } else {
+            partial.RawData = v
+        }
+        return partial, nil
+    }
+    // decode repeating fields
+     val.Repeating1 = make([]publicpgn.NmeaAcknowledgeGroupFunctionRepeating1, 0)
+     if repeat1Count == 0 {
+        return val, nil
+     }
+    for {
+        var rep publicpgn.NmeaAcknowledgeGroupFunctionRepeating1
+        if v, err := stream.readLookupField(4); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaAcknowledgeGroupFunction-Parameter: %w", err)
+        } else {
+            rep.Parameter = publicpgn.ParameterFieldConst(v)
+        }
+        val.Repeating1 = append(val.Repeating1, rep)
+        repeat1Count--
+        if int(repeat1Count) == 0 {
+            break
+        }
+   }
+
+    return val, nil
+}
 func DecodeNmeaReadFieldsReplyGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-    return nil, fmt.Errorf("PGN 126208 is not supported")
+    
+    var repeat1Count uint16 = 0
+    var repeat2Count uint16 = 0
+    var val publicpgn.NmeaReadFieldsReplyGroupFunction
+    val.Info = Info
+    if v, err := stream.readLookupField(8); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-FunctionCode: %w", err)
+    } else {
+        val.FunctionCode = publicpgn.GroupFunctionConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for NmeaReadFieldsReplyGroupFunction-FunctionCode: Expected %d != %d", 4, v)
+        }
     }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_NmeaReadFieldsReplyGroupFunction_Pgn); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-Pgn: %w", err)
+    } else {
+        val.Pgn = v
+    }
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaReadFieldsReplyGroupFunction_UniqueId); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-UniqueId: %w", err)
+    } else {
+        val.UniqueId = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaReadFieldsReplyGroupFunction_NumberOfSelectionPairs); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-NumberOfSelectionPairs: %w", err)
+    } else {
+        val.NumberOfSelectionPairs = v
+        if v != nil {
+            repeat1Count = uint16(*v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaReadFieldsReplyGroupFunction_NumberOfParameters); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-NumberOfParameters: %w", err)
+    } else {
+        val.NumberOfParameters = v
+    }
+    if val.Pgn != nil && (IsProprietaryPGN(*val.Pgn) || !HasDecoder(*val.Pgn)) {
+        partial := publicpgn.NmeaReadFieldsReplyGroupFunctionPartial{
+            Info: Info,
+            FunctionCode: val.FunctionCode,
+            Pgn: val.Pgn,
+            ManufacturerCode: val.ManufacturerCode,
+            IndustryCode: val.IndustryCode,
+            UniqueId: val.UniqueId,
+            NumberOfSelectionPairs: val.NumberOfSelectionPairs,
+            NumberOfParameters: val.NumberOfParameters,
+        }
+        if v, err := stream.readBinaryData(stream.remainingLength()); err != nil {
+            return nil, fmt.Errorf("failed to read remaining bytes: %w", err)
+        } else {
+            partial.RawData = v
+        }
+        return partial, nil
+    }
+    // decode repeating fields
+     val.Repeating1 = make([]publicpgn.NmeaReadFieldsReplyGroupFunctionRepeating1, 0)
+     if repeat1Count == 0 {
+        return val, nil
+     }
+    for {
+        var rep publicpgn.NmeaReadFieldsReplyGroupFunctionRepeating1
+        if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaReadFieldsReplyGroupFunction_SelectionParameter); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-SelectionParameter: %w", err)
+        } else {
+            rep.SelectionParameter = v
+        }
+        valueSpec := &fieldSpec_NmeaReadFieldsReplyGroupFunction_SelectionValue
+        parameter := rep.SelectionParameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaReadFieldsReplyGroupFunction-SelectionValue: %w", err)
+        } else {
+            rep.SelectionValue = v
+        }
+        val.Repeating1 = append(val.Repeating1, rep)
+        repeat1Count--
+        if int(repeat1Count) == 0 {
+            break
+        }
+   }
+    val.Repeating2 = make([]publicpgn.NmeaReadFieldsReplyGroupFunctionRepeating2, 0)
+    if repeat2Count == 0 {
+        return val, nil
+     }
+
+    return val, nil
+}
 func DecodeNmeaWriteFieldsGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-    return nil, fmt.Errorf("PGN 126208 is not supported")
+    
+    var repeat1Count uint16 = 0
+    var repeat2Count uint16 = 0
+    var val publicpgn.NmeaWriteFieldsGroupFunction
+    val.Info = Info
+    if v, err := stream.readLookupField(8); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-FunctionCode: %w", err)
+    } else {
+        val.FunctionCode = publicpgn.GroupFunctionConst(v)
+        if v != 5 {
+            return nil, fmt.Errorf("match failed for NmeaWriteFieldsGroupFunction-FunctionCode: Expected %d != %d", 5, v)
+        }
     }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_NmeaWriteFieldsGroupFunction_Pgn); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-Pgn: %w", err)
+    } else {
+        val.Pgn = v
+    }
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaWriteFieldsGroupFunction_UniqueId); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-UniqueId: %w", err)
+    } else {
+        val.UniqueId = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaWriteFieldsGroupFunction_NumberOfSelectionPairs); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-NumberOfSelectionPairs: %w", err)
+    } else {
+        val.NumberOfSelectionPairs = v
+        if v != nil {
+            repeat1Count = uint16(*v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaWriteFieldsGroupFunction_NumberOfParameters); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-NumberOfParameters: %w", err)
+    } else {
+        val.NumberOfParameters = v
+    }
+    if val.Pgn != nil && (IsProprietaryPGN(*val.Pgn) || !HasDecoder(*val.Pgn)) {
+        partial := publicpgn.NmeaWriteFieldsGroupFunctionPartial{
+            Info: Info,
+            FunctionCode: val.FunctionCode,
+            Pgn: val.Pgn,
+            ManufacturerCode: val.ManufacturerCode,
+            IndustryCode: val.IndustryCode,
+            UniqueId: val.UniqueId,
+            NumberOfSelectionPairs: val.NumberOfSelectionPairs,
+            NumberOfParameters: val.NumberOfParameters,
+        }
+        if v, err := stream.readBinaryData(stream.remainingLength()); err != nil {
+            return nil, fmt.Errorf("failed to read remaining bytes: %w", err)
+        } else {
+            partial.RawData = v
+        }
+        return partial, nil
+    }
+    // decode repeating fields
+     val.Repeating1 = make([]publicpgn.NmeaWriteFieldsGroupFunctionRepeating1, 0)
+     if repeat1Count == 0 {
+        return val, nil
+     }
+    for {
+        var rep publicpgn.NmeaWriteFieldsGroupFunctionRepeating1
+        if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaWriteFieldsGroupFunction_SelectionParameter); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-SelectionParameter: %w", err)
+        } else {
+            rep.SelectionParameter = v
+        }
+        valueSpec := &fieldSpec_NmeaWriteFieldsGroupFunction_SelectionValue
+        parameter := rep.SelectionParameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaWriteFieldsGroupFunction-SelectionValue: %w", err)
+        } else {
+            rep.SelectionValue = v
+        }
+        val.Repeating1 = append(val.Repeating1, rep)
+        repeat1Count--
+        if int(repeat1Count) == 0 {
+            break
+        }
+   }
+    val.Repeating2 = make([]publicpgn.NmeaWriteFieldsGroupFunctionRepeating2, 0)
+    if repeat2Count == 0 {
+        return val, nil
+     }
+
+    return val, nil
+}
 func DecodeNmeaWriteFieldsReplyGroupFunction(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-    return nil, fmt.Errorf("PGN 126208 is not supported")
+    
+    var repeat1Count uint16 = 0
+    var repeat2Count uint16 = 0
+    var val publicpgn.NmeaWriteFieldsReplyGroupFunction
+    val.Info = Info
+    if v, err := stream.readLookupField(8); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-FunctionCode: %w", err)
+    } else {
+        val.FunctionCode = publicpgn.GroupFunctionConst(v)
+        if v != 6 {
+            return nil, fmt.Errorf("match failed for NmeaWriteFieldsReplyGroupFunction-FunctionCode: Expected %d != %d", 6, v)
+        }
     }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_NmeaWriteFieldsReplyGroupFunction_Pgn); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-Pgn: %w", err)
+    } else {
+        val.Pgn = v
+    }
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaWriteFieldsReplyGroupFunction_UniqueId); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-UniqueId: %w", err)
+    } else {
+        val.UniqueId = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaWriteFieldsReplyGroupFunction_NumberOfSelectionPairs); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-NumberOfSelectionPairs: %w", err)
+    } else {
+        val.NumberOfSelectionPairs = v
+        if v != nil {
+            repeat1Count = uint16(*v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaWriteFieldsReplyGroupFunction_NumberOfParameters); err != nil {
+        return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-NumberOfParameters: %w", err)
+    } else {
+        val.NumberOfParameters = v
+    }
+    if val.Pgn != nil && (IsProprietaryPGN(*val.Pgn) || !HasDecoder(*val.Pgn)) {
+        partial := publicpgn.NmeaWriteFieldsReplyGroupFunctionPartial{
+            Info: Info,
+            FunctionCode: val.FunctionCode,
+            Pgn: val.Pgn,
+            ManufacturerCode: val.ManufacturerCode,
+            IndustryCode: val.IndustryCode,
+            UniqueId: val.UniqueId,
+            NumberOfSelectionPairs: val.NumberOfSelectionPairs,
+            NumberOfParameters: val.NumberOfParameters,
+        }
+        if v, err := stream.readBinaryData(stream.remainingLength()); err != nil {
+            return nil, fmt.Errorf("failed to read remaining bytes: %w", err)
+        } else {
+            partial.RawData = v
+        }
+        return partial, nil
+    }
+    // decode repeating fields
+     val.Repeating1 = make([]publicpgn.NmeaWriteFieldsReplyGroupFunctionRepeating1, 0)
+     if repeat1Count == 0 {
+        return val, nil
+     }
+    for {
+        var rep publicpgn.NmeaWriteFieldsReplyGroupFunctionRepeating1
+        if v, err := ReadRaw[uint8](stream, &fieldSpec_NmeaWriteFieldsReplyGroupFunction_SelectionParameter); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-SelectionParameter: %w", err)
+        } else {
+            rep.SelectionParameter = v
+        }
+        valueSpec := &fieldSpec_NmeaWriteFieldsReplyGroupFunction_SelectionValue
+        parameter := rep.SelectionParameter
+        if val.Pgn != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+                valueSpec = spec
+            }
+        }
+        if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+            return nil, fmt.Errorf("parse failed for NmeaWriteFieldsReplyGroupFunction-SelectionValue: %w", err)
+        } else {
+            rep.SelectionValue = v
+        }
+        val.Repeating1 = append(val.Repeating1, rep)
+        repeat1Count--
+        if int(repeat1Count) == 0 {
+            break
+        }
+   }
+    val.Repeating2 = make([]publicpgn.NmeaWriteFieldsReplyGroupFunctionRepeating2, 0)
+    if repeat2Count == 0 {
+        return val, nil
+     }
+
+    return val, nil
+}
 func DecodePgnListTransmitAndReceive(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
     
     var val publicpgn.PgnListTransmitAndReceive

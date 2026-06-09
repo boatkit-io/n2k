@@ -57,12 +57,11 @@ func (s *DataStream) SetPosition(bitOffset uint16) {
 	s.bitOffset = uint8(bitOffset % 8)
 }
 
-// remainingLength returns the number of bits remaining in the stream
-/* func (s *DataStream) remainingLength() uint16 {
+// remainingLength returns the number of bits remaining in the stream.
+func (s *DataStream) remainingLength() uint16 {
 	totalBits := len(s.data)*8 - (int(s.byteOffset)*8 + int(s.bitOffset))
 	return uint16(totalBits)
 }
-*/
 
 // calcPrecision calculates the resulting precision of applying a given resolution to a given value
 func calcPrecision(resolution float64) uint8 {
