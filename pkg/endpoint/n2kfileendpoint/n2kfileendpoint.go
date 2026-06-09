@@ -18,7 +18,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/brutella/can"
 	"github.com/pkg/errors"
@@ -52,8 +51,11 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			n.log.WithError(err).Warnf("failed to close n2k file %s", n.inFilePath)
+		}
+	}()
 
 	startTime := time.Now()
 
@@ -84,7 +86,12 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 		if err != nil {
 			return err
 		}
-		bts := strings.Split(line[37:], " ")
+		_, tail, ok := strings.Cut(line, "]")
+		if !ok {
+			return fmt.Errorf("failed to cut line")
+		}
+		tail = strings.TrimSpace(tail)
+		bts := strings.Split(tail, " ")
 		for i := range frame.Length {
 			_, err := fmt.Sscanf(bts[i], "%X", &frame.Data[i])
 			if err != nil {
@@ -118,8 +125,20 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 	return nil
 }
 
+// Close closes the endpoint
+func (n *N2kFileEndpoint) Close() error {
+	// For file endpoints, there's nothing to close
+	return nil
+}
+
+// WriteFrame writes a CAN frame to the endpoint
+func (n *N2kFileEndpoint) WriteFrame(_ can.Frame) {
+	// For file endpoints, we don't support writing frames
+	// This is a read-only endpoint
+}
+
 // frameReady is a helper to handle passing completed frames to the handler
-func (n *N2kFileEndpoint) frameReady(frame adapter.Message) {
+func (n *N2kFileEndpoint) frameReady(frame endpoint.Message) {
 	if n.handler != nil {
 		n.handler.HandleMessage(frame)
 	}

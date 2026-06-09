@@ -30,12 +30,14 @@ func NewDeDuper() *DeDuper {
 //nolint:gocritic // Why: Not needed.
 func (deduper *DeDuper) unique(name string) (bool, string) {
 	firstTime := true
-	count := deduper.used[name]
+	count, found := deduper.used[name]
+	if !found {
+		deduper.used[name] = 1
+		return firstTime, name
+	}
 	count++
 	deduper.used[name] = count
-	if count > 1 {
-		name += "_" + strconv.FormatInt(int64(count), 10)
-		firstTime = false
-	}
+	name += "_" + strconv.FormatInt(int64(count), 10)
+	firstTime = false
 	return firstTime, name
 }

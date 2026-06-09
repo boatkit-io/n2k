@@ -12,17 +12,23 @@ package endpoint
 import (
 	"context"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
+	"github.com/brutella/can"
 )
+
+// Message is a generic type for messages passed between and endpoint
+// and an adapter.
+type Message interface {
+}
 
 // Endpoint declares the interface for endpoints.
 type Endpoint interface {
 	Run(ctx context.Context) error
 	Close() error
 	SetOutput(MessageHandler)
+	WriteFrame(can.Frame)
 }
 
 // MessageHandler is an interface for the handler of an Endpoint that takes a finished Message object
 type MessageHandler interface {
-	HandleMessage(adapter.Message)
+	HandleMessage(message Message)
 }

@@ -1,0 +1,75 @@
+// Copyright (C) 2026 Boatkit
+//
+// This work is licensed under the terms of the MIT license. For a copy,
+// see <https://opensource.org/licenses/MIT>.
+//
+// SPDX-License-Identifier: MIT
+
+// Package n2k provides the public API for NMEA 2000 message processing.
+package n2k
+
+import (
+	"context"
+
+	"github.com/boatkit-io/n2k/internal/n2kinternal"
+	"github.com/boatkit-io/n2k/pkg/endpoint"
+	"github.com/brutella/can"
+	"github.com/sirupsen/logrus"
+)
+
+// N2kService provides the main public API for NMEA 2000 operations
+type N2kService struct {
+	impl *n2kinternal.N2kService
+}
+
+// NewN2kService creates a new N2K service with the specified endpoint
+func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger) *N2kService {
+	return &N2kService{
+		impl: n2kinternal.NewN2kService(ep, log),
+	}
+}
+
+// Write sends a PGN struct to the bus
+func (s *N2kService) Write(pgnStruct any) error {
+	return s.impl.Write(pgnStruct)
+}
+
+// Start begins processing messages from the endpoint
+func (s *N2kService) Start(ctx context.Context) error {
+	return s.impl.Start(ctx)
+}
+
+// Stop stops processing messages
+func (s *N2kService) Stop() error {
+	return s.impl.Stop()
+}
+
+// UpdateEndpoint updates the endpoint used by the service
+func (s *N2kService) UpdateEndpoint(ep endpoint.Endpoint) error {
+	return s.impl.UpdateEndpoint(ep)
+}
+
+// SubscribeToAllStructs subscribes to all PGN struct types and calls the callback when any message is received.
+func (s *N2kService) SubscribeToAllStructs(callback any) (uint, error) {
+	return s.impl.SubscribeToAllStructs(callback)
+}
+
+// SubscribeToStruct subscribes to a specific PGN struct type and calls the callback when messages of that type are received.
+func (s *N2kService) SubscribeToStruct(t, callback any) (uint, error) {
+	return s.impl.SubscribeToStruct(t, callback)
+}
+
+// Unsubscribe removes a subscription by its ID.
+func (s *N2kService) Unsubscribe(id uint) error {
+	return s.impl.Unsubscribe(id)
+}
+
+// SetReceivedCANFrameHook registers a callback invoked for each live CAN frame before decode.
+func (s *N2kService) SetReceivedCANFrameHook(fn func(*can.Frame)) {
+	s.impl.SetReceivedCANFrameHook(fn)
+}
+
+// HandleReplayCANFrame feeds a captured CAN frame into the shared decode pipeline.
+func (s *N2kService) HandleReplayCANFrame(frame *can.Frame) error {
+	return s.impl.HandleReplayCANFrame(frame)
+}

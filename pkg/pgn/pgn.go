@@ -5,8 +5,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-// Package pgn uses data from canboat.json to convert NMEA 2000 messages
-// to strongly-typed golang data.
-// The command pgngen generates the file pgn/pgninfo_generated.go from
-// canboat.json.
+// Package pgn provides NMEA 2000 PGN domain types: structs, enums, and constants.
+// Generated types are produced by cmd/pgngen.
 package pgn

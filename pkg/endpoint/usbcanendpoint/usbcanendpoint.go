@@ -12,7 +12,6 @@ package usbcanendpoint
 import (
 	"context"
 
-	"github.com/boatkit-io/n2k/pkg/adapter"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/boatkit-io/tugboat/pkg/canbus"
 	"github.com/brutella/can"
@@ -80,9 +79,18 @@ func (c *USBCANEndpoint) Close() error {
 	return nil
 }
 
+// WriteFrame sends a CAN frame to the USBCAN interface
+func (c *USBCANEndpoint) WriteFrame(frame can.Frame) {
+	if c.channel != nil {
+		if err := c.channel.WriteFrame(frame); err != nil {
+			c.log.WithError(err).Error("failed to send frame to USBCAN interface")
+		}
+	}
+}
+
 // frameReady is a helper to handle passing completed frames to the handler
 func (c *USBCANEndpoint) frameReady(frame can.Frame) {
 	if c.handler != nil {
-		c.handler.HandleMessage(adapter.Message(&frame))
+		c.handler.HandleMessage(endpoint.Message(&frame))
 	}
 }

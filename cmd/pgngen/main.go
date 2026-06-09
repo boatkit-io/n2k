@@ -5,13 +5,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-// Package main implements pgngen which generates the file pgninfo_generated.go.
-// The generated file provides go declarations and functions to assist conversion from
-// strongly typed go structures and NMEA 2000 frames.
+// Package main generates NMEA 2000 PGN decoders and related Go sources from Canboat JSON.
 package main
 
 import (
 	_ "embed"
+	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -19,6 +18,7 @@ import (
 	"path/filepath"
 	"strconv"
 
+	//	"math"
 	"net/http"
 	"os"
 	"strings"
@@ -36,26 +36,24 @@ import (
 // resolution64BitCutoff is a heuristic for a cutoff to jump from float32 -> float64 for uint32->float conversion
 const resolution64BitCutoff = 0.0000001
 
+// MaxPGNLength is the maximum length of a PGN in bytes
+const MaxPGNLength = 223 // 31*7 + 6
+
 // log provides standard logging capability to the program.
 var log = logrus.StandardLogger()
-
-// pgninfoTemplate is the template used to generate the output file.
-//
-//go:embed templates/pgninfo.go.tmpl
-var pgninfoTemplate string
 
 func main() {
 	fmt.Println("Entered Main")
 	builder := newCanboatConverter()
 	builder.fixup()
 	builder.filter()
+	builder.validate()
 	builder.write()
 }
 
 // canboatConverter is inflated from the json file canboat.json.
 // The data is massaged and used to generate the output file.
-// We filter PGNs that have never been seen into a separate list. If one
-// is encountered we'll log it and its data, and return an UnknownPGN to
+// We filter PGNs that have never been seen into a separate list. If one is encountered we'll log it and its data, and return an UnknownPGN to
 // allow processing to continue.
 type canboatConverter struct {
 	Comment        string
@@ -70,6 +68,10 @@ type canboatConverter struct {
 	PGNs           []*PGN
 	NeverSeenPGNs  []*PGN
 	IncompletePGNS []*PGN
+
+	// Derived domain range data seeded from canboat and curated overrides
+	domainRanges      map[domainKey]domainRange
+	domainDiagnostics domainDiagnostics
 }
 
 // PhysicalUnit, defined in Canboat.json, defines the units used by Canboat.
@@ -104,6 +106,7 @@ type EnumTriplet struct {
 
 // EnumPair is used as elements of LookupEnumerations.
 type EnumPair struct {
+	Name  string // The generated name for the go const
 	Text  string `json:"Name"`
 	Value int
 }
@@ -117,6 +120,7 @@ type BitEnumeration struct {
 
 // BitEnumPair is an element of a BitEnumeration
 type BitEnumPair struct {
+	Name  string // The generated name for the go const
 	Label string `json:"Name"`
 	Bit   int
 }
@@ -141,8 +145,7 @@ type EnumFieldType struct {
 
 // PGN is the core data structure describing a NMEA message.
 type PGN struct {
-	PGN uint32
-	//nolint:revive // Why: Needs to be this way.
+	PGN                          uint32
 	Id                           string
 	Description                  string
 	Explanation                  string
@@ -168,11 +171,10 @@ type PGN struct {
 
 // PGNField describes an individual field in a PGN.
 type PGNField struct {
-	Order uint8
-	//nolint:revive // Why: Needs to be this way.
+	Order                    uint8
 	Id                       string
 	Name                     string
-	Description              any
+	Description              string
 	BitLength                uint16
 	BitLengthVariable        bool
 	BitLengthField           uint8
@@ -180,12 +182,15 @@ type PGNField struct {
 	BitStart                 uint8
 	FieldType                string
 	Resolution               *float32
-	Offset                   *int64
-	RangeMin                 float32
-	RangeMax                 float32
+	Offset                   int64
+	RangeMin                 float64
+	RangeMax                 float64
+	DomainMin                *float64
+	DomainMax                *float64
 	Match                    *int
 	Signed                   bool
 	Unit                     string
+	PhysicalQuantity         string `json:"PhysicalQuantity"`
 	LookupName               string `json:"LookupEnumeration"`
 	BitLookupName            string `json:"LookupBitEnumeration"`
 	IndirectLookupName       string `json:"LookupIndirectEnumeration"`
@@ -201,141 +206,405 @@ func newCanboatConverter() *canboatConverter {
 }
 
 // init initializes a canboatConverter from canboat.json.
-func (builder *canboatConverter) init() {
-	raw, err := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json")
-	if err != nil {
-		log.Info(err)
-	}
+func (conv *canboatConverter) init() {
+	raw := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json")
 
-	if err := json.Unmarshal(raw, builder); err != nil {
+	if err := json.Unmarshal(raw, conv); err != nil {
 		log.Info(err)
 	}
-	log.Infof("Initially Parsed Lookup enums: %d", len(builder.Enums))
-	log.Infof("Initially Parsed IndirectLookup enums: %d", len(builder.IndirectEnums))
-	log.Infof("Initially Parsed BitLookup enums: %d", len(builder.BitEnums))
-	log.Infof("Initially Parsed FieldTypeLookup enums: %d", len(builder.FieldTypeEnums))
-	log.Infof("Parsed pgns: %d", len(builder.PGNs))
+	log.Infof("Initially Parsed Lookup enums: %d", len(conv.Enums))
+	log.Infof("Initially Parsed IndirectLookup enums: %d", len(conv.IndirectEnums))
+	log.Infof("Initially Parsed BitLookup enums: %d", len(conv.BitEnums))
+	log.Infof("Initially Parsed FieldTypeLookup enums: %d", len(conv.FieldTypeEnums))
+	log.Infof("Parsed pgns: %d", len(conv.PGNs))
 }
 
 // fixup massages the imported data (details in the routines it invokes).
-func (builder *canboatConverter) fixup() {
-	builder.fixIDs()
-	builder.fixEnumDefs()
-	builder.fixRepeating()
-	builder.validate()
+func (conv *canboatConverter) fixup() {
+	conv.buildDomainRanges()
+	conv.fixIDs()
+	conv.fixEnumDefs()
+	conv.fixRepeating()
 }
 
-// filter builds separate slices for known, unknown (no Canboat samples), and incomplete PGNs
-func (builder *canboatConverter) filter() {
+// filter builds separate slices for known, unknown (no Canboat samples), and incomplete PGNs.
+func (conv *canboatConverter) filter() {
 	known := make([]*PGN, 0)
 	unknown := make([]*PGN, 0)
 	incomplete := make([]*PGN, 0)
 	var keep bool
-	for _, pgn := range builder.PGNs {
+	for _, pgn := range conv.PGNs {
 		keep = true
 		if !pgn.Complete {
-			switch len(pgn.Missing) {
-			case 0:
+			if len(pgn.Missing) == 0 {
 				panic("Complete is false but Missing is empty!")
-			case 1:
-				keep = true // pgn.Missing[0] == "Interval"
-			default:
-				incomplete = append(incomplete, pgn)
-				for _, miss := range pgn.Missing {
-					if miss == "SampleData" {
-						keep = false
-						unknown = append(unknown, pgn)
-					}
+			}
+			for i := range pgn.Missing {
+				if (pgn.Missing[i] == "Interval") || (pgn.Missing[i] == "Lookups") { // we don't care about these
+					continue
+				}
+				keep = false
+				if pgn.Missing[i] == "SampleData" { // we track these so we can provide sample data if we encounter them
+					unknown = append(unknown, pgn)
 				}
 			}
 		}
 		if keep {
 			known = append(known, pgn)
+		} else {
+			incomplete = append(incomplete, pgn)
 		}
 	}
-	builder.PGNs = known
-	builder.NeverSeenPGNs = unknown
-	builder.IncompletePGNS = incomplete
-	log.Infof("After filtering, known: %d, unknown: %d, incomplete: %d",
-		len(builder.PGNs), len(builder.NeverSeenPGNs), len(builder.IncompletePGNS))
+	conv.PGNs = known
+	conv.NeverSeenPGNs = unknown
+	conv.IncompletePGNS = incomplete
+	log.Infof("After filtering, known: %d, unknown: %d, incomplete: %d", len(conv.PGNs), len(conv.NeverSeenPGNs), len(conv.IncompletePGNS))
 }
 
-// write outputs the pgninfo_generated.go file. Most of the work occurs in the template.
-func (builder *canboatConverter) write() {
-	f, err := os.Create(filepath.Join("pkg", "pgn", "pgninfo_generated.go"))
+// write outputs the generated files. Most of the work occurs in the templates.
+// write outputs the generated files. Most of the work occurs in the templates.
+func (conv *canboatConverter) write() {
+	// Get the project root directory
+	projectRoot, err := filepath.Abs(".")
 	if err != nil {
 		panic(err)
 	}
-	defer f.Close()
 
-	t := template.Must(template.New("pgninfo").Funcs(sprig.TxtFuncMap()).Funcs(template.FuncMap{
-		"convertFieldType":     convertFieldType,
-		"getFieldDeserializer": getFieldDeserializer,
-		"fieldByteCount":       fieldByteCount,
-		"concat":               func(strs ...string) string { return strings.Join(strs, "") },
-		"toNumber":             toNumber,
-		"toVarName":            toVarName,
-		"isPointerFieldType":   isPointerFieldType,
-		"constSize":            constSize,
-		"subtract":             func(x, y uint8) uint8 { return x - y },
-		"matchManufacturer":    matchManufacturer,
-		"makeIndirectMap":      makeIndirectMap,
-		"derefInt":             func(ip *int) int { return *ip },
-		"isNil":                func(fp *int) bool { return fp == nil },
-		"contains":             strings.Contains,
-	}).Parse(pgninfoTemplate))
+	// Create output directories
+	internalPGNDir := filepath.Join(projectRoot, "internal", "pgn")
+	publicPGNDir := filepath.Join(projectRoot, "pkg", "pgn")
+	filterrawDir := filepath.Join(projectRoot, "cmd", "filterraw")
 
-	if err := t.Execute(f, map[string]any{
-		"PGNDoc": builder,
-	}); err != nil {
+	if err := os.MkdirAll(internalPGNDir, 0755); err != nil {
 		panic(err)
+	}
+	if err := os.MkdirAll(publicPGNDir, 0755); err != nil {
+		panic(err)
+	}
+	if err := os.MkdirAll(filterrawDir, 0755); err != nil {
+		panic(err)
+	}
+
+	// Template function map
+	funcMap := template.FuncMap{
+		"convertFieldType":          convertFieldType,
+		"getFieldSerializer":        getFieldSerializer,
+		"getFieldDeserializer":      getFieldDeserializer,
+		"fieldByteCount":            fieldByteCount,
+		"concat":                    func(strs ...string) string { return strings.Join(strs, "") },
+		"toNumber":                  toNumber,
+		"isPointerFieldType":        isPointerFieldType,
+		"constSize":                 constSize,
+		"subtract":                  func(x, y uint8) uint8 { return x - y },
+		"matchManufacturer":         matchManufacturer,
+		"makeIndirectMap":           makeIndirectMap,
+		"getReservedValueCount":     getReservedValueCount,
+		"generateFieldSpecConstant": generateFieldSpecConstant,
+		"getMaxRawValue":            calcMaxRawValue,
+		"getMissingValue":           calcMissingValue,
+		"calcMaxValidRawValue":      calcMaxValidRawValue,
+		"calcMissingValue":          calcMissingValue,
+		"derefOrZero": func(v *uint64) uint64 {
+			if v == nil {
+				return 0
+			} else {
+				return *v
+			}
+		},
+		"derefInt":   func(ip *int) int { return *ip },
+		"isNil":      func(fp *int) bool { return fp == nil },
+		"hasFloat64": func(fp *float64) bool { return fp != nil },
+		"derefFloat64": func(fp *float64) float64 {
+			if fp == nil {
+				return 0
+			}
+			return *fp
+		},
+		"contains":         strings.Contains,
+		"getDecoderConfig": getDecoderConfig,
+		"groupByPGN":       groupByPGN,
+		"needsFieldSpec": func(field PGNField) bool {
+			if reservedNumericType(field.FieldType) {
+				return true
+			}
+			if field.FieldType == "MMSI" {
+				return true
+			}
+			if field.FieldType == "FIELD_INDEX" || field.FieldType == "VARIABLE" {
+				return true
+			}
+			return field.Match != nil
+		},
+	}
+
+	// Generate fast bits array
+	fastBits := conv.generateFastBits()
+
+	// Template data
+	templateData := struct {
+		PGNDoc   any
+		ForDebug bool
+		FastBits []byte
+	}{
+		PGNDoc:   conv,
+		ForDebug: false,
+		FastBits: fastBits,
+	}
+
+	// Generate internal PGN runtime files
+	internalTemplates := map[string]string{
+		"encode_dispatch_generated.go": "runtime/encode_dispatch.go.tmpl",
+		"enums_fieldtype_generated.go": "runtime/enums_fieldtype.go.tmpl",
+		// "pgninfo_generated.go":        "runtime/pgninfo.go.tmpl", // Moved to cmd/filterraw
+		"decoders_generated.go":       "runtime/decoders.go.tmpl",
+		"encoders_generated.go":       "runtime/encoders.go.tmpl",
+		"discriminators_generated.go": "runtime/discriminators.go.tmpl",
+		"fieldspecs_generated.go":     "runtime/fieldspecs.go.tmpl",
+		"fieldspec_vars_generated.go": "runtime/fieldspec_vars.go.tmpl",
+		"fastbits_generated.go":       "runtime/fastbits.go.tmpl",
+	}
+
+	for filename, templatePath := range internalTemplates {
+		fmt.Printf("Generating internal file: %s from template: %s\n", filename, templatePath)
+		if err := conv.generateFile(filepath.Join(internalPGNDir, filename), templatePath, funcMap, templateData); err != nil {
+			fmt.Printf("Error generating %s: %v\n", filename, err)
+			panic(err)
+		}
+	}
+
+	// Generate filterraw files
+	filterrawTemplates := map[string]string{
+		"pgn_data.go": "filterraw/pgn_data.go.tmpl",
+	}
+
+	for filename, templatePath := range filterrawTemplates {
+		fmt.Printf("Generating filterraw file: %s from template: %s\n", filename, templatePath)
+		if err := conv.generateFile(filepath.Join(filterrawDir, filename), templatePath, funcMap, templateData); err != nil {
+			fmt.Printf("Error generating %s: %v\n", filename, err)
+			panic(err)
+		}
+	}
+
+	// Generate public domain types
+	publicTemplates := map[string]string{
+		"types_generated.go":  "public/types.go.tmpl",
+		"enums_generated.go":  "public/enums.go.tmpl",
+		"consts_generated.go": "public/consts.go.tmpl",
+	}
+
+	for filename, templatePath := range publicTemplates {
+		fmt.Printf("Generating public file: %s from template: %s\n", filename, templatePath)
+		if err := conv.generateFile(filepath.Join(publicPGNDir, filename), templatePath, funcMap, templateData); err != nil {
+			fmt.Printf("Error generating %s: %v\n", filename, err)
+			panic(err)
+		}
+	}
+}
+
+// generateFile generates a single file from a template
+func (conv *canboatConverter) generateFile(outputPath, templatePath string, funcMap template.FuncMap, data interface{}) error {
+	templateFullPath := filepath.Join("cmd/pgngen/templates", templatePath)
+	fmt.Printf("  Reading template: %s\n", templateFullPath)
+	// Read template file
+	templateContent, err := os.ReadFile(templateFullPath)
+	if err != nil {
+		return err
+	}
+
+	// Create template
+	t := template.Must(template.New(templatePath).Funcs(sprig.TxtFuncMap()).Funcs(funcMap).Parse(string(templateContent)))
+
+	fmt.Printf("  Creating output file: %s\n", outputPath)
+	// Create output file
+	f, err := os.Create(outputPath)
+	if err != nil {
+		return err
+	}
+	defer func() {
+		if err := f.Close(); err != nil {
+			fmt.Printf("Error closing file: %v\n", err)
+		}
+	}()
+
+	// Execute template
+	if err := t.Execute(f, data); err != nil {
+		return err
+	}
+
+	fmt.Printf("  Successfully generated: %s\n", outputPath)
+	return nil
+}
+
+// reservedNumericType returns true if the field type has reserved values.
+func reservedNumericType(fieldType string) bool {
+	// MMSI should be treated as string
+	// DECIMAL is BCD, but no reserved values are specified
+	return fieldType == "NUMBER" || fieldType == "DATE" || fieldType == "TIME" || fieldType == "PGN" || fieldType == "ISO_NAME" || fieldType == "DURATION" || fieldType == "DYNAMIC_FIELD_KEY" || fieldType == "DYNAMIC_FIELD_LENGTH"
+}
+
+// calcMaxRawValue calculates the maximum raw value for a field.
+func calcMaxRawValue(field *PGNField) uint64 {
+	if field.BitLength == 0 { // only possible if no bitLength is specified in canboat.json
+		return 0
+	}
+	if !reservedNumericType(field.FieldType) {
+		return 0
+	}
+	maxRawVal := uint64(0xFFFFFFFFFFFFFFFF)
+	maxRawVal >>= 64 - field.BitLength // the largest value representable in length of field
+	if field.Signed {                  // high bit set means it's negative, so maximum positive value is 1 bit shorter
+		maxRawVal >>= 1 // clears the high bit since we need the maximum positive value
+	}
+	return maxRawVal
+}
+
+// calcMaxValidRawValue calculates the maximum valid raw value accounting for reserved values
+func calcMaxValidRawValue(field *PGNField) uint64 {
+	if field.BitLength == 0 || !reservedNumericType(field.FieldType) {
+		return 0
+	}
+
+	reservedCount := getReservedValueCount(field)
+	maxRaw := calcMaxRawValue(field)
+
+	if reservedCount > 0 {
+		maxRaw -= uint64(reservedCount)
+	}
+
+	return maxRaw
+}
+
+// calcMissingValue calculates the sentinel value representing missing (nil) data
+func calcMissingValue(field *PGNField) uint64 {
+	reservedCount := getReservedValueCount(field)
+	if reservedCount == 0 {
+		// No reserved values means we can't represent missing - return 0 as safe default
+		return 0
+	}
+
+	missing := uint64(0xFFFFFFFFFFFFFFFF)
+	missing >>= 64 - field.BitLength // the largest value representable in length of field if unsigned
+	if field.Signed {                // high bit set means it's negative, so maximum positive value is 1 bit shorter
+		missing >>= 1 // missing flag is max positive value; negative value has high bit set
+	}
+	return missing
+}
+
+// needsScaling returns true if the field requires fractional resolution processing.
+// Offset-only fields (resolution == 1) keep integer types and use ReadRaw/WriteRaw.
+func needsScaling(field *PGNField) bool {
+	return field.Resolution != nil && *field.Resolution != 1.0
+}
+
+// generateFieldSpecConstant creates a FieldSpec struct literal
+func generateFieldSpecConstant(field *PGNField) string {
+	reservedCount := getReservedValueCount(field)
+	maxRawValue := calcMaxValidRawValue(field)
+	missingValue := calcMissingValue(field)
+
+	resolution := 1.0
+	if field.Resolution != nil {
+		resolution = float64(*field.Resolution)
+	}
+
+	// Handle domain constraints if available
+	domainMin := "nil"
+	domainMax := "nil"
+	if field.DomainMin != nil {
+		domainMin = fmt.Sprintf("&[]float64{%g}[0]", *field.DomainMin)
+	}
+	if field.DomainMax != nil {
+		domainMax = fmt.Sprintf("&[]float64{%g}[0]", *field.DomainMax)
+	}
+
+	return fmt.Sprintf(`FieldSpec{
+		BitLength:         %d,
+		BitOffset:         %d,
+		MaxRawValue:       0x%X,
+		MissingValue:      0x%X,
+		Resolution:        %g,
+		Offset:            %d,
+		IsSigned:          %t,
+		ReservedCount:     %d,
+		DomainMin:         %s,
+		DomainMax:         %s,
+		BitLengthVariable: %t,
+	}`, field.BitLength, field.BitOffset, maxRawValue, missingValue, resolution, field.Offset, field.Signed, reservedCount, domainMin, domainMax, field.BitLengthVariable)
+}
+
+// fieldSpecRef returns a compile-time reference to a generated FieldSpec variable.
+func fieldSpecRef(pgnID, fieldID string) string {
+	return fmt.Sprintf("&fieldSpec_%s_%s", pgnID, fieldID)
+}
+
+// getReservedValueCount returns the number of reserved values at the top of a field's range.
+// This is based purely on NMEA 2000 protocol standards, not domain constraints.
+// Used by template.
+func getReservedValueCount(field *PGNField) uint8 {
+	if !reservedNumericType(field.FieldType) {
+		return 0
+	}
+
+	if field.BitLength == 0 { // only possible if no bitLength is specified in canboat.json
+		return 0
+	}
+
+	// Use NMEA 2000 standard logic:
+	// - Most fields reserve 1-2 values for "missing" and "invalid"
+	// - Length >= 4 bits typically reserves 2 values
+	// - Length < 4 bits typically reserves 1 value
+	if field.BitLength >= 4 {
+		return 2 // Reserve top 2 values (missing=0xFF..FF, invalid=0xFF..FE)
+	} else {
+		return 1 // Reserve top 1 value (missing=max value)
 	}
 }
 
 // fixIDs uppercases the first letter of PGN Ids and assures names are unique.
 // It then invokes a function to fixup each field.
-func (builder *canboatConverter) fixIDs() {
+func (conv *canboatConverter) fixIDs() {
 	pgnDeDuper := NewDeDuper()
-	for i := range builder.PGNs {
+	for i := range conv.PGNs {
 		fieldDeDuper := NewDeDuper()
 		// Capitalize first letter of the Ids (currently lowercase)
-		builder.PGNs[i].Id = cleanIdentifier(capitalizeFirstChar(builder.PGNs[i].Id))
-		if firstTime, _ := pgnDeDuper.unique(builder.PGNs[i].Id); !firstTime {
-			panic("PGN ID not unique: " + builder.PGNs[i].Id)
+		conv.PGNs[i].Id = capitalizeFirstChar(conv.PGNs[i].Id)
+		if firstTime, _ := pgnDeDuper.unique(conv.PGNs[i].Id); !firstTime {
+			panic("PGN ID not unique: " + conv.PGNs[i].Id)
 		}
-		for j := range builder.PGNs[i].Fields {
-			fixupField(&builder.PGNs[i].Fields[j], *fieldDeDuper)
+		for j := range conv.PGNs[i].Fields {
+			conv.fixField(&conv.PGNs[i].Fields[j], *fieldDeDuper)
 			// For variable length fields, the length of such a field is passed
 			// in another field. When we find such a field we keep the value in
 			// the PGN so it can be used by the decoder for that PGN.
-			if builder.PGNs[i].Fields[j].BitLengthField != 0 {
-				builder.PGNs[i].BitLengthField = builder.PGNs[i].Fields[j].BitLengthField
+			if conv.PGNs[i].Fields[j].BitLengthField != 0 {
+				conv.PGNs[i].BitLengthField = conv.PGNs[i].Fields[j].BitLengthField
 			}
 		}
 	}
 }
 
-// fixupField capitializes Id's first char, assures field name is unique, and forces lookup names.
-func fixupField(field *PGNField, dedup DeDuper) {
-	field.Id = cleanIdentifier(capitalizeFirstChar(field.Id))
-	if field.FieldTypeLookupName != "" {
+// fixField capitializes Id's first char, assures field name is unique, and forces lookup names.
+func (conv *canboatConverter) fixField(field *PGNField, dedup DeDuper) {
+	field.Id = capitalizeFirstChar(field.Id)
+	if len(field.FieldTypeLookupName) > 0 {
 		convertToConst(&field.FieldTypeLookupName)
 	}
-	if field.FieldType == "LOOKUP" && field.LookupName == "" {
-		log.Infof("%s", "Lookup without Enumeration Name: "+field.Id)
+	if field.FieldType == "LOOKUP" && len(field.LookupName) == 0 {
+		log.Infof("Lookup without Enumeration Name: %s", field.Id)
 	}
 	if firstTime, _ := dedup.unique(field.Id); !firstTime {
 		panic("field ID not unique: " + field.Id)
 	}
-	if field.LookupName != "" {
+	if len(field.LookupName) > 0 {
 		convertToConst(&field.LookupName)
 	}
-	if field.BitLookupName != "" {
+	if len(field.BitLookupName) > 0 {
 		convertToConst(&field.BitLookupName)
 	}
-	if field.IndirectLookupName != "" {
+	if len(field.IndirectLookupName) > 0 {
 		convertToConst(&field.IndirectLookupName)
 	}
+	conv.fixDomainLimits(field)
 }
 
 // fixRepeating identifies the range of repeating fields and extracts them to their own slice(s).
@@ -359,55 +628,62 @@ func (builder *canboatConverter) fixRepeating() {
 			pgn.FieldsRepeating1 = []PGNField{}
 		}
 	}
+	builder.zeroBitOffsets()
 }
 
 // fixEnumDefs checks that enum names are unique and makes them legal golang identifiers.
 func (builder *canboatConverter) fixEnumDefs() {
 	constDeDuper := NewDeDuper()
+	constValDeDuper := NewDeDuper()
 	for i := range builder.Enums {
 		convertToConst(&builder.Enums[i].Name)
-		if firstTime, _ := constDeDuper.unique(builder.Enums[i].Name); !firstTime {
-			panic("Enum name not unique: " + builder.Enums[i].Name)
+		if firstTime, uniqueName := constDeDuper.unique(builder.Enums[i].Name); !firstTime {
+			builder.Enums[i].Name = uniqueName
 		}
 		for j := range builder.Enums[i].Values {
-			forceFirstLetter(&builder.Enums[i].Values[j].Text)
+			enumPair := &builder.Enums[i].Values[j]
+			candidateName := generateConstName(builder.Enums[i].Name, enumPair.Text, enumPair.Value)
+			_, uniqueName := constValDeDuper.unique(candidateName)
+			enumPair.Name = uniqueName
 		}
 	}
 	for i := range builder.IndirectEnums {
 		convertToConst(&builder.IndirectEnums[i].Name)
-		if firstTime, _ := constDeDuper.unique(builder.IndirectEnums[i].Name); !firstTime {
-			panic("IndirectEnum name not unique: " + builder.IndirectEnums[i].Name)
-		} // else don't need to change name
-		for j := range builder.IndirectEnums[i].Values { // not strictly necessary since we aren't creating identifiers from them
-			forceFirstLetter(&builder.IndirectEnums[i].Values[j].Text)
+		if firstTime, uniqueName := constDeDuper.unique(builder.IndirectEnums[i].Name); !firstTime {
+			builder.IndirectEnums[i].Name = uniqueName
+		}
+		for range builder.IndirectEnums[i].Values { // not strictly necessary since we aren't creating identifiers from them
 		}
 	}
 	for i := range builder.BitEnums {
 		convertToConst(&builder.BitEnums[i].Name)
-		if firstTime, _ := constDeDuper.unique(builder.BitEnums[i].Name); !firstTime {
-			panic("BitEnum name not unique: " + builder.BitEnums[i].Name)
-		} // else don't need to change name
+		if firstTime, uniqueName := constDeDuper.unique(builder.BitEnums[i].Name); !firstTime {
+			builder.BitEnums[i].Name = uniqueName
+		}
 		for j := range builder.BitEnums[i].EnumBitValues {
-			forceFirstLetter(&builder.BitEnums[i].EnumBitValues[j].Label)
+			bitEnumPair := &builder.BitEnums[i].EnumBitValues[j]
+			candidateName := generateConstName(builder.BitEnums[i].Name, bitEnumPair.Label, bitEnumPair.Bit)
+			_, uniqueName := constValDeDuper.unique(candidateName)
+			bitEnumPair.Name = uniqueName
 		}
 	}
 	for i := range builder.FieldTypeEnums {
 		convertToConst(&builder.FieldTypeEnums[i].Name)
-		if firstTime, _ := constDeDuper.unique(builder.FieldTypeEnums[i].Name); !firstTime {
-			panic("FieldTypeEnum name not unique: " + builder.FieldTypeEnums[i].Name)
-		} // else don't need to change name
+		if firstTime, uniqueName := constDeDuper.unique(builder.FieldTypeEnums[i].Name); !firstTime {
+			builder.FieldTypeEnums[i].Name = uniqueName
+		}
 	}
 }
 
 // validate assures that pgns with multiple definitions and the same Manufacturer ID are all single or all fast.
-// It also warns the with the number of multiply defined pgns each with a different Manufacturer ID.
+// It also warns with the number of multiply defined pgns each with a different Manufacturer ID.
 // If more than one such warning is emitted we need to fail the build and update any code to handle the new special case.
 func (builder *canboatConverter) validate() {
 	specials := 0
 	pgns := make(map[uint32][]*PGN)
 	for i := range builder.PGNs {
 		if pgns[builder.PGNs[i].PGN] == nil {
-			pgns[builder.PGNs[i].PGN] = make([]*PGN, 0)
+			pgns[builder.PGNs[i].PGN] = make([](*PGN), 0)
 		}
 		pgns[builder.PGNs[i].PGN] = append(pgns[builder.PGNs[i].PGN], builder.PGNs[i])
 	}
@@ -416,26 +692,27 @@ func (builder *canboatConverter) validate() {
 		if len(pi) == 1 {
 			continue
 		}
-
+		//		fmt.Printf("%d: has %d entries\n", pi[0].PGN, len(pi))
 		for _, p := range pi {
 			if !isProprietaryPGN(p.PGN) {
 				continue
 			}
-			manIDs := make(map[int]string) // manId[]"Fast" or "Single"
-			manID := getManID(p)
+			manIds := make(map[int]string) // manId[]"Fast" or "Single"
+			manId := getManId(p)
 			if p.Type == "Fast" {
 				fast++
-				if manIDs[manID] == "Single" {
+				if manIds[manId] == "Single" {
 					panic("same manId both single and fast for pgn:" + p.Id)
+				} else {
+					manIds[manId] = "Fast"
 				}
-				manIDs[manID] = "Fast"
 			} else {
 				single++
-				if manIDs[manID] == "Fast" {
+				if manIds[manId] == "Fast" {
 					panic("same manId both single and fast for pgn:" + p.Id)
+				} else {
+					manIds[manId] = "Single"
 				}
-
-				manIDs[manID] = "Single"
 			}
 		}
 		if fast > 0 && single > 0 {
@@ -446,43 +723,456 @@ func (builder *canboatConverter) validate() {
 	if specials > 0 {
 		panic("New special case(s) added to canboat.json. Resolve and update this check.")
 	}
+
+	// Validate match field uniqueness for PGN variants
+	builder.validateMatchFieldUniqueness()
+
+	// Validate Fast flags against isFast function (skipped for now)
+	// builder.validateFastFlags()
+
+	// Validate fields with resolution != 1
+	builder.validateResolutionFields()
+
+	// Validate min/max values against calculated values
+	builder.validateMinMaxValues()
 }
 
-// varNameReplacer points to a function that changes various substrings with values legal in golang identifiers.
-// Used by toVarName (and so by template).
-var varNameReplacer = strings.NewReplacer(
-	" ", "", "/", "", "+1", "Plus1", "-1", "Minus1", "+",
-	"", "-", "", "(", "", ")", "", "#", "", ".", "", ":",
-	"", "%", "Percent", "&", "And", ",", "",
-)
+// validateResolutionFields checks if fields with resolution != 1 have correct RangeMax values
+func (builder *canboatConverter) validateResolutionFields() {
+	var issues []string
 
-// varDeDuper is used to assure a variable name is unique.
-// Used by toVarName (and so by template).
-var varDeDuper = NewDeDuper()
+	for _, pgn := range builder.PGNs {
+		for _, field := range pgn.Fields {
+			if field.Resolution != nil && *field.Resolution != 1.0 && *field.Resolution != 0 {
+				// Calculate maximum expressible raw value
+				// The 2 largest values are reserved (maxRawValue and maxRawValue-1)
+				maxRawValue := uint64(1) << field.BitLength
+				if field.Signed {
+					maxRawValue = uint64(1) << (field.BitLength - 1)
+				}
 
-// toVarName massages its input to a legal golang identifier.
-// Used by template.
-func toVarName(str string) string {
-	str = strings.Title(str) //nolint:staticcheck // Why: Refactor
-	str = varNameReplacer.Replace(str)
-	str = cleanIdentifier(str)
-	_, str = varDeDuper.unique(str)
-	return str
-}
+				// Account for 2 reserved values
+				maxExpressibleRaw := maxRawValue - 2
 
-func cleanIdentifier(str string) string {
-	var cleaned strings.Builder
-	for _, r := range str {
-		if unicode.IsLetter(r) || unicode.IsDigit(r) {
-			cleaned.WriteRune(r)
+				// Convert to scaled value
+				maxScaledValue := float64(maxExpressibleRaw)*float64(*field.Resolution) + float64(field.Offset)
+
+				// Compare with RangeMax using tolerance of ±1 resolution step
+				tolerance := float64(*field.Resolution) * 2
+				if field.RangeMax > 0 && math.Abs(maxScaledValue-field.RangeMax) > tolerance {
+					issue := fmt.Sprintf("PGN %s field %s: max expressible %.6f != RangeMax %.6f (resolution %.6f, bitLength %d, signed %t)",
+						pgn.Id, field.Id, maxScaledValue, field.RangeMax, *field.Resolution, field.BitLength, field.Signed)
+					issues = append(issues, issue)
+				}
+			}
 		}
 	}
-	str = cleaned.String()
-	if str == "" {
-		str = "Value"
+
+	if len(issues) > 0 {
+		log.Infof("Found %d fields with resolution != 1 that have incorrect RangeMax values:", len(issues))
+		/* for _, issue := range issues {
+			log.Infof("  %s", issue)
+		} */
+	} else {
+		log.Infof("All fields with resolution != 1 have correct RangeMax values")
 	}
-	forceFirstLetter(&str)
-	return str
+}
+
+// getCanboatReservedValueCount returns the number of reserved values as canboat might calculate them.
+// This includes a potential bug where fields >= 8 bits reserve 3 values instead of 2.
+func getCanboatReservedValueCount(field PGNField) uint8 {
+	if !reservedNumericType(field.FieldType) {
+		return 0
+	}
+
+	if field.BitLength == 0 {
+		return 0
+	}
+
+	// Canboat's logic (potentially buggy):
+	// - Length >= 8 bits reserves 3 values
+	// - Length >= 4 bits but < 8 bits reserves 2 values
+	// - Length < 4 bits reserves 1 value
+	if field.BitLength >= 8 {
+		return 3
+	} else if field.BitLength >= 4 {
+		return 2
+	} else {
+		return 1
+	}
+}
+
+// validateMinMaxValues checks if fields have RangeMin/RangeMax values that differ from calculated values
+// and writes the results to a CSV file for analysis
+//
+//nolint:gocyclo // Why: domain/range validation is inherently branchy.
+func (builder *canboatConverter) validateMinMaxValues() {
+	// Create CSV file
+	csvFile, err := os.Create("range_min_max_discrepancies.csv")
+	if err != nil {
+		log.WithError(err).Error("Failed to create CSV file")
+		return
+	}
+	defer func() {
+		if err := csvFile.Close(); err != nil {
+			log.WithError(err).Warn("Failed to close CSV file")
+		}
+	}()
+
+	writer := csv.NewWriter(csvFile)
+	defer writer.Flush()
+
+	// Write CSV header
+	header := []string{
+		"PGN",
+		"PGN_ID",
+		"Field_ID",
+		"Field_Name",
+		"Unit",
+		"FieldType",
+		"RangeMin",
+		"RangeMax",
+		"CalcMin",
+		"CalcMax",
+		"CalcMaxCanboat",
+		"MinDiff",
+		"MaxDiff",
+		"MaxDiffCanboat",
+		"BitLength",
+		"Signed",
+		"Resolution",
+		"Offset",
+		"ReservedCount",
+		"ReservedCountCanboat",
+		"HasOffset",
+		"HasScaling",
+		"ExplainedByCanboatBug",
+		"Category",
+	}
+	if err := writer.Write(header); err != nil {
+		log.WithError(err).Error("Failed to write CSV header")
+		return
+	}
+
+	var totalChecked int
+	var totalDiscrepancies int
+	var explainedByCanboatBug int
+
+	for _, pgn := range builder.PGNs {
+		// Check all field slices
+		allFieldSlices := [][]PGNField{
+			pgn.Fields,
+			pgn.FieldsRepeating1,
+			pgn.FieldsRepeating2,
+		}
+
+		for _, fields := range allFieldSlices {
+			for _, field := range fields {
+				// Skip if both RangeMin and RangeMax are 0 (undefined)
+				if field.RangeMin == 0 && field.RangeMax == 0 {
+					continue
+				}
+
+				// Skip non-numeric fields or fields with 0 bit length
+				if !reservedNumericType(field.FieldType) || field.BitLength == 0 {
+					continue
+				}
+
+				totalChecked++
+
+				// Get resolution (default to 1.0 if nil)
+				resolution := 1.0
+				if field.Resolution != nil {
+					resolution = float64(*field.Resolution)
+				}
+
+				// Calculate theoretical maximum using our logic (correct NMEA 2000 standard)
+				maxRaw := calcMaxValidRawValue(&field)
+				calcMax := float64(maxRaw)*resolution + float64(field.Offset)
+
+				// Calculate theoretical maximum using canboat's logic (potentially buggy)
+				maxRawCanboat := calcMaxRawValue(&field)
+				canboatReservedCount := getCanboatReservedValueCount(field)
+				reservedCount := getReservedValueCount(&field)
+				if canboatReservedCount > 0 {
+					maxRawCanboat -= uint64(canboatReservedCount)
+				}
+				calcMaxCanboat := float64(maxRawCanboat)*resolution + float64(field.Offset)
+
+				// Calculate theoretical minimum
+				var calcMin float64
+				if field.Signed {
+					// For signed: minimum is -(2^(bits-1))
+					// Use uint64 for shift to avoid overflow, then convert
+					minRawUint := uint64(1) << (field.BitLength - 1)
+					minRaw := -int64(minRawUint)
+					calcMin = float64(minRaw)*resolution + float64(field.Offset)
+				} else {
+					// For unsigned: minimum is 0
+					calcMin = float64(field.Offset)
+				}
+
+				// Use tolerance based on resolution (0.5 * resolution, or 0.0001 if resolution is 0)
+				tolerance := 0.5 * resolution
+				if tolerance == 0 {
+					tolerance = 0.0001
+				}
+
+				// Calculate differences
+				minDiff := 0.0
+				if field.RangeMin != 0 {
+					minDiff = math.Abs(calcMin - field.RangeMin)
+				}
+
+				maxDiff := 0.0
+				if field.RangeMax != 0 {
+					maxDiff = math.Abs(calcMax - field.RangeMax)
+				}
+
+				maxDiffCanboat := 0.0
+				if field.RangeMax != 0 {
+					maxDiffCanboat = math.Abs(calcMaxCanboat - field.RangeMax)
+				}
+
+				// Determine if this is a discrepancy
+				hasMinDiscrepancy := field.RangeMin != 0 && minDiff > tolerance
+				hasMaxDiscrepancy := field.RangeMax != 0 && maxDiff > tolerance
+				explainedByBug := field.RangeMax != 0 && maxDiff > tolerance && maxDiffCanboat <= tolerance
+
+				if hasMinDiscrepancy || hasMaxDiscrepancy {
+					totalDiscrepancies++
+					if explainedByBug {
+						explainedByCanboatBug++
+					}
+				}
+
+				// Determine category hints
+				category := ""
+				if hasMinDiscrepancy || hasMaxDiscrepancy {
+					if explainedByBug {
+						category = "CanboatBug"
+					} else if field.Offset != 0 {
+						category = "OffsetRelated"
+					} else if field.Unit == "K" && field.RangeMin == 0 {
+						category = "PhysicalConstraint" // Temperature 0-bounded
+					} else if resolution != 1.0 && (minDiff < resolution*10 || maxDiff < resolution*10) {
+						category = "ScalingCalculation"
+					} else {
+						category = "Unknown"
+					}
+				}
+
+				// Write row for all fields with RangeMin or RangeMax defined
+				row := []string{
+					strconv.FormatUint(uint64(pgn.PGN), 10),
+					pgn.Id,
+					field.Id,
+					field.Name,
+					field.Unit,
+					field.FieldType,
+					strconv.FormatFloat(field.RangeMin, 'f', 6, 64),
+					strconv.FormatFloat(field.RangeMax, 'f', 6, 64),
+					strconv.FormatFloat(calcMin, 'f', 6, 64),
+					strconv.FormatFloat(calcMax, 'f', 6, 64),
+					strconv.FormatFloat(calcMaxCanboat, 'f', 6, 64),
+					strconv.FormatFloat(minDiff, 'f', 6, 64),
+					strconv.FormatFloat(maxDiff, 'f', 6, 64),
+					strconv.FormatFloat(maxDiffCanboat, 'f', 6, 64),
+					strconv.FormatUint(uint64(field.BitLength), 10),
+					strconv.FormatBool(field.Signed),
+					strconv.FormatFloat(resolution, 'f', 6, 64),
+					strconv.FormatInt(field.Offset, 10),
+					strconv.FormatUint(uint64(reservedCount), 10),
+					strconv.FormatUint(uint64(canboatReservedCount), 10),
+					strconv.FormatBool(field.Offset != 0),
+					strconv.FormatBool(resolution != 1.0),
+					strconv.FormatBool(explainedByBug),
+					category,
+				}
+				if err := writer.Write(row); err != nil {
+					log.WithError(err).Error("Failed to write CSV row")
+					return
+				}
+			}
+		}
+	}
+
+	log.Infof("Wrote range_min_max_discrepancies.csv with %d fields checked", totalChecked)
+	log.Infof("Found %d fields with discrepancies (%d explained by canboat bug)", totalDiscrepancies, explainedByCanboatBug)
+}
+
+// validateMatchFieldUniqueness checks that PGN variants with the same PGN number have unique match field sets
+func (builder *canboatConverter) validateMatchFieldUniqueness() {
+	pgnGroups := make(map[uint32][]*PGN)
+
+	// Group PGNs by PGN number
+	for _, pgn := range builder.PGNs {
+		pgnGroups[pgn.PGN] = append(pgnGroups[pgn.PGN], pgn)
+	}
+
+	for pgnNum, variants := range pgnGroups {
+		if len(variants) <= 1 {
+			continue // No variants to check
+		}
+
+		// Extract match fields for each variant
+		variantMatchFields := make(map[string]map[string]int) // variantId -> fieldName -> matchValue
+
+		for _, variant := range variants {
+			matchFields := make(map[string]int)
+			for _, field := range variant.Fields {
+				if field.Match != nil {
+					matchFields[field.Id] = *field.Match
+				}
+			}
+			variantMatchFields[variant.Id] = matchFields
+		}
+
+		// Check for conflicts between variants
+		variantIds := make([]string, 0, len(variants))
+		for id := range variantMatchFields {
+			variantIds = append(variantIds, id)
+		}
+
+		for i := 0; i < len(variantIds); i++ {
+			for j := i + 1; j < len(variantIds); j++ {
+				variant1 := variantIds[i]
+				variant2 := variantIds[j]
+				matchFields1 := variantMatchFields[variant1]
+				matchFields2 := variantMatchFields[variant2]
+
+				// Check if match field sets are identical
+				if mapsEqual(matchFields1, matchFields2) {
+					// Only warn for now - some PGNs may have special handling
+					log.Warnf("PGN %d: variants %s and %s have identical match fields: %v - may need special handling",
+						pgnNum, variant1, variant2, matchFields1)
+				}
+			}
+		}
+
+		// Check for variants with no match fields (when there are multiple variants)
+		// Skip this check for now as some PGNs may have special handling
+		noMatchFields := make([]string, 0)
+		for _, variant := range variants {
+			if len(variantMatchFields[variant.Id]) == 0 {
+				noMatchFields = append(noMatchFields, variant.Id)
+			}
+		}
+
+		if len(noMatchFields) > 0 && len(variants) > 1 {
+			log.Warnf("PGN %d: variants %v have no match fields but PGN has multiple variants - may need special handling",
+				pgnNum, noMatchFields)
+		}
+	}
+
+	log.Infof("Match field uniqueness validation passed")
+}
+
+/* // isFast returns true if the specified PGN is a Fast packet based on PGN ranges
+// This duplicates the function in internal/pgn/pgninfo.go for validation purposes
+func isFast(pgn uint32) bool {
+	switch {
+	case pgn >= 59392 && pgn <= 60928: // 0xE800-0xEE00
+		return false // ISO 11783, Single frame
+	case pgn == 61184: // 0xEF00
+		return false // Manufacturer proprietary, Single frame
+	case pgn >= 61440 && pgn <= 65279: // 0xF000-0xFEFF
+		return false // Standardized, Single frame
+	case pgn >= 65280 && pgn <= 65535: // 0xFF00-0xFFFF
+		return false // Manufacturer proprietary, Single frame
+	case pgn >= 126208 && pgn <= 126464: // 0x1ED00-0x1EE00
+		return true // Standardized protocol, Fast packet
+	case pgn == 126720: // 0x1EF00
+		return true // Manufacturer proprietary, Fast packet
+	case pgn >= 126976 && pgn <= 130815: // 0x1F000-0x1FEFF
+		// Mixed range - most PGNs are single frame, only specific ones are fast
+		// For now, default to single frame (false) - specific fast PGNs can be added as needed
+		return false // Standardized, mixed single/fast (default to single)
+	case pgn >= 130816 && pgn <= 131071: // 0x1FF00-0x1FFFF
+		return true // Manufacturer proprietary, Fast packet
+	default:
+		return false // Unknown PGN, assume single frame
+	}
+} */
+
+/* // validateFastFlags compares the Fast flag from source data against the isFast function
+func (builder *canboatConverter) validateFastFlags() {
+	var mismatches []string
+
+	for _, pgn := range builder.PGNs {
+		expectedFast := isFast(pgn.PGN)
+		actualFast := (pgn.Type == "Fast")
+
+		if expectedFast != actualFast {
+			mismatch := fmt.Sprintf("PGN %d (%s): source Type=%s (Fast=%t), isFast()=%t",
+				pgn.PGN, pgn.Id, pgn.Type, actualFast, expectedFast)
+			mismatches = append(mismatches, mismatch)
+		}
+	}
+
+	if len(mismatches) > 0 {
+		log.Warnf("Fast flag validation found %d mismatches - source data may have inconsistencies:", len(mismatches))
+		for _, mismatch := range mismatches {
+			log.Warnf("  %s", mismatch)
+		}
+		log.Warnf("Using isFast() function results (based on NMEA 2000 specification) over source data")
+	} else {
+		log.Infof("Fast flag validation passed - all %d PGNs match isFast() function", len(builder.PGNs))
+	}
+} */
+
+// generateFastBits creates a bit array for PGNs >= 126208 indicating if they are fast packets
+func (builder *canboatConverter) generateFastBits() []byte {
+	// PGNs 126208-131071 = 4864 PGNs = 608 bytes
+	const maxPgn = 131071
+	const minPgn = 126208
+	const bitArraySize = (maxPgn - minPgn + 1 + 7) / 8 // Round up to nearest byte
+
+	bits := make([]byte, bitArraySize)
+
+	// Set bits for fast PGNs based on source data
+	for _, pgn := range builder.PGNs {
+		if pgn.PGN >= minPgn && pgn.PGN <= maxPgn {
+			if pgn.Type == "Fast" {
+				bitIndex := pgn.PGN - minPgn
+				byteIndex := bitIndex / 8
+				bitOffset := bitIndex % 8
+				bits[byteIndex] |= 1 << bitOffset
+			}
+		}
+	}
+
+	return bits
+}
+
+// mapsEqual compares two maps for equality
+func mapsEqual(m1, m2 map[string]int) bool {
+	if len(m1) != len(m2) {
+		return false
+	}
+	for k, v := range m1 {
+		if m2[k] != v {
+			return false
+		}
+	}
+	return true
+}
+
+// zeroBitOffsets sets the BitOffset fields of repeating fields
+// to 0 (issue filed with canboat)
+func (builder *canboatConverter) zeroBitOffsets() {
+	for _, p := range builder.PGNs {
+		if len(p.FieldsRepeating1) > 0 {
+			for i := range p.FieldsRepeating1 {
+				p.FieldsRepeating1[i].BitOffset = 0
+			}
+		}
+		if len(p.FieldsRepeating2) > 0 {
+			for i := range p.FieldsRepeating2 {
+				p.FieldsRepeating2[i].BitOffset = 0
+			}
+		}
+	}
 }
 
 // isPointerFieldType returns true if the underlying type of a field is a pointer.
@@ -491,11 +1181,31 @@ func isPointerFieldType(field *PGNField) bool {
 	return strings.HasPrefix(convertFieldType(field), "*")
 }
 
-func fieldOffset(field *PGNField) int64 {
-	if field.Offset == nil {
-		return 0
+// getRawTypeString returns the appropriate type string for WriteRaw based on bit length and signedness
+func getRawTypeString(bitLength uint16, signed bool) string {
+	if signed {
+		switch {
+		case bitLength > 32:
+			return "int64"
+		case bitLength > 16:
+			return "int32"
+		case bitLength > 8:
+			return "int16"
+		default:
+			return "int8"
+		}
+	} else {
+		switch {
+		case bitLength > 32:
+			return "uint64"
+		case bitLength > 16:
+			return "uint32"
+		case bitLength > 8:
+			return "uint16"
+		default:
+			return "uint8"
+		}
 	}
-	return *field.Offset
 }
 
 // toNumber converts its input to an integer.
@@ -510,13 +1220,13 @@ func toNumber(str string) int {
 
 // constSize returns (as a string) the smallest uint needed to represent the const.
 // Used by template.
-func constSize(i int) string {
+func constSize(max int) string {
 	switch {
-	case i < 256:
+	case max < 256:
 		return "uint8"
-	case i < 65536:
+	case max < 65536:
 		return "uint16"
-	case i < 4294967296:
+	case max < 4294967296:
 		return "uint32"
 	default:
 		return "uint64"
@@ -525,14 +1235,11 @@ func constSize(i int) string {
 
 // fieldByteCount calculates the number of bytes required to read to extract a field's value.
 // Used by template.
-func fieldByteCount(field *PGNField) uint16 {
+func fieldByteCount(field PGNField) uint16 {
 	return uint16(math.Ceil((float64(field.BitLength) + float64(field.BitOffset)) / 8))
 }
 
-// getUnitType maps the canboat units into our tugboat unit library's
-// categories/types.
-//
-//nolint:gocritic // Why: Not needed.
+// getUnitType maps the canboat units into our tugboat unit library's categories/types
 func getUnitType(unitName string) (string, string) {
 	switch unitName {
 	case "m":
@@ -575,7 +1282,7 @@ func convertFieldType(field *PGNField) string {
 		return field.FieldTypeLookupName
 	case "FIELD_INDEX":
 		return "*uint8"
-	case "NUMBER", "DATE", "TIME", "MMSI", "PGN", "DURATION", "ISO_NAME", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
+	case "NUMBER", "DATE", "TIME", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
 		// If it has a unit, use that
 		unitType, _ := getUnitType(field.Unit)
 		if unitType != "" {
@@ -614,7 +1321,7 @@ func convertFieldType(field *PGNField) string {
 			return "*float64"
 		}
 		return "*float32"
-	case "DECIMAL", "BINARY", "KEY_VALUE", "VARIABLE", "DYNAMIC_FIELD_VALUE":
+	case "DECIMAL", "BINARY", "DYNAMIC_FIELD_VALUE", "VARIABLE":
 		return "[]uint8"
 	case "STRING_FIX", "STRING_VAR", "STRING_LZ", "STRING_LAU":
 		return "string"
@@ -623,62 +1330,130 @@ func convertFieldType(field *PGNField) string {
 	}
 }
 
-// getFieldDeserializer returns a string that when evaluated returns its
-// value from the input stream. Used by template.
+// getFieldSerializer returns a string that when evaluates its value into the output stream.
+// Used by template
+func getFieldSerializer(pgn PGN, field *PGNField, substruct string) string {
+	var outstr, pre, value, post string
+	var isUnit bool
+	reservedCount := getReservedValueCount(field)
+
+	// Generate FieldSpec reference for numeric fields
+	specRef := fieldSpecRef(pgn.Id, field.Id)
+
+	if field.Unit != "" { // set conv to invoke conversion to default type
+		unitType, _ := getUnitType(field.Unit)
+		if isUnit = unitType != ""; isUnit {
+			return fmt.Sprintf("err = stream.writeUnit(p."+substruct+"%s, %s)", field.Id, specRef)
+		}
+	}
+	switch field.FieldType {
+	case "RESERVED":
+		outstr = fmt.Sprintf("err = stream.writeReserved(%d, %d)", field.BitLength, field.BitOffset)
+	case "SPARE":
+		outstr = fmt.Sprintf("err = stream.writeSpare(%d, %d)", field.BitLength, field.BitOffset)
+	case "LOOKUP", "BITLOOKUP", "INDIRECT_LOOKUP", "FIELDTYPE_LOOKUP":
+		outstr = fmt.Sprintf("err = stream.putNumberRaw(uint64(p."+substruct+"%s), %d, %d)", field.Id, field.BitLength, field.BitOffset)
+	case "NUMBER", "TIME", "DATE", "MMSI", "FIELD_INDEX", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH", "DURATION", "PGN", "ISO_NAME":
+		if needsScaling(field) || isUnit {
+			// Use WriteScaled for fields that need fractional resolution processing
+			// floatType := "float32"
+			// if field.Resolution != nil && *field.Resolution <= resolution64BitCutoff {
+			//	floatType = "float64"
+			//}
+			pre = "err = WriteScaled(stream, "
+			if !isPointerFieldType(field) {
+				value = "&"
+			}
+			value += "p." + substruct + "%s"
+			post = fmt.Sprintf(", %s)", specRef)
+			outstr = fmt.Sprintf(pre+value+post, field.Id)
+		} else {
+			// Use WriteRaw for non-scaled fields
+			// typeStr := getRawTypeString(field.BitLength, field.Signed)
+			fieldRef := "p." + substruct + "%s"
+			if !isPointerFieldType(field) {
+				fieldRef = "&" + fieldRef
+			}
+			outstr = fmt.Sprintf("err = WriteRaw(stream, %s, %s)", fieldRef, specRef)
+			outstr = fmt.Sprintf(outstr, field.Id)
+		}
+	case "FLOAT":
+		if field.BitLength > 32 {
+			pre = "err = stream.writeFloat64("
+		} else {
+			pre = "err = stream.writeFloat32("
+		}
+		value += "p." + substruct + "%s"
+		post = ", %d, %d, %d)"
+		outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, field.BitOffset, reservedCount)
+	case "VARIABLE":
+		outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
+	case "BINARY":
+		if field.BitLength > 0 {
+			outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
+		} else {
+			outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s,"+"binaryLength, %d)", field.Id, field.BitOffset)
+		}
+	case "STRING_FIX":
+		outstr = fmt.Sprintf("err = stream.writeStringFix([]uint8(p."+substruct+"%s), %d, %d )", field.Id, field.BitLength, field.BitOffset)
+	case "STRING_LAU":
+		outstr = fmt.Sprintf("err = stream.writeStringLau(p."+substruct+"%s, %d )", field.Id, field.BitOffset)
+	case "STRING_LZ":
+		outstr = fmt.Sprintf("err = stream.writeStringWithLength(p."+substruct+"%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
+	case "DYNAMIC_FIELD_VALUE":
+		outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s, valueLength, 0)", field.Id)
+	default:
+		outstr = fmt.Sprintf("log.Infof(\"field %s, index %d, type %s, unhandled\")", field.Name, field.Order, field.FieldType)
+	}
+
+	return outstr
+}
+
+// getFieldDeserializer returns a string that when evaluated returns its value from the input stream.
+// Used by template.
 //
-//nolint:gocyclo // Why: Refactor.
-func getFieldDeserializer(_ *PGN, field *PGNField) [2]string {
+//nolint:gocyclo // Why: one switch per field type for generated deserializer names.
+func getFieldDeserializer(pgn PGN, field *PGNField) [2]string {
 	switch field.FieldType {
 	case "LOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for LOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.LookupName + "(v)"}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), "publicpgn." + field.LookupName + "(v)"}
 	case "BITLOOKUP":
-		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.BitLookupName + "(v)"}
+		if field.BitLength > 32 {
+			panic("No deserializer for BITLOOKUP with bitlength > 32")
+		}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), "publicpgn." + field.BitLookupName + "(v)"}
 	case "INDIRECT_LOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for INDIRECT_LOOKUP with bitlength > 32")
 		}
-		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.IndirectLookupName + "(v)"}
+		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), "publicpgn." + field.IndirectLookupName + "(v)"}
 	case "FIELDTYPE_LOOKUP":
 		if field.BitLength > 32 {
 			panic("No deserializer for FIELDTYPE_LOOKUP with bitlength > 32")
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName + "(v)"}
 	case "FIELD_INDEX":
-		return [2]string{fmt.Sprintf("stream.readUInt8(%d, 0)", field.BitLength), ""}
-	case "NUMBER", "TIME", "DATE", "MMSI", "PGN", "DURATION", "ISO_NAME", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
+		specRef := fieldSpecRef(pgn.Id, field.Id)
+		return [2]string{fmt.Sprintf("ReadRaw[uint8](stream, %s)", specRef), ""}
+	case "NUMBER", "TIME", "DATE", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
+		specRef := fieldSpecRef(pgn.Id, field.Id)
 		var outerVal string
-		offset := fieldOffset(field)
-		if field.Signed {
-			switch {
-			case field.Resolution != nil && *field.Resolution <= resolution64BitCutoff:
-				outerVal = fmt.Sprintf("stream.readSignedResolution64Override(%d, %g, %d)", field.BitLength, *field.Resolution, offset)
-			case field.Resolution != nil && *field.Resolution != 1.0:
-				outerVal = fmt.Sprintf("stream.readSignedResolution(%d, %g, %d)", field.BitLength, *field.Resolution, offset)
-			case field.BitLength > 32:
-				outerVal = fmt.Sprintf("stream.readInt64(%d, %d)", field.BitLength, offset)
-			case field.BitLength > 16:
-				outerVal = fmt.Sprintf("stream.readInt32(%d, %d)", field.BitLength, offset)
-			case field.BitLength > 8:
-				outerVal = fmt.Sprintf("stream.readInt16(%d, %d)", field.BitLength, offset)
-			default:
-				outerVal = fmt.Sprintf("stream.readInt8(%d, %d)", field.BitLength, offset)
+
+		if needsScaling(field) {
+			// Use ReadScaled for fields that need resolution/offset processing
+			// Choose float64 for high-precision fields, float32 for others (matches struct field types)
+			floatType := "float32"
+			if field.Resolution != nil && *field.Resolution <= resolution64BitCutoff {
+				floatType = "float64"
 			}
+			outerVal = fmt.Sprintf("ReadScaled[%s](stream, %s)", floatType, specRef)
 		} else {
-			switch {
-			case field.Resolution != nil && *field.Resolution != 1.0:
-				outerVal = fmt.Sprintf("stream.readUnsignedResolution(%d, %g, %d)", field.BitLength, *field.Resolution, offset)
-			case field.BitLength > 32:
-				outerVal = fmt.Sprintf("stream.readUInt64(%d, %d)", field.BitLength, offset)
-			case field.BitLength > 16:
-				outerVal = fmt.Sprintf("stream.readUInt32(%d, %d)", field.BitLength, offset)
-			case field.BitLength > 8:
-				outerVal = fmt.Sprintf("stream.readUInt16(%d, %d)", field.BitLength, offset)
-			default:
-				outerVal = fmt.Sprintf("stream.readUInt8(%d, %d)", field.BitLength, offset)
-			}
+			// Use ReadRaw for non-scaled fields
+			typeStr := getRawTypeString(field.BitLength, field.Signed)
+			outerVal = fmt.Sprintf("ReadRaw[%s](stream, %s)", typeStr, specRef)
 		}
 
 		unitConv := ""
@@ -702,16 +1477,15 @@ func getFieldDeserializer(_ *PGN, field *PGNField) [2]string {
 	case "STRING_FIX":
 		return [2]string{fmt.Sprintf("stream.readFixedString(%d)", field.BitLength), ""}
 	case "STRING_LZ":
-		return [2]string{"stream.readStringWithLength()", ""}
+		return [2]string{fmt.Sprintf("stream.readStringWithLength(%d)", field.BitLength), ""}
 	case "BINARY":
 		if field.BitLength > 0 {
 			return [2]string{fmt.Sprintf("stream.readBinaryData(%d)", field.BitLength), ""}
 		}
 		return [2]string{"stream.readBinaryData(binaryLength)", ""}
 	case "VARIABLE":
-		return [2]string{"stream.readVariableData(*val.Pgn, manufacturer, fieldIndex)", ""}
-	case "KEY_VALUE":
-		return [2]string{"stream.readBinaryData(valueLength)", ""}
+		specRef := fieldSpecRef(pgn.Id, field.Id)
+		return [2]string{fmt.Sprintf("stream.readVariableDataWithSpec(%s)", specRef), ""}
 	case "DYNAMIC_FIELD_VALUE":
 		return [2]string{"stream.readBinaryData(valueLength)", ""}
 	default:
@@ -721,9 +1495,8 @@ func getFieldDeserializer(_ *PGN, field *PGNField) [2]string {
 
 // matchManufacturer returns the required Match value of the Manufacturer Code as a string.
 // Used by template.
-func matchManufacturer(pgn *PGN) string {
-	for i := range pgn.Fields {
-		field := &pgn.Fields[i]
+func matchManufacturer(pgn PGN) string {
+	for _, field := range pgn.Fields {
 		if field.Id == "ManufacturerCode" {
 			if field.Match != nil {
 				return strconv.Itoa(*field.Match)
@@ -767,48 +1540,54 @@ func cacheFromWeb(name, url string) (string, error) {
 		if err != nil {
 			return cachedName, err
 		}
-		defer resp.Body.Close()
+		defer func() {
+			if err = resp.Body.Close(); err != nil {
+				log.WithError(err).Warn("error closing http response body")
+			}
+		}()
 
-		//nolint:gosec // Why: Acceptable.
-		f, err := os.OpenFile(cachedName, os.O_CREATE|os.O_WRONLY, 0o644)
+		f, err := os.OpenFile(cachedName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 		if err != nil {
-			return cachedName, err
+			log.WithError(err).Fatalf("failed to open cache file %s", cachedName)
 		}
-		defer f.Close()
 
 		bar := progressbar.DefaultBytes(
 			resp.ContentLength,
 			fmt.Sprintf("Downloading %s", name),
 		)
-		_, err = io.Copy(io.MultiWriter(f, bar), resp.Body)
-		if err != nil {
-			return cachedName, err
+		if _, err = io.Copy(io.MultiWriter(f, bar), resp.Body); err != nil {
+			log.WithError(err).Fatalf("failed to write to cache file %s", cachedName)
+		}
+
+		if err := f.Close(); err != nil {
+			log.WithError(err).Fatalf("failed to close cache file %s", cachedName)
 		}
 	} else {
-		log.Infof("%s", fmt.Sprintf("Using cached file %s", name))
+		log.Infof("Using cached file %s", name)
 	}
 	return cachedName, nil
 }
 
 // loadCachedWebContent updates the cache contents and returns it as a byte slice.
-func loadCachedWebContent(name, url string) ([]byte, error) {
+func loadCachedWebContent(name, url string) []byte {
 	cachedName, err := cacheFromWeb(name, url)
 	if err != nil {
 		panic(err)
 	}
-
-	//nolint:gosec // Why: Acceptable.
 	f, err := os.Open(cachedName)
 	if err != nil {
 		panic(err)
 	}
-	defer f.Close()
-
+	defer func() {
+		if err = f.Close(); err != nil {
+			log.WithError(err).Warnf("failed to close cache file %s", cachedName)
+		}
+	}()
 	cacheContent, err := io.ReadAll(f)
 	if err != nil {
 		panic(err)
 	}
-	return cacheContent, nil
+	return cacheContent
 }
 
 // capitalizeFirstChar forces the first character to upper case and converts "1st" to "First".
@@ -822,28 +1601,67 @@ func capitalizeFirstChar(raw string) string {
 
 // getManId returns the required Manufacturer Code ID for the defined PGN.
 // Only call on Proprietary PGNs!
-func getManID(p *PGN) int {
-	for i := range p.Fields {
-		field := &p.Fields[i]
+func getManId(p *PGN) int {
+	for _, field := range p.Fields {
 		if field.Id == "ManufacturerCode" {
 			if field.Match != nil {
 				return *field.Match
+			} else {
+				log.Infof("Proprietary PGN %d does not match on ManufacturerCode", p.PGN)
+				return 0
 			}
-
-			log.Infof("Proprietary PGN %d does not match on ManufacturerCode", p.PGN)
-			return 0
 		}
 	}
 	return 0
 }
 
-// forceFirstLetter assures the name starts with a letter (required for use as a golang identifier).
-func forceFirstLetter(name *string) {
-	current := *name
-	if !unicode.IsLetter(rune(current[0])) {
-		current = "A" + current
-		*name = current
+// digitToWord is a map for converting leading digits to words.
+var digitToWord = map[string]string{
+	"0": "Zero", "1": "One", "2": "Two", "3": "Three", "4": "Four",
+	"5": "Five", "6": "Six", "7": "Seven", "8": "Eight", "9": "Nine",
+}
+
+// generateConstName creates a Go constant identifier from a display string.
+// It handles leading digits and truncates long names.
+func generateConstName(enumName, text string, value int) string {
+	// Handle leading digit
+	if len(text) > 0 && unicode.IsDigit(rune(text[0])) {
+		parts := strings.Fields(text)
+		if word, ok := digitToWord[parts[0]]; ok {
+			parts[0] = word
+			text = strings.Join(parts, " ")
+		}
 	}
+
+	words := strings.Fields(text)
+	caser := cases.Title(language.English)
+	camelCase := caser.String(text)
+
+	var builder strings.Builder
+	for _, r := range camelCase {
+		if unicode.IsLetter(r) || unicode.IsDigit(r) {
+			builder.WriteRune(r)
+		}
+	}
+	candidateName := builder.String()
+
+	// If there are more than 3 words, truncate at 30 characters
+	if len(words) > 3 && len(candidateName) > 30 {
+		candidateName = candidateName[:30]
+	}
+
+	// If the resulting name is empty, use the fallback.
+	if len(candidateName) == 0 {
+		return fmt.Sprintf("%s%d", enumName, value)
+	}
+
+	// Ensure the first character is a letter.
+	if !unicode.IsLetter(rune(candidateName[0])) {
+		// Prepend the enumeration name to guarantee a valid identifier start.
+		candidateName = enumName + candidateName
+	}
+
+	return candidateName
 }
 
 // convertToConst changes XXX_YYY to XxxYyyConst (all go consts have global namespace scope).
@@ -858,8 +1676,8 @@ func convertToConst(name *string) {
 }
 
 // isProprietaryPGN evaluates if its input falls into the proprietary PGN ranges.
-// Duplicated from n2k/pgninfo.go. Could export it there and use it here, but
-// we're generating a source file for that package, so a bootstrapping problem...
+// Duplicated from pgn/pgn.go. Could export it there and use it here, but
+// we're generating source files for that package, so a circular dependency problem...
 func isProprietaryPGN(pgn uint32) bool {
 	switch {
 	case pgn >= 0x0EF00 && pgn <= 0x0EFFF:
@@ -879,7 +1697,44 @@ func isProprietaryPGN(pgn uint32) bool {
 	case pgn >= 0x1FF00 && pgn <= 0x1FFFF:
 		// proprietary PDU2 (non addressed) fast packet range 0x1FF00 to 0x1FFFF (130816 - 131071)
 		return true
+	default:
+		return false
 	}
+}
 
-	return false
+// DecoderConfig contains configuration for decoding PGN fields with repeating groups and dynamic lengths.
+type DecoderConfig struct {
+	Repeat1            bool
+	Repeat2            bool
+	Repeat1CountField  uint8
+	Repeat2CountField  uint8
+	BitLengthField     uint8
+	DynamicLengthField uint8
+}
+
+// getDecoderConfig extracts decoder configuration from a PGN definition.
+func getDecoderConfig(pgn PGN) DecoderConfig {
+	dynamicLengthField := uint8(0)
+	for _, field := range pgn.AllFields {
+		if field.FieldType == "DYNAMIC_FIELD_LENGTH" {
+			dynamicLengthField = field.Order
+		}
+	}
+	return DecoderConfig{
+		Repeat1:            pgn.RepeatingFieldSet1Size > 0,
+		Repeat2:            pgn.RepeatingFieldSet2Size > 0,
+		Repeat1CountField:  pgn.RepeatingFieldSet1CountField,
+		Repeat2CountField:  pgn.RepeatingFieldSet2CountField,
+		BitLengthField:     pgn.BitLengthField,
+		DynamicLengthField: dynamicLengthField,
+	}
+}
+
+// groupByPGN groups PGNs by their PGN number
+func groupByPGN(pgns []*PGN) map[uint32][]*PGN {
+	groups := make(map[uint32][]*PGN)
+	for _, pgn := range pgns {
+		groups[pgn.PGN] = append(groups[pgn.PGN], pgn)
+	}
+	return groups
 }

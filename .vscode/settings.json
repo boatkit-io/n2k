@@ -1,4 +1,17 @@
 {
+	"gopls": {
+		"buildFlags": ["-tags=!pgngen_debug"],
+		"env": {
+			"PGNGEN_DEBUG": "0"
+		},
+		"directoryFilters": ["-node_modules", "-/internal/pgn/pgn_debug_test.go"],
+		"verboseOutput": true,
+		"analyses": {
+			"unusedparams": true,
+			"shadow": true
+		}
+	},
+	"go.testTags": "pgngen_debug",
 	"go.lintTool": "golangci-lint-v2",
 	"go.useLanguageServer": true,
 	"go.formatFlags": ["fmt", "--stdin"],
