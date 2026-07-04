@@ -1769,13 +1769,13 @@ default:
 }
 type GnsMethodConst uint8
 const (
-	NoGnss	GnsMethodConst = 0
-	GnssFix	GnsMethodConst = 1
-	DgnssFix	GnsMethodConst = 2
-	PreciseGnss	GnsMethodConst = 3
-	RtkFixedInteger	GnsMethodConst = 4
-	RtkFloat	GnsMethodConst = 5
-	EstimatedDrMode	GnsMethodConst = 6
+	NoGNSS	GnsMethodConst = 0
+	GNSSFix	GnsMethodConst = 1
+	DGNSSFix	GnsMethodConst = 2
+	PreciseGNSS	GnsMethodConst = 3
+	RTKFixedInteger	GnsMethodConst = 4
+	RTKFloat	GnsMethodConst = 5
+	EstimatedDRMode	GnsMethodConst = 6
 	ManualInput	GnsMethodConst = 7
 	SimulateMode	GnsMethodConst = 8
 )

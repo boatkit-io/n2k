@@ -1631,15 +1631,12 @@ func generateConstName(enumName, text string, value int) string {
 		}
 	}
 
-	words := strings.Fields(text)
-	caser := cases.Title(language.English)
-	camelCase := caser.String(text)
-
 	var builder strings.Builder
-	for _, r := range camelCase {
-		if unicode.IsLetter(r) || unicode.IsDigit(r) {
-			builder.WriteRune(r)
-		}
+	words := strings.FieldsFunc(text, func(r rune) bool {
+		return !unicode.IsLetter(r) && !unicode.IsDigit(r)
+	})
+	for _, word := range words {
+		builder.WriteString(goIdentifierWord(word))
 	}
 	candidateName := builder.String()
 
@@ -1660,6 +1657,27 @@ func generateConstName(enumName, text string, value int) string {
 	}
 
 	return candidateName
+}
+
+var goInitialisms = map[string]string{
+	"DR":    "DR",
+	"DGNSS": "DGNSS",
+	"GNSS":  "GNSS",
+	"RTK":   "RTK",
+}
+
+func goIdentifierWord(word string) string {
+	if word == "" {
+		return ""
+	}
+	if initialism, ok := goInitialisms[strings.ToUpper(word)]; ok {
+		return initialism
+	}
+	if unicode.IsDigit([]rune(word)[0]) {
+		return strings.ToUpper(word)
+	}
+	lower := strings.ToLower(word)
+	return cases.Title(language.English).String(lower)
 }
 
 // convertToConst changes XXX_YYY to XxxYyyConst (all go consts have global namespace scope).
