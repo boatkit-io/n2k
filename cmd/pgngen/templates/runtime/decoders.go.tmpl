@@ -77,7 +77,7 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
    {{- end }}
 
     {{- if eq $pgn.PGN 126208 }}
-    if val.Pgn != nil && (IsProprietaryPGN(*val.Pgn) || !HasDecoder(*val.Pgn)) {
+    if val.PGN != nil && (IsProprietaryPGN(*val.PGN) || !HasDecoder(*val.PGN)) {
         partial := publicpgn.{{ .Id }}Partial{
             Info: Info,
             {{- range $pgn.Fields }}
@@ -137,22 +137,22 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
             }
             {{- end }}
         }
-        {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NmeaRequestGroupFunction") (eq $pgn.Id "NmeaCommandGroupFunction")) (eq .Id "Parameter") }}
+        {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NMEARequestGroupFunction") (eq $pgn.Id "NMEACommandGroupFunction")) (eq .Id "Parameter") }}
         {{- if eq .Id "Parameter" }}
         valueSpec := &fieldSpec_{{ $pgn.Id }}_Value
         parameter := rep.Parameter
         {{- end }}
-        if val.Pgn != nil && parameter != nil {
-            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+        if val.PGN != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
                 valueSpec = spec
             }
         }
         {{- end }}
-        {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NmeaReadFieldsReplyGroupFunction") (eq $pgn.Id "NmeaWriteFieldsGroupFunction") (eq $pgn.Id "NmeaWriteFieldsReplyGroupFunction")) (eq .Id "SelectionParameter") }}
+        {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NMEAReadFieldsReplyGroupFunction") (eq $pgn.Id "NMEAWriteFieldsGroupFunction") (eq $pgn.Id "NMEAWriteFieldsReplyGroupFunction")) (eq .Id "SelectionParameter") }}
         valueSpec := &fieldSpec_{{ $pgn.Id }}_SelectionValue
         parameter := rep.SelectionParameter
-        if val.Pgn != nil && parameter != nil {
-            if spec, ok := FindFieldSpec(*val.Pgn, *parameter); ok {
+        if val.PGN != nil && parameter != nil {
+            if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
                 valueSpec = spec
             }
         }

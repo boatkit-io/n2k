@@ -201,30 +201,30 @@ func (n *Node) SetLogger(logger *logrus.Logger) {
 	n.logger = logger
 }
 
-func (n *Node) handleIsoRequest(p pgn.IsoRequest) {
+func (n *Node) handleIsoRequest(p pgn.ISORequest) {
 	n.enqueuePgn(p)
 }
 
-func (n *Node) handleIsoAddressClaim(p pgn.IsoAddressClaim) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
+func (n *Node) handleIsoAddressClaim(p pgn.ISOAddressClaim) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 	n.logger.Infof("handleIsoAddressClaim: received address claim from source %d", p.Info.SourceId)
 	n.enqueuePgn(p)
 }
 
-func (n *Node) handleIsoCommandedAddress(p pgn.IsoCommandedAddress) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
+func (n *Node) handleIsoCommandedAddress(p pgn.ISOCommandedAddress) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 	n.enqueuePgn(p)
 }
 
-func (n *Node) handleIsoAcknowledgement(p pgn.IsoAcknowledgement) {
-	n.enqueuePgn(p)
-}
-
-//nolint:gocritic // Subscriber callbacks must accept value PGNs.
-func (n *Node) handleNmeaRequestGroupFunction(p pgn.NmeaRequestGroupFunction) {
+func (n *Node) handleIsoAcknowledgement(p pgn.ISOAcknowledgement) {
 	n.enqueuePgn(p)
 }
 
 //nolint:gocritic // Subscriber callbacks must accept value PGNs.
-func (n *Node) handleNmeaCommandGroupFunction(p pgn.NmeaCommandGroupFunction) {
+func (n *Node) handleNmeaRequestGroupFunction(p pgn.NMEARequestGroupFunction) {
+	n.enqueuePgn(p)
+}
+
+//nolint:gocritic // Subscriber callbacks must accept value PGNs.
+func (n *Node) handleNmeaCommandGroupFunction(p pgn.NMEACommandGroupFunction) {
 	n.enqueuePgn(p)
 }
 
@@ -237,7 +237,7 @@ func (n *Node) handleConfigurationInformation(p pgn.ConfigurationInformation) {
 	n.enqueuePgn(p)
 }
 
-func (n *Node) handlePgnListTransmitAndReceive(p pgn.PgnListTransmitAndReceive) {
+func (n *Node) handlePgnListTransmitAndReceive(p pgn.PGNListTransmitAndReceive) {
 	n.enqueuePgn(p)
 }
 
@@ -249,39 +249,39 @@ func (n *Node) Start() error {
 		return fmt.Errorf("node already started")
 	}
 
-	sub, err := n.subscriber.SubscribeToStruct(pgn.IsoRequest{}, n.handleIsoRequest)
+	sub, err := n.subscriber.SubscribeToStruct(pgn.ISORequest{}, n.handleIsoRequest)
 	if err != nil {
-		return fmt.Errorf("failed to subscribe to IsoRequest: %w", err)
+		return fmt.Errorf("failed to subscribe to ISORequest: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
-	sub, err = n.subscriber.SubscribeToStruct(pgn.IsoAddressClaim{}, n.handleIsoAddressClaim)
+	sub, err = n.subscriber.SubscribeToStruct(pgn.ISOAddressClaim{}, n.handleIsoAddressClaim)
 	if err != nil {
-		return fmt.Errorf("failed to subscribe to IsoAddressClaim: %w", err)
+		return fmt.Errorf("failed to subscribe to ISOAddressClaim: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
-	sub, err = n.subscriber.SubscribeToStruct(pgn.IsoCommandedAddress{}, n.handleIsoCommandedAddress)
+	sub, err = n.subscriber.SubscribeToStruct(pgn.ISOCommandedAddress{}, n.handleIsoCommandedAddress)
 	if err != nil {
-		return fmt.Errorf("failed to subscribe to IsoCommandedAddress: %w", err)
+		return fmt.Errorf("failed to subscribe to ISOCommandedAddress: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
-	sub, err = n.subscriber.SubscribeToStruct(pgn.IsoAcknowledgement{}, n.handleIsoAcknowledgement)
+	sub, err = n.subscriber.SubscribeToStruct(pgn.ISOAcknowledgement{}, n.handleIsoAcknowledgement)
 	if err != nil {
-		return fmt.Errorf("failed to subscribe to IsoAcknowledgement: %w", err)
+		return fmt.Errorf("failed to subscribe to ISOAcknowledgement: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
-	sub, err = n.subscriber.SubscribeToStruct(pgn.NmeaRequestGroupFunction{}, n.handleNmeaRequestGroupFunction)
+	sub, err = n.subscriber.SubscribeToStruct(pgn.NMEARequestGroupFunction{}, n.handleNmeaRequestGroupFunction)
 	if err != nil {
-		return fmt.Errorf("failed to subscribe to NmeaRequestGroupFunction: %w", err)
+		return fmt.Errorf("failed to subscribe to NMEARequestGroupFunction: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
-	sub, err = n.subscriber.SubscribeToStruct(pgn.NmeaCommandGroupFunction{}, n.handleNmeaCommandGroupFunction)
+	sub, err = n.subscriber.SubscribeToStruct(pgn.NMEACommandGroupFunction{}, n.handleNmeaCommandGroupFunction)
 	if err != nil {
-		return fmt.Errorf("failed to subscribe to NmeaCommandGroupFunction: %w", err)
+		return fmt.Errorf("failed to subscribe to NMEACommandGroupFunction: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
@@ -297,9 +297,9 @@ func (n *Node) Start() error {
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
-	sub, err = n.subscriber.SubscribeToStruct(pgn.PgnListTransmitAndReceive{}, n.handlePgnListTransmitAndReceive)
+	sub, err = n.subscriber.SubscribeToStruct(pgn.PGNListTransmitAndReceive{}, n.handlePgnListTransmitAndReceive)
 	if err != nil {
-		return fmt.Errorf("failed to subscribe to PgnListTransmitAndReceive: %w", err)
+		return fmt.Errorf("failed to subscribe to PGNListTransmitAndReceive: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
@@ -543,7 +543,7 @@ func (n *Node) enqueuePgn(p any) {
 	}
 }
 
-func (n *Node) processIsoRequest(req pgn.IsoRequest) []toSend {
+func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 	n.mutex.RLock()
 	addressClaimed := n.addressClaimed
 	networkAddress := n.networkAddress
@@ -556,7 +556,7 @@ func (n *Node) processIsoRequest(req pgn.IsoRequest) []toSend {
 	readOnly := n.readOnly
 	n.mutex.RUnlock()
 
-	if req.Pgn == nil {
+	if req.PGN == nil {
 		return nil
 	}
 	if readOnly {
@@ -569,12 +569,12 @@ func (n *Node) processIsoRequest(req pgn.IsoRequest) []toSend {
 		return nil
 	}
 
-	n.logger.Infof("processIsoRequest: processing request for PGN %d from source %d", *req.Pgn, req.Info.SourceId)
+	n.logger.Infof("processIsoRequest: processing request for PGN %d from source %d", *req.PGN, req.Info.SourceId)
 
 	var responses []toSend
 
-	switch *req.Pgn {
-	case pgn.IsoAddressClaimPgn:
+	switch *req.PGN {
+	case pgn.ISOAddressClaimPgn:
 		responses = append(responses, toSend{pgn: buildAddressClaim(deviceInfoCopy, networkAddress), dest: req.Info.SourceId})
 
 	case pgn.ProductInformationPgn:
@@ -587,9 +587,9 @@ func (n *Node) processIsoRequest(req pgn.IsoRequest) []toSend {
 				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
-			Nmea2000Version:     &version,
+			NMEA2000Version:     &version,
 			ProductCode:         &productCode,
-			ModelId:             productInfoCopy.ModelID,
+			ModelID:             productInfoCopy.ModelID,
 			SoftwareVersionCode: productInfoCopy.SoftwareVersionCode,
 			ModelVersion:        productInfoCopy.ModelVersion,
 			ModelSerialCode:     productInfoCopy.ModelSerialCode,
@@ -598,18 +598,18 @@ func (n *Node) processIsoRequest(req pgn.IsoRequest) []toSend {
 		}
 		responses = append(responses, toSend{pgn: responsePgn, dest: req.Info.SourceId})
 
-	case pgn.PgnListTransmitAndReceivePgn:
+	case pgn.PGNListTransmitAndReceivePgn:
 		transmitPGNs = managedTransmitPGNs(transmitPGNs, configProvider != nil, heartbeatEnabled)
 		receivePGNs = managedReceivePGNs(receivePGNs)
 
-		txRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(transmitPGNs))
+		txRepeating := make([]pgn.PGNListTransmitAndReceiveRepeating1, len(transmitPGNs))
 		for i, pgnNum := range transmitPGNs {
 			p := pgnNum
-			txRepeating[i] = pgn.PgnListTransmitAndReceiveRepeating1{Pgn: &p}
+			txRepeating[i] = pgn.PGNListTransmitAndReceiveRepeating1{PGN: &p}
 		}
-		txResponse := &pgn.PgnListTransmitAndReceive{
+		txResponse := &pgn.PGNListTransmitAndReceive{
 			Info: pgn.MessageInfo{
-				PGN:      pgn.PgnListTransmitAndReceivePgn,
+				PGN:      pgn.PGNListTransmitAndReceivePgn,
 				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
@@ -618,14 +618,14 @@ func (n *Node) processIsoRequest(req pgn.IsoRequest) []toSend {
 		}
 		responses = append(responses, toSend{pgn: txResponse, dest: req.Info.SourceId})
 
-		rxRepeating := make([]pgn.PgnListTransmitAndReceiveRepeating1, len(receivePGNs))
+		rxRepeating := make([]pgn.PGNListTransmitAndReceiveRepeating1, len(receivePGNs))
 		for i, pgnNum := range receivePGNs {
 			p := pgnNum
-			rxRepeating[i] = pgn.PgnListTransmitAndReceiveRepeating1{Pgn: &p}
+			rxRepeating[i] = pgn.PGNListTransmitAndReceiveRepeating1{PGN: &p}
 		}
-		rxResponse := &pgn.PgnListTransmitAndReceive{
+		rxResponse := &pgn.PGNListTransmitAndReceive{
 			Info: pgn.MessageInfo{
-				PGN:      pgn.PgnListTransmitAndReceivePgn,
+				PGN:      pgn.PGNListTransmitAndReceivePgn,
 				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
@@ -636,13 +636,13 @@ func (n *Node) processIsoRequest(req pgn.IsoRequest) []toSend {
 
 	case pgn.ConfigurationInformationPgn:
 		if configProvider == nil {
-			responses = append(responses, toSend{pgn: buildIsoNak(networkAddress, req.Info.SourceId, *req.Pgn), dest: req.Info.SourceId})
+			responses = append(responses, toSend{pgn: buildIsoNak(networkAddress, req.Info.SourceId, *req.PGN), dest: req.Info.SourceId})
 			break
 		}
 		configInfo, err := configProvider.GetConfigurationInfo()
 		if err != nil {
 			n.logger.Errorf("processIsoRequest: failed to get configuration information: %v", err)
-			responses = append(responses, toSend{pgn: buildIsoNak(networkAddress, req.Info.SourceId, *req.Pgn), dest: req.Info.SourceId})
+			responses = append(responses, toSend{pgn: buildIsoNak(networkAddress, req.Info.SourceId, *req.PGN), dest: req.Info.SourceId})
 			break
 		}
 		responsePgn := &pgn.ConfigurationInformation{
@@ -663,10 +663,10 @@ func (n *Node) processIsoRequest(req pgn.IsoRequest) []toSend {
 
 func managedTransmitPGNs(configured []uint32, hasConfigurationProvider, heartbeatEnabled bool) []uint32 {
 	managed := []uint32{
-		pgn.IsoAcknowledgementPgn,
-		pgn.IsoAddressClaimPgn,
-		pgn.NmeaAcknowledgeGroupFunctionPgn,
-		pgn.PgnListTransmitAndReceivePgn,
+		pgn.ISOAcknowledgementPgn,
+		pgn.ISOAddressClaimPgn,
+		pgn.NMEAAcknowledgeGroupFunctionPgn,
+		pgn.PGNListTransmitAndReceivePgn,
 		pgn.ProductInformationPgn,
 	}
 	if hasConfigurationProvider {
@@ -680,12 +680,12 @@ func managedTransmitPGNs(configured []uint32, hasConfigurationProvider, heartbea
 
 func managedReceivePGNs(configured []uint32) []uint32 {
 	return mergePGNs(configured, []uint32{
-		pgn.IsoAcknowledgementPgn,
-		pgn.IsoRequestPgn,
-		pgn.IsoAddressClaimPgn,
-		pgn.IsoCommandedAddressPgn,
-		pgn.NmeaRequestGroupFunctionPgn,
-		pgn.NmeaCommandGroupFunctionPgn,
+		pgn.ISOAcknowledgementPgn,
+		pgn.ISORequestPgn,
+		pgn.ISOAddressClaimPgn,
+		pgn.ISOCommandedAddressPgn,
+		pgn.NMEARequestGroupFunctionPgn,
+		pgn.NMEACommandGroupFunctionPgn,
 	})
 }
 
@@ -709,25 +709,25 @@ func mergePGNs(configured, managed []uint32) []uint32 {
 	return merged
 }
 
-func (n *Node) processNmeaRequestGroupFunction(req *pgn.NmeaRequestGroupFunction) []toSend {
-	if req.Pgn == nil {
+func (n *Node) processNmeaRequestGroupFunction(req *pgn.NMEARequestGroupFunction) []toSend {
+	if req.PGN == nil {
 		return nil
 	}
 	if req.NumberOfParameters != nil && *req.NumberOfParameters != 0 {
-		return n.processUnsupportedGroupFunction(req.Info, *req.Pgn, pgn.ReadOrWriteNotSupported)
+		return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.ReadOrWriteNotSupported)
 	}
 
-	return n.processIsoRequest(pgn.IsoRequest{
+	return n.processIsoRequest(pgn.ISORequest{
 		Info: req.Info,
-		Pgn:  req.Pgn,
+		PGN:  req.PGN,
 	})
 }
 
-func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NmeaCommandGroupFunction) []toSend {
-	if cmd.Pgn == nil {
+func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NMEACommandGroupFunction) []toSend {
+	if cmd.PGN == nil {
 		return nil
 	}
-	return n.processUnsupportedGroupFunction(cmd.Info, *cmd.Pgn, pgn.ReadOrWriteNotSupported)
+	return n.processUnsupportedGroupFunction(cmd.Info, *cmd.PGN, pgn.ReadOrWriteNotSupported)
 }
 
 func (n *Node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPgn uint32, parameterError pgn.ParameterFieldConst) []toSend {
@@ -756,7 +756,7 @@ func (n *Node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPg
 	}}
 }
 
-func (n *Node) processIsoCommandedAddress(cmd *pgn.IsoCommandedAddress) {
+func (n *Node) processIsoCommandedAddress(cmd *pgn.ISOCommandedAddress) {
 	n.mutex.RLock()
 	currentName := n.name
 	readOnly := n.readOnly
@@ -784,7 +784,7 @@ func (n *Node) processIsoCommandedAddress(cmd *pgn.IsoCommandedAddress) {
 	n.mutex.Unlock()
 }
 
-func (n *Node) processIsoAddressClaim(claim *pgn.IsoAddressClaim) {
+func (n *Node) processIsoAddressClaim(claim *pgn.ISOAddressClaim) {
 	incomingName := computeNameFromClaim(claim)
 	n.updateKnownDeviceFromClaim(claim, incomingName)
 
@@ -840,7 +840,7 @@ func (n *Node) processIsoAddressClaim(claim *pgn.IsoAddressClaim) {
 	}
 }
 
-func (n *Node) updateKnownDeviceFromClaim(claim *pgn.IsoAddressClaim, name uint64) {
+func (n *Node) updateKnownDeviceFromClaim(claim *pgn.ISOAddressClaim, name uint64) {
 	var changes []DeviceChange
 	n.mutex.Lock()
 
@@ -896,8 +896,8 @@ func (n *Node) updateKnownDeviceFromProductInfo(info *pgn.ProductInformation) {
 		productCode = *info.ProductCode
 	}
 	nmea2000Version := uint16(0)
-	if info.Nmea2000Version != nil {
-		nmea2000Version = uint16(*info.Nmea2000Version * 100)
+	if info.NMEA2000Version != nil {
+		nmea2000Version = uint16(*info.NMEA2000Version * 100)
 	}
 	loadEquivalency := uint8(0)
 	if info.LoadEquivalency != nil {
@@ -907,7 +907,7 @@ func (n *Node) updateKnownDeviceFromProductInfo(info *pgn.ProductInformation) {
 	productInfo := ProductInfo{
 		NMEA2000Version:     nmea2000Version,
 		ProductCode:         productCode,
-		ModelID:             info.ModelId,
+		ModelID:             info.ModelID,
 		SoftwareVersionCode: info.SoftwareVersionCode,
 		ModelVersion:        info.ModelVersion,
 		ModelSerialCode:     info.ModelSerialCode,
@@ -952,7 +952,7 @@ func (n *Node) updateKnownDeviceFromConfigurationInfo(info *pgn.ConfigurationInf
 	n.publishDeviceChanges(changes)
 }
 
-func (n *Node) updateKnownDeviceFromPgnList(info *pgn.PgnListTransmitAndReceive) {
+func (n *Node) updateKnownDeviceFromPgnList(info *pgn.PGNListTransmitAndReceive) {
 	var changes []DeviceChange
 	n.mutex.Lock()
 
@@ -1074,11 +1074,11 @@ func cloneKnownDevice(device *KnownDevice) KnownDevice {
 	return ret
 }
 
-func knownDevicePGNListValues(list []pgn.PgnListTransmitAndReceiveRepeating1) []uint32 {
+func knownDevicePGNListValues(list []pgn.PGNListTransmitAndReceiveRepeating1) []uint32 {
 	values := make([]uint32, 0, len(list))
 	for _, item := range list {
-		if item.Pgn != nil {
-			values = append(values, *item.Pgn)
+		if item.PGN != nil {
+			values = append(values, *item.PGN)
 		}
 	}
 	return values
@@ -1126,15 +1126,15 @@ func (n *Node) sendAddressClaim() {
 	}
 }
 
-func buildAddressClaim(deviceInfo DeviceInfo, networkAddress uint8) *pgn.IsoAddressClaim {
+func buildAddressClaim(deviceInfo DeviceInfo, networkAddress uint8) *pgn.ISOAddressClaim {
 	arbitraryBit := uint8(0)
 	if deviceInfo.ArbitraryAddressCapable {
 		arbitraryBit = 1
 	}
 
-	return &pgn.IsoAddressClaim{
+	return &pgn.ISOAddressClaim{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.IsoAddressClaimPgn,
+			PGN:      pgn.ISOAddressClaimPgn,
 			SourceId: networkAddress,
 			TargetId: 255,
 			Priority: 6,
@@ -1151,16 +1151,16 @@ func buildAddressClaim(deviceInfo DeviceInfo, networkAddress uint8) *pgn.IsoAddr
 	}
 }
 
-func buildIsoNak(source, destination uint8, requestedPgn uint32) *pgn.IsoAcknowledgement {
-	return &pgn.IsoAcknowledgement{
+func buildIsoNak(source, destination uint8, requestedPgn uint32) *pgn.ISOAcknowledgement {
+	return &pgn.ISOAcknowledgement{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.IsoAcknowledgementPgn,
+			PGN:      pgn.ISOAcknowledgementPgn,
 			SourceId: source,
 			TargetId: destination,
 			Priority: 6,
 		},
 		Control: pgn.Nak,
-		Pgn:     &requestedPgn,
+		PGN:     &requestedPgn,
 	}
 }
 
@@ -1168,19 +1168,19 @@ func buildNmeaGroupNak(
 	source, destination uint8,
 	requestedPgn uint32,
 	parameterError pgn.ParameterFieldConst,
-) *pgn.NmeaAcknowledgeGroupFunction {
-	return &pgn.NmeaAcknowledgeGroupFunction{
+) *pgn.NMEAAcknowledgeGroupFunction {
+	return &pgn.NMEAAcknowledgeGroupFunction{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.NmeaAcknowledgeGroupFunctionPgn,
+			PGN:      pgn.NMEAAcknowledgeGroupFunctionPgn,
 			SourceId: source,
 			TargetId: destination,
 			Priority: 3,
 		},
-		FunctionCode:                          pgn.Acknowledge_4,
-		Pgn:                                   &requestedPgn,
-		PgnErrorCode:                          pgn.PgnNotSupported,
+		FunctionCode:                          pgn.Acknowledge_5,
+		PGN:                                   &requestedPgn,
+		PGNErrorCode:                          pgn.PgnNotSupported,
 		TransmissionIntervalPriorityErrorCode: pgn.NotSupported,
-		Repeating1: []pgn.NmeaAcknowledgeGroupFunctionRepeating1{
+		Repeating1: []pgn.NMEAAcknowledgeGroupFunctionRepeating1{
 			{Parameter: parameterError},
 		},
 	}
@@ -1214,23 +1214,23 @@ func (n *Node) sendHeartbeat() {
 
 func (n *Node) processPGN(p any) []toSend {
 	switch v := p.(type) {
-	case pgn.IsoRequest:
+	case pgn.ISORequest:
 		return n.processIsoRequest(v)
-	case pgn.NmeaRequestGroupFunction:
+	case pgn.NMEARequestGroupFunction:
 		return n.processNmeaRequestGroupFunction(&v)
-	case pgn.NmeaCommandGroupFunction:
+	case pgn.NMEACommandGroupFunction:
 		return n.processNmeaCommandGroupFunction(&v)
-	case pgn.IsoAcknowledgement:
-		n.logger.Infof("process: received ISO acknowledgement for PGN %v", v.Pgn)
-	case pgn.IsoAddressClaim:
+	case pgn.ISOAcknowledgement:
+		n.logger.Infof("process: received ISO acknowledgement for PGN %v", v.PGN)
+	case pgn.ISOAddressClaim:
 		n.processIsoAddressClaim(&v)
-	case pgn.IsoCommandedAddress:
+	case pgn.ISOCommandedAddress:
 		n.processIsoCommandedAddress(&v)
 	case pgn.ProductInformation:
 		n.updateKnownDeviceFromProductInfo(&v)
 	case pgn.ConfigurationInformation:
 		n.updateKnownDeviceFromConfigurationInfo(&v)
-	case pgn.PgnListTransmitAndReceive:
+	case pgn.PGNListTransmitAndReceive:
 		n.updateKnownDeviceFromPgnList(&v)
 	default:
 		n.logger.Infof("process: received unhandled PGN type %T", p)
@@ -1392,7 +1392,7 @@ func computeName(d DeviceInfo) (uint64, error) {
 	return name, nil
 }
 
-func computeNameFromClaim(claim *pgn.IsoAddressClaim) uint64 {
+func computeNameFromClaim(claim *pgn.ISOAddressClaim) uint64 {
 	var name uint64
 	if claim.UniqueNumber != nil {
 		name |= uint64(*claim.UniqueNumber)
@@ -1425,7 +1425,7 @@ func computeNameFromClaim(claim *pgn.IsoAddressClaim) uint64 {
 	return name
 }
 
-func computeNameFromCommand(cmd *pgn.IsoCommandedAddress) uint64 {
+func computeNameFromCommand(cmd *pgn.ISOCommandedAddress) uint64 {
 	var name uint64
 	if len(cmd.UniqueNumber) >= 3 {
 		uniqueNum := uint64(cmd.UniqueNumber[0]) | (uint64(cmd.UniqueNumber[1]) << 8) | (uint64(cmd.UniqueNumber[2]) << 16)

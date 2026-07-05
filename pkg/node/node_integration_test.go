@@ -106,8 +106,8 @@ func TestNodeIntegration(t *testing.T) {
 	}
 
 	log.Info("Sending ISO Request for Address Claim (PGN 60928)")
-	isoRequestAddrClaim := &pgn.IsoRequest{
-		Pgn: ptrUint32(60928),
+	isoRequestAddrClaim := &pgn.ISORequest{
+		PGN: ptrUint32(60928),
 		Info: pgn.MessageInfo{
 			PGN:      59904,
 			SourceId: nodeImpl.GetNetworkAddress(),
@@ -121,8 +121,8 @@ func TestNodeIntegration(t *testing.T) {
 	time.Sleep(500 * time.Millisecond)
 
 	log.Info("Sending ISO Request for Product Info (PGN 126996)")
-	isoRequestProdInfo := &pgn.IsoRequest{
-		Pgn: ptrUint32(126996),
+	isoRequestProdInfo := &pgn.ISORequest{
+		PGN: ptrUint32(126996),
 		Info: pgn.MessageInfo{
 			PGN:      59904,
 			SourceId: nodeImpl.GetNetworkAddress(),

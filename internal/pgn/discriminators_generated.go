@@ -66,7 +66,10 @@ var KnownPGNs = map[uint32]struct{}{
 	65285: {},
 	65286: {},
 	65287: {},
+	65303: {},
+	65304: {},
 	65305: {},
+	65313: {},
 	65360: {},
 	65361: {},
 	65409: {},
@@ -113,7 +116,6 @@ var KnownPGNs = map[uint32]struct{}{
 	127748: {},
 	127749: {},
 	127750: {},
-	127751: {},
 	128000: {},
 	128006: {},
 	128007: {},
@@ -188,46 +190,47 @@ var KnownPGNs = map[uint32]struct{}{
 	130826: {},
 	130836: {},
 	130837: {},
+	130845: {},
 }
 
 // PgnFieldSpecMap maps PGN IDs to their one-based field order specs.
 var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 	59392: {
-		{FieldOrder: 2, FieldSpec: &fieldSpec_IsoAcknowledgement_GroupFunction},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_IsoAcknowledgement_Pgn},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ISOAcknowledgement_GroupFunction},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ISOAcknowledgement_PGN},
 	},
 	59904: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_IsoRequest_Pgn},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ISORequest_PGN},
 	},
 	60160: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_IsoTransportProtocolDataTransfer_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ISOTransportProtocolDataTransfer_SID},
 	},
 	60416: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_GroupFunctionCode},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_MessageSize},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_Packets},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_PacketsReply},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_Pgn},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_GroupFunctionCode},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_MaxPackets},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_NextSid},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_Pgn},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_GroupFunctionCode},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_TotalMessageSize},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_TotalNumberOfFramesReceived},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_Pgn},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_GroupFunctionCode},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_MessageSize},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_Packets},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_Pgn},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementAbort_GroupFunctionCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_IsoTransportProtocolConnectionManagementAbort_Pgn},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementRequestToSend_GroupFunctionCode},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementRequestToSend_MessageSize},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementRequestToSend_Packets},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementRequestToSend_PacketsReply},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementRequestToSend_PGN},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementClearToSend_GroupFunctionCode},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementClearToSend_MaxPackets},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementClearToSend_NextSID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementClearToSend_PGN},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementEndOfMessage_GroupFunctionCode},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementEndOfMessage_TotalMessageSize},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementEndOfMessage_TotalNumberOfFramesReceived},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementEndOfMessage_PGN},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementBroadcastAnnounce_GroupFunctionCode},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementBroadcastAnnounce_MessageSize},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementBroadcastAnnounce_Packets},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementBroadcastAnnounce_PGN},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementAbort_GroupFunctionCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ISOTransportProtocolConnectionManagementAbort_PGN},
 	},
 	60928: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_IsoAddressClaim_UniqueNumber},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_IsoAddressClaim_DeviceInstanceLower},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_IsoAddressClaim_DeviceInstanceUpper},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_IsoAddressClaim_SystemInstance},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ISOAddressClaim_UniqueNumber},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ISOAddressClaim_DeviceInstanceLower},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ISOAddressClaim_DeviceInstanceUpper},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_ISOAddressClaim_SystemInstance},
 	},
 	61184: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_CarlingBreakerCommand_ManufacturerCode},
@@ -240,150 +243,150 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 10, FieldSpec: &fieldSpec_CarlingBreakerCommand_DimValue},
 	},
 	65001: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_Bus1PhaseCBasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_Bus1PhaseCBasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_Bus1PhaseCBasicAcQuantities_AcFrequency},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_Bus1PhaseCBasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_Bus1PhaseCBasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_Bus1PhaseCBasicACQuantities_ACFrequency},
 	},
 	65002: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_Bus1PhaseBBasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_Bus1PhaseBBasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_Bus1PhaseBBasicAcQuantities_AcFrequency},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_Bus1PhaseBBasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_Bus1PhaseBBasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_Bus1PhaseBBasicACQuantities_ACFrequency},
 	},
 	65003: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_Bus1PhaseABasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_Bus1PhaseABasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_Bus1PhaseABasicAcQuantities_AcFrequency},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_Bus1PhaseABasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_Bus1PhaseABasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_Bus1PhaseABasicACQuantities_ACFrequency},
 	},
 	65006: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseCAcReactivePower_ReactivePower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseCAcReactivePower_PowerFactor},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseCACReactivePower_ReactivePower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseCACReactivePower_PowerFactor},
 	},
 	65007: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseCAcPower_RealPower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseCAcPower_ApparentPower},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseCACPower_RealPower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseCACPower_ApparentPower},
 	},
 	65008: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseCBasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseCBasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_UtilityPhaseCBasicAcQuantities_AcFrequency},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_UtilityPhaseCBasicAcQuantities_AcRmsCurrent},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseCBasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseCBasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_UtilityPhaseCBasicACQuantities_ACFrequency},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_UtilityPhaseCBasicACQuantities_ACRMSCurrent},
 	},
 	65009: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseBAcReactivePower_ReactivePower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseBAcReactivePower_PowerFactor},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseBACReactivePower_ReactivePower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseBACReactivePower_PowerFactor},
 	},
 	65010: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseBAcPower_RealPower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseBAcPower_ApparentPower},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseBACPower_RealPower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseBACPower_ApparentPower},
 	},
 	65011: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseBBasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseBBasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_UtilityPhaseBBasicAcQuantities_AcFrequency},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_UtilityPhaseBBasicAcQuantities_AcRmsCurrent},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseBBasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseBBasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_UtilityPhaseBBasicACQuantities_ACFrequency},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_UtilityPhaseBBasicACQuantities_ACRMSCurrent},
 	},
 	65012: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseAAcReactivePower_ReactivePower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseAAcReactivePower_PowerFactor},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseAACReactivePower_ReactivePower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseAACReactivePower_PowerFactor},
 	},
 	65013: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseAAcPower_RealPower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseAAcPower_ApparentPower},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseAACPower_RealPower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseAACPower_ApparentPower},
 	},
 	65014: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseABasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseABasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_UtilityPhaseABasicAcQuantities_AcFrequency},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_UtilityPhaseABasicAcQuantities_AcRmsCurrent},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityPhaseABasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityPhaseABasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_UtilityPhaseABasicACQuantities_ACFrequency},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_UtilityPhaseABasicACQuantities_ACRMSCurrent},
 	},
 	65015: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityTotalAcReactivePower_ReactivePower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityTotalAcReactivePower_PowerFactor},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityTotalACReactivePower_ReactivePower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityTotalACReactivePower_PowerFactor},
 	},
 	65016: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityTotalAcPower_RealPower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityTotalAcPower_ApparentPower},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityTotalACPower_RealPower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityTotalACPower_ApparentPower},
 	},
 	65017: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityAverageBasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityAverageBasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_UtilityAverageBasicAcQuantities_AcFrequency},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_UtilityAverageBasicAcQuantities_AcRmsCurrent},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_UtilityAverageBasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_UtilityAverageBasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_UtilityAverageBasicACQuantities_ACFrequency},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_UtilityAverageBasicACQuantities_ACRMSCurrent},
 	},
 	65019: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseCAcReactivePower_ReactivePower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseCAcReactivePower_PowerFactor},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseCACReactivePower_ReactivePower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseCACReactivePower_PowerFactor},
 	},
 	65020: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseCAcPower_RealPower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseCAcPower_ApparentPower},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseCACPower_RealPower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseCACPower_ApparentPower},
 	},
 	65021: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseCBasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseCBasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_GeneratorPhaseCBasicAcQuantities_AcFrequency},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GeneratorPhaseCBasicAcQuantities_AcRmsCurrent},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseCBasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseCBasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_GeneratorPhaseCBasicACQuantities_ACFrequency},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GeneratorPhaseCBasicACQuantities_ACRMSCurrent},
 	},
 	65022: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseBAcReactivePower_ReactivePower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseBAcReactivePower_PowerFactor},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseBACReactivePower_ReactivePower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseBACReactivePower_PowerFactor},
 	},
 	65023: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseBAcPower_RealPower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseBAcPower_ApparentPower},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseBACPower_RealPower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseBACPower_ApparentPower},
 	},
 	65024: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseBBasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseBBasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_GeneratorPhaseBBasicAcQuantities_AcFrequency},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GeneratorPhaseBBasicAcQuantities_AcRmsCurrent},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseBBasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseBBasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_GeneratorPhaseBBasicACQuantities_ACFrequency},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GeneratorPhaseBBasicACQuantities_ACRMSCurrent},
 	},
 	65025: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseAAcReactivePower_ReactivePower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseAAcReactivePower_PowerFactor},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseAACReactivePower_ReactivePower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseAACReactivePower_PowerFactor},
 	},
 	65026: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseAAcPower_RealPower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseAAcPower_ApparentPower},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseAACPower_RealPower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseAACPower_ApparentPower},
 	},
 	65027: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseABasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseABasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_GeneratorPhaseABasicAcQuantities_AcFrequency},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GeneratorPhaseABasicAcQuantities_AcRmsCurrent},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorPhaseABasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorPhaseABasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_GeneratorPhaseABasicACQuantities_ACFrequency},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GeneratorPhaseABasicACQuantities_ACRMSCurrent},
 	},
 	65028: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorTotalAcReactivePower_ReactivePower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorTotalAcReactivePower_PowerFactor},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorTotalACReactivePower_ReactivePower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorTotalACReactivePower_PowerFactor},
 	},
 	65029: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorTotalAcPower_RealPower},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorTotalAcPower_ApparentPower},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorTotalACPower_RealPower},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorTotalACPower_ApparentPower},
 	},
 	65030: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorAverageBasicAcQuantities_LineLineAcRmsVoltage},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorAverageBasicAcQuantities_LineNeutralAcRmsVoltage},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_GeneratorAverageBasicAcQuantities_AcFrequency},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GeneratorAverageBasicAcQuantities_AcRmsCurrent},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GeneratorAverageBasicACQuantities_LineLineACRMSVoltage},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GeneratorAverageBasicACQuantities_LineNeutralACRMSVoltage},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_GeneratorAverageBasicACQuantities_ACFrequency},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GeneratorAverageBasicACQuantities_ACRMSCurrent},
 	},
 	65240: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_IsoCommandedAddress_DeviceInstanceLower},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_IsoCommandedAddress_DeviceInstanceUpper},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_IsoCommandedAddress_SystemInstance},
-		{FieldOrder: 11, FieldSpec: &fieldSpec_IsoCommandedAddress_NewSourceAddress},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ISOCommandedAddress_DeviceInstanceLower},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ISOCommandedAddress_DeviceInstanceUpper},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_ISOCommandedAddress_SystemInstance},
+		{FieldOrder: 11, FieldSpec: &fieldSpec_ISOCommandedAddress_NewSourceAddress},
 	},
 	65282: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_MaretronNumberOfChannels_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_MaretronNumberOfChannels_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_MaretronNumberOfChannels_Pgn},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_MaretronNumberOfChannels_PGN},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_MaretronNumberOfChannels_NumberOfChannels},
 	},
 	65284: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_MaretronProprietaryDcBreakerCurrent_ManufacturerCode},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_MaretronProprietaryDcBreakerCurrent_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_MaretronProprietaryDcBreakerCurrent_BankInstance},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_MaretronProprietaryDcBreakerCurrent_IndicatorNumber},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_MaretronProprietaryDcBreakerCurrent_BreakerCurrent},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_MaretronProprietaryDCBreakerCurrent_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_MaretronProprietaryDCBreakerCurrent_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_MaretronProprietaryDCBreakerCurrent_BankInstance},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_MaretronProprietaryDCBreakerCurrent_IndicatorNumber},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_MaretronProprietaryDCBreakerCurrent_BreakerCurrent},
 	},
 	65285: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarBootStateAcknowledgment_ManufacturerCode},
@@ -402,6 +405,20 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarAccessLevel_FormatCode},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_AirmarAccessLevel_AccessSeedKey},
 	},
+	65303: {
+		{FieldOrder: 1, FieldSpec: &fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_NumberOfEngines},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_NumberOfFuelTanks},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_TotalFuelCapacity},
+	},
+	65304: {
+		{FieldOrder: 1, FieldSpec: &fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_NumberOfEngines},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_NumberOfFuelTanks},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_TotalFuelCapacity},
+	},
 	65305: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_SimnetDeviceStatus_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_SimnetDeviceStatus_IndustryCode},
@@ -416,10 +433,16 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 3, FieldSpec: &fieldSpec_SimnetDeviceModeRequest_IndustryCode},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_SimnetDeviceModeRequest_Report},
 	},
+	65313: {
+		{FieldOrder: 1, FieldSpec: &fieldSpec_NavicoDepthQuality_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_NavicoDepthQuality_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_NavicoDepthQuality_Instance},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_NavicoDepthQuality_DepthQuality},
+	},
 	65360: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_SeatalkPilotLockedHeading_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_SeatalkPilotLockedHeading_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_SeatalkPilotLockedHeading_Sid},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_SeatalkPilotLockedHeading_SID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_SeatalkPilotLockedHeading_TargetHeadingTrue},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_SeatalkPilotLockedHeading_TargetHeadingMagnetic},
 	},
@@ -430,118 +453,118 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 	65409: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarSpeedPulseCount_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarSpeedPulseCount_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarSpeedPulseCount_Sid},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarSpeedPulseCount_SID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_AirmarSpeedPulseCount_DurationOfInterval},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_AirmarSpeedPulseCount_NumberOfPulsesReceived},
 	},
 	126208: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_NmeaRequestGroupFunction_FunctionCode},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_NmeaRequestGroupFunction_Pgn},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_NmeaRequestGroupFunction_TransmissionInterval},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_NmeaRequestGroupFunction_TransmissionIntervalOffset},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_NmeaRequestGroupFunction_NumberOfParameters},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_NmeaCommandGroupFunction_FunctionCode},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_NmeaCommandGroupFunction_Pgn},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_NmeaCommandGroupFunction_NumberOfParameters},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_NmeaAcknowledgeGroupFunction_FunctionCode},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_NmeaAcknowledgeGroupFunction_Pgn},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_NmeaAcknowledgeGroupFunction_NumberOfParameters},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_NmeaReadFieldsReplyGroupFunction_FunctionCode},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_NmeaReadFieldsReplyGroupFunction_Pgn},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_NmeaReadFieldsReplyGroupFunction_UniqueId},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_NmeaReadFieldsReplyGroupFunction_NumberOfSelectionPairs},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_NmeaReadFieldsReplyGroupFunction_NumberOfParameters},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_NmeaWriteFieldsGroupFunction_FunctionCode},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_NmeaWriteFieldsGroupFunction_Pgn},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_NmeaWriteFieldsGroupFunction_UniqueId},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_NmeaWriteFieldsGroupFunction_NumberOfSelectionPairs},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_NmeaWriteFieldsGroupFunction_NumberOfParameters},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_NmeaWriteFieldsReplyGroupFunction_FunctionCode},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_NmeaWriteFieldsReplyGroupFunction_Pgn},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_NmeaWriteFieldsReplyGroupFunction_UniqueId},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_NmeaWriteFieldsReplyGroupFunction_NumberOfSelectionPairs},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_NmeaWriteFieldsReplyGroupFunction_NumberOfParameters},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_NMEARequestGroupFunction_FunctionCode},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_NMEARequestGroupFunction_PGN},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_NMEARequestGroupFunction_TransmissionInterval},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_NMEARequestGroupFunction_TransmissionIntervalOffset},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_NMEARequestGroupFunction_NumberOfParameters},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_NMEACommandGroupFunction_FunctionCode},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_NMEACommandGroupFunction_PGN},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_NMEACommandGroupFunction_NumberOfParameters},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_NMEAAcknowledgeGroupFunction_FunctionCode},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_NMEAAcknowledgeGroupFunction_PGN},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_NMEAAcknowledgeGroupFunction_NumberOfParameters},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_NMEAReadFieldsReplyGroupFunction_FunctionCode},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_NMEAReadFieldsReplyGroupFunction_PGN},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_NMEAReadFieldsReplyGroupFunction_UniqueID},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_NMEAReadFieldsReplyGroupFunction_NumberOfSelectionPairs},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_NMEAReadFieldsReplyGroupFunction_NumberOfParameters},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_NMEAWriteFieldsGroupFunction_FunctionCode},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_NMEAWriteFieldsGroupFunction_PGN},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_NMEAWriteFieldsGroupFunction_UniqueID},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_NMEAWriteFieldsGroupFunction_NumberOfSelectionPairs},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_NMEAWriteFieldsGroupFunction_NumberOfParameters},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_NMEAWriteFieldsReplyGroupFunction_FunctionCode},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_NMEAWriteFieldsReplyGroupFunction_PGN},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_NMEAWriteFieldsReplyGroupFunction_UniqueID},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_NMEAWriteFieldsReplyGroupFunction_NumberOfSelectionPairs},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_NMEAWriteFieldsReplyGroupFunction_NumberOfParameters},
 	},
 	126464: {
 	},
 	126720: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMediaControl_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMediaControl_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMediaControl_ProprietaryId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMediaControl_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMediaControl_ProprietaryID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMediaControl_SourceID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSiriusControl_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSiriusControl_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusControl_ProprietaryId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusControl_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusControl_ProprietaryID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusControl_SourceID},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionSiriusControl_Data},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionRequestStatus_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionRequestStatus_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionRequestStatus_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionRequestStatus_ProprietaryID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSetSource_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSetSource_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSetSource_ProprietaryId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSetSource_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSetSource_ProprietaryID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSetSource_SourceID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSetMute_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSetMute_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSetMute_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSetMute_ProprietaryID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSetZoneVolume_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSetZoneVolume_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSetZoneVolume_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSetZoneVolume_ProprietaryID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSetZoneVolume_Zone},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSetZoneVolume_Volume},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSetAllVolumes_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSetAllVolumes_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSetAllVolumes_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSetAllVolumes_ProprietaryID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSetAllVolumes_Zone1},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSetAllVolumes_Zone2},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionSetAllVolumes_Zone3},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionSetAllVolumes_Zone4},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarAttitudeOffset_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarAttitudeOffset_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarAttitudeOffset_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarAttitudeOffset_ProprietaryID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_AirmarAttitudeOffset_AzimuthOffset},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_AirmarAttitudeOffset_PitchOffset},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_AirmarAttitudeOffset_RollOffset},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarSimulateMode_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarSimulateMode_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarSimulateMode_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarSimulateMode_ProprietaryID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarCalibrateDepth_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarCalibrateDepth_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarCalibrateDepth_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarCalibrateDepth_ProprietaryID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_AirmarCalibrateDepth_SpeedOfSoundMode},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarCalibrateSpeed_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarCalibrateSpeed_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarCalibrateSpeed_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarCalibrateSpeed_ProprietaryID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_AirmarCalibrateSpeed_NumberOfPairsOfDataPoints},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarCalibrateTemperature_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarCalibrateTemperature_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarCalibrateTemperature_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarCalibrateTemperature_ProprietaryID},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_AirmarCalibrateTemperature_TemperatureOffset},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarSpeedFilterNone_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarSpeedFilterNone_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarSpeedFilterNone_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarSpeedFilterNone_ProprietaryID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_AirmarSpeedFilterNone_FilterType},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_AirmarSpeedFilterNone_SampleInterval},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarSpeedFilterIir_ManufacturerCode},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarSpeedFilterIir_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarSpeedFilterIir_ProprietaryId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AirmarSpeedFilterIir_FilterType},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_AirmarSpeedFilterIir_SampleInterval},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_AirmarSpeedFilterIir_FilterDuration},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarSpeedFilterIIR_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarSpeedFilterIIR_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarSpeedFilterIIR_ProprietaryID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_AirmarSpeedFilterIIR_FilterType},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_AirmarSpeedFilterIIR_SampleInterval},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_AirmarSpeedFilterIIR_FilterDuration},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarTemperatureFilterNone_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarTemperatureFilterNone_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarTemperatureFilterNone_ProprietaryId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarTemperatureFilterNone_ProprietaryID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_AirmarTemperatureFilterNone_FilterType},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_AirmarTemperatureFilterNone_SampleInterval},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarTemperatureFilterIir_ManufacturerCode},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarTemperatureFilterIir_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarTemperatureFilterIir_ProprietaryId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AirmarTemperatureFilterIir_FilterType},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_AirmarTemperatureFilterIir_SampleInterval},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_AirmarTemperatureFilterIir_FilterDuration},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarNmea2000Options_ManufacturerCode},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarNmea2000Options_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarNmea2000Options_ProprietaryId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarTemperatureFilterIIR_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarTemperatureFilterIIR_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarTemperatureFilterIIR_ProprietaryID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_AirmarTemperatureFilterIIR_FilterType},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_AirmarTemperatureFilterIIR_SampleInterval},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_AirmarTemperatureFilterIIR_FilterDuration},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarNMEA2000Options_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AirmarNMEA2000Options_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AirmarNMEA2000Options_ProprietaryID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_MaretronDeviationCalibrationResponse_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_MaretronDeviationCalibrationResponse_IndustryCode},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_MaretronDeviationCalibrationResponse_SoftwareCode},
@@ -556,35 +579,35 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 	126983: {
 		{FieldOrder: 3, FieldSpec: &fieldSpec_Alert_AlertSystem},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_Alert_AlertSubSystem},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_Alert_AlertId},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_Alert_DataSourceNetworkIdName},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_Alert_AlertID},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_Alert_DataSourceNetworkIDNAME},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_Alert_DataSourceInstance},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_Alert_DataSourceIndexSource},
 		{FieldOrder: 9, FieldSpec: &fieldSpec_Alert_AlertOccurrenceNumber},
-		{FieldOrder: 17, FieldSpec: &fieldSpec_Alert_AcknowledgeSourceNetworkIdName},
+		{FieldOrder: 17, FieldSpec: &fieldSpec_Alert_AcknowledgeSourceNetworkIDNAME},
 		{FieldOrder: 20, FieldSpec: &fieldSpec_Alert_AlertPriority},
 	},
 	126984: {
 		{FieldOrder: 3, FieldSpec: &fieldSpec_AlertResponse_AlertSystem},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_AlertResponse_AlertSubSystem},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AlertResponse_AlertId},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_AlertResponse_DataSourceNetworkIdName},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_AlertResponse_AlertID},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_AlertResponse_DataSourceNetworkIDNAME},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_AlertResponse_DataSourceInstance},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_AlertResponse_DataSourceIndexSource},
 		{FieldOrder: 9, FieldSpec: &fieldSpec_AlertResponse_AlertOccurrenceNumber},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_AlertResponse_AcknowledgeSourceNetworkIdName},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_AlertResponse_AcknowledgeSourceNetworkIDNAME},
 	},
 	126985: {
 		{FieldOrder: 3, FieldSpec: &fieldSpec_AlertText_AlertSystem},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_AlertText_AlertSubSystem},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AlertText_AlertId},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_AlertText_DataSourceNetworkIdName},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_AlertText_AlertID},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_AlertText_DataSourceNetworkIDNAME},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_AlertText_DataSourceInstance},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_AlertText_DataSourceIndexSource},
 		{FieldOrder: 9, FieldSpec: &fieldSpec_AlertText_AlertOccurrenceNumber},
 	},
 	126992: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_SystemTime_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_SystemTime_SID},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_SystemTime_Date},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_SystemTime_Time},
 	},
@@ -593,23 +616,23 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 2, FieldSpec: &fieldSpec_Heartbeat_SequenceCounter},
 	},
 	126996: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_ProductInformation_Nmea2000Version},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ProductInformation_NMEA2000Version},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_ProductInformation_ProductCode},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_ProductInformation_LoadEquivalency},
 	},
 	126998: {
 	},
 	127233: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_ManOverboardNotification_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_ManOverboardNotification_MobEmitterId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ManOverboardNotification_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ManOverboardNotification_MOBEmitterID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_ManOverboardNotification_ActivationTime},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_ManOverboardNotification_PositionDate},
 		{FieldOrder: 9, FieldSpec: &fieldSpec_ManOverboardNotification_PositionTime},
 		{FieldOrder: 10, FieldSpec: &fieldSpec_ManOverboardNotification_Latitude},
 		{FieldOrder: 11, FieldSpec: &fieldSpec_ManOverboardNotification_Longitude},
-		{FieldOrder: 14, FieldSpec: &fieldSpec_ManOverboardNotification_Cog},
-		{FieldOrder: 15, FieldSpec: &fieldSpec_ManOverboardNotification_Sog},
-		{FieldOrder: 16, FieldSpec: &fieldSpec_ManOverboardNotification_MmsiOfVesselOfOrigin},
+		{FieldOrder: 14, FieldSpec: &fieldSpec_ManOverboardNotification_COG},
+		{FieldOrder: 15, FieldSpec: &fieldSpec_ManOverboardNotification_SOG},
+		{FieldOrder: 16, FieldSpec: &fieldSpec_ManOverboardNotification_MMSIOfVesselOfOrigin},
 	},
 	127237: {
 		{FieldOrder: 10, FieldSpec: &fieldSpec_HeadingTrackControl_CommandedRudderAngle},
@@ -628,23 +651,23 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 5, FieldSpec: &fieldSpec_Rudder_Position},
 	},
 	127250: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_VesselHeading_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_VesselHeading_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_VesselHeading_Heading},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_VesselHeading_Deviation},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_VesselHeading_Variation},
 	},
 	127251: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RateOfTurn_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RateOfTurn_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_RateOfTurn_Rate},
 	},
 	127257: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_Attitude_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_Attitude_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_Attitude_Yaw},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_Attitude_Pitch},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_Attitude_Roll},
 	},
 	127258: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_MagneticVariation_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_MagneticVariation_SID},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_MagneticVariation_AgeOfService},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_MagneticVariation_Variation},
 	},
@@ -668,7 +691,6 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 	127493: {
 		{FieldOrder: 4, FieldSpec: &fieldSpec_TransmissionParametersDynamic_OilPressure},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_TransmissionParametersDynamic_OilTemperature},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_TransmissionParametersDynamic_DiscreteStatus1},
 	},
 	127496: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_TripParametersVessel_TimeToEmpty},
@@ -686,12 +708,12 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 2, FieldSpec: &fieldSpec_EngineParametersStatic_RatedEngineSpeed},
 	},
 	127500: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_SequenceId},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_ConnectionId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_SequenceID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_ConnectionID},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_State},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_Status},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_OperationalStatusControl},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_PwmDutyCycle},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_PWMDutyCycle},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_Timeon},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_LoadControllerConnectionStateControl_Timeoff},
 	},
@@ -702,12 +724,12 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 1, FieldSpec: &fieldSpec_SwitchBankControl_Instance},
 	},
 	127503: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AcInputStatus_Instance},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_AcInputStatus_NumberOfLines},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ACInputStatus_Instance},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ACInputStatus_NumberOfLines},
 	},
 	127504: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AcOutputStatus_Instance},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_AcOutputStatus_NumberOfLines},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ACOutputStatus_Instance},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ACOutputStatus_NumberOfLines},
 	},
 	127505: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FluidLevel_Instance},
@@ -715,13 +737,13 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 4, FieldSpec: &fieldSpec_FluidLevel_Capacity},
 	},
 	127506: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_DcDetailedStatus_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_DcDetailedStatus_Instance},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_DcDetailedStatus_StateOfCharge},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_DcDetailedStatus_StateOfHealth},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_DcDetailedStatus_TimeRemaining},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_DcDetailedStatus_RippleVoltage},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_DcDetailedStatus_RemainingCapacity},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_DCDetailedStatus_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_DCDetailedStatus_Instance},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_DCDetailedStatus_StateOfCharge},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_DCDetailedStatus_StateOfHealth},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_DCDetailedStatus_TimeRemaining},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_DCDetailedStatus_RippleVoltage},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_DCDetailedStatus_RemainingCapacity},
 	},
 	127507: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_ChargerStatus_Instance},
@@ -733,12 +755,12 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 2, FieldSpec: &fieldSpec_BatteryStatus_Voltage},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_BatteryStatus_Current},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_BatteryStatus_Temperature},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_BatteryStatus_Sid},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_BatteryStatus_SID},
 	},
 	127509: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_InverterStatus_Instance},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_InverterStatus_AcInstance},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_InverterStatus_DcInstance},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_InverterStatus_ACInstance},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_InverterStatus_DCInstance},
 	},
 	127510: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_ChargerConfigurationStatus_Instance},
@@ -748,8 +770,8 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 	},
 	127511: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_InverterConfigurationStatus_Instance},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_InverterConfigurationStatus_AcInstance},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_InverterConfigurationStatus_DcInstance},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_InverterConfigurationStatus_ACInstance},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_InverterConfigurationStatus_DCInstance},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_InverterConfigurationStatus_LoadSensePowerThreshold},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_InverterConfigurationStatus_LoadSenseInterval},
 	},
@@ -761,60 +783,54 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 10, FieldSpec: &fieldSpec_BatteryConfigurationStatus_ChargeEfficiencyFactor},
 	},
 	127744: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AcPowerCurrentPhaseA_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_AcPowerCurrentPhaseA_ConnectionNumber},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AcPowerCurrentPhaseA_AcRmsCurrent},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AcPowerCurrentPhaseA_Power},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ACPowerCurrentPhaseA_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ACPowerCurrentPhaseA_ConnectionNumber},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ACPowerCurrentPhaseA_ACRMSCurrent},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ACPowerCurrentPhaseA_Power},
 	},
 	127745: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AcPowerCurrentPhaseB_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_AcPowerCurrentPhaseB_ConnectionNumber},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AcPowerCurrentPhaseB_AcRmsCurrent},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AcPowerCurrentPhaseB_Power},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ACPowerCurrentPhaseB_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ACPowerCurrentPhaseB_ConnectionNumber},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ACPowerCurrentPhaseB_ACRMSCurrent},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ACPowerCurrentPhaseB_Power},
 	},
 	127746: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AcPowerCurrentPhaseC_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_AcPowerCurrentPhaseC_ConnectionNumber},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AcPowerCurrentPhaseC_AcRmsCurrent},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AcPowerCurrentPhaseC_Power},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ACPowerCurrentPhaseC_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ACPowerCurrentPhaseC_ConnectionNumber},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ACPowerCurrentPhaseC_ACRMSCurrent},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ACPowerCurrentPhaseC_Power},
 	},
 	127747: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseA_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseA_ConnectionNumber},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseA_AcVoltageLineToNeutral},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseA_AcVoltageLineToLine},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseA_Frequency},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseA_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseA_ConnectionNumber},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseA_ACVoltageLineToNeutral},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseA_ACVoltageLineToLine},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseA_Frequency},
 	},
 	127748: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseB_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseB_ConnectionNumber},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseB_AcVoltageLineToNeutral},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseB_AcVoltageLineToLine},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseB_Frequency},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseB_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseB_ConnectionNumber},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseB_ACVoltageLineToNeutral},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseB_ACVoltageLineToLine},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseB_Frequency},
 	},
 	127749: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseC_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseC_ConnectionNumber},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseC_AcVoltageLineToNeutral},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseC_AcVoltageLineToLine},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AcVoltageFrequencyPhaseC_Frequency},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseC_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseC_ConnectionNumber},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseC_ACVoltageLineToNeutral},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseC_ACVoltageLineToLine},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_ACVoltageFrequencyPhaseC_Frequency},
 	},
 	127750: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_ConverterStatus_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ConverterStatus_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_ConverterStatus_ConnectionNumber},
 	},
-	127751: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_DcVoltageCurrent_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_DcVoltageCurrent_ConnectionNumber},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_DcVoltageCurrent_DcVoltage},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_DcVoltageCurrent_DcCurrent},
-	},
 	128000: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_LeewayAngle_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_LeewayAngle_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_LeewayAngle_LeewayAngle},
 	},
 	128006: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_ThrusterControlStatus_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ThrusterControlStatus_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_ThrusterControlStatus_Identifier},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_ThrusterControlStatus_SpeedControl},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_ThrusterControlStatus_CommandTimeout},
@@ -827,20 +843,20 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 6, FieldSpec: &fieldSpec_ThrusterInformation_MaximumRotationalSpeed},
 	},
 	128008: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_ThrusterMotorStatus_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ThrusterMotorStatus_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_ThrusterMotorStatus_Identifier},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_ThrusterMotorStatus_Current},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_ThrusterMotorStatus_Temperature},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_ThrusterMotorStatus_OperatingTime},
 	},
 	128259: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_Speed_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_Speed_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_Speed_SpeedWaterReferenced},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_Speed_SpeedGroundReferenced},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_Speed_SpeedDirection},
 	},
 	128267: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_WaterDepth_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_WaterDepth_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_WaterDepth_Depth},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_WaterDepth_Offset},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_WaterDepth_Range},
@@ -852,19 +868,19 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 4, FieldSpec: &fieldSpec_DistanceLog_TripLog},
 	},
 	128776: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_WindlassControlStatus_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_WindlassControlStatus_WindlassId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_WindlassControlStatus_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_WindlassControlStatus_WindlassID},
 		{FieldOrder: 12, FieldSpec: &fieldSpec_WindlassControlStatus_CommandTimeout},
 	},
 	128777: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AnchorWindlassOperatingStatus_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_AnchorWindlassOperatingStatus_WindlassId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_AnchorWindlassOperatingStatus_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_AnchorWindlassOperatingStatus_WindlassID},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_AnchorWindlassOperatingStatus_RodeCounterValue},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_AnchorWindlassOperatingStatus_WindlassLineSpeed},
 	},
 	128778: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_AnchorWindlassMonitoringStatus_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_AnchorWindlassMonitoringStatus_WindlassId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_AnchorWindlassMonitoringStatus_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_AnchorWindlassMonitoringStatus_WindlassID},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_AnchorWindlassMonitoringStatus_ControllerVoltage},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_AnchorWindlassMonitoringStatus_MotorCurrent},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_AnchorWindlassMonitoringStatus_TotalMotorTime},
@@ -874,22 +890,22 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 2, FieldSpec: &fieldSpec_PositionRapidUpdate_Longitude},
 	},
 	129026: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_CogSogRapidUpdate_Sid},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_CogSogRapidUpdate_Cog},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_CogSogRapidUpdate_Sog},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_COGSOGRapidUpdate_SID},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_COGSOGRapidUpdate_COG},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_COGSOGRapidUpdate_SOG},
 	},
 	129029: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GnssPositionData_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GnssPositionData_Date},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_GnssPositionData_Time},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GnssPositionData_Latitude},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_GnssPositionData_Longitude},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_GnssPositionData_Altitude},
-		{FieldOrder: 11, FieldSpec: &fieldSpec_GnssPositionData_NumberOfSvs},
-		{FieldOrder: 12, FieldSpec: &fieldSpec_GnssPositionData_Hdop},
-		{FieldOrder: 13, FieldSpec: &fieldSpec_GnssPositionData_Pdop},
-		{FieldOrder: 14, FieldSpec: &fieldSpec_GnssPositionData_GeoidalSeparation},
-		{FieldOrder: 15, FieldSpec: &fieldSpec_GnssPositionData_ReferenceStations},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GNSSPositionData_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GNSSPositionData_Date},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_GNSSPositionData_Time},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GNSSPositionData_Latitude},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_GNSSPositionData_Longitude},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_GNSSPositionData_Altitude},
+		{FieldOrder: 11, FieldSpec: &fieldSpec_GNSSPositionData_NumberOfSVs},
+		{FieldOrder: 12, FieldSpec: &fieldSpec_GNSSPositionData_HDOP},
+		{FieldOrder: 13, FieldSpec: &fieldSpec_GNSSPositionData_PDOP},
+		{FieldOrder: 14, FieldSpec: &fieldSpec_GNSSPositionData_GeoidalSeparation},
+		{FieldOrder: 15, FieldSpec: &fieldSpec_GNSSPositionData_ReferenceStations},
 	},
 	129033: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_TimeDate_Date},
@@ -897,31 +913,31 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 3, FieldSpec: &fieldSpec_TimeDate_LocalOffset},
 	},
 	129038: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AisClassAPositionReport_UserId},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AisClassAPositionReport_Longitude},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AisClassAPositionReport_Latitude},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_AisClassAPositionReport_Cog},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_AisClassAPositionReport_Sog},
-		{FieldOrder: 13, FieldSpec: &fieldSpec_AisClassAPositionReport_Heading},
-		{FieldOrder: 14, FieldSpec: &fieldSpec_AisClassAPositionReport_RateOfTurn},
-		{FieldOrder: 20, FieldSpec: &fieldSpec_AisClassAPositionReport_SequenceId},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AISClassAPositionReport_UserID},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AISClassAPositionReport_Longitude},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_AISClassAPositionReport_Latitude},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_AISClassAPositionReport_COG},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_AISClassAPositionReport_SOG},
+		{FieldOrder: 13, FieldSpec: &fieldSpec_AISClassAPositionReport_Heading},
+		{FieldOrder: 14, FieldSpec: &fieldSpec_AISClassAPositionReport_RateOfTurn},
+		{FieldOrder: 20, FieldSpec: &fieldSpec_AISClassAPositionReport_SequenceID},
 	},
 	129039: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AisClassBPositionReport_UserId},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AisClassBPositionReport_Longitude},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AisClassBPositionReport_Latitude},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_AisClassBPositionReport_Cog},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_AisClassBPositionReport_Sog},
-		{FieldOrder: 13, FieldSpec: &fieldSpec_AisClassBPositionReport_Heading},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AISClassBPositionReport_UserID},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AISClassBPositionReport_Longitude},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_AISClassBPositionReport_Latitude},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_AISClassBPositionReport_COG},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_AISClassBPositionReport_SOG},
+		{FieldOrder: 13, FieldSpec: &fieldSpec_AISClassBPositionReport_Heading},
 	},
 	129041: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AisAidsToNavigationAtonReport_UserId},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AisAidsToNavigationAtonReport_Longitude},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AisAidsToNavigationAtonReport_Latitude},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_AisAidsToNavigationAtonReport_LengthDiameter},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_AisAidsToNavigationAtonReport_BeamDiameter},
-		{FieldOrder: 11, FieldSpec: &fieldSpec_AisAidsToNavigationAtonReport_PositionReferenceFromStarboardEdge},
-		{FieldOrder: 12, FieldSpec: &fieldSpec_AisAidsToNavigationAtonReport_PositionReferenceFromTrueNorthFacingEdge},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AISAidsToNavigationAtonReport_UserID},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AISAidsToNavigationAtonReport_Longitude},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_AISAidsToNavigationAtonReport_Latitude},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_AISAidsToNavigationAtonReport_LengthDiameter},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_AISAidsToNavigationAtonReport_BeamDiameter},
+		{FieldOrder: 11, FieldSpec: &fieldSpec_AISAidsToNavigationAtonReport_PositionReferenceFromStarboardEdge},
+		{FieldOrder: 12, FieldSpec: &fieldSpec_AISAidsToNavigationAtonReport_PositionReferenceFromTrueNorthFacingEdge},
 	},
 	129044: {
 		{FieldOrder: 2, FieldSpec: &fieldSpec_Datum_DeltaLatitude},
@@ -935,14 +951,14 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 8, FieldSpec: &fieldSpec_UserDatum_EllipsoidSemiMajorAxis},
 	},
 	129283: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_CrossTrackError_Sid},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_CrossTrackError_Xte},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_CrossTrackError_SID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_CrossTrackError_XTE},
 	},
 	129284: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_NavigationData_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_NavigationData_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_NavigationData_DistanceToWaypoint},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_NavigationData_EtaTime},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_NavigationData_EtaDate},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_NavigationData_ETATime},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_NavigationData_ETADate},
 		{FieldOrder: 9, FieldSpec: &fieldSpec_NavigationData_BearingOriginToDestinationWaypoint},
 		{FieldOrder: 10, FieldSpec: &fieldSpec_NavigationData_BearingPositionToDestinationWaypoint},
 		{FieldOrder: 11, FieldSpec: &fieldSpec_NavigationData_OriginWaypointNumber},
@@ -952,124 +968,124 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 15, FieldSpec: &fieldSpec_NavigationData_WaypointClosingVelocity},
 	},
 	129285: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_NavigationRouteWpInformation_StartRps},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_NavigationRouteWpInformation_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_NavigationRouteWpInformation_DatabaseId},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_NavigationRouteWpInformation_RouteId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_NavigationRouteWPInformation_StartRPS},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_NavigationRouteWPInformation_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_NavigationRouteWPInformation_DatabaseID},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_NavigationRouteWPInformation_RouteID},
 	},
 	129291: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_SetDriftRapidUpdate_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_SetDriftRapidUpdate_SID},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_SetDriftRapidUpdate_Set},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_SetDriftRapidUpdate_Drift},
 	},
 	129301: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_NavigationRouteTimeToFromMark_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_NavigationRouteTimeToFromMark_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_NavigationRouteTimeToFromMark_TimeToMark},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_NavigationRouteTimeToFromMark_MarkId},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_NavigationRouteTimeToFromMark_MarkID},
 	},
 	129538: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GnssControlStatus_SvElevationMask},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GnssControlStatus_PdopMask},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_GnssControlStatus_PdopSwitch},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GnssControlStatus_SnrMask},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_GnssControlStatus_MaxCorrectionAge},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_GnssControlStatus_AntennaAltitudeFor2dMode},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GNSSControlStatus_SVElevationMask},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GNSSControlStatus_PDOPMask},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_GNSSControlStatus_PDOPSwitch},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GNSSControlStatus_SNRMask},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_GNSSControlStatus_MaxCorrectionAge},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_GNSSControlStatus_AntennaAltitudeFor2DMode},
 	},
 	129539: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GnssDops_Sid},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_GnssDops_Hdop},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_GnssDops_Vdop},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_GnssDops_Tdop},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GNSSDOPs_SID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_GNSSDOPs_HDOP},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_GNSSDOPs_VDOP},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_GNSSDOPs_TDOP},
 	},
 	129540: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GnssSatsInView_Sid},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GnssSatsInView_SatsInView},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GNSSSatsInView_SID},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GNSSSatsInView_SatsInView},
 	},
 	129546: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GnssRaimSettings_RadialPositionErrorMaximumThreshold},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GnssRaimSettings_ProbabilityOfFalseAlarm},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_GnssRaimSettings_ProbabilityOfMissedDetection},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GnssRaimSettings_PseudorangeResidualFilteringTimeConstant},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GNSSRAIMSettings_RadialPositionErrorMaximumThreshold},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GNSSRAIMSettings_ProbabilityOfFalseAlarm},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_GNSSRAIMSettings_ProbabilityOfMissedDetection},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GNSSRAIMSettings_PseudorangeResidualFilteringTimeConstant},
 	},
 	129547: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GnssPseudorangeErrorStatistics_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GnssPseudorangeErrorStatistics_RmsStdDevOfRangeInputs},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_GnssPseudorangeErrorStatistics_StdDevOfMajorErrorEllipse},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GnssPseudorangeErrorStatistics_StdDevOfMinorErrorEllipse},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_GnssPseudorangeErrorStatistics_OrientationOfErrorEllipse},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_GnssPseudorangeErrorStatistics_StdDevLatError},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_GnssPseudorangeErrorStatistics_StdDevLonError},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_GnssPseudorangeErrorStatistics_StdDevAltError},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GNSSPseudorangeErrorStatistics_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GNSSPseudorangeErrorStatistics_RMSStdDevOfRangeInputs},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_GNSSPseudorangeErrorStatistics_StdDevOfMajorErrorEllipse},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GNSSPseudorangeErrorStatistics_StdDevOfMinorErrorEllipse},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_GNSSPseudorangeErrorStatistics_OrientationOfErrorEllipse},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_GNSSPseudorangeErrorStatistics_StdDevLatError},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_GNSSPseudorangeErrorStatistics_StdDevLonError},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_GNSSPseudorangeErrorStatistics_StdDevAltError},
 	},
 	129549: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_DgnssCorrections_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_DgnssCorrections_ReferenceStationId},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_DgnssCorrections_TimeOfCorrections},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_DgnssCorrections_SatelliteId},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_DgnssCorrections_Prc},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_DgnssCorrections_Rrc},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_DgnssCorrections_Udre},
-		{FieldOrder: 11, FieldSpec: &fieldSpec_DgnssCorrections_Iod},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_DGNSSCorrections_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_DGNSSCorrections_ReferenceStationID},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_DGNSSCorrections_TimeOfCorrections},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_DGNSSCorrections_SatelliteID},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_DGNSSCorrections_PRC},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_DGNSSCorrections_RRC},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_DGNSSCorrections_UDRE},
+		{FieldOrder: 11, FieldSpec: &fieldSpec_DGNSSCorrections_IOD},
 	},
 	129550: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GnssDifferentialCorrectionReceiverInterface_Channel},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GnssDifferentialCorrectionReceiverInterface_Frequency},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GNSSDifferentialCorrectionReceiverInterface_Channel},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GNSSDifferentialCorrectionReceiverInterface_Frequency},
 	},
 	129551: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GnssDifferentialCorrectionReceiverSignal_Sid},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GnssDifferentialCorrectionReceiverSignal_Channel},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_GnssDifferentialCorrectionReceiverSignal_SignalStrength},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GnssDifferentialCorrectionReceiverSignal_SignalSnr},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_GnssDifferentialCorrectionReceiverSignal_Frequency},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_GnssDifferentialCorrectionReceiverSignal_ReferenceStationId},
-		{FieldOrder: 13, FieldSpec: &fieldSpec_GnssDifferentialCorrectionReceiverSignal_TimeSinceLastSatDifferentialSync},
-		{FieldOrder: 14, FieldSpec: &fieldSpec_GnssDifferentialCorrectionReceiverSignal_SatelliteServiceIdNo},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_SID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_Channel},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_SignalStrength},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_SignalSNR},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_Frequency},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_ReferenceStationID},
+		{FieldOrder: 13, FieldSpec: &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_TimeSinceLastSatDifferentialSync},
+		{FieldOrder: 14, FieldSpec: &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_SatelliteServiceIDNo},
 	},
 	129556: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_GlonassAlmanacData_Prn},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_GlonassAlmanacData_Na},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_GlonassAlmanacData_Cna},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_GlonassAlmanacData_Hna},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_GlonassAlmanacData_EpsilonNa},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_GlonassAlmanacData_DeltatnaDot},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_GlonassAlmanacData_OmegaNa},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_GlonassAlmanacData_DeltaTna},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_GlonassAlmanacData_Tna},
-		{FieldOrder: 11, FieldSpec: &fieldSpec_GlonassAlmanacData_LambdaNa},
-		{FieldOrder: 12, FieldSpec: &fieldSpec_GlonassAlmanacData_DeltaIna},
-		{FieldOrder: 13, FieldSpec: &fieldSpec_GlonassAlmanacData_TauCa},
-		{FieldOrder: 14, FieldSpec: &fieldSpec_GlonassAlmanacData_TauNa},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_GLONASSAlmanacData_PRN},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_GLONASSAlmanacData_NA},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_GLONASSAlmanacData_Cna},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_GLONASSAlmanacData_Hna},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_GLONASSAlmanacData_EpsilonNa},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_GLONASSAlmanacData_DeltatnaDot},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_GLONASSAlmanacData_OmegaNa},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_GLONASSAlmanacData_DeltaTna},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_GLONASSAlmanacData_Tna},
+		{FieldOrder: 11, FieldSpec: &fieldSpec_GLONASSAlmanacData_LambdaNa},
+		{FieldOrder: 12, FieldSpec: &fieldSpec_GLONASSAlmanacData_DeltaIna},
+		{FieldOrder: 13, FieldSpec: &fieldSpec_GLONASSAlmanacData_TauCa},
+		{FieldOrder: 14, FieldSpec: &fieldSpec_GLONASSAlmanacData_TauNa},
 	},
 	129793: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AisUtcAndDateReport_UserId},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AisUtcAndDateReport_Longitude},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_AisUtcAndDateReport_Latitude},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_AisUtcAndDateReport_PositionTime},
-		{FieldOrder: 12, FieldSpec: &fieldSpec_AisUtcAndDateReport_PositionDate},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AISUTCAndDateReport_UserID},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AISUTCAndDateReport_Longitude},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_AISUTCAndDateReport_Latitude},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_AISUTCAndDateReport_PositionTime},
+		{FieldOrder: 12, FieldSpec: &fieldSpec_AISUTCAndDateReport_PositionDate},
 	},
 	129794: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AisClassAStaticAndVoyageRelatedData_UserId},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_AisClassAStaticAndVoyageRelatedData_ImoNumber},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_AisClassAStaticAndVoyageRelatedData_Length},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_AisClassAStaticAndVoyageRelatedData_Beam},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_AisClassAStaticAndVoyageRelatedData_PositionReferenceFromStarboard},
-		{FieldOrder: 11, FieldSpec: &fieldSpec_AisClassAStaticAndVoyageRelatedData_PositionReferenceFromBow},
-		{FieldOrder: 12, FieldSpec: &fieldSpec_AisClassAStaticAndVoyageRelatedData_EtaDate},
-		{FieldOrder: 13, FieldSpec: &fieldSpec_AisClassAStaticAndVoyageRelatedData_EtaTime},
-		{FieldOrder: 14, FieldSpec: &fieldSpec_AisClassAStaticAndVoyageRelatedData_Draft},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AISClassAStaticAndVoyageRelatedData_UserID},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_AISClassAStaticAndVoyageRelatedData_IMONumber},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_AISClassAStaticAndVoyageRelatedData_Length},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_AISClassAStaticAndVoyageRelatedData_Beam},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_AISClassAStaticAndVoyageRelatedData_PositionReferenceFromStarboard},
+		{FieldOrder: 11, FieldSpec: &fieldSpec_AISClassAStaticAndVoyageRelatedData_PositionReferenceFromBow},
+		{FieldOrder: 12, FieldSpec: &fieldSpec_AISClassAStaticAndVoyageRelatedData_ETADate},
+		{FieldOrder: 13, FieldSpec: &fieldSpec_AISClassAStaticAndVoyageRelatedData_ETATime},
+		{FieldOrder: 14, FieldSpec: &fieldSpec_AISClassAStaticAndVoyageRelatedData_Draft},
 	},
 	129795: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AisAddressedBinaryMessage_SourceId},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_AisAddressedBinaryMessage_SequenceNumber},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_AisAddressedBinaryMessage_DestinationId},
-		{FieldOrder: 11, FieldSpec: &fieldSpec_AisAddressedBinaryMessage_NumberOfBitsInBinaryDataField},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AISAddressedBinaryMessage_SourceID},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_AISAddressedBinaryMessage_SequenceNumber},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_AISAddressedBinaryMessage_DestinationID},
+		{FieldOrder: 11, FieldSpec: &fieldSpec_AISAddressedBinaryMessage_NumberOfBitsInBinaryDataField},
 	},
 	129796: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AisAcknowledge_SourceId},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AISAcknowledge_SourceID},
 	},
 	129797: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AisBinaryBroadcastMessage_SourceId},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_AisBinaryBroadcastMessage_NumberOfBitsInBinaryDataField},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AISBinaryBroadcastMessage_SourceID},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_AISBinaryBroadcastMessage_NumberOfBitsInBinaryDataField},
 	},
 	129799: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_RadioFrequencyModePower_RxFrequency},
@@ -1078,128 +1094,128 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 6, FieldSpec: &fieldSpec_RadioFrequencyModePower_ChannelBandwidth},
 	},
 	129809: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AisClassBStaticDataMsg24PartA_UserId},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_AisClassBStaticDataMsg24PartA_SequenceId},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AISClassBStaticDataMsg24PartA_UserID},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_AISClassBStaticDataMsg24PartA_SequenceID},
 	},
 	129810: {
-		{FieldOrder: 3, FieldSpec: &fieldSpec_AisClassBStaticDataMsg24PartB_UserId},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_AisClassBStaticDataMsg24PartB_Length},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_AisClassBStaticDataMsg24PartB_Beam},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_AisClassBStaticDataMsg24PartB_PositionReferenceFromStarboard},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_AisClassBStaticDataMsg24PartB_PositionReferenceFromBow},
-		{FieldOrder: 11, FieldSpec: &fieldSpec_AisClassBStaticDataMsg24PartB_MothershipUserId},
-		{FieldOrder: 17, FieldSpec: &fieldSpec_AisClassBStaticDataMsg24PartB_SequenceId},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_AISClassBStaticDataMsg24PartB_UserID},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_AISClassBStaticDataMsg24PartB_Length},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_AISClassBStaticDataMsg24PartB_Beam},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_AISClassBStaticDataMsg24PartB_PositionReferenceFromStarboard},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_AISClassBStaticDataMsg24PartB_PositionReferenceFromBow},
+		{FieldOrder: 11, FieldSpec: &fieldSpec_AISClassBStaticDataMsg24PartB_MothershipUserID},
+		{FieldOrder: 17, FieldSpec: &fieldSpec_AISClassBStaticDataMsg24PartB_SequenceID},
 	},
 	130064: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceDatabaseList_StartDatabaseId},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceDatabaseList_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWpServiceDatabaseList_NumberOfDatabasesAvailable},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceDatabaseList_StartDatabaseID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceDatabaseList_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWPServiceDatabaseList_NumberOfDatabasesAvailable},
 	},
 	130065: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceRouteList_StartRouteId},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceRouteList_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWpServiceRouteList_NumberOfRoutesInDatabase},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWpServiceRouteList_DatabaseId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceRouteList_StartRouteID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceRouteList_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWPServiceRouteList_NumberOfRoutesInDatabase},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWPServiceRouteList_DatabaseID},
 	},
 	130066: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpListAttributes_DatabaseId},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteId},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteWpListTimestamp},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteWpListDatestamp},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpListAttributes_NumberOfWpsInTheRouteWpList},
-		{FieldOrder: 12, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpListAttributes_XteLimitForTheRoute},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPListAttributes_DatabaseID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPListAttributes_RouteID},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPListAttributes_RouteWPListTimestamp},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPListAttributes_RouteWPListDatestamp},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPListAttributes_NumberOfWPsInTheRouteWPList},
+		{FieldOrder: 12, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPListAttributes_XTELimitForTheRoute},
 	},
 	130067: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpNamePosition_StartRps},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpNamePosition_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpNamePosition_NumberOfWpsInTheRouteWpList},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpNamePosition_DatabaseId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpNamePosition_RouteId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPNamePosition_StartRPS},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPNamePosition_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPNamePosition_NumberOfWPsInTheRouteWPList},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPNamePosition_DatabaseID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPNamePosition_RouteID},
 	},
 	130068: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpName_StartRps},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpName_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpName_NumberOfWpsInTheRouteWpList},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpName_DatabaseId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_RouteAndWpServiceRouteWpName_RouteId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPName_StartRPS},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPName_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPName_NumberOfWPsInTheRouteWPList},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPName_DatabaseID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_RouteAndWPServiceRouteWPName_RouteID},
 	},
 	130069: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_StartRps},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_NumberOfWpsWithASpecificXteLimitOrNavMethod},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_StartRPS},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_NumberOfWPsWithASpecificXTELimitOrNavMethod},
 	},
 	130070: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceWpComment_StartId},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceWpComment_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWpServiceWpComment_NumberOfWpsWithComments},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWpServiceWpComment_DatabaseId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_RouteAndWpServiceWpComment_RouteId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceWPComment_StartID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceWPComment_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWPServiceWPComment_NumberOfWPsWithComments},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWPServiceWPComment_DatabaseID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_RouteAndWPServiceWPComment_RouteID},
 	},
 	130071: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceRouteComment_StartRouteId},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceRouteComment_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWpServiceRouteComment_NumberOfRoutesWithComments},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWpServiceRouteComment_DatabaseId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceRouteComment_StartRouteID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceRouteComment_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWPServiceRouteComment_NumberOfRoutesWithComments},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWPServiceRouteComment_DatabaseID},
 	},
 	130072: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceDatabaseComment_StartDatabaseId},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceDatabaseComment_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWpServiceDatabaseComment_NumberOfDatabasesWithComments},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceDatabaseComment_StartDatabaseID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceDatabaseComment_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWPServiceDatabaseComment_NumberOfDatabasesWithComments},
 	},
 	130073: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceRadiusOfTurn_StartRps},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceRadiusOfTurn_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWpServiceRadiusOfTurn_NumberOfWpsWithASpecificRadiusOfTurn},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWpServiceRadiusOfTurn_DatabaseId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_RouteAndWpServiceRadiusOfTurn_RouteId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceRadiusOfTurn_StartRPS},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceRadiusOfTurn_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWPServiceRadiusOfTurn_NumberOfWPsWithASpecificRadiusOfTurn},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWPServiceRadiusOfTurn_DatabaseID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_RouteAndWPServiceRadiusOfTurn_RouteID},
 	},
 	130074: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWpServiceWpListWpNamePosition_StartWpId},
-		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWpServiceWpListWpNamePosition_Nitems},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWpServiceWpListWpNamePosition_NumberOfValidWpsInTheWpList},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWpServiceWpListWpNamePosition_DatabaseId},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_RouteAndWPServiceWPListWPNamePosition_StartWPID},
+		{FieldOrder: 2, FieldSpec: &fieldSpec_RouteAndWPServiceWPListWPNamePosition_Nitems},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_RouteAndWPServiceWPListWPNamePosition_NumberOfValidWPsInTheWPList},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_RouteAndWPServiceWPListWPNamePosition_DatabaseID},
 	},
 	130306: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_WindData_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_WindData_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_WindData_WindSpeed},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_WindData_WindAngle},
 	},
 	130310: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_EnvironmentalParametersObsolete_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_EnvironmentalParametersObsolete_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_EnvironmentalParametersObsolete_WaterTemperature},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_EnvironmentalParametersObsolete_OutsideAmbientAirTemperature},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_EnvironmentalParametersObsolete_AtmosphericPressure},
 	},
 	130311: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_EnvironmentalParameters_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_EnvironmentalParameters_SID},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_EnvironmentalParameters_Temperature},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_EnvironmentalParameters_Humidity},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_EnvironmentalParameters_AtmosphericPressure},
 	},
 	130312: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_Temperature_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_Temperature_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_Temperature_Instance},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_Temperature_ActualTemperature},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_Temperature_SetTemperature},
 	},
 	130313: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_Humidity_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_Humidity_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_Humidity_Instance},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_Humidity_ActualHumidity},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_Humidity_SetHumidity},
 	},
 	130314: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_ActualPressure_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_ActualPressure_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_ActualPressure_Instance},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_ActualPressure_Pressure},
 	},
 	130315: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_SetPressure_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_SetPressure_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_SetPressure_Instance},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_SetPressure_Pressure},
 	},
 	130316: {
-		{FieldOrder: 1, FieldSpec: &fieldSpec_TemperatureExtendedRange_Sid},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_TemperatureExtendedRange_SID},
 		{FieldOrder: 2, FieldSpec: &fieldSpec_TemperatureExtendedRange_Instance},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_TemperatureExtendedRange_Temperature},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_TemperatureExtendedRange_SetTemperature},
@@ -1228,9 +1244,9 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 2, FieldSpec: &fieldSpec_SmallCraftStatus_StarboardTrimTab},
 	},
 	130577: {
-		{FieldOrder: 4, FieldSpec: &fieldSpec_DirectionData_Sid},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_DirectionData_Cog},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_DirectionData_Sog},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_DirectionData_SID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_DirectionData_COG},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_DirectionData_SOG},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_DirectionData_Heading},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_DirectionData_SpeedThroughWater},
 		{FieldOrder: 9, FieldSpec: &fieldSpec_DirectionData_Set},
@@ -1247,13 +1263,13 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 	130816: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_SonichubVolume_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_SonichubVolume_IndustryCode},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_SonichubVolume_ProprietaryId},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_SonichubVolume_ProprietaryID},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_SonichubVolume_Zone},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_SonichubVolume_Level},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_BepMarineCzoneZcfBusDistribution_ManufacturerCode},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_BepMarineCzoneZcfBusDistribution_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_BepMarineCzoneZcfBusDistribution_ChunkIndex},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_BepMarineCzoneZcfBusDistribution_Flag},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_BEPMarineCzoneZcfBusDistribution_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_BEPMarineCzoneZcfBusDistribution_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_BEPMarineCzoneZcfBusDistribution_ChunkIndex},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_BEPMarineCzoneZcfBusDistribution_Flag},
 	},
 	130818: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_MaretronLabel_ManufacturerCode},
@@ -1266,146 +1282,184 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 	130820: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionVersions_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionVersions_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionVersions_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionVersions_HwVersionMajor},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionVersions_HwVersionMinor},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionVersions_SwVersionMajor},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionVersions_SwVersionMinor},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionVersions_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionVersions_HWVersionMajor},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionVersions_HWVersionMinor},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionVersions_SWVersionMajor},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionVersions_SWVersionMinor},
 		{FieldOrder: 9, FieldSpec: &fieldSpec_FusionVersions_BuildNumber},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSource_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSource_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSource_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSource_SourceId},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSource_CurrentSourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSource_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSource_SourceID},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSource_CurrentSourceID},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionSource_Flags},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSourceCount_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSourceCount_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSourceCount_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSourceCount_MessageID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSourceCount_SourceCount},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMedia_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMedia_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMedia_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMedia_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMedia_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMedia_SourceID},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionMedia_Track},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionMedia_TrackCount},
 		{FieldOrder: 9, FieldSpec: &fieldSpec_FusionMedia_Length},
 		{FieldOrder: 10, FieldSpec: &fieldSpec_FusionMedia_PositionInTrack},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionTrackName_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionTrackName_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionTrackName_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionTrackName_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionTrackName_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionTrackName_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionTrackName_Index},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionArtistName_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionArtistName_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionArtistName_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionArtistName_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionArtistName_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionArtistName_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionArtistName_Index},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionAlbumName_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionAlbumName_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionAlbumName_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionAlbumName_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionAlbumName_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionAlbumName_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionAlbumName_Index},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionDeviceName_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionDeviceName_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionDeviceName_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionDeviceName_MessageID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionZoneName_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionZoneName_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionZoneName_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionZoneName_MessageID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionZoneName_Number},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSpeedVolumeCurrentSpeed_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSpeedVolumeCurrentSpeed_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSpeedVolumeCurrentSpeed_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSpeedVolumeCurrentSpeed_SourceID},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSpeedVolumeCurrentSpeed_Speed},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionSpeedVolumeCurrentSpeed_Enabled},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionIgnitionSwitchState_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionIgnitionSwitchState_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionIgnitionSwitchState_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionIgnitionSwitchState_State},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMenuLockId_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMenuLockId_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMenuLockId_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMenuLockId_LockId},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionMenuLockId_Flags},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionRDSData_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionRDSData_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionRDSData_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionRDSData_SourceID},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionRDSData_RDSType},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionRDSData_ProgrammeType},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMultiroom_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMultiroom_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMultiroom_MessageID},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionMultiroom_IPAddress1},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionMultiroom_IPAddress2},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionMultiroom_IPAddress3},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_FusionMultiroom_IPAddress4},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMultiroomStatus_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMultiroomStatus_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMultiroomStatus_MessageID},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionProcessingBypass_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionProcessingBypass_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionProcessingBypass_MessageID},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMono_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMono_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMono_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMono_Zone},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionTrackPosition_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionTrackPosition_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionTrackPosition_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionTrackPosition_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionTrackPosition_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionTrackPosition_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionTrackPosition_Progress},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionTuner_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionTuner_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionTuner_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionTuner_MessageID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionTuner_Scanning},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionTuner_Frequency},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionTuner_SignalStrength},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMarineTuner_ManufacturerCode},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMarineTuner_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMarineTuner_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMarineTuner_SourceId},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionMarineTuner_Channel},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionMarineTuner_SignalStrength},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMARINETUNER_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMARINETUNER_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMARINETUNER_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMARINETUNER_SourceID},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionMARINETUNER_Channel},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionMARINETUNER_SignalStrength},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMarineSquelch_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMarineSquelch_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMarineSquelch_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMarineSquelch_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMarineSquelch_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMarineSquelch_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionMarineSquelch_Squelch},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMarineScanMode_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMarineScanMode_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMarineScanMode_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMarineScanMode_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMarineScanMode_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMarineScanMode_SourceID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMenuItem_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMenuItem_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMenuItem_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMenuItem_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMenuItem_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionMenuItem_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionMenuItem_ItemIndex},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionMenuItem_Flags},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionMenuItem_LockId},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionMenuItem_LockID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionAuxGain_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionAuxGain_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionAuxGain_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionAuxGain_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionAuxGain_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionAuxGain_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionAuxGain_Gain},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionUsbRepeatStatus_ManufacturerCode},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionUsbRepeatStatus_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionUsbRepeatStatus_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionUsbRepeatStatus_Id},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionUSBRepeatStatus_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionUSBRepeatStatus_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionUSBRepeatStatus_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionUSBRepeatStatus_ID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSetting_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSetting_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSetting_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSetting_MessageID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSetting_Value},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSettings_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSettings_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSettings_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSettings_MessageID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSettings_Count},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionMute_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionMute_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMute_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionMute_MessageID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionBalance_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionBalance_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionBalance_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionBalance_MessageID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionBalance_Zone},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionBalance_Value},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionBalance_VALUE},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionLowPassFilter_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionLowPassFilter_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionLowPassFilter_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionLowPassFilter_MessageID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionLowPassFilter_Zone},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionLowPassFilter_Filter},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSublevels_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSublevels_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSublevels_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSublevels_MessageID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSublevels_Zone1},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSublevels_Zone2},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionSublevels_Zone3},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionSublevels_Zone4},
-		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionEq_ManufacturerCode},
-		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionEq_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionEq_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionEq_Zone},
-		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionEq_Bass},
-		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionEq_Mid},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionEq_Treble},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionEQ_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionEQ_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionEQ_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionEQ_Zone},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionEQ_Bass},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionEQ_Mid},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionEQ_Treble},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionVolumeLimits_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionVolumeLimits_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionVolumeLimits_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionVolumeLimits_MessageID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionVolumeLimits_Zone1VolumeLimit},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionVolumeLimits_Zone2VolumeLimit},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionVolumeLimits_Zone3VolumeLimit},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionVolumeLimits_Zone4VolumeLimit},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionVolumes_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionVolumes_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionVolumes_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionVolumes_MessageID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionVolumes_Zone1},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionVolumes_Zone2},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionVolumes_Zone3},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionVolumes_Zone4},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionCapabilities_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionCapabilities_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionCapabilities_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionCapabilities_MessageID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionCapabilities_Zone1},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionCapabilities_Zone2},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_FusionCapabilities_Zone3},
@@ -1413,57 +1467,57 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 9, FieldSpec: &fieldSpec_FusionCapabilities_Global},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionLineLevelControl_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionLineLevelControl_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionLineLevelControl_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionLineLevelControl_MessageID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionLineLevelControl_Zone},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionLineLevelControl_Control},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionPowerState_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionPowerState_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionPowerState_MessageId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionPowerState_MessageID},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSiriusxm_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSiriusxm_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxm_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxm_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxm_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxm_SourceID},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_FusionSiriusxm_AdvisoryChannel},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSiriusxmChannel_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSiriusxmChannel_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmChannel_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmChannel_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmChannel_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmChannel_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSiriusxmChannel_ChannelNumber},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSiriusxmTitle_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSiriusxmTitle_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmTitle_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmTitle_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmTitle_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmTitle_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSiriusxmTitle_Channel},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSiriusxmArtist_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSiriusxmArtist_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmArtist_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmArtist_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmArtist_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmArtist_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSiriusxmArtist_Channel},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSiriusxmContentInfo_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSiriusxmContentInfo_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmContentInfo_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmContentInfo_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmContentInfo_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmContentInfo_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSiriusxmContentInfo_Channel},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSiriusxmCategory_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSiriusxmCategory_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmCategory_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmCategory_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmCategory_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmCategory_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSiriusxmCategory_Channel},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSiriusxmSignal_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSiriusxmSignal_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmSignal_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmSignal_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmSignal_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmSignal_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSiriusxmSignal_Signal},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_FusionSiriusxmPresets_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_FusionSiriusxmPresets_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmPresets_MessageId},
-		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmPresets_SourceId},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FusionSiriusxmPresets_MessageID},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FusionSiriusxmPresets_SourceID},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_FusionSiriusxmPresets_Count},
 	},
 	130823: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_MaretronProprietaryTemperatureHighRange_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_MaretronProprietaryTemperatureHighRange_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_MaretronProprietaryTemperatureHighRange_Sid},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_MaretronProprietaryTemperatureHighRange_SID},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_MaretronProprietaryTemperatureHighRange_Instance},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_MaretronProprietaryTemperatureHighRange_ActualTemperature},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_MaretronProprietaryTemperatureHighRange_SetTemperature},
@@ -1471,11 +1525,13 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 	130824: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_BGKeyValueData_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_BGKeyValueData_IndustryCode},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_MercuryEngineKeyValueData_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_MercuryEngineKeyValueData_IndustryCode},
 	},
 	130825: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_MaretronDataInstanceChannelCorrelation_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_MaretronDataInstanceChannelCorrelation_IndustryCode},
-		{FieldOrder: 4, FieldSpec: &fieldSpec_MaretronDataInstanceChannelCorrelation_Pgn},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_MaretronDataInstanceChannelCorrelation_PGN},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_MaretronDataInstanceChannelCorrelation_HardwareChannel},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_MaretronDataInstanceChannelCorrelation_Instance},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_MaretronDataInstanceChannelCorrelation_DataSource},
@@ -1494,9 +1550,9 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 5, FieldSpec: &fieldSpec_MaretronSwitchStatusCounter_IndicatorNumber},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_MaretronSwitchStatusCounter_StartDate},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_MaretronSwitchStatusCounter_StartTime},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_MaretronSwitchStatusCounter_OffCounter},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_MaretronSwitchStatusCounter_OnCounter},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_MaretronSwitchStatusCounter_ErrorCounter},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_MaretronSwitchStatusCounter_OFFCounter},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_MaretronSwitchStatusCounter_ONCounter},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_MaretronSwitchStatusCounter_ERRORCounter},
 	},
 	130837: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_MaretronSwitchStatusTimer_ManufacturerCode},
@@ -1505,9 +1561,19 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 5, FieldSpec: &fieldSpec_MaretronSwitchStatusTimer_IndicatorNumber},
 		{FieldOrder: 6, FieldSpec: &fieldSpec_MaretronSwitchStatusTimer_StartDate},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_MaretronSwitchStatusTimer_StartTime},
-		{FieldOrder: 8, FieldSpec: &fieldSpec_MaretronSwitchStatusTimer_AccumulatedOffPeriod},
-		{FieldOrder: 9, FieldSpec: &fieldSpec_MaretronSwitchStatusTimer_AccumulatedOnPeriod},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_MaretronSwitchStatusTimer_AccumulatedErrorPeriod},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_MaretronSwitchStatusTimer_AccumulatedOFFPeriod},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_MaretronSwitchStatusTimer_AccumulatedONPeriod},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_MaretronSwitchStatusTimer_AccumulatedERRORPeriod},
+	},
+	130845: {
+		{FieldOrder: 1, FieldSpec: &fieldSpec_FurunoMultiSatsInViewExtended_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_FurunoMultiSatsInViewExtended_IndustryCode},
+		{FieldOrder: 4, FieldSpec: &fieldSpec_FurunoMultiSatsInViewExtended_ReportType},
+		{FieldOrder: 5, FieldSpec: &fieldSpec_FurunoMultiSatsInViewExtended_Antenna},
+		{FieldOrder: 6, FieldSpec: &fieldSpec_FurunoMultiSatsInViewExtended_PageType},
+		{FieldOrder: 7, FieldSpec: &fieldSpec_FurunoMultiSatsInViewExtended_Page},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_FurunoMultiSatsInViewExtended_SatsInUse},
+		{FieldOrder: 10, FieldSpec: &fieldSpec_FurunoMultiSatsInViewExtended_SatsInView},
 	},
 }
 
@@ -1529,28 +1595,28 @@ func FindFieldSpec(pgn uint32, fieldOrder uint8) (*FieldSpec, bool) {
 var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	59392: {
 		{
-			Decoder: DecodeIsoAcknowledgement,
+			Decoder: DecodeISOAcknowledgement,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	59904: {
 		{
-			Decoder: DecodeIsoRequest,
+			Decoder: DecodeISORequest,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	60160: {
 		{
-			Decoder: DecodeIsoTransportProtocolDataTransfer,
+			Decoder: DecodeISOTransportProtocolDataTransfer,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	60416: {
 		{
-			Decoder: DecodeIsoTransportProtocolConnectionManagementRequestToSend,
+			Decoder: DecodeISOTransportProtocolConnectionManagementRequestToSend,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -1569,7 +1635,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeIsoTransportProtocolConnectionManagementClearToSend,
+			Decoder: DecodeISOTransportProtocolConnectionManagementClearToSend,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -1588,7 +1654,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeIsoTransportProtocolConnectionManagementEndOfMessage,
+			Decoder: DecodeISOTransportProtocolConnectionManagementEndOfMessage,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -1607,7 +1673,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeIsoTransportProtocolConnectionManagementBroadcastAnnounce,
+			Decoder: DecodeISOTransportProtocolConnectionManagementBroadcastAnnounce,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -1626,7 +1692,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeIsoTransportProtocolConnectionManagementAbort,
+			Decoder: DecodeISOTransportProtocolConnectionManagementAbort,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -1647,7 +1713,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	60928: {
 		{
-			Decoder: DecodeIsoAddressClaim,
+			Decoder: DecodeISOAddressClaim,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -1703,196 +1769,196 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	65001: {
 		{
-			Decoder: DecodeBus1PhaseCBasicAcQuantities,
+			Decoder: DecodeBus1PhaseCBasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65002: {
 		{
-			Decoder: DecodeBus1PhaseBBasicAcQuantities,
+			Decoder: DecodeBus1PhaseBBasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65003: {
 		{
-			Decoder: DecodeBus1PhaseABasicAcQuantities,
+			Decoder: DecodeBus1PhaseABasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65006: {
 		{
-			Decoder: DecodeUtilityPhaseCAcReactivePower,
+			Decoder: DecodeUtilityPhaseCACReactivePower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65007: {
 		{
-			Decoder: DecodeUtilityPhaseCAcPower,
+			Decoder: DecodeUtilityPhaseCACPower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65008: {
 		{
-			Decoder: DecodeUtilityPhaseCBasicAcQuantities,
+			Decoder: DecodeUtilityPhaseCBasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65009: {
 		{
-			Decoder: DecodeUtilityPhaseBAcReactivePower,
+			Decoder: DecodeUtilityPhaseBACReactivePower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65010: {
 		{
-			Decoder: DecodeUtilityPhaseBAcPower,
+			Decoder: DecodeUtilityPhaseBACPower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65011: {
 		{
-			Decoder: DecodeUtilityPhaseBBasicAcQuantities,
+			Decoder: DecodeUtilityPhaseBBasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65012: {
 		{
-			Decoder: DecodeUtilityPhaseAAcReactivePower,
+			Decoder: DecodeUtilityPhaseAACReactivePower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65013: {
 		{
-			Decoder: DecodeUtilityPhaseAAcPower,
+			Decoder: DecodeUtilityPhaseAACPower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65014: {
 		{
-			Decoder: DecodeUtilityPhaseABasicAcQuantities,
+			Decoder: DecodeUtilityPhaseABasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65015: {
 		{
-			Decoder: DecodeUtilityTotalAcReactivePower,
+			Decoder: DecodeUtilityTotalACReactivePower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65016: {
 		{
-			Decoder: DecodeUtilityTotalAcPower,
+			Decoder: DecodeUtilityTotalACPower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65017: {
 		{
-			Decoder: DecodeUtilityAverageBasicAcQuantities,
+			Decoder: DecodeUtilityAverageBasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65019: {
 		{
-			Decoder: DecodeGeneratorPhaseCAcReactivePower,
+			Decoder: DecodeGeneratorPhaseCACReactivePower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65020: {
 		{
-			Decoder: DecodeGeneratorPhaseCAcPower,
+			Decoder: DecodeGeneratorPhaseCACPower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65021: {
 		{
-			Decoder: DecodeGeneratorPhaseCBasicAcQuantities,
+			Decoder: DecodeGeneratorPhaseCBasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65022: {
 		{
-			Decoder: DecodeGeneratorPhaseBAcReactivePower,
+			Decoder: DecodeGeneratorPhaseBACReactivePower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65023: {
 		{
-			Decoder: DecodeGeneratorPhaseBAcPower,
+			Decoder: DecodeGeneratorPhaseBACPower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65024: {
 		{
-			Decoder: DecodeGeneratorPhaseBBasicAcQuantities,
+			Decoder: DecodeGeneratorPhaseBBasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65025: {
 		{
-			Decoder: DecodeGeneratorPhaseAAcReactivePower,
+			Decoder: DecodeGeneratorPhaseAACReactivePower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65026: {
 		{
-			Decoder: DecodeGeneratorPhaseAAcPower,
+			Decoder: DecodeGeneratorPhaseAACPower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65027: {
 		{
-			Decoder: DecodeGeneratorPhaseABasicAcQuantities,
+			Decoder: DecodeGeneratorPhaseABasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65028: {
 		{
-			Decoder: DecodeGeneratorTotalAcReactivePower,
+			Decoder: DecodeGeneratorTotalACReactivePower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65029: {
 		{
-			Decoder: DecodeGeneratorTotalAcPower,
+			Decoder: DecodeGeneratorTotalACPower,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65030: {
 		{
-			Decoder: DecodeGeneratorAverageBasicAcQuantities,
+			Decoder: DecodeGeneratorAverageBasicACQuantities,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	65240: {
 		{
-			Decoder: DecodeIsoCommandedAddress,
+			Decoder: DecodeISOCommandedAddress,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -1934,7 +2000,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	65284: {
 		{
-			Decoder: DecodeMaretronProprietaryDcBreakerCurrent,
+			Decoder: DecodeMaretronProprietaryDCBreakerCurrent,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -2087,6 +2153,76 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 						BitLengthVariable: false,
 					},
 					MatchValue: 135,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+			},
+		},
+	},
+	65303: {
+		{
+			Decoder: DecodeLowranceVesselSetupEngineAndTankConfiguration,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 140,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+			},
+		},
+	},
+	65304: {
+		{
+			Decoder: DecodeLowranceVesselSetupEngineAndTankConfigurationBroadcast,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 140,
 				},
 				{
 					FieldSpec: &FieldSpec{
@@ -2295,6 +2431,41 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 	},
+	65313: {
+		{
+			Decoder: DecodeNavicoDepthQuality,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 275,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+			},
+		},
+	},
 	65360: {
 		{
 			Decoder: DecodeSeatalkPilotLockedHeading,
@@ -2402,7 +2573,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	126208: {
 		{
-			Decoder: DecodeNmeaRequestGroupFunction,
+			Decoder: DecodeNMEARequestGroupFunction,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -2421,7 +2592,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeNmeaCommandGroupFunction,
+			Decoder: DecodeNMEACommandGroupFunction,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -2440,7 +2611,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeNmeaAcknowledgeGroupFunction,
+			Decoder: DecodeNMEAAcknowledgeGroupFunction,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -2459,7 +2630,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeNmeaReadFieldsReplyGroupFunction,
+			Decoder: DecodeNMEAReadFieldsReplyGroupFunction,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -2478,7 +2649,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeNmeaWriteFieldsGroupFunction,
+			Decoder: DecodeNMEAWriteFieldsGroupFunction,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -2497,7 +2668,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeNmeaWriteFieldsReplyGroupFunction,
+			Decoder: DecodeNMEAWriteFieldsReplyGroupFunction,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -2518,7 +2689,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	126464: {
 		{
-			Decoder: DecodePgnListTransmitAndReceive,
+			Decoder: DecodePGNListTransmitAndReceive,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -3150,7 +3321,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeAirmarSpeedFilterIir,
+			Decoder: DecodeAirmarSpeedFilterIIR,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -3272,7 +3443,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeAirmarTemperatureFilterIir,
+			Decoder: DecodeAirmarTemperatureFilterIIR,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -3333,7 +3504,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeAirmarNmea2000Options,
+			Decoder: DecodeAirmarNMEA2000Options,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -3637,14 +3808,14 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	127503: {
 		{
-			Decoder: DecodeAcInputStatus,
+			Decoder: DecodeACInputStatus,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	127504: {
 		{
-			Decoder: DecodeAcOutputStatus,
+			Decoder: DecodeACOutputStatus,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -3658,7 +3829,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	127506: {
 		{
-			Decoder: DecodeDcDetailedStatus,
+			Decoder: DecodeDCDetailedStatus,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -3707,42 +3878,42 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	127744: {
 		{
-			Decoder: DecodeAcPowerCurrentPhaseA,
+			Decoder: DecodeACPowerCurrentPhaseA,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	127745: {
 		{
-			Decoder: DecodeAcPowerCurrentPhaseB,
+			Decoder: DecodeACPowerCurrentPhaseB,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	127746: {
 		{
-			Decoder: DecodeAcPowerCurrentPhaseC,
+			Decoder: DecodeACPowerCurrentPhaseC,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	127747: {
 		{
-			Decoder: DecodeAcVoltageFrequencyPhaseA,
+			Decoder: DecodeACVoltageFrequencyPhaseA,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	127748: {
 		{
-			Decoder: DecodeAcVoltageFrequencyPhaseB,
+			Decoder: DecodeACVoltageFrequencyPhaseB,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	127749: {
 		{
-			Decoder: DecodeAcVoltageFrequencyPhaseC,
+			Decoder: DecodeACVoltageFrequencyPhaseC,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -3750,13 +3921,6 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	127750: {
 		{
 			Decoder: DecodeConverterStatus,
-			MatchSpecs: []MatchFieldSpec{
-			},
-		},
-	},
-	127751: {
-		{
-			Decoder: DecodeDcVoltageCurrent,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -3840,14 +4004,14 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	129026: {
 		{
-			Decoder: DecodeCogSogRapidUpdate,
+			Decoder: DecodeCOGSOGRapidUpdate,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129029: {
 		{
-			Decoder: DecodeGnssPositionData,
+			Decoder: DecodeGNSSPositionData,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -3861,21 +4025,21 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	129038: {
 		{
-			Decoder: DecodeAisClassAPositionReport,
+			Decoder: DecodeAISClassAPositionReport,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129039: {
 		{
-			Decoder: DecodeAisClassBPositionReport,
+			Decoder: DecodeAISClassBPositionReport,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129041: {
 		{
-			Decoder: DecodeAisAidsToNavigationAtonReport,
+			Decoder: DecodeAISAidsToNavigationAtonReport,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -3910,7 +4074,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	129285: {
 		{
-			Decoder: DecodeNavigationRouteWpInformation,
+			Decoder: DecodeNavigationRouteWPInformation,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -3931,98 +4095,98 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	129538: {
 		{
-			Decoder: DecodeGnssControlStatus,
+			Decoder: DecodeGNSSControlStatus,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129539: {
 		{
-			Decoder: DecodeGnssDops,
+			Decoder: DecodeGNSSDOPs,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129540: {
 		{
-			Decoder: DecodeGnssSatsInView,
+			Decoder: DecodeGNSSSatsInView,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129546: {
 		{
-			Decoder: DecodeGnssRaimSettings,
+			Decoder: DecodeGNSSRAIMSettings,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129547: {
 		{
-			Decoder: DecodeGnssPseudorangeErrorStatistics,
+			Decoder: DecodeGNSSPseudorangeErrorStatistics,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129549: {
 		{
-			Decoder: DecodeDgnssCorrections,
+			Decoder: DecodeDGNSSCorrections,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129550: {
 		{
-			Decoder: DecodeGnssDifferentialCorrectionReceiverInterface,
+			Decoder: DecodeGNSSDifferentialCorrectionReceiverInterface,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129551: {
 		{
-			Decoder: DecodeGnssDifferentialCorrectionReceiverSignal,
+			Decoder: DecodeGNSSDifferentialCorrectionReceiverSignal,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129556: {
 		{
-			Decoder: DecodeGlonassAlmanacData,
+			Decoder: DecodeGLONASSAlmanacData,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129793: {
 		{
-			Decoder: DecodeAisUtcAndDateReport,
+			Decoder: DecodeAISUTCAndDateReport,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129794: {
 		{
-			Decoder: DecodeAisClassAStaticAndVoyageRelatedData,
+			Decoder: DecodeAISClassAStaticAndVoyageRelatedData,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129795: {
 		{
-			Decoder: DecodeAisAddressedBinaryMessage,
+			Decoder: DecodeAISAddressedBinaryMessage,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129796: {
 		{
-			Decoder: DecodeAisAcknowledge,
+			Decoder: DecodeAISAcknowledge,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129797: {
 		{
-			Decoder: DecodeAisBinaryBroadcastMessage,
+			Decoder: DecodeAISBinaryBroadcastMessage,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -4036,91 +4200,91 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 	},
 	129809: {
 		{
-			Decoder: DecodeAisClassBStaticDataMsg24PartA,
+			Decoder: DecodeAISClassBStaticDataMsg24PartA,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	129810: {
 		{
-			Decoder: DecodeAisClassBStaticDataMsg24PartB,
+			Decoder: DecodeAISClassBStaticDataMsg24PartB,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130064: {
 		{
-			Decoder: DecodeRouteAndWpServiceDatabaseList,
+			Decoder: DecodeRouteAndWPServiceDatabaseList,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130065: {
 		{
-			Decoder: DecodeRouteAndWpServiceRouteList,
+			Decoder: DecodeRouteAndWPServiceRouteList,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130066: {
 		{
-			Decoder: DecodeRouteAndWpServiceRouteWpListAttributes,
+			Decoder: DecodeRouteAndWPServiceRouteWPListAttributes,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130067: {
 		{
-			Decoder: DecodeRouteAndWpServiceRouteWpNamePosition,
+			Decoder: DecodeRouteAndWPServiceRouteWPNamePosition,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130068: {
 		{
-			Decoder: DecodeRouteAndWpServiceRouteWpName,
+			Decoder: DecodeRouteAndWPServiceRouteWPName,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130069: {
 		{
-			Decoder: DecodeRouteAndWpServiceXteLimitNavigationMethod,
+			Decoder: DecodeRouteAndWPServiceXTELimitNavigationMethod,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130070: {
 		{
-			Decoder: DecodeRouteAndWpServiceWpComment,
+			Decoder: DecodeRouteAndWPServiceWPComment,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130071: {
 		{
-			Decoder: DecodeRouteAndWpServiceRouteComment,
+			Decoder: DecodeRouteAndWPServiceRouteComment,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130072: {
 		{
-			Decoder: DecodeRouteAndWpServiceDatabaseComment,
+			Decoder: DecodeRouteAndWPServiceDatabaseComment,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130073: {
 		{
-			Decoder: DecodeRouteAndWpServiceRadiusOfTurn,
+			Decoder: DecodeRouteAndWPServiceRadiusOfTurn,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
 	},
 	130074: {
 		{
-			Decoder: DecodeRouteAndWpServiceWpListWpNamePosition,
+			Decoder: DecodeRouteAndWPServiceWPListWPNamePosition,
 			MatchSpecs: []MatchFieldSpec{
 			},
 		},
@@ -4265,7 +4429,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeBepMarineCzoneZcfBusDistribution,
+			Decoder: DecodeBEPMarineCzoneZcfBusDistribution,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -4758,6 +4922,382 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
+			Decoder: DecodeFusionSpeedVolumeCurrentSpeed,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 419,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 16,
+						BitOffset: 16,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 32863,
+				},
+			},
+		},
+		{
+			Decoder: DecodeFusionIgnitionSwitchState,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 419,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 16,
+						BitOffset: 16,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 32859,
+				},
+			},
+		},
+		{
+			Decoder: DecodeFusionMenuLockId,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 419,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 16,
+						BitOffset: 16,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 32786,
+				},
+			},
+		},
+		{
+			Decoder: DecodeFusionRDSData,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 419,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 16,
+						BitOffset: 16,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 32850,
+				},
+			},
+		},
+		{
+			Decoder: DecodeFusionMultiroom,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 419,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 16,
+						BitOffset: 16,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 32824,
+				},
+			},
+		},
+		{
+			Decoder: DecodeFusionMultiroomStatus,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 419,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 16,
+						BitOffset: 16,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 32825,
+				},
+			},
+		},
+		{
+			Decoder: DecodeFusionProcessingBypass,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 419,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 16,
+						BitOffset: 16,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 32832,
+				},
+			},
+		},
+		{
+			Decoder: DecodeFusionMono,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 419,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 16,
+						BitOffset: 16,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 32862,
+				},
+			},
+		},
+		{
 			Decoder: DecodeFusionTrackPosition,
 			MatchSpecs: []MatchFieldSpec{
 				{
@@ -4852,7 +5392,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeFusionMarineTuner,
+			Decoder: DecodeFusionMARINETUNER,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -5087,7 +5627,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeFusionUsbRepeatStatus,
+			Decoder: DecodeFusionUSBRepeatStatus,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -5430,7 +5970,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 			},
 		},
 		{
-			Decoder: DecodeFusionEq,
+			Decoder: DecodeFusionEQ,
 			MatchSpecs: []MatchFieldSpec{
 				{
 					FieldSpec: &FieldSpec{
@@ -6157,6 +6697,39 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 				},
 			},
 		},
+		{
+			Decoder: DecodeMercuryEngineKeyValueData,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 144,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+			},
+		},
 	},
 	130825: {
 		{
@@ -6280,6 +6853,41 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 						BitLengthVariable: false,
 					},
 					MatchValue: 137,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+			},
+		},
+	},
+	130845: {
+		{
+			Decoder: DecodeFurunoMultiSatsInViewExtended,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 1855,
 				},
 				{
 					FieldSpec: &FieldSpec{

@@ -79,7 +79,7 @@ func TestDecodeCanID(t *testing.T) {
 			id:   2565799790, // 0x98EEFF6E - actual CAN ID for PGN 60928, source 110, priority 6, dest 255
 			expected: FrameHeader{
 				SourceID: 110,
-				PGN:      pgn.IsoAddressClaimPgn,
+				PGN:      pgn.ISOAddressClaimPgn,
 				Priority: 6,
 				TargetID: 255, // PDU1 format - TargetID extracted from PGN
 			},
@@ -160,10 +160,10 @@ func TestCanIDFromDataAndDecodeCanIDRoundTrip(t *testing.T) {
 		expectError bool
 	}{
 		// PDU1 format tests (PF < 240)
-		{"IsoAcknowledgement PDU1 with specific destination", pgn.IsoAcknowledgementPgn, 110, 6, 50, false},
-		{"IsoAcknowledgement PDU1 with broadcast destination", pgn.IsoAcknowledgementPgn, 110, 6, 255, false},
-		{"IsoRequest PDU1 with specific destination", pgn.IsoRequestPgn, 100, 2, 25, false},
-		{"IsoRequest PDU1 with broadcast destination", pgn.IsoRequestPgn, 100, 2, 255, false},
+		{"ISOAcknowledgement PDU1 with specific destination", pgn.ISOAcknowledgementPgn, 110, 6, 50, false},
+		{"ISOAcknowledgement PDU1 with broadcast destination", pgn.ISOAcknowledgementPgn, 110, 6, 255, false},
+		{"ISORequest PDU1 with specific destination", pgn.ISORequestPgn, 100, 2, 25, false},
+		{"ISORequest PDU1 with broadcast destination", pgn.ISORequestPgn, 100, 2, 255, false},
 
 		// PDU2 format tests (PF >= 240)
 		{"Heartbeat PDU2 with global destination", pgn.HeartbeatPgn, 238, 3, 255, false},
@@ -254,14 +254,14 @@ func TestPriorityHandling(t *testing.T) {
 		destination uint8
 	}{
 		// Test all valid priority values (0-7) for PDU1 format
-		{"PDU1 Priority 0", pgn.IsoRequestPgn, 100, 0, 50},
-		{"PDU1 Priority 1", pgn.IsoRequestPgn, 100, 1, 50},
-		{"PDU1 Priority 2", pgn.IsoRequestPgn, 100, 2, 50},
-		{"PDU1 Priority 3", pgn.IsoRequestPgn, 100, 3, 50},
-		{"PDU1 Priority 4", pgn.IsoRequestPgn, 100, 4, 50},
-		{"PDU1 Priority 5", pgn.IsoRequestPgn, 100, 5, 50},
-		{"PDU1 Priority 6", pgn.IsoRequestPgn, 100, 6, 50},
-		{"PDU1 Priority 7", pgn.IsoRequestPgn, 100, 7, 50},
+		{"PDU1 Priority 0", pgn.ISORequestPgn, 100, 0, 50},
+		{"PDU1 Priority 1", pgn.ISORequestPgn, 100, 1, 50},
+		{"PDU1 Priority 2", pgn.ISORequestPgn, 100, 2, 50},
+		{"PDU1 Priority 3", pgn.ISORequestPgn, 100, 3, 50},
+		{"PDU1 Priority 4", pgn.ISORequestPgn, 100, 4, 50},
+		{"PDU1 Priority 5", pgn.ISORequestPgn, 100, 5, 50},
+		{"PDU1 Priority 6", pgn.ISORequestPgn, 100, 6, 50},
+		{"PDU1 Priority 7", pgn.ISORequestPgn, 100, 7, 50},
 
 		// Test all valid priority values (0-7) for PDU2 format
 		{"PDU2 Priority 0", pgn.HeartbeatPgn, 200, 0, 255},
@@ -333,7 +333,7 @@ func TestCanIDFromStruct(t *testing.T) {
 	}{
 		{
 			"Address Claim PGN",
-			CanIDData{PGN: pgn.IsoAddressClaimPgn, SourceID: 110, Priority: 6, Destination: 255},
+			CanIDData{PGN: pgn.ISOAddressClaimPgn, SourceID: 110, Priority: 6, Destination: 255},
 			0x98EEFF6E, // Same as TestCanIDFromData
 		},
 		{
@@ -366,7 +366,7 @@ func TestCanIDFromStructWithValidation(t *testing.T) {
 	}{
 		{
 			"Valid PDU1 with specific destination",
-			CanIDData{PGN: pgn.IsoAcknowledgementPgn, SourceID: 100, Priority: 3, Destination: 200},
+			CanIDData{PGN: pgn.ISOAcknowledgementPgn, SourceID: 100, Priority: 3, Destination: 200},
 			false,
 		},
 		{

@@ -29,24 +29,24 @@ func newMockSubscriber() *mockSubscriber {
 func (m *mockSubscriber) SubscribeToStruct(t, callback any) (SubscriptionID, error) {
 	structName := ""
 	switch t.(type) {
-	case pgn.IsoAcknowledgement:
-		structName = "IsoAcknowledgement"
-	case pgn.IsoRequest:
-		structName = "IsoRequest"
-	case pgn.IsoAddressClaim:
-		structName = "IsoAddressClaim"
-	case pgn.IsoCommandedAddress:
-		structName = "IsoCommandedAddress"
-	case pgn.NmeaRequestGroupFunction:
-		structName = "NmeaRequestGroupFunction"
-	case pgn.NmeaCommandGroupFunction:
-		structName = "NmeaCommandGroupFunction"
+	case pgn.ISOAcknowledgement:
+		structName = "ISOAcknowledgement"
+	case pgn.ISORequest:
+		structName = "ISORequest"
+	case pgn.ISOAddressClaim:
+		structName = "ISOAddressClaim"
+	case pgn.ISOCommandedAddress:
+		structName = "ISOCommandedAddress"
+	case pgn.NMEARequestGroupFunction:
+		structName = "NMEARequestGroupFunction"
+	case pgn.NMEACommandGroupFunction:
+		structName = "NMEACommandGroupFunction"
 	case pgn.ProductInformation:
 		structName = "ProductInformation"
 	case pgn.ConfigurationInformation:
 		structName = "ConfigurationInformation"
-	case pgn.PgnListTransmitAndReceive:
-		structName = "PgnListTransmitAndReceive"
+	case pgn.PGNListTransmitAndReceive:
+		structName = "PGNListTransmitAndReceive"
 	default:
 		return 0, fmt.Errorf("mockSubscriber does not support type %T", t)
 	}
@@ -69,24 +69,24 @@ func (m *mockSubscriber) Unsubscribe(subID SubscriptionID) error {
 func (m *mockSubscriber) simulatePGN(pgnStruct any) {
 	var structName string
 	switch pgnStruct.(type) {
-	case pgn.IsoAcknowledgement, *pgn.IsoAcknowledgement:
-		structName = "IsoAcknowledgement"
-	case pgn.IsoRequest, *pgn.IsoRequest:
-		structName = "IsoRequest"
-	case pgn.IsoAddressClaim, *pgn.IsoAddressClaim:
-		structName = "IsoAddressClaim"
-	case pgn.IsoCommandedAddress, *pgn.IsoCommandedAddress:
-		structName = "IsoCommandedAddress"
-	case pgn.NmeaRequestGroupFunction, *pgn.NmeaRequestGroupFunction:
-		structName = "NmeaRequestGroupFunction"
-	case pgn.NmeaCommandGroupFunction, *pgn.NmeaCommandGroupFunction:
-		structName = "NmeaCommandGroupFunction"
+	case pgn.ISOAcknowledgement, *pgn.ISOAcknowledgement:
+		structName = "ISOAcknowledgement"
+	case pgn.ISORequest, *pgn.ISORequest:
+		structName = "ISORequest"
+	case pgn.ISOAddressClaim, *pgn.ISOAddressClaim:
+		structName = "ISOAddressClaim"
+	case pgn.ISOCommandedAddress, *pgn.ISOCommandedAddress:
+		structName = "ISOCommandedAddress"
+	case pgn.NMEARequestGroupFunction, *pgn.NMEARequestGroupFunction:
+		structName = "NMEARequestGroupFunction"
+	case pgn.NMEACommandGroupFunction, *pgn.NMEACommandGroupFunction:
+		structName = "NMEACommandGroupFunction"
 	case pgn.ProductInformation, *pgn.ProductInformation:
 		structName = "ProductInformation"
 	case pgn.ConfigurationInformation, *pgn.ConfigurationInformation:
 		structName = "ConfigurationInformation"
-	case pgn.PgnListTransmitAndReceive, *pgn.PgnListTransmitAndReceive:
-		structName = "PgnListTransmitAndReceive"
+	case pgn.PGNListTransmitAndReceive, *pgn.PGNListTransmitAndReceive:
+		structName = "PGNListTransmitAndReceive"
 	default:
 		return
 	}

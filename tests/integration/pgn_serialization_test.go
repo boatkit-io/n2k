@@ -340,9 +340,9 @@ func TestComprehensivePerformanceProfiling(t *testing.T) {
 
 	// Define known slow PGN types (based on our earlier analysis)
 	slowPgnTypes := map[string]bool{
-		"NmeaAcknowledgeGroupFunctionPartial": true,
-		"NmeaRequestGroupFunctionPartial":     true,
-		"NmeaCommandGroupFunctionPartial":     true,
+		"NMEAAcknowledgeGroupFunctionPartial": true,
+		"NMEARequestGroupFunctionPartial":     true,
+		"NMEACommandGroupFunctionPartial":     true,
 		"UnknownPGN":                          true, // These might be slow due to processing overhead
 	}
 

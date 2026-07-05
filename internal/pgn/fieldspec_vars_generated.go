@@ -2,7 +2,7 @@
 package pgn
 
 var (
-    fieldSpec_IsoAcknowledgement_GroupFunction = FieldSpec{
+    fieldSpec_ISOAcknowledgement_GroupFunction = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -15,7 +15,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoAcknowledgement_Pgn = FieldSpec{
+    fieldSpec_ISOAcknowledgement_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFFFD,
@@ -28,7 +28,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoRequest_Pgn = FieldSpec{
+    fieldSpec_ISORequest_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFFFD,
@@ -41,7 +41,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolDataTransfer_Sid = FieldSpec{
+    fieldSpec_ISOTransportProtocolDataTransfer_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -54,7 +54,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_GroupFunctionCode = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementRequestToSend_GroupFunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -67,7 +67,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_MessageSize = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementRequestToSend_MessageSize = FieldSpec{
 		BitLength:         16,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFD,
@@ -80,7 +80,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_Packets = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementRequestToSend_Packets = FieldSpec{
 		BitLength:         8,
 		BitOffset:         24,
 		MaxRawValue:       0xFD,
@@ -93,7 +93,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_PacketsReply = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementRequestToSend_PacketsReply = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -106,7 +106,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementRequestToSend_Pgn = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementRequestToSend_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFFFD,
@@ -119,7 +119,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_GroupFunctionCode = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementClearToSend_GroupFunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -132,7 +132,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_MaxPackets = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementClearToSend_MaxPackets = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -145,7 +145,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_NextSid = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementClearToSend_NextSID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0xFD,
@@ -158,7 +158,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementClearToSend_Pgn = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementClearToSend_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFFFD,
@@ -171,7 +171,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_GroupFunctionCode = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementEndOfMessage_GroupFunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -184,7 +184,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_TotalMessageSize = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementEndOfMessage_TotalMessageSize = FieldSpec{
 		BitLength:         16,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFD,
@@ -197,7 +197,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_TotalNumberOfFramesReceived = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementEndOfMessage_TotalNumberOfFramesReceived = FieldSpec{
 		BitLength:         8,
 		BitOffset:         24,
 		MaxRawValue:       0xFD,
@@ -210,7 +210,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementEndOfMessage_Pgn = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementEndOfMessage_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFFFD,
@@ -223,7 +223,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_GroupFunctionCode = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementBroadcastAnnounce_GroupFunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -236,7 +236,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_MessageSize = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementBroadcastAnnounce_MessageSize = FieldSpec{
 		BitLength:         16,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFD,
@@ -249,7 +249,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_Packets = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementBroadcastAnnounce_Packets = FieldSpec{
 		BitLength:         8,
 		BitOffset:         24,
 		MaxRawValue:       0xFD,
@@ -262,7 +262,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementBroadcastAnnounce_Pgn = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementBroadcastAnnounce_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFFFD,
@@ -275,7 +275,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementAbort_GroupFunctionCode = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementAbort_GroupFunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -288,7 +288,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoTransportProtocolConnectionManagementAbort_Pgn = FieldSpec{
+    fieldSpec_ISOTransportProtocolConnectionManagementAbort_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFFFD,
@@ -301,7 +301,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoAddressClaim_UniqueNumber = FieldSpec{
+    fieldSpec_ISOAddressClaim_UniqueNumber = FieldSpec{
 		BitLength:         21,
 		BitOffset:         0,
 		MaxRawValue:       0x1FFFFD,
@@ -314,7 +314,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoAddressClaim_DeviceInstanceLower = FieldSpec{
+    fieldSpec_ISOAddressClaim_DeviceInstanceLower = FieldSpec{
 		BitLength:         3,
 		BitOffset:         32,
 		MaxRawValue:       0x6,
@@ -327,7 +327,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoAddressClaim_DeviceInstanceUpper = FieldSpec{
+    fieldSpec_ISOAddressClaim_DeviceInstanceUpper = FieldSpec{
 		BitLength:         5,
 		BitOffset:         35,
 		MaxRawValue:       0x1D,
@@ -340,7 +340,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoAddressClaim_SystemInstance = FieldSpec{
+    fieldSpec_ISOAddressClaim_SystemInstance = FieldSpec{
 		BitLength:         4,
 		BitOffset:         56,
 		MaxRawValue:       0xD,
@@ -457,7 +457,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Bus1PhaseCBasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_Bus1PhaseCBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -470,7 +470,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Bus1PhaseCBasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_Bus1PhaseCBasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -483,7 +483,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Bus1PhaseCBasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_Bus1PhaseCBasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -496,7 +496,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Bus1PhaseBBasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_Bus1PhaseBBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -509,7 +509,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Bus1PhaseBBasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_Bus1PhaseBBasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -522,7 +522,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Bus1PhaseBBasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_Bus1PhaseBBasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -535,7 +535,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Bus1PhaseABasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_Bus1PhaseABasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -548,7 +548,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Bus1PhaseABasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_Bus1PhaseABasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -561,7 +561,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Bus1PhaseABasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_Bus1PhaseABasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -574,7 +574,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseCAcReactivePower_ReactivePower = FieldSpec{
+    fieldSpec_UtilityPhaseCACReactivePower_ReactivePower = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -587,7 +587,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseCAcReactivePower_PowerFactor = FieldSpec{
+    fieldSpec_UtilityPhaseCACReactivePower_PowerFactor = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -600,7 +600,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseCAcPower_RealPower = FieldSpec{
+    fieldSpec_UtilityPhaseCACPower_RealPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -613,7 +613,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseCAcPower_ApparentPower = FieldSpec{
+    fieldSpec_UtilityPhaseCACPower_ApparentPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -626,7 +626,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseCBasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_UtilityPhaseCBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -639,7 +639,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseCBasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_UtilityPhaseCBasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -652,7 +652,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseCBasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_UtilityPhaseCBasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -665,7 +665,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseCBasicAcQuantities_AcRmsCurrent = FieldSpec{
+    fieldSpec_UtilityPhaseCBasicACQuantities_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -678,7 +678,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseBAcReactivePower_ReactivePower = FieldSpec{
+    fieldSpec_UtilityPhaseBACReactivePower_ReactivePower = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -691,7 +691,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseBAcReactivePower_PowerFactor = FieldSpec{
+    fieldSpec_UtilityPhaseBACReactivePower_PowerFactor = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -704,7 +704,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseBAcPower_RealPower = FieldSpec{
+    fieldSpec_UtilityPhaseBACPower_RealPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -717,7 +717,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseBAcPower_ApparentPower = FieldSpec{
+    fieldSpec_UtilityPhaseBACPower_ApparentPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -730,7 +730,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseBBasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_UtilityPhaseBBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -743,7 +743,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseBBasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_UtilityPhaseBBasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -756,7 +756,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseBBasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_UtilityPhaseBBasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -769,7 +769,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseBBasicAcQuantities_AcRmsCurrent = FieldSpec{
+    fieldSpec_UtilityPhaseBBasicACQuantities_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -782,7 +782,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseAAcReactivePower_ReactivePower = FieldSpec{
+    fieldSpec_UtilityPhaseAACReactivePower_ReactivePower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -795,7 +795,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseAAcReactivePower_PowerFactor = FieldSpec{
+    fieldSpec_UtilityPhaseAACReactivePower_PowerFactor = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -808,7 +808,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseAAcPower_RealPower = FieldSpec{
+    fieldSpec_UtilityPhaseAACPower_RealPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -821,7 +821,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseAAcPower_ApparentPower = FieldSpec{
+    fieldSpec_UtilityPhaseAACPower_ApparentPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -834,7 +834,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseABasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_UtilityPhaseABasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -847,7 +847,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseABasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_UtilityPhaseABasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -860,7 +860,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseABasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_UtilityPhaseABasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -873,7 +873,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityPhaseABasicAcQuantities_AcRmsCurrent = FieldSpec{
+    fieldSpec_UtilityPhaseABasicACQuantities_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -886,7 +886,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityTotalAcReactivePower_ReactivePower = FieldSpec{
+    fieldSpec_UtilityTotalACReactivePower_ReactivePower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -899,7 +899,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityTotalAcReactivePower_PowerFactor = FieldSpec{
+    fieldSpec_UtilityTotalACReactivePower_PowerFactor = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -912,7 +912,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityTotalAcPower_RealPower = FieldSpec{
+    fieldSpec_UtilityTotalACPower_RealPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -925,7 +925,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityTotalAcPower_ApparentPower = FieldSpec{
+    fieldSpec_UtilityTotalACPower_ApparentPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -938,7 +938,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityAverageBasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_UtilityAverageBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -951,7 +951,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityAverageBasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_UtilityAverageBasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -964,7 +964,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityAverageBasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_UtilityAverageBasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -977,7 +977,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_UtilityAverageBasicAcQuantities_AcRmsCurrent = FieldSpec{
+    fieldSpec_UtilityAverageBasicACQuantities_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -990,7 +990,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseCAcReactivePower_ReactivePower = FieldSpec{
+    fieldSpec_GeneratorPhaseCACReactivePower_ReactivePower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1003,7 +1003,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseCAcReactivePower_PowerFactor = FieldSpec{
+    fieldSpec_GeneratorPhaseCACReactivePower_PowerFactor = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -1016,7 +1016,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseCAcPower_RealPower = FieldSpec{
+    fieldSpec_GeneratorPhaseCACPower_RealPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1029,7 +1029,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseCAcPower_ApparentPower = FieldSpec{
+    fieldSpec_GeneratorPhaseCACPower_ApparentPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1042,7 +1042,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseCBasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_GeneratorPhaseCBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -1055,7 +1055,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseCBasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_GeneratorPhaseCBasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -1068,7 +1068,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseCBasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_GeneratorPhaseCBasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -1081,7 +1081,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseCBasicAcQuantities_AcRmsCurrent = FieldSpec{
+    fieldSpec_GeneratorPhaseCBasicACQuantities_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -1094,7 +1094,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseBAcReactivePower_ReactivePower = FieldSpec{
+    fieldSpec_GeneratorPhaseBACReactivePower_ReactivePower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1107,7 +1107,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseBAcReactivePower_PowerFactor = FieldSpec{
+    fieldSpec_GeneratorPhaseBACReactivePower_PowerFactor = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -1120,7 +1120,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseBAcPower_RealPower = FieldSpec{
+    fieldSpec_GeneratorPhaseBACPower_RealPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1133,7 +1133,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseBAcPower_ApparentPower = FieldSpec{
+    fieldSpec_GeneratorPhaseBACPower_ApparentPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1146,7 +1146,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseBBasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_GeneratorPhaseBBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -1159,7 +1159,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseBBasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_GeneratorPhaseBBasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -1172,7 +1172,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseBBasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_GeneratorPhaseBBasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -1185,7 +1185,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseBBasicAcQuantities_AcRmsCurrent = FieldSpec{
+    fieldSpec_GeneratorPhaseBBasicACQuantities_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -1198,7 +1198,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseAAcReactivePower_ReactivePower = FieldSpec{
+    fieldSpec_GeneratorPhaseAACReactivePower_ReactivePower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1211,7 +1211,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseAAcReactivePower_PowerFactor = FieldSpec{
+    fieldSpec_GeneratorPhaseAACReactivePower_PowerFactor = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -1224,7 +1224,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseAAcPower_RealPower = FieldSpec{
+    fieldSpec_GeneratorPhaseAACPower_RealPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1237,7 +1237,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseAAcPower_ApparentPower = FieldSpec{
+    fieldSpec_GeneratorPhaseAACPower_ApparentPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1250,7 +1250,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseABasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_GeneratorPhaseABasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -1263,7 +1263,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseABasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_GeneratorPhaseABasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -1276,7 +1276,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseABasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_GeneratorPhaseABasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -1289,7 +1289,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorPhaseABasicAcQuantities_AcRmsCurrent = FieldSpec{
+    fieldSpec_GeneratorPhaseABasicACQuantities_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -1302,7 +1302,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorTotalAcReactivePower_ReactivePower = FieldSpec{
+    fieldSpec_GeneratorTotalACReactivePower_ReactivePower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1315,7 +1315,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorTotalAcReactivePower_PowerFactor = FieldSpec{
+    fieldSpec_GeneratorTotalACReactivePower_PowerFactor = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -1328,7 +1328,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorTotalAcPower_RealPower = FieldSpec{
+    fieldSpec_GeneratorTotalACPower_RealPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1341,7 +1341,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorTotalAcPower_ApparentPower = FieldSpec{
+    fieldSpec_GeneratorTotalACPower_ApparentPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -1354,7 +1354,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorAverageBasicAcQuantities_LineLineAcRmsVoltage = FieldSpec{
+    fieldSpec_GeneratorAverageBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -1367,7 +1367,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorAverageBasicAcQuantities_LineNeutralAcRmsVoltage = FieldSpec{
+    fieldSpec_GeneratorAverageBasicACQuantities_LineNeutralACRMSVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -1380,7 +1380,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorAverageBasicAcQuantities_AcFrequency = FieldSpec{
+    fieldSpec_GeneratorAverageBasicACQuantities_ACFrequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -1393,7 +1393,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GeneratorAverageBasicAcQuantities_AcRmsCurrent = FieldSpec{
+    fieldSpec_GeneratorAverageBasicACQuantities_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -1406,7 +1406,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoCommandedAddress_DeviceInstanceLower = FieldSpec{
+    fieldSpec_ISOCommandedAddress_DeviceInstanceLower = FieldSpec{
 		BitLength:         3,
 		BitOffset:         32,
 		MaxRawValue:       0x6,
@@ -1419,7 +1419,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoCommandedAddress_DeviceInstanceUpper = FieldSpec{
+    fieldSpec_ISOCommandedAddress_DeviceInstanceUpper = FieldSpec{
 		BitLength:         5,
 		BitOffset:         35,
 		MaxRawValue:       0x1D,
@@ -1432,7 +1432,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoCommandedAddress_SystemInstance = FieldSpec{
+    fieldSpec_ISOCommandedAddress_SystemInstance = FieldSpec{
 		BitLength:         4,
 		BitOffset:         56,
 		MaxRawValue:       0xD,
@@ -1445,7 +1445,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_IsoCommandedAddress_NewSourceAddress = FieldSpec{
+    fieldSpec_ISOCommandedAddress_NewSourceAddress = FieldSpec{
 		BitLength:         8,
 		BitOffset:         64,
 		MaxRawValue:       0xFD,
@@ -1484,7 +1484,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronNumberOfChannels_Pgn = FieldSpec{
+    fieldSpec_MaretronNumberOfChannels_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFFFD,
@@ -1510,7 +1510,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronProprietaryDcBreakerCurrent_ManufacturerCode = FieldSpec{
+    fieldSpec_MaretronProprietaryDCBreakerCurrent_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -1523,7 +1523,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronProprietaryDcBreakerCurrent_IndustryCode = FieldSpec{
+    fieldSpec_MaretronProprietaryDCBreakerCurrent_IndustryCode = FieldSpec{
 		BitLength:         3,
 		BitOffset:         13,
 		MaxRawValue:       0x0,
@@ -1536,7 +1536,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronProprietaryDcBreakerCurrent_BankInstance = FieldSpec{
+    fieldSpec_MaretronProprietaryDCBreakerCurrent_BankInstance = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0xFD,
@@ -1549,7 +1549,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronProprietaryDcBreakerCurrent_IndicatorNumber = FieldSpec{
+    fieldSpec_MaretronProprietaryDCBreakerCurrent_IndicatorNumber = FieldSpec{
 		BitLength:         8,
 		BitOffset:         24,
 		MaxRawValue:       0xFD,
@@ -1562,7 +1562,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronProprietaryDcBreakerCurrent_BreakerCurrent = FieldSpec{
+    fieldSpec_MaretronProprietaryDCBreakerCurrent_BreakerCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFD,
@@ -1711,6 +1711,136 @@ var (
 		MaxRawValue:       0xFFFFFFFD,
 		MissingValue:      0xFFFFFFFF,
 		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_NumberOfEngines = FieldSpec{
+		BitLength:         4,
+		BitOffset:         16,
+		MaxRawValue:       0xD,
+		MissingValue:      0xF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_NumberOfFuelTanks = FieldSpec{
+		BitLength:         4,
+		BitOffset:         20,
+		MaxRawValue:       0xD,
+		MissingValue:      0xF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_TotalFuelCapacity = FieldSpec{
+		BitLength:         16,
+		BitOffset:         24,
+		MaxRawValue:       0xFFFD,
+		MissingValue:      0xFFFF,
+		Resolution:        0.10000000149011612,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_NumberOfEngines = FieldSpec{
+		BitLength:         4,
+		BitOffset:         16,
+		MaxRawValue:       0xD,
+		MissingValue:      0xF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_NumberOfFuelTanks = FieldSpec{
+		BitLength:         4,
+		BitOffset:         20,
+		MaxRawValue:       0xD,
+		MissingValue:      0xF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_TotalFuelCapacity = FieldSpec{
+		BitLength:         16,
+		BitOffset:         24,
+		MaxRawValue:       0xFFFD,
+		MissingValue:      0xFFFF,
+		Resolution:        0.10000000149011612,
 		Offset:            0,
 		IsSigned:          false,
 		ReservedCount:     2,
@@ -1874,6 +2004,58 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
+    fieldSpec_NavicoDepthQuality_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_NavicoDepthQuality_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_NavicoDepthQuality_Instance = FieldSpec{
+		BitLength:         8,
+		BitOffset:         16,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_NavicoDepthQuality_DepthQuality = FieldSpec{
+		BitLength:         8,
+		BitOffset:         24,
+		MaxRawValue:       0x7D,
+		MissingValue:      0x7F,
+		Resolution:        0.009999999776482582,
+		Offset:            0,
+		IsSigned:          true,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
     fieldSpec_SeatalkPilotLockedHeading_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
@@ -1900,7 +2082,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_SeatalkPilotLockedHeading_Sid = FieldSpec{
+    fieldSpec_SeatalkPilotLockedHeading_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0xFD,
@@ -1991,7 +2173,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarSpeedPulseCount_Sid = FieldSpec{
+    fieldSpec_AirmarSpeedPulseCount_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0xFD,
@@ -2030,7 +2212,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaRequestGroupFunction_FunctionCode = FieldSpec{
+    fieldSpec_NMEARequestGroupFunction_FunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2043,7 +2225,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaRequestGroupFunction_Pgn = FieldSpec{
+    fieldSpec_NMEARequestGroupFunction_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFFFD,
@@ -2056,7 +2238,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaRequestGroupFunction_TransmissionInterval = FieldSpec{
+    fieldSpec_NMEARequestGroupFunction_TransmissionInterval = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFFFFFD,
@@ -2069,7 +2251,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaRequestGroupFunction_TransmissionIntervalOffset = FieldSpec{
+    fieldSpec_NMEARequestGroupFunction_TransmissionIntervalOffset = FieldSpec{
 		BitLength:         16,
 		BitOffset:         64,
 		MaxRawValue:       0xFFFD,
@@ -2082,7 +2264,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaRequestGroupFunction_NumberOfParameters = FieldSpec{
+    fieldSpec_NMEARequestGroupFunction_NumberOfParameters = FieldSpec{
 		BitLength:         8,
 		BitOffset:         80,
 		MaxRawValue:       0xFD,
@@ -2095,7 +2277,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaRequestGroupFunction_Parameter = FieldSpec{
+    fieldSpec_NMEARequestGroupFunction_Parameter = FieldSpec{
 		BitLength:         8,
 		BitOffset:         88,
 		MaxRawValue:       0x0,
@@ -2108,7 +2290,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaRequestGroupFunction_Value = FieldSpec{
+    fieldSpec_NMEARequestGroupFunction_Value = FieldSpec{
 		BitLength:         0,
 		BitOffset:         96,
 		MaxRawValue:       0x0,
@@ -2121,7 +2303,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: true,
 	}
-    fieldSpec_NmeaCommandGroupFunction_FunctionCode = FieldSpec{
+    fieldSpec_NMEACommandGroupFunction_FunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2134,7 +2316,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaCommandGroupFunction_Pgn = FieldSpec{
+    fieldSpec_NMEACommandGroupFunction_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFFFD,
@@ -2147,7 +2329,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaCommandGroupFunction_NumberOfParameters = FieldSpec{
+    fieldSpec_NMEACommandGroupFunction_NumberOfParameters = FieldSpec{
 		BitLength:         8,
 		BitOffset:         40,
 		MaxRawValue:       0xFD,
@@ -2160,7 +2342,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaCommandGroupFunction_Parameter = FieldSpec{
+    fieldSpec_NMEACommandGroupFunction_Parameter = FieldSpec{
 		BitLength:         8,
 		BitOffset:         48,
 		MaxRawValue:       0x0,
@@ -2173,7 +2355,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaCommandGroupFunction_Value = FieldSpec{
+    fieldSpec_NMEACommandGroupFunction_Value = FieldSpec{
 		BitLength:         0,
 		BitOffset:         56,
 		MaxRawValue:       0x0,
@@ -2186,7 +2368,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: true,
 	}
-    fieldSpec_NmeaAcknowledgeGroupFunction_FunctionCode = FieldSpec{
+    fieldSpec_NMEAAcknowledgeGroupFunction_FunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2199,7 +2381,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaAcknowledgeGroupFunction_Pgn = FieldSpec{
+    fieldSpec_NMEAAcknowledgeGroupFunction_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFFFD,
@@ -2212,7 +2394,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaAcknowledgeGroupFunction_NumberOfParameters = FieldSpec{
+    fieldSpec_NMEAAcknowledgeGroupFunction_NumberOfParameters = FieldSpec{
 		BitLength:         8,
 		BitOffset:         40,
 		MaxRawValue:       0xFD,
@@ -2225,7 +2407,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaReadFieldsReplyGroupFunction_FunctionCode = FieldSpec{
+    fieldSpec_NMEAReadFieldsReplyGroupFunction_FunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2238,7 +2420,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaReadFieldsReplyGroupFunction_Pgn = FieldSpec{
+    fieldSpec_NMEAReadFieldsReplyGroupFunction_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFFFD,
@@ -2251,7 +2433,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaReadFieldsReplyGroupFunction_UniqueId = FieldSpec{
+    fieldSpec_NMEAReadFieldsReplyGroupFunction_UniqueID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -2264,7 +2446,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaReadFieldsReplyGroupFunction_NumberOfSelectionPairs = FieldSpec{
+    fieldSpec_NMEAReadFieldsReplyGroupFunction_NumberOfSelectionPairs = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -2277,7 +2459,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaReadFieldsReplyGroupFunction_NumberOfParameters = FieldSpec{
+    fieldSpec_NMEAReadFieldsReplyGroupFunction_NumberOfParameters = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -2290,7 +2472,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaReadFieldsReplyGroupFunction_SelectionParameter = FieldSpec{
+    fieldSpec_NMEAReadFieldsReplyGroupFunction_SelectionParameter = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2303,7 +2485,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaReadFieldsReplyGroupFunction_SelectionValue = FieldSpec{
+    fieldSpec_NMEAReadFieldsReplyGroupFunction_SelectionValue = FieldSpec{
 		BitLength:         0,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2316,7 +2498,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: true,
 	}
-    fieldSpec_NmeaReadFieldsReplyGroupFunction_Parameter = FieldSpec{
+    fieldSpec_NMEAReadFieldsReplyGroupFunction_Parameter = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2329,7 +2511,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaReadFieldsReplyGroupFunction_Value = FieldSpec{
+    fieldSpec_NMEAReadFieldsReplyGroupFunction_Value = FieldSpec{
 		BitLength:         0,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2342,7 +2524,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: true,
 	}
-    fieldSpec_NmeaWriteFieldsGroupFunction_FunctionCode = FieldSpec{
+    fieldSpec_NMEAWriteFieldsGroupFunction_FunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2355,7 +2537,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsGroupFunction_Pgn = FieldSpec{
+    fieldSpec_NMEAWriteFieldsGroupFunction_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFFFD,
@@ -2368,7 +2550,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsGroupFunction_UniqueId = FieldSpec{
+    fieldSpec_NMEAWriteFieldsGroupFunction_UniqueID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -2381,7 +2563,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsGroupFunction_NumberOfSelectionPairs = FieldSpec{
+    fieldSpec_NMEAWriteFieldsGroupFunction_NumberOfSelectionPairs = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -2394,7 +2576,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsGroupFunction_NumberOfParameters = FieldSpec{
+    fieldSpec_NMEAWriteFieldsGroupFunction_NumberOfParameters = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -2407,7 +2589,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsGroupFunction_SelectionParameter = FieldSpec{
+    fieldSpec_NMEAWriteFieldsGroupFunction_SelectionParameter = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2420,7 +2602,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsGroupFunction_SelectionValue = FieldSpec{
+    fieldSpec_NMEAWriteFieldsGroupFunction_SelectionValue = FieldSpec{
 		BitLength:         0,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2433,7 +2615,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: true,
 	}
-    fieldSpec_NmeaWriteFieldsGroupFunction_Parameter = FieldSpec{
+    fieldSpec_NMEAWriteFieldsGroupFunction_Parameter = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2446,7 +2628,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsGroupFunction_Value = FieldSpec{
+    fieldSpec_NMEAWriteFieldsGroupFunction_Value = FieldSpec{
 		BitLength:         0,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2459,7 +2641,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: true,
 	}
-    fieldSpec_NmeaWriteFieldsReplyGroupFunction_FunctionCode = FieldSpec{
+    fieldSpec_NMEAWriteFieldsReplyGroupFunction_FunctionCode = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2472,7 +2654,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsReplyGroupFunction_Pgn = FieldSpec{
+    fieldSpec_NMEAWriteFieldsReplyGroupFunction_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFFFD,
@@ -2485,7 +2667,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsReplyGroupFunction_UniqueId = FieldSpec{
+    fieldSpec_NMEAWriteFieldsReplyGroupFunction_UniqueID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -2498,7 +2680,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsReplyGroupFunction_NumberOfSelectionPairs = FieldSpec{
+    fieldSpec_NMEAWriteFieldsReplyGroupFunction_NumberOfSelectionPairs = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -2511,7 +2693,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsReplyGroupFunction_NumberOfParameters = FieldSpec{
+    fieldSpec_NMEAWriteFieldsReplyGroupFunction_NumberOfParameters = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -2524,7 +2706,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsReplyGroupFunction_SelectionParameter = FieldSpec{
+    fieldSpec_NMEAWriteFieldsReplyGroupFunction_SelectionParameter = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2537,7 +2719,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsReplyGroupFunction_SelectionValue = FieldSpec{
+    fieldSpec_NMEAWriteFieldsReplyGroupFunction_SelectionValue = FieldSpec{
 		BitLength:         0,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2550,7 +2732,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: true,
 	}
-    fieldSpec_NmeaWriteFieldsReplyGroupFunction_Parameter = FieldSpec{
+    fieldSpec_NMEAWriteFieldsReplyGroupFunction_Parameter = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2563,7 +2745,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NmeaWriteFieldsReplyGroupFunction_Value = FieldSpec{
+    fieldSpec_NMEAWriteFieldsReplyGroupFunction_Value = FieldSpec{
 		BitLength:         0,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -2576,7 +2758,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: true,
 	}
-    fieldSpec_PgnListTransmitAndReceive_Pgn = FieldSpec{
+    fieldSpec_PGNListTransmitAndReceive_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFFFD,
@@ -2615,7 +2797,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMediaControl_ProprietaryId = FieldSpec{
+    fieldSpec_FusionMediaControl_ProprietaryID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -2628,7 +2810,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMediaControl_SourceId = FieldSpec{
+    fieldSpec_FusionMediaControl_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -2667,7 +2849,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusControl_ProprietaryId = FieldSpec{
+    fieldSpec_FusionSiriusControl_ProprietaryID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -2680,7 +2862,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusControl_SourceId = FieldSpec{
+    fieldSpec_FusionSiriusControl_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -2732,7 +2914,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionRequestStatus_ProprietaryId = FieldSpec{
+    fieldSpec_FusionRequestStatus_ProprietaryID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -2771,7 +2953,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSetSource_ProprietaryId = FieldSpec{
+    fieldSpec_FusionSetSource_ProprietaryID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -2784,7 +2966,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSetSource_SourceId = FieldSpec{
+    fieldSpec_FusionSetSource_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -2823,7 +3005,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSetMute_ProprietaryId = FieldSpec{
+    fieldSpec_FusionSetMute_ProprietaryID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -2862,7 +3044,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSetZoneVolume_ProprietaryId = FieldSpec{
+    fieldSpec_FusionSetZoneVolume_ProprietaryID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -2927,7 +3109,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSetAllVolumes_ProprietaryId = FieldSpec{
+    fieldSpec_FusionSetAllVolumes_ProprietaryID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3018,7 +3200,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarAttitudeOffset_ProprietaryId = FieldSpec{
+    fieldSpec_AirmarAttitudeOffset_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3096,7 +3278,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarSimulateMode_ProprietaryId = FieldSpec{
+    fieldSpec_AirmarSimulateMode_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3135,7 +3317,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarCalibrateDepth_ProprietaryId = FieldSpec{
+    fieldSpec_AirmarCalibrateDepth_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3187,7 +3369,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarCalibrateSpeed_ProprietaryId = FieldSpec{
+    fieldSpec_AirmarCalibrateSpeed_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3265,7 +3447,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarCalibrateTemperature_ProprietaryId = FieldSpec{
+    fieldSpec_AirmarCalibrateTemperature_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3317,7 +3499,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarSpeedFilterNone_ProprietaryId = FieldSpec{
+    fieldSpec_AirmarSpeedFilterNone_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3356,7 +3538,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarSpeedFilterIir_ManufacturerCode = FieldSpec{
+    fieldSpec_AirmarSpeedFilterIIR_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -3369,7 +3551,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarSpeedFilterIir_IndustryCode = FieldSpec{
+    fieldSpec_AirmarSpeedFilterIIR_IndustryCode = FieldSpec{
 		BitLength:         3,
 		BitOffset:         13,
 		MaxRawValue:       0x0,
@@ -3382,7 +3564,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarSpeedFilterIir_ProprietaryId = FieldSpec{
+    fieldSpec_AirmarSpeedFilterIIR_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3395,7 +3577,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarSpeedFilterIir_FilterType = FieldSpec{
+    fieldSpec_AirmarSpeedFilterIIR_FilterType = FieldSpec{
 		BitLength:         4,
 		BitOffset:         24,
 		MaxRawValue:       0xD,
@@ -3408,7 +3590,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarSpeedFilterIir_SampleInterval = FieldSpec{
+    fieldSpec_AirmarSpeedFilterIIR_SampleInterval = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -3421,7 +3603,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarSpeedFilterIir_FilterDuration = FieldSpec{
+    fieldSpec_AirmarSpeedFilterIIR_FilterDuration = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -3460,7 +3642,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarTemperatureFilterNone_ProprietaryId = FieldSpec{
+    fieldSpec_AirmarTemperatureFilterNone_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3499,7 +3681,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarTemperatureFilterIir_ManufacturerCode = FieldSpec{
+    fieldSpec_AirmarTemperatureFilterIIR_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -3512,7 +3694,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarTemperatureFilterIir_IndustryCode = FieldSpec{
+    fieldSpec_AirmarTemperatureFilterIIR_IndustryCode = FieldSpec{
 		BitLength:         3,
 		BitOffset:         13,
 		MaxRawValue:       0x0,
@@ -3525,7 +3707,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarTemperatureFilterIir_ProprietaryId = FieldSpec{
+    fieldSpec_AirmarTemperatureFilterIIR_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3538,7 +3720,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarTemperatureFilterIir_FilterType = FieldSpec{
+    fieldSpec_AirmarTemperatureFilterIIR_FilterType = FieldSpec{
 		BitLength:         4,
 		BitOffset:         24,
 		MaxRawValue:       0xD,
@@ -3551,7 +3733,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarTemperatureFilterIir_SampleInterval = FieldSpec{
+    fieldSpec_AirmarTemperatureFilterIIR_SampleInterval = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -3564,7 +3746,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarTemperatureFilterIir_FilterDuration = FieldSpec{
+    fieldSpec_AirmarTemperatureFilterIIR_FilterDuration = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -3577,7 +3759,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarNmea2000Options_ManufacturerCode = FieldSpec{
+    fieldSpec_AirmarNMEA2000Options_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -3590,7 +3772,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarNmea2000Options_IndustryCode = FieldSpec{
+    fieldSpec_AirmarNMEA2000Options_IndustryCode = FieldSpec{
 		BitLength:         3,
 		BitOffset:         13,
 		MaxRawValue:       0x0,
@@ -3603,7 +3785,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AirmarNmea2000Options_ProprietaryId = FieldSpec{
+    fieldSpec_AirmarNMEA2000Options_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -3772,7 +3954,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Alert_AlertId = FieldSpec{
+    fieldSpec_Alert_AlertID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         24,
 		MaxRawValue:       0xFFFD,
@@ -3785,7 +3967,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Alert_DataSourceNetworkIdName = FieldSpec{
+    fieldSpec_Alert_DataSourceNetworkIDNAME = FieldSpec{
 		BitLength:         64,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFFFFFFFFFFFFFD,
@@ -3837,7 +4019,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Alert_AcknowledgeSourceNetworkIdName = FieldSpec{
+    fieldSpec_Alert_AcknowledgeSourceNetworkIDNAME = FieldSpec{
 		BitLength:         64,
 		BitOffset:         136,
 		MaxRawValue:       0xFFFFFFFFFFFFFFFD,
@@ -3889,7 +4071,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AlertResponse_AlertId = FieldSpec{
+    fieldSpec_AlertResponse_AlertID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         24,
 		MaxRawValue:       0xFFFD,
@@ -3902,7 +4084,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AlertResponse_DataSourceNetworkIdName = FieldSpec{
+    fieldSpec_AlertResponse_DataSourceNetworkIDNAME = FieldSpec{
 		BitLength:         64,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFFFFFFFFFFFFFD,
@@ -3954,7 +4136,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AlertResponse_AcknowledgeSourceNetworkIdName = FieldSpec{
+    fieldSpec_AlertResponse_AcknowledgeSourceNetworkIDNAME = FieldSpec{
 		BitLength:         64,
 		BitOffset:         128,
 		MaxRawValue:       0xFFFFFFFFFFFFFFFD,
@@ -3993,7 +4175,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AlertText_AlertId = FieldSpec{
+    fieldSpec_AlertText_AlertID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         24,
 		MaxRawValue:       0xFFFD,
@@ -4006,7 +4188,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AlertText_DataSourceNetworkIdName = FieldSpec{
+    fieldSpec_AlertText_DataSourceNetworkIDNAME = FieldSpec{
 		BitLength:         64,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFFFFFFFFFFFFFD,
@@ -4058,7 +4240,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_SystemTime_Sid = FieldSpec{
+    fieldSpec_SystemTime_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -4102,7 +4284,7 @@ var (
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
 		MissingValue:      0xFFFF,
-		Resolution:        0.009999999776482582,
+		Resolution:        0.0010000000474974513,
 		Offset:            0,
 		IsSigned:          false,
 		ReservedCount:     2,
@@ -4123,7 +4305,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_ProductInformation_Nmea2000Version = FieldSpec{
+    fieldSpec_ProductInformation_NMEA2000Version = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -4162,7 +4344,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_ManOverboardNotification_Sid = FieldSpec{
+    fieldSpec_ManOverboardNotification_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -4175,7 +4357,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_ManOverboardNotification_MobEmitterId = FieldSpec{
+    fieldSpec_ManOverboardNotification_MOBEmitterID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFFFFFD,
@@ -4253,7 +4435,7 @@ var (
 		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_ManOverboardNotification_Cog = FieldSpec{
+    fieldSpec_ManOverboardNotification_COG = FieldSpec{
 		BitLength:         16,
 		BitOffset:         208,
 		MaxRawValue:       0xFFFD,
@@ -4266,7 +4448,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_ManOverboardNotification_Sog = FieldSpec{
+    fieldSpec_ManOverboardNotification_SOG = FieldSpec{
 		BitLength:         16,
 		BitOffset:         224,
 		MaxRawValue:       0xFFFD,
@@ -4279,7 +4461,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_ManOverboardNotification_MmsiOfVesselOfOrigin = FieldSpec{
+    fieldSpec_ManOverboardNotification_MMSIOfVesselOfOrigin = FieldSpec{
 		BitLength:         32,
 		BitOffset:         240,
 		MaxRawValue:       0x0,
@@ -4448,7 +4630,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_VesselHeading_Sid = FieldSpec{
+    fieldSpec_VesselHeading_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -4500,7 +4682,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_RateOfTurn_Sid = FieldSpec{
+    fieldSpec_RateOfTurn_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -4526,7 +4708,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Attitude_Sid = FieldSpec{
+    fieldSpec_Attitude_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -4578,7 +4760,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_MagneticVariation_Sid = FieldSpec{
+    fieldSpec_MagneticVariation_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -4812,19 +4994,6 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_TransmissionParametersDynamic_DiscreteStatus1 = FieldSpec{
-		BitLength:         8,
-		BitOffset:         48,
-		MaxRawValue:       0xFD,
-		MissingValue:      0xFF,
-		Resolution:        1,
-		Offset:            0,
-		IsSigned:          false,
-		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
-		BitLengthVariable: false,
-	}
     fieldSpec_TripParametersVessel_TimeToEmpty = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
@@ -4942,7 +5111,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_LoadControllerConnectionStateControl_SequenceId = FieldSpec{
+    fieldSpec_LoadControllerConnectionStateControl_SequenceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -4955,7 +5124,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_LoadControllerConnectionStateControl_ConnectionId = FieldSpec{
+    fieldSpec_LoadControllerConnectionStateControl_ConnectionID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -5007,7 +5176,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_LoadControllerConnectionStateControl_PwmDutyCycle = FieldSpec{
+    fieldSpec_LoadControllerConnectionStateControl_PWMDutyCycle = FieldSpec{
 		BitLength:         8,
 		BitOffset:         40,
 		MaxRawValue:       0xFD,
@@ -5072,7 +5241,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcInputStatus_Instance = FieldSpec{
+    fieldSpec_ACInputStatus_Instance = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -5085,7 +5254,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcInputStatus_NumberOfLines = FieldSpec{
+    fieldSpec_ACInputStatus_NumberOfLines = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -5098,7 +5267,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcInputStatus_Voltage = FieldSpec{
+    fieldSpec_ACInputStatus_Voltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         24,
 		MaxRawValue:       0xFFFD,
@@ -5111,7 +5280,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcInputStatus_Current = FieldSpec{
+    fieldSpec_ACInputStatus_Current = FieldSpec{
 		BitLength:         16,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFD,
@@ -5124,7 +5293,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcInputStatus_Frequency = FieldSpec{
+    fieldSpec_ACInputStatus_Frequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         56,
 		MaxRawValue:       0xFFFD,
@@ -5137,7 +5306,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcInputStatus_BreakerSize = FieldSpec{
+    fieldSpec_ACInputStatus_BreakerSize = FieldSpec{
 		BitLength:         16,
 		BitOffset:         72,
 		MaxRawValue:       0xFFFD,
@@ -5150,7 +5319,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcInputStatus_RealPower = FieldSpec{
+    fieldSpec_ACInputStatus_RealPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         88,
 		MaxRawValue:       0xFFFFFFFD,
@@ -5163,7 +5332,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcInputStatus_ReactivePower = FieldSpec{
+    fieldSpec_ACInputStatus_ReactivePower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         120,
 		MaxRawValue:       0xFFFFFFFD,
@@ -5176,7 +5345,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcInputStatus_PowerFactor = FieldSpec{
+    fieldSpec_ACInputStatus_PowerFactor = FieldSpec{
 		BitLength:         8,
 		BitOffset:         152,
 		MaxRawValue:       0x7D,
@@ -5189,7 +5358,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcOutputStatus_Instance = FieldSpec{
+    fieldSpec_ACOutputStatus_Instance = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -5202,7 +5371,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcOutputStatus_NumberOfLines = FieldSpec{
+    fieldSpec_ACOutputStatus_NumberOfLines = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -5215,7 +5384,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcOutputStatus_Voltage = FieldSpec{
+    fieldSpec_ACOutputStatus_Voltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         24,
 		MaxRawValue:       0xFFFD,
@@ -5228,7 +5397,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcOutputStatus_Current = FieldSpec{
+    fieldSpec_ACOutputStatus_Current = FieldSpec{
 		BitLength:         16,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFD,
@@ -5241,7 +5410,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcOutputStatus_Frequency = FieldSpec{
+    fieldSpec_ACOutputStatus_Frequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         56,
 		MaxRawValue:       0xFFFD,
@@ -5254,7 +5423,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcOutputStatus_BreakerSize = FieldSpec{
+    fieldSpec_ACOutputStatus_BreakerSize = FieldSpec{
 		BitLength:         16,
 		BitOffset:         72,
 		MaxRawValue:       0xFFFD,
@@ -5267,7 +5436,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcOutputStatus_RealPower = FieldSpec{
+    fieldSpec_ACOutputStatus_RealPower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         88,
 		MaxRawValue:       0xFFFFFFFD,
@@ -5280,7 +5449,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcOutputStatus_ReactivePower = FieldSpec{
+    fieldSpec_ACOutputStatus_ReactivePower = FieldSpec{
 		BitLength:         32,
 		BitOffset:         120,
 		MaxRawValue:       0xFFFFFFFD,
@@ -5293,7 +5462,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcOutputStatus_PowerFactor = FieldSpec{
+    fieldSpec_ACOutputStatus_PowerFactor = FieldSpec{
 		BitLength:         8,
 		BitOffset:         152,
 		MaxRawValue:       0x7D,
@@ -5345,7 +5514,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DcDetailedStatus_Sid = FieldSpec{
+    fieldSpec_DCDetailedStatus_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -5358,7 +5527,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DcDetailedStatus_Instance = FieldSpec{
+    fieldSpec_DCDetailedStatus_Instance = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -5371,7 +5540,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DcDetailedStatus_StateOfCharge = FieldSpec{
+    fieldSpec_DCDetailedStatus_StateOfCharge = FieldSpec{
 		BitLength:         8,
 		BitOffset:         24,
 		MaxRawValue:       0xFD,
@@ -5384,7 +5553,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DcDetailedStatus_StateOfHealth = FieldSpec{
+    fieldSpec_DCDetailedStatus_StateOfHealth = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -5397,7 +5566,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DcDetailedStatus_TimeRemaining = FieldSpec{
+    fieldSpec_DCDetailedStatus_TimeRemaining = FieldSpec{
 		BitLength:         16,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFD,
@@ -5410,7 +5579,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DcDetailedStatus_RippleVoltage = FieldSpec{
+    fieldSpec_DCDetailedStatus_RippleVoltage = FieldSpec{
 		BitLength:         16,
 		BitOffset:         56,
 		MaxRawValue:       0xFFFD,
@@ -5423,7 +5592,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DcDetailedStatus_RemainingCapacity = FieldSpec{
+    fieldSpec_DCDetailedStatus_RemainingCapacity = FieldSpec{
 		BitLength:         16,
 		BitOffset:         72,
 		MaxRawValue:       0xFFFD,
@@ -5527,7 +5696,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_BatteryStatus_Sid = FieldSpec{
+    fieldSpec_BatteryStatus_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         56,
 		MaxRawValue:       0xFD,
@@ -5553,7 +5722,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_InverterStatus_AcInstance = FieldSpec{
+    fieldSpec_InverterStatus_ACInstance = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -5566,7 +5735,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_InverterStatus_DcInstance = FieldSpec{
+    fieldSpec_InverterStatus_DCInstance = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0xFD,
@@ -5644,7 +5813,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_InverterConfigurationStatus_AcInstance = FieldSpec{
+    fieldSpec_InverterConfigurationStatus_ACInstance = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -5657,7 +5826,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_InverterConfigurationStatus_DcInstance = FieldSpec{
+    fieldSpec_InverterConfigurationStatus_DCInstance = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0xFD,
@@ -5761,7 +5930,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseA_Sid = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseA_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -5774,7 +5943,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseA_ConnectionNumber = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseA_ConnectionNumber = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -5787,7 +5956,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseA_AcRmsCurrent = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseA_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -5800,7 +5969,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseA_Power = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseA_Power = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -5813,7 +5982,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseB_Sid = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseB_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -5826,7 +5995,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseB_ConnectionNumber = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseB_ConnectionNumber = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -5839,7 +6008,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseB_AcRmsCurrent = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseB_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -5852,7 +6021,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseB_Power = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseB_Power = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -5865,7 +6034,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseC_Sid = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseC_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -5878,7 +6047,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseC_ConnectionNumber = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseC_ConnectionNumber = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -5891,7 +6060,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseC_AcRmsCurrent = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseC_ACRMSCurrent = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -5904,7 +6073,7 @@ var (
 		DomainMax:         &[]float64{65532}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcPowerCurrentPhaseC_Power = FieldSpec{
+    fieldSpec_ACPowerCurrentPhaseC_Power = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFFFFFD,
@@ -5917,7 +6086,7 @@ var (
 		DomainMax:         &[]float64{4.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseA_Sid = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseA_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -5930,7 +6099,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseA_ConnectionNumber = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseA_ConnectionNumber = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -5943,7 +6112,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseA_AcVoltageLineToNeutral = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseA_ACVoltageLineToNeutral = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -5956,7 +6125,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseA_AcVoltageLineToLine = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseA_ACVoltageLineToLine = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -5969,7 +6138,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseA_Frequency = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseA_Frequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -5982,7 +6151,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseB_Sid = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseB_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -5995,7 +6164,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseB_ConnectionNumber = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseB_ConnectionNumber = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -6008,7 +6177,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseB_AcVoltageLineToNeutral = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseB_ACVoltageLineToNeutral = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -6021,7 +6190,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseB_AcVoltageLineToLine = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseB_ACVoltageLineToLine = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -6034,7 +6203,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseB_Frequency = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseB_Frequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -6047,7 +6216,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseC_Sid = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseC_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6060,7 +6229,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseC_ConnectionNumber = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseC_ConnectionNumber = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -6073,7 +6242,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseC_AcVoltageLineToNeutral = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseC_ACVoltageLineToNeutral = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -6086,7 +6255,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseC_AcVoltageLineToLine = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseC_ACVoltageLineToLine = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -6099,7 +6268,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AcVoltageFrequencyPhaseC_Frequency = FieldSpec{
+    fieldSpec_ACVoltageFrequencyPhaseC_Frequency = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -6112,7 +6281,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_ConverterStatus_Sid = FieldSpec{
+    fieldSpec_ConverterStatus_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6138,59 +6307,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DcVoltageCurrent_Sid = FieldSpec{
-		BitLength:         8,
-		BitOffset:         0,
-		MaxRawValue:       0xFD,
-		MissingValue:      0xFF,
-		Resolution:        1,
-		Offset:            0,
-		IsSigned:          false,
-		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
-		BitLengthVariable: false,
-	}
-    fieldSpec_DcVoltageCurrent_ConnectionNumber = FieldSpec{
-		BitLength:         8,
-		BitOffset:         8,
-		MaxRawValue:       0xFD,
-		MissingValue:      0xFF,
-		Resolution:        1,
-		Offset:            0,
-		IsSigned:          false,
-		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
-		BitLengthVariable: false,
-	}
-    fieldSpec_DcVoltageCurrent_DcVoltage = FieldSpec{
-		BitLength:         16,
-		BitOffset:         16,
-		MaxRawValue:       0xFFFD,
-		MissingValue:      0xFFFF,
-		Resolution:        0.10000000149011612,
-		Offset:            0,
-		IsSigned:          false,
-		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
-		BitLengthVariable: false,
-	}
-    fieldSpec_DcVoltageCurrent_DcCurrent = FieldSpec{
-		BitLength:         24,
-		BitOffset:         32,
-		MaxRawValue:       0x7FFFFD,
-		MissingValue:      0x7FFFFF,
-		Resolution:        0.009999999776482582,
-		Offset:            0,
-		IsSigned:          true,
-		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
-		BitLengthVariable: false,
-	}
-    fieldSpec_LeewayAngle_Sid = FieldSpec{
+    fieldSpec_LeewayAngle_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6216,7 +6333,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_ThrusterControlStatus_Sid = FieldSpec{
+    fieldSpec_ThrusterControlStatus_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6333,7 +6450,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_ThrusterMotorStatus_Sid = FieldSpec{
+    fieldSpec_ThrusterMotorStatus_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6398,7 +6515,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Speed_Sid = FieldSpec{
+    fieldSpec_Speed_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6450,7 +6567,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_WaterDepth_Sid = FieldSpec{
+    fieldSpec_WaterDepth_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6554,7 +6671,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_WindlassControlStatus_Sid = FieldSpec{
+    fieldSpec_WindlassControlStatus_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6567,7 +6684,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_WindlassControlStatus_WindlassId = FieldSpec{
+    fieldSpec_WindlassControlStatus_WindlassID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -6593,7 +6710,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AnchorWindlassOperatingStatus_Sid = FieldSpec{
+    fieldSpec_AnchorWindlassOperatingStatus_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6606,7 +6723,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AnchorWindlassOperatingStatus_WindlassId = FieldSpec{
+    fieldSpec_AnchorWindlassOperatingStatus_WindlassID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -6645,7 +6762,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AnchorWindlassMonitoringStatus_Sid = FieldSpec{
+    fieldSpec_AnchorWindlassMonitoringStatus_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6658,7 +6775,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AnchorWindlassMonitoringStatus_WindlassId = FieldSpec{
+    fieldSpec_AnchorWindlassMonitoringStatus_WindlassID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -6736,7 +6853,7 @@ var (
 		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_CogSogRapidUpdate_Sid = FieldSpec{
+    fieldSpec_COGSOGRapidUpdate_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6749,7 +6866,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_CogSogRapidUpdate_Cog = FieldSpec{
+    fieldSpec_COGSOGRapidUpdate_COG = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -6762,7 +6879,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_CogSogRapidUpdate_Sog = FieldSpec{
+    fieldSpec_COGSOGRapidUpdate_SOG = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -6775,7 +6892,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_Sid = FieldSpec{
+    fieldSpec_GNSSPositionData_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -6788,7 +6905,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_Date = FieldSpec{
+    fieldSpec_GNSSPositionData_Date = FieldSpec{
 		BitLength:         16,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFD,
@@ -6801,7 +6918,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_Time = FieldSpec{
+    fieldSpec_GNSSPositionData_Time = FieldSpec{
 		BitLength:         32,
 		BitOffset:         24,
 		MaxRawValue:       0xFFFFFFFD,
@@ -6814,7 +6931,7 @@ var (
 		DomainMax:         &[]float64{86401}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_Latitude = FieldSpec{
+    fieldSpec_GNSSPositionData_Latitude = FieldSpec{
 		BitLength:         64,
 		BitOffset:         56,
 		MaxRawValue:       0x7FFFFFFFFFFFFFFD,
@@ -6827,7 +6944,7 @@ var (
 		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_Longitude = FieldSpec{
+    fieldSpec_GNSSPositionData_Longitude = FieldSpec{
 		BitLength:         64,
 		BitOffset:         120,
 		MaxRawValue:       0x7FFFFFFFFFFFFFFD,
@@ -6840,7 +6957,7 @@ var (
 		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_Altitude = FieldSpec{
+    fieldSpec_GNSSPositionData_Altitude = FieldSpec{
 		BitLength:         64,
 		BitOffset:         184,
 		MaxRawValue:       0x7FFFFFFFFFFFFFFD,
@@ -6853,7 +6970,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_NumberOfSvs = FieldSpec{
+    fieldSpec_GNSSPositionData_NumberOfSVs = FieldSpec{
 		BitLength:         8,
 		BitOffset:         264,
 		MaxRawValue:       0xFD,
@@ -6866,7 +6983,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_Hdop = FieldSpec{
+    fieldSpec_GNSSPositionData_HDOP = FieldSpec{
 		BitLength:         16,
 		BitOffset:         272,
 		MaxRawValue:       0x7FFD,
@@ -6879,7 +6996,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_Pdop = FieldSpec{
+    fieldSpec_GNSSPositionData_PDOP = FieldSpec{
 		BitLength:         16,
 		BitOffset:         288,
 		MaxRawValue:       0x7FFD,
@@ -6892,7 +7009,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_GeoidalSeparation = FieldSpec{
+    fieldSpec_GNSSPositionData_GeoidalSeparation = FieldSpec{
 		BitLength:         32,
 		BitOffset:         304,
 		MaxRawValue:       0x7FFFFFFD,
@@ -6905,7 +7022,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_ReferenceStations = FieldSpec{
+    fieldSpec_GNSSPositionData_ReferenceStations = FieldSpec{
 		BitLength:         8,
 		BitOffset:         336,
 		MaxRawValue:       0xFD,
@@ -6918,7 +7035,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_ReferenceStationId = FieldSpec{
+    fieldSpec_GNSSPositionData_ReferenceStationID = FieldSpec{
 		BitLength:         12,
 		BitOffset:         348,
 		MaxRawValue:       0xFFD,
@@ -6931,7 +7048,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPositionData_AgeOfDgnssCorrections = FieldSpec{
+    fieldSpec_GNSSPositionData_AgeOfDGNSSCorrections = FieldSpec{
 		BitLength:         16,
 		BitOffset:         360,
 		MaxRawValue:       0xFFFD,
@@ -6983,7 +7100,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAPositionReport_UserId = FieldSpec{
+    fieldSpec_AISClassAPositionReport_UserID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0x0,
@@ -6996,7 +7113,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAPositionReport_Longitude = FieldSpec{
+    fieldSpec_AISClassAPositionReport_Longitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         40,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7009,7 +7126,7 @@ var (
 		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAPositionReport_Latitude = FieldSpec{
+    fieldSpec_AISClassAPositionReport_Latitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         72,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7022,7 +7139,7 @@ var (
 		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAPositionReport_Cog = FieldSpec{
+    fieldSpec_AISClassAPositionReport_COG = FieldSpec{
 		BitLength:         16,
 		BitOffset:         112,
 		MaxRawValue:       0xFFFD,
@@ -7035,7 +7152,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAPositionReport_Sog = FieldSpec{
+    fieldSpec_AISClassAPositionReport_SOG = FieldSpec{
 		BitLength:         16,
 		BitOffset:         128,
 		MaxRawValue:       0xFFFD,
@@ -7048,7 +7165,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAPositionReport_Heading = FieldSpec{
+    fieldSpec_AISClassAPositionReport_Heading = FieldSpec{
 		BitLength:         16,
 		BitOffset:         168,
 		MaxRawValue:       0xFFFD,
@@ -7061,7 +7178,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAPositionReport_RateOfTurn = FieldSpec{
+    fieldSpec_AISClassAPositionReport_RateOfTurn = FieldSpec{
 		BitLength:         16,
 		BitOffset:         184,
 		MaxRawValue:       0x7FFD,
@@ -7074,7 +7191,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAPositionReport_SequenceId = FieldSpec{
+    fieldSpec_AISClassAPositionReport_SequenceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         216,
 		MaxRawValue:       0xFD,
@@ -7087,7 +7204,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBPositionReport_UserId = FieldSpec{
+    fieldSpec_AISClassBPositionReport_UserID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0x0,
@@ -7100,7 +7217,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBPositionReport_Longitude = FieldSpec{
+    fieldSpec_AISClassBPositionReport_Longitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         40,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7113,7 +7230,7 @@ var (
 		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBPositionReport_Latitude = FieldSpec{
+    fieldSpec_AISClassBPositionReport_Latitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         72,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7126,7 +7243,7 @@ var (
 		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBPositionReport_Cog = FieldSpec{
+    fieldSpec_AISClassBPositionReport_COG = FieldSpec{
 		BitLength:         16,
 		BitOffset:         112,
 		MaxRawValue:       0xFFFD,
@@ -7139,7 +7256,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBPositionReport_Sog = FieldSpec{
+    fieldSpec_AISClassBPositionReport_SOG = FieldSpec{
 		BitLength:         16,
 		BitOffset:         128,
 		MaxRawValue:       0xFFFD,
@@ -7152,7 +7269,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBPositionReport_Heading = FieldSpec{
+    fieldSpec_AISClassBPositionReport_Heading = FieldSpec{
 		BitLength:         16,
 		BitOffset:         168,
 		MaxRawValue:       0xFFFD,
@@ -7165,7 +7282,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAidsToNavigationAtonReport_UserId = FieldSpec{
+    fieldSpec_AISAidsToNavigationAtonReport_UserID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0x0,
@@ -7178,7 +7295,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAidsToNavigationAtonReport_Longitude = FieldSpec{
+    fieldSpec_AISAidsToNavigationAtonReport_Longitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         40,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7191,7 +7308,7 @@ var (
 		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAidsToNavigationAtonReport_Latitude = FieldSpec{
+    fieldSpec_AISAidsToNavigationAtonReport_Latitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         72,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7204,7 +7321,7 @@ var (
 		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAidsToNavigationAtonReport_LengthDiameter = FieldSpec{
+    fieldSpec_AISAidsToNavigationAtonReport_LengthDiameter = FieldSpec{
 		BitLength:         16,
 		BitOffset:         112,
 		MaxRawValue:       0xFFFD,
@@ -7217,7 +7334,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAidsToNavigationAtonReport_BeamDiameter = FieldSpec{
+    fieldSpec_AISAidsToNavigationAtonReport_BeamDiameter = FieldSpec{
 		BitLength:         16,
 		BitOffset:         128,
 		MaxRawValue:       0xFFFD,
@@ -7230,7 +7347,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAidsToNavigationAtonReport_PositionReferenceFromStarboardEdge = FieldSpec{
+    fieldSpec_AISAidsToNavigationAtonReport_PositionReferenceFromStarboardEdge = FieldSpec{
 		BitLength:         16,
 		BitOffset:         144,
 		MaxRawValue:       0xFFFD,
@@ -7243,7 +7360,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAidsToNavigationAtonReport_PositionReferenceFromTrueNorthFacingEdge = FieldSpec{
+    fieldSpec_AISAidsToNavigationAtonReport_PositionReferenceFromTrueNorthFacingEdge = FieldSpec{
 		BitLength:         16,
 		BitOffset:         160,
 		MaxRawValue:       0xFFFD,
@@ -7347,7 +7464,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_CrossTrackError_Sid = FieldSpec{
+    fieldSpec_CrossTrackError_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -7360,7 +7477,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_CrossTrackError_Xte = FieldSpec{
+    fieldSpec_CrossTrackError_XTE = FieldSpec{
 		BitLength:         32,
 		BitOffset:         16,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7373,7 +7490,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationData_Sid = FieldSpec{
+    fieldSpec_NavigationData_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -7399,7 +7516,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationData_EtaTime = FieldSpec{
+    fieldSpec_NavigationData_ETATime = FieldSpec{
 		BitLength:         32,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFFFFFD,
@@ -7412,7 +7529,7 @@ var (
 		DomainMax:         &[]float64{86401}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationData_EtaDate = FieldSpec{
+    fieldSpec_NavigationData_ETADate = FieldSpec{
 		BitLength:         16,
 		BitOffset:         80,
 		MaxRawValue:       0xFFFD,
@@ -7516,7 +7633,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationRouteWpInformation_StartRps = FieldSpec{
+    fieldSpec_NavigationRouteWPInformation_StartRPS = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -7529,7 +7646,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationRouteWpInformation_Nitems = FieldSpec{
+    fieldSpec_NavigationRouteWPInformation_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -7542,7 +7659,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationRouteWpInformation_DatabaseId = FieldSpec{
+    fieldSpec_NavigationRouteWPInformation_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -7555,7 +7672,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationRouteWpInformation_RouteId = FieldSpec{
+    fieldSpec_NavigationRouteWPInformation_RouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -7568,7 +7685,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationRouteWpInformation_WpId = FieldSpec{
+    fieldSpec_NavigationRouteWPInformation_WPID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -7581,7 +7698,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationRouteWpInformation_WpLatitude = FieldSpec{
+    fieldSpec_NavigationRouteWPInformation_WPLatitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7594,7 +7711,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationRouteWpInformation_WpLongitude = FieldSpec{
+    fieldSpec_NavigationRouteWPInformation_WPLongitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7607,7 +7724,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_SetDriftRapidUpdate_Sid = FieldSpec{
+    fieldSpec_SetDriftRapidUpdate_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -7646,7 +7763,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationRouteTimeToFromMark_Sid = FieldSpec{
+    fieldSpec_NavigationRouteTimeToFromMark_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -7672,7 +7789,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_NavigationRouteTimeToFromMark_MarkId = FieldSpec{
+    fieldSpec_NavigationRouteTimeToFromMark_MarkID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFFFFFD,
@@ -7685,7 +7802,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssControlStatus_SvElevationMask = FieldSpec{
+    fieldSpec_GNSSControlStatus_SVElevationMask = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFD,
@@ -7698,7 +7815,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssControlStatus_PdopMask = FieldSpec{
+    fieldSpec_GNSSControlStatus_PDOPMask = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x7FFD,
@@ -7711,7 +7828,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssControlStatus_PdopSwitch = FieldSpec{
+    fieldSpec_GNSSControlStatus_PDOPSwitch = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFD,
@@ -7724,7 +7841,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssControlStatus_SnrMask = FieldSpec{
+    fieldSpec_GNSSControlStatus_SNRMask = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0x7FFD,
@@ -7737,7 +7854,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssControlStatus_MaxCorrectionAge = FieldSpec{
+    fieldSpec_GNSSControlStatus_MaxCorrectionAge = FieldSpec{
 		BitLength:         16,
 		BitOffset:         72,
 		MaxRawValue:       0xFFFD,
@@ -7750,7 +7867,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssControlStatus_AntennaAltitudeFor2dMode = FieldSpec{
+    fieldSpec_GNSSControlStatus_AntennaAltitudeFor2DMode = FieldSpec{
 		BitLength:         32,
 		BitOffset:         88,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7763,7 +7880,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDops_Sid = FieldSpec{
+    fieldSpec_GNSSDOPs_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -7776,7 +7893,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDops_Hdop = FieldSpec{
+    fieldSpec_GNSSDOPs_HDOP = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x7FFD,
@@ -7789,7 +7906,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDops_Vdop = FieldSpec{
+    fieldSpec_GNSSDOPs_VDOP = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFD,
@@ -7802,7 +7919,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDops_Tdop = FieldSpec{
+    fieldSpec_GNSSDOPs_TDOP = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0x7FFD,
@@ -7815,7 +7932,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssSatsInView_Sid = FieldSpec{
+    fieldSpec_GNSSSatsInView_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -7828,7 +7945,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssSatsInView_SatsInView = FieldSpec{
+    fieldSpec_GNSSSatsInView_SatsInView = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0xFD,
@@ -7841,7 +7958,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssSatsInView_Prn = FieldSpec{
+    fieldSpec_GNSSSatsInView_PRN = FieldSpec{
 		BitLength:         8,
 		BitOffset:         24,
 		MaxRawValue:       0xFD,
@@ -7854,7 +7971,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssSatsInView_Elevation = FieldSpec{
+    fieldSpec_GNSSSatsInView_Elevation = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0x7FFD,
@@ -7867,7 +7984,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssSatsInView_Azimuth = FieldSpec{
+    fieldSpec_GNSSSatsInView_Azimuth = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -7880,7 +7997,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssSatsInView_Snr = FieldSpec{
+    fieldSpec_GNSSSatsInView_SNR = FieldSpec{
 		BitLength:         16,
 		BitOffset:         64,
 		MaxRawValue:       0x7FFD,
@@ -7893,7 +8010,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssSatsInView_RangeResiduals = FieldSpec{
+    fieldSpec_GNSSSatsInView_RangeResiduals = FieldSpec{
 		BitLength:         32,
 		BitOffset:         80,
 		MaxRawValue:       0x7FFFFFFD,
@@ -7906,7 +8023,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssRaimSettings_RadialPositionErrorMaximumThreshold = FieldSpec{
+    fieldSpec_GNSSRAIMSettings_RadialPositionErrorMaximumThreshold = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -7919,7 +8036,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssRaimSettings_ProbabilityOfFalseAlarm = FieldSpec{
+    fieldSpec_GNSSRAIMSettings_ProbabilityOfFalseAlarm = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0x7D,
@@ -7932,7 +8049,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssRaimSettings_ProbabilityOfMissedDetection = FieldSpec{
+    fieldSpec_GNSSRAIMSettings_ProbabilityOfMissedDetection = FieldSpec{
 		BitLength:         8,
 		BitOffset:         24,
 		MaxRawValue:       0x7D,
@@ -7945,7 +8062,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssRaimSettings_PseudorangeResidualFilteringTimeConstant = FieldSpec{
+    fieldSpec_GNSSRAIMSettings_PseudorangeResidualFilteringTimeConstant = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -7958,7 +8075,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPseudorangeErrorStatistics_Sid = FieldSpec{
+    fieldSpec_GNSSPseudorangeErrorStatistics_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -7971,7 +8088,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPseudorangeErrorStatistics_RmsStdDevOfRangeInputs = FieldSpec{
+    fieldSpec_GNSSPseudorangeErrorStatistics_RMSStdDevOfRangeInputs = FieldSpec{
 		BitLength:         16,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFD,
@@ -7984,7 +8101,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPseudorangeErrorStatistics_StdDevOfMajorErrorEllipse = FieldSpec{
+    fieldSpec_GNSSPseudorangeErrorStatistics_StdDevOfMajorErrorEllipse = FieldSpec{
 		BitLength:         16,
 		BitOffset:         24,
 		MaxRawValue:       0xFFFD,
@@ -7997,7 +8114,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPseudorangeErrorStatistics_StdDevOfMinorErrorEllipse = FieldSpec{
+    fieldSpec_GNSSPseudorangeErrorStatistics_StdDevOfMinorErrorEllipse = FieldSpec{
 		BitLength:         16,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFD,
@@ -8010,7 +8127,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPseudorangeErrorStatistics_OrientationOfErrorEllipse = FieldSpec{
+    fieldSpec_GNSSPseudorangeErrorStatistics_OrientationOfErrorEllipse = FieldSpec{
 		BitLength:         16,
 		BitOffset:         56,
 		MaxRawValue:       0xFFFD,
@@ -8023,7 +8140,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPseudorangeErrorStatistics_StdDevLatError = FieldSpec{
+    fieldSpec_GNSSPseudorangeErrorStatistics_StdDevLatError = FieldSpec{
 		BitLength:         16,
 		BitOffset:         72,
 		MaxRawValue:       0xFFFD,
@@ -8036,7 +8153,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPseudorangeErrorStatistics_StdDevLonError = FieldSpec{
+    fieldSpec_GNSSPseudorangeErrorStatistics_StdDevLonError = FieldSpec{
 		BitLength:         16,
 		BitOffset:         88,
 		MaxRawValue:       0xFFFD,
@@ -8049,7 +8166,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssPseudorangeErrorStatistics_StdDevAltError = FieldSpec{
+    fieldSpec_GNSSPseudorangeErrorStatistics_StdDevAltError = FieldSpec{
 		BitLength:         16,
 		BitOffset:         104,
 		MaxRawValue:       0xFFFD,
@@ -8062,7 +8179,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DgnssCorrections_Sid = FieldSpec{
+    fieldSpec_DGNSSCorrections_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -8075,7 +8192,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DgnssCorrections_ReferenceStationId = FieldSpec{
+    fieldSpec_DGNSSCorrections_ReferenceStationID = FieldSpec{
 		BitLength:         12,
 		BitOffset:         8,
 		MaxRawValue:       0xFFD,
@@ -8088,7 +8205,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DgnssCorrections_TimeOfCorrections = FieldSpec{
+    fieldSpec_DGNSSCorrections_TimeOfCorrections = FieldSpec{
 		BitLength:         16,
 		BitOffset:         24,
 		MaxRawValue:       0xFFFD,
@@ -8101,7 +8218,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DgnssCorrections_SatelliteId = FieldSpec{
+    fieldSpec_DGNSSCorrections_SatelliteID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         48,
 		MaxRawValue:       0xFD,
@@ -8114,7 +8231,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DgnssCorrections_Prc = FieldSpec{
+    fieldSpec_DGNSSCorrections_PRC = FieldSpec{
 		BitLength:         32,
 		BitOffset:         56,
 		MaxRawValue:       0x7FFFFFFD,
@@ -8127,7 +8244,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DgnssCorrections_Rrc = FieldSpec{
+    fieldSpec_DGNSSCorrections_RRC = FieldSpec{
 		BitLength:         16,
 		BitOffset:         88,
 		MaxRawValue:       0x7FFD,
@@ -8140,7 +8257,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DgnssCorrections_Udre = FieldSpec{
+    fieldSpec_DGNSSCorrections_UDRE = FieldSpec{
 		BitLength:         16,
 		BitOffset:         104,
 		MaxRawValue:       0xFFFD,
@@ -8153,7 +8270,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DgnssCorrections_Iod = FieldSpec{
+    fieldSpec_DGNSSCorrections_IOD = FieldSpec{
 		BitLength:         8,
 		BitOffset:         120,
 		MaxRawValue:       0xFD,
@@ -8166,7 +8283,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDifferentialCorrectionReceiverInterface_Channel = FieldSpec{
+    fieldSpec_GNSSDifferentialCorrectionReceiverInterface_Channel = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -8179,7 +8296,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDifferentialCorrectionReceiverInterface_Frequency = FieldSpec{
+    fieldSpec_GNSSDifferentialCorrectionReceiverInterface_Frequency = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFFFFFD,
@@ -8192,7 +8309,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDifferentialCorrectionReceiverSignal_Sid = FieldSpec{
+    fieldSpec_GNSSDifferentialCorrectionReceiverSignal_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -8205,7 +8322,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDifferentialCorrectionReceiverSignal_Channel = FieldSpec{
+    fieldSpec_GNSSDifferentialCorrectionReceiverSignal_Channel = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -8218,7 +8335,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDifferentialCorrectionReceiverSignal_SignalStrength = FieldSpec{
+    fieldSpec_GNSSDifferentialCorrectionReceiverSignal_SignalStrength = FieldSpec{
 		BitLength:         32,
 		BitOffset:         16,
 		MaxRawValue:       0x7FFFFFFD,
@@ -8231,7 +8348,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDifferentialCorrectionReceiverSignal_SignalSnr = FieldSpec{
+    fieldSpec_GNSSDifferentialCorrectionReceiverSignal_SignalSNR = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0x7FFD,
@@ -8244,7 +8361,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDifferentialCorrectionReceiverSignal_Frequency = FieldSpec{
+    fieldSpec_GNSSDifferentialCorrectionReceiverSignal_Frequency = FieldSpec{
 		BitLength:         32,
 		BitOffset:         64,
 		MaxRawValue:       0xFFFFFFFD,
@@ -8257,7 +8374,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDifferentialCorrectionReceiverSignal_ReferenceStationId = FieldSpec{
+    fieldSpec_GNSSDifferentialCorrectionReceiverSignal_ReferenceStationID = FieldSpec{
 		BitLength:         12,
 		BitOffset:         100,
 		MaxRawValue:       0xFFD,
@@ -8270,7 +8387,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDifferentialCorrectionReceiverSignal_TimeSinceLastSatDifferentialSync = FieldSpec{
+    fieldSpec_GNSSDifferentialCorrectionReceiverSignal_TimeSinceLastSatDifferentialSync = FieldSpec{
 		BitLength:         16,
 		BitOffset:         128,
 		MaxRawValue:       0xFFFD,
@@ -8283,7 +8400,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GnssDifferentialCorrectionReceiverSignal_SatelliteServiceIdNo = FieldSpec{
+    fieldSpec_GNSSDifferentialCorrectionReceiverSignal_SatelliteServiceIDNo = FieldSpec{
 		BitLength:         16,
 		BitOffset:         144,
 		MaxRawValue:       0xFFFD,
@@ -8296,7 +8413,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_Prn = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_PRN = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -8309,7 +8426,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_Na = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_NA = FieldSpec{
 		BitLength:         16,
 		BitOffset:         8,
 		MaxRawValue:       0xFFFD,
@@ -8322,7 +8439,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_Cna = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_Cna = FieldSpec{
 		BitLength:         1,
 		BitOffset:         26,
 		MaxRawValue:       0x0,
@@ -8335,7 +8452,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_Hna = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_Hna = FieldSpec{
 		BitLength:         5,
 		BitOffset:         27,
 		MaxRawValue:       0x1D,
@@ -8348,7 +8465,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_EpsilonNa = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_EpsilonNa = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -8361,7 +8478,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_DeltatnaDot = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_DeltatnaDot = FieldSpec{
 		BitLength:         8,
 		BitOffset:         48,
 		MaxRawValue:       0xFD,
@@ -8374,7 +8491,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_OmegaNa = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_OmegaNa = FieldSpec{
 		BitLength:         16,
 		BitOffset:         56,
 		MaxRawValue:       0xFFFD,
@@ -8387,7 +8504,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_DeltaTna = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_DeltaTna = FieldSpec{
 		BitLength:         24,
 		BitOffset:         72,
 		MaxRawValue:       0xFFFFFD,
@@ -8400,7 +8517,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_Tna = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_Tna = FieldSpec{
 		BitLength:         24,
 		BitOffset:         96,
 		MaxRawValue:       0xFFFFFD,
@@ -8413,7 +8530,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_LambdaNa = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_LambdaNa = FieldSpec{
 		BitLength:         24,
 		BitOffset:         120,
 		MaxRawValue:       0xFFFFFD,
@@ -8426,7 +8543,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_DeltaIna = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_DeltaIna = FieldSpec{
 		BitLength:         24,
 		BitOffset:         144,
 		MaxRawValue:       0xFFFFFD,
@@ -8439,7 +8556,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_TauCa = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_TauCa = FieldSpec{
 		BitLength:         28,
 		BitOffset:         168,
 		MaxRawValue:       0xFFFFFFD,
@@ -8452,7 +8569,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_GlonassAlmanacData_TauNa = FieldSpec{
+    fieldSpec_GLONASSAlmanacData_TauNa = FieldSpec{
 		BitLength:         12,
 		BitOffset:         196,
 		MaxRawValue:       0xFFD,
@@ -8465,7 +8582,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisUtcAndDateReport_UserId = FieldSpec{
+    fieldSpec_AISUTCAndDateReport_UserID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0x0,
@@ -8478,7 +8595,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisUtcAndDateReport_Longitude = FieldSpec{
+    fieldSpec_AISUTCAndDateReport_Longitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         40,
 		MaxRawValue:       0x7FFFFFFD,
@@ -8491,7 +8608,7 @@ var (
 		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisUtcAndDateReport_Latitude = FieldSpec{
+    fieldSpec_AISUTCAndDateReport_Latitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         72,
 		MaxRawValue:       0x7FFFFFFD,
@@ -8504,7 +8621,7 @@ var (
 		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisUtcAndDateReport_PositionTime = FieldSpec{
+    fieldSpec_AISUTCAndDateReport_PositionTime = FieldSpec{
 		BitLength:         32,
 		BitOffset:         112,
 		MaxRawValue:       0xFFFFFFFD,
@@ -8517,7 +8634,7 @@ var (
 		DomainMax:         &[]float64{86401}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisUtcAndDateReport_PositionDate = FieldSpec{
+    fieldSpec_AISUTCAndDateReport_PositionDate = FieldSpec{
 		BitLength:         16,
 		BitOffset:         168,
 		MaxRawValue:       0xFFFD,
@@ -8530,7 +8647,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAStaticAndVoyageRelatedData_UserId = FieldSpec{
+    fieldSpec_AISClassAStaticAndVoyageRelatedData_UserID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0x0,
@@ -8543,7 +8660,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAStaticAndVoyageRelatedData_ImoNumber = FieldSpec{
+    fieldSpec_AISClassAStaticAndVoyageRelatedData_IMONumber = FieldSpec{
 		BitLength:         32,
 		BitOffset:         40,
 		MaxRawValue:       0xFFFFFFFD,
@@ -8556,7 +8673,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAStaticAndVoyageRelatedData_Length = FieldSpec{
+    fieldSpec_AISClassAStaticAndVoyageRelatedData_Length = FieldSpec{
 		BitLength:         16,
 		BitOffset:         296,
 		MaxRawValue:       0xFFFD,
@@ -8569,7 +8686,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAStaticAndVoyageRelatedData_Beam = FieldSpec{
+    fieldSpec_AISClassAStaticAndVoyageRelatedData_Beam = FieldSpec{
 		BitLength:         16,
 		BitOffset:         312,
 		MaxRawValue:       0xFFFD,
@@ -8582,7 +8699,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAStaticAndVoyageRelatedData_PositionReferenceFromStarboard = FieldSpec{
+    fieldSpec_AISClassAStaticAndVoyageRelatedData_PositionReferenceFromStarboard = FieldSpec{
 		BitLength:         16,
 		BitOffset:         328,
 		MaxRawValue:       0xFFFD,
@@ -8595,7 +8712,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAStaticAndVoyageRelatedData_PositionReferenceFromBow = FieldSpec{
+    fieldSpec_AISClassAStaticAndVoyageRelatedData_PositionReferenceFromBow = FieldSpec{
 		BitLength:         16,
 		BitOffset:         344,
 		MaxRawValue:       0xFFFD,
@@ -8608,7 +8725,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAStaticAndVoyageRelatedData_EtaDate = FieldSpec{
+    fieldSpec_AISClassAStaticAndVoyageRelatedData_ETADate = FieldSpec{
 		BitLength:         16,
 		BitOffset:         360,
 		MaxRawValue:       0xFFFD,
@@ -8621,7 +8738,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAStaticAndVoyageRelatedData_EtaTime = FieldSpec{
+    fieldSpec_AISClassAStaticAndVoyageRelatedData_ETATime = FieldSpec{
 		BitLength:         32,
 		BitOffset:         376,
 		MaxRawValue:       0xFFFFFFFD,
@@ -8634,7 +8751,7 @@ var (
 		DomainMax:         &[]float64{86401}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassAStaticAndVoyageRelatedData_Draft = FieldSpec{
+    fieldSpec_AISClassAStaticAndVoyageRelatedData_Draft = FieldSpec{
 		BitLength:         16,
 		BitOffset:         408,
 		MaxRawValue:       0xFFFD,
@@ -8647,7 +8764,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAddressedBinaryMessage_SourceId = FieldSpec{
+    fieldSpec_AISAddressedBinaryMessage_SourceID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0x0,
@@ -8660,7 +8777,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAddressedBinaryMessage_SequenceNumber = FieldSpec{
+    fieldSpec_AISAddressedBinaryMessage_SequenceNumber = FieldSpec{
 		BitLength:         2,
 		BitOffset:         46,
 		MaxRawValue:       0x2,
@@ -8673,7 +8790,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAddressedBinaryMessage_DestinationId = FieldSpec{
+    fieldSpec_AISAddressedBinaryMessage_DestinationID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         48,
 		MaxRawValue:       0x0,
@@ -8686,7 +8803,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAddressedBinaryMessage_NumberOfBitsInBinaryDataField = FieldSpec{
+    fieldSpec_AISAddressedBinaryMessage_NumberOfBitsInBinaryDataField = FieldSpec{
 		BitLength:         16,
 		BitOffset:         88,
 		MaxRawValue:       0xFFFD,
@@ -8699,7 +8816,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAcknowledge_SourceId = FieldSpec{
+    fieldSpec_AISAcknowledge_SourceID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0x0,
@@ -8712,7 +8829,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAcknowledge_DestinationId = FieldSpec{
+    fieldSpec_AISAcknowledge_DestinationID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         48,
 		MaxRawValue:       0x0,
@@ -8725,7 +8842,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisAcknowledge_SequenceNumber = FieldSpec{
+    fieldSpec_AISAcknowledge_SequenceNumber = FieldSpec{
 		BitLength:         2,
 		BitOffset:         80,
 		MaxRawValue:       0x2,
@@ -8738,7 +8855,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisBinaryBroadcastMessage_SourceId = FieldSpec{
+    fieldSpec_AISBinaryBroadcastMessage_SourceID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0x0,
@@ -8751,7 +8868,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisBinaryBroadcastMessage_NumberOfBitsInBinaryDataField = FieldSpec{
+    fieldSpec_AISBinaryBroadcastMessage_NumberOfBitsInBinaryDataField = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -8816,7 +8933,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBStaticDataMsg24PartA_UserId = FieldSpec{
+    fieldSpec_AISClassBStaticDataMsg24PartA_UserID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0x0,
@@ -8829,7 +8946,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBStaticDataMsg24PartA_SequenceId = FieldSpec{
+    fieldSpec_AISClassBStaticDataMsg24PartA_SequenceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         208,
 		MaxRawValue:       0xFD,
@@ -8842,7 +8959,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBStaticDataMsg24PartB_UserId = FieldSpec{
+    fieldSpec_AISClassBStaticDataMsg24PartB_UserID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         8,
 		MaxRawValue:       0x0,
@@ -8855,7 +8972,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBStaticDataMsg24PartB_Length = FieldSpec{
+    fieldSpec_AISClassBStaticDataMsg24PartB_Length = FieldSpec{
 		BitLength:         16,
 		BitOffset:         160,
 		MaxRawValue:       0xFFFD,
@@ -8868,7 +8985,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBStaticDataMsg24PartB_Beam = FieldSpec{
+    fieldSpec_AISClassBStaticDataMsg24PartB_Beam = FieldSpec{
 		BitLength:         16,
 		BitOffset:         176,
 		MaxRawValue:       0xFFFD,
@@ -8881,7 +8998,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBStaticDataMsg24PartB_PositionReferenceFromStarboard = FieldSpec{
+    fieldSpec_AISClassBStaticDataMsg24PartB_PositionReferenceFromStarboard = FieldSpec{
 		BitLength:         16,
 		BitOffset:         192,
 		MaxRawValue:       0xFFFD,
@@ -8894,7 +9011,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBStaticDataMsg24PartB_PositionReferenceFromBow = FieldSpec{
+    fieldSpec_AISClassBStaticDataMsg24PartB_PositionReferenceFromBow = FieldSpec{
 		BitLength:         16,
 		BitOffset:         208,
 		MaxRawValue:       0xFFFD,
@@ -8907,7 +9024,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBStaticDataMsg24PartB_MothershipUserId = FieldSpec{
+    fieldSpec_AISClassBStaticDataMsg24PartB_MothershipUserID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         224,
 		MaxRawValue:       0x0,
@@ -8920,7 +9037,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_AisClassBStaticDataMsg24PartB_SequenceId = FieldSpec{
+    fieldSpec_AISClassBStaticDataMsg24PartB_SequenceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         272,
 		MaxRawValue:       0xFD,
@@ -8933,7 +9050,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseList_StartDatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseList_StartDatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -8946,7 +9063,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseList_Nitems = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseList_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -8959,7 +9076,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseList_NumberOfDatabasesAvailable = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseList_NumberOfDatabasesAvailable = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -8972,7 +9089,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseList_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseList_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -8985,7 +9102,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseList_DatabaseTimestamp = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseList_DatabaseTimestamp = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFFFFFD,
@@ -8998,7 +9115,7 @@ var (
 		DomainMax:         &[]float64{86401}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseList_DatabaseDatestamp = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseList_DatabaseDatestamp = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9011,7 +9128,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseList_NumberOfRoutesInDatabase = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseList_NumberOfRoutesInDatabase = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9024,7 +9141,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseList_NumberOfWpsInDatabase = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseList_NumberOfWPsInDatabase = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFFFFFD,
@@ -9037,7 +9154,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseList_NumberOfBytesInDatabase = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseList_NumberOfBytesInDatabase = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFFFFFD,
@@ -9050,7 +9167,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteList_StartRouteId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteList_StartRouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9063,7 +9180,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteList_Nitems = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteList_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -9076,7 +9193,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteList_NumberOfRoutesInDatabase = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteList_NumberOfRoutesInDatabase = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -9089,7 +9206,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteList_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteList_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -9102,7 +9219,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteList_RouteId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteList_RouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         64,
 		MaxRawValue:       0xFFFD,
@@ -9115,7 +9232,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpListAttributes_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPListAttributes_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9128,7 +9245,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPListAttributes_RouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -9141,7 +9258,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteWpListTimestamp = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPListAttributes_RouteWPListTimestamp = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFFFFFD,
@@ -9154,7 +9271,7 @@ var (
 		DomainMax:         &[]float64{86401}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpListAttributes_RouteWpListDatestamp = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPListAttributes_RouteWPListDatestamp = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9167,7 +9284,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpListAttributes_NumberOfWpsInTheRouteWpList = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPListAttributes_NumberOfWPsInTheRouteWPList = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9180,7 +9297,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpListAttributes_XteLimitForTheRoute = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPListAttributes_XTELimitForTheRoute = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFD,
@@ -9193,7 +9310,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpNamePosition_StartRps = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPNamePosition_StartRPS = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9206,7 +9323,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpNamePosition_Nitems = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPNamePosition_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -9219,7 +9336,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpNamePosition_NumberOfWpsInTheRouteWpList = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPNamePosition_NumberOfWPsInTheRouteWPList = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -9232,7 +9349,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpNamePosition_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPNamePosition_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -9245,7 +9362,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpNamePosition_RouteId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPNamePosition_RouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         64,
 		MaxRawValue:       0xFFFD,
@@ -9258,7 +9375,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpNamePosition_WpId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPNamePosition_WPID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         80,
 		MaxRawValue:       0xFFFD,
@@ -9271,7 +9388,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpNamePosition_WpLatitude = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPNamePosition_WPLatitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -9284,7 +9401,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpNamePosition_WpLongitude = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPNamePosition_WPLongitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -9297,7 +9414,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpName_StartRps = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPName_StartRPS = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9310,7 +9427,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpName_Nitems = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPName_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -9323,7 +9440,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpName_NumberOfWpsInTheRouteWpList = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPName_NumberOfWPsInTheRouteWPList = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -9336,7 +9453,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpName_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPName_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -9349,7 +9466,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpName_RouteId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPName_RouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         64,
 		MaxRawValue:       0xFFFD,
@@ -9362,7 +9479,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteWpName_WpId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteWPName_WPID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         80,
 		MaxRawValue:       0xFFFD,
@@ -9375,7 +9492,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_StartRps = FieldSpec{
+    fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_StartRPS = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9388,7 +9505,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_Nitems = FieldSpec{
+    fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -9401,7 +9518,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_NumberOfWpsWithASpecificXteLimitOrNavMethod = FieldSpec{
+    fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_NumberOfWPsWithASpecificXTELimitOrNavMethod = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -9414,7 +9531,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -9427,7 +9544,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_RouteId = FieldSpec{
+    fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_RouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         64,
 		MaxRawValue:       0xFFFD,
@@ -9440,7 +9557,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_Rps = FieldSpec{
+    fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_RPS = FieldSpec{
 		BitLength:         16,
 		BitOffset:         80,
 		MaxRawValue:       0xFFFD,
@@ -9453,7 +9570,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceXteLimitNavigationMethod_XteLimitInTheLegAfterWp = FieldSpec{
+    fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_XTELimitInTheLegAfterWP = FieldSpec{
 		BitLength:         16,
 		BitOffset:         96,
 		MaxRawValue:       0x7FFD,
@@ -9466,7 +9583,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpComment_StartId = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPComment_StartID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9479,7 +9596,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpComment_Nitems = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPComment_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -9492,7 +9609,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpComment_NumberOfWpsWithComments = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPComment_NumberOfWPsWithComments = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -9505,7 +9622,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpComment_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPComment_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -9518,7 +9635,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpComment_RouteId = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPComment_RouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         64,
 		MaxRawValue:       0xFFFD,
@@ -9531,7 +9648,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpComment_WpIdRps = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPComment_WPIDRPS = FieldSpec{
 		BitLength:         16,
 		BitOffset:         80,
 		MaxRawValue:       0xFFFD,
@@ -9544,7 +9661,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteComment_StartRouteId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteComment_StartRouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9557,7 +9674,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteComment_Nitems = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteComment_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -9570,7 +9687,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteComment_NumberOfRoutesWithComments = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteComment_NumberOfRoutesWithComments = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -9583,7 +9700,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteComment_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteComment_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -9596,7 +9713,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRouteComment_RouteId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRouteComment_RouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         64,
 		MaxRawValue:       0xFFFD,
@@ -9609,7 +9726,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseComment_StartDatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseComment_StartDatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9622,7 +9739,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseComment_Nitems = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseComment_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -9635,7 +9752,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseComment_NumberOfDatabasesWithComments = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseComment_NumberOfDatabasesWithComments = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -9648,7 +9765,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceDatabaseComment_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceDatabaseComment_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -9661,7 +9778,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRadiusOfTurn_StartRps = FieldSpec{
+    fieldSpec_RouteAndWPServiceRadiusOfTurn_StartRPS = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9674,7 +9791,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRadiusOfTurn_Nitems = FieldSpec{
+    fieldSpec_RouteAndWPServiceRadiusOfTurn_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -9687,7 +9804,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRadiusOfTurn_NumberOfWpsWithASpecificRadiusOfTurn = FieldSpec{
+    fieldSpec_RouteAndWPServiceRadiusOfTurn_NumberOfWPsWithASpecificRadiusOfTurn = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -9700,7 +9817,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRadiusOfTurn_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRadiusOfTurn_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -9713,7 +9830,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRadiusOfTurn_RouteId = FieldSpec{
+    fieldSpec_RouteAndWPServiceRadiusOfTurn_RouteID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         64,
 		MaxRawValue:       0xFFFD,
@@ -9726,7 +9843,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRadiusOfTurn_Rps = FieldSpec{
+    fieldSpec_RouteAndWPServiceRadiusOfTurn_RPS = FieldSpec{
 		BitLength:         16,
 		BitOffset:         80,
 		MaxRawValue:       0xFFFD,
@@ -9739,7 +9856,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceRadiusOfTurn_RadiusOfTurn = FieldSpec{
+    fieldSpec_RouteAndWPServiceRadiusOfTurn_RadiusOfTurn = FieldSpec{
 		BitLength:         16,
 		BitOffset:         96,
 		MaxRawValue:       0x7FFD,
@@ -9752,7 +9869,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpListWpNamePosition_StartWpId = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPListWPNamePosition_StartWPID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         0,
 		MaxRawValue:       0xFFFD,
@@ -9765,7 +9882,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpListWpNamePosition_Nitems = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPListWPNamePosition_Nitems = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -9778,7 +9895,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpListWpNamePosition_NumberOfValidWpsInTheWpList = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPListWPNamePosition_NumberOfValidWPsInTheWPList = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -9791,7 +9908,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpListWpNamePosition_DatabaseId = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPListWPNamePosition_DatabaseID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -9804,7 +9921,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpListWpNamePosition_WpId = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPListWPNamePosition_WPID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         80,
 		MaxRawValue:       0xFFFD,
@@ -9817,7 +9934,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpListWpNamePosition_WpLatitude = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPListWPNamePosition_WPLatitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -9830,7 +9947,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_RouteAndWpServiceWpListWpNamePosition_WpLongitude = FieldSpec{
+    fieldSpec_RouteAndWPServiceWPListWPNamePosition_WPLongitude = FieldSpec{
 		BitLength:         32,
 		BitOffset:         0,
 		MaxRawValue:       0x7FFFFFFD,
@@ -9843,7 +9960,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_WindData_Sid = FieldSpec{
+    fieldSpec_WindData_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -9882,7 +9999,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_EnvironmentalParametersObsolete_Sid = FieldSpec{
+    fieldSpec_EnvironmentalParametersObsolete_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -9934,7 +10051,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_EnvironmentalParameters_Sid = FieldSpec{
+    fieldSpec_EnvironmentalParameters_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -9986,7 +10103,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Temperature_Sid = FieldSpec{
+    fieldSpec_Temperature_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -10038,7 +10155,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_Humidity_Sid = FieldSpec{
+    fieldSpec_Humidity_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -10090,7 +10207,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_ActualPressure_Sid = FieldSpec{
+    fieldSpec_ActualPressure_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -10129,7 +10246,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_SetPressure_Sid = FieldSpec{
+    fieldSpec_SetPressure_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -10168,7 +10285,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_TemperatureExtendedRange_Sid = FieldSpec{
+    fieldSpec_TemperatureExtendedRange_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         0,
 		MaxRawValue:       0xFD,
@@ -10441,7 +10558,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DirectionData_Sid = FieldSpec{
+    fieldSpec_DirectionData_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         8,
 		MaxRawValue:       0xFD,
@@ -10454,7 +10571,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_DirectionData_Cog = FieldSpec{
+    fieldSpec_DirectionData_COG = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -10467,7 +10584,7 @@ var (
 		DomainMax:         &[]float64{6.2831852}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_DirectionData_Sog = FieldSpec{
+    fieldSpec_DirectionData_SOG = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -10636,7 +10753,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_SonichubVolume_ProprietaryId = FieldSpec{
+    fieldSpec_SonichubVolume_ProprietaryID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         24,
 		MaxRawValue:       0x0,
@@ -10675,7 +10792,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_BepMarineCzoneZcfBusDistribution_ManufacturerCode = FieldSpec{
+    fieldSpec_BEPMarineCzoneZcfBusDistribution_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -10688,7 +10805,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_BepMarineCzoneZcfBusDistribution_IndustryCode = FieldSpec{
+    fieldSpec_BEPMarineCzoneZcfBusDistribution_IndustryCode = FieldSpec{
 		BitLength:         3,
 		BitOffset:         13,
 		MaxRawValue:       0x0,
@@ -10701,7 +10818,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_BepMarineCzoneZcfBusDistribution_ChunkIndex = FieldSpec{
+    fieldSpec_BEPMarineCzoneZcfBusDistribution_ChunkIndex = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFD,
@@ -10714,7 +10831,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_BepMarineCzoneZcfBusDistribution_Flag = FieldSpec{
+    fieldSpec_BEPMarineCzoneZcfBusDistribution_Flag = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -10831,7 +10948,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionVersions_MessageId = FieldSpec{
+    fieldSpec_FusionVersions_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -10844,7 +10961,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionVersions_HwVersionMajor = FieldSpec{
+    fieldSpec_FusionVersions_HWVersionMajor = FieldSpec{
 		BitLength:         16,
 		BitOffset:         32,
 		MaxRawValue:       0xFFFD,
@@ -10857,7 +10974,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionVersions_HwVersionMinor = FieldSpec{
+    fieldSpec_FusionVersions_HWVersionMinor = FieldSpec{
 		BitLength:         16,
 		BitOffset:         48,
 		MaxRawValue:       0xFFFD,
@@ -10870,7 +10987,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionVersions_SwVersionMajor = FieldSpec{
+    fieldSpec_FusionVersions_SWVersionMajor = FieldSpec{
 		BitLength:         8,
 		BitOffset:         64,
 		MaxRawValue:       0xFD,
@@ -10883,7 +11000,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionVersions_SwVersionMinor = FieldSpec{
+    fieldSpec_FusionVersions_SWVersionMinor = FieldSpec{
 		BitLength:         8,
 		BitOffset:         72,
 		MaxRawValue:       0xFD,
@@ -10935,7 +11052,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSource_MessageId = FieldSpec{
+    fieldSpec_FusionSource_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -10948,7 +11065,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSource_SourceId = FieldSpec{
+    fieldSpec_FusionSource_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -10961,7 +11078,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSource_CurrentSourceId = FieldSpec{
+    fieldSpec_FusionSource_CurrentSourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         40,
 		MaxRawValue:       0xFD,
@@ -11013,7 +11130,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSourceCount_MessageId = FieldSpec{
+    fieldSpec_FusionSourceCount_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11065,7 +11182,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMedia_MessageId = FieldSpec{
+    fieldSpec_FusionMedia_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11078,7 +11195,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMedia_SourceId = FieldSpec{
+    fieldSpec_FusionMedia_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11169,7 +11286,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionTrackName_MessageId = FieldSpec{
+    fieldSpec_FusionTrackName_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11182,7 +11299,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionTrackName_SourceId = FieldSpec{
+    fieldSpec_FusionTrackName_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11234,7 +11351,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionArtistName_MessageId = FieldSpec{
+    fieldSpec_FusionArtistName_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11247,7 +11364,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionArtistName_SourceId = FieldSpec{
+    fieldSpec_FusionArtistName_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11299,7 +11416,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionAlbumName_MessageId = FieldSpec{
+    fieldSpec_FusionAlbumName_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11312,7 +11429,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionAlbumName_SourceId = FieldSpec{
+    fieldSpec_FusionAlbumName_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11364,7 +11481,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionDeviceName_MessageId = FieldSpec{
+    fieldSpec_FusionDeviceName_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11403,7 +11520,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionZoneName_MessageId = FieldSpec{
+    fieldSpec_FusionZoneName_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11417,6 +11534,500 @@ var (
 		BitLengthVariable: false,
 	}
     fieldSpec_FusionZoneName_Number = FieldSpec{
+		BitLength:         8,
+		BitOffset:         32,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionSpeedVolumeCurrentSpeed_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionSpeedVolumeCurrentSpeed_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionSpeedVolumeCurrentSpeed_MessageID = FieldSpec{
+		BitLength:         16,
+		BitOffset:         16,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionSpeedVolumeCurrentSpeed_SourceID = FieldSpec{
+		BitLength:         8,
+		BitOffset:         32,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionSpeedVolumeCurrentSpeed_Speed = FieldSpec{
+		BitLength:         16,
+		BitOffset:         40,
+		MaxRawValue:       0xFFFD,
+		MissingValue:      0xFFFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionSpeedVolumeCurrentSpeed_Enabled = FieldSpec{
+		BitLength:         8,
+		BitOffset:         56,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionIgnitionSwitchState_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionIgnitionSwitchState_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionIgnitionSwitchState_MessageID = FieldSpec{
+		BitLength:         16,
+		BitOffset:         16,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionIgnitionSwitchState_State = FieldSpec{
+		BitLength:         8,
+		BitOffset:         32,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMenuLockId_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMenuLockId_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMenuLockId_MessageID = FieldSpec{
+		BitLength:         16,
+		BitOffset:         16,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMenuLockId_LockId = FieldSpec{
+		BitLength:         32,
+		BitOffset:         32,
+		MaxRawValue:       0xFFFFFFFD,
+		MissingValue:      0xFFFFFFFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMenuLockId_Flags = FieldSpec{
+		BitLength:         8,
+		BitOffset:         64,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionRDSData_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionRDSData_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionRDSData_MessageID = FieldSpec{
+		BitLength:         16,
+		BitOffset:         16,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionRDSData_SourceID = FieldSpec{
+		BitLength:         8,
+		BitOffset:         32,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionRDSData_RDSType = FieldSpec{
+		BitLength:         8,
+		BitOffset:         40,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionRDSData_ProgrammeType = FieldSpec{
+		BitLength:         8,
+		BitOffset:         48,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMultiroom_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMultiroom_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMultiroom_MessageID = FieldSpec{
+		BitLength:         16,
+		BitOffset:         16,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMultiroom_IPAddress1 = FieldSpec{
+		BitLength:         8,
+		BitOffset:         40,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMultiroom_IPAddress2 = FieldSpec{
+		BitLength:         8,
+		BitOffset:         48,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMultiroom_IPAddress3 = FieldSpec{
+		BitLength:         8,
+		BitOffset:         56,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMultiroom_IPAddress4 = FieldSpec{
+		BitLength:         8,
+		BitOffset:         64,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMultiroomStatus_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMultiroomStatus_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMultiroomStatus_MessageID = FieldSpec{
+		BitLength:         16,
+		BitOffset:         16,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionProcessingBypass_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionProcessingBypass_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionProcessingBypass_MessageID = FieldSpec{
+		BitLength:         16,
+		BitOffset:         16,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMono_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMono_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMono_MessageID = FieldSpec{
+		BitLength:         16,
+		BitOffset:         16,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FusionMono_Zone = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11455,7 +12066,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionTrackPosition_MessageId = FieldSpec{
+    fieldSpec_FusionTrackPosition_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11468,7 +12079,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionTrackPosition_SourceId = FieldSpec{
+    fieldSpec_FusionTrackPosition_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11520,7 +12131,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionTuner_MessageId = FieldSpec{
+    fieldSpec_FusionTuner_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11572,7 +12183,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMarineTuner_ManufacturerCode = FieldSpec{
+    fieldSpec_FusionMARINETUNER_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -11585,7 +12196,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMarineTuner_IndustryCode = FieldSpec{
+    fieldSpec_FusionMARINETUNER_IndustryCode = FieldSpec{
 		BitLength:         3,
 		BitOffset:         13,
 		MaxRawValue:       0x0,
@@ -11598,7 +12209,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMarineTuner_MessageId = FieldSpec{
+    fieldSpec_FusionMARINETUNER_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11611,7 +12222,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMarineTuner_SourceId = FieldSpec{
+    fieldSpec_FusionMARINETUNER_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11624,7 +12235,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMarineTuner_Channel = FieldSpec{
+    fieldSpec_FusionMARINETUNER_Channel = FieldSpec{
 		BitLength:         8,
 		BitOffset:         40,
 		MaxRawValue:       0xFD,
@@ -11637,7 +12248,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMarineTuner_SignalStrength = FieldSpec{
+    fieldSpec_FusionMARINETUNER_SignalStrength = FieldSpec{
 		BitLength:         8,
 		BitOffset:         48,
 		MaxRawValue:       0xFD,
@@ -11676,7 +12287,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMarineSquelch_MessageId = FieldSpec{
+    fieldSpec_FusionMarineSquelch_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11689,7 +12300,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMarineSquelch_SourceId = FieldSpec{
+    fieldSpec_FusionMarineSquelch_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11741,7 +12352,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMarineScanMode_MessageId = FieldSpec{
+    fieldSpec_FusionMarineScanMode_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11754,7 +12365,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMarineScanMode_SourceId = FieldSpec{
+    fieldSpec_FusionMarineScanMode_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11793,7 +12404,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMenuItem_MessageId = FieldSpec{
+    fieldSpec_FusionMenuItem_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11806,7 +12417,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMenuItem_SourceId = FieldSpec{
+    fieldSpec_FusionMenuItem_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11845,7 +12456,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMenuItem_LockId = FieldSpec{
+    fieldSpec_FusionMenuItem_LockID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         80,
 		MaxRawValue:       0xFD,
@@ -11884,7 +12495,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionAuxGain_MessageId = FieldSpec{
+    fieldSpec_FusionAuxGain_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11897,7 +12508,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionAuxGain_SourceId = FieldSpec{
+    fieldSpec_FusionAuxGain_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -11923,7 +12534,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionUsbRepeatStatus_ManufacturerCode = FieldSpec{
+    fieldSpec_FusionUSBRepeatStatus_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -11936,7 +12547,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionUsbRepeatStatus_IndustryCode = FieldSpec{
+    fieldSpec_FusionUSBRepeatStatus_IndustryCode = FieldSpec{
 		BitLength:         3,
 		BitOffset:         13,
 		MaxRawValue:       0x0,
@@ -11949,7 +12560,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionUsbRepeatStatus_MessageId = FieldSpec{
+    fieldSpec_FusionUSBRepeatStatus_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -11962,7 +12573,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionUsbRepeatStatus_Id = FieldSpec{
+    fieldSpec_FusionUSBRepeatStatus_ID = FieldSpec{
 		BitLength:         32,
 		BitOffset:         32,
 		MaxRawValue:       0x0,
@@ -12001,7 +12612,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSetting_MessageId = FieldSpec{
+    fieldSpec_FusionSetting_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12053,7 +12664,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSettings_MessageId = FieldSpec{
+    fieldSpec_FusionSettings_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12118,7 +12729,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionMute_MessageId = FieldSpec{
+    fieldSpec_FusionMute_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12157,7 +12768,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionBalance_MessageId = FieldSpec{
+    fieldSpec_FusionBalance_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12183,7 +12794,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionBalance_Value = FieldSpec{
+    fieldSpec_FusionBalance_VALUE = FieldSpec{
 		BitLength:         8,
 		BitOffset:         40,
 		MaxRawValue:       0xFD,
@@ -12222,7 +12833,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionLowPassFilter_MessageId = FieldSpec{
+    fieldSpec_FusionLowPassFilter_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12287,7 +12898,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSublevels_MessageId = FieldSpec{
+    fieldSpec_FusionSublevels_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12352,7 +12963,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionEq_ManufacturerCode = FieldSpec{
+    fieldSpec_FusionEQ_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
 		MaxRawValue:       0x0,
@@ -12365,7 +12976,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionEq_IndustryCode = FieldSpec{
+    fieldSpec_FusionEQ_IndustryCode = FieldSpec{
 		BitLength:         3,
 		BitOffset:         13,
 		MaxRawValue:       0x0,
@@ -12378,7 +12989,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionEq_MessageId = FieldSpec{
+    fieldSpec_FusionEQ_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12391,7 +13002,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionEq_Zone = FieldSpec{
+    fieldSpec_FusionEQ_Zone = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -12404,7 +13015,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionEq_Bass = FieldSpec{
+    fieldSpec_FusionEQ_Bass = FieldSpec{
 		BitLength:         8,
 		BitOffset:         40,
 		MaxRawValue:       0x7D,
@@ -12417,7 +13028,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionEq_Mid = FieldSpec{
+    fieldSpec_FusionEQ_Mid = FieldSpec{
 		BitLength:         8,
 		BitOffset:         48,
 		MaxRawValue:       0x7D,
@@ -12430,7 +13041,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionEq_Treble = FieldSpec{
+    fieldSpec_FusionEQ_Treble = FieldSpec{
 		BitLength:         8,
 		BitOffset:         56,
 		MaxRawValue:       0x7D,
@@ -12469,7 +13080,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionVolumeLimits_MessageId = FieldSpec{
+    fieldSpec_FusionVolumeLimits_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12560,7 +13171,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionVolumes_MessageId = FieldSpec{
+    fieldSpec_FusionVolumes_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12651,7 +13262,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionCapabilities_MessageId = FieldSpec{
+    fieldSpec_FusionCapabilities_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12755,7 +13366,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionLineLevelControl_MessageId = FieldSpec{
+    fieldSpec_FusionLineLevelControl_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12820,7 +13431,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionPowerState_MessageId = FieldSpec{
+    fieldSpec_FusionPowerState_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12859,7 +13470,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxm_MessageId = FieldSpec{
+    fieldSpec_FusionSiriusxm_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12872,7 +13483,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxm_SourceId = FieldSpec{
+    fieldSpec_FusionSiriusxm_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -12924,7 +13535,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmChannel_MessageId = FieldSpec{
+    fieldSpec_FusionSiriusxmChannel_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -12937,7 +13548,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmChannel_SourceId = FieldSpec{
+    fieldSpec_FusionSiriusxmChannel_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -12989,7 +13600,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmTitle_MessageId = FieldSpec{
+    fieldSpec_FusionSiriusxmTitle_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -13002,7 +13613,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmTitle_SourceId = FieldSpec{
+    fieldSpec_FusionSiriusxmTitle_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -13054,7 +13665,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmArtist_MessageId = FieldSpec{
+    fieldSpec_FusionSiriusxmArtist_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -13067,7 +13678,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmArtist_SourceId = FieldSpec{
+    fieldSpec_FusionSiriusxmArtist_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -13119,7 +13730,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmContentInfo_MessageId = FieldSpec{
+    fieldSpec_FusionSiriusxmContentInfo_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -13132,7 +13743,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmContentInfo_SourceId = FieldSpec{
+    fieldSpec_FusionSiriusxmContentInfo_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -13184,7 +13795,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmCategory_MessageId = FieldSpec{
+    fieldSpec_FusionSiriusxmCategory_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -13197,7 +13808,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmCategory_SourceId = FieldSpec{
+    fieldSpec_FusionSiriusxmCategory_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -13249,7 +13860,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmSignal_MessageId = FieldSpec{
+    fieldSpec_FusionSiriusxmSignal_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -13262,7 +13873,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmSignal_SourceId = FieldSpec{
+    fieldSpec_FusionSiriusxmSignal_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -13314,7 +13925,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmPresets_MessageId = FieldSpec{
+    fieldSpec_FusionSiriusxmPresets_MessageID = FieldSpec{
 		BitLength:         16,
 		BitOffset:         16,
 		MaxRawValue:       0x0,
@@ -13327,7 +13938,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_FusionSiriusxmPresets_SourceId = FieldSpec{
+    fieldSpec_FusionSiriusxmPresets_SourceID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         32,
 		MaxRawValue:       0xFD,
@@ -13379,7 +13990,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronProprietaryTemperatureHighRange_Sid = FieldSpec{
+    fieldSpec_MaretronProprietaryTemperatureHighRange_SID = FieldSpec{
 		BitLength:         8,
 		BitOffset:         16,
 		MaxRawValue:       0xFD,
@@ -13483,6 +14094,58 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
+    fieldSpec_MercuryEngineKeyValueData_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_MercuryEngineKeyValueData_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_MercuryEngineKeyValueData_Key = FieldSpec{
+		BitLength:         12,
+		BitOffset:         16,
+		MaxRawValue:       0xFFD,
+		MissingValue:      0xFFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_MercuryEngineKeyValueData_Length = FieldSpec{
+		BitLength:         4,
+		BitOffset:         28,
+		MaxRawValue:       0xD,
+		MissingValue:      0xF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
     fieldSpec_MaretronDataInstanceChannelCorrelation_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
@@ -13509,7 +14172,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronDataInstanceChannelCorrelation_Pgn = FieldSpec{
+    fieldSpec_MaretronDataInstanceChannelCorrelation_PGN = FieldSpec{
 		BitLength:         24,
 		BitOffset:         16,
 		MaxRawValue:       0xFFFFFD,
@@ -13717,7 +14380,7 @@ var (
 		DomainMax:         &[]float64{86401}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronSwitchStatusCounter_OffCounter = FieldSpec{
+    fieldSpec_MaretronSwitchStatusCounter_OFFCounter = FieldSpec{
 		BitLength:         32,
 		BitOffset:         80,
 		MaxRawValue:       0xFFFFFFFD,
@@ -13730,7 +14393,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronSwitchStatusCounter_OnCounter = FieldSpec{
+    fieldSpec_MaretronSwitchStatusCounter_ONCounter = FieldSpec{
 		BitLength:         32,
 		BitOffset:         112,
 		MaxRawValue:       0xFFFFFFFD,
@@ -13743,7 +14406,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronSwitchStatusCounter_ErrorCounter = FieldSpec{
+    fieldSpec_MaretronSwitchStatusCounter_ERRORCounter = FieldSpec{
 		BitLength:         32,
 		BitOffset:         144,
 		MaxRawValue:       0xFFFFFFFD,
@@ -13834,7 +14497,7 @@ var (
 		DomainMax:         &[]float64{86401}[0],
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronSwitchStatusTimer_AccumulatedOffPeriod = FieldSpec{
+    fieldSpec_MaretronSwitchStatusTimer_AccumulatedOFFPeriod = FieldSpec{
 		BitLength:         32,
 		BitOffset:         80,
 		MaxRawValue:       0xFFFFFFFD,
@@ -13847,7 +14510,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronSwitchStatusTimer_AccumulatedOnPeriod = FieldSpec{
+    fieldSpec_MaretronSwitchStatusTimer_AccumulatedONPeriod = FieldSpec{
 		BitLength:         32,
 		BitOffset:         112,
 		MaxRawValue:       0xFFFFFFFD,
@@ -13860,7 +14523,7 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
-    fieldSpec_MaretronSwitchStatusTimer_AccumulatedErrorPeriod = FieldSpec{
+    fieldSpec_MaretronSwitchStatusTimer_AccumulatedERRORPeriod = FieldSpec{
 		BitLength:         32,
 		BitOffset:         144,
 		MaxRawValue:       0xFFFFFFFD,
@@ -13870,6 +14533,175 @@ var (
 		IsSigned:          false,
 		ReservedCount:     2,
 		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_ReportType = FieldSpec{
+		BitLength:         4,
+		BitOffset:         16,
+		MaxRawValue:       0xD,
+		MissingValue:      0xF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_Antenna = FieldSpec{
+		BitLength:         4,
+		BitOffset:         20,
+		MaxRawValue:       0xD,
+		MissingValue:      0xF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_PageType = FieldSpec{
+		BitLength:         4,
+		BitOffset:         24,
+		MaxRawValue:       0xD,
+		MissingValue:      0xF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_Page = FieldSpec{
+		BitLength:         4,
+		BitOffset:         28,
+		MaxRawValue:       0xD,
+		MissingValue:      0xF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_SatsInUse = FieldSpec{
+		BitLength:         8,
+		BitOffset:         40,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_SatsInView = FieldSpec{
+		BitLength:         8,
+		BitOffset:         48,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_PRN = FieldSpec{
+		BitLength:         8,
+		BitOffset:         56,
+		MaxRawValue:       0xFD,
+		MissingValue:      0xFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_Elevation = FieldSpec{
+		BitLength:         16,
+		BitOffset:         64,
+		MaxRawValue:       0x7FFD,
+		MissingValue:      0x7FFF,
+		Resolution:        9.999999747378752e-05,
+		Offset:            0,
+		IsSigned:          true,
+		ReservedCount:     2,
+		DomainMin:         &[]float64{0}[0],
+		DomainMax:         &[]float64{6.2831852}[0],
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_Azimuth = FieldSpec{
+		BitLength:         16,
+		BitOffset:         80,
+		MaxRawValue:       0x7FFD,
+		MissingValue:      0x7FFF,
+		Resolution:        9.999999747378752e-05,
+		Offset:            0,
+		IsSigned:          true,
+		ReservedCount:     2,
+		DomainMin:         &[]float64{0}[0],
+		DomainMax:         &[]float64{6.2831852}[0],
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_SNR = FieldSpec{
+		BitLength:         16,
+		BitOffset:         96,
+		MaxRawValue:       0x7FFD,
+		MissingValue:      0x7FFF,
+		Resolution:        0.009999999776482582,
+		Offset:            0,
+		IsSigned:          true,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_FurunoMultiSatsInViewExtended_RangeResidual = FieldSpec{
+		BitLength:         32,
+		BitOffset:         112,
+		MaxRawValue:       0x7FFFFFFD,
+		MissingValue:      0x7FFFFFFF,
+		Resolution:        9.999999747378752e-06,
+		Offset:            0,
+		IsSigned:          true,
+		ReservedCount:     2,
+		DomainMin:         &[]float64{0}[0],
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
