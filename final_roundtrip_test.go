@@ -17,10 +17,10 @@ func main() {
 		priority    uint8
 		destination uint8
 	}{
-		{"PDU1 - IsoAcknowledgement with specific dest", pgn.IsoAcknowledgementPgn, 110, 6, 50},
-		{"PDU1 - IsoAcknowledgement with broadcast dest", pgn.IsoAcknowledgementPgn, 110, 6, 255},
-		{"PDU1 - IsoRequest with specific dest", pgn.IsoRequestPgn, 100, 2, 25},
-		{"PDU1 - IsoRequest with broadcast dest", pgn.IsoRequestPgn, 100, 2, 255},
+		{"PDU1 - ISOAcknowledgement with specific dest", pgn.ISOAcknowledgementPgn, 110, 6, 50},
+		{"PDU1 - ISOAcknowledgement with broadcast dest", pgn.ISOAcknowledgementPgn, 110, 6, 255},
+		{"PDU1 - ISORequest with specific dest", pgn.ISORequestPgn, 100, 2, 25},
+		{"PDU1 - ISORequest with broadcast dest", pgn.ISORequestPgn, 100, 2, 255},
 		{"PDU2 - Heartbeat with global dest", pgn.HeartbeatPgn, 238, 3, 255},
 		{"PDU2 - Heartbeat with zero dest", pgn.HeartbeatPgn, 238, 3, 0},
 		{"PDU2 - VesselHeading with global dest", pgn.VesselHeadingPgn, 200, 2, 255},

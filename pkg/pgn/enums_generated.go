@@ -93,7 +93,7 @@ const (
 	DisenosYTechnologia	ManufacturerCodeConst = 201
 	DigitalSwitchingSystems	ManufacturerCodeConst = 211
 	XintexAtena	ManufacturerCodeConst = 215
-	EmmiNetworkSl	ManufacturerCodeConst = 224
+	EmmiNetworkSL	ManufacturerCodeConst = 224
 	HondaMarine3	ManufacturerCodeConst = 225
 	Zf	ManufacturerCodeConst = 228
 	Garmin	ManufacturerCodeConst = 229
@@ -148,7 +148,7 @@ const (
 	VdoAkaContinentalCorporation	ManufacturerCodeConst = 443
 	ParkerHannifinAkaVillageMarine	ManufacturerCodeConst = 451
 	AlltekMarineElectronicsCorp	ManufacturerCodeConst = 459
-	SanGiorgioSein	ManufacturerCodeConst = 460
+	SanGiorgioSEIN	ManufacturerCodeConst = 460
 	VeethreeElectronicsMarine	ManufacturerCodeConst = 466
 	HumminbirdMarineElectronics	ManufacturerCodeConst = 467
 	SiTexMarineElectronics	ManufacturerCodeConst = 470
@@ -160,7 +160,7 @@ const (
 	Watcheye	ManufacturerCodeConst = 493
 	LcjCapteurs	ManufacturerCodeConst = 499
 	AttwoodMarine	ManufacturerCodeConst = 502
-	NaviopSrl	ManufacturerCodeConst = 503
+	NaviopSRL	ManufacturerCodeConst = 503
 	VesperMarineLtd	ManufacturerCodeConst = 504
 	MarinesoftCoLtd	ManufacturerCodeConst = 510
 	Simarine	ManufacturerCodeConst = 513
@@ -186,7 +186,7 @@ const (
 	ArltTecnologies	ManufacturerCodeConst = 614
 	BavariaYacts	ManufacturerCodeConst = 637
 	DiverseYachtServices	ManufacturerCodeConst = 641
-	WemaUsaDbaKus	ManufacturerCodeConst = 644
+	WemaUSADbaKus	ManufacturerCodeConst = 644
 	Garmin2	ManufacturerCodeConst = 645
 	ShenzhenJiuzhouHimunication	ManufacturerCodeConst = 658
 	RockfordCorp	ManufacturerCodeConst = 688
@@ -279,7 +279,7 @@ const (
 	OrcaTechnologoesAs	ManufacturerCodeConst = 1151
 	TbsElectronicsBv	ManufacturerCodeConst = 1154
 	TechnotonElectroics	ManufacturerCodeConst = 1158
-	MgEnergySystemsBv	ManufacturerCodeConst = 1160
+	MgEnergySystemsBV	ManufacturerCodeConst = 1160
 	SeaMacineRoboticsInc	ManufacturerCodeConst = 1169
 	VistaManufacturing	ManufacturerCodeConst = 1171
 	Zipwake	ManufacturerCodeConst = 1183
@@ -314,13 +314,13 @@ const (
 	RadPropulsion	ManufacturerCodeConst = 1368
 	ElectricYacht	ManufacturerCodeConst = 1369
 	ElcoMotorYachts	ManufacturerCodeConst = 1372
-	TecnosealFoundrySrl	ManufacturerCodeConst = 1384
+	TecnosealFoundrySRL	ManufacturerCodeConst = 1384
 	ProChargingSystemsLlc	ManufacturerCodeConst = 1385
 	EvexCoLtd	ManufacturerCodeConst = 1389
 	GobiusSensorTechnologyAb	ManufacturerCodeConst = 1398
 	ArcoMarine	ManufacturerCodeConst = 1403
 	LencoMarineInc	ManufacturerCodeConst = 1408
-	NaocontrolSl	ManufacturerCodeConst = 1413
+	NaocontrolSL	ManufacturerCodeConst = 1413
 	Revatek	ManufacturerCodeConst = 1417
 	Aeolionics	ManufacturerCodeConst = 1438
 	PredictwindLtd	ManufacturerCodeConst = 1439
@@ -943,6 +943,197 @@ default:
 		return fmt.Sprintf("ManufacturerCodeConst(%d)", uint16(e))
 	}
 }
+type CzoneAlarmTypeConst uint16
+const (
+	AcVoltageError	CzoneAlarmTypeConst = 1
+	AcFrequencyError	CzoneAlarmTypeConst = 2
+	AcHighPower	CzoneAlarmTypeConst = 3
+	DcLowVoltage	CzoneAlarmTypeConst = 4
+	DcVeryLowVoltage	CzoneAlarmTypeConst = 5
+	DcHighVoltage	CzoneAlarmTypeConst = 6
+	DcLowBatteryCapacity	CzoneAlarmTypeConst = 7
+	OutOfRange	CzoneAlarmTypeConst = 10
+	LowRunCurrent	CzoneAlarmTypeConst = 11
+	OverCurrent	CzoneAlarmTypeConst = 12
+	ShortCircuit	CzoneAlarmTypeConst = 13
+	MissingCommander	CzoneAlarmTypeConst = 14
+	ReverseCurrent	CzoneAlarmTypeConst = 15
+	CalibrationError	CzoneAlarmTypeConst = 16
+	MissingOutput	CzoneAlarmTypeConst = 17
+	SystemsOn	CzoneAlarmTypeConst = 18
+	AcVeryHighPower	CzoneAlarmTypeConst = 19
+	AcLowPower	CzoneAlarmTypeConst = 20
+	DcVeryLowBatteryCapacity	CzoneAlarmTypeConst = 21
+	BatteryFull	CzoneAlarmTypeConst = 22
+	DcLoadShedLow	CzoneAlarmTypeConst = 23
+	DcLoadShedVeryLow	CzoneAlarmTypeConst = 24
+	AcLoadShedLow	CzoneAlarmTypeConst = 25
+	AcLoadShedVeryLow	CzoneAlarmTypeConst = 26
+	ReversePolarity	CzoneAlarmTypeConst = 27
+	ManualOverride	CzoneAlarmTypeConst = 28
+	Mastervolt_2	CzoneAlarmTypeConst = 29
+	HardwareFault	CzoneAlarmTypeConst = 30
+	NoAcSupply	CzoneAlarmTypeConst = 31
+	PgnSwitchingOn	CzoneAlarmTypeConst = 34
+	LowCanbusVoltage	CzoneAlarmTypeConst = 35
+	BlownFuse	CzoneAlarmTypeConst = 36
+	ManualBypass	CzoneAlarmTypeConst = 37
+	GenericAlarm	CzoneAlarmTypeConst = 38
+	BatteryTemperatureAlarm	CzoneAlarmTypeConst = 39
+	TemperatureSensorError	CzoneAlarmTypeConst = 40
+	AcInOutOfRange	CzoneAlarmTypeConst = 41
+	DeviceInOverload	CzoneAlarmTypeConst = 42
+	HighTemperature	CzoneAlarmTypeConst = 43
+	InverterChargerInstallationErr	CzoneAlarmTypeConst = 44
+	InverterInstallationError	CzoneAlarmTypeConst = 45
+	ChargerInstallationError	CzoneAlarmTypeConst = 46
+	CableVoltageDropTooHigh	CzoneAlarmTypeConst = 47
+	ShuntMistmatch	CzoneAlarmTypeConst = 48
+	CoolingFanError	CzoneAlarmTypeConst = 49
+	MastershuntFuseBlown	CzoneAlarmTypeConst = 50
+	HighTemperature_2	CzoneAlarmTypeConst = 51
+	OverPressure	CzoneAlarmTypeConst = 52
+	LowPressure	CzoneAlarmTypeConst = 53
+	RapidDeflation	CzoneAlarmTypeConst = 54
+	InverterChargerOverTemperature	CzoneAlarmTypeConst = 55
+	ConfirmOn	CzoneAlarmTypeConst = 56
+	BatterySafety	CzoneAlarmTypeConst = 57
+	StopCharging	CzoneAlarmTypeConst = 58
+	CheckBatteryRelay	CzoneAlarmTypeConst = 59
+	BatteryHardwareFailure	CzoneAlarmTypeConst = 60
+	BatteryOverCurrent	CzoneAlarmTypeConst = 61
+	BatteryTemperatureLow	CzoneAlarmTypeConst = 62
+	BatteryTemperatureHigh	CzoneAlarmTypeConst = 63
+	BatteryLast100	CzoneAlarmTypeConst = 64
+)
+
+func (e CzoneAlarmTypeConst) GoString() string {return e.String() }
+func (e CzoneAlarmTypeConst) String() string {
+	switch e {
+		case 1:
+			return "AC Voltage Error"
+		case 2:
+			return "AC Frequency Error"
+		case 3:
+			return "AC High Power"
+		case 4:
+			return "DC Low Voltage"
+		case 5:
+			return "DC Very Low Voltage"
+		case 6:
+			return "DC High Voltage"
+		case 7:
+			return "DC Low Battery Capacity"
+		case 10:
+			return "Out of Range"
+		case 11:
+			return "Low Run Current"
+		case 12:
+			return "Over Current"
+		case 13:
+			return "Short Circuit"
+		case 14:
+			return "Missing Commander"
+		case 15:
+			return "Reverse Current"
+		case 16:
+			return "Calibration Error"
+		case 17:
+			return "Missing Output"
+		case 18:
+			return "Systems On"
+		case 19:
+			return "AC Very High Power"
+		case 20:
+			return "AC Low Power"
+		case 21:
+			return "DC Very Low Battery Capacity"
+		case 22:
+			return "Battery Full"
+		case 23:
+			return "DC Load Shed Low"
+		case 24:
+			return "DC Load Shed Very Low"
+		case 25:
+			return "AC Load Shed Low"
+		case 26:
+			return "AC Load Shed Very Low"
+		case 27:
+			return "Reverse Polarity"
+		case 28:
+			return "Manual Override"
+		case 29:
+			return "Mastervolt"
+		case 30:
+			return "Hardware Fault"
+		case 31:
+			return "No AC Supply"
+		case 34:
+			return "PGN Switching On"
+		case 35:
+			return "Low Canbus Voltage"
+		case 36:
+			return "Blown Fuse"
+		case 37:
+			return "Manual Bypass"
+		case 38:
+			return "Generic Alarm"
+		case 39:
+			return "Battery Temperature Alarm"
+		case 40:
+			return "Temperature Sensor Error"
+		case 41:
+			return "AC IN Out Of Range"
+		case 42:
+			return "Device In Overload"
+		case 43:
+			return "High Temperature"
+		case 44:
+			return "Inverter/Charger Installation Error"
+		case 45:
+			return "Inverter Installation Error"
+		case 46:
+			return "Charger Installation Error"
+		case 47:
+			return "Cable Voltage Drop Too High"
+		case 48:
+			return "Shunt mistmatch"
+		case 49:
+			return "Cooling Fan Error"
+		case 50:
+			return "Mastershunt Fuse Blown"
+		case 51:
+			return "High Temperature"
+		case 52:
+			return "Over Pressure"
+		case 53:
+			return "Low Pressure"
+		case 54:
+			return "Rapid Deflation"
+		case 55:
+			return "Inverter/Charger Over Temperature"
+		case 56:
+			return "Confirm On"
+		case 57:
+			return "Battery Safety"
+		case 58:
+			return "Stop Charging"
+		case 59:
+			return "Check Battery Relay"
+		case 60:
+			return "Battery Hardware Failure"
+		case 61:
+			return "Battery Over Current"
+		case 62:
+			return "Battery Temperature Low"
+		case 63:
+			return "Battery Temperature High"
+		case 64:
+			return "Battery Last 100"
+default:
+		return fmt.Sprintf("CzoneAlarmTypeConst(%d)", uint16(e))
+	}
+}
 type AisMessageIdConst uint8
 const (
 	ScheduledClassAPositionReport	AisMessageIdConst = 1
@@ -961,7 +1152,7 @@ const (
 	SatetyRelatedBroadcastMessage	AisMessageIdConst = 14
 	Interrogation	AisMessageIdConst = 15
 	AssignmentModeCommand	AisMessageIdConst = 16
-	DgnssBroadcastBinaryMessage	AisMessageIdConst = 17
+	DGNSSBroadcastBinaryMessage	AisMessageIdConst = 17
 	StandardClassBPositionReport	AisMessageIdConst = 18
 	ExtendedClassBPositionReport	AisMessageIdConst = 19
 	DataLinkManagementMessage	AisMessageIdConst = 20
@@ -2959,6 +3150,12 @@ const (
 	AisSafetyRelatedMessageUsedToS	SeatalkAlarmIdConst = 106
 	AisConnectionLost	SeatalkAlarmIdConst = 107
 	NoFix	SeatalkAlarmIdConst = 108
+	PilotCompassCalibrationComplet	SeatalkAlarmIdConst = 112
+	AisTransmitterDisabledMmsiRequ	SeatalkAlarmIdConst = 113
+	BluetoothDeviceLowBattery	SeatalkAlarmIdConst = 122
+	BluetoothDeviceSleepMode	SeatalkAlarmIdConst = 123
+	BluetoothDeviceHighBatteryTemp	SeatalkAlarmIdConst = 124
+	BluetoothDeviceLostCommunicati	SeatalkAlarmIdConst = 125
 )
 
 func (e SeatalkAlarmIdConst) GoString() string {return e.String() }
@@ -3176,6 +3373,18 @@ func (e SeatalkAlarmIdConst) String() string {
 			return "AIS Connection Lost"
 		case 108:
 			return "No Fix"
+		case 112:
+			return "Pilot Compass Calibration Complete"
+		case 113:
+			return "AIS Transmitter Disabled - MMSI Required"
+		case 122:
+			return "Bluetooth Device Low Battery"
+		case 123:
+			return "Bluetooth Device Sleep Mode"
+		case 124:
+			return "Bluetooth Device High Battery Temperature"
+		case 125:
+			return "Bluetooth Device Lost Communications"
 default:
 		return fmt.Sprintf("SeatalkAlarmIdConst(%d)", uint8(e))
 	}
@@ -3187,6 +3396,7 @@ const (
 	Radar	SeatalkAlarmGroupConst = 2
 	ChartPlotter	SeatalkAlarmGroupConst = 3
 	Ais	SeatalkAlarmGroupConst = 4
+	BluetoothAccessory	SeatalkAlarmGroupConst = 5
 )
 
 func (e SeatalkAlarmGroupConst) GoString() string {return e.String() }
@@ -3202,6 +3412,8 @@ func (e SeatalkAlarmGroupConst) String() string {
 			return "Chart Plotter"
 		case 4:
 			return "AIS"
+		case 5:
+			return "Bluetooth Accessory"
 default:
 		return fmt.Sprintf("SeatalkAlarmGroupConst(%d)", uint8(e))
 	}
@@ -4045,10 +4257,10 @@ default:
 }
 type ThrusterMotorTypeConst uint8
 const (
-	ThrusterMotorTypeConst12Vdc	ThrusterMotorTypeConst = 0
-	ThrusterMotorTypeConst24Vdc	ThrusterMotorTypeConst = 1
-	ThrusterMotorTypeConst48Vdc	ThrusterMotorTypeConst = 2
-	ThrusterMotorTypeConst24Vac	ThrusterMotorTypeConst = 3
+	ThrusterMotorTypeConst12VDC	ThrusterMotorTypeConst = 0
+	ThrusterMotorTypeConst24VDC	ThrusterMotorTypeConst = 1
+	ThrusterMotorTypeConst48VDC	ThrusterMotorTypeConst = 2
+	ThrusterMotorTypeConst24VAC	ThrusterMotorTypeConst = 3
 	Hydraulic_2	ThrusterMotorTypeConst = 4
 )
 
@@ -4503,6 +4715,7 @@ const (
 	MobEmitterActivated	MobStatusConst = 0
 	ManualOnBoardMobButtonActivati	MobStatusConst = 1
 	TestMode	MobStatusConst = 2
+	MobNotActive	MobStatusConst = 3
 )
 
 func (e MobStatusConst) GoString() string {return e.String() }
@@ -4514,6 +4727,8 @@ func (e MobStatusConst) String() string {
 			return "Manual on-board MOB Button Activation"
 		case 2:
 			return "Test mode"
+		case 3:
+			return "MOB Not Active"
 default:
 		return fmt.Sprintf("MobStatusConst(%d)", uint8(e))
 	}
@@ -5613,6 +5828,2333 @@ default:
 		return fmt.Sprintf("SimnetApStatusConst(%d)", uint8(e))
 	}
 }
+type SimnetAutopilotModeClassConst uint8
+const (
+	Standby_3	SimnetAutopilotModeClassConst = 0
+	Engaged	SimnetAutopilotModeClassConst = 16
+)
+
+func (e SimnetAutopilotModeClassConst) GoString() string {return e.String() }
+func (e SimnetAutopilotModeClassConst) String() string {
+	switch e {
+		case 0:
+			return "Standby"
+		case 16:
+			return "Engaged"
+default:
+		return fmt.Sprintf("SimnetAutopilotModeClassConst(%d)", uint8(e))
+	}
+}
+type SimnetAutopilotModeConst uint8
+const (
+	Standby_4	SimnetAutopilotModeConst = 0
+	Heading_2	SimnetAutopilotModeConst = 1
+	Mode4	SimnetAutopilotModeConst = 3
+	Wind_4	SimnetAutopilotModeConst = 4
+	NonFollowUp	SimnetAutopilotModeConst = 5
+	Navigation_2	SimnetAutopilotModeConst = 6
+)
+
+func (e SimnetAutopilotModeConst) GoString() string {return e.String() }
+func (e SimnetAutopilotModeConst) String() string {
+	switch e {
+		case 0:
+			return "Standby"
+		case 1:
+			return "Heading"
+		case 3:
+			return "Mode 4"
+		case 4:
+			return "Wind"
+		case 5:
+			return "Non-Follow-Up"
+		case 6:
+			return "Navigation"
+default:
+		return fmt.Sprintf("SimnetAutopilotModeConst(%d)", uint8(e))
+	}
+}
+type SimnetDataSourceConst uint8
+const (
+	Heading_3	SimnetDataSourceConst = 0
+	Navigation_3	SimnetDataSourceConst = 1
+	Position_2	SimnetDataSourceConst = 2
+	ApparentWind	SimnetDataSourceConst = 3
+	TrueWind	SimnetDataSourceConst = 4
+	SpeedThroughWater_2	SimnetDataSourceConst = 5
+	SeaTemperature_2	SimnetDataSourceConst = 6
+	SimnetDataSourceConstDistanceLog	SimnetDataSourceConst = 7
+	Depth	SimnetDataSourceConst = 8
+	RudderFeedback	SimnetDataSourceConst = 9
+	MonitorCompass	SimnetDataSourceConst = 19
+	PositionBackup	SimnetDataSourceConst = 20
+	BoatSpeedBackup	SimnetDataSourceConst = 21
+	AirTemperature	SimnetDataSourceConst = 22
+	BarometricPressure	SimnetDataSourceConst = 28
+	HeelAngle	SimnetDataSourceConst = 30
+	SailingNavigation	SimnetDataSourceConst = 34
+	TrimAngle	SimnetDataSourceConst = 35
+	Sailing_2	SimnetDataSourceConst = 36
+	AftDepth	SimnetDataSourceConst = 37
+	SpeedLog	SimnetDataSourceConst = 38
+	RtcmSignal	SimnetDataSourceConst = 39
+	RtcmCorrections	SimnetDataSourceConst = 40
+	Autopilot_2	SimnetDataSourceConst = 54
+	AutopilotFunctionBackup	SimnetDataSourceConst = 59
+	AutopilotControl	SimnetDataSourceConst = 104
+)
+
+func (e SimnetDataSourceConst) GoString() string {return e.String() }
+func (e SimnetDataSourceConst) String() string {
+	switch e {
+		case 0:
+			return "Heading"
+		case 1:
+			return "Navigation"
+		case 2:
+			return "Position"
+		case 3:
+			return "Apparent Wind"
+		case 4:
+			return "True Wind"
+		case 5:
+			return "Speed Through Water"
+		case 6:
+			return "Sea Temperature"
+		case 7:
+			return "Distance Log"
+		case 8:
+			return "Depth"
+		case 9:
+			return "Rudder Feedback"
+		case 19:
+			return "Monitor Compass"
+		case 20:
+			return "Position Backup"
+		case 21:
+			return "Boat Speed Backup"
+		case 22:
+			return "Air Temperature"
+		case 28:
+			return "Barometric Pressure"
+		case 30:
+			return "Heel Angle"
+		case 34:
+			return "Sailing Navigation"
+		case 35:
+			return "Trim Angle"
+		case 36:
+			return "Sailing"
+		case 37:
+			return "Aft Depth"
+		case 38:
+			return "Speed Log"
+		case 39:
+			return "RTCM Signal"
+		case 40:
+			return "RTCM Corrections"
+		case 54:
+			return "Autopilot"
+		case 59:
+			return "Autopilot Function Backup"
+		case 104:
+			return "Autopilot Control"
+default:
+		return fmt.Sprintf("SimnetDataSourceConst(%d)", uint8(e))
+	}
+}
+type NavicoDataTypeConst uint16
+const (
+	Altitude	NavicoDataTypeConst = 0
+	Position_3	NavicoDataTypeConst = 1
+	PositionError	NavicoDataTypeConst = 2
+	Hdop	NavicoDataTypeConst = 3
+	Vdop	NavicoDataTypeConst = 4
+	Tdop	NavicoDataTypeConst = 5
+	Pdop	NavicoDataTypeConst = 6
+	GeoidalSeperation	NavicoDataTypeConst = 7
+	Cog_2	NavicoDataTypeConst = 8
+	PositionQuality	NavicoDataTypeConst = 9
+	PositionIntegrity	NavicoDataTypeConst = 10
+	SatsInView	NavicoDataTypeConst = 11
+	WaasStatus	NavicoDataTypeConst = 12
+	Bearing	NavicoDataTypeConst = 13
+	Course	NavicoDataTypeConst = 14
+	CdiGraphic	NavicoDataTypeConst = 15
+	CourseToSteer	NavicoDataTypeConst = 16
+	CrossTrack	NavicoDataTypeConst = 17
+	VelocityMadeGood	NavicoDataTypeConst = 18
+	Destination	NavicoDataTypeConst = 19
+	DistanceToTurn	NavicoDataTypeConst = 20
+	DistanceToDest	NavicoDataTypeConst = 21
+	TimeToTurn	NavicoDataTypeConst = 22
+	TimeToDest	NavicoDataTypeConst = 23
+	EtaAtTurn	NavicoDataTypeConst = 24
+	EtaAtDest	NavicoDataTypeConst = 25
+	TotalDistance	NavicoDataTypeConst = 26
+	SteerArrow	NavicoDataTypeConst = 27
+	Odometer	NavicoDataTypeConst = 28
+	TripDistance	NavicoDataTypeConst = 29
+	TripTime	NavicoDataTypeConst = 30
+	Date_2	NavicoDataTypeConst = 31
+	Time	NavicoDataTypeConst = 32
+	UtcDate	NavicoDataTypeConst = 33
+	UtcTime	NavicoDataTypeConst = 34
+	LocalTimeOffset	NavicoDataTypeConst = 35
+	Heading_4	NavicoDataTypeConst = 36
+	WasVoltage	NavicoDataTypeConst = 37
+	CurrentSet	NavicoDataTypeConst = 38
+	CurrentDrift	NavicoDataTypeConst = 39
+	SpeedSog	NavicoDataTypeConst = 40
+	SpeedWater	NavicoDataTypeConst = 41
+	SpeedPitot	NavicoDataTypeConst = 42
+	SpeedTripAvg	NavicoDataTypeConst = 43
+	SpeedTripMax	NavicoDataTypeConst = 44
+	SpeedWindApp	NavicoDataTypeConst = 45
+	SpeedWindTrue	NavicoDataTypeConst = 46
+	TempWater	NavicoDataTypeConst = 47
+	TempOutside	NavicoDataTypeConst = 48
+	TempInside	NavicoDataTypeConst = 49
+	TempEngineRoom	NavicoDataTypeConst = 50
+	TempMainCabin	NavicoDataTypeConst = 51
+	TempLiveWell	NavicoDataTypeConst = 52
+	TempBaitWell	NavicoDataTypeConst = 53
+	TempRefrigeration	NavicoDataTypeConst = 54
+	TempHeatingSystem	NavicoDataTypeConst = 55
+	TempDewPoint	NavicoDataTypeConst = 56
+	TempWindChillApp	NavicoDataTypeConst = 57
+	TempWindChillTheoretic	NavicoDataTypeConst = 58
+	TempHeatIndex	NavicoDataTypeConst = 59
+	TempFreezer	NavicoDataTypeConst = 60
+	EngineTemp	NavicoDataTypeConst = 61
+	EngineAirTemp	NavicoDataTypeConst = 62
+	EngineOilTemp	NavicoDataTypeConst = 63
+	TempBattery	NavicoDataTypeConst = 64
+	PressureAtmospheric	NavicoDataTypeConst = 65
+	EngineBoostPres	NavicoDataTypeConst = 66
+	EngineOilPres	NavicoDataTypeConst = 67
+	EngineWaterPres	NavicoDataTypeConst = 68
+	EngineFuelPres	NavicoDataTypeConst = 69
+	EngineManifoldPres	NavicoDataTypeConst = 70
+	PressureSteam	NavicoDataTypeConst = 71
+	PressureComprAir	NavicoDataTypeConst = 72
+	PressureHydraulic	NavicoDataTypeConst = 73
+	WasGenericPressureLo	NavicoDataTypeConst = 74
+	WasGenericPressureHi	NavicoDataTypeConst = 75
+	Depth_2	NavicoDataTypeConst = 76
+	WaterDistance	NavicoDataTypeConst = 77
+	EngineRpm	NavicoDataTypeConst = 78
+	EngineTrim	NavicoDataTypeConst = 79
+	EngineAlternatorPotential	NavicoDataTypeConst = 80
+	EngineFuelRate	NavicoDataTypeConst = 81
+	EnginePercentLoad	NavicoDataTypeConst = 82
+	EnginePercentTorque	NavicoDataTypeConst = 83
+	WasSuzukiAlarmLevLo	NavicoDataTypeConst = 84
+	WasSuzukiAlarmLevHigh	NavicoDataTypeConst = 85
+	TankFuelLevel	NavicoDataTypeConst = 86
+	FluidLevelFreshWater	NavicoDataTypeConst = 87
+	FluidLevelGrayWater	NavicoDataTypeConst = 88
+	FluidLevelLiveWell	NavicoDataTypeConst = 89
+	FluidLevelOil	NavicoDataTypeConst = 90
+	FluidLevelBlackWater	NavicoDataTypeConst = 91
+	TankFuelRemaining	NavicoDataTypeConst = 92
+	FluidVolumeFreshWater	NavicoDataTypeConst = 93
+	FluidVolumeGrayWater	NavicoDataTypeConst = 94
+	FluidVolumeLiveWell	NavicoDataTypeConst = 95
+	FluidVolumeOil	NavicoDataTypeConst = 96
+	FluidVolumeBlackWater	NavicoDataTypeConst = 97
+	GenFluidVolume	NavicoDataTypeConst = 98
+	WasTankFuelLevelLo	NavicoDataTypeConst = 99
+	WasFluidLevelLoFreshWater	NavicoDataTypeConst = 100
+	WasFluidLevelLoGrayWater	NavicoDataTypeConst = 101
+	WasFluidLevelLoLiveWell	NavicoDataTypeConst = 102
+	WasFluidLevelLoOil	NavicoDataTypeConst = 103
+	GenTankCapacity	NavicoDataTypeConst = 104
+	TankFuelCapacity	NavicoDataTypeConst = 105
+	TankCapacityFreshWater	NavicoDataTypeConst = 106
+	TankCapacityGrayWater	NavicoDataTypeConst = 107
+	TankCapacityLiveWell	NavicoDataTypeConst = 108
+	TankCapacityOil	NavicoDataTypeConst = 109
+	TankCapacityBlackWater	NavicoDataTypeConst = 110
+	WasTankFuelUsed	NavicoDataTypeConst = 111
+	EngineFuelUsed	NavicoDataTypeConst = 112
+	EngineFuelUsedTrip	NavicoDataTypeConst = 113
+	EngineFuelUsedSeasonal	NavicoDataTypeConst = 114
+	EngineFuelKValue	NavicoDataTypeConst = 115
+	BatteryPotential	NavicoDataTypeConst = 116
+	BatteryCurrent	NavicoDataTypeConst = 117
+	TrimTab	NavicoDataTypeConst = 118
+	WasTrimStbdTab	NavicoDataTypeConst = 119
+	NavicoDataTypeConstRateOfTurn	NavicoDataTypeConst = 120
+	AttitudeYaw	NavicoDataTypeConst = 121
+	AttitudePitch	NavicoDataTypeConst = 122
+	AttitudeRoll	NavicoDataTypeConst = 123
+	NavicoDataTypeConstMagneticVariation	NavicoDataTypeConst = 124
+	Deviation	NavicoDataTypeConst = 125
+	FuelEconomyWtr	NavicoDataTypeConst = 126
+	FuelEconomyGps	NavicoDataTypeConst = 127
+	WasFuelRemaining	NavicoDataTypeConst = 128
+	WasFuelRangeWtr	NavicoDataTypeConst = 129
+	WasFuelRangeGps	NavicoDataTypeConst = 130
+	EngineHoursUsed	NavicoDataTypeConst = 131
+	EngineType	NavicoDataTypeConst = 132
+	VesselFuelRate	NavicoDataTypeConst = 133
+	VesselFuelEconomyWtr	NavicoDataTypeConst = 134
+	VesselFuelEconomyGps	NavicoDataTypeConst = 135
+	VesselFuelRemaining	NavicoDataTypeConst = 136
+	VesselFuelRangeWtr	NavicoDataTypeConst = 137
+	VesselFuelRangeGps	NavicoDataTypeConst = 138
+	WindAppAngle	NavicoDataTypeConst = 139
+	WindTrueAngle	NavicoDataTypeConst = 140
+	WindTrueDirection	NavicoDataTypeConst = 141
+	HumidityInside	NavicoDataTypeConst = 142
+	HumidityOutside	NavicoDataTypeConst = 143
+	SetHumidity	NavicoDataTypeConst = 144
+	RudderAngle	NavicoDataTypeConst = 145
+	TransGear	NavicoDataTypeConst = 146
+	TransOilPressure	NavicoDataTypeConst = 147
+	TransOilTemp	NavicoDataTypeConst = 148
+	CmdRudderAngle	NavicoDataTypeConst = 149
+	RudderLimit_2	NavicoDataTypeConst = 150
+	OffHeadingLim	NavicoDataTypeConst = 151
+	RadiusOfTurnOrder	NavicoDataTypeConst = 152
+	RateOfTurnOrder	NavicoDataTypeConst = 153
+	OffTrackLim	NavicoDataTypeConst = 154
+	LoggingTimeRemaining	NavicoDataTypeConst = 155
+	PositionFixType	NavicoDataTypeConst = 156
+	EngineDiscreteStatus	NavicoDataTypeConst = 157
+	TransmissionDiscreteStatus	NavicoDataTypeConst = 158
+	GpsBestOfFourSnr	NavicoDataTypeConst = 159
+	GenFluidLevel	NavicoDataTypeConst = 160
+	GenPressure	NavicoDataTypeConst = 161
+	GenTemperature	NavicoDataTypeConst = 162
+	InternalVoltage	NavicoDataTypeConst = 163
+	DepthOffset	NavicoDataTypeConst = 164
+	StructureDepth	NavicoDataTypeConst = 165
+	LoranPosition	NavicoDataTypeConst = 166
+	VesselStatus	NavicoDataTypeConst = 167
+	BatteryDcType	NavicoDataTypeConst = 168
+	BatteryStateOfCharge	NavicoDataTypeConst = 169
+	BatteryStateOfHealth	NavicoDataTypeConst = 170
+	BatteryTimeRemaining	NavicoDataTypeConst = 171
+	BatteryRippleVoltage	NavicoDataTypeConst = 172
+	Ac1Acceptability	NavicoDataTypeConst = 173
+	Ac2Acceptability	NavicoDataTypeConst = 174
+	Ac3Acceptability	NavicoDataTypeConst = 175
+	Ac1Voltage	NavicoDataTypeConst = 176
+	Ac2Voltage	NavicoDataTypeConst = 177
+	Ac3Voltage	NavicoDataTypeConst = 178
+	Ac1Current	NavicoDataTypeConst = 179
+	Ac2Current	NavicoDataTypeConst = 180
+	Ac3Current	NavicoDataTypeConst = 181
+	Ac1Frequency	NavicoDataTypeConst = 182
+	Ac2Frequency	NavicoDataTypeConst = 183
+	Ac3Frequency	NavicoDataTypeConst = 184
+	Ac1BreakerSize	NavicoDataTypeConst = 185
+	Ac2BreakerSize	NavicoDataTypeConst = 186
+	Ac3BreakerSize	NavicoDataTypeConst = 187
+	Ac1RealPower	NavicoDataTypeConst = 188
+	Ac2RealPower	NavicoDataTypeConst = 189
+	Ac3RealPower	NavicoDataTypeConst = 190
+	Ac1ReactivePower	NavicoDataTypeConst = 191
+	Ac2ReactivePower	NavicoDataTypeConst = 192
+	Ac3ReactivePower	NavicoDataTypeConst = 193
+	Ac1PowerFactor	NavicoDataTypeConst = 194
+	Ac2PowerFactor	NavicoDataTypeConst = 195
+	Ac3PowerFactor	NavicoDataTypeConst = 196
+	SwitchState	NavicoDataTypeConst = 197
+	SwitchCurrent	NavicoDataTypeConst = 198
+	SwitchFault	NavicoDataTypeConst = 199
+	SwitchDimLevel	NavicoDataTypeConst = 200
+	PreviousCmdHeading	NavicoDataTypeConst = 201
+	CmdWindAngle	NavicoDataTypeConst = 202
+	WasCmdBearingOffset	NavicoDataTypeConst = 203
+	CmdBearing	NavicoDataTypeConst = 204
+	CmdDepthContour	NavicoDataTypeConst = 205
+	CmdCourseChange	NavicoDataTypeConst = 206
+	PilotDrift	NavicoDataTypeConst = 207
+	PilotDistanceToTurn	NavicoDataTypeConst = 208
+	PilotTimeToTurn	NavicoDataTypeConst = 209
+	PilotReferencePosition	NavicoDataTypeConst = 210
+	DcStatus	NavicoDataTypeConst = 211
+	Ac1Status	NavicoDataTypeConst = 212
+	WasSwitchVoltage	NavicoDataTypeConst = 213
+	BatteryCapacityRemaining	NavicoDataTypeConst = 214
+	PilotHeadingReference	NavicoDataTypeConst = 215
+	BAndGLinear1	NavicoDataTypeConst = 216
+	BAndGLinear2	NavicoDataTypeConst = 217
+	BAndGLinear3	NavicoDataTypeConst = 218
+	BoomPosition	NavicoDataTypeConst = 219
+	SailingCourse	NavicoDataTypeConst = 220
+	DaggerboardPosition	NavicoDataTypeConst = 221
+	BAndGLinear4	NavicoDataTypeConst = 222
+	HeadingOnNextTack	NavicoDataTypeConst = 223
+	KeelAngle	NavicoDataTypeConst = 224
+	Leeway	NavicoDataTypeConst = 225
+	MastAngle	NavicoDataTypeConst = 226
+	TargetTrueWindAngle	NavicoDataTypeConst = 227
+	KeelTrimTab	NavicoDataTypeConst = 228
+	RaceTimer	NavicoDataTypeConst = 229
+	CanardAngle	NavicoDataTypeConst = 230
+	NextLegApparentWindAngle	NavicoDataTypeConst = 231
+	NextLegApparentWindSpeed	NavicoDataTypeConst = 232
+	TargetBoatSpeed	NavicoDataTypeConst = 233
+	VmgToWind	NavicoDataTypeConst = 234
+	TimeToLaylines	NavicoDataTypeConst = 235
+	DistanceToLaylines	NavicoDataTypeConst = 236
+	AftDepth_2	NavicoDataTypeConst = 237
+	Forestay	NavicoDataTypeConst = 238
+	PolarSpeed	NavicoDataTypeConst = 239
+	PolarPerformance	NavicoDataTypeConst = 240
+	TackingPerformance	NavicoDataTypeConst = 241
+	WindAngleToMast	NavicoDataTypeConst = 242
+	CanBusVoltage	NavicoDataTypeConst = 243
+	InternalTemperature	NavicoDataTypeConst = 244
+	EngageCurrent	NavicoDataTypeConst = 245
+	UrefVoltage	NavicoDataTypeConst = 246
+	SupplyVoltage	NavicoDataTypeConst = 247
+	DestinationPosition	NavicoDataTypeConst = 248
+	CompassHeadingReference	NavicoDataTypeConst = 249
+	CmdRudderDirection	NavicoDataTypeConst = 250
+	WasEngineSyncState	NavicoDataTypeConst = 251
+	EngineGeneralMaintenance	NavicoDataTypeConst = 252
+	EnginePercentThrottle	NavicoDataTypeConst = 253
+	EngineSteeringAngle	NavicoDataTypeConst = 254
+	EngineBreakInReqd	NavicoDataTypeConst = 255
+	GpsAll	NavicoDataTypeConst = 256
+	EngineBreakInAccum	NavicoDataTypeConst = 257
+	EngineTrimStatus	NavicoDataTypeConst = 258
+	PilotPresent	NavicoDataTypeConst = 259
+	Ac1OutWaveform	NavicoDataTypeConst = 260
+	Ac2OutWaveform	NavicoDataTypeConst = 261
+	Ac3OutWaveform	NavicoDataTypeConst = 262
+	Ac1OutVoltage	NavicoDataTypeConst = 263
+	Ac2OutVoltage	NavicoDataTypeConst = 264
+	Ac3OutVoltage	NavicoDataTypeConst = 265
+	Ac1OutCurrent	NavicoDataTypeConst = 266
+	Ac2OutCurrent	NavicoDataTypeConst = 267
+	Ac3OutCurrent	NavicoDataTypeConst = 268
+	Ac1OutFrequency	NavicoDataTypeConst = 269
+	Ac2OutFrequency	NavicoDataTypeConst = 270
+	Ac3OutFrequency	NavicoDataTypeConst = 271
+	Ac1OutBreakerSize	NavicoDataTypeConst = 272
+	Ac2OutBreakerSize	NavicoDataTypeConst = 273
+	Ac3OutBreakerSize	NavicoDataTypeConst = 274
+	Ac1OutRealPower	NavicoDataTypeConst = 275
+	Ac2OutRealPower	NavicoDataTypeConst = 276
+	Ac3OutRealPower	NavicoDataTypeConst = 277
+	Ac1OutReactivePower	NavicoDataTypeConst = 278
+	Ac2OutReactivePower	NavicoDataTypeConst = 279
+	Ac3OutReactivePower	NavicoDataTypeConst = 280
+	Ac1OutPowerFactor	NavicoDataTypeConst = 281
+	Ac2OutPowerFactor	NavicoDataTypeConst = 282
+	Ac3OutPowerFactor	NavicoDataTypeConst = 283
+	Ac2Status	NavicoDataTypeConst = 284
+	Ac3Status	NavicoDataTypeConst = 285
+	Ac1OutStatus	NavicoDataTypeConst = 286
+	Ac2OutStatus	NavicoDataTypeConst = 287
+	Ac3OutStatus	NavicoDataTypeConst = 288
+	SwitchManualOverride	NavicoDataTypeConst = 289
+	SwitchReversePolarity	NavicoDataTypeConst = 290
+	SwitchAcsourceAvailable	NavicoDataTypeConst = 291
+	SwitchAccontactorSystemsonstate	NavicoDataTypeConst = 292
+	ChargerBatteryInstance	NavicoDataTypeConst = 293
+	ChargerOperatingState	NavicoDataTypeConst = 294
+	ChargerMode	NavicoDataTypeConst = 295
+	ChargerEnabled	NavicoDataTypeConst = 296
+	ChargerEqualizationPending	NavicoDataTypeConst = 297
+	ChargerEqualizationTimeRemaini	NavicoDataTypeConst = 298
+	InverterAcInstance	NavicoDataTypeConst = 299
+	InverterDcInstance	NavicoDataTypeConst = 300
+	InverterOperatingState	NavicoDataTypeConst = 301
+	InverterEnabled	NavicoDataTypeConst = 302
+	ThrusterPower	NavicoDataTypeConst = 303
+	FuelToTurn	NavicoDataTypeConst = 304
+	EngineMil	NavicoDataTypeConst = 305
+	EngineWarningFlags	NavicoDataTypeConst = 306
+	SpeedStw	NavicoDataTypeConst = 307
+	EnginePerformanceSog	NavicoDataTypeConst = 308
+	EnginePerformanceStw	NavicoDataTypeConst = 309
+	EngineControlFlags	NavicoDataTypeConst = 310
+	EngineTrollRpmSetpoint	NavicoDataTypeConst = 311
+	ActiveHelm	NavicoDataTypeConst = 312
+	CruiseRpmSetpoint	NavicoDataTypeConst = 313
+	CruiseSpeedSetpoint	NavicoDataTypeConst = 314
+	CmdPatternDir	NavicoDataTypeConst = 315
+	SmartContextual	NavicoDataTypeConst = 316
+	SailingTimeToWaypoint	NavicoDataTypeConst = 317
+	SailingDistanceToWaypoint	NavicoDataTypeConst = 318
+	SailingEta	NavicoDataTypeConst = 319
+	GeneratorTemp	NavicoDataTypeConst = 320
+	GeneratorOilTemp	NavicoDataTypeConst = 321
+	GeneratorOilPres	NavicoDataTypeConst = 322
+	GeneratorWaterPres	NavicoDataTypeConst = 323
+	GeneratorFuelPres	NavicoDataTypeConst = 324
+	GeneratorFuelRate	NavicoDataTypeConst = 325
+	GeneratorHoursUsed	NavicoDataTypeConst = 326
+	GeneratorDiscreteStatus	NavicoDataTypeConst = 327
+	GeneratorPercentLoad	NavicoDataTypeConst = 328
+	GeneratorPercentTorque	NavicoDataTypeConst = 329
+	GeneratorBatteryVoltage	NavicoDataTypeConst = 330
+	GeneratorAverageVoltage	NavicoDataTypeConst = 331
+	GeneratorAverageFrequency	NavicoDataTypeConst = 332
+	GeneratorAverageCurrent	NavicoDataTypeConst = 333
+	PilotMode	NavicoDataTypeConst = 334
+	PilotResponseLevel	NavicoDataTypeConst = 335
+	CruiseSmarttowOvershoot	NavicoDataTypeConst = 336
+	PilotCmdHeading	NavicoDataTypeConst = 337
+	MobDRPosition	NavicoDataTypeConst = 338
+	MobDRRange	NavicoDataTypeConst = 339
+	MobDRBearing	NavicoDataTypeConst = 340
+	BowPosition	NavicoDataTypeConst = 341
+	StartLineBearing	NavicoDataTypeConst = 342
+	StartLineBias	NavicoDataTypeConst = 343
+	DistanceToStartLine	NavicoDataTypeConst = 344
+	DistanceToStartLinePortEnd	NavicoDataTypeConst = 345
+	DistanceToStartLineStbdEnd	NavicoDataTypeConst = 346
+	StartLinePortPosition	NavicoDataTypeConst = 347
+	StartLineStbdPosition	NavicoDataTypeConst = 348
+	StartLineBoatLengthAdvantage	NavicoDataTypeConst = 349
+	DistanceToStartLineBoatLengths	NavicoDataTypeConst = 350
+	Backstay	NavicoDataTypeConst = 351
+	BoomAngle	NavicoDataTypeConst = 352
+	BoomVang	NavicoDataTypeConst = 353
+	ChainLength	NavicoDataTypeConst = 354
+	Cunningham	NavicoDataTypeConst = 355
+	InnerForestayLoad	NavicoDataTypeConst = 356
+	InnerForestayHalyardLoad	NavicoDataTypeConst = 357
+	JibFurl	NavicoDataTypeConst = 358
+	JibHalyardLoad	NavicoDataTypeConst = 359
+	OptimumWindAngle	NavicoDataTypeConst = 360
+	OuthaulLoad	NavicoDataTypeConst = 361
+	PitchRate	NavicoDataTypeConst = 362
+	PlowAngle	NavicoDataTypeConst = 363
+	RollRate	NavicoDataTypeConst = 364
+	VmgPerformance	NavicoDataTypeConst = 365
+	BAndGLinear5	NavicoDataTypeConst = 366
+	BAndGLinear6	NavicoDataTypeConst = 367
+	BAndGLinear7	NavicoDataTypeConst = 368
+	BAndGLinear8	NavicoDataTypeConst = 369
+	BAndGLinear9	NavicoDataTypeConst = 370
+	BAndGLinear10	NavicoDataTypeConst = 371
+	BAndGLinear11	NavicoDataTypeConst = 372
+	BAndGLinear12	NavicoDataTypeConst = 373
+	BAndGLinear13	NavicoDataTypeConst = 374
+	BAndGLinear14	NavicoDataTypeConst = 375
+	BAndGLinear15	NavicoDataTypeConst = 376
+	BAndGLinear16	NavicoDataTypeConst = 377
+	KeelDraught	NavicoDataTypeConst = 378
+	PoolTemperature	NavicoDataTypeConst = 379
+	JacuzziTemperature	NavicoDataTypeConst = 380
+	TripDRBearing	NavicoDataTypeConst = 381
+	TripDRDistance	NavicoDataTypeConst = 382
+	CodeZeroLoad	NavicoDataTypeConst = 383
+	BAndGMobPosition	NavicoDataTypeConst = 384
+	DistanceBehindStartLine	NavicoDataTypeConst = 385
+	DistanceBehindStartLineBoatLen	NavicoDataTypeConst = 386
+	BiasAdvantage	NavicoDataTypeConst = 387
+	OppositeTackCog	NavicoDataTypeConst = 388
+	OppositeTackTargetHeading	NavicoDataTypeConst = 389
+	MastRake	NavicoDataTypeConst = 390
+	NextLegBearing	NavicoDataTypeConst = 391
+	NextLegTargetSpeed	NavicoDataTypeConst = 392
+	GroundWindDirection	NavicoDataTypeConst = 393
+	GroundWindSpeed	NavicoDataTypeConst = 394
+	MastCantAngle	NavicoDataTypeConst = 395
+	RudderToeIn	NavicoDataTypeConst = 396
+	DaggerboardPort	NavicoDataTypeConst = 397
+	DaggerboardStarboard	NavicoDataTypeConst = 398
+	BAndGRemote0	NavicoDataTypeConst = 399
+	BAndGRemote1	NavicoDataTypeConst = 400
+	BAndGRemote2	NavicoDataTypeConst = 401
+	BAndGRemote3	NavicoDataTypeConst = 402
+	BAndGRemote4	NavicoDataTypeConst = 403
+	BAndGRemote5	NavicoDataTypeConst = 404
+	BAndGRemote6	NavicoDataTypeConst = 405
+	BAndGRemote7	NavicoDataTypeConst = 406
+	BAndGRemote8	NavicoDataTypeConst = 407
+	BAndGRemote9	NavicoDataTypeConst = 408
+	ForwardDepth	NavicoDataTypeConst = 409
+	CriticalRange	NavicoDataTypeConst = 410
+	CautionRange	NavicoDataTypeConst = 411
+	MaxRange	NavicoDataTypeConst = 412
+	GeneratorAlternatorVoltage	NavicoDataTypeConst = 413
+	TrollingPropRate	NavicoDataTypeConst = 414
+	TrollingCruiseControlSpeed	NavicoDataTypeConst = 415
+	VesselFuelUsed	NavicoDataTypeConst = 416
+	SuzukiEngineBaroPressure	NavicoDataTypeConst = 417
+	SuzukiCylinderTemperature	NavicoDataTypeConst = 418
+	SuzukiIntakeAirTemperature	NavicoDataTypeConst = 419
+	SuzukiIgnitionTiming	NavicoDataTypeConst = 420
+	SuzukiFuelInjectorPulseWidth	NavicoDataTypeConst = 421
+	WasSuzukiInjectedFuelAmount	NavicoDataTypeConst = 422
+	SuzukiIacValveDuty	NavicoDataTypeConst = 423
+	SuzukiDiscreteStatus1	NavicoDataTypeConst = 424
+	SuzukiDiscreteStatus2	NavicoDataTypeConst = 425
+	SuzukiDiscreteStatus3	NavicoDataTypeConst = 426
+	SuzukiDiscreteStatus4	NavicoDataTypeConst = 427
+	FuelEconomyPit	NavicoDataTypeConst = 428
+	VesselFuelEconomyPit	NavicoDataTypeConst = 429
+	VesselFuelRangePit	NavicoDataTypeConst = 430
+	Waypoint_2	NavicoDataTypeConst = 431
+	AverageWindDirection	NavicoDataTypeConst = 432
+	WindPhase	NavicoDataTypeConst = 433
+	WindLift	NavicoDataTypeConst = 434
+	FuelRangeSeasonalAverage	NavicoDataTypeConst = 435
+	FuelRangeInstantaneous	NavicoDataTypeConst = 436
+	VesselFuelEconomy	NavicoDataTypeConst = 437
+	AverageFuelEconomySeasonal	NavicoDataTypeConst = 438
+	AverageFuelEconomyTrip	NavicoDataTypeConst = 439
+	BestFuelEconomySeasonal	NavicoDataTypeConst = 440
+	BestFuelEconomyTrip	NavicoDataTypeConst = 441
+	VesselFuelLevel	NavicoDataTypeConst = 442
+	VesselFuelUsedTrip	NavicoDataTypeConst = 443
+	BAndGLinear17	NavicoDataTypeConst = 444
+	BAndGLinear18	NavicoDataTypeConst = 445
+	BAndGLinear19	NavicoDataTypeConst = 446
+	BAndGLinear20	NavicoDataTypeConst = 447
+	BAndGLinear21	NavicoDataTypeConst = 448
+	BAndGLinear22	NavicoDataTypeConst = 449
+	BAndGLinear23	NavicoDataTypeConst = 450
+	BAndGLinear24	NavicoDataTypeConst = 451
+	BAndGLinear25	NavicoDataTypeConst = 452
+	BAndGLinear26	NavicoDataTypeConst = 453
+	BAndGLinear27	NavicoDataTypeConst = 454
+	BAndGLinear28	NavicoDataTypeConst = 455
+	BAndGLinear29	NavicoDataTypeConst = 456
+	BAndGLinear30	NavicoDataTypeConst = 457
+	BAndGLinear31	NavicoDataTypeConst = 458
+	BAndGLinear32	NavicoDataTypeConst = 459
+	OriginWayPointNumber	NavicoDataTypeConst = 460
+	DestWayPointNumber	NavicoDataTypeConst = 461
+	ArrivalNotification	NavicoDataTypeConst = 462
+	ArrivalCircleNotification	NavicoDataTypeConst = 463
+	WasNavTerminated	NavicoDataTypeConst = 464
+	Bobstay	NavicoDataTypeConst = 465
+	J1	NavicoDataTypeConst = 466
+	J2	NavicoDataTypeConst = 467
+	J3	NavicoDataTypeConst = 468
+	MastBase	NavicoDataTypeConst = 469
+	Mainsheet	NavicoDataTypeConst = 470
+	D0Port	NavicoDataTypeConst = 471
+	D0Starboard	NavicoDataTypeConst = 472
+	RunnerPort	NavicoDataTypeConst = 473
+	RunnerStarboard	NavicoDataTypeConst = 474
+	FoilPort	NavicoDataTypeConst = 475
+	FoilStarboard	NavicoDataTypeConst = 476
+	SailtackPort	NavicoDataTypeConst = 477
+	SailtackStarboard	NavicoDataTypeConst = 478
+	DeflectPort	NavicoDataTypeConst = 479
+	DeflectStarboard	NavicoDataTypeConst = 480
+	RudderLoadPort	NavicoDataTypeConst = 481
+	RudderLoadStarboard	NavicoDataTypeConst = 482
+	D1Port	NavicoDataTypeConst = 483
+	D1Starboard	NavicoDataTypeConst = 484
+	V0Port	NavicoDataTypeConst = 485
+	V0Starboard	NavicoDataTypeConst = 486
+	V1Port	NavicoDataTypeConst = 487
+	V1Starboard	NavicoDataTypeConst = 488
+	GNSSSystem	NavicoDataTypeConst = 489
+	SvCount	NavicoDataTypeConst = 490
+	GNSSOpMode	NavicoDataTypeConst = 491
+	DGNSSMode	NavicoDataTypeConst = 492
+	SuzukiFuelPumpDuty	NavicoDataTypeConst = 493
+	SpeedLogWaterLongitudinal	NavicoDataTypeConst = 494
+	SpeedLogWaterTransverse	NavicoDataTypeConst = 495
+	SpeedLogWaterResultant	NavicoDataTypeConst = 496
+	SpeedLogWaterAngle	NavicoDataTypeConst = 497
+	SpeedLogGroundLongitudinal	NavicoDataTypeConst = 498
+	SpeedLogGroundTransverse	NavicoDataTypeConst = 499
+	SpeedLogGroundResultant	NavicoDataTypeConst = 500
+	SpeedLogGroundAngle	NavicoDataTypeConst = 501
+	SpeedLogSternWaterTransverse	NavicoDataTypeConst = 502
+	SpeedLogSternGroundTransverse	NavicoDataTypeConst = 503
+	PositionDatum	NavicoDataTypeConst = 504
+	SpeedBoat	NavicoDataTypeConst = 505
+	WasEngineFuelUsedMercury	NavicoDataTypeConst = 506
+	NavicoDataTypeConstHeave	NavicoDataTypeConst = 507
+	SpeedTripMaxRpm	NavicoDataTypeConst = 508
+	HondaEngineStatusParams	NavicoDataTypeConst = 509
+	PilotFeatures	NavicoDataTypeConst = 510
+	PilotSetpointHeading	NavicoDataTypeConst = 511
+	IdleSpeedControlMode	NavicoDataTypeConst = 512
+	IdleSpeedControlValue	NavicoDataTypeConst = 513
+	TrollingMode	NavicoDataTypeConst = 514
+	ImmobilizerLockStatus	NavicoDataTypeConst = 515
+	EngineDiscreteParams1	NavicoDataTypeConst = 516
+	EngineDiscreteParams2	NavicoDataTypeConst = 517
+	EngineDiscreteParams3	NavicoDataTypeConst = 518
+	EngineDiscreteParams4	NavicoDataTypeConst = 519
+	EngineDiscreteParams5	NavicoDataTypeConst = 520
+	EngineDiscreteParams6	NavicoDataTypeConst = 521
+	IdleSpeedLimitLow	NavicoDataTypeConst = 522
+	IdleSpeedLimitHigh	NavicoDataTypeConst = 523
+	WasTrollingVariableRpmInfo	NavicoDataTypeConst = 524
+	IdleSpeedControlTargetRev	NavicoDataTypeConst = 525
+	IdleControl	NavicoDataTypeConst = 526
+	IdleFeedback	NavicoDataTypeConst = 527
+	ImmediatelyAfterStartingContro	NavicoDataTypeConst = 528
+	GatewayParams	NavicoDataTypeConst = 529
+	GatewayProtocol	NavicoDataTypeConst = 530
+	EngineWallTemp	NavicoDataTypeConst = 531
+	SubstituteBatteryVoltage	NavicoDataTypeConst = 532
+	YamahaEngineM6DiagCode	NavicoDataTypeConst = 533
+	WirelessSensorBatteryStatus	NavicoDataTypeConst = 534
+	WirelessSensorBatteryChargeSta	NavicoDataTypeConst = 535
+	WirelessSensorBatteryStatusVol	NavicoDataTypeConst = 536
+	WirelessSensorBatteryChargeSta_2	NavicoDataTypeConst = 537
+	FluidTypeMode	NavicoDataTypeConst = 538
+	Datetime	NavicoDataTypeConst = 539
+	ReacherLoad	NavicoDataTypeConst = 540
+	BladeLoad	NavicoDataTypeConst = 541
+	StaysailLoad	NavicoDataTypeConst = 542
+	TackLoad	NavicoDataTypeConst = 543
+	J4Load	NavicoDataTypeConst = 544
+	SolentLoad	NavicoDataTypeConst = 545
+	TackPortLoad	NavicoDataTypeConst = 546
+	TackStarboardLoad	NavicoDataTypeConst = 547
+	DeflectUpperLoad	NavicoDataTypeConst = 548
+	DeflectLowerLoad	NavicoDataTypeConst = 549
+	WinchPortLoad	NavicoDataTypeConst = 550
+	WinchStarboardLoad	NavicoDataTypeConst = 551
+	SpinHalyardPortLoad	NavicoDataTypeConst = 552
+	SpinHalyardStarboardLoad	NavicoDataTypeConst = 553
+	MainHalyward	NavicoDataTypeConst = 554
+	Load1Load	NavicoDataTypeConst = 555
+	Load2Load	NavicoDataTypeConst = 556
+	MastBase2Load	NavicoDataTypeConst = 557
+	PilotActivePerfMode	NavicoDataTypeConst = 558
+	PilotGust	NavicoDataTypeConst = 559
+	PilotTwsResponse	NavicoDataTypeConst = 560
+	PilotHeelComp	NavicoDataTypeConst = 561
+	PilotNetCourse	NavicoDataTypeConst = 562
+	PilotTargetWindAngle	NavicoDataTypeConst = 563
+	PilotWeatherHelm	NavicoDataTypeConst = 564
+	PilotMeanHeel	NavicoDataTypeConst = 565
+	PropellerShaftPitchAngle	NavicoDataTypeConst = 566
+	PropellerShaftPitchPercent	NavicoDataTypeConst = 567
+	PropellerShaftRpm	NavicoDataTypeConst = 568
+	ThrusterPitchAngle	NavicoDataTypeConst = 569
+	ThrusterPitchPercent	NavicoDataTypeConst = 570
+	GroundWindAngle	NavicoDataTypeConst = 571
+	FuelFlowOffset	NavicoDataTypeConst = 572
+	FluidLevelGasoline	NavicoDataTypeConst = 573
+	FluidVolumeGasoline	NavicoDataTypeConst = 574
+	TankCapacityGasoline	NavicoDataTypeConst = 575
+	CmdXteOffset	NavicoDataTypeConst = 576
+	Engine4STROKEOil	NavicoDataTypeConst = 577
+	WirelessSensorSignalStrength	NavicoDataTypeConst = 578
+	WirelessSensorSoftwareUpdatePr	NavicoDataTypeConst = 579
+	TrollingStatus	NavicoDataTypeConst = 580
+	MercuryExhaustValve	NavicoDataTypeConst = 581
+	MercuryExhaustStatus	NavicoDataTypeConst = 582
+	YanmarEngineEcuAlarms	NavicoDataTypeConst = 583
+	YanmarHelmEcuAlarms	NavicoDataTypeConst = 584
+	YanmarDriveEcuAlarms	NavicoDataTypeConst = 585
+	DgpsCorrectionData	NavicoDataTypeConst = 586
+	DgpsReferenceStationId	NavicoDataTypeConst = 587
+	DgpsReferenceStationHealth	NavicoDataTypeConst = 588
+	DgpsSignalSnr	NavicoDataTypeConst = 589
+	DgpsSignalFrequency	NavicoDataTypeConst = 590
+	DgpsSignalStrength	NavicoDataTypeConst = 591
+	EngineFuelTemp	NavicoDataTypeConst = 592
+	DepthQuality	NavicoDataTypeConst = 593
+	NumberOfActiveDtc	NavicoDataTypeConst = 594
+	YanmarFuelLevelTank1Port	NavicoDataTypeConst = 595
+	YanmarFuelLevelTank2Port	NavicoDataTypeConst = 596
+	YanmarFuelLevelTank1Stbd	NavicoDataTypeConst = 597
+	YanmarFuelLevelTank2Stbd	NavicoDataTypeConst = 598
+	YanmarFuelLevelTank1Center	NavicoDataTypeConst = 599
+	YanmarFuelLevelTank2Center	NavicoDataTypeConst = 600
+	YanmarFreshWaterLevelTank1Port	NavicoDataTypeConst = 601
+	YanmarFreshWaterLevelTank2Port	NavicoDataTypeConst = 602
+	YanmarFreshWaterLevelTank1Stbd	NavicoDataTypeConst = 603
+	YanmarFreshWaterLevelTank2Stbd	NavicoDataTypeConst = 604
+	YanmarFreshWaterLevelTank1Cent	NavicoDataTypeConst = 605
+	YanmarFreshWaterLevelTank2Cent	NavicoDataTypeConst = 606
+	YanmarGrayWaterLevelTank1Port	NavicoDataTypeConst = 607
+	YanmarGrayWaterLevelTank2Port	NavicoDataTypeConst = 608
+	YanmarGrayWaterLevelTank1Stbd	NavicoDataTypeConst = 609
+	YanmarGrayWaterLevelTank2Stbd	NavicoDataTypeConst = 610
+	YanmarGrayWaterLevelTank1Cente	NavicoDataTypeConst = 611
+	YanmarGrayWaterLevelTank2Cente	NavicoDataTypeConst = 612
+	RudderAnglePercentage	NavicoDataTypeConst = 613
+	TrollActiveHelm	NavicoDataTypeConst = 614
+	TidesGraphic	NavicoDataTypeConst = 615
+	AnchorDistance	NavicoDataTypeConst = 616
+	AnchorSize	NavicoDataTypeConst = 617
+	AnchorDepth	NavicoDataTypeConst = 618
+	AnchorBearing	NavicoDataTypeConst = 619
+	HondaEngineWarningParams	NavicoDataTypeConst = 620
+	HondaEngineDiscreteParams1	NavicoDataTypeConst = 621
+	HondaEngineDiscreteParams2	NavicoDataTypeConst = 622
+	HondaEngineDiscreteParams3	NavicoDataTypeConst = 623
+	HondaEngineDiscreteParams4	NavicoDataTypeConst = 624
+	MainsailHeadLoad	NavicoDataTypeConst = 625
+	MainsailClewLoad	NavicoDataTypeConst = 626
+	MainsailTackLoad	NavicoDataTypeConst = 627
+	J1HeadLoad	NavicoDataTypeConst = 628
+	J1ClewLoad	NavicoDataTypeConst = 629
+	J1TackLoad	NavicoDataTypeConst = 630
+	J2HeadLoad	NavicoDataTypeConst = 631
+	J2ClewLoad	NavicoDataTypeConst = 632
+	J2TackLoad	NavicoDataTypeConst = 633
+	J3HeadLoad	NavicoDataTypeConst = 634
+	J3ClewLoad	NavicoDataTypeConst = 635
+	J3TackLoad	NavicoDataTypeConst = 636
+	CodeZeroHeadLoad	NavicoDataTypeConst = 637
+	CodeZeroClewLoad	NavicoDataTypeConst = 638
+	CodeZeroTackLoad	NavicoDataTypeConst = 639
+	SuzukiEngineAlertI	NavicoDataTypeConst = 640
+	EngineOilLife	NavicoDataTypeConst = 641
+	EngineOilLevelStatus	NavicoDataTypeConst = 642
+	TransFluidStatus	NavicoDataTypeConst = 643
+	HondaEcoStatusAllEngines	NavicoDataTypeConst = 644
+	OutputRpm	NavicoDataTypeConst = 645
+	SuzukiEngineAlertA	NavicoDataTypeConst = 646
+	SuzukiEngineAlertB	NavicoDataTypeConst = 647
+	SuzukiEngineAlertC	NavicoDataTypeConst = 648
+	SuzukiEngineAlertD	NavicoDataTypeConst = 649
+	SuzukiEngineAlertE	NavicoDataTypeConst = 650
+	SuzukiEngineAlertF	NavicoDataTypeConst = 651
+	SuzukiEngineAlertG	NavicoDataTypeConst = 652
+	SuzukiEngineAlertH	NavicoDataTypeConst = 653
+	SuzukiEngineAlertJ	NavicoDataTypeConst = 654
+	SuzukiBcmFault	NavicoDataTypeConst = 655
+	SuzukiBcmMode	NavicoDataTypeConst = 656
+	SuzukiEngineKlsStatus	NavicoDataTypeConst = 657
+	SuzukiSwitchFault	NavicoDataTypeConst = 658
+	SuzukiShiftPositionStatus	NavicoDataTypeConst = 659
+	VesselFuelUsedSeasonal	NavicoDataTypeConst = 660
+	VesselFuelCapacity	NavicoDataTypeConst = 661
+	SuzukiEngineAutoTrimStatus	NavicoDataTypeConst = 662
+	TrollingModeActive	NavicoDataTypeConst = 663
+	TrollingModeActiveMaster	NavicoDataTypeConst = 664
+	KeylessCommunicationState	NavicoDataTypeConst = 665
+	LinearActuatorPosition	NavicoDataTypeConst = 666
+	EngineExhaustTemp	NavicoDataTypeConst = 667
+	EngineGuardianPowerLimit	NavicoDataTypeConst = 668
+	EngineState	NavicoDataTypeConst = 669
+	SailingTimeToBurn	NavicoDataTypeConst = 670
+	MastTwist	NavicoDataTypeConst = 671
+	VhfChannel	NavicoDataTypeConst = 672
+	TrollingLowerUnitDirection	NavicoDataTypeConst = 673
+	PropulsionBatteryStatus	NavicoDataTypeConst = 674
+	PropulsionBatteryIsolationStat	NavicoDataTypeConst = 675
+	PropulsionBatteryError	NavicoDataTypeConst = 676
+	PropulsionBatteryVoltage	NavicoDataTypeConst = 677
+	PropulsionBatteryCurrent	NavicoDataTypeConst = 678
+	PropulsionBatteryStateOfCharge	NavicoDataTypeConst = 679
+	PropulsionBatteryTimeRemaining	NavicoDataTypeConst = 680
+	PropulsionBatteryHighestCellTe	NavicoDataTypeConst = 681
+	PropulsionBatteryLowestCellTem	NavicoDataTypeConst = 682
+	PropulsionBatteryAverageCellTe	NavicoDataTypeConst = 683
+	PropulsionBatteryMaximumDischa	NavicoDataTypeConst = 684
+	PropulsionBatteryMaximumCharge	NavicoDataTypeConst = 685
+	PropulsionBatteryCoolingSystem	NavicoDataTypeConst = 686
+	PropulsionBatteryHeatingSystem	NavicoDataTypeConst = 687
+	PropulsionBatteryStorageMode	NavicoDataTypeConst = 688
+	PropulsionBatteryChemistry	NavicoDataTypeConst = 689
+	PropulsionBatteryMaximumTemper	NavicoDataTypeConst = 690
+	PropulsionBatteryMaximumTemper_2	NavicoDataTypeConst = 691
+	PropulsionBatteryMinimumTemper	NavicoDataTypeConst = 692
+	PropulsionBatteryMinimumTemper_2	NavicoDataTypeConst = 693
+	PropulsionBatteryUsableEnergy	NavicoDataTypeConst = 694
+	PropulsionBatteryStateOfHealth	NavicoDataTypeConst = 695
+	PropulsionBatteryDischargeCycl	NavicoDataTypeConst = 696
+	PropulsionBatteryFullStatus	NavicoDataTypeConst = 697
+	PropulsionBatteryEmptyStatus	NavicoDataTypeConst = 698
+	PropulsionBatteryMaximumCharge_2	NavicoDataTypeConst = 699
+	PropulsionBatteryMinimumDischa	NavicoDataTypeConst = 700
+	ActiveMotorMode	NavicoDataTypeConst = 701
+	MotorBrakeMode	NavicoDataTypeConst = 702
+	MotorRotationalShaftSpeed	NavicoDataTypeConst = 703
+	MotorVoltage	NavicoDataTypeConst = 704
+	MotorCurrent	NavicoDataTypeConst = 705
+	MotorOperatingMode	NavicoDataTypeConst = 706
+	MotorTemperature	NavicoDataTypeConst = 707
+	MotorInverterTemperature	NavicoDataTypeConst = 708
+	MotorCoolantTemperature	NavicoDataTypeConst = 709
+	MotorGearTemperature	NavicoDataTypeConst = 710
+	MotorShaftTorquePercent	NavicoDataTypeConst = 711
+	MotorVoltageType	NavicoDataTypeConst = 712
+	MotorVoltageRating	NavicoDataTypeConst = 713
+	MotorMaxContinuousPower	NavicoDataTypeConst = 714
+	MotorMaxBoostPower	NavicoDataTypeConst = 715
+	MotorMaxTemperatureRating	NavicoDataTypeConst = 716
+	MotorRatedSpeed	NavicoDataTypeConst = 717
+	MotorMaxControllerTemperatureR	NavicoDataTypeConst = 718
+	MotorShaftTorqueRating	NavicoDataTypeConst = 719
+	MotorDcVoltageDeratingThreshol	NavicoDataTypeConst = 720
+	MotorDcVoltageCutoffThreshold	NavicoDataTypeConst = 721
+	MotorRuntime	NavicoDataTypeConst = 722
+	SailingPingTimePort	NavicoDataTypeConst = 723
+	SailingPingTimeStbd	NavicoDataTypeConst = 724
+	HeadingSource	NavicoDataTypeConst = 725
+	Invalid	NavicoDataTypeConst = 726
+)
+
+func (e NavicoDataTypeConst) GoString() string {return e.String() }
+func (e NavicoDataTypeConst) String() string {
+	switch e {
+		case 0:
+			return "Altitude"
+		case 1:
+			return "Position"
+		case 2:
+			return "Position Error"
+		case 3:
+			return "HDOP"
+		case 4:
+			return "VDOP"
+		case 5:
+			return "TDOP"
+		case 6:
+			return "PDOP"
+		case 7:
+			return "Geoidal Seperation"
+		case 8:
+			return "COG"
+		case 9:
+			return "Position Quality"
+		case 10:
+			return "Position Integrity"
+		case 11:
+			return "Sats In View"
+		case 12:
+			return "Waas Status"
+		case 13:
+			return "Bearing"
+		case 14:
+			return "Course"
+		case 15:
+			return "CDI Graphic"
+		case 16:
+			return "Course To Steer"
+		case 17:
+			return "Cross Track"
+		case 18:
+			return "Velocity Made Good"
+		case 19:
+			return "Destination"
+		case 20:
+			return "Distance To Turn"
+		case 21:
+			return "Distance To Dest"
+		case 22:
+			return "Time To Turn"
+		case 23:
+			return "Time To Dest"
+		case 24:
+			return "ETA At Turn"
+		case 25:
+			return "ETA At Dest"
+		case 26:
+			return "Total Distance"
+		case 27:
+			return "Steer Arrow"
+		case 28:
+			return "Odometer"
+		case 29:
+			return "Trip Distance"
+		case 30:
+			return "Trip Time"
+		case 31:
+			return "Date"
+		case 32:
+			return "Time"
+		case 33:
+			return "UTC Date"
+		case 34:
+			return "UTC Time"
+		case 35:
+			return "Local Time Offset"
+		case 36:
+			return "Heading"
+		case 37:
+			return "Was Voltage"
+		case 38:
+			return "Current Set"
+		case 39:
+			return "Current Drift"
+		case 40:
+			return "Speed SOG"
+		case 41:
+			return "Speed Water"
+		case 42:
+			return "Speed Pitot"
+		case 43:
+			return "Speed Trip Avg"
+		case 44:
+			return "Speed Trip Max"
+		case 45:
+			return "Speed Wind App"
+		case 46:
+			return "Speed Wind True"
+		case 47:
+			return "Temp Water"
+		case 48:
+			return "Temp Outside"
+		case 49:
+			return "Temp Inside"
+		case 50:
+			return "Temp Engine Room"
+		case 51:
+			return "Temp Main Cabin"
+		case 52:
+			return "Temp Live Well"
+		case 53:
+			return "Temp Bait Well"
+		case 54:
+			return "Temp Refrigeration"
+		case 55:
+			return "Temp Heating System"
+		case 56:
+			return "Temp Dew Point"
+		case 57:
+			return "Temp Wind Chill App"
+		case 58:
+			return "Temp Wind Chill Theoretic"
+		case 59:
+			return "Temp Heat Index"
+		case 60:
+			return "Temp Freezer"
+		case 61:
+			return "Engine Temp"
+		case 62:
+			return "Engine Air Temp"
+		case 63:
+			return "Engine Oil Temp"
+		case 64:
+			return "Temp Battery"
+		case 65:
+			return "Pressure Atmospheric"
+		case 66:
+			return "Engine Boost Pres"
+		case 67:
+			return "Engine Oil Pres"
+		case 68:
+			return "Engine Water Pres"
+		case 69:
+			return "Engine Fuel Pres"
+		case 70:
+			return "Engine Manifold Pres"
+		case 71:
+			return "Pressure Steam"
+		case 72:
+			return "Pressure Compr Air"
+		case 73:
+			return "Pressure Hydraulic"
+		case 74:
+			return "Was Generic Pressure Lo"
+		case 75:
+			return "Was Generic Pressure Hi"
+		case 76:
+			return "Depth"
+		case 77:
+			return "Water Distance"
+		case 78:
+			return "Engine RPM"
+		case 79:
+			return "Engine Trim"
+		case 80:
+			return "Engine Alternator Potential"
+		case 81:
+			return "Engine Fuel Rate"
+		case 82:
+			return "Engine Percent Load"
+		case 83:
+			return "Engine Percent Torque"
+		case 84:
+			return "Was Suzuki Alarm Lev Lo"
+		case 85:
+			return "Was Suzuki Alarm Lev High"
+		case 86:
+			return "Tank Fuel Level"
+		case 87:
+			return "Fluid Level Fresh Water"
+		case 88:
+			return "Fluid Level Gray Water"
+		case 89:
+			return "Fluid Level Live Well"
+		case 90:
+			return "Fluid Level Oil"
+		case 91:
+			return "Fluid Level Black Water"
+		case 92:
+			return "Tank Fuel Remaining"
+		case 93:
+			return "Fluid Volume Fresh Water"
+		case 94:
+			return "Fluid Volume Gray Water"
+		case 95:
+			return "Fluid Volume Live Well"
+		case 96:
+			return "Fluid Volume Oil"
+		case 97:
+			return "Fluid Volume Black Water"
+		case 98:
+			return "Gen Fluid Volume"
+		case 99:
+			return "Was Tank Fuel Level Lo"
+		case 100:
+			return "Was Fluid Level Lo Fresh Water"
+		case 101:
+			return "Was Fluid Level Lo Gray Water"
+		case 102:
+			return "Was Fluid Level Lo Live Well"
+		case 103:
+			return "Was Fluid Level Lo Oil"
+		case 104:
+			return "Gen Tank Capacity"
+		case 105:
+			return "Tank Fuel Capacity"
+		case 106:
+			return "Tank Capacity Fresh Water"
+		case 107:
+			return "Tank Capacity Gray Water"
+		case 108:
+			return "Tank Capacity Live Well"
+		case 109:
+			return "Tank Capacity Oil"
+		case 110:
+			return "Tank Capacity Black Water"
+		case 111:
+			return "Was Tank Fuel Used"
+		case 112:
+			return "Engine Fuel Used"
+		case 113:
+			return "Engine Fuel Used Trip"
+		case 114:
+			return "Engine Fuel Used Seasonal"
+		case 115:
+			return "Engine Fuel K Value"
+		case 116:
+			return "Battery Potential"
+		case 117:
+			return "Battery Current"
+		case 118:
+			return "Trim Tab"
+		case 119:
+			return "Was Trim Stbd Tab"
+		case 120:
+			return "Rate Of Turn"
+		case 121:
+			return "Attitude Yaw"
+		case 122:
+			return "Attitude Pitch"
+		case 123:
+			return "Attitude Roll"
+		case 124:
+			return "Magnetic Variation"
+		case 125:
+			return "Deviation"
+		case 126:
+			return "Fuel Economy Wtr"
+		case 127:
+			return "Fuel Economy GPS"
+		case 128:
+			return "Was Fuel Remaining"
+		case 129:
+			return "Was Fuel Range Wtr"
+		case 130:
+			return "Was Fuel Range GPS"
+		case 131:
+			return "Engine Hours Used"
+		case 132:
+			return "Engine Type"
+		case 133:
+			return "Vessel Fuel Rate"
+		case 134:
+			return "Vessel Fuel Economy Wtr"
+		case 135:
+			return "Vessel Fuel Economy GPS"
+		case 136:
+			return "Vessel Fuel Remaining"
+		case 137:
+			return "Vessel Fuel Range Wtr"
+		case 138:
+			return "Vessel Fuel Range GPS"
+		case 139:
+			return "Wind App Angle"
+		case 140:
+			return "Wind True Angle"
+		case 141:
+			return "Wind True Direction"
+		case 142:
+			return "Humidity Inside"
+		case 143:
+			return "Humidity Outside"
+		case 144:
+			return "Set Humidity"
+		case 145:
+			return "Rudder Angle"
+		case 146:
+			return "Trans Gear"
+		case 147:
+			return "Trans Oil Pressure"
+		case 148:
+			return "Trans Oil Temp"
+		case 149:
+			return "Cmd Rudder Angle"
+		case 150:
+			return "Rudder Limit"
+		case 151:
+			return "Off Heading Lim"
+		case 152:
+			return "Radius Of Turn Order"
+		case 153:
+			return "Rate Of Turn Order"
+		case 154:
+			return "Off Track Lim"
+		case 155:
+			return "Logging Time Remaining"
+		case 156:
+			return "Position Fix Type"
+		case 157:
+			return "Engine Discrete Status"
+		case 158:
+			return "Transmission Discrete Status"
+		case 159:
+			return "GPS Best Of Four Snr"
+		case 160:
+			return "Gen Fluid Level"
+		case 161:
+			return "Gen Pressure"
+		case 162:
+			return "Gen Temperature"
+		case 163:
+			return "Internal Voltage"
+		case 164:
+			return "Depth Offset"
+		case 165:
+			return "Structure Depth"
+		case 166:
+			return "Loran Position"
+		case 167:
+			return "Vessel Status"
+		case 168:
+			return "Battery DC Type"
+		case 169:
+			return "Battery State Of Charge"
+		case 170:
+			return "Battery State Of Health"
+		case 171:
+			return "Battery Time Remaining"
+		case 172:
+			return "Battery Ripple Voltage"
+		case 173:
+			return "Ac1 Acceptability"
+		case 174:
+			return "Ac2 Acceptability"
+		case 175:
+			return "Ac3 Acceptability"
+		case 176:
+			return "Ac1 Voltage"
+		case 177:
+			return "Ac2 Voltage"
+		case 178:
+			return "Ac3 Voltage"
+		case 179:
+			return "Ac1 Current"
+		case 180:
+			return "Ac2 Current"
+		case 181:
+			return "Ac3 Current"
+		case 182:
+			return "Ac1 Frequency"
+		case 183:
+			return "Ac2 Frequency"
+		case 184:
+			return "Ac3 Frequency"
+		case 185:
+			return "Ac1 Breaker Size"
+		case 186:
+			return "Ac2 Breaker Size"
+		case 187:
+			return "Ac3 Breaker Size"
+		case 188:
+			return "Ac1 Real Power"
+		case 189:
+			return "Ac2 Real Power"
+		case 190:
+			return "Ac3 Real Power"
+		case 191:
+			return "Ac1 Reactive Power"
+		case 192:
+			return "Ac2 Reactive Power"
+		case 193:
+			return "Ac3 Reactive Power"
+		case 194:
+			return "Ac1 Power Factor"
+		case 195:
+			return "Ac2 Power Factor"
+		case 196:
+			return "Ac3 Power Factor"
+		case 197:
+			return "Switch State"
+		case 198:
+			return "Switch Current"
+		case 199:
+			return "Switch Fault"
+		case 200:
+			return "Switch Dim Level"
+		case 201:
+			return "Previous Cmd Heading"
+		case 202:
+			return "Cmd Wind Angle"
+		case 203:
+			return "Was Cmd Bearing Offset"
+		case 204:
+			return "Cmd Bearing"
+		case 205:
+			return "Cmd Depth Contour"
+		case 206:
+			return "Cmd Course Change"
+		case 207:
+			return "Pilot Drift"
+		case 208:
+			return "Pilot Distance To Turn"
+		case 209:
+			return "Pilot Time To Turn"
+		case 210:
+			return "Pilot Reference Position"
+		case 211:
+			return "DC Status"
+		case 212:
+			return "Ac1 Status"
+		case 213:
+			return "Was Switch Voltage"
+		case 214:
+			return "Battery Capacity Remaining"
+		case 215:
+			return "Pilot Heading Reference"
+		case 216:
+			return "B And G Linear 1"
+		case 217:
+			return "B And G Linear 2"
+		case 218:
+			return "B And G Linear 3"
+		case 219:
+			return "Boom Position"
+		case 220:
+			return "Sailing Course"
+		case 221:
+			return "Daggerboard Position"
+		case 222:
+			return "B And G Linear 4"
+		case 223:
+			return "Heading On Next Tack"
+		case 224:
+			return "Keel Angle"
+		case 225:
+			return "Leeway"
+		case 226:
+			return "Mast Angle"
+		case 227:
+			return "Target True Wind Angle"
+		case 228:
+			return "Keel Trim Tab"
+		case 229:
+			return "Race Timer"
+		case 230:
+			return "Canard Angle"
+		case 231:
+			return "Next Leg Apparent Wind Angle"
+		case 232:
+			return "Next Leg Apparent Wind Speed"
+		case 233:
+			return "Target Boat Speed"
+		case 234:
+			return "VMG To Wind"
+		case 235:
+			return "Time To Laylines"
+		case 236:
+			return "Distance To Laylines"
+		case 237:
+			return "Aft Depth"
+		case 238:
+			return "Forestay"
+		case 239:
+			return "Polar Speed"
+		case 240:
+			return "Polar Performance"
+		case 241:
+			return "Tacking Performance"
+		case 242:
+			return "Wind Angle To Mast"
+		case 243:
+			return "Can Bus Voltage"
+		case 244:
+			return "Internal Temperature"
+		case 245:
+			return "Engage Current"
+		case 246:
+			return "Uref Voltage"
+		case 247:
+			return "Supply Voltage"
+		case 248:
+			return "Destination Position"
+		case 249:
+			return "Compass Heading Reference"
+		case 250:
+			return "Cmd Rudder Direction"
+		case 251:
+			return "Was Engine Sync State"
+		case 252:
+			return "Engine General Maintenance"
+		case 253:
+			return "Engine Percent Throttle"
+		case 254:
+			return "Engine Steering Angle"
+		case 255:
+			return "Engine Break In Reqd"
+		case 256:
+			return "GPS All"
+		case 257:
+			return "Engine Break In Accum"
+		case 258:
+			return "Engine Trim Status"
+		case 259:
+			return "Pilot Present"
+		case 260:
+			return "Ac1 Out Waveform"
+		case 261:
+			return "Ac2 Out Waveform"
+		case 262:
+			return "Ac3 Out Waveform"
+		case 263:
+			return "Ac1 Out Voltage"
+		case 264:
+			return "Ac2 Out Voltage"
+		case 265:
+			return "Ac3 Out Voltage"
+		case 266:
+			return "Ac1 Out Current"
+		case 267:
+			return "Ac2 Out Current"
+		case 268:
+			return "Ac3 Out Current"
+		case 269:
+			return "Ac1 Out Frequency"
+		case 270:
+			return "Ac2 Out Frequency"
+		case 271:
+			return "Ac3 Out Frequency"
+		case 272:
+			return "Ac1 Out Breaker Size"
+		case 273:
+			return "Ac2 Out Breaker Size"
+		case 274:
+			return "Ac3 Out Breaker Size"
+		case 275:
+			return "Ac1 Out Real Power"
+		case 276:
+			return "Ac2 Out Real Power"
+		case 277:
+			return "Ac3 Out Real Power"
+		case 278:
+			return "Ac1 Out Reactive Power"
+		case 279:
+			return "Ac2 Out Reactive Power"
+		case 280:
+			return "Ac3 Out Reactive Power"
+		case 281:
+			return "Ac1 Out Power Factor"
+		case 282:
+			return "Ac2 Out Power Factor"
+		case 283:
+			return "Ac3 Out Power Factor"
+		case 284:
+			return "Ac2 Status"
+		case 285:
+			return "Ac3 Status"
+		case 286:
+			return "Ac1 Out Status"
+		case 287:
+			return "Ac2 Out Status"
+		case 288:
+			return "Ac3 Out Status"
+		case 289:
+			return "Switch Manual Override"
+		case 290:
+			return "Switch Reverse Polarity"
+		case 291:
+			return "Switch Acsource Available"
+		case 292:
+			return "Switch Accontactor Systemsonstate"
+		case 293:
+			return "Charger Battery Instance"
+		case 294:
+			return "Charger Operating State"
+		case 295:
+			return "Charger Mode"
+		case 296:
+			return "Charger Enabled"
+		case 297:
+			return "Charger Equalization Pending"
+		case 298:
+			return "Charger Equalization Time Remaining"
+		case 299:
+			return "Inverter AC Instance"
+		case 300:
+			return "Inverter DC Instance"
+		case 301:
+			return "Inverter Operating State"
+		case 302:
+			return "Inverter Enabled"
+		case 303:
+			return "Thruster Power"
+		case 304:
+			return "Fuel To Turn"
+		case 305:
+			return "Engine Mil"
+		case 306:
+			return "Engine Warning Flags"
+		case 307:
+			return "Speed Stw"
+		case 308:
+			return "Engine Performance SOG"
+		case 309:
+			return "Engine Performance Stw"
+		case 310:
+			return "Engine Control Flags"
+		case 311:
+			return "Engine Troll RPM Setpoint"
+		case 312:
+			return "Active Helm"
+		case 313:
+			return "Cruise RPM Setpoint"
+		case 314:
+			return "Cruise Speed Setpoint"
+		case 315:
+			return "Cmd Pattern Dir"
+		case 316:
+			return "Smart Contextual"
+		case 317:
+			return "Sailing Time To Waypoint"
+		case 318:
+			return "Sailing Distance To Waypoint"
+		case 319:
+			return "Sailing ETA"
+		case 320:
+			return "Generator Temp"
+		case 321:
+			return "Generator Oil Temp"
+		case 322:
+			return "Generator Oil Pres"
+		case 323:
+			return "Generator Water Pres"
+		case 324:
+			return "Generator Fuel Pres"
+		case 325:
+			return "Generator Fuel Rate"
+		case 326:
+			return "Generator Hours Used"
+		case 327:
+			return "Generator Discrete Status"
+		case 328:
+			return "Generator Percent Load"
+		case 329:
+			return "Generator Percent Torque"
+		case 330:
+			return "Generator Battery Voltage"
+		case 331:
+			return "Generator Average Voltage"
+		case 332:
+			return "Generator Average Frequency"
+		case 333:
+			return "Generator Average Current"
+		case 334:
+			return "Pilot Mode"
+		case 335:
+			return "Pilot Response Level"
+		case 336:
+			return "Cruise Smarttow Overshoot"
+		case 337:
+			return "Pilot Cmd Heading"
+		case 338:
+			return "MOB Dr Position"
+		case 339:
+			return "MOB Dr Range"
+		case 340:
+			return "MOB Dr Bearing"
+		case 341:
+			return "Bow Position"
+		case 342:
+			return "Start Line Bearing"
+		case 343:
+			return "Start Line Bias"
+		case 344:
+			return "Distance To Start Line"
+		case 345:
+			return "Distance To Start Line Port End"
+		case 346:
+			return "Distance To Start Line Stbd End"
+		case 347:
+			return "Start Line Port Position"
+		case 348:
+			return "Start Line Stbd Position"
+		case 349:
+			return "Start Line Boat Length Advantage"
+		case 350:
+			return "Distance To Start Line Boat Lengths"
+		case 351:
+			return "Backstay"
+		case 352:
+			return "Boom Angle"
+		case 353:
+			return "Boom Vang"
+		case 354:
+			return "Chain Length"
+		case 355:
+			return "Cunningham"
+		case 356:
+			return "Inner Forestay Load"
+		case 357:
+			return "Inner Forestay Halyard Load"
+		case 358:
+			return "Jib Furl"
+		case 359:
+			return "Jib Halyard Load"
+		case 360:
+			return "Optimum Wind Angle"
+		case 361:
+			return "Outhaul Load"
+		case 362:
+			return "Pitch Rate"
+		case 363:
+			return "Plow Angle"
+		case 364:
+			return "Roll Rate"
+		case 365:
+			return "VMG Performance"
+		case 366:
+			return "B And G Linear 5"
+		case 367:
+			return "B And G Linear 6"
+		case 368:
+			return "B And G Linear 7"
+		case 369:
+			return "B And G Linear 8"
+		case 370:
+			return "B And G Linear 9"
+		case 371:
+			return "B And G Linear 10"
+		case 372:
+			return "B And G Linear 11"
+		case 373:
+			return "B And G Linear 12"
+		case 374:
+			return "B And G Linear 13"
+		case 375:
+			return "B And G Linear 14"
+		case 376:
+			return "B And G Linear 15"
+		case 377:
+			return "B And G Linear 16"
+		case 378:
+			return "Keel Draught"
+		case 379:
+			return "Pool Temperature"
+		case 380:
+			return "Jacuzzi Temperature"
+		case 381:
+			return "Trip Dr Bearing"
+		case 382:
+			return "Trip Dr Distance"
+		case 383:
+			return "Code Zero Load"
+		case 384:
+			return "B And G MOB Position"
+		case 385:
+			return "Distance Behind Start Line"
+		case 386:
+			return "Distance Behind Start Line Boat Lengths"
+		case 387:
+			return "Bias Advantage"
+		case 388:
+			return "Opposite Tack COG"
+		case 389:
+			return "Opposite Tack Target Heading"
+		case 390:
+			return "Mast Rake"
+		case 391:
+			return "Next Leg Bearing"
+		case 392:
+			return "Next Leg Target Speed"
+		case 393:
+			return "Ground Wind Direction"
+		case 394:
+			return "Ground Wind Speed"
+		case 395:
+			return "Mast Cant Angle"
+		case 396:
+			return "Rudder Toe In"
+		case 397:
+			return "Daggerboard Port"
+		case 398:
+			return "Daggerboard Starboard"
+		case 399:
+			return "B And G Remote 0"
+		case 400:
+			return "B And G Remote 1"
+		case 401:
+			return "B And G Remote 2"
+		case 402:
+			return "B And G Remote 3"
+		case 403:
+			return "B And G Remote 4"
+		case 404:
+			return "B And G Remote 5"
+		case 405:
+			return "B And G Remote 6"
+		case 406:
+			return "B And G Remote 7"
+		case 407:
+			return "B And G Remote 8"
+		case 408:
+			return "B And G Remote 9"
+		case 409:
+			return "Forward Depth"
+		case 410:
+			return "Critical Range"
+		case 411:
+			return "Caution Range"
+		case 412:
+			return "Max Range"
+		case 413:
+			return "Generator Alternator Voltage"
+		case 414:
+			return "Trolling Prop Rate"
+		case 415:
+			return "Trolling Cruise Control Speed"
+		case 416:
+			return "Vessel Fuel Used"
+		case 417:
+			return "Suzuki Engine Baro Pressure"
+		case 418:
+			return "Suzuki Cylinder Temperature"
+		case 419:
+			return "Suzuki Intake Air Temperature"
+		case 420:
+			return "Suzuki Ignition Timing"
+		case 421:
+			return "Suzuki Fuel Injector Pulse Width"
+		case 422:
+			return "Was Suzuki Injected Fuel Amount"
+		case 423:
+			return "Suzuki Iac Valve Duty"
+		case 424:
+			return "Suzuki Discrete Status 1"
+		case 425:
+			return "Suzuki Discrete Status 2"
+		case 426:
+			return "Suzuki Discrete Status 3"
+		case 427:
+			return "Suzuki Discrete Status 4"
+		case 428:
+			return "Fuel Economy Pit"
+		case 429:
+			return "Vessel Fuel Economy Pit"
+		case 430:
+			return "Vessel Fuel Range Pit"
+		case 431:
+			return "Waypoint"
+		case 432:
+			return "Average Wind Direction"
+		case 433:
+			return "Wind Phase"
+		case 434:
+			return "Wind Lift"
+		case 435:
+			return "Fuel Range Seasonal Average"
+		case 436:
+			return "Fuel Range Instantaneous"
+		case 437:
+			return "Vessel Fuel Economy"
+		case 438:
+			return "Average Fuel Economy Seasonal"
+		case 439:
+			return "Average Fuel Economy Trip"
+		case 440:
+			return "Best Fuel Economy Seasonal"
+		case 441:
+			return "Best Fuel Economy Trip"
+		case 442:
+			return "Vessel Fuel Level"
+		case 443:
+			return "Vessel Fuel Used Trip"
+		case 444:
+			return "B And G Linear 17"
+		case 445:
+			return "B And G Linear 18"
+		case 446:
+			return "B And G Linear 19"
+		case 447:
+			return "B And G Linear 20"
+		case 448:
+			return "B And G Linear 21"
+		case 449:
+			return "B And G Linear 22"
+		case 450:
+			return "B And G Linear 23"
+		case 451:
+			return "B And G Linear 24"
+		case 452:
+			return "B And G Linear 25"
+		case 453:
+			return "B And G Linear 26"
+		case 454:
+			return "B And G Linear 27"
+		case 455:
+			return "B And G Linear 28"
+		case 456:
+			return "B And G Linear 29"
+		case 457:
+			return "B And G Linear 30"
+		case 458:
+			return "B And G Linear 31"
+		case 459:
+			return "B And G Linear 32"
+		case 460:
+			return "Origin Way Point Number"
+		case 461:
+			return "Dest Way Point Number"
+		case 462:
+			return "Arrival Notification"
+		case 463:
+			return "Arrival Circle Notification"
+		case 464:
+			return "Was Nav Terminated"
+		case 465:
+			return "Bobstay"
+		case 466:
+			return "J1"
+		case 467:
+			return "J2"
+		case 468:
+			return "J3"
+		case 469:
+			return "Mast Base"
+		case 470:
+			return "Mainsheet"
+		case 471:
+			return "D0 Port"
+		case 472:
+			return "D0 Starboard"
+		case 473:
+			return "Runner Port"
+		case 474:
+			return "Runner Starboard"
+		case 475:
+			return "Foil Port"
+		case 476:
+			return "Foil Starboard"
+		case 477:
+			return "Sailtack Port"
+		case 478:
+			return "Sailtack Starboard"
+		case 479:
+			return "Deflect Port"
+		case 480:
+			return "Deflect Starboard"
+		case 481:
+			return "Rudder Load Port"
+		case 482:
+			return "Rudder Load Starboard"
+		case 483:
+			return "D1 Port"
+		case 484:
+			return "D1 Starboard"
+		case 485:
+			return "V0 Port"
+		case 486:
+			return "V0 Starboard"
+		case 487:
+			return "V1 Port"
+		case 488:
+			return "V1 Starboard"
+		case 489:
+			return "Gnss System"
+		case 490:
+			return "Sv Count"
+		case 491:
+			return "Gnss Op Mode"
+		case 492:
+			return "Dgnss Mode"
+		case 493:
+			return "Suzuki Fuel Pump Duty"
+		case 494:
+			return "Speed Log Water Longitudinal"
+		case 495:
+			return "Speed Log Water Transverse"
+		case 496:
+			return "Speed Log Water Resultant"
+		case 497:
+			return "Speed Log Water Angle"
+		case 498:
+			return "Speed Log Ground Longitudinal"
+		case 499:
+			return "Speed Log Ground Transverse"
+		case 500:
+			return "Speed Log Ground Resultant"
+		case 501:
+			return "Speed Log Ground Angle"
+		case 502:
+			return "Speed Log Stern Water Transverse"
+		case 503:
+			return "Speed Log Stern Ground Transverse"
+		case 504:
+			return "Position Datum"
+		case 505:
+			return "Speed Boat"
+		case 506:
+			return "Was Engine Fuel Used Mercury"
+		case 507:
+			return "Heave"
+		case 508:
+			return "Speed Trip Max RPM"
+		case 509:
+			return "Honda Engine Status Params"
+		case 510:
+			return "Pilot Features"
+		case 511:
+			return "Pilot Setpoint Heading"
+		case 512:
+			return "Idle Speed Control Mode"
+		case 513:
+			return "Idle Speed Control Value"
+		case 514:
+			return "Trolling Mode"
+		case 515:
+			return "Immobilizer Lock Status"
+		case 516:
+			return "Engine Discrete Params 1"
+		case 517:
+			return "Engine Discrete Params 2"
+		case 518:
+			return "Engine Discrete Params 3"
+		case 519:
+			return "Engine Discrete Params 4"
+		case 520:
+			return "Engine Discrete Params 5"
+		case 521:
+			return "Engine Discrete Params 6"
+		case 522:
+			return "Idle Speed Limit Low"
+		case 523:
+			return "Idle Speed Limit High"
+		case 524:
+			return "Was Trolling Variable RPM Info"
+		case 525:
+			return "Idle Speed Control Target Rev"
+		case 526:
+			return "Idle Control"
+		case 527:
+			return "Idle Feedback"
+		case 528:
+			return "Immediately After Starting Control"
+		case 529:
+			return "Gateway Params"
+		case 530:
+			return "Gateway Protocol"
+		case 531:
+			return "Engine Wall Temp"
+		case 532:
+			return "Substitute Battery Voltage"
+		case 533:
+			return "Yamaha Engine M6 Diag Code"
+		case 534:
+			return "Wireless Sensor Battery Status"
+		case 535:
+			return "Wireless Sensor Battery Charge Status"
+		case 536:
+			return "Wireless Sensor Battery Status Voltage"
+		case 537:
+			return "Wireless Sensor Battery Charge Status Current"
+		case 538:
+			return "Fluid Type Mode"
+		case 539:
+			return "Datetime"
+		case 540:
+			return "Reacher Load"
+		case 541:
+			return "Blade Load"
+		case 542:
+			return "Staysail Load"
+		case 543:
+			return "Tack Load"
+		case 544:
+			return "J4 Load"
+		case 545:
+			return "Solent Load"
+		case 546:
+			return "Tack Port Load"
+		case 547:
+			return "Tack Starboard Load"
+		case 548:
+			return "Deflect Upper Load"
+		case 549:
+			return "Deflect Lower Load"
+		case 550:
+			return "Winch Port Load"
+		case 551:
+			return "Winch Starboard Load"
+		case 552:
+			return "Spin Halyard Port Load"
+		case 553:
+			return "Spin Halyard Starboard Load"
+		case 554:
+			return "Main Halyward"
+		case 555:
+			return "Load 1 Load"
+		case 556:
+			return "Load 2 Load"
+		case 557:
+			return "Mast Base 2 Load"
+		case 558:
+			return "Pilot Active Perf Mode"
+		case 559:
+			return "Pilot Gust"
+		case 560:
+			return "Pilot Tws Response"
+		case 561:
+			return "Pilot Heel Comp"
+		case 562:
+			return "Pilot Net Course"
+		case 563:
+			return "Pilot Target Wind Angle"
+		case 564:
+			return "Pilot Weather Helm"
+		case 565:
+			return "Pilot Mean Heel"
+		case 566:
+			return "Propeller Shaft Pitch Angle"
+		case 567:
+			return "Propeller Shaft Pitch Percent"
+		case 568:
+			return "Propeller Shaft RPM"
+		case 569:
+			return "Thruster Pitch Angle"
+		case 570:
+			return "Thruster Pitch Percent"
+		case 571:
+			return "Ground Wind Angle"
+		case 572:
+			return "Fuel Flow Offset"
+		case 573:
+			return "Fluid Level Gasoline"
+		case 574:
+			return "Fluid Volume Gasoline"
+		case 575:
+			return "Tank Capacity Gasoline"
+		case 576:
+			return "Cmd Xte Offset"
+		case 577:
+			return "Engine 4Stroke Oil"
+		case 578:
+			return "Wireless Sensor Signal Strength"
+		case 579:
+			return "Wireless Sensor Software Update Progress"
+		case 580:
+			return "Trolling Status"
+		case 581:
+			return "Mercury Exhaust Valve"
+		case 582:
+			return "Mercury Exhaust Status"
+		case 583:
+			return "Yanmar Engine Ecu Alarms"
+		case 584:
+			return "Yanmar Helm Ecu Alarms"
+		case 585:
+			return "Yanmar Drive Ecu Alarms"
+		case 586:
+			return "Dgps Correction Data"
+		case 587:
+			return "Dgps Reference Station Id"
+		case 588:
+			return "Dgps Reference Station Health"
+		case 589:
+			return "Dgps Signal Snr"
+		case 590:
+			return "Dgps Signal Frequency"
+		case 591:
+			return "Dgps Signal Strength"
+		case 592:
+			return "Engine Fuel Temp"
+		case 593:
+			return "Depth Quality"
+		case 594:
+			return "Number Of Active Dtc"
+		case 595:
+			return "Yanmar Fuel Level Tank1 Port"
+		case 596:
+			return "Yanmar Fuel Level Tank2 Port"
+		case 597:
+			return "Yanmar Fuel Level Tank1 Stbd"
+		case 598:
+			return "Yanmar Fuel Level Tank2 Stbd"
+		case 599:
+			return "Yanmar Fuel Level Tank1 Center"
+		case 600:
+			return "Yanmar Fuel Level Tank2 Center"
+		case 601:
+			return "Yanmar Fresh Water Level Tank1 Port"
+		case 602:
+			return "Yanmar Fresh Water Level Tank2 Port"
+		case 603:
+			return "Yanmar Fresh Water Level Tank1 Stbd"
+		case 604:
+			return "Yanmar Fresh Water Level Tank2 Stbd"
+		case 605:
+			return "Yanmar Fresh Water Level Tank1 Center"
+		case 606:
+			return "Yanmar Fresh Water Level Tank2 Center"
+		case 607:
+			return "Yanmar Gray Water Level Tank1 Port"
+		case 608:
+			return "Yanmar Gray Water Level Tank2 Port"
+		case 609:
+			return "Yanmar Gray Water Level Tank1 Stbd"
+		case 610:
+			return "Yanmar Gray Water Level Tank2 Stbd"
+		case 611:
+			return "Yanmar Gray Water Level Tank1 Center"
+		case 612:
+			return "Yanmar Gray Water Level Tank2 Center"
+		case 613:
+			return "Rudder Angle Percentage"
+		case 614:
+			return "Troll Active Helm"
+		case 615:
+			return "Tides Graphic"
+		case 616:
+			return "Anchor Distance"
+		case 617:
+			return "Anchor Size"
+		case 618:
+			return "Anchor Depth"
+		case 619:
+			return "Anchor Bearing"
+		case 620:
+			return "Honda Engine Warning Params"
+		case 621:
+			return "Honda Engine Discrete Params 1"
+		case 622:
+			return "Honda Engine Discrete Params 2"
+		case 623:
+			return "Honda Engine Discrete Params 3"
+		case 624:
+			return "Honda Engine Discrete Params 4"
+		case 625:
+			return "Mainsail Head Load"
+		case 626:
+			return "Mainsail Clew Load"
+		case 627:
+			return "Mainsail Tack Load"
+		case 628:
+			return "J1 Head Load"
+		case 629:
+			return "J1 Clew Load"
+		case 630:
+			return "J1 Tack Load"
+		case 631:
+			return "J2 Head Load"
+		case 632:
+			return "J2 Clew Load"
+		case 633:
+			return "J2 Tack Load"
+		case 634:
+			return "J3 Head Load"
+		case 635:
+			return "J3 Clew Load"
+		case 636:
+			return "J3 Tack Load"
+		case 637:
+			return "Code Zero Head Load"
+		case 638:
+			return "Code Zero Clew Load"
+		case 639:
+			return "Code Zero Tack Load"
+		case 640:
+			return "Suzuki Engine Alert I"
+		case 641:
+			return "Engine Oil Life"
+		case 642:
+			return "Engine Oil Level Status"
+		case 643:
+			return "Trans Fluid Status"
+		case 644:
+			return "Honda Eco Status All Engines"
+		case 645:
+			return "Output RPM"
+		case 646:
+			return "Suzuki Engine Alert A"
+		case 647:
+			return "Suzuki Engine Alert B"
+		case 648:
+			return "Suzuki Engine Alert C"
+		case 649:
+			return "Suzuki Engine Alert D"
+		case 650:
+			return "Suzuki Engine Alert E"
+		case 651:
+			return "Suzuki Engine Alert F"
+		case 652:
+			return "Suzuki Engine Alert G"
+		case 653:
+			return "Suzuki Engine Alert H"
+		case 654:
+			return "Suzuki Engine Alert J"
+		case 655:
+			return "Suzuki Bcm Fault"
+		case 656:
+			return "Suzuki Bcm Mode"
+		case 657:
+			return "Suzuki Engine Kls Status"
+		case 658:
+			return "Suzuki Switch Fault"
+		case 659:
+			return "Suzuki Shift Position Status"
+		case 660:
+			return "Vessel Fuel Used Seasonal"
+		case 661:
+			return "Vessel Fuel Capacity"
+		case 662:
+			return "Suzuki Engine Auto Trim Status"
+		case 663:
+			return "Trolling Mode Active"
+		case 664:
+			return "Trolling Mode Active Master"
+		case 665:
+			return "Keyless Communication State"
+		case 666:
+			return "Linear Actuator Position"
+		case 667:
+			return "Engine Exhaust Temp"
+		case 668:
+			return "Engine Guardian Power Limit"
+		case 669:
+			return "Engine State"
+		case 670:
+			return "Sailing Time To Burn"
+		case 671:
+			return "Mast Twist"
+		case 672:
+			return "VHF Channel"
+		case 673:
+			return "Trolling Lower Unit Direction"
+		case 674:
+			return "Propulsion Battery Status"
+		case 675:
+			return "Propulsion Battery Isolation Status"
+		case 676:
+			return "Propulsion Battery Error"
+		case 677:
+			return "Propulsion Battery Voltage"
+		case 678:
+			return "Propulsion Battery Current"
+		case 679:
+			return "Propulsion Battery State Of Charge"
+		case 680:
+			return "Propulsion Battery Time Remaining"
+		case 681:
+			return "Propulsion Battery Highest Cell Temperature"
+		case 682:
+			return "Propulsion Battery Lowest Cell Temperature"
+		case 683:
+			return "Propulsion Battery Average Cell Temperature"
+		case 684:
+			return "Propulsion Battery Maximum Discharge Current"
+		case 685:
+			return "Propulsion Battery Maximum Charge Current"
+		case 686:
+			return "Propulsion Battery Cooling System Status"
+		case 687:
+			return "Propulsion Battery Heating System Status"
+		case 688:
+			return "Propulsion Battery Storage Mode"
+		case 689:
+			return "Propulsion Battery Chemistry"
+		case 690:
+			return "Propulsion Battery Maximum Temperature Derating"
+		case 691:
+			return "Propulsion Battery Maximum Temperature Shutoff"
+		case 692:
+			return "Propulsion Battery Minimum Temperature Derating"
+		case 693:
+			return "Propulsion Battery Minimum Temperature Shutoff"
+		case 694:
+			return "Propulsion Battery Usable Energy"
+		case 695:
+			return "Propulsion Battery State Of Health"
+		case 696:
+			return "Propulsion Battery Discharge Cycles Count"
+		case 697:
+			return "Propulsion Battery Full Status"
+		case 698:
+			return "Propulsion Battery Empty Status"
+		case 699:
+			return "Propulsion Battery Maximum Charge Soc"
+		case 700:
+			return "Propulsion Battery Minimum Discharge Soc"
+		case 701:
+			return "Active Motor Mode"
+		case 702:
+			return "Motor Brake Mode"
+		case 703:
+			return "Motor Rotational Shaft Speed"
+		case 704:
+			return "Motor Voltage"
+		case 705:
+			return "Motor Current"
+		case 706:
+			return "Motor Operating Mode"
+		case 707:
+			return "Motor Temperature"
+		case 708:
+			return "Motor Inverter Temperature"
+		case 709:
+			return "Motor Coolant Temperature"
+		case 710:
+			return "Motor Gear Temperature"
+		case 711:
+			return "Motor Shaft Torque Percent"
+		case 712:
+			return "Motor Voltage Type"
+		case 713:
+			return "Motor Voltage Rating"
+		case 714:
+			return "Motor Max Continuous Power"
+		case 715:
+			return "Motor Max Boost Power"
+		case 716:
+			return "Motor Max Temperature Rating"
+		case 717:
+			return "Motor Rated Speed"
+		case 718:
+			return "Motor Max Controller Temperature Rating"
+		case 719:
+			return "Motor Shaft Torque Rating"
+		case 720:
+			return "Motor DC Voltage Derating Threshold"
+		case 721:
+			return "Motor DC Voltage Cutoff Threshold"
+		case 722:
+			return "Motor Runtime"
+		case 723:
+			return "Sailing Ping Time Port"
+		case 724:
+			return "Sailing Ping Time Stbd"
+		case 725:
+			return "Heading Source"
+		case 726:
+			return "Invalid"
+default:
+		return fmt.Sprintf("NavicoDataTypeConst(%d)", uint16(e))
+	}
+}
 type SimnetCommandConst uint8
 const (
 	Text	SimnetCommandConst = 50
@@ -5627,24 +8169,24 @@ default:
 		return fmt.Sprintf("SimnetCommandConst(%d)", uint8(e))
 	}
 }
-type SimnetEventCommandConst uint8
+type SimnetKeyOperationConst uint8
 const (
-	Alarm_2	SimnetEventCommandConst = 1
-	ApCommand	SimnetEventCommandConst = 2
-	Autopilot_2	SimnetEventCommandConst = 255
+	Read	SimnetKeyOperationConst = 0
+	Set	SimnetKeyOperationConst = 1
+	Reply	SimnetKeyOperationConst = 2
 )
 
-func (e SimnetEventCommandConst) GoString() string {return e.String() }
-func (e SimnetEventCommandConst) String() string {
+func (e SimnetKeyOperationConst) GoString() string {return e.String() }
+func (e SimnetKeyOperationConst) String() string {
 	switch e {
+		case 0:
+			return "Read"
 		case 1:
-			return "Alarm"
+			return "Set"
 		case 2:
-			return "AP command"
-		case 255:
-			return "Autopilot"
+			return "Reply"
 default:
-		return fmt.Sprintf("SimnetEventCommandConst(%d)", uint8(e))
+		return fmt.Sprintf("SimnetKeyOperationConst(%d)", uint8(e))
 	}
 }
 type SimnetNightModeConst uint8
@@ -5662,6 +8204,29 @@ func (e SimnetNightModeConst) String() string {
 			return "Night"
 default:
 		return fmt.Sprintf("SimnetNightModeConst(%d)", uint8(e))
+	}
+}
+type SimnetCompassAutocalModeConst uint8
+const (
+	Off_9	SimnetCompassAutocalModeConst = 0
+	On_3	SimnetCompassAutocalModeConst = 1
+	AutoLocked	SimnetCompassAutocalModeConst = 2
+	Auto_5	SimnetCompassAutocalModeConst = 3
+)
+
+func (e SimnetCompassAutocalModeConst) GoString() string {return e.String() }
+func (e SimnetCompassAutocalModeConst) String() string {
+	switch e {
+		case 0:
+			return "Off"
+		case 1:
+			return "On"
+		case 2:
+			return "Auto locked"
+		case 3:
+			return "Auto"
+default:
+		return fmt.Sprintf("SimnetCompassAutocalModeConst(%d)", uint8(e))
 	}
 }
 type SimnetNightModeColorConst uint8
@@ -5690,20 +8255,23 @@ default:
 		return fmt.Sprintf("SimnetNightModeColorConst(%d)", uint8(e))
 	}
 }
-type SimnetDisplayGroupConst uint8
+type SimnetNetworkGroupConst uint8
 const (
-	Default	SimnetDisplayGroupConst = 1
-	Group1_2	SimnetDisplayGroupConst = 2
-	Group2_2	SimnetDisplayGroupConst = 3
-	Group3_2	SimnetDisplayGroupConst = 4
-	Group4_2	SimnetDisplayGroupConst = 5
-	Group5_2	SimnetDisplayGroupConst = 6
-	Group6	SimnetDisplayGroupConst = 7
+	None_4	SimnetNetworkGroupConst = 0
+	Default	SimnetNetworkGroupConst = 1
+	Group1_2	SimnetNetworkGroupConst = 2
+	Group2_2	SimnetNetworkGroupConst = 3
+	Group3_2	SimnetNetworkGroupConst = 4
+	Group4_2	SimnetNetworkGroupConst = 5
+	Group5_2	SimnetNetworkGroupConst = 6
+	Group6	SimnetNetworkGroupConst = 7
 )
 
-func (e SimnetDisplayGroupConst) GoString() string {return e.String() }
-func (e SimnetDisplayGroupConst) String() string {
+func (e SimnetNetworkGroupConst) GoString() string {return e.String() }
+func (e SimnetNetworkGroupConst) String() string {
 	switch e {
+		case 0:
+			return "None"
 		case 1:
 			return "Default"
 		case 2:
@@ -5719,7 +8287,7 @@ func (e SimnetDisplayGroupConst) String() string {
 		case 7:
 			return "Group 6"
 default:
-		return fmt.Sprintf("SimnetDisplayGroupConst(%d)", uint8(e))
+		return fmt.Sprintf("SimnetNetworkGroupConst(%d)", uint8(e))
 	}
 }
 type SimnetHourDisplayConst uint8
@@ -5803,10 +8371,207 @@ default:
 		return fmt.Sprintf("SimnetBacklightLevelConst(%d)", uint8(e))
 	}
 }
+type SimnetHeadingUnitConst uint8
+const (
+	Magnetic_2	SimnetHeadingUnitConst = 0
+	True_2	SimnetHeadingUnitConst = 1
+)
+
+func (e SimnetHeadingUnitConst) GoString() string {return e.String() }
+func (e SimnetHeadingUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Magnetic"
+		case 1:
+			return "True"
+default:
+		return fmt.Sprintf("SimnetHeadingUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetWindSpeedUnitConst uint8
+const (
+	Knots	SimnetWindSpeedUnitConst = 0
+	MetersPerSecond	SimnetWindSpeedUnitConst = 1
+	MilesPerHour	SimnetWindSpeedUnitConst = 2
+	KilometersPerHour	SimnetWindSpeedUnitConst = 3
+)
+
+func (e SimnetWindSpeedUnitConst) GoString() string {return e.String() }
+func (e SimnetWindSpeedUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Knots"
+		case 1:
+			return "Meters per second"
+		case 2:
+			return "Miles per hour"
+		case 3:
+			return "Kilometers per hour"
+default:
+		return fmt.Sprintf("SimnetWindSpeedUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetSpeedUnitConst uint8
+const (
+	Knots_2	SimnetSpeedUnitConst = 0
+	KilometersPerHour_2	SimnetSpeedUnitConst = 1
+	MilesPerHour_2	SimnetSpeedUnitConst = 2
+)
+
+func (e SimnetSpeedUnitConst) GoString() string {return e.String() }
+func (e SimnetSpeedUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Knots"
+		case 1:
+			return "Kilometers per hour"
+		case 2:
+			return "Miles per hour"
+default:
+		return fmt.Sprintf("SimnetSpeedUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetTemperatureUnitConst uint8
+const (
+	Celsius	SimnetTemperatureUnitConst = 0
+	Fahrenheit	SimnetTemperatureUnitConst = 1
+)
+
+func (e SimnetTemperatureUnitConst) GoString() string {return e.String() }
+func (e SimnetTemperatureUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Celsius"
+		case 1:
+			return "Fahrenheit"
+default:
+		return fmt.Sprintf("SimnetTemperatureUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetDistanceUnitConst uint8
+const (
+	NauticalMiles	SimnetDistanceUnitConst = 0
+	Kilometers	SimnetDistanceUnitConst = 1
+	Miles	SimnetDistanceUnitConst = 2
+)
+
+func (e SimnetDistanceUnitConst) GoString() string {return e.String() }
+func (e SimnetDistanceUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Nautical miles"
+		case 1:
+			return "Kilometers"
+		case 2:
+			return "Miles"
+default:
+		return fmt.Sprintf("SimnetDistanceUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetDistanceSmallUnitConst uint8
+const (
+	Feet	SimnetDistanceSmallUnitConst = 0
+	Meters	SimnetDistanceSmallUnitConst = 1
+	Yards	SimnetDistanceSmallUnitConst = 2
+)
+
+func (e SimnetDistanceSmallUnitConst) GoString() string {return e.String() }
+func (e SimnetDistanceSmallUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Feet"
+		case 1:
+			return "Meters"
+		case 2:
+			return "Yards"
+default:
+		return fmt.Sprintf("SimnetDistanceSmallUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetDepthUnitConst uint8
+const (
+	Meters_2	SimnetDepthUnitConst = 0
+	Feet_2	SimnetDepthUnitConst = 1
+	Fathoms	SimnetDepthUnitConst = 2
+)
+
+func (e SimnetDepthUnitConst) GoString() string {return e.String() }
+func (e SimnetDepthUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Meters"
+		case 1:
+			return "Feet"
+		case 2:
+			return "Fathoms"
+default:
+		return fmt.Sprintf("SimnetDepthUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetVolumeUnitConst uint8
+const (
+	Liters	SimnetVolumeUnitConst = 0
+	Gallons	SimnetVolumeUnitConst = 1
+)
+
+func (e SimnetVolumeUnitConst) GoString() string {return e.String() }
+func (e SimnetVolumeUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Liters"
+		case 1:
+			return "Gallons"
+default:
+		return fmt.Sprintf("SimnetVolumeUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetPressureUnitConst uint8
+const (
+	Psi	SimnetPressureUnitConst = 1
+	Kilopascal	SimnetPressureUnitConst = 3
+	InchesOfMercury	SimnetPressureUnitConst = 5
+	Bar	SimnetPressureUnitConst = 6
+)
+
+func (e SimnetPressureUnitConst) GoString() string {return e.String() }
+func (e SimnetPressureUnitConst) String() string {
+	switch e {
+		case 1:
+			return "PSI"
+		case 3:
+			return "Kilopascal"
+		case 5:
+			return "Inches of mercury"
+		case 6:
+			return "Bar"
+default:
+		return fmt.Sprintf("SimnetPressureUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetBaroPressureUnitConst uint8
+const (
+	Millibar	SimnetBaroPressureUnitConst = 0
+	Hectopascal	SimnetBaroPressureUnitConst = 2
+	InchesOfMercury_2	SimnetBaroPressureUnitConst = 5
+)
+
+func (e SimnetBaroPressureUnitConst) GoString() string {return e.String() }
+func (e SimnetBaroPressureUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Millibar"
+		case 2:
+			return "Hectopascal"
+		case 5:
+			return "Inches of mercury"
+default:
+		return fmt.Sprintf("SimnetBaroPressureUnitConst(%d)", uint8(e))
+	}
+}
 type SimnetApEventsConst uint8
 const (
 	FollowNonFollow	SimnetApEventsConst = 2
-	Standby_3	SimnetApEventsConst = 6
+	Standby_5	SimnetApEventsConst = 6
 	HeadingMode	SimnetApEventsConst = 9
 	NavMode	SimnetApEventsConst = 10
 	NoDriftMode	SimnetApEventsConst = 12
@@ -5823,6 +8588,8 @@ const (
 	DepthTurn	SimnetApEventsConst = 24
 	ChangeCourse	SimnetApEventsConst = 26
 	TimerSync	SimnetApEventsConst = 61
+	MobActivated	SimnetApEventsConst = 107
+	MobDeactivated	SimnetApEventsConst = 108
 	PingPortEnd	SimnetApEventsConst = 112
 	PingStarboardEnd	SimnetApEventsConst = 113
 )
@@ -5866,6 +8633,10 @@ func (e SimnetApEventsConst) String() string {
 			return "Change course"
 		case 61:
 			return "Timer sync"
+		case 107:
+			return "MOB Activated"
+		case 108:
+			return "MOB Deactivated"
 		case 112:
 			return "Ping port end"
 		case 113:
@@ -5897,41 +8668,654 @@ default:
 		return fmt.Sprintf("SimnetDirectionConst(%d)", uint8(e))
 	}
 }
-type SimnetApCommandTypeConst uint8
+type SimnetAlarmCommandConst uint8
 const (
-	FollowUp	SimnetApCommandTypeConst = 2
-	ApCommand_2	SimnetApCommandTypeConst = 10
+	Deactivate	SimnetAlarmCommandConst = 56
+	Activate	SimnetAlarmCommandConst = 57
+	Acknowledge_4	SimnetAlarmCommandConst = 58
+	Silence	SimnetAlarmCommandConst = 68
+	AlarmHistory	SimnetAlarmCommandConst = 104
+	MobActivated_2	SimnetAlarmCommandConst = 107
+	MobCancelled	SimnetAlarmCommandConst = 108
 )
 
-func (e SimnetApCommandTypeConst) GoString() string {return e.String() }
-func (e SimnetApCommandTypeConst) String() string {
+func (e SimnetAlarmCommandConst) GoString() string {return e.String() }
+func (e SimnetAlarmCommandConst) String() string {
+	switch e {
+		case 56:
+			return "Deactivate"
+		case 57:
+			return "Activate"
+		case 58:
+			return "Acknowledge"
+		case 68:
+			return "Silence"
+		case 104:
+			return "Alarm History"
+		case 107:
+			return "MOB Activated"
+		case 108:
+			return "MOB Cancelled"
+default:
+		return fmt.Sprintf("SimnetAlarmCommandConst(%d)", uint8(e))
+	}
+}
+type SimnetEventTypeConst uint8
+const (
+	FollowUp	SimnetEventTypeConst = 2
+	ApCommand	SimnetEventTypeConst = 10
+	Timer	SimnetEventTypeConst = 23
+	Siren	SimnetEventTypeConst = 31
+	AisVesselSelected	SimnetEventTypeConst = 36
+	Alarm_2	SimnetEventTypeConst = 255
+)
+
+func (e SimnetEventTypeConst) GoString() string {return e.String() }
+func (e SimnetEventTypeConst) String() string {
 	switch e {
 		case 2:
 			return "Follow Up"
 		case 10:
 			return "AP Command"
+		case 23:
+			return "Timer"
+		case 31:
+			return "Siren"
+		case 36:
+			return "AIS vessel selected"
+		case 255:
+			return "Alarm"
 default:
-		return fmt.Sprintf("SimnetApCommandTypeConst(%d)", uint8(e))
+		return fmt.Sprintf("SimnetEventTypeConst(%d)", uint8(e))
 	}
 }
-type SimnetAlarmConst uint8
+type SimnetTimerEventConst uint16
 const (
-	LowBoatSpeed	SimnetAlarmConst = 57
-	NoAutopilotComputer	SimnetAlarmConst = 56
-	NavDataMissing	SimnetAlarmConst = 58
+	RaceTimerStart	SimnetTimerEventConst = 61
+	RaceTimerStop	SimnetTimerEventConst = 62
+	RaceTimerSync	SimnetTimerEventConst = 63
+	RaceTimerReset	SimnetTimerEventConst = 64
+	TripTimerResetAll	SimnetTimerEventConst = 65
+	TripTimerEnable	SimnetTimerEventConst = 100
+	TripTimerDisable	SimnetTimerEventConst = 101
 )
 
-func (e SimnetAlarmConst) GoString() string {return e.String() }
-func (e SimnetAlarmConst) String() string {
+func (e SimnetTimerEventConst) GoString() string {return e.String() }
+func (e SimnetTimerEventConst) String() string {
 	switch e {
-		case 57:
-			return "Low boat speed"
-		case 56:
-			return "No autopilot computer"
-		case 58:
-			return "Nav data missing"
+		case 61:
+			return "Race Timer Start"
+		case 62:
+			return "Race Timer Stop"
+		case 63:
+			return "Race Timer Sync"
+		case 64:
+			return "Race Timer Reset"
+		case 65:
+			return "Trip Timer Reset All"
+		case 100:
+			return "Trip Timer Enable"
+		case 101:
+			return "Trip Timer Disable"
 default:
-		return fmt.Sprintf("SimnetAlarmConst(%d)", uint8(e))
+		return fmt.Sprintf("SimnetTimerEventConst(%d)", uint16(e))
+	}
+}
+type SimnetAlarmIdConst uint16
+const (
+	ShallowWater	SimnetAlarmIdConst = 10
+	DeepWater	SimnetAlarmIdConst = 11
+	AnchorDepth_2	SimnetAlarmIdConst = 12
+	TrueWindShift	SimnetAlarmIdConst = 13
+	TrueWindHigh	SimnetAlarmIdConst = 14
+	TrueWindLow	SimnetAlarmIdConst = 15
+	LowBoatSpeed	SimnetAlarmIdConst = 16
+	HighVoltage	SimnetAlarmIdConst = 17
+	LowVoltage	SimnetAlarmIdConst = 18
+	DepthDataMissing	SimnetAlarmIdConst = 19
+	WindDataMissing	SimnetAlarmIdConst = 20
+	NavDataMissing	SimnetAlarmIdConst = 21
+	HeadingMissing	SimnetAlarmIdConst = 22
+	Xte	SimnetAlarmIdConst = 23
+	RudderDataMissing	SimnetAlarmIdConst = 24
+	RudderControllerFault	SimnetAlarmIdConst = 25
+	NoRudderResponse	SimnetAlarmIdConst = 26
+	RudderDriveOverload	SimnetAlarmIdConst = 27
+	HighInternalTemperature	SimnetAlarmIdConst = 28
+	ApClutchOverload	SimnetAlarmIdConst = 29
+	ApClutchDisengaged	SimnetAlarmIdConst = 30
+	HighDriveSupply	SimnetAlarmIdConst = 31
+	LowDriveSupply	SimnetAlarmIdConst = 32
+	NoActiveAutopilotControlUnit	SimnetAlarmIdConst = 33
+	NoAutopilotComputer	SimnetAlarmIdConst = 34
+	MemoryFail	SimnetAlarmIdConst = 35
+	WaterTempMissing	SimnetAlarmIdConst = 36
+	LowWaterTemp	SimnetAlarmIdConst = 37
+	HighWaterTemp	SimnetAlarmIdConst = 38
+	WaterTempRate	SimnetAlarmIdConst = 39
+	Fish	SimnetAlarmIdConst = 40
+	NoGpsFix	SimnetAlarmIdConst = 41
+	WaasDgps	SimnetAlarmIdConst = 42
+	Arrival	SimnetAlarmIdConst = 45
+	Anchor	SimnetAlarmIdConst = 46
+	FuelLow	SimnetAlarmIdConst = 47
+	FuelHigh	SimnetAlarmIdConst = 48
+	TankLow	SimnetAlarmIdConst = 49
+	TankHigh	SimnetAlarmIdConst = 50
+	Bep	SimnetAlarmIdConst = 51
+	WaypointRadius	SimnetAlarmIdConst = 52
+	Cpa	SimnetAlarmIdConst = 53
+	AisRangeToVessel	SimnetAlarmIdConst = 54
+	AisVesselLost	SimnetAlarmIdConst = 55
+	VesselMessage	SimnetAlarmIdConst = 56
+	Lightning	SimnetAlarmIdConst = 57
+	SevereWeather	SimnetAlarmIdConst = 58
+	Storm	SimnetAlarmIdConst = 59
+	EngineCheck	SimnetAlarmIdConst = 61
+	EngineOverTemperature	SimnetAlarmIdConst = 62
+	EngineLowOilPressure	SimnetAlarmIdConst = 63
+	EngineLowOilLevel	SimnetAlarmIdConst = 64
+	EngineLowFuelPressure	SimnetAlarmIdConst = 65
+	EngineLowVoltage	SimnetAlarmIdConst = 66
+	EngineLowCoolantLevel	SimnetAlarmIdConst = 67
+	EngineWaterFlow	SimnetAlarmIdConst = 68
+	EngineWaterInFuel	SimnetAlarmIdConst = 69
+	EngineCharge	SimnetAlarmIdConst = 70
+	EnginePreheat	SimnetAlarmIdConst = 71
+	EngineHighBoostPressure	SimnetAlarmIdConst = 72
+	EngineRevLimit	SimnetAlarmIdConst = 73
+	EngineEgrSystem	SimnetAlarmIdConst = 74
+	EngineThrottlePosition	SimnetAlarmIdConst = 75
+	EngineEmergencyStop	SimnetAlarmIdConst = 76
+	EngineWarningLevel1	SimnetAlarmIdConst = 77
+	EngineWarningLevel2	SimnetAlarmIdConst = 78
+	EnginePowerReduction	SimnetAlarmIdConst = 79
+	EngineMaintenance	SimnetAlarmIdConst = 80
+	EngineCommError	SimnetAlarmIdConst = 81
+	EngineThrottle	SimnetAlarmIdConst = 82
+	EngineStartProtect	SimnetAlarmIdConst = 83
+	EngineShuttingDown	SimnetAlarmIdConst = 84
+	TransmissionCheck	SimnetAlarmIdConst = 85
+	TransmissionOverTemperature	SimnetAlarmIdConst = 86
+	TransmissionLowOilPressure	SimnetAlarmIdConst = 87
+	TransmissionLowOilLevel	SimnetAlarmIdConst = 88
+	SailDrive	SimnetAlarmIdConst = 89
+	FreshWaterLow	SimnetAlarmIdConst = 96
+	FreshWaterHigh	SimnetAlarmIdConst = 97
+	GrayWaterLow	SimnetAlarmIdConst = 98
+	GrayWaterHigh	SimnetAlarmIdConst = 99
+	LiveWellLow	SimnetAlarmIdConst = 100
+	LiveWellHigh	SimnetAlarmIdConst = 101
+	OilLow	SimnetAlarmIdConst = 102
+	OilHigh	SimnetAlarmIdConst = 103
+	BlackWaterLow	SimnetAlarmIdConst = 104
+	BlackWaterHigh	SimnetAlarmIdConst = 105
+	WeatherDataMissing	SimnetAlarmIdConst = 106
+	ApPositionDataMissing	SimnetAlarmIdConst = 107
+	ApSpeedDataMissing	SimnetAlarmIdConst = 108
+	ApDepthDataMissing	SimnetAlarmIdConst = 109
+	ApHeadingDataMissing	SimnetAlarmIdConst = 110
+	ApNavDataMissing	SimnetAlarmIdConst = 111
+	ApOffCourse	SimnetAlarmIdConst = 112
+	ApRudderDataMissing	SimnetAlarmIdConst = 113
+	ApWindDataMissing	SimnetAlarmIdConst = 114
+	RadarGuardZone	SimnetAlarmIdConst = 115
+	MarpaTargetLost	SimnetAlarmIdConst = 116
+	MarpaUnavailable	SimnetAlarmIdConst = 117
+	DangerousVessel	SimnetAlarmIdConst = 118
+	RadarError	SimnetAlarmIdConst = 119
+	CzoneCritical	SimnetAlarmIdConst = 120
+	CzoneImportant	SimnetAlarmIdConst = 121
+	CzoneStandard	SimnetAlarmIdConst = 122
+	CzoneWarning	SimnetAlarmIdConst = 123
+	TrueWindShift_2	SimnetAlarmIdConst = 124
+	EvcComError	SimnetAlarmIdConst = 125
+	EvcOverride	SimnetAlarmIdConst = 126
+	HighDriveTemperature	SimnetAlarmIdConst = 127
+	DriveInhibit	SimnetAlarmIdConst = 128
+	CanBusSupplyOverload	SimnetAlarmIdConst = 129
+	DriveRefVoltageMissing	SimnetAlarmIdConst = 130
+	RudderLimit_3	SimnetAlarmIdConst = 131
+	CompassDifference	SimnetAlarmIdConst = 132
+	ApLowBoatSpeed	SimnetAlarmIdConst = 133
+	MonitorCompassMissing	SimnetAlarmIdConst = 134
+	CrossTrackDistanceLimit	SimnetAlarmIdConst = 135
+	EndOfRoute	SimnetAlarmIdConst = 137
+	CompassAlignment	SimnetAlarmIdConst = 138
+	RAIM	SimnetAlarmIdConst = 139
+	OffHeading	SimnetAlarmIdConst = 141
+	SupplyVoltage_2	SimnetAlarmIdConst = 142
+	LowCanBusVoltage	SimnetAlarmIdConst = 143
+	CanBusFailure	SimnetAlarmIdConst = 144
+	DriveReadyMissing	SimnetAlarmIdConst = 145
+	DriveComputerMissing	SimnetAlarmIdConst = 146
+	ExternalModeIllegal	SimnetAlarmIdConst = 147
+	RudderTooSlow	SimnetAlarmIdConst = 148
+	WheelOver	SimnetAlarmIdConst = 149
+	ThrusterInhibited	SimnetAlarmIdConst = 150
+	CheckHeading	SimnetAlarmIdConst = 151
+	TrueWindSpeedHigh	SimnetAlarmIdConst = 152
+	Override	SimnetAlarmIdConst = 153
+	SpeedThroughWaterRationalityFa	SimnetAlarmIdConst = 154
+	NoDrivesAvailable	SimnetAlarmIdConst = 155
+	FuelRemainingLow	SimnetAlarmIdConst = 156
+	FuelRemainingHigh	SimnetAlarmIdConst = 157
+	GeneratorCheck	SimnetAlarmIdConst = 158
+	GeneratorOverTemperature	SimnetAlarmIdConst = 159
+	GeneratorLowOilPressure	SimnetAlarmIdConst = 160
+	GeneratorLowOilLevel	SimnetAlarmIdConst = 161
+	GeneratorLowFuelPressure	SimnetAlarmIdConst = 162
+	GeneratorLowVoltage	SimnetAlarmIdConst = 163
+	GeneratorLowCoolantLevel	SimnetAlarmIdConst = 164
+	GeneratorWaterFlow	SimnetAlarmIdConst = 165
+	GeneratorWaterInFuel	SimnetAlarmIdConst = 166
+	GeneratorCharge	SimnetAlarmIdConst = 167
+	GeneratorPreheat	SimnetAlarmIdConst = 168
+	GeneratorHighBoostPressure	SimnetAlarmIdConst = 169
+	GeneratorRevLimit	SimnetAlarmIdConst = 170
+	GeneratorEgrSystem	SimnetAlarmIdConst = 171
+	GeneratorThrottlePosition	SimnetAlarmIdConst = 172
+	GeneratorEmergencyStop	SimnetAlarmIdConst = 173
+	GeneratorWarningLevel1	SimnetAlarmIdConst = 174
+	GeneratorWarningLevel2	SimnetAlarmIdConst = 175
+	GeneratorPowerReduction	SimnetAlarmIdConst = 176
+	GeneratorMaintenance	SimnetAlarmIdConst = 177
+	GeneratorCommError	SimnetAlarmIdConst = 178
+	GeneratorThrottle	SimnetAlarmIdConst = 179
+	GeneratorStartProtect	SimnetAlarmIdConst = 180
+	GeneratorShuttingDown	SimnetAlarmIdConst = 181
+	ShallowAftDepth	SimnetAlarmIdConst = 182
+	ForwardRange	SimnetAlarmIdConst = 183
+	AlarmSourceMissing	SimnetAlarmIdConst = 245
+	External	SimnetAlarmIdConst = 246
+	EvcComError_2	SimnetAlarmIdConst = 247
+	WindSensorBatteryLow	SimnetAlarmIdConst = 248
+	GasolineLow	SimnetAlarmIdConst = 266
+	GasolineHigh	SimnetAlarmIdConst = 267
+	ChargingSystem	SimnetAlarmIdConst = 268
+	SeawaterFlow	SimnetAlarmIdConst = 269
+	WaterInDriveSeal	SimnetAlarmIdConst = 270
+	Turnover	SimnetAlarmIdConst = 272
+	HelmEcuDetectFailure	SimnetAlarmIdConst = 273
+	JoystickEcuDetectFailure	SimnetAlarmIdConst = 274
+	DriveEcuDetectFailure	SimnetAlarmIdConst = 275
+	HotTransmission	SimnetAlarmIdConst = 276
+	LowGearOilPressure	SimnetAlarmIdConst = 277
+	LowDriveLubOilLevel	SimnetAlarmIdConst = 278
+	CheckThermostat	SimnetAlarmIdConst = 285
+	TrackOffsetActive	SimnetAlarmIdConst = 287
+	NavigationNotSupported	SimnetAlarmIdConst = 385
+)
+
+func (e SimnetAlarmIdConst) GoString() string {return e.String() }
+func (e SimnetAlarmIdConst) String() string {
+	switch e {
+		case 10:
+			return "Shallow water"
+		case 11:
+			return "Deep water"
+		case 12:
+			return "Anchor depth"
+		case 13:
+			return "True wind shift"
+		case 14:
+			return "True wind high"
+		case 15:
+			return "True wind low"
+		case 16:
+			return "Low boat speed"
+		case 17:
+			return "High voltage"
+		case 18:
+			return "Low voltage"
+		case 19:
+			return "Depth data missing"
+		case 20:
+			return "Wind data missing"
+		case 21:
+			return "Nav data missing"
+		case 22:
+			return "Heading missing"
+		case 23:
+			return "XTE"
+		case 24:
+			return "Rudder data missing"
+		case 25:
+			return "Rudder controller fault"
+		case 26:
+			return "No rudder response"
+		case 27:
+			return "Rudder drive overload"
+		case 28:
+			return "High internal temperature"
+		case 29:
+			return "AP clutch overload"
+		case 30:
+			return "AP clutch disengaged"
+		case 31:
+			return "High drive supply"
+		case 32:
+			return "Low drive supply"
+		case 33:
+			return "No active autopilot control unit"
+		case 34:
+			return "No autopilot computer"
+		case 35:
+			return "Memory fail"
+		case 36:
+			return "Water temp missing"
+		case 37:
+			return "Low water temp"
+		case 38:
+			return "High water temp"
+		case 39:
+			return "Water temp rate"
+		case 40:
+			return "Fish"
+		case 41:
+			return "No GPS fix"
+		case 42:
+			return "WAAS/DGPS"
+		case 45:
+			return "Arrival"
+		case 46:
+			return "Anchor"
+		case 47:
+			return "Fuel low"
+		case 48:
+			return "Fuel high"
+		case 49:
+			return "Tank low"
+		case 50:
+			return "Tank high"
+		case 51:
+			return "BEP"
+		case 52:
+			return "Waypoint radius"
+		case 53:
+			return "CPA"
+		case 54:
+			return "AIS range to vessel"
+		case 55:
+			return "AIS vessel lost"
+		case 56:
+			return "Vessel message"
+		case 57:
+			return "Lightning"
+		case 58:
+			return "Severe weather"
+		case 59:
+			return "Storm"
+		case 61:
+			return "Engine Check"
+		case 62:
+			return "Engine over temperature"
+		case 63:
+			return "Engine low oil pressure"
+		case 64:
+			return "Engine low oil level"
+		case 65:
+			return "Engine low fuel pressure"
+		case 66:
+			return "Engine low voltage"
+		case 67:
+			return "Engine low coolant level"
+		case 68:
+			return "Engine water flow"
+		case 69:
+			return "Engine water in fuel"
+		case 70:
+			return "Engine charge"
+		case 71:
+			return "Engine preheat"
+		case 72:
+			return "Engine high boost pressure"
+		case 73:
+			return "Engine rev limit"
+		case 74:
+			return "Engine EGR system"
+		case 75:
+			return "Engine throttle position"
+		case 76:
+			return "Engine emergency stop"
+		case 77:
+			return "Engine warning level 1"
+		case 78:
+			return "Engine warning level 2"
+		case 79:
+			return "Engine power reduction"
+		case 80:
+			return "Engine maintenance"
+		case 81:
+			return "Engine comm error"
+		case 82:
+			return "Engine throttle"
+		case 83:
+			return "Engine start protect"
+		case 84:
+			return "Engine shutting down"
+		case 85:
+			return "Transmission Check"
+		case 86:
+			return "Transmission over temperature"
+		case 87:
+			return "Transmission low oil pressure"
+		case 88:
+			return "Transmission low oil level"
+		case 89:
+			return "Sail drive"
+		case 96:
+			return "Fresh water low"
+		case 97:
+			return "Fresh water high"
+		case 98:
+			return "Gray water low"
+		case 99:
+			return "Gray water high"
+		case 100:
+			return "Live well low"
+		case 101:
+			return "Live well high"
+		case 102:
+			return "Oil low"
+		case 103:
+			return "Oil high"
+		case 104:
+			return "Black water low"
+		case 105:
+			return "Black water high"
+		case 106:
+			return "Weather data missing"
+		case 107:
+			return "AP Position data missing"
+		case 108:
+			return "AP Speed data missing"
+		case 109:
+			return "AP Depth data missing"
+		case 110:
+			return "AP Heading data missing"
+		case 111:
+			return "AP Nav data missing"
+		case 112:
+			return "AP Off course"
+		case 113:
+			return "AP Rudder data missing"
+		case 114:
+			return "AP Wind data missing"
+		case 115:
+			return "Radar guard zone"
+		case 116:
+			return "MARPA target lost"
+		case 117:
+			return "MARPA unavailable"
+		case 118:
+			return "Dangerous vessel"
+		case 119:
+			return "Radar error"
+		case 120:
+			return "CZone critical"
+		case 121:
+			return "CZone important"
+		case 122:
+			return "CZone standard"
+		case 123:
+			return "CZone warning"
+		case 124:
+			return "True wind shift"
+		case 125:
+			return "EVC Com Error"
+		case 126:
+			return "EVC override"
+		case 127:
+			return "High drive temperature"
+		case 128:
+			return "Drive inhibit"
+		case 129:
+			return "CAN bus supply overload"
+		case 130:
+			return "Drive ref voltage missing"
+		case 131:
+			return "Rudder limit"
+		case 132:
+			return "Compass difference"
+		case 133:
+			return "AP Low boat speed"
+		case 134:
+			return "Monitor compass missing"
+		case 135:
+			return "Cross track distance limit"
+		case 137:
+			return "End of route"
+		case 138:
+			return "Compass alignment"
+		case 139:
+			return "R.A.I.M"
+		case 141:
+			return "Off heading"
+		case 142:
+			return "Supply voltage"
+		case 143:
+			return "Low CAN bus voltage"
+		case 144:
+			return "CAN bus failure"
+		case 145:
+			return "Drive ready missing"
+		case 146:
+			return "Drive computer missing"
+		case 147:
+			return "External mode illegal"
+		case 148:
+			return "Rudder too slow"
+		case 149:
+			return "Wheel over"
+		case 150:
+			return "Thruster inhibited"
+		case 151:
+			return "Check heading"
+		case 152:
+			return "True wind speed high"
+		case 153:
+			return "Override"
+		case 154:
+			return "Speed through water rationality fault"
+		case 155:
+			return "No drives available"
+		case 156:
+			return "Fuel remaining low"
+		case 157:
+			return "Fuel remaining high"
+		case 158:
+			return "Generator Check"
+		case 159:
+			return "Generator over temperature"
+		case 160:
+			return "Generator low oil pressure"
+		case 161:
+			return "Generator low oil level"
+		case 162:
+			return "Generator low fuel pressure"
+		case 163:
+			return "Generator low voltage"
+		case 164:
+			return "Generator low coolant level"
+		case 165:
+			return "Generator water flow"
+		case 166:
+			return "Generator water in fuel"
+		case 167:
+			return "Generator charge"
+		case 168:
+			return "Generator preheat"
+		case 169:
+			return "Generator high boost pressure"
+		case 170:
+			return "Generator rev limit"
+		case 171:
+			return "Generator EGR system"
+		case 172:
+			return "Generator throttle position"
+		case 173:
+			return "Generator emergency stop"
+		case 174:
+			return "Generator warning level 1"
+		case 175:
+			return "Generator warning level 2"
+		case 176:
+			return "Generator power reduction"
+		case 177:
+			return "Generator maintenance"
+		case 178:
+			return "Generator comm error"
+		case 179:
+			return "Generator throttle"
+		case 180:
+			return "Generator start protect"
+		case 181:
+			return "Generator shutting down"
+		case 182:
+			return "Shallow aft depth"
+		case 183:
+			return "Forward range"
+		case 245:
+			return "Alarm source missing"
+		case 246:
+			return "External"
+		case 247:
+			return "EVC Com Error"
+		case 248:
+			return "Wind sensor battery low"
+		case 266:
+			return "Gasoline low"
+		case 267:
+			return "Gasoline high"
+		case 268:
+			return "Charging System"
+		case 269:
+			return "Seawater Flow"
+		case 270:
+			return "Water in Drive Seal"
+		case 272:
+			return "Turnover"
+		case 273:
+			return "Helm ECU Detect Failure"
+		case 274:
+			return "Joystick ECU Detect Failure"
+		case 275:
+			return "Drive ECU Detect Failure"
+		case 276:
+			return "Hot Transmission"
+		case 277:
+			return "Low Gear Oil Pressure"
+		case 278:
+			return "Low Drive Lub Oil Level"
+		case 285:
+			return "Check Thermostat"
+		case 287:
+			return "Track offset active"
+		case 385:
+			return "Navigation Not Supported"
+default:
+		return fmt.Sprintf("SimnetAlarmIdConst(%d)", uint16(e))
 	}
 }
 type FusionMessageIdConst uint16
@@ -6094,7 +9478,7 @@ default:
 }
 type FusionPlayStatusConst uint16
 const (
-	Invalid	FusionPlayStatusConst = 0
+	Invalid_2	FusionPlayStatusConst = 0
 	Playing	FusionPlayStatusConst = 1
 	Paused	FusionPlayStatusConst = 2
 	Stopped_2	FusionPlayStatusConst = 3
@@ -6131,7 +9515,7 @@ const (
 	Usb_2	FusionSourceTypeConst = 5
 	Dvd	FusionSourceTypeConst = 6
 	Vhf	FusionSourceTypeConst = 7
-	Invalid_2	FusionSourceTypeConst = 8
+	Invalid_3	FusionSourceTypeConst = 8
 	Mtp	FusionSourceTypeConst = 9
 	Bluetooth_2	FusionSourceTypeConst = 10
 	Arc	FusionSourceTypeConst = 11
@@ -6189,9 +9573,9 @@ default:
 type FusionSiriusComStateConst uint8
 const (
 	Unknown_2	FusionSiriusComStateConst = 255
-	Off_9	FusionSiriusComStateConst = 1
+	Off_10	FusionSiriusComStateConst = 1
 	Initialising	FusionSiriusComStateConst = 2
-	On_3	FusionSiriusComStateConst = 3
+	On_4	FusionSiriusComStateConst = 3
 )
 
 func (e FusionSiriusComStateConst) GoString() string {return e.String() }
@@ -6212,7 +9596,7 @@ default:
 type FusionSiriusAlertConst uint8
 const (
 	Unknown_3	FusionSiriusAlertConst = 255
-	None_4	FusionSiriusAlertConst = 1
+	None_5	FusionSiriusAlertConst = 1
 	Antenna	FusionSiriusAlertConst = 2
 	Nosignal	FusionSiriusAlertConst = 3
 	SubscriptionUpdate	FusionSiriusAlertConst = 4
@@ -6303,6 +9687,18 @@ const (
 	SiriusxmDiagnostics	FusionStatusMessageIdConst = 32811
 	SiriusxmPresets	FusionStatusMessageIdConst = 32812
 	ZoneName	FusionStatusMessageIdConst = 32813
+	IpSetting	FusionStatusMessageIdConst = 32819
+	Multiroom	FusionStatusMessageIdConst = 32824
+	MultiroomStatus	FusionStatusMessageIdConst = 32825
+	SystemCapabilities	FusionStatusMessageIdConst = 32829
+	PartNumber	FusionStatusMessageIdConst = 32830
+	ProcessingBypass	FusionStatusMessageIdConst = 32832
+	ServerInfo	FusionStatusMessageIdConst = 32846
+	RdsData	FusionStatusMessageIdConst = 32850
+	IgnitionSwitchState	FusionStatusMessageIdConst = 32859
+	Mono	FusionStatusMessageIdConst = 32862
+	SpeedVolumeCurrentSpeed	FusionStatusMessageIdConst = 32863
+	ZoneCapabilitiesExtended	FusionStatusMessageIdConst = 32865
 )
 
 func (e FusionStatusMessageIdConst) GoString() string {return e.String() }
@@ -6400,13 +9796,37 @@ func (e FusionStatusMessageIdConst) String() string {
 			return "SiriusXM Presets"
 		case 32813:
 			return "Zone Name"
+		case 32819:
+			return "IP Setting"
+		case 32824:
+			return "Multiroom"
+		case 32825:
+			return "Multiroom Status"
+		case 32829:
+			return "System Capabilities"
+		case 32830:
+			return "Part Number"
+		case 32832:
+			return "Processing Bypass"
+		case 32846:
+			return "Server Info"
+		case 32850:
+			return "RDS Data"
+		case 32859:
+			return "Ignition Switch State"
+		case 32862:
+			return "Mono"
+		case 32863:
+			return "Speed Volume Current Speed"
+		case 32865:
+			return "Zone Capabilities Extended"
 default:
 		return fmt.Sprintf("FusionStatusMessageIdConst(%d)", uint16(e))
 	}
 }
 type SonichubControlConst uint8
 const (
-	Set	SonichubControlConst = 0
+	Set_2	SonichubControlConst = 0
 	Ack	SonichubControlConst = 128
 )
 
@@ -6509,7 +9929,7 @@ type GroupFunctionConst uint8
 const (
 	Request	GroupFunctionConst = 0
 	Command	GroupFunctionConst = 1
-	Acknowledge_4	GroupFunctionConst = 2
+	Acknowledge_5	GroupFunctionConst = 2
 	ReadFields	GroupFunctionConst = 3
 	ReadFieldsReply	GroupFunctionConst = 4
 	WriteFields	GroupFunctionConst = 5
@@ -6624,7 +10044,7 @@ default:
 }
 type PgnErrorCodeConst uint8
 const (
-	Acknowledge_5	PgnErrorCodeConst = 0
+	Acknowledge_6	PgnErrorCodeConst = 0
 	PgnNotSupported	PgnErrorCodeConst = 1
 	PgnNotAvailable	PgnErrorCodeConst = 2
 	AccessDenied_4	PgnErrorCodeConst = 3
@@ -6981,7 +10401,7 @@ default:
 }
 type FusionRepeatStatusConst uint32
 const (
-	Off_10	FusionRepeatStatusConst = 0
+	Off_11	FusionRepeatStatusConst = 0
 	OneTrack	FusionRepeatStatusConst = 1
 	AllAlbum	FusionRepeatStatusConst = 2
 )
@@ -7093,8 +10513,8 @@ default:
 }
 type FusionPowerStateConst uint8
 const (
-	On_4	FusionPowerStateConst = 1
-	Off_11	FusionPowerStateConst = 2
+	On_5	FusionPowerStateConst = 1
+	Off_12	FusionPowerStateConst = 2
 )
 
 func (e FusionPowerStateConst) GoString() string {return e.String() }
@@ -7176,7 +10596,7 @@ const (
 	Two_2	BandgDecimalsConst = 2
 	Three_2	BandgDecimalsConst = 3
 	Four_2	BandgDecimalsConst = 4
-	Auto_5	BandgDecimalsConst = 254
+	Auto_6	BandgDecimalsConst = 254
 )
 
 func (e BandgDecimalsConst) GoString() string {return e.String() }
@@ -7320,7 +10740,7 @@ default:
 }
 type SeatalkPilotMode16Const uint16
 const (
-	Standby_4	SeatalkPilotMode16Const = 0
+	Standby_6	SeatalkPilotMode16Const = 0
 	AutoCompassCommanded	SeatalkPilotMode16Const = 64
 	VaneWindMode	SeatalkPilotMode16Const = 256
 	TrackMode	SeatalkPilotMode16Const = 384
@@ -7439,7 +10859,7 @@ default:
 }
 type DifferentialSourceConst uint8
 const (
-	Auto_6	DifferentialSourceConst = 0
+	Auto_7	DifferentialSourceConst = 0
 	Loran	DifferentialSourceConst = 1
 	MskBeacon	DifferentialSourceConst = 2
 	FmSubcarrier	DifferentialSourceConst = 3
@@ -7617,8 +11037,8 @@ default:
 }
 type AgsModeConst uint8
 const (
-	Off_12	AgsModeConst = 0
-	On_5	AgsModeConst = 1
+	Off_13	AgsModeConst = 0
+	On_6	AgsModeConst = 1
 	Automatic_3	AgsModeConst = 2
 )
 
@@ -8316,6 +11736,50 @@ default:
 		return fmt.Sprintf("SbasSvConst(%d)", uint8(e))
 	}
 }
+type MercuryCommandOpcodeConst uint8
+const (
+	HornControl	MercuryCommandOpcodeConst = 0
+	MaintenanceResetCommand	MercuryCommandOpcodeConst = 1
+	MaintenanceResetResponse	MercuryCommandOpcodeConst = 2
+	CruiseControl	MercuryCommandOpcodeConst = 4
+	GlobalBrightness	MercuryCommandOpcodeConst = 5
+	ActiveTrimCommand	MercuryCommandOpcodeConst = 6
+	ActiveTrimStatus	MercuryCommandOpcodeConst = 7
+	AutopilotCommand	MercuryCommandOpcodeConst = 8
+	ActiveExhaust	MercuryCommandOpcodeConst = 9
+	OilLevelCheckCommand	MercuryCommandOpcodeConst = 12
+	OilLevelResetResponse	MercuryCommandOpcodeConst = 13
+)
+
+func (e MercuryCommandOpcodeConst) GoString() string {return e.String() }
+func (e MercuryCommandOpcodeConst) String() string {
+	switch e {
+		case 0:
+			return "Horn Control"
+		case 1:
+			return "Maintenance Reset Command"
+		case 2:
+			return "Maintenance Reset Response"
+		case 4:
+			return "Cruise Control"
+		case 5:
+			return "Global Brightness"
+		case 6:
+			return "Active Trim Command"
+		case 7:
+			return "Active Trim Status"
+		case 8:
+			return "Autopilot Command"
+		case 9:
+			return "Active Exhaust"
+		case 12:
+			return "Oil Level Check Command"
+		case 13:
+			return "Oil Level Reset Response"
+default:
+		return fmt.Sprintf("MercuryCommandOpcodeConst(%d)", uint8(e))
+	}
+}
 type DeviceFunctionConst uint16
 var DeviceFunctionConstMap = map[int]map[int]string{10: {130: "Diagnostic",
 	140: "Bus Traffic Logger",
@@ -8532,10 +11996,10 @@ const (
 	WarningLevel2	EngineStatus2Const = 1
 	PowerReduction	EngineStatus2Const = 2
 	MaintenanceNeeded	EngineStatus2Const = 3
-	EngineCommError	EngineStatus2Const = 4
+	EngineCommError_2	EngineStatus2Const = 4
 	SubOrSecondaryThrottle	EngineStatus2Const = 5
 	NeutralStartProtect	EngineStatus2Const = 6
-	EngineShuttingDown	EngineStatus2Const = 7
+	EngineShuttingDown_2	EngineStatus2Const = 7
 )
 
 func (e EngineStatus2Const) GoString() string {return e.String() }
@@ -8559,6 +12023,32 @@ func (e EngineStatus2Const) String() string {
 			return "Engine Shutting Down"
 	default:
 		return fmt.Sprintf("%s(%d)", "EngineStatus2Const", int(e))
+	}
+}
+type TransmissionStatus1Const uint16
+const (
+	CheckTransmission	TransmissionStatus1Const = 0
+	OverTemperature_2	TransmissionStatus1Const = 1
+	LowOilPressure_2	TransmissionStatus1Const = 2
+	LowOilLevel_2	TransmissionStatus1Const = 3
+	SailDrive_2	TransmissionStatus1Const = 4
+)
+
+func (e TransmissionStatus1Const) GoString() string {return e.String() }
+func (e TransmissionStatus1Const) String() string {
+	switch e {
+		case 0:
+			return "Check Transmission"
+		case 1:
+			return "Over Temperature"
+		case 2:
+			return "Low Oil Pressure"
+		case 3:
+			return "Low Oil Level"
+		case 4:
+			return "Sail Drive"
+	default:
+		return fmt.Sprintf("%s(%d)", "TransmissionStatus1Const", int(e))
 	}
 }
 type EntertainmentPlayStatusBitfieldConst uint16
@@ -8803,13 +12293,42 @@ func (e WindlassMonitoringConst) String() string {
 		return fmt.Sprintf("%s(%d)", "WindlassMonitoringConst", int(e))
 	}
 }
+type FurunoBaselineStatusConst uint16
+const (
+	BaselineAntenna12	FurunoBaselineStatusConst = 0
+	BaselineAntenna23	FurunoBaselineStatusConst = 1
+	BaselineAntenna34	FurunoBaselineStatusConst = 2
+	BaselineAntenna41	FurunoBaselineStatusConst = 3
+	BaselineAntenna13	FurunoBaselineStatusConst = 4
+	BaselineAntenna24	FurunoBaselineStatusConst = 5
+)
+
+func (e FurunoBaselineStatusConst) GoString() string {return e.String() }
+func (e FurunoBaselineStatusConst) String() string {
+	switch e {
+		case 0:
+			return "Baseline Antenna 1-2"
+		case 1:
+			return "Baseline Antenna 2-3"
+		case 2:
+			return "Baseline Antenna 3-4"
+		case 3:
+			return "Baseline Antenna 4-1"
+		case 4:
+			return "Baseline Antenna 1-3"
+		case 5:
+			return "Baseline Antenna 2-4"
+	default:
+		return fmt.Sprintf("%s(%d)", "FurunoBaselineStatusConst", int(e))
+	}
+}
 type SimnetApModeBitfieldConst uint16
 const (
-	Standby_5	SimnetApModeBitfieldConst = 3
-	Heading_2	SimnetApModeBitfieldConst = 4
+	Standby_7	SimnetApModeBitfieldConst = 3
+	Heading_5	SimnetApModeBitfieldConst = 4
 	Nav_2	SimnetApModeBitfieldConst = 6
 	NoDrift_2	SimnetApModeBitfieldConst = 8
-	Wind_4	SimnetApModeBitfieldConst = 10
+	Wind_5	SimnetApModeBitfieldConst = 10
 )
 
 func (e SimnetApModeBitfieldConst) GoString() string {return e.String() }
@@ -8831,35 +12350,35 @@ func (e SimnetApModeBitfieldConst) String() string {
 }
 type SimnetAlertBitfieldConst uint16
 const (
-	NoGpsFix	SimnetAlertBitfieldConst = 0
-	NoActiveAutopilotControlUnit	SimnetAlertBitfieldConst = 2
+	NoGpsFix_2	SimnetAlertBitfieldConst = 0
+	NoActiveAutopilotControlUnit_2	SimnetAlertBitfieldConst = 2
 	NoAutopilotComputer_2	SimnetAlertBitfieldConst = 4
-	ApClutchOverload	SimnetAlertBitfieldConst = 6
-	ApClutchDisengaged	SimnetAlertBitfieldConst = 8
-	RudderControllerFault	SimnetAlertBitfieldConst = 10
-	NoRudderResponse	SimnetAlertBitfieldConst = 12
-	RudderDriveOverload	SimnetAlertBitfieldConst = 14
-	HighDriveSupply	SimnetAlertBitfieldConst = 16
-	LowDriveSupply	SimnetAlertBitfieldConst = 18
-	MemoryFail	SimnetAlertBitfieldConst = 20
-	ApPositionDataMissing	SimnetAlertBitfieldConst = 22
-	ApSpeedDataMissing	SimnetAlertBitfieldConst = 24
-	ApDepthDataMissing	SimnetAlertBitfieldConst = 26
-	ApHeadingDataMissing	SimnetAlertBitfieldConst = 28
-	ApNavDataMissing	SimnetAlertBitfieldConst = 30
-	ApRudderDataMissing	SimnetAlertBitfieldConst = 32
-	ApWindDataMissing	SimnetAlertBitfieldConst = 34
-	ApOffCourse	SimnetAlertBitfieldConst = 36
-	HighDriveTemperature	SimnetAlertBitfieldConst = 38
-	DriveInhibit	SimnetAlertBitfieldConst = 40
-	RudderLimit_2	SimnetAlertBitfieldConst = 42
-	DriveComputerMissing	SimnetAlertBitfieldConst = 44
-	DriveReadyMissing	SimnetAlertBitfieldConst = 46
-	EvcComError	SimnetAlertBitfieldConst = 48
-	EvcOverride	SimnetAlertBitfieldConst = 50
-	LowCanBusVoltage	SimnetAlertBitfieldConst = 52
-	CanBusSupplyOverload	SimnetAlertBitfieldConst = 54
-	WindSensorBatteryLow	SimnetAlertBitfieldConst = 56
+	ApClutchOverload_2	SimnetAlertBitfieldConst = 6
+	ApClutchDisengaged_2	SimnetAlertBitfieldConst = 8
+	RudderControllerFault_2	SimnetAlertBitfieldConst = 10
+	NoRudderResponse_2	SimnetAlertBitfieldConst = 12
+	RudderDriveOverload_2	SimnetAlertBitfieldConst = 14
+	HighDriveSupply_2	SimnetAlertBitfieldConst = 16
+	LowDriveSupply_2	SimnetAlertBitfieldConst = 18
+	MemoryFail_2	SimnetAlertBitfieldConst = 20
+	ApPositionDataMissing_2	SimnetAlertBitfieldConst = 22
+	ApSpeedDataMissing_2	SimnetAlertBitfieldConst = 24
+	ApDepthDataMissing_2	SimnetAlertBitfieldConst = 26
+	ApHeadingDataMissing_2	SimnetAlertBitfieldConst = 28
+	ApNavDataMissing_2	SimnetAlertBitfieldConst = 30
+	ApRudderDataMissing_2	SimnetAlertBitfieldConst = 32
+	ApWindDataMissing_2	SimnetAlertBitfieldConst = 34
+	ApOffCourse_2	SimnetAlertBitfieldConst = 36
+	HighDriveTemperature_2	SimnetAlertBitfieldConst = 38
+	DriveInhibit_2	SimnetAlertBitfieldConst = 40
+	RudderLimit_4	SimnetAlertBitfieldConst = 42
+	DriveComputerMissing_2	SimnetAlertBitfieldConst = 44
+	DriveReadyMissing_2	SimnetAlertBitfieldConst = 46
+	EvcComError_3	SimnetAlertBitfieldConst = 48
+	EvcOverride_2	SimnetAlertBitfieldConst = 50
+	LowCanBusVoltage_2	SimnetAlertBitfieldConst = 52
+	CanBusSupplyOverload_2	SimnetAlertBitfieldConst = 54
+	WindSensorBatteryLow_2	SimnetAlertBitfieldConst = 56
 )
 
 func (e SimnetAlertBitfieldConst) GoString() string {return e.String() }

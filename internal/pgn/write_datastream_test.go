@@ -92,8 +92,8 @@ func TestWritePgn(t *testing.T) {
 			SourceId: 12,
 			PGN:      129702,
 		},
-		Sid:                nil,
-		MobEmitterId:       nil,
+		SID:                nil,
+		MOBEmitterID:       nil,
 		ManOverboardStatus: publicpgn.MobStatusConst(1),
 		ActivationTime:     nil,
 		PositionSource:     publicpgn.MobPositionSourceConst(3),
@@ -101,14 +101,14 @@ func TestWritePgn(t *testing.T) {
 		PositionTime:       nil,
 		Latitude:           nil,
 		Longitude:          nil,
-		CogReference:       publicpgn.DirectionReferenceConst(2),
-		Cog:                nil,
-		Sog: &units.Velocity{
+		COGReference:       publicpgn.DirectionReferenceConst(2),
+		COG:                nil,
+		SOG: &units.Velocity{
 			Unit:  1,
 			Value: 8,
 		},
-		MmsiOfVesselOfOrigin:       &mmsi,
-		MobEmitterBatteryLowStatus: publicpgn.LowBatteryConst(1),
+		MMSIOfVesselOfOrigin:       &mmsi,
+		MOBEmitterBatteryLowStatus: publicpgn.LowBatteryConst(1),
 	}
 	stream := NewDataStream(make([]uint8, 223))
 	info, err := EncodeManOverboardNotification(&p, stream)

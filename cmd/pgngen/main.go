@@ -174,7 +174,7 @@ type PGNField struct {
 	Order                    uint8
 	Id                       string
 	Name                     string
-	Description              string
+	Description              canboatFieldDescription
 	BitLength                uint16
 	BitLengthVariable        bool
 	BitLengthField           uint8
@@ -196,6 +196,29 @@ type PGNField struct {
 	IndirectLookupName       string `json:"LookupIndirectEnumeration"`
 	IndirectLookupFieldOrder uint8  `json:"LookupIndirectEnumerationFieldOrder"`
 	FieldTypeLookupName      string `json:"LookupFieldTypeEnumeration"`
+}
+
+type canboatFieldDescription string
+
+func (description *canboatFieldDescription) UnmarshalJSON(data []byte) error {
+	var text string
+	if err := json.Unmarshal(data, &text); err == nil {
+		*description = canboatFieldDescription(text)
+		return nil
+	}
+
+	var number json.Number
+	if err := json.Unmarshal(data, &number); err == nil {
+		*description = canboatFieldDescription(number.String())
+		return nil
+	}
+
+	if string(data) == "null" {
+		*description = ""
+		return nil
+	}
+
+	return fmt.Errorf("canboat field description must be a string or number: %s", string(data))
 }
 
 // newCanboatConverter instantiates a new converter
@@ -558,14 +581,13 @@ func getReservedValueCount(field *PGNField) uint8 {
 	}
 }
 
-// fixIDs uppercases the first letter of PGN Ids and assures names are unique.
+// fixIDs converts PGN Ids to exported Go identifiers and assures names are unique.
 // It then invokes a function to fixup each field.
 func (conv *canboatConverter) fixIDs() {
 	pgnDeDuper := NewDeDuper()
 	for i := range conv.PGNs {
 		fieldDeDuper := NewDeDuper()
-		// Capitalize first letter of the Ids (currently lowercase)
-		conv.PGNs[i].Id = capitalizeFirstChar(conv.PGNs[i].Id)
+		conv.PGNs[i].Id = goIdentifierFromCanboatName(conv.PGNs[i].Id, conv.PGNs[i].Description)
 		if firstTime, _ := pgnDeDuper.unique(conv.PGNs[i].Id); !firstTime {
 			panic("PGN ID not unique: " + conv.PGNs[i].Id)
 		}
@@ -581,9 +603,9 @@ func (conv *canboatConverter) fixIDs() {
 	}
 }
 
-// fixField capitializes Id's first char, assures field name is unique, and forces lookup names.
+// fixField converts Id to a Go identifier, assures field name is unique, and forces lookup names.
 func (conv *canboatConverter) fixField(field *PGNField, dedup DeDuper) {
-	field.Id = capitalizeFirstChar(field.Id)
+	field.Id = goIdentifierFromCanboatName(field.Id, field.Name)
 	if len(field.FieldTypeLookupName) > 0 {
 		convertToConst(&field.FieldTypeLookupName)
 	}
@@ -633,6 +655,7 @@ func (builder *canboatConverter) fixRepeating() {
 func (builder *canboatConverter) fixEnumDefs() {
 	constDeDuper := NewDeDuper()
 	constValDeDuper := NewDeDuper()
+	reservedConstNames := builder.publicStructNames()
 	for i := range builder.Enums {
 		convertToConst(&builder.Enums[i].Name)
 		if firstTime, uniqueName := constDeDuper.unique(builder.Enums[i].Name); !firstTime {
@@ -641,7 +664,7 @@ func (builder *canboatConverter) fixEnumDefs() {
 		for j := range builder.Enums[i].Values {
 			enumPair := &builder.Enums[i].Values[j]
 			candidateName := generateConstName(builder.Enums[i].Name, enumPair.Text, enumPair.Value)
-			_, uniqueName := constValDeDuper.unique(candidateName)
+			_, uniqueName := constValDeDuper.unique(reserveConstName(builder.Enums[i].Name, candidateName, reservedConstNames))
 			enumPair.Name = uniqueName
 		}
 	}
@@ -661,7 +684,7 @@ func (builder *canboatConverter) fixEnumDefs() {
 		for j := range builder.BitEnums[i].EnumBitValues {
 			bitEnumPair := &builder.BitEnums[i].EnumBitValues[j]
 			candidateName := generateConstName(builder.BitEnums[i].Name, bitEnumPair.Label, bitEnumPair.Bit)
-			_, uniqueName := constValDeDuper.unique(candidateName)
+			_, uniqueName := constValDeDuper.unique(reserveConstName(builder.BitEnums[i].Name, candidateName, reservedConstNames))
 			bitEnumPair.Name = uniqueName
 		}
 	}
@@ -671,6 +694,21 @@ func (builder *canboatConverter) fixEnumDefs() {
 			builder.FieldTypeEnums[i].Name = uniqueName
 		}
 	}
+}
+
+func (builder *canboatConverter) publicStructNames() map[string]bool {
+	names := make(map[string]bool, len(builder.PGNs))
+	for _, pgn := range builder.PGNs {
+		names[pgn.Id] = true
+	}
+	return names
+}
+
+func reserveConstName(enumName, candidateName string, reservedNames map[string]bool) string {
+	if !reservedNames[candidateName] {
+		return candidateName
+	}
+	return enumName + candidateName
 }
 
 // validate assures that pgns with multiple definitions and the same Manufacturer ID are all single or all fast.
@@ -1588,15 +1626,6 @@ func loadCachedWebContent(name, url string) []byte {
 	return cacheContent
 }
 
-// capitalizeFirstChar forces the first character to upper case and converts "1st" to "First".
-func capitalizeFirstChar(raw string) string {
-	title := strings.ToUpper(raw[0:1]) + raw[1:]
-	if len(title) > 3 && title[0:3] == "1st" {
-		title = "First" + title[3:]
-	}
-	return title
-}
-
 // getManId returns the required Manufacturer Code ID for the defined PGN.
 // Only call on Proprietary PGNs!
 func getManId(p *PGN) int {
@@ -1636,7 +1665,7 @@ func generateConstName(enumName, text string, value int) string {
 		return !unicode.IsLetter(r) && !unicode.IsDigit(r)
 	})
 	for _, word := range words {
-		builder.WriteString(goIdentifierWord(word))
+		builder.WriteString(goIdentifierWordFromDisplay(word))
 	}
 	candidateName := builder.String()
 
@@ -1659,19 +1688,41 @@ func generateConstName(enumName, text string, value int) string {
 	return candidateName
 }
 
-var goInitialisms = map[string]string{
-	"DR":    "DR",
-	"DGNSS": "DGNSS",
-	"GNSS":  "GNSS",
-	"RTK":   "RTK",
+func goIdentifier(raw string) string {
+	return goIdentifierFromWords(splitIdentifierWords(raw), nil)
+}
+
+func goIdentifierFromCanboatName(id, name string) string {
+	if id == "" {
+		return ""
+	}
+	idWords := splitIdentifierWords(id)
+	nameWords := splitIdentifierWords(name)
+	acronymWords := acronymWordsFromName(idWords, nameWords)
+	return goIdentifierFromWords(idWords, acronymWords)
+}
+
+func goIdentifierFromWords(words []string, acronymWords map[int]string) string {
+	if len(words) > 0 && strings.EqualFold(words[0], "1") && len(words) > 1 && strings.EqualFold(words[1], "st") {
+		words = append([]string{"First"}, words[2:]...)
+	} else if len(words) > 0 && strings.EqualFold(words[0], "1st") {
+		words = append([]string{"First"}, words[1:]...)
+	}
+
+	var builder strings.Builder
+	for i, word := range words {
+		if acronym, ok := acronymWords[i]; ok {
+			builder.WriteString(acronym)
+			continue
+		}
+		builder.WriteString(goIdentifierWord(word))
+	}
+	return builder.String()
 }
 
 func goIdentifierWord(word string) string {
 	if word == "" {
 		return ""
-	}
-	if initialism, ok := goInitialisms[strings.ToUpper(word)]; ok {
-		return initialism
 	}
 	if unicode.IsDigit([]rune(word)[0]) {
 		return strings.ToUpper(word)
@@ -1680,15 +1731,101 @@ func goIdentifierWord(word string) string {
 	return cases.Title(language.English).String(lower)
 }
 
+func goIdentifierWordFromDisplay(word string) string {
+	if initialism, ok := enumValueInitialisms[strings.ToUpper(word)]; ok {
+		return initialism
+	}
+	return goIdentifierWord(word)
+}
+
+var enumValueInitialisms = map[string]string{
+	"DGNSS": "DGNSS",
+	"DR":    "DR",
+	"GNSS":  "GNSS",
+	"RTK":   "RTK",
+}
+
+func acronymWordsFromName(idWords, nameWords []string) map[int]string {
+	acronymWords := make(map[int]string)
+	idIndex := 0
+	for _, nameWord := range nameWords {
+		if idIndex >= len(idWords) {
+			break
+		}
+		if !strings.EqualFold(idWords[idIndex], nameWord) {
+			continue
+		}
+		if isAcronymWord(nameWord) {
+			acronymWords[idIndex] = nameWord
+		}
+		idIndex++
+	}
+	return acronymWords
+}
+
+func isAcronymWord(word string) bool {
+	letters := []rune{}
+	for _, r := range word {
+		if !unicode.IsLetter(r) {
+			continue
+		}
+		letters = append(letters, r)
+	}
+	if len(letters) == 0 {
+		return false
+	}
+	last := len(letters) - 1
+	for i, r := range letters {
+		if i == last && r == 's' && len(letters) > 1 {
+			continue
+		}
+		if !unicode.IsUpper(r) {
+			return false
+		}
+	}
+	return true
+}
+
 // convertToConst changes XXX_YYY to XxxYyyConst (all go consts have global namespace scope).
 func convertToConst(name *string) {
-	parts := strings.Split(strings.ToLower(*name), "_")
-	s := ""
-	makeTitle := cases.Title(language.English)
-	for i := range parts {
-		s += makeTitle.String(parts[i])
+	*name = goIdentifier(*name) + "Const"
+}
+
+func splitIdentifierWords(raw string) []string {
+	segments := strings.FieldsFunc(raw, func(r rune) bool {
+		return !unicode.IsLetter(r) && !unicode.IsDigit(r)
+	})
+
+	var words []string
+	for _, segment := range segments {
+		runes := []rune(segment)
+		start := 0
+		for i := 1; i < len(runes); i++ {
+			if identifierWordBoundary(runes, i) {
+				words = append(words, string(runes[start:i]))
+				start = i
+			}
+		}
+		if start < len(runes) {
+			words = append(words, string(runes[start:]))
+		}
 	}
-	*name = s + "Const"
+	return words
+}
+
+func identifierWordBoundary(runes []rune, i int) bool {
+	prev := runes[i-1]
+	curr := runes[i]
+	if unicode.IsDigit(prev) != unicode.IsDigit(curr) {
+		return true
+	}
+	if unicode.IsLower(prev) && unicode.IsUpper(curr) {
+		return true
+	}
+	if unicode.IsUpper(prev) && unicode.IsUpper(curr) && i+2 < len(runes) && unicode.IsLower(runes[i+1]) {
+		return true
+	}
+	return false
 }
 
 // isProprietaryPGN evaluates if its input falls into the proprietary PGN ranges.

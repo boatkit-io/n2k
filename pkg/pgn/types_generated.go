@@ -26,57 +26,57 @@ type MessageInfo struct {
 
 
 // PGN struct definitions
-type IsoAcknowledgement struct {
+type ISOAcknowledgement struct {
 	Info MessageInfo
 	Control IsoControlConst
 	GroupFunction *uint8
-	Pgn *uint32
+	PGN *uint32
 }
-type IsoRequest struct {
+type ISORequest struct {
 	Info MessageInfo
-	Pgn *uint32
+	PGN *uint32
 }
-type IsoTransportProtocolDataTransfer struct {
+type ISOTransportProtocolDataTransfer struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Data []uint8
 }
-type IsoTransportProtocolConnectionManagementRequestToSend struct {
+type ISOTransportProtocolConnectionManagementRequestToSend struct {
 	Info MessageInfo
 	GroupFunctionCode IsoCommandConst
 	MessageSize *uint16
 	Packets *uint8
 	PacketsReply *uint8
-	Pgn *uint32
+	PGN *uint32
 }
-type IsoTransportProtocolConnectionManagementClearToSend struct {
+type ISOTransportProtocolConnectionManagementClearToSend struct {
 	Info MessageInfo
 	GroupFunctionCode IsoCommandConst
 	MaxPackets *uint8
-	NextSid *uint8
-	Pgn *uint32
+	NextSID *uint8
+	PGN *uint32
 }
-type IsoTransportProtocolConnectionManagementEndOfMessage struct {
+type ISOTransportProtocolConnectionManagementEndOfMessage struct {
 	Info MessageInfo
 	GroupFunctionCode IsoCommandConst
 	TotalMessageSize *uint16
 	TotalNumberOfFramesReceived *uint8
-	Pgn *uint32
+	PGN *uint32
 }
-type IsoTransportProtocolConnectionManagementBroadcastAnnounce struct {
+type ISOTransportProtocolConnectionManagementBroadcastAnnounce struct {
 	Info MessageInfo
 	GroupFunctionCode IsoCommandConst
 	MessageSize *uint16
 	Packets *uint8
-	Pgn *uint32
+	PGN *uint32
 }
-type IsoTransportProtocolConnectionManagementAbort struct {
+type ISOTransportProtocolConnectionManagementAbort struct {
 	Info MessageInfo
 	GroupFunctionCode IsoCommandConst
 	Reason []uint8
-	Pgn *uint32
+	PGN *uint32
 }
-type IsoAddressClaim struct {
+type ISOAddressClaim struct {
 	Info MessageInfo
 	UniqueNumber *uint32
 	ManufacturerCode ManufacturerCodeConst
@@ -99,169 +99,169 @@ type CarlingBreakerCommand struct {
 	BreakerCommand *uint8
 	DimValue *uint8
 }
-type Bus1PhaseCBasicAcQuantities struct {
+type Bus1PhaseCBasicACQuantities struct {
 	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
 }
-type Bus1PhaseBBasicAcQuantities struct {
+type Bus1PhaseBBasicACQuantities struct {
 	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
 }
-type Bus1PhaseABasicAcQuantities struct {
+type Bus1PhaseABasicACQuantities struct {
 	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
 }
-type UtilityPhaseCAcReactivePower struct {
-	Info MessageInfo
-	ReactivePower *uint16
-	PowerFactor *float32
-	PowerFactorLagging PowerFactorConst
-}
-type UtilityPhaseCAcPower struct {
-	Info MessageInfo
-	RealPower *int32
-	ApparentPower *int32
-}
-type UtilityPhaseCBasicAcQuantities struct {
-	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
-	AcRmsCurrent *uint16
-}
-type UtilityPhaseBAcReactivePower struct {
+type UtilityPhaseCACReactivePower struct {
 	Info MessageInfo
 	ReactivePower *uint16
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-type UtilityPhaseBAcPower struct {
+type UtilityPhaseCACPower struct {
 	Info MessageInfo
 	RealPower *int32
 	ApparentPower *int32
 }
-type UtilityPhaseBBasicAcQuantities struct {
+type UtilityPhaseCBasicACQuantities struct {
 	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
-	AcRmsCurrent *uint16
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
+	ACRMSCurrent *uint16
 }
-type UtilityPhaseAAcReactivePower struct {
+type UtilityPhaseBACReactivePower struct {
+	Info MessageInfo
+	ReactivePower *uint16
+	PowerFactor *float32
+	PowerFactorLagging PowerFactorConst
+}
+type UtilityPhaseBACPower struct {
+	Info MessageInfo
+	RealPower *int32
+	ApparentPower *int32
+}
+type UtilityPhaseBBasicACQuantities struct {
+	Info MessageInfo
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
+	ACRMSCurrent *uint16
+}
+type UtilityPhaseAACReactivePower struct {
 	Info MessageInfo
 	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-type UtilityPhaseAAcPower struct {
+type UtilityPhaseAACPower struct {
 	Info MessageInfo
 	RealPower *int32
 	ApparentPower *int32
 }
-type UtilityPhaseABasicAcQuantities struct {
+type UtilityPhaseABasicACQuantities struct {
 	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
-	AcRmsCurrent *uint16
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
+	ACRMSCurrent *uint16
 }
-type UtilityTotalAcReactivePower struct {
+type UtilityTotalACReactivePower struct {
 	Info MessageInfo
 	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-type UtilityTotalAcPower struct {
+type UtilityTotalACPower struct {
 	Info MessageInfo
 	RealPower *int32
 	ApparentPower *int32
 }
-type UtilityAverageBasicAcQuantities struct {
+type UtilityAverageBasicACQuantities struct {
 	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
-	AcRmsCurrent *uint16
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
+	ACRMSCurrent *uint16
 }
-type GeneratorPhaseCAcReactivePower struct {
+type GeneratorPhaseCACReactivePower struct {
 	Info MessageInfo
 	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-type GeneratorPhaseCAcPower struct {
+type GeneratorPhaseCACPower struct {
 	Info MessageInfo
 	RealPower *int32
 	ApparentPower *int32
 }
-type GeneratorPhaseCBasicAcQuantities struct {
+type GeneratorPhaseCBasicACQuantities struct {
 	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
-	AcRmsCurrent *uint16
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
+	ACRMSCurrent *uint16
 }
-type GeneratorPhaseBAcReactivePower struct {
+type GeneratorPhaseBACReactivePower struct {
 	Info MessageInfo
 	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-type GeneratorPhaseBAcPower struct {
+type GeneratorPhaseBACPower struct {
 	Info MessageInfo
 	RealPower *int32
 	ApparentPower *int32
 }
-type GeneratorPhaseBBasicAcQuantities struct {
+type GeneratorPhaseBBasicACQuantities struct {
 	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
-	AcRmsCurrent *uint16
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
+	ACRMSCurrent *uint16
 }
-type GeneratorPhaseAAcReactivePower struct {
+type GeneratorPhaseAACReactivePower struct {
 	Info MessageInfo
 	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-type GeneratorPhaseAAcPower struct {
+type GeneratorPhaseAACPower struct {
 	Info MessageInfo
 	RealPower *int32
 	ApparentPower *int32
 }
-type GeneratorPhaseABasicAcQuantities struct {
+type GeneratorPhaseABasicACQuantities struct {
 	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
-	AcRmsCurrent *uint16
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
+	ACRMSCurrent *uint16
 }
-type GeneratorTotalAcReactivePower struct {
+type GeneratorTotalACReactivePower struct {
 	Info MessageInfo
 	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
-type GeneratorTotalAcPower struct {
+type GeneratorTotalACPower struct {
 	Info MessageInfo
 	RealPower *int32
 	ApparentPower *int32
 }
-type GeneratorAverageBasicAcQuantities struct {
+type GeneratorAverageBasicACQuantities struct {
 	Info MessageInfo
-	LineLineAcRmsVoltage *uint16
-	LineNeutralAcRmsVoltage *uint16
-	AcFrequency *float32
-	AcRmsCurrent *uint16
+	LineLineACRMSVoltage *uint16
+	LineNeutralACRMSVoltage *uint16
+	ACFrequency *float32
+	ACRMSCurrent *uint16
 }
-type IsoCommandedAddress struct {
+type ISOCommandedAddress struct {
 	Info MessageInfo
 	UniqueNumber []uint8
 	ManufacturerCode ManufacturerCodeConst
@@ -277,10 +277,10 @@ type MaretronNumberOfChannels struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Pgn *uint32
+	PGN *uint32
 	NumberOfChannels *uint8
 }
-type MaretronProprietaryDcBreakerCurrent struct {
+type MaretronProprietaryDCBreakerCurrent struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
@@ -314,6 +314,22 @@ type AirmarAccessLevel struct {
 	AccessLevel AccessLevelConst
 	AccessSeedKey *uint32
 }
+type LowranceVesselSetupEngineAndTankConfiguration struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	NumberOfEngines *uint8
+	NumberOfFuelTanks *uint8
+	TotalFuelCapacity *units.Volume
+}
+type LowranceVesselSetupEngineAndTankConfigurationBroadcast struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	NumberOfEngines *uint8
+	NumberOfFuelTanks *uint8
+	TotalFuelCapacity *units.Volume
+}
 type SimnetDeviceStatus struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -344,11 +360,18 @@ type SimnetDeviceModeRequest struct {
 	Model SimnetDeviceModelConst
 	Report SimnetDeviceReportConst
 }
+type NavicoDepthQuality struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Instance *uint8
+	DepthQuality *float32
+}
 type SeatalkPilotLockedHeading struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Sid *uint8
+	SID *uint8
 	TargetHeadingTrue *float32
 	TargetHeadingMagnetic *float32
 }
@@ -356,136 +379,136 @@ type SeatalkSilenceAlarm struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	AlarmId SeatalkAlarmIdConst
+	AlarmID SeatalkAlarmIdConst
 	AlarmGroup SeatalkAlarmGroupConst
 }
 type AirmarSpeedPulseCount struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Sid *uint8
+	SID *uint8
 	DurationOfInterval *float32
 	NumberOfPulsesReceived *uint16
 }
-type NmeaRequestGroupFunction struct {
+type NMEARequestGroupFunction struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
+	PGN *uint32
 	TransmissionInterval *float32
 	TransmissionIntervalOffset *float32
 	NumberOfParameters *uint8
-	Repeating1 []NmeaRequestGroupFunctionRepeating1
+	Repeating1 []NMEARequestGroupFunctionRepeating1
 }
-type NmeaRequestGroupFunctionRepeating1 struct {
+type NMEARequestGroupFunctionRepeating1 struct {
 	Parameter *uint8
 	Value []uint8
 }
-type NmeaCommandGroupFunction struct {
+type NMEACommandGroupFunction struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
+	PGN *uint32
 	Priority PriorityConst
 	NumberOfParameters *uint8
-	Repeating1 []NmeaCommandGroupFunctionRepeating1
+	Repeating1 []NMEACommandGroupFunctionRepeating1
 }
-type NmeaCommandGroupFunctionRepeating1 struct {
+type NMEACommandGroupFunctionRepeating1 struct {
 	Parameter *uint8
 	Value []uint8
 }
-type NmeaAcknowledgeGroupFunction struct {
+type NMEAAcknowledgeGroupFunction struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
-	PgnErrorCode PgnErrorCodeConst
+	PGN *uint32
+	PGNErrorCode PgnErrorCodeConst
 	TransmissionIntervalPriorityErrorCode TransmissionIntervalConst
 	NumberOfParameters *uint8
-	Repeating1 []NmeaAcknowledgeGroupFunctionRepeating1
+	Repeating1 []NMEAAcknowledgeGroupFunctionRepeating1
 }
-type NmeaAcknowledgeGroupFunctionRepeating1 struct {
+type NMEAAcknowledgeGroupFunctionRepeating1 struct {
 	Parameter ParameterFieldConst
 }
-type NmeaReadFieldsReplyGroupFunction struct {
+type NMEAReadFieldsReplyGroupFunction struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
+	PGN *uint32
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	UniqueId *uint8
+	UniqueID *uint8
 	NumberOfSelectionPairs *uint8
 	NumberOfParameters *uint8
-	Repeating1 []NmeaReadFieldsReplyGroupFunctionRepeating1
-	Repeating2 []NmeaReadFieldsReplyGroupFunctionRepeating2
+	Repeating1 []NMEAReadFieldsReplyGroupFunctionRepeating1
+	Repeating2 []NMEAReadFieldsReplyGroupFunctionRepeating2
 }
-type NmeaReadFieldsReplyGroupFunctionRepeating1 struct {
+type NMEAReadFieldsReplyGroupFunctionRepeating1 struct {
 	SelectionParameter *uint8
 	SelectionValue []uint8
 }
-type NmeaReadFieldsReplyGroupFunctionRepeating2 struct {
+type NMEAReadFieldsReplyGroupFunctionRepeating2 struct {
 	Parameter *uint8
 	Value []uint8
 }
-type NmeaWriteFieldsGroupFunction struct {
+type NMEAWriteFieldsGroupFunction struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
+	PGN *uint32
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	UniqueId *uint8
+	UniqueID *uint8
 	NumberOfSelectionPairs *uint8
 	NumberOfParameters *uint8
-	Repeating1 []NmeaWriteFieldsGroupFunctionRepeating1
-	Repeating2 []NmeaWriteFieldsGroupFunctionRepeating2
+	Repeating1 []NMEAWriteFieldsGroupFunctionRepeating1
+	Repeating2 []NMEAWriteFieldsGroupFunctionRepeating2
 }
-type NmeaWriteFieldsGroupFunctionRepeating1 struct {
+type NMEAWriteFieldsGroupFunctionRepeating1 struct {
 	SelectionParameter *uint8
 	SelectionValue []uint8
 }
-type NmeaWriteFieldsGroupFunctionRepeating2 struct {
+type NMEAWriteFieldsGroupFunctionRepeating2 struct {
 	Parameter *uint8
 	Value []uint8
 }
-type NmeaWriteFieldsReplyGroupFunction struct {
+type NMEAWriteFieldsReplyGroupFunction struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
+	PGN *uint32
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	UniqueId *uint8
+	UniqueID *uint8
 	NumberOfSelectionPairs *uint8
 	NumberOfParameters *uint8
-	Repeating1 []NmeaWriteFieldsReplyGroupFunctionRepeating1
-	Repeating2 []NmeaWriteFieldsReplyGroupFunctionRepeating2
+	Repeating1 []NMEAWriteFieldsReplyGroupFunctionRepeating1
+	Repeating2 []NMEAWriteFieldsReplyGroupFunctionRepeating2
 }
-type NmeaWriteFieldsReplyGroupFunctionRepeating1 struct {
+type NMEAWriteFieldsReplyGroupFunctionRepeating1 struct {
 	SelectionParameter *uint8
 	SelectionValue []uint8
 }
-type NmeaWriteFieldsReplyGroupFunctionRepeating2 struct {
+type NMEAWriteFieldsReplyGroupFunctionRepeating2 struct {
 	Parameter *uint8
 	Value []uint8
 }
-type PgnListTransmitAndReceive struct {
+type PGNListTransmitAndReceive struct {
 	Info MessageInfo
 	FunctionCode PgnListFunctionConst
-	Repeating1 []PgnListTransmitAndReceiveRepeating1
+	Repeating1 []PGNListTransmitAndReceiveRepeating1
 }
-type PgnListTransmitAndReceiveRepeating1 struct {
-	Pgn *uint32
+type PGNListTransmitAndReceiveRepeating1 struct {
+	PGN *uint32
 }
 type FusionMediaControl struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId FusionMessageIdConst
-	SourceId *uint8
+	ProprietaryID FusionMessageIdConst
+	SourceID *uint8
 	Command FusionCommandConst
 }
 type FusionSiriusControl struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId FusionMessageIdConst
-	SourceId *uint8
+	ProprietaryID FusionMessageIdConst
+	SourceID *uint8
 	Command FusionSiriusCommandConst
 	Data *uint16
 }
@@ -493,27 +516,27 @@ type FusionRequestStatus struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId FusionMessageIdConst
+	ProprietaryID FusionMessageIdConst
 }
 type FusionSetSource struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId FusionMessageIdConst
-	SourceId *uint8
+	ProprietaryID FusionMessageIdConst
+	SourceID *uint8
 }
 type FusionSetMute struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId FusionMessageIdConst
+	ProprietaryID FusionMessageIdConst
 	Command FusionMuteCommandConst
 }
 type FusionSetZoneVolume struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId FusionMessageIdConst
+	ProprietaryID FusionMessageIdConst
 	Zone *uint8
 	Volume *uint8
 }
@@ -521,7 +544,7 @@ type FusionSetAllVolumes struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId FusionMessageIdConst
+	ProprietaryID FusionMessageIdConst
 	Zone1 *uint8
 	Zone2 *uint8
 	Zone3 *uint8
@@ -531,7 +554,7 @@ type AirmarAttitudeOffset struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId AirmarCommandConst
+	ProprietaryID AirmarCommandConst
 	AzimuthOffset *float32
 	PitchOffset *float32
 	RollOffset *float32
@@ -540,21 +563,21 @@ type AirmarSimulateMode struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId AirmarCommandConst
+	ProprietaryID AirmarCommandConst
 	SimulateMode OffOnConst
 }
 type AirmarCalibrateDepth struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId AirmarCommandConst
+	ProprietaryID AirmarCommandConst
 	SpeedOfSoundMode *units.Velocity
 }
 type AirmarCalibrateSpeed struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId AirmarCommandConst
+	ProprietaryID AirmarCommandConst
 	NumberOfPairsOfDataPoints *uint8
 	Repeating1 []AirmarCalibrateSpeedRepeating1
 }
@@ -566,7 +589,7 @@ type AirmarCalibrateTemperature struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId AirmarCommandConst
+	ProprietaryID AirmarCommandConst
 	TemperatureInstance AirmarTemperatureInstanceConst
 	TemperatureOffset *units.Temperature
 }
@@ -574,15 +597,15 @@ type AirmarSpeedFilterNone struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId AirmarCommandConst
+	ProprietaryID AirmarCommandConst
 	FilterType *uint8
 	SampleInterval *float32
 }
-type AirmarSpeedFilterIir struct {
+type AirmarSpeedFilterIIR struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId AirmarCommandConst
+	ProprietaryID AirmarCommandConst
 	FilterType *uint8
 	SampleInterval *float32
 	FilterDuration *float32
@@ -591,24 +614,24 @@ type AirmarTemperatureFilterNone struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId AirmarCommandConst
+	ProprietaryID AirmarCommandConst
 	FilterType *uint8
 	SampleInterval *float32
 }
-type AirmarTemperatureFilterIir struct {
+type AirmarTemperatureFilterIIR struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId AirmarCommandConst
+	ProprietaryID AirmarCommandConst
 	FilterType *uint8
 	SampleInterval *float32
 	FilterDuration *float32
 }
-type AirmarNmea2000Options struct {
+type AirmarNMEA2000Options struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId AirmarCommandConst
+	ProprietaryID AirmarCommandConst
 	TransmissionInterval AirmarTransmissionIntervalConst
 }
 type MaretronDeviationCalibrationResponse struct {
@@ -635,8 +658,8 @@ type Alert struct {
 	AlertCategory AlertCategoryConst
 	AlertSystem *uint8
 	AlertSubSystem *uint8
-	AlertId *uint16
-	DataSourceNetworkIdName *uint64
+	AlertID *uint16
+	DataSourceNetworkIDNAME *uint64
 	DataSourceInstance *uint8
 	DataSourceIndexSource *uint8
 	AlertOccurrenceNumber *uint8
@@ -646,7 +669,7 @@ type Alert struct {
 	TemporarySilenceSupport YesNoConst
 	AcknowledgeSupport YesNoConst
 	EscalationSupport YesNoConst
-	AcknowledgeSourceNetworkIdName *uint64
+	AcknowledgeSourceNetworkIDNAME *uint64
 	TriggerCondition AlertTriggerConditionConst
 	ThresholdStatus AlertThresholdStatusConst
 	AlertPriority *uint8
@@ -658,12 +681,12 @@ type AlertResponse struct {
 	AlertCategory AlertCategoryConst
 	AlertSystem *uint8
 	AlertSubSystem *uint8
-	AlertId *uint16
-	DataSourceNetworkIdName *uint64
+	AlertID *uint16
+	DataSourceNetworkIDNAME *uint64
 	DataSourceInstance *uint8
 	DataSourceIndexSource *uint8
 	AlertOccurrenceNumber *uint8
-	AcknowledgeSourceNetworkIdName *uint64
+	AcknowledgeSourceNetworkIDNAME *uint64
 	ResponseCommand AlertResponseCommandConst
 }
 type AlertText struct {
@@ -672,18 +695,18 @@ type AlertText struct {
 	AlertCategory AlertCategoryConst
 	AlertSystem *uint8
 	AlertSubSystem *uint8
-	AlertId *uint16
-	DataSourceNetworkIdName *uint64
+	AlertID *uint16
+	DataSourceNetworkIDNAME *uint64
 	DataSourceInstance *uint8
 	DataSourceIndexSource *uint8
 	AlertOccurrenceNumber *uint8
-	LanguageId AlertLanguageIdConst
+	LanguageID AlertLanguageIdConst
 	AlertTextDescription string
 	AlertLocationTextDescription string
 }
 type SystemTime struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Source SystemTimeConst
 	Date *uint16
 	Time *float32
@@ -698,9 +721,9 @@ type Heartbeat struct {
 }
 type ProductInformation struct {
 	Info MessageInfo
-	Nmea2000Version *float32
+	NMEA2000Version *float32
 	ProductCode *uint16
-	ModelId string
+	ModelID string
 	SoftwareVersionCode string
 	ModelVersion string
 	ModelSerialCode string
@@ -715,8 +738,8 @@ type ConfigurationInformation struct {
 }
 type ManOverboardNotification struct {
 	Info MessageInfo
-	Sid *uint8
-	MobEmitterId *uint32
+	SID *uint8
+	MOBEmitterID *uint32
 	ManOverboardStatus MobStatusConst
 	ActivationTime *float32
 	PositionSource MobPositionSourceConst
@@ -724,11 +747,11 @@ type ManOverboardNotification struct {
 	PositionTime *float32
 	Latitude *float64
 	Longitude *float64
-	CogReference DirectionReferenceConst
-	Cog *float32
-	Sog *units.Velocity
-	MmsiOfVesselOfOrigin *uint32
-	MobEmitterBatteryLowStatus LowBatteryConst
+	COGReference DirectionReferenceConst
+	COG *float32
+	SOG *units.Velocity
+	MMSIOfVesselOfOrigin *uint32
+	MOBEmitterBatteryLowStatus LowBatteryConst
 }
 type HeadingTrackControl struct {
 	Info MessageInfo
@@ -759,7 +782,7 @@ type Rudder struct {
 }
 type VesselHeading struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Heading *float32
 	Deviation *float32
 	Variation *float32
@@ -767,19 +790,19 @@ type VesselHeading struct {
 }
 type RateOfTurn struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Rate *float64
 }
 type Attitude struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Yaw *float32
 	Pitch *float32
 	Roll *float32
 }
 type MagneticVariation struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Source MagneticVariationConst
 	AgeOfService *uint16
 	Variation *float32
@@ -813,7 +836,7 @@ type TransmissionParametersDynamic struct {
 	TransmissionGear GearStatusConst
 	OilPressure *units.Pressure
 	OilTemperature *units.Temperature
-	DiscreteStatus1 *uint8
+	DiscreteStatus1 TransmissionStatus1Const
 }
 type TripParametersVessel struct {
 	Info MessageInfo
@@ -834,17 +857,17 @@ type EngineParametersStatic struct {
 	Info MessageInfo
 	Instance EngineInstanceConst
 	RatedEngineSpeed *float32
-	Vin string
-	SoftwareId string
+	VIN string
+	SoftwareID string
 }
 type LoadControllerConnectionStateControl struct {
 	Info MessageInfo
-	SequenceId *uint8
-	ConnectionId *uint8
+	SequenceID *uint8
+	ConnectionID *uint8
 	State *uint8
 	Status *uint8
 	OperationalStatusControl *uint8
-	PwmDutyCycle *uint8
+	PWMDutyCycle *uint8
 	Timeon *uint8
 	Timeoff *uint8
 }
@@ -912,13 +935,13 @@ type SwitchBankControl struct {
 	Switch27 OffOnControlConst
 	Switch28 OffOnControlConst
 }
-type AcInputStatus struct {
+type ACInputStatus struct {
 	Info MessageInfo
 	Instance *uint8
 	NumberOfLines *uint8
-	Repeating1 []AcInputStatusRepeating1
+	Repeating1 []ACInputStatusRepeating1
 }
-type AcInputStatusRepeating1 struct {
+type ACInputStatusRepeating1 struct {
 	Line AcLineConst
 	Acceptability AcceptabilityConst
 	Voltage *float32
@@ -929,13 +952,13 @@ type AcInputStatusRepeating1 struct {
 	ReactivePower *uint32
 	PowerFactor *float32
 }
-type AcOutputStatus struct {
+type ACOutputStatus struct {
 	Info MessageInfo
 	Instance *uint8
 	NumberOfLines *uint8
-	Repeating1 []AcOutputStatusRepeating1
+	Repeating1 []ACOutputStatusRepeating1
 }
-type AcOutputStatusRepeating1 struct {
+type ACOutputStatusRepeating1 struct {
 	Line LineConst
 	Waveform WaveformConst
 	Voltage *float32
@@ -953,11 +976,11 @@ type FluidLevel struct {
 	Level *float32
 	Capacity *units.Volume
 }
-type DcDetailedStatus struct {
+type DCDetailedStatus struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Instance *uint8
-	DcType DcSourceConst
+	DCType DcSourceConst
 	StateOfCharge *uint8
 	StateOfHealth *uint8
 	TimeRemaining *float32
@@ -980,13 +1003,13 @@ type BatteryStatus struct {
 	Voltage *float32
 	Current *float32
 	Temperature *units.Temperature
-	Sid *uint8
+	SID *uint8
 }
 type InverterStatus struct {
 	Info MessageInfo
 	Instance *uint8
-	AcInstance *uint8
-	DcInstance *uint8
+	ACInstance *uint8
+	DCInstance *uint8
 	OperatingState InverterStateConst
 	InverterEnable OffOnConst
 }
@@ -1006,8 +1029,8 @@ type ChargerConfigurationStatus struct {
 type InverterConfigurationStatus struct {
 	Info MessageInfo
 	Instance *uint8
-	AcInstance *uint8
-	DcInstance *uint8
+	ACInstance *uint8
+	DCInstance *uint8
 	InverterEnableDisable OffOnConst
 	InverterMode InverterModeConst
 	LoadSenseEnableDisable OffOnConst
@@ -1026,76 +1049,69 @@ type BatteryConfigurationStatus struct {
 	PeukertExponent *float32
 	ChargeEfficiencyFactor *int8
 }
-type AcPowerCurrentPhaseA struct {
+type ACPowerCurrentPhaseA struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	ConnectionNumber *uint8
-	AcRmsCurrent *float32
+	ACRMSCurrent *float32
 	Power *int32
 }
-type AcPowerCurrentPhaseB struct {
+type ACPowerCurrentPhaseB struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	ConnectionNumber *uint8
-	AcRmsCurrent *float32
+	ACRMSCurrent *float32
 	Power *int32
 }
-type AcPowerCurrentPhaseC struct {
+type ACPowerCurrentPhaseC struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	ConnectionNumber *uint8
-	AcRmsCurrent *float32
+	ACRMSCurrent *float32
 	Power *int32
 }
-type AcVoltageFrequencyPhaseA struct {
+type ACVoltageFrequencyPhaseA struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	ConnectionNumber *uint8
-	AcVoltageLineToNeutral *float32
-	AcVoltageLineToLine *float32
+	ACVoltageLineToNeutral *float32
+	ACVoltageLineToLine *float32
 	Frequency *float32
 }
-type AcVoltageFrequencyPhaseB struct {
+type ACVoltageFrequencyPhaseB struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	ConnectionNumber *uint8
-	AcVoltageLineToNeutral *float32
-	AcVoltageLineToLine *float32
+	ACVoltageLineToNeutral *float32
+	ACVoltageLineToLine *float32
 	Frequency *float32
 }
-type AcVoltageFrequencyPhaseC struct {
+type ACVoltageFrequencyPhaseC struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	ConnectionNumber *uint8
-	AcVoltageLineToNeutral *float32
-	AcVoltageLineToLine *float32
+	ACVoltageLineToNeutral *float32
+	ACVoltageLineToLine *float32
 	Frequency *float32
 }
 type ConverterStatus struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	ConnectionNumber *uint8
 	OperatingState ConverterStateConst
 	TemperatureState GoodWarningErrorConst
 	OverloadState GoodWarningErrorConst
-	LowDcVoltageState GoodWarningErrorConst
+	LowDCVoltageState GoodWarningErrorConst
 	RippleState GoodWarningErrorConst
-}
-type DcVoltageCurrent struct {
-	Info MessageInfo
-	Sid *uint8
-	ConnectionNumber *uint8
-	DcVoltage *float32
-	DcCurrent *float32
 }
 type LeewayAngle struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	LeewayAngle *float32
 }
 type ThrusterControlStatus struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Identifier *uint8
 	DirectionControl ThrusterDirectionControlConst
 	PowerEnabled OffOnConst
@@ -1115,7 +1131,7 @@ type ThrusterInformation struct {
 }
 type ThrusterMotorStatus struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Identifier *uint8
 	MotorEvents ThrusterMotorEventsConst
 	Current *uint8
@@ -1124,7 +1140,7 @@ type ThrusterMotorStatus struct {
 }
 type Speed struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	SpeedWaterReferenced *units.Velocity
 	SpeedGroundReferenced *units.Velocity
 	SpeedWaterReferencedType WaterReferenceConst
@@ -1132,7 +1148,7 @@ type Speed struct {
 }
 type WaterDepth struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Depth *units.Distance
 	Offset *units.Distance
 	Range *units.Distance
@@ -1146,8 +1162,8 @@ type DistanceLog struct {
 }
 type WindlassControlStatus struct {
 	Info MessageInfo
-	Sid *uint8
-	WindlassId *uint8
+	SID *uint8
+	WindlassID *uint8
 	WindlassDirectionControl WindlassDirectionConst
 	AnchorDockingControl OffOnConst
 	SpeedControlType SpeedTypeConst
@@ -1161,8 +1177,8 @@ type WindlassControlStatus struct {
 }
 type AnchorWindlassOperatingStatus struct {
 	Info MessageInfo
-	Sid *uint8
-	WindlassId *uint8
+	SID *uint8
+	WindlassID *uint8
 	WindlassDirectionControl WindlassDirectionConst
 	WindlassMotionStatus WindlassMotionConst
 	RodeTypeStatus RodeTypeConst
@@ -1173,8 +1189,8 @@ type AnchorWindlassOperatingStatus struct {
 }
 type AnchorWindlassMonitoringStatus struct {
 	Info MessageInfo
-	Sid *uint8
-	WindlassId *uint8
+	SID *uint8
+	WindlassID *uint8
 	WindlassMonitoringEvents WindlassMonitoringConst
 	ControllerVoltage *float32
 	MotorCurrent *uint8
@@ -1185,35 +1201,35 @@ type PositionRapidUpdate struct {
 	Latitude *float64
 	Longitude *float64
 }
-type CogSogRapidUpdate struct {
+type COGSOGRapidUpdate struct {
 	Info MessageInfo
-	Sid *uint8
-	CogReference DirectionReferenceConst
-	Cog *float32
-	Sog *units.Velocity
+	SID *uint8
+	COGReference DirectionReferenceConst
+	COG *float32
+	SOG *units.Velocity
 }
-type GnssPositionData struct {
+type GNSSPositionData struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Date *uint16
 	Time *float32
 	Latitude *float64
 	Longitude *float64
 	Altitude *units.Distance
-	GnssType GnsConst
+	GNSSType GnsConst
 	Method GnsMethodConst
 	Integrity GnsIntegrityConst
-	NumberOfSvs *uint8
-	Hdop *float32
-	Pdop *float32
+	NumberOfSVs *uint8
+	HDOP *float32
+	PDOP *float32
 	GeoidalSeparation *units.Distance
 	ReferenceStations *uint8
-	Repeating1 []GnssPositionDataRepeating1
+	Repeating1 []GNSSPositionDataRepeating1
 }
-type GnssPositionDataRepeating1 struct {
+type GNSSPositionDataRepeating1 struct {
 	ReferenceStationType GnsConst
-	ReferenceStationId *uint16
-	AgeOfDgnssCorrections *float32
+	ReferenceStationID *uint16
+	AgeOfDGNSSCorrections *float32
 }
 type TimeDate struct {
 	Info MessageInfo
@@ -1221,58 +1237,58 @@ type TimeDate struct {
 	Time *float32
 	LocalOffset *float32
 }
-type AisClassAPositionReport struct {
+type AISClassAPositionReport struct {
 	Info MessageInfo
-	MessageId AisMessageIdConst
+	MessageID AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
-	UserId *uint32
+	UserID *uint32
 	Longitude *float64
 	Latitude *float64
 	PositionAccuracy PositionAccuracyConst
-	Raim RaimFlagConst
+	RAIM RaimFlagConst
 	TimeStamp TimeStampConst
-	Cog *float32
-	Sog *units.Velocity
+	COG *float32
+	SOG *units.Velocity
 	CommunicationState []uint8
-	AisTransceiverInformation AisTransceiverConst
+	AISTransceiverInformation AisTransceiverConst
 	Heading *float32
 	RateOfTurn *float32
 	NavStatus NavStatusConst
 	SpecialManeuverIndicator AisSpecialManeuverConst
-	SequenceId *uint8
+	SequenceID *uint8
 }
-type AisClassBPositionReport struct {
+type AISClassBPositionReport struct {
 	Info MessageInfo
-	MessageId AisMessageIdConst
+	MessageID AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
-	UserId *uint32
+	UserID *uint32
 	Longitude *float64
 	Latitude *float64
 	PositionAccuracy PositionAccuracyConst
-	Raim RaimFlagConst
+	RAIM RaimFlagConst
 	TimeStamp TimeStampConst
-	Cog *float32
-	Sog *units.Velocity
+	COG *float32
+	SOG *units.Velocity
 	CommunicationState []uint8
-	AisTransceiverInformation AisTransceiverConst
+	AISTransceiverInformation AisTransceiverConst
 	Heading *float32
 	UnitType AisTypeConst
 	IntegratedDisplay YesNoConst
-	Dsc YesNoConst
+	DSC YesNoConst
 	Band AisBandConst
 	CanHandleMsg22 YesNoConst
-	AisMode AisModeConst
-	AisCommunicationState AisCommunicationStateConst
+	AISMode AisModeConst
+	AISCommunicationState AisCommunicationStateConst
 }
-type AisAidsToNavigationAtonReport struct {
+type AISAidsToNavigationAtonReport struct {
 	Info MessageInfo
-	MessageId AisMessageIdConst
+	MessageID AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
-	UserId *uint32
+	UserID *uint32
 	Longitude *float64
 	Latitude *float64
 	PositionAccuracy PositionAccuracyConst
-	Raim RaimFlagConst
+	RAIM RaimFlagConst
 	TimeStamp TimeStampConst
 	LengthDiameter *units.Distance
 	BeamDiameter *units.Distance
@@ -1284,7 +1300,7 @@ type AisAidsToNavigationAtonReport struct {
 	AssignedModeFlag AisAssignedModeConst
 	PositionFixingDeviceType PositionFixDeviceConst
 	AtonStatus []uint8
-	AisTransceiverInformation AisTransceiverConst
+	AISTransceiverInformation AisTransceiverConst
 	AtonName string
 }
 type Datum struct {
@@ -1310,21 +1326,21 @@ type UserDatum struct {
 }
 type CrossTrackError struct {
 	Info MessageInfo
-	Sid *uint8
-	XteMode ResidualModeConst
+	SID *uint8
+	XTEMode ResidualModeConst
 	NavigationTerminated YesNoConst
-	Xte *units.Distance
+	XTE *units.Distance
 }
 type NavigationData struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	DistanceToWaypoint *units.Distance
 	CourseBearingReference DirectionReferenceConst
 	PerpendicularCrossed YesNoConst
 	ArrivalCircleEntered YesNoConst
 	CalculationType BearingModeConst
-	EtaTime *float32
-	EtaDate *uint16
+	ETATime *float32
+	ETADate *uint16
 	BearingOriginToDestinationWaypoint *float32
 	BearingPositionToDestinationWaypoint *float32
 	OriginWaypointNumber *uint32
@@ -1333,85 +1349,85 @@ type NavigationData struct {
 	DestinationLongitude *float64
 	WaypointClosingVelocity *units.Velocity
 }
-type NavigationRouteWpInformation struct {
+type NavigationRouteWPInformation struct {
 	Info MessageInfo
-	StartRps *uint16
+	StartRPS *uint16
 	Nitems *uint16
-	DatabaseId *uint16
-	RouteId *uint16
+	DatabaseID *uint16
+	RouteID *uint16
 	NavigationDirectionInRoute DirectionConst
-	SupplementaryRouteWpDataAvailable OffOnConst
+	SupplementaryRouteWPDataAvailable OffOnConst
 	RouteName string
-	Repeating1 []NavigationRouteWpInformationRepeating1
+	Repeating1 []NavigationRouteWPInformationRepeating1
 }
-type NavigationRouteWpInformationRepeating1 struct {
-	WpId *uint16
-	WpName string
-	WpLatitude *float64
-	WpLongitude *float64
+type NavigationRouteWPInformationRepeating1 struct {
+	WPID *uint16
+	WPName string
+	WPLatitude *float64
+	WPLongitude *float64
 }
 type SetDriftRapidUpdate struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	SetReference DirectionReferenceConst
 	Set *float32
 	Drift *units.Velocity
 }
 type NavigationRouteTimeToFromMark struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	TimeToMark *float32
 	MarkType MarkTypeConst
-	MarkId *uint32
+	MarkID *uint32
 }
-type GnssControlStatus struct {
+type GNSSControlStatus struct {
 	Info MessageInfo
-	SvElevationMask *float32
-	PdopMask *float32
-	PdopSwitch *float32
-	SnrMask *float32
-	GnssModeDesired GnssModeConst
-	DgnssModeDesired DgnssModeConst
+	SVElevationMask *float32
+	PDOPMask *float32
+	PDOPSwitch *float32
+	SNRMask *float32
+	GNSSModeDesired GnssModeConst
+	DGNSSModeDesired DgnssModeConst
 	PositionVelocityFilter YesNoConst
 	MaxCorrectionAge *float32
-	AntennaAltitudeFor2dMode *units.Distance
-	UseAntennaAltitudeFor2dMode YesNoConst
+	AntennaAltitudeFor2DMode *units.Distance
+	UseAntennaAltitudeFor2DMode YesNoConst
 }
-type GnssDops struct {
+type GNSSDOPs struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	DesiredMode GnssModeConst
 	ActualMode GnssModeConst
-	Hdop *float32
-	Vdop *float32
-	Tdop *float32
+	HDOP *float32
+	VDOP *float32
+	TDOP *float32
 }
-type GnssSatsInView struct {
+type GNSSSatsInView struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	RangeResidualMode RangeResidualModeConst
 	SatsInView *uint8
-	Repeating1 []GnssSatsInViewRepeating1
+	Repeating1 []GNSSSatsInViewRepeating1
 }
-type GnssSatsInViewRepeating1 struct {
-	Prn *uint8
+type GNSSSatsInViewRepeating1 struct {
+	PRN *uint8
 	Elevation *float32
 	Azimuth *float32
-	Snr *float32
+	SNR *float32
 	RangeResiduals *units.Distance
 	Status SatelliteStatusConst
 }
-type GnssRaimSettings struct {
+type GNSSRAIMSettings struct {
 	Info MessageInfo
 	RadialPositionErrorMaximumThreshold *units.Distance
 	ProbabilityOfFalseAlarm *int8
 	ProbabilityOfMissedDetection *int8
 	PseudorangeResidualFilteringTimeConstant *uint16
 }
-type GnssPseudorangeErrorStatistics struct {
+type GNSSPseudorangeErrorStatistics struct {
 	Info MessageInfo
-	Sid *uint8
-	RmsStdDevOfRangeInputs *units.Distance
+	SID *uint8
+	RMSStdDevOfRangeInputs *units.Distance
 	StdDevOfMajorErrorEllipse *units.Distance
 	StdDevOfMinorErrorEllipse *units.Distance
 	OrientationOfErrorEllipse *float32
@@ -1419,20 +1435,20 @@ type GnssPseudorangeErrorStatistics struct {
 	StdDevLonError *units.Distance
 	StdDevAltError *units.Distance
 }
-type DgnssCorrections struct {
+type DGNSSCorrections struct {
 	Info MessageInfo
-	Sid *uint8
-	ReferenceStationId *uint16
+	SID *uint8
+	ReferenceStationID *uint16
 	ReferenceStationType GnsConst
 	TimeOfCorrections *float32
 	StationHealth StationHealthConst
-	SatelliteId *uint8
-	Prc *units.Distance
-	Rrc *units.Velocity
-	Udre *units.Distance
-	Iod *uint8
+	SatelliteID *uint8
+	PRC *units.Distance
+	RRC *units.Velocity
+	UDRE *units.Distance
+	IOD *uint8
 }
-type GnssDifferentialCorrectionReceiverInterface struct {
+type GNSSDifferentialCorrectionReceiverInterface struct {
 	Info MessageInfo
 	Channel *uint8
 	Frequency *float32
@@ -1441,26 +1457,26 @@ type GnssDifferentialCorrectionReceiverInterface struct {
 	DifferentialSource DifferentialSourceConst
 	DifferentialOperationMode DifferentialModeConst
 }
-type GnssDifferentialCorrectionReceiverSignal struct {
+type GNSSDifferentialCorrectionReceiverSignal struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Channel *uint8
 	SignalStrength *float32
-	SignalSnr *float32
+	SignalSNR *float32
 	Frequency *float32
 	StationType GnsConst
-	ReferenceStationId *uint16
+	ReferenceStationID *uint16
 	DifferentialSignalBitRate SerialBitRateConst
 	DifferentialSignalDetectionMode SerialDetectionModeConst
 	UsedAsCorrectionSource YesNoConst
 	DifferentialSource DifferentialSourceConst
 	TimeSinceLastSatDifferentialSync *float32
-	SatelliteServiceIdNo *uint16
+	SatelliteServiceIDNo *uint16
 }
-type GlonassAlmanacData struct {
+type GLONASSAlmanacData struct {
 	Info MessageInfo
-	Prn *uint8
-	Na *uint16
+	PRN *uint8
+	NA *uint16
 	Cna *uint8
 	Hna *uint8
 	EpsilonNa *uint16
@@ -1473,27 +1489,27 @@ type GlonassAlmanacData struct {
 	TauCa *uint32
 	TauNa *uint16
 }
-type AisUtcAndDateReport struct {
+type AISUTCAndDateReport struct {
 	Info MessageInfo
-	MessageId AisMessageIdConst
+	MessageID AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
-	UserId *uint32
+	UserID *uint32
 	Longitude *float64
 	Latitude *float64
 	PositionAccuracy PositionAccuracyConst
-	Raim RaimFlagConst
+	RAIM RaimFlagConst
 	PositionTime *float32
 	CommunicationState []uint8
-	AisTransceiverInformation AisTransceiverConst
+	AISTransceiverInformation AisTransceiverConst
 	PositionDate *uint16
-	GnssType PositionFixDeviceConst
+	GNSSType PositionFixDeviceConst
 }
-type AisClassAStaticAndVoyageRelatedData struct {
+type AISClassAStaticAndVoyageRelatedData struct {
 	Info MessageInfo
-	MessageId AisMessageIdConst
+	MessageID AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
-	UserId *uint32
-	ImoNumber *uint32
+	UserID *uint32
+	IMONumber *uint32
 	Callsign string
 	Name string
 	TypeOfShip ShipTypeConst
@@ -1501,45 +1517,45 @@ type AisClassAStaticAndVoyageRelatedData struct {
 	Beam *units.Distance
 	PositionReferenceFromStarboard *units.Distance
 	PositionReferenceFromBow *units.Distance
-	EtaDate *uint16
-	EtaTime *float32
+	ETADate *uint16
+	ETATime *float32
 	Draft *units.Distance
 	Destination string
-	AisVersionIndicator AisVersionConst
-	GnssType PositionFixDeviceConst
-	Dte AvailableConst
-	AisTransceiverInformation AisTransceiverConst
+	AISVersionIndicator AisVersionConst
+	GNSSType PositionFixDeviceConst
+	DTE AvailableConst
+	AISTransceiverInformation AisTransceiverConst
 }
-type AisAddressedBinaryMessage struct {
+type AISAddressedBinaryMessage struct {
 	Info MessageInfo
-	MessageId AisMessageIdConst
+	MessageID AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
-	SourceId *uint32
-	AisTransceiverInformation AisTransceiverConst
+	SourceID *uint32
+	AISTransceiverInformation AisTransceiverConst
 	SequenceNumber *uint8
-	DestinationId *uint32
+	DestinationID *uint32
 	RetransmitFlag YesNoConst
 	NumberOfBitsInBinaryDataField *uint16
 	BinaryData []uint8
 }
-type AisAcknowledge struct {
+type AISAcknowledge struct {
 	Info MessageInfo
-	MessageId AisMessageIdConst
+	MessageID AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
-	SourceId *uint32
-	AisTransceiverInformation AisTransceiverConst
-	Repeating1 []AisAcknowledgeRepeating1
+	SourceID *uint32
+	AISTransceiverInformation AisTransceiverConst
+	Repeating1 []AISAcknowledgeRepeating1
 }
-type AisAcknowledgeRepeating1 struct {
-	DestinationId *uint32
+type AISAcknowledgeRepeating1 struct {
+	DestinationID *uint32
 	SequenceNumber *uint8
 }
-type AisBinaryBroadcastMessage struct {
+type AISBinaryBroadcastMessage struct {
 	Info MessageInfo
-	MessageId AisMessageIdConst
+	MessageID AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
-	SourceId *uint32
-	AisTransceiverInformation AisTransceiverConst
+	SourceID *uint32
+	AISTransceiverInformation AisTransceiverConst
 	NumberOfBitsInBinaryDataField *uint16
 	BinaryData []uint8
 }
@@ -1552,200 +1568,200 @@ type RadioFrequencyModePower struct {
 	Mode TelephoneModeConst
 	ChannelBandwidth *uint16
 }
-type AisClassBStaticDataMsg24PartA struct {
+type AISClassBStaticDataMsg24PartA struct {
 	Info MessageInfo
-	MessageId AisMessageIdConst
+	MessageID AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
-	UserId *uint32
+	UserID *uint32
 	Name string
-	AisTransceiverInformation AisTransceiverConst
-	SequenceId *uint8
+	AISTransceiverInformation AisTransceiverConst
+	SequenceID *uint8
 }
-type AisClassBStaticDataMsg24PartB struct {
+type AISClassBStaticDataMsg24PartB struct {
 	Info MessageInfo
-	MessageId AisMessageIdConst
+	MessageID AisMessageIdConst
 	RepeatIndicator RepeatIndicatorConst
-	UserId *uint32
+	UserID *uint32
 	TypeOfShip ShipTypeConst
-	VendorId string
+	VendorID string
 	Callsign string
 	Length *units.Distance
 	Beam *units.Distance
 	PositionReferenceFromStarboard *units.Distance
 	PositionReferenceFromBow *units.Distance
-	MothershipUserId *uint32
-	GnssType PositionFixDeviceConst
-	AisTransceiverInformation AisTransceiverConst
-	SequenceId *uint8
+	MothershipUserID *uint32
+	GNSSType PositionFixDeviceConst
+	AISTransceiverInformation AisTransceiverConst
+	SequenceID *uint8
 }
-type RouteAndWpServiceDatabaseList struct {
+type RouteAndWPServiceDatabaseList struct {
 	Info MessageInfo
-	StartDatabaseId *uint16
+	StartDatabaseID *uint16
 	Nitems *uint16
 	NumberOfDatabasesAvailable *uint16
-	Repeating1 []RouteAndWpServiceDatabaseListRepeating1
+	Repeating1 []RouteAndWPServiceDatabaseListRepeating1
 }
-type RouteAndWpServiceDatabaseListRepeating1 struct {
-	DatabaseId *uint16
+type RouteAndWPServiceDatabaseListRepeating1 struct {
+	DatabaseID *uint16
 	DatabaseName string
 	DatabaseTimestamp *float32
 	DatabaseDatestamp *uint16
-	WpPositionResolution WpPositionResolutionConst
+	WPPositionResolution WpPositionResolutionConst
 	NumberOfRoutesInDatabase *uint16
-	NumberOfWpsInDatabase *uint32
+	NumberOfWPsInDatabase *uint32
 	NumberOfBytesInDatabase *uint32
 }
-type RouteAndWpServiceRouteList struct {
+type RouteAndWPServiceRouteList struct {
 	Info MessageInfo
-	StartRouteId *uint16
+	StartRouteID *uint16
 	Nitems *uint16
 	NumberOfRoutesInDatabase *uint16
-	DatabaseId *uint16
-	Repeating1 []RouteAndWpServiceRouteListRepeating1
+	DatabaseID *uint16
+	Repeating1 []RouteAndWPServiceRouteListRepeating1
 }
-type RouteAndWpServiceRouteListRepeating1 struct {
-	RouteId *uint16
+type RouteAndWPServiceRouteListRepeating1 struct {
+	RouteID *uint16
 	RouteName string
-	WpIdentificationMethod WpIdentificationMethodConst
+	WPIdentificationMethod WpIdentificationMethodConst
 	RouteStatus WpRouteStatusConst
 }
-type RouteAndWpServiceRouteWpListAttributes struct {
+type RouteAndWPServiceRouteWPListAttributes struct {
 	Info MessageInfo
-	DatabaseId *uint16
-	RouteId *uint16
-	RouteWpListName string
-	RouteWpListTimestamp *float32
-	RouteWpListDatestamp *uint16
+	DatabaseID *uint16
+	RouteID *uint16
+	RouteWPListName string
+	RouteWPListTimestamp *float32
+	RouteWPListDatestamp *uint16
 	ChangeAtLastTimestamp WpChangeConst
-	NumberOfWpsInTheRouteWpList *uint16
+	NumberOfWPsInTheRouteWPList *uint16
 	CriticalSupplementaryParameters WpCriticalParametersConst
 	NavigationMethod WpNavigationMethodConst
-	WpIdentificationMethod WpIdentificationMethodConst
+	WPIdentificationMethod WpIdentificationMethodConst
 	RouteStatus WpRouteStatusConst
-	XteLimitForTheRoute *units.Distance
+	XTELimitForTheRoute *units.Distance
 }
-type RouteAndWpServiceRouteWpNamePosition struct {
+type RouteAndWPServiceRouteWPNamePosition struct {
 	Info MessageInfo
-	StartRps *uint16
+	StartRPS *uint16
 	Nitems *uint16
-	NumberOfWpsInTheRouteWpList *uint16
-	DatabaseId *uint16
-	RouteId *uint16
-	Repeating1 []RouteAndWpServiceRouteWpNamePositionRepeating1
+	NumberOfWPsInTheRouteWPList *uint16
+	DatabaseID *uint16
+	RouteID *uint16
+	Repeating1 []RouteAndWPServiceRouteWPNamePositionRepeating1
 }
-type RouteAndWpServiceRouteWpNamePositionRepeating1 struct {
-	WpId *uint16
-	WpName string
-	WpLatitude *float64
-	WpLongitude *float64
+type RouteAndWPServiceRouteWPNamePositionRepeating1 struct {
+	WPID *uint16
+	WPName string
+	WPLatitude *float64
+	WPLongitude *float64
 }
-type RouteAndWpServiceRouteWpName struct {
+type RouteAndWPServiceRouteWPName struct {
 	Info MessageInfo
-	StartRps *uint16
+	StartRPS *uint16
 	Nitems *uint16
-	NumberOfWpsInTheRouteWpList *uint16
-	DatabaseId *uint16
-	RouteId *uint16
-	Repeating1 []RouteAndWpServiceRouteWpNameRepeating1
+	NumberOfWPsInTheRouteWPList *uint16
+	DatabaseID *uint16
+	RouteID *uint16
+	Repeating1 []RouteAndWPServiceRouteWPNameRepeating1
 }
-type RouteAndWpServiceRouteWpNameRepeating1 struct {
-	WpId *uint16
-	WpName string
+type RouteAndWPServiceRouteWPNameRepeating1 struct {
+	WPID *uint16
+	WPName string
 }
-type RouteAndWpServiceXteLimitNavigationMethod struct {
+type RouteAndWPServiceXTELimitNavigationMethod struct {
 	Info MessageInfo
-	StartRps *uint16
+	StartRPS *uint16
 	Nitems *uint16
-	NumberOfWpsWithASpecificXteLimitOrNavMethod *uint16
-	Repeating1 []RouteAndWpServiceXteLimitNavigationMethodRepeating1
+	NumberOfWPsWithASpecificXTELimitOrNavMethod *uint16
+	Repeating1 []RouteAndWPServiceXTELimitNavigationMethodRepeating1
 }
-type RouteAndWpServiceXteLimitNavigationMethodRepeating1 struct {
-	DatabaseId *uint16
-	RouteId *uint16
-	Rps *uint16
-	XteLimitInTheLegAfterWp *units.Distance
-	NavMethodInTheLegAfterWp WpNavigationMethodConst
+type RouteAndWPServiceXTELimitNavigationMethodRepeating1 struct {
+	DatabaseID *uint16
+	RouteID *uint16
+	RPS *uint16
+	XTELimitInTheLegAfterWP *units.Distance
+	NavMethodInTheLegAfterWP WpNavigationMethodConst
 }
-type RouteAndWpServiceWpComment struct {
+type RouteAndWPServiceWPComment struct {
 	Info MessageInfo
-	StartId *uint16
+	StartID *uint16
 	Nitems *uint16
-	NumberOfWpsWithComments *uint16
-	DatabaseId *uint16
-	RouteId *uint16
-	Repeating1 []RouteAndWpServiceWpCommentRepeating1
+	NumberOfWPsWithComments *uint16
+	DatabaseID *uint16
+	RouteID *uint16
+	Repeating1 []RouteAndWPServiceWPCommentRepeating1
 }
-type RouteAndWpServiceWpCommentRepeating1 struct {
-	WpIdRps *uint16
+type RouteAndWPServiceWPCommentRepeating1 struct {
+	WPIDRPS *uint16
 	Comment string
 }
-type RouteAndWpServiceRouteComment struct {
+type RouteAndWPServiceRouteComment struct {
 	Info MessageInfo
-	StartRouteId *uint16
+	StartRouteID *uint16
 	Nitems *uint16
 	NumberOfRoutesWithComments *uint16
-	DatabaseId *uint16
-	Repeating1 []RouteAndWpServiceRouteCommentRepeating1
+	DatabaseID *uint16
+	Repeating1 []RouteAndWPServiceRouteCommentRepeating1
 }
-type RouteAndWpServiceRouteCommentRepeating1 struct {
-	RouteId *uint16
+type RouteAndWPServiceRouteCommentRepeating1 struct {
+	RouteID *uint16
 	Comment string
 }
-type RouteAndWpServiceDatabaseComment struct {
+type RouteAndWPServiceDatabaseComment struct {
 	Info MessageInfo
-	StartDatabaseId *uint16
+	StartDatabaseID *uint16
 	Nitems *uint16
 	NumberOfDatabasesWithComments *uint16
-	Repeating1 []RouteAndWpServiceDatabaseCommentRepeating1
+	Repeating1 []RouteAndWPServiceDatabaseCommentRepeating1
 }
-type RouteAndWpServiceDatabaseCommentRepeating1 struct {
-	DatabaseId *uint16
+type RouteAndWPServiceDatabaseCommentRepeating1 struct {
+	DatabaseID *uint16
 	Comment string
 }
-type RouteAndWpServiceRadiusOfTurn struct {
+type RouteAndWPServiceRadiusOfTurn struct {
 	Info MessageInfo
-	StartRps *uint16
+	StartRPS *uint16
 	Nitems *uint16
-	NumberOfWpsWithASpecificRadiusOfTurn *uint16
-	DatabaseId *uint16
-	RouteId *uint16
-	Repeating1 []RouteAndWpServiceRadiusOfTurnRepeating1
+	NumberOfWPsWithASpecificRadiusOfTurn *uint16
+	DatabaseID *uint16
+	RouteID *uint16
+	Repeating1 []RouteAndWPServiceRadiusOfTurnRepeating1
 }
-type RouteAndWpServiceRadiusOfTurnRepeating1 struct {
-	Rps *uint16
+type RouteAndWPServiceRadiusOfTurnRepeating1 struct {
+	RPS *uint16
 	RadiusOfTurn *units.Distance
 }
-type RouteAndWpServiceWpListWpNamePosition struct {
+type RouteAndWPServiceWPListWPNamePosition struct {
 	Info MessageInfo
-	StartWpId *uint16
+	StartWPID *uint16
 	Nitems *uint16
-	NumberOfValidWpsInTheWpList *uint16
-	DatabaseId *uint16
-	Repeating1 []RouteAndWpServiceWpListWpNamePositionRepeating1
+	NumberOfValidWPsInTheWPList *uint16
+	DatabaseID *uint16
+	Repeating1 []RouteAndWPServiceWPListWPNamePositionRepeating1
 }
-type RouteAndWpServiceWpListWpNamePositionRepeating1 struct {
-	WpId *uint16
-	WpName string
-	WpLatitude *float64
-	WpLongitude *float64
+type RouteAndWPServiceWPListWPNamePositionRepeating1 struct {
+	WPID *uint16
+	WPName string
+	WPLatitude *float64
+	WPLongitude *float64
 }
 type WindData struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	WindSpeed *units.Velocity
 	WindAngle *float32
 	Reference WindReferenceConst
 }
 type EnvironmentalParametersObsolete struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	WaterTemperature *units.Temperature
 	OutsideAmbientAirTemperature *units.Temperature
 	AtmosphericPressure *units.Pressure
 }
 type EnvironmentalParameters struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	TemperatureSource TemperatureSourceConst
 	HumiditySource HumiditySourceConst
 	Temperature *units.Temperature
@@ -1754,7 +1770,7 @@ type EnvironmentalParameters struct {
 }
 type Temperature struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Instance *uint8
 	Source TemperatureSourceConst
 	ActualTemperature *units.Temperature
@@ -1762,7 +1778,7 @@ type Temperature struct {
 }
 type Humidity struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Instance *uint8
 	Source HumiditySourceConst
 	ActualHumidity *float32
@@ -1770,21 +1786,21 @@ type Humidity struct {
 }
 type ActualPressure struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Instance *uint8
 	Source PressureSourceConst
 	Pressure *units.Pressure
 }
 type SetPressure struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Instance *uint8
 	Source PressureSourceConst
 	Pressure *units.Pressure
 }
 type TemperatureExtendedRange struct {
 	Info MessageInfo
-	Sid *uint8
+	SID *uint8
 	Instance *uint8
 	Source TemperatureSourceConst
 	Temperature *units.Temperature
@@ -1800,7 +1816,7 @@ type TideStationData struct {
 	StationLongitude *float64
 	TideLevel *units.Distance
 	TideLevelStandardDeviation *units.Distance
-	StationId string
+	StationID string
 	StationName string
 }
 type WatermakerInputSettingAndStatus struct {
@@ -1836,10 +1852,10 @@ type SmallCraftStatus struct {
 type DirectionData struct {
 	Info MessageInfo
 	DataMode ResidualModeConst
-	CogReference DirectionReferenceConst
-	Sid *uint8
-	Cog *float32
-	Sog *units.Velocity
+	COGReference DirectionReferenceConst
+	SID *uint8
+	COG *float32
+	SOG *units.Velocity
 	Heading *float32
 	SpeedThroughWater *units.Velocity
 	Set *float32
@@ -1858,12 +1874,12 @@ type SonichubVolume struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	ProprietaryId SonichubCommandConst
+	ProprietaryID SonichubCommandConst
 	Control SonichubControlConst
 	Zone *uint8
 	Level *uint8
 }
-type BepMarineCzoneZcfBusDistribution struct {
+type BEPMarineCzoneZcfBusDistribution struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
@@ -1885,20 +1901,20 @@ type FusionVersions struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	HwVersionMajor *uint16
-	HwVersionMinor *uint16
-	SwVersionMajor *uint8
-	SwVersionMinor *uint8
+	MessageID FusionStatusMessageIdConst
+	HWVersionMajor *uint16
+	HWVersionMinor *uint16
+	SWVersionMajor *uint8
+	SWVersionMinor *uint8
 	BuildNumber *uint8
 }
 type FusionSource struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
-	CurrentSourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
+	CurrentSourceID *uint8
 	SourceType FusionSourceTypeConst
 	Flags *uint8
 	Source string
@@ -1907,15 +1923,15 @@ type FusionSourceCount struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	SourceCount *uint8
 }
 type FusionMedia struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Flags FusionPlayStatusConst
 	Track *uint32
 	TrackCount *uint32
@@ -1926,8 +1942,8 @@ type FusionTrackName struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Index *uint32
 	Track string
 }
@@ -1935,8 +1951,8 @@ type FusionArtistName struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Index *uint32
 	Artist string
 }
@@ -1944,8 +1960,8 @@ type FusionAlbumName struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Index *uint32
 	Album string
 }
@@ -1953,42 +1969,109 @@ type FusionDeviceName struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Name string
 }
 type FusionZoneName struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Number *uint8
 	Name string
+}
+type FusionSpeedVolumeCurrentSpeed struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
+	Speed *uint16
+	Enabled *uint8
+}
+type FusionIgnitionSwitchState struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIdConst
+	State *uint8
+}
+type FusionMenuLockId struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIdConst
+	LockId *uint32
+	Flags *uint8
+}
+type FusionRDSData struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
+	RDSType *uint8
+	ProgrammeType *uint8
+	RDS string
+}
+type FusionMultiroom struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIdConst
+	Enabled YesNoConst
+	IPAddress1 *uint8
+	IPAddress2 *uint8
+	IPAddress3 *uint8
+	IPAddress4 *uint8
+}
+type FusionMultiroomStatus struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIdConst
+	Available YesNoConst
+}
+type FusionProcessingBypass struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIdConst
+	Bypass YesNoConst
+}
+type FusionMono struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIdConst
+	Zone *uint8
+	Enabled YesNoConst
 }
 type FusionTrackPosition struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Progress *float32
 }
 type FusionTuner struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId FusionRadioSourceConst
+	MessageID FusionStatusMessageIdConst
+	SourceID FusionRadioSourceConst
 	Scanning *uint8
 	Frequency *uint32
 	SignalStrength *uint8
 	Track string
 }
-type FusionMarineTuner struct {
+type FusionMARINETUNER struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Channel *uint8
 	SignalStrength *uint8
 	Name string
@@ -1997,85 +2080,85 @@ type FusionMarineSquelch struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Squelch *uint8
 }
 type FusionMarineScanMode struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Scan YesNoConst
 }
 type FusionMenuItem struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	ItemIndex *uint32
 	Flags *uint8
-	LockId *uint8
+	LockID *uint8
 	Text string
 }
 type FusionAuxGain struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Gain *uint8
 }
-type FusionUsbRepeatStatus struct {
+type FusionUSBRepeatStatus struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	Id FusionSettingConst
+	MessageID FusionStatusMessageIdConst
+	ID FusionSettingConst
 	Status FusionRepeatStatusConst
 }
 type FusionSetting struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	Id FusionSettingConst
+	MessageID FusionStatusMessageIdConst
+	ID FusionSettingConst
 	Value *uint32
 }
 type FusionSettings struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Count *uint32
 	Repeating1 []FusionSettingsRepeating1
 }
 type FusionSettingsRepeating1 struct {
-	Id FusionSettingConst
+	ID FusionSettingConst
 	Value *uint32
 }
 type FusionMute struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Mute FusionMuteCommandConst
 }
 type FusionBalance struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Zone *uint8
-	Value *uint8
+	VALUE *uint8
 }
 type FusionLowPassFilter struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Zone *uint8
 	Filter *uint8
 }
@@ -2083,17 +2166,17 @@ type FusionSublevels struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Zone1 *uint8
 	Zone2 *uint8
 	Zone3 *uint8
 	Zone4 *uint8
 }
-type FusionEq struct {
+type FusionEQ struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Zone *uint8
 	Bass *int8
 	Mid *int8
@@ -2103,7 +2186,7 @@ type FusionVolumeLimits struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Zone1VolumeLimit *uint8
 	Zone2VolumeLimit *uint8
 	Zone3VolumeLimit *uint8
@@ -2113,7 +2196,7 @@ type FusionVolumes struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Zone1 *uint8
 	Zone2 *uint8
 	Zone3 *uint8
@@ -2123,7 +2206,7 @@ type FusionCapabilities struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Zone1 *uint16
 	Zone2 *uint16
 	Zone3 *uint16
@@ -2134,7 +2217,7 @@ type FusionLineLevelControl struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	Zone *uint8
 	Control *uint8
 }
@@ -2142,15 +2225,15 @@ type FusionPowerState struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
+	MessageID FusionStatusMessageIdConst
 	State FusionPowerStateConst
 }
 type FusionSiriusxm struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	ComState FusionSiriusComStateConst
 	Alert FusionSiriusComStateConst
 	AdvisoryChannel *uint16
@@ -2160,8 +2243,8 @@ type FusionSiriusxmChannel struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	ChannelNumber *uint16
 	Channel string
 }
@@ -2169,8 +2252,8 @@ type FusionSiriusxmTitle struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Channel *uint16
 	Title string
 }
@@ -2178,8 +2261,8 @@ type FusionSiriusxmArtist struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Channel *uint16
 	Artist string
 }
@@ -2187,8 +2270,8 @@ type FusionSiriusxmContentInfo struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Channel *uint16
 	Genre string
 }
@@ -2196,8 +2279,8 @@ type FusionSiriusxmCategory struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Channel *uint16
 	Name string
 }
@@ -2205,16 +2288,16 @@ type FusionSiriusxmSignal struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Signal *uint8
 }
 type FusionSiriusxmPresets struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	MessageId FusionStatusMessageIdConst
-	SourceId *uint8
+	MessageID FusionStatusMessageIdConst
+	SourceID *uint8
 	Count *uint8
 	Values []uint8
 }
@@ -2222,7 +2305,7 @@ type MaretronProprietaryTemperatureHighRange struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Sid *uint8
+	SID *uint8
 	Instance *uint8
 	Source TemperatureSourceConst
 	ActualTemperature *units.Temperature
@@ -2239,11 +2322,22 @@ type BGKeyValueDataRepeating1 struct {
 	Length *uint8
 	Value []uint8
 }
+type MercuryEngineKeyValueData struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Repeating1 []MercuryEngineKeyValueDataRepeating1
+}
+type MercuryEngineKeyValueDataRepeating1 struct {
+	Key *uint16
+	Length *uint8
+	Value []uint8
+}
 type MaretronDataInstanceChannelCorrelation struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Pgn *uint32
+	PGN *uint32
 	HardwareChannel *uint8
 	Instance *uint8
 	DataSource *uint8
@@ -2268,9 +2362,9 @@ type MaretronSwitchStatusCounter struct {
 	IndicatorNumber *uint8
 	StartDate *uint16
 	StartTime *float32
-	OffCounter *uint32
-	OnCounter *uint32
-	ErrorCounter *uint32
+	OFFCounter *uint32
+	ONCounter *uint32
+	ERRORCounter *uint32
 	SwitchStatus OffOnConst
 }
 type MaretronSwitchStatusTimer struct {
@@ -2281,72 +2375,92 @@ type MaretronSwitchStatusTimer struct {
 	IndicatorNumber *uint8
 	StartDate *uint16
 	StartTime *float32
-	AccumulatedOffPeriod *uint32
-	AccumulatedOnPeriod *uint32
-	AccumulatedErrorPeriod *uint32
+	AccumulatedOFFPeriod *uint32
+	AccumulatedONPeriod *uint32
+	AccumulatedERRORPeriod *uint32
 	SwitchStatus OffOnConst
 }
-// Partial type for NmeaRequestGroupFunction when PGN is proprietary or unknown
-type NmeaRequestGroupFunctionPartial struct {
+type FurunoMultiSatsInViewExtended struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ReportType *uint8
+	Antenna *uint8
+	PageType *uint8
+	Page *uint8
+	SatsInUse *uint8
+	SatsInView *uint8
+	Repeating1 []FurunoMultiSatsInViewExtendedRepeating1
+}
+type FurunoMultiSatsInViewExtendedRepeating1 struct {
+	PRN *uint8
+	Elevation *float32
+	Azimuth *float32
+	SNR *float32
+	RangeResidual *units.Distance
+	BaselineStatus FurunoBaselineStatusConst
+}
+// Partial type for NMEARequestGroupFunction when PGN is proprietary or unknown
+type NMEARequestGroupFunctionPartial struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
+	PGN *uint32
 	TransmissionInterval *float32
 	TransmissionIntervalOffset *float32
 	NumberOfParameters *uint8
 	RawData []byte
 }
-// Partial type for NmeaCommandGroupFunction when PGN is proprietary or unknown
-type NmeaCommandGroupFunctionPartial struct {
+// Partial type for NMEACommandGroupFunction when PGN is proprietary or unknown
+type NMEACommandGroupFunctionPartial struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
+	PGN *uint32
 	Priority PriorityConst
 	NumberOfParameters *uint8
 	RawData []byte
 }
-// Partial type for NmeaAcknowledgeGroupFunction when PGN is proprietary or unknown
-type NmeaAcknowledgeGroupFunctionPartial struct {
+// Partial type for NMEAAcknowledgeGroupFunction when PGN is proprietary or unknown
+type NMEAAcknowledgeGroupFunctionPartial struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
-	PgnErrorCode PgnErrorCodeConst
+	PGN *uint32
+	PGNErrorCode PgnErrorCodeConst
 	TransmissionIntervalPriorityErrorCode TransmissionIntervalConst
 	NumberOfParameters *uint8
 	RawData []byte
 }
-// Partial type for NmeaReadFieldsReplyGroupFunction when PGN is proprietary or unknown
-type NmeaReadFieldsReplyGroupFunctionPartial struct {
+// Partial type for NMEAReadFieldsReplyGroupFunction when PGN is proprietary or unknown
+type NMEAReadFieldsReplyGroupFunctionPartial struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
+	PGN *uint32
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	UniqueId *uint8
+	UniqueID *uint8
 	NumberOfSelectionPairs *uint8
 	NumberOfParameters *uint8
 	RawData []byte
 }
-// Partial type for NmeaWriteFieldsGroupFunction when PGN is proprietary or unknown
-type NmeaWriteFieldsGroupFunctionPartial struct {
+// Partial type for NMEAWriteFieldsGroupFunction when PGN is proprietary or unknown
+type NMEAWriteFieldsGroupFunctionPartial struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
+	PGN *uint32
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	UniqueId *uint8
+	UniqueID *uint8
 	NumberOfSelectionPairs *uint8
 	NumberOfParameters *uint8
 	RawData []byte
 }
-// Partial type for NmeaWriteFieldsReplyGroupFunction when PGN is proprietary or unknown
-type NmeaWriteFieldsReplyGroupFunctionPartial struct {
+// Partial type for NMEAWriteFieldsReplyGroupFunction when PGN is proprietary or unknown
+type NMEAWriteFieldsReplyGroupFunctionPartial struct {
 	Info MessageInfo
 	FunctionCode GroupFunctionConst
-	Pgn *uint32
+	PGN *uint32
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	UniqueId *uint8
+	UniqueID *uint8
 	NumberOfSelectionPairs *uint8
 	NumberOfParameters *uint8
 	RawData []byte

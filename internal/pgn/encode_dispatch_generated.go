@@ -10,166 +10,166 @@ import (
 // EncodeStruct encodes a public PGN struct to NMEA 2000 wire format.
 func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	switch p := s.(type) {
-	case *publicpgn.IsoAcknowledgement:
-		return EncodeIsoAcknowledgement(p, stream)
-	case publicpgn.IsoAcknowledgement:
-		return EncodeIsoAcknowledgement(&p, stream)
-	case *publicpgn.IsoRequest:
-		return EncodeIsoRequest(p, stream)
-	case publicpgn.IsoRequest:
-		return EncodeIsoRequest(&p, stream)
-	case *publicpgn.IsoTransportProtocolDataTransfer:
-		return EncodeIsoTransportProtocolDataTransfer(p, stream)
-	case publicpgn.IsoTransportProtocolDataTransfer:
-		return EncodeIsoTransportProtocolDataTransfer(&p, stream)
-	case *publicpgn.IsoTransportProtocolConnectionManagementRequestToSend:
-		return EncodeIsoTransportProtocolConnectionManagementRequestToSend(p, stream)
-	case publicpgn.IsoTransportProtocolConnectionManagementRequestToSend:
-		return EncodeIsoTransportProtocolConnectionManagementRequestToSend(&p, stream)
-	case *publicpgn.IsoTransportProtocolConnectionManagementClearToSend:
-		return EncodeIsoTransportProtocolConnectionManagementClearToSend(p, stream)
-	case publicpgn.IsoTransportProtocolConnectionManagementClearToSend:
-		return EncodeIsoTransportProtocolConnectionManagementClearToSend(&p, stream)
-	case *publicpgn.IsoTransportProtocolConnectionManagementEndOfMessage:
-		return EncodeIsoTransportProtocolConnectionManagementEndOfMessage(p, stream)
-	case publicpgn.IsoTransportProtocolConnectionManagementEndOfMessage:
-		return EncodeIsoTransportProtocolConnectionManagementEndOfMessage(&p, stream)
-	case *publicpgn.IsoTransportProtocolConnectionManagementBroadcastAnnounce:
-		return EncodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(p, stream)
-	case publicpgn.IsoTransportProtocolConnectionManagementBroadcastAnnounce:
-		return EncodeIsoTransportProtocolConnectionManagementBroadcastAnnounce(&p, stream)
-	case *publicpgn.IsoTransportProtocolConnectionManagementAbort:
-		return EncodeIsoTransportProtocolConnectionManagementAbort(p, stream)
-	case publicpgn.IsoTransportProtocolConnectionManagementAbort:
-		return EncodeIsoTransportProtocolConnectionManagementAbort(&p, stream)
-	case *publicpgn.IsoAddressClaim:
-		return EncodeIsoAddressClaim(p, stream)
-	case publicpgn.IsoAddressClaim:
-		return EncodeIsoAddressClaim(&p, stream)
+	case *publicpgn.ISOAcknowledgement:
+		return EncodeISOAcknowledgement(p, stream)
+	case publicpgn.ISOAcknowledgement:
+		return EncodeISOAcknowledgement(&p, stream)
+	case *publicpgn.ISORequest:
+		return EncodeISORequest(p, stream)
+	case publicpgn.ISORequest:
+		return EncodeISORequest(&p, stream)
+	case *publicpgn.ISOTransportProtocolDataTransfer:
+		return EncodeISOTransportProtocolDataTransfer(p, stream)
+	case publicpgn.ISOTransportProtocolDataTransfer:
+		return EncodeISOTransportProtocolDataTransfer(&p, stream)
+	case *publicpgn.ISOTransportProtocolConnectionManagementRequestToSend:
+		return EncodeISOTransportProtocolConnectionManagementRequestToSend(p, stream)
+	case publicpgn.ISOTransportProtocolConnectionManagementRequestToSend:
+		return EncodeISOTransportProtocolConnectionManagementRequestToSend(&p, stream)
+	case *publicpgn.ISOTransportProtocolConnectionManagementClearToSend:
+		return EncodeISOTransportProtocolConnectionManagementClearToSend(p, stream)
+	case publicpgn.ISOTransportProtocolConnectionManagementClearToSend:
+		return EncodeISOTransportProtocolConnectionManagementClearToSend(&p, stream)
+	case *publicpgn.ISOTransportProtocolConnectionManagementEndOfMessage:
+		return EncodeISOTransportProtocolConnectionManagementEndOfMessage(p, stream)
+	case publicpgn.ISOTransportProtocolConnectionManagementEndOfMessage:
+		return EncodeISOTransportProtocolConnectionManagementEndOfMessage(&p, stream)
+	case *publicpgn.ISOTransportProtocolConnectionManagementBroadcastAnnounce:
+		return EncodeISOTransportProtocolConnectionManagementBroadcastAnnounce(p, stream)
+	case publicpgn.ISOTransportProtocolConnectionManagementBroadcastAnnounce:
+		return EncodeISOTransportProtocolConnectionManagementBroadcastAnnounce(&p, stream)
+	case *publicpgn.ISOTransportProtocolConnectionManagementAbort:
+		return EncodeISOTransportProtocolConnectionManagementAbort(p, stream)
+	case publicpgn.ISOTransportProtocolConnectionManagementAbort:
+		return EncodeISOTransportProtocolConnectionManagementAbort(&p, stream)
+	case *publicpgn.ISOAddressClaim:
+		return EncodeISOAddressClaim(p, stream)
+	case publicpgn.ISOAddressClaim:
+		return EncodeISOAddressClaim(&p, stream)
 	case *publicpgn.CarlingBreakerCommand:
 		return EncodeCarlingBreakerCommand(p, stream)
 	case publicpgn.CarlingBreakerCommand:
 		return EncodeCarlingBreakerCommand(&p, stream)
-	case *publicpgn.Bus1PhaseCBasicAcQuantities:
-		return EncodeBus1PhaseCBasicAcQuantities(p, stream)
-	case publicpgn.Bus1PhaseCBasicAcQuantities:
-		return EncodeBus1PhaseCBasicAcQuantities(&p, stream)
-	case *publicpgn.Bus1PhaseBBasicAcQuantities:
-		return EncodeBus1PhaseBBasicAcQuantities(p, stream)
-	case publicpgn.Bus1PhaseBBasicAcQuantities:
-		return EncodeBus1PhaseBBasicAcQuantities(&p, stream)
-	case *publicpgn.Bus1PhaseABasicAcQuantities:
-		return EncodeBus1PhaseABasicAcQuantities(p, stream)
-	case publicpgn.Bus1PhaseABasicAcQuantities:
-		return EncodeBus1PhaseABasicAcQuantities(&p, stream)
-	case *publicpgn.UtilityPhaseCAcReactivePower:
-		return EncodeUtilityPhaseCAcReactivePower(p, stream)
-	case publicpgn.UtilityPhaseCAcReactivePower:
-		return EncodeUtilityPhaseCAcReactivePower(&p, stream)
-	case *publicpgn.UtilityPhaseCAcPower:
-		return EncodeUtilityPhaseCAcPower(p, stream)
-	case publicpgn.UtilityPhaseCAcPower:
-		return EncodeUtilityPhaseCAcPower(&p, stream)
-	case *publicpgn.UtilityPhaseCBasicAcQuantities:
-		return EncodeUtilityPhaseCBasicAcQuantities(p, stream)
-	case publicpgn.UtilityPhaseCBasicAcQuantities:
-		return EncodeUtilityPhaseCBasicAcQuantities(&p, stream)
-	case *publicpgn.UtilityPhaseBAcReactivePower:
-		return EncodeUtilityPhaseBAcReactivePower(p, stream)
-	case publicpgn.UtilityPhaseBAcReactivePower:
-		return EncodeUtilityPhaseBAcReactivePower(&p, stream)
-	case *publicpgn.UtilityPhaseBAcPower:
-		return EncodeUtilityPhaseBAcPower(p, stream)
-	case publicpgn.UtilityPhaseBAcPower:
-		return EncodeUtilityPhaseBAcPower(&p, stream)
-	case *publicpgn.UtilityPhaseBBasicAcQuantities:
-		return EncodeUtilityPhaseBBasicAcQuantities(p, stream)
-	case publicpgn.UtilityPhaseBBasicAcQuantities:
-		return EncodeUtilityPhaseBBasicAcQuantities(&p, stream)
-	case *publicpgn.UtilityPhaseAAcReactivePower:
-		return EncodeUtilityPhaseAAcReactivePower(p, stream)
-	case publicpgn.UtilityPhaseAAcReactivePower:
-		return EncodeUtilityPhaseAAcReactivePower(&p, stream)
-	case *publicpgn.UtilityPhaseAAcPower:
-		return EncodeUtilityPhaseAAcPower(p, stream)
-	case publicpgn.UtilityPhaseAAcPower:
-		return EncodeUtilityPhaseAAcPower(&p, stream)
-	case *publicpgn.UtilityPhaseABasicAcQuantities:
-		return EncodeUtilityPhaseABasicAcQuantities(p, stream)
-	case publicpgn.UtilityPhaseABasicAcQuantities:
-		return EncodeUtilityPhaseABasicAcQuantities(&p, stream)
-	case *publicpgn.UtilityTotalAcReactivePower:
-		return EncodeUtilityTotalAcReactivePower(p, stream)
-	case publicpgn.UtilityTotalAcReactivePower:
-		return EncodeUtilityTotalAcReactivePower(&p, stream)
-	case *publicpgn.UtilityTotalAcPower:
-		return EncodeUtilityTotalAcPower(p, stream)
-	case publicpgn.UtilityTotalAcPower:
-		return EncodeUtilityTotalAcPower(&p, stream)
-	case *publicpgn.UtilityAverageBasicAcQuantities:
-		return EncodeUtilityAverageBasicAcQuantities(p, stream)
-	case publicpgn.UtilityAverageBasicAcQuantities:
-		return EncodeUtilityAverageBasicAcQuantities(&p, stream)
-	case *publicpgn.GeneratorPhaseCAcReactivePower:
-		return EncodeGeneratorPhaseCAcReactivePower(p, stream)
-	case publicpgn.GeneratorPhaseCAcReactivePower:
-		return EncodeGeneratorPhaseCAcReactivePower(&p, stream)
-	case *publicpgn.GeneratorPhaseCAcPower:
-		return EncodeGeneratorPhaseCAcPower(p, stream)
-	case publicpgn.GeneratorPhaseCAcPower:
-		return EncodeGeneratorPhaseCAcPower(&p, stream)
-	case *publicpgn.GeneratorPhaseCBasicAcQuantities:
-		return EncodeGeneratorPhaseCBasicAcQuantities(p, stream)
-	case publicpgn.GeneratorPhaseCBasicAcQuantities:
-		return EncodeGeneratorPhaseCBasicAcQuantities(&p, stream)
-	case *publicpgn.GeneratorPhaseBAcReactivePower:
-		return EncodeGeneratorPhaseBAcReactivePower(p, stream)
-	case publicpgn.GeneratorPhaseBAcReactivePower:
-		return EncodeGeneratorPhaseBAcReactivePower(&p, stream)
-	case *publicpgn.GeneratorPhaseBAcPower:
-		return EncodeGeneratorPhaseBAcPower(p, stream)
-	case publicpgn.GeneratorPhaseBAcPower:
-		return EncodeGeneratorPhaseBAcPower(&p, stream)
-	case *publicpgn.GeneratorPhaseBBasicAcQuantities:
-		return EncodeGeneratorPhaseBBasicAcQuantities(p, stream)
-	case publicpgn.GeneratorPhaseBBasicAcQuantities:
-		return EncodeGeneratorPhaseBBasicAcQuantities(&p, stream)
-	case *publicpgn.GeneratorPhaseAAcReactivePower:
-		return EncodeGeneratorPhaseAAcReactivePower(p, stream)
-	case publicpgn.GeneratorPhaseAAcReactivePower:
-		return EncodeGeneratorPhaseAAcReactivePower(&p, stream)
-	case *publicpgn.GeneratorPhaseAAcPower:
-		return EncodeGeneratorPhaseAAcPower(p, stream)
-	case publicpgn.GeneratorPhaseAAcPower:
-		return EncodeGeneratorPhaseAAcPower(&p, stream)
-	case *publicpgn.GeneratorPhaseABasicAcQuantities:
-		return EncodeGeneratorPhaseABasicAcQuantities(p, stream)
-	case publicpgn.GeneratorPhaseABasicAcQuantities:
-		return EncodeGeneratorPhaseABasicAcQuantities(&p, stream)
-	case *publicpgn.GeneratorTotalAcReactivePower:
-		return EncodeGeneratorTotalAcReactivePower(p, stream)
-	case publicpgn.GeneratorTotalAcReactivePower:
-		return EncodeGeneratorTotalAcReactivePower(&p, stream)
-	case *publicpgn.GeneratorTotalAcPower:
-		return EncodeGeneratorTotalAcPower(p, stream)
-	case publicpgn.GeneratorTotalAcPower:
-		return EncodeGeneratorTotalAcPower(&p, stream)
-	case *publicpgn.GeneratorAverageBasicAcQuantities:
-		return EncodeGeneratorAverageBasicAcQuantities(p, stream)
-	case publicpgn.GeneratorAverageBasicAcQuantities:
-		return EncodeGeneratorAverageBasicAcQuantities(&p, stream)
-	case *publicpgn.IsoCommandedAddress:
-		return EncodeIsoCommandedAddress(p, stream)
-	case publicpgn.IsoCommandedAddress:
-		return EncodeIsoCommandedAddress(&p, stream)
+	case *publicpgn.Bus1PhaseCBasicACQuantities:
+		return EncodeBus1PhaseCBasicACQuantities(p, stream)
+	case publicpgn.Bus1PhaseCBasicACQuantities:
+		return EncodeBus1PhaseCBasicACQuantities(&p, stream)
+	case *publicpgn.Bus1PhaseBBasicACQuantities:
+		return EncodeBus1PhaseBBasicACQuantities(p, stream)
+	case publicpgn.Bus1PhaseBBasicACQuantities:
+		return EncodeBus1PhaseBBasicACQuantities(&p, stream)
+	case *publicpgn.Bus1PhaseABasicACQuantities:
+		return EncodeBus1PhaseABasicACQuantities(p, stream)
+	case publicpgn.Bus1PhaseABasicACQuantities:
+		return EncodeBus1PhaseABasicACQuantities(&p, stream)
+	case *publicpgn.UtilityPhaseCACReactivePower:
+		return EncodeUtilityPhaseCACReactivePower(p, stream)
+	case publicpgn.UtilityPhaseCACReactivePower:
+		return EncodeUtilityPhaseCACReactivePower(&p, stream)
+	case *publicpgn.UtilityPhaseCACPower:
+		return EncodeUtilityPhaseCACPower(p, stream)
+	case publicpgn.UtilityPhaseCACPower:
+		return EncodeUtilityPhaseCACPower(&p, stream)
+	case *publicpgn.UtilityPhaseCBasicACQuantities:
+		return EncodeUtilityPhaseCBasicACQuantities(p, stream)
+	case publicpgn.UtilityPhaseCBasicACQuantities:
+		return EncodeUtilityPhaseCBasicACQuantities(&p, stream)
+	case *publicpgn.UtilityPhaseBACReactivePower:
+		return EncodeUtilityPhaseBACReactivePower(p, stream)
+	case publicpgn.UtilityPhaseBACReactivePower:
+		return EncodeUtilityPhaseBACReactivePower(&p, stream)
+	case *publicpgn.UtilityPhaseBACPower:
+		return EncodeUtilityPhaseBACPower(p, stream)
+	case publicpgn.UtilityPhaseBACPower:
+		return EncodeUtilityPhaseBACPower(&p, stream)
+	case *publicpgn.UtilityPhaseBBasicACQuantities:
+		return EncodeUtilityPhaseBBasicACQuantities(p, stream)
+	case publicpgn.UtilityPhaseBBasicACQuantities:
+		return EncodeUtilityPhaseBBasicACQuantities(&p, stream)
+	case *publicpgn.UtilityPhaseAACReactivePower:
+		return EncodeUtilityPhaseAACReactivePower(p, stream)
+	case publicpgn.UtilityPhaseAACReactivePower:
+		return EncodeUtilityPhaseAACReactivePower(&p, stream)
+	case *publicpgn.UtilityPhaseAACPower:
+		return EncodeUtilityPhaseAACPower(p, stream)
+	case publicpgn.UtilityPhaseAACPower:
+		return EncodeUtilityPhaseAACPower(&p, stream)
+	case *publicpgn.UtilityPhaseABasicACQuantities:
+		return EncodeUtilityPhaseABasicACQuantities(p, stream)
+	case publicpgn.UtilityPhaseABasicACQuantities:
+		return EncodeUtilityPhaseABasicACQuantities(&p, stream)
+	case *publicpgn.UtilityTotalACReactivePower:
+		return EncodeUtilityTotalACReactivePower(p, stream)
+	case publicpgn.UtilityTotalACReactivePower:
+		return EncodeUtilityTotalACReactivePower(&p, stream)
+	case *publicpgn.UtilityTotalACPower:
+		return EncodeUtilityTotalACPower(p, stream)
+	case publicpgn.UtilityTotalACPower:
+		return EncodeUtilityTotalACPower(&p, stream)
+	case *publicpgn.UtilityAverageBasicACQuantities:
+		return EncodeUtilityAverageBasicACQuantities(p, stream)
+	case publicpgn.UtilityAverageBasicACQuantities:
+		return EncodeUtilityAverageBasicACQuantities(&p, stream)
+	case *publicpgn.GeneratorPhaseCACReactivePower:
+		return EncodeGeneratorPhaseCACReactivePower(p, stream)
+	case publicpgn.GeneratorPhaseCACReactivePower:
+		return EncodeGeneratorPhaseCACReactivePower(&p, stream)
+	case *publicpgn.GeneratorPhaseCACPower:
+		return EncodeGeneratorPhaseCACPower(p, stream)
+	case publicpgn.GeneratorPhaseCACPower:
+		return EncodeGeneratorPhaseCACPower(&p, stream)
+	case *publicpgn.GeneratorPhaseCBasicACQuantities:
+		return EncodeGeneratorPhaseCBasicACQuantities(p, stream)
+	case publicpgn.GeneratorPhaseCBasicACQuantities:
+		return EncodeGeneratorPhaseCBasicACQuantities(&p, stream)
+	case *publicpgn.GeneratorPhaseBACReactivePower:
+		return EncodeGeneratorPhaseBACReactivePower(p, stream)
+	case publicpgn.GeneratorPhaseBACReactivePower:
+		return EncodeGeneratorPhaseBACReactivePower(&p, stream)
+	case *publicpgn.GeneratorPhaseBACPower:
+		return EncodeGeneratorPhaseBACPower(p, stream)
+	case publicpgn.GeneratorPhaseBACPower:
+		return EncodeGeneratorPhaseBACPower(&p, stream)
+	case *publicpgn.GeneratorPhaseBBasicACQuantities:
+		return EncodeGeneratorPhaseBBasicACQuantities(p, stream)
+	case publicpgn.GeneratorPhaseBBasicACQuantities:
+		return EncodeGeneratorPhaseBBasicACQuantities(&p, stream)
+	case *publicpgn.GeneratorPhaseAACReactivePower:
+		return EncodeGeneratorPhaseAACReactivePower(p, stream)
+	case publicpgn.GeneratorPhaseAACReactivePower:
+		return EncodeGeneratorPhaseAACReactivePower(&p, stream)
+	case *publicpgn.GeneratorPhaseAACPower:
+		return EncodeGeneratorPhaseAACPower(p, stream)
+	case publicpgn.GeneratorPhaseAACPower:
+		return EncodeGeneratorPhaseAACPower(&p, stream)
+	case *publicpgn.GeneratorPhaseABasicACQuantities:
+		return EncodeGeneratorPhaseABasicACQuantities(p, stream)
+	case publicpgn.GeneratorPhaseABasicACQuantities:
+		return EncodeGeneratorPhaseABasicACQuantities(&p, stream)
+	case *publicpgn.GeneratorTotalACReactivePower:
+		return EncodeGeneratorTotalACReactivePower(p, stream)
+	case publicpgn.GeneratorTotalACReactivePower:
+		return EncodeGeneratorTotalACReactivePower(&p, stream)
+	case *publicpgn.GeneratorTotalACPower:
+		return EncodeGeneratorTotalACPower(p, stream)
+	case publicpgn.GeneratorTotalACPower:
+		return EncodeGeneratorTotalACPower(&p, stream)
+	case *publicpgn.GeneratorAverageBasicACQuantities:
+		return EncodeGeneratorAverageBasicACQuantities(p, stream)
+	case publicpgn.GeneratorAverageBasicACQuantities:
+		return EncodeGeneratorAverageBasicACQuantities(&p, stream)
+	case *publicpgn.ISOCommandedAddress:
+		return EncodeISOCommandedAddress(p, stream)
+	case publicpgn.ISOCommandedAddress:
+		return EncodeISOCommandedAddress(&p, stream)
 	case *publicpgn.MaretronNumberOfChannels:
 		return EncodeMaretronNumberOfChannels(p, stream)
 	case publicpgn.MaretronNumberOfChannels:
 		return EncodeMaretronNumberOfChannels(&p, stream)
-	case *publicpgn.MaretronProprietaryDcBreakerCurrent:
-		return EncodeMaretronProprietaryDcBreakerCurrent(p, stream)
-	case publicpgn.MaretronProprietaryDcBreakerCurrent:
-		return EncodeMaretronProprietaryDcBreakerCurrent(&p, stream)
+	case *publicpgn.MaretronProprietaryDCBreakerCurrent:
+		return EncodeMaretronProprietaryDCBreakerCurrent(p, stream)
+	case publicpgn.MaretronProprietaryDCBreakerCurrent:
+		return EncodeMaretronProprietaryDCBreakerCurrent(&p, stream)
 	case *publicpgn.AirmarBootStateAcknowledgment:
 		return EncodeAirmarBootStateAcknowledgment(p, stream)
 	case publicpgn.AirmarBootStateAcknowledgment:
@@ -186,6 +186,14 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeAirmarAccessLevel(p, stream)
 	case publicpgn.AirmarAccessLevel:
 		return EncodeAirmarAccessLevel(&p, stream)
+	case *publicpgn.LowranceVesselSetupEngineAndTankConfiguration:
+		return EncodeLowranceVesselSetupEngineAndTankConfiguration(p, stream)
+	case publicpgn.LowranceVesselSetupEngineAndTankConfiguration:
+		return EncodeLowranceVesselSetupEngineAndTankConfiguration(&p, stream)
+	case *publicpgn.LowranceVesselSetupEngineAndTankConfigurationBroadcast:
+		return EncodeLowranceVesselSetupEngineAndTankConfigurationBroadcast(p, stream)
+	case publicpgn.LowranceVesselSetupEngineAndTankConfigurationBroadcast:
+		return EncodeLowranceVesselSetupEngineAndTankConfigurationBroadcast(&p, stream)
 	case *publicpgn.SimnetDeviceStatus:
 		return EncodeSimnetDeviceStatus(p, stream)
 	case publicpgn.SimnetDeviceStatus:
@@ -202,6 +210,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSimnetDeviceModeRequest(p, stream)
 	case publicpgn.SimnetDeviceModeRequest:
 		return EncodeSimnetDeviceModeRequest(&p, stream)
+	case *publicpgn.NavicoDepthQuality:
+		return EncodeNavicoDepthQuality(p, stream)
+	case publicpgn.NavicoDepthQuality:
+		return EncodeNavicoDepthQuality(&p, stream)
 	case *publicpgn.SeatalkPilotLockedHeading:
 		return EncodeSeatalkPilotLockedHeading(p, stream)
 	case publicpgn.SeatalkPilotLockedHeading:
@@ -214,58 +226,58 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeAirmarSpeedPulseCount(p, stream)
 	case publicpgn.AirmarSpeedPulseCount:
 		return EncodeAirmarSpeedPulseCount(&p, stream)
-	case *publicpgn.NmeaRequestGroupFunction:
-		return EncodeNmeaRequestGroupFunction(p, stream)
-	case publicpgn.NmeaRequestGroupFunction:
-		return EncodeNmeaRequestGroupFunction(&p, stream)
-	case *publicpgn.NmeaRequestGroupFunctionPartial:
-		return EncodeNmeaRequestGroupFunctionPartial(p, stream)
-	case publicpgn.NmeaRequestGroupFunctionPartial:
-		return EncodeNmeaRequestGroupFunctionPartial(&p, stream)
-	case *publicpgn.NmeaCommandGroupFunction:
-		return EncodeNmeaCommandGroupFunction(p, stream)
-	case publicpgn.NmeaCommandGroupFunction:
-		return EncodeNmeaCommandGroupFunction(&p, stream)
-	case *publicpgn.NmeaCommandGroupFunctionPartial:
-		return EncodeNmeaCommandGroupFunctionPartial(p, stream)
-	case publicpgn.NmeaCommandGroupFunctionPartial:
-		return EncodeNmeaCommandGroupFunctionPartial(&p, stream)
-	case *publicpgn.NmeaAcknowledgeGroupFunction:
-		return EncodeNmeaAcknowledgeGroupFunction(p, stream)
-	case publicpgn.NmeaAcknowledgeGroupFunction:
-		return EncodeNmeaAcknowledgeGroupFunction(&p, stream)
-	case *publicpgn.NmeaAcknowledgeGroupFunctionPartial:
-		return EncodeNmeaAcknowledgeGroupFunctionPartial(p, stream)
-	case publicpgn.NmeaAcknowledgeGroupFunctionPartial:
-		return EncodeNmeaAcknowledgeGroupFunctionPartial(&p, stream)
-	case *publicpgn.NmeaReadFieldsReplyGroupFunction:
-		return EncodeNmeaReadFieldsReplyGroupFunction(p, stream)
-	case publicpgn.NmeaReadFieldsReplyGroupFunction:
-		return EncodeNmeaReadFieldsReplyGroupFunction(&p, stream)
-	case *publicpgn.NmeaReadFieldsReplyGroupFunctionPartial:
-		return EncodeNmeaReadFieldsReplyGroupFunctionPartial(p, stream)
-	case publicpgn.NmeaReadFieldsReplyGroupFunctionPartial:
-		return EncodeNmeaReadFieldsReplyGroupFunctionPartial(&p, stream)
-	case *publicpgn.NmeaWriteFieldsGroupFunction:
-		return EncodeNmeaWriteFieldsGroupFunction(p, stream)
-	case publicpgn.NmeaWriteFieldsGroupFunction:
-		return EncodeNmeaWriteFieldsGroupFunction(&p, stream)
-	case *publicpgn.NmeaWriteFieldsGroupFunctionPartial:
-		return EncodeNmeaWriteFieldsGroupFunctionPartial(p, stream)
-	case publicpgn.NmeaWriteFieldsGroupFunctionPartial:
-		return EncodeNmeaWriteFieldsGroupFunctionPartial(&p, stream)
-	case *publicpgn.NmeaWriteFieldsReplyGroupFunction:
-		return EncodeNmeaWriteFieldsReplyGroupFunction(p, stream)
-	case publicpgn.NmeaWriteFieldsReplyGroupFunction:
-		return EncodeNmeaWriteFieldsReplyGroupFunction(&p, stream)
-	case *publicpgn.NmeaWriteFieldsReplyGroupFunctionPartial:
-		return EncodeNmeaWriteFieldsReplyGroupFunctionPartial(p, stream)
-	case publicpgn.NmeaWriteFieldsReplyGroupFunctionPartial:
-		return EncodeNmeaWriteFieldsReplyGroupFunctionPartial(&p, stream)
-	case *publicpgn.PgnListTransmitAndReceive:
-		return EncodePgnListTransmitAndReceive(p, stream)
-	case publicpgn.PgnListTransmitAndReceive:
-		return EncodePgnListTransmitAndReceive(&p, stream)
+	case *publicpgn.NMEARequestGroupFunction:
+		return EncodeNMEARequestGroupFunction(p, stream)
+	case publicpgn.NMEARequestGroupFunction:
+		return EncodeNMEARequestGroupFunction(&p, stream)
+	case *publicpgn.NMEARequestGroupFunctionPartial:
+		return EncodeNMEARequestGroupFunctionPartial(p, stream)
+	case publicpgn.NMEARequestGroupFunctionPartial:
+		return EncodeNMEARequestGroupFunctionPartial(&p, stream)
+	case *publicpgn.NMEACommandGroupFunction:
+		return EncodeNMEACommandGroupFunction(p, stream)
+	case publicpgn.NMEACommandGroupFunction:
+		return EncodeNMEACommandGroupFunction(&p, stream)
+	case *publicpgn.NMEACommandGroupFunctionPartial:
+		return EncodeNMEACommandGroupFunctionPartial(p, stream)
+	case publicpgn.NMEACommandGroupFunctionPartial:
+		return EncodeNMEACommandGroupFunctionPartial(&p, stream)
+	case *publicpgn.NMEAAcknowledgeGroupFunction:
+		return EncodeNMEAAcknowledgeGroupFunction(p, stream)
+	case publicpgn.NMEAAcknowledgeGroupFunction:
+		return EncodeNMEAAcknowledgeGroupFunction(&p, stream)
+	case *publicpgn.NMEAAcknowledgeGroupFunctionPartial:
+		return EncodeNMEAAcknowledgeGroupFunctionPartial(p, stream)
+	case publicpgn.NMEAAcknowledgeGroupFunctionPartial:
+		return EncodeNMEAAcknowledgeGroupFunctionPartial(&p, stream)
+	case *publicpgn.NMEAReadFieldsReplyGroupFunction:
+		return EncodeNMEAReadFieldsReplyGroupFunction(p, stream)
+	case publicpgn.NMEAReadFieldsReplyGroupFunction:
+		return EncodeNMEAReadFieldsReplyGroupFunction(&p, stream)
+	case *publicpgn.NMEAReadFieldsReplyGroupFunctionPartial:
+		return EncodeNMEAReadFieldsReplyGroupFunctionPartial(p, stream)
+	case publicpgn.NMEAReadFieldsReplyGroupFunctionPartial:
+		return EncodeNMEAReadFieldsReplyGroupFunctionPartial(&p, stream)
+	case *publicpgn.NMEAWriteFieldsGroupFunction:
+		return EncodeNMEAWriteFieldsGroupFunction(p, stream)
+	case publicpgn.NMEAWriteFieldsGroupFunction:
+		return EncodeNMEAWriteFieldsGroupFunction(&p, stream)
+	case *publicpgn.NMEAWriteFieldsGroupFunctionPartial:
+		return EncodeNMEAWriteFieldsGroupFunctionPartial(p, stream)
+	case publicpgn.NMEAWriteFieldsGroupFunctionPartial:
+		return EncodeNMEAWriteFieldsGroupFunctionPartial(&p, stream)
+	case *publicpgn.NMEAWriteFieldsReplyGroupFunction:
+		return EncodeNMEAWriteFieldsReplyGroupFunction(p, stream)
+	case publicpgn.NMEAWriteFieldsReplyGroupFunction:
+		return EncodeNMEAWriteFieldsReplyGroupFunction(&p, stream)
+	case *publicpgn.NMEAWriteFieldsReplyGroupFunctionPartial:
+		return EncodeNMEAWriteFieldsReplyGroupFunctionPartial(p, stream)
+	case publicpgn.NMEAWriteFieldsReplyGroupFunctionPartial:
+		return EncodeNMEAWriteFieldsReplyGroupFunctionPartial(&p, stream)
+	case *publicpgn.PGNListTransmitAndReceive:
+		return EncodePGNListTransmitAndReceive(p, stream)
+	case publicpgn.PGNListTransmitAndReceive:
+		return EncodePGNListTransmitAndReceive(&p, stream)
 	case *publicpgn.FusionMediaControl:
 		return EncodeFusionMediaControl(p, stream)
 	case publicpgn.FusionMediaControl:
@@ -318,22 +330,22 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeAirmarSpeedFilterNone(p, stream)
 	case publicpgn.AirmarSpeedFilterNone:
 		return EncodeAirmarSpeedFilterNone(&p, stream)
-	case *publicpgn.AirmarSpeedFilterIir:
-		return EncodeAirmarSpeedFilterIir(p, stream)
-	case publicpgn.AirmarSpeedFilterIir:
-		return EncodeAirmarSpeedFilterIir(&p, stream)
+	case *publicpgn.AirmarSpeedFilterIIR:
+		return EncodeAirmarSpeedFilterIIR(p, stream)
+	case publicpgn.AirmarSpeedFilterIIR:
+		return EncodeAirmarSpeedFilterIIR(&p, stream)
 	case *publicpgn.AirmarTemperatureFilterNone:
 		return EncodeAirmarTemperatureFilterNone(p, stream)
 	case publicpgn.AirmarTemperatureFilterNone:
 		return EncodeAirmarTemperatureFilterNone(&p, stream)
-	case *publicpgn.AirmarTemperatureFilterIir:
-		return EncodeAirmarTemperatureFilterIir(p, stream)
-	case publicpgn.AirmarTemperatureFilterIir:
-		return EncodeAirmarTemperatureFilterIir(&p, stream)
-	case *publicpgn.AirmarNmea2000Options:
-		return EncodeAirmarNmea2000Options(p, stream)
-	case publicpgn.AirmarNmea2000Options:
-		return EncodeAirmarNmea2000Options(&p, stream)
+	case *publicpgn.AirmarTemperatureFilterIIR:
+		return EncodeAirmarTemperatureFilterIIR(p, stream)
+	case publicpgn.AirmarTemperatureFilterIIR:
+		return EncodeAirmarTemperatureFilterIIR(&p, stream)
+	case *publicpgn.AirmarNMEA2000Options:
+		return EncodeAirmarNMEA2000Options(p, stream)
+	case publicpgn.AirmarNMEA2000Options:
+		return EncodeAirmarNMEA2000Options(&p, stream)
 	case *publicpgn.MaretronDeviationCalibrationResponse:
 		return EncodeMaretronDeviationCalibrationResponse(p, stream)
 	case publicpgn.MaretronDeviationCalibrationResponse:
@@ -434,22 +446,22 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSwitchBankControl(p, stream)
 	case publicpgn.SwitchBankControl:
 		return EncodeSwitchBankControl(&p, stream)
-	case *publicpgn.AcInputStatus:
-		return EncodeAcInputStatus(p, stream)
-	case publicpgn.AcInputStatus:
-		return EncodeAcInputStatus(&p, stream)
-	case *publicpgn.AcOutputStatus:
-		return EncodeAcOutputStatus(p, stream)
-	case publicpgn.AcOutputStatus:
-		return EncodeAcOutputStatus(&p, stream)
+	case *publicpgn.ACInputStatus:
+		return EncodeACInputStatus(p, stream)
+	case publicpgn.ACInputStatus:
+		return EncodeACInputStatus(&p, stream)
+	case *publicpgn.ACOutputStatus:
+		return EncodeACOutputStatus(p, stream)
+	case publicpgn.ACOutputStatus:
+		return EncodeACOutputStatus(&p, stream)
 	case *publicpgn.FluidLevel:
 		return EncodeFluidLevel(p, stream)
 	case publicpgn.FluidLevel:
 		return EncodeFluidLevel(&p, stream)
-	case *publicpgn.DcDetailedStatus:
-		return EncodeDcDetailedStatus(p, stream)
-	case publicpgn.DcDetailedStatus:
-		return EncodeDcDetailedStatus(&p, stream)
+	case *publicpgn.DCDetailedStatus:
+		return EncodeDCDetailedStatus(p, stream)
+	case publicpgn.DCDetailedStatus:
+		return EncodeDCDetailedStatus(&p, stream)
 	case *publicpgn.ChargerStatus:
 		return EncodeChargerStatus(p, stream)
 	case publicpgn.ChargerStatus:
@@ -474,38 +486,34 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeBatteryConfigurationStatus(p, stream)
 	case publicpgn.BatteryConfigurationStatus:
 		return EncodeBatteryConfigurationStatus(&p, stream)
-	case *publicpgn.AcPowerCurrentPhaseA:
-		return EncodeAcPowerCurrentPhaseA(p, stream)
-	case publicpgn.AcPowerCurrentPhaseA:
-		return EncodeAcPowerCurrentPhaseA(&p, stream)
-	case *publicpgn.AcPowerCurrentPhaseB:
-		return EncodeAcPowerCurrentPhaseB(p, stream)
-	case publicpgn.AcPowerCurrentPhaseB:
-		return EncodeAcPowerCurrentPhaseB(&p, stream)
-	case *publicpgn.AcPowerCurrentPhaseC:
-		return EncodeAcPowerCurrentPhaseC(p, stream)
-	case publicpgn.AcPowerCurrentPhaseC:
-		return EncodeAcPowerCurrentPhaseC(&p, stream)
-	case *publicpgn.AcVoltageFrequencyPhaseA:
-		return EncodeAcVoltageFrequencyPhaseA(p, stream)
-	case publicpgn.AcVoltageFrequencyPhaseA:
-		return EncodeAcVoltageFrequencyPhaseA(&p, stream)
-	case *publicpgn.AcVoltageFrequencyPhaseB:
-		return EncodeAcVoltageFrequencyPhaseB(p, stream)
-	case publicpgn.AcVoltageFrequencyPhaseB:
-		return EncodeAcVoltageFrequencyPhaseB(&p, stream)
-	case *publicpgn.AcVoltageFrequencyPhaseC:
-		return EncodeAcVoltageFrequencyPhaseC(p, stream)
-	case publicpgn.AcVoltageFrequencyPhaseC:
-		return EncodeAcVoltageFrequencyPhaseC(&p, stream)
+	case *publicpgn.ACPowerCurrentPhaseA:
+		return EncodeACPowerCurrentPhaseA(p, stream)
+	case publicpgn.ACPowerCurrentPhaseA:
+		return EncodeACPowerCurrentPhaseA(&p, stream)
+	case *publicpgn.ACPowerCurrentPhaseB:
+		return EncodeACPowerCurrentPhaseB(p, stream)
+	case publicpgn.ACPowerCurrentPhaseB:
+		return EncodeACPowerCurrentPhaseB(&p, stream)
+	case *publicpgn.ACPowerCurrentPhaseC:
+		return EncodeACPowerCurrentPhaseC(p, stream)
+	case publicpgn.ACPowerCurrentPhaseC:
+		return EncodeACPowerCurrentPhaseC(&p, stream)
+	case *publicpgn.ACVoltageFrequencyPhaseA:
+		return EncodeACVoltageFrequencyPhaseA(p, stream)
+	case publicpgn.ACVoltageFrequencyPhaseA:
+		return EncodeACVoltageFrequencyPhaseA(&p, stream)
+	case *publicpgn.ACVoltageFrequencyPhaseB:
+		return EncodeACVoltageFrequencyPhaseB(p, stream)
+	case publicpgn.ACVoltageFrequencyPhaseB:
+		return EncodeACVoltageFrequencyPhaseB(&p, stream)
+	case *publicpgn.ACVoltageFrequencyPhaseC:
+		return EncodeACVoltageFrequencyPhaseC(p, stream)
+	case publicpgn.ACVoltageFrequencyPhaseC:
+		return EncodeACVoltageFrequencyPhaseC(&p, stream)
 	case *publicpgn.ConverterStatus:
 		return EncodeConverterStatus(p, stream)
 	case publicpgn.ConverterStatus:
 		return EncodeConverterStatus(&p, stream)
-	case *publicpgn.DcVoltageCurrent:
-		return EncodeDcVoltageCurrent(p, stream)
-	case publicpgn.DcVoltageCurrent:
-		return EncodeDcVoltageCurrent(&p, stream)
 	case *publicpgn.LeewayAngle:
 		return EncodeLeewayAngle(p, stream)
 	case publicpgn.LeewayAngle:
@@ -550,30 +558,30 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodePositionRapidUpdate(p, stream)
 	case publicpgn.PositionRapidUpdate:
 		return EncodePositionRapidUpdate(&p, stream)
-	case *publicpgn.CogSogRapidUpdate:
-		return EncodeCogSogRapidUpdate(p, stream)
-	case publicpgn.CogSogRapidUpdate:
-		return EncodeCogSogRapidUpdate(&p, stream)
-	case *publicpgn.GnssPositionData:
-		return EncodeGnssPositionData(p, stream)
-	case publicpgn.GnssPositionData:
-		return EncodeGnssPositionData(&p, stream)
+	case *publicpgn.COGSOGRapidUpdate:
+		return EncodeCOGSOGRapidUpdate(p, stream)
+	case publicpgn.COGSOGRapidUpdate:
+		return EncodeCOGSOGRapidUpdate(&p, stream)
+	case *publicpgn.GNSSPositionData:
+		return EncodeGNSSPositionData(p, stream)
+	case publicpgn.GNSSPositionData:
+		return EncodeGNSSPositionData(&p, stream)
 	case *publicpgn.TimeDate:
 		return EncodeTimeDate(p, stream)
 	case publicpgn.TimeDate:
 		return EncodeTimeDate(&p, stream)
-	case *publicpgn.AisClassAPositionReport:
-		return EncodeAisClassAPositionReport(p, stream)
-	case publicpgn.AisClassAPositionReport:
-		return EncodeAisClassAPositionReport(&p, stream)
-	case *publicpgn.AisClassBPositionReport:
-		return EncodeAisClassBPositionReport(p, stream)
-	case publicpgn.AisClassBPositionReport:
-		return EncodeAisClassBPositionReport(&p, stream)
-	case *publicpgn.AisAidsToNavigationAtonReport:
-		return EncodeAisAidsToNavigationAtonReport(p, stream)
-	case publicpgn.AisAidsToNavigationAtonReport:
-		return EncodeAisAidsToNavigationAtonReport(&p, stream)
+	case *publicpgn.AISClassAPositionReport:
+		return EncodeAISClassAPositionReport(p, stream)
+	case publicpgn.AISClassAPositionReport:
+		return EncodeAISClassAPositionReport(&p, stream)
+	case *publicpgn.AISClassBPositionReport:
+		return EncodeAISClassBPositionReport(p, stream)
+	case publicpgn.AISClassBPositionReport:
+		return EncodeAISClassBPositionReport(&p, stream)
+	case *publicpgn.AISAidsToNavigationAtonReport:
+		return EncodeAISAidsToNavigationAtonReport(p, stream)
+	case publicpgn.AISAidsToNavigationAtonReport:
+		return EncodeAISAidsToNavigationAtonReport(&p, stream)
 	case *publicpgn.Datum:
 		return EncodeDatum(p, stream)
 	case publicpgn.Datum:
@@ -590,10 +598,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeNavigationData(p, stream)
 	case publicpgn.NavigationData:
 		return EncodeNavigationData(&p, stream)
-	case *publicpgn.NavigationRouteWpInformation:
-		return EncodeNavigationRouteWpInformation(p, stream)
-	case publicpgn.NavigationRouteWpInformation:
-		return EncodeNavigationRouteWpInformation(&p, stream)
+	case *publicpgn.NavigationRouteWPInformation:
+		return EncodeNavigationRouteWPInformation(p, stream)
+	case publicpgn.NavigationRouteWPInformation:
+		return EncodeNavigationRouteWPInformation(&p, stream)
 	case *publicpgn.SetDriftRapidUpdate:
 		return EncodeSetDriftRapidUpdate(p, stream)
 	case publicpgn.SetDriftRapidUpdate:
@@ -602,118 +610,118 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeNavigationRouteTimeToFromMark(p, stream)
 	case publicpgn.NavigationRouteTimeToFromMark:
 		return EncodeNavigationRouteTimeToFromMark(&p, stream)
-	case *publicpgn.GnssControlStatus:
-		return EncodeGnssControlStatus(p, stream)
-	case publicpgn.GnssControlStatus:
-		return EncodeGnssControlStatus(&p, stream)
-	case *publicpgn.GnssDops:
-		return EncodeGnssDops(p, stream)
-	case publicpgn.GnssDops:
-		return EncodeGnssDops(&p, stream)
-	case *publicpgn.GnssSatsInView:
-		return EncodeGnssSatsInView(p, stream)
-	case publicpgn.GnssSatsInView:
-		return EncodeGnssSatsInView(&p, stream)
-	case *publicpgn.GnssRaimSettings:
-		return EncodeGnssRaimSettings(p, stream)
-	case publicpgn.GnssRaimSettings:
-		return EncodeGnssRaimSettings(&p, stream)
-	case *publicpgn.GnssPseudorangeErrorStatistics:
-		return EncodeGnssPseudorangeErrorStatistics(p, stream)
-	case publicpgn.GnssPseudorangeErrorStatistics:
-		return EncodeGnssPseudorangeErrorStatistics(&p, stream)
-	case *publicpgn.DgnssCorrections:
-		return EncodeDgnssCorrections(p, stream)
-	case publicpgn.DgnssCorrections:
-		return EncodeDgnssCorrections(&p, stream)
-	case *publicpgn.GnssDifferentialCorrectionReceiverInterface:
-		return EncodeGnssDifferentialCorrectionReceiverInterface(p, stream)
-	case publicpgn.GnssDifferentialCorrectionReceiverInterface:
-		return EncodeGnssDifferentialCorrectionReceiverInterface(&p, stream)
-	case *publicpgn.GnssDifferentialCorrectionReceiverSignal:
-		return EncodeGnssDifferentialCorrectionReceiverSignal(p, stream)
-	case publicpgn.GnssDifferentialCorrectionReceiverSignal:
-		return EncodeGnssDifferentialCorrectionReceiverSignal(&p, stream)
-	case *publicpgn.GlonassAlmanacData:
-		return EncodeGlonassAlmanacData(p, stream)
-	case publicpgn.GlonassAlmanacData:
-		return EncodeGlonassAlmanacData(&p, stream)
-	case *publicpgn.AisUtcAndDateReport:
-		return EncodeAisUtcAndDateReport(p, stream)
-	case publicpgn.AisUtcAndDateReport:
-		return EncodeAisUtcAndDateReport(&p, stream)
-	case *publicpgn.AisClassAStaticAndVoyageRelatedData:
-		return EncodeAisClassAStaticAndVoyageRelatedData(p, stream)
-	case publicpgn.AisClassAStaticAndVoyageRelatedData:
-		return EncodeAisClassAStaticAndVoyageRelatedData(&p, stream)
-	case *publicpgn.AisAddressedBinaryMessage:
-		return EncodeAisAddressedBinaryMessage(p, stream)
-	case publicpgn.AisAddressedBinaryMessage:
-		return EncodeAisAddressedBinaryMessage(&p, stream)
-	case *publicpgn.AisAcknowledge:
-		return EncodeAisAcknowledge(p, stream)
-	case publicpgn.AisAcknowledge:
-		return EncodeAisAcknowledge(&p, stream)
-	case *publicpgn.AisBinaryBroadcastMessage:
-		return EncodeAisBinaryBroadcastMessage(p, stream)
-	case publicpgn.AisBinaryBroadcastMessage:
-		return EncodeAisBinaryBroadcastMessage(&p, stream)
+	case *publicpgn.GNSSControlStatus:
+		return EncodeGNSSControlStatus(p, stream)
+	case publicpgn.GNSSControlStatus:
+		return EncodeGNSSControlStatus(&p, stream)
+	case *publicpgn.GNSSDOPs:
+		return EncodeGNSSDOPs(p, stream)
+	case publicpgn.GNSSDOPs:
+		return EncodeGNSSDOPs(&p, stream)
+	case *publicpgn.GNSSSatsInView:
+		return EncodeGNSSSatsInView(p, stream)
+	case publicpgn.GNSSSatsInView:
+		return EncodeGNSSSatsInView(&p, stream)
+	case *publicpgn.GNSSRAIMSettings:
+		return EncodeGNSSRAIMSettings(p, stream)
+	case publicpgn.GNSSRAIMSettings:
+		return EncodeGNSSRAIMSettings(&p, stream)
+	case *publicpgn.GNSSPseudorangeErrorStatistics:
+		return EncodeGNSSPseudorangeErrorStatistics(p, stream)
+	case publicpgn.GNSSPseudorangeErrorStatistics:
+		return EncodeGNSSPseudorangeErrorStatistics(&p, stream)
+	case *publicpgn.DGNSSCorrections:
+		return EncodeDGNSSCorrections(p, stream)
+	case publicpgn.DGNSSCorrections:
+		return EncodeDGNSSCorrections(&p, stream)
+	case *publicpgn.GNSSDifferentialCorrectionReceiverInterface:
+		return EncodeGNSSDifferentialCorrectionReceiverInterface(p, stream)
+	case publicpgn.GNSSDifferentialCorrectionReceiverInterface:
+		return EncodeGNSSDifferentialCorrectionReceiverInterface(&p, stream)
+	case *publicpgn.GNSSDifferentialCorrectionReceiverSignal:
+		return EncodeGNSSDifferentialCorrectionReceiverSignal(p, stream)
+	case publicpgn.GNSSDifferentialCorrectionReceiverSignal:
+		return EncodeGNSSDifferentialCorrectionReceiverSignal(&p, stream)
+	case *publicpgn.GLONASSAlmanacData:
+		return EncodeGLONASSAlmanacData(p, stream)
+	case publicpgn.GLONASSAlmanacData:
+		return EncodeGLONASSAlmanacData(&p, stream)
+	case *publicpgn.AISUTCAndDateReport:
+		return EncodeAISUTCAndDateReport(p, stream)
+	case publicpgn.AISUTCAndDateReport:
+		return EncodeAISUTCAndDateReport(&p, stream)
+	case *publicpgn.AISClassAStaticAndVoyageRelatedData:
+		return EncodeAISClassAStaticAndVoyageRelatedData(p, stream)
+	case publicpgn.AISClassAStaticAndVoyageRelatedData:
+		return EncodeAISClassAStaticAndVoyageRelatedData(&p, stream)
+	case *publicpgn.AISAddressedBinaryMessage:
+		return EncodeAISAddressedBinaryMessage(p, stream)
+	case publicpgn.AISAddressedBinaryMessage:
+		return EncodeAISAddressedBinaryMessage(&p, stream)
+	case *publicpgn.AISAcknowledge:
+		return EncodeAISAcknowledge(p, stream)
+	case publicpgn.AISAcknowledge:
+		return EncodeAISAcknowledge(&p, stream)
+	case *publicpgn.AISBinaryBroadcastMessage:
+		return EncodeAISBinaryBroadcastMessage(p, stream)
+	case publicpgn.AISBinaryBroadcastMessage:
+		return EncodeAISBinaryBroadcastMessage(&p, stream)
 	case *publicpgn.RadioFrequencyModePower:
 		return EncodeRadioFrequencyModePower(p, stream)
 	case publicpgn.RadioFrequencyModePower:
 		return EncodeRadioFrequencyModePower(&p, stream)
-	case *publicpgn.AisClassBStaticDataMsg24PartA:
-		return EncodeAisClassBStaticDataMsg24PartA(p, stream)
-	case publicpgn.AisClassBStaticDataMsg24PartA:
-		return EncodeAisClassBStaticDataMsg24PartA(&p, stream)
-	case *publicpgn.AisClassBStaticDataMsg24PartB:
-		return EncodeAisClassBStaticDataMsg24PartB(p, stream)
-	case publicpgn.AisClassBStaticDataMsg24PartB:
-		return EncodeAisClassBStaticDataMsg24PartB(&p, stream)
-	case *publicpgn.RouteAndWpServiceDatabaseList:
-		return EncodeRouteAndWpServiceDatabaseList(p, stream)
-	case publicpgn.RouteAndWpServiceDatabaseList:
-		return EncodeRouteAndWpServiceDatabaseList(&p, stream)
-	case *publicpgn.RouteAndWpServiceRouteList:
-		return EncodeRouteAndWpServiceRouteList(p, stream)
-	case publicpgn.RouteAndWpServiceRouteList:
-		return EncodeRouteAndWpServiceRouteList(&p, stream)
-	case *publicpgn.RouteAndWpServiceRouteWpListAttributes:
-		return EncodeRouteAndWpServiceRouteWpListAttributes(p, stream)
-	case publicpgn.RouteAndWpServiceRouteWpListAttributes:
-		return EncodeRouteAndWpServiceRouteWpListAttributes(&p, stream)
-	case *publicpgn.RouteAndWpServiceRouteWpNamePosition:
-		return EncodeRouteAndWpServiceRouteWpNamePosition(p, stream)
-	case publicpgn.RouteAndWpServiceRouteWpNamePosition:
-		return EncodeRouteAndWpServiceRouteWpNamePosition(&p, stream)
-	case *publicpgn.RouteAndWpServiceRouteWpName:
-		return EncodeRouteAndWpServiceRouteWpName(p, stream)
-	case publicpgn.RouteAndWpServiceRouteWpName:
-		return EncodeRouteAndWpServiceRouteWpName(&p, stream)
-	case *publicpgn.RouteAndWpServiceXteLimitNavigationMethod:
-		return EncodeRouteAndWpServiceXteLimitNavigationMethod(p, stream)
-	case publicpgn.RouteAndWpServiceXteLimitNavigationMethod:
-		return EncodeRouteAndWpServiceXteLimitNavigationMethod(&p, stream)
-	case *publicpgn.RouteAndWpServiceWpComment:
-		return EncodeRouteAndWpServiceWpComment(p, stream)
-	case publicpgn.RouteAndWpServiceWpComment:
-		return EncodeRouteAndWpServiceWpComment(&p, stream)
-	case *publicpgn.RouteAndWpServiceRouteComment:
-		return EncodeRouteAndWpServiceRouteComment(p, stream)
-	case publicpgn.RouteAndWpServiceRouteComment:
-		return EncodeRouteAndWpServiceRouteComment(&p, stream)
-	case *publicpgn.RouteAndWpServiceDatabaseComment:
-		return EncodeRouteAndWpServiceDatabaseComment(p, stream)
-	case publicpgn.RouteAndWpServiceDatabaseComment:
-		return EncodeRouteAndWpServiceDatabaseComment(&p, stream)
-	case *publicpgn.RouteAndWpServiceRadiusOfTurn:
-		return EncodeRouteAndWpServiceRadiusOfTurn(p, stream)
-	case publicpgn.RouteAndWpServiceRadiusOfTurn:
-		return EncodeRouteAndWpServiceRadiusOfTurn(&p, stream)
-	case *publicpgn.RouteAndWpServiceWpListWpNamePosition:
-		return EncodeRouteAndWpServiceWpListWpNamePosition(p, stream)
-	case publicpgn.RouteAndWpServiceWpListWpNamePosition:
-		return EncodeRouteAndWpServiceWpListWpNamePosition(&p, stream)
+	case *publicpgn.AISClassBStaticDataMsg24PartA:
+		return EncodeAISClassBStaticDataMsg24PartA(p, stream)
+	case publicpgn.AISClassBStaticDataMsg24PartA:
+		return EncodeAISClassBStaticDataMsg24PartA(&p, stream)
+	case *publicpgn.AISClassBStaticDataMsg24PartB:
+		return EncodeAISClassBStaticDataMsg24PartB(p, stream)
+	case publicpgn.AISClassBStaticDataMsg24PartB:
+		return EncodeAISClassBStaticDataMsg24PartB(&p, stream)
+	case *publicpgn.RouteAndWPServiceDatabaseList:
+		return EncodeRouteAndWPServiceDatabaseList(p, stream)
+	case publicpgn.RouteAndWPServiceDatabaseList:
+		return EncodeRouteAndWPServiceDatabaseList(&p, stream)
+	case *publicpgn.RouteAndWPServiceRouteList:
+		return EncodeRouteAndWPServiceRouteList(p, stream)
+	case publicpgn.RouteAndWPServiceRouteList:
+		return EncodeRouteAndWPServiceRouteList(&p, stream)
+	case *publicpgn.RouteAndWPServiceRouteWPListAttributes:
+		return EncodeRouteAndWPServiceRouteWPListAttributes(p, stream)
+	case publicpgn.RouteAndWPServiceRouteWPListAttributes:
+		return EncodeRouteAndWPServiceRouteWPListAttributes(&p, stream)
+	case *publicpgn.RouteAndWPServiceRouteWPNamePosition:
+		return EncodeRouteAndWPServiceRouteWPNamePosition(p, stream)
+	case publicpgn.RouteAndWPServiceRouteWPNamePosition:
+		return EncodeRouteAndWPServiceRouteWPNamePosition(&p, stream)
+	case *publicpgn.RouteAndWPServiceRouteWPName:
+		return EncodeRouteAndWPServiceRouteWPName(p, stream)
+	case publicpgn.RouteAndWPServiceRouteWPName:
+		return EncodeRouteAndWPServiceRouteWPName(&p, stream)
+	case *publicpgn.RouteAndWPServiceXTELimitNavigationMethod:
+		return EncodeRouteAndWPServiceXTELimitNavigationMethod(p, stream)
+	case publicpgn.RouteAndWPServiceXTELimitNavigationMethod:
+		return EncodeRouteAndWPServiceXTELimitNavigationMethod(&p, stream)
+	case *publicpgn.RouteAndWPServiceWPComment:
+		return EncodeRouteAndWPServiceWPComment(p, stream)
+	case publicpgn.RouteAndWPServiceWPComment:
+		return EncodeRouteAndWPServiceWPComment(&p, stream)
+	case *publicpgn.RouteAndWPServiceRouteComment:
+		return EncodeRouteAndWPServiceRouteComment(p, stream)
+	case publicpgn.RouteAndWPServiceRouteComment:
+		return EncodeRouteAndWPServiceRouteComment(&p, stream)
+	case *publicpgn.RouteAndWPServiceDatabaseComment:
+		return EncodeRouteAndWPServiceDatabaseComment(p, stream)
+	case publicpgn.RouteAndWPServiceDatabaseComment:
+		return EncodeRouteAndWPServiceDatabaseComment(&p, stream)
+	case *publicpgn.RouteAndWPServiceRadiusOfTurn:
+		return EncodeRouteAndWPServiceRadiusOfTurn(p, stream)
+	case publicpgn.RouteAndWPServiceRadiusOfTurn:
+		return EncodeRouteAndWPServiceRadiusOfTurn(&p, stream)
+	case *publicpgn.RouteAndWPServiceWPListWPNamePosition:
+		return EncodeRouteAndWPServiceWPListWPNamePosition(p, stream)
+	case publicpgn.RouteAndWPServiceWPListWPNamePosition:
+		return EncodeRouteAndWPServiceWPListWPNamePosition(&p, stream)
 	case *publicpgn.WindData:
 		return EncodeWindData(p, stream)
 	case publicpgn.WindData:
@@ -770,10 +778,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSonichubVolume(p, stream)
 	case publicpgn.SonichubVolume:
 		return EncodeSonichubVolume(&p, stream)
-	case *publicpgn.BepMarineCzoneZcfBusDistribution:
-		return EncodeBepMarineCzoneZcfBusDistribution(p, stream)
-	case publicpgn.BepMarineCzoneZcfBusDistribution:
-		return EncodeBepMarineCzoneZcfBusDistribution(&p, stream)
+	case *publicpgn.BEPMarineCzoneZcfBusDistribution:
+		return EncodeBEPMarineCzoneZcfBusDistribution(p, stream)
+	case publicpgn.BEPMarineCzoneZcfBusDistribution:
+		return EncodeBEPMarineCzoneZcfBusDistribution(&p, stream)
 	case *publicpgn.MaretronLabel:
 		return EncodeMaretronLabel(p, stream)
 	case publicpgn.MaretronLabel:
@@ -814,6 +822,38 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeFusionZoneName(p, stream)
 	case publicpgn.FusionZoneName:
 		return EncodeFusionZoneName(&p, stream)
+	case *publicpgn.FusionSpeedVolumeCurrentSpeed:
+		return EncodeFusionSpeedVolumeCurrentSpeed(p, stream)
+	case publicpgn.FusionSpeedVolumeCurrentSpeed:
+		return EncodeFusionSpeedVolumeCurrentSpeed(&p, stream)
+	case *publicpgn.FusionIgnitionSwitchState:
+		return EncodeFusionIgnitionSwitchState(p, stream)
+	case publicpgn.FusionIgnitionSwitchState:
+		return EncodeFusionIgnitionSwitchState(&p, stream)
+	case *publicpgn.FusionMenuLockId:
+		return EncodeFusionMenuLockId(p, stream)
+	case publicpgn.FusionMenuLockId:
+		return EncodeFusionMenuLockId(&p, stream)
+	case *publicpgn.FusionRDSData:
+		return EncodeFusionRDSData(p, stream)
+	case publicpgn.FusionRDSData:
+		return EncodeFusionRDSData(&p, stream)
+	case *publicpgn.FusionMultiroom:
+		return EncodeFusionMultiroom(p, stream)
+	case publicpgn.FusionMultiroom:
+		return EncodeFusionMultiroom(&p, stream)
+	case *publicpgn.FusionMultiroomStatus:
+		return EncodeFusionMultiroomStatus(p, stream)
+	case publicpgn.FusionMultiroomStatus:
+		return EncodeFusionMultiroomStatus(&p, stream)
+	case *publicpgn.FusionProcessingBypass:
+		return EncodeFusionProcessingBypass(p, stream)
+	case publicpgn.FusionProcessingBypass:
+		return EncodeFusionProcessingBypass(&p, stream)
+	case *publicpgn.FusionMono:
+		return EncodeFusionMono(p, stream)
+	case publicpgn.FusionMono:
+		return EncodeFusionMono(&p, stream)
 	case *publicpgn.FusionTrackPosition:
 		return EncodeFusionTrackPosition(p, stream)
 	case publicpgn.FusionTrackPosition:
@@ -822,10 +862,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeFusionTuner(p, stream)
 	case publicpgn.FusionTuner:
 		return EncodeFusionTuner(&p, stream)
-	case *publicpgn.FusionMarineTuner:
-		return EncodeFusionMarineTuner(p, stream)
-	case publicpgn.FusionMarineTuner:
-		return EncodeFusionMarineTuner(&p, stream)
+	case *publicpgn.FusionMARINETUNER:
+		return EncodeFusionMARINETUNER(p, stream)
+	case publicpgn.FusionMARINETUNER:
+		return EncodeFusionMARINETUNER(&p, stream)
 	case *publicpgn.FusionMarineSquelch:
 		return EncodeFusionMarineSquelch(p, stream)
 	case publicpgn.FusionMarineSquelch:
@@ -842,10 +882,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeFusionAuxGain(p, stream)
 	case publicpgn.FusionAuxGain:
 		return EncodeFusionAuxGain(&p, stream)
-	case *publicpgn.FusionUsbRepeatStatus:
-		return EncodeFusionUsbRepeatStatus(p, stream)
-	case publicpgn.FusionUsbRepeatStatus:
-		return EncodeFusionUsbRepeatStatus(&p, stream)
+	case *publicpgn.FusionUSBRepeatStatus:
+		return EncodeFusionUSBRepeatStatus(p, stream)
+	case publicpgn.FusionUSBRepeatStatus:
+		return EncodeFusionUSBRepeatStatus(&p, stream)
 	case *publicpgn.FusionSetting:
 		return EncodeFusionSetting(p, stream)
 	case publicpgn.FusionSetting:
@@ -870,10 +910,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeFusionSublevels(p, stream)
 	case publicpgn.FusionSublevels:
 		return EncodeFusionSublevels(&p, stream)
-	case *publicpgn.FusionEq:
-		return EncodeFusionEq(p, stream)
-	case publicpgn.FusionEq:
-		return EncodeFusionEq(&p, stream)
+	case *publicpgn.FusionEQ:
+		return EncodeFusionEQ(p, stream)
+	case publicpgn.FusionEQ:
+		return EncodeFusionEQ(&p, stream)
 	case *publicpgn.FusionVolumeLimits:
 		return EncodeFusionVolumeLimits(p, stream)
 	case publicpgn.FusionVolumeLimits:
@@ -934,6 +974,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeBGKeyValueData(p, stream)
 	case publicpgn.BGKeyValueData:
 		return EncodeBGKeyValueData(&p, stream)
+	case *publicpgn.MercuryEngineKeyValueData:
+		return EncodeMercuryEngineKeyValueData(p, stream)
+	case publicpgn.MercuryEngineKeyValueData:
+		return EncodeMercuryEngineKeyValueData(&p, stream)
 	case *publicpgn.MaretronDataInstanceChannelCorrelation:
 		return EncodeMaretronDataInstanceChannelCorrelation(p, stream)
 	case publicpgn.MaretronDataInstanceChannelCorrelation:
@@ -950,6 +994,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMaretronSwitchStatusTimer(p, stream)
 	case publicpgn.MaretronSwitchStatusTimer:
 		return EncodeMaretronSwitchStatusTimer(&p, stream)
+	case *publicpgn.FurunoMultiSatsInViewExtended:
+		return EncodeFurunoMultiSatsInViewExtended(p, stream)
+	case publicpgn.FurunoMultiSatsInViewExtended:
+		return EncodeFurunoMultiSatsInViewExtended(&p, stream)
 	default:
 		return nil, fmt.Errorf("trying to encode a struct that isn't a PGN: %T", s)
 	}

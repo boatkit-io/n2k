@@ -150,7 +150,7 @@ func sendSpeedData(sourceID uint8, counter float32, log *logrus.Logger) error {
 			Priority: 0,   // Explicitly set priority to 0
 			TargetId: 255, // Broadcast
 		},
-		Sid:                      &sid,
+		SID:                      &sid,
 		SpeedWaterReferenced:     &waterSpeed,
 		SpeedGroundReferenced:    &groundSpeed,
 		SpeedWaterReferencedType: pgn.PaddleWheel,

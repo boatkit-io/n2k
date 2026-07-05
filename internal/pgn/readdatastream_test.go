@@ -154,16 +154,16 @@ func TestDataStream_readStringWithLengthAndControl(t *testing.T) {
 	}
 }
 
-func TestDecodeUtilityPhaseAAcPower(t *testing.T) {
-	acPowerRaw, err := DecodeUtilityPhaseAAcPower(MessageInfo{}, NewDataStream([]uint8{
+func TestDecodeUtilityPhaseAACPower(t *testing.T) {
+	acPowerRaw, err := DecodeUtilityPhaseAACPower(MessageInfo{}, NewDataStream([]uint8{
 		0x4d, 0x94, 0x35, 0x77, 0x66, 0x94, 0x35, 0x77,
 	}))
 	assert.NoError(t, err)
-	acPower := acPowerRaw.(publicpgn.UtilityPhaseAAcPower)
+	acPower := acPowerRaw.(publicpgn.UtilityPhaseAACPower)
 	assert.Equal(t, int32(77), *acPower.RealPower)
 	assert.Equal(t, int32(102), *acPower.ApparentPower)
 
-	realPowerSpec := &fieldSpec_UtilityPhaseAAcPower_RealPower
+	realPowerSpec := &fieldSpec_UtilityPhaseAACPower_RealPower
 	assert.Equal(t, int64(-2000000000), realPowerSpec.Offset)
 	assert.False(t, realPowerSpec.IsScaled())
 }
