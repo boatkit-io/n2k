@@ -6,13 +6,13 @@ require (
 	github.com/Masterminds/sprig/v3 v3.3.0
 	github.com/boatkit-io/tugboat v0.9.0
 	github.com/brutella/can v0.0.2
-	github.com/google/go-cmp v0.6.0
+	github.com/google/go-cmp v0.7.0
 	github.com/pkg/errors v0.9.1
-	github.com/schollz/progressbar/v3 v3.19.0
+	github.com/schollz/progressbar/v3 v3.19.1
 	github.com/sirupsen/logrus v1.9.4
 	github.com/stretchr/testify v1.11.1
-	golang.org/x/exp v0.0.0-20250106191152-7588d65b2ba8
-	golang.org/x/text v0.37.0
+	golang.org/x/exp v0.0.0-20260611194520-c48552f49976
+	golang.org/x/text v0.38.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
@@ -37,6 +37,6 @@ require (
 	github.com/spf13/cast v1.10.0 // indirect
 	go.bug.st/serial v1.7.1 // indirect
 	golang.org/x/crypto v0.52.0 // indirect
-	golang.org/x/sys v0.45.0 // indirect
-	golang.org/x/term v0.43.0 // indirect
+	golang.org/x/sys v0.46.0 // indirect
+	golang.org/x/term v0.44.0 // indirect
 )

@@ -17,7 +17,7 @@ jobs:
     name: go test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: jdx/mise-action@v4
         with: {}
       - name: Get Go directories
@@ -25,11 +25,11 @@ jobs:
         run: |
           echo "cache_dir=$(go env GOCACHE)" >> "$GITHUB_OUTPUT"
           echo "mod_cache_dir=$(go env GOMODCACHE)" >> "$GITHUB_OUTPUT"
-      - uses: actions/cache@v5
+      - uses: actions/cache@v6
         with:
           path: ${{ steps.go.outputs.cache_dir }}
           key: ${{ runner.os }}-go-build-cache-${{ hashFiles('**/go.sum') }}
-      - uses: actions/cache@v5
+      - uses: actions/cache@v6
         with:
           path: ${{ steps.go.outputs.mod_cache_dir }}
           key: ${{ runner.os }}-go-mod-cache-${{ hashFiles('go.sum') }}
@@ -46,7 +46,7 @@ jobs:
     name: golangci-lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: jdx/mise-action@v4
         with: {}
       - name: Retrieve golangci-lint version
