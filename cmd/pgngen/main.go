@@ -1739,6 +1739,7 @@ func goIdentifierWordFromDisplay(word string) string {
 }
 
 var enumValueInitialisms = map[string]string{
+	"ATON":  "ATON",
 	"DGNSS": "DGNSS",
 	"DR":    "DR",
 	"GNSS":  "GNSS",

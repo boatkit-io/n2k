@@ -16,6 +16,7 @@ func TestGenerateConstNamePreservesInitialisms(t *testing.T) {
 		{name: "precise gnss", text: "Precise GNSS", expected: "PreciseGNSS"},
 		{name: "rtk fixed", text: "RTK Fixed Integer", expected: "RTKFixedInteger"},
 		{name: "rtk float", text: "RTK float", expected: "RTKFloat"},
+		{name: "aton report", text: "ATON report", expected: "ATONReport"},
 		{name: "no gnss", text: "No GNSS", expected: "NoGNSS"},
 		{name: "estimated dr", text: "Estimated DR mode", expected: "EstimatedDRMode"},
 		{name: "normal words", text: "not available", expected: "NotAvailable"},

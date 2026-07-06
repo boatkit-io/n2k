@@ -1156,7 +1156,7 @@ const (
 	StandardClassBPositionReport	AisMessageIdConst = 18
 	ExtendedClassBPositionReport	AisMessageIdConst = 19
 	DataLinkManagementMessage	AisMessageIdConst = 20
-	AtonReport	AisMessageIdConst = 21
+	ATONReport	AisMessageIdConst = 21
 	ChannelManagement	AisMessageIdConst = 22
 	GroupAssignmentCommand	AisMessageIdConst = 23
 	StaticDataReport	AisMessageIdConst = 24
@@ -1515,7 +1515,7 @@ const (
 	AllTypesOfMobileStation	StationTypeConst = 0
 	AllTypesOfClassBMobileStation	StationTypeConst = 2
 	SarAirborneMobileStation	StationTypeConst = 3
-	AtonStation	StationTypeConst = 4
+	ATONStation	StationTypeConst = 4
 	ClassBCsShipborneMobileStation	StationTypeConst = 5
 	InlandWaterways	StationTypeConst = 6
 	RegionalUse7	StationTypeConst = 7
@@ -1643,7 +1643,7 @@ default:
 }
 type AtonTypeConst uint8
 const (
-	DefaultTypeOfAtonNotSpecified	AtonTypeConst = 0
+	DefaultTypeOfATONNotSpecified	AtonTypeConst = 0
 	ReferencePoint	AtonTypeConst = 1
 	Racon	AtonTypeConst = 2
 	FixedStructureOffShore	AtonTypeConst = 3
@@ -1663,18 +1663,18 @@ const (
 	FixedBeaconIsolatedDanger	AtonTypeConst = 17
 	FixedBeaconSafeWater	AtonTypeConst = 18
 	FixedBeaconSpecialMark	AtonTypeConst = 19
-	FloatingAtonCardinalN	AtonTypeConst = 20
-	FloatingAtonCardinalE	AtonTypeConst = 21
-	FloatingAtonCardinalS	AtonTypeConst = 22
-	FloatingAtonCardinalW	AtonTypeConst = 23
-	FloatingAtonPortHandMark	AtonTypeConst = 24
-	FloatingAtonStarboardHandMark	AtonTypeConst = 25
-	FloatingAtonPreferredChannelPo	AtonTypeConst = 26
-	FloatingAtonPreferredChannelSt	AtonTypeConst = 27
-	FloatingAtonIsolatedDanger	AtonTypeConst = 28
-	FloatingAtonSafeWater	AtonTypeConst = 29
-	FloatingAtonSpecialMark	AtonTypeConst = 30
-	FloatingAtonLightVesselLanbyRi	AtonTypeConst = 31
+	FloatingATONCardinalN	AtonTypeConst = 20
+	FloatingATONCardinalE	AtonTypeConst = 21
+	FloatingATONCardinalS	AtonTypeConst = 22
+	FloatingATONCardinalW	AtonTypeConst = 23
+	FloatingATONPortHandMark	AtonTypeConst = 24
+	FloatingATONStarboardHandMark	AtonTypeConst = 25
+	FloatingATONPreferredChannelPo	AtonTypeConst = 26
+	FloatingATONPreferredChannelSt	AtonTypeConst = 27
+	FloatingATONIsolatedDanger	AtonTypeConst = 28
+	FloatingATONSafeWater	AtonTypeConst = 29
+	FloatingATONSpecialMark	AtonTypeConst = 30
+	FloatingATONLightVesselLanbyRi	AtonTypeConst = 31
 )
 
 func (e AtonTypeConst) GoString() string {return e.String() }
@@ -8674,6 +8674,7 @@ const (
 	Activate	SimnetAlarmCommandConst = 57
 	Acknowledge_4	SimnetAlarmCommandConst = 58
 	Silence	SimnetAlarmCommandConst = 68
+	TackGybeConfirm	SimnetAlarmCommandConst = 88
 	AlarmHistory	SimnetAlarmCommandConst = 104
 	MobActivated_2	SimnetAlarmCommandConst = 107
 	MobCancelled	SimnetAlarmCommandConst = 108
@@ -8690,6 +8691,8 @@ func (e SimnetAlarmCommandConst) String() string {
 			return "Acknowledge"
 		case 68:
 			return "Silence"
+		case 88:
+			return "Tack/Gybe Confirm"
 		case 104:
 			return "Alarm History"
 		case 107:
