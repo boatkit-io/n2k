@@ -65,7 +65,7 @@ const (
 	FwMurphyEnovationControls	ManufacturerCodeConst = 78
 	TwinDisc	ManufacturerCodeConst = 80
 	KohlerPowerSystems	ManufacturerCodeConst = 85
-	HemisphereGpsInc	ManufacturerCodeConst = 88
+	HemisphereGPSInc	ManufacturerCodeConst = 88
 	BepMarine	ManufacturerCodeConst = 116
 	Airmar	ManufacturerCodeConst = 135
 	Maretron	ManufacturerCodeConst = 137
@@ -945,13 +945,13 @@ default:
 }
 type CzoneAlarmTypeConst uint16
 const (
-	AcVoltageError	CzoneAlarmTypeConst = 1
-	AcFrequencyError	CzoneAlarmTypeConst = 2
-	AcHighPower	CzoneAlarmTypeConst = 3
-	DcLowVoltage	CzoneAlarmTypeConst = 4
-	DcVeryLowVoltage	CzoneAlarmTypeConst = 5
-	DcHighVoltage	CzoneAlarmTypeConst = 6
-	DcLowBatteryCapacity	CzoneAlarmTypeConst = 7
+	ACVoltageError	CzoneAlarmTypeConst = 1
+	ACFrequencyError	CzoneAlarmTypeConst = 2
+	ACHighPower	CzoneAlarmTypeConst = 3
+	DCLowVoltage	CzoneAlarmTypeConst = 4
+	DCVeryLowVoltage	CzoneAlarmTypeConst = 5
+	DCHighVoltage	CzoneAlarmTypeConst = 6
+	DCLowBatteryCapacity	CzoneAlarmTypeConst = 7
 	OutOfRange	CzoneAlarmTypeConst = 10
 	LowRunCurrent	CzoneAlarmTypeConst = 11
 	OverCurrent	CzoneAlarmTypeConst = 12
@@ -961,27 +961,27 @@ const (
 	CalibrationError	CzoneAlarmTypeConst = 16
 	MissingOutput	CzoneAlarmTypeConst = 17
 	SystemsOn	CzoneAlarmTypeConst = 18
-	AcVeryHighPower	CzoneAlarmTypeConst = 19
-	AcLowPower	CzoneAlarmTypeConst = 20
-	DcVeryLowBatteryCapacity	CzoneAlarmTypeConst = 21
+	ACVeryHighPower	CzoneAlarmTypeConst = 19
+	ACLowPower	CzoneAlarmTypeConst = 20
+	DCVeryLowBatteryCapacity	CzoneAlarmTypeConst = 21
 	BatteryFull	CzoneAlarmTypeConst = 22
-	DcLoadShedLow	CzoneAlarmTypeConst = 23
-	DcLoadShedVeryLow	CzoneAlarmTypeConst = 24
-	AcLoadShedLow	CzoneAlarmTypeConst = 25
-	AcLoadShedVeryLow	CzoneAlarmTypeConst = 26
+	DCLoadShedLow	CzoneAlarmTypeConst = 23
+	DCLoadShedVeryLow	CzoneAlarmTypeConst = 24
+	ACLoadShedLow	CzoneAlarmTypeConst = 25
+	ACLoadShedVeryLow	CzoneAlarmTypeConst = 26
 	ReversePolarity	CzoneAlarmTypeConst = 27
 	ManualOverride	CzoneAlarmTypeConst = 28
 	Mastervolt_2	CzoneAlarmTypeConst = 29
 	HardwareFault	CzoneAlarmTypeConst = 30
-	NoAcSupply	CzoneAlarmTypeConst = 31
-	PgnSwitchingOn	CzoneAlarmTypeConst = 34
+	NoACSupply	CzoneAlarmTypeConst = 31
+	PGNSwitchingOn	CzoneAlarmTypeConst = 34
 	LowCanbusVoltage	CzoneAlarmTypeConst = 35
 	BlownFuse	CzoneAlarmTypeConst = 36
 	ManualBypass	CzoneAlarmTypeConst = 37
 	GenericAlarm	CzoneAlarmTypeConst = 38
 	BatteryTemperatureAlarm	CzoneAlarmTypeConst = 39
 	TemperatureSensorError	CzoneAlarmTypeConst = 40
-	AcInOutOfRange	CzoneAlarmTypeConst = 41
+	ACInOutOfRange	CzoneAlarmTypeConst = 41
 	DeviceInOverload	CzoneAlarmTypeConst = 42
 	HighTemperature	CzoneAlarmTypeConst = 43
 	InverterChargerInstallationErr	CzoneAlarmTypeConst = 44
@@ -1134,39 +1134,39 @@ default:
 		return fmt.Sprintf("CzoneAlarmTypeConst(%d)", uint16(e))
 	}
 }
-type AisMessageIdConst uint8
+type AISMessageIDConst uint8
 const (
-	ScheduledClassAPositionReport	AisMessageIdConst = 1
-	AssignedScheduledClassAPositio	AisMessageIdConst = 2
-	InterrogatedClassAPositionRepo	AisMessageIdConst = 3
-	BaseStationReport	AisMessageIdConst = 4
-	StaticAndVoyageRelatedData	AisMessageIdConst = 5
-	BinaryAddressedMessage	AisMessageIdConst = 6
-	BinaryAcknowledgement	AisMessageIdConst = 7
-	BinaryBroadcastMessage	AisMessageIdConst = 8
-	StandardSarAircraftPositionRep	AisMessageIdConst = 9
-	UtcDateInquiry	AisMessageIdConst = 10
-	UtcDateResponse	AisMessageIdConst = 11
-	SafetyRelatedAddressedMessage	AisMessageIdConst = 12
-	SafetyRelatedAcknowledgement	AisMessageIdConst = 13
-	SatetyRelatedBroadcastMessage	AisMessageIdConst = 14
-	Interrogation	AisMessageIdConst = 15
-	AssignmentModeCommand	AisMessageIdConst = 16
-	DGNSSBroadcastBinaryMessage	AisMessageIdConst = 17
-	StandardClassBPositionReport	AisMessageIdConst = 18
-	ExtendedClassBPositionReport	AisMessageIdConst = 19
-	DataLinkManagementMessage	AisMessageIdConst = 20
-	AtonReport	AisMessageIdConst = 21
-	ChannelManagement	AisMessageIdConst = 22
-	GroupAssignmentCommand	AisMessageIdConst = 23
-	StaticDataReport	AisMessageIdConst = 24
-	SingleSlotBinaryMessage	AisMessageIdConst = 25
-	MultipleSlotBinaryMessage	AisMessageIdConst = 26
-	PositionReportForLongRangeAppl	AisMessageIdConst = 27
+	ScheduledClassAPositionReport	AISMessageIDConst = 1
+	AssignedScheduledClassAPositio	AISMessageIDConst = 2
+	InterrogatedClassAPositionRepo	AISMessageIDConst = 3
+	BaseStationReport	AISMessageIDConst = 4
+	StaticAndVoyageRelatedData	AISMessageIDConst = 5
+	BinaryAddressedMessage	AISMessageIDConst = 6
+	BinaryAcknowledgement	AISMessageIDConst = 7
+	BinaryBroadcastMessage	AISMessageIDConst = 8
+	StandardSARAircraftPositionRep	AISMessageIDConst = 9
+	UTCDateInquiry	AISMessageIDConst = 10
+	UTCDateResponse	AISMessageIDConst = 11
+	SafetyRelatedAddressedMessage	AISMessageIDConst = 12
+	SafetyRelatedAcknowledgement	AISMessageIDConst = 13
+	SatetyRelatedBroadcastMessage	AISMessageIDConst = 14
+	Interrogation	AISMessageIDConst = 15
+	AssignmentModeCommand	AISMessageIDConst = 16
+	DGNSSBroadcastBinaryMessage	AISMessageIDConst = 17
+	StandardClassBPositionReport	AISMessageIDConst = 18
+	ExtendedClassBPositionReport	AISMessageIDConst = 19
+	DataLinkManagementMessage	AISMessageIDConst = 20
+	ATONReport	AISMessageIDConst = 21
+	ChannelManagement	AISMessageIDConst = 22
+	GroupAssignmentCommand	AISMessageIDConst = 23
+	StaticDataReport	AISMessageIDConst = 24
+	SingleSlotBinaryMessage	AISMessageIDConst = 25
+	MultipleSlotBinaryMessage	AISMessageIDConst = 26
+	PositionReportForLongRangeAppl	AISMessageIDConst = 27
 )
 
-func (e AisMessageIdConst) GoString() string {return e.String() }
-func (e AisMessageIdConst) String() string {
+func (e AISMessageIDConst) GoString() string {return e.String() }
+func (e AISMessageIDConst) String() string {
 	switch e {
 		case 1:
 			return "Scheduled Class A position report"
@@ -1223,7 +1223,7 @@ func (e AisMessageIdConst) String() string {
 		case 27:
 			return "Position report for long range applications"
 default:
-		return fmt.Sprintf("AisMessageIdConst(%d)", uint8(e))
+		return fmt.Sprintf("AISMessageIDConst(%d)", uint8(e))
 	}
 }
 type ShipTypeConst uint8
@@ -1250,7 +1250,7 @@ const (
 	HighSpeedCraftHazardCatOs	ShipTypeConst = 44
 	HighSpeedCraftNoAdditionalInfo	ShipTypeConst = 49
 	PilotVessel	ShipTypeConst = 50
-	Sar	ShipTypeConst = 51
+	SAR	ShipTypeConst = 51
 	Tug	ShipTypeConst = 52
 	PortTender	ShipTypeConst = 53
 	AntiPollution	ShipTypeConst = 54
@@ -1514,8 +1514,8 @@ type StationTypeConst uint8
 const (
 	AllTypesOfMobileStation	StationTypeConst = 0
 	AllTypesOfClassBMobileStation	StationTypeConst = 2
-	SarAirborneMobileStation	StationTypeConst = 3
-	AtonStation	StationTypeConst = 4
+	SARAirborneMobileStation	StationTypeConst = 3
+	ATONStation	StationTypeConst = 4
 	ClassBCsShipborneMobileStation	StationTypeConst = 5
 	InlandWaterways	StationTypeConst = 6
 	RegionalUse7	StationTypeConst = 7
@@ -1595,18 +1595,18 @@ default:
 		return fmt.Sprintf("ReportingIntervalConst(%d)", uint8(e))
 	}
 }
-type AisTransceiverConst uint8
+type AISTransceiverConst uint8
 const (
-	ChannelAVdlReception	AisTransceiverConst = 0
-	ChannelBVdlReception	AisTransceiverConst = 1
-	ChannelAVdlTransmission	AisTransceiverConst = 2
-	ChannelBVdlTransmission	AisTransceiverConst = 3
-	OwnInformationNotBroadcast	AisTransceiverConst = 4
-	Reserved	AisTransceiverConst = 5
+	ChannelAVDLReception	AISTransceiverConst = 0
+	ChannelBVDLReception	AISTransceiverConst = 1
+	ChannelAVDLTransmission	AISTransceiverConst = 2
+	ChannelBVDLTransmission	AISTransceiverConst = 3
+	OwnInformationNotBroadcast	AISTransceiverConst = 4
+	Reserved	AISTransceiverConst = 5
 )
 
-func (e AisTransceiverConst) GoString() string {return e.String() }
-func (e AisTransceiverConst) String() string {
+func (e AISTransceiverConst) GoString() string {return e.String() }
+func (e AISTransceiverConst) String() string {
 	switch e {
 		case 0:
 			return "Channel A VDL reception"
@@ -1621,64 +1621,64 @@ func (e AisTransceiverConst) String() string {
 		case 5:
 			return "Reserved"
 default:
-		return fmt.Sprintf("AisTransceiverConst(%d)", uint8(e))
+		return fmt.Sprintf("AISTransceiverConst(%d)", uint8(e))
 	}
 }
-type AisAssignedModeConst uint8
+type AISAssignedModeConst uint8
 const (
-	AutonomousAndContinuous	AisAssignedModeConst = 0
-	AssignedMode	AisAssignedModeConst = 1
+	AutonomousAndContinuous	AISAssignedModeConst = 0
+	AssignedMode	AISAssignedModeConst = 1
 )
 
-func (e AisAssignedModeConst) GoString() string {return e.String() }
-func (e AisAssignedModeConst) String() string {
+func (e AISAssignedModeConst) GoString() string {return e.String() }
+func (e AISAssignedModeConst) String() string {
 	switch e {
 		case 0:
 			return "Autonomous and continuous"
 		case 1:
 			return "Assigned mode"
 default:
-		return fmt.Sprintf("AisAssignedModeConst(%d)", uint8(e))
+		return fmt.Sprintf("AISAssignedModeConst(%d)", uint8(e))
 	}
 }
-type AtonTypeConst uint8
+type ATONTypeConst uint8
 const (
-	DefaultTypeOfAtonNotSpecified	AtonTypeConst = 0
-	ReferencePoint	AtonTypeConst = 1
-	Racon	AtonTypeConst = 2
-	FixedStructureOffShore	AtonTypeConst = 3
-	ReservedForFutureUse	AtonTypeConst = 4
-	FixedLightWithoutSectors	AtonTypeConst = 5
-	FixedLightWithSectors	AtonTypeConst = 6
-	FixedLeadingLightFront	AtonTypeConst = 7
-	FixedLeadingLightRear	AtonTypeConst = 8
-	FixedBeaconCardinalN	AtonTypeConst = 9
-	FixedBeaconCardinalE	AtonTypeConst = 10
-	FixedBeaconCardinalS	AtonTypeConst = 11
-	FixedBeaconCardinalW	AtonTypeConst = 12
-	FixedBeaconPortHand	AtonTypeConst = 13
-	FixedBeaconStarboardHand	AtonTypeConst = 14
-	FixedBeaconPreferredChannelPor	AtonTypeConst = 15
-	FixedBeaconPreferredChannelSta	AtonTypeConst = 16
-	FixedBeaconIsolatedDanger	AtonTypeConst = 17
-	FixedBeaconSafeWater	AtonTypeConst = 18
-	FixedBeaconSpecialMark	AtonTypeConst = 19
-	FloatingAtonCardinalN	AtonTypeConst = 20
-	FloatingAtonCardinalE	AtonTypeConst = 21
-	FloatingAtonCardinalS	AtonTypeConst = 22
-	FloatingAtonCardinalW	AtonTypeConst = 23
-	FloatingAtonPortHandMark	AtonTypeConst = 24
-	FloatingAtonStarboardHandMark	AtonTypeConst = 25
-	FloatingAtonPreferredChannelPo	AtonTypeConst = 26
-	FloatingAtonPreferredChannelSt	AtonTypeConst = 27
-	FloatingAtonIsolatedDanger	AtonTypeConst = 28
-	FloatingAtonSafeWater	AtonTypeConst = 29
-	FloatingAtonSpecialMark	AtonTypeConst = 30
-	FloatingAtonLightVesselLanbyRi	AtonTypeConst = 31
+	DefaultTypeOfATONNotSpecified	ATONTypeConst = 0
+	ReferencePoint	ATONTypeConst = 1
+	Racon	ATONTypeConst = 2
+	FixedStructureOffShore	ATONTypeConst = 3
+	ReservedForFutureUse	ATONTypeConst = 4
+	FixedLightWithoutSectors	ATONTypeConst = 5
+	FixedLightWithSectors	ATONTypeConst = 6
+	FixedLeadingLightFront	ATONTypeConst = 7
+	FixedLeadingLightRear	ATONTypeConst = 8
+	FixedBeaconCardinalN	ATONTypeConst = 9
+	FixedBeaconCardinalE	ATONTypeConst = 10
+	FixedBeaconCardinalS	ATONTypeConst = 11
+	FixedBeaconCardinalW	ATONTypeConst = 12
+	FixedBeaconPortHand	ATONTypeConst = 13
+	FixedBeaconStarboardHand	ATONTypeConst = 14
+	FixedBeaconPreferredChannelPor	ATONTypeConst = 15
+	FixedBeaconPreferredChannelSta	ATONTypeConst = 16
+	FixedBeaconIsolatedDanger	ATONTypeConst = 17
+	FixedBeaconSafeWater	ATONTypeConst = 18
+	FixedBeaconSpecialMark	ATONTypeConst = 19
+	FloatingATONCardinalN	ATONTypeConst = 20
+	FloatingATONCardinalE	ATONTypeConst = 21
+	FloatingATONCardinalS	ATONTypeConst = 22
+	FloatingATONCardinalW	ATONTypeConst = 23
+	FloatingATONPortHandMark	ATONTypeConst = 24
+	FloatingATONStarboardHandMark	ATONTypeConst = 25
+	FloatingATONPreferredChannelPo	ATONTypeConst = 26
+	FloatingATONPreferredChannelSt	ATONTypeConst = 27
+	FloatingATONIsolatedDanger	ATONTypeConst = 28
+	FloatingATONSafeWater	ATONTypeConst = 29
+	FloatingATONSpecialMark	ATONTypeConst = 30
+	FloatingATONLightVesselLanbyRi	ATONTypeConst = 31
 )
 
-func (e AtonTypeConst) GoString() string {return e.String() }
-func (e AtonTypeConst) String() string {
+func (e ATONTypeConst) GoString() string {return e.String() }
+func (e ATONTypeConst) String() string {
 	switch e {
 		case 0:
 			return "Default: Type of AtoN not specified"
@@ -1745,19 +1745,19 @@ func (e AtonTypeConst) String() string {
 		case 31:
 			return "Floating AtoN: light vessel/LANBY/rigs"
 default:
-		return fmt.Sprintf("AtonTypeConst(%d)", uint8(e))
+		return fmt.Sprintf("ATONTypeConst(%d)", uint8(e))
 	}
 }
-type AisSpecialManeuverConst uint8
+type AISSpecialManeuverConst uint8
 const (
-	NotAvailable	AisSpecialManeuverConst = 0
-	NotEngagedInSpecialManeuver	AisSpecialManeuverConst = 1
-	EngagedInSpecialManeuver	AisSpecialManeuverConst = 2
-	Reserved_2	AisSpecialManeuverConst = 3
+	NotAvailable	AISSpecialManeuverConst = 0
+	NotEngagedInSpecialManeuver	AISSpecialManeuverConst = 1
+	EngagedInSpecialManeuver	AISSpecialManeuverConst = 2
+	Reserved_2	AISSpecialManeuverConst = 3
 )
 
-func (e AisSpecialManeuverConst) GoString() string {return e.String() }
-func (e AisSpecialManeuverConst) String() string {
+func (e AISSpecialManeuverConst) GoString() string {return e.String() }
+func (e AISSpecialManeuverConst) String() string {
 	switch e {
 		case 0:
 			return "Not available"
@@ -1768,15 +1768,15 @@ func (e AisSpecialManeuverConst) String() string {
 		case 3:
 			return "Reserved"
 default:
-		return fmt.Sprintf("AisSpecialManeuverConst(%d)", uint8(e))
+		return fmt.Sprintf("AISSpecialManeuverConst(%d)", uint8(e))
 	}
 }
 type PositionFixDeviceConst uint8
 const (
 	DefaultUndefined	PositionFixDeviceConst = 0
-	Gps	PositionFixDeviceConst = 1
-	Glonass	PositionFixDeviceConst = 2
-	CombinedGpsGlonass	PositionFixDeviceConst = 3
+	GPS	PositionFixDeviceConst = 1
+	GLONASS	PositionFixDeviceConst = 2
+	CombinedGPSGLONASS	PositionFixDeviceConst = 3
 	LoranC	PositionFixDeviceConst = 4
 	Chayka	PositionFixDeviceConst = 5
 	IntegratedNavigationSystem	PositionFixDeviceConst = 6
@@ -1809,21 +1809,21 @@ default:
 		return fmt.Sprintf("PositionFixDeviceConst(%d)", uint8(e))
 	}
 }
-type GnsConst uint8
+type GNSConst uint8
 const (
-	Gps_2	GnsConst = 0
-	Glonass_2	GnsConst = 1
-	GpsGlonass	GnsConst = 2
-	GpsSbasWaas	GnsConst = 3
-	GpsSbasWaasGlonass	GnsConst = 4
-	Chayka_2	GnsConst = 5
-	Integrated	GnsConst = 6
-	Surveyed_2	GnsConst = 7
-	Galileo_2	GnsConst = 8
+	GPS_2	GNSConst = 0
+	GLONASS_2	GNSConst = 1
+	GPSGLONASS	GNSConst = 2
+	GPSSBASWAAS	GNSConst = 3
+	GPSSBASWAASGLONASS	GNSConst = 4
+	Chayka_2	GNSConst = 5
+	Integrated	GNSConst = 6
+	Surveyed_2	GNSConst = 7
+	Galileo_2	GNSConst = 8
 )
 
-func (e GnsConst) GoString() string {return e.String() }
-func (e GnsConst) String() string {
+func (e GNSConst) GoString() string {return e.String() }
+func (e GNSConst) String() string {
 	switch e {
 		case 0:
 			return "GPS"
@@ -1844,7 +1844,7 @@ func (e GnsConst) String() string {
 		case 8:
 			return "Galileo"
 default:
-		return fmt.Sprintf("GnsConst(%d)", uint8(e))
+		return fmt.Sprintf("GNSConst(%d)", uint8(e))
 	}
 }
 type EngineInstanceConst uint8
@@ -1918,21 +1918,21 @@ default:
 		return fmt.Sprintf("PositionAccuracyConst(%d)", uint8(e))
 	}
 }
-type RaimFlagConst uint8
+type RAIMFlagConst uint8
 const (
-	NotInUse	RaimFlagConst = 0
-	InUse	RaimFlagConst = 1
+	NotInUse	RAIMFlagConst = 0
+	InUse	RAIMFlagConst = 1
 )
 
-func (e RaimFlagConst) GoString() string {return e.String() }
-func (e RaimFlagConst) String() string {
+func (e RAIMFlagConst) GoString() string {return e.String() }
+func (e RAIMFlagConst) String() string {
 	switch e {
 		case 0:
 			return "not in use"
 		case 1:
 			return "in use"
 default:
-		return fmt.Sprintf("RaimFlagConst(%d)", uint8(e))
+		return fmt.Sprintf("RAIMFlagConst(%d)", uint8(e))
 	}
 }
 type TimeStampConst uint8
@@ -1958,21 +1958,21 @@ default:
 		return fmt.Sprintf("TimeStampConst(%d)", uint8(e))
 	}
 }
-type GnsMethodConst uint8
+type GNSMethodConst uint8
 const (
-	NoGNSS	GnsMethodConst = 0
-	GNSSFix	GnsMethodConst = 1
-	DGNSSFix	GnsMethodConst = 2
-	PreciseGNSS	GnsMethodConst = 3
-	RTKFixedInteger	GnsMethodConst = 4
-	RTKFloat	GnsMethodConst = 5
-	EstimatedDRMode	GnsMethodConst = 6
-	ManualInput	GnsMethodConst = 7
-	SimulateMode	GnsMethodConst = 8
+	NoGNSS	GNSMethodConst = 0
+	GNSSFix	GNSMethodConst = 1
+	DGNSSFix	GNSMethodConst = 2
+	PreciseGNSS	GNSMethodConst = 3
+	RTKFixedInteger	GNSMethodConst = 4
+	RTKFloat	GNSMethodConst = 5
+	EstimatedDRMode	GNSMethodConst = 6
+	ManualInput	GNSMethodConst = 7
+	SimulateMode	GNSMethodConst = 8
 )
 
-func (e GnsMethodConst) GoString() string {return e.String() }
-func (e GnsMethodConst) String() string {
+func (e GNSMethodConst) GoString() string {return e.String() }
+func (e GNSMethodConst) String() string {
 	switch e {
 		case 0:
 			return "no GNSS"
@@ -1993,19 +1993,19 @@ func (e GnsMethodConst) String() string {
 		case 8:
 			return "Simulate mode"
 default:
-		return fmt.Sprintf("GnsMethodConst(%d)", uint8(e))
+		return fmt.Sprintf("GNSMethodConst(%d)", uint8(e))
 	}
 }
-type GnsIntegrityConst uint8
+type GNSIntegrityConst uint8
 const (
-	NoIntegrityChecking	GnsIntegrityConst = 0
-	Safe	GnsIntegrityConst = 1
-	Caution	GnsIntegrityConst = 2
-	Unsafe	GnsIntegrityConst = 3
+	NoIntegrityChecking	GNSIntegrityConst = 0
+	Safe	GNSIntegrityConst = 1
+	Caution	GNSIntegrityConst = 2
+	Unsafe	GNSIntegrityConst = 3
 )
 
-func (e GnsIntegrityConst) GoString() string {return e.String() }
-func (e GnsIntegrityConst) String() string {
+func (e GNSIntegrityConst) GoString() string {return e.String() }
+func (e GNSIntegrityConst) String() string {
 	switch e {
 		case 0:
 			return "No integrity checking"
@@ -2016,13 +2016,13 @@ func (e GnsIntegrityConst) String() string {
 		case 3:
 			return "Unsafe"
 default:
-		return fmt.Sprintf("GnsIntegrityConst(%d)", uint8(e))
+		return fmt.Sprintf("GNSIntegrityConst(%d)", uint8(e))
 	}
 }
 type SystemTimeConst uint8
 const (
-	Gps_3	SystemTimeConst = 0
-	Glonass_3	SystemTimeConst = 1
+	GPS_3	SystemTimeConst = 0
+	GLONASS_3	SystemTimeConst = 1
 	RadioStation	SystemTimeConst = 2
 	LocalCesiumClock	SystemTimeConst = 3
 	LocalRubidiumClock	SystemTimeConst = 4
@@ -2296,7 +2296,7 @@ const (
 	HazardousMaterialWingInGround	NavStatusConst = 10
 	PowerDrivenVesselTowingAstern	NavStatusConst = 11
 	PowerDrivenVesselPushingAheadO	NavStatusConst = 12
-	AisSart	NavStatusConst = 14
+	AISSART	NavStatusConst = 14
 )
 
 func (e NavStatusConst) GoString() string {return e.String() }
@@ -2468,19 +2468,19 @@ default:
 		return fmt.Sprintf("PressureSourceConst(%d)", uint8(e))
 	}
 }
-type DscFormatConst uint8
+type DSCFormatConst uint8
 const (
-	GeographicalArea	DscFormatConst = 102
-	Distress	DscFormatConst = 112
-	CommonInterest	DscFormatConst = 114
-	AllShips	DscFormatConst = 116
-	IndividualStations	DscFormatConst = 120
-	NonCallingPurpose	DscFormatConst = 121
-	IndividualStationAutomatic	DscFormatConst = 123
+	GeographicalArea	DSCFormatConst = 102
+	Distress	DSCFormatConst = 112
+	CommonInterest	DSCFormatConst = 114
+	AllShips	DSCFormatConst = 116
+	IndividualStations	DSCFormatConst = 120
+	NonCallingPurpose	DSCFormatConst = 121
+	IndividualStationAutomatic	DSCFormatConst = 123
 )
 
-func (e DscFormatConst) GoString() string {return e.String() }
-func (e DscFormatConst) String() string {
+func (e DSCFormatConst) GoString() string {return e.String() }
+func (e DSCFormatConst) String() string {
 	switch e {
 		case 102:
 			return "Geographical area"
@@ -2497,19 +2497,19 @@ func (e DscFormatConst) String() string {
 		case 123:
 			return "Individual station automatic"
 default:
-		return fmt.Sprintf("DscFormatConst(%d)", uint8(e))
+		return fmt.Sprintf("DSCFormatConst(%d)", uint8(e))
 	}
 }
-type DscCategoryConst uint8
+type DSCCategoryConst uint8
 const (
-	Routine	DscCategoryConst = 100
-	Safety	DscCategoryConst = 108
-	Urgency	DscCategoryConst = 110
-	Distress_2	DscCategoryConst = 112
+	Routine	DSCCategoryConst = 100
+	Safety	DSCCategoryConst = 108
+	Urgency	DSCCategoryConst = 110
+	Distress_2	DSCCategoryConst = 112
 )
 
-func (e DscCategoryConst) GoString() string {return e.String() }
-func (e DscCategoryConst) String() string {
+func (e DSCCategoryConst) GoString() string {return e.String() }
+func (e DSCCategoryConst) String() string {
 	switch e {
 		case 100:
 			return "Routine"
@@ -2520,27 +2520,27 @@ func (e DscCategoryConst) String() string {
 		case 112:
 			return "Distress"
 default:
-		return fmt.Sprintf("DscCategoryConst(%d)", uint8(e))
+		return fmt.Sprintf("DSCCategoryConst(%d)", uint8(e))
 	}
 }
-type DscNatureConst uint8
+type DSCNatureConst uint8
 const (
-	Fire	DscNatureConst = 100
-	Flooding	DscNatureConst = 101
-	Collision	DscNatureConst = 102
-	Grounding	DscNatureConst = 103
-	Listing	DscNatureConst = 104
-	Sinking	DscNatureConst = 105
-	DisabledAndAdrift	DscNatureConst = 106
-	Undesignated	DscNatureConst = 107
-	AbandoningShip	DscNatureConst = 108
-	Piracy	DscNatureConst = 109
-	ManOverboard	DscNatureConst = 110
-	EpirbEmission	DscNatureConst = 112
+	Fire	DSCNatureConst = 100
+	Flooding	DSCNatureConst = 101
+	Collision	DSCNatureConst = 102
+	Grounding	DSCNatureConst = 103
+	Listing	DSCNatureConst = 104
+	Sinking	DSCNatureConst = 105
+	DisabledAndAdrift	DSCNatureConst = 106
+	Undesignated	DSCNatureConst = 107
+	AbandoningShip	DSCNatureConst = 108
+	Piracy	DSCNatureConst = 109
+	ManOverboard	DSCNatureConst = 110
+	EpirbEmission	DSCNatureConst = 112
 )
 
-func (e DscNatureConst) GoString() string {return e.String() }
-func (e DscNatureConst) String() string {
+func (e DSCNatureConst) GoString() string {return e.String() }
+func (e DSCNatureConst) String() string {
 	switch e {
 		case 100:
 			return "Fire"
@@ -2567,29 +2567,29 @@ func (e DscNatureConst) String() string {
 		case 112:
 			return "EPIRB emission"
 default:
-		return fmt.Sprintf("DscNatureConst(%d)", uint8(e))
+		return fmt.Sprintf("DSCNatureConst(%d)", uint8(e))
 	}
 }
-type DscFirstTelecommandConst uint8
+type DSCFirstTelecommandConst uint8
 const (
-	F3eG3eAllModesTp	DscFirstTelecommandConst = 100
-	F3eG3eDuplexTp	DscFirstTelecommandConst = 101
-	Polling	DscFirstTelecommandConst = 103
-	UnableToComply	DscFirstTelecommandConst = 104
-	EndOfCall	DscFirstTelecommandConst = 105
-	Data	DscFirstTelecommandConst = 106
-	J3eTp	DscFirstTelecommandConst = 109
-	DistressAcknowledgement	DscFirstTelecommandConst = 110
-	DistressRelay	DscFirstTelecommandConst = 112
-	F1bJ2bTtyFec	DscFirstTelecommandConst = 113
-	F1bJ2bTtyArq	DscFirstTelecommandConst = 115
-	Test	DscFirstTelecommandConst = 118
-	ShipPositionOrLocationRegistra	DscFirstTelecommandConst = 121
-	NoInformation	DscFirstTelecommandConst = 126
+	F3eG3eAllModesTp	DSCFirstTelecommandConst = 100
+	F3eG3eDuplexTp	DSCFirstTelecommandConst = 101
+	Polling	DSCFirstTelecommandConst = 103
+	UnableToComply	DSCFirstTelecommandConst = 104
+	EndOfCall	DSCFirstTelecommandConst = 105
+	Data	DSCFirstTelecommandConst = 106
+	J3eTp	DSCFirstTelecommandConst = 109
+	DistressAcknowledgement	DSCFirstTelecommandConst = 110
+	DistressRelay	DSCFirstTelecommandConst = 112
+	F1bJ2bTtyFec	DSCFirstTelecommandConst = 113
+	F1bJ2bTtyArq	DSCFirstTelecommandConst = 115
+	Test	DSCFirstTelecommandConst = 118
+	ShipPositionOrLocationRegistra	DSCFirstTelecommandConst = 121
+	NoInformation	DSCFirstTelecommandConst = 126
 )
 
-func (e DscFirstTelecommandConst) GoString() string {return e.String() }
-func (e DscFirstTelecommandConst) String() string {
+func (e DSCFirstTelecommandConst) GoString() string {return e.String() }
+func (e DSCFirstTelecommandConst) String() string {
 	switch e {
 		case 100:
 			return "F3E/G3E All modes TP"
@@ -2620,30 +2620,30 @@ func (e DscFirstTelecommandConst) String() string {
 		case 126:
 			return "No information"
 default:
-		return fmt.Sprintf("DscFirstTelecommandConst(%d)", uint8(e))
+		return fmt.Sprintf("DSCFirstTelecommandConst(%d)", uint8(e))
 	}
 }
-type DscSecondTelecommandConst uint8
+type DSCSecondTelecommandConst uint8
 const (
-	NoReasonGiven	DscSecondTelecommandConst = 100
-	CongestionAtMsc	DscSecondTelecommandConst = 101
-	Busy	DscSecondTelecommandConst = 102
-	QueueIndication	DscSecondTelecommandConst = 103
-	StationBarred	DscSecondTelecommandConst = 104
-	NoOperatorAvailable	DscSecondTelecommandConst = 105
-	OperatorTemporarilyUnavailable	DscSecondTelecommandConst = 106
-	EquipmentDisabled	DscSecondTelecommandConst = 107
-	UnableToUseProposedChannel	DscSecondTelecommandConst = 108
-	UnableToUseProposedMode	DscSecondTelecommandConst = 109
-	ShipsAndAircraftOfStatesNotPar_2	DscSecondTelecommandConst = 110
-	MedicalTransports	DscSecondTelecommandConst = 111
-	PayPhonePublicCallOffice	DscSecondTelecommandConst = 112
-	FaxData	DscSecondTelecommandConst = 113
-	NoInformation_2	DscSecondTelecommandConst = 126
+	NoReasonGiven	DSCSecondTelecommandConst = 100
+	CongestionAtMsc	DSCSecondTelecommandConst = 101
+	Busy	DSCSecondTelecommandConst = 102
+	QueueIndication	DSCSecondTelecommandConst = 103
+	StationBarred	DSCSecondTelecommandConst = 104
+	NoOperatorAvailable	DSCSecondTelecommandConst = 105
+	OperatorTemporarilyUnavailable	DSCSecondTelecommandConst = 106
+	EquipmentDisabled	DSCSecondTelecommandConst = 107
+	UnableToUseProposedChannel	DSCSecondTelecommandConst = 108
+	UnableToUseProposedMode	DSCSecondTelecommandConst = 109
+	ShipsAndAircraftOfStatesNotPar_2	DSCSecondTelecommandConst = 110
+	MedicalTransports	DSCSecondTelecommandConst = 111
+	PayPhonePublicCallOffice	DSCSecondTelecommandConst = 112
+	FaxData	DSCSecondTelecommandConst = 113
+	NoInformation_2	DSCSecondTelecommandConst = 126
 )
 
-func (e DscSecondTelecommandConst) GoString() string {return e.String() }
-func (e DscSecondTelecommandConst) String() string {
+func (e DSCSecondTelecommandConst) GoString() string {return e.String() }
+func (e DSCSecondTelecommandConst) String() string {
 	switch e {
 		case 100:
 			return "No reason given"
@@ -2676,22 +2676,22 @@ func (e DscSecondTelecommandConst) String() string {
 		case 126:
 			return "No information"
 default:
-		return fmt.Sprintf("DscSecondTelecommandConst(%d)", uint8(e))
+		return fmt.Sprintf("DSCSecondTelecommandConst(%d)", uint8(e))
 	}
 }
-type DscExpansionDataConst uint8
+type DSCExpansionDataConst uint8
 const (
-	EnhancedPosition	DscExpansionDataConst = 100
-	SourceAndDatumOfPosition	DscExpansionDataConst = 101
-	Sog	DscExpansionDataConst = 102
-	Cog	DscExpansionDataConst = 103
-	AdditionalStationIdentification	DscExpansionDataConst = 104
-	EnhancedGeographicArea	DscExpansionDataConst = 105
-	NumberOfPersonsOnBoard	DscExpansionDataConst = 106
+	EnhancedPosition	DSCExpansionDataConst = 100
+	SourceAndDatumOfPosition	DSCExpansionDataConst = 101
+	SOG	DSCExpansionDataConst = 102
+	COG	DSCExpansionDataConst = 103
+	AdditionalStationIdentification	DSCExpansionDataConst = 104
+	EnhancedGeographicArea	DSCExpansionDataConst = 105
+	NumberOfPersonsOnBoard	DSCExpansionDataConst = 106
 )
 
-func (e DscExpansionDataConst) GoString() string {return e.String() }
-func (e DscExpansionDataConst) String() string {
+func (e DSCExpansionDataConst) GoString() string {return e.String() }
+func (e DSCExpansionDataConst) String() string {
 	switch e {
 		case 100:
 			return "Enhanced position"
@@ -2708,18 +2708,18 @@ func (e DscExpansionDataConst) String() string {
 		case 106:
 			return "Number of persons on board"
 default:
-		return fmt.Sprintf("DscExpansionDataConst(%d)", uint8(e))
+		return fmt.Sprintf("DSCExpansionDataConst(%d)", uint8(e))
 	}
 }
-type SeatalkMessageIdConst uint8
+type SeatalkMessageIDConst uint8
 const (
-	Seatalk1Encoded	SeatalkMessageIdConst = 240
-	Display_2	SeatalkMessageIdConst = 140
-	PilotConfiguration	SeatalkMessageIdConst = 108
+	Seatalk1Encoded	SeatalkMessageIDConst = 240
+	Display_2	SeatalkMessageIDConst = 140
+	PilotConfiguration	SeatalkMessageIDConst = 108
 )
 
-func (e SeatalkMessageIdConst) GoString() string {return e.String() }
-func (e SeatalkMessageIdConst) String() string {
+func (e SeatalkMessageIDConst) GoString() string {return e.String() }
+func (e SeatalkMessageIDConst) String() string {
 	switch e {
 		case 240:
 			return "Seatalk 1 Encoded"
@@ -2728,7 +2728,7 @@ func (e SeatalkMessageIdConst) String() string {
 		case 108:
 			return "Pilot Configuration"
 default:
-		return fmt.Sprintf("SeatalkMessageIdConst(%d)", uint8(e))
+		return fmt.Sprintf("SeatalkMessageIDConst(%d)", uint8(e))
 	}
 }
 type SeatalkCommandConst uint8
@@ -2823,8 +2823,8 @@ default:
 type Seatalk1CommandConst uint8
 const (
 	DepthBelowTransducer	Seatalk1CommandConst = 0
-	EquipmentId	Seatalk1CommandConst = 1
-	EngineRpmAndPitch	Seatalk1CommandConst = 5
+	EquipmentID	Seatalk1CommandConst = 1
+	EngineRPMAndPitch	Seatalk1CommandConst = 5
 	ApparentWindAngle	Seatalk1CommandConst = 16
 	ApparentWindSpeed	Seatalk1CommandConst = 17
 	SpeedThroughWater	Seatalk1CommandConst = 32
@@ -2836,14 +2836,14 @@ const (
 	SpeedThroughWaterWithAverage	Seatalk1CommandConst = 38
 	WaterTemperature	Seatalk1CommandConst = 39
 	SetLampIntensity	Seatalk1CommandConst = 48
-	CancelMobManOverBoardCondition	Seatalk1CommandConst = 54
+	CancelMOBManOverBoardCondition	Seatalk1CommandConst = 54
 	CodelockData	Seatalk1CommandConst = 56
 	LatPosition	Seatalk1CommandConst = 80
 	LonPosition	Seatalk1CommandConst = 81
 	SpeedOverGround	Seatalk1CommandConst = 82
-	CourseOverGroundCog	Seatalk1CommandConst = 83
+	CourseOverGroundCOG	Seatalk1CommandConst = 83
 	GmtTime	Seatalk1CommandConst = 84
-	TrackKeystrokeOnGpsUnit	Seatalk1CommandConst = 85
+	TrackKeystrokeOnGPSUnit	Seatalk1CommandConst = 85
 	Date	Seatalk1CommandConst = 86
 	SatInfo	Seatalk1CommandConst = 87
 	LatLonRawUnfiltered	Seatalk1CommandConst = 88
@@ -2852,8 +2852,8 @@ const (
 	SelectFathomDisplayUnitsForDep	Seatalk1CommandConst = 101
 	WindAlarm	Seatalk1CommandConst = 102
 	AlarmAcknowledgmentKeystroke	Seatalk1CommandConst = 104
-	SecondEquipmentIdDatagram	Seatalk1CommandConst = 108
-	MobManOverBoard	Seatalk1CommandConst = 110
+	SecondEquipmentIDDatagram	Seatalk1CommandConst = 108
+	MOBManOverBoard	Seatalk1CommandConst = 110
 	KeystrokeOnRaymarineA25006St60	Seatalk1CommandConst = 112
 	SetLampIntensity_2	Seatalk1CommandConst = 128
 	SentByCourseComputerDuringSetu	Seatalk1CommandConst = 129
@@ -2877,7 +2877,7 @@ const (
 	DestinationWaypointInfo	Seatalk1CommandConst = 161
 	ArrivalInfo	Seatalk1CommandConst = 162
 	BroadcastQueryResponseToIdenti	Seatalk1CommandConst = 164
-	GpsAndDgpsInfo	Seatalk1CommandConst = 165
+	GPSAndDGPSInfo	Seatalk1CommandConst = 165
 	UnknownMeaning	Seatalk1CommandConst = 167
 	AlarmOnOffForGuard	Seatalk1CommandConst = 168
 	AlarmOnOffForGuard_2	Seatalk1CommandConst = 171
@@ -3008,20 +3008,6 @@ default:
 		return fmt.Sprintf("Seatalk1CommandConst(%d)", uint8(e))
 	}
 }
-type Seatalk1AttConst uint8
-const (
-	DepthBelowTransducer_2	Seatalk1AttConst = 0
-)
-
-func (e Seatalk1AttConst) GoString() string {return e.String() }
-func (e Seatalk1AttConst) String() string {
-	switch e {
-		case 0:
-			return "Depth Below Transducer"
-default:
-		return fmt.Sprintf("Seatalk1AttConst(%d)", uint8(e))
-	}
-}
 type SeatalkAlarmStatusConst uint8
 const (
 	AlarmConditionNotMet	SeatalkAlarmStatusConst = 0
@@ -3042,124 +3028,124 @@ default:
 		return fmt.Sprintf("SeatalkAlarmStatusConst(%d)", uint8(e))
 	}
 }
-type SeatalkAlarmIdConst uint8
+type SeatalkAlarmIDConst uint8
 const (
-	NoAlarm	SeatalkAlarmIdConst = 0
-	ShallowDepth	SeatalkAlarmIdConst = 1
-	DeepDepth	SeatalkAlarmIdConst = 2
-	ShallowAnchor	SeatalkAlarmIdConst = 3
-	DeepAnchor	SeatalkAlarmIdConst = 4
-	OffCourse	SeatalkAlarmIdConst = 5
-	AwaHigh	SeatalkAlarmIdConst = 6
-	AwaLow	SeatalkAlarmIdConst = 7
-	AwsHigh	SeatalkAlarmIdConst = 8
-	AwsLow	SeatalkAlarmIdConst = 9
-	TwaHigh	SeatalkAlarmIdConst = 10
-	TwaLow	SeatalkAlarmIdConst = 11
-	TwsHigh	SeatalkAlarmIdConst = 12
-	TwsLow	SeatalkAlarmIdConst = 13
-	WpArrival	SeatalkAlarmIdConst = 14
-	BoatSpeedHigh	SeatalkAlarmIdConst = 15
-	BoatSpeedLow	SeatalkAlarmIdConst = 16
-	SeaTemperatureHigh	SeatalkAlarmIdConst = 17
-	SeaTemperatureLow	SeatalkAlarmIdConst = 18
-	PilotWatch	SeatalkAlarmIdConst = 19
-	PilotOffCourse	SeatalkAlarmIdConst = 20
-	PilotWindShift	SeatalkAlarmIdConst = 21
-	PilotLowBattery	SeatalkAlarmIdConst = 22
-	PilotLastMinuteOfWatch	SeatalkAlarmIdConst = 23
-	PilotNoNmeaData	SeatalkAlarmIdConst = 24
-	PilotLargeXte	SeatalkAlarmIdConst = 25
-	PilotNmeaDataerror	SeatalkAlarmIdConst = 26
-	PilotCuDisconnected	SeatalkAlarmIdConst = 27
-	PilotAutoRelease	SeatalkAlarmIdConst = 28
-	PilotWayPointAdvance	SeatalkAlarmIdConst = 29
-	PilotDriveStopped	SeatalkAlarmIdConst = 30
-	PilotTypeUnspecified	SeatalkAlarmIdConst = 31
-	PilotCalibrationRequired	SeatalkAlarmIdConst = 32
-	PilotLastHeading	SeatalkAlarmIdConst = 33
-	PilotNoPilot	SeatalkAlarmIdConst = 34
-	PilotRouteComplete	SeatalkAlarmIdConst = 35
-	PilotVariableText	SeatalkAlarmIdConst = 36
-	GpsFailure	SeatalkAlarmIdConst = 37
-	Mob	SeatalkAlarmIdConst = 38
-	Seatalk1Anchor	SeatalkAlarmIdConst = 39
-	PilotSwappedMotorPower	SeatalkAlarmIdConst = 40
-	PilotStandbyTooFastToFish	SeatalkAlarmIdConst = 41
-	PilotNoGpsFix	SeatalkAlarmIdConst = 42
-	PilotNoGpsCog	SeatalkAlarmIdConst = 43
-	PilotStartUp	SeatalkAlarmIdConst = 44
-	PilotTooSlow	SeatalkAlarmIdConst = 45
-	PilotNoCompass	SeatalkAlarmIdConst = 46
-	PilotRateGyroFault	SeatalkAlarmIdConst = 47
-	PilotCurrentLimit	SeatalkAlarmIdConst = 48
-	PilotWayPointAdvancePort	SeatalkAlarmIdConst = 49
-	PilotWayPointAdvanceStbd	SeatalkAlarmIdConst = 50
-	PilotNoWindData	SeatalkAlarmIdConst = 51
-	PilotNoSpeedData	SeatalkAlarmIdConst = 52
-	PilotSeatalkFail1	SeatalkAlarmIdConst = 53
-	PilotSeatalkFail2	SeatalkAlarmIdConst = 54
-	PilotWarningTooFastToFish	SeatalkAlarmIdConst = 55
-	PilotAutoDocksideFail	SeatalkAlarmIdConst = 56
-	PilotTurnTooFast	SeatalkAlarmIdConst = 57
-	PilotNoNavData	SeatalkAlarmIdConst = 58
-	PilotLostWaypointData	SeatalkAlarmIdConst = 59
-	PilotEepromCorrupt	SeatalkAlarmIdConst = 60
-	PilotRudderFeedbackFail	SeatalkAlarmIdConst = 61
-	PilotAutolearnFail1	SeatalkAlarmIdConst = 62
-	PilotAutolearnFail2	SeatalkAlarmIdConst = 63
-	PilotAutolearnFail3	SeatalkAlarmIdConst = 64
-	PilotAutolearnFail4	SeatalkAlarmIdConst = 65
-	PilotAutolearnFail5	SeatalkAlarmIdConst = 66
-	PilotAutolearnFail6	SeatalkAlarmIdConst = 67
-	PilotWarningCalRequired	SeatalkAlarmIdConst = 68
-	PilotWarningOffcourse	SeatalkAlarmIdConst = 69
-	PilotWarningXte	SeatalkAlarmIdConst = 70
-	PilotWarningWindShift	SeatalkAlarmIdConst = 71
-	PilotWarningDriveShort	SeatalkAlarmIdConst = 72
-	PilotWarningClutchShort	SeatalkAlarmIdConst = 73
-	PilotWarningSolenoidShort	SeatalkAlarmIdConst = 74
-	PilotJoystickFault	SeatalkAlarmIdConst = 75
-	PilotNoJoystickData	SeatalkAlarmIdConst = 76
-	PilotInvalidCommand	SeatalkAlarmIdConst = 80
-	AisTxMalfunction	SeatalkAlarmIdConst = 81
-	AisAntennaVswrFault	SeatalkAlarmIdConst = 82
-	AisRxChannel1Malfunction	SeatalkAlarmIdConst = 83
-	AisRxChannel2Malfunction	SeatalkAlarmIdConst = 84
-	AisNoSensorPositionInUse	SeatalkAlarmIdConst = 85
-	AisNoValidSogInformation	SeatalkAlarmIdConst = 86
-	AisNoValidCogInformation	SeatalkAlarmIdConst = 87
-	Ais12VAlarm	SeatalkAlarmIdConst = 88
-	Ais6VAlarm	SeatalkAlarmIdConst = 89
-	AisNoiseThresholdExceededChann	SeatalkAlarmIdConst = 90
-	AisNoiseThresholdExceededChann_2	SeatalkAlarmIdConst = 91
-	AisTransmitterPaFault	SeatalkAlarmIdConst = 92
-	Ais3V3Alarm	SeatalkAlarmIdConst = 93
-	AisRxChannel70Malfunction	SeatalkAlarmIdConst = 94
-	AisHeadingLostInvalid	SeatalkAlarmIdConst = 95
-	AisInternalGpsLost	SeatalkAlarmIdConst = 96
-	AisNoSensorPosition	SeatalkAlarmIdConst = 97
-	AisLockFailure	SeatalkAlarmIdConst = 98
-	AisInternalGgaTimeout	SeatalkAlarmIdConst = 99
-	AisProtocolStackRestart	SeatalkAlarmIdConst = 100
-	PilotNoIpsCommunications	SeatalkAlarmIdConst = 101
-	PilotPowerOnOrSleepSwitchReset	SeatalkAlarmIdConst = 102
-	PilotUnexpectedResetWhileEngag	SeatalkAlarmIdConst = 103
-	AisDangerousTarget	SeatalkAlarmIdConst = 104
-	AisLostTarget	SeatalkAlarmIdConst = 105
-	AisSafetyRelatedMessageUsedToS	SeatalkAlarmIdConst = 106
-	AisConnectionLost	SeatalkAlarmIdConst = 107
-	NoFix	SeatalkAlarmIdConst = 108
-	PilotCompassCalibrationComplet	SeatalkAlarmIdConst = 112
-	AisTransmitterDisabledMmsiRequ	SeatalkAlarmIdConst = 113
-	BluetoothDeviceLowBattery	SeatalkAlarmIdConst = 122
-	BluetoothDeviceSleepMode	SeatalkAlarmIdConst = 123
-	BluetoothDeviceHighBatteryTemp	SeatalkAlarmIdConst = 124
-	BluetoothDeviceLostCommunicati	SeatalkAlarmIdConst = 125
+	NoAlarm	SeatalkAlarmIDConst = 0
+	ShallowDepth	SeatalkAlarmIDConst = 1
+	DeepDepth	SeatalkAlarmIDConst = 2
+	ShallowAnchor	SeatalkAlarmIDConst = 3
+	DeepAnchor	SeatalkAlarmIDConst = 4
+	OffCourse	SeatalkAlarmIDConst = 5
+	AwaHigh	SeatalkAlarmIDConst = 6
+	AwaLow	SeatalkAlarmIDConst = 7
+	AwsHigh	SeatalkAlarmIDConst = 8
+	AwsLow	SeatalkAlarmIDConst = 9
+	TwaHigh	SeatalkAlarmIDConst = 10
+	TwaLow	SeatalkAlarmIDConst = 11
+	TwsHigh	SeatalkAlarmIDConst = 12
+	TwsLow	SeatalkAlarmIDConst = 13
+	WPArrival	SeatalkAlarmIDConst = 14
+	BoatSpeedHigh	SeatalkAlarmIDConst = 15
+	BoatSpeedLow	SeatalkAlarmIDConst = 16
+	SeaTemperatureHigh	SeatalkAlarmIDConst = 17
+	SeaTemperatureLow	SeatalkAlarmIDConst = 18
+	PilotWatch	SeatalkAlarmIDConst = 19
+	PilotOffCourse	SeatalkAlarmIDConst = 20
+	PilotWindShift	SeatalkAlarmIDConst = 21
+	PilotLowBattery	SeatalkAlarmIDConst = 22
+	PilotLastMinuteOfWatch	SeatalkAlarmIDConst = 23
+	PilotNoNMEAData	SeatalkAlarmIDConst = 24
+	PilotLargeXTE	SeatalkAlarmIDConst = 25
+	PilotNMEADataerror	SeatalkAlarmIDConst = 26
+	PilotCuDisconnected	SeatalkAlarmIDConst = 27
+	PilotAutoRelease	SeatalkAlarmIDConst = 28
+	PilotWayPointAdvance	SeatalkAlarmIDConst = 29
+	PilotDriveStopped	SeatalkAlarmIDConst = 30
+	PilotTypeUnspecified	SeatalkAlarmIDConst = 31
+	PilotCalibrationRequired	SeatalkAlarmIDConst = 32
+	PilotLastHeading	SeatalkAlarmIDConst = 33
+	PilotNoPilot	SeatalkAlarmIDConst = 34
+	PilotRouteComplete	SeatalkAlarmIDConst = 35
+	PilotVariableText	SeatalkAlarmIDConst = 36
+	GPSFailure	SeatalkAlarmIDConst = 37
+	MOB	SeatalkAlarmIDConst = 38
+	Seatalk1Anchor	SeatalkAlarmIDConst = 39
+	PilotSwappedMotorPower	SeatalkAlarmIDConst = 40
+	PilotStandbyTooFastToFish	SeatalkAlarmIDConst = 41
+	PilotNoGPSFix	SeatalkAlarmIDConst = 42
+	PilotNoGPSCOG	SeatalkAlarmIDConst = 43
+	PilotStartUp	SeatalkAlarmIDConst = 44
+	PilotTooSlow	SeatalkAlarmIDConst = 45
+	PilotNoCompass	SeatalkAlarmIDConst = 46
+	PilotRateGyroFault	SeatalkAlarmIDConst = 47
+	PilotCurrentLimit	SeatalkAlarmIDConst = 48
+	PilotWayPointAdvancePort	SeatalkAlarmIDConst = 49
+	PilotWayPointAdvanceStbd	SeatalkAlarmIDConst = 50
+	PilotNoWindData	SeatalkAlarmIDConst = 51
+	PilotNoSpeedData	SeatalkAlarmIDConst = 52
+	PilotSeatalkFail1	SeatalkAlarmIDConst = 53
+	PilotSeatalkFail2	SeatalkAlarmIDConst = 54
+	PilotWarningTooFastToFish	SeatalkAlarmIDConst = 55
+	PilotAutoDocksideFail	SeatalkAlarmIDConst = 56
+	PilotTurnTooFast	SeatalkAlarmIDConst = 57
+	PilotNoNavData	SeatalkAlarmIDConst = 58
+	PilotLostWaypointData	SeatalkAlarmIDConst = 59
+	PilotEepromCorrupt	SeatalkAlarmIDConst = 60
+	PilotRudderFeedbackFail	SeatalkAlarmIDConst = 61
+	PilotAutolearnFail1	SeatalkAlarmIDConst = 62
+	PilotAutolearnFail2	SeatalkAlarmIDConst = 63
+	PilotAutolearnFail3	SeatalkAlarmIDConst = 64
+	PilotAutolearnFail4	SeatalkAlarmIDConst = 65
+	PilotAutolearnFail5	SeatalkAlarmIDConst = 66
+	PilotAutolearnFail6	SeatalkAlarmIDConst = 67
+	PilotWarningCalRequired	SeatalkAlarmIDConst = 68
+	PilotWarningOffcourse	SeatalkAlarmIDConst = 69
+	PilotWarningXTE	SeatalkAlarmIDConst = 70
+	PilotWarningWindShift	SeatalkAlarmIDConst = 71
+	PilotWarningDriveShort	SeatalkAlarmIDConst = 72
+	PilotWarningClutchShort	SeatalkAlarmIDConst = 73
+	PilotWarningSolenoidShort	SeatalkAlarmIDConst = 74
+	PilotJoystickFault	SeatalkAlarmIDConst = 75
+	PilotNoJoystickData	SeatalkAlarmIDConst = 76
+	PilotInvalidCommand	SeatalkAlarmIDConst = 80
+	AISTxMalfunction	SeatalkAlarmIDConst = 81
+	AISAntennaVswrFault	SeatalkAlarmIDConst = 82
+	AISRxChannel1Malfunction	SeatalkAlarmIDConst = 83
+	AISRxChannel2Malfunction	SeatalkAlarmIDConst = 84
+	AISNoSensorPositionInUse	SeatalkAlarmIDConst = 85
+	AISNoValidSOGInformation	SeatalkAlarmIDConst = 86
+	AISNoValidCOGInformation	SeatalkAlarmIDConst = 87
+	AIS12VAlarm	SeatalkAlarmIDConst = 88
+	AIS6VAlarm	SeatalkAlarmIDConst = 89
+	AISNoiseThresholdExceededChann	SeatalkAlarmIDConst = 90
+	AISNoiseThresholdExceededChann_2	SeatalkAlarmIDConst = 91
+	AISTransmitterPaFault	SeatalkAlarmIDConst = 92
+	AIS3V3Alarm	SeatalkAlarmIDConst = 93
+	AISRxChannel70Malfunction	SeatalkAlarmIDConst = 94
+	AISHeadingLostInvalid	SeatalkAlarmIDConst = 95
+	AISInternalGPSLost	SeatalkAlarmIDConst = 96
+	AISNoSensorPosition	SeatalkAlarmIDConst = 97
+	AISLockFailure	SeatalkAlarmIDConst = 98
+	AISInternalGgaTimeout	SeatalkAlarmIDConst = 99
+	AISProtocolStackRestart	SeatalkAlarmIDConst = 100
+	PilotNoIpsCommunications	SeatalkAlarmIDConst = 101
+	PilotPowerOnOrSleepSwitchReset	SeatalkAlarmIDConst = 102
+	PilotUnexpectedResetWhileEngag	SeatalkAlarmIDConst = 103
+	AISDangerousTarget	SeatalkAlarmIDConst = 104
+	AISLostTarget	SeatalkAlarmIDConst = 105
+	AISSafetyRelatedMessageUsedToS	SeatalkAlarmIDConst = 106
+	AISConnectionLost	SeatalkAlarmIDConst = 107
+	NoFix	SeatalkAlarmIDConst = 108
+	PilotCompassCalibrationComplet	SeatalkAlarmIDConst = 112
+	AISTransmitterDisabledMMSIRequ	SeatalkAlarmIDConst = 113
+	BluetoothDeviceLowBattery	SeatalkAlarmIDConst = 122
+	BluetoothDeviceSleepMode	SeatalkAlarmIDConst = 123
+	BluetoothDeviceHighBatteryTemp	SeatalkAlarmIDConst = 124
+	BluetoothDeviceLostCommunicati	SeatalkAlarmIDConst = 125
 )
 
-func (e SeatalkAlarmIdConst) GoString() string {return e.String() }
-func (e SeatalkAlarmIdConst) String() string {
+func (e SeatalkAlarmIDConst) GoString() string {return e.String() }
+func (e SeatalkAlarmIDConst) String() string {
 	switch e {
 		case 0:
 			return "No Alarm"
@@ -3386,7 +3372,7 @@ func (e SeatalkAlarmIdConst) String() string {
 		case 125:
 			return "Bluetooth Device Lost Communications"
 default:
-		return fmt.Sprintf("SeatalkAlarmIdConst(%d)", uint8(e))
+		return fmt.Sprintf("SeatalkAlarmIDConst(%d)", uint8(e))
 	}
 }
 type SeatalkAlarmGroupConst uint8
@@ -3395,7 +3381,7 @@ const (
 	Autopilot	SeatalkAlarmGroupConst = 1
 	Radar	SeatalkAlarmGroupConst = 2
 	ChartPlotter	SeatalkAlarmGroupConst = 3
-	Ais	SeatalkAlarmGroupConst = 4
+	AIS	SeatalkAlarmGroupConst = 4
 	BluetoothAccessory	SeatalkAlarmGroupConst = 5
 )
 
@@ -3521,7 +3507,7 @@ const (
 	Weather	EntertainmentSourceConst = 3
 	Dab	EntertainmentSourceConst = 4
 	Aux	EntertainmentSourceConst = 5
-	Usb	EntertainmentSourceConst = 6
+	USB	EntertainmentSourceConst = 6
 	Cd	EntertainmentSourceConst = 7
 	Mp3	EntertainmentSourceConst = 8
 	AppleIos	EntertainmentSourceConst = 9
@@ -3883,23 +3869,23 @@ default:
 		return fmt.Sprintf("EntertainmentChannelConst(%d)", uint8(e))
 	}
 }
-type EntertainmentEqConst uint8
+type EntertainmentEQConst uint8
 const (
-	Flat	EntertainmentEqConst = 0
-	Rock	EntertainmentEqConst = 1
-	Hall	EntertainmentEqConst = 2
-	Jazz	EntertainmentEqConst = 3
-	Pop	EntertainmentEqConst = 4
-	Live	EntertainmentEqConst = 5
-	Classic	EntertainmentEqConst = 6
-	Vocal	EntertainmentEqConst = 7
-	Arena	EntertainmentEqConst = 8
-	Cinema	EntertainmentEqConst = 9
-	Custom	EntertainmentEqConst = 10
+	Flat	EntertainmentEQConst = 0
+	Rock	EntertainmentEQConst = 1
+	Hall	EntertainmentEQConst = 2
+	Jazz	EntertainmentEQConst = 3
+	Pop	EntertainmentEQConst = 4
+	Live	EntertainmentEQConst = 5
+	Classic	EntertainmentEQConst = 6
+	Vocal	EntertainmentEQConst = 7
+	Arena	EntertainmentEQConst = 8
+	Cinema	EntertainmentEQConst = 9
+	Custom	EntertainmentEQConst = 10
 )
 
-func (e EntertainmentEqConst) GoString() string {return e.String() }
-func (e EntertainmentEqConst) String() string {
+func (e EntertainmentEQConst) GoString() string {return e.String() }
+func (e EntertainmentEQConst) String() string {
 	switch e {
 		case 0:
 			return "Flat"
@@ -3924,7 +3910,7 @@ func (e EntertainmentEqConst) String() string {
 		case 10:
 			return "Custom"
 default:
-		return fmt.Sprintf("EntertainmentEqConst(%d)", uint8(e))
+		return fmt.Sprintf("EntertainmentEQConst(%d)", uint8(e))
 	}
 }
 type EntertainmentFilterConst uint8
@@ -4074,32 +4060,32 @@ default:
 		return fmt.Sprintf("AlertStateConst(%d)", uint8(e))
 	}
 }
-type AlertLanguageIdConst uint8
+type AlertLanguageIDConst uint8
 const (
-	EnglishUs	AlertLanguageIdConst = 0
-	EnglishUk	AlertLanguageIdConst = 1
-	Arabic	AlertLanguageIdConst = 2
-	ChineseSimplified	AlertLanguageIdConst = 3
-	Croatian	AlertLanguageIdConst = 4
-	Danish	AlertLanguageIdConst = 5
-	Dutch	AlertLanguageIdConst = 6
-	Finnish	AlertLanguageIdConst = 7
-	French	AlertLanguageIdConst = 8
-	German	AlertLanguageIdConst = 9
-	Greek	AlertLanguageIdConst = 10
-	Italian	AlertLanguageIdConst = 11
-	Japanese	AlertLanguageIdConst = 12
-	Korean	AlertLanguageIdConst = 13
-	Norwegian	AlertLanguageIdConst = 14
-	Polish	AlertLanguageIdConst = 15
-	Portuguese	AlertLanguageIdConst = 16
-	Russian	AlertLanguageIdConst = 17
-	Spanish	AlertLanguageIdConst = 18
-	Swedish	AlertLanguageIdConst = 19
+	EnglishUs	AlertLanguageIDConst = 0
+	EnglishUk	AlertLanguageIDConst = 1
+	Arabic	AlertLanguageIDConst = 2
+	ChineseSimplified	AlertLanguageIDConst = 3
+	Croatian	AlertLanguageIDConst = 4
+	Danish	AlertLanguageIDConst = 5
+	Dutch	AlertLanguageIDConst = 6
+	Finnish	AlertLanguageIDConst = 7
+	French	AlertLanguageIDConst = 8
+	German	AlertLanguageIDConst = 9
+	Greek	AlertLanguageIDConst = 10
+	Italian	AlertLanguageIDConst = 11
+	Japanese	AlertLanguageIDConst = 12
+	Korean	AlertLanguageIDConst = 13
+	Norwegian	AlertLanguageIDConst = 14
+	Polish	AlertLanguageIDConst = 15
+	Portuguese	AlertLanguageIDConst = 16
+	Russian	AlertLanguageIDConst = 17
+	Spanish	AlertLanguageIDConst = 18
+	Swedish	AlertLanguageIDConst = 19
 )
 
-func (e AlertLanguageIdConst) GoString() string {return e.String() }
-func (e AlertLanguageIdConst) String() string {
+func (e AlertLanguageIDConst) GoString() string {return e.String() }
+func (e AlertLanguageIDConst) String() string {
 	switch e {
 		case 0:
 			return "English (US)"
@@ -4142,7 +4128,7 @@ func (e AlertLanguageIdConst) String() string {
 		case 19:
 			return "Swedish"
 default:
-		return fmt.Sprintf("AlertLanguageIdConst(%d)", uint8(e))
+		return fmt.Sprintf("AlertLanguageIDConst(%d)", uint8(e))
 	}
 }
 type AlertResponseCommandConst uint8
@@ -4379,21 +4365,21 @@ default:
 		return fmt.Sprintf("ParameterFieldConst(%d)", uint8(e))
 	}
 }
-type PgnListFunctionConst uint8
+type PGNListFunctionConst uint8
 const (
-	TransmitPgnList	PgnListFunctionConst = 0
-	ReceivePgnList	PgnListFunctionConst = 1
+	TransmitPGNList	PGNListFunctionConst = 0
+	ReceivePGNList	PGNListFunctionConst = 1
 )
 
-func (e PgnListFunctionConst) GoString() string {return e.String() }
-func (e PgnListFunctionConst) String() string {
+func (e PGNListFunctionConst) GoString() string {return e.String() }
+func (e PGNListFunctionConst) String() string {
 	switch e {
 		case 0:
 			return "Transmit PGN list"
 		case 1:
 			return "Receive PGN list"
 default:
-		return fmt.Sprintf("PgnListFunctionConst(%d)", uint8(e))
+		return fmt.Sprintf("PGNListFunctionConst(%d)", uint8(e))
 	}
 }
 type FusionCommandConst uint8
@@ -4494,21 +4480,21 @@ default:
 		return fmt.Sprintf("SeatalkKeystrokeConst(%d)", uint8(e))
 	}
 }
-type SeatalkDeviceIdConst uint8
+type SeatalkDeviceIDConst uint8
 const (
-	S100	SeatalkDeviceIdConst = 3
-	CourseComputer	SeatalkDeviceIdConst = 5
+	S100	SeatalkDeviceIDConst = 3
+	CourseComputer	SeatalkDeviceIDConst = 5
 )
 
-func (e SeatalkDeviceIdConst) GoString() string {return e.String() }
-func (e SeatalkDeviceIdConst) String() string {
+func (e SeatalkDeviceIDConst) GoString() string {return e.String() }
+func (e SeatalkDeviceIDConst) String() string {
 	switch e {
 		case 3:
 			return "S100"
 		case 5:
 			return "Course Computer"
 default:
-		return fmt.Sprintf("SeatalkDeviceIdConst(%d)", uint8(e))
+		return fmt.Sprintf("SeatalkDeviceIDConst(%d)", uint8(e))
 	}
 }
 type SeatalkNetworkGroupConst uint8
@@ -4656,23 +4642,6 @@ default:
 		return fmt.Sprintf("AirmarTemperatureInstanceConst(%d)", uint8(e))
 	}
 }
-type AirmarFilterConst uint8
-const (
-	NoFilter	AirmarFilterConst = 0
-	BasicIirFilter	AirmarFilterConst = 1
-)
-
-func (e AirmarFilterConst) GoString() string {return e.String() }
-func (e AirmarFilterConst) String() string {
-	switch e {
-		case 0:
-			return "No filter"
-		case 1:
-			return "Basic IIR filter"
-default:
-		return fmt.Sprintf("AirmarFilterConst(%d)", uint8(e))
-	}
-}
 type ControllerStateConst uint8
 const (
 	ErrorActive	ControllerStateConst = 0
@@ -4710,16 +4679,16 @@ default:
 		return fmt.Sprintf("EquipmentStatusConst(%d)", uint8(e))
 	}
 }
-type MobStatusConst uint8
+type MOBStatusConst uint8
 const (
-	MobEmitterActivated	MobStatusConst = 0
-	ManualOnBoardMobButtonActivati	MobStatusConst = 1
-	TestMode	MobStatusConst = 2
-	MobNotActive	MobStatusConst = 3
+	MOBEmitterActivated	MOBStatusConst = 0
+	ManualOnBoardMOBButtonActivati	MOBStatusConst = 1
+	TestMode	MOBStatusConst = 2
+	MOBNotActive	MOBStatusConst = 3
 )
 
-func (e MobStatusConst) GoString() string {return e.String() }
-func (e MobStatusConst) String() string {
+func (e MOBStatusConst) GoString() string {return e.String() }
+func (e MOBStatusConst) String() string {
 	switch e {
 		case 0:
 			return "MOB Emitter Activated"
@@ -4730,7 +4699,7 @@ func (e MobStatusConst) String() string {
 		case 3:
 			return "MOB Not Active"
 default:
-		return fmt.Sprintf("MobStatusConst(%d)", uint8(e))
+		return fmt.Sprintf("MOBStatusConst(%d)", uint8(e))
 	}
 }
 type LowBatteryConst uint8
@@ -4859,17 +4828,17 @@ default:
 		return fmt.Sprintf("TankTypeConst(%d)", uint8(e))
 	}
 }
-type DcSourceConst uint8
+type DCSourceConst uint8
 const (
-	Battery	DcSourceConst = 0
-	Alternator	DcSourceConst = 1
-	Convertor	DcSourceConst = 2
-	SolarCell	DcSourceConst = 3
-	WindGenerator	DcSourceConst = 4
+	Battery	DCSourceConst = 0
+	Alternator	DCSourceConst = 1
+	Convertor	DCSourceConst = 2
+	SolarCell	DCSourceConst = 3
+	WindGenerator	DCSourceConst = 4
 )
 
-func (e DcSourceConst) GoString() string {return e.String() }
-func (e DcSourceConst) String() string {
+func (e DCSourceConst) GoString() string {return e.String() }
+func (e DCSourceConst) String() string {
 	switch e {
 		case 0:
 			return "Battery"
@@ -4882,7 +4851,7 @@ func (e DcSourceConst) String() string {
 		case 4:
 			return "Wind generator"
 default:
-		return fmt.Sprintf("DcSourceConst(%d)", uint8(e))
+		return fmt.Sprintf("DCSourceConst(%d)", uint8(e))
 	}
 }
 type ChargerStateConst uint8
@@ -4975,7 +4944,7 @@ default:
 type InverterStateConst uint8
 const (
 	Invert	InverterStateConst = 0
-	AcPassthru	InverterStateConst = 1
+	ACPassthru	InverterStateConst = 1
 	LoadSense	InverterStateConst = 2
 	Fault_4	InverterStateConst = 3
 	Disabled_4	InverterStateConst = 4
@@ -5230,72 +5199,72 @@ default:
 		return fmt.Sprintf("DockingStatusConst(%d)", uint8(e))
 	}
 }
-type AisTypeConst uint8
+type AISTypeConst uint8
 const (
-	Sotdma	AisTypeConst = 0
-	Cs	AisTypeConst = 1
+	Sotdma	AISTypeConst = 0
+	Cs	AISTypeConst = 1
 )
 
-func (e AisTypeConst) GoString() string {return e.String() }
-func (e AisTypeConst) String() string {
+func (e AISTypeConst) GoString() string {return e.String() }
+func (e AISTypeConst) String() string {
 	switch e {
 		case 0:
 			return "SOTDMA"
 		case 1:
 			return "CS"
 default:
-		return fmt.Sprintf("AisTypeConst(%d)", uint8(e))
+		return fmt.Sprintf("AISTypeConst(%d)", uint8(e))
 	}
 }
-type AisBandConst uint8
+type AISBandConst uint8
 const (
-	Top525KhzOfMarineBand	AisBandConst = 0
-	EntireMarineBand	AisBandConst = 1
+	Top525KhzOfMarineBand	AISBandConst = 0
+	EntireMarineBand	AISBandConst = 1
 )
 
-func (e AisBandConst) GoString() string {return e.String() }
-func (e AisBandConst) String() string {
+func (e AISBandConst) GoString() string {return e.String() }
+func (e AISBandConst) String() string {
 	switch e {
 		case 0:
 			return "Top 525 kHz of marine band"
 		case 1:
 			return "Entire marine band"
 default:
-		return fmt.Sprintf("AisBandConst(%d)", uint8(e))
+		return fmt.Sprintf("AISBandConst(%d)", uint8(e))
 	}
 }
-type AisModeConst uint8
+type AISModeConst uint8
 const (
-	Autonomous_2	AisModeConst = 0
-	Assigned	AisModeConst = 1
+	Autonomous_2	AISModeConst = 0
+	Assigned	AISModeConst = 1
 )
 
-func (e AisModeConst) GoString() string {return e.String() }
-func (e AisModeConst) String() string {
+func (e AISModeConst) GoString() string {return e.String() }
+func (e AISModeConst) String() string {
 	switch e {
 		case 0:
 			return "Autonomous"
 		case 1:
 			return "Assigned"
 default:
-		return fmt.Sprintf("AisModeConst(%d)", uint8(e))
+		return fmt.Sprintf("AISModeConst(%d)", uint8(e))
 	}
 }
-type AisCommunicationStateConst uint8
+type AISCommunicationStateConst uint8
 const (
-	Sotdma_2	AisCommunicationStateConst = 0
-	Itdma	AisCommunicationStateConst = 1
+	Sotdma_2	AISCommunicationStateConst = 0
+	Itdma	AISCommunicationStateConst = 1
 )
 
-func (e AisCommunicationStateConst) GoString() string {return e.String() }
-func (e AisCommunicationStateConst) String() string {
+func (e AISCommunicationStateConst) GoString() string {return e.String() }
+func (e AISCommunicationStateConst) String() string {
 	switch e {
 		case 0:
 			return "SOTDMA"
 		case 1:
 			return "ITDMA"
 default:
-		return fmt.Sprintf("AisCommunicationStateConst(%d)", uint8(e))
+		return fmt.Sprintf("AISCommunicationStateConst(%d)", uint8(e))
 	}
 }
 type AvailableConst uint8
@@ -5358,16 +5327,16 @@ default:
 		return fmt.Sprintf("MarkTypeConst(%d)", uint8(e))
 	}
 }
-type GnssModeConst uint8
+type GNSSModeConst uint8
 const (
-	GnssModeConst1D	GnssModeConst = 0
-	GnssModeConst2D	GnssModeConst = 1
-	GnssModeConst3D	GnssModeConst = 2
-	Auto_4	GnssModeConst = 3
+	GNSSModeConst1D	GNSSModeConst = 0
+	GNSSModeConst2D	GNSSModeConst = 1
+	GNSSModeConst3D	GNSSModeConst = 2
+	Auto_4	GNSSModeConst = 3
 )
 
-func (e GnssModeConst) GoString() string {return e.String() }
-func (e GnssModeConst) String() string {
+func (e GNSSModeConst) GoString() string {return e.String() }
+func (e GNSSModeConst) String() string {
 	switch e {
 		case 0:
 			return "1D"
@@ -5378,7 +5347,7 @@ func (e GnssModeConst) String() string {
 		case 3:
 			return "Auto"
 default:
-		return fmt.Sprintf("GnssModeConst(%d)", uint8(e))
+		return fmt.Sprintf("GNSSModeConst(%d)", uint8(e))
 	}
 }
 type RangeResidualModeConst uint8
@@ -5398,15 +5367,15 @@ default:
 		return fmt.Sprintf("RangeResidualModeConst(%d)", uint8(e))
 	}
 }
-type DgnssModeConst uint8
+type DGNSSModeConst uint8
 const (
-	None_3	DgnssModeConst = 0
-	SbasIfAvailable	DgnssModeConst = 1
-	Sbas	DgnssModeConst = 3
+	None_3	DGNSSModeConst = 0
+	SBASIfAvailable	DGNSSModeConst = 1
+	SBAS	DGNSSModeConst = 3
 )
 
-func (e DgnssModeConst) GoString() string {return e.String() }
-func (e DgnssModeConst) String() string {
+func (e DGNSSModeConst) GoString() string {return e.String() }
+func (e DGNSSModeConst) String() string {
 	switch e {
 		case 0:
 			return "None"
@@ -5415,7 +5384,7 @@ func (e DgnssModeConst) String() string {
 		case 3:
 			return "SBAS"
 default:
-		return fmt.Sprintf("DgnssModeConst(%d)", uint8(e))
+		return fmt.Sprintf("DGNSSModeConst(%d)", uint8(e))
 	}
 }
 type SatelliteStatusConst uint8
@@ -5447,16 +5416,16 @@ default:
 		return fmt.Sprintf("SatelliteStatusConst(%d)", uint8(e))
 	}
 }
-type AisVersionConst uint8
+type AISVersionConst uint8
 const (
-	ItuRM13711	AisVersionConst = 0
-	ItuRM13713	AisVersionConst = 1
-	ItuRM13715	AisVersionConst = 2
-	ItuRM1371FutureEdition	AisVersionConst = 3
+	ItuRM13711	AISVersionConst = 0
+	ItuRM13713	AISVersionConst = 1
+	ItuRM13715	AISVersionConst = 2
+	ItuRM1371FutureEdition	AISVersionConst = 3
 )
 
-func (e AisVersionConst) GoString() string {return e.String() }
-func (e AisVersionConst) String() string {
+func (e AISVersionConst) GoString() string {return e.String() }
+func (e AISVersionConst) String() string {
 	switch e {
 		case 0:
 			return "ITU-R M.1371-1"
@@ -5467,7 +5436,7 @@ func (e AisVersionConst) String() string {
 		case 3:
 			return "ITU-R M.1371 future edition"
 default:
-		return fmt.Sprintf("AisVersionConst(%d)", uint8(e))
+		return fmt.Sprintf("AISVersionConst(%d)", uint8(e))
 	}
 }
 type TideConst uint8
@@ -5522,16 +5491,16 @@ default:
 		return fmt.Sprintf("WatermakerStateConst(%d)", uint8(e))
 	}
 }
-type EntertainmentIdTypeConst uint8
+type EntertainmentIDTypeConst uint8
 const (
-	Group	EntertainmentIdTypeConst = 0
-	File_3	EntertainmentIdTypeConst = 1
-	EncryptedGroup	EntertainmentIdTypeConst = 2
-	EncryptedFile	EntertainmentIdTypeConst = 3
+	Group	EntertainmentIDTypeConst = 0
+	File_3	EntertainmentIDTypeConst = 1
+	EncryptedGroup	EntertainmentIDTypeConst = 2
+	EncryptedFile	EntertainmentIDTypeConst = 3
 )
 
-func (e EntertainmentIdTypeConst) GoString() string {return e.String() }
-func (e EntertainmentIdTypeConst) String() string {
+func (e EntertainmentIDTypeConst) GoString() string {return e.String() }
+func (e EntertainmentIDTypeConst) String() string {
 	switch e {
 		case 0:
 			return "Group"
@@ -5542,7 +5511,7 @@ func (e EntertainmentIdTypeConst) String() string {
 		case 3:
 			return "Encrypted file"
 default:
-		return fmt.Sprintf("EntertainmentIdTypeConst(%d)", uint8(e))
+		return fmt.Sprintf("EntertainmentIDTypeConst(%d)", uint8(e))
 	}
 }
 type EntertainmentDefaultSettingsConst uint8
@@ -5767,7 +5736,7 @@ default:
 }
 type SimnetDeviceModelConst uint8
 const (
-	Ac	SimnetDeviceModelConst = 0
+	AC	SimnetDeviceModelConst = 0
 	OtherDevice	SimnetDeviceModelConst = 1
 	Nac	SimnetDeviceModelConst = 100
 )
@@ -5973,11 +5942,11 @@ const (
 	Tdop	NavicoDataTypeConst = 5
 	Pdop	NavicoDataTypeConst = 6
 	GeoidalSeperation	NavicoDataTypeConst = 7
-	Cog_2	NavicoDataTypeConst = 8
+	COG_2	NavicoDataTypeConst = 8
 	PositionQuality	NavicoDataTypeConst = 9
 	PositionIntegrity	NavicoDataTypeConst = 10
 	SatsInView	NavicoDataTypeConst = 11
-	WaasStatus	NavicoDataTypeConst = 12
+	WAASStatus	NavicoDataTypeConst = 12
 	Bearing	NavicoDataTypeConst = 13
 	Course	NavicoDataTypeConst = 14
 	CdiGraphic	NavicoDataTypeConst = 15
@@ -5998,14 +5967,14 @@ const (
 	TripTime	NavicoDataTypeConst = 30
 	Date_2	NavicoDataTypeConst = 31
 	Time	NavicoDataTypeConst = 32
-	UtcDate	NavicoDataTypeConst = 33
-	UtcTime	NavicoDataTypeConst = 34
+	UTCDate	NavicoDataTypeConst = 33
+	UTCTime	NavicoDataTypeConst = 34
 	LocalTimeOffset	NavicoDataTypeConst = 35
 	Heading_4	NavicoDataTypeConst = 36
 	WasVoltage	NavicoDataTypeConst = 37
 	CurrentSet	NavicoDataTypeConst = 38
 	CurrentDrift	NavicoDataTypeConst = 39
-	SpeedSog	NavicoDataTypeConst = 40
+	SpeedSOG	NavicoDataTypeConst = 40
 	SpeedWater	NavicoDataTypeConst = 41
 	SpeedPitot	NavicoDataTypeConst = 42
 	SpeedTripAvg	NavicoDataTypeConst = 43
@@ -6043,7 +6012,7 @@ const (
 	WasGenericPressureHi	NavicoDataTypeConst = 75
 	Depth_2	NavicoDataTypeConst = 76
 	WaterDistance	NavicoDataTypeConst = 77
-	EngineRpm	NavicoDataTypeConst = 78
+	EngineRPM	NavicoDataTypeConst = 78
 	EngineTrim	NavicoDataTypeConst = 79
 	EngineAlternatorPotential	NavicoDataTypeConst = 80
 	EngineFuelRate	NavicoDataTypeConst = 81
@@ -6092,18 +6061,18 @@ const (
 	NavicoDataTypeConstMagneticVariation	NavicoDataTypeConst = 124
 	Deviation	NavicoDataTypeConst = 125
 	FuelEconomyWtr	NavicoDataTypeConst = 126
-	FuelEconomyGps	NavicoDataTypeConst = 127
+	FuelEconomyGPS	NavicoDataTypeConst = 127
 	WasFuelRemaining	NavicoDataTypeConst = 128
 	WasFuelRangeWtr	NavicoDataTypeConst = 129
-	WasFuelRangeGps	NavicoDataTypeConst = 130
+	WasFuelRangeGPS	NavicoDataTypeConst = 130
 	EngineHoursUsed	NavicoDataTypeConst = 131
 	EngineType	NavicoDataTypeConst = 132
 	VesselFuelRate	NavicoDataTypeConst = 133
 	VesselFuelEconomyWtr	NavicoDataTypeConst = 134
-	VesselFuelEconomyGps	NavicoDataTypeConst = 135
+	VesselFuelEconomyGPS	NavicoDataTypeConst = 135
 	VesselFuelRemaining	NavicoDataTypeConst = 136
 	VesselFuelRangeWtr	NavicoDataTypeConst = 137
-	VesselFuelRangeGps	NavicoDataTypeConst = 138
+	VesselFuelRangeGPS	NavicoDataTypeConst = 138
 	WindAppAngle	NavicoDataTypeConst = 139
 	WindTrueAngle	NavicoDataTypeConst = 140
 	WindTrueDirection	NavicoDataTypeConst = 141
@@ -6124,7 +6093,7 @@ const (
 	PositionFixType	NavicoDataTypeConst = 156
 	EngineDiscreteStatus	NavicoDataTypeConst = 157
 	TransmissionDiscreteStatus	NavicoDataTypeConst = 158
-	GpsBestOfFourSnr	NavicoDataTypeConst = 159
+	GPSBestOfFourSnr	NavicoDataTypeConst = 159
 	GenFluidLevel	NavicoDataTypeConst = 160
 	GenPressure	NavicoDataTypeConst = 161
 	GenTemperature	NavicoDataTypeConst = 162
@@ -6133,7 +6102,7 @@ const (
 	StructureDepth	NavicoDataTypeConst = 165
 	LoranPosition	NavicoDataTypeConst = 166
 	VesselStatus	NavicoDataTypeConst = 167
-	BatteryDcType	NavicoDataTypeConst = 168
+	BatteryDCType	NavicoDataTypeConst = 168
 	BatteryStateOfCharge	NavicoDataTypeConst = 169
 	BatteryStateOfHealth	NavicoDataTypeConst = 170
 	BatteryTimeRemaining	NavicoDataTypeConst = 171
@@ -6176,7 +6145,7 @@ const (
 	PilotDistanceToTurn	NavicoDataTypeConst = 208
 	PilotTimeToTurn	NavicoDataTypeConst = 209
 	PilotReferencePosition	NavicoDataTypeConst = 210
-	DcStatus	NavicoDataTypeConst = 211
+	DCStatus	NavicoDataTypeConst = 211
 	Ac1Status	NavicoDataTypeConst = 212
 	WasSwitchVoltage	NavicoDataTypeConst = 213
 	BatteryCapacityRemaining	NavicoDataTypeConst = 214
@@ -6208,7 +6177,7 @@ const (
 	PolarPerformance	NavicoDataTypeConst = 240
 	TackingPerformance	NavicoDataTypeConst = 241
 	WindAngleToMast	NavicoDataTypeConst = 242
-	CanBusVoltage	NavicoDataTypeConst = 243
+	CANBusVoltage	NavicoDataTypeConst = 243
 	InternalTemperature	NavicoDataTypeConst = 244
 	EngageCurrent	NavicoDataTypeConst = 245
 	UrefVoltage	NavicoDataTypeConst = 246
@@ -6221,7 +6190,7 @@ const (
 	EnginePercentThrottle	NavicoDataTypeConst = 253
 	EngineSteeringAngle	NavicoDataTypeConst = 254
 	EngineBreakInReqd	NavicoDataTypeConst = 255
-	GpsAll	NavicoDataTypeConst = 256
+	GPSAll	NavicoDataTypeConst = 256
 	EngineBreakInAccum	NavicoDataTypeConst = 257
 	EngineTrimStatus	NavicoDataTypeConst = 258
 	PilotPresent	NavicoDataTypeConst = 259
@@ -6264,8 +6233,8 @@ const (
 	ChargerEnabled	NavicoDataTypeConst = 296
 	ChargerEqualizationPending	NavicoDataTypeConst = 297
 	ChargerEqualizationTimeRemaini	NavicoDataTypeConst = 298
-	InverterAcInstance	NavicoDataTypeConst = 299
-	InverterDcInstance	NavicoDataTypeConst = 300
+	InverterACInstance	NavicoDataTypeConst = 299
+	InverterDCInstance	NavicoDataTypeConst = 300
 	InverterOperatingState	NavicoDataTypeConst = 301
 	InverterEnabled	NavicoDataTypeConst = 302
 	ThrusterPower	NavicoDataTypeConst = 303
@@ -6273,12 +6242,12 @@ const (
 	EngineMil	NavicoDataTypeConst = 305
 	EngineWarningFlags	NavicoDataTypeConst = 306
 	SpeedStw	NavicoDataTypeConst = 307
-	EnginePerformanceSog	NavicoDataTypeConst = 308
+	EnginePerformanceSOG	NavicoDataTypeConst = 308
 	EnginePerformanceStw	NavicoDataTypeConst = 309
 	EngineControlFlags	NavicoDataTypeConst = 310
-	EngineTrollRpmSetpoint	NavicoDataTypeConst = 311
+	EngineTrollRPMSetpoint	NavicoDataTypeConst = 311
 	ActiveHelm	NavicoDataTypeConst = 312
-	CruiseRpmSetpoint	NavicoDataTypeConst = 313
+	CruiseRPMSetpoint	NavicoDataTypeConst = 313
 	CruiseSpeedSetpoint	NavicoDataTypeConst = 314
 	CmdPatternDir	NavicoDataTypeConst = 315
 	SmartContextual	NavicoDataTypeConst = 316
@@ -6303,9 +6272,9 @@ const (
 	PilotResponseLevel	NavicoDataTypeConst = 335
 	CruiseSmarttowOvershoot	NavicoDataTypeConst = 336
 	PilotCmdHeading	NavicoDataTypeConst = 337
-	MobDRPosition	NavicoDataTypeConst = 338
-	MobDRRange	NavicoDataTypeConst = 339
-	MobDRBearing	NavicoDataTypeConst = 340
+	MOBDRPosition	NavicoDataTypeConst = 338
+	MOBDRRange	NavicoDataTypeConst = 339
+	MOBDRBearing	NavicoDataTypeConst = 340
 	BowPosition	NavicoDataTypeConst = 341
 	StartLineBearing	NavicoDataTypeConst = 342
 	StartLineBias	NavicoDataTypeConst = 343
@@ -6349,11 +6318,11 @@ const (
 	TripDRBearing	NavicoDataTypeConst = 381
 	TripDRDistance	NavicoDataTypeConst = 382
 	CodeZeroLoad	NavicoDataTypeConst = 383
-	BAndGMobPosition	NavicoDataTypeConst = 384
+	BAndGMOBPosition	NavicoDataTypeConst = 384
 	DistanceBehindStartLine	NavicoDataTypeConst = 385
 	DistanceBehindStartLineBoatLen	NavicoDataTypeConst = 386
 	BiasAdvantage	NavicoDataTypeConst = 387
-	OppositeTackCog	NavicoDataTypeConst = 388
+	OppositeTackCOG	NavicoDataTypeConst = 388
 	OppositeTackTargetHeading	NavicoDataTypeConst = 389
 	MastRake	NavicoDataTypeConst = 390
 	NextLegBearing	NavicoDataTypeConst = 391
@@ -6473,7 +6442,7 @@ const (
 	SpeedBoat	NavicoDataTypeConst = 505
 	WasEngineFuelUsedMercury	NavicoDataTypeConst = 506
 	NavicoDataTypeConstHeave	NavicoDataTypeConst = 507
-	SpeedTripMaxRpm	NavicoDataTypeConst = 508
+	SpeedTripMaxRPM	NavicoDataTypeConst = 508
 	HondaEngineStatusParams	NavicoDataTypeConst = 509
 	PilotFeatures	NavicoDataTypeConst = 510
 	PilotSetpointHeading	NavicoDataTypeConst = 511
@@ -6489,7 +6458,7 @@ const (
 	EngineDiscreteParams6	NavicoDataTypeConst = 521
 	IdleSpeedLimitLow	NavicoDataTypeConst = 522
 	IdleSpeedLimitHigh	NavicoDataTypeConst = 523
-	WasTrollingVariableRpmInfo	NavicoDataTypeConst = 524
+	WasTrollingVariableRPMInfo	NavicoDataTypeConst = 524
 	IdleSpeedControlTargetRev	NavicoDataTypeConst = 525
 	IdleControl	NavicoDataTypeConst = 526
 	IdleFeedback	NavicoDataTypeConst = 527
@@ -6533,7 +6502,7 @@ const (
 	PilotMeanHeel	NavicoDataTypeConst = 565
 	PropellerShaftPitchAngle	NavicoDataTypeConst = 566
 	PropellerShaftPitchPercent	NavicoDataTypeConst = 567
-	PropellerShaftRpm	NavicoDataTypeConst = 568
+	PropellerShaftRPM	NavicoDataTypeConst = 568
 	ThrusterPitchAngle	NavicoDataTypeConst = 569
 	ThrusterPitchPercent	NavicoDataTypeConst = 570
 	GroundWindAngle	NavicoDataTypeConst = 571
@@ -6541,7 +6510,7 @@ const (
 	FluidLevelGasoline	NavicoDataTypeConst = 573
 	FluidVolumeGasoline	NavicoDataTypeConst = 574
 	TankCapacityGasoline	NavicoDataTypeConst = 575
-	CmdXteOffset	NavicoDataTypeConst = 576
+	CmdXTEOffset	NavicoDataTypeConst = 576
 	Engine4STROKEOil	NavicoDataTypeConst = 577
 	WirelessSensorSignalStrength	NavicoDataTypeConst = 578
 	WirelessSensorSoftwareUpdatePr	NavicoDataTypeConst = 579
@@ -6551,12 +6520,12 @@ const (
 	YanmarEngineEcuAlarms	NavicoDataTypeConst = 583
 	YanmarHelmEcuAlarms	NavicoDataTypeConst = 584
 	YanmarDriveEcuAlarms	NavicoDataTypeConst = 585
-	DgpsCorrectionData	NavicoDataTypeConst = 586
-	DgpsReferenceStationId	NavicoDataTypeConst = 587
-	DgpsReferenceStationHealth	NavicoDataTypeConst = 588
-	DgpsSignalSnr	NavicoDataTypeConst = 589
-	DgpsSignalFrequency	NavicoDataTypeConst = 590
-	DgpsSignalStrength	NavicoDataTypeConst = 591
+	DGPSCorrectionData	NavicoDataTypeConst = 586
+	DGPSReferenceStationID	NavicoDataTypeConst = 587
+	DGPSReferenceStationHealth	NavicoDataTypeConst = 588
+	DGPSSignalSnr	NavicoDataTypeConst = 589
+	DGPSSignalFrequency	NavicoDataTypeConst = 590
+	DGPSSignalStrength	NavicoDataTypeConst = 591
 	EngineFuelTemp	NavicoDataTypeConst = 592
 	DepthQuality	NavicoDataTypeConst = 593
 	NumberOfActiveDtc	NavicoDataTypeConst = 594
@@ -6610,7 +6579,7 @@ const (
 	EngineOilLevelStatus	NavicoDataTypeConst = 642
 	TransFluidStatus	NavicoDataTypeConst = 643
 	HondaEcoStatusAllEngines	NavicoDataTypeConst = 644
-	OutputRpm	NavicoDataTypeConst = 645
+	OutputRPM	NavicoDataTypeConst = 645
 	SuzukiEngineAlertA	NavicoDataTypeConst = 646
 	SuzukiEngineAlertB	NavicoDataTypeConst = 647
 	SuzukiEngineAlertC	NavicoDataTypeConst = 648
@@ -6637,7 +6606,7 @@ const (
 	EngineState	NavicoDataTypeConst = 669
 	SailingTimeToBurn	NavicoDataTypeConst = 670
 	MastTwist	NavicoDataTypeConst = 671
-	VhfChannel	NavicoDataTypeConst = 672
+	VHFChannel	NavicoDataTypeConst = 672
 	TrollingLowerUnitDirection	NavicoDataTypeConst = 673
 	PropulsionBatteryStatus	NavicoDataTypeConst = 674
 	PropulsionBatteryIsolationStat	NavicoDataTypeConst = 675
@@ -6685,8 +6654,8 @@ const (
 	MotorRatedSpeed	NavicoDataTypeConst = 717
 	MotorMaxControllerTemperatureR	NavicoDataTypeConst = 718
 	MotorShaftTorqueRating	NavicoDataTypeConst = 719
-	MotorDcVoltageDeratingThreshol	NavicoDataTypeConst = 720
-	MotorDcVoltageCutoffThreshold	NavicoDataTypeConst = 721
+	MotorDCVoltageDeratingThreshol	NavicoDataTypeConst = 720
+	MotorDCVoltageCutoffThreshold	NavicoDataTypeConst = 721
 	MotorRuntime	NavicoDataTypeConst = 722
 	SailingPingTimePort	NavicoDataTypeConst = 723
 	SailingPingTimeStbd	NavicoDataTypeConst = 724
@@ -8588,8 +8557,8 @@ const (
 	DepthTurn	SimnetApEventsConst = 24
 	ChangeCourse	SimnetApEventsConst = 26
 	TimerSync	SimnetApEventsConst = 61
-	MobActivated	SimnetApEventsConst = 107
-	MobDeactivated	SimnetApEventsConst = 108
+	MOBActivated	SimnetApEventsConst = 107
+	MOBDeactivated	SimnetApEventsConst = 108
 	PingPortEnd	SimnetApEventsConst = 112
 	PingStarboardEnd	SimnetApEventsConst = 113
 )
@@ -8674,9 +8643,10 @@ const (
 	Activate	SimnetAlarmCommandConst = 57
 	Acknowledge_4	SimnetAlarmCommandConst = 58
 	Silence	SimnetAlarmCommandConst = 68
+	TackGybeConfirm	SimnetAlarmCommandConst = 88
 	AlarmHistory	SimnetAlarmCommandConst = 104
-	MobActivated_2	SimnetAlarmCommandConst = 107
-	MobCancelled	SimnetAlarmCommandConst = 108
+	MOBActivated_2	SimnetAlarmCommandConst = 107
+	MOBCancelled	SimnetAlarmCommandConst = 108
 )
 
 func (e SimnetAlarmCommandConst) GoString() string {return e.String() }
@@ -8690,6 +8660,8 @@ func (e SimnetAlarmCommandConst) String() string {
 			return "Acknowledge"
 		case 68:
 			return "Silence"
+		case 88:
+			return "Tack/Gybe Confirm"
 		case 104:
 			return "Alarm History"
 		case 107:
@@ -8706,7 +8678,7 @@ const (
 	ApCommand	SimnetEventTypeConst = 10
 	Timer	SimnetEventTypeConst = 23
 	Siren	SimnetEventTypeConst = 31
-	AisVesselSelected	SimnetEventTypeConst = 36
+	AISVesselSelected	SimnetEventTypeConst = 36
 	Alarm_2	SimnetEventTypeConst = 255
 )
 
@@ -8761,194 +8733,194 @@ default:
 		return fmt.Sprintf("SimnetTimerEventConst(%d)", uint16(e))
 	}
 }
-type SimnetAlarmIdConst uint16
+type SimnetAlarmIDConst uint16
 const (
-	ShallowWater	SimnetAlarmIdConst = 10
-	DeepWater	SimnetAlarmIdConst = 11
-	AnchorDepth_2	SimnetAlarmIdConst = 12
-	TrueWindShift	SimnetAlarmIdConst = 13
-	TrueWindHigh	SimnetAlarmIdConst = 14
-	TrueWindLow	SimnetAlarmIdConst = 15
-	LowBoatSpeed	SimnetAlarmIdConst = 16
-	HighVoltage	SimnetAlarmIdConst = 17
-	LowVoltage	SimnetAlarmIdConst = 18
-	DepthDataMissing	SimnetAlarmIdConst = 19
-	WindDataMissing	SimnetAlarmIdConst = 20
-	NavDataMissing	SimnetAlarmIdConst = 21
-	HeadingMissing	SimnetAlarmIdConst = 22
-	Xte	SimnetAlarmIdConst = 23
-	RudderDataMissing	SimnetAlarmIdConst = 24
-	RudderControllerFault	SimnetAlarmIdConst = 25
-	NoRudderResponse	SimnetAlarmIdConst = 26
-	RudderDriveOverload	SimnetAlarmIdConst = 27
-	HighInternalTemperature	SimnetAlarmIdConst = 28
-	ApClutchOverload	SimnetAlarmIdConst = 29
-	ApClutchDisengaged	SimnetAlarmIdConst = 30
-	HighDriveSupply	SimnetAlarmIdConst = 31
-	LowDriveSupply	SimnetAlarmIdConst = 32
-	NoActiveAutopilotControlUnit	SimnetAlarmIdConst = 33
-	NoAutopilotComputer	SimnetAlarmIdConst = 34
-	MemoryFail	SimnetAlarmIdConst = 35
-	WaterTempMissing	SimnetAlarmIdConst = 36
-	LowWaterTemp	SimnetAlarmIdConst = 37
-	HighWaterTemp	SimnetAlarmIdConst = 38
-	WaterTempRate	SimnetAlarmIdConst = 39
-	Fish	SimnetAlarmIdConst = 40
-	NoGpsFix	SimnetAlarmIdConst = 41
-	WaasDgps	SimnetAlarmIdConst = 42
-	Arrival	SimnetAlarmIdConst = 45
-	Anchor	SimnetAlarmIdConst = 46
-	FuelLow	SimnetAlarmIdConst = 47
-	FuelHigh	SimnetAlarmIdConst = 48
-	TankLow	SimnetAlarmIdConst = 49
-	TankHigh	SimnetAlarmIdConst = 50
-	Bep	SimnetAlarmIdConst = 51
-	WaypointRadius	SimnetAlarmIdConst = 52
-	Cpa	SimnetAlarmIdConst = 53
-	AisRangeToVessel	SimnetAlarmIdConst = 54
-	AisVesselLost	SimnetAlarmIdConst = 55
-	VesselMessage	SimnetAlarmIdConst = 56
-	Lightning	SimnetAlarmIdConst = 57
-	SevereWeather	SimnetAlarmIdConst = 58
-	Storm	SimnetAlarmIdConst = 59
-	EngineCheck	SimnetAlarmIdConst = 61
-	EngineOverTemperature	SimnetAlarmIdConst = 62
-	EngineLowOilPressure	SimnetAlarmIdConst = 63
-	EngineLowOilLevel	SimnetAlarmIdConst = 64
-	EngineLowFuelPressure	SimnetAlarmIdConst = 65
-	EngineLowVoltage	SimnetAlarmIdConst = 66
-	EngineLowCoolantLevel	SimnetAlarmIdConst = 67
-	EngineWaterFlow	SimnetAlarmIdConst = 68
-	EngineWaterInFuel	SimnetAlarmIdConst = 69
-	EngineCharge	SimnetAlarmIdConst = 70
-	EnginePreheat	SimnetAlarmIdConst = 71
-	EngineHighBoostPressure	SimnetAlarmIdConst = 72
-	EngineRevLimit	SimnetAlarmIdConst = 73
-	EngineEgrSystem	SimnetAlarmIdConst = 74
-	EngineThrottlePosition	SimnetAlarmIdConst = 75
-	EngineEmergencyStop	SimnetAlarmIdConst = 76
-	EngineWarningLevel1	SimnetAlarmIdConst = 77
-	EngineWarningLevel2	SimnetAlarmIdConst = 78
-	EnginePowerReduction	SimnetAlarmIdConst = 79
-	EngineMaintenance	SimnetAlarmIdConst = 80
-	EngineCommError	SimnetAlarmIdConst = 81
-	EngineThrottle	SimnetAlarmIdConst = 82
-	EngineStartProtect	SimnetAlarmIdConst = 83
-	EngineShuttingDown	SimnetAlarmIdConst = 84
-	TransmissionCheck	SimnetAlarmIdConst = 85
-	TransmissionOverTemperature	SimnetAlarmIdConst = 86
-	TransmissionLowOilPressure	SimnetAlarmIdConst = 87
-	TransmissionLowOilLevel	SimnetAlarmIdConst = 88
-	SailDrive	SimnetAlarmIdConst = 89
-	FreshWaterLow	SimnetAlarmIdConst = 96
-	FreshWaterHigh	SimnetAlarmIdConst = 97
-	GrayWaterLow	SimnetAlarmIdConst = 98
-	GrayWaterHigh	SimnetAlarmIdConst = 99
-	LiveWellLow	SimnetAlarmIdConst = 100
-	LiveWellHigh	SimnetAlarmIdConst = 101
-	OilLow	SimnetAlarmIdConst = 102
-	OilHigh	SimnetAlarmIdConst = 103
-	BlackWaterLow	SimnetAlarmIdConst = 104
-	BlackWaterHigh	SimnetAlarmIdConst = 105
-	WeatherDataMissing	SimnetAlarmIdConst = 106
-	ApPositionDataMissing	SimnetAlarmIdConst = 107
-	ApSpeedDataMissing	SimnetAlarmIdConst = 108
-	ApDepthDataMissing	SimnetAlarmIdConst = 109
-	ApHeadingDataMissing	SimnetAlarmIdConst = 110
-	ApNavDataMissing	SimnetAlarmIdConst = 111
-	ApOffCourse	SimnetAlarmIdConst = 112
-	ApRudderDataMissing	SimnetAlarmIdConst = 113
-	ApWindDataMissing	SimnetAlarmIdConst = 114
-	RadarGuardZone	SimnetAlarmIdConst = 115
-	MarpaTargetLost	SimnetAlarmIdConst = 116
-	MarpaUnavailable	SimnetAlarmIdConst = 117
-	DangerousVessel	SimnetAlarmIdConst = 118
-	RadarError	SimnetAlarmIdConst = 119
-	CzoneCritical	SimnetAlarmIdConst = 120
-	CzoneImportant	SimnetAlarmIdConst = 121
-	CzoneStandard	SimnetAlarmIdConst = 122
-	CzoneWarning	SimnetAlarmIdConst = 123
-	TrueWindShift_2	SimnetAlarmIdConst = 124
-	EvcComError	SimnetAlarmIdConst = 125
-	EvcOverride	SimnetAlarmIdConst = 126
-	HighDriveTemperature	SimnetAlarmIdConst = 127
-	DriveInhibit	SimnetAlarmIdConst = 128
-	CanBusSupplyOverload	SimnetAlarmIdConst = 129
-	DriveRefVoltageMissing	SimnetAlarmIdConst = 130
-	RudderLimit_3	SimnetAlarmIdConst = 131
-	CompassDifference	SimnetAlarmIdConst = 132
-	ApLowBoatSpeed	SimnetAlarmIdConst = 133
-	MonitorCompassMissing	SimnetAlarmIdConst = 134
-	CrossTrackDistanceLimit	SimnetAlarmIdConst = 135
-	EndOfRoute	SimnetAlarmIdConst = 137
-	CompassAlignment	SimnetAlarmIdConst = 138
-	RAIM	SimnetAlarmIdConst = 139
-	OffHeading	SimnetAlarmIdConst = 141
-	SupplyVoltage_2	SimnetAlarmIdConst = 142
-	LowCanBusVoltage	SimnetAlarmIdConst = 143
-	CanBusFailure	SimnetAlarmIdConst = 144
-	DriveReadyMissing	SimnetAlarmIdConst = 145
-	DriveComputerMissing	SimnetAlarmIdConst = 146
-	ExternalModeIllegal	SimnetAlarmIdConst = 147
-	RudderTooSlow	SimnetAlarmIdConst = 148
-	WheelOver	SimnetAlarmIdConst = 149
-	ThrusterInhibited	SimnetAlarmIdConst = 150
-	CheckHeading	SimnetAlarmIdConst = 151
-	TrueWindSpeedHigh	SimnetAlarmIdConst = 152
-	Override	SimnetAlarmIdConst = 153
-	SpeedThroughWaterRationalityFa	SimnetAlarmIdConst = 154
-	NoDrivesAvailable	SimnetAlarmIdConst = 155
-	FuelRemainingLow	SimnetAlarmIdConst = 156
-	FuelRemainingHigh	SimnetAlarmIdConst = 157
-	GeneratorCheck	SimnetAlarmIdConst = 158
-	GeneratorOverTemperature	SimnetAlarmIdConst = 159
-	GeneratorLowOilPressure	SimnetAlarmIdConst = 160
-	GeneratorLowOilLevel	SimnetAlarmIdConst = 161
-	GeneratorLowFuelPressure	SimnetAlarmIdConst = 162
-	GeneratorLowVoltage	SimnetAlarmIdConst = 163
-	GeneratorLowCoolantLevel	SimnetAlarmIdConst = 164
-	GeneratorWaterFlow	SimnetAlarmIdConst = 165
-	GeneratorWaterInFuel	SimnetAlarmIdConst = 166
-	GeneratorCharge	SimnetAlarmIdConst = 167
-	GeneratorPreheat	SimnetAlarmIdConst = 168
-	GeneratorHighBoostPressure	SimnetAlarmIdConst = 169
-	GeneratorRevLimit	SimnetAlarmIdConst = 170
-	GeneratorEgrSystem	SimnetAlarmIdConst = 171
-	GeneratorThrottlePosition	SimnetAlarmIdConst = 172
-	GeneratorEmergencyStop	SimnetAlarmIdConst = 173
-	GeneratorWarningLevel1	SimnetAlarmIdConst = 174
-	GeneratorWarningLevel2	SimnetAlarmIdConst = 175
-	GeneratorPowerReduction	SimnetAlarmIdConst = 176
-	GeneratorMaintenance	SimnetAlarmIdConst = 177
-	GeneratorCommError	SimnetAlarmIdConst = 178
-	GeneratorThrottle	SimnetAlarmIdConst = 179
-	GeneratorStartProtect	SimnetAlarmIdConst = 180
-	GeneratorShuttingDown	SimnetAlarmIdConst = 181
-	ShallowAftDepth	SimnetAlarmIdConst = 182
-	ForwardRange	SimnetAlarmIdConst = 183
-	AlarmSourceMissing	SimnetAlarmIdConst = 245
-	External	SimnetAlarmIdConst = 246
-	EvcComError_2	SimnetAlarmIdConst = 247
-	WindSensorBatteryLow	SimnetAlarmIdConst = 248
-	GasolineLow	SimnetAlarmIdConst = 266
-	GasolineHigh	SimnetAlarmIdConst = 267
-	ChargingSystem	SimnetAlarmIdConst = 268
-	SeawaterFlow	SimnetAlarmIdConst = 269
-	WaterInDriveSeal	SimnetAlarmIdConst = 270
-	Turnover	SimnetAlarmIdConst = 272
-	HelmEcuDetectFailure	SimnetAlarmIdConst = 273
-	JoystickEcuDetectFailure	SimnetAlarmIdConst = 274
-	DriveEcuDetectFailure	SimnetAlarmIdConst = 275
-	HotTransmission	SimnetAlarmIdConst = 276
-	LowGearOilPressure	SimnetAlarmIdConst = 277
-	LowDriveLubOilLevel	SimnetAlarmIdConst = 278
-	CheckThermostat	SimnetAlarmIdConst = 285
-	TrackOffsetActive	SimnetAlarmIdConst = 287
-	NavigationNotSupported	SimnetAlarmIdConst = 385
+	ShallowWater	SimnetAlarmIDConst = 10
+	DeepWater	SimnetAlarmIDConst = 11
+	AnchorDepth_2	SimnetAlarmIDConst = 12
+	TrueWindShift	SimnetAlarmIDConst = 13
+	TrueWindHigh	SimnetAlarmIDConst = 14
+	TrueWindLow	SimnetAlarmIDConst = 15
+	LowBoatSpeed	SimnetAlarmIDConst = 16
+	HighVoltage	SimnetAlarmIDConst = 17
+	LowVoltage	SimnetAlarmIDConst = 18
+	DepthDataMissing	SimnetAlarmIDConst = 19
+	WindDataMissing	SimnetAlarmIDConst = 20
+	NavDataMissing	SimnetAlarmIDConst = 21
+	HeadingMissing	SimnetAlarmIDConst = 22
+	XTE	SimnetAlarmIDConst = 23
+	RudderDataMissing	SimnetAlarmIDConst = 24
+	RudderControllerFault	SimnetAlarmIDConst = 25
+	NoRudderResponse	SimnetAlarmIDConst = 26
+	RudderDriveOverload	SimnetAlarmIDConst = 27
+	HighInternalTemperature	SimnetAlarmIDConst = 28
+	ApClutchOverload	SimnetAlarmIDConst = 29
+	ApClutchDisengaged	SimnetAlarmIDConst = 30
+	HighDriveSupply	SimnetAlarmIDConst = 31
+	LowDriveSupply	SimnetAlarmIDConst = 32
+	NoActiveAutopilotControlUnit	SimnetAlarmIDConst = 33
+	NoAutopilotComputer	SimnetAlarmIDConst = 34
+	MemoryFail	SimnetAlarmIDConst = 35
+	WaterTempMissing	SimnetAlarmIDConst = 36
+	LowWaterTemp	SimnetAlarmIDConst = 37
+	HighWaterTemp	SimnetAlarmIDConst = 38
+	WaterTempRate	SimnetAlarmIDConst = 39
+	Fish	SimnetAlarmIDConst = 40
+	NoGPSFix	SimnetAlarmIDConst = 41
+	WAASDGPS	SimnetAlarmIDConst = 42
+	Arrival	SimnetAlarmIDConst = 45
+	Anchor	SimnetAlarmIDConst = 46
+	FuelLow	SimnetAlarmIDConst = 47
+	FuelHigh	SimnetAlarmIDConst = 48
+	TankLow	SimnetAlarmIDConst = 49
+	TankHigh	SimnetAlarmIDConst = 50
+	Bep	SimnetAlarmIDConst = 51
+	WaypointRadius	SimnetAlarmIDConst = 52
+	Cpa	SimnetAlarmIDConst = 53
+	AISRangeToVessel	SimnetAlarmIDConst = 54
+	AISVesselLost	SimnetAlarmIDConst = 55
+	VesselMessage	SimnetAlarmIDConst = 56
+	Lightning	SimnetAlarmIDConst = 57
+	SevereWeather	SimnetAlarmIDConst = 58
+	Storm	SimnetAlarmIDConst = 59
+	EngineCheck	SimnetAlarmIDConst = 61
+	EngineOverTemperature	SimnetAlarmIDConst = 62
+	EngineLowOilPressure	SimnetAlarmIDConst = 63
+	EngineLowOilLevel	SimnetAlarmIDConst = 64
+	EngineLowFuelPressure	SimnetAlarmIDConst = 65
+	EngineLowVoltage	SimnetAlarmIDConst = 66
+	EngineLowCoolantLevel	SimnetAlarmIDConst = 67
+	EngineWaterFlow	SimnetAlarmIDConst = 68
+	EngineWaterInFuel	SimnetAlarmIDConst = 69
+	EngineCharge	SimnetAlarmIDConst = 70
+	EnginePreheat	SimnetAlarmIDConst = 71
+	EngineHighBoostPressure	SimnetAlarmIDConst = 72
+	EngineRevLimit	SimnetAlarmIDConst = 73
+	EngineEgrSystem	SimnetAlarmIDConst = 74
+	EngineThrottlePosition	SimnetAlarmIDConst = 75
+	EngineEmergencyStop	SimnetAlarmIDConst = 76
+	EngineWarningLevel1	SimnetAlarmIDConst = 77
+	EngineWarningLevel2	SimnetAlarmIDConst = 78
+	EnginePowerReduction	SimnetAlarmIDConst = 79
+	EngineMaintenance	SimnetAlarmIDConst = 80
+	EngineCommError	SimnetAlarmIDConst = 81
+	EngineThrottle	SimnetAlarmIDConst = 82
+	EngineStartProtect	SimnetAlarmIDConst = 83
+	EngineShuttingDown	SimnetAlarmIDConst = 84
+	TransmissionCheck	SimnetAlarmIDConst = 85
+	TransmissionOverTemperature	SimnetAlarmIDConst = 86
+	TransmissionLowOilPressure	SimnetAlarmIDConst = 87
+	TransmissionLowOilLevel	SimnetAlarmIDConst = 88
+	SailDrive	SimnetAlarmIDConst = 89
+	FreshWaterLow	SimnetAlarmIDConst = 96
+	FreshWaterHigh	SimnetAlarmIDConst = 97
+	GrayWaterLow	SimnetAlarmIDConst = 98
+	GrayWaterHigh	SimnetAlarmIDConst = 99
+	LiveWellLow	SimnetAlarmIDConst = 100
+	LiveWellHigh	SimnetAlarmIDConst = 101
+	OilLow	SimnetAlarmIDConst = 102
+	OilHigh	SimnetAlarmIDConst = 103
+	BlackWaterLow	SimnetAlarmIDConst = 104
+	BlackWaterHigh	SimnetAlarmIDConst = 105
+	WeatherDataMissing	SimnetAlarmIDConst = 106
+	ApPositionDataMissing	SimnetAlarmIDConst = 107
+	ApSpeedDataMissing	SimnetAlarmIDConst = 108
+	ApDepthDataMissing	SimnetAlarmIDConst = 109
+	ApHeadingDataMissing	SimnetAlarmIDConst = 110
+	ApNavDataMissing	SimnetAlarmIDConst = 111
+	ApOffCourse	SimnetAlarmIDConst = 112
+	ApRudderDataMissing	SimnetAlarmIDConst = 113
+	ApWindDataMissing	SimnetAlarmIDConst = 114
+	RadarGuardZone	SimnetAlarmIDConst = 115
+	MarpaTargetLost	SimnetAlarmIDConst = 116
+	MarpaUnavailable	SimnetAlarmIDConst = 117
+	DangerousVessel	SimnetAlarmIDConst = 118
+	RadarError	SimnetAlarmIDConst = 119
+	CzoneCritical	SimnetAlarmIDConst = 120
+	CzoneImportant	SimnetAlarmIDConst = 121
+	CzoneStandard	SimnetAlarmIDConst = 122
+	CzoneWarning	SimnetAlarmIDConst = 123
+	TrueWindShift_2	SimnetAlarmIDConst = 124
+	EvcComError	SimnetAlarmIDConst = 125
+	EvcOverride	SimnetAlarmIDConst = 126
+	HighDriveTemperature	SimnetAlarmIDConst = 127
+	DriveInhibit	SimnetAlarmIDConst = 128
+	CANBusSupplyOverload	SimnetAlarmIDConst = 129
+	DriveRefVoltageMissing	SimnetAlarmIDConst = 130
+	RudderLimit_3	SimnetAlarmIDConst = 131
+	CompassDifference	SimnetAlarmIDConst = 132
+	ApLowBoatSpeed	SimnetAlarmIDConst = 133
+	MonitorCompassMissing	SimnetAlarmIDConst = 134
+	CrossTrackDistanceLimit	SimnetAlarmIDConst = 135
+	EndOfRoute	SimnetAlarmIDConst = 137
+	CompassAlignment	SimnetAlarmIDConst = 138
+	RAIM	SimnetAlarmIDConst = 139
+	OffHeading	SimnetAlarmIDConst = 141
+	SupplyVoltage_2	SimnetAlarmIDConst = 142
+	LowCANBusVoltage	SimnetAlarmIDConst = 143
+	CANBusFailure	SimnetAlarmIDConst = 144
+	DriveReadyMissing	SimnetAlarmIDConst = 145
+	DriveComputerMissing	SimnetAlarmIDConst = 146
+	ExternalModeIllegal	SimnetAlarmIDConst = 147
+	RudderTooSlow	SimnetAlarmIDConst = 148
+	WheelOver	SimnetAlarmIDConst = 149
+	ThrusterInhibited	SimnetAlarmIDConst = 150
+	CheckHeading	SimnetAlarmIDConst = 151
+	TrueWindSpeedHigh	SimnetAlarmIDConst = 152
+	Override	SimnetAlarmIDConst = 153
+	SpeedThroughWaterRationalityFa	SimnetAlarmIDConst = 154
+	NoDrivesAvailable	SimnetAlarmIDConst = 155
+	FuelRemainingLow	SimnetAlarmIDConst = 156
+	FuelRemainingHigh	SimnetAlarmIDConst = 157
+	GeneratorCheck	SimnetAlarmIDConst = 158
+	GeneratorOverTemperature	SimnetAlarmIDConst = 159
+	GeneratorLowOilPressure	SimnetAlarmIDConst = 160
+	GeneratorLowOilLevel	SimnetAlarmIDConst = 161
+	GeneratorLowFuelPressure	SimnetAlarmIDConst = 162
+	GeneratorLowVoltage	SimnetAlarmIDConst = 163
+	GeneratorLowCoolantLevel	SimnetAlarmIDConst = 164
+	GeneratorWaterFlow	SimnetAlarmIDConst = 165
+	GeneratorWaterInFuel	SimnetAlarmIDConst = 166
+	GeneratorCharge	SimnetAlarmIDConst = 167
+	GeneratorPreheat	SimnetAlarmIDConst = 168
+	GeneratorHighBoostPressure	SimnetAlarmIDConst = 169
+	GeneratorRevLimit	SimnetAlarmIDConst = 170
+	GeneratorEgrSystem	SimnetAlarmIDConst = 171
+	GeneratorThrottlePosition	SimnetAlarmIDConst = 172
+	GeneratorEmergencyStop	SimnetAlarmIDConst = 173
+	GeneratorWarningLevel1	SimnetAlarmIDConst = 174
+	GeneratorWarningLevel2	SimnetAlarmIDConst = 175
+	GeneratorPowerReduction	SimnetAlarmIDConst = 176
+	GeneratorMaintenance	SimnetAlarmIDConst = 177
+	GeneratorCommError	SimnetAlarmIDConst = 178
+	GeneratorThrottle	SimnetAlarmIDConst = 179
+	GeneratorStartProtect	SimnetAlarmIDConst = 180
+	GeneratorShuttingDown	SimnetAlarmIDConst = 181
+	ShallowAftDepth	SimnetAlarmIDConst = 182
+	ForwardRange	SimnetAlarmIDConst = 183
+	AlarmSourceMissing	SimnetAlarmIDConst = 245
+	External	SimnetAlarmIDConst = 246
+	EvcComError_2	SimnetAlarmIDConst = 247
+	WindSensorBatteryLow	SimnetAlarmIDConst = 248
+	GasolineLow	SimnetAlarmIDConst = 266
+	GasolineHigh	SimnetAlarmIDConst = 267
+	ChargingSystem	SimnetAlarmIDConst = 268
+	SeawaterFlow	SimnetAlarmIDConst = 269
+	WaterInDriveSeal	SimnetAlarmIDConst = 270
+	Turnover	SimnetAlarmIDConst = 272
+	HelmEcuDetectFailure	SimnetAlarmIDConst = 273
+	JoystickEcuDetectFailure	SimnetAlarmIDConst = 274
+	DriveEcuDetectFailure	SimnetAlarmIDConst = 275
+	HotTransmission	SimnetAlarmIDConst = 276
+	LowGearOilPressure	SimnetAlarmIDConst = 277
+	LowDriveLubOilLevel	SimnetAlarmIDConst = 278
+	CheckThermostat	SimnetAlarmIDConst = 285
+	TrackOffsetActive	SimnetAlarmIDConst = 287
+	NavigationNotSupported	SimnetAlarmIDConst = 385
 )
 
-func (e SimnetAlarmIdConst) GoString() string {return e.String() }
-func (e SimnetAlarmIdConst) String() string {
+func (e SimnetAlarmIDConst) GoString() string {return e.String() }
+func (e SimnetAlarmIDConst) String() string {
 	switch e {
 		case 10:
 			return "Shallow water"
@@ -9315,64 +9287,64 @@ func (e SimnetAlarmIdConst) String() string {
 		case 385:
 			return "Navigation Not Supported"
 default:
-		return fmt.Sprintf("SimnetAlarmIdConst(%d)", uint16(e))
+		return fmt.Sprintf("SimnetAlarmIDConst(%d)", uint16(e))
 	}
 }
-type FusionMessageIdConst uint16
+type FusionMessageIDConst uint16
 const (
-	RequestStatus	FusionMessageIdConst = 1
-	SetSource	FusionMessageIdConst = 2
-	MediaCommand	FusionMessageIdConst = 3
-	TunerCommand	FusionMessageIdConst = 5
-	MarineTunerCommand	FusionMessageIdConst = 6
-	SetMarineTunerSquelch	FusionMessageIdConst = 7
-	SetMarineTunerScanMode	FusionMessageIdConst = 8
-	MenuAction	FusionMessageIdConst = 9
-	RequestMenuCount	FusionMessageIdConst = 10
-	RequestMenuItem	FusionMessageIdConst = 11
-	RequestMenuLockId	FusionMessageIdConst = 12
-	SetAuxGain	FusionMessageIdConst = 13
-	SetSettings	FusionMessageIdConst = 15
-	DabUpdtateCommand	FusionMessageIdConst = 16
-	SetMute	FusionMessageIdConst = 17
-	SetBalance	FusionMessageIdConst = 18
-	SetLowPassFiler	FusionMessageIdConst = 19
-	SetSublevel	FusionMessageIdConst = 20
-	SetEqualizer	FusionMessageIdConst = 22
-	SetVolumeLimit	FusionMessageIdConst = 23
-	SetZoneVolume	FusionMessageIdConst = 24
-	SetAllVolumes	FusionMessageIdConst = 25
-	SetLineLevelControl	FusionMessageIdConst = 27
-	Power_2	FusionMessageIdConst = 28
-	SetDeviceName	FusionMessageIdConst = 29
-	SendSiriusCommand	FusionMessageIdConst = 30
-	SetSiriusParental	FusionMessageIdConst = 31
-	SendFactoryResetCommand	FusionMessageIdConst = 33
-	SetZoneName	FusionMessageIdConst = 34
-	SendDvdCommand	FusionMessageIdConst = 35
-	DvdPressIrKey	FusionMessageIdConst = 36
-	SendSelectSiriusTeam	FusionMessageIdConst = 39
-	SendSelectSiriusArtist	FusionMessageIdConst = 40
-	SendSiriusSportAlertUserAction	FusionMessageIdConst = 41
-	SendSiriusArtistSongUserAction	FusionMessageIdConst = 45
-	SendMultiroomCommand	FusionMessageIdConst = 50
-	GetMultiroomDeviceRecord	FusionMessageIdConst = 51
-	ScanMultirooomDevices	FusionMessageIdConst = 52
-	SendFileTransfer	FusionMessageIdConst = 53
-	SetLoud	FusionMessageIdConst = 54
-	FapiSetSourceMultiroomEnabled	FusionMessageIdConst = 56
-	RequestHeadUnitDspSettings	FusionMessageIdConst = 57
-	SendTransferStatus	FusionMessageIdConst = 64
-	FapiGetServerInfo	FusionMessageIdConst = 65
-	FapiSetSourceEnabled	FusionMessageIdConst = 69
-	FapiSetSourceName	FusionMessageIdConst = 70
-	SendExternalAmpGain	FusionMessageIdConst = 73
-	SendInternalAmpGain	FusionMessageIdConst = 74
-	SendMono	FusionMessageIdConst = 75
+	RequestStatus	FusionMessageIDConst = 1
+	SetSource	FusionMessageIDConst = 2
+	MediaCommand	FusionMessageIDConst = 3
+	TunerCommand	FusionMessageIDConst = 5
+	MarineTunerCommand	FusionMessageIDConst = 6
+	SetMarineTunerSquelch	FusionMessageIDConst = 7
+	SetMarineTunerScanMode	FusionMessageIDConst = 8
+	MenuAction	FusionMessageIDConst = 9
+	RequestMenuCount	FusionMessageIDConst = 10
+	RequestMenuItem	FusionMessageIDConst = 11
+	RequestMenuLockID	FusionMessageIDConst = 12
+	SetAuxGain	FusionMessageIDConst = 13
+	SetSettings	FusionMessageIDConst = 15
+	DabUpdtateCommand	FusionMessageIDConst = 16
+	SetMute	FusionMessageIDConst = 17
+	SetBalance	FusionMessageIDConst = 18
+	SetLowPassFiler	FusionMessageIDConst = 19
+	SetSublevel	FusionMessageIDConst = 20
+	SetEqualizer	FusionMessageIDConst = 22
+	SetVolumeLimit	FusionMessageIDConst = 23
+	SetZoneVolume	FusionMessageIDConst = 24
+	SetAllVolumes	FusionMessageIDConst = 25
+	SetLineLevelControl	FusionMessageIDConst = 27
+	Power_2	FusionMessageIDConst = 28
+	SetDeviceName	FusionMessageIDConst = 29
+	SendSiriusCommand	FusionMessageIDConst = 30
+	SetSiriusParental	FusionMessageIDConst = 31
+	SendFactoryResetCommand	FusionMessageIDConst = 33
+	SetZoneName	FusionMessageIDConst = 34
+	SendDvdCommand	FusionMessageIDConst = 35
+	DvdPressIrKey	FusionMessageIDConst = 36
+	SendSelectSiriusTeam	FusionMessageIDConst = 39
+	SendSelectSiriusArtist	FusionMessageIDConst = 40
+	SendSiriusSportAlertUserAction	FusionMessageIDConst = 41
+	SendSiriusArtistSongUserAction	FusionMessageIDConst = 45
+	SendMultiroomCommand	FusionMessageIDConst = 50
+	GetMultiroomDeviceRecord	FusionMessageIDConst = 51
+	ScanMultirooomDevices	FusionMessageIDConst = 52
+	SendFileTransfer	FusionMessageIDConst = 53
+	SetLoud	FusionMessageIDConst = 54
+	FapiSetSourceMultiroomEnabled	FusionMessageIDConst = 56
+	RequestHeadUnitDspSettings	FusionMessageIDConst = 57
+	SendTransferStatus	FusionMessageIDConst = 64
+	FapiGetServerInfo	FusionMessageIDConst = 65
+	FapiSetSourceEnabled	FusionMessageIDConst = 69
+	FapiSetSourceName	FusionMessageIDConst = 70
+	SendExternalAmpGain	FusionMessageIDConst = 73
+	SendInternalAmpGain	FusionMessageIDConst = 74
+	SendMono	FusionMessageIDConst = 75
 )
 
-func (e FusionMessageIdConst) GoString() string {return e.String() }
-func (e FusionMessageIdConst) String() string {
+func (e FusionMessageIDConst) GoString() string {return e.String() }
+func (e FusionMessageIDConst) String() string {
 	switch e {
 		case 1:
 			return "Request Status"
@@ -9473,7 +9445,7 @@ func (e FusionMessageIdConst) String() string {
 		case 75:
 			return "Send Mono"
 default:
-		return fmt.Sprintf("FusionMessageIdConst(%d)", uint16(e))
+		return fmt.Sprintf("FusionMessageIDConst(%d)", uint16(e))
 	}
 }
 type FusionPlayStatusConst uint16
@@ -9512,9 +9484,9 @@ const (
 	Aux_2	FusionSourceTypeConst = 2
 	Sirius	FusionSourceTypeConst = 3
 	Ipod	FusionSourceTypeConst = 4
-	Usb_2	FusionSourceTypeConst = 5
+	USB_2	FusionSourceTypeConst = 5
 	Dvd	FusionSourceTypeConst = 6
-	Vhf	FusionSourceTypeConst = 7
+	VHF	FusionSourceTypeConst = 7
 	Invalid_3	FusionSourceTypeConst = 8
 	Mtp	FusionSourceTypeConst = 9
 	Bluetooth_2	FusionSourceTypeConst = 10
@@ -9593,32 +9565,6 @@ default:
 		return fmt.Sprintf("FusionSiriusComStateConst(%d)", uint8(e))
 	}
 }
-type FusionSiriusAlertConst uint8
-const (
-	Unknown_3	FusionSiriusAlertConst = 255
-	None_5	FusionSiriusAlertConst = 1
-	Antenna	FusionSiriusAlertConst = 2
-	Nosignal	FusionSiriusAlertConst = 3
-	SubscriptionUpdate	FusionSiriusAlertConst = 4
-)
-
-func (e FusionSiriusAlertConst) GoString() string {return e.String() }
-func (e FusionSiriusAlertConst) String() string {
-	switch e {
-		case 255:
-			return "Unknown"
-		case 1:
-			return "None"
-		case 2:
-			return "Antenna"
-		case 3:
-			return "NoSignal"
-		case 4:
-			return "Subscription Update"
-default:
-		return fmt.Sprintf("FusionSiriusAlertConst(%d)", uint8(e))
-	}
-}
 type FusionSiriusTuningModeConst uint8
 const (
 	Normal_3	FusionSiriusTuningModeConst = 1
@@ -9639,70 +9585,70 @@ default:
 		return fmt.Sprintf("FusionSiriusTuningModeConst(%d)", uint8(e))
 	}
 }
-type FusionStatusMessageIdConst uint16
+type FusionStatusMessageIDConst uint16
 const (
-	Unknown_4	FusionStatusMessageIdConst = 0
-	ApiVersion	FusionStatusMessageIdConst = 32769
-	Source_2	FusionStatusMessageIdConst = 32770
-	SourceCount	FusionStatusMessageIdConst = 32771
-	TrackInfo	FusionStatusMessageIdConst = 32772
-	TrackTitle	FusionStatusMessageIdConst = 32773
-	TrackArtist	FusionStatusMessageIdConst = 32774
-	TrackAlbum	FusionStatusMessageIdConst = 32775
-	CoverArt	FusionStatusMessageIdConst = 32776
-	TrackProgress	FusionStatusMessageIdConst = 32777
-	TunerAlign	FusionStatusMessageIdConst = 32778
-	Tuner	FusionStatusMessageIdConst = 32779
-	MarineTuner	FusionStatusMessageIdConst = 32780
-	MarineSquelch	FusionStatusMessageIdConst = 32781
-	MarineScanMode	FusionStatusMessageIdConst = 32782
-	MenuAction_2	FusionStatusMessageIdConst = 32783
-	MenuCount	FusionStatusMessageIdConst = 32784
-	MenuItem_2	FusionStatusMessageIdConst = 32785
-	MenuLockId	FusionStatusMessageIdConst = 32786
-	AuxGain	FusionStatusMessageIdConst = 32787
-	Setting	FusionStatusMessageIdConst = 32788
-	Settings_2	FusionStatusMessageIdConst = 32789
-	UpdateFirmwareResult	FusionStatusMessageIdConst = 32790
-	Mute	FusionStatusMessageIdConst = 32791
-	Balance	FusionStatusMessageIdConst = 32792
-	LowPassFilter	FusionStatusMessageIdConst = 32793
-	Sublevels	FusionStatusMessageIdConst = 32794
-	Tone	FusionStatusMessageIdConst = 32795
-	VolumeLimits	FusionStatusMessageIdConst = 32796
-	Volume_2	FusionStatusMessageIdConst = 32797
-	Capabilities	FusionStatusMessageIdConst = 32798
-	LineLevelControl	FusionStatusMessageIdConst = 32799
-	Power_3	FusionStatusMessageIdConst = 32800
-	UnitName	FusionStatusMessageIdConst = 32801
-	Sirius_2	FusionStatusMessageIdConst = 32802
-	SiriusxmPresetEvent	FusionStatusMessageIdConst = 32803
-	SiriusxmChannel	FusionStatusMessageIdConst = 32804
-	SiriusxmTitle	FusionStatusMessageIdConst = 32805
-	SiriusxmArtist	FusionStatusMessageIdConst = 32806
-	SiriusxmGenre	FusionStatusMessageIdConst = 32807
-	SiriusxmCategory	FusionStatusMessageIdConst = 32808
-	SiriusxmSignal	FusionStatusMessageIdConst = 32809
-	SiriusxmParentalRequest	FusionStatusMessageIdConst = 32810
-	SiriusxmDiagnostics	FusionStatusMessageIdConst = 32811
-	SiriusxmPresets	FusionStatusMessageIdConst = 32812
-	ZoneName	FusionStatusMessageIdConst = 32813
-	IpSetting	FusionStatusMessageIdConst = 32819
-	Multiroom	FusionStatusMessageIdConst = 32824
-	MultiroomStatus	FusionStatusMessageIdConst = 32825
-	SystemCapabilities	FusionStatusMessageIdConst = 32829
-	PartNumber	FusionStatusMessageIdConst = 32830
-	ProcessingBypass	FusionStatusMessageIdConst = 32832
-	ServerInfo	FusionStatusMessageIdConst = 32846
-	RdsData	FusionStatusMessageIdConst = 32850
-	IgnitionSwitchState	FusionStatusMessageIdConst = 32859
-	Mono	FusionStatusMessageIdConst = 32862
-	SpeedVolumeCurrentSpeed	FusionStatusMessageIdConst = 32863
-	ZoneCapabilitiesExtended	FusionStatusMessageIdConst = 32865
+	Unknown_3	FusionStatusMessageIDConst = 0
+	ApiVersion	FusionStatusMessageIDConst = 32769
+	Source_2	FusionStatusMessageIDConst = 32770
+	SourceCount	FusionStatusMessageIDConst = 32771
+	TrackInfo	FusionStatusMessageIDConst = 32772
+	TrackTitle	FusionStatusMessageIDConst = 32773
+	TrackArtist	FusionStatusMessageIDConst = 32774
+	TrackAlbum	FusionStatusMessageIDConst = 32775
+	CoverArt	FusionStatusMessageIDConst = 32776
+	TrackProgress	FusionStatusMessageIDConst = 32777
+	TunerAlign	FusionStatusMessageIDConst = 32778
+	Tuner	FusionStatusMessageIDConst = 32779
+	MarineTuner	FusionStatusMessageIDConst = 32780
+	MarineSquelch	FusionStatusMessageIDConst = 32781
+	MarineScanMode	FusionStatusMessageIDConst = 32782
+	MenuAction_2	FusionStatusMessageIDConst = 32783
+	MenuCount	FusionStatusMessageIDConst = 32784
+	MenuItem_2	FusionStatusMessageIDConst = 32785
+	MenuLockID	FusionStatusMessageIDConst = 32786
+	AuxGain	FusionStatusMessageIDConst = 32787
+	Setting	FusionStatusMessageIDConst = 32788
+	Settings_2	FusionStatusMessageIDConst = 32789
+	UpdateFirmwareResult	FusionStatusMessageIDConst = 32790
+	Mute	FusionStatusMessageIDConst = 32791
+	Balance	FusionStatusMessageIDConst = 32792
+	LowPassFilter	FusionStatusMessageIDConst = 32793
+	Sublevels	FusionStatusMessageIDConst = 32794
+	Tone	FusionStatusMessageIDConst = 32795
+	VolumeLimits	FusionStatusMessageIDConst = 32796
+	Volume_2	FusionStatusMessageIDConst = 32797
+	Capabilities	FusionStatusMessageIDConst = 32798
+	LineLevelControl	FusionStatusMessageIDConst = 32799
+	Power_3	FusionStatusMessageIDConst = 32800
+	UnitName	FusionStatusMessageIDConst = 32801
+	Sirius_2	FusionStatusMessageIDConst = 32802
+	SiriusxmPresetEvent	FusionStatusMessageIDConst = 32803
+	SiriusxmChannel	FusionStatusMessageIDConst = 32804
+	SiriusxmTitle	FusionStatusMessageIDConst = 32805
+	SiriusxmArtist	FusionStatusMessageIDConst = 32806
+	SiriusxmGenre	FusionStatusMessageIDConst = 32807
+	SiriusxmCategory	FusionStatusMessageIDConst = 32808
+	SiriusxmSignal	FusionStatusMessageIDConst = 32809
+	SiriusxmParentalRequest	FusionStatusMessageIDConst = 32810
+	SiriusxmDiagnostics	FusionStatusMessageIDConst = 32811
+	SiriusxmPresets	FusionStatusMessageIDConst = 32812
+	ZoneName	FusionStatusMessageIDConst = 32813
+	IpSetting	FusionStatusMessageIDConst = 32819
+	Multiroom	FusionStatusMessageIDConst = 32824
+	MultiroomStatus	FusionStatusMessageIDConst = 32825
+	SystemCapabilities	FusionStatusMessageIDConst = 32829
+	PartNumber	FusionStatusMessageIDConst = 32830
+	ProcessingBypass	FusionStatusMessageIDConst = 32832
+	ServerInfo	FusionStatusMessageIDConst = 32846
+	RDSData	FusionStatusMessageIDConst = 32850
+	IgnitionSwitchState	FusionStatusMessageIDConst = 32859
+	Mono	FusionStatusMessageIDConst = 32862
+	SpeedVolumeCurrentSpeed	FusionStatusMessageIDConst = 32863
+	ZoneCapabilitiesExtended	FusionStatusMessageIDConst = 32865
 )
 
-func (e FusionStatusMessageIdConst) GoString() string {return e.String() }
-func (e FusionStatusMessageIdConst) String() string {
+func (e FusionStatusMessageIDConst) GoString() string {return e.String() }
+func (e FusionStatusMessageIDConst) String() string {
 	switch e {
 		case 0:
 			return "Unknown"
@@ -9821,7 +9767,7 @@ func (e FusionStatusMessageIdConst) String() string {
 		case 32865:
 			return "Zone Capabilities Extended"
 default:
-		return fmt.Sprintf("FusionStatusMessageIdConst(%d)", uint16(e))
+		return fmt.Sprintf("FusionStatusMessageIDConst(%d)", uint16(e))
 	}
 }
 type SonichubControlConst uint8
@@ -9846,7 +9792,7 @@ const (
 	Am_3	SonichubSourceConst = 0
 	Fm_3	SonichubSourceConst = 1
 	Ipod_2	SonichubSourceConst = 2
-	Usb_3	SonichubSourceConst = 3
+	USB_3	SonichubSourceConst = 3
 	Aux_3	SonichubSourceConst = 4
 	Aux2	SonichubSourceConst = 5
 	Mic	SonichubSourceConst = 6
@@ -9873,16 +9819,16 @@ default:
 		return fmt.Sprintf("SonichubSourceConst(%d)", uint8(e))
 	}
 }
-type IsoControlConst uint8
+type ISOControlConst uint8
 const (
-	Ack_2	IsoControlConst = 0
-	Nak	IsoControlConst = 1
-	AccessDenied_3	IsoControlConst = 2
-	AddressBusy	IsoControlConst = 3
+	Ack_2	ISOControlConst = 0
+	Nak	ISOControlConst = 1
+	AccessDenied_3	ISOControlConst = 2
+	AddressBusy	ISOControlConst = 3
 )
 
-func (e IsoControlConst) GoString() string {return e.String() }
-func (e IsoControlConst) String() string {
+func (e ISOControlConst) GoString() string {return e.String() }
+func (e ISOControlConst) String() string {
 	switch e {
 		case 0:
 			return "ACK"
@@ -9893,21 +9839,21 @@ func (e IsoControlConst) String() string {
 		case 3:
 			return "Address Busy"
 default:
-		return fmt.Sprintf("IsoControlConst(%d)", uint8(e))
+		return fmt.Sprintf("ISOControlConst(%d)", uint8(e))
 	}
 }
-type IsoCommandConst uint8
+type ISOCommandConst uint8
 const (
-	Ack_3	IsoCommandConst = 0
-	Rts	IsoCommandConst = 16
-	Cts	IsoCommandConst = 17
-	Eom	IsoCommandConst = 19
-	Bam	IsoCommandConst = 32
-	Abort	IsoCommandConst = 255
+	Ack_3	ISOCommandConst = 0
+	Rts	ISOCommandConst = 16
+	Cts	ISOCommandConst = 17
+	Eom	ISOCommandConst = 19
+	Bam	ISOCommandConst = 32
+	Abort	ISOCommandConst = 255
 )
 
-func (e IsoCommandConst) GoString() string {return e.String() }
-func (e IsoCommandConst) String() string {
+func (e ISOCommandConst) GoString() string {return e.String() }
+func (e ISOCommandConst) String() string {
 	switch e {
 		case 0:
 			return "ACK"
@@ -9922,7 +9868,7 @@ func (e IsoCommandConst) String() string {
 		case 255:
 			return "Abort"
 default:
-		return fmt.Sprintf("IsoCommandConst(%d)", uint8(e))
+		return fmt.Sprintf("ISOCommandConst(%d)", uint8(e))
 	}
 }
 type GroupFunctionConst uint8
@@ -9968,7 +9914,7 @@ const (
 	CalibrateTemperature	AirmarCommandConst = 42
 	SpeedFilter	AirmarCommandConst = 43
 	TemperatureFilter	AirmarCommandConst = 44
-	Nmea2000Options	AirmarCommandConst = 46
+	NMEA2000Options	AirmarCommandConst = 46
 )
 
 func (e AirmarCommandConst) GoString() string {return e.String() }
@@ -10042,19 +9988,19 @@ default:
 		return fmt.Sprintf("AirmarDepthQualityFactorConst(%d)", uint8(e))
 	}
 }
-type PgnErrorCodeConst uint8
+type PGNErrorCodeConst uint8
 const (
-	Acknowledge_6	PgnErrorCodeConst = 0
-	PgnNotSupported	PgnErrorCodeConst = 1
-	PgnNotAvailable	PgnErrorCodeConst = 2
-	AccessDenied_4	PgnErrorCodeConst = 3
-	NotSupported_3	PgnErrorCodeConst = 4
-	TagNotSupported	PgnErrorCodeConst = 5
-	ReadOrWriteNotSupported_2	PgnErrorCodeConst = 6
+	Acknowledge_6	PGNErrorCodeConst = 0
+	PGNNotSupported	PGNErrorCodeConst = 1
+	PGNNotAvailable	PGNErrorCodeConst = 2
+	AccessDenied_4	PGNErrorCodeConst = 3
+	NotSupported_3	PGNErrorCodeConst = 4
+	TagNotSupported	PGNErrorCodeConst = 5
+	ReadOrWriteNotSupported_2	PGNErrorCodeConst = 6
 )
 
-func (e PgnErrorCodeConst) GoString() string {return e.String() }
-func (e PgnErrorCodeConst) String() string {
+func (e PGNErrorCodeConst) GoString() string {return e.String() }
+func (e PGNErrorCodeConst) String() string {
 	switch e {
 		case 0:
 			return "Acknowledge"
@@ -10071,7 +10017,7 @@ func (e PgnErrorCodeConst) String() string {
 		case 6:
 			return "Read or Write not supported"
 default:
-		return fmt.Sprintf("PgnErrorCodeConst(%d)", uint8(e))
+		return fmt.Sprintf("PGNErrorCodeConst(%d)", uint8(e))
 	}
 }
 type AirmarTransmissionIntervalConst uint8
@@ -10091,21 +10037,21 @@ default:
 		return fmt.Sprintf("AirmarTransmissionIntervalConst(%d)", uint8(e))
 	}
 }
-type MobPositionSourceConst uint8
+type MOBPositionSourceConst uint8
 const (
-	PositionEstimatedByTheVessel	MobPositionSourceConst = 0
-	PositionReportedByMobEmitter	MobPositionSourceConst = 1
+	PositionEstimatedByTheVessel	MOBPositionSourceConst = 0
+	PositionReportedByMOBEmitter	MOBPositionSourceConst = 1
 )
 
-func (e MobPositionSourceConst) GoString() string {return e.String() }
-func (e MobPositionSourceConst) String() string {
+func (e MOBPositionSourceConst) GoString() string {return e.String() }
+func (e MOBPositionSourceConst) String() string {
 	switch e {
 		case 0:
 			return "Position estimated by the vessel"
 		case 1:
 			return "Position reported by MOB emitter"
 default:
-		return fmt.Sprintf("MobPositionSourceConst(%d)", uint8(e))
+		return fmt.Sprintf("MOBPositionSourceConst(%d)", uint8(e))
 	}
 }
 type SteeringModeConst uint8
@@ -10165,8 +10111,8 @@ const (
 	Telemute	FusionSettingConst = 6
 	TunerRegion	FusionSettingConst = 7
 	MarineZone	FusionSettingConst = 8
-	UsbRepeat	FusionSettingConst = 9
-	UsbShuffle	FusionSettingConst = 10
+	USBRepeat	FusionSettingConst = 9
+	USBShuffle	FusionSettingConst = 10
 	IpodAlbumArtwork	FusionSettingConst = 11
 	IpodRepeat	FusionSettingConst = 12
 	IpodShuffle	FusionSettingConst = 13
@@ -10200,34 +10146,34 @@ const (
 	FmPreset12	FusionSettingConst = 41
 	FmPreset13	FusionSettingConst = 42
 	FmPreset14	FusionSettingConst = 43
-	VhfPreset0	FusionSettingConst = 44
-	VhfPreset1	FusionSettingConst = 45
-	VhfPreset2	FusionSettingConst = 46
-	VhfPreset3	FusionSettingConst = 47
-	VhfPreset4	FusionSettingConst = 48
-	VhfPreset5	FusionSettingConst = 49
-	VhfPreset6	FusionSettingConst = 50
-	VhfPreset7	FusionSettingConst = 51
-	VhfPreset8	FusionSettingConst = 52
-	VhfPreset9	FusionSettingConst = 53
-	VhfPreset10	FusionSettingConst = 54
-	VhfPreset11	FusionSettingConst = 55
-	VhfPreset12	FusionSettingConst = 56
-	VhfPreset13	FusionSettingConst = 57
-	VhfPreset14	FusionSettingConst = 58
+	VHFPreset0	FusionSettingConst = 44
+	VHFPreset1	FusionSettingConst = 45
+	VHFPreset2	FusionSettingConst = 46
+	VHFPreset3	FusionSettingConst = 47
+	VHFPreset4	FusionSettingConst = 48
+	VHFPreset5	FusionSettingConst = 49
+	VHFPreset6	FusionSettingConst = 50
+	VHFPreset7	FusionSettingConst = 51
+	VHFPreset8	FusionSettingConst = 52
+	VHFPreset9	FusionSettingConst = 53
+	VHFPreset10	FusionSettingConst = 54
+	VHFPreset11	FusionSettingConst = 55
+	VHFPreset12	FusionSettingConst = 56
+	VHFPreset13	FusionSettingConst = 57
+	VHFPreset14	FusionSettingConst = 58
 	ClockTime	FusionSettingConst = 59
 	ClockAlarm	FusionSettingConst = 60
 	IpodVideoSignal	FusionSettingConst = 61
 	IpodMonitorAspect	FusionSettingConst = 62
 	AuxNameIndex	FusionSettingConst = 63
 	AmEnabled	FusionSettingConst = 64
-	VhfEnabled	FusionSettingConst = 65
+	VHFEnabled	FusionSettingConst = 65
 	Language	FusionSettingConst = 66
 	InternalAmpsOn	FusionSettingConst = 67
 	MtpRepeat	FusionSettingConst = 68
 	MtpShuffle	FusionSettingConst = 69
-	IdAccessorySource	FusionSettingConst = 70
-	NmeaPower	FusionSettingConst = 71
+	IDAccessorySource	FusionSettingConst = 70
+	NMEAPower	FusionSettingConst = 71
 	LowPowerMode_2	FusionSettingConst = 72
 	DvdRegion	FusionSettingConst = 73
 	VolumeZoneSync	FusionSettingConst = 74
@@ -10436,20 +10382,20 @@ default:
 		return fmt.Sprintf("AirmarPostControlConst(%d)", uint8(e))
 	}
 }
-type AirmarPostIdConst uint8
+type AirmarPostIDConst uint8
 const (
-	FormatCode	AirmarPostIdConst = 1
-	FactoryEeprom	AirmarPostIdConst = 2
-	UserEeprom	AirmarPostIdConst = 3
-	WaterTemperatureSensor	AirmarPostIdConst = 4
-	SonarTransceiver	AirmarPostIdConst = 5
-	SpeedSensor	AirmarPostIdConst = 6
-	InternalTemperatureSensor	AirmarPostIdConst = 7
-	BatteryVoltageSensor	AirmarPostIdConst = 8
+	FormatCode	AirmarPostIDConst = 1
+	FactoryEeprom	AirmarPostIDConst = 2
+	UserEeprom	AirmarPostIDConst = 3
+	WaterTemperatureSensor	AirmarPostIDConst = 4
+	SonarTransceiver	AirmarPostIDConst = 5
+	SpeedSensor	AirmarPostIDConst = 6
+	InternalTemperatureSensor	AirmarPostIDConst = 7
+	BatteryVoltageSensor	AirmarPostIDConst = 8
 )
 
-func (e AirmarPostIdConst) GoString() string {return e.String() }
-func (e AirmarPostIdConst) String() string {
+func (e AirmarPostIDConst) GoString() string {return e.String() }
+func (e AirmarPostIDConst) String() string {
 	switch e {
 		case 1:
 			return "Format Code"
@@ -10468,7 +10414,7 @@ func (e AirmarPostIdConst) String() string {
 		case 8:
 			return "Battery voltage sensor"
 default:
-		return fmt.Sprintf("AirmarPostIdConst(%d)", uint8(e))
+		return fmt.Sprintf("AirmarPostIDConst(%d)", uint8(e))
 	}
 }
 type SonichubTuningConst uint8
@@ -10744,7 +10690,7 @@ const (
 	AutoCompassCommanded	SeatalkPilotMode16Const = 64
 	VaneWindMode	SeatalkPilotMode16Const = 256
 	TrackMode	SeatalkPilotMode16Const = 384
-	NoDriftCogReferencedInTrackCou	SeatalkPilotMode16Const = 385
+	NoDriftCOGReferencedInTrackCou	SeatalkPilotMode16Const = 385
 )
 
 func (e SeatalkPilotMode16Const) GoString() string {return e.String() }
@@ -10863,9 +10809,9 @@ const (
 	Loran	DifferentialSourceConst = 1
 	MskBeacon	DifferentialSourceConst = 2
 	FmSubcarrier	DifferentialSourceConst = 3
-	Ais_2	DifferentialSourceConst = 4
+	AIS_2	DifferentialSourceConst = 4
 	GroundBasedRadio	DifferentialSourceConst = 5
-	Sbas_2	DifferentialSourceConst = 6
+	SBAS_2	DifferentialSourceConst = 6
 	Satellite	DifferentialSourceConst = 7
 )
 
@@ -10912,17 +10858,17 @@ default:
 		return fmt.Sprintf("DifferentialModeConst(%d)", uint8(e))
 	}
 }
-type WpPositionResolutionConst uint8
+type WPPositionResolutionConst uint8
 const (
-	MoreThan01Min	WpPositionResolutionConst = 0
-	WpPositionResolutionConst00101Min	WpPositionResolutionConst = 1
-	WpPositionResolutionConst0001001Min	WpPositionResolutionConst = 2
-	WpPositionResolutionConst000010001Min	WpPositionResolutionConst = 3
-	WpPositionResolutionConst000001Min	WpPositionResolutionConst = 4
+	MoreThan01Min	WPPositionResolutionConst = 0
+	WPPositionResolutionConst00101Min	WPPositionResolutionConst = 1
+	WPPositionResolutionConst0001001Min	WPPositionResolutionConst = 2
+	WPPositionResolutionConst000010001Min	WPPositionResolutionConst = 3
+	WPPositionResolutionConst000001Min	WPPositionResolutionConst = 4
 )
 
-func (e WpPositionResolutionConst) GoString() string {return e.String() }
-func (e WpPositionResolutionConst) String() string {
+func (e WPPositionResolutionConst) GoString() string {return e.String() }
+func (e WPPositionResolutionConst) String() string {
 	switch e {
 		case 0:
 			return "more than 0.1 min"
@@ -10935,35 +10881,35 @@ func (e WpPositionResolutionConst) String() string {
 		case 4:
 			return "<0 .. 0.0001] min"
 default:
-		return fmt.Sprintf("WpPositionResolutionConst(%d)", uint8(e))
+		return fmt.Sprintf("WPPositionResolutionConst(%d)", uint8(e))
 	}
 }
-type WpIdentificationMethodConst uint8
+type WPIdentificationMethodConst uint8
 const (
-	WaypointsInWpList	WpIdentificationMethodConst = 0
-	WaypointsEmbeddedInRoute	WpIdentificationMethodConst = 1
+	WaypointsInWPList	WPIdentificationMethodConst = 0
+	WaypointsEmbeddedInRoute	WPIdentificationMethodConst = 1
 )
 
-func (e WpIdentificationMethodConst) GoString() string {return e.String() }
-func (e WpIdentificationMethodConst) String() string {
+func (e WPIdentificationMethodConst) GoString() string {return e.String() }
+func (e WPIdentificationMethodConst) String() string {
 	switch e {
 		case 0:
 			return "Waypoints in WP list"
 		case 1:
 			return "Waypoints embedded in route"
 default:
-		return fmt.Sprintf("WpIdentificationMethodConst(%d)", uint8(e))
+		return fmt.Sprintf("WPIdentificationMethodConst(%d)", uint8(e))
 	}
 }
-type WpRouteStatusConst uint8
+type WPRouteStatusConst uint8
 const (
-	Active_2	WpRouteStatusConst = 0
-	Inactive	WpRouteStatusConst = 1
-	Deleted	WpRouteStatusConst = 2
+	Active_2	WPRouteStatusConst = 0
+	Inactive	WPRouteStatusConst = 1
+	Deleted	WPRouteStatusConst = 2
 )
 
-func (e WpRouteStatusConst) GoString() string {return e.String() }
-func (e WpRouteStatusConst) String() string {
+func (e WPRouteStatusConst) GoString() string {return e.String() }
+func (e WPRouteStatusConst) String() string {
 	switch e {
 		case 0:
 			return "Active"
@@ -10972,24 +10918,24 @@ func (e WpRouteStatusConst) String() string {
 		case 2:
 			return "Deleted"
 default:
-		return fmt.Sprintf("WpRouteStatusConst(%d)", uint8(e))
+		return fmt.Sprintf("WPRouteStatusConst(%d)", uint8(e))
 	}
 }
-type WpNavigationMethodConst uint8
+type WPNavigationMethodConst uint8
 const (
-	GreatCircle_2	WpNavigationMethodConst = 0
-	RhumbLine	WpNavigationMethodConst = 1
+	GreatCircle_2	WPNavigationMethodConst = 0
+	RhumbLine	WPNavigationMethodConst = 1
 )
 
-func (e WpNavigationMethodConst) GoString() string {return e.String() }
-func (e WpNavigationMethodConst) String() string {
+func (e WPNavigationMethodConst) GoString() string {return e.String() }
+func (e WPNavigationMethodConst) String() string {
 	switch e {
 		case 0:
 			return "Great Circle"
 		case 1:
 			return "Rhumb Line"
 default:
-		return fmt.Sprintf("WpNavigationMethodConst(%d)", uint8(e))
+		return fmt.Sprintf("WPNavigationMethodConst(%d)", uint8(e))
 	}
 }
 type InverterModeConst uint8
@@ -11146,9 +11092,9 @@ default:
 type AgsOnReasonConst uint8
 const (
 	NotOn	AgsOnReasonConst = 0
-	DcVoltageLow	AgsOnReasonConst = 1
+	DCVoltageLow	AgsOnReasonConst = 1
 	BatteryStateOfChargeLow	AgsOnReasonConst = 2
-	AcCurrentHigh	AgsOnReasonConst = 3
+	ACCurrentHigh	AgsOnReasonConst = 3
 	ContactClosed	AgsOnReasonConst = 4
 	ManualOn_2	AgsOnReasonConst = 5
 	Exercise	AgsOnReasonConst = 6
@@ -11190,9 +11136,9 @@ default:
 type AgsOffReasonConst uint8
 const (
 	NotOff	AgsOffReasonConst = 0
-	DcVoltageHigh	AgsOffReasonConst = 1
+	DCVoltageHigh	AgsOffReasonConst = 1
 	BatteryStateOfChargeHigh	AgsOffReasonConst = 2
-	AcCurrentLow	AgsOffReasonConst = 3
+	ACCurrentLow	AgsOffReasonConst = 3
 	ContactOpened	AgsOffReasonConst = 4
 	ReachedAbsorption	AgsOffReasonConst = 5
 	ReachedFloat	AgsOffReasonConst = 6
@@ -11263,8 +11209,8 @@ const (
 	H3eTelephone	TelephoneModeConst = 3
 	F1bJ2bFecNbdpTelexTeleprinter	TelephoneModeConst = 4
 	F1bJ2bArqNbdpTelexTeleprinter	TelephoneModeConst = 5
-	F1bJ2bReceiveOnlyTeleprinterDs	TelephoneModeConst = 6
-	F1bJ2bTeleprinterDsc	TelephoneModeConst = 7
+	F1bJ2bReceiveOnlyTeleprinterDS	TelephoneModeConst = 6
+	F1bJ2bTeleprinterDSC	TelephoneModeConst = 7
 	A1aMorseTapeRecorder	TelephoneModeConst = 8
 	A1aMorseMorseKeyHeadSet	TelephoneModeConst = 9
 	F1cF2cF3cFaxMachine	TelephoneModeConst = 10
@@ -11370,15 +11316,15 @@ default:
 		return fmt.Sprintf("FloodStateConst(%d)", uint8(e))
 	}
 }
-type AcLineConst uint8
+type ACLineConst uint8
 const (
-	Line1_2	AcLineConst = 0
-	Line2_2	AcLineConst = 1
-	Line3_2	AcLineConst = 2
+	Line1_2	ACLineConst = 0
+	Line2_2	ACLineConst = 1
+	Line3_2	ACLineConst = 2
 )
 
-func (e AcLineConst) GoString() string {return e.String() }
-func (e AcLineConst) String() string {
+func (e ACLineConst) GoString() string {return e.String() }
+func (e ACLineConst) String() string {
 	switch e {
 		case 0:
 			return "Line 1"
@@ -11387,7 +11333,7 @@ func (e AcLineConst) String() string {
 		case 2:
 			return "Line 3"
 default:
-		return fmt.Sprintf("AcLineConst(%d)", uint8(e))
+		return fmt.Sprintf("ACLineConst(%d)", uint8(e))
 	}
 }
 type ZoneSizeConst uint8
@@ -11668,31 +11614,31 @@ default:
 		return fmt.Sprintf("AutomaticManualConst(%d)", uint8(e))
 	}
 }
-type SbasSvConst uint8
+type SBASSvConst uint8
 const (
-	SbasSvConst120	SbasSvConst = 0
-	SbasSvConst121	SbasSvConst = 1
-	SbasSvConst122	SbasSvConst = 2
-	SbasSvConst123	SbasSvConst = 3
-	SbasSvConst124	SbasSvConst = 4
-	SbasSvConst125	SbasSvConst = 5
-	SbasSvConst126	SbasSvConst = 6
-	SbasSvConst127	SbasSvConst = 7
-	SbasSvConst128	SbasSvConst = 8
-	SbasSvConst129	SbasSvConst = 9
-	SbasSvConst130	SbasSvConst = 10
-	SbasSvConst131	SbasSvConst = 11
-	SbasSvConst132	SbasSvConst = 12
-	SbasSvConst133	SbasSvConst = 13
-	SbasSvConst134	SbasSvConst = 14
-	SbasSvConst135	SbasSvConst = 15
-	SbasSvConst136	SbasSvConst = 16
-	SbasSvConst137	SbasSvConst = 17
-	SbasSvConst138	SbasSvConst = 18
+	SBASSvConst120	SBASSvConst = 0
+	SBASSvConst121	SBASSvConst = 1
+	SBASSvConst122	SBASSvConst = 2
+	SBASSvConst123	SBASSvConst = 3
+	SBASSvConst124	SBASSvConst = 4
+	SBASSvConst125	SBASSvConst = 5
+	SBASSvConst126	SBASSvConst = 6
+	SBASSvConst127	SBASSvConst = 7
+	SBASSvConst128	SBASSvConst = 8
+	SBASSvConst129	SBASSvConst = 9
+	SBASSvConst130	SBASSvConst = 10
+	SBASSvConst131	SBASSvConst = 11
+	SBASSvConst132	SBASSvConst = 12
+	SBASSvConst133	SBASSvConst = 13
+	SBASSvConst134	SBASSvConst = 14
+	SBASSvConst135	SBASSvConst = 15
+	SBASSvConst136	SBASSvConst = 16
+	SBASSvConst137	SBASSvConst = 17
+	SBASSvConst138	SBASSvConst = 18
 )
 
-func (e SbasSvConst) GoString() string {return e.String() }
-func (e SbasSvConst) String() string {
+func (e SBASSvConst) GoString() string {return e.String() }
+func (e SBASSvConst) String() string {
 	switch e {
 		case 0:
 			return "120"
@@ -11733,7 +11679,7 @@ func (e SbasSvConst) String() string {
 		case 18:
 			return "138"
 default:
-		return fmt.Sprintf("SbasSvConst(%d)", uint8(e))
+		return fmt.Sprintf("SBASSvConst(%d)", uint8(e))
 	}
 }
 type MercuryCommandOpcodeConst uint8
@@ -12350,7 +12296,7 @@ func (e SimnetApModeBitfieldConst) String() string {
 }
 type SimnetAlertBitfieldConst uint16
 const (
-	NoGpsFix_2	SimnetAlertBitfieldConst = 0
+	NoGPSFix_2	SimnetAlertBitfieldConst = 0
 	NoActiveAutopilotControlUnit_2	SimnetAlertBitfieldConst = 2
 	NoAutopilotComputer_2	SimnetAlertBitfieldConst = 4
 	ApClutchOverload_2	SimnetAlertBitfieldConst = 6
@@ -12376,8 +12322,8 @@ const (
 	DriveReadyMissing_2	SimnetAlertBitfieldConst = 46
 	EvcComError_3	SimnetAlertBitfieldConst = 48
 	EvcOverride_2	SimnetAlertBitfieldConst = 50
-	LowCanBusVoltage_2	SimnetAlertBitfieldConst = 52
-	CanBusSupplyOverload_2	SimnetAlertBitfieldConst = 54
+	LowCANBusVoltage_2	SimnetAlertBitfieldConst = 52
+	CANBusSupplyOverload_2	SimnetAlertBitfieldConst = 54
 	WindSensorBatteryLow_2	SimnetAlertBitfieldConst = 56
 )
 
@@ -12480,17 +12426,17 @@ func (e EntertainmentShuffleBitfieldConst) String() string {
 		return fmt.Sprintf("%s(%d)", "EntertainmentShuffleBitfieldConst", int(e))
 	}
 }
-type WpChangeConst uint16
+type WPChangeConst uint16
 const (
-	ChangeInMainDataPositionName	WpChangeConst = 0
-	ChangeInSupplementaryParameter	WpChangeConst = 1
-	ChangedNumberOfWpsInRouteWpLis	WpChangeConst = 2
-	RouteChangeSupplementaryParame	WpChangeConst = 3
-	OtherNotSpecifiedChanged	WpChangeConst = 6
+	ChangeInMainDataPositionName	WPChangeConst = 0
+	ChangeInSupplementaryParameter	WPChangeConst = 1
+	ChangedNumberOfWPsInRouteWPLis	WPChangeConst = 2
+	RouteChangeSupplementaryParame	WPChangeConst = 3
+	OtherNotSpecifiedChanged	WPChangeConst = 6
 )
 
-func (e WpChangeConst) GoString() string {return e.String() }
-func (e WpChangeConst) String() string {
+func (e WPChangeConst) GoString() string {return e.String() }
+func (e WPChangeConst) String() string {
 	switch e {
 		case 0:
 			return "Change in main data (Position, Name)"
@@ -12503,24 +12449,24 @@ func (e WpChangeConst) String() string {
 		case 6:
 			return "Other not specified changed"
 	default:
-		return fmt.Sprintf("%s(%d)", "WpChangeConst", int(e))
+		return fmt.Sprintf("%s(%d)", "WPChangeConst", int(e))
 	}
 }
-type WpCriticalParametersConst uint16
+type WPCriticalParametersConst uint16
 const (
-	NavigationMethod	WpCriticalParametersConst = 0
-	XteLimit	WpCriticalParametersConst = 1
+	NavigationMethod	WPCriticalParametersConst = 0
+	XTELimit	WPCriticalParametersConst = 1
 )
 
-func (e WpCriticalParametersConst) GoString() string {return e.String() }
-func (e WpCriticalParametersConst) String() string {
+func (e WPCriticalParametersConst) GoString() string {return e.String() }
+func (e WPCriticalParametersConst) String() string {
 	switch e {
 		case 0:
 			return "Navigation Method"
 		case 1:
 			return "XTE Limit"
 	default:
-		return fmt.Sprintf("%s(%d)", "WpCriticalParametersConst", int(e))
+		return fmt.Sprintf("%s(%d)", "WPCriticalParametersConst", int(e))
 	}
 }
 type DisabledSatellitesConst uint16

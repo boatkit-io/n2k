@@ -80,7 +80,7 @@ func TestSendFastShortPayloadWritesOneFrame(t *testing.T) {
 	adapter.SetWriter(writer)
 
 	data := []uint8{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
-	err := adapter.sendFast(35, publicpgn.UserDatumPgn, 0x1F80523, data)
+	err := adapter.sendFast(35, publicpgn.UserDatumPGN, 0x1F80523, data)
 	require.NoError(t, err)
 	require.Len(t, writer.frames, 1)
 

@@ -350,10 +350,6 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMaretronDeviationCalibrationResponse(p, stream)
 	case publicpgn.MaretronDeviationCalibrationResponse:
 		return EncodeMaretronDeviationCalibrationResponse(&p, stream)
-	case *publicpgn.MaretronSlaveResponse:
-		return EncodeMaretronSlaveResponse(p, stream)
-	case publicpgn.MaretronSlaveResponse:
-		return EncodeMaretronSlaveResponse(&p, stream)
 	case *publicpgn.Alert:
 		return EncodeAlert(p, stream)
 	case publicpgn.Alert:
@@ -578,10 +574,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeAISClassBPositionReport(p, stream)
 	case publicpgn.AISClassBPositionReport:
 		return EncodeAISClassBPositionReport(&p, stream)
-	case *publicpgn.AISAidsToNavigationAtonReport:
-		return EncodeAISAidsToNavigationAtonReport(p, stream)
-	case publicpgn.AISAidsToNavigationAtonReport:
-		return EncodeAISAidsToNavigationAtonReport(&p, stream)
+	case *publicpgn.AISAidsToNavigationATONReport:
+		return EncodeAISAidsToNavigationATONReport(p, stream)
+	case publicpgn.AISAidsToNavigationATONReport:
+		return EncodeAISAidsToNavigationATONReport(&p, stream)
 	case *publicpgn.Datum:
 		return EncodeDatum(p, stream)
 	case publicpgn.Datum:
@@ -778,10 +774,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSonichubVolume(p, stream)
 	case publicpgn.SonichubVolume:
 		return EncodeSonichubVolume(&p, stream)
-	case *publicpgn.BEPMarineCzoneZcfBusDistribution:
-		return EncodeBEPMarineCzoneZcfBusDistribution(p, stream)
-	case publicpgn.BEPMarineCzoneZcfBusDistribution:
-		return EncodeBEPMarineCzoneZcfBusDistribution(&p, stream)
+	case *publicpgn.BepMarineCzoneZcfBusDistribution:
+		return EncodeBepMarineCzoneZcfBusDistribution(p, stream)
+	case publicpgn.BepMarineCzoneZcfBusDistribution:
+		return EncodeBepMarineCzoneZcfBusDistribution(&p, stream)
 	case *publicpgn.MaretronLabel:
 		return EncodeMaretronLabel(p, stream)
 	case publicpgn.MaretronLabel:
@@ -830,10 +826,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeFusionIgnitionSwitchState(p, stream)
 	case publicpgn.FusionIgnitionSwitchState:
 		return EncodeFusionIgnitionSwitchState(&p, stream)
-	case *publicpgn.FusionMenuLockId:
-		return EncodeFusionMenuLockId(p, stream)
-	case publicpgn.FusionMenuLockId:
-		return EncodeFusionMenuLockId(&p, stream)
+	case *publicpgn.FusionMenuLockID:
+		return EncodeFusionMenuLockID(p, stream)
+	case publicpgn.FusionMenuLockID:
+		return EncodeFusionMenuLockID(&p, stream)
 	case *publicpgn.FusionRDSData:
 		return EncodeFusionRDSData(p, stream)
 	case publicpgn.FusionRDSData:
@@ -862,10 +858,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeFusionTuner(p, stream)
 	case publicpgn.FusionTuner:
 		return EncodeFusionTuner(&p, stream)
-	case *publicpgn.FusionMARINETUNER:
-		return EncodeFusionMARINETUNER(p, stream)
-	case publicpgn.FusionMARINETUNER:
-		return EncodeFusionMARINETUNER(&p, stream)
+	case *publicpgn.FusionMarineTuner:
+		return EncodeFusionMarineTuner(p, stream)
+	case publicpgn.FusionMarineTuner:
+		return EncodeFusionMarineTuner(&p, stream)
 	case *publicpgn.FusionMarineSquelch:
 		return EncodeFusionMarineSquelch(p, stream)
 	case publicpgn.FusionMarineSquelch:

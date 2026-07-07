@@ -165,7 +165,7 @@ func sendSpeedData(sourceID uint8, counter float32, log *logrus.Logger) error {
 func sendEngineInfo(sourceID uint8, log *logrus.Logger) error {
 	log.Info("Testing single frame PGN...")
 	info1 := pgn.MessageInfo{
-		PGN:      pgn.EngineParametersRapidUpdatePgn, // Engine Parameters Rapid Update
+		PGN:      pgn.EngineParametersRapidUpdatePGN, // Engine Parameters Rapid Update
 		SourceId: sourceID,
 		TargetId: 0x0,
 		Priority: 0x3,
@@ -204,7 +204,7 @@ func sendPositionData(sourceID uint8, counter float32, log *logrus.Logger) error
 
 	positionPgn := pgn.PositionRapidUpdate{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.PositionRapidUpdatePgn,
+			PGN:      pgn.PositionRapidUpdatePGN,
 			SourceId: sourceID,
 			TargetId: 0, // Broadcast
 			Priority: 0x3,

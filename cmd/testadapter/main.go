@@ -83,7 +83,7 @@ func main() {
 	// Test 1: Single frame PGN (should work)
 	log.Info("Testing single frame PGN...")
 	info1 := pgn.MessageInfo{
-		PGN:      pgn.EngineParametersRapidUpdatePgn, // Engine Parameters Rapid Update
+		PGN:      pgn.EngineParametersRapidUpdatePGN, // Engine Parameters Rapid Update
 		SourceId: 0xFE,
 		TargetId: 0x0,
 		Priority: 0x3,

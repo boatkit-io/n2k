@@ -24,12 +24,12 @@ func decodeGroupFunctionPayload(t *testing.T, data []byte) any {
 	t.Helper()
 
 	stream := NewDataStream(data)
-	decoder, err := FindDecoder(stream, publicpgn.NMEARequestGroupFunctionPgn)
+	decoder, err := FindDecoder(stream, publicpgn.NMEARequestGroupFunctionPGN)
 	if err != nil {
 		t.Fatalf("FindDecoder() error = %v", err)
 	}
 
-	decoded, err := decoder(publicpgn.MessageInfo{PGN: publicpgn.NMEARequestGroupFunctionPgn}, stream)
+	decoded, err := decoder(publicpgn.MessageInfo{PGN: publicpgn.NMEARequestGroupFunctionPGN}, stream)
 	if err != nil {
 		t.Fatalf("decoder() error = %v", err)
 	}
@@ -37,14 +37,14 @@ func decodeGroupFunctionPayload(t *testing.T, data []byte) any {
 }
 
 func TestDecodeNmeaRequestGroupFunctionKnownTargetReturnsCompleteStruct(t *testing.T) {
-	decoded := decodeGroupFunctionPayload(t, groupFunctionRequestPayload(publicpgn.ProductInformationPgn, 0, nil))
+	decoded := decodeGroupFunctionPayload(t, groupFunctionRequestPayload(publicpgn.ProductInformationPGN, 0, nil))
 
 	request, ok := decoded.(publicpgn.NMEARequestGroupFunction)
 	if !ok {
 		t.Fatalf("decoded type = %T, want %T", decoded, publicpgn.NMEARequestGroupFunction{})
 	}
-	if request.PGN == nil || *request.PGN != publicpgn.ProductInformationPgn {
-		t.Fatalf("decoded referenced PGN = %v, want %d", request.PGN, publicpgn.ProductInformationPgn)
+	if request.PGN == nil || *request.PGN != publicpgn.ProductInformationPGN {
+		t.Fatalf("decoded referenced PGN = %v, want %d", request.PGN, publicpgn.ProductInformationPGN)
 	}
 	if len(request.Repeating1) != 0 {
 		t.Fatalf("decoded repeating fields = %d, want 0", len(request.Repeating1))
@@ -56,7 +56,7 @@ func TestDecodeNmeaRequestGroupFunctionKnownTargetConsumesParameterValues(t *tes
 		2, 0x34, 0x12, // ProductInformation.ProductCode: 16 bits
 		1, 0x08, 0x34, // ProductInformation.NMEA2000Version: 16 bits
 	}
-	decoded := decodeGroupFunctionPayload(t, groupFunctionRequestPayload(publicpgn.ProductInformationPgn, 2, rawData))
+	decoded := decodeGroupFunctionPayload(t, groupFunctionRequestPayload(publicpgn.ProductInformationPGN, 2, rawData))
 
 	request, ok := decoded.(publicpgn.NMEARequestGroupFunction)
 	if !ok {

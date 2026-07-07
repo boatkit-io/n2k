@@ -1689,7 +1689,11 @@ func generateConstName(enumName, text string, value int) string {
 }
 
 func goIdentifier(raw string) string {
-	return goIdentifierFromWords(splitIdentifierWords(raw), nil)
+	return goIdentifierFromWords(splitIdentifierWords(raw), nil, false)
+}
+
+func goIdentifierWithInitialisms(raw string) string {
+	return goIdentifierFromWords(splitIdentifierWords(raw), nil, true)
 }
 
 func goIdentifierFromCanboatName(id, name string) string {
@@ -1697,12 +1701,12 @@ func goIdentifierFromCanboatName(id, name string) string {
 		return ""
 	}
 	idWords := splitIdentifierWords(id)
-	nameWords := splitIdentifierWords(name)
+	nameWords := splitDisplayWords(name)
 	acronymWords := acronymWordsFromName(idWords, nameWords)
-	return goIdentifierFromWords(idWords, acronymWords)
+	return goIdentifierFromWords(idWords, acronymWords, false)
 }
 
-func goIdentifierFromWords(words []string, acronymWords map[int]string) string {
+func goIdentifierFromWords(words []string, acronymWords map[int]string, useInitialisms bool) string {
 	if len(words) > 0 && strings.EqualFold(words[0], "1") && len(words) > 1 && strings.EqualFold(words[1], "st") {
 		words = append([]string{"First"}, words[2:]...)
 	} else if len(words) > 0 && strings.EqualFold(words[0], "1st") {
@@ -1713,6 +1717,10 @@ func goIdentifierFromWords(words []string, acronymWords map[int]string) string {
 	for i, word := range words {
 		if acronym, ok := acronymWords[i]; ok {
 			builder.WriteString(acronym)
+			continue
+		}
+		if useInitialisms {
+			builder.WriteString(goIdentifierWordWithInitialisms(word))
 			continue
 		}
 		builder.WriteString(goIdentifierWord(word))
@@ -1732,17 +1740,138 @@ func goIdentifierWord(word string) string {
 }
 
 func goIdentifierWordFromDisplay(word string) string {
-	if initialism, ok := enumValueInitialisms[strings.ToUpper(word)]; ok {
+	if initialism, ok := canonicalInitialismSequence(word); ok {
 		return initialism
 	}
 	return goIdentifierWord(word)
 }
 
-var enumValueInitialisms = map[string]string{
-	"DGNSS": "DGNSS",
-	"DR":    "DR",
-	"GNSS":  "GNSS",
-	"RTK":   "RTK",
+func goIdentifierWordWithInitialisms(word string) string {
+	if initialism, ok := canonicalInitialismSequence(word); ok {
+		return initialism
+	}
+	return goIdentifierWord(word)
+}
+
+var canonicalInitialisms = map[string]string{
+	"AC":      "AC",
+	"AIS":     "AIS",
+	"ASI":     "ASI",
+	"ATON":    "ATON",
+	"COG":     "COG",
+	"DC":      "DC",
+	"DGNSS":   "DGNSS",
+	"DGPS":    "DGPS",
+	"DOP":     "DOP",
+	"DOPS":    "DOPs",
+	"DR":      "DR",
+	"DSC":     "DSC",
+	"EQ":      "EQ",
+	"GLONASS": "GLONASS",
+	"GNS":     "GNS",
+	"GNSS":    "GNSS",
+	"GPS":     "GPS",
+	"ID":      "ID",
+	"IDS":     "IDs",
+	"IIR":     "IIR",
+	"ISO":     "ISO",
+	"MMSI":    "MMSI",
+	"MOB":     "MOB",
+	"NMEA":    "NMEA",
+	"PGN":     "PGN",
+	"PGNS":    "PGNs",
+	"RAIM":    "RAIM",
+	"RDS":     "RDS",
+	"RMS":     "RMS",
+	"RPM":     "RPM",
+	"RTK":     "RTK",
+	"SAR":     "SAR",
+	"SART":    "SART",
+	"SBAS":    "SBAS",
+	"SID":     "SID",
+	"SOG":     "SOG",
+	"UTC":     "UTC",
+	"USB":     "USB",
+	"VDL":     "VDL",
+	"VHF":     "VHF",
+	"WAAS":    "WAAS",
+	"WP":      "WP",
+	"WPS":     "WPs",
+	"XTE":     "XTE",
+	"CAN":     "CAN",
+}
+
+var canonicalInitialismParts = []string{
+	"GLONASS",
+	"DGNSS",
+	"GNSS",
+	"ATON",
+	"MMSI",
+	"NMEA",
+	"PGNS",
+	"RAIM",
+	"SART",
+	"SBAS",
+	"WAAS",
+	"DOPS",
+	"DGPS",
+	"GNS",
+	"GPS",
+	"IIR",
+	"AIS",
+	"ASI",
+	"CAN",
+	"COG",
+	"DOP",
+	"DSC",
+	"IDS",
+	"ISO",
+	"MOB",
+	"PGN",
+	"RDS",
+	"RMS",
+	"RPM",
+	"RTK",
+	"SAR",
+	"SID",
+	"SOG",
+	"UTC",
+	"USB",
+	"VDL",
+	"VHF",
+	"WPS",
+	"XTE",
+	"AC",
+	"DC",
+	"DR",
+	"EQ",
+	"ID",
+	"WP",
+}
+
+func canonicalInitialismSequence(word string) (string, bool) {
+	upper := strings.ToUpper(word)
+	if initialism, ok := canonicalInitialisms[upper]; ok {
+		return initialism, true
+	}
+
+	var builder strings.Builder
+	for len(upper) > 0 {
+		matched := false
+		for _, part := range canonicalInitialismParts {
+			if !strings.HasPrefix(upper, part) {
+				continue
+			}
+			builder.WriteString(canonicalInitialisms[part])
+			upper = strings.TrimPrefix(upper, part)
+			matched = true
+			break
+		}
+		if !matched {
+			return "", false
+		}
+	}
+	return builder.String(), true
 }
 
 func acronymWordsFromName(idWords, nameWords []string) map[int]string {
@@ -1755,40 +1884,17 @@ func acronymWordsFromName(idWords, nameWords []string) map[int]string {
 		if !strings.EqualFold(idWords[idIndex], nameWord) {
 			continue
 		}
-		if isAcronymWord(nameWord) {
-			acronymWords[idIndex] = nameWord
+		if initialism, ok := canonicalInitialismSequence(nameWord); ok {
+			acronymWords[idIndex] = initialism
 		}
 		idIndex++
 	}
 	return acronymWords
 }
 
-func isAcronymWord(word string) bool {
-	letters := []rune{}
-	for _, r := range word {
-		if !unicode.IsLetter(r) {
-			continue
-		}
-		letters = append(letters, r)
-	}
-	if len(letters) == 0 {
-		return false
-	}
-	last := len(letters) - 1
-	for i, r := range letters {
-		if i == last && r == 's' && len(letters) > 1 {
-			continue
-		}
-		if !unicode.IsUpper(r) {
-			return false
-		}
-	}
-	return true
-}
-
 // convertToConst changes XXX_YYY to XxxYyyConst (all go consts have global namespace scope).
 func convertToConst(name *string) {
-	*name = goIdentifier(*name) + "Const"
+	*name = goIdentifierWithInitialisms(*name) + "Const"
 }
 
 func splitIdentifierWords(raw string) []string {
@@ -1811,6 +1917,12 @@ func splitIdentifierWords(raw string) []string {
 		}
 	}
 	return words
+}
+
+func splitDisplayWords(raw string) []string {
+	return strings.FieldsFunc(raw, func(r rune) bool {
+		return !unicode.IsLetter(r) && !unicode.IsDigit(r)
+	})
 }
 
 func identifierWordBoundary(runes []rune, i int) bool {
