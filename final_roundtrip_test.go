@@ -17,14 +17,14 @@ func main() {
 		priority    uint8
 		destination uint8
 	}{
-		{"PDU1 - ISOAcknowledgement with specific dest", pgn.ISOAcknowledgementPgn, 110, 6, 50},
-		{"PDU1 - ISOAcknowledgement with broadcast dest", pgn.ISOAcknowledgementPgn, 110, 6, 255},
-		{"PDU1 - ISORequest with specific dest", pgn.ISORequestPgn, 100, 2, 25},
-		{"PDU1 - ISORequest with broadcast dest", pgn.ISORequestPgn, 100, 2, 255},
-		{"PDU2 - Heartbeat with global dest", pgn.HeartbeatPgn, 238, 3, 255},
-		{"PDU2 - Heartbeat with zero dest", pgn.HeartbeatPgn, 238, 3, 0},
-		{"PDU2 - VesselHeading with global dest", pgn.VesselHeadingPgn, 200, 2, 255},
-		{"PDU2 - VesselHeading with zero dest", pgn.VesselHeadingPgn, 200, 2, 0},
+		{"PDU1 - ISOAcknowledgement with specific dest", pgn.ISOAcknowledgementPGN, 110, 6, 50},
+		{"PDU1 - ISOAcknowledgement with broadcast dest", pgn.ISOAcknowledgementPGN, 110, 6, 255},
+		{"PDU1 - ISORequest with specific dest", pgn.ISORequestPGN, 100, 2, 25},
+		{"PDU1 - ISORequest with broadcast dest", pgn.ISORequestPGN, 100, 2, 255},
+		{"PDU2 - Heartbeat with global dest", pgn.HeartbeatPGN, 238, 3, 255},
+		{"PDU2 - Heartbeat with zero dest", pgn.HeartbeatPGN, 238, 3, 0},
+		{"PDU2 - VesselHeading with global dest", pgn.VesselHeadingPGN, 200, 2, 255},
+		{"PDU2 - VesselHeading with zero dest", pgn.VesselHeadingPGN, 200, 2, 0},
 	}
 
 	for _, tc := range testCases {
@@ -68,14 +68,14 @@ func main() {
 	fmt.Println("\n=== Validation Test ===")
 
 	// Test validation
-	_, err := converter.CanIDFromDataWithValidation(pgn.HeartbeatPgn, 238, 3, 50)
+	_, err := converter.CanIDFromDataWithValidation(pgn.HeartbeatPGN, 238, 3, 50)
 	if err != nil {
 		fmt.Printf("✅ Validation correctly rejected PDU2 with invalid destination: %v\n", err)
 	} else {
 		fmt.Printf("❌ Validation should have rejected PDU2 with invalid destination\n")
 	}
 
-	_, err = converter.CanIDFromDataWithValidation(pgn.HeartbeatPgn, 238, 3, 255)
+	_, err = converter.CanIDFromDataWithValidation(pgn.HeartbeatPGN, 238, 3, 255)
 	if err == nil {
 		fmt.Printf("✅ Validation correctly allowed PDU2 with valid destination\n")
 	} else {

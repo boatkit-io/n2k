@@ -5407,17 +5407,17 @@ func DecodeGNSSPositionData(Info publicpgn.MessageInfo, stream *DataStream) (any
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for GNSSPositionData-GNSSType: %w", err)
     } else {
-        val.GNSSType = publicpgn.GnsConst(v)
+        val.GNSSType = publicpgn.GNSConst(v)
     }
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for GNSSPositionData-Method: %w", err)
     } else {
-        val.Method = publicpgn.GnsMethodConst(v)
+        val.Method = publicpgn.GNSMethodConst(v)
     }
     if v, err := stream.readLookupField(2); err != nil {
         return nil, fmt.Errorf("parse failed for GNSSPositionData-Integrity: %w", err)
     } else {
-        val.Integrity = publicpgn.GnsIntegrityConst(v)
+        val.Integrity = publicpgn.GNSIntegrityConst(v)
     }
     stream.skipBits(6)
     if v, err := ReadRaw[uint8](stream, &fieldSpec_GNSSPositionData_NumberOfSvs); err != nil {
@@ -5458,7 +5458,7 @@ func DecodeGNSSPositionData(Info publicpgn.MessageInfo, stream *DataStream) (any
         if v, err := stream.readLookupField(4); err != nil {
             return nil, fmt.Errorf("parse failed for GNSSPositionData-ReferenceStationType: %w", err)
         } else {
-            rep.ReferenceStationType = publicpgn.GnsConst(v)
+            rep.ReferenceStationType = publicpgn.GNSConst(v)
         }
         if v, err := ReadRaw[uint16](stream, &fieldSpec_GNSSPositionData_ReferenceStationID); err != nil {
             return nil, fmt.Errorf("parse failed for GNSSPositionData-ReferenceStationID: %w", err)
@@ -6413,7 +6413,7 @@ func DecodeDGNSSCorrections(Info publicpgn.MessageInfo, stream *DataStream) (any
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for DGNSSCorrections-ReferenceStationType: %w", err)
     } else {
-        val.ReferenceStationType = publicpgn.GnsConst(v)
+        val.ReferenceStationType = publicpgn.GNSConst(v)
     }
     if v, err := ReadScaled[float32](stream, &fieldSpec_DGNSSCorrections_TimeOfCorrections); err != nil {
         return nil, fmt.Errorf("parse failed for DGNSSCorrections-TimeOfCorrections: %w", err)
@@ -6524,7 +6524,7 @@ func DecodeGNSSDifferentialCorrectionReceiverSignal(Info publicpgn.MessageInfo, 
     if v, err := stream.readLookupField(4); err != nil {
         return nil, fmt.Errorf("parse failed for GNSSDifferentialCorrectionReceiverSignal-StationType: %w", err)
     } else {
-        val.StationType = publicpgn.GnsConst(v)
+        val.StationType = publicpgn.GNSConst(v)
     }
     if v, err := ReadRaw[uint16](stream, &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_ReferenceStationID); err != nil {
         return nil, fmt.Errorf("parse failed for GNSSDifferentialCorrectionReceiverSignal-ReferenceStationID: %w", err)

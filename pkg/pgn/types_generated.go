@@ -1207,9 +1207,9 @@ type GNSSPositionData struct {
 	Latitude *float64
 	Longitude *float64
 	Altitude *units.Distance
-	GNSSType GnsConst
-	Method GnsMethodConst
-	Integrity GnsIntegrityConst
+	GNSSType GNSConst
+	Method GNSMethodConst
+	Integrity GNSIntegrityConst
 	NumberOfSvs *uint8
 	Hdop *float32
 	Pdop *float32
@@ -1218,7 +1218,7 @@ type GNSSPositionData struct {
 	Repeating1 []GNSSPositionDataRepeating1
 }
 type GNSSPositionDataRepeating1 struct {
-	ReferenceStationType GnsConst
+	ReferenceStationType GNSConst
 	ReferenceStationID *uint16
 	AgeOfDGNSSCorrections *float32
 }
@@ -1430,7 +1430,7 @@ type DGNSSCorrections struct {
 	Info MessageInfo
 	SID *uint8
 	ReferenceStationID *uint16
-	ReferenceStationType GnsConst
+	ReferenceStationType GNSConst
 	TimeOfCorrections *float32
 	StationHealth StationHealthConst
 	SatelliteID *uint8
@@ -1455,7 +1455,7 @@ type GNSSDifferentialCorrectionReceiverSignal struct {
 	SignalStrength *float32
 	SignalSnr *float32
 	Frequency *float32
-	StationType GnsConst
+	StationType GNSConst
 	ReferenceStationID *uint16
 	DifferentialSignalBitRate SerialBitRateConst
 	DifferentialSignalDetectionMode SerialDetectionModeConst

@@ -161,14 +161,14 @@ func TestClaimAddressReadOnly(t *testing.T) {
 	time.Sleep(10 * time.Millisecond)
 	assert.Empty(t, pub.written)
 
-	err = n.Write(&pgn.ISORequest{PGN: uint32Ptr(pgn.ISOAddressClaimPgn)})
+	err = n.Write(&pgn.ISORequest{PGN: uint32Ptr(pgn.ISOAddressClaimPGN)})
 	assert.Error(t, err)
 	assert.Contains(t, err.Error(), "node is read-only")
 	assert.Empty(t, pub.written)
 
 	responses := n.processIsoRequest(pgn.ISORequest{
 		Info: pgn.MessageInfo{SourceId: 10, TargetId: 255},
-		PGN:  uint32Ptr(pgn.ProductInformationPgn),
+		PGN:  uint32Ptr(pgn.ProductInformationPGN),
 	})
 	assert.Empty(t, responses)
 
@@ -257,18 +257,18 @@ func TestEnableHeartbeatAfterClaimWakesProcess(t *testing.T) {
 }
 
 func TestManagedTransmitPGNsIncludesConditionalNodePGNs(t *testing.T) {
-	result := managedTransmitPGNs([]uint32{pgn.ISOAddressClaimPgn, 1}, true, true)
+	result := managedTransmitPGNs([]uint32{pgn.ISOAddressClaimPGN, 1}, true, true)
 
 	assert.ElementsMatch(t,
 		[]uint32{
 			1,
-			pgn.ISOAcknowledgementPgn,
-			pgn.ISOAddressClaimPgn,
-			pgn.NMEAAcknowledgeGroupFunctionPgn,
-			pgn.PGNListTransmitAndReceivePgn,
-			pgn.ProductInformationPgn,
-			pgn.ConfigurationInformationPgn,
-			pgn.HeartbeatPgn,
+			pgn.ISOAcknowledgementPGN,
+			pgn.ISOAddressClaimPGN,
+			pgn.NMEAAcknowledgeGroupFunctionPGN,
+			pgn.PGNListTransmitAndReceivePGN,
+			pgn.ProductInformationPGN,
+			pgn.ConfigurationInformationPGN,
+			pgn.HeartbeatPGN,
 		},
 		result,
 	)
@@ -369,7 +369,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 
 		requestPgn := pgn.ISORequest{
 			Info: pgn.MessageInfo{SourceId: 10, TargetId: 255},
-			PGN:  uint32Ptr(pgn.ISOAddressClaimPgn),
+			PGN:  uint32Ptr(pgn.ISOAddressClaimPGN),
 		}
 		pub.expectWrite()
 		sub.simulatePGN(requestPgn)
@@ -405,12 +405,12 @@ func TestLifecycleAndResponses(t *testing.T) {
 			[]uint32{
 				1,
 				2,
-				pgn.ISOAcknowledgementPgn,
-				pgn.ISOAddressClaimPgn,
-				pgn.NMEAAcknowledgeGroupFunctionPgn,
-				pgn.PGNListTransmitAndReceivePgn,
-				pgn.ProductInformationPgn,
-				pgn.ConfigurationInformationPgn,
+				pgn.ISOAcknowledgementPGN,
+				pgn.ISOAddressClaimPGN,
+				pgn.NMEAAcknowledgeGroupFunctionPGN,
+				pgn.PGNListTransmitAndReceivePGN,
+				pgn.ProductInformationPGN,
+				pgn.ConfigurationInformationPGN,
 			},
 			pgnListValues(txResponse.Repeating1),
 		)
@@ -421,11 +421,11 @@ func TestLifecycleAndResponses(t *testing.T) {
 			[]uint32{
 				3,
 				4,
-				pgn.ISOAcknowledgementPgn,
-				pgn.ISORequestPgn,
-				pgn.ISOAddressClaimPgn,
-				pgn.ISOCommandedAddressPgn,
-				pgn.NMEARequestGroupFunctionPgn,
+				pgn.ISOAcknowledgementPGN,
+				pgn.ISORequestPGN,
+				pgn.ISOAddressClaimPGN,
+				pgn.ISOCommandedAddressPGN,
+				pgn.NMEARequestGroupFunctionPGN,
 			},
 			pgnListValues(rxResponse.Repeating1),
 		)
@@ -443,7 +443,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 
 		requestPgn := pgn.ISORequest{
 			Info: pgn.MessageInfo{SourceId: 10, TargetId: 255},
-			PGN:  uint32Ptr(pgn.ConfigurationInformationPgn),
+			PGN:  uint32Ptr(pgn.ConfigurationInformationPGN),
 		}
 		pub.expectWrite()
 		sub.simulatePGN(requestPgn)
@@ -463,7 +463,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 
 		requestPgn := pgn.ISORequest{
 			Info: pgn.MessageInfo{SourceId: 10, TargetId: 255},
-			PGN:  uint32Ptr(pgn.ConfigurationInformationPgn),
+			PGN:  uint32Ptr(pgn.ConfigurationInformationPGN),
 		}
 		pub.expectWrite()
 		sub.simulatePGN(requestPgn)
@@ -473,7 +473,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		response, ok := pub.lastWritten().(*pgn.ISOAcknowledgement)
 		assert.True(t, ok)
 		assert.Equal(t, pgn.Nak, response.Control)
-		assert.Equal(t, uint32(pgn.ConfigurationInformationPgn), *response.PGN)
+		assert.Equal(t, uint32(pgn.ConfigurationInformationPGN), *response.PGN)
 	})
 
 	t.Run("NmeaRequestGroupFunctionRoutesToIsoRequestHandling", func(t *testing.T) {
@@ -485,7 +485,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		requestPgn := pgn.NMEARequestGroupFunction{
 			Info:               pgn.MessageInfo{SourceId: 10, TargetId: 255},
 			FunctionCode:       pgn.Request,
-			PGN:                uint32Ptr(pgn.ProductInformationPgn),
+			PGN:                uint32Ptr(pgn.ProductInformationPGN),
 			NumberOfParameters: &zeroParameters,
 		}
 		pub.expectWrite()
@@ -506,7 +506,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		commandPgn := pgn.NMEACommandGroupFunction{
 			Info:               pgn.MessageInfo{SourceId: 10, TargetId: 50},
 			FunctionCode:       pgn.Command,
-			PGN:                uint32Ptr(pgn.ConfigurationInformationPgn),
+			PGN:                uint32Ptr(pgn.ConfigurationInformationPGN),
 			NumberOfParameters: &zeroParameters,
 		}
 		pub.expectWrite()
@@ -519,7 +519,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		assert.Equal(t, pgn.Acknowledge_5, response.FunctionCode)
 		assert.Equal(t, pgn.PGNNotSupported, response.PGNErrorCode)
 		assert.Equal(t, pgn.NotSupported, response.TransmissionIntervalPriorityErrorCode)
-		assert.Equal(t, uint32(pgn.ConfigurationInformationPgn), *response.PGN)
+		assert.Equal(t, uint32(pgn.ConfigurationInformationPGN), *response.PGN)
 		assert.Len(t, response.Repeating1, 1)
 		assert.Equal(t, pgn.ReadOrWriteNotSupported, response.Repeating1[0].Parameter)
 	})
@@ -528,7 +528,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		commandPgn := pgn.NMEACommandGroupFunction{
 			Info:         pgn.MessageInfo{SourceId: 10, TargetId: 255},
 			FunctionCode: pgn.Command,
-			PGN:          uint32Ptr(pgn.ConfigurationInformationPgn),
+			PGN:          uint32Ptr(pgn.ConfigurationInformationPGN),
 		}
 		responses := n.processNmeaCommandGroupFunction(&commandPgn)
 		assert.Empty(t, responses)
@@ -607,15 +607,15 @@ func TestKnownDevices(t *testing.T) {
 		Info:         pgn.MessageInfo{SourceId: 23},
 		FunctionCode: pgn.TransmitPGNList,
 		Repeating1: []pgn.PGNListTransmitAndReceiveRepeating1{
-			{PGN: uint32Ptr(pgn.ISOAddressClaimPgn)},
-			{PGN: uint32Ptr(pgn.ProductInformationPgn)},
+			{PGN: uint32Ptr(pgn.ISOAddressClaimPGN)},
+			{PGN: uint32Ptr(pgn.ProductInformationPGN)},
 		},
 	})
 	sub.simulatePGN(pgn.PGNListTransmitAndReceive{
 		Info:         pgn.MessageInfo{SourceId: 23},
 		FunctionCode: pgn.ReceivePGNList,
 		Repeating1: []pgn.PGNListTransmitAndReceiveRepeating1{
-			{PGN: uint32Ptr(pgn.ISORequestPgn)},
+			{PGN: uint32Ptr(pgn.ISORequestPGN)},
 		},
 	})
 	sub.waitForHandler()
@@ -633,13 +633,13 @@ func TestKnownDevices(t *testing.T) {
 	assert.Equal(t, "Remote", devices[0].ProductInfo.ModelID)
 	assert.Equal(t, "1.2.3", devices[0].ProductInfo.SoftwareVersionCode)
 	assert.Equal(t, "helm", devices[0].ConfigInfo.InstallationDescription1)
-	assert.Equal(t, []uint32{pgn.ISOAddressClaimPgn, pgn.ProductInformationPgn}, devices[0].TransmitPGNs)
-	assert.Equal(t, []uint32{pgn.ISORequestPgn}, devices[0].ReceivePGNs)
+	assert.Equal(t, []uint32{pgn.ISOAddressClaimPGN, pgn.ProductInformationPGN}, devices[0].TransmitPGNs)
+	assert.Equal(t, []uint32{pgn.ISORequestPGN}, devices[0].ReceivePGNs)
 
 	devices[0].ProductInfo.ModelID = "mutated"
 	devices[0].TransmitPGNs[0] = 0
 	assert.Equal(t, "Remote", n.KnownDevices()[0].ProductInfo.ModelID)
-	assert.Equal(t, uint32(pgn.ISOAddressClaimPgn), n.KnownDevices()[0].TransmitPGNs[0])
+	assert.Equal(t, uint32(pgn.ISOAddressClaimPGN), n.KnownDevices()[0].TransmitPGNs[0])
 }
 
 func TestKnownDevicesTracksNameAcrossAddressChanges(t *testing.T) {

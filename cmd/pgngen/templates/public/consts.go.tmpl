@@ -3,5 +3,5 @@ package pgn
 
 // PGN constants for easy struct-to-PGN mapping
 {{- range .PGNDoc.PGNs }}
-const {{ .Id }}Pgn = {{ .PGN }}
+const {{ .Id }}PGN = {{ .PGN }}
 {{- end }}

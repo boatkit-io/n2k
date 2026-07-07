@@ -1809,21 +1809,21 @@ default:
 		return fmt.Sprintf("PositionFixDeviceConst(%d)", uint8(e))
 	}
 }
-type GnsConst uint8
+type GNSConst uint8
 const (
-	GPS_2	GnsConst = 0
-	GLONASS_2	GnsConst = 1
-	GPSGLONASS	GnsConst = 2
-	GPSSBASWaas	GnsConst = 3
-	GPSSBASWaasGLONASS	GnsConst = 4
-	Chayka_2	GnsConst = 5
-	Integrated	GnsConst = 6
-	Surveyed_2	GnsConst = 7
-	Galileo_2	GnsConst = 8
+	GPS_2	GNSConst = 0
+	GLONASS_2	GNSConst = 1
+	GPSGLONASS	GNSConst = 2
+	GPSSBASWAAS	GNSConst = 3
+	GPSSBASWAASGLONASS	GNSConst = 4
+	Chayka_2	GNSConst = 5
+	Integrated	GNSConst = 6
+	Surveyed_2	GNSConst = 7
+	Galileo_2	GNSConst = 8
 )
 
-func (e GnsConst) GoString() string {return e.String() }
-func (e GnsConst) String() string {
+func (e GNSConst) GoString() string {return e.String() }
+func (e GNSConst) String() string {
 	switch e {
 		case 0:
 			return "GPS"
@@ -1844,7 +1844,7 @@ func (e GnsConst) String() string {
 		case 8:
 			return "Galileo"
 default:
-		return fmt.Sprintf("GnsConst(%d)", uint8(e))
+		return fmt.Sprintf("GNSConst(%d)", uint8(e))
 	}
 }
 type EngineInstanceConst uint8
@@ -1958,21 +1958,21 @@ default:
 		return fmt.Sprintf("TimeStampConst(%d)", uint8(e))
 	}
 }
-type GnsMethodConst uint8
+type GNSMethodConst uint8
 const (
-	NoGNSS	GnsMethodConst = 0
-	GNSSFix	GnsMethodConst = 1
-	DGNSSFix	GnsMethodConst = 2
-	PreciseGNSS	GnsMethodConst = 3
-	RTKFixedInteger	GnsMethodConst = 4
-	RTKFloat	GnsMethodConst = 5
-	EstimatedDRMode	GnsMethodConst = 6
-	ManualInput	GnsMethodConst = 7
-	SimulateMode	GnsMethodConst = 8
+	NoGNSS	GNSMethodConst = 0
+	GNSSFix	GNSMethodConst = 1
+	DGNSSFix	GNSMethodConst = 2
+	PreciseGNSS	GNSMethodConst = 3
+	RTKFixedInteger	GNSMethodConst = 4
+	RTKFloat	GNSMethodConst = 5
+	EstimatedDRMode	GNSMethodConst = 6
+	ManualInput	GNSMethodConst = 7
+	SimulateMode	GNSMethodConst = 8
 )
 
-func (e GnsMethodConst) GoString() string {return e.String() }
-func (e GnsMethodConst) String() string {
+func (e GNSMethodConst) GoString() string {return e.String() }
+func (e GNSMethodConst) String() string {
 	switch e {
 		case 0:
 			return "no GNSS"
@@ -1993,19 +1993,19 @@ func (e GnsMethodConst) String() string {
 		case 8:
 			return "Simulate mode"
 default:
-		return fmt.Sprintf("GnsMethodConst(%d)", uint8(e))
+		return fmt.Sprintf("GNSMethodConst(%d)", uint8(e))
 	}
 }
-type GnsIntegrityConst uint8
+type GNSIntegrityConst uint8
 const (
-	NoIntegrityChecking	GnsIntegrityConst = 0
-	Safe	GnsIntegrityConst = 1
-	Caution	GnsIntegrityConst = 2
-	Unsafe	GnsIntegrityConst = 3
+	NoIntegrityChecking	GNSIntegrityConst = 0
+	Safe	GNSIntegrityConst = 1
+	Caution	GNSIntegrityConst = 2
+	Unsafe	GNSIntegrityConst = 3
 )
 
-func (e GnsIntegrityConst) GoString() string {return e.String() }
-func (e GnsIntegrityConst) String() string {
+func (e GNSIntegrityConst) GoString() string {return e.String() }
+func (e GNSIntegrityConst) String() string {
 	switch e {
 		case 0:
 			return "No integrity checking"
@@ -2016,7 +2016,7 @@ func (e GnsIntegrityConst) String() string {
 		case 3:
 			return "Unsafe"
 default:
-		return fmt.Sprintf("GnsIntegrityConst(%d)", uint8(e))
+		return fmt.Sprintf("GNSIntegrityConst(%d)", uint8(e))
 	}
 }
 type SystemTimeConst uint8
@@ -2296,7 +2296,7 @@ const (
 	HazardousMaterialWingInGround	NavStatusConst = 10
 	PowerDrivenVesselTowingAstern	NavStatusConst = 11
 	PowerDrivenVesselPushingAheadO	NavStatusConst = 12
-	AISSart	NavStatusConst = 14
+	AISSART	NavStatusConst = 14
 )
 
 func (e NavStatusConst) GoString() string {return e.String() }
@@ -2877,7 +2877,7 @@ const (
 	DestinationWaypointInfo	Seatalk1CommandConst = 161
 	ArrivalInfo	Seatalk1CommandConst = 162
 	BroadcastQueryResponseToIdenti	Seatalk1CommandConst = 164
-	GPSAndDgpsInfo	Seatalk1CommandConst = 165
+	GPSAndDGPSInfo	Seatalk1CommandConst = 165
 	UnknownMeaning	Seatalk1CommandConst = 167
 	AlarmOnOffForGuard	Seatalk1CommandConst = 168
 	AlarmOnOffForGuard_2	Seatalk1CommandConst = 171
@@ -5946,7 +5946,7 @@ const (
 	PositionQuality	NavicoDataTypeConst = 9
 	PositionIntegrity	NavicoDataTypeConst = 10
 	SatsInView	NavicoDataTypeConst = 11
-	WaasStatus	NavicoDataTypeConst = 12
+	WAASStatus	NavicoDataTypeConst = 12
 	Bearing	NavicoDataTypeConst = 13
 	Course	NavicoDataTypeConst = 14
 	CdiGraphic	NavicoDataTypeConst = 15
@@ -6520,12 +6520,12 @@ const (
 	YanmarEngineEcuAlarms	NavicoDataTypeConst = 583
 	YanmarHelmEcuAlarms	NavicoDataTypeConst = 584
 	YanmarDriveEcuAlarms	NavicoDataTypeConst = 585
-	DgpsCorrectionData	NavicoDataTypeConst = 586
-	DgpsReferenceStationID	NavicoDataTypeConst = 587
-	DgpsReferenceStationHealth	NavicoDataTypeConst = 588
-	DgpsSignalSnr	NavicoDataTypeConst = 589
-	DgpsSignalFrequency	NavicoDataTypeConst = 590
-	DgpsSignalStrength	NavicoDataTypeConst = 591
+	DGPSCorrectionData	NavicoDataTypeConst = 586
+	DGPSReferenceStationID	NavicoDataTypeConst = 587
+	DGPSReferenceStationHealth	NavicoDataTypeConst = 588
+	DGPSSignalSnr	NavicoDataTypeConst = 589
+	DGPSSignalFrequency	NavicoDataTypeConst = 590
+	DGPSSignalStrength	NavicoDataTypeConst = 591
 	EngineFuelTemp	NavicoDataTypeConst = 592
 	DepthQuality	NavicoDataTypeConst = 593
 	NumberOfActiveDtc	NavicoDataTypeConst = 594
@@ -8767,7 +8767,7 @@ const (
 	WaterTempRate	SimnetAlarmIDConst = 39
 	Fish	SimnetAlarmIDConst = 40
 	NoGPSFix	SimnetAlarmIDConst = 41
-	WaasDgps	SimnetAlarmIDConst = 42
+	WAASDGPS	SimnetAlarmIDConst = 42
 	Arrival	SimnetAlarmIDConst = 45
 	Anchor	SimnetAlarmIDConst = 46
 	FuelLow	SimnetAlarmIDConst = 47

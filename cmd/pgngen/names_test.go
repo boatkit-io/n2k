@@ -25,6 +25,9 @@ func TestGenerateConstNamePreservesInitialisms(t *testing.T) {
 		{name: "glonass", text: "GLONASS almanac data", expected: "GLONASSAlmanacData"},
 		{name: "usb rds eq", text: "USB RDS EQ", expected: "USBRDSEQ"},
 		{name: "sar", text: "SAR aircraft position", expected: "SARAircraftPosition"},
+		{name: "sart", text: "AIS-SART", expected: "AISSART"},
+		{name: "dgps", text: "GPS and DGPS Info", expected: "GPSAndDGPSInfo"},
+		{name: "waas dgps", text: "WAAS/DGPS", expected: "WAASDGPS"},
 		{name: "no gnss", text: "No GNSS", expected: "NoGNSS"},
 		{name: "estimated dr", text: "Estimated DR mode", expected: "EstimatedDRMode"},
 		{name: "concatenated initialisms", text: "AISUTC report", expected: "AISUTCReport"},
@@ -92,8 +95,8 @@ func TestGoIdentifierDoesNotInventInitialisms(t *testing.T) {
 func TestConvertToConstUsesRawIdentifierCasing(t *testing.T) {
 	name := "GNS_METHOD"
 	convertToConst(&name)
-	if name != "GnsMethodConst" {
-		t.Fatalf("convertToConst(GNS_METHOD) = %q, want GnsMethodConst", name)
+	if name != "GNSMethodConst" {
+		t.Fatalf("convertToConst(GNS_METHOD) = %q, want GNSMethodConst", name)
 	}
 }
 
@@ -107,6 +110,7 @@ func TestConvertToConstPreservesInitialisms(t *testing.T) {
 		{raw: "PGN_ERROR_CODE", expected: "PGNErrorCodeConst"},
 		{raw: "MOB_POSITION_SOURCE", expected: "MOBPositionSourceConst"},
 		{raw: "NMEA_FUNCTION_CODE", expected: "NMEAFunctionCodeConst"},
+		{raw: "GNS_INTEGRITY", expected: "GNSIntegrityConst"},
 	}
 
 	for _, tt := range tests {

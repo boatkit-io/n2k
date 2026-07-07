@@ -574,16 +574,16 @@ func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 	var responses []toSend
 
 	switch *req.PGN {
-	case pgn.ISOAddressClaimPgn:
+	case pgn.ISOAddressClaimPGN:
 		responses = append(responses, toSend{pgn: buildAddressClaim(deviceInfoCopy, networkAddress), dest: req.Info.SourceId})
 
-	case pgn.ProductInformationPgn:
+	case pgn.ProductInformationPGN:
 		version := float32(productInfoCopy.NMEA2000Version) / 100.0
 		productCode := productInfoCopy.ProductCode
 		loadEquivalency := productInfoCopy.LoadEquivalency
 		responsePgn := &pgn.ProductInformation{
 			Info: pgn.MessageInfo{
-				PGN:      pgn.ProductInformationPgn,
+				PGN:      pgn.ProductInformationPGN,
 				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
@@ -598,7 +598,7 @@ func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 		}
 		responses = append(responses, toSend{pgn: responsePgn, dest: req.Info.SourceId})
 
-	case pgn.PGNListTransmitAndReceivePgn:
+	case pgn.PGNListTransmitAndReceivePGN:
 		transmitPGNs = managedTransmitPGNs(transmitPGNs, configProvider != nil, heartbeatEnabled)
 		receivePGNs = managedReceivePGNs(receivePGNs)
 
@@ -609,7 +609,7 @@ func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 		}
 		txResponse := &pgn.PGNListTransmitAndReceive{
 			Info: pgn.MessageInfo{
-				PGN:      pgn.PGNListTransmitAndReceivePgn,
+				PGN:      pgn.PGNListTransmitAndReceivePGN,
 				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
@@ -625,7 +625,7 @@ func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 		}
 		rxResponse := &pgn.PGNListTransmitAndReceive{
 			Info: pgn.MessageInfo{
-				PGN:      pgn.PGNListTransmitAndReceivePgn,
+				PGN:      pgn.PGNListTransmitAndReceivePGN,
 				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
@@ -634,7 +634,7 @@ func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 		}
 		responses = append(responses, toSend{pgn: rxResponse, dest: req.Info.SourceId})
 
-	case pgn.ConfigurationInformationPgn:
+	case pgn.ConfigurationInformationPGN:
 		if configProvider == nil {
 			responses = append(responses, toSend{pgn: buildIsoNak(networkAddress, req.Info.SourceId, *req.PGN), dest: req.Info.SourceId})
 			break
@@ -647,7 +647,7 @@ func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 		}
 		responsePgn := &pgn.ConfigurationInformation{
 			Info: pgn.MessageInfo{
-				PGN:      pgn.ConfigurationInformationPgn,
+				PGN:      pgn.ConfigurationInformationPGN,
 				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
@@ -663,29 +663,29 @@ func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 
 func managedTransmitPGNs(configured []uint32, hasConfigurationProvider, heartbeatEnabled bool) []uint32 {
 	managed := []uint32{
-		pgn.ISOAcknowledgementPgn,
-		pgn.ISOAddressClaimPgn,
-		pgn.NMEAAcknowledgeGroupFunctionPgn,
-		pgn.PGNListTransmitAndReceivePgn,
-		pgn.ProductInformationPgn,
+		pgn.ISOAcknowledgementPGN,
+		pgn.ISOAddressClaimPGN,
+		pgn.NMEAAcknowledgeGroupFunctionPGN,
+		pgn.PGNListTransmitAndReceivePGN,
+		pgn.ProductInformationPGN,
 	}
 	if hasConfigurationProvider {
-		managed = append(managed, pgn.ConfigurationInformationPgn)
+		managed = append(managed, pgn.ConfigurationInformationPGN)
 	}
 	if heartbeatEnabled {
-		managed = append(managed, pgn.HeartbeatPgn)
+		managed = append(managed, pgn.HeartbeatPGN)
 	}
 	return mergePGNs(configured, managed)
 }
 
 func managedReceivePGNs(configured []uint32) []uint32 {
 	return mergePGNs(configured, []uint32{
-		pgn.ISOAcknowledgementPgn,
-		pgn.ISORequestPgn,
-		pgn.ISOAddressClaimPgn,
-		pgn.ISOCommandedAddressPgn,
-		pgn.NMEARequestGroupFunctionPgn,
-		pgn.NMEACommandGroupFunctionPgn,
+		pgn.ISOAcknowledgementPGN,
+		pgn.ISORequestPGN,
+		pgn.ISOAddressClaimPGN,
+		pgn.ISOCommandedAddressPGN,
+		pgn.NMEARequestGroupFunctionPGN,
+		pgn.NMEACommandGroupFunctionPGN,
 	})
 }
 
@@ -1134,7 +1134,7 @@ func buildAddressClaim(deviceInfo DeviceInfo, networkAddress uint8) *pgn.ISOAddr
 
 	return &pgn.ISOAddressClaim{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.ISOAddressClaimPgn,
+			PGN:      pgn.ISOAddressClaimPGN,
 			SourceId: networkAddress,
 			TargetId: 255,
 			Priority: 6,
@@ -1154,7 +1154,7 @@ func buildAddressClaim(deviceInfo DeviceInfo, networkAddress uint8) *pgn.ISOAddr
 func buildIsoNak(source, destination uint8, requestedPgn uint32) *pgn.ISOAcknowledgement {
 	return &pgn.ISOAcknowledgement{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.ISOAcknowledgementPgn,
+			PGN:      pgn.ISOAcknowledgementPGN,
 			SourceId: source,
 			TargetId: destination,
 			Priority: 6,
@@ -1171,7 +1171,7 @@ func buildNmeaGroupNak(
 ) *pgn.NMEAAcknowledgeGroupFunction {
 	return &pgn.NMEAAcknowledgeGroupFunction{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.NMEAAcknowledgeGroupFunctionPgn,
+			PGN:      pgn.NMEAAcknowledgeGroupFunctionPGN,
 			SourceId: source,
 			TargetId: destination,
 			Priority: 3,
@@ -1194,7 +1194,7 @@ func (n *Node) sendHeartbeat() {
 
 	hb := &pgn.Heartbeat{
 		Info: pgn.MessageInfo{
-			PGN:      pgn.HeartbeatPgn,
+			PGN:      pgn.HeartbeatPGN,
 			SourceId: networkAddressCopy,
 		},
 		SequenceCounter:  &heartbeatSeqCopy,

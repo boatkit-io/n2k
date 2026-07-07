@@ -264,13 +264,13 @@ func run() error {
 	})
 	nodeImpl.SetSupportedPGNs(
 		[]uint32{
-			pgn.ProductInformationPgn,
-			pgn.ConfigurationInformationPgn,
+			pgn.ProductInformationPGN,
+			pgn.ConfigurationInformationPGN,
 		},
 		[]uint32{
-			pgn.ISORequestPgn,
-			pgn.NMEARequestGroupFunctionPgn,
-			pgn.NMEACommandGroupFunctionPgn,
+			pgn.ISORequestPGN,
+			pgn.NMEARequestGroupFunctionPGN,
+			pgn.NMEACommandGroupFunctionPGN,
 		},
 	)
 	nodeImpl.SetHeartbeatInterval(5 * time.Second)
@@ -339,9 +339,9 @@ func run() error {
 func sendActiveRequests(log *logrus.Logger, svc *n2k.N2kService, sourceAddress uint8) {
 	log.Info("Sending ISO Request for Address Claim (PGN 60928)")
 	isoRequestAddrClaim := &pgn.ISORequest{
-		PGN: ptrUint32(pgn.ISOAddressClaimPgn),
+		PGN: ptrUint32(pgn.ISOAddressClaimPGN),
 		Info: pgn.MessageInfo{
-			PGN:      pgn.ISORequestPgn,
+			PGN:      pgn.ISORequestPGN,
 			SourceId: sourceAddress,
 			TargetId: 255,
 			Priority: 6,
@@ -355,9 +355,9 @@ func sendActiveRequests(log *logrus.Logger, svc *n2k.N2kService, sourceAddress u
 
 	log.Info("Sending ISO Request for Product Info (PGN 126996)")
 	isoRequestProdInfo := &pgn.ISORequest{
-		PGN: ptrUint32(pgn.ProductInformationPgn),
+		PGN: ptrUint32(pgn.ProductInformationPGN),
 		Info: pgn.MessageInfo{
-			PGN:      pgn.ISORequestPgn,
+			PGN:      pgn.ISORequestPGN,
 			SourceId: sourceAddress,
 			TargetId: 255,
 			Priority: 6,
@@ -371,9 +371,9 @@ func sendActiveRequests(log *logrus.Logger, svc *n2k.N2kService, sourceAddress u
 
 	log.Info("Sending ISO Request for PGN List (PGN 126464)")
 	isoRequestPgnList := &pgn.ISORequest{
-		PGN: ptrUint32(pgn.PGNListTransmitAndReceivePgn),
+		PGN: ptrUint32(pgn.PGNListTransmitAndReceivePGN),
 		Info: pgn.MessageInfo{
-			PGN:      pgn.ISORequestPgn,
+			PGN:      pgn.ISORequestPGN,
 			SourceId: sourceAddress,
 			TargetId: 255,
 			Priority: 6,
@@ -387,9 +387,9 @@ func sendActiveRequests(log *logrus.Logger, svc *n2k.N2kService, sourceAddress u
 
 	log.Info("Sending ISO Request for Configuration Info (PGN 126998)")
 	isoRequestConfigInfo := &pgn.ISORequest{
-		PGN: ptrUint32(pgn.ConfigurationInformationPgn),
+		PGN: ptrUint32(pgn.ConfigurationInformationPGN),
 		Info: pgn.MessageInfo{
-			PGN:      pgn.ISORequestPgn,
+			PGN:      pgn.ISORequestPGN,
 			SourceId: sourceAddress,
 			TargetId: 255,
 			Priority: 6,
@@ -405,10 +405,10 @@ func sendActiveRequests(log *logrus.Logger, svc *n2k.N2kService, sourceAddress u
 	zeroParameters := uint8(0)
 	nmeaRequestProdInfo := &pgn.NMEARequestGroupFunction{
 		FunctionCode:       pgn.Request,
-		PGN:                ptrUint32(pgn.ProductInformationPgn),
+		PGN:                ptrUint32(pgn.ProductInformationPGN),
 		NumberOfParameters: &zeroParameters,
 		Info: pgn.MessageInfo{
-			PGN:      pgn.NMEARequestGroupFunctionPgn,
+			PGN:      pgn.NMEARequestGroupFunctionPGN,
 			SourceId: sourceAddress,
 			TargetId: sourceAddress,
 			Priority: 3,
@@ -423,11 +423,11 @@ func sendActiveRequests(log *logrus.Logger, svc *n2k.N2kService, sourceAddress u
 	log.Info("Sending unsupported NMEA Command Group Function for Configuration Info (expect group-function NAK)")
 	nmeaCommandConfigInfo := &pgn.NMEACommandGroupFunction{
 		FunctionCode:       pgn.Command,
-		PGN:                ptrUint32(pgn.ConfigurationInformationPgn),
+		PGN:                ptrUint32(pgn.ConfigurationInformationPGN),
 		Priority:           pgn.Three,
 		NumberOfParameters: &zeroParameters,
 		Info: pgn.MessageInfo{
-			PGN:      pgn.NMEACommandGroupFunctionPgn,
+			PGN:      pgn.NMEACommandGroupFunctionPGN,
 			SourceId: sourceAddress,
 			TargetId: sourceAddress,
 			Priority: 3,
