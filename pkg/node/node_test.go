@@ -400,7 +400,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		assert.Len(t, pub.written, 2)
 		txResponse, ok := pub.written[0].(*pgn.PGNListTransmitAndReceive)
 		assert.True(t, ok)
-		assert.Equal(t, pgn.TransmitPgnList, txResponse.FunctionCode)
+		assert.Equal(t, pgn.TransmitPGNList, txResponse.FunctionCode)
 		assert.ElementsMatch(t,
 			[]uint32{
 				1,
@@ -416,7 +416,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		)
 		rxResponse, ok := pub.written[1].(*pgn.PGNListTransmitAndReceive)
 		assert.True(t, ok)
-		assert.Equal(t, pgn.ReceivePgnList, rxResponse.FunctionCode)
+		assert.Equal(t, pgn.ReceivePGNList, rxResponse.FunctionCode)
 		assert.ElementsMatch(t,
 			[]uint32{
 				3,
@@ -517,7 +517,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 		response, ok := pub.lastWritten().(*pgn.NMEAAcknowledgeGroupFunction)
 		assert.True(t, ok)
 		assert.Equal(t, pgn.Acknowledge_5, response.FunctionCode)
-		assert.Equal(t, pgn.PgnNotSupported, response.PGNErrorCode)
+		assert.Equal(t, pgn.PGNNotSupported, response.PGNErrorCode)
 		assert.Equal(t, pgn.NotSupported, response.TransmissionIntervalPriorityErrorCode)
 		assert.Equal(t, uint32(pgn.ConfigurationInformationPgn), *response.PGN)
 		assert.Len(t, response.Repeating1, 1)
@@ -605,7 +605,7 @@ func TestKnownDevices(t *testing.T) {
 	})
 	sub.simulatePGN(pgn.PGNListTransmitAndReceive{
 		Info:         pgn.MessageInfo{SourceId: 23},
-		FunctionCode: pgn.TransmitPgnList,
+		FunctionCode: pgn.TransmitPGNList,
 		Repeating1: []pgn.PGNListTransmitAndReceiveRepeating1{
 			{PGN: uint32Ptr(pgn.ISOAddressClaimPgn)},
 			{PGN: uint32Ptr(pgn.ProductInformationPgn)},
@@ -613,7 +613,7 @@ func TestKnownDevices(t *testing.T) {
 	})
 	sub.simulatePGN(pgn.PGNListTransmitAndReceive{
 		Info:         pgn.MessageInfo{SourceId: 23},
-		FunctionCode: pgn.ReceivePgnList,
+		FunctionCode: pgn.ReceivePGNList,
 		Repeating1: []pgn.PGNListTransmitAndReceiveRepeating1{
 			{PGN: uint32Ptr(pgn.ISORequestPgn)},
 		},

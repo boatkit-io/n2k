@@ -17,8 +17,18 @@ func TestGenerateConstNamePreservesInitialisms(t *testing.T) {
 		{name: "rtk fixed", text: "RTK Fixed Integer", expected: "RTKFixedInteger"},
 		{name: "rtk float", text: "RTK float", expected: "RTKFloat"},
 		{name: "aton report", text: "ATON report", expected: "ATONReport"},
+		{name: "ais utc", text: "AIS UTC and date report", expected: "AISUTCAndDateReport"},
+		{name: "cog sog", text: "COG/SOG, rapid update", expected: "COGSOGRapidUpdate"},
+		{name: "gps vhf", text: "GPS/VHF MOB alert", expected: "GPSVHFMOBAlert"},
+		{name: "sid", text: "SID", expected: "SID"},
+		{name: "rms", text: "AC RMS voltage", expected: "ACRMSVoltage"},
+		{name: "glonass", text: "GLONASS almanac data", expected: "GLONASSAlmanacData"},
+		{name: "usb rds eq", text: "USB RDS EQ", expected: "USBRDSEQ"},
+		{name: "sar", text: "SAR aircraft position", expected: "SARAircraftPosition"},
 		{name: "no gnss", text: "No GNSS", expected: "NoGNSS"},
 		{name: "estimated dr", text: "Estimated DR mode", expected: "EstimatedDRMode"},
+		{name: "concatenated initialisms", text: "AISUTC report", expected: "AISUTCReport"},
+		{name: "unknown capital run", text: "ARKS Enterprises Inc", expected: "ArksEnterprisesInc"},
 		{name: "normal words", text: "not available", expected: "NotAvailable"},
 	}
 
@@ -43,6 +53,16 @@ func TestGoIdentifierFromCanboatNamePreservesInitialismsFromName(t *testing.T) {
 		{name: "ais struct", id: "aisClassAPositionReport", source: "AIS Class A Position Report", expected: "AISClassAPositionReport"},
 		{name: "pgn struct", id: "pgnListTransmitAndReceive", source: "PGN List (Transmit and Receive)", expected: "PGNListTransmitAndReceive"},
 		{name: "nmea struct", id: "nmeaRequestGroupFunction", source: "NMEA - Request group function", expected: "NMEARequestGroupFunction"},
+		{
+			name:     "aton struct",
+			id:       "aisAidsToNavigationAtonReport",
+			source:   "AIS Aids to Navigation (AtoN) Report",
+			expected: "AISAidsToNavigationATONReport",
+		},
+		{name: "aton field", id: "virtualAtonFlag", source: "Virtual AtoN Flag", expected: "VirtualATONFlag"},
+		{name: "gps field", id: "gpsQuality", source: "GPS Quality", expected: "GPSQuality"},
+		{name: "utc field", id: "utcDate", source: "UTC Date", expected: "UTCDate"},
+		{name: "cog sog struct", id: "cogSogRapidUpdate", source: "COG/SOG, Rapid Update", expected: "COGSOGRapidUpdate"},
 		{name: "ac struct", id: "acInputStatus", source: "AC Input Status", expected: "ACInputStatus"},
 		{name: "dc struct", id: "dcDetailedStatus", source: "DC Detailed Status", expected: "DCDetailedStatus"},
 		{name: "field id", id: "sourceId", source: "Source ID", expected: "SourceID"},
@@ -74,6 +94,29 @@ func TestConvertToConstUsesRawIdentifierCasing(t *testing.T) {
 	convertToConst(&name)
 	if name != "GnsMethodConst" {
 		t.Fatalf("convertToConst(GNS_METHOD) = %q, want GnsMethodConst", name)
+	}
+}
+
+func TestConvertToConstPreservesInitialisms(t *testing.T) {
+	tests := []struct {
+		raw      string
+		expected string
+	}{
+		{raw: "AIS_MESSAGE_ID", expected: "AISMessageIDConst"},
+		{raw: "ATON_TYPE", expected: "ATONTypeConst"},
+		{raw: "PGN_ERROR_CODE", expected: "PGNErrorCodeConst"},
+		{raw: "MOB_POSITION_SOURCE", expected: "MOBPositionSourceConst"},
+		{raw: "NMEA_FUNCTION_CODE", expected: "NMEAFunctionCodeConst"},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.raw, func(t *testing.T) {
+			name := tt.raw
+			convertToConst(&name)
+			if name != tt.expected {
+				t.Fatalf("convertToConst(%q) = %q, want %q", tt.raw, name, tt.expected)
+			}
+		})
 	}
 }
 

@@ -613,7 +613,7 @@ func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
-			FunctionCode: pgn.TransmitPgnList,
+			FunctionCode: pgn.TransmitPGNList,
 			Repeating1:   txRepeating,
 		}
 		responses = append(responses, toSend{pgn: txResponse, dest: req.Info.SourceId})
@@ -629,7 +629,7 @@ func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 				SourceId: networkAddress,
 				TargetId: req.Info.SourceId,
 			},
-			FunctionCode: pgn.ReceivePgnList,
+			FunctionCode: pgn.ReceivePGNList,
 			Repeating1:   rxRepeating,
 		}
 		responses = append(responses, toSend{pgn: rxResponse, dest: req.Info.SourceId})
@@ -963,12 +963,12 @@ func (n *Node) updateKnownDeviceFromPgnList(info *pgn.PGNListTransmitAndReceive)
 	pgns := knownDevicePGNListValues(info.Repeating1)
 	var changedPGNs []uint32
 	switch info.FunctionCode {
-	case pgn.TransmitPgnList:
+	case pgn.TransmitPGNList:
 		if !reflect.DeepEqual(device.TransmitPGNs, pgns) {
 			device.TransmitPGNs = pgns
 			changedPGNs = append([]uint32(nil), pgns...)
 		}
-	case pgn.ReceivePgnList:
+	case pgn.ReceivePGNList:
 		if !reflect.DeepEqual(device.ReceivePGNs, pgns) {
 			device.ReceivePGNs = pgns
 			changedPGNs = append([]uint32(nil), pgns...)
@@ -1178,7 +1178,7 @@ func buildNmeaGroupNak(
 		},
 		FunctionCode:                          pgn.Acknowledge_5,
 		PGN:                                   &requestedPgn,
-		PGNErrorCode:                          pgn.PgnNotSupported,
+		PGNErrorCode:                          pgn.PGNNotSupported,
 		TransmissionIntervalPriorityErrorCode: pgn.NotSupported,
 		Repeating1: []pgn.NMEAAcknowledgeGroupFunctionRepeating1{
 			{Parameter: parameterError},

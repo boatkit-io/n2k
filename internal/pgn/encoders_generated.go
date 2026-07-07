@@ -2758,45 +2758,6 @@ func EncodeMaretronDeviationCalibrationResponse(p *publicpgn.MaretronDeviationCa
     return &p.Info, err
 }
 
-// EncodeMaretronSlaveResponse encodes a MaretronSlaveResponse struct to NMEA 2000 wire format
-func EncodeMaretronSlaveResponse(p *publicpgn.MaretronSlaveResponse, stream *DataStream) (*publicpgn.MessageInfo, error) {
-	var err error
-    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.writeReserved(2, 11)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.ProductCode, &fieldSpec_MaretronSlaveResponse_ProductCode)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.SoftwareCode, &fieldSpec_MaretronSlaveResponse_SoftwareCode)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.Command, &fieldSpec_MaretronSlaveResponse_Command)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.Status, &fieldSpec_MaretronSlaveResponse_Status)
-    if err != nil {
-        return nil, err
-    }
-    if p.Info.PGN == 0 {
-        p.Info.PGN = 126720
-    }
-    p.Info.Timestamp = time.Now()
-
-    return &p.Info, err
-}
-
 // EncodeAlert encodes a Alert struct to NMEA 2000 wire format
 func EncodeAlert(p *publicpgn.Alert, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
@@ -2820,7 +2781,7 @@ func EncodeAlert(p *publicpgn.Alert, stream *DataStream) (*publicpgn.MessageInfo
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.DataSourceNetworkIDNAME, &fieldSpec_Alert_DataSourceNetworkIDNAME)
+    err = WriteRaw(stream, p.DataSourceNetworkIDName, &fieldSpec_Alert_DataSourceNetworkIDName)
     if err != nil {
         return nil, err
     }
@@ -2864,7 +2825,7 @@ func EncodeAlert(p *publicpgn.Alert, stream *DataStream) (*publicpgn.MessageInfo
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.AcknowledgeSourceNetworkIDNAME, &fieldSpec_Alert_AcknowledgeSourceNetworkIDNAME)
+    err = WriteRaw(stream, p.AcknowledgeSourceNetworkIDName, &fieldSpec_Alert_AcknowledgeSourceNetworkIDName)
     if err != nil {
         return nil, err
     }
@@ -2915,7 +2876,7 @@ func EncodeAlertResponse(p *publicpgn.AlertResponse, stream *DataStream) (*publi
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.DataSourceNetworkIDNAME, &fieldSpec_AlertResponse_DataSourceNetworkIDNAME)
+    err = WriteRaw(stream, p.DataSourceNetworkIDName, &fieldSpec_AlertResponse_DataSourceNetworkIDName)
     if err != nil {
         return nil, err
     }
@@ -2931,7 +2892,7 @@ func EncodeAlertResponse(p *publicpgn.AlertResponse, stream *DataStream) (*publi
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.AcknowledgeSourceNetworkIDNAME, &fieldSpec_AlertResponse_AcknowledgeSourceNetworkIDNAME)
+    err = WriteRaw(stream, p.AcknowledgeSourceNetworkIDName, &fieldSpec_AlertResponse_AcknowledgeSourceNetworkIDName)
     if err != nil {
         return nil, err
     }
@@ -2974,7 +2935,7 @@ func EncodeAlertText(p *publicpgn.AlertText, stream *DataStream) (*publicpgn.Mes
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.DataSourceNetworkIDNAME, &fieldSpec_AlertText_DataSourceNetworkIDNAME)
+    err = WriteRaw(stream, p.DataSourceNetworkIDName, &fieldSpec_AlertText_DataSourceNetworkIDName)
     if err != nil {
         return nil, err
     }
@@ -3673,7 +3634,7 @@ func EncodeEngineParametersStatic(p *publicpgn.EngineParametersStatic, stream *D
     if err != nil {
         return nil, err
     }
-    err = stream.writeStringLau(p.VIN, 24 )
+    err = stream.writeStringLau(p.Vin, 24 )
     if err != nil {
         return nil, err
     }
@@ -3712,7 +3673,7 @@ func EncodeLoadControllerConnectionStateControl(p *publicpgn.LoadControllerConne
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.PWMDutyCycle, &fieldSpec_LoadControllerConnectionStateControl_PWMDutyCycle)
+    err = WriteRaw(stream, p.PwmDutyCycle, &fieldSpec_LoadControllerConnectionStateControl_PwmDutyCycle)
     if err != nil {
         return nil, err
     }
@@ -5162,15 +5123,15 @@ func EncodeGNSSPositionData(p *publicpgn.GNSSPositionData, stream *DataStream) (
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.NumberOfSVs, &fieldSpec_GNSSPositionData_NumberOfSVs)
+    err = WriteRaw(stream, p.NumberOfSvs, &fieldSpec_GNSSPositionData_NumberOfSvs)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.HDOP, &fieldSpec_GNSSPositionData_HDOP)
+    err = WriteScaled(stream, p.Hdop, &fieldSpec_GNSSPositionData_Hdop)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.PDOP, &fieldSpec_GNSSPositionData_PDOP)
+    err = WriteScaled(stream, p.Pdop, &fieldSpec_GNSSPositionData_Pdop)
     if err != nil {
         return nil, err
     }
@@ -5408,7 +5369,7 @@ func EncodeAISClassBPositionReport(p *publicpgn.AISClassBPositionReport, stream 
     if err != nil {
         return nil, err
     }
-    err = stream.putNumberRaw(uint64(p.CanHandleMsg22), 1, 198)
+    err = stream.putNumberRaw(uint64(p.CANHandleMsg22), 1, 198)
     if err != nil {
         return nil, err
     }
@@ -5432,8 +5393,8 @@ func EncodeAISClassBPositionReport(p *publicpgn.AISClassBPositionReport, stream 
     return &p.Info, err
 }
 
-// EncodeAISAidsToNavigationAtonReport encodes a AISAidsToNavigationAtonReport struct to NMEA 2000 wire format
-func EncodeAISAidsToNavigationAtonReport(p *publicpgn.AISAidsToNavigationAtonReport, stream *DataStream) (*publicpgn.MessageInfo, error) {
+// EncodeAISAidsToNavigationATONReport encodes a AISAidsToNavigationATONReport struct to NMEA 2000 wire format
+func EncodeAISAidsToNavigationATONReport(p *publicpgn.AISAidsToNavigationATONReport, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.MessageID), 6, 0)
     if err != nil {
@@ -5443,15 +5404,15 @@ func EncodeAISAidsToNavigationAtonReport(p *publicpgn.AISAidsToNavigationAtonRep
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.UserID, &fieldSpec_AISAidsToNavigationAtonReport_UserID)
+    err = WriteRaw(stream, p.UserID, &fieldSpec_AISAidsToNavigationATONReport_UserID)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.Longitude, &fieldSpec_AISAidsToNavigationAtonReport_Longitude)
+    err = WriteScaled(stream, p.Longitude, &fieldSpec_AISAidsToNavigationATONReport_Longitude)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.Latitude, &fieldSpec_AISAidsToNavigationAtonReport_Latitude)
+    err = WriteScaled(stream, p.Latitude, &fieldSpec_AISAidsToNavigationATONReport_Latitude)
     if err != nil {
         return nil, err
     }
@@ -5467,23 +5428,23 @@ func EncodeAISAidsToNavigationAtonReport(p *publicpgn.AISAidsToNavigationAtonRep
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.LengthDiameter, &fieldSpec_AISAidsToNavigationAtonReport_LengthDiameter)
+    err = stream.writeUnit(p.LengthDiameter, &fieldSpec_AISAidsToNavigationATONReport_LengthDiameter)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.BeamDiameter, &fieldSpec_AISAidsToNavigationAtonReport_BeamDiameter)
+    err = stream.writeUnit(p.BeamDiameter, &fieldSpec_AISAidsToNavigationATONReport_BeamDiameter)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PositionReferenceFromStarboardEdge, &fieldSpec_AISAidsToNavigationAtonReport_PositionReferenceFromStarboardEdge)
+    err = stream.writeUnit(p.PositionReferenceFromStarboardEdge, &fieldSpec_AISAidsToNavigationATONReport_PositionReferenceFromStarboardEdge)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PositionReferenceFromTrueNorthFacingEdge, &fieldSpec_AISAidsToNavigationAtonReport_PositionReferenceFromTrueNorthFacingEdge)
+    err = stream.writeUnit(p.PositionReferenceFromTrueNorthFacingEdge, &fieldSpec_AISAidsToNavigationATONReport_PositionReferenceFromTrueNorthFacingEdge)
     if err != nil {
         return nil, err
     }
-    err = stream.putNumberRaw(uint64(p.AtonType), 5, 176)
+    err = stream.putNumberRaw(uint64(p.ATONType), 5, 176)
     if err != nil {
         return nil, err
     }
@@ -5491,7 +5452,7 @@ func EncodeAISAidsToNavigationAtonReport(p *publicpgn.AISAidsToNavigationAtonRep
     if err != nil {
         return nil, err
     }
-    err = stream.putNumberRaw(uint64(p.VirtualAtonFlag), 1, 182)
+    err = stream.putNumberRaw(uint64(p.VirtualATONFlag), 1, 182)
     if err != nil {
         return nil, err
     }
@@ -5511,7 +5472,7 @@ func EncodeAISAidsToNavigationAtonReport(p *publicpgn.AISAidsToNavigationAtonRep
     if err != nil {
         return nil, err
     }
-    err = stream.writeBinary(p.AtonStatus, 8, 192 )
+    err = stream.writeBinary(p.ATONStatus, 8, 192 )
     if err != nil {
         return nil, err
     }
@@ -5523,7 +5484,7 @@ func EncodeAISAidsToNavigationAtonReport(p *publicpgn.AISAidsToNavigationAtonRep
     if err != nil {
         return nil, err
     }
-    err = stream.writeStringLau(p.AtonName, 208 )
+    err = stream.writeStringLau(p.ATONName, 208 )
     if err != nil {
         return nil, err
     }
@@ -5679,11 +5640,11 @@ func EncodeNavigationData(p *publicpgn.NavigationData, stream *DataStream) (*pub
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.ETATime, &fieldSpec_NavigationData_ETATime)
+    err = WriteScaled(stream, p.EtaTime, &fieldSpec_NavigationData_EtaTime)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.ETADate, &fieldSpec_NavigationData_ETADate)
+    err = WriteRaw(stream, p.EtaDate, &fieldSpec_NavigationData_EtaDate)
     if err != nil {
         return nil, err
     }
@@ -5726,7 +5687,7 @@ func EncodeNavigationData(p *publicpgn.NavigationData, stream *DataStream) (*pub
 // EncodeNavigationRouteWPInformation encodes a NavigationRouteWPInformation struct to NMEA 2000 wire format
 func EncodeNavigationRouteWPInformation(p *publicpgn.NavigationRouteWPInformation, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
-    err = WriteRaw(stream, p.StartRPS, &fieldSpec_NavigationRouteWPInformation_StartRPS)
+    err = WriteRaw(stream, p.StartRps, &fieldSpec_NavigationRouteWPInformation_StartRps)
     if err != nil {
         return nil, err
     }
@@ -5868,19 +5829,19 @@ func EncodeNavigationRouteTimeToFromMark(p *publicpgn.NavigationRouteTimeToFromM
 // EncodeGNSSControlStatus encodes a GNSSControlStatus struct to NMEA 2000 wire format
 func EncodeGNSSControlStatus(p *publicpgn.GNSSControlStatus, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.SVElevationMask, &fieldSpec_GNSSControlStatus_SVElevationMask)
+    err = WriteScaled(stream, p.SvElevationMask, &fieldSpec_GNSSControlStatus_SvElevationMask)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.PDOPMask, &fieldSpec_GNSSControlStatus_PDOPMask)
+    err = WriteScaled(stream, p.PdopMask, &fieldSpec_GNSSControlStatus_PdopMask)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.PDOPSwitch, &fieldSpec_GNSSControlStatus_PDOPSwitch)
+    err = WriteScaled(stream, p.PdopSwitch, &fieldSpec_GNSSControlStatus_PdopSwitch)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.SNRMask, &fieldSpec_GNSSControlStatus_SNRMask)
+    err = WriteScaled(stream, p.SnrMask, &fieldSpec_GNSSControlStatus_SnrMask)
     if err != nil {
         return nil, err
     }
@@ -5939,15 +5900,15 @@ func EncodeGNSSDOPs(p *publicpgn.GNSSDOPs, stream *DataStream) (*publicpgn.Messa
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.HDOP, &fieldSpec_GNSSDOPs_HDOP)
+    err = WriteScaled(stream, p.Hdop, &fieldSpec_GNSSDOPs_Hdop)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.VDOP, &fieldSpec_GNSSDOPs_VDOP)
+    err = WriteScaled(stream, p.Vdop, &fieldSpec_GNSSDOPs_Vdop)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.TDOP, &fieldSpec_GNSSDOPs_TDOP)
+    err = WriteScaled(stream, p.Tdop, &fieldSpec_GNSSDOPs_Tdop)
     if err != nil {
         return nil, err
     }
@@ -5995,7 +5956,7 @@ func encodeGNSSSatsInViewRepeating1(p *publicpgn.GNSSSatsInView, stream *DataStr
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = WriteRaw(stream, p.Repeating1[index].PRN, &fieldSpec_GNSSSatsInView_PRN)
+        err = WriteRaw(stream, p.Repeating1[index].Prn, &fieldSpec_GNSSSatsInView_Prn)
         if err != nil {
             return err
         }
@@ -6007,7 +5968,7 @@ func encodeGNSSSatsInViewRepeating1(p *publicpgn.GNSSSatsInView, stream *DataStr
         if err != nil {
             return err
         }
-        err = WriteScaled(stream, p.Repeating1[index].SNR, &fieldSpec_GNSSSatsInView_SNR)
+        err = WriteScaled(stream, p.Repeating1[index].Snr, &fieldSpec_GNSSSatsInView_Snr)
         if err != nil {
             return err
         }
@@ -6132,19 +6093,19 @@ func EncodeDGNSSCorrections(p *publicpgn.DGNSSCorrections, stream *DataStream) (
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.PRC, &fieldSpec_DGNSSCorrections_PRC)
+    err = stream.writeUnit(p.Prc, &fieldSpec_DGNSSCorrections_Prc)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.RRC, &fieldSpec_DGNSSCorrections_RRC)
+    err = stream.writeUnit(p.Rrc, &fieldSpec_DGNSSCorrections_Rrc)
     if err != nil {
         return nil, err
     }
-    err = stream.writeUnit(p.UDRE, &fieldSpec_DGNSSCorrections_UDRE)
+    err = stream.writeUnit(p.Udre, &fieldSpec_DGNSSCorrections_Udre)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.IOD, &fieldSpec_DGNSSCorrections_IOD)
+    err = WriteRaw(stream, p.Iod, &fieldSpec_DGNSSCorrections_Iod)
     if err != nil {
         return nil, err
     }
@@ -6210,7 +6171,7 @@ func EncodeGNSSDifferentialCorrectionReceiverSignal(p *publicpgn.GNSSDifferentia
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.SignalSNR, &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_SignalSNR)
+    err = WriteScaled(stream, p.SignalSnr, &fieldSpec_GNSSDifferentialCorrectionReceiverSignal_SignalSnr)
     if err != nil {
         return nil, err
     }
@@ -6265,11 +6226,11 @@ func EncodeGNSSDifferentialCorrectionReceiverSignal(p *publicpgn.GNSSDifferentia
 // EncodeGLONASSAlmanacData encodes a GLONASSAlmanacData struct to NMEA 2000 wire format
 func EncodeGLONASSAlmanacData(p *publicpgn.GLONASSAlmanacData, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
-    err = WriteRaw(stream, p.PRN, &fieldSpec_GLONASSAlmanacData_PRN)
+    err = WriteRaw(stream, p.Prn, &fieldSpec_GLONASSAlmanacData_Prn)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.NA, &fieldSpec_GLONASSAlmanacData_NA)
+    err = WriteRaw(stream, p.Na, &fieldSpec_GLONASSAlmanacData_Na)
     if err != nil {
         return nil, err
     }
@@ -6411,7 +6372,7 @@ func EncodeAISClassAStaticAndVoyageRelatedData(p *publicpgn.AISClassAStaticAndVo
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.IMONumber, &fieldSpec_AISClassAStaticAndVoyageRelatedData_IMONumber)
+    err = WriteRaw(stream, p.ImoNumber, &fieldSpec_AISClassAStaticAndVoyageRelatedData_ImoNumber)
     if err != nil {
         return nil, err
     }
@@ -6443,11 +6404,11 @@ func EncodeAISClassAStaticAndVoyageRelatedData(p *publicpgn.AISClassAStaticAndVo
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.ETADate, &fieldSpec_AISClassAStaticAndVoyageRelatedData_ETADate)
+    err = WriteRaw(stream, p.EtaDate, &fieldSpec_AISClassAStaticAndVoyageRelatedData_EtaDate)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.ETATime, &fieldSpec_AISClassAStaticAndVoyageRelatedData_ETATime)
+    err = WriteScaled(stream, p.EtaTime, &fieldSpec_AISClassAStaticAndVoyageRelatedData_EtaTime)
     if err != nil {
         return nil, err
     }
@@ -6467,7 +6428,7 @@ func EncodeAISClassAStaticAndVoyageRelatedData(p *publicpgn.AISClassAStaticAndVo
     if err != nil {
         return nil, err
     }
-    err = stream.putNumberRaw(uint64(p.DTE), 1, 590)
+    err = stream.putNumberRaw(uint64(p.Dte), 1, 590)
     if err != nil {
         return nil, err
     }
@@ -7008,7 +6969,7 @@ func EncodeRouteAndWPServiceRouteWPListAttributes(p *publicpgn.RouteAndWPService
 // EncodeRouteAndWPServiceRouteWPNamePosition encodes a RouteAndWPServiceRouteWPNamePosition struct to NMEA 2000 wire format
 func EncodeRouteAndWPServiceRouteWPNamePosition(p *publicpgn.RouteAndWPServiceRouteWPNamePosition, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
-    err = WriteRaw(stream, p.StartRPS, &fieldSpec_RouteAndWPServiceRouteWPNamePosition_StartRPS)
+    err = WriteRaw(stream, p.StartRps, &fieldSpec_RouteAndWPServiceRouteWPNamePosition_StartRps)
     if err != nil {
         return nil, err
     }
@@ -7068,7 +7029,7 @@ func encodeRouteAndWPServiceRouteWPNamePositionRepeating1(p *publicpgn.RouteAndW
 // EncodeRouteAndWPServiceRouteWPName encodes a RouteAndWPServiceRouteWPName struct to NMEA 2000 wire format
 func EncodeRouteAndWPServiceRouteWPName(p *publicpgn.RouteAndWPServiceRouteWPName, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
-    err = WriteRaw(stream, p.StartRPS, &fieldSpec_RouteAndWPServiceRouteWPName_StartRPS)
+    err = WriteRaw(stream, p.StartRps, &fieldSpec_RouteAndWPServiceRouteWPName_StartRps)
     if err != nil {
         return nil, err
     }
@@ -7120,7 +7081,7 @@ func encodeRouteAndWPServiceRouteWPNameRepeating1(p *publicpgn.RouteAndWPService
 // EncodeRouteAndWPServiceXTELimitNavigationMethod encodes a RouteAndWPServiceXTELimitNavigationMethod struct to NMEA 2000 wire format
 func EncodeRouteAndWPServiceXTELimitNavigationMethod(p *publicpgn.RouteAndWPServiceXTELimitNavigationMethod, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
-    err = WriteRaw(stream, p.StartRPS, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_StartRPS)
+    err = WriteRaw(stream, p.StartRps, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_StartRps)
     if err != nil {
         return nil, err
     }
@@ -7157,7 +7118,7 @@ func encodeRouteAndWPServiceXTELimitNavigationMethodRepeating1(p *publicpgn.Rout
         if err != nil {
             return err
         }
-        err = WriteRaw(stream, p.Repeating1[index].RPS, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_RPS)
+        err = WriteRaw(stream, p.Repeating1[index].Rps, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_Rps)
         if err != nil {
             return err
         }
@@ -7217,7 +7178,7 @@ func encodeRouteAndWPServiceWPCommentRepeating1(p *publicpgn.RouteAndWPServiceWP
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = WriteRaw(stream, p.Repeating1[index].WPIDRPS, &fieldSpec_RouteAndWPServiceWPComment_WPIDRPS)
+        err = WriteRaw(stream, p.Repeating1[index].WPIDRps, &fieldSpec_RouteAndWPServiceWPComment_WPIDRps)
         if err != nil {
             return err
         }
@@ -7324,7 +7285,7 @@ func encodeRouteAndWPServiceDatabaseCommentRepeating1(p *publicpgn.RouteAndWPSer
 // EncodeRouteAndWPServiceRadiusOfTurn encodes a RouteAndWPServiceRadiusOfTurn struct to NMEA 2000 wire format
 func EncodeRouteAndWPServiceRadiusOfTurn(p *publicpgn.RouteAndWPServiceRadiusOfTurn, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
-    err = WriteRaw(stream, p.StartRPS, &fieldSpec_RouteAndWPServiceRadiusOfTurn_StartRPS)
+    err = WriteRaw(stream, p.StartRps, &fieldSpec_RouteAndWPServiceRadiusOfTurn_StartRps)
     if err != nil {
         return nil, err
     }
@@ -7361,7 +7322,7 @@ func encodeRouteAndWPServiceRadiusOfTurnRepeating1(p *publicpgn.RouteAndWPServic
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = WriteRaw(stream, p.Repeating1[index].RPS, &fieldSpec_RouteAndWPServiceRadiusOfTurn_RPS)
+        err = WriteRaw(stream, p.Repeating1[index].Rps, &fieldSpec_RouteAndWPServiceRadiusOfTurn_Rps)
         if err != nil {
             return err
         }
@@ -8003,8 +7964,8 @@ func EncodeSonichubVolume(p *publicpgn.SonichubVolume, stream *DataStream) (*pub
     return &p.Info, err
 }
 
-// EncodeBEPMarineCzoneZcfBusDistribution encodes a BEPMarineCzoneZcfBusDistribution struct to NMEA 2000 wire format
-func EncodeBEPMarineCzoneZcfBusDistribution(p *publicpgn.BEPMarineCzoneZcfBusDistribution, stream *DataStream) (*publicpgn.MessageInfo, error) {
+// EncodeBepMarineCzoneZcfBusDistribution encodes a BepMarineCzoneZcfBusDistribution struct to NMEA 2000 wire format
+func EncodeBepMarineCzoneZcfBusDistribution(p *publicpgn.BepMarineCzoneZcfBusDistribution, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8018,11 +7979,11 @@ func EncodeBEPMarineCzoneZcfBusDistribution(p *publicpgn.BEPMarineCzoneZcfBusDis
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.ChunkIndex, &fieldSpec_BEPMarineCzoneZcfBusDistribution_ChunkIndex)
+    err = WriteRaw(stream, p.ChunkIndex, &fieldSpec_BepMarineCzoneZcfBusDistribution_ChunkIndex)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.Flag, &fieldSpec_BEPMarineCzoneZcfBusDistribution_Flag)
+    err = WriteRaw(stream, p.Flag, &fieldSpec_BepMarineCzoneZcfBusDistribution_Flag)
     if err != nil {
         return nil, err
     }
@@ -8104,19 +8065,19 @@ func EncodeFusionVersions(p *publicpgn.FusionVersions, stream *DataStream) (*pub
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.HWVersionMajor, &fieldSpec_FusionVersions_HWVersionMajor)
+    err = WriteRaw(stream, p.HwVersionMajor, &fieldSpec_FusionVersions_HwVersionMajor)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.HWVersionMinor, &fieldSpec_FusionVersions_HWVersionMinor)
+    err = WriteRaw(stream, p.HwVersionMinor, &fieldSpec_FusionVersions_HwVersionMinor)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.SWVersionMajor, &fieldSpec_FusionVersions_SWVersionMajor)
+    err = WriteRaw(stream, p.SwVersionMajor, &fieldSpec_FusionVersions_SwVersionMajor)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.SWVersionMinor, &fieldSpec_FusionVersions_SWVersionMinor)
+    err = WriteRaw(stream, p.SwVersionMinor, &fieldSpec_FusionVersions_SwVersionMinor)
     if err != nil {
         return nil, err
     }
@@ -8514,8 +8475,8 @@ func EncodeFusionIgnitionSwitchState(p *publicpgn.FusionIgnitionSwitchState, str
     return &p.Info, err
 }
 
-// EncodeFusionMenuLockId encodes a FusionMenuLockId struct to NMEA 2000 wire format
-func EncodeFusionMenuLockId(p *publicpgn.FusionMenuLockId, stream *DataStream) (*publicpgn.MessageInfo, error) {
+// EncodeFusionMenuLockID encodes a FusionMenuLockID struct to NMEA 2000 wire format
+func EncodeFusionMenuLockID(p *publicpgn.FusionMenuLockID, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8533,11 +8494,11 @@ func EncodeFusionMenuLockId(p *publicpgn.FusionMenuLockId, stream *DataStream) (
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.LockId, &fieldSpec_FusionMenuLockId_LockId)
+    err = WriteRaw(stream, p.LockID, &fieldSpec_FusionMenuLockID_LockID)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.Flags, &fieldSpec_FusionMenuLockId_Flags)
+    err = WriteRaw(stream, p.Flags, &fieldSpec_FusionMenuLockID_Flags)
     if err != nil {
         return nil, err
     }
@@ -8615,19 +8576,19 @@ func EncodeFusionMultiroom(p *publicpgn.FusionMultiroom, stream *DataStream) (*p
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.IPAddress1, &fieldSpec_FusionMultiroom_IPAddress1)
+    err = WriteRaw(stream, p.IpAddress1, &fieldSpec_FusionMultiroom_IpAddress1)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.IPAddress2, &fieldSpec_FusionMultiroom_IPAddress2)
+    err = WriteRaw(stream, p.IpAddress2, &fieldSpec_FusionMultiroom_IpAddress2)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.IPAddress3, &fieldSpec_FusionMultiroom_IPAddress3)
+    err = WriteRaw(stream, p.IpAddress3, &fieldSpec_FusionMultiroom_IpAddress3)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.IPAddress4, &fieldSpec_FusionMultiroom_IPAddress4)
+    err = WriteRaw(stream, p.IpAddress4, &fieldSpec_FusionMultiroom_IpAddress4)
     if err != nil {
         return nil, err
     }
@@ -8818,8 +8779,8 @@ func EncodeFusionTuner(p *publicpgn.FusionTuner, stream *DataStream) (*publicpgn
     return &p.Info, err
 }
 
-// EncodeFusionMARINETUNER encodes a FusionMARINETUNER struct to NMEA 2000 wire format
-func EncodeFusionMARINETUNER(p *publicpgn.FusionMARINETUNER, stream *DataStream) (*publicpgn.MessageInfo, error) {
+// EncodeFusionMarineTuner encodes a FusionMarineTuner struct to NMEA 2000 wire format
+func EncodeFusionMarineTuner(p *publicpgn.FusionMarineTuner, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -8837,15 +8798,15 @@ func EncodeFusionMARINETUNER(p *publicpgn.FusionMARINETUNER, stream *DataStream)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.SourceID, &fieldSpec_FusionMARINETUNER_SourceID)
+    err = WriteRaw(stream, p.SourceID, &fieldSpec_FusionMarineTuner_SourceID)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.Channel, &fieldSpec_FusionMARINETUNER_Channel)
+    err = WriteRaw(stream, p.Channel, &fieldSpec_FusionMarineTuner_Channel)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.SignalStrength, &fieldSpec_FusionMARINETUNER_SignalStrength)
+    err = WriteRaw(stream, p.SignalStrength, &fieldSpec_FusionMarineTuner_SignalStrength)
     if err != nil {
         return nil, err
     }
@@ -9189,7 +9150,7 @@ func EncodeFusionBalance(p *publicpgn.FusionBalance, stream *DataStream) (*publi
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.VALUE, &fieldSpec_FusionBalance_VALUE)
+    err = WriteRaw(stream, p.Value, &fieldSpec_FusionBalance_Value)
     if err != nil {
         return nil, err
     }
@@ -10110,15 +10071,15 @@ func EncodeMaretronSwitchStatusCounter(p *publicpgn.MaretronSwitchStatusCounter,
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.OFFCounter, &fieldSpec_MaretronSwitchStatusCounter_OFFCounter)
+    err = WriteRaw(stream, p.OffCounter, &fieldSpec_MaretronSwitchStatusCounter_OffCounter)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.ONCounter, &fieldSpec_MaretronSwitchStatusCounter_ONCounter)
+    err = WriteRaw(stream, p.OnCounter, &fieldSpec_MaretronSwitchStatusCounter_OnCounter)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.ERRORCounter, &fieldSpec_MaretronSwitchStatusCounter_ERRORCounter)
+    err = WriteRaw(stream, p.ErrorCounter, &fieldSpec_MaretronSwitchStatusCounter_ErrorCounter)
     if err != nil {
         return nil, err
     }
@@ -10169,15 +10130,15 @@ func EncodeMaretronSwitchStatusTimer(p *publicpgn.MaretronSwitchStatusTimer, str
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.AccumulatedOFFPeriod, &fieldSpec_MaretronSwitchStatusTimer_AccumulatedOFFPeriod)
+    err = WriteRaw(stream, p.AccumulatedOffPeriod, &fieldSpec_MaretronSwitchStatusTimer_AccumulatedOffPeriod)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.AccumulatedONPeriod, &fieldSpec_MaretronSwitchStatusTimer_AccumulatedONPeriod)
+    err = WriteRaw(stream, p.AccumulatedOnPeriod, &fieldSpec_MaretronSwitchStatusTimer_AccumulatedOnPeriod)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.AccumulatedERRORPeriod, &fieldSpec_MaretronSwitchStatusTimer_AccumulatedERRORPeriod)
+    err = WriteRaw(stream, p.AccumulatedErrorPeriod, &fieldSpec_MaretronSwitchStatusTimer_AccumulatedErrorPeriod)
     if err != nil {
         return nil, err
     }
@@ -10257,7 +10218,7 @@ func encodeFurunoMultiSatsInViewExtendedRepeating1(p *publicpgn.FurunoMultiSatsI
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = WriteRaw(stream, p.Repeating1[index].PRN, &fieldSpec_FurunoMultiSatsInViewExtended_PRN)
+        err = WriteRaw(stream, p.Repeating1[index].Prn, &fieldSpec_FurunoMultiSatsInViewExtended_Prn)
         if err != nil {
             return err
         }
@@ -10269,7 +10230,7 @@ func encodeFurunoMultiSatsInViewExtendedRepeating1(p *publicpgn.FurunoMultiSatsI
         if err != nil {
             return err
         }
-        err = WriteScaled(stream, p.Repeating1[index].SNR, &fieldSpec_FurunoMultiSatsInViewExtended_SNR)
+        err = WriteScaled(stream, p.Repeating1[index].Snr, &fieldSpec_FurunoMultiSatsInViewExtended_Snr)
         if err != nil {
             return err
         }

@@ -13,11 +13,11 @@ var NavicoDiagnosticConstMap = map[int]FieldSpec{4: {
 		BitLength: 0,
 		Resolution: 0,
 		},
-
+	 
 }
 
-type NavicoSourceSettingIdConst uint16
-var NavicoSourceSettingIdConstMap = map[int]FieldSpec{17: {
+type NavicoSourceSettingIDConst uint16
+var NavicoSourceSettingIDConstMap = map[int]FieldSpec{17: {
 		BitLength: 0,
 		Resolution: 0,
 		},
@@ -45,7 +45,7 @@ var NavicoSourceSettingIdConstMap = map[int]FieldSpec{17: {
 		BitLength: 0,
 		Resolution: 1,
 		},
-
+	 
 }
 
 type SimnetKeyValueConst uint16
@@ -221,7 +221,7 @@ var SimnetKeyValueConstMap = map[int]FieldSpec{0: {
 		BitLength: 0,
 		Resolution: 0,
 		},
-
+	 
 }
 
 type BandgKeyValueConst uint16
@@ -917,7 +917,7 @@ var BandgKeyValueConstMap = map[int]FieldSpec{0: {
 		BitLength: 0,
 		Resolution: 0.001,
 		},
-
+	 
 }
 
 type VictronVregConst uint16
@@ -1593,7 +1593,7 @@ var VictronVregConstMap = map[int]FieldSpec{260: {
 		BitLength: 0,
 		Resolution: 0,
 		},
-
+	 
 }
 
 type MercuryKeyValueConst uint16
@@ -1757,6 +1757,6 @@ var MercuryKeyValueConstMap = map[int]FieldSpec{5: {
 		BitLength: 0,
 		Resolution: 0,
 		},
-
+	 
 }
 
