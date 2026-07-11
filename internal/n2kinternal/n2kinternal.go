@@ -10,6 +10,8 @@ package n2kinternal
 
 import (
 	"context"
+	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/boatkit-io/n2k/internal/adapter/canadapter"
@@ -32,7 +34,25 @@ type N2kService struct {
 	log           *logrus.Logger
 
 	receivedCANFrameHook func(*can.Frame)
+
+	messageQueue        chan endpoint.Message
+	messageQueueDropped atomic.Uint64
+	messageQueueWG      sync.WaitGroup
+
+	processorMu     sync.Mutex
+	processorCancel context.CancelFunc
+	processorDone   chan struct{}
+
+	queueLogMu          sync.Mutex
+	queueLastLog        time.Time
+	queueLastDroppedLog uint64
 }
+
+const (
+	messageQueueCapacity       = 8192
+	messageQueueWarnDepthRatio = 0.75
+	messageQueueLogInterval    = time.Second
+)
 
 // NewN2kService creates a new internal N2K service with the specified endpoint
 func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger) *N2kService {
@@ -51,6 +71,7 @@ func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger) *N2kService {
 		subscriber:   subscriber,
 		publisher:    &pub,
 		log:          log,
+		messageQueue: make(chan endpoint.Message, messageQueueCapacity),
 	}
 
 	ep.SetOutput(s)
@@ -84,10 +105,48 @@ func (s *N2kService) SetReceivedCANFrameHook(fn func(*can.Frame)) {
 
 // HandleMessage implements endpoint.MessageHandler for live endpoint traffic.
 func (s *N2kService) HandleMessage(message endpoint.Message) {
-	if frame, ok := message.(*can.Frame); ok && s.receivedCANFrameHook != nil {
-		s.receivedCANFrameHook(frame)
+	if frame, ok := message.(*can.Frame); ok {
+		if s.receivedCANFrameHook != nil {
+			s.receivedCANFrameHook(frame)
+		}
 	}
+
+	message = cloneMessage(message)
+
+	s.processorMu.Lock()
+	if s.processorCancel == nil {
+		s.processorMu.Unlock()
+		s.processMessage(message)
+		return
+	}
+
+	s.messageQueueWG.Add(1)
+	select {
+	case s.messageQueue <- message:
+		queueFill := float64(len(s.messageQueue)) / float64(cap(s.messageQueue))
+		s.processorMu.Unlock()
+		if queueFill >= messageQueueWarnDepthRatio {
+			s.maybeLogMessageQueueBacklog()
+		}
+	default:
+		s.messageQueueWG.Done()
+		s.messageQueueDropped.Add(1)
+		s.processorMu.Unlock()
+		s.maybeLogMessageQueueBacklog()
+	}
+}
+
+func (s *N2kService) processMessage(message endpoint.Message) {
 	s.adapter.HandleMessage(message)
+}
+
+func cloneMessage(message endpoint.Message) endpoint.Message {
+	frame, ok := message.(*can.Frame)
+	if !ok || frame == nil {
+		return message
+	}
+	frameCopy := *frame
+	return &frameCopy
 }
 
 // HandleReplayCANFrame feeds a captured CAN frame through a dedicated adapter into the
@@ -108,6 +167,8 @@ func (s *N2kService) Write(pgnStruct any) error {
 
 // Start begins processing messages from the endpoint
 func (s *N2kService) Start(ctx context.Context) error {
+	s.startMessageProcessor(ctx)
+
 	// Start the endpoint in a goroutine
 	errChan := make(chan error, 1)
 	go func() {
@@ -118,6 +179,10 @@ func (s *N2kService) Start(ctx context.Context) error {
 	// This ensures the CAN bus is connected before we start writing frames
 	select {
 	case err := <-errChan:
+		if waitErr := s.waitForMessageQueueDrain(ctx); waitErr != nil && err == nil {
+			err = waitErr
+		}
+		s.stopMessageProcessor()
 		// Endpoint failed to start
 		return err
 	case <-time.After(500 * time.Millisecond):
@@ -128,7 +193,9 @@ func (s *N2kService) Start(ctx context.Context) error {
 
 // Stop stops processing messages
 func (s *N2kService) Stop() error {
-	return s.endpoint.Close()
+	err := s.endpoint.Close()
+	s.stopMessageProcessor()
+	return err
 }
 
 // UpdateEndpoint updates the endpoint used by the service
@@ -137,6 +204,7 @@ func (s *N2kService) UpdateEndpoint(ep endpoint.Endpoint) error {
 	if err := s.endpoint.Close(); err != nil {
 		return err
 	}
+	s.stopMessageProcessor()
 
 	// Set the new endpoint
 	s.endpoint = ep
@@ -148,4 +216,127 @@ func (s *N2kService) UpdateEndpoint(ep endpoint.Endpoint) error {
 	s.adapter.SetWriter(s.endpoint)
 
 	return nil
+}
+
+func (s *N2kService) startMessageProcessor(ctx context.Context) {
+	s.processorMu.Lock()
+	defer s.processorMu.Unlock()
+
+	if s.processorCancel != nil {
+		return
+	}
+
+	processorCtx, cancel := context.WithCancel(ctx)
+	done := make(chan struct{})
+	s.processorCancel = cancel
+	s.processorDone = done
+
+	go s.runMessageProcessor(processorCtx, done)
+}
+
+func (s *N2kService) stopMessageProcessor() {
+	s.processorMu.Lock()
+	cancel := s.processorCancel
+	done := s.processorDone
+	s.processorCancel = nil
+	s.processorDone = nil
+	if cancel != nil {
+		cancel()
+	}
+	s.processorMu.Unlock()
+
+	if done != nil {
+		<-done
+	}
+}
+
+func (s *N2kService) runMessageProcessor(ctx context.Context, done chan<- struct{}) {
+	defer func() {
+		s.processorMu.Lock()
+		if s.processorDone == done {
+			s.processorCancel = nil
+			s.processorDone = nil
+		}
+		s.processorMu.Unlock()
+		close(done)
+	}()
+	ticker := time.NewTicker(messageQueueLogInterval)
+	defer ticker.Stop()
+
+	for {
+		select {
+		case message := <-s.messageQueue:
+			s.processMessage(message)
+			s.messageQueueWG.Done()
+		case <-ticker.C:
+			s.maybeLogMessageQueueBacklog()
+		case <-ctx.Done():
+			s.discardQueuedMessages()
+			return
+		}
+	}
+}
+
+func (s *N2kService) discardQueuedMessages() {
+	for {
+		select {
+		case <-s.messageQueue:
+			s.messageQueueWG.Done()
+		default:
+			return
+		}
+	}
+}
+
+func (s *N2kService) waitForMessageQueueDrain(ctx context.Context) error {
+	done := make(chan struct{})
+	go func() {
+		s.messageQueueWG.Wait()
+		close(done)
+	}()
+
+	select {
+	case <-done:
+		return nil
+	case <-ctx.Done():
+		return ctx.Err()
+	}
+}
+
+func (s *N2kService) maybeLogMessageQueueBacklog() {
+	if s.log == nil {
+		return
+	}
+
+	now := time.Now()
+	s.queueLogMu.Lock()
+	if !s.queueLastLog.IsZero() && now.Sub(s.queueLastLog) < messageQueueLogInterval {
+		s.queueLogMu.Unlock()
+		return
+	}
+
+	depth := len(s.messageQueue)
+	capacity := cap(s.messageQueue)
+	var fill float64
+	if capacity > 0 {
+		fill = float64(depth) / float64(capacity)
+	}
+	droppedTotal := s.messageQueueDropped.Load()
+	droppedInterval := droppedTotal - s.queueLastDroppedLog
+	if fill < messageQueueWarnDepthRatio && droppedInterval == 0 {
+		s.queueLogMu.Unlock()
+		return
+	}
+	s.queueLastLog = now
+	s.queueLastDroppedLog = droppedTotal
+	s.queueLogMu.Unlock()
+
+	s.log.WithFields(logrus.Fields{
+		"queueDepth":      depth,
+		"queueCapacity":   capacity,
+		"queueFill":       fill,
+		"droppedInterval": droppedInterval,
+		"droppedTotal":    droppedTotal,
+		"stage":           "n2k-listener-handler-queue",
+	}).Warn("N2K handler queue is falling behind")
 }

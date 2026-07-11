@@ -213,9 +213,10 @@ func (c *CANAdapter) sendSingle(canID uint32, data []uint8) error {
 func ExtractMessageInfo(message *can.Frame) pgn.MessageInfo {
 	h := converter.DecodeCanID(message.ID)
 	return pgn.MessageInfo{
-		PGN:      h.PGN,
-		SourceId: h.SourceID,
-		TargetId: h.TargetID,
-		Priority: h.Priority,
+		Timestamp: h.TimeStamp,
+		PGN:       h.PGN,
+		SourceId:  h.SourceID,
+		TargetId:  h.TargetID,
+		Priority:  h.Priority,
 	}
 }
