@@ -1,11 +1,13 @@
 package node
 
 import (
+	"bytes"
 	"sync"
 	"testing"
 	"time"
 
 	"github.com/boatkit-io/n2k/pkg/pgn"
+	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -172,7 +174,7 @@ func TestClaimAddressReadOnly(t *testing.T) {
 	})
 	assert.Empty(t, responses)
 
-	sub.simulatePGN(testKnownDeviceClaim(23, 42))
+	sub.simulatePGN(testKnownDeviceClaim(23))
 	sub.waitForHandler()
 	assert.Eventually(t, func() bool {
 		devices := n.KnownDevices()
@@ -659,7 +661,7 @@ func TestKnownDevicesTracksNameAcrossAddressChanges(t *testing.T) {
 	assert.NoError(t, err)
 	defer func() { _ = n.Stop() }()
 
-	claim := testKnownDeviceClaim(23, 42)
+	claim := testKnownDeviceClaim(23)
 	sub.simulatePGN(claim)
 	sub.waitForHandler()
 
@@ -727,7 +729,7 @@ func TestKnownDevicesMergesPreClaimMetadata(t *testing.T) {
 		return len(devices) == 1 && devices[0].Name == 0 && devices[0].ProductInfo != nil
 	}, time.Second, time.Millisecond)
 
-	sub.simulatePGN(testKnownDeviceClaim(23, 42))
+	sub.simulatePGN(testKnownDeviceClaim(23))
 	sub.waitForHandler()
 
 	assert.Eventually(t, func() bool {
@@ -739,7 +741,36 @@ func TestKnownDevicesMergesPreClaimMetadata(t *testing.T) {
 	}, time.Second, time.Millisecond)
 }
 
-func testKnownDeviceClaim(sourceID uint8, uniqueNumber uint32) pgn.ISOAddressClaim {
+func TestOtherAddressClaimDoesNotLogInfoNoise(t *testing.T) {
+	var logOutput bytes.Buffer
+	logger := logrus.New()
+	logger.SetLevel(logrus.InfoLevel)
+	logger.SetOutput(&logOutput)
+
+	n := NewNode(newMockSubscriber(), newMockPublisher(), newMockClock())
+	n.SetLogger(logger)
+	err := n.SetDeviceInfo(DeviceInfo{
+		UniqueNumber:            100,
+		ManufacturerCode:        pgn.Garmin,
+		DeviceFunction:          140,
+		DeviceClass:             pgn.Navigation,
+		IndustryGroup:           pgn.MarineIndustry,
+		ArbitraryAddressCapable: true,
+	})
+	assert.NoError(t, err)
+
+	n.addressState = stateClaimed
+	n.addressClaimed = true
+	n.networkAddress = 110
+
+	claim := testKnownDeviceClaim(229)
+	n.processIsoAddressClaim(&claim)
+
+	assert.Empty(t, logOutput.String())
+}
+
+func testKnownDeviceClaim(sourceID uint8) pgn.ISOAddressClaim {
+	uniqueNumber := uint32(42)
 	deviceInstanceLower := uint8(1)
 	deviceInstanceUpper := uint8(2)
 	systemInstance := uint8(3)

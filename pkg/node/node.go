@@ -206,7 +206,6 @@ func (n *Node) handleIsoRequest(p pgn.ISORequest) {
 }
 
 func (n *Node) handleIsoAddressClaim(p pgn.ISOAddressClaim) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
-	n.logger.Infof("handleIsoAddressClaim: received address claim from source %d", p.Info.SourceId)
 	n.enqueuePgn(p)
 }
 
@@ -353,6 +352,7 @@ func (n *Node) ClaimAddress(preferredAddress uint8) error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
 	if preferredAddress == ReadOnlyAddress {
+		n.logger.Infof("N2K address claim disabled; entering passive mode")
 		n.preferredAddress = preferredAddress
 		n.networkAddress = ReadOnlyAddress
 		n.addressState = stateUnclaimed
@@ -370,6 +370,7 @@ func (n *Node) ClaimAddress(preferredAddress uint8) error {
 	if preferredAddress > 253 {
 		return fmt.Errorf("preferred address %d is out of range (0-253)", preferredAddress)
 	}
+	n.logger.Infof("starting N2K address claim for preferred address %d", preferredAddress)
 	n.preferredAddress = preferredAddress
 	n.readOnly = false
 	n.addressState = stateClaiming
@@ -535,11 +536,10 @@ func (n *Node) EnableHeartbeat(enable bool) {
 }
 
 func (n *Node) enqueuePgn(p any) {
-	n.logger.Infof("enqueuePgn: received %T", p)
 	select {
 	case n.pgnIn <- p:
 	case <-n.ctx.Done():
-		n.logger.Infof("enqueuePgn: context done, dropping PGN")
+		n.logger.Debugf("node context done, dropping PGN %T", p)
 	}
 }
 
@@ -568,8 +568,6 @@ func (n *Node) processIsoRequest(req pgn.ISORequest) []toSend {
 	if req.Info.TargetId != 255 && req.Info.TargetId != networkAddress {
 		return nil
 	}
-
-	n.logger.Infof("processIsoRequest: processing request for PGN %d from source %d", *req.PGN, req.Info.SourceId)
 
 	var responses []toSend
 
@@ -777,6 +775,8 @@ func (n *Node) processIsoCommandedAddress(cmd *pgn.ISOCommandedAddress) {
 		return
 	}
 
+	n.logger.Infof("received commanded N2K address %d; restarting address claim", *cmd.NewSourceAddress)
+
 	n.mutex.Lock()
 	n.preferredAddress = *cmd.NewSourceAddress
 	n.addressState = stateClaiming
@@ -794,40 +794,33 @@ func (n *Node) processIsoAddressClaim(claim *pgn.ISOAddressClaim) {
 	currentName := n.name
 	n.mutex.RUnlock()
 
-	n.logger.Infof("processIsoAddressClaim: received claim from source %d, our address %d, state %d",
-		claim.Info.SourceId, currentAddress, currentState)
-
 	if currentState != stateClaiming && currentState != stateClaimed {
-		n.logger.Infof("processIsoAddressClaim: ignoring claim, not in claiming/claimed state")
 		return
 	}
 
 	if claim.Info.SourceId != currentAddress {
-		n.logger.Infof("processIsoAddressClaim: ignoring claim, different address (%d vs %d)",
-			claim.Info.SourceId, currentAddress)
 		return
 	}
 
-	n.logger.Infof("processIsoAddressClaim: comparing NAMEs - incoming: %x, ours: %x",
-		incomingName, currentName)
-
 	if incomingName < currentName {
-		n.logger.Infof("processIsoAddressClaim: incoming NAME has higher priority, yielding address")
+		n.logger.Warnf("N2K address %d conflict: device NAME %016x has higher priority than ours %016x; yielding",
+			currentAddress, incomingName, currentName)
 		n.mutex.Lock()
 		n.addressClaimed = false
 		if n.deviceInfo.ArbitraryAddressCapable {
 			if nextAddress, ok := n.nextAvailableAddressLocked(currentAddress); ok {
 				n.preferredAddress = nextAddress
 				n.addressState = stateClaiming
-				n.logger.Infof("processIsoAddressClaim: retrying address claim with address %d", nextAddress)
+				n.logger.Infof("retrying N2K address claim with address %d", nextAddress)
 			} else {
 				n.addressState = stateLost
 				n.networkAddress = 255
-				n.logger.Warnf("processIsoAddressClaim: no available address found")
+				n.logger.Warnf("lost N2K address %d conflict and no available address found", currentAddress)
 			}
 		} else {
 			n.addressState = stateLost
 			n.networkAddress = 255
+			n.logger.Warnf("lost N2K address %d conflict and this node cannot choose another address", currentAddress)
 		}
 		n.mutex.Unlock()
 		select {
@@ -835,7 +828,8 @@ func (n *Node) processIsoAddressClaim(claim *pgn.ISOAddressClaim) {
 		default:
 		}
 	} else {
-		n.logger.Infof("processIsoAddressClaim: our NAME has higher priority, keeping address")
+		n.logger.Infof("N2K address %d conflict: our NAME %016x has higher priority than incoming %016x; reasserting claim",
+			currentAddress, currentName, incomingName)
 		n.sendAddressClaim()
 	}
 }
@@ -1120,9 +1114,9 @@ func (n *Node) sendAddressClaim() {
 	}
 
 	claim := buildAddressClaim(deviceInfoCopy, networkAddressCopy)
-	n.logger.Infof("sendAddressClaim: sending claim for address %d", networkAddressCopy)
+	n.logger.Infof("claiming N2K address %d", networkAddressCopy)
 	if err := publisher.Write(claim); err != nil {
-		n.logger.Errorf("sendAddressClaim: failed to write claim: %v", err)
+		n.logger.Errorf("failed to write N2K address claim: %v", err)
 	}
 }
 
@@ -1221,7 +1215,7 @@ func (n *Node) processPGN(p any) []toSend {
 	case pgn.NMEACommandGroupFunction:
 		return n.processNmeaCommandGroupFunction(&v)
 	case pgn.ISOAcknowledgement:
-		n.logger.Infof("process: received ISO acknowledgement for PGN %v", v.PGN)
+		n.logger.Debugf("received ISO acknowledgement for PGN %v", v.PGN)
 	case pgn.ISOAddressClaim:
 		n.processIsoAddressClaim(&v)
 	case pgn.ISOCommandedAddress:
@@ -1233,7 +1227,7 @@ func (n *Node) processPGN(p any) []toSend {
 	case pgn.PGNListTransmitAndReceive:
 		n.updateKnownDeviceFromPgnList(&v)
 	default:
-		n.logger.Infof("process: received unhandled PGN type %T", p)
+		n.logger.Debugf("received unhandled PGN type %T", p)
 	}
 	return nil
 }
@@ -1251,17 +1245,17 @@ func (n *Node) sendProcessResponses(toSendList []toSend) {
 		return
 	}
 	for _, ts := range toSendList {
-		n.logger.Infof("process: sending PGN %+v to %d", ts.pgn, ts.dest)
+		n.logger.Debugf("sending node response PGN %T to %d", ts.pgn, ts.dest)
 		if err := publisher.Write(ts.pgn); err != nil {
-			n.logger.Errorf("process: failed to write PGN %+v to %d: %v", ts.pgn, ts.dest, err)
+			n.logger.Errorf("failed to write node response PGN %T to %d: %v", ts.pgn, ts.dest, err)
 		}
 	}
 }
 
 func (n *Node) process() {
 	defer n.wg.Done()
-	n.logger.Infof("process: goroutine started")
-	defer n.logger.Infof("process: goroutine stopped")
+	n.logger.Debugf("node process goroutine started")
+	defer n.logger.Debugf("node process goroutine stopped")
 
 	var claimTicker Ticker
 	var heartbeatTicker Ticker
@@ -1318,7 +1312,7 @@ func (n *Node) process() {
 		select {
 		case p, ok := <-n.pgnIn:
 			if !ok {
-				n.logger.Infof("process: pgnIn channel closed")
+				n.logger.Debugf("node PGN channel closed")
 				return
 			}
 			n.sendProcessResponses(n.processPGN(p))
@@ -1328,7 +1322,7 @@ func (n *Node) process() {
 			if n.addressState == stateClaiming {
 				n.addressState = stateClaimed
 				n.addressClaimed = true
-				n.logger.Infof("process: address %d claimed", n.networkAddress)
+				n.logger.Infof("claimed N2K address %d", n.networkAddress)
 			}
 			n.mutex.Unlock()
 
