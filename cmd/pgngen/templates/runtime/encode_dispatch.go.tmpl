@@ -15,9 +15,9 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return Encode{{ .Id }}(p, stream)
 	case publicpgn.{{ .Id }}:
 		return Encode{{ .Id }}(&p, stream)
-{{- if eq .PGN 126208 }}
-	case *publicpgn.{{ .Id }}Partial:
-		return Encode{{ .Id }}Partial(p, stream)
+	{{- if and (eq .PGN 126208) (hasField . "PGN") }}
+		case *publicpgn.{{ .Id }}Partial:
+			return Encode{{ .Id }}Partial(p, stream)
 	case publicpgn.{{ .Id }}Partial:
 		return Encode{{ .Id }}Partial(&p, stream)
 {{- end }}

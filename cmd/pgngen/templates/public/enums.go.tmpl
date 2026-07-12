@@ -42,7 +42,8 @@ var {{ .Name }}Map = map[int]map[int]string{
 
 {{- range .PGNDoc.BitEnums }}
 {{- $name := .Name  }}
-type {{ $name }} uint16
+{{- $size := bitEnumSize .MaxValue }}
+type {{ $name }} {{ $size }}
 const (
 {{- range .EnumBitValues }}
 	{{ .Name }}	{{ $name }} = {{ .Bit }}
@@ -57,7 +58,7 @@ func (e {{ $name }}) String() string {
 			return "{{ .Label }}"
 {{- end }}
 	default:
-		return fmt.Sprintf("%s(%d)", "{{ $name }}", int(e))
+		return fmt.Sprintf("%s(%d)", "{{ $name }}", {{ $size }}(e))
 	}
 }
 {{- end }}

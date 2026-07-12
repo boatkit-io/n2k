@@ -305,7 +305,7 @@ func TestComputeNameFromClaimIncludesArbitraryAddressBit(t *testing.T) {
 		DeviceInstanceUpper:     &deviceInstanceUpper,
 		SystemInstance:          &systemInstance,
 		IndustryGroup:           pgn.MarineIndustry,
-		ArbitraryAddressCapable: pgn.Yes,
+		ArbitraryAddressCapable: pgn.Yes_2,
 	})
 	assert.Equal(t, expectedName, claimName)
 	assert.NotZero(t, claimName&(1<<63))
@@ -571,7 +571,7 @@ func TestKnownDevices(t *testing.T) {
 		DeviceClass:             pgn.Navigation,
 		SystemInstance:          &systemInstance,
 		IndustryGroup:           pgn.MarineIndustry,
-		ArbitraryAddressCapable: pgn.Yes,
+		ArbitraryAddressCapable: pgn.Yes_2,
 	}
 	sub.simulatePGN(claim)
 	sub.waitForHandler()
@@ -784,7 +784,7 @@ func testKnownDeviceClaim(sourceID uint8) pgn.ISOAddressClaim {
 		DeviceClass:             pgn.Navigation,
 		SystemInstance:          &systemInstance,
 		IndustryGroup:           pgn.MarineIndustry,
-		ArbitraryAddressCapable: pgn.Yes,
+		ArbitraryAddressCapable: pgn.Yes_2,
 	}
 }
 
@@ -820,7 +820,7 @@ func TestAddressClaimRetriesNextKnownFreeAddress(t *testing.T) {
 		DeviceFunction:          140,
 		DeviceClass:             pgn.Navigation,
 		IndustryGroup:           pgn.MarineIndustry,
-		ArbitraryAddressCapable: pgn.Yes,
+		ArbitraryAddressCapable: pgn.Yes_2,
 	})
 	pub.waitForWrite()
 

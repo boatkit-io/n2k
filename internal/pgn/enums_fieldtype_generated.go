@@ -327,7 +327,7 @@ var BandgKeyValueConstMap = map[int]FieldSpec{0: {
 		},
 	60: {
 		BitLength: 0,
-		Resolution: 0.0001,
+		Resolution: 3.125e-08,
 		},
 	64: {
 		BitLength: 0,
@@ -336,6 +336,10 @@ var BandgKeyValueConstMap = map[int]FieldSpec{0: {
 	65: {
 		BitLength: 0,
 		Resolution: 0.01,
+		},
+	68: {
+		BitLength: 0,
+		Resolution: 3.125e-08,
 		},
 	73: {
 		BitLength: 0,
@@ -463,7 +467,7 @@ var BandgKeyValueConstMap = map[int]FieldSpec{0: {
 		},
 	158: {
 		BitLength: 0,
-		Resolution: 0.0001,
+		Resolution: 3.125e-08,
 		},
 	163: {
 		BitLength: 0,

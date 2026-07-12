@@ -76,7 +76,7 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
     {{- end }}
    {{- end }}
 
-    {{- if eq $pgn.PGN 126208 }}
+    {{- if and (eq $pgn.PGN 126208) (hasField $pgn "PGN") }}
     if val.PGN != nil && (IsProprietaryPGN(*val.PGN) || !HasDecoder(*val.PGN)) {
         partial := publicpgn.{{ .Id }}Partial{
             Info: Info,
@@ -132,11 +132,16 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
         } else {
             rep.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
             {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
-            if v != nil {
-                valueLength = uint16(*v) * 8
-            }
-            {{- end }}
-        }
+	            if v != nil {
+	                valueLength = uint16(*v) * 8
+	            }
+	            {{- end }}
+	            {{- if and $config.BitLengthField (eq $config.BitLengthField .Order) }}
+	            if v != nil {
+	                binaryLength = uint16(*v)
+	            }
+	            {{- end }}
+	        }
         {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NMEARequestGroupFunction") (eq $pgn.Id "NMEACommandGroupFunction")) (eq .Id "Parameter") }}
         {{- if eq .Id "Parameter" }}
         valueSpec := &fieldSpec_{{ $pgn.Id }}_Value
@@ -148,7 +153,7 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
             }
         }
         {{- end }}
-        {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NMEAReadFieldsReplyGroupFunction") (eq $pgn.Id "NMEAWriteFieldsGroupFunction") (eq $pgn.Id "NMEAWriteFieldsReplyGroupFunction")) (eq .Id "SelectionParameter") }}
+        {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NMEAReadFieldsGroupFunction") (eq $pgn.Id "NMEAReadFieldsReplyGroupFunction") (eq $pgn.Id "NMEAWriteFieldsGroupFunction") (eq $pgn.Id "NMEAWriteFieldsReplyGroupFunction")) (eq .Id "SelectionParameter") }}
         valueSpec := &fieldSpec_{{ $pgn.Id }}_SelectionValue
         parameter := rep.SelectionParameter
         if val.PGN != nil && parameter != nil {

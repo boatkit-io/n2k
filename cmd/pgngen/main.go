@@ -16,6 +16,7 @@ import (
 	"io"
 	"math"
 	"path/filepath"
+	"sort"
 	"strconv"
 
 	//	"math"
@@ -250,33 +251,25 @@ func (conv *canboatConverter) fixup() {
 	conv.fixRepeating()
 }
 
-// filter builds separate slices for known, unknown (no Canboat samples), and incomplete PGNs.
+// filter builds side lists for PGNs without Canboat samples and PGNs with incomplete metadata.
+// Incomplete PGNs are still kept in the generated PGN list so newly identified packets can be decoded.
 func (conv *canboatConverter) filter() {
 	known := make([]*PGN, 0)
 	unknown := make([]*PGN, 0)
 	incomplete := make([]*PGN, 0)
-	var keep bool
 	for _, pgn := range conv.PGNs {
-		keep = true
 		if !pgn.Complete {
 			if len(pgn.Missing) == 0 {
 				panic("Complete is false but Missing is empty!")
 			}
 			for i := range pgn.Missing {
-				if (pgn.Missing[i] == "Interval") || (pgn.Missing[i] == "Lookups") { // we don't care about these
-					continue
-				}
-				keep = false
 				if pgn.Missing[i] == "SampleData" { // we track these so we can provide sample data if we encounter them
 					unknown = append(unknown, pgn)
 				}
 			}
-		}
-		if keep {
-			known = append(known, pgn)
-		} else {
 			incomplete = append(incomplete, pgn)
 		}
+		known = append(known, pgn)
 	}
 	conv.PGNs = known
 	conv.NeverSeenPGNs = unknown
@@ -310,23 +303,29 @@ func (conv *canboatConverter) write() {
 
 	// Template function map
 	funcMap := template.FuncMap{
-		"convertFieldType":          convertFieldType,
-		"getFieldSerializer":        getFieldSerializer,
-		"getFieldDeserializer":      getFieldDeserializer,
-		"fieldByteCount":            fieldByteCount,
-		"concat":                    func(strs ...string) string { return strings.Join(strs, "") },
-		"toNumber":                  toNumber,
-		"isPointerFieldType":        isPointerFieldType,
-		"constSize":                 constSize,
-		"subtract":                  func(x, y uint8) uint8 { return x - y },
-		"matchManufacturer":         matchManufacturer,
-		"makeIndirectMap":           makeIndirectMap,
-		"getReservedValueCount":     getReservedValueCount,
-		"generateFieldSpecConstant": generateFieldSpecConstant,
-		"getMaxRawValue":            calcMaxRawValue,
-		"getMissingValue":           calcMissingValue,
-		"calcMaxValidRawValue":      calcMaxValidRawValue,
-		"calcMissingValue":          calcMissingValue,
+		"convertFieldType":                 convertFieldType,
+		"getFieldSerializer":               getFieldSerializer,
+		"getFieldDeserializer":             getFieldDeserializer,
+		"fieldByteCount":                   fieldByteCount,
+		"concat":                           func(strs ...string) string { return strings.Join(strs, "") },
+		"toNumber":                         toNumber,
+		"isPointerFieldType":               isPointerFieldType,
+		"constSize":                        constSize,
+		"subtract":                         func(x, y uint8) uint8 { return x - y },
+		"matchManufacturer":                matchManufacturer,
+		"makeIndirectMap":                  makeIndirectMap,
+		"getReservedValueCount":            getReservedValueCount,
+		"generateFieldSpecConstant":        generateFieldSpecConstant,
+		"getMaxRawValue":                   calcMaxRawValue,
+		"getMissingValue":                  calcMissingValue,
+		"calcMaxValidRawValue":             calcMaxValidRawValue,
+		"calcMissingValue":                 calcMissingValue,
+		"bitEnumSize":                      bitEnumSize,
+		"hasField":                         hasField,
+		"hasFieldOrder":                    hasFieldOrder,
+		"hasFieldType":                     hasFieldType,
+		"hasVariableBitLength":             hasVariableBitLength,
+		"orderedVariantsForDiscrimination": orderedVariantsForDiscrimination,
 		"derefOrZero": func(v *uint64) uint64 {
 			if v == nil {
 				return 0
@@ -1269,6 +1268,19 @@ func constSize(max int) string {
 	}
 }
 
+// bitEnumSize returns the unsigned type needed to hold a bitfield whose highest
+// named bit is maxBit. Keep uint16 as the floor to preserve existing small enum APIs.
+func bitEnumSize(maxBit int) string {
+	switch {
+	case maxBit < 16:
+		return "uint16"
+	case maxBit < 32:
+		return "uint32"
+	default:
+		return "uint64"
+	}
+}
+
 // fieldByteCount calculates the number of bytes required to read to extract a field's value.
 // Used by template.
 func fieldByteCount(field PGNField) uint16 {
@@ -1376,7 +1388,7 @@ func getFieldSerializer(pgn PGN, field *PGNField, substruct string) string {
 	// Generate FieldSpec reference for numeric fields
 	specRef := fieldSpecRef(pgn.Id, field.Id)
 
-	if field.Unit != "" { // set conv to invoke conversion to default type
+	if field.Unit != "" && strings.HasPrefix(convertFieldType(field), "*units.") { // set conv to invoke conversion to default type
 		unitType, _ := getUnitType(field.Unit)
 		if isUnit = unitType != ""; isUnit {
 			return fmt.Sprintf("err = stream.writeUnit(p."+substruct+"%s, %s)", field.Id, specRef)
@@ -1422,7 +1434,7 @@ func getFieldSerializer(pgn PGN, field *PGNField, substruct string) string {
 		value += "p." + substruct + "%s"
 		post = ", %d, %d, %d)"
 		outstr = fmt.Sprintf(pre+value+post, field.Id, field.BitLength, field.BitOffset, reservedCount)
-	case "VARIABLE":
+	case "DECIMAL", "VARIABLE":
 		outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
 	case "BINARY":
 		if field.BitLength > 0 {
@@ -1437,7 +1449,13 @@ func getFieldSerializer(pgn PGN, field *PGNField, substruct string) string {
 	case "STRING_LZ":
 		outstr = fmt.Sprintf("err = stream.writeStringWithLength(p."+substruct+"%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
 	case "DYNAMIC_FIELD_VALUE":
-		outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s, valueLength, 0)", field.Id)
+		if field.BitLength > 0 {
+			outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s, %d, %d )", field.Id, field.BitLength, field.BitOffset)
+		} else if hasFieldType(pgn, "DYNAMIC_FIELD_LENGTH") {
+			outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s, valueLength, 0)", field.Id)
+		} else {
+			outstr = fmt.Sprintf("err = stream.writeBinary(p."+substruct+"%s, 0, %d)", field.Id, field.BitOffset)
+		}
 	default:
 		outstr = fmt.Sprintf("log.Infof(\"field %s, index %d, type %s, unhandled\")", field.Name, field.Order, field.FieldType)
 	}
@@ -1452,23 +1470,23 @@ func getFieldSerializer(pgn PGN, field *PGNField, substruct string) string {
 func getFieldDeserializer(pgn PGN, field *PGNField) [2]string {
 	switch field.FieldType {
 	case "LOOKUP":
-		if field.BitLength > 32 {
-			panic("No deserializer for LOOKUP with bitlength > 32")
+		if field.BitLength > 64 {
+			panic("No deserializer for LOOKUP with bitlength > 64")
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), "publicpgn." + field.LookupName + "(v)"}
 	case "BITLOOKUP":
-		if field.BitLength > 32 {
-			panic("No deserializer for BITLOOKUP with bitlength > 32")
+		if field.BitLength > 64 {
+			panic("No deserializer for BITLOOKUP with bitlength > 64")
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), "publicpgn." + field.BitLookupName + "(v)"}
 	case "INDIRECT_LOOKUP":
-		if field.BitLength > 32 {
-			panic("No deserializer for INDIRECT_LOOKUP with bitlength > 32")
+		if field.BitLength > 64 {
+			panic("No deserializer for INDIRECT_LOOKUP with bitlength > 64")
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), "publicpgn." + field.IndirectLookupName + "(v)"}
 	case "FIELDTYPE_LOOKUP":
-		if field.BitLength > 32 {
-			panic("No deserializer for FIELDTYPE_LOOKUP with bitlength > 32")
+		if field.BitLength > 64 {
+			panic("No deserializer for FIELDTYPE_LOOKUP with bitlength > 64")
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName + "(v)"}
 	case "FIELD_INDEX":
@@ -1523,10 +1541,52 @@ func getFieldDeserializer(pgn PGN, field *PGNField) [2]string {
 		specRef := fieldSpecRef(pgn.Id, field.Id)
 		return [2]string{fmt.Sprintf("stream.readVariableDataWithSpec(%s)", specRef), ""}
 	case "DYNAMIC_FIELD_VALUE":
-		return [2]string{"stream.readBinaryData(valueLength)", ""}
+		if field.BitLength > 0 {
+			return [2]string{fmt.Sprintf("stream.readBinaryData(%d)", field.BitLength), ""}
+		}
+		if hasFieldType(pgn, "DYNAMIC_FIELD_LENGTH") {
+			return [2]string{"stream.readBinaryData(valueLength)", ""}
+		}
+		return [2]string{"stream.readBinaryData(stream.remainingLength())", ""}
 	default:
 		panic("No deserializer for type: " + field.FieldType)
 	}
+}
+
+func hasField(pgn PGN, fieldID string) bool {
+	for _, field := range pgn.AllFields {
+		if field.Id == fieldID {
+			return true
+		}
+	}
+	return false
+}
+
+func hasFieldOrder(fields []PGNField, order uint8) bool {
+	for _, field := range fields {
+		if field.Order == order {
+			return true
+		}
+	}
+	return false
+}
+
+func hasFieldType(pgn PGN, fieldType string) bool {
+	for _, field := range pgn.AllFields {
+		if field.FieldType == fieldType {
+			return true
+		}
+	}
+	return false
+}
+
+func hasVariableBitLength(fields []PGNField) bool {
+	for _, field := range fields {
+		if field.BitLengthVariable {
+			return true
+		}
+	}
+	return false
 }
 
 // matchManufacturer returns the required Match value of the Manufacturer Code as a string.
@@ -1719,6 +1779,10 @@ func goIdentifierFromWords(words []string, acronymWords map[int]string, useIniti
 			builder.WriteString(acronym)
 			continue
 		}
+		if i == 0 && word != "" && unicode.IsDigit([]rune(word)[0]) {
+			builder.WriteString(goIdentifierLeadingDigitWord(word))
+			continue
+		}
 		if useInitialisms {
 			builder.WriteString(goIdentifierWordWithInitialisms(word))
 			continue
@@ -1737,6 +1801,16 @@ func goIdentifierWord(word string) string {
 	}
 	lower := strings.ToLower(word)
 	return cases.Title(language.English).String(lower)
+}
+
+func goIdentifierLeadingDigitWord(word string) string {
+	var builder strings.Builder
+	for _, r := range word {
+		if digit, ok := digitToWord[string(r)]; ok {
+			builder.WriteString(digit)
+		}
+	}
+	return builder.String()
 }
 
 func goIdentifierWordFromDisplay(word string) string {
@@ -2002,4 +2076,22 @@ func groupByPGN(pgns []*PGN) map[uint32][]*PGN {
 		groups[pgn.PGN] = append(groups[pgn.PGN], pgn)
 	}
 	return groups
+}
+
+func orderedVariantsForDiscrimination(variants []*PGN) []*PGN {
+	ordered := append([]*PGN(nil), variants...)
+	sort.SliceStable(ordered, func(i, j int) bool {
+		return matchFieldCount(ordered[i]) > matchFieldCount(ordered[j])
+	})
+	return ordered
+}
+
+func matchFieldCount(pgn *PGN) int {
+	count := 0
+	for _, field := range pgn.Fields {
+		if field.Match != nil {
+			count++
+		}
+	}
+	return count
 }

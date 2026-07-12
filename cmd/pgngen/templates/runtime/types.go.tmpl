@@ -61,7 +61,7 @@ type {{ .Id }}Repeating2 struct {
 {{- end }}
 
 {{- range .PGNDoc.PGNs }}
-{{- if eq .PGN 126208 }}
+{{- if and (eq .PGN 126208) (hasField . "PGN") }}
 // Partial type for {{ .Id }} when PGN is proprietary or unknown
 type {{ .Id }}Partial struct {
 	Info MessageInfo

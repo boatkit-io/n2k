@@ -2184,6 +2184,23 @@ default:
 		return fmt.Sprintf("YesNoConst(%d)", uint8(e))
 	}
 }
+type YesNo1BitConst uint8
+const (
+	No_2	YesNo1BitConst = 0
+	Yes_2	YesNo1BitConst = 1
+)
+
+func (e YesNo1BitConst) GoString() string {return e.String() }
+func (e YesNo1BitConst) String() string {
+	switch e {
+		case 0:
+			return "No"
+		case 1:
+			return "Yes"
+default:
+		return fmt.Sprintf("YesNo1BitConst(%d)", uint8(e))
+	}
+}
 type OkWarningConst uint8
 const (
 	Ok	OkWarningConst = 0
@@ -3585,7 +3602,7 @@ default:
 		return fmt.Sprintf("EntertainmentSourceConst(%d)", uint8(e))
 	}
 }
-type EntertainmentPlayStatusConst uint16
+type EntertainmentPlayStatusConst uint8
 const (
 	Play	EntertainmentPlayStatusConst = 0
 	Pause	EntertainmentPlayStatusConst = 1
@@ -3668,7 +3685,7 @@ func (e EntertainmentPlayStatusConst) String() string {
 		case 24:
 			return "Slow motion .125x"
 default:
-		return fmt.Sprintf("EntertainmentPlayStatusConst(%d)", uint16(e))
+		return fmt.Sprintf("EntertainmentPlayStatusConst(%d)", uint8(e))
 	}
 }
 type EntertainmentRepeatStatusConst uint8
@@ -10610,6 +10627,113 @@ default:
 		return fmt.Sprintf("GarminColorConst(%d)", uint8(e))
 	}
 }
+type GarminAutopilotModeStateConst uint8
+const (
+	Standby_6	GarminAutopilotModeStateConst = 2
+	ShadowDrive	GarminAutopilotModeStateConst = 3
+	Engaged_2	GarminAutopilotModeStateConst = 5
+)
+
+func (e GarminAutopilotModeStateConst) GoString() string {return e.String() }
+func (e GarminAutopilotModeStateConst) String() string {
+	switch e {
+		case 2:
+			return "Standby"
+		case 3:
+			return "Shadow Drive"
+		case 5:
+			return "Engaged"
+default:
+		return fmt.Sprintf("GarminAutopilotModeStateConst(%d)", uint8(e))
+	}
+}
+type GarminMessageIDConst uint16
+const (
+	AhrsAttTransport	GarminMessageIDConst = 1900
+	AutopilotTransport	GarminMessageIDConst = 5904
+)
+
+func (e GarminMessageIDConst) GoString() string {return e.String() }
+func (e GarminMessageIDConst) String() string {
+	switch e {
+		case 1900:
+			return "AHRS ATT transport"
+		case 5904:
+			return "Autopilot transport"
+default:
+		return fmt.Sprintf("GarminMessageIDConst(%d)", uint16(e))
+	}
+}
+type GarminAutopilotFieldConst uint8
+const (
+	GarminAutopilotFieldConstHeartbeat	GarminAutopilotFieldConst = 3
+	ModeState	GarminAutopilotFieldConst = 10
+	HeadingToSteer	GarminAutopilotFieldConst = 11
+	ResponseSetting	GarminAutopilotFieldConst = 62
+	GarminAutopilotFieldConstRateOfTurn	GarminAutopilotFieldConst = 114
+	RateOfTurnOrder_2	GarminAutopilotFieldConst = 115
+	TurnAngleOrder	GarminAutopilotFieldConst = 116
+	SystemVoltage	GarminAutopilotFieldConst = 158
+	TurnAngleMeasured	GarminAutopilotFieldConst = 161
+	EngineRPMB	GarminAutopilotFieldConst = 239
+	EngineRPMA	GarminAutopilotFieldConst = 240
+	GarminAutopilotFieldConstSpeed	GarminAutopilotFieldConst = 246
+)
+
+func (e GarminAutopilotFieldConst) GoString() string {return e.String() }
+func (e GarminAutopilotFieldConst) String() string {
+	switch e {
+		case 3:
+			return "Heartbeat"
+		case 10:
+			return "Mode State"
+		case 11:
+			return "Heading to Steer"
+		case 62:
+			return "Response Setting"
+		case 114:
+			return "Rate of Turn"
+		case 115:
+			return "Rate of Turn Order"
+		case 116:
+			return "Turn Angle Order"
+		case 158:
+			return "System Voltage"
+		case 161:
+			return "Turn Angle Measured"
+		case 239:
+			return "Engine RPM B"
+		case 240:
+			return "Engine RPM A"
+		case 246:
+			return "Speed"
+default:
+		return fmt.Sprintf("GarminAutopilotFieldConst(%d)", uint8(e))
+	}
+}
+type GarminAttMessageIDConst uint16
+const (
+	CalibrationMatrixPresent	GarminAttMessageIDConst = 40
+	SetNorthState	GarminAttMessageIDConst = 52
+	DeviceFlags	GarminAttMessageIDConst = 65
+	COGSourceValidFlag	GarminAttMessageIDConst = 67
+)
+
+func (e GarminAttMessageIDConst) GoString() string {return e.String() }
+func (e GarminAttMessageIDConst) String() string {
+	switch e {
+		case 40:
+			return "Calibration Matrix Present"
+		case 52:
+			return "Set North State"
+		case 65:
+			return "Device Flags"
+		case 67:
+			return "COG Source Valid Flag"
+default:
+		return fmt.Sprintf("GarminAttMessageIDConst(%d)", uint16(e))
+	}
+}
 type GarminBacklightLevelConst uint8
 const (
 	GarminBacklightLevelConst0	GarminBacklightLevelConst = 0
@@ -10686,7 +10810,7 @@ default:
 }
 type SeatalkPilotMode16Const uint16
 const (
-	Standby_6	SeatalkPilotMode16Const = 0
+	Standby_7	SeatalkPilotMode16Const = 0
 	AutoCompassCommanded	SeatalkPilotMode16Const = 64
 	VaneWindMode	SeatalkPilotMode16Const = 256
 	TrackMode	SeatalkPilotMode16Const = 384
@@ -11874,7 +11998,7 @@ func (e StationStatusConst) String() string {
 		case 3:
 			return "Blink"
 	default:
-		return fmt.Sprintf("%s(%d)", "StationStatusConst", int(e))
+		return fmt.Sprintf("%s(%d)", "StationStatusConst", uint16(e))
 	}
 }
 type EngineStatus1Const uint16
@@ -11933,7 +12057,7 @@ func (e EngineStatus1Const) String() string {
 		case 15:
 			return "Emergency Stop"
 	default:
-		return fmt.Sprintf("%s(%d)", "EngineStatus1Const", int(e))
+		return fmt.Sprintf("%s(%d)", "EngineStatus1Const", uint16(e))
 	}
 }
 type EngineStatus2Const uint16
@@ -11968,7 +12092,7 @@ func (e EngineStatus2Const) String() string {
 		case 7:
 			return "Engine Shutting Down"
 	default:
-		return fmt.Sprintf("%s(%d)", "EngineStatus2Const", int(e))
+		return fmt.Sprintf("%s(%d)", "EngineStatus2Const", uint16(e))
 	}
 }
 type TransmissionStatus1Const uint16
@@ -11994,10 +12118,10 @@ func (e TransmissionStatus1Const) String() string {
 		case 4:
 			return "Sail Drive"
 	default:
-		return fmt.Sprintf("%s(%d)", "TransmissionStatus1Const", int(e))
+		return fmt.Sprintf("%s(%d)", "TransmissionStatus1Const", uint16(e))
 	}
 }
-type EntertainmentPlayStatusBitfieldConst uint16
+type EntertainmentPlayStatusBitfieldConst uint32
 const (
 	Play_3	EntertainmentPlayStatusBitfieldConst = 0
 	Pause_3	EntertainmentPlayStatusBitfieldConst = 1
@@ -12083,7 +12207,7 @@ func (e EntertainmentPlayStatusBitfieldConst) String() string {
 		case 25:
 			return "Source renaming"
 	default:
-		return fmt.Sprintf("%s(%d)", "EntertainmentPlayStatusBitfieldConst", int(e))
+		return fmt.Sprintf("%s(%d)", "EntertainmentPlayStatusBitfieldConst", uint32(e))
 	}
 }
 type EntertainmentGroupBitfieldConst uint16
@@ -12127,7 +12251,7 @@ func (e EntertainmentGroupBitfieldConst) String() string {
 		case 10:
 			return "Content Info"
 	default:
-		return fmt.Sprintf("%s(%d)", "EntertainmentGroupBitfieldConst", int(e))
+		return fmt.Sprintf("%s(%d)", "EntertainmentGroupBitfieldConst", uint16(e))
 	}
 }
 type ThrusterControlEventsConst uint16
@@ -12144,7 +12268,7 @@ func (e ThrusterControlEventsConst) String() string {
 		case 1:
 			return "Boat speed too fast to safely use thruster"
 	default:
-		return fmt.Sprintf("%s(%d)", "ThrusterControlEventsConst", int(e))
+		return fmt.Sprintf("%s(%d)", "ThrusterControlEventsConst", uint16(e))
 	}
 }
 type ThrusterMotorEventsConst uint16
@@ -12173,7 +12297,7 @@ func (e ThrusterMotorEventsConst) String() string {
 		case 5:
 			return "Manufacturer defined"
 	default:
-		return fmt.Sprintf("%s(%d)", "ThrusterMotorEventsConst", int(e))
+		return fmt.Sprintf("%s(%d)", "ThrusterMotorEventsConst", uint16(e))
 	}
 }
 type WindlassControlConst uint16
@@ -12187,7 +12311,7 @@ func (e WindlassControlConst) String() string {
 		case 0:
 			return "Another device controlling windlass"
 	default:
-		return fmt.Sprintf("%s(%d)", "WindlassControlConst", int(e))
+		return fmt.Sprintf("%s(%d)", "WindlassControlConst", uint16(e))
 	}
 }
 type WindlassOperationConst uint16
@@ -12213,7 +12337,7 @@ func (e WindlassOperationConst) String() string {
 		case 4:
 			return "End of rode reached"
 	default:
-		return fmt.Sprintf("%s(%d)", "WindlassOperationConst", int(e))
+		return fmt.Sprintf("%s(%d)", "WindlassOperationConst", uint16(e))
 	}
 }
 type WindlassMonitoringConst uint16
@@ -12236,7 +12360,7 @@ func (e WindlassMonitoringConst) String() string {
 		case 3:
 			return "Manufacturer defined"
 	default:
-		return fmt.Sprintf("%s(%d)", "WindlassMonitoringConst", int(e))
+		return fmt.Sprintf("%s(%d)", "WindlassMonitoringConst", uint16(e))
 	}
 }
 type FurunoBaselineStatusConst uint16
@@ -12265,12 +12389,12 @@ func (e FurunoBaselineStatusConst) String() string {
 		case 5:
 			return "Baseline Antenna 2-4"
 	default:
-		return fmt.Sprintf("%s(%d)", "FurunoBaselineStatusConst", int(e))
+		return fmt.Sprintf("%s(%d)", "FurunoBaselineStatusConst", uint16(e))
 	}
 }
 type SimnetApModeBitfieldConst uint16
 const (
-	Standby_7	SimnetApModeBitfieldConst = 3
+	Standby_8	SimnetApModeBitfieldConst = 3
 	Heading_5	SimnetApModeBitfieldConst = 4
 	Nav_2	SimnetApModeBitfieldConst = 6
 	NoDrift_2	SimnetApModeBitfieldConst = 8
@@ -12291,10 +12415,10 @@ func (e SimnetApModeBitfieldConst) String() string {
 		case 10:
 			return "Wind"
 	default:
-		return fmt.Sprintf("%s(%d)", "SimnetApModeBitfieldConst", int(e))
+		return fmt.Sprintf("%s(%d)", "SimnetApModeBitfieldConst", uint16(e))
 	}
 }
-type SimnetAlertBitfieldConst uint16
+type SimnetAlertBitfieldConst uint64
 const (
 	NoGPSFix_2	SimnetAlertBitfieldConst = 0
 	NoActiveAutopilotControlUnit_2	SimnetAlertBitfieldConst = 2
@@ -12389,7 +12513,7 @@ func (e SimnetAlertBitfieldConst) String() string {
 		case 56:
 			return "Wind sensor battery low"
 	default:
-		return fmt.Sprintf("%s(%d)", "SimnetAlertBitfieldConst", int(e))
+		return fmt.Sprintf("%s(%d)", "SimnetAlertBitfieldConst", uint64(e))
 	}
 }
 type EntertainmentRepeatBitfieldConst uint16
@@ -12406,7 +12530,7 @@ func (e EntertainmentRepeatBitfieldConst) String() string {
 		case 1:
 			return "Play queue"
 	default:
-		return fmt.Sprintf("%s(%d)", "EntertainmentRepeatBitfieldConst", int(e))
+		return fmt.Sprintf("%s(%d)", "EntertainmentRepeatBitfieldConst", uint16(e))
 	}
 }
 type EntertainmentShuffleBitfieldConst uint16
@@ -12423,7 +12547,7 @@ func (e EntertainmentShuffleBitfieldConst) String() string {
 		case 1:
 			return "All"
 	default:
-		return fmt.Sprintf("%s(%d)", "EntertainmentShuffleBitfieldConst", int(e))
+		return fmt.Sprintf("%s(%d)", "EntertainmentShuffleBitfieldConst", uint16(e))
 	}
 }
 type WPChangeConst uint16
@@ -12449,7 +12573,7 @@ func (e WPChangeConst) String() string {
 		case 6:
 			return "Other not specified changed"
 	default:
-		return fmt.Sprintf("%s(%d)", "WPChangeConst", int(e))
+		return fmt.Sprintf("%s(%d)", "WPChangeConst", uint16(e))
 	}
 }
 type WPCriticalParametersConst uint16
@@ -12466,10 +12590,10 @@ func (e WPCriticalParametersConst) String() string {
 		case 1:
 			return "XTE Limit"
 	default:
-		return fmt.Sprintf("%s(%d)", "WPCriticalParametersConst", int(e))
+		return fmt.Sprintf("%s(%d)", "WPCriticalParametersConst", uint16(e))
 	}
 }
-type DisabledSatellitesConst uint16
+type DisabledSatellitesConst uint64
 const (
 	DisableSv1	DisabledSatellitesConst = 0
 	DisableSv2	DisabledSatellitesConst = 1
@@ -12597,6 +12721,6 @@ func (e DisabledSatellitesConst) String() string {
 		case 39:
 			return "Disable SV #40"
 	default:
-		return fmt.Sprintf("%s(%d)", "DisabledSatellitesConst", int(e))
+		return fmt.Sprintf("%s(%d)", "DisabledSatellitesConst", uint64(e))
 	}
 }

@@ -68,7 +68,7 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 {{- $pgnGroups := groupByPGN .PGNDoc.PGNs }}
 {{- range $pgn, $variants := $pgnGroups }}
 	{{ $pgn }}: {
-{{- range $variant := $variants }}
+{{- range $variant := orderedVariantsForDiscrimination $variants }}
 		{
 			Decoder: Decode{{ $variant.Id }},
 			MatchSpecs: []MatchFieldSpec{

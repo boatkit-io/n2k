@@ -73,6 +73,12 @@ func TestGoIdentifierFromCanboatNamePreservesInitialismsFromName(t *testing.T) {
 		{name: "plural id", id: "numberOfIds", source: "Number of IDs", expected: "NumberOfIDs"},
 		{name: "normal word", id: "mode", source: "Mode", expected: "Mode"},
 		{name: "first prefix", id: "1stDeviceStatus", source: "1st Device Status", expected: "FirstDeviceStatus"},
+		{
+			name:     "hex range placeholder",
+			id:       "0xe800-0xee00StandardizedSingleFrameAddressed",
+			source:   "0xE800-0xEE00: Standardized single-frame addressed",
+			expected: "ZeroXe8000Xee00StandardizedSingleFrameAddressed",
+		},
 	}
 
 	for _, tt := range tests {
