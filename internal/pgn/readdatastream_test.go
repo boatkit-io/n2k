@@ -96,16 +96,31 @@ func TestDataStream_readStringWithLengthAndControl(t *testing.T) {
 		expectedError error
 	}{
 		{
-			name: "UTF-16 Basic string",
-			// Length 3, control 0 (UTF-16), "ABC" in UTF-16
+			name: "UTF-16 Basic string with terminator",
+			// Length 9, control 0 (UTF-16), "ABC" in UTF-16, and a one-byte terminator.
 			data:        []uint8{0x09, 0x00, 0x00, 0x41, 0x00, 0x42, 0x00, 0x43, 0x00},
 			expectedStr: "ABC",
 		},
 		{
-			name: "ASCII/UTF-8 Basic string",
-			// Length 3, control 1 (ASCII), "ABC"
+			name:        "UTF-16 Basic string without terminator",
+			data:        []uint8{0x08, 0x00, 0x00, 0x41, 0x00, 0x42, 0x00, 0x43},
+			expectedStr: "ABC",
+		},
+		{
+			name: "ASCII/UTF-8 Basic string with terminator",
+			// Length 6, control 1 (ASCII), "ABC", and a one-byte terminator.
 			data:        []uint8{0x06, 0x01, 0x41, 0x42, 0x43, 0x00},
 			expectedStr: "ABC",
+		},
+		{
+			name:        "ASCII/UTF-8 Basic string without terminator",
+			data:        []uint8{0x05, 0x01, 0x41, 0x42, 0x43},
+			expectedStr: "ABC",
+		},
+		{
+			name:        "ASCII/UTF-8 single character without terminator",
+			data:        []uint8{0x03, 0x01, 0x41},
+			expectedStr: "A",
 		},
 		{
 			name: "Empty UTF-16 string",
@@ -152,6 +167,20 @@ func TestDataStream_readStringWithLengthAndControl(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestDecodeConfigurationInformationNoTerminatorLAUStrings(t *testing.T) {
+	raw, err := DecodeConfigurationInformation(MessageInfo{}, NewDataStream([]uint8{
+		0x07, 0x01, 'H', 'E', 'L', 'M', 'S',
+		0x06, 0x01, 'P', 'O', 'R', 'T',
+		0x02, 0x01,
+	}))
+
+	assert.NoError(t, err)
+	configInfo := raw.(publicpgn.ConfigurationInformation)
+	assert.Equal(t, "HELMS", configInfo.InstallationDescription1)
+	assert.Equal(t, "PORT", configInfo.InstallationDescription2)
+	assert.Equal(t, "", configInfo.ManufacturerInformation)
 }
 
 func TestDecodeUtilityPhaseAACPower(t *testing.T) {

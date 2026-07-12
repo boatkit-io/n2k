@@ -119,16 +119,14 @@ func (s *DataStream) readBinaryData(bitLength uint16) ([]uint8, error) {
 }
 */
 
-// readStringWithLengthAndControl method reads a string with length and control byte
-// String has a terminating zero(s). We remove them.
-// Length incudes the len/control bytes.
+// readStringWithLengthAndControl method reads a string with length and control byte.
+// Length includes the length/control bytes. Some devices include a terminating
+// zero in that length, and some do not, so trim a terminator only when present.
 //
 //	        "Name":"STRING_LAU",
 //		"Description":"A varying length string containing double or single byte codepoints encoded with a length byte and terminating zero.",
 //		"EncodingDescription": (length byte, then 0=UNICODE / 1=ASCII — see canboat schema).
 //		"Comment": (character set details omitted; see canboat).
-//
-// Conflicts with this comment:
 func (s *DataStream) readStringWithLengthAndControl() (string, error) {
 	lc, err := s.readBinaryData(16)
 	if err != nil {
@@ -137,18 +135,21 @@ func (s *DataStream) readStringWithLengthAndControl() (string, error) {
 	if len(lc) == 0 {
 		return "", fmt.Errorf("no data available for string length and control")
 	}
-	if lc[0] < 4 { // 2 is zero-length, 0 or 1 is an error, 3 means there's only the terminating zero. Minimum length for content is 4
+	if lc[0] <= 2 {
 		return "", nil
 	}
-	length := (uint16(lc[0]) - 2) * 8 // remove length and control bytes, calculate bitLength for remaining chars with terminating 0
-	arr, err := s.readBinaryData(length)
+	byteLength := int(lc[0]) - 2
+	arr, err := s.readBinaryData(uint16(byteLength) * 8)
 	if err != nil {
 		return "", err
 	}
-	arr = arr[:len(arr)-1] // remove the trailing 0
 
 	// if control == 0, then it's UTF-16. Convert to UTF-8
 	if lc[1] == 0 {
+		arr = trimUTF16LAUTerminator(arr)
+		if len(arr)%2 != 0 {
+			return "", fmt.Errorf("UTF-16 string has odd byte length: %d", len(arr))
+		}
 		var a16 []uint16
 		for i := 0; i < len(arr); i += 2 {
 			n := uint16(arr[i])<<8 | uint16(arr[i+1])
@@ -157,7 +158,25 @@ func (s *DataStream) readStringWithLengthAndControl() (string, error) {
 		runes := utf16.Decode(a16)
 		return string(runes), nil
 	}
+	arr = trimASCIILAUTerminator(arr)
 	return string(arr), nil
+}
+
+func trimASCIILAUTerminator(arr []uint8) []uint8 {
+	if len(arr) > 0 && arr[len(arr)-1] == 0 {
+		return arr[:len(arr)-1]
+	}
+	return arr
+}
+
+func trimUTF16LAUTerminator(arr []uint8) []uint8 {
+	if len(arr) >= 2 && arr[len(arr)-2] == 0 && arr[len(arr)-1] == 0 {
+		return arr[:len(arr)-2]
+	}
+	if len(arr)%2 != 0 && len(arr) > 0 && arr[len(arr)-1] == 0 {
+		return arr[:len(arr)-1]
+	}
+	return arr
 }
 
 // readStringWithLength method reads a string with leading length byte
