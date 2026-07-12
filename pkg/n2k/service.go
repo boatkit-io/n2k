@@ -10,6 +10,7 @@ package n2k
 
 import (
 	"context"
+	"time"
 
 	"github.com/boatkit-io/n2k/internal/n2kinternal"
 	"github.com/boatkit-io/n2k/pkg/endpoint"
@@ -17,15 +18,45 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// DefaultMessageQueueMaxAge is the default maximum live CAN message lag allowed
+// before queued messages are dropped.
+const DefaultMessageQueueMaxAge = n2kinternal.DefaultMessageQueueMaxAge
+
+type serviceOptions struct {
+	messageQueueMaxAge    time.Duration
+	hasMessageQueueMaxAge bool
+}
+
+// ServiceOption configures an N2K service.
+type ServiceOption func(*serviceOptions)
+
+// WithMessageQueueMaxAge sets how stale queued live CAN messages may become before the
+// service rejects new messages and discards queued stale messages.
+func WithMessageQueueMaxAge(maxAge time.Duration) ServiceOption {
+	return func(options *serviceOptions) {
+		options.messageQueueMaxAge = maxAge
+		options.hasMessageQueueMaxAge = true
+	}
+}
+
 // N2kService provides the main public API for NMEA 2000 operations
 type N2kService struct {
 	impl *n2kinternal.N2kService
 }
 
 // NewN2kService creates a new N2K service with the specified endpoint
-func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger) *N2kService {
+func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger, opts ...ServiceOption) *N2kService {
+	options := serviceOptions{}
+	for _, opt := range opts {
+		opt(&options)
+	}
+	internalOptions := []n2kinternal.ServiceOption{}
+	if options.hasMessageQueueMaxAge {
+		internalOptions = append(internalOptions, n2kinternal.WithMessageQueueMaxAge(options.messageQueueMaxAge))
+	}
+
 	return &N2kService{
-		impl: n2kinternal.NewN2kService(ep, log),
+		impl: n2kinternal.NewN2kService(ep, log, internalOptions...),
 	}
 }
 
@@ -67,6 +98,17 @@ func (s *N2kService) Unsubscribe(id uint) error {
 // SetReceivedCANFrameHook registers a callback invoked for each live CAN frame before decode.
 func (s *N2kService) SetReceivedCANFrameHook(fn func(*can.Frame)) {
 	s.impl.SetReceivedCANFrameHook(fn)
+}
+
+// MessageQueueLag returns the current age of the oldest live CAN message waiting
+// in or moving through the serial handler path.
+func (s *N2kService) MessageQueueLag() time.Duration {
+	return s.impl.MessageQueueLag()
+}
+
+// MessageQueueMaxAge returns the configured maximum tolerated live CAN message queue lag.
+func (s *N2kService) MessageQueueMaxAge() time.Duration {
+	return s.impl.MessageQueueMaxAge()
 }
 
 // HandleReplayCANFrame feeds a captured CAN frame into the shared decode pipeline.

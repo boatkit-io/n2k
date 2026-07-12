@@ -11,7 +11,10 @@ package subscribe
 import (
 	"fmt"
 	"reflect"
+	"runtime"
+	"strings"
 	"sync"
+	"time"
 )
 
 // SubscribeManager maintains lists of subscribers to specific or all
@@ -27,6 +30,13 @@ type SubscribeManager struct {
 	// subscriptions for all structs
 	all       []*trackedSub
 	lastSubId SubscriptionId
+
+	callbackObserver CallbackObserver
+}
+
+// CallbackObserver receives aggregate callback timing observations from the synchronous subscriber path.
+type CallbackObserver interface {
+	ObserveCallback(structName, callbackName string, duration time.Duration)
 }
 
 // SubscriptionId identifies a specific subscriber.
@@ -42,7 +52,8 @@ type trackedSub struct {
 	subId      SubscriptionId
 	structName string
 	// Will be either func(any) for global handler or func(specific struct) for a struct callback
-	callback any
+	callback     any
+	callbackName string
 }
 
 // New returns a pointer to a new SubscribeManager.
@@ -55,6 +66,13 @@ func New() *SubscribeManager {
 	}
 }
 
+// SetCallbackObserver sets a callback timing observer for diagnostics.
+func (s *SubscribeManager) SetCallbackObserver(observer CallbackObserver) {
+	s.subMutex.Lock()
+	defer s.subMutex.Unlock()
+	s.callbackObserver = observer
+}
+
 // addSubscription adds a subscription. It's called internally by routines that validate its arguments.
 // Callback must be validated already
 func (s *SubscribeManager) addSubscription(structName string, callback any) (SubscriptionId, error) {
@@ -63,9 +81,10 @@ func (s *SubscribeManager) addSubscription(structName string, callback any) (Sub
 
 	s.lastSubId++
 	ts := &trackedSub{
-		subId:      s.lastSubId,
-		structName: structName,
-		callback:   callback,
+		subId:        s.lastSubId,
+		structName:   structName,
+		callback:     callback,
+		callbackName: callbackDisplayName(callback),
 	}
 
 	s.subs[ts.subId] = ts
@@ -143,9 +162,10 @@ func (s *SubscribeManager) HandleStruct(p any) {
 	sn := pv.Type().Name()
 
 	// Build a call list inside the mutex to call back outside of it, in case the callback unsubscribes
-	callList := []reflect.Value{}
+	callList := []callbackCall{}
 
 	s.subMutex.Lock()
+	callbackObserver := s.callbackObserver
 
 	if single, exists := s.singles[sn]; exists {
 		// Copy the single slice in case it changes while we're iterating
@@ -154,7 +174,10 @@ func (s *SubscribeManager) HandleStruct(p any) {
 
 		for _, sub := range psc {
 			t := reflect.ValueOf(sub.callback)
-			callList = append(callList, t)
+			callList = append(callList, callbackCall{
+				callback: t,
+				name:     sub.callbackName,
+			})
 		}
 	}
 
@@ -163,13 +186,17 @@ func (s *SubscribeManager) HandleStruct(p any) {
 	copy(gsc, s.all)
 	for _, sub := range gsc {
 		t := reflect.ValueOf(sub.callback)
-		callList = append(callList, t)
+		callList = append(callList, callbackCall{
+			callback: t,
+			name:     sub.callbackName,
+		})
 	}
 
 	s.subMutex.Unlock()
 
 	// Call each callback with the appropriate value type
-	for _, t := range callList {
+	for _, call := range callList {
+		t := call.callback
 		// Check what type the callback expects
 		funcType := t.Type()
 		if funcType.NumIn() == 0 {
@@ -204,8 +231,33 @@ func (s *SubscribeManager) HandleStruct(p any) {
 			callWith = []reflect.Value{pv}
 		}
 
+		start := time.Now()
 		t.Call(callWith)
+		if callbackObserver != nil {
+			callbackObserver.ObserveCallback(sn, call.name, time.Since(start))
+		}
 	}
+}
+
+type callbackCall struct {
+	callback reflect.Value
+	name     string
+}
+
+func callbackDisplayName(callback any) string {
+	value := reflect.ValueOf(callback)
+	if value.Kind() != reflect.Func {
+		return "<non-func>"
+	}
+	fn := runtime.FuncForPC(value.Pointer())
+	if fn == nil {
+		return "<unknown>"
+	}
+	name := fn.Name()
+	if slash := strings.LastIndex(name, "/"); slash >= 0 {
+		name = name[slash+1:]
+	}
+	return name
 }
 
 // SubscribeToStruct registers a subscription to the specified struct.
