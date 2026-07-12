@@ -29,7 +29,7 @@ run = "go build -trimpath -o ./bin/pgngen ./cmd/pgngen"
 alias = "pgngen"
 depends = ["build-pgngen"]
 env = { "CGO_ENABLED" = "0" }
-description = "Run pgngen (skipped when outputs are newer than sources + binary)"
+description = "Run pgngen against the locked Canboat release (skipped when outputs are newer than sources + binary)"
 sources = [
 	"bin/pgngen",
 	"cmd/pgngen/**/*.go",
@@ -43,6 +43,11 @@ outputs = [
 	"pkg/pgn/*_generated.go",
 ]
 run = "./bin/pgngen"
+
+[tasks.check-canboat]
+depends = ["build-pgngen"]
+description = "Report whether a newer stable Canboat release exists"
+run = "./bin/pgngen -check-canboat-update"
 
 [tasks.build]
 depends = ["codegen"]
@@ -84,8 +89,35 @@ run = ["./.github/scripts/get-next-version.sh"]
 tools.svu = "latest"
 
 [tasks.test]
-description = "Run tests"
-run = "gotestsum"
+description = "Run fast tests"
+run = "gotestsum -- -short ./..."
+
+[tasks.test-integration]
+description = "Run replay integration tests"
+run = "gotestsum -- ./tests/integration"
+
+[tasks.test-all]
+description = "Run all tests, including replay integration tests"
+run = "gotestsum -- ./..."
+
+[tasks.test-race]
+description = "Run all tests with the Go race detector"
+run = "gotestsum -- -race ./..."
+
+[tasks.check-generated]
+description = "Verify generated files are up to date"
+run = "git diff --exit-code -- cmd/filterraw/pgn_data.go cmd/pgngen/domain_ranges.generated.yaml internal/pgn pkg/pgn"
+
+[tasks.test-release]
+description = "Run the full release test gate"
+run = [
+	"mise run check-canboat",
+	"mise run lint",
+	"mise run test-all",
+	"mise run test-race",
+	"mise run build",
+	"mise run check-generated",
+]
 
 ## <<Stencil::Block(custom)>>
 

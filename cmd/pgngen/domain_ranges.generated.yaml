@@ -26,8 +26,8 @@
 - physicalQuantity: ANGULAR_VELOCITY
   unit: rad/s
   signed: true
-  min: -3.40282346638529e+38
-  max: 3.40282346638529e+38
+  min: -1.02396875
+  max: null
 - physicalQuantity: ANGULAR_VELOCITY
   unit: rpm
   signed: false
@@ -261,8 +261,8 @@
 - physicalQuantity: SPEED
   unit: m/s
   signed: true
-  min: -3.40282346638529e+38
-  max: 3.40282346638529e+38
+  min: -327.67
+  max: null
 - physicalQuantity: SQUARE_ROOT_LENGTH
   unit: sqrt(m)
   signed: false

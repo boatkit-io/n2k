@@ -38,6 +38,7 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
+          lfs: true
       - uses: jdx/mise-action@v4
         with: {}
       - name: Get Go directories
@@ -67,6 +68,9 @@ jobs:
         uses: fregante/setup-git-user@v2
       - name: Download syft (SBOM)
         uses: anchore/sbom-action/download-syft@v0
+      - name: Run release tests
+        run: |-
+          mise run test-release
 
       # Bumping logic
       - name: Get next version

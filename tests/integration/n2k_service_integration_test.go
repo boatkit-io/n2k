@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"sync/atomic"
 	"testing"
 	"time"
 
@@ -59,7 +60,16 @@ func repoRoot(t *testing.T) string {
 	return filepath.Clean(filepath.Join(filepath.Dir(file), "..", ".."))
 }
 
+func skipReplayIntegrationInShortMode(t *testing.T) {
+	t.Helper()
+	if testing.Short() {
+		t.Skip("skipping replay integration test in short mode")
+	}
+}
+
 func TestN2kServiceIntegration(t *testing.T) {
+	skipReplayIntegrationInShortMode(t)
+
 	// Get path to test data file
 	testFile := requireReplayFile(t)
 
@@ -112,6 +122,8 @@ func TestN2kServiceIntegration(t *testing.T) {
 }
 
 func TestN2kServiceWithSubscription(t *testing.T) {
+	skipReplayIntegrationInShortMode(t)
+
 	// Get path to test data file
 	testFile := requireReplayFile(t)
 
@@ -153,6 +165,8 @@ func TestN2kServiceWithSubscription(t *testing.T) {
 }
 
 func TestN2kServiceWrite(t *testing.T) {
+	skipReplayIntegrationInShortMode(t)
+
 	// Create a mock endpoint for testing write functionality
 	// For this test, we'll use a file endpoint but focus on the write capability
 	testFile := requireReplayFile(t)
@@ -174,6 +188,8 @@ func TestN2kServiceWrite(t *testing.T) {
 }
 
 func TestN2kServiceUpdateEndpoint(t *testing.T) {
+	skipReplayIntegrationInShortMode(t)
+
 	// Get path to test data file
 	testFile := requireReplayFile(t)
 
@@ -214,6 +230,8 @@ func TestN2kServiceUpdateEndpoint(t *testing.T) {
 }
 
 func TestN2kServiceUpdateEndpointWhileRunning(t *testing.T) {
+	skipReplayIntegrationInShortMode(t)
+
 	// Get path to test data file
 	testFile := requireReplayFile(t)
 
@@ -257,6 +275,8 @@ func TestN2kServiceUpdateEndpointWhileRunning(t *testing.T) {
 }
 
 func TestN2kServiceHandleReplayCANFrame(t *testing.T) {
+	skipReplayIntegrationInShortMode(t)
+
 	log := logrus.New()
 	ep := n2kfileendpoint.NewN2kFileEndpoint(requireReplayFile(t), log)
 	service := n2k.NewN2kService(ep, log)
@@ -277,23 +297,32 @@ func TestN2kServiceHandleReplayCANFrame(t *testing.T) {
 }
 
 func TestN2kServiceReceivedCANFrameHook(t *testing.T) {
+	skipReplayIntegrationInShortMode(t)
+
 	log := logrus.New()
 	ep := n2kfileendpoint.NewN2kFileEndpoint(requireReplayFile(t), log)
 	service := n2k.NewN2kService(ep, log)
 
-	var hookCount int
+	var hookCount atomic.Int64
 	service.SetReceivedCANFrameHook(func(_ *can.Frame) {
-		hookCount++
+		hookCount.Add(1)
 	})
 
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
+	errChan := make(chan error, 1)
 	go func() {
-		_ = service.Start(ctx)
+		errChan <- service.Start(ctx)
 	}()
-	time.Sleep(50 * time.Millisecond)
 
-	require.NoError(t, ep.Run(ctx))
-	assert.Greater(t, hookCount, 0, "hook should receive live frames from endpoint")
+	select {
+	case err := <-errChan:
+		require.NoError(t, err)
+	case <-ctx.Done():
+		t.Fatal("Test timed out")
+	}
+
+	require.NoError(t, service.Stop())
+	assert.Greater(t, hookCount.Load(), int64(0), "hook should receive live frames from endpoint")
 }

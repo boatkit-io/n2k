@@ -12,6 +12,7 @@ import (
 	_ "embed"
 	"encoding/csv"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"math"
@@ -40,10 +41,23 @@ const resolution64BitCutoff = 0.0000001
 // MaxPGNLength is the maximum length of a PGN in bytes
 const MaxPGNLength = 223 // 31*7 + 6
 
+const canboatRelease = "v7.1.0"
+const canboatCacheName = "canboatjson-" + canboatRelease
+const canboatJSONURL = "https://raw.githubusercontent.com/canboat/canboat/" + canboatRelease + "/docs/canboat.json"
+const canboatLatestReleaseURL = "https://api.github.com/repos/canboat/canboat/releases/latest"
+
 // log provides standard logging capability to the program.
 var log = logrus.StandardLogger()
 
 func main() {
+	checkCanboatUpdate := flag.Bool("check-canboat-update", false, "check whether a newer stable Canboat release exists")
+	flag.Parse()
+
+	if *checkCanboatUpdate {
+		checkCanboatRelease()
+		return
+	}
+
 	fmt.Println("Entered Main")
 	builder := newCanboatConverter()
 	builder.fixup()
@@ -231,11 +245,12 @@ func newCanboatConverter() *canboatConverter {
 
 // init initializes a canboatConverter from canboat.json.
 func (conv *canboatConverter) init() {
-	raw := loadCachedWebContent("canboatjson", "https://raw.githubusercontent.com/canboat/canboat/master/docs/canboat.json")
+	raw := loadCachedWebContent(canboatCacheName, canboatJSONURL)
 
 	if err := json.Unmarshal(raw, conv); err != nil {
 		log.Info(err)
 	}
+	log.Infof("Using Canboat release: %s", canboatRelease)
 	log.Infof("Initially Parsed Lookup enums: %d", len(conv.Enums))
 	log.Infof("Initially Parsed IndirectLookup enums: %d", len(conv.IndirectEnums))
 	log.Infof("Initially Parsed BitLookup enums: %d", len(conv.BitEnums))
@@ -1641,6 +1656,9 @@ func cacheFromWeb(name, url string) (string, error) {
 				log.WithError(err).Warn("error closing http response body")
 			}
 		}()
+		if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+			return cachedName, fmt.Errorf("download %s failed: %s", url, resp.Status)
+		}
 
 		f, err := os.OpenFile(cachedName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 		if err != nil {
@@ -1684,6 +1702,64 @@ func loadCachedWebContent(name, url string) []byte {
 		panic(err)
 	}
 	return cacheContent
+}
+
+type githubRelease struct {
+	TagName string `json:"tag_name"`
+	HTMLURL string `json:"html_url"`
+}
+
+func checkCanboatRelease() {
+	latest, err := latestCanboatRelease(canboatLatestReleaseURL)
+	if err != nil {
+		log.WithError(err).Fatal("failed to check latest Canboat release")
+	}
+	if latest.TagName == "" {
+		log.Fatal("latest Canboat release did not include a tag_name")
+	}
+
+	log.Infof("Canboat input is locked to %s", canboatRelease)
+	reportCanboatReleaseStatus(canboatRelease, latest)
+}
+
+func latestCanboatRelease(url string) (githubRelease, error) {
+	return latestCanboatReleaseWithClient(http.DefaultClient, url)
+}
+
+func latestCanboatReleaseWithClient(client *http.Client, url string) (githubRelease, error) {
+	req, err := http.NewRequest("GET", url, http.NoBody)
+	if err != nil {
+		return githubRelease{}, err
+	}
+	req.Header.Set("Accept", "application/vnd.github+json")
+	req.Header.Set("User-Agent", "boatkit-n2k-pgngen")
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return githubRelease{}, err
+	}
+	defer func() {
+		if err := resp.Body.Close(); err != nil {
+			log.WithError(err).Warn("error closing http response body")
+		}
+	}()
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		return githubRelease{}, fmt.Errorf("GitHub latest release request failed: %s", resp.Status)
+	}
+
+	var latest githubRelease
+	if err := json.NewDecoder(resp.Body).Decode(&latest); err != nil {
+		return githubRelease{}, err
+	}
+	return latest, nil
+}
+
+func reportCanboatReleaseStatus(locked string, latest githubRelease) {
+	log.Infof("Latest stable Canboat release is %s", latest.TagName)
+
+	if latest.TagName != locked {
+		log.Warnf("newer Canboat release available: locked=%s latest=%s url=%s", locked, latest.TagName, latest.HTMLURL)
+	}
 }
 
 // getManId returns the required Manufacturer Code ID for the defined PGN.

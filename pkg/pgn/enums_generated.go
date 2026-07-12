@@ -4,12722 +4,12814 @@ package pgn
 import (
 	"fmt"
 )
+
 type LightingCommandConst uint8
+
 const (
-	Idle	LightingCommandConst = 0
-	DetectDevices	LightingCommandConst = 1
-	Reboot	LightingCommandConst = 2
-	FactoryReset	LightingCommandConst = 3
-	PoweringUp	LightingCommandConst = 4
+	Idle          LightingCommandConst = 0
+	DetectDevices LightingCommandConst = 1
+	Reboot        LightingCommandConst = 2
+	FactoryReset  LightingCommandConst = 3
+	PoweringUp    LightingCommandConst = 4
 )
 
-func (e LightingCommandConst) GoString() string {return e.String() }
+func (e LightingCommandConst) GoString() string { return e.String() }
 func (e LightingCommandConst) String() string {
 	switch e {
-		case 0:
-			return "Idle"
-		case 1:
-			return "Detect Devices"
-		case 2:
-			return "Reboot"
-		case 3:
-			return "Factory Reset"
-		case 4:
-			return "Powering Up"
-default:
+	case 0:
+		return "Idle"
+	case 1:
+		return "Detect Devices"
+	case 2:
+		return "Reboot"
+	case 3:
+		return "Factory Reset"
+	case 4:
+		return "Powering Up"
+	default:
 		return fmt.Sprintf("LightingCommandConst(%d)", uint8(e))
 	}
 }
+
 type IndustryCodeConst uint8
+
 const (
-	Global	IndustryCodeConst = 0
-	Highway	IndustryCodeConst = 1
-	Agriculture	IndustryCodeConst = 2
-	Construction	IndustryCodeConst = 3
-	MarineIndustry	IndustryCodeConst = 4
-	Industrial	IndustryCodeConst = 5
+	Global         IndustryCodeConst = 0
+	Highway        IndustryCodeConst = 1
+	Agriculture    IndustryCodeConst = 2
+	Construction   IndustryCodeConst = 3
+	MarineIndustry IndustryCodeConst = 4
+	Industrial     IndustryCodeConst = 5
 )
 
-func (e IndustryCodeConst) GoString() string {return e.String() }
+func (e IndustryCodeConst) GoString() string { return e.String() }
 func (e IndustryCodeConst) String() string {
 	switch e {
-		case 0:
-			return "Global"
-		case 1:
-			return "Highway"
-		case 2:
-			return "Agriculture"
-		case 3:
-			return "Construction"
-		case 4:
-			return "Marine Industry"
-		case 5:
-			return "Industrial"
-default:
+	case 0:
+		return "Global"
+	case 1:
+		return "Highway"
+	case 2:
+		return "Agriculture"
+	case 3:
+		return "Construction"
+	case 4:
+		return "Marine Industry"
+	case 5:
+		return "Industrial"
+	default:
 		return fmt.Sprintf("IndustryCodeConst(%d)", uint8(e))
 	}
 }
+
 type ManufacturerCodeConst uint16
+
 const (
-	ArksEnterprisesInc	ManufacturerCodeConst = 69
-	FwMurphyEnovationControls	ManufacturerCodeConst = 78
-	TwinDisc	ManufacturerCodeConst = 80
-	KohlerPowerSystems	ManufacturerCodeConst = 85
-	HemisphereGPSInc	ManufacturerCodeConst = 88
-	BepMarine	ManufacturerCodeConst = 116
-	Airmar	ManufacturerCodeConst = 135
-	Maretron	ManufacturerCodeConst = 137
-	Lowrance	ManufacturerCodeConst = 140
-	MercuryMarine	ManufacturerCodeConst = 144
-	NautibusElectronicGmbh	ManufacturerCodeConst = 147
-	BlueWaterData	ManufacturerCodeConst = 148
-	Westerbeke	ManufacturerCodeConst = 154
-	IssproInc	ManufacturerCodeConst = 157
-	OffshoreSystemsUkLtd	ManufacturerCodeConst = 161
-	EvinrudeBrp	ManufacturerCodeConst = 163
-	CpacSystemsAb	ManufacturerCodeConst = 165
-	XantrexTechnologyInc	ManufacturerCodeConst = 168
-	MarlinTechnologiesInc	ManufacturerCodeConst = 169
-	YanmarMarine	ManufacturerCodeConst = 172
-	VolvoPenta	ManufacturerCodeConst = 174
-	HondaMarine	ManufacturerCodeConst = 175
-	CarlingTechnologiesIncMoritzAe	ManufacturerCodeConst = 176
-	BeedeInstruments	ManufacturerCodeConst = 185
-	FloscanInstrumentCoInc	ManufacturerCodeConst = 192
-	Nobletec	ManufacturerCodeConst = 193
-	MysticValleyCommunications	ManufacturerCodeConst = 198
-	Actia	ManufacturerCodeConst = 199
-	HondaMarine2	ManufacturerCodeConst = 200
-	DisenosYTechnologia	ManufacturerCodeConst = 201
-	DigitalSwitchingSystems	ManufacturerCodeConst = 211
-	XintexAtena	ManufacturerCodeConst = 215
-	EmmiNetworkSL	ManufacturerCodeConst = 224
-	HondaMarine3	ManufacturerCodeConst = 225
-	Zf	ManufacturerCodeConst = 228
-	Garmin	ManufacturerCodeConst = 229
-	YachtMonitoringSolutions	ManufacturerCodeConst = 233
-	SailormadeMarineTelemetryTetra	ManufacturerCodeConst = 235
-	Eride	ManufacturerCodeConst = 243
-	HondaMarine4	ManufacturerCodeConst = 250
-	HondaMotorCompanyLtd	ManufacturerCodeConst = 257
-	Groco	ManufacturerCodeConst = 272
-	Actisense	ManufacturerCodeConst = 273
-	AmphenolLtwTechnology	ManufacturerCodeConst = 274
-	Navico	ManufacturerCodeConst = 275
-	HamiltonJet	ManufacturerCodeConst = 283
-	SeaRecovery	ManufacturerCodeConst = 285
-	CoelmoSrlItaly	ManufacturerCodeConst = 286
-	BepMarine2	ManufacturerCodeConst = 295
-	EmpirBus	ManufacturerCodeConst = 304
-	Novatel	ManufacturerCodeConst = 305
-	SleipnerMotorAs	ManufacturerCodeConst = 306
-	MbwTechnologies	ManufacturerCodeConst = 307
-	FischerPanda	ManufacturerCodeConst = 311
-	Icom	ManufacturerCodeConst = 315
-	Qwerty	ManufacturerCodeConst = 328
-	Dief	ManufacturerCodeConst = 329
-	BoeningAutomationstechnologieG	ManufacturerCodeConst = 341
-	KoreanMaritimeUniversity	ManufacturerCodeConst = 345
-	ThraneAndThrane	ManufacturerCodeConst = 351
-	Mastervolt	ManufacturerCodeConst = 355
-	FischerPandaGenerators	ManufacturerCodeConst = 356
-	VictronEnergy	ManufacturerCodeConst = 358
-	RollsRoyceMarine	ManufacturerCodeConst = 370
-	ElectronicDesign	ManufacturerCodeConst = 373
-	NorthernLights	ManufacturerCodeConst = 374
-	Glendinning	ManufacturerCodeConst = 378
-	BG	ManufacturerCodeConst = 381
-	RosePointNavigationSystems	ManufacturerCodeConst = 384
-	JohnsonOutdoorsMarineElectroni	ManufacturerCodeConst = 385
-	Capi2	ManufacturerCodeConst = 394
-	BeyondMeasure	ManufacturerCodeConst = 396
-	LivorsiMarine	ManufacturerCodeConst = 400
-	Comnav	ManufacturerCodeConst = 404
-	Chetco	ManufacturerCodeConst = 409
-	FusionElectronics	ManufacturerCodeConst = 419
-	StandardHorizon	ManufacturerCodeConst = 421
-	TrueHeadingAb	ManufacturerCodeConst = 422
-	EgersundMarineElectronicsAs	ManufacturerCodeConst = 426
-	EmTrakMarineElectronics	ManufacturerCodeConst = 427
-	TohatsuCoJp	ManufacturerCodeConst = 431
-	DigitalYacht	ManufacturerCodeConst = 437
-	ComarSystemsLimited	ManufacturerCodeConst = 438
-	Cummins	ManufacturerCodeConst = 440
-	VdoAkaContinentalCorporation	ManufacturerCodeConst = 443
-	ParkerHannifinAkaVillageMarine	ManufacturerCodeConst = 451
-	AlltekMarineElectronicsCorp	ManufacturerCodeConst = 459
-	SanGiorgioSEIN	ManufacturerCodeConst = 460
-	VeethreeElectronicsMarine	ManufacturerCodeConst = 466
-	HumminbirdMarineElectronics	ManufacturerCodeConst = 467
-	SiTexMarineElectronics	ManufacturerCodeConst = 470
-	SeaCrossMarineAb	ManufacturerCodeConst = 471
-	GmeAkaStandardCommunicationsPt	ManufacturerCodeConst = 475
-	HumminbirdMarineElectronics2	ManufacturerCodeConst = 476
-	OceanSatBv	ManufacturerCodeConst = 478
-	ChetcoDigitialInstruments	ManufacturerCodeConst = 481
-	Watcheye	ManufacturerCodeConst = 493
-	LcjCapteurs	ManufacturerCodeConst = 499
-	AttwoodMarine	ManufacturerCodeConst = 502
-	NaviopSRL	ManufacturerCodeConst = 503
-	VesperMarineLtd	ManufacturerCodeConst = 504
-	MarinesoftCoLtd	ManufacturerCodeConst = 510
-	Simarine	ManufacturerCodeConst = 513
-	NolandEngineering	ManufacturerCodeConst = 517
-	TransasUsa	ManufacturerCodeConst = 518
-	NationalInstrumentsKorea	ManufacturerCodeConst = 529
-	NationalMarineElectronicsAssoc	ManufacturerCodeConst = 530
-	OnwaMarine	ManufacturerCodeConst = 532
-	Webasto	ManufacturerCodeConst = 540
-	MarinecraftSouthKorea	ManufacturerCodeConst = 571
-	McmurdoGroupAkaOroliaLtd	ManufacturerCodeConst = 573
-	Advansea	ManufacturerCodeConst = 578
-	Kvh	ManufacturerCodeConst = 579
-	SanJoseTechnology	ManufacturerCodeConst = 580
-	YachtControl	ManufacturerCodeConst = 583
-	SuzukiMotorCorporation	ManufacturerCodeConst = 586
-	UsCoastGuard	ManufacturerCodeConst = 591
-	ShipModuleAkaCustomware	ManufacturerCodeConst = 595
-	AquaticAv	ManufacturerCodeConst = 600
-	AventicsGmbh	ManufacturerCodeConst = 605
-	Intellian	ManufacturerCodeConst = 606
-	Samwonit	ManufacturerCodeConst = 612
-	ArltTecnologies	ManufacturerCodeConst = 614
-	BavariaYacts	ManufacturerCodeConst = 637
-	DiverseYachtServices	ManufacturerCodeConst = 641
-	WemaUSADbaKus	ManufacturerCodeConst = 644
-	Garmin2	ManufacturerCodeConst = 645
-	ShenzhenJiuzhouHimunication	ManufacturerCodeConst = 658
-	RockfordCorp	ManufacturerCodeConst = 688
-	HarmanInternational	ManufacturerCodeConst = 699
-	JlAudio	ManufacturerCodeConst = 704
-	LarsThrane	ManufacturerCodeConst = 708
-	Autonnic	ManufacturerCodeConst = 715
-	YachtDevices	ManufacturerCodeConst = 717
-	ReapSystems	ManufacturerCodeConst = 734
-	AuElectronicsGroup	ManufacturerCodeConst = 735
-	Lxnav	ManufacturerCodeConst = 739
-	LittelfuseIncFormerlyCarlingTe	ManufacturerCodeConst = 741
-	Daemyung	ManufacturerCodeConst = 743
-	Woosung	ManufacturerCodeConst = 744
-	IsottaIfraSrl	ManufacturerCodeConst = 748
-	ClarionUs	ManufacturerCodeConst = 773
-	HmiSystems	ManufacturerCodeConst = 776
-	OceanSignal	ManufacturerCodeConst = 777
-	Seekeeper	ManufacturerCodeConst = 778
-	PolyPlanar	ManufacturerCodeConst = 781
-	FischerPandaDe	ManufacturerCodeConst = 785
-	BroydaIndustries	ManufacturerCodeConst = 795
-	CanadianAutomotive	ManufacturerCodeConst = 796
-	TidesMarine	ManufacturerCodeConst = 797
-	Lumishore	ManufacturerCodeConst = 798
-	StillWaterDesignsAndAudio	ManufacturerCodeConst = 799
-	BjTechnologiesBeneteau	ManufacturerCodeConst = 802
-	GillSensors	ManufacturerCodeConst = 803
-	BlueWaterDesalination	ManufacturerCodeConst = 811
-	Flir	ManufacturerCodeConst = 815
-	UndheimSystems	ManufacturerCodeConst = 824
-	LewmarInc	ManufacturerCodeConst = 826
-	Teamsurv	ManufacturerCodeConst = 838
-	FellMarine	ManufacturerCodeConst = 844
-	Oceanvolt	ManufacturerCodeConst = 847
-	Prospec	ManufacturerCodeConst = 862
-	DataPanelCorp	ManufacturerCodeConst = 868
-	L3Technologies	ManufacturerCodeConst = 890
-	RhodanMarineSystems	ManufacturerCodeConst = 894
-	NexfourSolutions	ManufacturerCodeConst = 896
-	AsaElectronics	ManufacturerCodeConst = 905
-	MarinesCoSouthKorea	ManufacturerCodeConst = 909
-	NauticOn	ManufacturerCodeConst = 911
-	Sentinel	ManufacturerCodeConst = 917
-	JlMarineYstems	ManufacturerCodeConst = 929
-	Ecotronix	ManufacturerCodeConst = 930
-	ZontisaMarine	ManufacturerCodeConst = 944
-	ExorInternational	ManufacturerCodeConst = 951
-	TimbolierIndustries	ManufacturerCodeConst = 962
-	TjcMicro	ManufacturerCodeConst = 963
-	CoxPowertrain	ManufacturerCodeConst = 968
-	BlueSeas	ManufacturerCodeConst = 969
-	KobeltManufacturingCoLtd	ManufacturerCodeConst = 981
-	BlueOceanIot	ManufacturerCodeConst = 992
-	XentaSystems	ManufacturerCodeConst = 997
-	SignalK	ManufacturerCodeConst = 999
-	UltraflexSpa	ManufacturerCodeConst = 1004
-	LintestSmartboat	ManufacturerCodeConst = 1008
-	Soundmax	ManufacturerCodeConst = 1011
-	TeamItaliaMarineOnyxMarineAuto	ManufacturerCodeConst = 1020
-	Entratech	ManufacturerCodeConst = 1021
-	ItcInc	ManufacturerCodeConst = 1022
-	TheMarineGuardianLlc	ManufacturerCodeConst = 1029
-	SonicCorporation	ManufacturerCodeConst = 1047
-	Pronav	ManufacturerCodeConst = 1051
-	VetusMaxwellInc	ManufacturerCodeConst = 1053
-	LithiumPros	ManufacturerCodeConst = 1056
-	Boatrax	ManufacturerCodeConst = 1059
-	MarolCoLtd	ManufacturerCodeConst = 1062
-	CalypsoInstruments	ManufacturerCodeConst = 1065
-	SpotZeroWater	ManufacturerCodeConst = 1066
-	LithionicsBatteryLlc	ManufacturerCodeConst = 1069
-	QuickTeckElectronicsLtd	ManufacturerCodeConst = 1070
-	UnidenAmerica	ManufacturerCodeConst = 1075
-	Nauticoncept	ManufacturerCodeConst = 1083
-	ShadowCasterLedLightingLlc	ManufacturerCodeConst = 1084
-	WetSoundsLlc	ManufacturerCodeConst = 1085
-	ETACircuitBreakers	ManufacturerCodeConst = 1088
-	Scheiber	ManufacturerCodeConst = 1092
-	SmartYachtsInternationalLimite	ManufacturerCodeConst = 1100
-	Dockmate	ManufacturerCodeConst = 1109
-	BobsMachine	ManufacturerCodeConst = 1114
-	L3harrisAsv	ManufacturerCodeConst = 1118
-	BalmarLlc	ManufacturerCodeConst = 1119
-	ElettromediaSpa	ManufacturerCodeConst = 1120
-	Electromaax	ManufacturerCodeConst = 1127
-	AcrossOceansSystemsLtd	ManufacturerCodeConst = 1140
-	KiwiYachting	ManufacturerCodeConst = 1145
-	BsbArtificialIntelligenceGmbh	ManufacturerCodeConst = 1150
-	OrcaTechnologoesAs	ManufacturerCodeConst = 1151
-	TbsElectronicsBv	ManufacturerCodeConst = 1154
-	TechnotonElectroics	ManufacturerCodeConst = 1158
-	MgEnergySystemsBV	ManufacturerCodeConst = 1160
-	SeaMacineRoboticsInc	ManufacturerCodeConst = 1169
-	VistaManufacturing	ManufacturerCodeConst = 1171
-	Zipwake	ManufacturerCodeConst = 1183
-	SailmonBv	ManufacturerCodeConst = 1186
-	AirmoniqProKft	ManufacturerCodeConst = 1192
-	SierraMarine	ManufacturerCodeConst = 1194
-	XinuoInformationTechnologyXiam	ManufacturerCodeConst = 1200
-	Septentrio	ManufacturerCodeConst = 1218
-	NkeMarineElecronics	ManufacturerCodeConst = 1233
-	SupertrackAps	ManufacturerCodeConst = 1238
-	HondaElectronicsCoLtd	ManufacturerCodeConst = 1239
-	RaritanEngineeringCompanyInc	ManufacturerCodeConst = 1245
-	IntegratedPowerSolutionsAg	ManufacturerCodeConst = 1249
-	InteractiveTechnologiesInc	ManufacturerCodeConst = 1260
-	LtgTech	ManufacturerCodeConst = 1283
-	EnergySolutionsUkLtd	ManufacturerCodeConst = 1299
-	WattFuelCellCorp	ManufacturerCodeConst = 1300
-	ProMainer	ManufacturerCodeConst = 1302
-	DragonflyEnergy	ManufacturerCodeConst = 1305
-	KodenElectronicsCoLtd	ManufacturerCodeConst = 1306
-	HumphreeAb	ManufacturerCodeConst = 1311
-	HinkleyYachts	ManufacturerCodeConst = 1316
-	GlobalMarineManagementGmbhGmm	ManufacturerCodeConst = 1317
-	TriskelMarineLtd	ManufacturerCodeConst = 1320
-	WarwickControlTechnologies	ManufacturerCodeConst = 1330
-	DolphinCharger	ManufacturerCodeConst = 1331
-	BarnacleSystemsInc	ManufacturerCodeConst = 1337
-	RadianIotInc	ManufacturerCodeConst = 1348
-	OceanLedMarineLtd	ManufacturerCodeConst = 1353
-	Blunav	ManufacturerCodeConst = 1359
-	OvaNantongSaiyangElectronicsCo	ManufacturerCodeConst = 1361
-	RadPropulsion	ManufacturerCodeConst = 1368
-	ElectricYacht	ManufacturerCodeConst = 1369
-	ElcoMotorYachts	ManufacturerCodeConst = 1372
-	TecnosealFoundrySRL	ManufacturerCodeConst = 1384
-	ProChargingSystemsLlc	ManufacturerCodeConst = 1385
-	EvexCoLtd	ManufacturerCodeConst = 1389
-	GobiusSensorTechnologyAb	ManufacturerCodeConst = 1398
-	ArcoMarine	ManufacturerCodeConst = 1403
-	LencoMarineInc	ManufacturerCodeConst = 1408
-	NaocontrolSL	ManufacturerCodeConst = 1413
-	Revatek	ManufacturerCodeConst = 1417
-	Aeolionics	ManufacturerCodeConst = 1438
-	PredictwindLtd	ManufacturerCodeConst = 1439
-	EgisMobileElectric	ManufacturerCodeConst = 1440
-	StarboardYachtGroup	ManufacturerCodeConst = 1445
-	RoswellMarine	ManufacturerCodeConst = 1446
-	EpropulsionGuangdongEpropulsio	ManufacturerCodeConst = 1451
-	MicroAirLlc	ManufacturerCodeConst = 1452
-	VitalBattery	ManufacturerCodeConst = 1453
-	RideControllerLlc	ManufacturerCodeConst = 1458
-	TocaroBlue	ManufacturerCodeConst = 1460
-	VanquishYachts	ManufacturerCodeConst = 1461
-	FtTechnologies	ManufacturerCodeConst = 1471
-	AlpsAlpineCoLtd	ManufacturerCodeConst = 1478
-	EForceMarine	ManufacturerCodeConst = 1481
-	CmcMarine	ManufacturerCodeConst = 1482
-	NanjingSandemarineInformationT	ManufacturerCodeConst = 1483
-	TeleflexMarineSeastarSolutions	ManufacturerCodeConst = 1850
-	Raymarine	ManufacturerCodeConst = 1851
-	Navionics	ManufacturerCodeConst = 1852
-	JapanRadioCo	ManufacturerCodeConst = 1853
-	NorthstarTechnologies	ManufacturerCodeConst = 1854
-	Furuno	ManufacturerCodeConst = 1855
-	Trimble	ManufacturerCodeConst = 1856
-	Simrad	ManufacturerCodeConst = 1857
-	Litton	ManufacturerCodeConst = 1858
-	KvasarAb	ManufacturerCodeConst = 1859
-	Mmp	ManufacturerCodeConst = 1860
-	VectorCantech	ManufacturerCodeConst = 1861
-	YamahaMarine	ManufacturerCodeConst = 1862
-	FariaInstruments	ManufacturerCodeConst = 1863
+	ArksEnterprisesInc             ManufacturerCodeConst = 69
+	FwMurphyEnovationControls      ManufacturerCodeConst = 78
+	TwinDisc                       ManufacturerCodeConst = 80
+	KohlerPowerSystems             ManufacturerCodeConst = 85
+	HemisphereGPSInc               ManufacturerCodeConst = 88
+	BepMarine                      ManufacturerCodeConst = 116
+	Airmar                         ManufacturerCodeConst = 135
+	Maretron                       ManufacturerCodeConst = 137
+	Lowrance                       ManufacturerCodeConst = 140
+	MercuryMarine                  ManufacturerCodeConst = 144
+	NautibusElectronicGmbh         ManufacturerCodeConst = 147
+	BlueWaterData                  ManufacturerCodeConst = 148
+	Westerbeke                     ManufacturerCodeConst = 154
+	IssproInc                      ManufacturerCodeConst = 157
+	OffshoreSystemsUkLtd           ManufacturerCodeConst = 161
+	EvinrudeBrp                    ManufacturerCodeConst = 163
+	CpacSystemsAb                  ManufacturerCodeConst = 165
+	XantrexTechnologyInc           ManufacturerCodeConst = 168
+	MarlinTechnologiesInc          ManufacturerCodeConst = 169
+	YanmarMarine                   ManufacturerCodeConst = 172
+	VolvoPenta                     ManufacturerCodeConst = 174
+	HondaMarine                    ManufacturerCodeConst = 175
+	CarlingTechnologiesIncMoritzAe ManufacturerCodeConst = 176
+	BeedeInstruments               ManufacturerCodeConst = 185
+	FloscanInstrumentCoInc         ManufacturerCodeConst = 192
+	Nobletec                       ManufacturerCodeConst = 193
+	MysticValleyCommunications     ManufacturerCodeConst = 198
+	Actia                          ManufacturerCodeConst = 199
+	HondaMarine2                   ManufacturerCodeConst = 200
+	DisenosYTechnologia            ManufacturerCodeConst = 201
+	DigitalSwitchingSystems        ManufacturerCodeConst = 211
+	XintexAtena                    ManufacturerCodeConst = 215
+	EmmiNetworkSL                  ManufacturerCodeConst = 224
+	HondaMarine3                   ManufacturerCodeConst = 225
+	Zf                             ManufacturerCodeConst = 228
+	Garmin                         ManufacturerCodeConst = 229
+	YachtMonitoringSolutions       ManufacturerCodeConst = 233
+	SailormadeMarineTelemetryTetra ManufacturerCodeConst = 235
+	Eride                          ManufacturerCodeConst = 243
+	HondaMarine4                   ManufacturerCodeConst = 250
+	HondaMotorCompanyLtd           ManufacturerCodeConst = 257
+	Groco                          ManufacturerCodeConst = 272
+	Actisense                      ManufacturerCodeConst = 273
+	AmphenolLtwTechnology          ManufacturerCodeConst = 274
+	Navico                         ManufacturerCodeConst = 275
+	HamiltonJet                    ManufacturerCodeConst = 283
+	SeaRecovery                    ManufacturerCodeConst = 285
+	CoelmoSrlItaly                 ManufacturerCodeConst = 286
+	BepMarine2                     ManufacturerCodeConst = 295
+	EmpirBus                       ManufacturerCodeConst = 304
+	Novatel                        ManufacturerCodeConst = 305
+	SleipnerMotorAs                ManufacturerCodeConst = 306
+	MbwTechnologies                ManufacturerCodeConst = 307
+	FischerPanda                   ManufacturerCodeConst = 311
+	Icom                           ManufacturerCodeConst = 315
+	Qwerty                         ManufacturerCodeConst = 328
+	Dief                           ManufacturerCodeConst = 329
+	BoeningAutomationstechnologieG ManufacturerCodeConst = 341
+	KoreanMaritimeUniversity       ManufacturerCodeConst = 345
+	ThraneAndThrane                ManufacturerCodeConst = 351
+	Mastervolt                     ManufacturerCodeConst = 355
+	FischerPandaGenerators         ManufacturerCodeConst = 356
+	VictronEnergy                  ManufacturerCodeConst = 358
+	RollsRoyceMarine               ManufacturerCodeConst = 370
+	ElectronicDesign               ManufacturerCodeConst = 373
+	NorthernLights                 ManufacturerCodeConst = 374
+	Glendinning                    ManufacturerCodeConst = 378
+	BG                             ManufacturerCodeConst = 381
+	RosePointNavigationSystems     ManufacturerCodeConst = 384
+	JohnsonOutdoorsMarineElectroni ManufacturerCodeConst = 385
+	Capi2                          ManufacturerCodeConst = 394
+	BeyondMeasure                  ManufacturerCodeConst = 396
+	LivorsiMarine                  ManufacturerCodeConst = 400
+	Comnav                         ManufacturerCodeConst = 404
+	Chetco                         ManufacturerCodeConst = 409
+	FusionElectronics              ManufacturerCodeConst = 419
+	StandardHorizon                ManufacturerCodeConst = 421
+	TrueHeadingAb                  ManufacturerCodeConst = 422
+	EgersundMarineElectronicsAs    ManufacturerCodeConst = 426
+	EmTrakMarineElectronics        ManufacturerCodeConst = 427
+	TohatsuCoJp                    ManufacturerCodeConst = 431
+	DigitalYacht                   ManufacturerCodeConst = 437
+	ComarSystemsLimited            ManufacturerCodeConst = 438
+	Cummins                        ManufacturerCodeConst = 440
+	VdoAkaContinentalCorporation   ManufacturerCodeConst = 443
+	ParkerHannifinAkaVillageMarine ManufacturerCodeConst = 451
+	AlltekMarineElectronicsCorp    ManufacturerCodeConst = 459
+	SanGiorgioSEIN                 ManufacturerCodeConst = 460
+	VeethreeElectronicsMarine      ManufacturerCodeConst = 466
+	HumminbirdMarineElectronics    ManufacturerCodeConst = 467
+	SiTexMarineElectronics         ManufacturerCodeConst = 470
+	SeaCrossMarineAb               ManufacturerCodeConst = 471
+	GmeAkaStandardCommunicationsPt ManufacturerCodeConst = 475
+	HumminbirdMarineElectronics2   ManufacturerCodeConst = 476
+	OceanSatBv                     ManufacturerCodeConst = 478
+	ChetcoDigitialInstruments      ManufacturerCodeConst = 481
+	Watcheye                       ManufacturerCodeConst = 493
+	LcjCapteurs                    ManufacturerCodeConst = 499
+	AttwoodMarine                  ManufacturerCodeConst = 502
+	NaviopSRL                      ManufacturerCodeConst = 503
+	VesperMarineLtd                ManufacturerCodeConst = 504
+	MarinesoftCoLtd                ManufacturerCodeConst = 510
+	Simarine                       ManufacturerCodeConst = 513
+	NolandEngineering              ManufacturerCodeConst = 517
+	TransasUsa                     ManufacturerCodeConst = 518
+	NationalInstrumentsKorea       ManufacturerCodeConst = 529
+	NationalMarineElectronicsAssoc ManufacturerCodeConst = 530
+	OnwaMarine                     ManufacturerCodeConst = 532
+	Webasto                        ManufacturerCodeConst = 540
+	MarinecraftSouthKorea          ManufacturerCodeConst = 571
+	McmurdoGroupAkaOroliaLtd       ManufacturerCodeConst = 573
+	Advansea                       ManufacturerCodeConst = 578
+	Kvh                            ManufacturerCodeConst = 579
+	SanJoseTechnology              ManufacturerCodeConst = 580
+	YachtControl                   ManufacturerCodeConst = 583
+	SuzukiMotorCorporation         ManufacturerCodeConst = 586
+	UsCoastGuard                   ManufacturerCodeConst = 591
+	ShipModuleAkaCustomware        ManufacturerCodeConst = 595
+	AquaticAv                      ManufacturerCodeConst = 600
+	AventicsGmbh                   ManufacturerCodeConst = 605
+	Intellian                      ManufacturerCodeConst = 606
+	Samwonit                       ManufacturerCodeConst = 612
+	ArltTecnologies                ManufacturerCodeConst = 614
+	BavariaYacts                   ManufacturerCodeConst = 637
+	DiverseYachtServices           ManufacturerCodeConst = 641
+	WemaUSADbaKus                  ManufacturerCodeConst = 644
+	Garmin2                        ManufacturerCodeConst = 645
+	ShenzhenJiuzhouHimunication    ManufacturerCodeConst = 658
+	RockfordCorp                   ManufacturerCodeConst = 688
+	HarmanInternational            ManufacturerCodeConst = 699
+	JlAudio                        ManufacturerCodeConst = 704
+	LarsThrane                     ManufacturerCodeConst = 708
+	Autonnic                       ManufacturerCodeConst = 715
+	YachtDevices                   ManufacturerCodeConst = 717
+	ReapSystems                    ManufacturerCodeConst = 734
+	AuElectronicsGroup             ManufacturerCodeConst = 735
+	Lxnav                          ManufacturerCodeConst = 739
+	LittelfuseIncFormerlyCarlingTe ManufacturerCodeConst = 741
+	Daemyung                       ManufacturerCodeConst = 743
+	Woosung                        ManufacturerCodeConst = 744
+	IsottaIfraSrl                  ManufacturerCodeConst = 748
+	ClarionUs                      ManufacturerCodeConst = 773
+	HmiSystems                     ManufacturerCodeConst = 776
+	OceanSignal                    ManufacturerCodeConst = 777
+	Seekeeper                      ManufacturerCodeConst = 778
+	PolyPlanar                     ManufacturerCodeConst = 781
+	FischerPandaDe                 ManufacturerCodeConst = 785
+	BroydaIndustries               ManufacturerCodeConst = 795
+	CanadianAutomotive             ManufacturerCodeConst = 796
+	TidesMarine                    ManufacturerCodeConst = 797
+	Lumishore                      ManufacturerCodeConst = 798
+	StillWaterDesignsAndAudio      ManufacturerCodeConst = 799
+	BjTechnologiesBeneteau         ManufacturerCodeConst = 802
+	GillSensors                    ManufacturerCodeConst = 803
+	BlueWaterDesalination          ManufacturerCodeConst = 811
+	Flir                           ManufacturerCodeConst = 815
+	UndheimSystems                 ManufacturerCodeConst = 824
+	LewmarInc                      ManufacturerCodeConst = 826
+	Teamsurv                       ManufacturerCodeConst = 838
+	FellMarine                     ManufacturerCodeConst = 844
+	Oceanvolt                      ManufacturerCodeConst = 847
+	Prospec                        ManufacturerCodeConst = 862
+	DataPanelCorp                  ManufacturerCodeConst = 868
+	L3Technologies                 ManufacturerCodeConst = 890
+	RhodanMarineSystems            ManufacturerCodeConst = 894
+	NexfourSolutions               ManufacturerCodeConst = 896
+	AsaElectronics                 ManufacturerCodeConst = 905
+	MarinesCoSouthKorea            ManufacturerCodeConst = 909
+	NauticOn                       ManufacturerCodeConst = 911
+	Sentinel                       ManufacturerCodeConst = 917
+	JlMarineYstems                 ManufacturerCodeConst = 929
+	Ecotronix                      ManufacturerCodeConst = 930
+	ZontisaMarine                  ManufacturerCodeConst = 944
+	ExorInternational              ManufacturerCodeConst = 951
+	TimbolierIndustries            ManufacturerCodeConst = 962
+	TjcMicro                       ManufacturerCodeConst = 963
+	CoxPowertrain                  ManufacturerCodeConst = 968
+	BlueSeas                       ManufacturerCodeConst = 969
+	KobeltManufacturingCoLtd       ManufacturerCodeConst = 981
+	BlueOceanIot                   ManufacturerCodeConst = 992
+	XentaSystems                   ManufacturerCodeConst = 997
+	SignalK                        ManufacturerCodeConst = 999
+	UltraflexSpa                   ManufacturerCodeConst = 1004
+	LintestSmartboat               ManufacturerCodeConst = 1008
+	Soundmax                       ManufacturerCodeConst = 1011
+	TeamItaliaMarineOnyxMarineAuto ManufacturerCodeConst = 1020
+	Entratech                      ManufacturerCodeConst = 1021
+	ItcInc                         ManufacturerCodeConst = 1022
+	TheMarineGuardianLlc           ManufacturerCodeConst = 1029
+	SonicCorporation               ManufacturerCodeConst = 1047
+	Pronav                         ManufacturerCodeConst = 1051
+	VetusMaxwellInc                ManufacturerCodeConst = 1053
+	LithiumPros                    ManufacturerCodeConst = 1056
+	Boatrax                        ManufacturerCodeConst = 1059
+	MarolCoLtd                     ManufacturerCodeConst = 1062
+	CalypsoInstruments             ManufacturerCodeConst = 1065
+	SpotZeroWater                  ManufacturerCodeConst = 1066
+	LithionicsBatteryLlc           ManufacturerCodeConst = 1069
+	QuickTeckElectronicsLtd        ManufacturerCodeConst = 1070
+	UnidenAmerica                  ManufacturerCodeConst = 1075
+	Nauticoncept                   ManufacturerCodeConst = 1083
+	ShadowCasterLedLightingLlc     ManufacturerCodeConst = 1084
+	WetSoundsLlc                   ManufacturerCodeConst = 1085
+	ETACircuitBreakers             ManufacturerCodeConst = 1088
+	Scheiber                       ManufacturerCodeConst = 1092
+	SmartYachtsInternationalLimite ManufacturerCodeConst = 1100
+	Dockmate                       ManufacturerCodeConst = 1109
+	BobsMachine                    ManufacturerCodeConst = 1114
+	L3harrisAsv                    ManufacturerCodeConst = 1118
+	BalmarLlc                      ManufacturerCodeConst = 1119
+	ElettromediaSpa                ManufacturerCodeConst = 1120
+	Electromaax                    ManufacturerCodeConst = 1127
+	AcrossOceansSystemsLtd         ManufacturerCodeConst = 1140
+	KiwiYachting                   ManufacturerCodeConst = 1145
+	BsbArtificialIntelligenceGmbh  ManufacturerCodeConst = 1150
+	OrcaTechnologoesAs             ManufacturerCodeConst = 1151
+	TbsElectronicsBv               ManufacturerCodeConst = 1154
+	TechnotonElectroics            ManufacturerCodeConst = 1158
+	MgEnergySystemsBV              ManufacturerCodeConst = 1160
+	SeaMacineRoboticsInc           ManufacturerCodeConst = 1169
+	VistaManufacturing             ManufacturerCodeConst = 1171
+	Zipwake                        ManufacturerCodeConst = 1183
+	SailmonBv                      ManufacturerCodeConst = 1186
+	AirmoniqProKft                 ManufacturerCodeConst = 1192
+	SierraMarine                   ManufacturerCodeConst = 1194
+	XinuoInformationTechnologyXiam ManufacturerCodeConst = 1200
+	Septentrio                     ManufacturerCodeConst = 1218
+	NkeMarineElecronics            ManufacturerCodeConst = 1233
+	SupertrackAps                  ManufacturerCodeConst = 1238
+	HondaElectronicsCoLtd          ManufacturerCodeConst = 1239
+	RaritanEngineeringCompanyInc   ManufacturerCodeConst = 1245
+	IntegratedPowerSolutionsAg     ManufacturerCodeConst = 1249
+	InteractiveTechnologiesInc     ManufacturerCodeConst = 1260
+	LtgTech                        ManufacturerCodeConst = 1283
+	EnergySolutionsUkLtd           ManufacturerCodeConst = 1299
+	WattFuelCellCorp               ManufacturerCodeConst = 1300
+	ProMainer                      ManufacturerCodeConst = 1302
+	DragonflyEnergy                ManufacturerCodeConst = 1305
+	KodenElectronicsCoLtd          ManufacturerCodeConst = 1306
+	HumphreeAb                     ManufacturerCodeConst = 1311
+	HinkleyYachts                  ManufacturerCodeConst = 1316
+	GlobalMarineManagementGmbhGmm  ManufacturerCodeConst = 1317
+	TriskelMarineLtd               ManufacturerCodeConst = 1320
+	WarwickControlTechnologies     ManufacturerCodeConst = 1330
+	DolphinCharger                 ManufacturerCodeConst = 1331
+	BarnacleSystemsInc             ManufacturerCodeConst = 1337
+	RadianIotInc                   ManufacturerCodeConst = 1348
+	OceanLedMarineLtd              ManufacturerCodeConst = 1353
+	Blunav                         ManufacturerCodeConst = 1359
+	OvaNantongSaiyangElectronicsCo ManufacturerCodeConst = 1361
+	RadPropulsion                  ManufacturerCodeConst = 1368
+	ElectricYacht                  ManufacturerCodeConst = 1369
+	ElcoMotorYachts                ManufacturerCodeConst = 1372
+	TecnosealFoundrySRL            ManufacturerCodeConst = 1384
+	ProChargingSystemsLlc          ManufacturerCodeConst = 1385
+	EvexCoLtd                      ManufacturerCodeConst = 1389
+	GobiusSensorTechnologyAb       ManufacturerCodeConst = 1398
+	ArcoMarine                     ManufacturerCodeConst = 1403
+	LencoMarineInc                 ManufacturerCodeConst = 1408
+	NaocontrolSL                   ManufacturerCodeConst = 1413
+	Revatek                        ManufacturerCodeConst = 1417
+	Aeolionics                     ManufacturerCodeConst = 1438
+	PredictwindLtd                 ManufacturerCodeConst = 1439
+	EgisMobileElectric             ManufacturerCodeConst = 1440
+	StarboardYachtGroup            ManufacturerCodeConst = 1445
+	RoswellMarine                  ManufacturerCodeConst = 1446
+	EpropulsionGuangdongEpropulsio ManufacturerCodeConst = 1451
+	MicroAirLlc                    ManufacturerCodeConst = 1452
+	VitalBattery                   ManufacturerCodeConst = 1453
+	RideControllerLlc              ManufacturerCodeConst = 1458
+	TocaroBlue                     ManufacturerCodeConst = 1460
+	VanquishYachts                 ManufacturerCodeConst = 1461
+	FtTechnologies                 ManufacturerCodeConst = 1471
+	AlpsAlpineCoLtd                ManufacturerCodeConst = 1478
+	EForceMarine                   ManufacturerCodeConst = 1481
+	CmcMarine                      ManufacturerCodeConst = 1482
+	NanjingSandemarineInformationT ManufacturerCodeConst = 1483
+	TeleflexMarineSeastarSolutions ManufacturerCodeConst = 1850
+	Raymarine                      ManufacturerCodeConst = 1851
+	Navionics                      ManufacturerCodeConst = 1852
+	JapanRadioCo                   ManufacturerCodeConst = 1853
+	NorthstarTechnologies          ManufacturerCodeConst = 1854
+	Furuno                         ManufacturerCodeConst = 1855
+	Trimble                        ManufacturerCodeConst = 1856
+	Simrad                         ManufacturerCodeConst = 1857
+	Litton                         ManufacturerCodeConst = 1858
+	KvasarAb                       ManufacturerCodeConst = 1859
+	Mmp                            ManufacturerCodeConst = 1860
+	VectorCantech                  ManufacturerCodeConst = 1861
+	YamahaMarine                   ManufacturerCodeConst = 1862
+	FariaInstruments               ManufacturerCodeConst = 1863
 )
 
-func (e ManufacturerCodeConst) GoString() string {return e.String() }
+func (e ManufacturerCodeConst) GoString() string { return e.String() }
 func (e ManufacturerCodeConst) String() string {
 	switch e {
-		case 69:
-			return "ARKS Enterprises, Inc."
-		case 78:
-			return "FW Murphy/Enovation Controls"
-		case 80:
-			return "Twin Disc"
-		case 85:
-			return "Kohler Power Systems"
-		case 88:
-			return "Hemisphere GPS Inc"
-		case 116:
-			return "BEP Marine"
-		case 135:
-			return "Airmar"
-		case 137:
-			return "Maretron"
-		case 140:
-			return "Lowrance"
-		case 144:
-			return "Mercury Marine"
-		case 147:
-			return "Nautibus Electronic GmbH"
-		case 148:
-			return "Blue Water Data"
-		case 154:
-			return "Westerbeke"
-		case 157:
-			return "ISSPRO Inc"
-		case 161:
-			return "Offshore Systems (UK) Ltd."
-		case 163:
-			return "Evinrude/BRP"
-		case 165:
-			return "CPAC Systems AB"
-		case 168:
-			return "Xantrex Technology Inc."
-		case 169:
-			return "Marlin Technologies, Inc."
-		case 172:
-			return "Yanmar Marine"
-		case 174:
-			return "Volvo Penta"
-		case 175:
-			return "Honda Marine"
-		case 176:
-			return "Carling Technologies Inc. (Moritz Aerospace)"
-		case 185:
-			return "Beede Instruments"
-		case 192:
-			return "Floscan Instrument Co. Inc."
-		case 193:
-			return "Nobletec"
-		case 198:
-			return "Mystic Valley Communications"
-		case 199:
-			return "Actia"
-		case 200:
-			return "Honda Marine 2"
-		case 201:
-			return "Disenos Y Technologia"
-		case 211:
-			return "Digital Switching Systems"
-		case 215:
-			return "Xintex/Atena"
-		case 224:
-			return "EMMI NETWORK S.L."
-		case 225:
-			return "Honda Marine 3"
-		case 228:
-			return "ZF"
-		case 229:
-			return "Garmin"
-		case 233:
-			return "Yacht Monitoring Solutions"
-		case 235:
-			return "Sailormade Marine Telemetry/Tetra Technology LTD"
-		case 243:
-			return "Eride"
-		case 250:
-			return "Honda Marine 4"
-		case 257:
-			return "Honda Motor Company LTD"
-		case 272:
-			return "Groco"
-		case 273:
-			return "Actisense"
-		case 274:
-			return "Amphenol LTW Technology"
-		case 275:
-			return "Navico"
-		case 283:
-			return "Hamilton Jet"
-		case 285:
-			return "Sea Recovery"
-		case 286:
-			return "Coelmo SRL Italy"
-		case 295:
-			return "BEP Marine 2"
-		case 304:
-			return "Empir Bus"
-		case 305:
-			return "NovAtel"
-		case 306:
-			return "Sleipner Motor AS"
-		case 307:
-			return "MBW Technologies"
-		case 311:
-			return "Fischer Panda"
-		case 315:
-			return "ICOM"
-		case 328:
-			return "Qwerty"
-		case 329:
-			return "Dief"
-		case 341:
-			return "Boening Automationstechnologie GmbH & Co. KG"
-		case 345:
-			return "Korean Maritime University"
-		case 351:
-			return "Thrane and Thrane"
-		case 355:
-			return "Mastervolt"
-		case 356:
-			return "Fischer Panda Generators"
-		case 358:
-			return "Victron Energy"
-		case 370:
-			return "Rolls Royce Marine"
-		case 373:
-			return "Electronic Design"
-		case 374:
-			return "Northern Lights"
-		case 378:
-			return "Glendinning"
-		case 381:
-			return "B & G"
-		case 384:
-			return "Rose Point Navigation Systems"
-		case 385:
-			return "Johnson Outdoors Marine Electronics Inc Geonav"
-		case 394:
-			return "Capi 2"
-		case 396:
-			return "Beyond Measure"
-		case 400:
-			return "Livorsi Marine"
-		case 404:
-			return "ComNav"
-		case 409:
-			return "Chetco"
-		case 419:
-			return "Fusion Electronics"
-		case 421:
-			return "Standard Horizon"
-		case 422:
-			return "True Heading AB"
-		case 426:
-			return "Egersund Marine Electronics AS"
-		case 427:
-			return "em-trak Marine Electronics"
-		case 431:
-			return "Tohatsu Co, JP"
-		case 437:
-			return "Digital Yacht"
-		case 438:
-			return "Comar Systems Limited"
-		case 440:
-			return "Cummins"
-		case 443:
-			return "VDO (aka Continental-Corporation)"
-		case 451:
-			return "Parker Hannifin aka Village Marine Tech"
-		case 459:
-			return "Alltek Marine Electronics Corp"
-		case 460:
-			return "SAN GIORGIO S.E.I.N"
-		case 466:
-			return "Veethree Electronics & Marine"
-		case 467:
-			return "Humminbird Marine Electronics"
-		case 470:
-			return "SI-TEX Marine Electronics"
-		case 471:
-			return "Sea Cross Marine AB"
-		case 475:
-			return "GME aka Standard Communications Pty LTD"
-		case 476:
-			return "Humminbird Marine Electronics 2"
-		case 478:
-			return "Ocean Sat BV"
-		case 481:
-			return "Chetco Digitial Instruments"
-		case 493:
-			return "Watcheye"
-		case 499:
-			return "Lcj Capteurs"
-		case 502:
-			return "Attwood Marine"
-		case 503:
-			return "Naviop S.R.L."
-		case 504:
-			return "Vesper Marine Ltd"
-		case 510:
-			return "Marinesoft Co. LTD"
-		case 513:
-			return "Simarine"
-		case 517:
-			return "NoLand Engineering"
-		case 518:
-			return "Transas USA"
-		case 529:
-			return "National Instruments Korea"
-		case 530:
-			return "National Marine Electronics Association"
-		case 532:
-			return "Onwa Marine"
-		case 540:
-			return "Webasto"
-		case 571:
-			return "Marinecraft (South Korea)"
-		case 573:
-			return "McMurdo Group aka Orolia LTD"
-		case 578:
-			return "Advansea"
-		case 579:
-			return "KVH"
-		case 580:
-			return "San Jose Technology"
-		case 583:
-			return "Yacht Control"
-		case 586:
-			return "Suzuki Motor Corporation"
-		case 591:
-			return "US Coast Guard"
-		case 595:
-			return "Ship Module aka Customware"
-		case 600:
-			return "Aquatic AV"
-		case 605:
-			return "Aventics GmbH"
-		case 606:
-			return "Intellian"
-		case 612:
-			return "SamwonIT"
-		case 614:
-			return "Arlt Tecnologies"
-		case 637:
-			return "Bavaria Yacts"
-		case 641:
-			return "Diverse Yacht Services"
-		case 644:
-			return "Wema U.S.A dba KUS"
-		case 645:
-			return "Garmin 2"
-		case 658:
-			return "Shenzhen Jiuzhou Himunication"
-		case 688:
-			return "Rockford Corp"
-		case 699:
-			return "Harman International"
-		case 704:
-			return "JL Audio"
-		case 708:
-			return "Lars Thrane"
-		case 715:
-			return "Autonnic"
-		case 717:
-			return "Yacht Devices"
-		case 734:
-			return "REAP Systems"
-		case 735:
-			return "Au Electronics Group"
-		case 739:
-			return "LxNav"
-		case 741:
-			return "Littelfuse, Inc (formerly Carling Technologies)"
-		case 743:
-			return "DaeMyung"
-		case 744:
-			return "Woosung"
-		case 748:
-			return "ISOTTA IFRA srl"
-		case 773:
-			return "Clarion US"
-		case 776:
-			return "HMI Systems"
-		case 777:
-			return "Ocean Signal"
-		case 778:
-			return "Seekeeper"
-		case 781:
-			return "Poly Planar"
-		case 785:
-			return "Fischer Panda DE"
-		case 795:
-			return "Broyda Industries"
-		case 796:
-			return "Canadian Automotive"
-		case 797:
-			return "Tides Marine"
-		case 798:
-			return "Lumishore"
-		case 799:
-			return "Still Water Designs and Audio"
-		case 802:
-			return "BJ Technologies (Beneteau)"
-		case 803:
-			return "Gill Sensors"
-		case 811:
-			return "Blue Water Desalination"
-		case 815:
-			return "FLIR"
-		case 824:
-			return "Undheim Systems"
-		case 826:
-			return "Lewmar Inc"
-		case 838:
-			return "TeamSurv"
-		case 844:
-			return "Fell Marine"
-		case 847:
-			return "Oceanvolt"
-		case 862:
-			return "Prospec"
-		case 868:
-			return "Data Panel Corp"
-		case 890:
-			return "L3 Technologies"
-		case 894:
-			return "Rhodan Marine Systems"
-		case 896:
-			return "Nexfour Solutions"
-		case 905:
-			return "ASA Electronics"
-		case 909:
-			return "Marines Co (South Korea)"
-		case 911:
-			return "Nautic-on"
-		case 917:
-			return "Sentinel"
-		case 929:
-			return "JL Marine ystems"
-		case 930:
-			return "Ecotronix"
-		case 944:
-			return "Zontisa Marine"
-		case 951:
-			return "EXOR International"
-		case 962:
-			return "Timbolier Industries"
-		case 963:
-			return "TJC Micro"
-		case 968:
-			return "Cox Powertrain"
-		case 969:
-			return "Blue Seas"
-		case 981:
-			return "Kobelt Manufacturing Co. Ltd"
-		case 992:
-			return "Blue Ocean IOT"
-		case 997:
-			return "Xenta Systems"
-		case 999:
-			return "Signal K"
-		case 1004:
-			return "Ultraflex SpA"
-		case 1008:
-			return "Lintest SmartBoat"
-		case 1011:
-			return "Soundmax"
-		case 1020:
-			return "Team Italia Marine (Onyx Marine Automation s.r.l)"
-		case 1021:
-			return "Entratech"
-		case 1022:
-			return "ITC Inc."
-		case 1029:
-			return "The Marine Guardian LLC"
-		case 1047:
-			return "Sonic Corporation"
-		case 1051:
-			return "ProNav"
-		case 1053:
-			return "Vetus Maxwell INC."
-		case 1056:
-			return "Lithium Pros"
-		case 1059:
-			return "Boatrax"
-		case 1062:
-			return "Marol Co ltd"
-		case 1065:
-			return "CALYPSO Instruments"
-		case 1066:
-			return "Spot Zero Water"
-		case 1069:
-			return "Lithionics Battery LLC"
-		case 1070:
-			return "Quick-teck Electronics Ltd"
-		case 1075:
-			return "Uniden America"
-		case 1083:
-			return "Nauticoncept"
-		case 1084:
-			return "Shadow-Caster LED lighting LLC"
-		case 1085:
-			return "Wet Sounds, LLC"
-		case 1088:
-			return "E-T-A Circuit Breakers"
-		case 1092:
-			return "Scheiber"
-		case 1100:
-			return "Smart Yachts International Limited"
-		case 1109:
-			return "Dockmate"
-		case 1114:
-			return "Bobs Machine"
-		case 1118:
-			return "L3Harris ASV"
-		case 1119:
-			return "Balmar LLC"
-		case 1120:
-			return "Elettromedia spa"
-		case 1127:
-			return "Electromaax"
-		case 1140:
-			return "Across Oceans Systems Ltd."
-		case 1145:
-			return "Kiwi Yachting"
-		case 1150:
-			return "BSB Artificial Intelligence GmbH"
-		case 1151:
-			return "Orca Technologoes AS"
-		case 1154:
-			return "TBS Electronics BV"
-		case 1158:
-			return "Technoton Electroics"
-		case 1160:
-			return "MG Energy Systems B.V."
-		case 1169:
-			return "Sea Macine Robotics Inc."
-		case 1171:
-			return "Vista Manufacturing"
-		case 1183:
-			return "Zipwake"
-		case 1186:
-			return "Sailmon BV"
-		case 1192:
-			return "Airmoniq Pro Kft"
-		case 1194:
-			return "Sierra Marine"
-		case 1200:
-			return "Xinuo Information Technology (Xiamen)"
-		case 1218:
-			return "Septentrio"
-		case 1233:
-			return "NKE Marine Elecronics"
-		case 1238:
-			return "SuperTrack Aps"
-		case 1239:
-			return "Honda Electronics Co., LTD"
-		case 1245:
-			return "Raritan Engineering Company, Inc"
-		case 1249:
-			return "Integrated Power Solutions AG"
-		case 1260:
-			return "Interactive Technologies, Inc."
-		case 1283:
-			return "LTG-Tech"
-		case 1299:
-			return "Energy Solutions (UK) LTD."
-		case 1300:
-			return "WATT Fuel Cell Corp"
-		case 1302:
-			return "Pro Mainer"
-		case 1305:
-			return "Dragonfly Energy"
-		case 1306:
-			return "Koden Electronics Co., Ltd"
-		case 1311:
-			return "Humphree AB"
-		case 1316:
-			return "Hinkley Yachts"
-		case 1317:
-			return "Global Marine Management GmbH (GMM)"
-		case 1320:
-			return "Triskel Marine Ltd"
-		case 1330:
-			return "Warwick Control Technologies"
-		case 1331:
-			return "Dolphin Charger"
-		case 1337:
-			return "Barnacle Systems Inc"
-		case 1348:
-			return "Radian IoT, Inc."
-		case 1353:
-			return "Ocean LED Marine Ltd"
-		case 1359:
-			return "BluNav"
-		case 1361:
-			return "OVA (Nantong Saiyang Electronics Co., Ltd)"
-		case 1368:
-			return "RAD Propulsion"
-		case 1369:
-			return "Electric Yacht"
-		case 1372:
-			return "Elco Motor Yachts"
-		case 1384:
-			return "Tecnoseal Foundry S.r.l"
-		case 1385:
-			return "Pro Charging Systems, LLC"
-		case 1389:
-			return "EVEX Co., LTD"
-		case 1398:
-			return "Gobius Sensor Technology AB"
-		case 1403:
-			return "Arco Marine"
-		case 1408:
-			return "Lenco Marine Inc."
-		case 1413:
-			return "Naocontrol S.L."
-		case 1417:
-			return "Revatek"
-		case 1438:
-			return "Aeolionics"
-		case 1439:
-			return "PredictWind Ltd"
-		case 1440:
-			return "Egis Mobile Electric"
-		case 1445:
-			return "Starboard Yacht Group"
-		case 1446:
-			return "Roswell Marine"
-		case 1451:
-			return "ePropulsion (Guangdong ePropulsion Technology Ltd.)"
-		case 1452:
-			return "Micro-Air LLC"
-		case 1453:
-			return "Vital Battery"
-		case 1458:
-			return "Ride Controller LLC"
-		case 1460:
-			return "Tocaro Blue"
-		case 1461:
-			return "Vanquish Yachts"
-		case 1471:
-			return "FT Technologies"
-		case 1478:
-			return "Alps Alpine Co., Ltd."
-		case 1481:
-			return "E-Force Marine"
-		case 1482:
-			return "CMC Marine"
-		case 1483:
-			return "Nanjing Sandemarine Information Technology Co., Ltd."
-		case 1850:
-			return "Teleflex Marine (SeaStar Solutions)"
-		case 1851:
-			return "Raymarine"
-		case 1852:
-			return "Navionics"
-		case 1853:
-			return "Japan Radio Co"
-		case 1854:
-			return "Northstar Technologies"
-		case 1855:
-			return "Furuno"
-		case 1856:
-			return "Trimble"
-		case 1857:
-			return "Simrad"
-		case 1858:
-			return "Litton"
-		case 1859:
-			return "Kvasar AB"
-		case 1860:
-			return "MMP"
-		case 1861:
-			return "Vector Cantech"
-		case 1862:
-			return "Yamaha Marine"
-		case 1863:
-			return "Faria Instruments"
-default:
+	case 69:
+		return "ARKS Enterprises, Inc."
+	case 78:
+		return "FW Murphy/Enovation Controls"
+	case 80:
+		return "Twin Disc"
+	case 85:
+		return "Kohler Power Systems"
+	case 88:
+		return "Hemisphere GPS Inc"
+	case 116:
+		return "BEP Marine"
+	case 135:
+		return "Airmar"
+	case 137:
+		return "Maretron"
+	case 140:
+		return "Lowrance"
+	case 144:
+		return "Mercury Marine"
+	case 147:
+		return "Nautibus Electronic GmbH"
+	case 148:
+		return "Blue Water Data"
+	case 154:
+		return "Westerbeke"
+	case 157:
+		return "ISSPRO Inc"
+	case 161:
+		return "Offshore Systems (UK) Ltd."
+	case 163:
+		return "Evinrude/BRP"
+	case 165:
+		return "CPAC Systems AB"
+	case 168:
+		return "Xantrex Technology Inc."
+	case 169:
+		return "Marlin Technologies, Inc."
+	case 172:
+		return "Yanmar Marine"
+	case 174:
+		return "Volvo Penta"
+	case 175:
+		return "Honda Marine"
+	case 176:
+		return "Carling Technologies Inc. (Moritz Aerospace)"
+	case 185:
+		return "Beede Instruments"
+	case 192:
+		return "Floscan Instrument Co. Inc."
+	case 193:
+		return "Nobletec"
+	case 198:
+		return "Mystic Valley Communications"
+	case 199:
+		return "Actia"
+	case 200:
+		return "Honda Marine 2"
+	case 201:
+		return "Disenos Y Technologia"
+	case 211:
+		return "Digital Switching Systems"
+	case 215:
+		return "Xintex/Atena"
+	case 224:
+		return "EMMI NETWORK S.L."
+	case 225:
+		return "Honda Marine 3"
+	case 228:
+		return "ZF"
+	case 229:
+		return "Garmin"
+	case 233:
+		return "Yacht Monitoring Solutions"
+	case 235:
+		return "Sailormade Marine Telemetry/Tetra Technology LTD"
+	case 243:
+		return "Eride"
+	case 250:
+		return "Honda Marine 4"
+	case 257:
+		return "Honda Motor Company LTD"
+	case 272:
+		return "Groco"
+	case 273:
+		return "Actisense"
+	case 274:
+		return "Amphenol LTW Technology"
+	case 275:
+		return "Navico"
+	case 283:
+		return "Hamilton Jet"
+	case 285:
+		return "Sea Recovery"
+	case 286:
+		return "Coelmo SRL Italy"
+	case 295:
+		return "BEP Marine 2"
+	case 304:
+		return "Empir Bus"
+	case 305:
+		return "NovAtel"
+	case 306:
+		return "Sleipner Motor AS"
+	case 307:
+		return "MBW Technologies"
+	case 311:
+		return "Fischer Panda"
+	case 315:
+		return "ICOM"
+	case 328:
+		return "Qwerty"
+	case 329:
+		return "Dief"
+	case 341:
+		return "Boening Automationstechnologie GmbH & Co. KG"
+	case 345:
+		return "Korean Maritime University"
+	case 351:
+		return "Thrane and Thrane"
+	case 355:
+		return "Mastervolt"
+	case 356:
+		return "Fischer Panda Generators"
+	case 358:
+		return "Victron Energy"
+	case 370:
+		return "Rolls Royce Marine"
+	case 373:
+		return "Electronic Design"
+	case 374:
+		return "Northern Lights"
+	case 378:
+		return "Glendinning"
+	case 381:
+		return "B & G"
+	case 384:
+		return "Rose Point Navigation Systems"
+	case 385:
+		return "Johnson Outdoors Marine Electronics Inc Geonav"
+	case 394:
+		return "Capi 2"
+	case 396:
+		return "Beyond Measure"
+	case 400:
+		return "Livorsi Marine"
+	case 404:
+		return "ComNav"
+	case 409:
+		return "Chetco"
+	case 419:
+		return "Fusion Electronics"
+	case 421:
+		return "Standard Horizon"
+	case 422:
+		return "True Heading AB"
+	case 426:
+		return "Egersund Marine Electronics AS"
+	case 427:
+		return "em-trak Marine Electronics"
+	case 431:
+		return "Tohatsu Co, JP"
+	case 437:
+		return "Digital Yacht"
+	case 438:
+		return "Comar Systems Limited"
+	case 440:
+		return "Cummins"
+	case 443:
+		return "VDO (aka Continental-Corporation)"
+	case 451:
+		return "Parker Hannifin aka Village Marine Tech"
+	case 459:
+		return "Alltek Marine Electronics Corp"
+	case 460:
+		return "SAN GIORGIO S.E.I.N"
+	case 466:
+		return "Veethree Electronics & Marine"
+	case 467:
+		return "Humminbird Marine Electronics"
+	case 470:
+		return "SI-TEX Marine Electronics"
+	case 471:
+		return "Sea Cross Marine AB"
+	case 475:
+		return "GME aka Standard Communications Pty LTD"
+	case 476:
+		return "Humminbird Marine Electronics 2"
+	case 478:
+		return "Ocean Sat BV"
+	case 481:
+		return "Chetco Digitial Instruments"
+	case 493:
+		return "Watcheye"
+	case 499:
+		return "Lcj Capteurs"
+	case 502:
+		return "Attwood Marine"
+	case 503:
+		return "Naviop S.R.L."
+	case 504:
+		return "Vesper Marine Ltd"
+	case 510:
+		return "Marinesoft Co. LTD"
+	case 513:
+		return "Simarine"
+	case 517:
+		return "NoLand Engineering"
+	case 518:
+		return "Transas USA"
+	case 529:
+		return "National Instruments Korea"
+	case 530:
+		return "National Marine Electronics Association"
+	case 532:
+		return "Onwa Marine"
+	case 540:
+		return "Webasto"
+	case 571:
+		return "Marinecraft (South Korea)"
+	case 573:
+		return "McMurdo Group aka Orolia LTD"
+	case 578:
+		return "Advansea"
+	case 579:
+		return "KVH"
+	case 580:
+		return "San Jose Technology"
+	case 583:
+		return "Yacht Control"
+	case 586:
+		return "Suzuki Motor Corporation"
+	case 591:
+		return "US Coast Guard"
+	case 595:
+		return "Ship Module aka Customware"
+	case 600:
+		return "Aquatic AV"
+	case 605:
+		return "Aventics GmbH"
+	case 606:
+		return "Intellian"
+	case 612:
+		return "SamwonIT"
+	case 614:
+		return "Arlt Tecnologies"
+	case 637:
+		return "Bavaria Yacts"
+	case 641:
+		return "Diverse Yacht Services"
+	case 644:
+		return "Wema U.S.A dba KUS"
+	case 645:
+		return "Garmin 2"
+	case 658:
+		return "Shenzhen Jiuzhou Himunication"
+	case 688:
+		return "Rockford Corp"
+	case 699:
+		return "Harman International"
+	case 704:
+		return "JL Audio"
+	case 708:
+		return "Lars Thrane"
+	case 715:
+		return "Autonnic"
+	case 717:
+		return "Yacht Devices"
+	case 734:
+		return "REAP Systems"
+	case 735:
+		return "Au Electronics Group"
+	case 739:
+		return "LxNav"
+	case 741:
+		return "Littelfuse, Inc (formerly Carling Technologies)"
+	case 743:
+		return "DaeMyung"
+	case 744:
+		return "Woosung"
+	case 748:
+		return "ISOTTA IFRA srl"
+	case 773:
+		return "Clarion US"
+	case 776:
+		return "HMI Systems"
+	case 777:
+		return "Ocean Signal"
+	case 778:
+		return "Seekeeper"
+	case 781:
+		return "Poly Planar"
+	case 785:
+		return "Fischer Panda DE"
+	case 795:
+		return "Broyda Industries"
+	case 796:
+		return "Canadian Automotive"
+	case 797:
+		return "Tides Marine"
+	case 798:
+		return "Lumishore"
+	case 799:
+		return "Still Water Designs and Audio"
+	case 802:
+		return "BJ Technologies (Beneteau)"
+	case 803:
+		return "Gill Sensors"
+	case 811:
+		return "Blue Water Desalination"
+	case 815:
+		return "FLIR"
+	case 824:
+		return "Undheim Systems"
+	case 826:
+		return "Lewmar Inc"
+	case 838:
+		return "TeamSurv"
+	case 844:
+		return "Fell Marine"
+	case 847:
+		return "Oceanvolt"
+	case 862:
+		return "Prospec"
+	case 868:
+		return "Data Panel Corp"
+	case 890:
+		return "L3 Technologies"
+	case 894:
+		return "Rhodan Marine Systems"
+	case 896:
+		return "Nexfour Solutions"
+	case 905:
+		return "ASA Electronics"
+	case 909:
+		return "Marines Co (South Korea)"
+	case 911:
+		return "Nautic-on"
+	case 917:
+		return "Sentinel"
+	case 929:
+		return "JL Marine ystems"
+	case 930:
+		return "Ecotronix"
+	case 944:
+		return "Zontisa Marine"
+	case 951:
+		return "EXOR International"
+	case 962:
+		return "Timbolier Industries"
+	case 963:
+		return "TJC Micro"
+	case 968:
+		return "Cox Powertrain"
+	case 969:
+		return "Blue Seas"
+	case 981:
+		return "Kobelt Manufacturing Co. Ltd"
+	case 992:
+		return "Blue Ocean IOT"
+	case 997:
+		return "Xenta Systems"
+	case 999:
+		return "Signal K"
+	case 1004:
+		return "Ultraflex SpA"
+	case 1008:
+		return "Lintest SmartBoat"
+	case 1011:
+		return "Soundmax"
+	case 1020:
+		return "Team Italia Marine (Onyx Marine Automation s.r.l)"
+	case 1021:
+		return "Entratech"
+	case 1022:
+		return "ITC Inc."
+	case 1029:
+		return "The Marine Guardian LLC"
+	case 1047:
+		return "Sonic Corporation"
+	case 1051:
+		return "ProNav"
+	case 1053:
+		return "Vetus Maxwell INC."
+	case 1056:
+		return "Lithium Pros"
+	case 1059:
+		return "Boatrax"
+	case 1062:
+		return "Marol Co ltd"
+	case 1065:
+		return "CALYPSO Instruments"
+	case 1066:
+		return "Spot Zero Water"
+	case 1069:
+		return "Lithionics Battery LLC"
+	case 1070:
+		return "Quick-teck Electronics Ltd"
+	case 1075:
+		return "Uniden America"
+	case 1083:
+		return "Nauticoncept"
+	case 1084:
+		return "Shadow-Caster LED lighting LLC"
+	case 1085:
+		return "Wet Sounds, LLC"
+	case 1088:
+		return "E-T-A Circuit Breakers"
+	case 1092:
+		return "Scheiber"
+	case 1100:
+		return "Smart Yachts International Limited"
+	case 1109:
+		return "Dockmate"
+	case 1114:
+		return "Bobs Machine"
+	case 1118:
+		return "L3Harris ASV"
+	case 1119:
+		return "Balmar LLC"
+	case 1120:
+		return "Elettromedia spa"
+	case 1127:
+		return "Electromaax"
+	case 1140:
+		return "Across Oceans Systems Ltd."
+	case 1145:
+		return "Kiwi Yachting"
+	case 1150:
+		return "BSB Artificial Intelligence GmbH"
+	case 1151:
+		return "Orca Technologoes AS"
+	case 1154:
+		return "TBS Electronics BV"
+	case 1158:
+		return "Technoton Electroics"
+	case 1160:
+		return "MG Energy Systems B.V."
+	case 1169:
+		return "Sea Macine Robotics Inc."
+	case 1171:
+		return "Vista Manufacturing"
+	case 1183:
+		return "Zipwake"
+	case 1186:
+		return "Sailmon BV"
+	case 1192:
+		return "Airmoniq Pro Kft"
+	case 1194:
+		return "Sierra Marine"
+	case 1200:
+		return "Xinuo Information Technology (Xiamen)"
+	case 1218:
+		return "Septentrio"
+	case 1233:
+		return "NKE Marine Elecronics"
+	case 1238:
+		return "SuperTrack Aps"
+	case 1239:
+		return "Honda Electronics Co., LTD"
+	case 1245:
+		return "Raritan Engineering Company, Inc"
+	case 1249:
+		return "Integrated Power Solutions AG"
+	case 1260:
+		return "Interactive Technologies, Inc."
+	case 1283:
+		return "LTG-Tech"
+	case 1299:
+		return "Energy Solutions (UK) LTD."
+	case 1300:
+		return "WATT Fuel Cell Corp"
+	case 1302:
+		return "Pro Mainer"
+	case 1305:
+		return "Dragonfly Energy"
+	case 1306:
+		return "Koden Electronics Co., Ltd"
+	case 1311:
+		return "Humphree AB"
+	case 1316:
+		return "Hinkley Yachts"
+	case 1317:
+		return "Global Marine Management GmbH (GMM)"
+	case 1320:
+		return "Triskel Marine Ltd"
+	case 1330:
+		return "Warwick Control Technologies"
+	case 1331:
+		return "Dolphin Charger"
+	case 1337:
+		return "Barnacle Systems Inc"
+	case 1348:
+		return "Radian IoT, Inc."
+	case 1353:
+		return "Ocean LED Marine Ltd"
+	case 1359:
+		return "BluNav"
+	case 1361:
+		return "OVA (Nantong Saiyang Electronics Co., Ltd)"
+	case 1368:
+		return "RAD Propulsion"
+	case 1369:
+		return "Electric Yacht"
+	case 1372:
+		return "Elco Motor Yachts"
+	case 1384:
+		return "Tecnoseal Foundry S.r.l"
+	case 1385:
+		return "Pro Charging Systems, LLC"
+	case 1389:
+		return "EVEX Co., LTD"
+	case 1398:
+		return "Gobius Sensor Technology AB"
+	case 1403:
+		return "Arco Marine"
+	case 1408:
+		return "Lenco Marine Inc."
+	case 1413:
+		return "Naocontrol S.L."
+	case 1417:
+		return "Revatek"
+	case 1438:
+		return "Aeolionics"
+	case 1439:
+		return "PredictWind Ltd"
+	case 1440:
+		return "Egis Mobile Electric"
+	case 1445:
+		return "Starboard Yacht Group"
+	case 1446:
+		return "Roswell Marine"
+	case 1451:
+		return "ePropulsion (Guangdong ePropulsion Technology Ltd.)"
+	case 1452:
+		return "Micro-Air LLC"
+	case 1453:
+		return "Vital Battery"
+	case 1458:
+		return "Ride Controller LLC"
+	case 1460:
+		return "Tocaro Blue"
+	case 1461:
+		return "Vanquish Yachts"
+	case 1471:
+		return "FT Technologies"
+	case 1478:
+		return "Alps Alpine Co., Ltd."
+	case 1481:
+		return "E-Force Marine"
+	case 1482:
+		return "CMC Marine"
+	case 1483:
+		return "Nanjing Sandemarine Information Technology Co., Ltd."
+	case 1850:
+		return "Teleflex Marine (SeaStar Solutions)"
+	case 1851:
+		return "Raymarine"
+	case 1852:
+		return "Navionics"
+	case 1853:
+		return "Japan Radio Co"
+	case 1854:
+		return "Northstar Technologies"
+	case 1855:
+		return "Furuno"
+	case 1856:
+		return "Trimble"
+	case 1857:
+		return "Simrad"
+	case 1858:
+		return "Litton"
+	case 1859:
+		return "Kvasar AB"
+	case 1860:
+		return "MMP"
+	case 1861:
+		return "Vector Cantech"
+	case 1862:
+		return "Yamaha Marine"
+	case 1863:
+		return "Faria Instruments"
+	default:
 		return fmt.Sprintf("ManufacturerCodeConst(%d)", uint16(e))
 	}
 }
+
 type CzoneAlarmTypeConst uint16
+
 const (
-	ACVoltageError	CzoneAlarmTypeConst = 1
-	ACFrequencyError	CzoneAlarmTypeConst = 2
-	ACHighPower	CzoneAlarmTypeConst = 3
-	DCLowVoltage	CzoneAlarmTypeConst = 4
-	DCVeryLowVoltage	CzoneAlarmTypeConst = 5
-	DCHighVoltage	CzoneAlarmTypeConst = 6
-	DCLowBatteryCapacity	CzoneAlarmTypeConst = 7
-	OutOfRange	CzoneAlarmTypeConst = 10
-	LowRunCurrent	CzoneAlarmTypeConst = 11
-	OverCurrent	CzoneAlarmTypeConst = 12
-	ShortCircuit	CzoneAlarmTypeConst = 13
-	MissingCommander	CzoneAlarmTypeConst = 14
-	ReverseCurrent	CzoneAlarmTypeConst = 15
-	CalibrationError	CzoneAlarmTypeConst = 16
-	MissingOutput	CzoneAlarmTypeConst = 17
-	SystemsOn	CzoneAlarmTypeConst = 18
-	ACVeryHighPower	CzoneAlarmTypeConst = 19
-	ACLowPower	CzoneAlarmTypeConst = 20
-	DCVeryLowBatteryCapacity	CzoneAlarmTypeConst = 21
-	BatteryFull	CzoneAlarmTypeConst = 22
-	DCLoadShedLow	CzoneAlarmTypeConst = 23
-	DCLoadShedVeryLow	CzoneAlarmTypeConst = 24
-	ACLoadShedLow	CzoneAlarmTypeConst = 25
-	ACLoadShedVeryLow	CzoneAlarmTypeConst = 26
-	ReversePolarity	CzoneAlarmTypeConst = 27
-	ManualOverride	CzoneAlarmTypeConst = 28
-	Mastervolt_2	CzoneAlarmTypeConst = 29
-	HardwareFault	CzoneAlarmTypeConst = 30
-	NoACSupply	CzoneAlarmTypeConst = 31
-	PGNSwitchingOn	CzoneAlarmTypeConst = 34
-	LowCanbusVoltage	CzoneAlarmTypeConst = 35
-	BlownFuse	CzoneAlarmTypeConst = 36
-	ManualBypass	CzoneAlarmTypeConst = 37
-	GenericAlarm	CzoneAlarmTypeConst = 38
-	BatteryTemperatureAlarm	CzoneAlarmTypeConst = 39
-	TemperatureSensorError	CzoneAlarmTypeConst = 40
-	ACInOutOfRange	CzoneAlarmTypeConst = 41
-	DeviceInOverload	CzoneAlarmTypeConst = 42
-	HighTemperature	CzoneAlarmTypeConst = 43
-	InverterChargerInstallationErr	CzoneAlarmTypeConst = 44
-	InverterInstallationError	CzoneAlarmTypeConst = 45
-	ChargerInstallationError	CzoneAlarmTypeConst = 46
-	CableVoltageDropTooHigh	CzoneAlarmTypeConst = 47
-	ShuntMistmatch	CzoneAlarmTypeConst = 48
-	CoolingFanError	CzoneAlarmTypeConst = 49
-	MastershuntFuseBlown	CzoneAlarmTypeConst = 50
-	HighTemperature_2	CzoneAlarmTypeConst = 51
-	OverPressure	CzoneAlarmTypeConst = 52
-	LowPressure	CzoneAlarmTypeConst = 53
-	RapidDeflation	CzoneAlarmTypeConst = 54
-	InverterChargerOverTemperature	CzoneAlarmTypeConst = 55
-	ConfirmOn	CzoneAlarmTypeConst = 56
-	BatterySafety	CzoneAlarmTypeConst = 57
-	StopCharging	CzoneAlarmTypeConst = 58
-	CheckBatteryRelay	CzoneAlarmTypeConst = 59
-	BatteryHardwareFailure	CzoneAlarmTypeConst = 60
-	BatteryOverCurrent	CzoneAlarmTypeConst = 61
-	BatteryTemperatureLow	CzoneAlarmTypeConst = 62
-	BatteryTemperatureHigh	CzoneAlarmTypeConst = 63
-	BatteryLast100	CzoneAlarmTypeConst = 64
+	ACVoltageError                 CzoneAlarmTypeConst = 1
+	ACFrequencyError               CzoneAlarmTypeConst = 2
+	ACHighPower                    CzoneAlarmTypeConst = 3
+	DCLowVoltage                   CzoneAlarmTypeConst = 4
+	DCVeryLowVoltage               CzoneAlarmTypeConst = 5
+	DCHighVoltage                  CzoneAlarmTypeConst = 6
+	DCLowBatteryCapacity           CzoneAlarmTypeConst = 7
+	OutOfRange                     CzoneAlarmTypeConst = 10
+	LowRunCurrent                  CzoneAlarmTypeConst = 11
+	OverCurrent                    CzoneAlarmTypeConst = 12
+	ShortCircuit                   CzoneAlarmTypeConst = 13
+	MissingCommander               CzoneAlarmTypeConst = 14
+	ReverseCurrent                 CzoneAlarmTypeConst = 15
+	CalibrationError               CzoneAlarmTypeConst = 16
+	MissingOutput                  CzoneAlarmTypeConst = 17
+	SystemsOn                      CzoneAlarmTypeConst = 18
+	ACVeryHighPower                CzoneAlarmTypeConst = 19
+	ACLowPower                     CzoneAlarmTypeConst = 20
+	DCVeryLowBatteryCapacity       CzoneAlarmTypeConst = 21
+	BatteryFull                    CzoneAlarmTypeConst = 22
+	DCLoadShedLow                  CzoneAlarmTypeConst = 23
+	DCLoadShedVeryLow              CzoneAlarmTypeConst = 24
+	ACLoadShedLow                  CzoneAlarmTypeConst = 25
+	ACLoadShedVeryLow              CzoneAlarmTypeConst = 26
+	ReversePolarity                CzoneAlarmTypeConst = 27
+	ManualOverride                 CzoneAlarmTypeConst = 28
+	Mastervolt_2                   CzoneAlarmTypeConst = 29
+	HardwareFault                  CzoneAlarmTypeConst = 30
+	NoACSupply                     CzoneAlarmTypeConst = 31
+	PGNSwitchingOn                 CzoneAlarmTypeConst = 34
+	LowCanbusVoltage               CzoneAlarmTypeConst = 35
+	BlownFuse                      CzoneAlarmTypeConst = 36
+	ManualBypass                   CzoneAlarmTypeConst = 37
+	GenericAlarm                   CzoneAlarmTypeConst = 38
+	BatteryTemperatureAlarm        CzoneAlarmTypeConst = 39
+	TemperatureSensorError         CzoneAlarmTypeConst = 40
+	ACInOutOfRange                 CzoneAlarmTypeConst = 41
+	DeviceInOverload               CzoneAlarmTypeConst = 42
+	HighTemperature                CzoneAlarmTypeConst = 43
+	InverterChargerInstallationErr CzoneAlarmTypeConst = 44
+	InverterInstallationError      CzoneAlarmTypeConst = 45
+	ChargerInstallationError       CzoneAlarmTypeConst = 46
+	CableVoltageDropTooHigh        CzoneAlarmTypeConst = 47
+	ShuntMistmatch                 CzoneAlarmTypeConst = 48
+	CoolingFanError                CzoneAlarmTypeConst = 49
+	MastershuntFuseBlown           CzoneAlarmTypeConst = 50
+	HighTemperature_2              CzoneAlarmTypeConst = 51
+	OverPressure                   CzoneAlarmTypeConst = 52
+	LowPressure                    CzoneAlarmTypeConst = 53
+	RapidDeflation                 CzoneAlarmTypeConst = 54
+	InverterChargerOverTemperature CzoneAlarmTypeConst = 55
+	ConfirmOn                      CzoneAlarmTypeConst = 56
+	BatterySafety                  CzoneAlarmTypeConst = 57
+	StopCharging                   CzoneAlarmTypeConst = 58
+	CheckBatteryRelay              CzoneAlarmTypeConst = 59
+	BatteryHardwareFailure         CzoneAlarmTypeConst = 60
+	BatteryOverCurrent             CzoneAlarmTypeConst = 61
+	BatteryTemperatureLow          CzoneAlarmTypeConst = 62
+	BatteryTemperatureHigh         CzoneAlarmTypeConst = 63
+	BatteryLast100                 CzoneAlarmTypeConst = 64
 )
 
-func (e CzoneAlarmTypeConst) GoString() string {return e.String() }
+func (e CzoneAlarmTypeConst) GoString() string { return e.String() }
 func (e CzoneAlarmTypeConst) String() string {
 	switch e {
-		case 1:
-			return "AC Voltage Error"
-		case 2:
-			return "AC Frequency Error"
-		case 3:
-			return "AC High Power"
-		case 4:
-			return "DC Low Voltage"
-		case 5:
-			return "DC Very Low Voltage"
-		case 6:
-			return "DC High Voltage"
-		case 7:
-			return "DC Low Battery Capacity"
-		case 10:
-			return "Out of Range"
-		case 11:
-			return "Low Run Current"
-		case 12:
-			return "Over Current"
-		case 13:
-			return "Short Circuit"
-		case 14:
-			return "Missing Commander"
-		case 15:
-			return "Reverse Current"
-		case 16:
-			return "Calibration Error"
-		case 17:
-			return "Missing Output"
-		case 18:
-			return "Systems On"
-		case 19:
-			return "AC Very High Power"
-		case 20:
-			return "AC Low Power"
-		case 21:
-			return "DC Very Low Battery Capacity"
-		case 22:
-			return "Battery Full"
-		case 23:
-			return "DC Load Shed Low"
-		case 24:
-			return "DC Load Shed Very Low"
-		case 25:
-			return "AC Load Shed Low"
-		case 26:
-			return "AC Load Shed Very Low"
-		case 27:
-			return "Reverse Polarity"
-		case 28:
-			return "Manual Override"
-		case 29:
-			return "Mastervolt"
-		case 30:
-			return "Hardware Fault"
-		case 31:
-			return "No AC Supply"
-		case 34:
-			return "PGN Switching On"
-		case 35:
-			return "Low Canbus Voltage"
-		case 36:
-			return "Blown Fuse"
-		case 37:
-			return "Manual Bypass"
-		case 38:
-			return "Generic Alarm"
-		case 39:
-			return "Battery Temperature Alarm"
-		case 40:
-			return "Temperature Sensor Error"
-		case 41:
-			return "AC IN Out Of Range"
-		case 42:
-			return "Device In Overload"
-		case 43:
-			return "High Temperature"
-		case 44:
-			return "Inverter/Charger Installation Error"
-		case 45:
-			return "Inverter Installation Error"
-		case 46:
-			return "Charger Installation Error"
-		case 47:
-			return "Cable Voltage Drop Too High"
-		case 48:
-			return "Shunt mistmatch"
-		case 49:
-			return "Cooling Fan Error"
-		case 50:
-			return "Mastershunt Fuse Blown"
-		case 51:
-			return "High Temperature"
-		case 52:
-			return "Over Pressure"
-		case 53:
-			return "Low Pressure"
-		case 54:
-			return "Rapid Deflation"
-		case 55:
-			return "Inverter/Charger Over Temperature"
-		case 56:
-			return "Confirm On"
-		case 57:
-			return "Battery Safety"
-		case 58:
-			return "Stop Charging"
-		case 59:
-			return "Check Battery Relay"
-		case 60:
-			return "Battery Hardware Failure"
-		case 61:
-			return "Battery Over Current"
-		case 62:
-			return "Battery Temperature Low"
-		case 63:
-			return "Battery Temperature High"
-		case 64:
-			return "Battery Last 100"
-default:
+	case 1:
+		return "AC Voltage Error"
+	case 2:
+		return "AC Frequency Error"
+	case 3:
+		return "AC High Power"
+	case 4:
+		return "DC Low Voltage"
+	case 5:
+		return "DC Very Low Voltage"
+	case 6:
+		return "DC High Voltage"
+	case 7:
+		return "DC Low Battery Capacity"
+	case 10:
+		return "Out of Range"
+	case 11:
+		return "Low Run Current"
+	case 12:
+		return "Over Current"
+	case 13:
+		return "Short Circuit"
+	case 14:
+		return "Missing Commander"
+	case 15:
+		return "Reverse Current"
+	case 16:
+		return "Calibration Error"
+	case 17:
+		return "Missing Output"
+	case 18:
+		return "Systems On"
+	case 19:
+		return "AC Very High Power"
+	case 20:
+		return "AC Low Power"
+	case 21:
+		return "DC Very Low Battery Capacity"
+	case 22:
+		return "Battery Full"
+	case 23:
+		return "DC Load Shed Low"
+	case 24:
+		return "DC Load Shed Very Low"
+	case 25:
+		return "AC Load Shed Low"
+	case 26:
+		return "AC Load Shed Very Low"
+	case 27:
+		return "Reverse Polarity"
+	case 28:
+		return "Manual Override"
+	case 29:
+		return "Mastervolt"
+	case 30:
+		return "Hardware Fault"
+	case 31:
+		return "No AC Supply"
+	case 34:
+		return "PGN Switching On"
+	case 35:
+		return "Low Canbus Voltage"
+	case 36:
+		return "Blown Fuse"
+	case 37:
+		return "Manual Bypass"
+	case 38:
+		return "Generic Alarm"
+	case 39:
+		return "Battery Temperature Alarm"
+	case 40:
+		return "Temperature Sensor Error"
+	case 41:
+		return "AC IN Out Of Range"
+	case 42:
+		return "Device In Overload"
+	case 43:
+		return "High Temperature"
+	case 44:
+		return "Inverter/Charger Installation Error"
+	case 45:
+		return "Inverter Installation Error"
+	case 46:
+		return "Charger Installation Error"
+	case 47:
+		return "Cable Voltage Drop Too High"
+	case 48:
+		return "Shunt mistmatch"
+	case 49:
+		return "Cooling Fan Error"
+	case 50:
+		return "Mastershunt Fuse Blown"
+	case 51:
+		return "High Temperature"
+	case 52:
+		return "Over Pressure"
+	case 53:
+		return "Low Pressure"
+	case 54:
+		return "Rapid Deflation"
+	case 55:
+		return "Inverter/Charger Over Temperature"
+	case 56:
+		return "Confirm On"
+	case 57:
+		return "Battery Safety"
+	case 58:
+		return "Stop Charging"
+	case 59:
+		return "Check Battery Relay"
+	case 60:
+		return "Battery Hardware Failure"
+	case 61:
+		return "Battery Over Current"
+	case 62:
+		return "Battery Temperature Low"
+	case 63:
+		return "Battery Temperature High"
+	case 64:
+		return "Battery Last 100"
+	default:
 		return fmt.Sprintf("CzoneAlarmTypeConst(%d)", uint16(e))
 	}
 }
+
 type AISMessageIDConst uint8
+
 const (
-	ScheduledClassAPositionReport	AISMessageIDConst = 1
-	AssignedScheduledClassAPositio	AISMessageIDConst = 2
-	InterrogatedClassAPositionRepo	AISMessageIDConst = 3
-	BaseStationReport	AISMessageIDConst = 4
-	StaticAndVoyageRelatedData	AISMessageIDConst = 5
-	BinaryAddressedMessage	AISMessageIDConst = 6
-	BinaryAcknowledgement	AISMessageIDConst = 7
-	BinaryBroadcastMessage	AISMessageIDConst = 8
-	StandardSARAircraftPositionRep	AISMessageIDConst = 9
-	UTCDateInquiry	AISMessageIDConst = 10
-	UTCDateResponse	AISMessageIDConst = 11
-	SafetyRelatedAddressedMessage	AISMessageIDConst = 12
-	SafetyRelatedAcknowledgement	AISMessageIDConst = 13
-	SatetyRelatedBroadcastMessage	AISMessageIDConst = 14
-	Interrogation	AISMessageIDConst = 15
-	AssignmentModeCommand	AISMessageIDConst = 16
-	DGNSSBroadcastBinaryMessage	AISMessageIDConst = 17
-	StandardClassBPositionReport	AISMessageIDConst = 18
-	ExtendedClassBPositionReport	AISMessageIDConst = 19
-	DataLinkManagementMessage	AISMessageIDConst = 20
-	ATONReport	AISMessageIDConst = 21
-	ChannelManagement	AISMessageIDConst = 22
-	GroupAssignmentCommand	AISMessageIDConst = 23
-	StaticDataReport	AISMessageIDConst = 24
-	SingleSlotBinaryMessage	AISMessageIDConst = 25
-	MultipleSlotBinaryMessage	AISMessageIDConst = 26
-	PositionReportForLongRangeAppl	AISMessageIDConst = 27
+	ScheduledClassAPositionReport  AISMessageIDConst = 1
+	AssignedScheduledClassAPositio AISMessageIDConst = 2
+	InterrogatedClassAPositionRepo AISMessageIDConst = 3
+	BaseStationReport              AISMessageIDConst = 4
+	StaticAndVoyageRelatedData     AISMessageIDConst = 5
+	BinaryAddressedMessage         AISMessageIDConst = 6
+	BinaryAcknowledgement          AISMessageIDConst = 7
+	BinaryBroadcastMessage         AISMessageIDConst = 8
+	StandardSARAircraftPositionRep AISMessageIDConst = 9
+	UTCDateInquiry                 AISMessageIDConst = 10
+	UTCDateResponse                AISMessageIDConst = 11
+	SafetyRelatedAddressedMessage  AISMessageIDConst = 12
+	SafetyRelatedAcknowledgement   AISMessageIDConst = 13
+	SatetyRelatedBroadcastMessage  AISMessageIDConst = 14
+	Interrogation                  AISMessageIDConst = 15
+	AssignmentModeCommand          AISMessageIDConst = 16
+	DGNSSBroadcastBinaryMessage    AISMessageIDConst = 17
+	StandardClassBPositionReport   AISMessageIDConst = 18
+	ExtendedClassBPositionReport   AISMessageIDConst = 19
+	DataLinkManagementMessage      AISMessageIDConst = 20
+	ATONReport                     AISMessageIDConst = 21
+	ChannelManagement              AISMessageIDConst = 22
+	GroupAssignmentCommand         AISMessageIDConst = 23
+	StaticDataReport               AISMessageIDConst = 24
+	SingleSlotBinaryMessage        AISMessageIDConst = 25
+	MultipleSlotBinaryMessage      AISMessageIDConst = 26
+	PositionReportForLongRangeAppl AISMessageIDConst = 27
 )
 
-func (e AISMessageIDConst) GoString() string {return e.String() }
+func (e AISMessageIDConst) GoString() string { return e.String() }
 func (e AISMessageIDConst) String() string {
 	switch e {
-		case 1:
-			return "Scheduled Class A position report"
-		case 2:
-			return "Assigned scheduled Class A position report"
-		case 3:
-			return "Interrogated Class A position report"
-		case 4:
-			return "Base station report"
-		case 5:
-			return "Static and voyage related data"
-		case 6:
-			return "Binary addressed message"
-		case 7:
-			return "Binary acknowledgement"
-		case 8:
-			return "Binary broadcast message"
-		case 9:
-			return "Standard SAR aircraft position report"
-		case 10:
-			return "UTC/date inquiry"
-		case 11:
-			return "UTC/date response"
-		case 12:
-			return "Safety related addressed message"
-		case 13:
-			return "Safety related acknowledgement"
-		case 14:
-			return "Satety related broadcast message"
-		case 15:
-			return "Interrogation"
-		case 16:
-			return "Assignment mode command"
-		case 17:
-			return "DGNSS broadcast binary message"
-		case 18:
-			return "Standard Class B position report"
-		case 19:
-			return "Extended Class B position report"
-		case 20:
-			return "Data link management message"
-		case 21:
-			return "ATON report"
-		case 22:
-			return "Channel management"
-		case 23:
-			return "Group assignment command"
-		case 24:
-			return "Static data report"
-		case 25:
-			return "Single slot binary message"
-		case 26:
-			return "Multiple slot binary message"
-		case 27:
-			return "Position report for long range applications"
-default:
+	case 1:
+		return "Scheduled Class A position report"
+	case 2:
+		return "Assigned scheduled Class A position report"
+	case 3:
+		return "Interrogated Class A position report"
+	case 4:
+		return "Base station report"
+	case 5:
+		return "Static and voyage related data"
+	case 6:
+		return "Binary addressed message"
+	case 7:
+		return "Binary acknowledgement"
+	case 8:
+		return "Binary broadcast message"
+	case 9:
+		return "Standard SAR aircraft position report"
+	case 10:
+		return "UTC/date inquiry"
+	case 11:
+		return "UTC/date response"
+	case 12:
+		return "Safety related addressed message"
+	case 13:
+		return "Safety related acknowledgement"
+	case 14:
+		return "Satety related broadcast message"
+	case 15:
+		return "Interrogation"
+	case 16:
+		return "Assignment mode command"
+	case 17:
+		return "DGNSS broadcast binary message"
+	case 18:
+		return "Standard Class B position report"
+	case 19:
+		return "Extended Class B position report"
+	case 20:
+		return "Data link management message"
+	case 21:
+		return "ATON report"
+	case 22:
+		return "Channel management"
+	case 23:
+		return "Group assignment command"
+	case 24:
+		return "Static data report"
+	case 25:
+		return "Single slot binary message"
+	case 26:
+		return "Multiple slot binary message"
+	case 27:
+		return "Position report for long range applications"
+	default:
 		return fmt.Sprintf("AISMessageIDConst(%d)", uint8(e))
 	}
 }
+
 type ShipTypeConst uint8
+
 const (
-	Unavailable	ShipTypeConst = 0
-	WingInGround	ShipTypeConst = 20
-	WingInGroundHazardCatX	ShipTypeConst = 21
-	WingInGroundHazardCatY	ShipTypeConst = 22
-	WingInGroundHazardCatZ	ShipTypeConst = 23
-	WingInGroundHazardCatOs	ShipTypeConst = 24
-	WingInGroundNoAdditionalInform	ShipTypeConst = 29
-	Fishing	ShipTypeConst = 30
-	Towing	ShipTypeConst = 31
-	TowingExceeds200MOrWiderThan25	ShipTypeConst = 32
-	EngagedInDredgingOrUnderwaterO	ShipTypeConst = 33
-	EngagedInDivingOperations	ShipTypeConst = 34
-	EngagedInMilitaryOperations	ShipTypeConst = 35
-	Sailing	ShipTypeConst = 36
-	Pleasure	ShipTypeConst = 37
-	HighSpeedCraft	ShipTypeConst = 40
-	HighSpeedCraftHazardCatX	ShipTypeConst = 41
-	HighSpeedCraftHazardCatY	ShipTypeConst = 42
-	HighSpeedCraftHazardCatZ	ShipTypeConst = 43
-	HighSpeedCraftHazardCatOs	ShipTypeConst = 44
-	HighSpeedCraftNoAdditionalInfo	ShipTypeConst = 49
-	PilotVessel	ShipTypeConst = 50
-	SAR	ShipTypeConst = 51
-	Tug	ShipTypeConst = 52
-	PortTender	ShipTypeConst = 53
-	AntiPollution	ShipTypeConst = 54
-	LawEnforcement	ShipTypeConst = 55
-	Spare	ShipTypeConst = 56
-	Spare2	ShipTypeConst = 57
-	Medical	ShipTypeConst = 58
-	ShipsAndAircraftOfStatesNotPar	ShipTypeConst = 59
-	PassengerShip	ShipTypeConst = 60
-	PassengerShipHazardCatX	ShipTypeConst = 61
-	PassengerShipHazardCatY	ShipTypeConst = 62
-	PassengerShipHazardCatZ	ShipTypeConst = 63
-	PassengerShipHazardCatOs	ShipTypeConst = 64
-	PassengerShipNoAdditionalInfor	ShipTypeConst = 69
-	CargoShip	ShipTypeConst = 70
-	CargoShipHazardCatX	ShipTypeConst = 71
-	CargoShipHazardCatY	ShipTypeConst = 72
-	CargoShipHazardCatZ	ShipTypeConst = 73
-	CargoShipHazardCatOs	ShipTypeConst = 74
-	CargoShipNoAdditionalInformati	ShipTypeConst = 79
-	Tanker	ShipTypeConst = 80
-	TankerHazardCatX	ShipTypeConst = 81
-	TankerHazardCatY	ShipTypeConst = 82
-	TankerHazardCatZ	ShipTypeConst = 83
-	TankerHazardCatOs	ShipTypeConst = 84
-	TankerNoAdditionalInformation	ShipTypeConst = 89
-	Other	ShipTypeConst = 90
-	OtherHazardCatX	ShipTypeConst = 91
-	OtherHazardCatY	ShipTypeConst = 92
-	OtherHazardCatZ	ShipTypeConst = 93
-	OtherHazardCatOs	ShipTypeConst = 94
-	OtherNoAdditionalInformation	ShipTypeConst = 99
+	Unavailable                    ShipTypeConst = 0
+	WingInGround                   ShipTypeConst = 20
+	WingInGroundHazardCatX         ShipTypeConst = 21
+	WingInGroundHazardCatY         ShipTypeConst = 22
+	WingInGroundHazardCatZ         ShipTypeConst = 23
+	WingInGroundHazardCatOs        ShipTypeConst = 24
+	WingInGroundNoAdditionalInform ShipTypeConst = 29
+	Fishing                        ShipTypeConst = 30
+	Towing                         ShipTypeConst = 31
+	TowingExceeds200MOrWiderThan25 ShipTypeConst = 32
+	EngagedInDredgingOrUnderwaterO ShipTypeConst = 33
+	EngagedInDivingOperations      ShipTypeConst = 34
+	EngagedInMilitaryOperations    ShipTypeConst = 35
+	Sailing                        ShipTypeConst = 36
+	Pleasure                       ShipTypeConst = 37
+	HighSpeedCraft                 ShipTypeConst = 40
+	HighSpeedCraftHazardCatX       ShipTypeConst = 41
+	HighSpeedCraftHazardCatY       ShipTypeConst = 42
+	HighSpeedCraftHazardCatZ       ShipTypeConst = 43
+	HighSpeedCraftHazardCatOs      ShipTypeConst = 44
+	HighSpeedCraftNoAdditionalInfo ShipTypeConst = 49
+	PilotVessel                    ShipTypeConst = 50
+	SAR                            ShipTypeConst = 51
+	Tug                            ShipTypeConst = 52
+	PortTender                     ShipTypeConst = 53
+	AntiPollution                  ShipTypeConst = 54
+	LawEnforcement                 ShipTypeConst = 55
+	Spare                          ShipTypeConst = 56
+	Spare2                         ShipTypeConst = 57
+	Medical                        ShipTypeConst = 58
+	ShipsAndAircraftOfStatesNotPar ShipTypeConst = 59
+	PassengerShip                  ShipTypeConst = 60
+	PassengerShipHazardCatX        ShipTypeConst = 61
+	PassengerShipHazardCatY        ShipTypeConst = 62
+	PassengerShipHazardCatZ        ShipTypeConst = 63
+	PassengerShipHazardCatOs       ShipTypeConst = 64
+	PassengerShipNoAdditionalInfor ShipTypeConst = 69
+	CargoShip                      ShipTypeConst = 70
+	CargoShipHazardCatX            ShipTypeConst = 71
+	CargoShipHazardCatY            ShipTypeConst = 72
+	CargoShipHazardCatZ            ShipTypeConst = 73
+	CargoShipHazardCatOs           ShipTypeConst = 74
+	CargoShipNoAdditionalInformati ShipTypeConst = 79
+	Tanker                         ShipTypeConst = 80
+	TankerHazardCatX               ShipTypeConst = 81
+	TankerHazardCatY               ShipTypeConst = 82
+	TankerHazardCatZ               ShipTypeConst = 83
+	TankerHazardCatOs              ShipTypeConst = 84
+	TankerNoAdditionalInformation  ShipTypeConst = 89
+	Other                          ShipTypeConst = 90
+	OtherHazardCatX                ShipTypeConst = 91
+	OtherHazardCatY                ShipTypeConst = 92
+	OtherHazardCatZ                ShipTypeConst = 93
+	OtherHazardCatOs               ShipTypeConst = 94
+	OtherNoAdditionalInformation   ShipTypeConst = 99
 )
 
-func (e ShipTypeConst) GoString() string {return e.String() }
+func (e ShipTypeConst) GoString() string { return e.String() }
 func (e ShipTypeConst) String() string {
 	switch e {
-		case 0:
-			return "Unavailable"
-		case 20:
-			return "Wing In Ground"
-		case 21:
-			return "Wing In Ground (hazard cat X)"
-		case 22:
-			return "Wing In Ground (hazard cat Y)"
-		case 23:
-			return "Wing In Ground (hazard cat Z)"
-		case 24:
-			return "Wing In Ground (hazard cat OS)"
-		case 29:
-			return "Wing In Ground (no additional information)"
-		case 30:
-			return "Fishing"
-		case 31:
-			return "Towing"
-		case 32:
-			return "Towing exceeds 200m or wider than 25m"
-		case 33:
-			return "Engaged in dredging or underwater operations"
-		case 34:
-			return "Engaged in diving operations"
-		case 35:
-			return "Engaged in military operations"
-		case 36:
-			return "Sailing"
-		case 37:
-			return "Pleasure"
-		case 40:
-			return "High speed craft"
-		case 41:
-			return "High speed craft (hazard cat X)"
-		case 42:
-			return "High speed craft (hazard cat Y)"
-		case 43:
-			return "High speed craft (hazard cat Z)"
-		case 44:
-			return "High speed craft (hazard cat OS)"
-		case 49:
-			return "High speed craft (no additional information)"
-		case 50:
-			return "Pilot vessel"
-		case 51:
-			return "SAR"
-		case 52:
-			return "Tug"
-		case 53:
-			return "Port tender"
-		case 54:
-			return "Anti-pollution"
-		case 55:
-			return "Law enforcement"
-		case 56:
-			return "Spare"
-		case 57:
-			return "Spare #2"
-		case 58:
-			return "Medical"
-		case 59:
-			return "Ships and aircraft of States not parties to an armed conflict"
-		case 60:
-			return "Passenger ship"
-		case 61:
-			return "Passenger ship (hazard cat X)"
-		case 62:
-			return "Passenger ship (hazard cat Y)"
-		case 63:
-			return "Passenger ship (hazard cat Z)"
-		case 64:
-			return "Passenger ship (hazard cat OS)"
-		case 69:
-			return "Passenger ship (no additional information)"
-		case 70:
-			return "Cargo ship"
-		case 71:
-			return "Cargo ship (hazard cat X)"
-		case 72:
-			return "Cargo ship (hazard cat Y)"
-		case 73:
-			return "Cargo ship (hazard cat Z)"
-		case 74:
-			return "Cargo ship (hazard cat OS)"
-		case 79:
-			return "Cargo ship (no additional information)"
-		case 80:
-			return "Tanker"
-		case 81:
-			return "Tanker (hazard cat X)"
-		case 82:
-			return "Tanker (hazard cat Y)"
-		case 83:
-			return "Tanker (hazard cat Z)"
-		case 84:
-			return "Tanker (hazard cat OS)"
-		case 89:
-			return "Tanker (no additional information)"
-		case 90:
-			return "Other"
-		case 91:
-			return "Other (hazard cat X)"
-		case 92:
-			return "Other (hazard cat Y)"
-		case 93:
-			return "Other (hazard cat Z)"
-		case 94:
-			return "Other (hazard cat OS)"
-		case 99:
-			return "Other (no additional information)"
-default:
+	case 0:
+		return "Unavailable"
+	case 20:
+		return "Wing In Ground"
+	case 21:
+		return "Wing In Ground (hazard cat X)"
+	case 22:
+		return "Wing In Ground (hazard cat Y)"
+	case 23:
+		return "Wing In Ground (hazard cat Z)"
+	case 24:
+		return "Wing In Ground (hazard cat OS)"
+	case 29:
+		return "Wing In Ground (no additional information)"
+	case 30:
+		return "Fishing"
+	case 31:
+		return "Towing"
+	case 32:
+		return "Towing exceeds 200m or wider than 25m"
+	case 33:
+		return "Engaged in dredging or underwater operations"
+	case 34:
+		return "Engaged in diving operations"
+	case 35:
+		return "Engaged in military operations"
+	case 36:
+		return "Sailing"
+	case 37:
+		return "Pleasure"
+	case 40:
+		return "High speed craft"
+	case 41:
+		return "High speed craft (hazard cat X)"
+	case 42:
+		return "High speed craft (hazard cat Y)"
+	case 43:
+		return "High speed craft (hazard cat Z)"
+	case 44:
+		return "High speed craft (hazard cat OS)"
+	case 49:
+		return "High speed craft (no additional information)"
+	case 50:
+		return "Pilot vessel"
+	case 51:
+		return "SAR"
+	case 52:
+		return "Tug"
+	case 53:
+		return "Port tender"
+	case 54:
+		return "Anti-pollution"
+	case 55:
+		return "Law enforcement"
+	case 56:
+		return "Spare"
+	case 57:
+		return "Spare #2"
+	case 58:
+		return "Medical"
+	case 59:
+		return "Ships and aircraft of States not parties to an armed conflict"
+	case 60:
+		return "Passenger ship"
+	case 61:
+		return "Passenger ship (hazard cat X)"
+	case 62:
+		return "Passenger ship (hazard cat Y)"
+	case 63:
+		return "Passenger ship (hazard cat Z)"
+	case 64:
+		return "Passenger ship (hazard cat OS)"
+	case 69:
+		return "Passenger ship (no additional information)"
+	case 70:
+		return "Cargo ship"
+	case 71:
+		return "Cargo ship (hazard cat X)"
+	case 72:
+		return "Cargo ship (hazard cat Y)"
+	case 73:
+		return "Cargo ship (hazard cat Z)"
+	case 74:
+		return "Cargo ship (hazard cat OS)"
+	case 79:
+		return "Cargo ship (no additional information)"
+	case 80:
+		return "Tanker"
+	case 81:
+		return "Tanker (hazard cat X)"
+	case 82:
+		return "Tanker (hazard cat Y)"
+	case 83:
+		return "Tanker (hazard cat Z)"
+	case 84:
+		return "Tanker (hazard cat OS)"
+	case 89:
+		return "Tanker (no additional information)"
+	case 90:
+		return "Other"
+	case 91:
+		return "Other (hazard cat X)"
+	case 92:
+		return "Other (hazard cat Y)"
+	case 93:
+		return "Other (hazard cat Z)"
+	case 94:
+		return "Other (hazard cat OS)"
+	case 99:
+		return "Other (no additional information)"
+	default:
 		return fmt.Sprintf("ShipTypeConst(%d)", uint8(e))
 	}
 }
+
 type DeviceClassConst uint8
+
 const (
-	ReservedFor2000Use	DeviceClassConst = 0
-	SystemTools	DeviceClassConst = 10
-	SafetySystems	DeviceClassConst = 20
-	InternetworkDevice	DeviceClassConst = 25
-	ElectricalDistribution	DeviceClassConst = 30
-	ElectricalGeneration	DeviceClassConst = 35
-	SteeringAndControlSurfaces	DeviceClassConst = 40
-	Propulsion	DeviceClassConst = 50
-	Navigation	DeviceClassConst = 60
-	Communication	DeviceClassConst = 70
-	SensorCommunicationInterface	DeviceClassConst = 75
-	InstrumentationGeneralSystems	DeviceClassConst = 80
-	ExternalEnvironment	DeviceClassConst = 85
-	InternalEnvironment	DeviceClassConst = 90
-	DeckCargoFishingEquipmentSyste	DeviceClassConst = 100
-	HumanInterface	DeviceClassConst = 110
-	Display	DeviceClassConst = 120
-	Entertainment	DeviceClassConst = 125
+	ReservedFor2000Use             DeviceClassConst = 0
+	SystemTools                    DeviceClassConst = 10
+	SafetySystems                  DeviceClassConst = 20
+	InternetworkDevice             DeviceClassConst = 25
+	ElectricalDistribution         DeviceClassConst = 30
+	ElectricalGeneration           DeviceClassConst = 35
+	SteeringAndControlSurfaces     DeviceClassConst = 40
+	Propulsion                     DeviceClassConst = 50
+	Navigation                     DeviceClassConst = 60
+	Communication                  DeviceClassConst = 70
+	SensorCommunicationInterface   DeviceClassConst = 75
+	InstrumentationGeneralSystems  DeviceClassConst = 80
+	ExternalEnvironment            DeviceClassConst = 85
+	InternalEnvironment            DeviceClassConst = 90
+	DeckCargoFishingEquipmentSyste DeviceClassConst = 100
+	HumanInterface                 DeviceClassConst = 110
+	Display                        DeviceClassConst = 120
+	Entertainment                  DeviceClassConst = 125
 )
 
-func (e DeviceClassConst) GoString() string {return e.String() }
+func (e DeviceClassConst) GoString() string { return e.String() }
 func (e DeviceClassConst) String() string {
 	switch e {
-		case 0:
-			return "Reserved for 2000 Use"
-		case 10:
-			return "System tools"
-		case 20:
-			return "Safety systems"
-		case 25:
-			return "Internetwork device"
-		case 30:
-			return "Electrical Distribution"
-		case 35:
-			return "Electrical Generation"
-		case 40:
-			return "Steering and Control surfaces"
-		case 50:
-			return "Propulsion"
-		case 60:
-			return "Navigation"
-		case 70:
-			return "Communication"
-		case 75:
-			return "Sensor Communication Interface"
-		case 80:
-			return "Instrumentation/general systems"
-		case 85:
-			return "External Environment"
-		case 90:
-			return "Internal Environment"
-		case 100:
-			return "Deck + cargo + fishing equipment systems"
-		case 110:
-			return "Human Interface"
-		case 120:
-			return "Display"
-		case 125:
-			return "Entertainment"
-default:
+	case 0:
+		return "Reserved for 2000 Use"
+	case 10:
+		return "System tools"
+	case 20:
+		return "Safety systems"
+	case 25:
+		return "Internetwork device"
+	case 30:
+		return "Electrical Distribution"
+	case 35:
+		return "Electrical Generation"
+	case 40:
+		return "Steering and Control surfaces"
+	case 50:
+		return "Propulsion"
+	case 60:
+		return "Navigation"
+	case 70:
+		return "Communication"
+	case 75:
+		return "Sensor Communication Interface"
+	case 80:
+		return "Instrumentation/general systems"
+	case 85:
+		return "External Environment"
+	case 90:
+		return "Internal Environment"
+	case 100:
+		return "Deck + cargo + fishing equipment systems"
+	case 110:
+		return "Human Interface"
+	case 120:
+		return "Display"
+	case 125:
+		return "Entertainment"
+	default:
 		return fmt.Sprintf("DeviceClassConst(%d)", uint8(e))
 	}
 }
+
 type RepeatIndicatorConst uint8
+
 const (
-	Initial	RepeatIndicatorConst = 0
-	FirstRetransmission	RepeatIndicatorConst = 1
-	SecondRetransmission	RepeatIndicatorConst = 2
-	FinalRetransmission	RepeatIndicatorConst = 3
+	Initial              RepeatIndicatorConst = 0
+	FirstRetransmission  RepeatIndicatorConst = 1
+	SecondRetransmission RepeatIndicatorConst = 2
+	FinalRetransmission  RepeatIndicatorConst = 3
 )
 
-func (e RepeatIndicatorConst) GoString() string {return e.String() }
+func (e RepeatIndicatorConst) GoString() string { return e.String() }
 func (e RepeatIndicatorConst) String() string {
 	switch e {
-		case 0:
-			return "Initial"
-		case 1:
-			return "First retransmission"
-		case 2:
-			return "Second retransmission"
-		case 3:
-			return "Final retransmission"
-default:
+	case 0:
+		return "Initial"
+	case 1:
+		return "First retransmission"
+	case 2:
+		return "Second retransmission"
+	case 3:
+		return "Final retransmission"
+	default:
 		return fmt.Sprintf("RepeatIndicatorConst(%d)", uint8(e))
 	}
 }
+
 type TxRxModeConst uint8
+
 const (
-	TxATxBRxARxB	TxRxModeConst = 0
-	TxARxARxB	TxRxModeConst = 1
-	TxBRxARxB	TxRxModeConst = 2
+	TxATxBRxARxB TxRxModeConst = 0
+	TxARxARxB    TxRxModeConst = 1
+	TxBRxARxB    TxRxModeConst = 2
 )
 
-func (e TxRxModeConst) GoString() string {return e.String() }
+func (e TxRxModeConst) GoString() string { return e.String() }
 func (e TxRxModeConst) String() string {
 	switch e {
-		case 0:
-			return "Tx A/Tx B, Rx A/Rx B"
-		case 1:
-			return "Tx A, Rx A/Rx B"
-		case 2:
-			return "Tx B, Rx A/Rx B"
-default:
+	case 0:
+		return "Tx A/Tx B, Rx A/Rx B"
+	case 1:
+		return "Tx A, Rx A/Rx B"
+	case 2:
+		return "Tx B, Rx A/Rx B"
+	default:
 		return fmt.Sprintf("TxRxModeConst(%d)", uint8(e))
 	}
 }
+
 type StationTypeConst uint8
+
 const (
-	AllTypesOfMobileStation	StationTypeConst = 0
-	AllTypesOfClassBMobileStation	StationTypeConst = 2
-	SARAirborneMobileStation	StationTypeConst = 3
-	ATONStation	StationTypeConst = 4
-	ClassBCsShipborneMobileStation	StationTypeConst = 5
-	InlandWaterways	StationTypeConst = 6
-	RegionalUse7	StationTypeConst = 7
-	RegionalUse8	StationTypeConst = 8
-	RegionalUse9	StationTypeConst = 9
+	AllTypesOfMobileStation        StationTypeConst = 0
+	AllTypesOfClassBMobileStation  StationTypeConst = 2
+	SARAirborneMobileStation       StationTypeConst = 3
+	ATONStation                    StationTypeConst = 4
+	ClassBCsShipborneMobileStation StationTypeConst = 5
+	InlandWaterways                StationTypeConst = 6
+	RegionalUse7                   StationTypeConst = 7
+	RegionalUse8                   StationTypeConst = 8
+	RegionalUse9                   StationTypeConst = 9
 )
 
-func (e StationTypeConst) GoString() string {return e.String() }
+func (e StationTypeConst) GoString() string { return e.String() }
 func (e StationTypeConst) String() string {
 	switch e {
-		case 0:
-			return "All types of mobile station"
-		case 2:
-			return "All types of Class B mobile station"
-		case 3:
-			return "SAR airborne mobile station"
-		case 4:
-			return "AtoN station"
-		case 5:
-			return "Class B CS shipborne mobile station"
-		case 6:
-			return "Inland waterways"
-		case 7:
-			return "Regional use 7"
-		case 8:
-			return "Regional use 8"
-		case 9:
-			return "Regional use 9"
-default:
+	case 0:
+		return "All types of mobile station"
+	case 2:
+		return "All types of Class B mobile station"
+	case 3:
+		return "SAR airborne mobile station"
+	case 4:
+		return "AtoN station"
+	case 5:
+		return "Class B CS shipborne mobile station"
+	case 6:
+		return "Inland waterways"
+	case 7:
+		return "Regional use 7"
+	case 8:
+		return "Regional use 8"
+	case 9:
+		return "Regional use 9"
+	default:
 		return fmt.Sprintf("StationTypeConst(%d)", uint8(e))
 	}
 }
+
 type ReportingIntervalConst uint8
+
 const (
-	AsGivenByTheAutonomousMode	ReportingIntervalConst = 0
-	ReportingIntervalConst10Min	ReportingIntervalConst = 1
-	SixMin	ReportingIntervalConst = 2
-	ThreeMin	ReportingIntervalConst = 3
-	OneMin	ReportingIntervalConst = 4
-	ReportingIntervalConst30Sec	ReportingIntervalConst = 5
-	ReportingIntervalConst15Sec	ReportingIntervalConst = 6
-	ReportingIntervalConst10Sec	ReportingIntervalConst = 7
-	FiveSec	ReportingIntervalConst = 8
-	TwoSecNotApplicableToClassBCs	ReportingIntervalConst = 9
-	NextShorterReportingInterval	ReportingIntervalConst = 10
-	NextLongerReportingInterval	ReportingIntervalConst = 11
+	AsGivenByTheAutonomousMode    ReportingIntervalConst = 0
+	ReportingIntervalConst10Min   ReportingIntervalConst = 1
+	SixMin                        ReportingIntervalConst = 2
+	ThreeMin                      ReportingIntervalConst = 3
+	OneMin                        ReportingIntervalConst = 4
+	ReportingIntervalConst30Sec   ReportingIntervalConst = 5
+	ReportingIntervalConst15Sec   ReportingIntervalConst = 6
+	ReportingIntervalConst10Sec   ReportingIntervalConst = 7
+	FiveSec                       ReportingIntervalConst = 8
+	TwoSecNotApplicableToClassBCs ReportingIntervalConst = 9
+	NextShorterReportingInterval  ReportingIntervalConst = 10
+	NextLongerReportingInterval   ReportingIntervalConst = 11
 )
 
-func (e ReportingIntervalConst) GoString() string {return e.String() }
+func (e ReportingIntervalConst) GoString() string { return e.String() }
 func (e ReportingIntervalConst) String() string {
 	switch e {
-		case 0:
-			return "As given by the autonomous mode"
-		case 1:
-			return "10 min"
-		case 2:
-			return "6 min"
-		case 3:
-			return "3 min"
-		case 4:
-			return "1 min"
-		case 5:
-			return "30 sec"
-		case 6:
-			return "15 sec"
-		case 7:
-			return "10 sec"
-		case 8:
-			return "5 sec"
-		case 9:
-			return "2 sec (not applicable to Class B CS)"
-		case 10:
-			return "Next shorter reporting interval"
-		case 11:
-			return "Next longer reporting interval"
-default:
+	case 0:
+		return "As given by the autonomous mode"
+	case 1:
+		return "10 min"
+	case 2:
+		return "6 min"
+	case 3:
+		return "3 min"
+	case 4:
+		return "1 min"
+	case 5:
+		return "30 sec"
+	case 6:
+		return "15 sec"
+	case 7:
+		return "10 sec"
+	case 8:
+		return "5 sec"
+	case 9:
+		return "2 sec (not applicable to Class B CS)"
+	case 10:
+		return "Next shorter reporting interval"
+	case 11:
+		return "Next longer reporting interval"
+	default:
 		return fmt.Sprintf("ReportingIntervalConst(%d)", uint8(e))
 	}
 }
+
 type AISTransceiverConst uint8
+
 const (
-	ChannelAVDLReception	AISTransceiverConst = 0
-	ChannelBVDLReception	AISTransceiverConst = 1
-	ChannelAVDLTransmission	AISTransceiverConst = 2
-	ChannelBVDLTransmission	AISTransceiverConst = 3
-	OwnInformationNotBroadcast	AISTransceiverConst = 4
-	Reserved	AISTransceiverConst = 5
+	ChannelAVDLReception       AISTransceiverConst = 0
+	ChannelBVDLReception       AISTransceiverConst = 1
+	ChannelAVDLTransmission    AISTransceiverConst = 2
+	ChannelBVDLTransmission    AISTransceiverConst = 3
+	OwnInformationNotBroadcast AISTransceiverConst = 4
+	Reserved                   AISTransceiverConst = 5
 )
 
-func (e AISTransceiverConst) GoString() string {return e.String() }
+func (e AISTransceiverConst) GoString() string { return e.String() }
 func (e AISTransceiverConst) String() string {
 	switch e {
-		case 0:
-			return "Channel A VDL reception"
-		case 1:
-			return "Channel B VDL reception"
-		case 2:
-			return "Channel A VDL transmission"
-		case 3:
-			return "Channel B VDL transmission"
-		case 4:
-			return "Own information not broadcast"
-		case 5:
-			return "Reserved"
-default:
+	case 0:
+		return "Channel A VDL reception"
+	case 1:
+		return "Channel B VDL reception"
+	case 2:
+		return "Channel A VDL transmission"
+	case 3:
+		return "Channel B VDL transmission"
+	case 4:
+		return "Own information not broadcast"
+	case 5:
+		return "Reserved"
+	default:
 		return fmt.Sprintf("AISTransceiverConst(%d)", uint8(e))
 	}
 }
+
 type AISAssignedModeConst uint8
+
 const (
-	AutonomousAndContinuous	AISAssignedModeConst = 0
-	AssignedMode	AISAssignedModeConst = 1
+	AutonomousAndContinuous AISAssignedModeConst = 0
+	AssignedMode            AISAssignedModeConst = 1
 )
 
-func (e AISAssignedModeConst) GoString() string {return e.String() }
+func (e AISAssignedModeConst) GoString() string { return e.String() }
 func (e AISAssignedModeConst) String() string {
 	switch e {
-		case 0:
-			return "Autonomous and continuous"
-		case 1:
-			return "Assigned mode"
-default:
+	case 0:
+		return "Autonomous and continuous"
+	case 1:
+		return "Assigned mode"
+	default:
 		return fmt.Sprintf("AISAssignedModeConst(%d)", uint8(e))
 	}
 }
+
 type ATONTypeConst uint8
+
 const (
-	DefaultTypeOfATONNotSpecified	ATONTypeConst = 0
-	ReferencePoint	ATONTypeConst = 1
-	Racon	ATONTypeConst = 2
-	FixedStructureOffShore	ATONTypeConst = 3
-	ReservedForFutureUse	ATONTypeConst = 4
-	FixedLightWithoutSectors	ATONTypeConst = 5
-	FixedLightWithSectors	ATONTypeConst = 6
-	FixedLeadingLightFront	ATONTypeConst = 7
-	FixedLeadingLightRear	ATONTypeConst = 8
-	FixedBeaconCardinalN	ATONTypeConst = 9
-	FixedBeaconCardinalE	ATONTypeConst = 10
-	FixedBeaconCardinalS	ATONTypeConst = 11
-	FixedBeaconCardinalW	ATONTypeConst = 12
-	FixedBeaconPortHand	ATONTypeConst = 13
-	FixedBeaconStarboardHand	ATONTypeConst = 14
-	FixedBeaconPreferredChannelPor	ATONTypeConst = 15
-	FixedBeaconPreferredChannelSta	ATONTypeConst = 16
-	FixedBeaconIsolatedDanger	ATONTypeConst = 17
-	FixedBeaconSafeWater	ATONTypeConst = 18
-	FixedBeaconSpecialMark	ATONTypeConst = 19
-	FloatingATONCardinalN	ATONTypeConst = 20
-	FloatingATONCardinalE	ATONTypeConst = 21
-	FloatingATONCardinalS	ATONTypeConst = 22
-	FloatingATONCardinalW	ATONTypeConst = 23
-	FloatingATONPortHandMark	ATONTypeConst = 24
-	FloatingATONStarboardHandMark	ATONTypeConst = 25
-	FloatingATONPreferredChannelPo	ATONTypeConst = 26
-	FloatingATONPreferredChannelSt	ATONTypeConst = 27
-	FloatingATONIsolatedDanger	ATONTypeConst = 28
-	FloatingATONSafeWater	ATONTypeConst = 29
-	FloatingATONSpecialMark	ATONTypeConst = 30
-	FloatingATONLightVesselLanbyRi	ATONTypeConst = 31
+	DefaultTypeOfATONNotSpecified  ATONTypeConst = 0
+	ReferencePoint                 ATONTypeConst = 1
+	Racon                          ATONTypeConst = 2
+	FixedStructureOffShore         ATONTypeConst = 3
+	ReservedForFutureUse           ATONTypeConst = 4
+	FixedLightWithoutSectors       ATONTypeConst = 5
+	FixedLightWithSectors          ATONTypeConst = 6
+	FixedLeadingLightFront         ATONTypeConst = 7
+	FixedLeadingLightRear          ATONTypeConst = 8
+	FixedBeaconCardinalN           ATONTypeConst = 9
+	FixedBeaconCardinalE           ATONTypeConst = 10
+	FixedBeaconCardinalS           ATONTypeConst = 11
+	FixedBeaconCardinalW           ATONTypeConst = 12
+	FixedBeaconPortHand            ATONTypeConst = 13
+	FixedBeaconStarboardHand       ATONTypeConst = 14
+	FixedBeaconPreferredChannelPor ATONTypeConst = 15
+	FixedBeaconPreferredChannelSta ATONTypeConst = 16
+	FixedBeaconIsolatedDanger      ATONTypeConst = 17
+	FixedBeaconSafeWater           ATONTypeConst = 18
+	FixedBeaconSpecialMark         ATONTypeConst = 19
+	FloatingATONCardinalN          ATONTypeConst = 20
+	FloatingATONCardinalE          ATONTypeConst = 21
+	FloatingATONCardinalS          ATONTypeConst = 22
+	FloatingATONCardinalW          ATONTypeConst = 23
+	FloatingATONPortHandMark       ATONTypeConst = 24
+	FloatingATONStarboardHandMark  ATONTypeConst = 25
+	FloatingATONPreferredChannelPo ATONTypeConst = 26
+	FloatingATONPreferredChannelSt ATONTypeConst = 27
+	FloatingATONIsolatedDanger     ATONTypeConst = 28
+	FloatingATONSafeWater          ATONTypeConst = 29
+	FloatingATONSpecialMark        ATONTypeConst = 30
+	FloatingATONLightVesselLanbyRi ATONTypeConst = 31
 )
 
-func (e ATONTypeConst) GoString() string {return e.String() }
+func (e ATONTypeConst) GoString() string { return e.String() }
 func (e ATONTypeConst) String() string {
 	switch e {
-		case 0:
-			return "Default: Type of AtoN not specified"
-		case 1:
-			return "Reference point"
-		case 2:
-			return "RACON"
-		case 3:
-			return "Fixed structure off-shore"
-		case 4:
-			return "Reserved for future use"
-		case 5:
-			return "Fixed light: without sectors"
-		case 6:
-			return "Fixed light: with sectors"
-		case 7:
-			return "Fixed leading light front"
-		case 8:
-			return "Fixed leading light rear"
-		case 9:
-			return "Fixed beacon: cardinal N"
-		case 10:
-			return "Fixed beacon: cardinal E"
-		case 11:
-			return "Fixed beacon: cardinal S"
-		case 12:
-			return "Fixed beacon: cardinal W"
-		case 13:
-			return "Fixed beacon: port hand"
-		case 14:
-			return "Fixed beacon: starboard hand"
-		case 15:
-			return "Fixed beacon: preferred channel port hand"
-		case 16:
-			return "Fixed beacon: preferred channel starboard hand"
-		case 17:
-			return "Fixed beacon: isolated danger"
-		case 18:
-			return "Fixed beacon: safe water"
-		case 19:
-			return "Fixed beacon: special mark"
-		case 20:
-			return "Floating AtoN: cardinal N"
-		case 21:
-			return "Floating AtoN: cardinal E"
-		case 22:
-			return "Floating AtoN: cardinal S"
-		case 23:
-			return "Floating AtoN: cardinal W"
-		case 24:
-			return "Floating AtoN: port hand mark"
-		case 25:
-			return "Floating AtoN: starboard hand mark"
-		case 26:
-			return "Floating AtoN: preferred channel port hand"
-		case 27:
-			return "Floating AtoN: preferred channel starboard hand"
-		case 28:
-			return "Floating AtoN: isolated danger"
-		case 29:
-			return "Floating AtoN: safe water"
-		case 30:
-			return "Floating AtoN: special mark"
-		case 31:
-			return "Floating AtoN: light vessel/LANBY/rigs"
-default:
+	case 0:
+		return "Default: Type of AtoN not specified"
+	case 1:
+		return "Reference point"
+	case 2:
+		return "RACON"
+	case 3:
+		return "Fixed structure off-shore"
+	case 4:
+		return "Reserved for future use"
+	case 5:
+		return "Fixed light: without sectors"
+	case 6:
+		return "Fixed light: with sectors"
+	case 7:
+		return "Fixed leading light front"
+	case 8:
+		return "Fixed leading light rear"
+	case 9:
+		return "Fixed beacon: cardinal N"
+	case 10:
+		return "Fixed beacon: cardinal E"
+	case 11:
+		return "Fixed beacon: cardinal S"
+	case 12:
+		return "Fixed beacon: cardinal W"
+	case 13:
+		return "Fixed beacon: port hand"
+	case 14:
+		return "Fixed beacon: starboard hand"
+	case 15:
+		return "Fixed beacon: preferred channel port hand"
+	case 16:
+		return "Fixed beacon: preferred channel starboard hand"
+	case 17:
+		return "Fixed beacon: isolated danger"
+	case 18:
+		return "Fixed beacon: safe water"
+	case 19:
+		return "Fixed beacon: special mark"
+	case 20:
+		return "Floating AtoN: cardinal N"
+	case 21:
+		return "Floating AtoN: cardinal E"
+	case 22:
+		return "Floating AtoN: cardinal S"
+	case 23:
+		return "Floating AtoN: cardinal W"
+	case 24:
+		return "Floating AtoN: port hand mark"
+	case 25:
+		return "Floating AtoN: starboard hand mark"
+	case 26:
+		return "Floating AtoN: preferred channel port hand"
+	case 27:
+		return "Floating AtoN: preferred channel starboard hand"
+	case 28:
+		return "Floating AtoN: isolated danger"
+	case 29:
+		return "Floating AtoN: safe water"
+	case 30:
+		return "Floating AtoN: special mark"
+	case 31:
+		return "Floating AtoN: light vessel/LANBY/rigs"
+	default:
 		return fmt.Sprintf("ATONTypeConst(%d)", uint8(e))
 	}
 }
+
 type AISSpecialManeuverConst uint8
+
 const (
-	NotAvailable	AISSpecialManeuverConst = 0
-	NotEngagedInSpecialManeuver	AISSpecialManeuverConst = 1
-	EngagedInSpecialManeuver	AISSpecialManeuverConst = 2
-	Reserved_2	AISSpecialManeuverConst = 3
+	NotAvailable                AISSpecialManeuverConst = 0
+	NotEngagedInSpecialManeuver AISSpecialManeuverConst = 1
+	EngagedInSpecialManeuver    AISSpecialManeuverConst = 2
+	Reserved_2                  AISSpecialManeuverConst = 3
 )
 
-func (e AISSpecialManeuverConst) GoString() string {return e.String() }
+func (e AISSpecialManeuverConst) GoString() string { return e.String() }
 func (e AISSpecialManeuverConst) String() string {
 	switch e {
-		case 0:
-			return "Not available"
-		case 1:
-			return "Not engaged in special maneuver"
-		case 2:
-			return "Engaged in special maneuver"
-		case 3:
-			return "Reserved"
-default:
+	case 0:
+		return "Not available"
+	case 1:
+		return "Not engaged in special maneuver"
+	case 2:
+		return "Engaged in special maneuver"
+	case 3:
+		return "Reserved"
+	default:
 		return fmt.Sprintf("AISSpecialManeuverConst(%d)", uint8(e))
 	}
 }
+
 type PositionFixDeviceConst uint8
+
 const (
-	DefaultUndefined	PositionFixDeviceConst = 0
-	GPS	PositionFixDeviceConst = 1
-	GLONASS	PositionFixDeviceConst = 2
-	CombinedGPSGLONASS	PositionFixDeviceConst = 3
-	LoranC	PositionFixDeviceConst = 4
-	Chayka	PositionFixDeviceConst = 5
-	IntegratedNavigationSystem	PositionFixDeviceConst = 6
-	Surveyed	PositionFixDeviceConst = 7
-	Galileo	PositionFixDeviceConst = 8
+	DefaultUndefined           PositionFixDeviceConst = 0
+	GPS                        PositionFixDeviceConst = 1
+	GLONASS                    PositionFixDeviceConst = 2
+	CombinedGPSGLONASS         PositionFixDeviceConst = 3
+	LoranC                     PositionFixDeviceConst = 4
+	Chayka                     PositionFixDeviceConst = 5
+	IntegratedNavigationSystem PositionFixDeviceConst = 6
+	Surveyed                   PositionFixDeviceConst = 7
+	Galileo                    PositionFixDeviceConst = 8
 )
 
-func (e PositionFixDeviceConst) GoString() string {return e.String() }
+func (e PositionFixDeviceConst) GoString() string { return e.String() }
 func (e PositionFixDeviceConst) String() string {
 	switch e {
-		case 0:
-			return "Default: undefined"
-		case 1:
-			return "GPS"
-		case 2:
-			return "GLONASS"
-		case 3:
-			return "Combined GPS/GLONASS"
-		case 4:
-			return "Loran-C"
-		case 5:
-			return "Chayka"
-		case 6:
-			return "Integrated navigation system"
-		case 7:
-			return "Surveyed"
-		case 8:
-			return "Galileo"
-default:
+	case 0:
+		return "Default: undefined"
+	case 1:
+		return "GPS"
+	case 2:
+		return "GLONASS"
+	case 3:
+		return "Combined GPS/GLONASS"
+	case 4:
+		return "Loran-C"
+	case 5:
+		return "Chayka"
+	case 6:
+		return "Integrated navigation system"
+	case 7:
+		return "Surveyed"
+	case 8:
+		return "Galileo"
+	default:
 		return fmt.Sprintf("PositionFixDeviceConst(%d)", uint8(e))
 	}
 }
+
 type GNSConst uint8
+
 const (
-	GPS_2	GNSConst = 0
-	GLONASS_2	GNSConst = 1
-	GPSGLONASS	GNSConst = 2
-	GPSSBASWAAS	GNSConst = 3
-	GPSSBASWAASGLONASS	GNSConst = 4
-	Chayka_2	GNSConst = 5
-	Integrated	GNSConst = 6
-	Surveyed_2	GNSConst = 7
-	Galileo_2	GNSConst = 8
+	GPS_2              GNSConst = 0
+	GLONASS_2          GNSConst = 1
+	GPSGLONASS         GNSConst = 2
+	GPSSBASWAAS        GNSConst = 3
+	GPSSBASWAASGLONASS GNSConst = 4
+	Chayka_2           GNSConst = 5
+	Integrated         GNSConst = 6
+	Surveyed_2         GNSConst = 7
+	Galileo_2          GNSConst = 8
 )
 
-func (e GNSConst) GoString() string {return e.String() }
+func (e GNSConst) GoString() string { return e.String() }
 func (e GNSConst) String() string {
 	switch e {
-		case 0:
-			return "GPS"
-		case 1:
-			return "GLONASS"
-		case 2:
-			return "GPS+GLONASS"
-		case 3:
-			return "GPS+SBAS/WAAS"
-		case 4:
-			return "GPS+SBAS/WAAS+GLONASS"
-		case 5:
-			return "Chayka"
-		case 6:
-			return "integrated"
-		case 7:
-			return "surveyed"
-		case 8:
-			return "Galileo"
-default:
+	case 0:
+		return "GPS"
+	case 1:
+		return "GLONASS"
+	case 2:
+		return "GPS+GLONASS"
+	case 3:
+		return "GPS+SBAS/WAAS"
+	case 4:
+		return "GPS+SBAS/WAAS+GLONASS"
+	case 5:
+		return "Chayka"
+	case 6:
+		return "integrated"
+	case 7:
+		return "surveyed"
+	case 8:
+		return "Galileo"
+	default:
 		return fmt.Sprintf("GNSConst(%d)", uint8(e))
 	}
 }
+
 type EngineInstanceConst uint8
+
 const (
-	SingleEngineOrDualEnginePort	EngineInstanceConst = 0
-	DualEngineStarboard	EngineInstanceConst = 1
+	SingleEngineOrDualEnginePort EngineInstanceConst = 0
+	DualEngineStarboard          EngineInstanceConst = 1
 )
 
-func (e EngineInstanceConst) GoString() string {return e.String() }
+func (e EngineInstanceConst) GoString() string { return e.String() }
 func (e EngineInstanceConst) String() string {
 	switch e {
-		case 0:
-			return "Single Engine or Dual Engine Port"
-		case 1:
-			return "Dual Engine Starboard"
-default:
+	case 0:
+		return "Single Engine or Dual Engine Port"
+	case 1:
+		return "Dual Engine Starboard"
+	default:
 		return fmt.Sprintf("EngineInstanceConst(%d)", uint8(e))
 	}
 }
+
 type GearStatusConst uint8
+
 const (
-	Forward	GearStatusConst = 0
-	Neutral	GearStatusConst = 1
-	Reverse	GearStatusConst = 2
+	Forward GearStatusConst = 0
+	Neutral GearStatusConst = 1
+	Reverse GearStatusConst = 2
 )
 
-func (e GearStatusConst) GoString() string {return e.String() }
+func (e GearStatusConst) GoString() string { return e.String() }
 func (e GearStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Forward"
-		case 1:
-			return "Neutral"
-		case 2:
-			return "Reverse"
-default:
+	case 0:
+		return "Forward"
+	case 1:
+		return "Neutral"
+	case 2:
+		return "Reverse"
+	default:
 		return fmt.Sprintf("GearStatusConst(%d)", uint8(e))
 	}
 }
+
 type DirectionConst uint8
+
 const (
-	Forward_2	DirectionConst = 0
-	Reverse_2	DirectionConst = 1
+	Forward_2 DirectionConst = 0
+	Reverse_2 DirectionConst = 1
 )
 
-func (e DirectionConst) GoString() string {return e.String() }
+func (e DirectionConst) GoString() string { return e.String() }
 func (e DirectionConst) String() string {
 	switch e {
-		case 0:
-			return "Forward"
-		case 1:
-			return "Reverse"
-default:
+	case 0:
+		return "Forward"
+	case 1:
+		return "Reverse"
+	default:
 		return fmt.Sprintf("DirectionConst(%d)", uint8(e))
 	}
 }
+
 type PositionAccuracyConst uint8
+
 const (
-	Low	PositionAccuracyConst = 0
-	High	PositionAccuracyConst = 1
+	Low  PositionAccuracyConst = 0
+	High PositionAccuracyConst = 1
 )
 
-func (e PositionAccuracyConst) GoString() string {return e.String() }
+func (e PositionAccuracyConst) GoString() string { return e.String() }
 func (e PositionAccuracyConst) String() string {
 	switch e {
-		case 0:
-			return "Low"
-		case 1:
-			return "High"
-default:
+	case 0:
+		return "Low"
+	case 1:
+		return "High"
+	default:
 		return fmt.Sprintf("PositionAccuracyConst(%d)", uint8(e))
 	}
 }
+
 type RAIMFlagConst uint8
+
 const (
-	NotInUse	RAIMFlagConst = 0
-	InUse	RAIMFlagConst = 1
+	NotInUse RAIMFlagConst = 0
+	InUse    RAIMFlagConst = 1
 )
 
-func (e RAIMFlagConst) GoString() string {return e.String() }
+func (e RAIMFlagConst) GoString() string { return e.String() }
 func (e RAIMFlagConst) String() string {
 	switch e {
-		case 0:
-			return "not in use"
-		case 1:
-			return "in use"
-default:
+	case 0:
+		return "not in use"
+	case 1:
+		return "in use"
+	default:
 		return fmt.Sprintf("RAIMFlagConst(%d)", uint8(e))
 	}
 }
+
 type TimeStampConst uint8
+
 const (
-	NotAvailable_2	TimeStampConst = 60
-	ManualInputMode	TimeStampConst = 61
-	DeadReckoningMode	TimeStampConst = 62
-	PositioningSystemIsInoperative	TimeStampConst = 63
+	NotAvailable_2                 TimeStampConst = 60
+	ManualInputMode                TimeStampConst = 61
+	DeadReckoningMode              TimeStampConst = 62
+	PositioningSystemIsInoperative TimeStampConst = 63
 )
 
-func (e TimeStampConst) GoString() string {return e.String() }
+func (e TimeStampConst) GoString() string { return e.String() }
 func (e TimeStampConst) String() string {
 	switch e {
-		case 60:
-			return "Not available"
-		case 61:
-			return "Manual input mode"
-		case 62:
-			return "Dead reckoning mode"
-		case 63:
-			return "Positioning system is inoperative"
-default:
+	case 60:
+		return "Not available"
+	case 61:
+		return "Manual input mode"
+	case 62:
+		return "Dead reckoning mode"
+	case 63:
+		return "Positioning system is inoperative"
+	default:
 		return fmt.Sprintf("TimeStampConst(%d)", uint8(e))
 	}
 }
+
 type GNSMethodConst uint8
+
 const (
-	NoGNSS	GNSMethodConst = 0
-	GNSSFix	GNSMethodConst = 1
-	DGNSSFix	GNSMethodConst = 2
-	PreciseGNSS	GNSMethodConst = 3
-	RTKFixedInteger	GNSMethodConst = 4
-	RTKFloat	GNSMethodConst = 5
-	EstimatedDRMode	GNSMethodConst = 6
-	ManualInput	GNSMethodConst = 7
-	SimulateMode	GNSMethodConst = 8
+	NoGNSS          GNSMethodConst = 0
+	GNSSFix         GNSMethodConst = 1
+	DGNSSFix        GNSMethodConst = 2
+	PreciseGNSS     GNSMethodConst = 3
+	RTKFixedInteger GNSMethodConst = 4
+	RTKFloat        GNSMethodConst = 5
+	EstimatedDRMode GNSMethodConst = 6
+	ManualInput     GNSMethodConst = 7
+	SimulateMode    GNSMethodConst = 8
 )
 
-func (e GNSMethodConst) GoString() string {return e.String() }
+func (e GNSMethodConst) GoString() string { return e.String() }
 func (e GNSMethodConst) String() string {
 	switch e {
-		case 0:
-			return "no GNSS"
-		case 1:
-			return "GNSS fix"
-		case 2:
-			return "DGNSS fix"
-		case 3:
-			return "Precise GNSS"
-		case 4:
-			return "RTK Fixed Integer"
-		case 5:
-			return "RTK float"
-		case 6:
-			return "Estimated (DR) mode"
-		case 7:
-			return "Manual Input"
-		case 8:
-			return "Simulate mode"
-default:
+	case 0:
+		return "no GNSS"
+	case 1:
+		return "GNSS fix"
+	case 2:
+		return "DGNSS fix"
+	case 3:
+		return "Precise GNSS"
+	case 4:
+		return "RTK Fixed Integer"
+	case 5:
+		return "RTK float"
+	case 6:
+		return "Estimated (DR) mode"
+	case 7:
+		return "Manual Input"
+	case 8:
+		return "Simulate mode"
+	default:
 		return fmt.Sprintf("GNSMethodConst(%d)", uint8(e))
 	}
 }
+
 type GNSIntegrityConst uint8
+
 const (
-	NoIntegrityChecking	GNSIntegrityConst = 0
-	Safe	GNSIntegrityConst = 1
-	Caution	GNSIntegrityConst = 2
-	Unsafe	GNSIntegrityConst = 3
+	NoIntegrityChecking GNSIntegrityConst = 0
+	Safe                GNSIntegrityConst = 1
+	Caution             GNSIntegrityConst = 2
+	Unsafe              GNSIntegrityConst = 3
 )
 
-func (e GNSIntegrityConst) GoString() string {return e.String() }
+func (e GNSIntegrityConst) GoString() string { return e.String() }
 func (e GNSIntegrityConst) String() string {
 	switch e {
-		case 0:
-			return "No integrity checking"
-		case 1:
-			return "Safe"
-		case 2:
-			return "Caution"
-		case 3:
-			return "Unsafe"
-default:
+	case 0:
+		return "No integrity checking"
+	case 1:
+		return "Safe"
+	case 2:
+		return "Caution"
+	case 3:
+		return "Unsafe"
+	default:
 		return fmt.Sprintf("GNSIntegrityConst(%d)", uint8(e))
 	}
 }
+
 type SystemTimeConst uint8
+
 const (
-	GPS_3	SystemTimeConst = 0
-	GLONASS_3	SystemTimeConst = 1
-	RadioStation	SystemTimeConst = 2
-	LocalCesiumClock	SystemTimeConst = 3
-	LocalRubidiumClock	SystemTimeConst = 4
-	LocalCrystalClock	SystemTimeConst = 5
+	GPS_3              SystemTimeConst = 0
+	GLONASS_3          SystemTimeConst = 1
+	RadioStation       SystemTimeConst = 2
+	LocalCesiumClock   SystemTimeConst = 3
+	LocalRubidiumClock SystemTimeConst = 4
+	LocalCrystalClock  SystemTimeConst = 5
 )
 
-func (e SystemTimeConst) GoString() string {return e.String() }
+func (e SystemTimeConst) GoString() string { return e.String() }
 func (e SystemTimeConst) String() string {
 	switch e {
-		case 0:
-			return "GPS"
-		case 1:
-			return "GLONASS"
-		case 2:
-			return "Radio Station"
-		case 3:
-			return "Local Cesium clock"
-		case 4:
-			return "Local Rubidium clock"
-		case 5:
-			return "Local Crystal clock"
-default:
+	case 0:
+		return "GPS"
+	case 1:
+		return "GLONASS"
+	case 2:
+		return "Radio Station"
+	case 3:
+		return "Local Cesium clock"
+	case 4:
+		return "Local Rubidium clock"
+	case 5:
+		return "Local Crystal clock"
+	default:
 		return fmt.Sprintf("SystemTimeConst(%d)", uint8(e))
 	}
 }
+
 type MagneticVariationConst uint8
+
 const (
-	Manual	MagneticVariationConst = 0
-	AutomaticChart	MagneticVariationConst = 1
-	AutomaticTable	MagneticVariationConst = 2
-	AutomaticCalculation	MagneticVariationConst = 3
-	Wmm2000	MagneticVariationConst = 4
-	Wmm2005	MagneticVariationConst = 5
-	Wmm2010	MagneticVariationConst = 6
-	Wmm2015	MagneticVariationConst = 7
-	Wmm2020	MagneticVariationConst = 8
-	Wmm2025	MagneticVariationConst = 9
+	Manual               MagneticVariationConst = 0
+	AutomaticChart       MagneticVariationConst = 1
+	AutomaticTable       MagneticVariationConst = 2
+	AutomaticCalculation MagneticVariationConst = 3
+	Wmm2000              MagneticVariationConst = 4
+	Wmm2005              MagneticVariationConst = 5
+	Wmm2010              MagneticVariationConst = 6
+	Wmm2015              MagneticVariationConst = 7
+	Wmm2020              MagneticVariationConst = 8
+	Wmm2025              MagneticVariationConst = 9
 )
 
-func (e MagneticVariationConst) GoString() string {return e.String() }
+func (e MagneticVariationConst) GoString() string { return e.String() }
 func (e MagneticVariationConst) String() string {
 	switch e {
-		case 0:
-			return "Manual"
-		case 1:
-			return "Automatic Chart"
-		case 2:
-			return "Automatic Table"
-		case 3:
-			return "Automatic Calculation"
-		case 4:
-			return "WMM 2000"
-		case 5:
-			return "WMM 2005"
-		case 6:
-			return "WMM 2010"
-		case 7:
-			return "WMM 2015"
-		case 8:
-			return "WMM 2020"
-		case 9:
-			return "WMM 2025"
-default:
+	case 0:
+		return "Manual"
+	case 1:
+		return "Automatic Chart"
+	case 2:
+		return "Automatic Table"
+	case 3:
+		return "Automatic Calculation"
+	case 4:
+		return "WMM 2000"
+	case 5:
+		return "WMM 2005"
+	case 6:
+		return "WMM 2010"
+	case 7:
+		return "WMM 2015"
+	case 8:
+		return "WMM 2020"
+	case 9:
+		return "WMM 2025"
+	default:
 		return fmt.Sprintf("MagneticVariationConst(%d)", uint8(e))
 	}
 }
+
 type ResidualModeConst uint8
+
 const (
-	Autonomous	ResidualModeConst = 0
-	DifferentialEnhanced	ResidualModeConst = 1
-	Estimated	ResidualModeConst = 2
-	Simulator	ResidualModeConst = 3
-	Manual_2	ResidualModeConst = 4
+	Autonomous           ResidualModeConst = 0
+	DifferentialEnhanced ResidualModeConst = 1
+	Estimated            ResidualModeConst = 2
+	Simulator            ResidualModeConst = 3
+	Manual_2             ResidualModeConst = 4
 )
 
-func (e ResidualModeConst) GoString() string {return e.String() }
+func (e ResidualModeConst) GoString() string { return e.String() }
 func (e ResidualModeConst) String() string {
 	switch e {
-		case 0:
-			return "Autonomous"
-		case 1:
-			return "Differential enhanced"
-		case 2:
-			return "Estimated"
-		case 3:
-			return "Simulator"
-		case 4:
-			return "Manual"
-default:
+	case 0:
+		return "Autonomous"
+	case 1:
+		return "Differential enhanced"
+	case 2:
+		return "Estimated"
+	case 3:
+		return "Simulator"
+	case 4:
+		return "Manual"
+	default:
 		return fmt.Sprintf("ResidualModeConst(%d)", uint8(e))
 	}
 }
+
 type WindReferenceConst uint8
+
 const (
-	TrueGroundReferencedToNorth	WindReferenceConst = 0
-	MagneticGroundReferencedToMagn	WindReferenceConst = 1
-	Apparent	WindReferenceConst = 2
-	TrueBoatReferenced	WindReferenceConst = 3
-	TrueWaterReferenced	WindReferenceConst = 4
+	TrueGroundReferencedToNorth    WindReferenceConst = 0
+	MagneticGroundReferencedToMagn WindReferenceConst = 1
+	Apparent                       WindReferenceConst = 2
+	TrueBoatReferenced             WindReferenceConst = 3
+	TrueWaterReferenced            WindReferenceConst = 4
 )
 
-func (e WindReferenceConst) GoString() string {return e.String() }
+func (e WindReferenceConst) GoString() string { return e.String() }
 func (e WindReferenceConst) String() string {
 	switch e {
-		case 0:
-			return "True (ground referenced to North)"
-		case 1:
-			return "Magnetic (ground referenced to Magnetic North)"
-		case 2:
-			return "Apparent"
-		case 3:
-			return "True (boat referenced)"
-		case 4:
-			return "True (water referenced)"
-default:
+	case 0:
+		return "True (ground referenced to North)"
+	case 1:
+		return "Magnetic (ground referenced to Magnetic North)"
+	case 2:
+		return "Apparent"
+	case 3:
+		return "True (boat referenced)"
+	case 4:
+		return "True (water referenced)"
+	default:
 		return fmt.Sprintf("WindReferenceConst(%d)", uint8(e))
 	}
 }
+
 type WaterReferenceConst uint8
+
 const (
-	PaddleWheel	WaterReferenceConst = 0
-	PitotTube	WaterReferenceConst = 1
-	Doppler	WaterReferenceConst = 2
-	CorrelationUltraSound	WaterReferenceConst = 3
-	ElectroMagnetic	WaterReferenceConst = 4
+	PaddleWheel           WaterReferenceConst = 0
+	PitotTube             WaterReferenceConst = 1
+	Doppler               WaterReferenceConst = 2
+	CorrelationUltraSound WaterReferenceConst = 3
+	ElectroMagnetic       WaterReferenceConst = 4
 )
 
-func (e WaterReferenceConst) GoString() string {return e.String() }
+func (e WaterReferenceConst) GoString() string { return e.String() }
 func (e WaterReferenceConst) String() string {
 	switch e {
-		case 0:
-			return "Paddle wheel"
-		case 1:
-			return "Pitot tube"
-		case 2:
-			return "Doppler"
-		case 3:
-			return "Correlation (ultra sound)"
-		case 4:
-			return "Electro Magnetic"
-default:
+	case 0:
+		return "Paddle wheel"
+	case 1:
+		return "Pitot tube"
+	case 2:
+		return "Doppler"
+	case 3:
+		return "Correlation (ultra sound)"
+	case 4:
+		return "Electro Magnetic"
+	default:
 		return fmt.Sprintf("WaterReferenceConst(%d)", uint8(e))
 	}
 }
+
 type YesNoConst uint8
+
 const (
-	No	YesNoConst = 0
-	Yes	YesNoConst = 1
+	No  YesNoConst = 0
+	Yes YesNoConst = 1
 )
 
-func (e YesNoConst) GoString() string {return e.String() }
+func (e YesNoConst) GoString() string { return e.String() }
 func (e YesNoConst) String() string {
 	switch e {
-		case 0:
-			return "No"
-		case 1:
-			return "Yes"
-default:
+	case 0:
+		return "No"
+	case 1:
+		return "Yes"
+	default:
 		return fmt.Sprintf("YesNoConst(%d)", uint8(e))
 	}
 }
-type YesNo1BitConst uint8
-const (
-	No_2	YesNo1BitConst = 0
-	Yes_2	YesNo1BitConst = 1
-)
 
-func (e YesNo1BitConst) GoString() string {return e.String() }
-func (e YesNo1BitConst) String() string {
-	switch e {
-		case 0:
-			return "No"
-		case 1:
-			return "Yes"
-default:
-		return fmt.Sprintf("YesNo1BitConst(%d)", uint8(e))
-	}
-}
 type OkWarningConst uint8
+
 const (
-	Ok	OkWarningConst = 0
-	Warning	OkWarningConst = 1
+	Ok      OkWarningConst = 0
+	Warning OkWarningConst = 1
 )
 
-func (e OkWarningConst) GoString() string {return e.String() }
+func (e OkWarningConst) GoString() string { return e.String() }
 func (e OkWarningConst) String() string {
 	switch e {
-		case 0:
-			return "OK"
-		case 1:
-			return "Warning"
-default:
+	case 0:
+		return "OK"
+	case 1:
+		return "Warning"
+	default:
 		return fmt.Sprintf("OkWarningConst(%d)", uint8(e))
 	}
 }
+
 type OffOnConst uint8
+
 const (
-	Off	OffOnConst = 0
-	On	OffOnConst = 1
+	Off OffOnConst = 0
+	On  OffOnConst = 1
 )
 
-func (e OffOnConst) GoString() string {return e.String() }
+func (e OffOnConst) GoString() string { return e.String() }
 func (e OffOnConst) String() string {
 	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "On"
-default:
+	case 0:
+		return "Off"
+	case 1:
+		return "On"
+	default:
 		return fmt.Sprintf("OffOnConst(%d)", uint8(e))
 	}
 }
+
 type OffOnControlConst uint8
+
 const (
-	Off_2	OffOnControlConst = 0
-	On_2	OffOnControlConst = 1
-	Reserved_3	OffOnControlConst = 2
-	TakeNoActionNoChange	OffOnControlConst = 3
+	Off_2                OffOnControlConst = 0
+	On_2                 OffOnControlConst = 1
+	Reserved_3           OffOnControlConst = 2
+	TakeNoActionNoChange OffOnControlConst = 3
 )
 
-func (e OffOnControlConst) GoString() string {return e.String() }
+func (e OffOnControlConst) GoString() string { return e.String() }
 func (e OffOnControlConst) String() string {
 	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "On"
-		case 2:
-			return "Reserved"
-		case 3:
-			return "Take no action (no change)"
-default:
+	case 0:
+		return "Off"
+	case 1:
+		return "On"
+	case 2:
+		return "Reserved"
+	case 3:
+		return "Take no action (no change)"
+	default:
 		return fmt.Sprintf("OffOnControlConst(%d)", uint8(e))
 	}
 }
+
 type DirectionReferenceConst uint8
+
 const (
-	True	DirectionReferenceConst = 0
-	Magnetic	DirectionReferenceConst = 1
-	Error	DirectionReferenceConst = 2
+	True     DirectionReferenceConst = 0
+	Magnetic DirectionReferenceConst = 1
+	Error    DirectionReferenceConst = 2
 )
 
-func (e DirectionReferenceConst) GoString() string {return e.String() }
+func (e DirectionReferenceConst) GoString() string { return e.String() }
 func (e DirectionReferenceConst) String() string {
 	switch e {
-		case 0:
-			return "True"
-		case 1:
-			return "Magnetic"
-		case 2:
-			return "Error"
-default:
+	case 0:
+		return "True"
+	case 1:
+		return "Magnetic"
+	case 2:
+		return "Error"
+	default:
 		return fmt.Sprintf("DirectionReferenceConst(%d)", uint8(e))
 	}
 }
+
 type DirectionRudderConst uint8
+
 const (
-	NoOrder	DirectionRudderConst = 0
-	MoveToStarboard	DirectionRudderConst = 1
-	MoveToPort	DirectionRudderConst = 2
+	NoOrder         DirectionRudderConst = 0
+	MoveToStarboard DirectionRudderConst = 1
+	MoveToPort      DirectionRudderConst = 2
 )
 
-func (e DirectionRudderConst) GoString() string {return e.String() }
+func (e DirectionRudderConst) GoString() string { return e.String() }
 func (e DirectionRudderConst) String() string {
 	switch e {
-		case 0:
-			return "No Order"
-		case 1:
-			return "Move to starboard"
-		case 2:
-			return "Move to port"
-default:
+	case 0:
+		return "No Order"
+	case 1:
+		return "Move to starboard"
+	case 2:
+		return "Move to port"
+	default:
 		return fmt.Sprintf("DirectionRudderConst(%d)", uint8(e))
 	}
 }
+
 type NavStatusConst uint8
+
 const (
-	UnderWayUsingEngine	NavStatusConst = 0
-	AtAnchor	NavStatusConst = 1
-	NotUnderCommand	NavStatusConst = 2
-	RestrictedManeuverability	NavStatusConst = 3
-	ConstrainedByHerDraught	NavStatusConst = 4
-	Moored	NavStatusConst = 5
-	Aground	NavStatusConst = 6
-	EngagedInFishing	NavStatusConst = 7
-	UnderWaySailing	NavStatusConst = 8
-	HazardousMaterialHighSpeed	NavStatusConst = 9
-	HazardousMaterialWingInGround	NavStatusConst = 10
-	PowerDrivenVesselTowingAstern	NavStatusConst = 11
-	PowerDrivenVesselPushingAheadO	NavStatusConst = 12
-	AISSART	NavStatusConst = 14
+	UnderWayUsingEngine            NavStatusConst = 0
+	AtAnchor                       NavStatusConst = 1
+	NotUnderCommand                NavStatusConst = 2
+	RestrictedManeuverability      NavStatusConst = 3
+	ConstrainedByHerDraught        NavStatusConst = 4
+	Moored                         NavStatusConst = 5
+	Aground                        NavStatusConst = 6
+	EngagedInFishing               NavStatusConst = 7
+	UnderWaySailing                NavStatusConst = 8
+	HazardousMaterialHighSpeed     NavStatusConst = 9
+	HazardousMaterialWingInGround  NavStatusConst = 10
+	PowerDrivenVesselTowingAstern  NavStatusConst = 11
+	PowerDrivenVesselPushingAheadO NavStatusConst = 12
+	AISSART                        NavStatusConst = 14
 )
 
-func (e NavStatusConst) GoString() string {return e.String() }
+func (e NavStatusConst) GoString() string { return e.String() }
 func (e NavStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Under way using engine"
-		case 1:
-			return "At anchor"
-		case 2:
-			return "Not under command"
-		case 3:
-			return "Restricted maneuverability"
-		case 4:
-			return "Constrained by her draught"
-		case 5:
-			return "Moored"
-		case 6:
-			return "Aground"
-		case 7:
-			return "Engaged in Fishing"
-		case 8:
-			return "Under way sailing"
-		case 9:
-			return "Hazardous material - High Speed"
-		case 10:
-			return "Hazardous material - Wing in Ground"
-		case 11:
-			return "Power-driven vessel towing astern"
-		case 12:
-			return "Power-driven vessel pushing ahead or towing alongside"
-		case 14:
-			return "AIS-SART"
-default:
+	case 0:
+		return "Under way using engine"
+	case 1:
+		return "At anchor"
+	case 2:
+		return "Not under command"
+	case 3:
+		return "Restricted maneuverability"
+	case 4:
+		return "Constrained by her draught"
+	case 5:
+		return "Moored"
+	case 6:
+		return "Aground"
+	case 7:
+		return "Engaged in Fishing"
+	case 8:
+		return "Under way sailing"
+	case 9:
+		return "Hazardous material - High Speed"
+	case 10:
+		return "Hazardous material - Wing in Ground"
+	case 11:
+		return "Power-driven vessel towing astern"
+	case 12:
+		return "Power-driven vessel pushing ahead or towing alongside"
+	case 14:
+		return "AIS-SART"
+	default:
 		return fmt.Sprintf("NavStatusConst(%d)", uint8(e))
 	}
 }
+
 type PowerFactorConst uint8
+
 const (
-	Leading	PowerFactorConst = 0
-	Lagging	PowerFactorConst = 1
-	Error_2	PowerFactorConst = 2
+	Leading PowerFactorConst = 0
+	Lagging PowerFactorConst = 1
+	Error_2 PowerFactorConst = 2
 )
 
-func (e PowerFactorConst) GoString() string {return e.String() }
+func (e PowerFactorConst) GoString() string { return e.String() }
 func (e PowerFactorConst) String() string {
 	switch e {
-		case 0:
-			return "Leading"
-		case 1:
-			return "Lagging"
-		case 2:
-			return "Error"
-default:
+	case 0:
+		return "Leading"
+	case 1:
+		return "Lagging"
+	case 2:
+		return "Error"
+	default:
 		return fmt.Sprintf("PowerFactorConst(%d)", uint8(e))
 	}
 }
+
 type TemperatureSourceConst uint8
+
 const (
-	SeaTemperature	TemperatureSourceConst = 0
-	OutsideTemperature	TemperatureSourceConst = 1
-	InsideTemperature	TemperatureSourceConst = 2
-	EngineRoomTemperature	TemperatureSourceConst = 3
-	MainCabinTemperature	TemperatureSourceConst = 4
-	LiveWellTemperature	TemperatureSourceConst = 5
-	BaitWellTemperature	TemperatureSourceConst = 6
-	RefrigerationTemperature	TemperatureSourceConst = 7
-	HeatingSystemTemperature	TemperatureSourceConst = 8
-	DewPointTemperature	TemperatureSourceConst = 9
-	ApparentWindChillTemperature	TemperatureSourceConst = 10
-	TheoreticalWindChillTemperatur	TemperatureSourceConst = 11
-	HeatIndexTemperature	TemperatureSourceConst = 12
-	FreezerTemperature	TemperatureSourceConst = 13
-	ExhaustGasTemperature	TemperatureSourceConst = 14
-	ShaftSealTemperature	TemperatureSourceConst = 15
+	SeaTemperature                 TemperatureSourceConst = 0
+	OutsideTemperature             TemperatureSourceConst = 1
+	InsideTemperature              TemperatureSourceConst = 2
+	EngineRoomTemperature          TemperatureSourceConst = 3
+	MainCabinTemperature           TemperatureSourceConst = 4
+	LiveWellTemperature            TemperatureSourceConst = 5
+	BaitWellTemperature            TemperatureSourceConst = 6
+	RefrigerationTemperature       TemperatureSourceConst = 7
+	HeatingSystemTemperature       TemperatureSourceConst = 8
+	DewPointTemperature            TemperatureSourceConst = 9
+	ApparentWindChillTemperature   TemperatureSourceConst = 10
+	TheoreticalWindChillTemperatur TemperatureSourceConst = 11
+	HeatIndexTemperature           TemperatureSourceConst = 12
+	FreezerTemperature             TemperatureSourceConst = 13
+	ExhaustGasTemperature          TemperatureSourceConst = 14
+	ShaftSealTemperature           TemperatureSourceConst = 15
 )
 
-func (e TemperatureSourceConst) GoString() string {return e.String() }
+func (e TemperatureSourceConst) GoString() string { return e.String() }
 func (e TemperatureSourceConst) String() string {
 	switch e {
-		case 0:
-			return "Sea Temperature"
-		case 1:
-			return "Outside Temperature"
-		case 2:
-			return "Inside Temperature"
-		case 3:
-			return "Engine Room Temperature"
-		case 4:
-			return "Main Cabin Temperature"
-		case 5:
-			return "Live Well Temperature"
-		case 6:
-			return "Bait Well Temperature"
-		case 7:
-			return "Refrigeration Temperature"
-		case 8:
-			return "Heating System Temperature"
-		case 9:
-			return "Dew Point Temperature"
-		case 10:
-			return "Apparent Wind Chill Temperature"
-		case 11:
-			return "Theoretical Wind Chill Temperature"
-		case 12:
-			return "Heat Index Temperature"
-		case 13:
-			return "Freezer Temperature"
-		case 14:
-			return "Exhaust Gas Temperature"
-		case 15:
-			return "Shaft Seal Temperature"
-default:
+	case 0:
+		return "Sea Temperature"
+	case 1:
+		return "Outside Temperature"
+	case 2:
+		return "Inside Temperature"
+	case 3:
+		return "Engine Room Temperature"
+	case 4:
+		return "Main Cabin Temperature"
+	case 5:
+		return "Live Well Temperature"
+	case 6:
+		return "Bait Well Temperature"
+	case 7:
+		return "Refrigeration Temperature"
+	case 8:
+		return "Heating System Temperature"
+	case 9:
+		return "Dew Point Temperature"
+	case 10:
+		return "Apparent Wind Chill Temperature"
+	case 11:
+		return "Theoretical Wind Chill Temperature"
+	case 12:
+		return "Heat Index Temperature"
+	case 13:
+		return "Freezer Temperature"
+	case 14:
+		return "Exhaust Gas Temperature"
+	case 15:
+		return "Shaft Seal Temperature"
+	default:
 		return fmt.Sprintf("TemperatureSourceConst(%d)", uint8(e))
 	}
 }
+
 type HumiditySourceConst uint8
+
 const (
-	Inside	HumiditySourceConst = 0
-	Outside	HumiditySourceConst = 1
+	Inside  HumiditySourceConst = 0
+	Outside HumiditySourceConst = 1
 )
 
-func (e HumiditySourceConst) GoString() string {return e.String() }
+func (e HumiditySourceConst) GoString() string { return e.String() }
 func (e HumiditySourceConst) String() string {
 	switch e {
-		case 0:
-			return "Inside"
-		case 1:
-			return "Outside"
-default:
+	case 0:
+		return "Inside"
+	case 1:
+		return "Outside"
+	default:
 		return fmt.Sprintf("HumiditySourceConst(%d)", uint8(e))
 	}
 }
+
 type PressureSourceConst uint8
+
 const (
-	Atmospheric	PressureSourceConst = 0
-	Water	PressureSourceConst = 1
-	Steam	PressureSourceConst = 2
-	CompressedAir	PressureSourceConst = 3
-	Hydraulic	PressureSourceConst = 4
-	Filter	PressureSourceConst = 5
-	Altimetersetting	PressureSourceConst = 6
-	Oil	PressureSourceConst = 7
-	Fuel	PressureSourceConst = 8
+	Atmospheric      PressureSourceConst = 0
+	Water            PressureSourceConst = 1
+	Steam            PressureSourceConst = 2
+	CompressedAir    PressureSourceConst = 3
+	Hydraulic        PressureSourceConst = 4
+	Filter           PressureSourceConst = 5
+	Altimetersetting PressureSourceConst = 6
+	Oil              PressureSourceConst = 7
+	Fuel             PressureSourceConst = 8
 )
 
-func (e PressureSourceConst) GoString() string {return e.String() }
+func (e PressureSourceConst) GoString() string { return e.String() }
 func (e PressureSourceConst) String() string {
 	switch e {
-		case 0:
-			return "Atmospheric"
-		case 1:
-			return "Water"
-		case 2:
-			return "Steam"
-		case 3:
-			return "Compressed Air"
-		case 4:
-			return "Hydraulic"
-		case 5:
-			return "Filter"
-		case 6:
-			return "AltimeterSetting"
-		case 7:
-			return "Oil"
-		case 8:
-			return "Fuel"
-default:
+	case 0:
+		return "Atmospheric"
+	case 1:
+		return "Water"
+	case 2:
+		return "Steam"
+	case 3:
+		return "Compressed Air"
+	case 4:
+		return "Hydraulic"
+	case 5:
+		return "Filter"
+	case 6:
+		return "AltimeterSetting"
+	case 7:
+		return "Oil"
+	case 8:
+		return "Fuel"
+	default:
 		return fmt.Sprintf("PressureSourceConst(%d)", uint8(e))
 	}
 }
+
 type DSCFormatConst uint8
+
 const (
-	GeographicalArea	DSCFormatConst = 102
-	Distress	DSCFormatConst = 112
-	CommonInterest	DSCFormatConst = 114
-	AllShips	DSCFormatConst = 116
-	IndividualStations	DSCFormatConst = 120
-	NonCallingPurpose	DSCFormatConst = 121
-	IndividualStationAutomatic	DSCFormatConst = 123
+	GeographicalArea           DSCFormatConst = 102
+	Distress                   DSCFormatConst = 112
+	CommonInterest             DSCFormatConst = 114
+	AllShips                   DSCFormatConst = 116
+	IndividualStations         DSCFormatConst = 120
+	NonCallingPurpose          DSCFormatConst = 121
+	IndividualStationAutomatic DSCFormatConst = 123
 )
 
-func (e DSCFormatConst) GoString() string {return e.String() }
+func (e DSCFormatConst) GoString() string { return e.String() }
 func (e DSCFormatConst) String() string {
 	switch e {
-		case 102:
-			return "Geographical area"
-		case 112:
-			return "Distress"
-		case 114:
-			return "Common interest"
-		case 116:
-			return "All ships"
-		case 120:
-			return "Individual stations"
-		case 121:
-			return "Non-calling purpose"
-		case 123:
-			return "Individual station automatic"
-default:
+	case 102:
+		return "Geographical area"
+	case 112:
+		return "Distress"
+	case 114:
+		return "Common interest"
+	case 116:
+		return "All ships"
+	case 120:
+		return "Individual stations"
+	case 121:
+		return "Non-calling purpose"
+	case 123:
+		return "Individual station automatic"
+	default:
 		return fmt.Sprintf("DSCFormatConst(%d)", uint8(e))
 	}
 }
+
 type DSCCategoryConst uint8
+
 const (
-	Routine	DSCCategoryConst = 100
-	Safety	DSCCategoryConst = 108
-	Urgency	DSCCategoryConst = 110
-	Distress_2	DSCCategoryConst = 112
+	Routine    DSCCategoryConst = 100
+	Safety     DSCCategoryConst = 108
+	Urgency    DSCCategoryConst = 110
+	Distress_2 DSCCategoryConst = 112
 )
 
-func (e DSCCategoryConst) GoString() string {return e.String() }
+func (e DSCCategoryConst) GoString() string { return e.String() }
 func (e DSCCategoryConst) String() string {
 	switch e {
-		case 100:
-			return "Routine"
-		case 108:
-			return "Safety"
-		case 110:
-			return "Urgency"
-		case 112:
-			return "Distress"
-default:
+	case 100:
+		return "Routine"
+	case 108:
+		return "Safety"
+	case 110:
+		return "Urgency"
+	case 112:
+		return "Distress"
+	default:
 		return fmt.Sprintf("DSCCategoryConst(%d)", uint8(e))
 	}
 }
+
 type DSCNatureConst uint8
+
 const (
-	Fire	DSCNatureConst = 100
-	Flooding	DSCNatureConst = 101
-	Collision	DSCNatureConst = 102
-	Grounding	DSCNatureConst = 103
-	Listing	DSCNatureConst = 104
-	Sinking	DSCNatureConst = 105
-	DisabledAndAdrift	DSCNatureConst = 106
-	Undesignated	DSCNatureConst = 107
-	AbandoningShip	DSCNatureConst = 108
-	Piracy	DSCNatureConst = 109
-	ManOverboard	DSCNatureConst = 110
-	EpirbEmission	DSCNatureConst = 112
+	Fire              DSCNatureConst = 100
+	Flooding          DSCNatureConst = 101
+	Collision         DSCNatureConst = 102
+	Grounding         DSCNatureConst = 103
+	Listing           DSCNatureConst = 104
+	Sinking           DSCNatureConst = 105
+	DisabledAndAdrift DSCNatureConst = 106
+	Undesignated      DSCNatureConst = 107
+	AbandoningShip    DSCNatureConst = 108
+	Piracy            DSCNatureConst = 109
+	ManOverboard      DSCNatureConst = 110
+	EpirbEmission     DSCNatureConst = 112
 )
 
-func (e DSCNatureConst) GoString() string {return e.String() }
+func (e DSCNatureConst) GoString() string { return e.String() }
 func (e DSCNatureConst) String() string {
 	switch e {
-		case 100:
-			return "Fire"
-		case 101:
-			return "Flooding"
-		case 102:
-			return "Collision"
-		case 103:
-			return "Grounding"
-		case 104:
-			return "Listing"
-		case 105:
-			return "Sinking"
-		case 106:
-			return "Disabled and adrift"
-		case 107:
-			return "Undesignated"
-		case 108:
-			return "Abandoning ship"
-		case 109:
-			return "Piracy"
-		case 110:
-			return "Man overboard"
-		case 112:
-			return "EPIRB emission"
-default:
+	case 100:
+		return "Fire"
+	case 101:
+		return "Flooding"
+	case 102:
+		return "Collision"
+	case 103:
+		return "Grounding"
+	case 104:
+		return "Listing"
+	case 105:
+		return "Sinking"
+	case 106:
+		return "Disabled and adrift"
+	case 107:
+		return "Undesignated"
+	case 108:
+		return "Abandoning ship"
+	case 109:
+		return "Piracy"
+	case 110:
+		return "Man overboard"
+	case 112:
+		return "EPIRB emission"
+	default:
 		return fmt.Sprintf("DSCNatureConst(%d)", uint8(e))
 	}
 }
+
 type DSCFirstTelecommandConst uint8
+
 const (
-	F3eG3eAllModesTp	DSCFirstTelecommandConst = 100
-	F3eG3eDuplexTp	DSCFirstTelecommandConst = 101
-	Polling	DSCFirstTelecommandConst = 103
-	UnableToComply	DSCFirstTelecommandConst = 104
-	EndOfCall	DSCFirstTelecommandConst = 105
-	Data	DSCFirstTelecommandConst = 106
-	J3eTp	DSCFirstTelecommandConst = 109
-	DistressAcknowledgement	DSCFirstTelecommandConst = 110
-	DistressRelay	DSCFirstTelecommandConst = 112
-	F1bJ2bTtyFec	DSCFirstTelecommandConst = 113
-	F1bJ2bTtyArq	DSCFirstTelecommandConst = 115
-	Test	DSCFirstTelecommandConst = 118
-	ShipPositionOrLocationRegistra	DSCFirstTelecommandConst = 121
-	NoInformation	DSCFirstTelecommandConst = 126
+	F3eG3eAllModesTp               DSCFirstTelecommandConst = 100
+	F3eG3eDuplexTp                 DSCFirstTelecommandConst = 101
+	Polling                        DSCFirstTelecommandConst = 103
+	UnableToComply                 DSCFirstTelecommandConst = 104
+	EndOfCall                      DSCFirstTelecommandConst = 105
+	Data                           DSCFirstTelecommandConst = 106
+	J3eTp                          DSCFirstTelecommandConst = 109
+	DistressAcknowledgement        DSCFirstTelecommandConst = 110
+	DistressRelay                  DSCFirstTelecommandConst = 112
+	F1bJ2bTtyFec                   DSCFirstTelecommandConst = 113
+	F1bJ2bTtyArq                   DSCFirstTelecommandConst = 115
+	Test                           DSCFirstTelecommandConst = 118
+	ShipPositionOrLocationRegistra DSCFirstTelecommandConst = 121
+	NoInformation                  DSCFirstTelecommandConst = 126
 )
 
-func (e DSCFirstTelecommandConst) GoString() string {return e.String() }
+func (e DSCFirstTelecommandConst) GoString() string { return e.String() }
 func (e DSCFirstTelecommandConst) String() string {
 	switch e {
-		case 100:
-			return "F3E/G3E All modes TP"
-		case 101:
-			return "F3E/G3E duplex TP"
-		case 103:
-			return "Polling"
-		case 104:
-			return "Unable to comply"
-		case 105:
-			return "End of call"
-		case 106:
-			return "Data"
-		case 109:
-			return "J3E TP"
-		case 110:
-			return "Distress acknowledgement"
-		case 112:
-			return "Distress relay"
-		case 113:
-			return "F1B/J2B TTY-FEC"
-		case 115:
-			return "F1B/J2B TTY-ARQ"
-		case 118:
-			return "Test"
-		case 121:
-			return "Ship position or location registration updating"
-		case 126:
-			return "No information"
-default:
+	case 100:
+		return "F3E/G3E All modes TP"
+	case 101:
+		return "F3E/G3E duplex TP"
+	case 103:
+		return "Polling"
+	case 104:
+		return "Unable to comply"
+	case 105:
+		return "End of call"
+	case 106:
+		return "Data"
+	case 109:
+		return "J3E TP"
+	case 110:
+		return "Distress acknowledgement"
+	case 112:
+		return "Distress relay"
+	case 113:
+		return "F1B/J2B TTY-FEC"
+	case 115:
+		return "F1B/J2B TTY-ARQ"
+	case 118:
+		return "Test"
+	case 121:
+		return "Ship position or location registration updating"
+	case 126:
+		return "No information"
+	default:
 		return fmt.Sprintf("DSCFirstTelecommandConst(%d)", uint8(e))
 	}
 }
+
 type DSCSecondTelecommandConst uint8
+
 const (
-	NoReasonGiven	DSCSecondTelecommandConst = 100
-	CongestionAtMsc	DSCSecondTelecommandConst = 101
-	Busy	DSCSecondTelecommandConst = 102
-	QueueIndication	DSCSecondTelecommandConst = 103
-	StationBarred	DSCSecondTelecommandConst = 104
-	NoOperatorAvailable	DSCSecondTelecommandConst = 105
-	OperatorTemporarilyUnavailable	DSCSecondTelecommandConst = 106
-	EquipmentDisabled	DSCSecondTelecommandConst = 107
-	UnableToUseProposedChannel	DSCSecondTelecommandConst = 108
-	UnableToUseProposedMode	DSCSecondTelecommandConst = 109
-	ShipsAndAircraftOfStatesNotPar_2	DSCSecondTelecommandConst = 110
-	MedicalTransports	DSCSecondTelecommandConst = 111
-	PayPhonePublicCallOffice	DSCSecondTelecommandConst = 112
-	FaxData	DSCSecondTelecommandConst = 113
-	NoInformation_2	DSCSecondTelecommandConst = 126
+	NoReasonGiven                    DSCSecondTelecommandConst = 100
+	CongestionAtMsc                  DSCSecondTelecommandConst = 101
+	Busy                             DSCSecondTelecommandConst = 102
+	QueueIndication                  DSCSecondTelecommandConst = 103
+	StationBarred                    DSCSecondTelecommandConst = 104
+	NoOperatorAvailable              DSCSecondTelecommandConst = 105
+	OperatorTemporarilyUnavailable   DSCSecondTelecommandConst = 106
+	EquipmentDisabled                DSCSecondTelecommandConst = 107
+	UnableToUseProposedChannel       DSCSecondTelecommandConst = 108
+	UnableToUseProposedMode          DSCSecondTelecommandConst = 109
+	ShipsAndAircraftOfStatesNotPar_2 DSCSecondTelecommandConst = 110
+	MedicalTransports                DSCSecondTelecommandConst = 111
+	PayPhonePublicCallOffice         DSCSecondTelecommandConst = 112
+	FaxData                          DSCSecondTelecommandConst = 113
+	NoInformation_2                  DSCSecondTelecommandConst = 126
 )
 
-func (e DSCSecondTelecommandConst) GoString() string {return e.String() }
+func (e DSCSecondTelecommandConst) GoString() string { return e.String() }
 func (e DSCSecondTelecommandConst) String() string {
 	switch e {
-		case 100:
-			return "No reason given"
-		case 101:
-			return "Congestion at MSC"
-		case 102:
-			return "Busy"
-		case 103:
-			return "Queue indication"
-		case 104:
-			return "Station barred"
-		case 105:
-			return "No operator available"
-		case 106:
-			return "Operator temporarily unavailable"
-		case 107:
-			return "Equipment disabled"
-		case 108:
-			return "Unable to use proposed channel"
-		case 109:
-			return "Unable to use proposed mode"
-		case 110:
-			return "Ships and aircraft of States not parties to an armed conflict"
-		case 111:
-			return "Medical transports"
-		case 112:
-			return "Pay phone/public call office"
-		case 113:
-			return "Fax/data"
-		case 126:
-			return "No information"
-default:
+	case 100:
+		return "No reason given"
+	case 101:
+		return "Congestion at MSC"
+	case 102:
+		return "Busy"
+	case 103:
+		return "Queue indication"
+	case 104:
+		return "Station barred"
+	case 105:
+		return "No operator available"
+	case 106:
+		return "Operator temporarily unavailable"
+	case 107:
+		return "Equipment disabled"
+	case 108:
+		return "Unable to use proposed channel"
+	case 109:
+		return "Unable to use proposed mode"
+	case 110:
+		return "Ships and aircraft of States not parties to an armed conflict"
+	case 111:
+		return "Medical transports"
+	case 112:
+		return "Pay phone/public call office"
+	case 113:
+		return "Fax/data"
+	case 126:
+		return "No information"
+	default:
 		return fmt.Sprintf("DSCSecondTelecommandConst(%d)", uint8(e))
 	}
 }
+
 type DSCExpansionDataConst uint8
+
 const (
-	EnhancedPosition	DSCExpansionDataConst = 100
-	SourceAndDatumOfPosition	DSCExpansionDataConst = 101
-	SOG	DSCExpansionDataConst = 102
-	COG	DSCExpansionDataConst = 103
-	AdditionalStationIdentification	DSCExpansionDataConst = 104
-	EnhancedGeographicArea	DSCExpansionDataConst = 105
-	NumberOfPersonsOnBoard	DSCExpansionDataConst = 106
+	EnhancedPosition                DSCExpansionDataConst = 100
+	SourceAndDatumOfPosition        DSCExpansionDataConst = 101
+	SOG                             DSCExpansionDataConst = 102
+	COG                             DSCExpansionDataConst = 103
+	AdditionalStationIdentification DSCExpansionDataConst = 104
+	EnhancedGeographicArea          DSCExpansionDataConst = 105
+	NumberOfPersonsOnBoard          DSCExpansionDataConst = 106
 )
 
-func (e DSCExpansionDataConst) GoString() string {return e.String() }
+func (e DSCExpansionDataConst) GoString() string { return e.String() }
 func (e DSCExpansionDataConst) String() string {
 	switch e {
-		case 100:
-			return "Enhanced position"
-		case 101:
-			return "Source and datum of position"
-		case 102:
-			return "SOG"
-		case 103:
-			return "COG"
-		case 104:
-			return "Additional station identification"
-		case 105:
-			return "Enhanced geographic area"
-		case 106:
-			return "Number of persons on board"
-default:
+	case 100:
+		return "Enhanced position"
+	case 101:
+		return "Source and datum of position"
+	case 102:
+		return "SOG"
+	case 103:
+		return "COG"
+	case 104:
+		return "Additional station identification"
+	case 105:
+		return "Enhanced geographic area"
+	case 106:
+		return "Number of persons on board"
+	default:
 		return fmt.Sprintf("DSCExpansionDataConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkMessageIDConst uint8
+
 const (
-	Seatalk1Encoded	SeatalkMessageIDConst = 240
-	Display_2	SeatalkMessageIDConst = 140
-	PilotConfiguration	SeatalkMessageIDConst = 108
+	Seatalk1Encoded    SeatalkMessageIDConst = 240
+	Display_2          SeatalkMessageIDConst = 140
+	PilotConfiguration SeatalkMessageIDConst = 108
 )
 
-func (e SeatalkMessageIDConst) GoString() string {return e.String() }
+func (e SeatalkMessageIDConst) GoString() string { return e.String() }
 func (e SeatalkMessageIDConst) String() string {
 	switch e {
-		case 240:
-			return "Seatalk 1 Encoded"
-		case 140:
-			return "Display"
-		case 108:
-			return "Pilot Configuration"
-default:
+	case 240:
+		return "Seatalk 1 Encoded"
+	case 140:
+		return "Display"
+	case 108:
+		return "Pilot Configuration"
+	default:
 		return fmt.Sprintf("SeatalkMessageIDConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkCommandConst uint8
+
 const (
-	Seatalk1	SeatalkCommandConst = 129
-	HullType	SeatalkCommandConst = 22
-	AutoTurn	SeatalkCommandConst = 38
-	Settings	SeatalkCommandConst = 12
-	RudderLimit	SeatalkCommandConst = 2
-	RudderDamping	SeatalkCommandConst = 3
-	RudderOffset	SeatalkCommandConst = 4
-	ReverseRudderReference	SeatalkCommandConst = 6
-	CruiseSpeed	SeatalkCommandConst = 8
-	PowerSteerMode	SeatalkCommandConst = 11
-	WindType	SeatalkCommandConst = 15
-	AutoTurn_2	SeatalkCommandConst = 17
-	CalibrationLock	SeatalkCommandConst = 18
-	GybeInhibit	SeatalkCommandConst = 20
-	CompassOffset	SeatalkCommandConst = 21
-	DriveType	SeatalkCommandConst = 23
-	ResponseLevel	SeatalkCommandConst = 25
-	MaxCompassDeviation	SeatalkCommandConst = 26
-	HardOverTime	SeatalkCommandConst = 27
-	DebugLevel	SeatalkCommandConst = 29
-	CompassLock	SeatalkCommandConst = 33
-	SpeedInput	SeatalkCommandConst = 34
-	CompassLinearisationProgress	SeatalkCommandConst = 35
-	AcuDebugLevel	SeatalkCommandConst = 36
-	WindShiftAlarm	SeatalkCommandConst = 37
-	AutoTurnTimeout	SeatalkCommandConst = 39
+	Seatalk1                     SeatalkCommandConst = 129
+	HullType                     SeatalkCommandConst = 22
+	AutoTurn                     SeatalkCommandConst = 38
+	Settings                     SeatalkCommandConst = 12
+	RudderLimit                  SeatalkCommandConst = 2
+	RudderDamping                SeatalkCommandConst = 3
+	RudderOffset                 SeatalkCommandConst = 4
+	ReverseRudderReference       SeatalkCommandConst = 6
+	CruiseSpeed                  SeatalkCommandConst = 8
+	PowerSteerMode               SeatalkCommandConst = 11
+	WindType                     SeatalkCommandConst = 15
+	AutoTurn_2                   SeatalkCommandConst = 17
+	CalibrationLock              SeatalkCommandConst = 18
+	GybeInhibit                  SeatalkCommandConst = 20
+	CompassOffset                SeatalkCommandConst = 21
+	DriveType                    SeatalkCommandConst = 23
+	ResponseLevel                SeatalkCommandConst = 25
+	MaxCompassDeviation          SeatalkCommandConst = 26
+	HardOverTime                 SeatalkCommandConst = 27
+	DebugLevel                   SeatalkCommandConst = 29
+	CompassLock                  SeatalkCommandConst = 33
+	SpeedInput                   SeatalkCommandConst = 34
+	CompassLinearisationProgress SeatalkCommandConst = 35
+	AcuDebugLevel                SeatalkCommandConst = 36
+	WindShiftAlarm               SeatalkCommandConst = 37
+	AutoTurnTimeout              SeatalkCommandConst = 39
 )
 
-func (e SeatalkCommandConst) GoString() string {return e.String() }
+func (e SeatalkCommandConst) GoString() string { return e.String() }
 func (e SeatalkCommandConst) String() string {
 	switch e {
-		case 129:
-			return "Seatalk1"
-		case 22:
-			return "Hull Type"
-		case 38:
-			return "Auto Turn"
-		case 12:
-			return "Settings"
-		case 2:
-			return "Rudder Limit"
-		case 3:
-			return "Rudder Damping"
-		case 4:
-			return "Rudder Offset"
-		case 6:
-			return "Reverse Rudder Reference"
-		case 8:
-			return "Cruise Speed"
-		case 11:
-			return "Power Steer Mode"
-		case 15:
-			return "Wind Type"
-		case 17:
-			return "Auto Turn"
-		case 18:
-			return "Calibration Lock"
-		case 20:
-			return "Gybe Inhibit"
-		case 21:
-			return "Compass Offset"
-		case 23:
-			return "Drive Type"
-		case 25:
-			return "Response Level"
-		case 26:
-			return "Max Compass Deviation"
-		case 27:
-			return "Hard Over Time"
-		case 29:
-			return "Debug Level"
-		case 33:
-			return "Compass Lock"
-		case 34:
-			return "Speed Input"
-		case 35:
-			return "Compass Linearisation Progress"
-		case 36:
-			return "ACU Debug Level"
-		case 37:
-			return "Wind Shift Alarm"
-		case 39:
-			return "Auto Turn Timeout"
-default:
+	case 129:
+		return "Seatalk1"
+	case 22:
+		return "Hull Type"
+	case 38:
+		return "Auto Turn"
+	case 12:
+		return "Settings"
+	case 2:
+		return "Rudder Limit"
+	case 3:
+		return "Rudder Damping"
+	case 4:
+		return "Rudder Offset"
+	case 6:
+		return "Reverse Rudder Reference"
+	case 8:
+		return "Cruise Speed"
+	case 11:
+		return "Power Steer Mode"
+	case 15:
+		return "Wind Type"
+	case 17:
+		return "Auto Turn"
+	case 18:
+		return "Calibration Lock"
+	case 20:
+		return "Gybe Inhibit"
+	case 21:
+		return "Compass Offset"
+	case 23:
+		return "Drive Type"
+	case 25:
+		return "Response Level"
+	case 26:
+		return "Max Compass Deviation"
+	case 27:
+		return "Hard Over Time"
+	case 29:
+		return "Debug Level"
+	case 33:
+		return "Compass Lock"
+	case 34:
+		return "Speed Input"
+	case 35:
+		return "Compass Linearisation Progress"
+	case 36:
+		return "ACU Debug Level"
+	case 37:
+		return "Wind Shift Alarm"
+	case 39:
+		return "Auto Turn Timeout"
+	default:
 		return fmt.Sprintf("SeatalkCommandConst(%d)", uint8(e))
 	}
 }
+
 type Seatalk1CommandConst uint8
+
 const (
-	DepthBelowTransducer	Seatalk1CommandConst = 0
-	EquipmentID	Seatalk1CommandConst = 1
-	EngineRPMAndPitch	Seatalk1CommandConst = 5
-	ApparentWindAngle	Seatalk1CommandConst = 16
-	ApparentWindSpeed	Seatalk1CommandConst = 17
-	SpeedThroughWater	Seatalk1CommandConst = 32
-	TripMileage	Seatalk1CommandConst = 33
-	TotalMileage	Seatalk1CommandConst = 34
-	WaterTemperatureSt50	Seatalk1CommandConst = 35
-	DisplayUnitsForMileageSpeed	Seatalk1CommandConst = 36
-	TotalTripLog	Seatalk1CommandConst = 37
-	SpeedThroughWaterWithAverage	Seatalk1CommandConst = 38
-	WaterTemperature	Seatalk1CommandConst = 39
-	SetLampIntensity	Seatalk1CommandConst = 48
-	CancelMOBManOverBoardCondition	Seatalk1CommandConst = 54
-	CodelockData	Seatalk1CommandConst = 56
-	LatPosition	Seatalk1CommandConst = 80
-	LonPosition	Seatalk1CommandConst = 81
-	SpeedOverGround	Seatalk1CommandConst = 82
-	CourseOverGroundCOG	Seatalk1CommandConst = 83
-	GmtTime	Seatalk1CommandConst = 84
-	TrackKeystrokeOnGPSUnit	Seatalk1CommandConst = 85
-	Date	Seatalk1CommandConst = 86
-	SatInfo	Seatalk1CommandConst = 87
-	LatLonRawUnfiltered	Seatalk1CommandConst = 88
-	SetCountDownTimer	Seatalk1CommandConst = 89
-	IssuedByE80MultifunctionDispla	Seatalk1CommandConst = 97
-	SelectFathomDisplayUnitsForDep	Seatalk1CommandConst = 101
-	WindAlarm	Seatalk1CommandConst = 102
-	AlarmAcknowledgmentKeystroke	Seatalk1CommandConst = 104
-	SecondEquipmentIDDatagram	Seatalk1CommandConst = 108
-	MOBManOverBoard	Seatalk1CommandConst = 110
-	KeystrokeOnRaymarineA25006St60	Seatalk1CommandConst = 112
-	SetLampIntensity_2	Seatalk1CommandConst = 128
-	SentByCourseComputerDuringSetu	Seatalk1CommandConst = 129
-	TargetWaypointName	Seatalk1CommandConst = 130
-	SentByCourseComputer	Seatalk1CommandConst = 131
-	CompassHeadingAutopilotCourseA	Seatalk1CommandConst = 132
-	NavigationToWaypointInformatio	Seatalk1CommandConst = 133
-	Keystroke	Seatalk1CommandConst = 134
-	SetResponseLevel	Seatalk1CommandConst = 135
-	AutopilotParameter	Seatalk1CommandConst = 136
-	CompassHeadingSentBySt40Compas	Seatalk1CommandConst = 137
-	DeviceIndentification	Seatalk1CommandConst = 144
-	SetRudderGain	Seatalk1CommandConst = 145
-	SetAutopilotParameter	Seatalk1CommandConst = 146
-	EnterApSetup	Seatalk1CommandConst = 147
-	ReplacesCommand84WhileAutopilo	Seatalk1CommandConst = 149
-	CompassVariation	Seatalk1CommandConst = 153
-	VersionString	Seatalk1CommandConst = 154
-	CompassHeadingAndRudderPositio	Seatalk1CommandConst = 156
-	WaypointDefinition	Seatalk1CommandConst = 158
-	DestinationWaypointInfo	Seatalk1CommandConst = 161
-	ArrivalInfo	Seatalk1CommandConst = 162
-	BroadcastQueryResponseToIdenti	Seatalk1CommandConst = 164
-	GPSAndDGPSInfo	Seatalk1CommandConst = 165
-	UnknownMeaning	Seatalk1CommandConst = 167
-	AlarmOnOffForGuard	Seatalk1CommandConst = 168
-	AlarmOnOffForGuard_2	Seatalk1CommandConst = 171
+	DepthBelowTransducer           Seatalk1CommandConst = 0
+	EquipmentID                    Seatalk1CommandConst = 1
+	EngineRPMAndPitch              Seatalk1CommandConst = 5
+	ApparentWindAngle              Seatalk1CommandConst = 16
+	ApparentWindSpeed              Seatalk1CommandConst = 17
+	SpeedThroughWater              Seatalk1CommandConst = 32
+	TripMileage                    Seatalk1CommandConst = 33
+	TotalMileage                   Seatalk1CommandConst = 34
+	WaterTemperatureSt50           Seatalk1CommandConst = 35
+	DisplayUnitsForMileageSpeed    Seatalk1CommandConst = 36
+	TotalTripLog                   Seatalk1CommandConst = 37
+	SpeedThroughWaterWithAverage   Seatalk1CommandConst = 38
+	WaterTemperature               Seatalk1CommandConst = 39
+	SetLampIntensity               Seatalk1CommandConst = 48
+	CancelMOBManOverBoardCondition Seatalk1CommandConst = 54
+	CodelockData                   Seatalk1CommandConst = 56
+	LatPosition                    Seatalk1CommandConst = 80
+	LonPosition                    Seatalk1CommandConst = 81
+	SpeedOverGround                Seatalk1CommandConst = 82
+	CourseOverGroundCOG            Seatalk1CommandConst = 83
+	GmtTime                        Seatalk1CommandConst = 84
+	TrackKeystrokeOnGPSUnit        Seatalk1CommandConst = 85
+	Date                           Seatalk1CommandConst = 86
+	SatInfo                        Seatalk1CommandConst = 87
+	LatLonRawUnfiltered            Seatalk1CommandConst = 88
+	SetCountDownTimer              Seatalk1CommandConst = 89
+	IssuedByE80MultifunctionDispla Seatalk1CommandConst = 97
+	SelectFathomDisplayUnitsForDep Seatalk1CommandConst = 101
+	WindAlarm                      Seatalk1CommandConst = 102
+	AlarmAcknowledgmentKeystroke   Seatalk1CommandConst = 104
+	SecondEquipmentIDDatagram      Seatalk1CommandConst = 108
+	MOBManOverBoard                Seatalk1CommandConst = 110
+	KeystrokeOnRaymarineA25006St60 Seatalk1CommandConst = 112
+	SetLampIntensity_2             Seatalk1CommandConst = 128
+	SentByCourseComputerDuringSetu Seatalk1CommandConst = 129
+	TargetWaypointName             Seatalk1CommandConst = 130
+	SentByCourseComputer           Seatalk1CommandConst = 131
+	CompassHeadingAutopilotCourseA Seatalk1CommandConst = 132
+	NavigationToWaypointInformatio Seatalk1CommandConst = 133
+	Keystroke                      Seatalk1CommandConst = 134
+	SetResponseLevel               Seatalk1CommandConst = 135
+	AutopilotParameter             Seatalk1CommandConst = 136
+	CompassHeadingSentBySt40Compas Seatalk1CommandConst = 137
+	DeviceIndentification          Seatalk1CommandConst = 144
+	SetRudderGain                  Seatalk1CommandConst = 145
+	SetAutopilotParameter          Seatalk1CommandConst = 146
+	EnterApSetup                   Seatalk1CommandConst = 147
+	ReplacesCommand84WhileAutopilo Seatalk1CommandConst = 149
+	CompassVariation               Seatalk1CommandConst = 153
+	VersionString                  Seatalk1CommandConst = 154
+	CompassHeadingAndRudderPositio Seatalk1CommandConst = 156
+	WaypointDefinition             Seatalk1CommandConst = 158
+	DestinationWaypointInfo        Seatalk1CommandConst = 161
+	ArrivalInfo                    Seatalk1CommandConst = 162
+	BroadcastQueryResponseToIdenti Seatalk1CommandConst = 164
+	GPSAndDGPSInfo                 Seatalk1CommandConst = 165
+	UnknownMeaning                 Seatalk1CommandConst = 167
+	AlarmOnOffForGuard             Seatalk1CommandConst = 168
+	AlarmOnOffForGuard_2           Seatalk1CommandConst = 171
 )
 
-func (e Seatalk1CommandConst) GoString() string {return e.String() }
+func (e Seatalk1CommandConst) GoString() string { return e.String() }
 func (e Seatalk1CommandConst) String() string {
 	switch e {
-		case 0:
-			return "Depth Below Transducer"
-		case 1:
-			return "Equipment ID"
-		case 5:
-			return "Engine RPM and PITCH"
-		case 16:
-			return "Apparent Wind Angle"
-		case 17:
-			return "Apparent Wind Speed"
-		case 32:
-			return "Speed through water"
-		case 33:
-			return "Trip Mileage"
-		case 34:
-			return "Total Mileage"
-		case 35:
-			return "Water temperature (ST50)"
-		case 36:
-			return "Display units for Mileage & Speed"
-		case 37:
-			return "Total & Trip Log"
-		case 38:
-			return "Speed through water (with average)"
-		case 39:
-			return "Water temperature"
-		case 48:
-			return "Set lamp Intensity"
-		case 54:
-			return "Cancel MOB (Man Over Board) condition"
-		case 56:
-			return "Codelock data"
-		case 80:
-			return "LAT position"
-		case 81:
-			return "LON position"
-		case 82:
-			return "Speed over Ground"
-		case 83:
-			return "Course over Ground (COG)"
-		case 84:
-			return "GMT-time"
-		case 85:
-			return "TRACK keystroke on GPS unit"
-		case 86:
-			return "Date"
-		case 87:
-			return "Sat Info"
-		case 88:
-			return "LAT/LON (raw unfiltered)"
-		case 89:
-			return "Set Count Down Timer"
-		case 97:
-			return "Issued by E-80 multifunction display at initialization"
-		case 101:
-			return "Select Fathom display units for depth display"
-		case 102:
-			return "Wind alarm"
-		case 104:
-			return "Alarm acknowledgment keystroke"
-		case 108:
-			return "Second equipment-ID datagram"
-		case 110:
-			return "MOB (Man Over Board)"
-		case 112:
-			return "Keystroke on Raymarine A25006 ST60 Maxiview Remote Control"
-		case 128:
-			return "Set Lamp Intensity"
-		case 129:
-			return "Sent by course computer during setup"
-		case 130:
-			return "Target waypoint name"
-		case 131:
-			return "Sent by course computer"
-		case 132:
-			return "Compass heading Autopilot course and Rudder position"
-		case 133:
-			return "Navigation to waypoint information"
-		case 134:
-			return "Keystroke"
-		case 135:
-			return "Set Response level"
-		case 136:
-			return "Autopilot Parameter"
-		case 137:
-			return "Compass heading sent by ST40 compass instrument"
-		case 144:
-			return "Device Indentification"
-		case 145:
-			return "Set Rudder gain"
-		case 146:
-			return "Set Autopilot Parameter"
-		case 147:
-			return "Enter AP-Setup"
-		case 149:
-			return "Replaces command 84 while autopilot is in value setting mode"
-		case 153:
-			return "Compass variation"
-		case 154:
-			return "Version String"
-		case 156:
-			return "Compass heading and Rudder position"
-		case 158:
-			return "Waypoint definition"
-		case 161:
-			return "Destination Waypoint Info"
-		case 162:
-			return "Arrival Info"
-		case 164:
-			return "Broadcast query/response to identify devices"
-		case 165:
-			return "GPS and DGPS Info"
-		case 167:
-			return "Unknown meaning"
-		case 168:
-			return "Alarm ON/OFF for Guard"
-		case 171:
-			return "Alarm ON/OFF for Guard"
-default:
+	case 0:
+		return "Depth Below Transducer"
+	case 1:
+		return "Equipment ID"
+	case 5:
+		return "Engine RPM and PITCH"
+	case 16:
+		return "Apparent Wind Angle"
+	case 17:
+		return "Apparent Wind Speed"
+	case 32:
+		return "Speed through water"
+	case 33:
+		return "Trip Mileage"
+	case 34:
+		return "Total Mileage"
+	case 35:
+		return "Water temperature (ST50)"
+	case 36:
+		return "Display units for Mileage & Speed"
+	case 37:
+		return "Total & Trip Log"
+	case 38:
+		return "Speed through water (with average)"
+	case 39:
+		return "Water temperature"
+	case 48:
+		return "Set lamp Intensity"
+	case 54:
+		return "Cancel MOB (Man Over Board) condition"
+	case 56:
+		return "Codelock data"
+	case 80:
+		return "LAT position"
+	case 81:
+		return "LON position"
+	case 82:
+		return "Speed over Ground"
+	case 83:
+		return "Course over Ground (COG)"
+	case 84:
+		return "GMT-time"
+	case 85:
+		return "TRACK keystroke on GPS unit"
+	case 86:
+		return "Date"
+	case 87:
+		return "Sat Info"
+	case 88:
+		return "LAT/LON (raw unfiltered)"
+	case 89:
+		return "Set Count Down Timer"
+	case 97:
+		return "Issued by E-80 multifunction display at initialization"
+	case 101:
+		return "Select Fathom display units for depth display"
+	case 102:
+		return "Wind alarm"
+	case 104:
+		return "Alarm acknowledgment keystroke"
+	case 108:
+		return "Second equipment-ID datagram"
+	case 110:
+		return "MOB (Man Over Board)"
+	case 112:
+		return "Keystroke on Raymarine A25006 ST60 Maxiview Remote Control"
+	case 128:
+		return "Set Lamp Intensity"
+	case 129:
+		return "Sent by course computer during setup"
+	case 130:
+		return "Target waypoint name"
+	case 131:
+		return "Sent by course computer"
+	case 132:
+		return "Compass heading Autopilot course and Rudder position"
+	case 133:
+		return "Navigation to waypoint information"
+	case 134:
+		return "Keystroke"
+	case 135:
+		return "Set Response level"
+	case 136:
+		return "Autopilot Parameter"
+	case 137:
+		return "Compass heading sent by ST40 compass instrument"
+	case 144:
+		return "Device Indentification"
+	case 145:
+		return "Set Rudder gain"
+	case 146:
+		return "Set Autopilot Parameter"
+	case 147:
+		return "Enter AP-Setup"
+	case 149:
+		return "Replaces command 84 while autopilot is in value setting mode"
+	case 153:
+		return "Compass variation"
+	case 154:
+		return "Version String"
+	case 156:
+		return "Compass heading and Rudder position"
+	case 158:
+		return "Waypoint definition"
+	case 161:
+		return "Destination Waypoint Info"
+	case 162:
+		return "Arrival Info"
+	case 164:
+		return "Broadcast query/response to identify devices"
+	case 165:
+		return "GPS and DGPS Info"
+	case 167:
+		return "Unknown meaning"
+	case 168:
+		return "Alarm ON/OFF for Guard"
+	case 171:
+		return "Alarm ON/OFF for Guard"
+	default:
 		return fmt.Sprintf("Seatalk1CommandConst(%d)", uint8(e))
 	}
 }
-type SeatalkAlarmStatusConst uint8
+
+type Seatalk1AttConst uint8
+
 const (
-	AlarmConditionNotMet	SeatalkAlarmStatusConst = 0
-	AlarmConditionMetAndNotSilence	SeatalkAlarmStatusConst = 1
-	AlarmConditionMetAndSilenced	SeatalkAlarmStatusConst = 2
+	DepthBelowTransducer_2 Seatalk1AttConst = 0
 )
 
-func (e SeatalkAlarmStatusConst) GoString() string {return e.String() }
+func (e Seatalk1AttConst) GoString() string { return e.String() }
+func (e Seatalk1AttConst) String() string {
+	switch e {
+	case 0:
+		return "Depth Below Transducer"
+	default:
+		return fmt.Sprintf("Seatalk1AttConst(%d)", uint8(e))
+	}
+}
+
+type SeatalkAlarmStatusConst uint8
+
+const (
+	AlarmConditionNotMet           SeatalkAlarmStatusConst = 0
+	AlarmConditionMetAndNotSilence SeatalkAlarmStatusConst = 1
+	AlarmConditionMetAndSilenced   SeatalkAlarmStatusConst = 2
+)
+
+func (e SeatalkAlarmStatusConst) GoString() string { return e.String() }
 func (e SeatalkAlarmStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Alarm condition not met"
-		case 1:
-			return "Alarm condition met and not silenced"
-		case 2:
-			return "Alarm condition met and silenced"
-default:
+	case 0:
+		return "Alarm condition not met"
+	case 1:
+		return "Alarm condition met and not silenced"
+	case 2:
+		return "Alarm condition met and silenced"
+	default:
 		return fmt.Sprintf("SeatalkAlarmStatusConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkAlarmIDConst uint8
+
 const (
-	NoAlarm	SeatalkAlarmIDConst = 0
-	ShallowDepth	SeatalkAlarmIDConst = 1
-	DeepDepth	SeatalkAlarmIDConst = 2
-	ShallowAnchor	SeatalkAlarmIDConst = 3
-	DeepAnchor	SeatalkAlarmIDConst = 4
-	OffCourse	SeatalkAlarmIDConst = 5
-	AwaHigh	SeatalkAlarmIDConst = 6
-	AwaLow	SeatalkAlarmIDConst = 7
-	AwsHigh	SeatalkAlarmIDConst = 8
-	AwsLow	SeatalkAlarmIDConst = 9
-	TwaHigh	SeatalkAlarmIDConst = 10
-	TwaLow	SeatalkAlarmIDConst = 11
-	TwsHigh	SeatalkAlarmIDConst = 12
-	TwsLow	SeatalkAlarmIDConst = 13
-	WPArrival	SeatalkAlarmIDConst = 14
-	BoatSpeedHigh	SeatalkAlarmIDConst = 15
-	BoatSpeedLow	SeatalkAlarmIDConst = 16
-	SeaTemperatureHigh	SeatalkAlarmIDConst = 17
-	SeaTemperatureLow	SeatalkAlarmIDConst = 18
-	PilotWatch	SeatalkAlarmIDConst = 19
-	PilotOffCourse	SeatalkAlarmIDConst = 20
-	PilotWindShift	SeatalkAlarmIDConst = 21
-	PilotLowBattery	SeatalkAlarmIDConst = 22
-	PilotLastMinuteOfWatch	SeatalkAlarmIDConst = 23
-	PilotNoNMEAData	SeatalkAlarmIDConst = 24
-	PilotLargeXTE	SeatalkAlarmIDConst = 25
-	PilotNMEADataerror	SeatalkAlarmIDConst = 26
-	PilotCuDisconnected	SeatalkAlarmIDConst = 27
-	PilotAutoRelease	SeatalkAlarmIDConst = 28
-	PilotWayPointAdvance	SeatalkAlarmIDConst = 29
-	PilotDriveStopped	SeatalkAlarmIDConst = 30
-	PilotTypeUnspecified	SeatalkAlarmIDConst = 31
-	PilotCalibrationRequired	SeatalkAlarmIDConst = 32
-	PilotLastHeading	SeatalkAlarmIDConst = 33
-	PilotNoPilot	SeatalkAlarmIDConst = 34
-	PilotRouteComplete	SeatalkAlarmIDConst = 35
-	PilotVariableText	SeatalkAlarmIDConst = 36
-	GPSFailure	SeatalkAlarmIDConst = 37
-	MOB	SeatalkAlarmIDConst = 38
-	Seatalk1Anchor	SeatalkAlarmIDConst = 39
-	PilotSwappedMotorPower	SeatalkAlarmIDConst = 40
-	PilotStandbyTooFastToFish	SeatalkAlarmIDConst = 41
-	PilotNoGPSFix	SeatalkAlarmIDConst = 42
-	PilotNoGPSCOG	SeatalkAlarmIDConst = 43
-	PilotStartUp	SeatalkAlarmIDConst = 44
-	PilotTooSlow	SeatalkAlarmIDConst = 45
-	PilotNoCompass	SeatalkAlarmIDConst = 46
-	PilotRateGyroFault	SeatalkAlarmIDConst = 47
-	PilotCurrentLimit	SeatalkAlarmIDConst = 48
-	PilotWayPointAdvancePort	SeatalkAlarmIDConst = 49
-	PilotWayPointAdvanceStbd	SeatalkAlarmIDConst = 50
-	PilotNoWindData	SeatalkAlarmIDConst = 51
-	PilotNoSpeedData	SeatalkAlarmIDConst = 52
-	PilotSeatalkFail1	SeatalkAlarmIDConst = 53
-	PilotSeatalkFail2	SeatalkAlarmIDConst = 54
-	PilotWarningTooFastToFish	SeatalkAlarmIDConst = 55
-	PilotAutoDocksideFail	SeatalkAlarmIDConst = 56
-	PilotTurnTooFast	SeatalkAlarmIDConst = 57
-	PilotNoNavData	SeatalkAlarmIDConst = 58
-	PilotLostWaypointData	SeatalkAlarmIDConst = 59
-	PilotEepromCorrupt	SeatalkAlarmIDConst = 60
-	PilotRudderFeedbackFail	SeatalkAlarmIDConst = 61
-	PilotAutolearnFail1	SeatalkAlarmIDConst = 62
-	PilotAutolearnFail2	SeatalkAlarmIDConst = 63
-	PilotAutolearnFail3	SeatalkAlarmIDConst = 64
-	PilotAutolearnFail4	SeatalkAlarmIDConst = 65
-	PilotAutolearnFail5	SeatalkAlarmIDConst = 66
-	PilotAutolearnFail6	SeatalkAlarmIDConst = 67
-	PilotWarningCalRequired	SeatalkAlarmIDConst = 68
-	PilotWarningOffcourse	SeatalkAlarmIDConst = 69
-	PilotWarningXTE	SeatalkAlarmIDConst = 70
-	PilotWarningWindShift	SeatalkAlarmIDConst = 71
-	PilotWarningDriveShort	SeatalkAlarmIDConst = 72
-	PilotWarningClutchShort	SeatalkAlarmIDConst = 73
-	PilotWarningSolenoidShort	SeatalkAlarmIDConst = 74
-	PilotJoystickFault	SeatalkAlarmIDConst = 75
-	PilotNoJoystickData	SeatalkAlarmIDConst = 76
-	PilotInvalidCommand	SeatalkAlarmIDConst = 80
-	AISTxMalfunction	SeatalkAlarmIDConst = 81
-	AISAntennaVswrFault	SeatalkAlarmIDConst = 82
-	AISRxChannel1Malfunction	SeatalkAlarmIDConst = 83
-	AISRxChannel2Malfunction	SeatalkAlarmIDConst = 84
-	AISNoSensorPositionInUse	SeatalkAlarmIDConst = 85
-	AISNoValidSOGInformation	SeatalkAlarmIDConst = 86
-	AISNoValidCOGInformation	SeatalkAlarmIDConst = 87
-	AIS12VAlarm	SeatalkAlarmIDConst = 88
-	AIS6VAlarm	SeatalkAlarmIDConst = 89
-	AISNoiseThresholdExceededChann	SeatalkAlarmIDConst = 90
-	AISNoiseThresholdExceededChann_2	SeatalkAlarmIDConst = 91
-	AISTransmitterPaFault	SeatalkAlarmIDConst = 92
-	AIS3V3Alarm	SeatalkAlarmIDConst = 93
-	AISRxChannel70Malfunction	SeatalkAlarmIDConst = 94
-	AISHeadingLostInvalid	SeatalkAlarmIDConst = 95
-	AISInternalGPSLost	SeatalkAlarmIDConst = 96
-	AISNoSensorPosition	SeatalkAlarmIDConst = 97
-	AISLockFailure	SeatalkAlarmIDConst = 98
-	AISInternalGgaTimeout	SeatalkAlarmIDConst = 99
-	AISProtocolStackRestart	SeatalkAlarmIDConst = 100
-	PilotNoIpsCommunications	SeatalkAlarmIDConst = 101
-	PilotPowerOnOrSleepSwitchReset	SeatalkAlarmIDConst = 102
-	PilotUnexpectedResetWhileEngag	SeatalkAlarmIDConst = 103
-	AISDangerousTarget	SeatalkAlarmIDConst = 104
-	AISLostTarget	SeatalkAlarmIDConst = 105
-	AISSafetyRelatedMessageUsedToS	SeatalkAlarmIDConst = 106
-	AISConnectionLost	SeatalkAlarmIDConst = 107
-	NoFix	SeatalkAlarmIDConst = 108
-	PilotCompassCalibrationComplet	SeatalkAlarmIDConst = 112
-	AISTransmitterDisabledMMSIRequ	SeatalkAlarmIDConst = 113
-	BluetoothDeviceLowBattery	SeatalkAlarmIDConst = 122
-	BluetoothDeviceSleepMode	SeatalkAlarmIDConst = 123
-	BluetoothDeviceHighBatteryTemp	SeatalkAlarmIDConst = 124
-	BluetoothDeviceLostCommunicati	SeatalkAlarmIDConst = 125
+	NoAlarm                          SeatalkAlarmIDConst = 0
+	ShallowDepth                     SeatalkAlarmIDConst = 1
+	DeepDepth                        SeatalkAlarmIDConst = 2
+	ShallowAnchor                    SeatalkAlarmIDConst = 3
+	DeepAnchor                       SeatalkAlarmIDConst = 4
+	OffCourse                        SeatalkAlarmIDConst = 5
+	AwaHigh                          SeatalkAlarmIDConst = 6
+	AwaLow                           SeatalkAlarmIDConst = 7
+	AwsHigh                          SeatalkAlarmIDConst = 8
+	AwsLow                           SeatalkAlarmIDConst = 9
+	TwaHigh                          SeatalkAlarmIDConst = 10
+	TwaLow                           SeatalkAlarmIDConst = 11
+	TwsHigh                          SeatalkAlarmIDConst = 12
+	TwsLow                           SeatalkAlarmIDConst = 13
+	WPArrival                        SeatalkAlarmIDConst = 14
+	BoatSpeedHigh                    SeatalkAlarmIDConst = 15
+	BoatSpeedLow                     SeatalkAlarmIDConst = 16
+	SeaTemperatureHigh               SeatalkAlarmIDConst = 17
+	SeaTemperatureLow                SeatalkAlarmIDConst = 18
+	PilotWatch                       SeatalkAlarmIDConst = 19
+	PilotOffCourse                   SeatalkAlarmIDConst = 20
+	PilotWindShift                   SeatalkAlarmIDConst = 21
+	PilotLowBattery                  SeatalkAlarmIDConst = 22
+	PilotLastMinuteOfWatch           SeatalkAlarmIDConst = 23
+	PilotNoNMEAData                  SeatalkAlarmIDConst = 24
+	PilotLargeXTE                    SeatalkAlarmIDConst = 25
+	PilotNMEADataerror               SeatalkAlarmIDConst = 26
+	PilotCuDisconnected              SeatalkAlarmIDConst = 27
+	PilotAutoRelease                 SeatalkAlarmIDConst = 28
+	PilotWayPointAdvance             SeatalkAlarmIDConst = 29
+	PilotDriveStopped                SeatalkAlarmIDConst = 30
+	PilotTypeUnspecified             SeatalkAlarmIDConst = 31
+	PilotCalibrationRequired         SeatalkAlarmIDConst = 32
+	PilotLastHeading                 SeatalkAlarmIDConst = 33
+	PilotNoPilot                     SeatalkAlarmIDConst = 34
+	PilotRouteComplete               SeatalkAlarmIDConst = 35
+	PilotVariableText                SeatalkAlarmIDConst = 36
+	GPSFailure                       SeatalkAlarmIDConst = 37
+	MOB                              SeatalkAlarmIDConst = 38
+	Seatalk1Anchor                   SeatalkAlarmIDConst = 39
+	PilotSwappedMotorPower           SeatalkAlarmIDConst = 40
+	PilotStandbyTooFastToFish        SeatalkAlarmIDConst = 41
+	PilotNoGPSFix                    SeatalkAlarmIDConst = 42
+	PilotNoGPSCOG                    SeatalkAlarmIDConst = 43
+	PilotStartUp                     SeatalkAlarmIDConst = 44
+	PilotTooSlow                     SeatalkAlarmIDConst = 45
+	PilotNoCompass                   SeatalkAlarmIDConst = 46
+	PilotRateGyroFault               SeatalkAlarmIDConst = 47
+	PilotCurrentLimit                SeatalkAlarmIDConst = 48
+	PilotWayPointAdvancePort         SeatalkAlarmIDConst = 49
+	PilotWayPointAdvanceStbd         SeatalkAlarmIDConst = 50
+	PilotNoWindData                  SeatalkAlarmIDConst = 51
+	PilotNoSpeedData                 SeatalkAlarmIDConst = 52
+	PilotSeatalkFail1                SeatalkAlarmIDConst = 53
+	PilotSeatalkFail2                SeatalkAlarmIDConst = 54
+	PilotWarningTooFastToFish        SeatalkAlarmIDConst = 55
+	PilotAutoDocksideFail            SeatalkAlarmIDConst = 56
+	PilotTurnTooFast                 SeatalkAlarmIDConst = 57
+	PilotNoNavData                   SeatalkAlarmIDConst = 58
+	PilotLostWaypointData            SeatalkAlarmIDConst = 59
+	PilotEepromCorrupt               SeatalkAlarmIDConst = 60
+	PilotRudderFeedbackFail          SeatalkAlarmIDConst = 61
+	PilotAutolearnFail1              SeatalkAlarmIDConst = 62
+	PilotAutolearnFail2              SeatalkAlarmIDConst = 63
+	PilotAutolearnFail3              SeatalkAlarmIDConst = 64
+	PilotAutolearnFail4              SeatalkAlarmIDConst = 65
+	PilotAutolearnFail5              SeatalkAlarmIDConst = 66
+	PilotAutolearnFail6              SeatalkAlarmIDConst = 67
+	PilotWarningCalRequired          SeatalkAlarmIDConst = 68
+	PilotWarningOffcourse            SeatalkAlarmIDConst = 69
+	PilotWarningXTE                  SeatalkAlarmIDConst = 70
+	PilotWarningWindShift            SeatalkAlarmIDConst = 71
+	PilotWarningDriveShort           SeatalkAlarmIDConst = 72
+	PilotWarningClutchShort          SeatalkAlarmIDConst = 73
+	PilotWarningSolenoidShort        SeatalkAlarmIDConst = 74
+	PilotJoystickFault               SeatalkAlarmIDConst = 75
+	PilotNoJoystickData              SeatalkAlarmIDConst = 76
+	PilotInvalidCommand              SeatalkAlarmIDConst = 80
+	AISTxMalfunction                 SeatalkAlarmIDConst = 81
+	AISAntennaVswrFault              SeatalkAlarmIDConst = 82
+	AISRxChannel1Malfunction         SeatalkAlarmIDConst = 83
+	AISRxChannel2Malfunction         SeatalkAlarmIDConst = 84
+	AISNoSensorPositionInUse         SeatalkAlarmIDConst = 85
+	AISNoValidSOGInformation         SeatalkAlarmIDConst = 86
+	AISNoValidCOGInformation         SeatalkAlarmIDConst = 87
+	AIS12VAlarm                      SeatalkAlarmIDConst = 88
+	AIS6VAlarm                       SeatalkAlarmIDConst = 89
+	AISNoiseThresholdExceededChann   SeatalkAlarmIDConst = 90
+	AISNoiseThresholdExceededChann_2 SeatalkAlarmIDConst = 91
+	AISTransmitterPaFault            SeatalkAlarmIDConst = 92
+	AIS3V3Alarm                      SeatalkAlarmIDConst = 93
+	AISRxChannel70Malfunction        SeatalkAlarmIDConst = 94
+	AISHeadingLostInvalid            SeatalkAlarmIDConst = 95
+	AISInternalGPSLost               SeatalkAlarmIDConst = 96
+	AISNoSensorPosition              SeatalkAlarmIDConst = 97
+	AISLockFailure                   SeatalkAlarmIDConst = 98
+	AISInternalGgaTimeout            SeatalkAlarmIDConst = 99
+	AISProtocolStackRestart          SeatalkAlarmIDConst = 100
+	PilotNoIpsCommunications         SeatalkAlarmIDConst = 101
+	PilotPowerOnOrSleepSwitchReset   SeatalkAlarmIDConst = 102
+	PilotUnexpectedResetWhileEngag   SeatalkAlarmIDConst = 103
+	AISDangerousTarget               SeatalkAlarmIDConst = 104
+	AISLostTarget                    SeatalkAlarmIDConst = 105
+	AISSafetyRelatedMessageUsedToS   SeatalkAlarmIDConst = 106
+	AISConnectionLost                SeatalkAlarmIDConst = 107
+	NoFix                            SeatalkAlarmIDConst = 108
 )
 
-func (e SeatalkAlarmIDConst) GoString() string {return e.String() }
+func (e SeatalkAlarmIDConst) GoString() string { return e.String() }
 func (e SeatalkAlarmIDConst) String() string {
 	switch e {
-		case 0:
-			return "No Alarm"
-		case 1:
-			return "Shallow Depth"
-		case 2:
-			return "Deep Depth"
-		case 3:
-			return "Shallow Anchor"
-		case 4:
-			return "Deep Anchor"
-		case 5:
-			return "Off Course"
-		case 6:
-			return "AWA High"
-		case 7:
-			return "AWA Low"
-		case 8:
-			return "AWS High"
-		case 9:
-			return "AWS Low"
-		case 10:
-			return "TWA High"
-		case 11:
-			return "TWA Low"
-		case 12:
-			return "TWS High"
-		case 13:
-			return "TWS Low"
-		case 14:
-			return "WP Arrival"
-		case 15:
-			return "Boat Speed High"
-		case 16:
-			return "Boat Speed Low"
-		case 17:
-			return "Sea Temperature High"
-		case 18:
-			return "Sea Temperature Low"
-		case 19:
-			return "Pilot Watch"
-		case 20:
-			return "Pilot Off Course"
-		case 21:
-			return "Pilot Wind Shift"
-		case 22:
-			return "Pilot Low Battery"
-		case 23:
-			return "Pilot Last Minute Of Watch"
-		case 24:
-			return "Pilot No NMEA Data"
-		case 25:
-			return "Pilot Large XTE"
-		case 26:
-			return "Pilot NMEA DataError"
-		case 27:
-			return "Pilot CU Disconnected"
-		case 28:
-			return "Pilot Auto Release"
-		case 29:
-			return "Pilot Way Point Advance"
-		case 30:
-			return "Pilot Drive Stopped"
-		case 31:
-			return "Pilot Type Unspecified"
-		case 32:
-			return "Pilot Calibration Required"
-		case 33:
-			return "Pilot Last Heading"
-		case 34:
-			return "Pilot No Pilot"
-		case 35:
-			return "Pilot Route Complete"
-		case 36:
-			return "Pilot Variable Text"
-		case 37:
-			return "GPS Failure"
-		case 38:
-			return "MOB"
-		case 39:
-			return "Seatalk1 Anchor"
-		case 40:
-			return "Pilot Swapped Motor Power"
-		case 41:
-			return "Pilot Standby Too Fast To Fish"
-		case 42:
-			return "Pilot No GPS Fix"
-		case 43:
-			return "Pilot No GPS COG"
-		case 44:
-			return "Pilot Start Up"
-		case 45:
-			return "Pilot Too Slow"
-		case 46:
-			return "Pilot No Compass"
-		case 47:
-			return "Pilot Rate Gyro Fault"
-		case 48:
-			return "Pilot Current Limit"
-		case 49:
-			return "Pilot Way Point Advance Port"
-		case 50:
-			return "Pilot Way Point Advance Stbd"
-		case 51:
-			return "Pilot No Wind Data"
-		case 52:
-			return "Pilot No Speed Data"
-		case 53:
-			return "Pilot Seatalk Fail1"
-		case 54:
-			return "Pilot Seatalk Fail2"
-		case 55:
-			return "Pilot Warning Too Fast To Fish"
-		case 56:
-			return "Pilot Auto Dockside Fail"
-		case 57:
-			return "Pilot Turn Too Fast"
-		case 58:
-			return "Pilot No Nav Data"
-		case 59:
-			return "Pilot Lost Waypoint Data"
-		case 60:
-			return "Pilot EEPROM Corrupt"
-		case 61:
-			return "Pilot Rudder Feedback Fail"
-		case 62:
-			return "Pilot Autolearn Fail1"
-		case 63:
-			return "Pilot Autolearn Fail2"
-		case 64:
-			return "Pilot Autolearn Fail3"
-		case 65:
-			return "Pilot Autolearn Fail4"
-		case 66:
-			return "Pilot Autolearn Fail5"
-		case 67:
-			return "Pilot Autolearn Fail6"
-		case 68:
-			return "Pilot Warning Cal Required"
-		case 69:
-			return "Pilot Warning OffCourse"
-		case 70:
-			return "Pilot Warning XTE"
-		case 71:
-			return "Pilot Warning Wind Shift"
-		case 72:
-			return "Pilot Warning Drive Short"
-		case 73:
-			return "Pilot Warning Clutch Short"
-		case 74:
-			return "Pilot Warning Solenoid Short"
-		case 75:
-			return "Pilot Joystick Fault"
-		case 76:
-			return "Pilot No Joystick Data"
-		case 80:
-			return "Pilot Invalid Command"
-		case 81:
-			return "AIS TX Malfunction"
-		case 82:
-			return "AIS Antenna VSWR fault"
-		case 83:
-			return "AIS Rx channel 1 malfunction"
-		case 84:
-			return "AIS Rx channel 2 malfunction"
-		case 85:
-			return "AIS No sensor position in use"
-		case 86:
-			return "AIS No valid SOG information"
-		case 87:
-			return "AIS No valid COG information"
-		case 88:
-			return "AIS 12V alarm"
-		case 89:
-			return "AIS 6V alarm"
-		case 90:
-			return "AIS Noise threshold exceeded channel A"
-		case 91:
-			return "AIS Noise threshold exceeded channel B"
-		case 92:
-			return "AIS Transmitter PA fault"
-		case 93:
-			return "AIS 3V3 alarm"
-		case 94:
-			return "AIS Rx channel 70 malfunction"
-		case 95:
-			return "AIS Heading lost/invalid"
-		case 96:
-			return "AIS internal GPS lost"
-		case 97:
-			return "AIS No sensor position"
-		case 98:
-			return "AIS Lock failure"
-		case 99:
-			return "AIS Internal GGA timeout"
-		case 100:
-			return "AIS Protocol stack restart"
-		case 101:
-			return "Pilot No IPS communications"
-		case 102:
-			return "Pilot Power-On or Sleep-Switch Reset While Engaged"
-		case 103:
-			return "Pilot Unexpected Reset While Engaged"
-		case 104:
-			return "AIS Dangerous Target"
-		case 105:
-			return "AIS Lost Target"
-		case 106:
-			return "AIS Safety Related Message (used to silence)"
-		case 107:
-			return "AIS Connection Lost"
-		case 108:
-			return "No Fix"
-		case 112:
-			return "Pilot Compass Calibration Complete"
-		case 113:
-			return "AIS Transmitter Disabled - MMSI Required"
-		case 122:
-			return "Bluetooth Device Low Battery"
-		case 123:
-			return "Bluetooth Device Sleep Mode"
-		case 124:
-			return "Bluetooth Device High Battery Temperature"
-		case 125:
-			return "Bluetooth Device Lost Communications"
-default:
+	case 0:
+		return "No Alarm"
+	case 1:
+		return "Shallow Depth"
+	case 2:
+		return "Deep Depth"
+	case 3:
+		return "Shallow Anchor"
+	case 4:
+		return "Deep Anchor"
+	case 5:
+		return "Off Course"
+	case 6:
+		return "AWA High"
+	case 7:
+		return "AWA Low"
+	case 8:
+		return "AWS High"
+	case 9:
+		return "AWS Low"
+	case 10:
+		return "TWA High"
+	case 11:
+		return "TWA Low"
+	case 12:
+		return "TWS High"
+	case 13:
+		return "TWS Low"
+	case 14:
+		return "WP Arrival"
+	case 15:
+		return "Boat Speed High"
+	case 16:
+		return "Boat Speed Low"
+	case 17:
+		return "Sea Temperature High"
+	case 18:
+		return "Sea Temperature Low"
+	case 19:
+		return "Pilot Watch"
+	case 20:
+		return "Pilot Off Course"
+	case 21:
+		return "Pilot Wind Shift"
+	case 22:
+		return "Pilot Low Battery"
+	case 23:
+		return "Pilot Last Minute Of Watch"
+	case 24:
+		return "Pilot No NMEA Data"
+	case 25:
+		return "Pilot Large XTE"
+	case 26:
+		return "Pilot NMEA DataError"
+	case 27:
+		return "Pilot CU Disconnected"
+	case 28:
+		return "Pilot Auto Release"
+	case 29:
+		return "Pilot Way Point Advance"
+	case 30:
+		return "Pilot Drive Stopped"
+	case 31:
+		return "Pilot Type Unspecified"
+	case 32:
+		return "Pilot Calibration Required"
+	case 33:
+		return "Pilot Last Heading"
+	case 34:
+		return "Pilot No Pilot"
+	case 35:
+		return "Pilot Route Complete"
+	case 36:
+		return "Pilot Variable Text"
+	case 37:
+		return "GPS Failure"
+	case 38:
+		return "MOB"
+	case 39:
+		return "Seatalk1 Anchor"
+	case 40:
+		return "Pilot Swapped Motor Power"
+	case 41:
+		return "Pilot Standby Too Fast To Fish"
+	case 42:
+		return "Pilot No GPS Fix"
+	case 43:
+		return "Pilot No GPS COG"
+	case 44:
+		return "Pilot Start Up"
+	case 45:
+		return "Pilot Too Slow"
+	case 46:
+		return "Pilot No Compass"
+	case 47:
+		return "Pilot Rate Gyro Fault"
+	case 48:
+		return "Pilot Current Limit"
+	case 49:
+		return "Pilot Way Point Advance Port"
+	case 50:
+		return "Pilot Way Point Advance Stbd"
+	case 51:
+		return "Pilot No Wind Data"
+	case 52:
+		return "Pilot No Speed Data"
+	case 53:
+		return "Pilot Seatalk Fail1"
+	case 54:
+		return "Pilot Seatalk Fail2"
+	case 55:
+		return "Pilot Warning Too Fast To Fish"
+	case 56:
+		return "Pilot Auto Dockside Fail"
+	case 57:
+		return "Pilot Turn Too Fast"
+	case 58:
+		return "Pilot No Nav Data"
+	case 59:
+		return "Pilot Lost Waypoint Data"
+	case 60:
+		return "Pilot EEPROM Corrupt"
+	case 61:
+		return "Pilot Rudder Feedback Fail"
+	case 62:
+		return "Pilot Autolearn Fail1"
+	case 63:
+		return "Pilot Autolearn Fail2"
+	case 64:
+		return "Pilot Autolearn Fail3"
+	case 65:
+		return "Pilot Autolearn Fail4"
+	case 66:
+		return "Pilot Autolearn Fail5"
+	case 67:
+		return "Pilot Autolearn Fail6"
+	case 68:
+		return "Pilot Warning Cal Required"
+	case 69:
+		return "Pilot Warning OffCourse"
+	case 70:
+		return "Pilot Warning XTE"
+	case 71:
+		return "Pilot Warning Wind Shift"
+	case 72:
+		return "Pilot Warning Drive Short"
+	case 73:
+		return "Pilot Warning Clutch Short"
+	case 74:
+		return "Pilot Warning Solenoid Short"
+	case 75:
+		return "Pilot Joystick Fault"
+	case 76:
+		return "Pilot No Joystick Data"
+	case 80:
+		return "Pilot Invalid Command"
+	case 81:
+		return "AIS TX Malfunction"
+	case 82:
+		return "AIS Antenna VSWR fault"
+	case 83:
+		return "AIS Rx channel 1 malfunction"
+	case 84:
+		return "AIS Rx channel 2 malfunction"
+	case 85:
+		return "AIS No sensor position in use"
+	case 86:
+		return "AIS No valid SOG information"
+	case 87:
+		return "AIS No valid COG information"
+	case 88:
+		return "AIS 12V alarm"
+	case 89:
+		return "AIS 6V alarm"
+	case 90:
+		return "AIS Noise threshold exceeded channel A"
+	case 91:
+		return "AIS Noise threshold exceeded channel B"
+	case 92:
+		return "AIS Transmitter PA fault"
+	case 93:
+		return "AIS 3V3 alarm"
+	case 94:
+		return "AIS Rx channel 70 malfunction"
+	case 95:
+		return "AIS Heading lost/invalid"
+	case 96:
+		return "AIS internal GPS lost"
+	case 97:
+		return "AIS No sensor position"
+	case 98:
+		return "AIS Lock failure"
+	case 99:
+		return "AIS Internal GGA timeout"
+	case 100:
+		return "AIS Protocol stack restart"
+	case 101:
+		return "Pilot No IPS communications"
+	case 102:
+		return "Pilot Power-On or Sleep-Switch Reset While Engaged"
+	case 103:
+		return "Pilot Unexpected Reset While Engaged"
+	case 104:
+		return "AIS Dangerous Target"
+	case 105:
+		return "AIS Lost Target"
+	case 106:
+		return "AIS Safety Related Message (used to silence)"
+	case 107:
+		return "AIS Connection Lost"
+	case 108:
+		return "No Fix"
+	default:
 		return fmt.Sprintf("SeatalkAlarmIDConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkAlarmGroupConst uint8
+
 const (
-	Instrument	SeatalkAlarmGroupConst = 0
-	Autopilot	SeatalkAlarmGroupConst = 1
-	Radar	SeatalkAlarmGroupConst = 2
-	ChartPlotter	SeatalkAlarmGroupConst = 3
-	AIS	SeatalkAlarmGroupConst = 4
-	BluetoothAccessory	SeatalkAlarmGroupConst = 5
+	Instrument   SeatalkAlarmGroupConst = 0
+	Autopilot    SeatalkAlarmGroupConst = 1
+	Radar        SeatalkAlarmGroupConst = 2
+	ChartPlotter SeatalkAlarmGroupConst = 3
+	AIS          SeatalkAlarmGroupConst = 4
 )
 
-func (e SeatalkAlarmGroupConst) GoString() string {return e.String() }
+func (e SeatalkAlarmGroupConst) GoString() string { return e.String() }
 func (e SeatalkAlarmGroupConst) String() string {
 	switch e {
-		case 0:
-			return "Instrument"
-		case 1:
-			return "Autopilot"
-		case 2:
-			return "Radar"
-		case 3:
-			return "Chart Plotter"
-		case 4:
-			return "AIS"
-		case 5:
-			return "Bluetooth Accessory"
-default:
+	case 0:
+		return "Instrument"
+	case 1:
+		return "Autopilot"
+	case 2:
+		return "Radar"
+	case 3:
+		return "Chart Plotter"
+	case 4:
+		return "AIS"
+	default:
 		return fmt.Sprintf("SeatalkAlarmGroupConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkPilotModeConst uint8
+
 const (
-	Standby	SeatalkPilotModeConst = 64
-	Auto	SeatalkPilotModeConst = 66
-	Wind	SeatalkPilotModeConst = 70
-	Track	SeatalkPilotModeConst = 74
+	Standby SeatalkPilotModeConst = 64
+	Auto    SeatalkPilotModeConst = 66
+	Wind    SeatalkPilotModeConst = 70
+	Track   SeatalkPilotModeConst = 74
 )
 
-func (e SeatalkPilotModeConst) GoString() string {return e.String() }
+func (e SeatalkPilotModeConst) GoString() string { return e.String() }
 func (e SeatalkPilotModeConst) String() string {
 	switch e {
-		case 64:
-			return "Standby"
-		case 66:
-			return "Auto"
-		case 70:
-			return "Wind"
-		case 74:
-			return "Track"
-default:
+	case 64:
+		return "Standby"
+	case 66:
+		return "Auto"
+	case 70:
+		return "Wind"
+	case 74:
+		return "Track"
+	default:
 		return fmt.Sprintf("SeatalkPilotModeConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkPilotHullTypeConst uint8
+
 const (
-	Sail	SeatalkPilotHullTypeConst = 0
-	SailSlowTurn	SeatalkPilotHullTypeConst = 1
-	SailCatamaran	SeatalkPilotHullTypeConst = 2
-	PowerSlowTurn	SeatalkPilotHullTypeConst = 3
-	PowerFastTurn	SeatalkPilotHullTypeConst = 4
-	Power	SeatalkPilotHullTypeConst = 8
+	Sail          SeatalkPilotHullTypeConst = 0
+	SailSlowTurn  SeatalkPilotHullTypeConst = 1
+	SailCatamaran SeatalkPilotHullTypeConst = 2
+	PowerSlowTurn SeatalkPilotHullTypeConst = 3
+	PowerFastTurn SeatalkPilotHullTypeConst = 4
+	Power         SeatalkPilotHullTypeConst = 8
 )
 
-func (e SeatalkPilotHullTypeConst) GoString() string {return e.String() }
+func (e SeatalkPilotHullTypeConst) GoString() string { return e.String() }
 func (e SeatalkPilotHullTypeConst) String() string {
 	switch e {
-		case 0:
-			return "Sail"
-		case 1:
-			return "Sail (slow turn)"
-		case 2:
-			return "Sail Catamaran"
-		case 3:
-			return "Power (slow turn)"
-		case 4:
-			return "Power (fast turn)"
-		case 8:
-			return "Power"
-default:
+	case 0:
+		return "Sail"
+	case 1:
+		return "Sail (slow turn)"
+	case 2:
+		return "Sail Catamaran"
+	case 3:
+		return "Power (slow turn)"
+	case 4:
+		return "Power (fast turn)"
+	case 8:
+		return "Power"
+	default:
 		return fmt.Sprintf("SeatalkPilotHullTypeConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkSharedConst uint8
+
 const (
-	Shared	SeatalkSharedConst = 1
-	NotShared	SeatalkSharedConst = 2
+	Shared    SeatalkSharedConst = 1
+	NotShared SeatalkSharedConst = 2
 )
 
-func (e SeatalkSharedConst) GoString() string {return e.String() }
+func (e SeatalkSharedConst) GoString() string { return e.String() }
 func (e SeatalkSharedConst) String() string {
 	switch e {
-		case 1:
-			return "Shared"
-		case 2:
-			return "Not Shared"
-default:
+	case 1:
+		return "Shared"
+	case 2:
+		return "Not Shared"
+	default:
 		return fmt.Sprintf("SeatalkSharedConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentZoneConst uint8
+
 const (
-	AllZones	EntertainmentZoneConst = 0
-	Zone1	EntertainmentZoneConst = 1
-	Zone2	EntertainmentZoneConst = 2
-	Zone3	EntertainmentZoneConst = 3
-	Zone4	EntertainmentZoneConst = 4
+	AllZones EntertainmentZoneConst = 0
+	Zone1    EntertainmentZoneConst = 1
+	Zone2    EntertainmentZoneConst = 2
+	Zone3    EntertainmentZoneConst = 3
+	Zone4    EntertainmentZoneConst = 4
 )
 
-func (e EntertainmentZoneConst) GoString() string {return e.String() }
+func (e EntertainmentZoneConst) GoString() string { return e.String() }
 func (e EntertainmentZoneConst) String() string {
 	switch e {
-		case 0:
-			return "All zones"
-		case 1:
-			return "Zone 1"
-		case 2:
-			return "Zone 2"
-		case 3:
-			return "Zone 3"
-		case 4:
-			return "Zone 4"
-default:
+	case 0:
+		return "All zones"
+	case 1:
+		return "Zone 1"
+	case 2:
+		return "Zone 2"
+	case 3:
+		return "Zone 3"
+	case 4:
+		return "Zone 4"
+	default:
 		return fmt.Sprintf("EntertainmentZoneConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentSourceConst uint8
+
 const (
-	VesselAlarm	EntertainmentSourceConst = 0
-	Am	EntertainmentSourceConst = 1
-	Fm	EntertainmentSourceConst = 2
-	Weather	EntertainmentSourceConst = 3
-	Dab	EntertainmentSourceConst = 4
-	Aux	EntertainmentSourceConst = 5
-	USB	EntertainmentSourceConst = 6
-	Cd	EntertainmentSourceConst = 7
-	Mp3	EntertainmentSourceConst = 8
-	AppleIos	EntertainmentSourceConst = 9
-	Android	EntertainmentSourceConst = 10
-	Bluetooth	EntertainmentSourceConst = 11
-	SiriusXm	EntertainmentSourceConst = 12
-	Pandora	EntertainmentSourceConst = 13
-	Spotify	EntertainmentSourceConst = 14
-	Slacker	EntertainmentSourceConst = 15
-	Songza	EntertainmentSourceConst = 16
-	AppleRadio	EntertainmentSourceConst = 17
-	LastFm	EntertainmentSourceConst = 18
-	Ethernet	EntertainmentSourceConst = 19
-	VideoMp4	EntertainmentSourceConst = 20
-	VideoDvd	EntertainmentSourceConst = 21
-	VideoBluray	EntertainmentSourceConst = 22
-	Hdmi	EntertainmentSourceConst = 23
-	Video	EntertainmentSourceConst = 24
+	VesselAlarm EntertainmentSourceConst = 0
+	Am          EntertainmentSourceConst = 1
+	Fm          EntertainmentSourceConst = 2
+	Weather     EntertainmentSourceConst = 3
+	Dab         EntertainmentSourceConst = 4
+	Aux         EntertainmentSourceConst = 5
+	USB         EntertainmentSourceConst = 6
+	Cd          EntertainmentSourceConst = 7
+	Mp3         EntertainmentSourceConst = 8
+	AppleIos    EntertainmentSourceConst = 9
+	Android     EntertainmentSourceConst = 10
+	Bluetooth   EntertainmentSourceConst = 11
+	SiriusXm    EntertainmentSourceConst = 12
+	Pandora     EntertainmentSourceConst = 13
+	Spotify     EntertainmentSourceConst = 14
+	Slacker     EntertainmentSourceConst = 15
+	Songza      EntertainmentSourceConst = 16
+	AppleRadio  EntertainmentSourceConst = 17
+	LastFm      EntertainmentSourceConst = 18
+	Ethernet    EntertainmentSourceConst = 19
+	VideoMp4    EntertainmentSourceConst = 20
+	VideoDvd    EntertainmentSourceConst = 21
+	VideoBluray EntertainmentSourceConst = 22
+	Hdmi        EntertainmentSourceConst = 23
+	Video       EntertainmentSourceConst = 24
 )
 
-func (e EntertainmentSourceConst) GoString() string {return e.String() }
+func (e EntertainmentSourceConst) GoString() string { return e.String() }
 func (e EntertainmentSourceConst) String() string {
 	switch e {
-		case 0:
-			return "Vessel alarm"
-		case 1:
-			return "AM"
-		case 2:
-			return "FM"
-		case 3:
-			return "Weather"
-		case 4:
-			return "DAB"
-		case 5:
-			return "Aux"
-		case 6:
-			return "USB"
-		case 7:
-			return "CD"
-		case 8:
-			return "MP3"
-		case 9:
-			return "Apple iOS"
-		case 10:
-			return "Android"
-		case 11:
-			return "Bluetooth"
-		case 12:
-			return "Sirius XM"
-		case 13:
-			return "Pandora"
-		case 14:
-			return "Spotify"
-		case 15:
-			return "Slacker"
-		case 16:
-			return "Songza"
-		case 17:
-			return "Apple Radio"
-		case 18:
-			return "Last FM"
-		case 19:
-			return "Ethernet"
-		case 20:
-			return "Video MP4"
-		case 21:
-			return "Video DVD"
-		case 22:
-			return "Video BluRay"
-		case 23:
-			return "HDMI"
-		case 24:
-			return "Video"
-default:
+	case 0:
+		return "Vessel alarm"
+	case 1:
+		return "AM"
+	case 2:
+		return "FM"
+	case 3:
+		return "Weather"
+	case 4:
+		return "DAB"
+	case 5:
+		return "Aux"
+	case 6:
+		return "USB"
+	case 7:
+		return "CD"
+	case 8:
+		return "MP3"
+	case 9:
+		return "Apple iOS"
+	case 10:
+		return "Android"
+	case 11:
+		return "Bluetooth"
+	case 12:
+		return "Sirius XM"
+	case 13:
+		return "Pandora"
+	case 14:
+		return "Spotify"
+	case 15:
+		return "Slacker"
+	case 16:
+		return "Songza"
+	case 17:
+		return "Apple Radio"
+	case 18:
+		return "Last FM"
+	case 19:
+		return "Ethernet"
+	case 20:
+		return "Video MP4"
+	case 21:
+		return "Video DVD"
+	case 22:
+		return "Video BluRay"
+	case 23:
+		return "HDMI"
+	case 24:
+		return "Video"
+	default:
 		return fmt.Sprintf("EntertainmentSourceConst(%d)", uint8(e))
 	}
 }
-type EntertainmentPlayStatusConst uint8
+
+type EntertainmentPlayStatusConst uint16
+
 const (
-	Play	EntertainmentPlayStatusConst = 0
-	Pause	EntertainmentPlayStatusConst = 1
-	Stop	EntertainmentPlayStatusConst = 2
-	Ff1X	EntertainmentPlayStatusConst = 3
-	Ff2X	EntertainmentPlayStatusConst = 4
-	Ff3X	EntertainmentPlayStatusConst = 5
-	Ff4X	EntertainmentPlayStatusConst = 6
-	Rw1X	EntertainmentPlayStatusConst = 7
-	Rw2X	EntertainmentPlayStatusConst = 8
-	Rw3X	EntertainmentPlayStatusConst = 9
-	Rw4X	EntertainmentPlayStatusConst = 10
-	SkipAhead	EntertainmentPlayStatusConst = 11
-	SkipBack	EntertainmentPlayStatusConst = 12
-	JogAhead	EntertainmentPlayStatusConst = 13
-	JogBack	EntertainmentPlayStatusConst = 14
-	SeekUp	EntertainmentPlayStatusConst = 15
-	SeekDown	EntertainmentPlayStatusConst = 16
-	ScanUp	EntertainmentPlayStatusConst = 17
-	ScanDown	EntertainmentPlayStatusConst = 18
-	TuneUp	EntertainmentPlayStatusConst = 19
-	TuneDown	EntertainmentPlayStatusConst = 20
-	SlowMotion75X	EntertainmentPlayStatusConst = 21
-	SlowMotion5X	EntertainmentPlayStatusConst = 22
-	SlowMotion25X	EntertainmentPlayStatusConst = 23
-	SlowMotion125X	EntertainmentPlayStatusConst = 24
+	Play           EntertainmentPlayStatusConst = 0
+	Pause          EntertainmentPlayStatusConst = 1
+	Stop           EntertainmentPlayStatusConst = 2
+	Ff1X           EntertainmentPlayStatusConst = 3
+	Ff2X           EntertainmentPlayStatusConst = 4
+	Ff3X           EntertainmentPlayStatusConst = 5
+	Ff4X           EntertainmentPlayStatusConst = 6
+	Rw1X           EntertainmentPlayStatusConst = 7
+	Rw2X           EntertainmentPlayStatusConst = 8
+	Rw3X           EntertainmentPlayStatusConst = 9
+	Rw4X           EntertainmentPlayStatusConst = 10
+	SkipAhead      EntertainmentPlayStatusConst = 11
+	SkipBack       EntertainmentPlayStatusConst = 12
+	JogAhead       EntertainmentPlayStatusConst = 13
+	JogBack        EntertainmentPlayStatusConst = 14
+	SeekUp         EntertainmentPlayStatusConst = 15
+	SeekDown       EntertainmentPlayStatusConst = 16
+	ScanUp         EntertainmentPlayStatusConst = 17
+	ScanDown       EntertainmentPlayStatusConst = 18
+	TuneUp         EntertainmentPlayStatusConst = 19
+	TuneDown       EntertainmentPlayStatusConst = 20
+	SlowMotion75X  EntertainmentPlayStatusConst = 21
+	SlowMotion5X   EntertainmentPlayStatusConst = 22
+	SlowMotion25X  EntertainmentPlayStatusConst = 23
+	SlowMotion125X EntertainmentPlayStatusConst = 24
 )
 
-func (e EntertainmentPlayStatusConst) GoString() string {return e.String() }
+func (e EntertainmentPlayStatusConst) GoString() string { return e.String() }
 func (e EntertainmentPlayStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Play"
-		case 1:
-			return "Pause"
-		case 2:
-			return "Stop"
-		case 3:
-			return "FF 1x"
-		case 4:
-			return "FF 2x"
-		case 5:
-			return "FF 3x"
-		case 6:
-			return "FF 4x"
-		case 7:
-			return "RW 1x"
-		case 8:
-			return "RW 2x"
-		case 9:
-			return "RW 3x"
-		case 10:
-			return "RW 4x"
-		case 11:
-			return "Skip ahead"
-		case 12:
-			return "Skip back"
-		case 13:
-			return "Jog ahead"
-		case 14:
-			return "Jog back"
-		case 15:
-			return "Seek up"
-		case 16:
-			return "Seek down"
-		case 17:
-			return "Scan up"
-		case 18:
-			return "Scan down"
-		case 19:
-			return "Tune up"
-		case 20:
-			return "Tune down"
-		case 21:
-			return "Slow motion .75x"
-		case 22:
-			return "Slow motion .5x"
-		case 23:
-			return "Slow motion .25x"
-		case 24:
-			return "Slow motion .125x"
-default:
-		return fmt.Sprintf("EntertainmentPlayStatusConst(%d)", uint8(e))
+	case 0:
+		return "Play"
+	case 1:
+		return "Pause"
+	case 2:
+		return "Stop"
+	case 3:
+		return "FF 1x"
+	case 4:
+		return "FF 2x"
+	case 5:
+		return "FF 3x"
+	case 6:
+		return "FF 4x"
+	case 7:
+		return "RW 1x"
+	case 8:
+		return "RW 2x"
+	case 9:
+		return "RW 3x"
+	case 10:
+		return "RW 4x"
+	case 11:
+		return "Skip ahead"
+	case 12:
+		return "Skip back"
+	case 13:
+		return "Jog ahead"
+	case 14:
+		return "Jog back"
+	case 15:
+		return "Seek up"
+	case 16:
+		return "Seek down"
+	case 17:
+		return "Scan up"
+	case 18:
+		return "Scan down"
+	case 19:
+		return "Tune up"
+	case 20:
+		return "Tune down"
+	case 21:
+		return "Slow motion .75x"
+	case 22:
+		return "Slow motion .5x"
+	case 23:
+		return "Slow motion .25x"
+	case 24:
+		return "Slow motion .125x"
+	default:
+		return fmt.Sprintf("EntertainmentPlayStatusConst(%d)", uint16(e))
 	}
 }
+
 type EntertainmentRepeatStatusConst uint8
+
 const (
-	Off_3	EntertainmentRepeatStatusConst = 0
-	One	EntertainmentRepeatStatusConst = 1
-	All	EntertainmentRepeatStatusConst = 2
+	Off_3 EntertainmentRepeatStatusConst = 0
+	One   EntertainmentRepeatStatusConst = 1
+	All   EntertainmentRepeatStatusConst = 2
 )
 
-func (e EntertainmentRepeatStatusConst) GoString() string {return e.String() }
+func (e EntertainmentRepeatStatusConst) GoString() string { return e.String() }
 func (e EntertainmentRepeatStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "One"
-		case 2:
-			return "All"
-default:
+	case 0:
+		return "Off"
+	case 1:
+		return "One"
+	case 2:
+		return "All"
+	default:
 		return fmt.Sprintf("EntertainmentRepeatStatusConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentShuffleStatusConst uint8
+
 const (
-	Off_4	EntertainmentShuffleStatusConst = 0
-	PlayQueue	EntertainmentShuffleStatusConst = 1
-	All_2	EntertainmentShuffleStatusConst = 2
+	Off_4     EntertainmentShuffleStatusConst = 0
+	PlayQueue EntertainmentShuffleStatusConst = 1
+	All_2     EntertainmentShuffleStatusConst = 2
 )
 
-func (e EntertainmentShuffleStatusConst) GoString() string {return e.String() }
+func (e EntertainmentShuffleStatusConst) GoString() string { return e.String() }
 func (e EntertainmentShuffleStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "Play queue"
-		case 2:
-			return "All"
-default:
+	case 0:
+		return "Off"
+	case 1:
+		return "Play queue"
+	case 2:
+		return "All"
+	default:
 		return fmt.Sprintf("EntertainmentShuffleStatusConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentLikeStatusConst uint8
+
 const (
-	None	EntertainmentLikeStatusConst = 0
-	ThumbsUp	EntertainmentLikeStatusConst = 1
-	ThumbsDown	EntertainmentLikeStatusConst = 2
+	None       EntertainmentLikeStatusConst = 0
+	ThumbsUp   EntertainmentLikeStatusConst = 1
+	ThumbsDown EntertainmentLikeStatusConst = 2
 )
 
-func (e EntertainmentLikeStatusConst) GoString() string {return e.String() }
+func (e EntertainmentLikeStatusConst) GoString() string { return e.String() }
 func (e EntertainmentLikeStatusConst) String() string {
 	switch e {
-		case 0:
-			return "None"
-		case 1:
-			return "Thumbs up"
-		case 2:
-			return "Thumbs down"
-default:
+	case 0:
+		return "None"
+	case 1:
+		return "Thumbs up"
+	case 2:
+		return "Thumbs down"
+	default:
 		return fmt.Sprintf("EntertainmentLikeStatusConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentTypeConst uint8
+
 const (
-	File	EntertainmentTypeConst = 0
-	PlaylistName	EntertainmentTypeConst = 1
-	GenreName	EntertainmentTypeConst = 2
-	AlbumName	EntertainmentTypeConst = 3
-	ArtistName	EntertainmentTypeConst = 4
-	TrackName	EntertainmentTypeConst = 5
-	StationName	EntertainmentTypeConst = 6
-	StationNumber	EntertainmentTypeConst = 7
-	FavouriteNumber	EntertainmentTypeConst = 8
-	PlayQueue_2	EntertainmentTypeConst = 9
-	ContentInfo	EntertainmentTypeConst = 10
+	File            EntertainmentTypeConst = 0
+	PlaylistName    EntertainmentTypeConst = 1
+	GenreName       EntertainmentTypeConst = 2
+	AlbumName       EntertainmentTypeConst = 3
+	ArtistName      EntertainmentTypeConst = 4
+	TrackName       EntertainmentTypeConst = 5
+	StationName     EntertainmentTypeConst = 6
+	StationNumber   EntertainmentTypeConst = 7
+	FavouriteNumber EntertainmentTypeConst = 8
+	PlayQueue_2     EntertainmentTypeConst = 9
+	ContentInfo     EntertainmentTypeConst = 10
 )
 
-func (e EntertainmentTypeConst) GoString() string {return e.String() }
+func (e EntertainmentTypeConst) GoString() string { return e.String() }
 func (e EntertainmentTypeConst) String() string {
 	switch e {
-		case 0:
-			return "File"
-		case 1:
-			return "Playlist Name"
-		case 2:
-			return "Genre Name"
-		case 3:
-			return "Album Name"
-		case 4:
-			return "Artist Name"
-		case 5:
-			return "Track Name"
-		case 6:
-			return "Station Name"
-		case 7:
-			return "Station Number"
-		case 8:
-			return "Favourite Number"
-		case 9:
-			return "Play Queue"
-		case 10:
-			return "Content Info"
-default:
+	case 0:
+		return "File"
+	case 1:
+		return "Playlist Name"
+	case 2:
+		return "Genre Name"
+	case 3:
+		return "Album Name"
+	case 4:
+		return "Artist Name"
+	case 5:
+		return "Track Name"
+	case 6:
+		return "Station Name"
+	case 7:
+		return "Station Number"
+	case 8:
+		return "Favourite Number"
+	case 9:
+		return "Play Queue"
+	case 10:
+		return "Content Info"
+	default:
 		return fmt.Sprintf("EntertainmentTypeConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentGroupConst uint8
+
 const (
-	File_2	EntertainmentGroupConst = 0
-	PlaylistName_2	EntertainmentGroupConst = 1
-	GenreName_2	EntertainmentGroupConst = 2
-	AlbumName_2	EntertainmentGroupConst = 3
-	ArtistName_2	EntertainmentGroupConst = 4
-	TrackName_2	EntertainmentGroupConst = 5
-	StationName_2	EntertainmentGroupConst = 6
-	StationNumber_2	EntertainmentGroupConst = 7
-	FavouriteNumber_2	EntertainmentGroupConst = 8
-	PlayQueue_3	EntertainmentGroupConst = 9
-	ContentInfo_2	EntertainmentGroupConst = 10
+	File_2            EntertainmentGroupConst = 0
+	PlaylistName_2    EntertainmentGroupConst = 1
+	GenreName_2       EntertainmentGroupConst = 2
+	AlbumName_2       EntertainmentGroupConst = 3
+	ArtistName_2      EntertainmentGroupConst = 4
+	TrackName_2       EntertainmentGroupConst = 5
+	StationName_2     EntertainmentGroupConst = 6
+	StationNumber_2   EntertainmentGroupConst = 7
+	FavouriteNumber_2 EntertainmentGroupConst = 8
+	PlayQueue_3       EntertainmentGroupConst = 9
+	ContentInfo_2     EntertainmentGroupConst = 10
 )
 
-func (e EntertainmentGroupConst) GoString() string {return e.String() }
+func (e EntertainmentGroupConst) GoString() string { return e.String() }
 func (e EntertainmentGroupConst) String() string {
 	switch e {
-		case 0:
-			return "File"
-		case 1:
-			return "Playlist Name"
-		case 2:
-			return "Genre Name"
-		case 3:
-			return "Album Name"
-		case 4:
-			return "Artist Name"
-		case 5:
-			return "Track Name"
-		case 6:
-			return "Station Name"
-		case 7:
-			return "Station Number"
-		case 8:
-			return "Favourite Number"
-		case 9:
-			return "Play Queue"
-		case 10:
-			return "Content Info"
-default:
+	case 0:
+		return "File"
+	case 1:
+		return "Playlist Name"
+	case 2:
+		return "Genre Name"
+	case 3:
+		return "Album Name"
+	case 4:
+		return "Artist Name"
+	case 5:
+		return "Track Name"
+	case 6:
+		return "Station Name"
+	case 7:
+		return "Station Number"
+	case 8:
+		return "Favourite Number"
+	case 9:
+		return "Play Queue"
+	case 10:
+		return "Content Info"
+	default:
 		return fmt.Sprintf("EntertainmentGroupConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentChannelConst uint8
+
 const (
-	AllChannels	EntertainmentChannelConst = 0
-	StereoFullRange	EntertainmentChannelConst = 1
-	StereoFront	EntertainmentChannelConst = 2
-	StereoBack	EntertainmentChannelConst = 3
-	StereoSurround	EntertainmentChannelConst = 4
-	Center	EntertainmentChannelConst = 5
-	Subwoofer	EntertainmentChannelConst = 6
-	FrontLeft	EntertainmentChannelConst = 7
-	FrontRight	EntertainmentChannelConst = 8
-	BackLeft	EntertainmentChannelConst = 9
-	BackRight	EntertainmentChannelConst = 10
-	SurroundLeft	EntertainmentChannelConst = 11
-	SurroundRight	EntertainmentChannelConst = 12
+	AllChannels     EntertainmentChannelConst = 0
+	StereoFullRange EntertainmentChannelConst = 1
+	StereoFront     EntertainmentChannelConst = 2
+	StereoBack      EntertainmentChannelConst = 3
+	StereoSurround  EntertainmentChannelConst = 4
+	Center          EntertainmentChannelConst = 5
+	Subwoofer       EntertainmentChannelConst = 6
+	FrontLeft       EntertainmentChannelConst = 7
+	FrontRight      EntertainmentChannelConst = 8
+	BackLeft        EntertainmentChannelConst = 9
+	BackRight       EntertainmentChannelConst = 10
+	SurroundLeft    EntertainmentChannelConst = 11
+	SurroundRight   EntertainmentChannelConst = 12
 )
 
-func (e EntertainmentChannelConst) GoString() string {return e.String() }
+func (e EntertainmentChannelConst) GoString() string { return e.String() }
 func (e EntertainmentChannelConst) String() string {
 	switch e {
-		case 0:
-			return "All channels"
-		case 1:
-			return "Stereo full range"
-		case 2:
-			return "Stereo front"
-		case 3:
-			return "Stereo back"
-		case 4:
-			return "Stereo surround"
-		case 5:
-			return "Center"
-		case 6:
-			return "Subwoofer"
-		case 7:
-			return "Front left"
-		case 8:
-			return "Front right"
-		case 9:
-			return "Back left"
-		case 10:
-			return "Back right"
-		case 11:
-			return "Surround left"
-		case 12:
-			return "Surround right"
-default:
+	case 0:
+		return "All channels"
+	case 1:
+		return "Stereo full range"
+	case 2:
+		return "Stereo front"
+	case 3:
+		return "Stereo back"
+	case 4:
+		return "Stereo surround"
+	case 5:
+		return "Center"
+	case 6:
+		return "Subwoofer"
+	case 7:
+		return "Front left"
+	case 8:
+		return "Front right"
+	case 9:
+		return "Back left"
+	case 10:
+		return "Back right"
+	case 11:
+		return "Surround left"
+	case 12:
+		return "Surround right"
+	default:
 		return fmt.Sprintf("EntertainmentChannelConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentEQConst uint8
+
 const (
-	Flat	EntertainmentEQConst = 0
-	Rock	EntertainmentEQConst = 1
-	Hall	EntertainmentEQConst = 2
-	Jazz	EntertainmentEQConst = 3
-	Pop	EntertainmentEQConst = 4
-	Live	EntertainmentEQConst = 5
-	Classic	EntertainmentEQConst = 6
-	Vocal	EntertainmentEQConst = 7
-	Arena	EntertainmentEQConst = 8
-	Cinema	EntertainmentEQConst = 9
-	Custom	EntertainmentEQConst = 10
+	Flat    EntertainmentEQConst = 0
+	Rock    EntertainmentEQConst = 1
+	Hall    EntertainmentEQConst = 2
+	Jazz    EntertainmentEQConst = 3
+	Pop     EntertainmentEQConst = 4
+	Live    EntertainmentEQConst = 5
+	Classic EntertainmentEQConst = 6
+	Vocal   EntertainmentEQConst = 7
+	Arena   EntertainmentEQConst = 8
+	Cinema  EntertainmentEQConst = 9
+	Custom  EntertainmentEQConst = 10
 )
 
-func (e EntertainmentEQConst) GoString() string {return e.String() }
+func (e EntertainmentEQConst) GoString() string { return e.String() }
 func (e EntertainmentEQConst) String() string {
 	switch e {
-		case 0:
-			return "Flat"
-		case 1:
-			return "Rock"
-		case 2:
-			return "Hall"
-		case 3:
-			return "Jazz"
-		case 4:
-			return "Pop"
-		case 5:
-			return "Live"
-		case 6:
-			return "Classic"
-		case 7:
-			return "Vocal"
-		case 8:
-			return "Arena"
-		case 9:
-			return "Cinema"
-		case 10:
-			return "Custom"
-default:
+	case 0:
+		return "Flat"
+	case 1:
+		return "Rock"
+	case 2:
+		return "Hall"
+	case 3:
+		return "Jazz"
+	case 4:
+		return "Pop"
+	case 5:
+		return "Live"
+	case 6:
+		return "Classic"
+	case 7:
+		return "Vocal"
+	case 8:
+		return "Arena"
+	case 9:
+		return "Cinema"
+	case 10:
+		return "Custom"
+	default:
 		return fmt.Sprintf("EntertainmentEQConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentFilterConst uint8
+
 const (
-	FullRange	EntertainmentFilterConst = 0
-	HighPass	EntertainmentFilterConst = 1
-	LowPass	EntertainmentFilterConst = 2
-	BandPass	EntertainmentFilterConst = 3
-	NotchFilter	EntertainmentFilterConst = 4
+	FullRange   EntertainmentFilterConst = 0
+	HighPass    EntertainmentFilterConst = 1
+	LowPass     EntertainmentFilterConst = 2
+	BandPass    EntertainmentFilterConst = 3
+	NotchFilter EntertainmentFilterConst = 4
 )
 
-func (e EntertainmentFilterConst) GoString() string {return e.String() }
+func (e EntertainmentFilterConst) GoString() string { return e.String() }
 func (e EntertainmentFilterConst) String() string {
 	switch e {
-		case 0:
-			return "Full range"
-		case 1:
-			return "High pass"
-		case 2:
-			return "Low pass"
-		case 3:
-			return "Band pass"
-		case 4:
-			return "Notch filter"
-default:
+	case 0:
+		return "Full range"
+	case 1:
+		return "High pass"
+	case 2:
+		return "Low pass"
+	case 3:
+		return "Band pass"
+	case 4:
+		return "Notch filter"
+	default:
 		return fmt.Sprintf("EntertainmentFilterConst(%d)", uint8(e))
 	}
 }
+
 type AlertTypeConst uint8
+
 const (
-	EmergencyAlarm	AlertTypeConst = 1
-	Alarm	AlertTypeConst = 2
-	Warning_2	AlertTypeConst = 5
-	Caution_2	AlertTypeConst = 8
+	EmergencyAlarm AlertTypeConst = 1
+	Alarm          AlertTypeConst = 2
+	Warning_2      AlertTypeConst = 5
+	Caution_2      AlertTypeConst = 8
 )
 
-func (e AlertTypeConst) GoString() string {return e.String() }
+func (e AlertTypeConst) GoString() string { return e.String() }
 func (e AlertTypeConst) String() string {
 	switch e {
-		case 1:
-			return "Emergency Alarm"
-		case 2:
-			return "Alarm"
-		case 5:
-			return "Warning"
-		case 8:
-			return "Caution"
-default:
+	case 1:
+		return "Emergency Alarm"
+	case 2:
+		return "Alarm"
+	case 5:
+		return "Warning"
+	case 8:
+		return "Caution"
+	default:
 		return fmt.Sprintf("AlertTypeConst(%d)", uint8(e))
 	}
 }
+
 type AlertCategoryConst uint8
+
 const (
-	Navigational	AlertCategoryConst = 0
-	Technical	AlertCategoryConst = 1
+	Navigational AlertCategoryConst = 0
+	Technical    AlertCategoryConst = 1
 )
 
-func (e AlertCategoryConst) GoString() string {return e.String() }
+func (e AlertCategoryConst) GoString() string { return e.String() }
 func (e AlertCategoryConst) String() string {
 	switch e {
-		case 0:
-			return "Navigational"
-		case 1:
-			return "Technical"
-default:
+	case 0:
+		return "Navigational"
+	case 1:
+		return "Technical"
+	default:
 		return fmt.Sprintf("AlertCategoryConst(%d)", uint8(e))
 	}
 }
+
 type AlertTriggerConditionConst uint8
+
 const (
-	Manual_3	AlertTriggerConditionConst = 0
-	Auto_2	AlertTriggerConditionConst = 1
-	Test_2	AlertTriggerConditionConst = 2
-	Disabled	AlertTriggerConditionConst = 3
+	Manual_3 AlertTriggerConditionConst = 0
+	Auto_2   AlertTriggerConditionConst = 1
+	Test_2   AlertTriggerConditionConst = 2
+	Disabled AlertTriggerConditionConst = 3
 )
 
-func (e AlertTriggerConditionConst) GoString() string {return e.String() }
+func (e AlertTriggerConditionConst) GoString() string { return e.String() }
 func (e AlertTriggerConditionConst) String() string {
 	switch e {
-		case 0:
-			return "Manual"
-		case 1:
-			return "Auto"
-		case 2:
-			return "Test"
-		case 3:
-			return "Disabled"
-default:
+	case 0:
+		return "Manual"
+	case 1:
+		return "Auto"
+	case 2:
+		return "Test"
+	case 3:
+		return "Disabled"
+	default:
 		return fmt.Sprintf("AlertTriggerConditionConst(%d)", uint8(e))
 	}
 }
+
 type AlertThresholdStatusConst uint8
+
 const (
-	Normal	AlertThresholdStatusConst = 0
-	ThresholdExceeded	AlertThresholdStatusConst = 1
-	ExtremeThresholdExceeded	AlertThresholdStatusConst = 2
-	LowThresholdExceeded	AlertThresholdStatusConst = 3
-	Acknowledged	AlertThresholdStatusConst = 4
-	AwaitingAcknowledge	AlertThresholdStatusConst = 5
+	Normal                   AlertThresholdStatusConst = 0
+	ThresholdExceeded        AlertThresholdStatusConst = 1
+	ExtremeThresholdExceeded AlertThresholdStatusConst = 2
+	LowThresholdExceeded     AlertThresholdStatusConst = 3
+	Acknowledged             AlertThresholdStatusConst = 4
+	AwaitingAcknowledge      AlertThresholdStatusConst = 5
 )
 
-func (e AlertThresholdStatusConst) GoString() string {return e.String() }
+func (e AlertThresholdStatusConst) GoString() string { return e.String() }
 func (e AlertThresholdStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Normal"
-		case 1:
-			return "Threshold Exceeded"
-		case 2:
-			return "Extreme Threshold Exceeded"
-		case 3:
-			return "Low Threshold Exceeded"
-		case 4:
-			return "Acknowledged"
-		case 5:
-			return "Awaiting Acknowledge"
-default:
+	case 0:
+		return "Normal"
+	case 1:
+		return "Threshold Exceeded"
+	case 2:
+		return "Extreme Threshold Exceeded"
+	case 3:
+		return "Low Threshold Exceeded"
+	case 4:
+		return "Acknowledged"
+	case 5:
+		return "Awaiting Acknowledge"
+	default:
 		return fmt.Sprintf("AlertThresholdStatusConst(%d)", uint8(e))
 	}
 }
+
 type AlertStateConst uint8
+
 const (
-	Disabled_2	AlertStateConst = 0
-	Normal_2	AlertStateConst = 1
-	Active	AlertStateConst = 2
-	Silenced	AlertStateConst = 3
-	Acknowledged_2	AlertStateConst = 4
-	AwaitingAcknowledge_2	AlertStateConst = 5
+	Disabled_2            AlertStateConst = 0
+	Normal_2              AlertStateConst = 1
+	Active                AlertStateConst = 2
+	Silenced              AlertStateConst = 3
+	Acknowledged_2        AlertStateConst = 4
+	AwaitingAcknowledge_2 AlertStateConst = 5
 )
 
-func (e AlertStateConst) GoString() string {return e.String() }
+func (e AlertStateConst) GoString() string { return e.String() }
 func (e AlertStateConst) String() string {
 	switch e {
-		case 0:
-			return "Disabled"
-		case 1:
-			return "Normal"
-		case 2:
-			return "Active"
-		case 3:
-			return "Silenced"
-		case 4:
-			return "Acknowledged"
-		case 5:
-			return "Awaiting Acknowledge"
-default:
+	case 0:
+		return "Disabled"
+	case 1:
+		return "Normal"
+	case 2:
+		return "Active"
+	case 3:
+		return "Silenced"
+	case 4:
+		return "Acknowledged"
+	case 5:
+		return "Awaiting Acknowledge"
+	default:
 		return fmt.Sprintf("AlertStateConst(%d)", uint8(e))
 	}
 }
+
 type AlertLanguageIDConst uint8
+
 const (
-	EnglishUs	AlertLanguageIDConst = 0
-	EnglishUk	AlertLanguageIDConst = 1
-	Arabic	AlertLanguageIDConst = 2
-	ChineseSimplified	AlertLanguageIDConst = 3
-	Croatian	AlertLanguageIDConst = 4
-	Danish	AlertLanguageIDConst = 5
-	Dutch	AlertLanguageIDConst = 6
-	Finnish	AlertLanguageIDConst = 7
-	French	AlertLanguageIDConst = 8
-	German	AlertLanguageIDConst = 9
-	Greek	AlertLanguageIDConst = 10
-	Italian	AlertLanguageIDConst = 11
-	Japanese	AlertLanguageIDConst = 12
-	Korean	AlertLanguageIDConst = 13
-	Norwegian	AlertLanguageIDConst = 14
-	Polish	AlertLanguageIDConst = 15
-	Portuguese	AlertLanguageIDConst = 16
-	Russian	AlertLanguageIDConst = 17
-	Spanish	AlertLanguageIDConst = 18
-	Swedish	AlertLanguageIDConst = 19
+	EnglishUs         AlertLanguageIDConst = 0
+	EnglishUk         AlertLanguageIDConst = 1
+	Arabic            AlertLanguageIDConst = 2
+	ChineseSimplified AlertLanguageIDConst = 3
+	Croatian          AlertLanguageIDConst = 4
+	Danish            AlertLanguageIDConst = 5
+	Dutch             AlertLanguageIDConst = 6
+	Finnish           AlertLanguageIDConst = 7
+	French            AlertLanguageIDConst = 8
+	German            AlertLanguageIDConst = 9
+	Greek             AlertLanguageIDConst = 10
+	Italian           AlertLanguageIDConst = 11
+	Japanese          AlertLanguageIDConst = 12
+	Korean            AlertLanguageIDConst = 13
+	Norwegian         AlertLanguageIDConst = 14
+	Polish            AlertLanguageIDConst = 15
+	Portuguese        AlertLanguageIDConst = 16
+	Russian           AlertLanguageIDConst = 17
+	Spanish           AlertLanguageIDConst = 18
+	Swedish           AlertLanguageIDConst = 19
 )
 
-func (e AlertLanguageIDConst) GoString() string {return e.String() }
+func (e AlertLanguageIDConst) GoString() string { return e.String() }
 func (e AlertLanguageIDConst) String() string {
 	switch e {
-		case 0:
-			return "English (US)"
-		case 1:
-			return "English (UK)"
-		case 2:
-			return "Arabic"
-		case 3:
-			return "Chinese (simplified)"
-		case 4:
-			return "Croatian"
-		case 5:
-			return "Danish"
-		case 6:
-			return "Dutch"
-		case 7:
-			return "Finnish"
-		case 8:
-			return "French"
-		case 9:
-			return "German"
-		case 10:
-			return "Greek"
-		case 11:
-			return "Italian"
-		case 12:
-			return "Japanese"
-		case 13:
-			return "Korean"
-		case 14:
-			return "Norwegian"
-		case 15:
-			return "Polish"
-		case 16:
-			return "Portuguese"
-		case 17:
-			return "Russian"
-		case 18:
-			return "Spanish"
-		case 19:
-			return "Swedish"
-default:
+	case 0:
+		return "English (US)"
+	case 1:
+		return "English (UK)"
+	case 2:
+		return "Arabic"
+	case 3:
+		return "Chinese (simplified)"
+	case 4:
+		return "Croatian"
+	case 5:
+		return "Danish"
+	case 6:
+		return "Dutch"
+	case 7:
+		return "Finnish"
+	case 8:
+		return "French"
+	case 9:
+		return "German"
+	case 10:
+		return "Greek"
+	case 11:
+		return "Italian"
+	case 12:
+		return "Japanese"
+	case 13:
+		return "Korean"
+	case 14:
+		return "Norwegian"
+	case 15:
+		return "Polish"
+	case 16:
+		return "Portuguese"
+	case 17:
+		return "Russian"
+	case 18:
+		return "Spanish"
+	case 19:
+		return "Swedish"
+	default:
 		return fmt.Sprintf("AlertLanguageIDConst(%d)", uint8(e))
 	}
 }
+
 type AlertResponseCommandConst uint8
+
 const (
-	Acknowledge	AlertResponseCommandConst = 0
-	TemporarySilence	AlertResponseCommandConst = 1
-	TestCommandOff	AlertResponseCommandConst = 2
-	TestCommandOn	AlertResponseCommandConst = 3
+	Acknowledge      AlertResponseCommandConst = 0
+	TemporarySilence AlertResponseCommandConst = 1
+	TestCommandOff   AlertResponseCommandConst = 2
+	TestCommandOn    AlertResponseCommandConst = 3
 )
 
-func (e AlertResponseCommandConst) GoString() string {return e.String() }
+func (e AlertResponseCommandConst) GoString() string { return e.String() }
 func (e AlertResponseCommandConst) String() string {
 	switch e {
-		case 0:
-			return "Acknowledge"
-		case 1:
-			return "Temporary Silence"
-		case 2:
-			return "Test Command off"
-		case 3:
-			return "Test Command on"
-default:
+	case 0:
+		return "Acknowledge"
+	case 1:
+		return "Temporary Silence"
+	case 2:
+		return "Test Command off"
+	case 3:
+		return "Test Command on"
+	default:
 		return fmt.Sprintf("AlertResponseCommandConst(%d)", uint8(e))
 	}
 }
+
 type ConverterStateConst uint8
+
 const (
-	Off_5	ConverterStateConst = 0
-	LowPowerMode	ConverterStateConst = 1
-	Fault	ConverterStateConst = 2
-	Bulk	ConverterStateConst = 3
-	Absorption	ConverterStateConst = 4
-	Float	ConverterStateConst = 5
-	Storage	ConverterStateConst = 6
-	Equalize	ConverterStateConst = 7
-	PassThru	ConverterStateConst = 8
-	Inverting	ConverterStateConst = 9
-	Assisting	ConverterStateConst = 10
+	Off_5        ConverterStateConst = 0
+	LowPowerMode ConverterStateConst = 1
+	Fault        ConverterStateConst = 2
+	Bulk         ConverterStateConst = 3
+	Absorption   ConverterStateConst = 4
+	Float        ConverterStateConst = 5
+	Storage      ConverterStateConst = 6
+	Equalize     ConverterStateConst = 7
+	PassThru     ConverterStateConst = 8
+	Inverting    ConverterStateConst = 9
+	Assisting    ConverterStateConst = 10
 )
 
-func (e ConverterStateConst) GoString() string {return e.String() }
+func (e ConverterStateConst) GoString() string { return e.String() }
 func (e ConverterStateConst) String() string {
 	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "Low Power Mode"
-		case 2:
-			return "Fault"
-		case 3:
-			return "Bulk"
-		case 4:
-			return "Absorption"
-		case 5:
-			return "Float"
-		case 6:
-			return "Storage"
-		case 7:
-			return "Equalize"
-		case 8:
-			return "Pass thru"
-		case 9:
-			return "Inverting"
-		case 10:
-			return "Assisting"
-default:
+	case 0:
+		return "Off"
+	case 1:
+		return "Low Power Mode"
+	case 2:
+		return "Fault"
+	case 3:
+		return "Bulk"
+	case 4:
+		return "Absorption"
+	case 5:
+		return "Float"
+	case 6:
+		return "Storage"
+	case 7:
+		return "Equalize"
+	case 8:
+		return "Pass thru"
+	case 9:
+		return "Inverting"
+	case 10:
+		return "Assisting"
+	default:
 		return fmt.Sprintf("ConverterStateConst(%d)", uint8(e))
 	}
 }
+
 type ThrusterDirectionControlConst uint8
+
 const (
-	Off_6	ThrusterDirectionControlConst = 0
-	Ready	ThrusterDirectionControlConst = 1
-	ToPort	ThrusterDirectionControlConst = 2
-	ToStarboard	ThrusterDirectionControlConst = 3
+	Off_6       ThrusterDirectionControlConst = 0
+	Ready       ThrusterDirectionControlConst = 1
+	ToPort      ThrusterDirectionControlConst = 2
+	ToStarboard ThrusterDirectionControlConst = 3
 )
 
-func (e ThrusterDirectionControlConst) GoString() string {return e.String() }
+func (e ThrusterDirectionControlConst) GoString() string { return e.String() }
 func (e ThrusterDirectionControlConst) String() string {
 	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "Ready"
-		case 2:
-			return "To Port"
-		case 3:
-			return "To Starboard"
-default:
+	case 0:
+		return "Off"
+	case 1:
+		return "Ready"
+	case 2:
+		return "To Port"
+	case 3:
+		return "To Starboard"
+	default:
 		return fmt.Sprintf("ThrusterDirectionControlConst(%d)", uint8(e))
 	}
 }
+
 type ThrusterRetractControlConst uint8
+
 const (
-	Off_7	ThrusterRetractControlConst = 0
-	Extend	ThrusterRetractControlConst = 1
-	Retract	ThrusterRetractControlConst = 2
+	Off_7   ThrusterRetractControlConst = 0
+	Extend  ThrusterRetractControlConst = 1
+	Retract ThrusterRetractControlConst = 2
 )
 
-func (e ThrusterRetractControlConst) GoString() string {return e.String() }
+func (e ThrusterRetractControlConst) GoString() string { return e.String() }
 func (e ThrusterRetractControlConst) String() string {
 	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "Extend"
-		case 2:
-			return "Retract"
-default:
+	case 0:
+		return "Off"
+	case 1:
+		return "Extend"
+	case 2:
+		return "Retract"
+	default:
 		return fmt.Sprintf("ThrusterRetractControlConst(%d)", uint8(e))
 	}
 }
+
 type ThrusterMotorTypeConst uint8
+
 const (
-	ThrusterMotorTypeConst12VDC	ThrusterMotorTypeConst = 0
-	ThrusterMotorTypeConst24VDC	ThrusterMotorTypeConst = 1
-	ThrusterMotorTypeConst48VDC	ThrusterMotorTypeConst = 2
-	ThrusterMotorTypeConst24VAC	ThrusterMotorTypeConst = 3
-	Hydraulic_2	ThrusterMotorTypeConst = 4
+	ThrusterMotorTypeConst12VDC ThrusterMotorTypeConst = 0
+	ThrusterMotorTypeConst24VDC ThrusterMotorTypeConst = 1
+	ThrusterMotorTypeConst48VDC ThrusterMotorTypeConst = 2
+	ThrusterMotorTypeConst24VAC ThrusterMotorTypeConst = 3
+	Hydraulic_2                 ThrusterMotorTypeConst = 4
 )
 
-func (e ThrusterMotorTypeConst) GoString() string {return e.String() }
+func (e ThrusterMotorTypeConst) GoString() string { return e.String() }
 func (e ThrusterMotorTypeConst) String() string {
 	switch e {
-		case 0:
-			return "12VDC"
-		case 1:
-			return "24VDC"
-		case 2:
-			return "48VDC"
-		case 3:
-			return "24VAC"
-		case 4:
-			return "Hydraulic"
-default:
+	case 0:
+		return "12VDC"
+	case 1:
+		return "24VDC"
+	case 2:
+		return "48VDC"
+	case 3:
+		return "24VAC"
+	case 4:
+		return "Hydraulic"
+	default:
 		return fmt.Sprintf("ThrusterMotorTypeConst(%d)", uint8(e))
 	}
 }
+
 type BootStateConst uint8
+
 const (
-	InStartupMonitor	BootStateConst = 0
-	RunningBootloader	BootStateConst = 1
-	RunningApplication	BootStateConst = 2
+	InStartupMonitor   BootStateConst = 0
+	RunningBootloader  BootStateConst = 1
+	RunningApplication BootStateConst = 2
 )
 
-func (e BootStateConst) GoString() string {return e.String() }
+func (e BootStateConst) GoString() string { return e.String() }
 func (e BootStateConst) String() string {
 	switch e {
-		case 0:
-			return "in Startup Monitor"
-		case 1:
-			return "running Bootloader"
-		case 2:
-			return "running Application"
-default:
+	case 0:
+		return "in Startup Monitor"
+	case 1:
+		return "running Bootloader"
+	case 2:
+		return "running Application"
+	default:
 		return fmt.Sprintf("BootStateConst(%d)", uint8(e))
 	}
 }
+
 type AccessLevelConst uint8
+
 const (
-	Locked	AccessLevelConst = 0
-	UnlockedLevel1	AccessLevelConst = 1
-	UnlockedLevel2	AccessLevelConst = 2
+	Locked         AccessLevelConst = 0
+	UnlockedLevel1 AccessLevelConst = 1
+	UnlockedLevel2 AccessLevelConst = 2
 )
 
-func (e AccessLevelConst) GoString() string {return e.String() }
+func (e AccessLevelConst) GoString() string { return e.String() }
 func (e AccessLevelConst) String() string {
 	switch e {
-		case 0:
-			return "Locked"
-		case 1:
-			return "unlocked level 1"
-		case 2:
-			return "unlocked level 2"
-default:
+	case 0:
+		return "Locked"
+	case 1:
+		return "unlocked level 1"
+	case 2:
+		return "unlocked level 2"
+	default:
 		return fmt.Sprintf("AccessLevelConst(%d)", uint8(e))
 	}
 }
+
 type TransmissionIntervalConst uint8
+
 const (
-	Acknowledge_2	TransmissionIntervalConst = 0
-	TransmitIntervalPriorityNotSup	TransmissionIntervalConst = 1
-	TransmitIntervalTooLow	TransmissionIntervalConst = 2
-	AccessDenied	TransmissionIntervalConst = 3
-	NotSupported	TransmissionIntervalConst = 4
+	Acknowledge_2                  TransmissionIntervalConst = 0
+	TransmitIntervalPriorityNotSup TransmissionIntervalConst = 1
+	TransmitIntervalTooLow         TransmissionIntervalConst = 2
+	AccessDenied                   TransmissionIntervalConst = 3
+	NotSupported                   TransmissionIntervalConst = 4
 )
 
-func (e TransmissionIntervalConst) GoString() string {return e.String() }
+func (e TransmissionIntervalConst) GoString() string { return e.String() }
 func (e TransmissionIntervalConst) String() string {
 	switch e {
-		case 0:
-			return "Acknowledge"
-		case 1:
-			return "Transmit Interval/Priority not supported"
-		case 2:
-			return "Transmit Interval too low"
-		case 3:
-			return "Access denied"
-		case 4:
-			return "Not supported"
-default:
+	case 0:
+		return "Acknowledge"
+	case 1:
+		return "Transmit Interval/Priority not supported"
+	case 2:
+		return "Transmit Interval too low"
+	case 3:
+		return "Access denied"
+	case 4:
+		return "Not supported"
+	default:
 		return fmt.Sprintf("TransmissionIntervalConst(%d)", uint8(e))
 	}
 }
+
 type ParameterFieldConst uint8
+
 const (
-	Acknowledge_3	ParameterFieldConst = 0
-	InvalidParameterField	ParameterFieldConst = 1
-	TemporaryError	ParameterFieldConst = 2
-	ParameterOutOfRange	ParameterFieldConst = 3
-	AccessDenied_2	ParameterFieldConst = 4
-	NotSupported_2	ParameterFieldConst = 5
-	ReadOrWriteNotSupported	ParameterFieldConst = 6
+	Acknowledge_3           ParameterFieldConst = 0
+	InvalidParameterField   ParameterFieldConst = 1
+	TemporaryError          ParameterFieldConst = 2
+	ParameterOutOfRange     ParameterFieldConst = 3
+	AccessDenied_2          ParameterFieldConst = 4
+	NotSupported_2          ParameterFieldConst = 5
+	ReadOrWriteNotSupported ParameterFieldConst = 6
 )
 
-func (e ParameterFieldConst) GoString() string {return e.String() }
+func (e ParameterFieldConst) GoString() string { return e.String() }
 func (e ParameterFieldConst) String() string {
 	switch e {
-		case 0:
-			return "Acknowledge"
-		case 1:
-			return "Invalid parameter field"
-		case 2:
-			return "Temporary error"
-		case 3:
-			return "Parameter out of range"
-		case 4:
-			return "Access denied"
-		case 5:
-			return "Not supported"
-		case 6:
-			return "Read or Write not supported"
-default:
+	case 0:
+		return "Acknowledge"
+	case 1:
+		return "Invalid parameter field"
+	case 2:
+		return "Temporary error"
+	case 3:
+		return "Parameter out of range"
+	case 4:
+		return "Access denied"
+	case 5:
+		return "Not supported"
+	case 6:
+		return "Read or Write not supported"
+	default:
 		return fmt.Sprintf("ParameterFieldConst(%d)", uint8(e))
 	}
 }
+
 type PGNListFunctionConst uint8
+
 const (
-	TransmitPGNList	PGNListFunctionConst = 0
-	ReceivePGNList	PGNListFunctionConst = 1
+	TransmitPGNList PGNListFunctionConst = 0
+	ReceivePGNList  PGNListFunctionConst = 1
 )
 
-func (e PGNListFunctionConst) GoString() string {return e.String() }
+func (e PGNListFunctionConst) GoString() string { return e.String() }
 func (e PGNListFunctionConst) String() string {
 	switch e {
-		case 0:
-			return "Transmit PGN list"
-		case 1:
-			return "Receive PGN list"
-default:
+	case 0:
+		return "Transmit PGN list"
+	case 1:
+		return "Receive PGN list"
+	default:
 		return fmt.Sprintf("PGNListFunctionConst(%d)", uint8(e))
 	}
 }
+
 type FusionCommandConst uint8
+
 const (
-	Play_2	FusionCommandConst = 1
-	Pause_2	FusionCommandConst = 2
-	Next	FusionCommandConst = 4
-	Prev	FusionCommandConst = 6
+	Play_2  FusionCommandConst = 1
+	Pause_2 FusionCommandConst = 2
+	Next    FusionCommandConst = 4
+	Prev    FusionCommandConst = 6
 )
 
-func (e FusionCommandConst) GoString() string {return e.String() }
+func (e FusionCommandConst) GoString() string { return e.String() }
 func (e FusionCommandConst) String() string {
 	switch e {
-		case 1:
-			return "Play"
-		case 2:
-			return "Pause"
-		case 4:
-			return "Next"
-		case 6:
-			return "Prev"
-default:
+	case 1:
+		return "Play"
+	case 2:
+		return "Pause"
+	case 4:
+		return "Next"
+	case 6:
+		return "Prev"
+	default:
 		return fmt.Sprintf("FusionCommandConst(%d)", uint8(e))
 	}
 }
+
 type FusionSiriusCommandConst uint8
+
 const (
-	Next_2	FusionSiriusCommandConst = 1
-	Prev_2	FusionSiriusCommandConst = 2
+	Next_2 FusionSiriusCommandConst = 1
+	Prev_2 FusionSiriusCommandConst = 2
 )
 
-func (e FusionSiriusCommandConst) GoString() string {return e.String() }
+func (e FusionSiriusCommandConst) GoString() string { return e.String() }
 func (e FusionSiriusCommandConst) String() string {
 	switch e {
-		case 1:
-			return "Next"
-		case 2:
-			return "Prev"
-default:
+	case 1:
+		return "Next"
+	case 2:
+		return "Prev"
+	default:
 		return fmt.Sprintf("FusionSiriusCommandConst(%d)", uint8(e))
 	}
 }
+
 type FusionMuteCommandConst uint8
+
 const (
-	MuteOn	FusionMuteCommandConst = 1
-	MuteOff	FusionMuteCommandConst = 2
+	MuteOn  FusionMuteCommandConst = 1
+	MuteOff FusionMuteCommandConst = 2
 )
 
-func (e FusionMuteCommandConst) GoString() string {return e.String() }
+func (e FusionMuteCommandConst) GoString() string { return e.String() }
 func (e FusionMuteCommandConst) String() string {
 	switch e {
-		case 1:
-			return "Mute On"
-		case 2:
-			return "Mute Off"
-default:
+	case 1:
+		return "Mute On"
+	case 2:
+		return "Mute Off"
+	default:
 		return fmt.Sprintf("FusionMuteCommandConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkKeystrokeConst uint8
+
 const (
-	Auto_3	SeatalkKeystrokeConst = 1
-	Standby_2	SeatalkKeystrokeConst = 2
-	Wind_2	SeatalkKeystrokeConst = 3
-	SeatalkKeystrokeConst1	SeatalkKeystrokeConst = 5
-	SeatalkKeystrokeConst10	SeatalkKeystrokeConst = 6
-	SeatalkKeystrokeConst1_2	SeatalkKeystrokeConst = 7
-	SeatalkKeystrokeConst10_2	SeatalkKeystrokeConst = 8
-	SeatalkKeystrokeConst1And10	SeatalkKeystrokeConst = 33
-	SeatalkKeystrokeConst1And10_2	SeatalkKeystrokeConst = 34
-	Track_2	SeatalkKeystrokeConst = 35
+	Auto_3                        SeatalkKeystrokeConst = 1
+	Standby_2                     SeatalkKeystrokeConst = 2
+	Wind_2                        SeatalkKeystrokeConst = 3
+	SeatalkKeystrokeConst1        SeatalkKeystrokeConst = 5
+	SeatalkKeystrokeConst10       SeatalkKeystrokeConst = 6
+	SeatalkKeystrokeConst1_2      SeatalkKeystrokeConst = 7
+	SeatalkKeystrokeConst10_2     SeatalkKeystrokeConst = 8
+	SeatalkKeystrokeConst1And10   SeatalkKeystrokeConst = 33
+	SeatalkKeystrokeConst1And10_2 SeatalkKeystrokeConst = 34
+	Track_2                       SeatalkKeystrokeConst = 35
 )
 
-func (e SeatalkKeystrokeConst) GoString() string {return e.String() }
+func (e SeatalkKeystrokeConst) GoString() string { return e.String() }
 func (e SeatalkKeystrokeConst) String() string {
 	switch e {
-		case 1:
-			return "Auto"
-		case 2:
-			return "Standby"
-		case 3:
-			return "Wind"
-		case 5:
-			return "-1"
-		case 6:
-			return "-10"
-		case 7:
-			return "+1"
-		case 8:
-			return "+10"
-		case 33:
-			return "-1 and -10"
-		case 34:
-			return "+1 and +10"
-		case 35:
-			return "Track"
-default:
+	case 1:
+		return "Auto"
+	case 2:
+		return "Standby"
+	case 3:
+		return "Wind"
+	case 5:
+		return "-1"
+	case 6:
+		return "-10"
+	case 7:
+		return "+1"
+	case 8:
+		return "+10"
+	case 33:
+		return "-1 and -10"
+	case 34:
+		return "+1 and +10"
+	case 35:
+		return "Track"
+	default:
 		return fmt.Sprintf("SeatalkKeystrokeConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkDeviceIDConst uint8
+
 const (
-	S100	SeatalkDeviceIDConst = 3
-	CourseComputer	SeatalkDeviceIDConst = 5
+	S100           SeatalkDeviceIDConst = 3
+	CourseComputer SeatalkDeviceIDConst = 5
 )
 
-func (e SeatalkDeviceIDConst) GoString() string {return e.String() }
+func (e SeatalkDeviceIDConst) GoString() string { return e.String() }
 func (e SeatalkDeviceIDConst) String() string {
 	switch e {
-		case 3:
-			return "S100"
-		case 5:
-			return "Course Computer"
-default:
+	case 3:
+		return "S100"
+	case 5:
+		return "Course Computer"
+	default:
 		return fmt.Sprintf("SeatalkDeviceIDConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkNetworkGroupConst uint8
+
 const (
-	None_2	SeatalkNetworkGroupConst = 0
-	Helm1	SeatalkNetworkGroupConst = 1
-	Helm2	SeatalkNetworkGroupConst = 2
-	Cockpit	SeatalkNetworkGroupConst = 3
-	Flybridge	SeatalkNetworkGroupConst = 4
-	Mast	SeatalkNetworkGroupConst = 5
-	Group1	SeatalkNetworkGroupConst = 6
-	Group2	SeatalkNetworkGroupConst = 7
-	Group3	SeatalkNetworkGroupConst = 8
-	Group4	SeatalkNetworkGroupConst = 9
-	Group5	SeatalkNetworkGroupConst = 10
+	None_2    SeatalkNetworkGroupConst = 0
+	Helm1     SeatalkNetworkGroupConst = 1
+	Helm2     SeatalkNetworkGroupConst = 2
+	Cockpit   SeatalkNetworkGroupConst = 3
+	Flybridge SeatalkNetworkGroupConst = 4
+	Mast      SeatalkNetworkGroupConst = 5
+	Group1    SeatalkNetworkGroupConst = 6
+	Group2    SeatalkNetworkGroupConst = 7
+	Group3    SeatalkNetworkGroupConst = 8
+	Group4    SeatalkNetworkGroupConst = 9
+	Group5    SeatalkNetworkGroupConst = 10
 )
 
-func (e SeatalkNetworkGroupConst) GoString() string {return e.String() }
+func (e SeatalkNetworkGroupConst) GoString() string { return e.String() }
 func (e SeatalkNetworkGroupConst) String() string {
 	switch e {
-		case 0:
-			return "None"
-		case 1:
-			return "Helm 1"
-		case 2:
-			return "Helm 2"
-		case 3:
-			return "Cockpit"
-		case 4:
-			return "Flybridge"
-		case 5:
-			return "Mast"
-		case 6:
-			return "Group 1"
-		case 7:
-			return "Group 2"
-		case 8:
-			return "Group 3"
-		case 9:
-			return "Group 4"
-		case 10:
-			return "Group 5"
-default:
+	case 0:
+		return "None"
+	case 1:
+		return "Helm 1"
+	case 2:
+		return "Helm 2"
+	case 3:
+		return "Cockpit"
+	case 4:
+		return "Flybridge"
+	case 5:
+		return "Mast"
+	case 6:
+		return "Group 1"
+	case 7:
+		return "Group 2"
+	case 8:
+		return "Group 3"
+	case 9:
+		return "Group 4"
+	case 10:
+		return "Group 5"
+	default:
 		return fmt.Sprintf("SeatalkNetworkGroupConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkDisplayColorConst uint8
+
 const (
-	Day1	SeatalkDisplayColorConst = 0
-	Day2	SeatalkDisplayColorConst = 2
-	RedBlack	SeatalkDisplayColorConst = 3
-	Inverse	SeatalkDisplayColorConst = 4
+	Day1     SeatalkDisplayColorConst = 0
+	Day2     SeatalkDisplayColorConst = 2
+	RedBlack SeatalkDisplayColorConst = 3
+	Inverse  SeatalkDisplayColorConst = 4
 )
 
-func (e SeatalkDisplayColorConst) GoString() string {return e.String() }
+func (e SeatalkDisplayColorConst) GoString() string { return e.String() }
 func (e SeatalkDisplayColorConst) String() string {
 	switch e {
-		case 0:
-			return "Day 1"
-		case 2:
-			return "Day 2"
-		case 3:
-			return "Red/Black"
-		case 4:
-			return "Inverse"
-default:
+	case 0:
+		return "Day 1"
+	case 2:
+		return "Day 2"
+	case 3:
+		return "Red/Black"
+	case 4:
+		return "Inverse"
+	default:
 		return fmt.Sprintf("SeatalkDisplayColorConst(%d)", uint8(e))
 	}
 }
+
 type AirmarCalibrateFunctionConst uint8
+
 const (
-	NormalCancelCalibration	AirmarCalibrateFunctionConst = 0
-	EnterCalibrationMode	AirmarCalibrateFunctionConst = 1
-	ResetCalibrationTo0	AirmarCalibrateFunctionConst = 2
-	Verify	AirmarCalibrateFunctionConst = 3
-	ResetCompassToDefaults	AirmarCalibrateFunctionConst = 4
-	ResetDampingToDefaults	AirmarCalibrateFunctionConst = 5
+	NormalCancelCalibration AirmarCalibrateFunctionConst = 0
+	EnterCalibrationMode    AirmarCalibrateFunctionConst = 1
+	ResetCalibrationTo0     AirmarCalibrateFunctionConst = 2
+	Verify                  AirmarCalibrateFunctionConst = 3
+	ResetCompassToDefaults  AirmarCalibrateFunctionConst = 4
+	ResetDampingToDefaults  AirmarCalibrateFunctionConst = 5
 )
 
-func (e AirmarCalibrateFunctionConst) GoString() string {return e.String() }
+func (e AirmarCalibrateFunctionConst) GoString() string { return e.String() }
 func (e AirmarCalibrateFunctionConst) String() string {
 	switch e {
-		case 0:
-			return "Normal/cancel calibration"
-		case 1:
-			return "Enter calibration mode"
-		case 2:
-			return "Reset calibration to 0"
-		case 3:
-			return "Verify"
-		case 4:
-			return "Reset compass to defaults"
-		case 5:
-			return "Reset damping to defaults"
-default:
+	case 0:
+		return "Normal/cancel calibration"
+	case 1:
+		return "Enter calibration mode"
+	case 2:
+		return "Reset calibration to 0"
+	case 3:
+		return "Verify"
+	case 4:
+		return "Reset compass to defaults"
+	case 5:
+		return "Reset damping to defaults"
+	default:
 		return fmt.Sprintf("AirmarCalibrateFunctionConst(%d)", uint8(e))
 	}
 }
+
 type AirmarCalibrateStatusConst uint8
+
 const (
-	Queried	AirmarCalibrateStatusConst = 0
-	Passed	AirmarCalibrateStatusConst = 1
-	FailedTimeout	AirmarCalibrateStatusConst = 2
-	FailedTiltError	AirmarCalibrateStatusConst = 3
-	FailedOther	AirmarCalibrateStatusConst = 4
-	InProgress	AirmarCalibrateStatusConst = 5
+	Queried         AirmarCalibrateStatusConst = 0
+	Passed          AirmarCalibrateStatusConst = 1
+	FailedTimeout   AirmarCalibrateStatusConst = 2
+	FailedTiltError AirmarCalibrateStatusConst = 3
+	FailedOther     AirmarCalibrateStatusConst = 4
+	InProgress      AirmarCalibrateStatusConst = 5
 )
 
-func (e AirmarCalibrateStatusConst) GoString() string {return e.String() }
+func (e AirmarCalibrateStatusConst) GoString() string { return e.String() }
 func (e AirmarCalibrateStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Queried"
-		case 1:
-			return "Passed"
-		case 2:
-			return "Failed - timeout"
-		case 3:
-			return "Failed - tilt error"
-		case 4:
-			return "Failed - other"
-		case 5:
-			return "In progress"
-default:
+	case 0:
+		return "Queried"
+	case 1:
+		return "Passed"
+	case 2:
+		return "Failed - timeout"
+	case 3:
+		return "Failed - tilt error"
+	case 4:
+		return "Failed - other"
+	case 5:
+		return "In progress"
+	default:
 		return fmt.Sprintf("AirmarCalibrateStatusConst(%d)", uint8(e))
 	}
 }
+
 type AirmarTemperatureInstanceConst uint8
+
 const (
-	DeviceSensor	AirmarTemperatureInstanceConst = 0
-	OnboardWaterSensor	AirmarTemperatureInstanceConst = 1
-	OptionalWaterSensor	AirmarTemperatureInstanceConst = 2
+	DeviceSensor        AirmarTemperatureInstanceConst = 0
+	OnboardWaterSensor  AirmarTemperatureInstanceConst = 1
+	OptionalWaterSensor AirmarTemperatureInstanceConst = 2
 )
 
-func (e AirmarTemperatureInstanceConst) GoString() string {return e.String() }
+func (e AirmarTemperatureInstanceConst) GoString() string { return e.String() }
 func (e AirmarTemperatureInstanceConst) String() string {
 	switch e {
-		case 0:
-			return "Device Sensor"
-		case 1:
-			return "Onboard Water Sensor"
-		case 2:
-			return "Optional Water Sensor"
-default:
+	case 0:
+		return "Device Sensor"
+	case 1:
+		return "Onboard Water Sensor"
+	case 2:
+		return "Optional Water Sensor"
+	default:
 		return fmt.Sprintf("AirmarTemperatureInstanceConst(%d)", uint8(e))
 	}
 }
-type ControllerStateConst uint8
+
+type AirmarFilterConst uint8
+
 const (
-	ErrorActive	ControllerStateConst = 0
-	ErrorPassive	ControllerStateConst = 1
-	BusOff	ControllerStateConst = 2
+	NoFilter       AirmarFilterConst = 0
+	BasicIIRFilter AirmarFilterConst = 1
 )
 
-func (e ControllerStateConst) GoString() string {return e.String() }
+func (e AirmarFilterConst) GoString() string { return e.String() }
+func (e AirmarFilterConst) String() string {
+	switch e {
+	case 0:
+		return "No filter"
+	case 1:
+		return "Basic IIR filter"
+	default:
+		return fmt.Sprintf("AirmarFilterConst(%d)", uint8(e))
+	}
+}
+
+type ControllerStateConst uint8
+
+const (
+	ErrorActive  ControllerStateConst = 0
+	ErrorPassive ControllerStateConst = 1
+	BusOff       ControllerStateConst = 2
+)
+
+func (e ControllerStateConst) GoString() string { return e.String() }
 func (e ControllerStateConst) String() string {
 	switch e {
-		case 0:
-			return "Error Active"
-		case 1:
-			return "Error Passive"
-		case 2:
-			return "Bus Off"
-default:
+	case 0:
+		return "Error Active"
+	case 1:
+		return "Error Passive"
+	case 2:
+		return "Bus Off"
+	default:
 		return fmt.Sprintf("ControllerStateConst(%d)", uint8(e))
 	}
 }
+
 type EquipmentStatusConst uint8
+
 const (
-	Operational	EquipmentStatusConst = 0
-	Fault_2	EquipmentStatusConst = 1
+	Operational EquipmentStatusConst = 0
+	Fault_2     EquipmentStatusConst = 1
 )
 
-func (e EquipmentStatusConst) GoString() string {return e.String() }
+func (e EquipmentStatusConst) GoString() string { return e.String() }
 func (e EquipmentStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Operational"
-		case 1:
-			return "Fault"
-default:
+	case 0:
+		return "Operational"
+	case 1:
+		return "Fault"
+	default:
 		return fmt.Sprintf("EquipmentStatusConst(%d)", uint8(e))
 	}
 }
+
 type MOBStatusConst uint8
+
 const (
-	MOBEmitterActivated	MOBStatusConst = 0
-	ManualOnBoardMOBButtonActivati	MOBStatusConst = 1
-	TestMode	MOBStatusConst = 2
-	MOBNotActive	MOBStatusConst = 3
+	MOBEmitterActivated            MOBStatusConst = 0
+	ManualOnBoardMOBButtonActivati MOBStatusConst = 1
+	TestMode                       MOBStatusConst = 2
+	MOBNotActive                   MOBStatusConst = 3
 )
 
-func (e MOBStatusConst) GoString() string {return e.String() }
+func (e MOBStatusConst) GoString() string { return e.String() }
 func (e MOBStatusConst) String() string {
 	switch e {
-		case 0:
-			return "MOB Emitter Activated"
-		case 1:
-			return "Manual on-board MOB Button Activation"
-		case 2:
-			return "Test mode"
-		case 3:
-			return "MOB Not Active"
-default:
+	case 0:
+		return "MOB Emitter Activated"
+	case 1:
+		return "Manual on-board MOB Button Activation"
+	case 2:
+		return "Test mode"
+	case 3:
+		return "MOB Not Active"
+	default:
 		return fmt.Sprintf("MOBStatusConst(%d)", uint8(e))
 	}
 }
+
 type LowBatteryConst uint8
+
 const (
-	Good	LowBatteryConst = 0
-	Low_2	LowBatteryConst = 1
+	Good  LowBatteryConst = 0
+	Low_2 LowBatteryConst = 1
 )
 
-func (e LowBatteryConst) GoString() string {return e.String() }
+func (e LowBatteryConst) GoString() string { return e.String() }
 func (e LowBatteryConst) String() string {
 	switch e {
-		case 0:
-			return "Good"
-		case 1:
-			return "Low"
-default:
+	case 0:
+		return "Good"
+	case 1:
+		return "Low"
+	default:
 		return fmt.Sprintf("LowBatteryConst(%d)", uint8(e))
 	}
 }
+
 type TurnModeConst uint8
+
 const (
-	RudderLimitControlled	TurnModeConst = 0
-	TurnRateControlled	TurnModeConst = 1
-	RadiusControlled	TurnModeConst = 2
+	RudderLimitControlled TurnModeConst = 0
+	TurnRateControlled    TurnModeConst = 1
+	RadiusControlled      TurnModeConst = 2
 )
 
-func (e TurnModeConst) GoString() string {return e.String() }
+func (e TurnModeConst) GoString() string { return e.String() }
 func (e TurnModeConst) String() string {
 	switch e {
-		case 0:
-			return "Rudder limit controlled"
-		case 1:
-			return "Turn rate controlled"
-		case 2:
-			return "Radius controlled"
-default:
+	case 0:
+		return "Rudder limit controlled"
+	case 1:
+		return "Turn rate controlled"
+	case 2:
+		return "Radius controlled"
+	default:
 		return fmt.Sprintf("TurnModeConst(%d)", uint8(e))
 	}
 }
+
 type AcceptabilityConst uint8
+
 const (
-	BadLevel	AcceptabilityConst = 0
-	BadFrequency	AcceptabilityConst = 1
-	BeingQualified	AcceptabilityConst = 2
-	Good_2	AcceptabilityConst = 3
+	BadLevel       AcceptabilityConst = 0
+	BadFrequency   AcceptabilityConst = 1
+	BeingQualified AcceptabilityConst = 2
+	Good_2         AcceptabilityConst = 3
 )
 
-func (e AcceptabilityConst) GoString() string {return e.String() }
+func (e AcceptabilityConst) GoString() string { return e.String() }
 func (e AcceptabilityConst) String() string {
 	switch e {
-		case 0:
-			return "Bad level"
-		case 1:
-			return "Bad frequency"
-		case 2:
-			return "Being qualified"
-		case 3:
-			return "Good"
-default:
+	case 0:
+		return "Bad level"
+	case 1:
+		return "Bad frequency"
+	case 2:
+		return "Being qualified"
+	case 3:
+		return "Good"
+	default:
 		return fmt.Sprintf("AcceptabilityConst(%d)", uint8(e))
 	}
 }
+
 type LineConst uint8
+
 const (
-	Line1	LineConst = 0
-	Line2	LineConst = 1
-	Line3	LineConst = 2
+	Line1 LineConst = 0
+	Line2 LineConst = 1
+	Line3 LineConst = 2
 )
 
-func (e LineConst) GoString() string {return e.String() }
+func (e LineConst) GoString() string { return e.String() }
 func (e LineConst) String() string {
 	switch e {
-		case 0:
-			return "Line 1"
-		case 1:
-			return "Line 2"
-		case 2:
-			return "Line 3"
-default:
+	case 0:
+		return "Line 1"
+	case 1:
+		return "Line 2"
+	case 2:
+		return "Line 3"
+	default:
 		return fmt.Sprintf("LineConst(%d)", uint8(e))
 	}
 }
+
 type WaveformConst uint8
+
 const (
-	SineWave	WaveformConst = 0
-	ModifiedSineWave	WaveformConst = 1
+	SineWave         WaveformConst = 0
+	ModifiedSineWave WaveformConst = 1
 )
 
-func (e WaveformConst) GoString() string {return e.String() }
+func (e WaveformConst) GoString() string { return e.String() }
 func (e WaveformConst) String() string {
 	switch e {
-		case 0:
-			return "Sine wave"
-		case 1:
-			return "Modified sine wave"
-default:
+	case 0:
+		return "Sine wave"
+	case 1:
+		return "Modified sine wave"
+	default:
 		return fmt.Sprintf("WaveformConst(%d)", uint8(e))
 	}
 }
+
 type TankTypeConst uint8
+
 const (
-	Fuel_2	TankTypeConst = 0
-	Water_2	TankTypeConst = 1
-	GrayWater	TankTypeConst = 2
-	LiveWell	TankTypeConst = 3
-	Oil_2	TankTypeConst = 4
-	BlackWater	TankTypeConst = 5
+	Fuel_2     TankTypeConst = 0
+	Water_2    TankTypeConst = 1
+	GrayWater  TankTypeConst = 2
+	LiveWell   TankTypeConst = 3
+	Oil_2      TankTypeConst = 4
+	BlackWater TankTypeConst = 5
 )
 
-func (e TankTypeConst) GoString() string {return e.String() }
+func (e TankTypeConst) GoString() string { return e.String() }
 func (e TankTypeConst) String() string {
 	switch e {
-		case 0:
-			return "Fuel"
-		case 1:
-			return "Water"
-		case 2:
-			return "Gray water"
-		case 3:
-			return "Live well"
-		case 4:
-			return "Oil"
-		case 5:
-			return "Black water"
-default:
+	case 0:
+		return "Fuel"
+	case 1:
+		return "Water"
+	case 2:
+		return "Gray water"
+	case 3:
+		return "Live well"
+	case 4:
+		return "Oil"
+	case 5:
+		return "Black water"
+	default:
 		return fmt.Sprintf("TankTypeConst(%d)", uint8(e))
 	}
 }
+
 type DCSourceConst uint8
+
 const (
-	Battery	DCSourceConst = 0
-	Alternator	DCSourceConst = 1
-	Convertor	DCSourceConst = 2
-	SolarCell	DCSourceConst = 3
-	WindGenerator	DCSourceConst = 4
+	Battery       DCSourceConst = 0
+	Alternator    DCSourceConst = 1
+	Convertor     DCSourceConst = 2
+	SolarCell     DCSourceConst = 3
+	WindGenerator DCSourceConst = 4
 )
 
-func (e DCSourceConst) GoString() string {return e.String() }
+func (e DCSourceConst) GoString() string { return e.String() }
 func (e DCSourceConst) String() string {
 	switch e {
-		case 0:
-			return "Battery"
-		case 1:
-			return "Alternator"
-		case 2:
-			return "Convertor"
-		case 3:
-			return "Solar cell"
-		case 4:
-			return "Wind generator"
-default:
+	case 0:
+		return "Battery"
+	case 1:
+		return "Alternator"
+	case 2:
+		return "Convertor"
+	case 3:
+		return "Solar cell"
+	case 4:
+		return "Wind generator"
+	default:
 		return fmt.Sprintf("DCSourceConst(%d)", uint8(e))
 	}
 }
+
 type ChargerStateConst uint8
+
 const (
-	NotCharging	ChargerStateConst = 0
-	Bulk_2	ChargerStateConst = 1
-	Absorption_2	ChargerStateConst = 2
-	Overcharge	ChargerStateConst = 3
-	Equalise	ChargerStateConst = 4
-	Float_2	ChargerStateConst = 5
-	NoFloat	ChargerStateConst = 6
-	ConstantVi	ChargerStateConst = 7
-	Disabled_3	ChargerStateConst = 8
-	Fault_3	ChargerStateConst = 9
+	NotCharging  ChargerStateConst = 0
+	Bulk_2       ChargerStateConst = 1
+	Absorption_2 ChargerStateConst = 2
+	Overcharge   ChargerStateConst = 3
+	Equalise     ChargerStateConst = 4
+	Float_2      ChargerStateConst = 5
+	NoFloat      ChargerStateConst = 6
+	ConstantVi   ChargerStateConst = 7
+	Disabled_3   ChargerStateConst = 8
+	Fault_3      ChargerStateConst = 9
 )
 
-func (e ChargerStateConst) GoString() string {return e.String() }
+func (e ChargerStateConst) GoString() string { return e.String() }
 func (e ChargerStateConst) String() string {
 	switch e {
-		case 0:
-			return "Not charging"
-		case 1:
-			return "Bulk"
-		case 2:
-			return "Absorption"
-		case 3:
-			return "Overcharge"
-		case 4:
-			return "Equalise"
-		case 5:
-			return "Float"
-		case 6:
-			return "No float"
-		case 7:
-			return "Constant VI"
-		case 8:
-			return "Disabled"
-		case 9:
-			return "Fault"
-default:
+	case 0:
+		return "Not charging"
+	case 1:
+		return "Bulk"
+	case 2:
+		return "Absorption"
+	case 3:
+		return "Overcharge"
+	case 4:
+		return "Equalise"
+	case 5:
+		return "Float"
+	case 6:
+		return "No float"
+	case 7:
+		return "Constant VI"
+	case 8:
+		return "Disabled"
+	case 9:
+		return "Fault"
+	default:
 		return fmt.Sprintf("ChargerStateConst(%d)", uint8(e))
 	}
 }
+
 type ChargingAlgorithmConst uint8
+
 const (
-	Trickle	ChargingAlgorithmConst = 0
-	ConstantVoltageConstantCurrent	ChargingAlgorithmConst = 1
-	TwoStageNoFloat	ChargingAlgorithmConst = 2
-	ThreeStage	ChargingAlgorithmConst = 3
+	Trickle                        ChargingAlgorithmConst = 0
+	ConstantVoltageConstantCurrent ChargingAlgorithmConst = 1
+	TwoStageNoFloat                ChargingAlgorithmConst = 2
+	ThreeStage                     ChargingAlgorithmConst = 3
 )
 
-func (e ChargingAlgorithmConst) GoString() string {return e.String() }
+func (e ChargingAlgorithmConst) GoString() string { return e.String() }
 func (e ChargingAlgorithmConst) String() string {
 	switch e {
-		case 0:
-			return "Trickle"
-		case 1:
-			return "Constant voltage / Constant current"
-		case 2:
-			return "2 stage (no float)"
-		case 3:
-			return "3 stage"
-default:
+	case 0:
+		return "Trickle"
+	case 1:
+		return "Constant voltage / Constant current"
+	case 2:
+		return "2 stage (no float)"
+	case 3:
+		return "3 stage"
+	default:
 		return fmt.Sprintf("ChargingAlgorithmConst(%d)", uint8(e))
 	}
 }
+
 type ChargerModeConst uint8
+
 const (
-	Standalone	ChargerModeConst = 0
-	Primary	ChargerModeConst = 1
-	Secondary	ChargerModeConst = 2
-	Echo	ChargerModeConst = 3
+	Standalone ChargerModeConst = 0
+	Primary    ChargerModeConst = 1
+	Secondary  ChargerModeConst = 2
+	Echo       ChargerModeConst = 3
 )
 
-func (e ChargerModeConst) GoString() string {return e.String() }
+func (e ChargerModeConst) GoString() string { return e.String() }
 func (e ChargerModeConst) String() string {
 	switch e {
-		case 0:
-			return "Standalone"
-		case 1:
-			return "Primary"
-		case 2:
-			return "Secondary"
-		case 3:
-			return "Echo"
-default:
+	case 0:
+		return "Standalone"
+	case 1:
+		return "Primary"
+	case 2:
+		return "Secondary"
+	case 3:
+		return "Echo"
+	default:
 		return fmt.Sprintf("ChargerModeConst(%d)", uint8(e))
 	}
 }
+
 type InverterStateConst uint8
+
 const (
-	Invert	InverterStateConst = 0
-	ACPassthru	InverterStateConst = 1
-	LoadSense	InverterStateConst = 2
-	Fault_4	InverterStateConst = 3
-	Disabled_4	InverterStateConst = 4
+	Invert     InverterStateConst = 0
+	ACPassthru InverterStateConst = 1
+	LoadSense  InverterStateConst = 2
+	Fault_4    InverterStateConst = 3
+	Disabled_4 InverterStateConst = 4
 )
 
-func (e InverterStateConst) GoString() string {return e.String() }
+func (e InverterStateConst) GoString() string { return e.String() }
 func (e InverterStateConst) String() string {
 	switch e {
-		case 0:
-			return "Invert"
-		case 1:
-			return "AC passthru"
-		case 2:
-			return "Load sense"
-		case 3:
-			return "Fault"
-		case 4:
-			return "Disabled"
-default:
+	case 0:
+		return "Invert"
+	case 1:
+		return "AC passthru"
+	case 2:
+		return "Load sense"
+	case 3:
+		return "Fault"
+	case 4:
+		return "Disabled"
+	default:
 		return fmt.Sprintf("InverterStateConst(%d)", uint8(e))
 	}
 }
+
 type BatteryTypeConst uint8
+
 const (
-	Flooded	BatteryTypeConst = 0
-	Gel	BatteryTypeConst = 1
-	Agm	BatteryTypeConst = 2
+	Flooded BatteryTypeConst = 0
+	Gel     BatteryTypeConst = 1
+	Agm     BatteryTypeConst = 2
 )
 
-func (e BatteryTypeConst) GoString() string {return e.String() }
+func (e BatteryTypeConst) GoString() string { return e.String() }
 func (e BatteryTypeConst) String() string {
 	switch e {
-		case 0:
-			return "Flooded"
-		case 1:
-			return "Gel"
-		case 2:
-			return "AGM"
-default:
+	case 0:
+		return "Flooded"
+	case 1:
+		return "Gel"
+	case 2:
+		return "AGM"
+	default:
 		return fmt.Sprintf("BatteryTypeConst(%d)", uint8(e))
 	}
 }
+
 type BatteryVoltageConst uint8
+
 const (
-	BatteryVoltageConst6V	BatteryVoltageConst = 0
-	BatteryVoltageConst12V	BatteryVoltageConst = 1
-	BatteryVoltageConst24V	BatteryVoltageConst = 2
-	BatteryVoltageConst32V	BatteryVoltageConst = 3
-	BatteryVoltageConst36V	BatteryVoltageConst = 4
-	BatteryVoltageConst42V	BatteryVoltageConst = 5
-	BatteryVoltageConst48V	BatteryVoltageConst = 6
+	BatteryVoltageConst6V  BatteryVoltageConst = 0
+	BatteryVoltageConst12V BatteryVoltageConst = 1
+	BatteryVoltageConst24V BatteryVoltageConst = 2
+	BatteryVoltageConst32V BatteryVoltageConst = 3
+	BatteryVoltageConst36V BatteryVoltageConst = 4
+	BatteryVoltageConst42V BatteryVoltageConst = 5
+	BatteryVoltageConst48V BatteryVoltageConst = 6
 )
 
-func (e BatteryVoltageConst) GoString() string {return e.String() }
+func (e BatteryVoltageConst) GoString() string { return e.String() }
 func (e BatteryVoltageConst) String() string {
 	switch e {
-		case 0:
-			return "6V"
-		case 1:
-			return "12V"
-		case 2:
-			return "24V"
-		case 3:
-			return "32V"
-		case 4:
-			return "36V"
-		case 5:
-			return "42V"
-		case 6:
-			return "48V"
-default:
+	case 0:
+		return "6V"
+	case 1:
+		return "12V"
+	case 2:
+		return "24V"
+	case 3:
+		return "32V"
+	case 4:
+		return "36V"
+	case 5:
+		return "42V"
+	case 6:
+		return "48V"
+	default:
 		return fmt.Sprintf("BatteryVoltageConst(%d)", uint8(e))
 	}
 }
+
 type BatteryChemistryConst uint8
+
 const (
-	PbLead	BatteryChemistryConst = 0
-	Li	BatteryChemistryConst = 1
-	Nicd	BatteryChemistryConst = 2
-	Zno	BatteryChemistryConst = 3
-	Nimh	BatteryChemistryConst = 4
+	PbLead BatteryChemistryConst = 0
+	Li     BatteryChemistryConst = 1
+	Nicd   BatteryChemistryConst = 2
+	Zno    BatteryChemistryConst = 3
+	Nimh   BatteryChemistryConst = 4
 )
 
-func (e BatteryChemistryConst) GoString() string {return e.String() }
+func (e BatteryChemistryConst) GoString() string { return e.String() }
 func (e BatteryChemistryConst) String() string {
 	switch e {
-		case 0:
-			return "Pb (Lead)"
-		case 1:
-			return "Li"
-		case 2:
-			return "NiCd"
-		case 3:
-			return "ZnO"
-		case 4:
-			return "NiMH"
-default:
+	case 0:
+		return "Pb (Lead)"
+	case 1:
+		return "Li"
+	case 2:
+		return "NiCd"
+	case 3:
+		return "ZnO"
+	case 4:
+		return "NiMH"
+	default:
 		return fmt.Sprintf("BatteryChemistryConst(%d)", uint8(e))
 	}
 }
+
 type GoodWarningErrorConst uint8
+
 const (
-	Good_3	GoodWarningErrorConst = 0
-	Warning_3	GoodWarningErrorConst = 1
-	Error_3	GoodWarningErrorConst = 2
+	Good_3    GoodWarningErrorConst = 0
+	Warning_3 GoodWarningErrorConst = 1
+	Error_3   GoodWarningErrorConst = 2
 )
 
-func (e GoodWarningErrorConst) GoString() string {return e.String() }
+func (e GoodWarningErrorConst) GoString() string { return e.String() }
 func (e GoodWarningErrorConst) String() string {
 	switch e {
-		case 0:
-			return "Good"
-		case 1:
-			return "Warning"
-		case 2:
-			return "Error"
-default:
+	case 0:
+		return "Good"
+	case 1:
+		return "Warning"
+	case 2:
+		return "Error"
+	default:
 		return fmt.Sprintf("GoodWarningErrorConst(%d)", uint8(e))
 	}
 }
+
 type TrackingConst uint8
+
 const (
-	Cancelled	TrackingConst = 0
-	Acquiring	TrackingConst = 1
-	Tracking	TrackingConst = 2
-	Lost	TrackingConst = 3
+	Cancelled TrackingConst = 0
+	Acquiring TrackingConst = 1
+	Tracking  TrackingConst = 2
+	Lost      TrackingConst = 3
 )
 
-func (e TrackingConst) GoString() string {return e.String() }
+func (e TrackingConst) GoString() string { return e.String() }
 func (e TrackingConst) String() string {
 	switch e {
-		case 0:
-			return "Cancelled"
-		case 1:
-			return "Acquiring"
-		case 2:
-			return "Tracking"
-		case 3:
-			return "Lost"
-default:
+	case 0:
+		return "Cancelled"
+	case 1:
+		return "Acquiring"
+	case 2:
+		return "Tracking"
+	case 3:
+		return "Lost"
+	default:
 		return fmt.Sprintf("TrackingConst(%d)", uint8(e))
 	}
 }
+
 type TargetAcquisitionConst uint8
+
 const (
-	Manual_4	TargetAcquisitionConst = 0
-	Automatic	TargetAcquisitionConst = 1
+	Manual_4  TargetAcquisitionConst = 0
+	Automatic TargetAcquisitionConst = 1
 )
 
-func (e TargetAcquisitionConst) GoString() string {return e.String() }
+func (e TargetAcquisitionConst) GoString() string { return e.String() }
 func (e TargetAcquisitionConst) String() string {
 	switch e {
-		case 0:
-			return "Manual"
-		case 1:
-			return "Automatic"
-default:
+	case 0:
+		return "Manual"
+	case 1:
+		return "Automatic"
+	default:
 		return fmt.Sprintf("TargetAcquisitionConst(%d)", uint8(e))
 	}
 }
+
 type WindlassDirectionConst uint8
+
 const (
-	Off_8	WindlassDirectionConst = 0
-	Down	WindlassDirectionConst = 1
-	Up	WindlassDirectionConst = 2
+	Off_8 WindlassDirectionConst = 0
+	Down  WindlassDirectionConst = 1
+	Up    WindlassDirectionConst = 2
 )
 
-func (e WindlassDirectionConst) GoString() string {return e.String() }
+func (e WindlassDirectionConst) GoString() string { return e.String() }
 func (e WindlassDirectionConst) String() string {
 	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "Down"
-		case 2:
-			return "Up"
-default:
+	case 0:
+		return "Off"
+	case 1:
+		return "Down"
+	case 2:
+		return "Up"
+	default:
 		return fmt.Sprintf("WindlassDirectionConst(%d)", uint8(e))
 	}
 }
+
 type SpeedTypeConst uint8
+
 const (
-	SingleSpeed	SpeedTypeConst = 0
-	DualSpeed	SpeedTypeConst = 1
-	ProportionalSpeed	SpeedTypeConst = 2
+	SingleSpeed       SpeedTypeConst = 0
+	DualSpeed         SpeedTypeConst = 1
+	ProportionalSpeed SpeedTypeConst = 2
 )
 
-func (e SpeedTypeConst) GoString() string {return e.String() }
+func (e SpeedTypeConst) GoString() string { return e.String() }
 func (e SpeedTypeConst) String() string {
 	switch e {
-		case 0:
-			return "Single speed"
-		case 1:
-			return "Dual speed"
-		case 2:
-			return "Proportional speed"
-default:
+	case 0:
+		return "Single speed"
+	case 1:
+		return "Dual speed"
+	case 2:
+		return "Proportional speed"
+	default:
 		return fmt.Sprintf("SpeedTypeConst(%d)", uint8(e))
 	}
 }
+
 type WindlassMotionConst uint8
+
 const (
-	WindlassStopped	WindlassMotionConst = 0
-	DeploymentOccurring	WindlassMotionConst = 1
-	RetrievalOccurring	WindlassMotionConst = 2
+	WindlassStopped     WindlassMotionConst = 0
+	DeploymentOccurring WindlassMotionConst = 1
+	RetrievalOccurring  WindlassMotionConst = 2
 )
 
-func (e WindlassMotionConst) GoString() string {return e.String() }
+func (e WindlassMotionConst) GoString() string { return e.String() }
 func (e WindlassMotionConst) String() string {
 	switch e {
-		case 0:
-			return "Windlass stopped"
-		case 1:
-			return "Deployment occurring"
-		case 2:
-			return "Retrieval occurring"
-default:
+	case 0:
+		return "Windlass stopped"
+	case 1:
+		return "Deployment occurring"
+	case 2:
+		return "Retrieval occurring"
+	default:
 		return fmt.Sprintf("WindlassMotionConst(%d)", uint8(e))
 	}
 }
+
 type RodeTypeConst uint8
+
 const (
-	ChainPresentlyDetected	RodeTypeConst = 0
-	RopePresentlyDetected	RodeTypeConst = 1
+	ChainPresentlyDetected RodeTypeConst = 0
+	RopePresentlyDetected  RodeTypeConst = 1
 )
 
-func (e RodeTypeConst) GoString() string {return e.String() }
+func (e RodeTypeConst) GoString() string { return e.String() }
 func (e RodeTypeConst) String() string {
 	switch e {
-		case 0:
-			return "Chain presently detected"
-		case 1:
-			return "Rope presently detected"
-default:
+	case 0:
+		return "Chain presently detected"
+	case 1:
+		return "Rope presently detected"
+	default:
 		return fmt.Sprintf("RodeTypeConst(%d)", uint8(e))
 	}
 }
+
 type DockingStatusConst uint8
+
 const (
-	NotDocked	DockingStatusConst = 0
-	FullyDocked	DockingStatusConst = 1
+	NotDocked   DockingStatusConst = 0
+	FullyDocked DockingStatusConst = 1
 )
 
-func (e DockingStatusConst) GoString() string {return e.String() }
+func (e DockingStatusConst) GoString() string { return e.String() }
 func (e DockingStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Not docked"
-		case 1:
-			return "Fully docked"
-default:
+	case 0:
+		return "Not docked"
+	case 1:
+		return "Fully docked"
+	default:
 		return fmt.Sprintf("DockingStatusConst(%d)", uint8(e))
 	}
 }
+
 type AISTypeConst uint8
+
 const (
-	Sotdma	AISTypeConst = 0
-	Cs	AISTypeConst = 1
+	Sotdma AISTypeConst = 0
+	Cs     AISTypeConst = 1
 )
 
-func (e AISTypeConst) GoString() string {return e.String() }
+func (e AISTypeConst) GoString() string { return e.String() }
 func (e AISTypeConst) String() string {
 	switch e {
-		case 0:
-			return "SOTDMA"
-		case 1:
-			return "CS"
-default:
+	case 0:
+		return "SOTDMA"
+	case 1:
+		return "CS"
+	default:
 		return fmt.Sprintf("AISTypeConst(%d)", uint8(e))
 	}
 }
+
 type AISBandConst uint8
+
 const (
-	Top525KhzOfMarineBand	AISBandConst = 0
-	EntireMarineBand	AISBandConst = 1
+	Top525KhzOfMarineBand AISBandConst = 0
+	EntireMarineBand      AISBandConst = 1
 )
 
-func (e AISBandConst) GoString() string {return e.String() }
+func (e AISBandConst) GoString() string { return e.String() }
 func (e AISBandConst) String() string {
 	switch e {
-		case 0:
-			return "Top 525 kHz of marine band"
-		case 1:
-			return "Entire marine band"
-default:
+	case 0:
+		return "Top 525 kHz of marine band"
+	case 1:
+		return "Entire marine band"
+	default:
 		return fmt.Sprintf("AISBandConst(%d)", uint8(e))
 	}
 }
+
 type AISModeConst uint8
+
 const (
-	Autonomous_2	AISModeConst = 0
-	Assigned	AISModeConst = 1
+	Autonomous_2 AISModeConst = 0
+	Assigned     AISModeConst = 1
 )
 
-func (e AISModeConst) GoString() string {return e.String() }
+func (e AISModeConst) GoString() string { return e.String() }
 func (e AISModeConst) String() string {
 	switch e {
-		case 0:
-			return "Autonomous"
-		case 1:
-			return "Assigned"
-default:
+	case 0:
+		return "Autonomous"
+	case 1:
+		return "Assigned"
+	default:
 		return fmt.Sprintf("AISModeConst(%d)", uint8(e))
 	}
 }
+
 type AISCommunicationStateConst uint8
+
 const (
-	Sotdma_2	AISCommunicationStateConst = 0
-	Itdma	AISCommunicationStateConst = 1
+	Sotdma_2 AISCommunicationStateConst = 0
+	Itdma    AISCommunicationStateConst = 1
 )
 
-func (e AISCommunicationStateConst) GoString() string {return e.String() }
+func (e AISCommunicationStateConst) GoString() string { return e.String() }
 func (e AISCommunicationStateConst) String() string {
 	switch e {
-		case 0:
-			return "SOTDMA"
-		case 1:
-			return "ITDMA"
-default:
+	case 0:
+		return "SOTDMA"
+	case 1:
+		return "ITDMA"
+	default:
 		return fmt.Sprintf("AISCommunicationStateConst(%d)", uint8(e))
 	}
 }
+
 type AvailableConst uint8
+
 const (
-	Available	AvailableConst = 0
-	NotAvailable_3	AvailableConst = 1
+	Available      AvailableConst = 0
+	NotAvailable_3 AvailableConst = 1
 )
 
-func (e AvailableConst) GoString() string {return e.String() }
+func (e AvailableConst) GoString() string { return e.String() }
 func (e AvailableConst) String() string {
 	switch e {
-		case 0:
-			return "Available"
-		case 1:
-			return "Not available"
-default:
+	case 0:
+		return "Available"
+	case 1:
+		return "Not available"
+	default:
 		return fmt.Sprintf("AvailableConst(%d)", uint8(e))
 	}
 }
+
 type BearingModeConst uint8
+
 const (
-	GreatCircle	BearingModeConst = 0
-	Rhumbline	BearingModeConst = 1
+	GreatCircle BearingModeConst = 0
+	Rhumbline   BearingModeConst = 1
 )
 
-func (e BearingModeConst) GoString() string {return e.String() }
+func (e BearingModeConst) GoString() string { return e.String() }
 func (e BearingModeConst) String() string {
 	switch e {
-		case 0:
-			return "Great Circle"
-		case 1:
-			return "Rhumbline"
-default:
+	case 0:
+		return "Great Circle"
+	case 1:
+		return "Rhumbline"
+	default:
 		return fmt.Sprintf("BearingModeConst(%d)", uint8(e))
 	}
 }
+
 type MarkTypeConst uint8
+
 const (
-	Collision_2	MarkTypeConst = 0
-	TurningPoint	MarkTypeConst = 1
-	Reference	MarkTypeConst = 2
-	Wheelover	MarkTypeConst = 3
-	Waypoint	MarkTypeConst = 4
+	Collision_2  MarkTypeConst = 0
+	TurningPoint MarkTypeConst = 1
+	Reference    MarkTypeConst = 2
+	Wheelover    MarkTypeConst = 3
+	Waypoint     MarkTypeConst = 4
 )
 
-func (e MarkTypeConst) GoString() string {return e.String() }
+func (e MarkTypeConst) GoString() string { return e.String() }
 func (e MarkTypeConst) String() string {
 	switch e {
-		case 0:
-			return "Collision"
-		case 1:
-			return "Turning point"
-		case 2:
-			return "Reference"
-		case 3:
-			return "Wheelover"
-		case 4:
-			return "Waypoint"
-default:
+	case 0:
+		return "Collision"
+	case 1:
+		return "Turning point"
+	case 2:
+		return "Reference"
+	case 3:
+		return "Wheelover"
+	case 4:
+		return "Waypoint"
+	default:
 		return fmt.Sprintf("MarkTypeConst(%d)", uint8(e))
 	}
 }
+
 type GNSSModeConst uint8
+
 const (
-	GNSSModeConst1D	GNSSModeConst = 0
-	GNSSModeConst2D	GNSSModeConst = 1
-	GNSSModeConst3D	GNSSModeConst = 2
-	Auto_4	GNSSModeConst = 3
+	GNSSModeConst1D GNSSModeConst = 0
+	GNSSModeConst2D GNSSModeConst = 1
+	GNSSModeConst3D GNSSModeConst = 2
+	Auto_4          GNSSModeConst = 3
 )
 
-func (e GNSSModeConst) GoString() string {return e.String() }
+func (e GNSSModeConst) GoString() string { return e.String() }
 func (e GNSSModeConst) String() string {
 	switch e {
-		case 0:
-			return "1D"
-		case 1:
-			return "2D"
-		case 2:
-			return "3D"
-		case 3:
-			return "Auto"
-default:
+	case 0:
+		return "1D"
+	case 1:
+		return "2D"
+	case 2:
+		return "3D"
+	case 3:
+		return "Auto"
+	default:
 		return fmt.Sprintf("GNSSModeConst(%d)", uint8(e))
 	}
 }
+
 type RangeResidualModeConst uint8
+
 const (
-	RangeResidualsWereUsedToCalcul	RangeResidualModeConst = 0
-	RangeResidualsWereCalculatedAf	RangeResidualModeConst = 1
+	RangeResidualsWereUsedToCalcul RangeResidualModeConst = 0
+	RangeResidualsWereCalculatedAf RangeResidualModeConst = 1
 )
 
-func (e RangeResidualModeConst) GoString() string {return e.String() }
+func (e RangeResidualModeConst) GoString() string { return e.String() }
 func (e RangeResidualModeConst) String() string {
 	switch e {
-		case 0:
-			return "Range residuals were used to calculate data"
-		case 1:
-			return "Range residuals were calculated after the position"
-default:
+	case 0:
+		return "Range residuals were used to calculate data"
+	case 1:
+		return "Range residuals were calculated after the position"
+	default:
 		return fmt.Sprintf("RangeResidualModeConst(%d)", uint8(e))
 	}
 }
+
 type DGNSSModeConst uint8
+
 const (
-	None_3	DGNSSModeConst = 0
-	SBASIfAvailable	DGNSSModeConst = 1
-	SBAS	DGNSSModeConst = 3
+	None_3          DGNSSModeConst = 0
+	SBASIfAvailable DGNSSModeConst = 1
+	SBAS            DGNSSModeConst = 3
 )
 
-func (e DGNSSModeConst) GoString() string {return e.String() }
+func (e DGNSSModeConst) GoString() string { return e.String() }
 func (e DGNSSModeConst) String() string {
 	switch e {
-		case 0:
-			return "None"
-		case 1:
-			return "SBAS if available"
-		case 3:
-			return "SBAS"
-default:
+	case 0:
+		return "None"
+	case 1:
+		return "SBAS if available"
+	case 3:
+		return "SBAS"
+	default:
 		return fmt.Sprintf("DGNSSModeConst(%d)", uint8(e))
 	}
 }
+
 type SatelliteStatusConst uint8
+
 const (
-	NotTracked	SatelliteStatusConst = 0
-	Tracked	SatelliteStatusConst = 1
-	Used	SatelliteStatusConst = 2
-	NotTrackedDiff	SatelliteStatusConst = 3
-	TrackedDiff	SatelliteStatusConst = 4
-	UsedDiff	SatelliteStatusConst = 5
+	NotTracked     SatelliteStatusConst = 0
+	Tracked        SatelliteStatusConst = 1
+	Used           SatelliteStatusConst = 2
+	NotTrackedDiff SatelliteStatusConst = 3
+	TrackedDiff    SatelliteStatusConst = 4
+	UsedDiff       SatelliteStatusConst = 5
 )
 
-func (e SatelliteStatusConst) GoString() string {return e.String() }
+func (e SatelliteStatusConst) GoString() string { return e.String() }
 func (e SatelliteStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Not tracked"
-		case 1:
-			return "Tracked"
-		case 2:
-			return "Used"
-		case 3:
-			return "Not tracked+Diff"
-		case 4:
-			return "Tracked+Diff"
-		case 5:
-			return "Used+Diff"
-default:
+	case 0:
+		return "Not tracked"
+	case 1:
+		return "Tracked"
+	case 2:
+		return "Used"
+	case 3:
+		return "Not tracked+Diff"
+	case 4:
+		return "Tracked+Diff"
+	case 5:
+		return "Used+Diff"
+	default:
 		return fmt.Sprintf("SatelliteStatusConst(%d)", uint8(e))
 	}
 }
+
 type AISVersionConst uint8
+
 const (
-	ItuRM13711	AISVersionConst = 0
-	ItuRM13713	AISVersionConst = 1
-	ItuRM13715	AISVersionConst = 2
-	ItuRM1371FutureEdition	AISVersionConst = 3
+	ItuRM13711             AISVersionConst = 0
+	ItuRM13713             AISVersionConst = 1
+	ItuRM13715             AISVersionConst = 2
+	ItuRM1371FutureEdition AISVersionConst = 3
 )
 
-func (e AISVersionConst) GoString() string {return e.String() }
+func (e AISVersionConst) GoString() string { return e.String() }
 func (e AISVersionConst) String() string {
 	switch e {
-		case 0:
-			return "ITU-R M.1371-1"
-		case 1:
-			return "ITU-R M.1371-3"
-		case 2:
-			return "ITU-R M.1371-5"
-		case 3:
-			return "ITU-R M.1371 future edition"
-default:
+	case 0:
+		return "ITU-R M.1371-1"
+	case 1:
+		return "ITU-R M.1371-3"
+	case 2:
+		return "ITU-R M.1371-5"
+	case 3:
+		return "ITU-R M.1371 future edition"
+	default:
 		return fmt.Sprintf("AISVersionConst(%d)", uint8(e))
 	}
 }
+
 type TideConst uint8
+
 const (
-	Falling	TideConst = 0
-	Rising	TideConst = 1
+	Falling TideConst = 0
+	Rising  TideConst = 1
 )
 
-func (e TideConst) GoString() string {return e.String() }
+func (e TideConst) GoString() string { return e.String() }
 func (e TideConst) String() string {
 	switch e {
-		case 0:
-			return "Falling"
-		case 1:
-			return "Rising"
-default:
+	case 0:
+		return "Falling"
+	case 1:
+		return "Rising"
+	default:
 		return fmt.Sprintf("TideConst(%d)", uint8(e))
 	}
 }
+
 type WatermakerStateConst uint8
+
 const (
-	Stopped	WatermakerStateConst = 0
-	Starting	WatermakerStateConst = 1
-	Running	WatermakerStateConst = 2
-	Stopping	WatermakerStateConst = 3
-	Flushing	WatermakerStateConst = 4
-	Rinsing	WatermakerStateConst = 5
-	Initiating	WatermakerStateConst = 6
-	Manual_5	WatermakerStateConst = 7
+	Stopped    WatermakerStateConst = 0
+	Starting   WatermakerStateConst = 1
+	Running    WatermakerStateConst = 2
+	Stopping   WatermakerStateConst = 3
+	Flushing   WatermakerStateConst = 4
+	Rinsing    WatermakerStateConst = 5
+	Initiating WatermakerStateConst = 6
+	Manual_5   WatermakerStateConst = 7
 )
 
-func (e WatermakerStateConst) GoString() string {return e.String() }
+func (e WatermakerStateConst) GoString() string { return e.String() }
 func (e WatermakerStateConst) String() string {
 	switch e {
-		case 0:
-			return "Stopped"
-		case 1:
-			return "Starting"
-		case 2:
-			return "Running"
-		case 3:
-			return "Stopping"
-		case 4:
-			return "Flushing"
-		case 5:
-			return "Rinsing"
-		case 6:
-			return "Initiating"
-		case 7:
-			return "Manual"
-default:
+	case 0:
+		return "Stopped"
+	case 1:
+		return "Starting"
+	case 2:
+		return "Running"
+	case 3:
+		return "Stopping"
+	case 4:
+		return "Flushing"
+	case 5:
+		return "Rinsing"
+	case 6:
+		return "Initiating"
+	case 7:
+		return "Manual"
+	default:
 		return fmt.Sprintf("WatermakerStateConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentIDTypeConst uint8
+
 const (
-	Group	EntertainmentIDTypeConst = 0
-	File_3	EntertainmentIDTypeConst = 1
-	EncryptedGroup	EntertainmentIDTypeConst = 2
-	EncryptedFile	EntertainmentIDTypeConst = 3
+	Group          EntertainmentIDTypeConst = 0
+	File_3         EntertainmentIDTypeConst = 1
+	EncryptedGroup EntertainmentIDTypeConst = 2
+	EncryptedFile  EntertainmentIDTypeConst = 3
 )
 
-func (e EntertainmentIDTypeConst) GoString() string {return e.String() }
+func (e EntertainmentIDTypeConst) GoString() string { return e.String() }
 func (e EntertainmentIDTypeConst) String() string {
 	switch e {
-		case 0:
-			return "Group"
-		case 1:
-			return "File"
-		case 2:
-			return "Encrypted group"
-		case 3:
-			return "Encrypted file"
-default:
+	case 0:
+		return "Group"
+	case 1:
+		return "File"
+	case 2:
+		return "Encrypted group"
+	case 3:
+		return "Encrypted file"
+	default:
 		return fmt.Sprintf("EntertainmentIDTypeConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentDefaultSettingsConst uint8
+
 const (
-	SaveCurrentSettingsAsUserDefau	EntertainmentDefaultSettingsConst = 0
-	LoadUserDefault	EntertainmentDefaultSettingsConst = 1
-	LoadManufacturerDefault	EntertainmentDefaultSettingsConst = 2
+	SaveCurrentSettingsAsUserDefau EntertainmentDefaultSettingsConst = 0
+	LoadUserDefault                EntertainmentDefaultSettingsConst = 1
+	LoadManufacturerDefault        EntertainmentDefaultSettingsConst = 2
 )
 
-func (e EntertainmentDefaultSettingsConst) GoString() string {return e.String() }
+func (e EntertainmentDefaultSettingsConst) GoString() string { return e.String() }
 func (e EntertainmentDefaultSettingsConst) String() string {
 	switch e {
-		case 0:
-			return "Save current settings as user default"
-		case 1:
-			return "Load user default"
-		case 2:
-			return "Load manufacturer default"
-default:
+	case 0:
+		return "Save current settings as user default"
+	case 1:
+		return "Load user default"
+	case 2:
+		return "Load manufacturer default"
+	default:
 		return fmt.Sprintf("EntertainmentDefaultSettingsConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentRegionsConst uint8
+
 const (
-	Usa	EntertainmentRegionsConst = 0
-	Europe	EntertainmentRegionsConst = 1
-	Asia	EntertainmentRegionsConst = 2
-	MiddleEast	EntertainmentRegionsConst = 3
-	LatinAmerica	EntertainmentRegionsConst = 4
-	Australia	EntertainmentRegionsConst = 5
-	Russia	EntertainmentRegionsConst = 6
-	Japan	EntertainmentRegionsConst = 7
+	Usa          EntertainmentRegionsConst = 0
+	Europe       EntertainmentRegionsConst = 1
+	Asia         EntertainmentRegionsConst = 2
+	MiddleEast   EntertainmentRegionsConst = 3
+	LatinAmerica EntertainmentRegionsConst = 4
+	Australia    EntertainmentRegionsConst = 5
+	Russia       EntertainmentRegionsConst = 6
+	Japan        EntertainmentRegionsConst = 7
 )
 
-func (e EntertainmentRegionsConst) GoString() string {return e.String() }
+func (e EntertainmentRegionsConst) GoString() string { return e.String() }
 func (e EntertainmentRegionsConst) String() string {
 	switch e {
-		case 0:
-			return "USA"
-		case 1:
-			return "Europe"
-		case 2:
-			return "Asia"
-		case 3:
-			return "Middle East"
-		case 4:
-			return "Latin America"
-		case 5:
-			return "Australia"
-		case 6:
-			return "Russia"
-		case 7:
-			return "Japan"
-default:
+	case 0:
+		return "USA"
+	case 1:
+		return "Europe"
+	case 2:
+		return "Asia"
+	case 3:
+		return "Middle East"
+	case 4:
+		return "Latin America"
+	case 5:
+		return "Australia"
+	case 6:
+		return "Russia"
+	case 7:
+		return "Japan"
+	default:
 		return fmt.Sprintf("EntertainmentRegionsConst(%d)", uint8(e))
 	}
 }
+
 type VideoProtocolsConst uint8
+
 const (
-	Pal	VideoProtocolsConst = 0
-	Ntsc	VideoProtocolsConst = 1
+	Pal  VideoProtocolsConst = 0
+	Ntsc VideoProtocolsConst = 1
 )
 
-func (e VideoProtocolsConst) GoString() string {return e.String() }
+func (e VideoProtocolsConst) GoString() string { return e.String() }
 func (e VideoProtocolsConst) String() string {
 	switch e {
-		case 0:
-			return "PAL"
-		case 1:
-			return "NTSC"
-default:
+	case 0:
+		return "PAL"
+	case 1:
+		return "NTSC"
+	default:
 		return fmt.Sprintf("VideoProtocolsConst(%d)", uint8(e))
 	}
 }
+
 type EntertainmentVolumeControlConst uint8
+
 const (
-	Up_2	EntertainmentVolumeControlConst = 0
-	Down_2	EntertainmentVolumeControlConst = 1
+	Up_2   EntertainmentVolumeControlConst = 0
+	Down_2 EntertainmentVolumeControlConst = 1
 )
 
-func (e EntertainmentVolumeControlConst) GoString() string {return e.String() }
+func (e EntertainmentVolumeControlConst) GoString() string { return e.String() }
 func (e EntertainmentVolumeControlConst) String() string {
 	switch e {
-		case 0:
-			return "Up"
-		case 1:
-			return "Down"
-default:
+	case 0:
+		return "Up"
+	case 1:
+		return "Down"
+	default:
 		return fmt.Sprintf("EntertainmentVolumeControlConst(%d)", uint8(e))
 	}
 }
+
 type BluetoothStatusConst uint8
+
 const (
-	Connected	BluetoothStatusConst = 0
-	NotConnected	BluetoothStatusConst = 1
-	NotPaired	BluetoothStatusConst = 2
+	Connected    BluetoothStatusConst = 0
+	NotConnected BluetoothStatusConst = 1
+	NotPaired    BluetoothStatusConst = 2
 )
 
-func (e BluetoothStatusConst) GoString() string {return e.String() }
+func (e BluetoothStatusConst) GoString() string { return e.String() }
 func (e BluetoothStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Connected"
-		case 1:
-			return "Not connected"
-		case 2:
-			return "Not paired"
-default:
+	case 0:
+		return "Connected"
+	case 1:
+		return "Not connected"
+	case 2:
+		return "Not paired"
+	default:
 		return fmt.Sprintf("BluetoothStatusConst(%d)", uint8(e))
 	}
 }
+
 type BluetoothSourceStatusConst uint8
+
 const (
-	Reserved_4	BluetoothSourceStatusConst = 0
-	Connected_2	BluetoothSourceStatusConst = 1
-	Connecting	BluetoothSourceStatusConst = 2
-	NotConnected_2	BluetoothSourceStatusConst = 3
+	Reserved_4     BluetoothSourceStatusConst = 0
+	Connected_2    BluetoothSourceStatusConst = 1
+	Connecting     BluetoothSourceStatusConst = 2
+	NotConnected_2 BluetoothSourceStatusConst = 3
 )
 
-func (e BluetoothSourceStatusConst) GoString() string {return e.String() }
+func (e BluetoothSourceStatusConst) GoString() string { return e.String() }
 func (e BluetoothSourceStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Reserved"
-		case 1:
-			return "Connected"
-		case 2:
-			return "Connecting"
-		case 3:
-			return "Not connected"
-default:
+	case 0:
+		return "Reserved"
+	case 1:
+		return "Connected"
+	case 2:
+		return "Connecting"
+	case 3:
+		return "Not connected"
+	default:
 		return fmt.Sprintf("BluetoothSourceStatusConst(%d)", uint8(e))
 	}
 }
+
 type SonichubCommandConst uint8
+
 const (
-	Init2	SonichubCommandConst = 1
-	AmRadio	SonichubCommandConst = 4
-	ZoneInfo	SonichubCommandConst = 5
-	Source	SonichubCommandConst = 6
-	SourceList	SonichubCommandConst = 8
-	Control	SonichubCommandConst = 9
-	FmRadio	SonichubCommandConst = 12
-	Playlist	SonichubCommandConst = 13
-	Track_3	SonichubCommandConst = 14
-	Artist	SonichubCommandConst = 15
-	Album	SonichubCommandConst = 16
-	MenuItem	SonichubCommandConst = 19
-	Zones	SonichubCommandConst = 20
-	MaxVolume	SonichubCommandConst = 23
-	Volume	SonichubCommandConst = 24
-	Init1	SonichubCommandConst = 25
-	Position	SonichubCommandConst = 48
-	Init3	SonichubCommandConst = 50
+	Init2      SonichubCommandConst = 1
+	AmRadio    SonichubCommandConst = 4
+	ZoneInfo   SonichubCommandConst = 5
+	Source     SonichubCommandConst = 6
+	SourceList SonichubCommandConst = 8
+	Control    SonichubCommandConst = 9
+	FmRadio    SonichubCommandConst = 12
+	Playlist   SonichubCommandConst = 13
+	Track_3    SonichubCommandConst = 14
+	Artist     SonichubCommandConst = 15
+	Album      SonichubCommandConst = 16
+	MenuItem   SonichubCommandConst = 19
+	Zones      SonichubCommandConst = 20
+	MaxVolume  SonichubCommandConst = 23
+	Volume     SonichubCommandConst = 24
+	Init1      SonichubCommandConst = 25
+	Position   SonichubCommandConst = 48
+	Init3      SonichubCommandConst = 50
 )
 
-func (e SonichubCommandConst) GoString() string {return e.String() }
+func (e SonichubCommandConst) GoString() string { return e.String() }
 func (e SonichubCommandConst) String() string {
 	switch e {
-		case 1:
-			return "Init #2"
-		case 4:
-			return "AM Radio"
-		case 5:
-			return "Zone Info"
-		case 6:
-			return "Source"
-		case 8:
-			return "Source List"
-		case 9:
-			return "Control"
-		case 12:
-			return "FM Radio"
-		case 13:
-			return "Playlist"
-		case 14:
-			return "Track"
-		case 15:
-			return "Artist"
-		case 16:
-			return "Album"
-		case 19:
-			return "Menu Item"
-		case 20:
-			return "Zones"
-		case 23:
-			return "Max Volume"
-		case 24:
-			return "Volume"
-		case 25:
-			return "Init #1"
-		case 48:
-			return "Position"
-		case 50:
-			return "Init #3"
-default:
+	case 1:
+		return "Init #2"
+	case 4:
+		return "AM Radio"
+	case 5:
+		return "Zone Info"
+	case 6:
+		return "Source"
+	case 8:
+		return "Source List"
+	case 9:
+		return "Control"
+	case 12:
+		return "FM Radio"
+	case 13:
+		return "Playlist"
+	case 14:
+		return "Track"
+	case 15:
+		return "Artist"
+	case 16:
+		return "Album"
+	case 19:
+		return "Menu Item"
+	case 20:
+		return "Zones"
+	case 23:
+		return "Max Volume"
+	case 24:
+		return "Volume"
+	case 25:
+		return "Init #1"
+	case 48:
+		return "Position"
+	case 50:
+		return "Init #3"
+	default:
 		return fmt.Sprintf("SonichubCommandConst(%d)", uint8(e))
 	}
 }
+
 type SimnetApModeConst uint8
+
 const (
-	Heading	SimnetApModeConst = 2
-	Wind_3	SimnetApModeConst = 3
-	Nav	SimnetApModeConst = 10
-	NoDrift	SimnetApModeConst = 11
+	Heading SimnetApModeConst = 2
+	Wind_3  SimnetApModeConst = 3
+	Nav     SimnetApModeConst = 10
+	NoDrift SimnetApModeConst = 11
 )
 
-func (e SimnetApModeConst) GoString() string {return e.String() }
+func (e SimnetApModeConst) GoString() string { return e.String() }
 func (e SimnetApModeConst) String() string {
 	switch e {
-		case 2:
-			return "Heading"
-		case 3:
-			return "Wind"
-		case 10:
-			return "Nav"
-		case 11:
-			return "No Drift"
-default:
+	case 2:
+		return "Heading"
+	case 3:
+		return "Wind"
+	case 10:
+		return "Nav"
+	case 11:
+		return "No Drift"
+	default:
 		return fmt.Sprintf("SimnetApModeConst(%d)", uint8(e))
 	}
 }
+
 type SimnetDeviceModelConst uint8
+
 const (
-	AC	SimnetDeviceModelConst = 0
-	OtherDevice	SimnetDeviceModelConst = 1
-	Nac	SimnetDeviceModelConst = 100
+	AC          SimnetDeviceModelConst = 0
+	OtherDevice SimnetDeviceModelConst = 1
+	Nac         SimnetDeviceModelConst = 100
 )
 
-func (e SimnetDeviceModelConst) GoString() string {return e.String() }
+func (e SimnetDeviceModelConst) GoString() string { return e.String() }
 func (e SimnetDeviceModelConst) String() string {
 	switch e {
-		case 0:
-			return "AC"
-		case 1:
-			return "Other device"
-		case 100:
-			return "NAC"
-default:
+	case 0:
+		return "AC"
+	case 1:
+		return "Other device"
+	case 100:
+		return "NAC"
+	default:
 		return fmt.Sprintf("SimnetDeviceModelConst(%d)", uint8(e))
 	}
 }
+
 type SimnetDeviceReportConst uint8
+
 const (
-	Status	SimnetDeviceReportConst = 2
-	SendStatus	SimnetDeviceReportConst = 3
-	Mode	SimnetDeviceReportConst = 10
-	SendMode	SimnetDeviceReportConst = 11
-	SailingProcessorStatus	SimnetDeviceReportConst = 23
+	Status                 SimnetDeviceReportConst = 2
+	SendStatus             SimnetDeviceReportConst = 3
+	Mode                   SimnetDeviceReportConst = 10
+	SendMode               SimnetDeviceReportConst = 11
+	SailingProcessorStatus SimnetDeviceReportConst = 23
 )
 
-func (e SimnetDeviceReportConst) GoString() string {return e.String() }
+func (e SimnetDeviceReportConst) GoString() string { return e.String() }
 func (e SimnetDeviceReportConst) String() string {
 	switch e {
-		case 2:
-			return "Status"
-		case 3:
-			return "Send Status"
-		case 10:
-			return "Mode"
-		case 11:
-			return "Send Mode"
-		case 23:
-			return "Sailing Processor Status"
-default:
+	case 2:
+		return "Status"
+	case 3:
+		return "Send Status"
+	case 10:
+		return "Mode"
+	case 11:
+		return "Send Mode"
+	case 23:
+		return "Sailing Processor Status"
+	default:
 		return fmt.Sprintf("SimnetDeviceReportConst(%d)", uint8(e))
 	}
 }
+
 type SimnetApStatusConst uint8
+
 const (
-	Manual_6	SimnetApStatusConst = 2
-	Automatic_2	SimnetApStatusConst = 16
+	Manual_6    SimnetApStatusConst = 2
+	Automatic_2 SimnetApStatusConst = 16
 )
 
-func (e SimnetApStatusConst) GoString() string {return e.String() }
+func (e SimnetApStatusConst) GoString() string { return e.String() }
 func (e SimnetApStatusConst) String() string {
 	switch e {
-		case 2:
-			return "Manual"
-		case 16:
-			return "Automatic"
-default:
+	case 2:
+		return "Manual"
+	case 16:
+		return "Automatic"
+	default:
 		return fmt.Sprintf("SimnetApStatusConst(%d)", uint8(e))
 	}
 }
+
 type SimnetAutopilotModeClassConst uint8
+
 const (
-	Standby_3	SimnetAutopilotModeClassConst = 0
-	Engaged	SimnetAutopilotModeClassConst = 16
+	Standby_3 SimnetAutopilotModeClassConst = 0
+	Engaged   SimnetAutopilotModeClassConst = 16
 )
 
-func (e SimnetAutopilotModeClassConst) GoString() string {return e.String() }
+func (e SimnetAutopilotModeClassConst) GoString() string { return e.String() }
 func (e SimnetAutopilotModeClassConst) String() string {
 	switch e {
-		case 0:
-			return "Standby"
-		case 16:
-			return "Engaged"
-default:
+	case 0:
+		return "Standby"
+	case 16:
+		return "Engaged"
+	default:
 		return fmt.Sprintf("SimnetAutopilotModeClassConst(%d)", uint8(e))
 	}
 }
+
 type SimnetAutopilotModeConst uint8
+
 const (
-	Standby_4	SimnetAutopilotModeConst = 0
-	Heading_2	SimnetAutopilotModeConst = 1
-	Mode4	SimnetAutopilotModeConst = 3
-	Wind_4	SimnetAutopilotModeConst = 4
-	NonFollowUp	SimnetAutopilotModeConst = 5
-	Navigation_2	SimnetAutopilotModeConst = 6
+	Standby_4    SimnetAutopilotModeConst = 0
+	Heading_2    SimnetAutopilotModeConst = 1
+	Mode4        SimnetAutopilotModeConst = 3
+	Wind_4       SimnetAutopilotModeConst = 4
+	NonFollowUp  SimnetAutopilotModeConst = 5
+	Navigation_2 SimnetAutopilotModeConst = 6
 )
 
-func (e SimnetAutopilotModeConst) GoString() string {return e.String() }
+func (e SimnetAutopilotModeConst) GoString() string { return e.String() }
 func (e SimnetAutopilotModeConst) String() string {
 	switch e {
-		case 0:
-			return "Standby"
-		case 1:
-			return "Heading"
-		case 3:
-			return "Mode 4"
-		case 4:
-			return "Wind"
-		case 5:
-			return "Non-Follow-Up"
-		case 6:
-			return "Navigation"
-default:
+	case 0:
+		return "Standby"
+	case 1:
+		return "Heading"
+	case 3:
+		return "Mode 4"
+	case 4:
+		return "Wind"
+	case 5:
+		return "Non-Follow-Up"
+	case 6:
+		return "Navigation"
+	default:
 		return fmt.Sprintf("SimnetAutopilotModeConst(%d)", uint8(e))
 	}
 }
+
 type SimnetDataSourceConst uint8
+
 const (
-	Heading_3	SimnetDataSourceConst = 0
-	Navigation_3	SimnetDataSourceConst = 1
-	Position_2	SimnetDataSourceConst = 2
-	ApparentWind	SimnetDataSourceConst = 3
-	TrueWind	SimnetDataSourceConst = 4
-	SpeedThroughWater_2	SimnetDataSourceConst = 5
-	SeaTemperature_2	SimnetDataSourceConst = 6
-	SimnetDataSourceConstDistanceLog	SimnetDataSourceConst = 7
-	Depth	SimnetDataSourceConst = 8
-	RudderFeedback	SimnetDataSourceConst = 9
-	MonitorCompass	SimnetDataSourceConst = 19
-	PositionBackup	SimnetDataSourceConst = 20
-	BoatSpeedBackup	SimnetDataSourceConst = 21
-	AirTemperature	SimnetDataSourceConst = 22
-	BarometricPressure	SimnetDataSourceConst = 28
-	HeelAngle	SimnetDataSourceConst = 30
-	SailingNavigation	SimnetDataSourceConst = 34
-	TrimAngle	SimnetDataSourceConst = 35
-	Sailing_2	SimnetDataSourceConst = 36
-	AftDepth	SimnetDataSourceConst = 37
-	SpeedLog	SimnetDataSourceConst = 38
-	RtcmSignal	SimnetDataSourceConst = 39
-	RtcmCorrections	SimnetDataSourceConst = 40
-	Autopilot_2	SimnetDataSourceConst = 54
-	AutopilotFunctionBackup	SimnetDataSourceConst = 59
-	AutopilotControl	SimnetDataSourceConst = 104
+	RudderFeedback     SimnetDataSourceConst = 17
+	Position_2         SimnetDataSourceConst = 19
+	Heading_3          SimnetDataSourceConst = 27
+	Depth              SimnetDataSourceConst = 35
+	BoatSpeed          SimnetDataSourceConst = 36
+	ApparentWind       SimnetDataSourceConst = 42
+	BarometricPressure SimnetDataSourceConst = 43
 )
 
-func (e SimnetDataSourceConst) GoString() string {return e.String() }
+func (e SimnetDataSourceConst) GoString() string { return e.String() }
 func (e SimnetDataSourceConst) String() string {
 	switch e {
-		case 0:
-			return "Heading"
-		case 1:
-			return "Navigation"
-		case 2:
-			return "Position"
-		case 3:
-			return "Apparent Wind"
-		case 4:
-			return "True Wind"
-		case 5:
-			return "Speed Through Water"
-		case 6:
-			return "Sea Temperature"
-		case 7:
-			return "Distance Log"
-		case 8:
-			return "Depth"
-		case 9:
-			return "Rudder Feedback"
-		case 19:
-			return "Monitor Compass"
-		case 20:
-			return "Position Backup"
-		case 21:
-			return "Boat Speed Backup"
-		case 22:
-			return "Air Temperature"
-		case 28:
-			return "Barometric Pressure"
-		case 30:
-			return "Heel Angle"
-		case 34:
-			return "Sailing Navigation"
-		case 35:
-			return "Trim Angle"
-		case 36:
-			return "Sailing"
-		case 37:
-			return "Aft Depth"
-		case 38:
-			return "Speed Log"
-		case 39:
-			return "RTCM Signal"
-		case 40:
-			return "RTCM Corrections"
-		case 54:
-			return "Autopilot"
-		case 59:
-			return "Autopilot Function Backup"
-		case 104:
-			return "Autopilot Control"
-default:
+	case 17:
+		return "Rudder Feedback"
+	case 19:
+		return "Position"
+	case 27:
+		return "Heading"
+	case 35:
+		return "Depth"
+	case 36:
+		return "Boat Speed"
+	case 42:
+		return "Apparent Wind"
+	case 43:
+		return "Barometric Pressure"
+	default:
 		return fmt.Sprintf("SimnetDataSourceConst(%d)", uint8(e))
 	}
 }
+
 type NavicoDataTypeConst uint16
+
 const (
-	Altitude	NavicoDataTypeConst = 0
-	Position_3	NavicoDataTypeConst = 1
-	PositionError	NavicoDataTypeConst = 2
-	Hdop	NavicoDataTypeConst = 3
-	Vdop	NavicoDataTypeConst = 4
-	Tdop	NavicoDataTypeConst = 5
-	Pdop	NavicoDataTypeConst = 6
-	GeoidalSeperation	NavicoDataTypeConst = 7
-	COG_2	NavicoDataTypeConst = 8
-	PositionQuality	NavicoDataTypeConst = 9
-	PositionIntegrity	NavicoDataTypeConst = 10
-	SatsInView	NavicoDataTypeConst = 11
-	WAASStatus	NavicoDataTypeConst = 12
-	Bearing	NavicoDataTypeConst = 13
-	Course	NavicoDataTypeConst = 14
-	CdiGraphic	NavicoDataTypeConst = 15
-	CourseToSteer	NavicoDataTypeConst = 16
-	CrossTrack	NavicoDataTypeConst = 17
-	VelocityMadeGood	NavicoDataTypeConst = 18
-	Destination	NavicoDataTypeConst = 19
-	DistanceToTurn	NavicoDataTypeConst = 20
-	DistanceToDest	NavicoDataTypeConst = 21
-	TimeToTurn	NavicoDataTypeConst = 22
-	TimeToDest	NavicoDataTypeConst = 23
-	EtaAtTurn	NavicoDataTypeConst = 24
-	EtaAtDest	NavicoDataTypeConst = 25
-	TotalDistance	NavicoDataTypeConst = 26
-	SteerArrow	NavicoDataTypeConst = 27
-	Odometer	NavicoDataTypeConst = 28
-	TripDistance	NavicoDataTypeConst = 29
-	TripTime	NavicoDataTypeConst = 30
-	Date_2	NavicoDataTypeConst = 31
-	Time	NavicoDataTypeConst = 32
-	UTCDate	NavicoDataTypeConst = 33
-	UTCTime	NavicoDataTypeConst = 34
-	LocalTimeOffset	NavicoDataTypeConst = 35
-	Heading_4	NavicoDataTypeConst = 36
-	WasVoltage	NavicoDataTypeConst = 37
-	CurrentSet	NavicoDataTypeConst = 38
-	CurrentDrift	NavicoDataTypeConst = 39
-	SpeedSOG	NavicoDataTypeConst = 40
-	SpeedWater	NavicoDataTypeConst = 41
-	SpeedPitot	NavicoDataTypeConst = 42
-	SpeedTripAvg	NavicoDataTypeConst = 43
-	SpeedTripMax	NavicoDataTypeConst = 44
-	SpeedWindApp	NavicoDataTypeConst = 45
-	SpeedWindTrue	NavicoDataTypeConst = 46
-	TempWater	NavicoDataTypeConst = 47
-	TempOutside	NavicoDataTypeConst = 48
-	TempInside	NavicoDataTypeConst = 49
-	TempEngineRoom	NavicoDataTypeConst = 50
-	TempMainCabin	NavicoDataTypeConst = 51
-	TempLiveWell	NavicoDataTypeConst = 52
-	TempBaitWell	NavicoDataTypeConst = 53
-	TempRefrigeration	NavicoDataTypeConst = 54
-	TempHeatingSystem	NavicoDataTypeConst = 55
-	TempDewPoint	NavicoDataTypeConst = 56
-	TempWindChillApp	NavicoDataTypeConst = 57
-	TempWindChillTheoretic	NavicoDataTypeConst = 58
-	TempHeatIndex	NavicoDataTypeConst = 59
-	TempFreezer	NavicoDataTypeConst = 60
-	EngineTemp	NavicoDataTypeConst = 61
-	EngineAirTemp	NavicoDataTypeConst = 62
-	EngineOilTemp	NavicoDataTypeConst = 63
-	TempBattery	NavicoDataTypeConst = 64
-	PressureAtmospheric	NavicoDataTypeConst = 65
-	EngineBoostPres	NavicoDataTypeConst = 66
-	EngineOilPres	NavicoDataTypeConst = 67
-	EngineWaterPres	NavicoDataTypeConst = 68
-	EngineFuelPres	NavicoDataTypeConst = 69
-	EngineManifoldPres	NavicoDataTypeConst = 70
-	PressureSteam	NavicoDataTypeConst = 71
-	PressureComprAir	NavicoDataTypeConst = 72
-	PressureHydraulic	NavicoDataTypeConst = 73
-	WasGenericPressureLo	NavicoDataTypeConst = 74
-	WasGenericPressureHi	NavicoDataTypeConst = 75
-	Depth_2	NavicoDataTypeConst = 76
-	WaterDistance	NavicoDataTypeConst = 77
-	EngineRPM	NavicoDataTypeConst = 78
-	EngineTrim	NavicoDataTypeConst = 79
-	EngineAlternatorPotential	NavicoDataTypeConst = 80
-	EngineFuelRate	NavicoDataTypeConst = 81
-	EnginePercentLoad	NavicoDataTypeConst = 82
-	EnginePercentTorque	NavicoDataTypeConst = 83
-	WasSuzukiAlarmLevLo	NavicoDataTypeConst = 84
-	WasSuzukiAlarmLevHigh	NavicoDataTypeConst = 85
-	TankFuelLevel	NavicoDataTypeConst = 86
-	FluidLevelFreshWater	NavicoDataTypeConst = 87
-	FluidLevelGrayWater	NavicoDataTypeConst = 88
-	FluidLevelLiveWell	NavicoDataTypeConst = 89
-	FluidLevelOil	NavicoDataTypeConst = 90
-	FluidLevelBlackWater	NavicoDataTypeConst = 91
-	TankFuelRemaining	NavicoDataTypeConst = 92
-	FluidVolumeFreshWater	NavicoDataTypeConst = 93
-	FluidVolumeGrayWater	NavicoDataTypeConst = 94
-	FluidVolumeLiveWell	NavicoDataTypeConst = 95
-	FluidVolumeOil	NavicoDataTypeConst = 96
-	FluidVolumeBlackWater	NavicoDataTypeConst = 97
-	GenFluidVolume	NavicoDataTypeConst = 98
-	WasTankFuelLevelLo	NavicoDataTypeConst = 99
-	WasFluidLevelLoFreshWater	NavicoDataTypeConst = 100
-	WasFluidLevelLoGrayWater	NavicoDataTypeConst = 101
-	WasFluidLevelLoLiveWell	NavicoDataTypeConst = 102
-	WasFluidLevelLoOil	NavicoDataTypeConst = 103
-	GenTankCapacity	NavicoDataTypeConst = 104
-	TankFuelCapacity	NavicoDataTypeConst = 105
-	TankCapacityFreshWater	NavicoDataTypeConst = 106
-	TankCapacityGrayWater	NavicoDataTypeConst = 107
-	TankCapacityLiveWell	NavicoDataTypeConst = 108
-	TankCapacityOil	NavicoDataTypeConst = 109
-	TankCapacityBlackWater	NavicoDataTypeConst = 110
-	WasTankFuelUsed	NavicoDataTypeConst = 111
-	EngineFuelUsed	NavicoDataTypeConst = 112
-	EngineFuelUsedTrip	NavicoDataTypeConst = 113
-	EngineFuelUsedSeasonal	NavicoDataTypeConst = 114
-	EngineFuelKValue	NavicoDataTypeConst = 115
-	BatteryPotential	NavicoDataTypeConst = 116
-	BatteryCurrent	NavicoDataTypeConst = 117
-	TrimTab	NavicoDataTypeConst = 118
-	WasTrimStbdTab	NavicoDataTypeConst = 119
-	NavicoDataTypeConstRateOfTurn	NavicoDataTypeConst = 120
-	AttitudeYaw	NavicoDataTypeConst = 121
-	AttitudePitch	NavicoDataTypeConst = 122
-	AttitudeRoll	NavicoDataTypeConst = 123
-	NavicoDataTypeConstMagneticVariation	NavicoDataTypeConst = 124
-	Deviation	NavicoDataTypeConst = 125
-	FuelEconomyWtr	NavicoDataTypeConst = 126
-	FuelEconomyGPS	NavicoDataTypeConst = 127
-	WasFuelRemaining	NavicoDataTypeConst = 128
-	WasFuelRangeWtr	NavicoDataTypeConst = 129
-	WasFuelRangeGPS	NavicoDataTypeConst = 130
-	EngineHoursUsed	NavicoDataTypeConst = 131
-	EngineType	NavicoDataTypeConst = 132
-	VesselFuelRate	NavicoDataTypeConst = 133
-	VesselFuelEconomyWtr	NavicoDataTypeConst = 134
-	VesselFuelEconomyGPS	NavicoDataTypeConst = 135
-	VesselFuelRemaining	NavicoDataTypeConst = 136
-	VesselFuelRangeWtr	NavicoDataTypeConst = 137
-	VesselFuelRangeGPS	NavicoDataTypeConst = 138
-	WindAppAngle	NavicoDataTypeConst = 139
-	WindTrueAngle	NavicoDataTypeConst = 140
-	WindTrueDirection	NavicoDataTypeConst = 141
-	HumidityInside	NavicoDataTypeConst = 142
-	HumidityOutside	NavicoDataTypeConst = 143
-	SetHumidity	NavicoDataTypeConst = 144
-	RudderAngle	NavicoDataTypeConst = 145
-	TransGear	NavicoDataTypeConst = 146
-	TransOilPressure	NavicoDataTypeConst = 147
-	TransOilTemp	NavicoDataTypeConst = 148
-	CmdRudderAngle	NavicoDataTypeConst = 149
-	RudderLimit_2	NavicoDataTypeConst = 150
-	OffHeadingLim	NavicoDataTypeConst = 151
-	RadiusOfTurnOrder	NavicoDataTypeConst = 152
-	RateOfTurnOrder	NavicoDataTypeConst = 153
-	OffTrackLim	NavicoDataTypeConst = 154
-	LoggingTimeRemaining	NavicoDataTypeConst = 155
-	PositionFixType	NavicoDataTypeConst = 156
-	EngineDiscreteStatus	NavicoDataTypeConst = 157
-	TransmissionDiscreteStatus	NavicoDataTypeConst = 158
-	GPSBestOfFourSnr	NavicoDataTypeConst = 159
-	GenFluidLevel	NavicoDataTypeConst = 160
-	GenPressure	NavicoDataTypeConst = 161
-	GenTemperature	NavicoDataTypeConst = 162
-	InternalVoltage	NavicoDataTypeConst = 163
-	DepthOffset	NavicoDataTypeConst = 164
-	StructureDepth	NavicoDataTypeConst = 165
-	LoranPosition	NavicoDataTypeConst = 166
-	VesselStatus	NavicoDataTypeConst = 167
-	BatteryDCType	NavicoDataTypeConst = 168
-	BatteryStateOfCharge	NavicoDataTypeConst = 169
-	BatteryStateOfHealth	NavicoDataTypeConst = 170
-	BatteryTimeRemaining	NavicoDataTypeConst = 171
-	BatteryRippleVoltage	NavicoDataTypeConst = 172
-	Ac1Acceptability	NavicoDataTypeConst = 173
-	Ac2Acceptability	NavicoDataTypeConst = 174
-	Ac3Acceptability	NavicoDataTypeConst = 175
-	Ac1Voltage	NavicoDataTypeConst = 176
-	Ac2Voltage	NavicoDataTypeConst = 177
-	Ac3Voltage	NavicoDataTypeConst = 178
-	Ac1Current	NavicoDataTypeConst = 179
-	Ac2Current	NavicoDataTypeConst = 180
-	Ac3Current	NavicoDataTypeConst = 181
-	Ac1Frequency	NavicoDataTypeConst = 182
-	Ac2Frequency	NavicoDataTypeConst = 183
-	Ac3Frequency	NavicoDataTypeConst = 184
-	Ac1BreakerSize	NavicoDataTypeConst = 185
-	Ac2BreakerSize	NavicoDataTypeConst = 186
-	Ac3BreakerSize	NavicoDataTypeConst = 187
-	Ac1RealPower	NavicoDataTypeConst = 188
-	Ac2RealPower	NavicoDataTypeConst = 189
-	Ac3RealPower	NavicoDataTypeConst = 190
-	Ac1ReactivePower	NavicoDataTypeConst = 191
-	Ac2ReactivePower	NavicoDataTypeConst = 192
-	Ac3ReactivePower	NavicoDataTypeConst = 193
-	Ac1PowerFactor	NavicoDataTypeConst = 194
-	Ac2PowerFactor	NavicoDataTypeConst = 195
-	Ac3PowerFactor	NavicoDataTypeConst = 196
-	SwitchState	NavicoDataTypeConst = 197
-	SwitchCurrent	NavicoDataTypeConst = 198
-	SwitchFault	NavicoDataTypeConst = 199
-	SwitchDimLevel	NavicoDataTypeConst = 200
-	PreviousCmdHeading	NavicoDataTypeConst = 201
-	CmdWindAngle	NavicoDataTypeConst = 202
-	WasCmdBearingOffset	NavicoDataTypeConst = 203
-	CmdBearing	NavicoDataTypeConst = 204
-	CmdDepthContour	NavicoDataTypeConst = 205
-	CmdCourseChange	NavicoDataTypeConst = 206
-	PilotDrift	NavicoDataTypeConst = 207
-	PilotDistanceToTurn	NavicoDataTypeConst = 208
-	PilotTimeToTurn	NavicoDataTypeConst = 209
-	PilotReferencePosition	NavicoDataTypeConst = 210
-	DCStatus	NavicoDataTypeConst = 211
-	Ac1Status	NavicoDataTypeConst = 212
-	WasSwitchVoltage	NavicoDataTypeConst = 213
-	BatteryCapacityRemaining	NavicoDataTypeConst = 214
-	PilotHeadingReference	NavicoDataTypeConst = 215
-	BAndGLinear1	NavicoDataTypeConst = 216
-	BAndGLinear2	NavicoDataTypeConst = 217
-	BAndGLinear3	NavicoDataTypeConst = 218
-	BoomPosition	NavicoDataTypeConst = 219
-	SailingCourse	NavicoDataTypeConst = 220
-	DaggerboardPosition	NavicoDataTypeConst = 221
-	BAndGLinear4	NavicoDataTypeConst = 222
-	HeadingOnNextTack	NavicoDataTypeConst = 223
-	KeelAngle	NavicoDataTypeConst = 224
-	Leeway	NavicoDataTypeConst = 225
-	MastAngle	NavicoDataTypeConst = 226
-	TargetTrueWindAngle	NavicoDataTypeConst = 227
-	KeelTrimTab	NavicoDataTypeConst = 228
-	RaceTimer	NavicoDataTypeConst = 229
-	CanardAngle	NavicoDataTypeConst = 230
-	NextLegApparentWindAngle	NavicoDataTypeConst = 231
-	NextLegApparentWindSpeed	NavicoDataTypeConst = 232
-	TargetBoatSpeed	NavicoDataTypeConst = 233
-	VmgToWind	NavicoDataTypeConst = 234
-	TimeToLaylines	NavicoDataTypeConst = 235
-	DistanceToLaylines	NavicoDataTypeConst = 236
-	AftDepth_2	NavicoDataTypeConst = 237
-	Forestay	NavicoDataTypeConst = 238
-	PolarSpeed	NavicoDataTypeConst = 239
-	PolarPerformance	NavicoDataTypeConst = 240
-	TackingPerformance	NavicoDataTypeConst = 241
-	WindAngleToMast	NavicoDataTypeConst = 242
-	CANBusVoltage	NavicoDataTypeConst = 243
-	InternalTemperature	NavicoDataTypeConst = 244
-	EngageCurrent	NavicoDataTypeConst = 245
-	UrefVoltage	NavicoDataTypeConst = 246
-	SupplyVoltage	NavicoDataTypeConst = 247
-	DestinationPosition	NavicoDataTypeConst = 248
-	CompassHeadingReference	NavicoDataTypeConst = 249
-	CmdRudderDirection	NavicoDataTypeConst = 250
-	WasEngineSyncState	NavicoDataTypeConst = 251
-	EngineGeneralMaintenance	NavicoDataTypeConst = 252
-	EnginePercentThrottle	NavicoDataTypeConst = 253
-	EngineSteeringAngle	NavicoDataTypeConst = 254
-	EngineBreakInReqd	NavicoDataTypeConst = 255
-	GPSAll	NavicoDataTypeConst = 256
-	EngineBreakInAccum	NavicoDataTypeConst = 257
-	EngineTrimStatus	NavicoDataTypeConst = 258
-	PilotPresent	NavicoDataTypeConst = 259
-	Ac1OutWaveform	NavicoDataTypeConst = 260
-	Ac2OutWaveform	NavicoDataTypeConst = 261
-	Ac3OutWaveform	NavicoDataTypeConst = 262
-	Ac1OutVoltage	NavicoDataTypeConst = 263
-	Ac2OutVoltage	NavicoDataTypeConst = 264
-	Ac3OutVoltage	NavicoDataTypeConst = 265
-	Ac1OutCurrent	NavicoDataTypeConst = 266
-	Ac2OutCurrent	NavicoDataTypeConst = 267
-	Ac3OutCurrent	NavicoDataTypeConst = 268
-	Ac1OutFrequency	NavicoDataTypeConst = 269
-	Ac2OutFrequency	NavicoDataTypeConst = 270
-	Ac3OutFrequency	NavicoDataTypeConst = 271
-	Ac1OutBreakerSize	NavicoDataTypeConst = 272
-	Ac2OutBreakerSize	NavicoDataTypeConst = 273
-	Ac3OutBreakerSize	NavicoDataTypeConst = 274
-	Ac1OutRealPower	NavicoDataTypeConst = 275
-	Ac2OutRealPower	NavicoDataTypeConst = 276
-	Ac3OutRealPower	NavicoDataTypeConst = 277
-	Ac1OutReactivePower	NavicoDataTypeConst = 278
-	Ac2OutReactivePower	NavicoDataTypeConst = 279
-	Ac3OutReactivePower	NavicoDataTypeConst = 280
-	Ac1OutPowerFactor	NavicoDataTypeConst = 281
-	Ac2OutPowerFactor	NavicoDataTypeConst = 282
-	Ac3OutPowerFactor	NavicoDataTypeConst = 283
-	Ac2Status	NavicoDataTypeConst = 284
-	Ac3Status	NavicoDataTypeConst = 285
-	Ac1OutStatus	NavicoDataTypeConst = 286
-	Ac2OutStatus	NavicoDataTypeConst = 287
-	Ac3OutStatus	NavicoDataTypeConst = 288
-	SwitchManualOverride	NavicoDataTypeConst = 289
-	SwitchReversePolarity	NavicoDataTypeConst = 290
-	SwitchAcsourceAvailable	NavicoDataTypeConst = 291
-	SwitchAccontactorSystemsonstate	NavicoDataTypeConst = 292
-	ChargerBatteryInstance	NavicoDataTypeConst = 293
-	ChargerOperatingState	NavicoDataTypeConst = 294
-	ChargerMode	NavicoDataTypeConst = 295
-	ChargerEnabled	NavicoDataTypeConst = 296
-	ChargerEqualizationPending	NavicoDataTypeConst = 297
-	ChargerEqualizationTimeRemaini	NavicoDataTypeConst = 298
-	InverterACInstance	NavicoDataTypeConst = 299
-	InverterDCInstance	NavicoDataTypeConst = 300
-	InverterOperatingState	NavicoDataTypeConst = 301
-	InverterEnabled	NavicoDataTypeConst = 302
-	ThrusterPower	NavicoDataTypeConst = 303
-	FuelToTurn	NavicoDataTypeConst = 304
-	EngineMil	NavicoDataTypeConst = 305
-	EngineWarningFlags	NavicoDataTypeConst = 306
-	SpeedStw	NavicoDataTypeConst = 307
-	EnginePerformanceSOG	NavicoDataTypeConst = 308
-	EnginePerformanceStw	NavicoDataTypeConst = 309
-	EngineControlFlags	NavicoDataTypeConst = 310
-	EngineTrollRPMSetpoint	NavicoDataTypeConst = 311
-	ActiveHelm	NavicoDataTypeConst = 312
-	CruiseRPMSetpoint	NavicoDataTypeConst = 313
-	CruiseSpeedSetpoint	NavicoDataTypeConst = 314
-	CmdPatternDir	NavicoDataTypeConst = 315
-	SmartContextual	NavicoDataTypeConst = 316
-	SailingTimeToWaypoint	NavicoDataTypeConst = 317
-	SailingDistanceToWaypoint	NavicoDataTypeConst = 318
-	SailingEta	NavicoDataTypeConst = 319
-	GeneratorTemp	NavicoDataTypeConst = 320
-	GeneratorOilTemp	NavicoDataTypeConst = 321
-	GeneratorOilPres	NavicoDataTypeConst = 322
-	GeneratorWaterPres	NavicoDataTypeConst = 323
-	GeneratorFuelPres	NavicoDataTypeConst = 324
-	GeneratorFuelRate	NavicoDataTypeConst = 325
-	GeneratorHoursUsed	NavicoDataTypeConst = 326
-	GeneratorDiscreteStatus	NavicoDataTypeConst = 327
-	GeneratorPercentLoad	NavicoDataTypeConst = 328
-	GeneratorPercentTorque	NavicoDataTypeConst = 329
-	GeneratorBatteryVoltage	NavicoDataTypeConst = 330
-	GeneratorAverageVoltage	NavicoDataTypeConst = 331
-	GeneratorAverageFrequency	NavicoDataTypeConst = 332
-	GeneratorAverageCurrent	NavicoDataTypeConst = 333
-	PilotMode	NavicoDataTypeConst = 334
-	PilotResponseLevel	NavicoDataTypeConst = 335
-	CruiseSmarttowOvershoot	NavicoDataTypeConst = 336
-	PilotCmdHeading	NavicoDataTypeConst = 337
-	MOBDRPosition	NavicoDataTypeConst = 338
-	MOBDRRange	NavicoDataTypeConst = 339
-	MOBDRBearing	NavicoDataTypeConst = 340
-	BowPosition	NavicoDataTypeConst = 341
-	StartLineBearing	NavicoDataTypeConst = 342
-	StartLineBias	NavicoDataTypeConst = 343
-	DistanceToStartLine	NavicoDataTypeConst = 344
-	DistanceToStartLinePortEnd	NavicoDataTypeConst = 345
-	DistanceToStartLineStbdEnd	NavicoDataTypeConst = 346
-	StartLinePortPosition	NavicoDataTypeConst = 347
-	StartLineStbdPosition	NavicoDataTypeConst = 348
-	StartLineBoatLengthAdvantage	NavicoDataTypeConst = 349
-	DistanceToStartLineBoatLengths	NavicoDataTypeConst = 350
-	Backstay	NavicoDataTypeConst = 351
-	BoomAngle	NavicoDataTypeConst = 352
-	BoomVang	NavicoDataTypeConst = 353
-	ChainLength	NavicoDataTypeConst = 354
-	Cunningham	NavicoDataTypeConst = 355
-	InnerForestayLoad	NavicoDataTypeConst = 356
-	InnerForestayHalyardLoad	NavicoDataTypeConst = 357
-	JibFurl	NavicoDataTypeConst = 358
-	JibHalyardLoad	NavicoDataTypeConst = 359
-	OptimumWindAngle	NavicoDataTypeConst = 360
-	OuthaulLoad	NavicoDataTypeConst = 361
-	PitchRate	NavicoDataTypeConst = 362
-	PlowAngle	NavicoDataTypeConst = 363
-	RollRate	NavicoDataTypeConst = 364
-	VmgPerformance	NavicoDataTypeConst = 365
-	BAndGLinear5	NavicoDataTypeConst = 366
-	BAndGLinear6	NavicoDataTypeConst = 367
-	BAndGLinear7	NavicoDataTypeConst = 368
-	BAndGLinear8	NavicoDataTypeConst = 369
-	BAndGLinear9	NavicoDataTypeConst = 370
-	BAndGLinear10	NavicoDataTypeConst = 371
-	BAndGLinear11	NavicoDataTypeConst = 372
-	BAndGLinear12	NavicoDataTypeConst = 373
-	BAndGLinear13	NavicoDataTypeConst = 374
-	BAndGLinear14	NavicoDataTypeConst = 375
-	BAndGLinear15	NavicoDataTypeConst = 376
-	BAndGLinear16	NavicoDataTypeConst = 377
-	KeelDraught	NavicoDataTypeConst = 378
-	PoolTemperature	NavicoDataTypeConst = 379
-	JacuzziTemperature	NavicoDataTypeConst = 380
-	TripDRBearing	NavicoDataTypeConst = 381
-	TripDRDistance	NavicoDataTypeConst = 382
-	CodeZeroLoad	NavicoDataTypeConst = 383
-	BAndGMOBPosition	NavicoDataTypeConst = 384
-	DistanceBehindStartLine	NavicoDataTypeConst = 385
-	DistanceBehindStartLineBoatLen	NavicoDataTypeConst = 386
-	BiasAdvantage	NavicoDataTypeConst = 387
-	OppositeTackCOG	NavicoDataTypeConst = 388
-	OppositeTackTargetHeading	NavicoDataTypeConst = 389
-	MastRake	NavicoDataTypeConst = 390
-	NextLegBearing	NavicoDataTypeConst = 391
-	NextLegTargetSpeed	NavicoDataTypeConst = 392
-	GroundWindDirection	NavicoDataTypeConst = 393
-	GroundWindSpeed	NavicoDataTypeConst = 394
-	MastCantAngle	NavicoDataTypeConst = 395
-	RudderToeIn	NavicoDataTypeConst = 396
-	DaggerboardPort	NavicoDataTypeConst = 397
-	DaggerboardStarboard	NavicoDataTypeConst = 398
-	BAndGRemote0	NavicoDataTypeConst = 399
-	BAndGRemote1	NavicoDataTypeConst = 400
-	BAndGRemote2	NavicoDataTypeConst = 401
-	BAndGRemote3	NavicoDataTypeConst = 402
-	BAndGRemote4	NavicoDataTypeConst = 403
-	BAndGRemote5	NavicoDataTypeConst = 404
-	BAndGRemote6	NavicoDataTypeConst = 405
-	BAndGRemote7	NavicoDataTypeConst = 406
-	BAndGRemote8	NavicoDataTypeConst = 407
-	BAndGRemote9	NavicoDataTypeConst = 408
-	ForwardDepth	NavicoDataTypeConst = 409
-	CriticalRange	NavicoDataTypeConst = 410
-	CautionRange	NavicoDataTypeConst = 411
-	MaxRange	NavicoDataTypeConst = 412
-	GeneratorAlternatorVoltage	NavicoDataTypeConst = 413
-	TrollingPropRate	NavicoDataTypeConst = 414
-	TrollingCruiseControlSpeed	NavicoDataTypeConst = 415
-	VesselFuelUsed	NavicoDataTypeConst = 416
-	SuzukiEngineBaroPressure	NavicoDataTypeConst = 417
-	SuzukiCylinderTemperature	NavicoDataTypeConst = 418
-	SuzukiIntakeAirTemperature	NavicoDataTypeConst = 419
-	SuzukiIgnitionTiming	NavicoDataTypeConst = 420
-	SuzukiFuelInjectorPulseWidth	NavicoDataTypeConst = 421
-	WasSuzukiInjectedFuelAmount	NavicoDataTypeConst = 422
-	SuzukiIacValveDuty	NavicoDataTypeConst = 423
-	SuzukiDiscreteStatus1	NavicoDataTypeConst = 424
-	SuzukiDiscreteStatus2	NavicoDataTypeConst = 425
-	SuzukiDiscreteStatus3	NavicoDataTypeConst = 426
-	SuzukiDiscreteStatus4	NavicoDataTypeConst = 427
-	FuelEconomyPit	NavicoDataTypeConst = 428
-	VesselFuelEconomyPit	NavicoDataTypeConst = 429
-	VesselFuelRangePit	NavicoDataTypeConst = 430
-	Waypoint_2	NavicoDataTypeConst = 431
-	AverageWindDirection	NavicoDataTypeConst = 432
-	WindPhase	NavicoDataTypeConst = 433
-	WindLift	NavicoDataTypeConst = 434
-	FuelRangeSeasonalAverage	NavicoDataTypeConst = 435
-	FuelRangeInstantaneous	NavicoDataTypeConst = 436
-	VesselFuelEconomy	NavicoDataTypeConst = 437
-	AverageFuelEconomySeasonal	NavicoDataTypeConst = 438
-	AverageFuelEconomyTrip	NavicoDataTypeConst = 439
-	BestFuelEconomySeasonal	NavicoDataTypeConst = 440
-	BestFuelEconomyTrip	NavicoDataTypeConst = 441
-	VesselFuelLevel	NavicoDataTypeConst = 442
-	VesselFuelUsedTrip	NavicoDataTypeConst = 443
-	BAndGLinear17	NavicoDataTypeConst = 444
-	BAndGLinear18	NavicoDataTypeConst = 445
-	BAndGLinear19	NavicoDataTypeConst = 446
-	BAndGLinear20	NavicoDataTypeConst = 447
-	BAndGLinear21	NavicoDataTypeConst = 448
-	BAndGLinear22	NavicoDataTypeConst = 449
-	BAndGLinear23	NavicoDataTypeConst = 450
-	BAndGLinear24	NavicoDataTypeConst = 451
-	BAndGLinear25	NavicoDataTypeConst = 452
-	BAndGLinear26	NavicoDataTypeConst = 453
-	BAndGLinear27	NavicoDataTypeConst = 454
-	BAndGLinear28	NavicoDataTypeConst = 455
-	BAndGLinear29	NavicoDataTypeConst = 456
-	BAndGLinear30	NavicoDataTypeConst = 457
-	BAndGLinear31	NavicoDataTypeConst = 458
-	BAndGLinear32	NavicoDataTypeConst = 459
-	OriginWayPointNumber	NavicoDataTypeConst = 460
-	DestWayPointNumber	NavicoDataTypeConst = 461
-	ArrivalNotification	NavicoDataTypeConst = 462
-	ArrivalCircleNotification	NavicoDataTypeConst = 463
-	WasNavTerminated	NavicoDataTypeConst = 464
-	Bobstay	NavicoDataTypeConst = 465
-	J1	NavicoDataTypeConst = 466
-	J2	NavicoDataTypeConst = 467
-	J3	NavicoDataTypeConst = 468
-	MastBase	NavicoDataTypeConst = 469
-	Mainsheet	NavicoDataTypeConst = 470
-	D0Port	NavicoDataTypeConst = 471
-	D0Starboard	NavicoDataTypeConst = 472
-	RunnerPort	NavicoDataTypeConst = 473
-	RunnerStarboard	NavicoDataTypeConst = 474
-	FoilPort	NavicoDataTypeConst = 475
-	FoilStarboard	NavicoDataTypeConst = 476
-	SailtackPort	NavicoDataTypeConst = 477
-	SailtackStarboard	NavicoDataTypeConst = 478
-	DeflectPort	NavicoDataTypeConst = 479
-	DeflectStarboard	NavicoDataTypeConst = 480
-	RudderLoadPort	NavicoDataTypeConst = 481
-	RudderLoadStarboard	NavicoDataTypeConst = 482
-	D1Port	NavicoDataTypeConst = 483
-	D1Starboard	NavicoDataTypeConst = 484
-	V0Port	NavicoDataTypeConst = 485
-	V0Starboard	NavicoDataTypeConst = 486
-	V1Port	NavicoDataTypeConst = 487
-	V1Starboard	NavicoDataTypeConst = 488
-	GNSSSystem	NavicoDataTypeConst = 489
-	SvCount	NavicoDataTypeConst = 490
-	GNSSOpMode	NavicoDataTypeConst = 491
-	DGNSSMode	NavicoDataTypeConst = 492
-	SuzukiFuelPumpDuty	NavicoDataTypeConst = 493
-	SpeedLogWaterLongitudinal	NavicoDataTypeConst = 494
-	SpeedLogWaterTransverse	NavicoDataTypeConst = 495
-	SpeedLogWaterResultant	NavicoDataTypeConst = 496
-	SpeedLogWaterAngle	NavicoDataTypeConst = 497
-	SpeedLogGroundLongitudinal	NavicoDataTypeConst = 498
-	SpeedLogGroundTransverse	NavicoDataTypeConst = 499
-	SpeedLogGroundResultant	NavicoDataTypeConst = 500
-	SpeedLogGroundAngle	NavicoDataTypeConst = 501
-	SpeedLogSternWaterTransverse	NavicoDataTypeConst = 502
-	SpeedLogSternGroundTransverse	NavicoDataTypeConst = 503
-	PositionDatum	NavicoDataTypeConst = 504
-	SpeedBoat	NavicoDataTypeConst = 505
-	WasEngineFuelUsedMercury	NavicoDataTypeConst = 506
-	NavicoDataTypeConstHeave	NavicoDataTypeConst = 507
-	SpeedTripMaxRPM	NavicoDataTypeConst = 508
-	HondaEngineStatusParams	NavicoDataTypeConst = 509
-	PilotFeatures	NavicoDataTypeConst = 510
-	PilotSetpointHeading	NavicoDataTypeConst = 511
-	IdleSpeedControlMode	NavicoDataTypeConst = 512
-	IdleSpeedControlValue	NavicoDataTypeConst = 513
-	TrollingMode	NavicoDataTypeConst = 514
-	ImmobilizerLockStatus	NavicoDataTypeConst = 515
-	EngineDiscreteParams1	NavicoDataTypeConst = 516
-	EngineDiscreteParams2	NavicoDataTypeConst = 517
-	EngineDiscreteParams3	NavicoDataTypeConst = 518
-	EngineDiscreteParams4	NavicoDataTypeConst = 519
-	EngineDiscreteParams5	NavicoDataTypeConst = 520
-	EngineDiscreteParams6	NavicoDataTypeConst = 521
-	IdleSpeedLimitLow	NavicoDataTypeConst = 522
-	IdleSpeedLimitHigh	NavicoDataTypeConst = 523
-	WasTrollingVariableRPMInfo	NavicoDataTypeConst = 524
-	IdleSpeedControlTargetRev	NavicoDataTypeConst = 525
-	IdleControl	NavicoDataTypeConst = 526
-	IdleFeedback	NavicoDataTypeConst = 527
-	ImmediatelyAfterStartingContro	NavicoDataTypeConst = 528
-	GatewayParams	NavicoDataTypeConst = 529
-	GatewayProtocol	NavicoDataTypeConst = 530
-	EngineWallTemp	NavicoDataTypeConst = 531
-	SubstituteBatteryVoltage	NavicoDataTypeConst = 532
-	YamahaEngineM6DiagCode	NavicoDataTypeConst = 533
-	WirelessSensorBatteryStatus	NavicoDataTypeConst = 534
-	WirelessSensorBatteryChargeSta	NavicoDataTypeConst = 535
-	WirelessSensorBatteryStatusVol	NavicoDataTypeConst = 536
-	WirelessSensorBatteryChargeSta_2	NavicoDataTypeConst = 537
-	FluidTypeMode	NavicoDataTypeConst = 538
-	Datetime	NavicoDataTypeConst = 539
-	ReacherLoad	NavicoDataTypeConst = 540
-	BladeLoad	NavicoDataTypeConst = 541
-	StaysailLoad	NavicoDataTypeConst = 542
-	TackLoad	NavicoDataTypeConst = 543
-	J4Load	NavicoDataTypeConst = 544
-	SolentLoad	NavicoDataTypeConst = 545
-	TackPortLoad	NavicoDataTypeConst = 546
-	TackStarboardLoad	NavicoDataTypeConst = 547
-	DeflectUpperLoad	NavicoDataTypeConst = 548
-	DeflectLowerLoad	NavicoDataTypeConst = 549
-	WinchPortLoad	NavicoDataTypeConst = 550
-	WinchStarboardLoad	NavicoDataTypeConst = 551
-	SpinHalyardPortLoad	NavicoDataTypeConst = 552
-	SpinHalyardStarboardLoad	NavicoDataTypeConst = 553
-	MainHalyward	NavicoDataTypeConst = 554
-	Load1Load	NavicoDataTypeConst = 555
-	Load2Load	NavicoDataTypeConst = 556
-	MastBase2Load	NavicoDataTypeConst = 557
-	PilotActivePerfMode	NavicoDataTypeConst = 558
-	PilotGust	NavicoDataTypeConst = 559
-	PilotTwsResponse	NavicoDataTypeConst = 560
-	PilotHeelComp	NavicoDataTypeConst = 561
-	PilotNetCourse	NavicoDataTypeConst = 562
-	PilotTargetWindAngle	NavicoDataTypeConst = 563
-	PilotWeatherHelm	NavicoDataTypeConst = 564
-	PilotMeanHeel	NavicoDataTypeConst = 565
-	PropellerShaftPitchAngle	NavicoDataTypeConst = 566
-	PropellerShaftPitchPercent	NavicoDataTypeConst = 567
-	PropellerShaftRPM	NavicoDataTypeConst = 568
-	ThrusterPitchAngle	NavicoDataTypeConst = 569
-	ThrusterPitchPercent	NavicoDataTypeConst = 570
-	GroundWindAngle	NavicoDataTypeConst = 571
-	FuelFlowOffset	NavicoDataTypeConst = 572
-	FluidLevelGasoline	NavicoDataTypeConst = 573
-	FluidVolumeGasoline	NavicoDataTypeConst = 574
-	TankCapacityGasoline	NavicoDataTypeConst = 575
-	CmdXTEOffset	NavicoDataTypeConst = 576
-	Engine4STROKEOil	NavicoDataTypeConst = 577
-	WirelessSensorSignalStrength	NavicoDataTypeConst = 578
-	WirelessSensorSoftwareUpdatePr	NavicoDataTypeConst = 579
-	TrollingStatus	NavicoDataTypeConst = 580
-	MercuryExhaustValve	NavicoDataTypeConst = 581
-	MercuryExhaustStatus	NavicoDataTypeConst = 582
-	YanmarEngineEcuAlarms	NavicoDataTypeConst = 583
-	YanmarHelmEcuAlarms	NavicoDataTypeConst = 584
-	YanmarDriveEcuAlarms	NavicoDataTypeConst = 585
-	DGPSCorrectionData	NavicoDataTypeConst = 586
-	DGPSReferenceStationID	NavicoDataTypeConst = 587
-	DGPSReferenceStationHealth	NavicoDataTypeConst = 588
-	DGPSSignalSnr	NavicoDataTypeConst = 589
-	DGPSSignalFrequency	NavicoDataTypeConst = 590
-	DGPSSignalStrength	NavicoDataTypeConst = 591
-	EngineFuelTemp	NavicoDataTypeConst = 592
-	DepthQuality	NavicoDataTypeConst = 593
-	NumberOfActiveDtc	NavicoDataTypeConst = 594
-	YanmarFuelLevelTank1Port	NavicoDataTypeConst = 595
-	YanmarFuelLevelTank2Port	NavicoDataTypeConst = 596
-	YanmarFuelLevelTank1Stbd	NavicoDataTypeConst = 597
-	YanmarFuelLevelTank2Stbd	NavicoDataTypeConst = 598
-	YanmarFuelLevelTank1Center	NavicoDataTypeConst = 599
-	YanmarFuelLevelTank2Center	NavicoDataTypeConst = 600
-	YanmarFreshWaterLevelTank1Port	NavicoDataTypeConst = 601
-	YanmarFreshWaterLevelTank2Port	NavicoDataTypeConst = 602
-	YanmarFreshWaterLevelTank1Stbd	NavicoDataTypeConst = 603
-	YanmarFreshWaterLevelTank2Stbd	NavicoDataTypeConst = 604
-	YanmarFreshWaterLevelTank1Cent	NavicoDataTypeConst = 605
-	YanmarFreshWaterLevelTank2Cent	NavicoDataTypeConst = 606
-	YanmarGrayWaterLevelTank1Port	NavicoDataTypeConst = 607
-	YanmarGrayWaterLevelTank2Port	NavicoDataTypeConst = 608
-	YanmarGrayWaterLevelTank1Stbd	NavicoDataTypeConst = 609
-	YanmarGrayWaterLevelTank2Stbd	NavicoDataTypeConst = 610
-	YanmarGrayWaterLevelTank1Cente	NavicoDataTypeConst = 611
-	YanmarGrayWaterLevelTank2Cente	NavicoDataTypeConst = 612
-	RudderAnglePercentage	NavicoDataTypeConst = 613
-	TrollActiveHelm	NavicoDataTypeConst = 614
-	TidesGraphic	NavicoDataTypeConst = 615
-	AnchorDistance	NavicoDataTypeConst = 616
-	AnchorSize	NavicoDataTypeConst = 617
-	AnchorDepth	NavicoDataTypeConst = 618
-	AnchorBearing	NavicoDataTypeConst = 619
-	HondaEngineWarningParams	NavicoDataTypeConst = 620
-	HondaEngineDiscreteParams1	NavicoDataTypeConst = 621
-	HondaEngineDiscreteParams2	NavicoDataTypeConst = 622
-	HondaEngineDiscreteParams3	NavicoDataTypeConst = 623
-	HondaEngineDiscreteParams4	NavicoDataTypeConst = 624
-	MainsailHeadLoad	NavicoDataTypeConst = 625
-	MainsailClewLoad	NavicoDataTypeConst = 626
-	MainsailTackLoad	NavicoDataTypeConst = 627
-	J1HeadLoad	NavicoDataTypeConst = 628
-	J1ClewLoad	NavicoDataTypeConst = 629
-	J1TackLoad	NavicoDataTypeConst = 630
-	J2HeadLoad	NavicoDataTypeConst = 631
-	J2ClewLoad	NavicoDataTypeConst = 632
-	J2TackLoad	NavicoDataTypeConst = 633
-	J3HeadLoad	NavicoDataTypeConst = 634
-	J3ClewLoad	NavicoDataTypeConst = 635
-	J3TackLoad	NavicoDataTypeConst = 636
-	CodeZeroHeadLoad	NavicoDataTypeConst = 637
-	CodeZeroClewLoad	NavicoDataTypeConst = 638
-	CodeZeroTackLoad	NavicoDataTypeConst = 639
-	SuzukiEngineAlertI	NavicoDataTypeConst = 640
-	EngineOilLife	NavicoDataTypeConst = 641
-	EngineOilLevelStatus	NavicoDataTypeConst = 642
-	TransFluidStatus	NavicoDataTypeConst = 643
-	HondaEcoStatusAllEngines	NavicoDataTypeConst = 644
-	OutputRPM	NavicoDataTypeConst = 645
-	SuzukiEngineAlertA	NavicoDataTypeConst = 646
-	SuzukiEngineAlertB	NavicoDataTypeConst = 647
-	SuzukiEngineAlertC	NavicoDataTypeConst = 648
-	SuzukiEngineAlertD	NavicoDataTypeConst = 649
-	SuzukiEngineAlertE	NavicoDataTypeConst = 650
-	SuzukiEngineAlertF	NavicoDataTypeConst = 651
-	SuzukiEngineAlertG	NavicoDataTypeConst = 652
-	SuzukiEngineAlertH	NavicoDataTypeConst = 653
-	SuzukiEngineAlertJ	NavicoDataTypeConst = 654
-	SuzukiBcmFault	NavicoDataTypeConst = 655
-	SuzukiBcmMode	NavicoDataTypeConst = 656
-	SuzukiEngineKlsStatus	NavicoDataTypeConst = 657
-	SuzukiSwitchFault	NavicoDataTypeConst = 658
-	SuzukiShiftPositionStatus	NavicoDataTypeConst = 659
-	VesselFuelUsedSeasonal	NavicoDataTypeConst = 660
-	VesselFuelCapacity	NavicoDataTypeConst = 661
-	SuzukiEngineAutoTrimStatus	NavicoDataTypeConst = 662
-	TrollingModeActive	NavicoDataTypeConst = 663
-	TrollingModeActiveMaster	NavicoDataTypeConst = 664
-	KeylessCommunicationState	NavicoDataTypeConst = 665
-	LinearActuatorPosition	NavicoDataTypeConst = 666
-	EngineExhaustTemp	NavicoDataTypeConst = 667
-	EngineGuardianPowerLimit	NavicoDataTypeConst = 668
-	EngineState	NavicoDataTypeConst = 669
-	SailingTimeToBurn	NavicoDataTypeConst = 670
-	MastTwist	NavicoDataTypeConst = 671
-	VHFChannel	NavicoDataTypeConst = 672
-	TrollingLowerUnitDirection	NavicoDataTypeConst = 673
-	PropulsionBatteryStatus	NavicoDataTypeConst = 674
-	PropulsionBatteryIsolationStat	NavicoDataTypeConst = 675
-	PropulsionBatteryError	NavicoDataTypeConst = 676
-	PropulsionBatteryVoltage	NavicoDataTypeConst = 677
-	PropulsionBatteryCurrent	NavicoDataTypeConst = 678
-	PropulsionBatteryStateOfCharge	NavicoDataTypeConst = 679
-	PropulsionBatteryTimeRemaining	NavicoDataTypeConst = 680
-	PropulsionBatteryHighestCellTe	NavicoDataTypeConst = 681
-	PropulsionBatteryLowestCellTem	NavicoDataTypeConst = 682
-	PropulsionBatteryAverageCellTe	NavicoDataTypeConst = 683
-	PropulsionBatteryMaximumDischa	NavicoDataTypeConst = 684
-	PropulsionBatteryMaximumCharge	NavicoDataTypeConst = 685
-	PropulsionBatteryCoolingSystem	NavicoDataTypeConst = 686
-	PropulsionBatteryHeatingSystem	NavicoDataTypeConst = 687
-	PropulsionBatteryStorageMode	NavicoDataTypeConst = 688
-	PropulsionBatteryChemistry	NavicoDataTypeConst = 689
-	PropulsionBatteryMaximumTemper	NavicoDataTypeConst = 690
-	PropulsionBatteryMaximumTemper_2	NavicoDataTypeConst = 691
-	PropulsionBatteryMinimumTemper	NavicoDataTypeConst = 692
-	PropulsionBatteryMinimumTemper_2	NavicoDataTypeConst = 693
-	PropulsionBatteryUsableEnergy	NavicoDataTypeConst = 694
-	PropulsionBatteryStateOfHealth	NavicoDataTypeConst = 695
-	PropulsionBatteryDischargeCycl	NavicoDataTypeConst = 696
-	PropulsionBatteryFullStatus	NavicoDataTypeConst = 697
-	PropulsionBatteryEmptyStatus	NavicoDataTypeConst = 698
-	PropulsionBatteryMaximumCharge_2	NavicoDataTypeConst = 699
-	PropulsionBatteryMinimumDischa	NavicoDataTypeConst = 700
-	ActiveMotorMode	NavicoDataTypeConst = 701
-	MotorBrakeMode	NavicoDataTypeConst = 702
-	MotorRotationalShaftSpeed	NavicoDataTypeConst = 703
-	MotorVoltage	NavicoDataTypeConst = 704
-	MotorCurrent	NavicoDataTypeConst = 705
-	MotorOperatingMode	NavicoDataTypeConst = 706
-	MotorTemperature	NavicoDataTypeConst = 707
-	MotorInverterTemperature	NavicoDataTypeConst = 708
-	MotorCoolantTemperature	NavicoDataTypeConst = 709
-	MotorGearTemperature	NavicoDataTypeConst = 710
-	MotorShaftTorquePercent	NavicoDataTypeConst = 711
-	MotorVoltageType	NavicoDataTypeConst = 712
-	MotorVoltageRating	NavicoDataTypeConst = 713
-	MotorMaxContinuousPower	NavicoDataTypeConst = 714
-	MotorMaxBoostPower	NavicoDataTypeConst = 715
-	MotorMaxTemperatureRating	NavicoDataTypeConst = 716
-	MotorRatedSpeed	NavicoDataTypeConst = 717
-	MotorMaxControllerTemperatureR	NavicoDataTypeConst = 718
-	MotorShaftTorqueRating	NavicoDataTypeConst = 719
-	MotorDCVoltageDeratingThreshol	NavicoDataTypeConst = 720
-	MotorDCVoltageCutoffThreshold	NavicoDataTypeConst = 721
-	MotorRuntime	NavicoDataTypeConst = 722
-	SailingPingTimePort	NavicoDataTypeConst = 723
-	SailingPingTimeStbd	NavicoDataTypeConst = 724
-	HeadingSource	NavicoDataTypeConst = 725
-	Invalid	NavicoDataTypeConst = 726
+	Altitude                             NavicoDataTypeConst = 0
+	Position_3                           NavicoDataTypeConst = 1
+	PositionError                        NavicoDataTypeConst = 2
+	Hdop                                 NavicoDataTypeConst = 3
+	Vdop                                 NavicoDataTypeConst = 4
+	Tdop                                 NavicoDataTypeConst = 5
+	Pdop                                 NavicoDataTypeConst = 6
+	GeoidalSeperation                    NavicoDataTypeConst = 7
+	COG_2                                NavicoDataTypeConst = 8
+	PositionQuality                      NavicoDataTypeConst = 9
+	PositionIntegrity                    NavicoDataTypeConst = 10
+	SatsInView                           NavicoDataTypeConst = 11
+	WAASStatus                           NavicoDataTypeConst = 12
+	Bearing                              NavicoDataTypeConst = 13
+	Course                               NavicoDataTypeConst = 14
+	CdiGraphic                           NavicoDataTypeConst = 15
+	CourseToSteer                        NavicoDataTypeConst = 16
+	CrossTrack                           NavicoDataTypeConst = 17
+	VelocityMadeGood                     NavicoDataTypeConst = 18
+	Destination                          NavicoDataTypeConst = 19
+	DistanceToTurn                       NavicoDataTypeConst = 20
+	DistanceToDest                       NavicoDataTypeConst = 21
+	TimeToTurn                           NavicoDataTypeConst = 22
+	TimeToDest                           NavicoDataTypeConst = 23
+	EtaAtTurn                            NavicoDataTypeConst = 24
+	EtaAtDest                            NavicoDataTypeConst = 25
+	TotalDistance                        NavicoDataTypeConst = 26
+	SteerArrow                           NavicoDataTypeConst = 27
+	Odometer                             NavicoDataTypeConst = 28
+	TripDistance                         NavicoDataTypeConst = 29
+	TripTime                             NavicoDataTypeConst = 30
+	Date_2                               NavicoDataTypeConst = 31
+	Time                                 NavicoDataTypeConst = 32
+	UTCDate                              NavicoDataTypeConst = 33
+	UTCTime                              NavicoDataTypeConst = 34
+	LocalTimeOffset                      NavicoDataTypeConst = 35
+	Heading_4                            NavicoDataTypeConst = 36
+	WasVoltage                           NavicoDataTypeConst = 37
+	CurrentSet                           NavicoDataTypeConst = 38
+	CurrentDrift                         NavicoDataTypeConst = 39
+	SpeedSOG                             NavicoDataTypeConst = 40
+	SpeedWater                           NavicoDataTypeConst = 41
+	SpeedPitot                           NavicoDataTypeConst = 42
+	SpeedTripAvg                         NavicoDataTypeConst = 43
+	SpeedTripMax                         NavicoDataTypeConst = 44
+	SpeedWindApp                         NavicoDataTypeConst = 45
+	SpeedWindTrue                        NavicoDataTypeConst = 46
+	TempWater                            NavicoDataTypeConst = 47
+	TempOutside                          NavicoDataTypeConst = 48
+	TempInside                           NavicoDataTypeConst = 49
+	TempEngineRoom                       NavicoDataTypeConst = 50
+	TempMainCabin                        NavicoDataTypeConst = 51
+	TempLiveWell                         NavicoDataTypeConst = 52
+	TempBaitWell                         NavicoDataTypeConst = 53
+	TempRefrigeration                    NavicoDataTypeConst = 54
+	TempHeatingSystem                    NavicoDataTypeConst = 55
+	TempDewPoint                         NavicoDataTypeConst = 56
+	TempWindChillApp                     NavicoDataTypeConst = 57
+	TempWindChillTheoretic               NavicoDataTypeConst = 58
+	TempHeatIndex                        NavicoDataTypeConst = 59
+	TempFreezer                          NavicoDataTypeConst = 60
+	EngineTemp                           NavicoDataTypeConst = 61
+	EngineAirTemp                        NavicoDataTypeConst = 62
+	EngineOilTemp                        NavicoDataTypeConst = 63
+	TempBattery                          NavicoDataTypeConst = 64
+	PressureAtmospheric                  NavicoDataTypeConst = 65
+	EngineBoostPres                      NavicoDataTypeConst = 66
+	EngineOilPres                        NavicoDataTypeConst = 67
+	EngineWaterPres                      NavicoDataTypeConst = 68
+	EngineFuelPres                       NavicoDataTypeConst = 69
+	EngineManifoldPres                   NavicoDataTypeConst = 70
+	PressureSteam                        NavicoDataTypeConst = 71
+	PressureComprAir                     NavicoDataTypeConst = 72
+	PressureHydraulic                    NavicoDataTypeConst = 73
+	WasGenericPressureLo                 NavicoDataTypeConst = 74
+	WasGenericPressureHi                 NavicoDataTypeConst = 75
+	Depth_2                              NavicoDataTypeConst = 76
+	WaterDistance                        NavicoDataTypeConst = 77
+	EngineRPM                            NavicoDataTypeConst = 78
+	EngineTrim                           NavicoDataTypeConst = 79
+	EngineAlternatorPotential            NavicoDataTypeConst = 80
+	EngineFuelRate                       NavicoDataTypeConst = 81
+	EnginePercentLoad                    NavicoDataTypeConst = 82
+	EnginePercentTorque                  NavicoDataTypeConst = 83
+	WasSuzukiAlarmLevLo                  NavicoDataTypeConst = 84
+	WasSuzukiAlarmLevHigh                NavicoDataTypeConst = 85
+	TankFuelLevel                        NavicoDataTypeConst = 86
+	FluidLevelFreshWater                 NavicoDataTypeConst = 87
+	FluidLevelGrayWater                  NavicoDataTypeConst = 88
+	FluidLevelLiveWell                   NavicoDataTypeConst = 89
+	FluidLevelOil                        NavicoDataTypeConst = 90
+	FluidLevelBlackWater                 NavicoDataTypeConst = 91
+	TankFuelRemaining                    NavicoDataTypeConst = 92
+	FluidVolumeFreshWater                NavicoDataTypeConst = 93
+	FluidVolumeGrayWater                 NavicoDataTypeConst = 94
+	FluidVolumeLiveWell                  NavicoDataTypeConst = 95
+	FluidVolumeOil                       NavicoDataTypeConst = 96
+	FluidVolumeBlackWater                NavicoDataTypeConst = 97
+	GenFluidVolume                       NavicoDataTypeConst = 98
+	WasTankFuelLevelLo                   NavicoDataTypeConst = 99
+	WasFluidLevelLoFreshWater            NavicoDataTypeConst = 100
+	WasFluidLevelLoGrayWater             NavicoDataTypeConst = 101
+	WasFluidLevelLoLiveWell              NavicoDataTypeConst = 102
+	WasFluidLevelLoOil                   NavicoDataTypeConst = 103
+	GenTankCapacity                      NavicoDataTypeConst = 104
+	TankFuelCapacity                     NavicoDataTypeConst = 105
+	TankCapacityFreshWater               NavicoDataTypeConst = 106
+	TankCapacityGrayWater                NavicoDataTypeConst = 107
+	TankCapacityLiveWell                 NavicoDataTypeConst = 108
+	TankCapacityOil                      NavicoDataTypeConst = 109
+	TankCapacityBlackWater               NavicoDataTypeConst = 110
+	WasTankFuelUsed                      NavicoDataTypeConst = 111
+	EngineFuelUsed                       NavicoDataTypeConst = 112
+	EngineFuelUsedTrip                   NavicoDataTypeConst = 113
+	EngineFuelUsedSeasonal               NavicoDataTypeConst = 114
+	EngineFuelKValue                     NavicoDataTypeConst = 115
+	BatteryPotential                     NavicoDataTypeConst = 116
+	BatteryCurrent                       NavicoDataTypeConst = 117
+	TrimTab                              NavicoDataTypeConst = 118
+	WasTrimStbdTab                       NavicoDataTypeConst = 119
+	NavicoDataTypeConstRateOfTurn        NavicoDataTypeConst = 120
+	AttitudeYaw                          NavicoDataTypeConst = 121
+	AttitudePitch                        NavicoDataTypeConst = 122
+	AttitudeRoll                         NavicoDataTypeConst = 123
+	NavicoDataTypeConstMagneticVariation NavicoDataTypeConst = 124
+	Deviation                            NavicoDataTypeConst = 125
+	FuelEconomyWtr                       NavicoDataTypeConst = 126
+	FuelEconomyGPS                       NavicoDataTypeConst = 127
+	WasFuelRemaining                     NavicoDataTypeConst = 128
+	WasFuelRangeWtr                      NavicoDataTypeConst = 129
+	WasFuelRangeGPS                      NavicoDataTypeConst = 130
+	EngineHoursUsed                      NavicoDataTypeConst = 131
+	EngineType                           NavicoDataTypeConst = 132
+	VesselFuelRate                       NavicoDataTypeConst = 133
+	VesselFuelEconomyWtr                 NavicoDataTypeConst = 134
+	VesselFuelEconomyGPS                 NavicoDataTypeConst = 135
+	VesselFuelRemaining                  NavicoDataTypeConst = 136
+	VesselFuelRangeWtr                   NavicoDataTypeConst = 137
+	VesselFuelRangeGPS                   NavicoDataTypeConst = 138
+	WindAppAngle                         NavicoDataTypeConst = 139
+	WindTrueAngle                        NavicoDataTypeConst = 140
+	WindTrueDirection                    NavicoDataTypeConst = 141
+	HumidityInside                       NavicoDataTypeConst = 142
+	HumidityOutside                      NavicoDataTypeConst = 143
+	SetHumidity                          NavicoDataTypeConst = 144
+	RudderAngle                          NavicoDataTypeConst = 145
+	TransGear                            NavicoDataTypeConst = 146
+	TransOilPressure                     NavicoDataTypeConst = 147
+	TransOilTemp                         NavicoDataTypeConst = 148
+	CmdRudderAngle                       NavicoDataTypeConst = 149
+	RudderLimit_2                        NavicoDataTypeConst = 150
+	OffHeadingLim                        NavicoDataTypeConst = 151
+	RadiusOfTurnOrder                    NavicoDataTypeConst = 152
+	RateOfTurnOrder                      NavicoDataTypeConst = 153
+	OffTrackLim                          NavicoDataTypeConst = 154
+	LoggingTimeRemaining                 NavicoDataTypeConst = 155
+	PositionFixType                      NavicoDataTypeConst = 156
+	EngineDiscreteStatus                 NavicoDataTypeConst = 157
+	TransmissionDiscreteStatus           NavicoDataTypeConst = 158
+	GPSBestOfFourSnr                     NavicoDataTypeConst = 159
+	GenFluidLevel                        NavicoDataTypeConst = 160
+	GenPressure                          NavicoDataTypeConst = 161
+	GenTemperature                       NavicoDataTypeConst = 162
+	InternalVoltage                      NavicoDataTypeConst = 163
+	DepthOffset                          NavicoDataTypeConst = 164
+	StructureDepth                       NavicoDataTypeConst = 165
+	LoranPosition                        NavicoDataTypeConst = 166
+	VesselStatus                         NavicoDataTypeConst = 167
+	BatteryDCType                        NavicoDataTypeConst = 168
+	BatteryStateOfCharge                 NavicoDataTypeConst = 169
+	BatteryStateOfHealth                 NavicoDataTypeConst = 170
+	BatteryTimeRemaining                 NavicoDataTypeConst = 171
+	BatteryRippleVoltage                 NavicoDataTypeConst = 172
+	Ac1Acceptability                     NavicoDataTypeConst = 173
+	Ac2Acceptability                     NavicoDataTypeConst = 174
+	Ac3Acceptability                     NavicoDataTypeConst = 175
+	Ac1Voltage                           NavicoDataTypeConst = 176
+	Ac2Voltage                           NavicoDataTypeConst = 177
+	Ac3Voltage                           NavicoDataTypeConst = 178
+	Ac1Current                           NavicoDataTypeConst = 179
+	Ac2Current                           NavicoDataTypeConst = 180
+	Ac3Current                           NavicoDataTypeConst = 181
+	Ac1Frequency                         NavicoDataTypeConst = 182
+	Ac2Frequency                         NavicoDataTypeConst = 183
+	Ac3Frequency                         NavicoDataTypeConst = 184
+	Ac1BreakerSize                       NavicoDataTypeConst = 185
+	Ac2BreakerSize                       NavicoDataTypeConst = 186
+	Ac3BreakerSize                       NavicoDataTypeConst = 187
+	Ac1RealPower                         NavicoDataTypeConst = 188
+	Ac2RealPower                         NavicoDataTypeConst = 189
+	Ac3RealPower                         NavicoDataTypeConst = 190
+	Ac1ReactivePower                     NavicoDataTypeConst = 191
+	Ac2ReactivePower                     NavicoDataTypeConst = 192
+	Ac3ReactivePower                     NavicoDataTypeConst = 193
+	Ac1PowerFactor                       NavicoDataTypeConst = 194
+	Ac2PowerFactor                       NavicoDataTypeConst = 195
+	Ac3PowerFactor                       NavicoDataTypeConst = 196
+	SwitchState                          NavicoDataTypeConst = 197
+	SwitchCurrent                        NavicoDataTypeConst = 198
+	SwitchFault                          NavicoDataTypeConst = 199
+	SwitchDimLevel                       NavicoDataTypeConst = 200
+	PreviousCmdHeading                   NavicoDataTypeConst = 201
+	CmdWindAngle                         NavicoDataTypeConst = 202
+	WasCmdBearingOffset                  NavicoDataTypeConst = 203
+	CmdBearing                           NavicoDataTypeConst = 204
+	CmdDepthContour                      NavicoDataTypeConst = 205
+	CmdCourseChange                      NavicoDataTypeConst = 206
+	PilotDrift                           NavicoDataTypeConst = 207
+	PilotDistanceToTurn                  NavicoDataTypeConst = 208
+	PilotTimeToTurn                      NavicoDataTypeConst = 209
+	PilotReferencePosition               NavicoDataTypeConst = 210
+	DCStatus                             NavicoDataTypeConst = 211
+	Ac1Status                            NavicoDataTypeConst = 212
+	WasSwitchVoltage                     NavicoDataTypeConst = 213
+	BatteryCapacityRemaining             NavicoDataTypeConst = 214
+	PilotHeadingReference                NavicoDataTypeConst = 215
+	BAndGLinear1                         NavicoDataTypeConst = 216
+	BAndGLinear2                         NavicoDataTypeConst = 217
+	BAndGLinear3                         NavicoDataTypeConst = 218
+	BoomPosition                         NavicoDataTypeConst = 219
+	SailingCourse                        NavicoDataTypeConst = 220
+	DaggerboardPosition                  NavicoDataTypeConst = 221
+	BAndGLinear4                         NavicoDataTypeConst = 222
+	HeadingOnNextTack                    NavicoDataTypeConst = 223
+	KeelAngle                            NavicoDataTypeConst = 224
+	Leeway                               NavicoDataTypeConst = 225
+	MastAngle                            NavicoDataTypeConst = 226
+	TargetTrueWindAngle                  NavicoDataTypeConst = 227
+	KeelTrimTab                          NavicoDataTypeConst = 228
+	RaceTimer                            NavicoDataTypeConst = 229
+	CanardAngle                          NavicoDataTypeConst = 230
+	NextLegApparentWindAngle             NavicoDataTypeConst = 231
+	NextLegApparentWindSpeed             NavicoDataTypeConst = 232
+	TargetBoatSpeed                      NavicoDataTypeConst = 233
+	VmgToWind                            NavicoDataTypeConst = 234
+	TimeToLaylines                       NavicoDataTypeConst = 235
+	DistanceToLaylines                   NavicoDataTypeConst = 236
+	AftDepth                             NavicoDataTypeConst = 237
+	Forestay                             NavicoDataTypeConst = 238
+	PolarSpeed                           NavicoDataTypeConst = 239
+	PolarPerformance                     NavicoDataTypeConst = 240
+	TackingPerformance                   NavicoDataTypeConst = 241
+	WindAngleToMast                      NavicoDataTypeConst = 242
+	CANBusVoltage                        NavicoDataTypeConst = 243
+	InternalTemperature                  NavicoDataTypeConst = 244
+	EngageCurrent                        NavicoDataTypeConst = 245
+	UrefVoltage                          NavicoDataTypeConst = 246
+	SupplyVoltage                        NavicoDataTypeConst = 247
+	DestinationPosition                  NavicoDataTypeConst = 248
+	CompassHeadingReference              NavicoDataTypeConst = 249
+	CmdRudderDirection                   NavicoDataTypeConst = 250
+	WasEngineSyncState                   NavicoDataTypeConst = 251
+	EngineGeneralMaintenance             NavicoDataTypeConst = 252
+	EnginePercentThrottle                NavicoDataTypeConst = 253
+	EngineSteeringAngle                  NavicoDataTypeConst = 254
+	EngineBreakInReqd                    NavicoDataTypeConst = 255
+	GPSAll                               NavicoDataTypeConst = 256
+	EngineBreakInAccum                   NavicoDataTypeConst = 257
+	EngineTrimStatus                     NavicoDataTypeConst = 258
+	PilotPresent                         NavicoDataTypeConst = 259
+	Ac1OutWaveform                       NavicoDataTypeConst = 260
+	Ac2OutWaveform                       NavicoDataTypeConst = 261
+	Ac3OutWaveform                       NavicoDataTypeConst = 262
+	Ac1OutVoltage                        NavicoDataTypeConst = 263
+	Ac2OutVoltage                        NavicoDataTypeConst = 264
+	Ac3OutVoltage                        NavicoDataTypeConst = 265
+	Ac1OutCurrent                        NavicoDataTypeConst = 266
+	Ac2OutCurrent                        NavicoDataTypeConst = 267
+	Ac3OutCurrent                        NavicoDataTypeConst = 268
+	Ac1OutFrequency                      NavicoDataTypeConst = 269
+	Ac2OutFrequency                      NavicoDataTypeConst = 270
+	Ac3OutFrequency                      NavicoDataTypeConst = 271
+	Ac1OutBreakerSize                    NavicoDataTypeConst = 272
+	Ac2OutBreakerSize                    NavicoDataTypeConst = 273
+	Ac3OutBreakerSize                    NavicoDataTypeConst = 274
+	Ac1OutRealPower                      NavicoDataTypeConst = 275
+	Ac2OutRealPower                      NavicoDataTypeConst = 276
+	Ac3OutRealPower                      NavicoDataTypeConst = 277
+	Ac1OutReactivePower                  NavicoDataTypeConst = 278
+	Ac2OutReactivePower                  NavicoDataTypeConst = 279
+	Ac3OutReactivePower                  NavicoDataTypeConst = 280
+	Ac1OutPowerFactor                    NavicoDataTypeConst = 281
+	Ac2OutPowerFactor                    NavicoDataTypeConst = 282
+	Ac3OutPowerFactor                    NavicoDataTypeConst = 283
+	Ac2Status                            NavicoDataTypeConst = 284
+	Ac3Status                            NavicoDataTypeConst = 285
+	Ac1OutStatus                         NavicoDataTypeConst = 286
+	Ac2OutStatus                         NavicoDataTypeConst = 287
+	Ac3OutStatus                         NavicoDataTypeConst = 288
+	SwitchManualOverride                 NavicoDataTypeConst = 289
+	SwitchReversePolarity                NavicoDataTypeConst = 290
+	SwitchAcsourceAvailable              NavicoDataTypeConst = 291
+	SwitchAccontactorSystemsonstate      NavicoDataTypeConst = 292
+	ChargerBatteryInstance               NavicoDataTypeConst = 293
+	ChargerOperatingState                NavicoDataTypeConst = 294
+	ChargerMode                          NavicoDataTypeConst = 295
+	ChargerEnabled                       NavicoDataTypeConst = 296
+	ChargerEqualizationPending           NavicoDataTypeConst = 297
+	ChargerEqualizationTimeRemaini       NavicoDataTypeConst = 298
+	InverterACInstance                   NavicoDataTypeConst = 299
+	InverterDCInstance                   NavicoDataTypeConst = 300
+	InverterOperatingState               NavicoDataTypeConst = 301
+	InverterEnabled                      NavicoDataTypeConst = 302
+	ThrusterPower                        NavicoDataTypeConst = 303
+	FuelToTurn                           NavicoDataTypeConst = 304
+	EngineMil                            NavicoDataTypeConst = 305
+	EngineWarningFlags                   NavicoDataTypeConst = 306
+	SpeedStw                             NavicoDataTypeConst = 307
+	EnginePerformanceSOG                 NavicoDataTypeConst = 308
+	EnginePerformanceStw                 NavicoDataTypeConst = 309
+	EngineControlFlags                   NavicoDataTypeConst = 310
+	EngineTrollRPMSetpoint               NavicoDataTypeConst = 311
+	ActiveHelm                           NavicoDataTypeConst = 312
+	CruiseRPMSetpoint                    NavicoDataTypeConst = 313
+	CruiseSpeedSetpoint                  NavicoDataTypeConst = 314
+	CmdPatternDir                        NavicoDataTypeConst = 315
+	SmartContextual                      NavicoDataTypeConst = 316
+	SailingTimeToWaypoint                NavicoDataTypeConst = 317
+	SailingDistanceToWaypoint            NavicoDataTypeConst = 318
+	SailingEta                           NavicoDataTypeConst = 319
+	GeneratorTemp                        NavicoDataTypeConst = 320
+	GeneratorOilTemp                     NavicoDataTypeConst = 321
+	GeneratorOilPres                     NavicoDataTypeConst = 322
+	GeneratorWaterPres                   NavicoDataTypeConst = 323
+	GeneratorFuelPres                    NavicoDataTypeConst = 324
+	GeneratorFuelRate                    NavicoDataTypeConst = 325
+	GeneratorHoursUsed                   NavicoDataTypeConst = 326
+	GeneratorDiscreteStatus              NavicoDataTypeConst = 327
+	GeneratorPercentLoad                 NavicoDataTypeConst = 328
+	GeneratorPercentTorque               NavicoDataTypeConst = 329
+	GeneratorBatteryVoltage              NavicoDataTypeConst = 330
+	GeneratorAverageVoltage              NavicoDataTypeConst = 331
+	GeneratorAverageFrequency            NavicoDataTypeConst = 332
+	GeneratorAverageCurrent              NavicoDataTypeConst = 333
+	PilotMode                            NavicoDataTypeConst = 334
+	PilotResponseLevel                   NavicoDataTypeConst = 335
+	CruiseSmarttowOvershoot              NavicoDataTypeConst = 336
+	PilotCmdHeading                      NavicoDataTypeConst = 337
+	MOBDRPosition                        NavicoDataTypeConst = 338
+	MOBDRRange                           NavicoDataTypeConst = 339
+	MOBDRBearing                         NavicoDataTypeConst = 340
+	BowPosition                          NavicoDataTypeConst = 341
+	StartLineBearing                     NavicoDataTypeConst = 342
+	StartLineBias                        NavicoDataTypeConst = 343
+	DistanceToStartLine                  NavicoDataTypeConst = 344
+	DistanceToStartLinePortEnd           NavicoDataTypeConst = 345
+	DistanceToStartLineStbdEnd           NavicoDataTypeConst = 346
+	StartLinePortPosition                NavicoDataTypeConst = 347
+	StartLineStbdPosition                NavicoDataTypeConst = 348
+	StartLineBoatLengthAdvantage         NavicoDataTypeConst = 349
+	DistanceToStartLineBoatLengths       NavicoDataTypeConst = 350
+	Backstay                             NavicoDataTypeConst = 351
+	BoomAngle                            NavicoDataTypeConst = 352
+	BoomVang                             NavicoDataTypeConst = 353
+	ChainLength                          NavicoDataTypeConst = 354
+	Cunningham                           NavicoDataTypeConst = 355
+	InnerForestayLoad                    NavicoDataTypeConst = 356
+	InnerForestayHalyardLoad             NavicoDataTypeConst = 357
+	JibFurl                              NavicoDataTypeConst = 358
+	JibHalyardLoad                       NavicoDataTypeConst = 359
+	OptimumWindAngle                     NavicoDataTypeConst = 360
+	OuthaulLoad                          NavicoDataTypeConst = 361
+	PitchRate                            NavicoDataTypeConst = 362
+	PlowAngle                            NavicoDataTypeConst = 363
+	RollRate                             NavicoDataTypeConst = 364
+	VmgPerformance                       NavicoDataTypeConst = 365
+	BAndGLinear5                         NavicoDataTypeConst = 366
+	BAndGLinear6                         NavicoDataTypeConst = 367
+	BAndGLinear7                         NavicoDataTypeConst = 368
+	BAndGLinear8                         NavicoDataTypeConst = 369
+	BAndGLinear9                         NavicoDataTypeConst = 370
+	BAndGLinear10                        NavicoDataTypeConst = 371
+	BAndGLinear11                        NavicoDataTypeConst = 372
+	BAndGLinear12                        NavicoDataTypeConst = 373
+	BAndGLinear13                        NavicoDataTypeConst = 374
+	BAndGLinear14                        NavicoDataTypeConst = 375
+	BAndGLinear15                        NavicoDataTypeConst = 376
+	BAndGLinear16                        NavicoDataTypeConst = 377
+	KeelDraught                          NavicoDataTypeConst = 378
+	PoolTemperature                      NavicoDataTypeConst = 379
+	JacuzziTemperature                   NavicoDataTypeConst = 380
+	TripDRBearing                        NavicoDataTypeConst = 381
+	TripDRDistance                       NavicoDataTypeConst = 382
+	CodeZeroLoad                         NavicoDataTypeConst = 383
+	BAndGMOBPosition                     NavicoDataTypeConst = 384
+	DistanceBehindStartLine              NavicoDataTypeConst = 385
+	DistanceBehindStartLineBoatLen       NavicoDataTypeConst = 386
+	BiasAdvantage                        NavicoDataTypeConst = 387
+	OppositeTackCOG                      NavicoDataTypeConst = 388
+	OppositeTackTargetHeading            NavicoDataTypeConst = 389
+	MastRake                             NavicoDataTypeConst = 390
+	NextLegBearing                       NavicoDataTypeConst = 391
+	NextLegTargetSpeed                   NavicoDataTypeConst = 392
+	GroundWindDirection                  NavicoDataTypeConst = 393
+	GroundWindSpeed                      NavicoDataTypeConst = 394
+	MastCantAngle                        NavicoDataTypeConst = 395
+	RudderToeIn                          NavicoDataTypeConst = 396
+	DaggerboardPort                      NavicoDataTypeConst = 397
+	DaggerboardStarboard                 NavicoDataTypeConst = 398
+	BAndGRemote0                         NavicoDataTypeConst = 399
+	BAndGRemote1                         NavicoDataTypeConst = 400
+	BAndGRemote2                         NavicoDataTypeConst = 401
+	BAndGRemote3                         NavicoDataTypeConst = 402
+	BAndGRemote4                         NavicoDataTypeConst = 403
+	BAndGRemote5                         NavicoDataTypeConst = 404
+	BAndGRemote6                         NavicoDataTypeConst = 405
+	BAndGRemote7                         NavicoDataTypeConst = 406
+	BAndGRemote8                         NavicoDataTypeConst = 407
+	BAndGRemote9                         NavicoDataTypeConst = 408
+	ForwardDepth                         NavicoDataTypeConst = 409
+	CriticalRange                        NavicoDataTypeConst = 410
+	CautionRange                         NavicoDataTypeConst = 411
+	MaxRange                             NavicoDataTypeConst = 412
+	GeneratorAlternatorVoltage           NavicoDataTypeConst = 413
+	TrollingPropRate                     NavicoDataTypeConst = 414
+	TrollingCruiseControlSpeed           NavicoDataTypeConst = 415
+	VesselFuelUsed                       NavicoDataTypeConst = 416
+	SuzukiEngineBaroPressure             NavicoDataTypeConst = 417
+	SuzukiCylinderTemperature            NavicoDataTypeConst = 418
+	SuzukiIntakeAirTemperature           NavicoDataTypeConst = 419
+	SuzukiIgnitionTiming                 NavicoDataTypeConst = 420
+	SuzukiFuelInjectorPulseWidth         NavicoDataTypeConst = 421
+	WasSuzukiInjectedFuelAmount          NavicoDataTypeConst = 422
+	SuzukiIacValveDuty                   NavicoDataTypeConst = 423
+	SuzukiDiscreteStatus1                NavicoDataTypeConst = 424
+	SuzukiDiscreteStatus2                NavicoDataTypeConst = 425
+	SuzukiDiscreteStatus3                NavicoDataTypeConst = 426
+	SuzukiDiscreteStatus4                NavicoDataTypeConst = 427
+	FuelEconomyPit                       NavicoDataTypeConst = 428
+	VesselFuelEconomyPit                 NavicoDataTypeConst = 429
+	VesselFuelRangePit                   NavicoDataTypeConst = 430
+	Waypoint_2                           NavicoDataTypeConst = 431
+	AverageWindDirection                 NavicoDataTypeConst = 432
+	WindPhase                            NavicoDataTypeConst = 433
+	WindLift                             NavicoDataTypeConst = 434
+	FuelRangeSeasonalAverage             NavicoDataTypeConst = 435
+	FuelRangeInstantaneous               NavicoDataTypeConst = 436
+	VesselFuelEconomy                    NavicoDataTypeConst = 437
+	AverageFuelEconomySeasonal           NavicoDataTypeConst = 438
+	AverageFuelEconomyTrip               NavicoDataTypeConst = 439
+	BestFuelEconomySeasonal              NavicoDataTypeConst = 440
+	BestFuelEconomyTrip                  NavicoDataTypeConst = 441
+	VesselFuelLevel                      NavicoDataTypeConst = 442
+	VesselFuelUsedTrip                   NavicoDataTypeConst = 443
+	BAndGLinear17                        NavicoDataTypeConst = 444
+	BAndGLinear18                        NavicoDataTypeConst = 445
+	BAndGLinear19                        NavicoDataTypeConst = 446
+	BAndGLinear20                        NavicoDataTypeConst = 447
+	BAndGLinear21                        NavicoDataTypeConst = 448
+	BAndGLinear22                        NavicoDataTypeConst = 449
+	BAndGLinear23                        NavicoDataTypeConst = 450
+	BAndGLinear24                        NavicoDataTypeConst = 451
+	BAndGLinear25                        NavicoDataTypeConst = 452
+	BAndGLinear26                        NavicoDataTypeConst = 453
+	BAndGLinear27                        NavicoDataTypeConst = 454
+	BAndGLinear28                        NavicoDataTypeConst = 455
+	BAndGLinear29                        NavicoDataTypeConst = 456
+	BAndGLinear30                        NavicoDataTypeConst = 457
+	BAndGLinear31                        NavicoDataTypeConst = 458
+	BAndGLinear32                        NavicoDataTypeConst = 459
+	OriginWayPointNumber                 NavicoDataTypeConst = 460
+	DestWayPointNumber                   NavicoDataTypeConst = 461
+	ArrivalNotification                  NavicoDataTypeConst = 462
+	ArrivalCircleNotification            NavicoDataTypeConst = 463
+	WasNavTerminated                     NavicoDataTypeConst = 464
+	Bobstay                              NavicoDataTypeConst = 465
+	J1                                   NavicoDataTypeConst = 466
+	J2                                   NavicoDataTypeConst = 467
+	J3                                   NavicoDataTypeConst = 468
+	MastBase                             NavicoDataTypeConst = 469
+	Mainsheet                            NavicoDataTypeConst = 470
+	D0Port                               NavicoDataTypeConst = 471
+	D0Starboard                          NavicoDataTypeConst = 472
+	RunnerPort                           NavicoDataTypeConst = 473
+	RunnerStarboard                      NavicoDataTypeConst = 474
+	FoilPort                             NavicoDataTypeConst = 475
+	FoilStarboard                        NavicoDataTypeConst = 476
+	SailtackPort                         NavicoDataTypeConst = 477
+	SailtackStarboard                    NavicoDataTypeConst = 478
+	DeflectPort                          NavicoDataTypeConst = 479
+	DeflectStarboard                     NavicoDataTypeConst = 480
+	RudderLoadPort                       NavicoDataTypeConst = 481
+	RudderLoadStarboard                  NavicoDataTypeConst = 482
+	D1Port                               NavicoDataTypeConst = 483
+	D1Starboard                          NavicoDataTypeConst = 484
+	V0Port                               NavicoDataTypeConst = 485
+	V0Starboard                          NavicoDataTypeConst = 486
+	V1Port                               NavicoDataTypeConst = 487
+	V1Starboard                          NavicoDataTypeConst = 488
+	GNSSSystem                           NavicoDataTypeConst = 489
+	SvCount                              NavicoDataTypeConst = 490
+	GNSSOpMode                           NavicoDataTypeConst = 491
+	DGNSSMode                            NavicoDataTypeConst = 492
+	SuzukiFuelPumpDuty                   NavicoDataTypeConst = 493
+	SpeedLogWaterLongitudinal            NavicoDataTypeConst = 494
+	SpeedLogWaterTransverse              NavicoDataTypeConst = 495
+	SpeedLogWaterResultant               NavicoDataTypeConst = 496
+	SpeedLogWaterAngle                   NavicoDataTypeConst = 497
+	SpeedLogGroundLongitudinal           NavicoDataTypeConst = 498
+	SpeedLogGroundTransverse             NavicoDataTypeConst = 499
+	SpeedLogGroundResultant              NavicoDataTypeConst = 500
+	SpeedLogGroundAngle                  NavicoDataTypeConst = 501
+	SpeedLogSternWaterTransverse         NavicoDataTypeConst = 502
+	SpeedLogSternGroundTransverse        NavicoDataTypeConst = 503
+	PositionDatum                        NavicoDataTypeConst = 504
+	SpeedBoat                            NavicoDataTypeConst = 505
+	WasEngineFuelUsedMercury             NavicoDataTypeConst = 506
+	NavicoDataTypeConstHeave             NavicoDataTypeConst = 507
+	SpeedTripMaxRPM                      NavicoDataTypeConst = 508
+	HondaEngineStatusParams              NavicoDataTypeConst = 509
+	PilotFeatures                        NavicoDataTypeConst = 510
+	PilotSetpointHeading                 NavicoDataTypeConst = 511
+	IdleSpeedControlMode                 NavicoDataTypeConst = 512
+	IdleSpeedControlValue                NavicoDataTypeConst = 513
+	TrollingMode                         NavicoDataTypeConst = 514
+	ImmobilizerLockStatus                NavicoDataTypeConst = 515
+	EngineDiscreteParams1                NavicoDataTypeConst = 516
+	EngineDiscreteParams2                NavicoDataTypeConst = 517
+	EngineDiscreteParams3                NavicoDataTypeConst = 518
+	EngineDiscreteParams4                NavicoDataTypeConst = 519
+	EngineDiscreteParams5                NavicoDataTypeConst = 520
+	EngineDiscreteParams6                NavicoDataTypeConst = 521
+	IdleSpeedLimitLow                    NavicoDataTypeConst = 522
+	IdleSpeedLimitHigh                   NavicoDataTypeConst = 523
+	WasTrollingVariableRPMInfo           NavicoDataTypeConst = 524
+	IdleSpeedControlTargetRev            NavicoDataTypeConst = 525
+	IdleControl                          NavicoDataTypeConst = 526
+	IdleFeedback                         NavicoDataTypeConst = 527
+	ImmediatelyAfterStartingContro       NavicoDataTypeConst = 528
+	GatewayParams                        NavicoDataTypeConst = 529
+	GatewayProtocol                      NavicoDataTypeConst = 530
+	EngineWallTemp                       NavicoDataTypeConst = 531
+	SubstituteBatteryVoltage             NavicoDataTypeConst = 532
+	YamahaEngineM6DiagCode               NavicoDataTypeConst = 533
+	WirelessSensorBatteryStatus          NavicoDataTypeConst = 534
+	WirelessSensorBatteryChargeSta       NavicoDataTypeConst = 535
+	WirelessSensorBatteryStatusVol       NavicoDataTypeConst = 536
+	WirelessSensorBatteryChargeSta_2     NavicoDataTypeConst = 537
+	FluidTypeMode                        NavicoDataTypeConst = 538
+	Datetime                             NavicoDataTypeConst = 539
+	ReacherLoad                          NavicoDataTypeConst = 540
+	BladeLoad                            NavicoDataTypeConst = 541
+	StaysailLoad                         NavicoDataTypeConst = 542
+	TackLoad                             NavicoDataTypeConst = 543
+	J4Load                               NavicoDataTypeConst = 544
+	SolentLoad                           NavicoDataTypeConst = 545
+	TackPortLoad                         NavicoDataTypeConst = 546
+	TackStarboardLoad                    NavicoDataTypeConst = 547
+	DeflectUpperLoad                     NavicoDataTypeConst = 548
+	DeflectLowerLoad                     NavicoDataTypeConst = 549
+	WinchPortLoad                        NavicoDataTypeConst = 550
+	WinchStarboardLoad                   NavicoDataTypeConst = 551
+	SpinHalyardPortLoad                  NavicoDataTypeConst = 552
+	SpinHalyardStarboardLoad             NavicoDataTypeConst = 553
+	MainHalyward                         NavicoDataTypeConst = 554
+	Load1Load                            NavicoDataTypeConst = 555
+	Load2Load                            NavicoDataTypeConst = 556
+	MastBase2Load                        NavicoDataTypeConst = 557
+	PilotActivePerfMode                  NavicoDataTypeConst = 558
+	PilotGust                            NavicoDataTypeConst = 559
+	PilotTwsResponse                     NavicoDataTypeConst = 560
+	PilotHeelComp                        NavicoDataTypeConst = 561
+	PilotNetCourse                       NavicoDataTypeConst = 562
+	PilotTargetWindAngle                 NavicoDataTypeConst = 563
+	PilotWeatherHelm                     NavicoDataTypeConst = 564
+	PilotMeanHeel                        NavicoDataTypeConst = 565
+	PropellerShaftPitchAngle             NavicoDataTypeConst = 566
+	PropellerShaftPitchPercent           NavicoDataTypeConst = 567
+	PropellerShaftRPM                    NavicoDataTypeConst = 568
+	ThrusterPitchAngle                   NavicoDataTypeConst = 569
+	ThrusterPitchPercent                 NavicoDataTypeConst = 570
+	GroundWindAngle                      NavicoDataTypeConst = 571
+	FuelFlowOffset                       NavicoDataTypeConst = 572
+	FluidLevelGasoline                   NavicoDataTypeConst = 573
+	FluidVolumeGasoline                  NavicoDataTypeConst = 574
+	TankCapacityGasoline                 NavicoDataTypeConst = 575
+	CmdXTEOffset                         NavicoDataTypeConst = 576
+	Engine4STROKEOil                     NavicoDataTypeConst = 577
+	WirelessSensorSignalStrength         NavicoDataTypeConst = 578
+	WirelessSensorSoftwareUpdatePr       NavicoDataTypeConst = 579
+	TrollingStatus                       NavicoDataTypeConst = 580
+	MercuryExhaustValve                  NavicoDataTypeConst = 581
+	MercuryExhaustStatus                 NavicoDataTypeConst = 582
+	YanmarEngineEcuAlarms                NavicoDataTypeConst = 583
+	YanmarHelmEcuAlarms                  NavicoDataTypeConst = 584
+	YanmarDriveEcuAlarms                 NavicoDataTypeConst = 585
+	DGPSCorrectionData                   NavicoDataTypeConst = 586
+	DGPSReferenceStationID               NavicoDataTypeConst = 587
+	DGPSReferenceStationHealth           NavicoDataTypeConst = 588
+	DGPSSignalSnr                        NavicoDataTypeConst = 589
+	DGPSSignalFrequency                  NavicoDataTypeConst = 590
+	DGPSSignalStrength                   NavicoDataTypeConst = 591
+	EngineFuelTemp                       NavicoDataTypeConst = 592
+	DepthQuality                         NavicoDataTypeConst = 593
+	NumberOfActiveDtc                    NavicoDataTypeConst = 594
+	YanmarFuelLevelTank1Port             NavicoDataTypeConst = 595
+	YanmarFuelLevelTank2Port             NavicoDataTypeConst = 596
+	YanmarFuelLevelTank1Stbd             NavicoDataTypeConst = 597
+	YanmarFuelLevelTank2Stbd             NavicoDataTypeConst = 598
+	YanmarFuelLevelTank1Center           NavicoDataTypeConst = 599
+	YanmarFuelLevelTank2Center           NavicoDataTypeConst = 600
+	YanmarFreshWaterLevelTank1Port       NavicoDataTypeConst = 601
+	YanmarFreshWaterLevelTank2Port       NavicoDataTypeConst = 602
+	YanmarFreshWaterLevelTank1Stbd       NavicoDataTypeConst = 603
+	YanmarFreshWaterLevelTank2Stbd       NavicoDataTypeConst = 604
+	YanmarFreshWaterLevelTank1Cent       NavicoDataTypeConst = 605
+	YanmarFreshWaterLevelTank2Cent       NavicoDataTypeConst = 606
+	YanmarGrayWaterLevelTank1Port        NavicoDataTypeConst = 607
+	YanmarGrayWaterLevelTank2Port        NavicoDataTypeConst = 608
+	YanmarGrayWaterLevelTank1Stbd        NavicoDataTypeConst = 609
+	YanmarGrayWaterLevelTank2Stbd        NavicoDataTypeConst = 610
+	YanmarGrayWaterLevelTank1Cente       NavicoDataTypeConst = 611
+	YanmarGrayWaterLevelTank2Cente       NavicoDataTypeConst = 612
+	RudderAnglePercentage                NavicoDataTypeConst = 613
+	TrollActiveHelm                      NavicoDataTypeConst = 614
+	TidesGraphic                         NavicoDataTypeConst = 615
+	AnchorDistance                       NavicoDataTypeConst = 616
+	AnchorSize                           NavicoDataTypeConst = 617
+	AnchorDepth                          NavicoDataTypeConst = 618
+	AnchorBearing                        NavicoDataTypeConst = 619
+	HondaEngineWarningParams             NavicoDataTypeConst = 620
+	HondaEngineDiscreteParams1           NavicoDataTypeConst = 621
+	HondaEngineDiscreteParams2           NavicoDataTypeConst = 622
+	HondaEngineDiscreteParams3           NavicoDataTypeConst = 623
+	HondaEngineDiscreteParams4           NavicoDataTypeConst = 624
+	MainsailHeadLoad                     NavicoDataTypeConst = 625
+	MainsailClewLoad                     NavicoDataTypeConst = 626
+	MainsailTackLoad                     NavicoDataTypeConst = 627
+	J1HeadLoad                           NavicoDataTypeConst = 628
+	J1ClewLoad                           NavicoDataTypeConst = 629
+	J1TackLoad                           NavicoDataTypeConst = 630
+	J2HeadLoad                           NavicoDataTypeConst = 631
+	J2ClewLoad                           NavicoDataTypeConst = 632
+	J2TackLoad                           NavicoDataTypeConst = 633
+	J3HeadLoad                           NavicoDataTypeConst = 634
+	J3ClewLoad                           NavicoDataTypeConst = 635
+	J3TackLoad                           NavicoDataTypeConst = 636
+	CodeZeroHeadLoad                     NavicoDataTypeConst = 637
+	CodeZeroClewLoad                     NavicoDataTypeConst = 638
+	CodeZeroTackLoad                     NavicoDataTypeConst = 639
+	SuzukiEngineAlertI                   NavicoDataTypeConst = 640
+	EngineOilLife                        NavicoDataTypeConst = 641
+	EngineOilLevelStatus                 NavicoDataTypeConst = 642
+	TransFluidStatus                     NavicoDataTypeConst = 643
+	HondaEcoStatusAllEngines             NavicoDataTypeConst = 644
+	OutputRPM                            NavicoDataTypeConst = 645
+	SuzukiEngineAlertA                   NavicoDataTypeConst = 646
+	SuzukiEngineAlertB                   NavicoDataTypeConst = 647
+	SuzukiEngineAlertC                   NavicoDataTypeConst = 648
+	SuzukiEngineAlertD                   NavicoDataTypeConst = 649
+	SuzukiEngineAlertE                   NavicoDataTypeConst = 650
+	SuzukiEngineAlertF                   NavicoDataTypeConst = 651
+	SuzukiEngineAlertG                   NavicoDataTypeConst = 652
+	SuzukiEngineAlertH                   NavicoDataTypeConst = 653
+	SuzukiEngineAlertJ                   NavicoDataTypeConst = 654
+	SuzukiBcmFault                       NavicoDataTypeConst = 655
+	SuzukiBcmMode                        NavicoDataTypeConst = 656
+	SuzukiEngineKlsStatus                NavicoDataTypeConst = 657
+	SuzukiSwitchFault                    NavicoDataTypeConst = 658
+	SuzukiShiftPositionStatus            NavicoDataTypeConst = 659
+	VesselFuelUsedSeasonal               NavicoDataTypeConst = 660
+	VesselFuelCapacity                   NavicoDataTypeConst = 661
+	SuzukiEngineAutoTrimStatus           NavicoDataTypeConst = 662
+	TrollingModeActive                   NavicoDataTypeConst = 663
+	TrollingModeActiveMaster             NavicoDataTypeConst = 664
+	KeylessCommunicationState            NavicoDataTypeConst = 665
+	LinearActuatorPosition               NavicoDataTypeConst = 666
+	EngineExhaustTemp                    NavicoDataTypeConst = 667
+	EngineGuardianPowerLimit             NavicoDataTypeConst = 668
+	EngineState                          NavicoDataTypeConst = 669
+	SailingTimeToBurn                    NavicoDataTypeConst = 670
+	MastTwist                            NavicoDataTypeConst = 671
+	VHFChannel                           NavicoDataTypeConst = 672
+	TrollingLowerUnitDirection           NavicoDataTypeConst = 673
+	PropulsionBatteryStatus              NavicoDataTypeConst = 674
+	PropulsionBatteryIsolationStat       NavicoDataTypeConst = 675
+	PropulsionBatteryError               NavicoDataTypeConst = 676
+	PropulsionBatteryVoltage             NavicoDataTypeConst = 677
+	PropulsionBatteryCurrent             NavicoDataTypeConst = 678
+	PropulsionBatteryStateOfCharge       NavicoDataTypeConst = 679
+	PropulsionBatteryTimeRemaining       NavicoDataTypeConst = 680
+	PropulsionBatteryHighestCellTe       NavicoDataTypeConst = 681
+	PropulsionBatteryLowestCellTem       NavicoDataTypeConst = 682
+	PropulsionBatteryAverageCellTe       NavicoDataTypeConst = 683
+	PropulsionBatteryMaximumDischa       NavicoDataTypeConst = 684
+	PropulsionBatteryMaximumCharge       NavicoDataTypeConst = 685
+	PropulsionBatteryCoolingSystem       NavicoDataTypeConst = 686
+	PropulsionBatteryHeatingSystem       NavicoDataTypeConst = 687
+	PropulsionBatteryStorageMode         NavicoDataTypeConst = 688
+	PropulsionBatteryChemistry           NavicoDataTypeConst = 689
+	PropulsionBatteryMaximumTemper       NavicoDataTypeConst = 690
+	PropulsionBatteryMaximumTemper_2     NavicoDataTypeConst = 691
+	PropulsionBatteryMinimumTemper       NavicoDataTypeConst = 692
+	PropulsionBatteryMinimumTemper_2     NavicoDataTypeConst = 693
+	PropulsionBatteryUsableEnergy        NavicoDataTypeConst = 694
+	PropulsionBatteryStateOfHealth       NavicoDataTypeConst = 695
+	PropulsionBatteryDischargeCycl       NavicoDataTypeConst = 696
+	PropulsionBatteryFullStatus          NavicoDataTypeConst = 697
+	PropulsionBatteryEmptyStatus         NavicoDataTypeConst = 698
+	PropulsionBatteryMaximumCharge_2     NavicoDataTypeConst = 699
+	PropulsionBatteryMinimumDischa       NavicoDataTypeConst = 700
+	ActiveMotorMode                      NavicoDataTypeConst = 701
+	MotorBrakeMode                       NavicoDataTypeConst = 702
+	MotorRotationalShaftSpeed            NavicoDataTypeConst = 703
+	MotorVoltage                         NavicoDataTypeConst = 704
+	MotorCurrent                         NavicoDataTypeConst = 705
+	MotorOperatingMode                   NavicoDataTypeConst = 706
+	MotorTemperature                     NavicoDataTypeConst = 707
+	MotorInverterTemperature             NavicoDataTypeConst = 708
+	MotorCoolantTemperature              NavicoDataTypeConst = 709
+	MotorGearTemperature                 NavicoDataTypeConst = 710
+	MotorShaftTorquePercent              NavicoDataTypeConst = 711
+	MotorVoltageType                     NavicoDataTypeConst = 712
+	MotorVoltageRating                   NavicoDataTypeConst = 713
+	MotorMaxContinuousPower              NavicoDataTypeConst = 714
+	MotorMaxBoostPower                   NavicoDataTypeConst = 715
+	MotorMaxTemperatureRating            NavicoDataTypeConst = 716
+	MotorRatedSpeed                      NavicoDataTypeConst = 717
+	MotorMaxControllerTemperatureR       NavicoDataTypeConst = 718
+	MotorShaftTorqueRating               NavicoDataTypeConst = 719
+	MotorDCVoltageDeratingThreshol       NavicoDataTypeConst = 720
+	MotorDCVoltageCutoffThreshold        NavicoDataTypeConst = 721
+	MotorRuntime                         NavicoDataTypeConst = 722
+	SailingPingTimePort                  NavicoDataTypeConst = 723
+	SailingPingTimeStbd                  NavicoDataTypeConst = 724
+	HeadingSource                        NavicoDataTypeConst = 725
+	Invalid                              NavicoDataTypeConst = 726
 )
 
-func (e NavicoDataTypeConst) GoString() string {return e.String() }
+func (e NavicoDataTypeConst) GoString() string { return e.String() }
 func (e NavicoDataTypeConst) String() string {
 	switch e {
-		case 0:
-			return "Altitude"
-		case 1:
-			return "Position"
-		case 2:
-			return "Position Error"
-		case 3:
-			return "HDOP"
-		case 4:
-			return "VDOP"
-		case 5:
-			return "TDOP"
-		case 6:
-			return "PDOP"
-		case 7:
-			return "Geoidal Seperation"
-		case 8:
-			return "COG"
-		case 9:
-			return "Position Quality"
-		case 10:
-			return "Position Integrity"
-		case 11:
-			return "Sats In View"
-		case 12:
-			return "Waas Status"
-		case 13:
-			return "Bearing"
-		case 14:
-			return "Course"
-		case 15:
-			return "CDI Graphic"
-		case 16:
-			return "Course To Steer"
-		case 17:
-			return "Cross Track"
-		case 18:
-			return "Velocity Made Good"
-		case 19:
-			return "Destination"
-		case 20:
-			return "Distance To Turn"
-		case 21:
-			return "Distance To Dest"
-		case 22:
-			return "Time To Turn"
-		case 23:
-			return "Time To Dest"
-		case 24:
-			return "ETA At Turn"
-		case 25:
-			return "ETA At Dest"
-		case 26:
-			return "Total Distance"
-		case 27:
-			return "Steer Arrow"
-		case 28:
-			return "Odometer"
-		case 29:
-			return "Trip Distance"
-		case 30:
-			return "Trip Time"
-		case 31:
-			return "Date"
-		case 32:
-			return "Time"
-		case 33:
-			return "UTC Date"
-		case 34:
-			return "UTC Time"
-		case 35:
-			return "Local Time Offset"
-		case 36:
-			return "Heading"
-		case 37:
-			return "Was Voltage"
-		case 38:
-			return "Current Set"
-		case 39:
-			return "Current Drift"
-		case 40:
-			return "Speed SOG"
-		case 41:
-			return "Speed Water"
-		case 42:
-			return "Speed Pitot"
-		case 43:
-			return "Speed Trip Avg"
-		case 44:
-			return "Speed Trip Max"
-		case 45:
-			return "Speed Wind App"
-		case 46:
-			return "Speed Wind True"
-		case 47:
-			return "Temp Water"
-		case 48:
-			return "Temp Outside"
-		case 49:
-			return "Temp Inside"
-		case 50:
-			return "Temp Engine Room"
-		case 51:
-			return "Temp Main Cabin"
-		case 52:
-			return "Temp Live Well"
-		case 53:
-			return "Temp Bait Well"
-		case 54:
-			return "Temp Refrigeration"
-		case 55:
-			return "Temp Heating System"
-		case 56:
-			return "Temp Dew Point"
-		case 57:
-			return "Temp Wind Chill App"
-		case 58:
-			return "Temp Wind Chill Theoretic"
-		case 59:
-			return "Temp Heat Index"
-		case 60:
-			return "Temp Freezer"
-		case 61:
-			return "Engine Temp"
-		case 62:
-			return "Engine Air Temp"
-		case 63:
-			return "Engine Oil Temp"
-		case 64:
-			return "Temp Battery"
-		case 65:
-			return "Pressure Atmospheric"
-		case 66:
-			return "Engine Boost Pres"
-		case 67:
-			return "Engine Oil Pres"
-		case 68:
-			return "Engine Water Pres"
-		case 69:
-			return "Engine Fuel Pres"
-		case 70:
-			return "Engine Manifold Pres"
-		case 71:
-			return "Pressure Steam"
-		case 72:
-			return "Pressure Compr Air"
-		case 73:
-			return "Pressure Hydraulic"
-		case 74:
-			return "Was Generic Pressure Lo"
-		case 75:
-			return "Was Generic Pressure Hi"
-		case 76:
-			return "Depth"
-		case 77:
-			return "Water Distance"
-		case 78:
-			return "Engine RPM"
-		case 79:
-			return "Engine Trim"
-		case 80:
-			return "Engine Alternator Potential"
-		case 81:
-			return "Engine Fuel Rate"
-		case 82:
-			return "Engine Percent Load"
-		case 83:
-			return "Engine Percent Torque"
-		case 84:
-			return "Was Suzuki Alarm Lev Lo"
-		case 85:
-			return "Was Suzuki Alarm Lev High"
-		case 86:
-			return "Tank Fuel Level"
-		case 87:
-			return "Fluid Level Fresh Water"
-		case 88:
-			return "Fluid Level Gray Water"
-		case 89:
-			return "Fluid Level Live Well"
-		case 90:
-			return "Fluid Level Oil"
-		case 91:
-			return "Fluid Level Black Water"
-		case 92:
-			return "Tank Fuel Remaining"
-		case 93:
-			return "Fluid Volume Fresh Water"
-		case 94:
-			return "Fluid Volume Gray Water"
-		case 95:
-			return "Fluid Volume Live Well"
-		case 96:
-			return "Fluid Volume Oil"
-		case 97:
-			return "Fluid Volume Black Water"
-		case 98:
-			return "Gen Fluid Volume"
-		case 99:
-			return "Was Tank Fuel Level Lo"
-		case 100:
-			return "Was Fluid Level Lo Fresh Water"
-		case 101:
-			return "Was Fluid Level Lo Gray Water"
-		case 102:
-			return "Was Fluid Level Lo Live Well"
-		case 103:
-			return "Was Fluid Level Lo Oil"
-		case 104:
-			return "Gen Tank Capacity"
-		case 105:
-			return "Tank Fuel Capacity"
-		case 106:
-			return "Tank Capacity Fresh Water"
-		case 107:
-			return "Tank Capacity Gray Water"
-		case 108:
-			return "Tank Capacity Live Well"
-		case 109:
-			return "Tank Capacity Oil"
-		case 110:
-			return "Tank Capacity Black Water"
-		case 111:
-			return "Was Tank Fuel Used"
-		case 112:
-			return "Engine Fuel Used"
-		case 113:
-			return "Engine Fuel Used Trip"
-		case 114:
-			return "Engine Fuel Used Seasonal"
-		case 115:
-			return "Engine Fuel K Value"
-		case 116:
-			return "Battery Potential"
-		case 117:
-			return "Battery Current"
-		case 118:
-			return "Trim Tab"
-		case 119:
-			return "Was Trim Stbd Tab"
-		case 120:
-			return "Rate Of Turn"
-		case 121:
-			return "Attitude Yaw"
-		case 122:
-			return "Attitude Pitch"
-		case 123:
-			return "Attitude Roll"
-		case 124:
-			return "Magnetic Variation"
-		case 125:
-			return "Deviation"
-		case 126:
-			return "Fuel Economy Wtr"
-		case 127:
-			return "Fuel Economy GPS"
-		case 128:
-			return "Was Fuel Remaining"
-		case 129:
-			return "Was Fuel Range Wtr"
-		case 130:
-			return "Was Fuel Range GPS"
-		case 131:
-			return "Engine Hours Used"
-		case 132:
-			return "Engine Type"
-		case 133:
-			return "Vessel Fuel Rate"
-		case 134:
-			return "Vessel Fuel Economy Wtr"
-		case 135:
-			return "Vessel Fuel Economy GPS"
-		case 136:
-			return "Vessel Fuel Remaining"
-		case 137:
-			return "Vessel Fuel Range Wtr"
-		case 138:
-			return "Vessel Fuel Range GPS"
-		case 139:
-			return "Wind App Angle"
-		case 140:
-			return "Wind True Angle"
-		case 141:
-			return "Wind True Direction"
-		case 142:
-			return "Humidity Inside"
-		case 143:
-			return "Humidity Outside"
-		case 144:
-			return "Set Humidity"
-		case 145:
-			return "Rudder Angle"
-		case 146:
-			return "Trans Gear"
-		case 147:
-			return "Trans Oil Pressure"
-		case 148:
-			return "Trans Oil Temp"
-		case 149:
-			return "Cmd Rudder Angle"
-		case 150:
-			return "Rudder Limit"
-		case 151:
-			return "Off Heading Lim"
-		case 152:
-			return "Radius Of Turn Order"
-		case 153:
-			return "Rate Of Turn Order"
-		case 154:
-			return "Off Track Lim"
-		case 155:
-			return "Logging Time Remaining"
-		case 156:
-			return "Position Fix Type"
-		case 157:
-			return "Engine Discrete Status"
-		case 158:
-			return "Transmission Discrete Status"
-		case 159:
-			return "GPS Best Of Four Snr"
-		case 160:
-			return "Gen Fluid Level"
-		case 161:
-			return "Gen Pressure"
-		case 162:
-			return "Gen Temperature"
-		case 163:
-			return "Internal Voltage"
-		case 164:
-			return "Depth Offset"
-		case 165:
-			return "Structure Depth"
-		case 166:
-			return "Loran Position"
-		case 167:
-			return "Vessel Status"
-		case 168:
-			return "Battery DC Type"
-		case 169:
-			return "Battery State Of Charge"
-		case 170:
-			return "Battery State Of Health"
-		case 171:
-			return "Battery Time Remaining"
-		case 172:
-			return "Battery Ripple Voltage"
-		case 173:
-			return "Ac1 Acceptability"
-		case 174:
-			return "Ac2 Acceptability"
-		case 175:
-			return "Ac3 Acceptability"
-		case 176:
-			return "Ac1 Voltage"
-		case 177:
-			return "Ac2 Voltage"
-		case 178:
-			return "Ac3 Voltage"
-		case 179:
-			return "Ac1 Current"
-		case 180:
-			return "Ac2 Current"
-		case 181:
-			return "Ac3 Current"
-		case 182:
-			return "Ac1 Frequency"
-		case 183:
-			return "Ac2 Frequency"
-		case 184:
-			return "Ac3 Frequency"
-		case 185:
-			return "Ac1 Breaker Size"
-		case 186:
-			return "Ac2 Breaker Size"
-		case 187:
-			return "Ac3 Breaker Size"
-		case 188:
-			return "Ac1 Real Power"
-		case 189:
-			return "Ac2 Real Power"
-		case 190:
-			return "Ac3 Real Power"
-		case 191:
-			return "Ac1 Reactive Power"
-		case 192:
-			return "Ac2 Reactive Power"
-		case 193:
-			return "Ac3 Reactive Power"
-		case 194:
-			return "Ac1 Power Factor"
-		case 195:
-			return "Ac2 Power Factor"
-		case 196:
-			return "Ac3 Power Factor"
-		case 197:
-			return "Switch State"
-		case 198:
-			return "Switch Current"
-		case 199:
-			return "Switch Fault"
-		case 200:
-			return "Switch Dim Level"
-		case 201:
-			return "Previous Cmd Heading"
-		case 202:
-			return "Cmd Wind Angle"
-		case 203:
-			return "Was Cmd Bearing Offset"
-		case 204:
-			return "Cmd Bearing"
-		case 205:
-			return "Cmd Depth Contour"
-		case 206:
-			return "Cmd Course Change"
-		case 207:
-			return "Pilot Drift"
-		case 208:
-			return "Pilot Distance To Turn"
-		case 209:
-			return "Pilot Time To Turn"
-		case 210:
-			return "Pilot Reference Position"
-		case 211:
-			return "DC Status"
-		case 212:
-			return "Ac1 Status"
-		case 213:
-			return "Was Switch Voltage"
-		case 214:
-			return "Battery Capacity Remaining"
-		case 215:
-			return "Pilot Heading Reference"
-		case 216:
-			return "B And G Linear 1"
-		case 217:
-			return "B And G Linear 2"
-		case 218:
-			return "B And G Linear 3"
-		case 219:
-			return "Boom Position"
-		case 220:
-			return "Sailing Course"
-		case 221:
-			return "Daggerboard Position"
-		case 222:
-			return "B And G Linear 4"
-		case 223:
-			return "Heading On Next Tack"
-		case 224:
-			return "Keel Angle"
-		case 225:
-			return "Leeway"
-		case 226:
-			return "Mast Angle"
-		case 227:
-			return "Target True Wind Angle"
-		case 228:
-			return "Keel Trim Tab"
-		case 229:
-			return "Race Timer"
-		case 230:
-			return "Canard Angle"
-		case 231:
-			return "Next Leg Apparent Wind Angle"
-		case 232:
-			return "Next Leg Apparent Wind Speed"
-		case 233:
-			return "Target Boat Speed"
-		case 234:
-			return "VMG To Wind"
-		case 235:
-			return "Time To Laylines"
-		case 236:
-			return "Distance To Laylines"
-		case 237:
-			return "Aft Depth"
-		case 238:
-			return "Forestay"
-		case 239:
-			return "Polar Speed"
-		case 240:
-			return "Polar Performance"
-		case 241:
-			return "Tacking Performance"
-		case 242:
-			return "Wind Angle To Mast"
-		case 243:
-			return "Can Bus Voltage"
-		case 244:
-			return "Internal Temperature"
-		case 245:
-			return "Engage Current"
-		case 246:
-			return "Uref Voltage"
-		case 247:
-			return "Supply Voltage"
-		case 248:
-			return "Destination Position"
-		case 249:
-			return "Compass Heading Reference"
-		case 250:
-			return "Cmd Rudder Direction"
-		case 251:
-			return "Was Engine Sync State"
-		case 252:
-			return "Engine General Maintenance"
-		case 253:
-			return "Engine Percent Throttle"
-		case 254:
-			return "Engine Steering Angle"
-		case 255:
-			return "Engine Break In Reqd"
-		case 256:
-			return "GPS All"
-		case 257:
-			return "Engine Break In Accum"
-		case 258:
-			return "Engine Trim Status"
-		case 259:
-			return "Pilot Present"
-		case 260:
-			return "Ac1 Out Waveform"
-		case 261:
-			return "Ac2 Out Waveform"
-		case 262:
-			return "Ac3 Out Waveform"
-		case 263:
-			return "Ac1 Out Voltage"
-		case 264:
-			return "Ac2 Out Voltage"
-		case 265:
-			return "Ac3 Out Voltage"
-		case 266:
-			return "Ac1 Out Current"
-		case 267:
-			return "Ac2 Out Current"
-		case 268:
-			return "Ac3 Out Current"
-		case 269:
-			return "Ac1 Out Frequency"
-		case 270:
-			return "Ac2 Out Frequency"
-		case 271:
-			return "Ac3 Out Frequency"
-		case 272:
-			return "Ac1 Out Breaker Size"
-		case 273:
-			return "Ac2 Out Breaker Size"
-		case 274:
-			return "Ac3 Out Breaker Size"
-		case 275:
-			return "Ac1 Out Real Power"
-		case 276:
-			return "Ac2 Out Real Power"
-		case 277:
-			return "Ac3 Out Real Power"
-		case 278:
-			return "Ac1 Out Reactive Power"
-		case 279:
-			return "Ac2 Out Reactive Power"
-		case 280:
-			return "Ac3 Out Reactive Power"
-		case 281:
-			return "Ac1 Out Power Factor"
-		case 282:
-			return "Ac2 Out Power Factor"
-		case 283:
-			return "Ac3 Out Power Factor"
-		case 284:
-			return "Ac2 Status"
-		case 285:
-			return "Ac3 Status"
-		case 286:
-			return "Ac1 Out Status"
-		case 287:
-			return "Ac2 Out Status"
-		case 288:
-			return "Ac3 Out Status"
-		case 289:
-			return "Switch Manual Override"
-		case 290:
-			return "Switch Reverse Polarity"
-		case 291:
-			return "Switch Acsource Available"
-		case 292:
-			return "Switch Accontactor Systemsonstate"
-		case 293:
-			return "Charger Battery Instance"
-		case 294:
-			return "Charger Operating State"
-		case 295:
-			return "Charger Mode"
-		case 296:
-			return "Charger Enabled"
-		case 297:
-			return "Charger Equalization Pending"
-		case 298:
-			return "Charger Equalization Time Remaining"
-		case 299:
-			return "Inverter AC Instance"
-		case 300:
-			return "Inverter DC Instance"
-		case 301:
-			return "Inverter Operating State"
-		case 302:
-			return "Inverter Enabled"
-		case 303:
-			return "Thruster Power"
-		case 304:
-			return "Fuel To Turn"
-		case 305:
-			return "Engine Mil"
-		case 306:
-			return "Engine Warning Flags"
-		case 307:
-			return "Speed Stw"
-		case 308:
-			return "Engine Performance SOG"
-		case 309:
-			return "Engine Performance Stw"
-		case 310:
-			return "Engine Control Flags"
-		case 311:
-			return "Engine Troll RPM Setpoint"
-		case 312:
-			return "Active Helm"
-		case 313:
-			return "Cruise RPM Setpoint"
-		case 314:
-			return "Cruise Speed Setpoint"
-		case 315:
-			return "Cmd Pattern Dir"
-		case 316:
-			return "Smart Contextual"
-		case 317:
-			return "Sailing Time To Waypoint"
-		case 318:
-			return "Sailing Distance To Waypoint"
-		case 319:
-			return "Sailing ETA"
-		case 320:
-			return "Generator Temp"
-		case 321:
-			return "Generator Oil Temp"
-		case 322:
-			return "Generator Oil Pres"
-		case 323:
-			return "Generator Water Pres"
-		case 324:
-			return "Generator Fuel Pres"
-		case 325:
-			return "Generator Fuel Rate"
-		case 326:
-			return "Generator Hours Used"
-		case 327:
-			return "Generator Discrete Status"
-		case 328:
-			return "Generator Percent Load"
-		case 329:
-			return "Generator Percent Torque"
-		case 330:
-			return "Generator Battery Voltage"
-		case 331:
-			return "Generator Average Voltage"
-		case 332:
-			return "Generator Average Frequency"
-		case 333:
-			return "Generator Average Current"
-		case 334:
-			return "Pilot Mode"
-		case 335:
-			return "Pilot Response Level"
-		case 336:
-			return "Cruise Smarttow Overshoot"
-		case 337:
-			return "Pilot Cmd Heading"
-		case 338:
-			return "MOB Dr Position"
-		case 339:
-			return "MOB Dr Range"
-		case 340:
-			return "MOB Dr Bearing"
-		case 341:
-			return "Bow Position"
-		case 342:
-			return "Start Line Bearing"
-		case 343:
-			return "Start Line Bias"
-		case 344:
-			return "Distance To Start Line"
-		case 345:
-			return "Distance To Start Line Port End"
-		case 346:
-			return "Distance To Start Line Stbd End"
-		case 347:
-			return "Start Line Port Position"
-		case 348:
-			return "Start Line Stbd Position"
-		case 349:
-			return "Start Line Boat Length Advantage"
-		case 350:
-			return "Distance To Start Line Boat Lengths"
-		case 351:
-			return "Backstay"
-		case 352:
-			return "Boom Angle"
-		case 353:
-			return "Boom Vang"
-		case 354:
-			return "Chain Length"
-		case 355:
-			return "Cunningham"
-		case 356:
-			return "Inner Forestay Load"
-		case 357:
-			return "Inner Forestay Halyard Load"
-		case 358:
-			return "Jib Furl"
-		case 359:
-			return "Jib Halyard Load"
-		case 360:
-			return "Optimum Wind Angle"
-		case 361:
-			return "Outhaul Load"
-		case 362:
-			return "Pitch Rate"
-		case 363:
-			return "Plow Angle"
-		case 364:
-			return "Roll Rate"
-		case 365:
-			return "VMG Performance"
-		case 366:
-			return "B And G Linear 5"
-		case 367:
-			return "B And G Linear 6"
-		case 368:
-			return "B And G Linear 7"
-		case 369:
-			return "B And G Linear 8"
-		case 370:
-			return "B And G Linear 9"
-		case 371:
-			return "B And G Linear 10"
-		case 372:
-			return "B And G Linear 11"
-		case 373:
-			return "B And G Linear 12"
-		case 374:
-			return "B And G Linear 13"
-		case 375:
-			return "B And G Linear 14"
-		case 376:
-			return "B And G Linear 15"
-		case 377:
-			return "B And G Linear 16"
-		case 378:
-			return "Keel Draught"
-		case 379:
-			return "Pool Temperature"
-		case 380:
-			return "Jacuzzi Temperature"
-		case 381:
-			return "Trip Dr Bearing"
-		case 382:
-			return "Trip Dr Distance"
-		case 383:
-			return "Code Zero Load"
-		case 384:
-			return "B And G MOB Position"
-		case 385:
-			return "Distance Behind Start Line"
-		case 386:
-			return "Distance Behind Start Line Boat Lengths"
-		case 387:
-			return "Bias Advantage"
-		case 388:
-			return "Opposite Tack COG"
-		case 389:
-			return "Opposite Tack Target Heading"
-		case 390:
-			return "Mast Rake"
-		case 391:
-			return "Next Leg Bearing"
-		case 392:
-			return "Next Leg Target Speed"
-		case 393:
-			return "Ground Wind Direction"
-		case 394:
-			return "Ground Wind Speed"
-		case 395:
-			return "Mast Cant Angle"
-		case 396:
-			return "Rudder Toe In"
-		case 397:
-			return "Daggerboard Port"
-		case 398:
-			return "Daggerboard Starboard"
-		case 399:
-			return "B And G Remote 0"
-		case 400:
-			return "B And G Remote 1"
-		case 401:
-			return "B And G Remote 2"
-		case 402:
-			return "B And G Remote 3"
-		case 403:
-			return "B And G Remote 4"
-		case 404:
-			return "B And G Remote 5"
-		case 405:
-			return "B And G Remote 6"
-		case 406:
-			return "B And G Remote 7"
-		case 407:
-			return "B And G Remote 8"
-		case 408:
-			return "B And G Remote 9"
-		case 409:
-			return "Forward Depth"
-		case 410:
-			return "Critical Range"
-		case 411:
-			return "Caution Range"
-		case 412:
-			return "Max Range"
-		case 413:
-			return "Generator Alternator Voltage"
-		case 414:
-			return "Trolling Prop Rate"
-		case 415:
-			return "Trolling Cruise Control Speed"
-		case 416:
-			return "Vessel Fuel Used"
-		case 417:
-			return "Suzuki Engine Baro Pressure"
-		case 418:
-			return "Suzuki Cylinder Temperature"
-		case 419:
-			return "Suzuki Intake Air Temperature"
-		case 420:
-			return "Suzuki Ignition Timing"
-		case 421:
-			return "Suzuki Fuel Injector Pulse Width"
-		case 422:
-			return "Was Suzuki Injected Fuel Amount"
-		case 423:
-			return "Suzuki Iac Valve Duty"
-		case 424:
-			return "Suzuki Discrete Status 1"
-		case 425:
-			return "Suzuki Discrete Status 2"
-		case 426:
-			return "Suzuki Discrete Status 3"
-		case 427:
-			return "Suzuki Discrete Status 4"
-		case 428:
-			return "Fuel Economy Pit"
-		case 429:
-			return "Vessel Fuel Economy Pit"
-		case 430:
-			return "Vessel Fuel Range Pit"
-		case 431:
-			return "Waypoint"
-		case 432:
-			return "Average Wind Direction"
-		case 433:
-			return "Wind Phase"
-		case 434:
-			return "Wind Lift"
-		case 435:
-			return "Fuel Range Seasonal Average"
-		case 436:
-			return "Fuel Range Instantaneous"
-		case 437:
-			return "Vessel Fuel Economy"
-		case 438:
-			return "Average Fuel Economy Seasonal"
-		case 439:
-			return "Average Fuel Economy Trip"
-		case 440:
-			return "Best Fuel Economy Seasonal"
-		case 441:
-			return "Best Fuel Economy Trip"
-		case 442:
-			return "Vessel Fuel Level"
-		case 443:
-			return "Vessel Fuel Used Trip"
-		case 444:
-			return "B And G Linear 17"
-		case 445:
-			return "B And G Linear 18"
-		case 446:
-			return "B And G Linear 19"
-		case 447:
-			return "B And G Linear 20"
-		case 448:
-			return "B And G Linear 21"
-		case 449:
-			return "B And G Linear 22"
-		case 450:
-			return "B And G Linear 23"
-		case 451:
-			return "B And G Linear 24"
-		case 452:
-			return "B And G Linear 25"
-		case 453:
-			return "B And G Linear 26"
-		case 454:
-			return "B And G Linear 27"
-		case 455:
-			return "B And G Linear 28"
-		case 456:
-			return "B And G Linear 29"
-		case 457:
-			return "B And G Linear 30"
-		case 458:
-			return "B And G Linear 31"
-		case 459:
-			return "B And G Linear 32"
-		case 460:
-			return "Origin Way Point Number"
-		case 461:
-			return "Dest Way Point Number"
-		case 462:
-			return "Arrival Notification"
-		case 463:
-			return "Arrival Circle Notification"
-		case 464:
-			return "Was Nav Terminated"
-		case 465:
-			return "Bobstay"
-		case 466:
-			return "J1"
-		case 467:
-			return "J2"
-		case 468:
-			return "J3"
-		case 469:
-			return "Mast Base"
-		case 470:
-			return "Mainsheet"
-		case 471:
-			return "D0 Port"
-		case 472:
-			return "D0 Starboard"
-		case 473:
-			return "Runner Port"
-		case 474:
-			return "Runner Starboard"
-		case 475:
-			return "Foil Port"
-		case 476:
-			return "Foil Starboard"
-		case 477:
-			return "Sailtack Port"
-		case 478:
-			return "Sailtack Starboard"
-		case 479:
-			return "Deflect Port"
-		case 480:
-			return "Deflect Starboard"
-		case 481:
-			return "Rudder Load Port"
-		case 482:
-			return "Rudder Load Starboard"
-		case 483:
-			return "D1 Port"
-		case 484:
-			return "D1 Starboard"
-		case 485:
-			return "V0 Port"
-		case 486:
-			return "V0 Starboard"
-		case 487:
-			return "V1 Port"
-		case 488:
-			return "V1 Starboard"
-		case 489:
-			return "Gnss System"
-		case 490:
-			return "Sv Count"
-		case 491:
-			return "Gnss Op Mode"
-		case 492:
-			return "Dgnss Mode"
-		case 493:
-			return "Suzuki Fuel Pump Duty"
-		case 494:
-			return "Speed Log Water Longitudinal"
-		case 495:
-			return "Speed Log Water Transverse"
-		case 496:
-			return "Speed Log Water Resultant"
-		case 497:
-			return "Speed Log Water Angle"
-		case 498:
-			return "Speed Log Ground Longitudinal"
-		case 499:
-			return "Speed Log Ground Transverse"
-		case 500:
-			return "Speed Log Ground Resultant"
-		case 501:
-			return "Speed Log Ground Angle"
-		case 502:
-			return "Speed Log Stern Water Transverse"
-		case 503:
-			return "Speed Log Stern Ground Transverse"
-		case 504:
-			return "Position Datum"
-		case 505:
-			return "Speed Boat"
-		case 506:
-			return "Was Engine Fuel Used Mercury"
-		case 507:
-			return "Heave"
-		case 508:
-			return "Speed Trip Max RPM"
-		case 509:
-			return "Honda Engine Status Params"
-		case 510:
-			return "Pilot Features"
-		case 511:
-			return "Pilot Setpoint Heading"
-		case 512:
-			return "Idle Speed Control Mode"
-		case 513:
-			return "Idle Speed Control Value"
-		case 514:
-			return "Trolling Mode"
-		case 515:
-			return "Immobilizer Lock Status"
-		case 516:
-			return "Engine Discrete Params 1"
-		case 517:
-			return "Engine Discrete Params 2"
-		case 518:
-			return "Engine Discrete Params 3"
-		case 519:
-			return "Engine Discrete Params 4"
-		case 520:
-			return "Engine Discrete Params 5"
-		case 521:
-			return "Engine Discrete Params 6"
-		case 522:
-			return "Idle Speed Limit Low"
-		case 523:
-			return "Idle Speed Limit High"
-		case 524:
-			return "Was Trolling Variable RPM Info"
-		case 525:
-			return "Idle Speed Control Target Rev"
-		case 526:
-			return "Idle Control"
-		case 527:
-			return "Idle Feedback"
-		case 528:
-			return "Immediately After Starting Control"
-		case 529:
-			return "Gateway Params"
-		case 530:
-			return "Gateway Protocol"
-		case 531:
-			return "Engine Wall Temp"
-		case 532:
-			return "Substitute Battery Voltage"
-		case 533:
-			return "Yamaha Engine M6 Diag Code"
-		case 534:
-			return "Wireless Sensor Battery Status"
-		case 535:
-			return "Wireless Sensor Battery Charge Status"
-		case 536:
-			return "Wireless Sensor Battery Status Voltage"
-		case 537:
-			return "Wireless Sensor Battery Charge Status Current"
-		case 538:
-			return "Fluid Type Mode"
-		case 539:
-			return "Datetime"
-		case 540:
-			return "Reacher Load"
-		case 541:
-			return "Blade Load"
-		case 542:
-			return "Staysail Load"
-		case 543:
-			return "Tack Load"
-		case 544:
-			return "J4 Load"
-		case 545:
-			return "Solent Load"
-		case 546:
-			return "Tack Port Load"
-		case 547:
-			return "Tack Starboard Load"
-		case 548:
-			return "Deflect Upper Load"
-		case 549:
-			return "Deflect Lower Load"
-		case 550:
-			return "Winch Port Load"
-		case 551:
-			return "Winch Starboard Load"
-		case 552:
-			return "Spin Halyard Port Load"
-		case 553:
-			return "Spin Halyard Starboard Load"
-		case 554:
-			return "Main Halyward"
-		case 555:
-			return "Load 1 Load"
-		case 556:
-			return "Load 2 Load"
-		case 557:
-			return "Mast Base 2 Load"
-		case 558:
-			return "Pilot Active Perf Mode"
-		case 559:
-			return "Pilot Gust"
-		case 560:
-			return "Pilot Tws Response"
-		case 561:
-			return "Pilot Heel Comp"
-		case 562:
-			return "Pilot Net Course"
-		case 563:
-			return "Pilot Target Wind Angle"
-		case 564:
-			return "Pilot Weather Helm"
-		case 565:
-			return "Pilot Mean Heel"
-		case 566:
-			return "Propeller Shaft Pitch Angle"
-		case 567:
-			return "Propeller Shaft Pitch Percent"
-		case 568:
-			return "Propeller Shaft RPM"
-		case 569:
-			return "Thruster Pitch Angle"
-		case 570:
-			return "Thruster Pitch Percent"
-		case 571:
-			return "Ground Wind Angle"
-		case 572:
-			return "Fuel Flow Offset"
-		case 573:
-			return "Fluid Level Gasoline"
-		case 574:
-			return "Fluid Volume Gasoline"
-		case 575:
-			return "Tank Capacity Gasoline"
-		case 576:
-			return "Cmd Xte Offset"
-		case 577:
-			return "Engine 4Stroke Oil"
-		case 578:
-			return "Wireless Sensor Signal Strength"
-		case 579:
-			return "Wireless Sensor Software Update Progress"
-		case 580:
-			return "Trolling Status"
-		case 581:
-			return "Mercury Exhaust Valve"
-		case 582:
-			return "Mercury Exhaust Status"
-		case 583:
-			return "Yanmar Engine Ecu Alarms"
-		case 584:
-			return "Yanmar Helm Ecu Alarms"
-		case 585:
-			return "Yanmar Drive Ecu Alarms"
-		case 586:
-			return "Dgps Correction Data"
-		case 587:
-			return "Dgps Reference Station Id"
-		case 588:
-			return "Dgps Reference Station Health"
-		case 589:
-			return "Dgps Signal Snr"
-		case 590:
-			return "Dgps Signal Frequency"
-		case 591:
-			return "Dgps Signal Strength"
-		case 592:
-			return "Engine Fuel Temp"
-		case 593:
-			return "Depth Quality"
-		case 594:
-			return "Number Of Active Dtc"
-		case 595:
-			return "Yanmar Fuel Level Tank1 Port"
-		case 596:
-			return "Yanmar Fuel Level Tank2 Port"
-		case 597:
-			return "Yanmar Fuel Level Tank1 Stbd"
-		case 598:
-			return "Yanmar Fuel Level Tank2 Stbd"
-		case 599:
-			return "Yanmar Fuel Level Tank1 Center"
-		case 600:
-			return "Yanmar Fuel Level Tank2 Center"
-		case 601:
-			return "Yanmar Fresh Water Level Tank1 Port"
-		case 602:
-			return "Yanmar Fresh Water Level Tank2 Port"
-		case 603:
-			return "Yanmar Fresh Water Level Tank1 Stbd"
-		case 604:
-			return "Yanmar Fresh Water Level Tank2 Stbd"
-		case 605:
-			return "Yanmar Fresh Water Level Tank1 Center"
-		case 606:
-			return "Yanmar Fresh Water Level Tank2 Center"
-		case 607:
-			return "Yanmar Gray Water Level Tank1 Port"
-		case 608:
-			return "Yanmar Gray Water Level Tank2 Port"
-		case 609:
-			return "Yanmar Gray Water Level Tank1 Stbd"
-		case 610:
-			return "Yanmar Gray Water Level Tank2 Stbd"
-		case 611:
-			return "Yanmar Gray Water Level Tank1 Center"
-		case 612:
-			return "Yanmar Gray Water Level Tank2 Center"
-		case 613:
-			return "Rudder Angle Percentage"
-		case 614:
-			return "Troll Active Helm"
-		case 615:
-			return "Tides Graphic"
-		case 616:
-			return "Anchor Distance"
-		case 617:
-			return "Anchor Size"
-		case 618:
-			return "Anchor Depth"
-		case 619:
-			return "Anchor Bearing"
-		case 620:
-			return "Honda Engine Warning Params"
-		case 621:
-			return "Honda Engine Discrete Params 1"
-		case 622:
-			return "Honda Engine Discrete Params 2"
-		case 623:
-			return "Honda Engine Discrete Params 3"
-		case 624:
-			return "Honda Engine Discrete Params 4"
-		case 625:
-			return "Mainsail Head Load"
-		case 626:
-			return "Mainsail Clew Load"
-		case 627:
-			return "Mainsail Tack Load"
-		case 628:
-			return "J1 Head Load"
-		case 629:
-			return "J1 Clew Load"
-		case 630:
-			return "J1 Tack Load"
-		case 631:
-			return "J2 Head Load"
-		case 632:
-			return "J2 Clew Load"
-		case 633:
-			return "J2 Tack Load"
-		case 634:
-			return "J3 Head Load"
-		case 635:
-			return "J3 Clew Load"
-		case 636:
-			return "J3 Tack Load"
-		case 637:
-			return "Code Zero Head Load"
-		case 638:
-			return "Code Zero Clew Load"
-		case 639:
-			return "Code Zero Tack Load"
-		case 640:
-			return "Suzuki Engine Alert I"
-		case 641:
-			return "Engine Oil Life"
-		case 642:
-			return "Engine Oil Level Status"
-		case 643:
-			return "Trans Fluid Status"
-		case 644:
-			return "Honda Eco Status All Engines"
-		case 645:
-			return "Output RPM"
-		case 646:
-			return "Suzuki Engine Alert A"
-		case 647:
-			return "Suzuki Engine Alert B"
-		case 648:
-			return "Suzuki Engine Alert C"
-		case 649:
-			return "Suzuki Engine Alert D"
-		case 650:
-			return "Suzuki Engine Alert E"
-		case 651:
-			return "Suzuki Engine Alert F"
-		case 652:
-			return "Suzuki Engine Alert G"
-		case 653:
-			return "Suzuki Engine Alert H"
-		case 654:
-			return "Suzuki Engine Alert J"
-		case 655:
-			return "Suzuki Bcm Fault"
-		case 656:
-			return "Suzuki Bcm Mode"
-		case 657:
-			return "Suzuki Engine Kls Status"
-		case 658:
-			return "Suzuki Switch Fault"
-		case 659:
-			return "Suzuki Shift Position Status"
-		case 660:
-			return "Vessel Fuel Used Seasonal"
-		case 661:
-			return "Vessel Fuel Capacity"
-		case 662:
-			return "Suzuki Engine Auto Trim Status"
-		case 663:
-			return "Trolling Mode Active"
-		case 664:
-			return "Trolling Mode Active Master"
-		case 665:
-			return "Keyless Communication State"
-		case 666:
-			return "Linear Actuator Position"
-		case 667:
-			return "Engine Exhaust Temp"
-		case 668:
-			return "Engine Guardian Power Limit"
-		case 669:
-			return "Engine State"
-		case 670:
-			return "Sailing Time To Burn"
-		case 671:
-			return "Mast Twist"
-		case 672:
-			return "VHF Channel"
-		case 673:
-			return "Trolling Lower Unit Direction"
-		case 674:
-			return "Propulsion Battery Status"
-		case 675:
-			return "Propulsion Battery Isolation Status"
-		case 676:
-			return "Propulsion Battery Error"
-		case 677:
-			return "Propulsion Battery Voltage"
-		case 678:
-			return "Propulsion Battery Current"
-		case 679:
-			return "Propulsion Battery State Of Charge"
-		case 680:
-			return "Propulsion Battery Time Remaining"
-		case 681:
-			return "Propulsion Battery Highest Cell Temperature"
-		case 682:
-			return "Propulsion Battery Lowest Cell Temperature"
-		case 683:
-			return "Propulsion Battery Average Cell Temperature"
-		case 684:
-			return "Propulsion Battery Maximum Discharge Current"
-		case 685:
-			return "Propulsion Battery Maximum Charge Current"
-		case 686:
-			return "Propulsion Battery Cooling System Status"
-		case 687:
-			return "Propulsion Battery Heating System Status"
-		case 688:
-			return "Propulsion Battery Storage Mode"
-		case 689:
-			return "Propulsion Battery Chemistry"
-		case 690:
-			return "Propulsion Battery Maximum Temperature Derating"
-		case 691:
-			return "Propulsion Battery Maximum Temperature Shutoff"
-		case 692:
-			return "Propulsion Battery Minimum Temperature Derating"
-		case 693:
-			return "Propulsion Battery Minimum Temperature Shutoff"
-		case 694:
-			return "Propulsion Battery Usable Energy"
-		case 695:
-			return "Propulsion Battery State Of Health"
-		case 696:
-			return "Propulsion Battery Discharge Cycles Count"
-		case 697:
-			return "Propulsion Battery Full Status"
-		case 698:
-			return "Propulsion Battery Empty Status"
-		case 699:
-			return "Propulsion Battery Maximum Charge Soc"
-		case 700:
-			return "Propulsion Battery Minimum Discharge Soc"
-		case 701:
-			return "Active Motor Mode"
-		case 702:
-			return "Motor Brake Mode"
-		case 703:
-			return "Motor Rotational Shaft Speed"
-		case 704:
-			return "Motor Voltage"
-		case 705:
-			return "Motor Current"
-		case 706:
-			return "Motor Operating Mode"
-		case 707:
-			return "Motor Temperature"
-		case 708:
-			return "Motor Inverter Temperature"
-		case 709:
-			return "Motor Coolant Temperature"
-		case 710:
-			return "Motor Gear Temperature"
-		case 711:
-			return "Motor Shaft Torque Percent"
-		case 712:
-			return "Motor Voltage Type"
-		case 713:
-			return "Motor Voltage Rating"
-		case 714:
-			return "Motor Max Continuous Power"
-		case 715:
-			return "Motor Max Boost Power"
-		case 716:
-			return "Motor Max Temperature Rating"
-		case 717:
-			return "Motor Rated Speed"
-		case 718:
-			return "Motor Max Controller Temperature Rating"
-		case 719:
-			return "Motor Shaft Torque Rating"
-		case 720:
-			return "Motor DC Voltage Derating Threshold"
-		case 721:
-			return "Motor DC Voltage Cutoff Threshold"
-		case 722:
-			return "Motor Runtime"
-		case 723:
-			return "Sailing Ping Time Port"
-		case 724:
-			return "Sailing Ping Time Stbd"
-		case 725:
-			return "Heading Source"
-		case 726:
-			return "Invalid"
-default:
+	case 0:
+		return "Altitude"
+	case 1:
+		return "Position"
+	case 2:
+		return "Position Error"
+	case 3:
+		return "HDOP"
+	case 4:
+		return "VDOP"
+	case 5:
+		return "TDOP"
+	case 6:
+		return "PDOP"
+	case 7:
+		return "Geoidal Seperation"
+	case 8:
+		return "COG"
+	case 9:
+		return "Position Quality"
+	case 10:
+		return "Position Integrity"
+	case 11:
+		return "Sats In View"
+	case 12:
+		return "Waas Status"
+	case 13:
+		return "Bearing"
+	case 14:
+		return "Course"
+	case 15:
+		return "CDI Graphic"
+	case 16:
+		return "Course To Steer"
+	case 17:
+		return "Cross Track"
+	case 18:
+		return "Velocity Made Good"
+	case 19:
+		return "Destination"
+	case 20:
+		return "Distance To Turn"
+	case 21:
+		return "Distance To Dest"
+	case 22:
+		return "Time To Turn"
+	case 23:
+		return "Time To Dest"
+	case 24:
+		return "ETA At Turn"
+	case 25:
+		return "ETA At Dest"
+	case 26:
+		return "Total Distance"
+	case 27:
+		return "Steer Arrow"
+	case 28:
+		return "Odometer"
+	case 29:
+		return "Trip Distance"
+	case 30:
+		return "Trip Time"
+	case 31:
+		return "Date"
+	case 32:
+		return "Time"
+	case 33:
+		return "UTC Date"
+	case 34:
+		return "UTC Time"
+	case 35:
+		return "Local Time Offset"
+	case 36:
+		return "Heading"
+	case 37:
+		return "Was Voltage"
+	case 38:
+		return "Current Set"
+	case 39:
+		return "Current Drift"
+	case 40:
+		return "Speed SOG"
+	case 41:
+		return "Speed Water"
+	case 42:
+		return "Speed Pitot"
+	case 43:
+		return "Speed Trip Avg"
+	case 44:
+		return "Speed Trip Max"
+	case 45:
+		return "Speed Wind App"
+	case 46:
+		return "Speed Wind True"
+	case 47:
+		return "Temp Water"
+	case 48:
+		return "Temp Outside"
+	case 49:
+		return "Temp Inside"
+	case 50:
+		return "Temp Engine Room"
+	case 51:
+		return "Temp Main Cabin"
+	case 52:
+		return "Temp Live Well"
+	case 53:
+		return "Temp Bait Well"
+	case 54:
+		return "Temp Refrigeration"
+	case 55:
+		return "Temp Heating System"
+	case 56:
+		return "Temp Dew Point"
+	case 57:
+		return "Temp Wind Chill App"
+	case 58:
+		return "Temp Wind Chill Theoretic"
+	case 59:
+		return "Temp Heat Index"
+	case 60:
+		return "Temp Freezer"
+	case 61:
+		return "Engine Temp"
+	case 62:
+		return "Engine Air Temp"
+	case 63:
+		return "Engine Oil Temp"
+	case 64:
+		return "Temp Battery"
+	case 65:
+		return "Pressure Atmospheric"
+	case 66:
+		return "Engine Boost Pres"
+	case 67:
+		return "Engine Oil Pres"
+	case 68:
+		return "Engine Water Pres"
+	case 69:
+		return "Engine Fuel Pres"
+	case 70:
+		return "Engine Manifold Pres"
+	case 71:
+		return "Pressure Steam"
+	case 72:
+		return "Pressure Compr Air"
+	case 73:
+		return "Pressure Hydraulic"
+	case 74:
+		return "Was Generic Pressure Lo"
+	case 75:
+		return "Was Generic Pressure Hi"
+	case 76:
+		return "Depth"
+	case 77:
+		return "Water Distance"
+	case 78:
+		return "Engine RPM"
+	case 79:
+		return "Engine Trim"
+	case 80:
+		return "Engine Alternator Potential"
+	case 81:
+		return "Engine Fuel Rate"
+	case 82:
+		return "Engine Percent Load"
+	case 83:
+		return "Engine Percent Torque"
+	case 84:
+		return "Was Suzuki Alarm Lev Lo"
+	case 85:
+		return "Was Suzuki Alarm Lev High"
+	case 86:
+		return "Tank Fuel Level"
+	case 87:
+		return "Fluid Level Fresh Water"
+	case 88:
+		return "Fluid Level Gray Water"
+	case 89:
+		return "Fluid Level Live Well"
+	case 90:
+		return "Fluid Level Oil"
+	case 91:
+		return "Fluid Level Black Water"
+	case 92:
+		return "Tank Fuel Remaining"
+	case 93:
+		return "Fluid Volume Fresh Water"
+	case 94:
+		return "Fluid Volume Gray Water"
+	case 95:
+		return "Fluid Volume Live Well"
+	case 96:
+		return "Fluid Volume Oil"
+	case 97:
+		return "Fluid Volume Black Water"
+	case 98:
+		return "Gen Fluid Volume"
+	case 99:
+		return "Was Tank Fuel Level Lo"
+	case 100:
+		return "Was Fluid Level Lo Fresh Water"
+	case 101:
+		return "Was Fluid Level Lo Gray Water"
+	case 102:
+		return "Was Fluid Level Lo Live Well"
+	case 103:
+		return "Was Fluid Level Lo Oil"
+	case 104:
+		return "Gen Tank Capacity"
+	case 105:
+		return "Tank Fuel Capacity"
+	case 106:
+		return "Tank Capacity Fresh Water"
+	case 107:
+		return "Tank Capacity Gray Water"
+	case 108:
+		return "Tank Capacity Live Well"
+	case 109:
+		return "Tank Capacity Oil"
+	case 110:
+		return "Tank Capacity Black Water"
+	case 111:
+		return "Was Tank Fuel Used"
+	case 112:
+		return "Engine Fuel Used"
+	case 113:
+		return "Engine Fuel Used Trip"
+	case 114:
+		return "Engine Fuel Used Seasonal"
+	case 115:
+		return "Engine Fuel K Value"
+	case 116:
+		return "Battery Potential"
+	case 117:
+		return "Battery Current"
+	case 118:
+		return "Trim Tab"
+	case 119:
+		return "Was Trim Stbd Tab"
+	case 120:
+		return "Rate Of Turn"
+	case 121:
+		return "Attitude Yaw"
+	case 122:
+		return "Attitude Pitch"
+	case 123:
+		return "Attitude Roll"
+	case 124:
+		return "Magnetic Variation"
+	case 125:
+		return "Deviation"
+	case 126:
+		return "Fuel Economy Wtr"
+	case 127:
+		return "Fuel Economy GPS"
+	case 128:
+		return "Was Fuel Remaining"
+	case 129:
+		return "Was Fuel Range Wtr"
+	case 130:
+		return "Was Fuel Range GPS"
+	case 131:
+		return "Engine Hours Used"
+	case 132:
+		return "Engine Type"
+	case 133:
+		return "Vessel Fuel Rate"
+	case 134:
+		return "Vessel Fuel Economy Wtr"
+	case 135:
+		return "Vessel Fuel Economy GPS"
+	case 136:
+		return "Vessel Fuel Remaining"
+	case 137:
+		return "Vessel Fuel Range Wtr"
+	case 138:
+		return "Vessel Fuel Range GPS"
+	case 139:
+		return "Wind App Angle"
+	case 140:
+		return "Wind True Angle"
+	case 141:
+		return "Wind True Direction"
+	case 142:
+		return "Humidity Inside"
+	case 143:
+		return "Humidity Outside"
+	case 144:
+		return "Set Humidity"
+	case 145:
+		return "Rudder Angle"
+	case 146:
+		return "Trans Gear"
+	case 147:
+		return "Trans Oil Pressure"
+	case 148:
+		return "Trans Oil Temp"
+	case 149:
+		return "Cmd Rudder Angle"
+	case 150:
+		return "Rudder Limit"
+	case 151:
+		return "Off Heading Lim"
+	case 152:
+		return "Radius Of Turn Order"
+	case 153:
+		return "Rate Of Turn Order"
+	case 154:
+		return "Off Track Lim"
+	case 155:
+		return "Logging Time Remaining"
+	case 156:
+		return "Position Fix Type"
+	case 157:
+		return "Engine Discrete Status"
+	case 158:
+		return "Transmission Discrete Status"
+	case 159:
+		return "GPS Best Of Four Snr"
+	case 160:
+		return "Gen Fluid Level"
+	case 161:
+		return "Gen Pressure"
+	case 162:
+		return "Gen Temperature"
+	case 163:
+		return "Internal Voltage"
+	case 164:
+		return "Depth Offset"
+	case 165:
+		return "Structure Depth"
+	case 166:
+		return "Loran Position"
+	case 167:
+		return "Vessel Status"
+	case 168:
+		return "Battery DC Type"
+	case 169:
+		return "Battery State Of Charge"
+	case 170:
+		return "Battery State Of Health"
+	case 171:
+		return "Battery Time Remaining"
+	case 172:
+		return "Battery Ripple Voltage"
+	case 173:
+		return "Ac1 Acceptability"
+	case 174:
+		return "Ac2 Acceptability"
+	case 175:
+		return "Ac3 Acceptability"
+	case 176:
+		return "Ac1 Voltage"
+	case 177:
+		return "Ac2 Voltage"
+	case 178:
+		return "Ac3 Voltage"
+	case 179:
+		return "Ac1 Current"
+	case 180:
+		return "Ac2 Current"
+	case 181:
+		return "Ac3 Current"
+	case 182:
+		return "Ac1 Frequency"
+	case 183:
+		return "Ac2 Frequency"
+	case 184:
+		return "Ac3 Frequency"
+	case 185:
+		return "Ac1 Breaker Size"
+	case 186:
+		return "Ac2 Breaker Size"
+	case 187:
+		return "Ac3 Breaker Size"
+	case 188:
+		return "Ac1 Real Power"
+	case 189:
+		return "Ac2 Real Power"
+	case 190:
+		return "Ac3 Real Power"
+	case 191:
+		return "Ac1 Reactive Power"
+	case 192:
+		return "Ac2 Reactive Power"
+	case 193:
+		return "Ac3 Reactive Power"
+	case 194:
+		return "Ac1 Power Factor"
+	case 195:
+		return "Ac2 Power Factor"
+	case 196:
+		return "Ac3 Power Factor"
+	case 197:
+		return "Switch State"
+	case 198:
+		return "Switch Current"
+	case 199:
+		return "Switch Fault"
+	case 200:
+		return "Switch Dim Level"
+	case 201:
+		return "Previous Cmd Heading"
+	case 202:
+		return "Cmd Wind Angle"
+	case 203:
+		return "Was Cmd Bearing Offset"
+	case 204:
+		return "Cmd Bearing"
+	case 205:
+		return "Cmd Depth Contour"
+	case 206:
+		return "Cmd Course Change"
+	case 207:
+		return "Pilot Drift"
+	case 208:
+		return "Pilot Distance To Turn"
+	case 209:
+		return "Pilot Time To Turn"
+	case 210:
+		return "Pilot Reference Position"
+	case 211:
+		return "DC Status"
+	case 212:
+		return "Ac1 Status"
+	case 213:
+		return "Was Switch Voltage"
+	case 214:
+		return "Battery Capacity Remaining"
+	case 215:
+		return "Pilot Heading Reference"
+	case 216:
+		return "B And G Linear 1"
+	case 217:
+		return "B And G Linear 2"
+	case 218:
+		return "B And G Linear 3"
+	case 219:
+		return "Boom Position"
+	case 220:
+		return "Sailing Course"
+	case 221:
+		return "Daggerboard Position"
+	case 222:
+		return "B And G Linear 4"
+	case 223:
+		return "Heading On Next Tack"
+	case 224:
+		return "Keel Angle"
+	case 225:
+		return "Leeway"
+	case 226:
+		return "Mast Angle"
+	case 227:
+		return "Target True Wind Angle"
+	case 228:
+		return "Keel Trim Tab"
+	case 229:
+		return "Race Timer"
+	case 230:
+		return "Canard Angle"
+	case 231:
+		return "Next Leg Apparent Wind Angle"
+	case 232:
+		return "Next Leg Apparent Wind Speed"
+	case 233:
+		return "Target Boat Speed"
+	case 234:
+		return "VMG To Wind"
+	case 235:
+		return "Time To Laylines"
+	case 236:
+		return "Distance To Laylines"
+	case 237:
+		return "Aft Depth"
+	case 238:
+		return "Forestay"
+	case 239:
+		return "Polar Speed"
+	case 240:
+		return "Polar Performance"
+	case 241:
+		return "Tacking Performance"
+	case 242:
+		return "Wind Angle To Mast"
+	case 243:
+		return "Can Bus Voltage"
+	case 244:
+		return "Internal Temperature"
+	case 245:
+		return "Engage Current"
+	case 246:
+		return "Uref Voltage"
+	case 247:
+		return "Supply Voltage"
+	case 248:
+		return "Destination Position"
+	case 249:
+		return "Compass Heading Reference"
+	case 250:
+		return "Cmd Rudder Direction"
+	case 251:
+		return "Was Engine Sync State"
+	case 252:
+		return "Engine General Maintenance"
+	case 253:
+		return "Engine Percent Throttle"
+	case 254:
+		return "Engine Steering Angle"
+	case 255:
+		return "Engine Break In Reqd"
+	case 256:
+		return "GPS All"
+	case 257:
+		return "Engine Break In Accum"
+	case 258:
+		return "Engine Trim Status"
+	case 259:
+		return "Pilot Present"
+	case 260:
+		return "Ac1 Out Waveform"
+	case 261:
+		return "Ac2 Out Waveform"
+	case 262:
+		return "Ac3 Out Waveform"
+	case 263:
+		return "Ac1 Out Voltage"
+	case 264:
+		return "Ac2 Out Voltage"
+	case 265:
+		return "Ac3 Out Voltage"
+	case 266:
+		return "Ac1 Out Current"
+	case 267:
+		return "Ac2 Out Current"
+	case 268:
+		return "Ac3 Out Current"
+	case 269:
+		return "Ac1 Out Frequency"
+	case 270:
+		return "Ac2 Out Frequency"
+	case 271:
+		return "Ac3 Out Frequency"
+	case 272:
+		return "Ac1 Out Breaker Size"
+	case 273:
+		return "Ac2 Out Breaker Size"
+	case 274:
+		return "Ac3 Out Breaker Size"
+	case 275:
+		return "Ac1 Out Real Power"
+	case 276:
+		return "Ac2 Out Real Power"
+	case 277:
+		return "Ac3 Out Real Power"
+	case 278:
+		return "Ac1 Out Reactive Power"
+	case 279:
+		return "Ac2 Out Reactive Power"
+	case 280:
+		return "Ac3 Out Reactive Power"
+	case 281:
+		return "Ac1 Out Power Factor"
+	case 282:
+		return "Ac2 Out Power Factor"
+	case 283:
+		return "Ac3 Out Power Factor"
+	case 284:
+		return "Ac2 Status"
+	case 285:
+		return "Ac3 Status"
+	case 286:
+		return "Ac1 Out Status"
+	case 287:
+		return "Ac2 Out Status"
+	case 288:
+		return "Ac3 Out Status"
+	case 289:
+		return "Switch Manual Override"
+	case 290:
+		return "Switch Reverse Polarity"
+	case 291:
+		return "Switch Acsource Available"
+	case 292:
+		return "Switch Accontactor Systemsonstate"
+	case 293:
+		return "Charger Battery Instance"
+	case 294:
+		return "Charger Operating State"
+	case 295:
+		return "Charger Mode"
+	case 296:
+		return "Charger Enabled"
+	case 297:
+		return "Charger Equalization Pending"
+	case 298:
+		return "Charger Equalization Time Remaining"
+	case 299:
+		return "Inverter AC Instance"
+	case 300:
+		return "Inverter DC Instance"
+	case 301:
+		return "Inverter Operating State"
+	case 302:
+		return "Inverter Enabled"
+	case 303:
+		return "Thruster Power"
+	case 304:
+		return "Fuel To Turn"
+	case 305:
+		return "Engine Mil"
+	case 306:
+		return "Engine Warning Flags"
+	case 307:
+		return "Speed Stw"
+	case 308:
+		return "Engine Performance SOG"
+	case 309:
+		return "Engine Performance Stw"
+	case 310:
+		return "Engine Control Flags"
+	case 311:
+		return "Engine Troll RPM Setpoint"
+	case 312:
+		return "Active Helm"
+	case 313:
+		return "Cruise RPM Setpoint"
+	case 314:
+		return "Cruise Speed Setpoint"
+	case 315:
+		return "Cmd Pattern Dir"
+	case 316:
+		return "Smart Contextual"
+	case 317:
+		return "Sailing Time To Waypoint"
+	case 318:
+		return "Sailing Distance To Waypoint"
+	case 319:
+		return "Sailing ETA"
+	case 320:
+		return "Generator Temp"
+	case 321:
+		return "Generator Oil Temp"
+	case 322:
+		return "Generator Oil Pres"
+	case 323:
+		return "Generator Water Pres"
+	case 324:
+		return "Generator Fuel Pres"
+	case 325:
+		return "Generator Fuel Rate"
+	case 326:
+		return "Generator Hours Used"
+	case 327:
+		return "Generator Discrete Status"
+	case 328:
+		return "Generator Percent Load"
+	case 329:
+		return "Generator Percent Torque"
+	case 330:
+		return "Generator Battery Voltage"
+	case 331:
+		return "Generator Average Voltage"
+	case 332:
+		return "Generator Average Frequency"
+	case 333:
+		return "Generator Average Current"
+	case 334:
+		return "Pilot Mode"
+	case 335:
+		return "Pilot Response Level"
+	case 336:
+		return "Cruise Smarttow Overshoot"
+	case 337:
+		return "Pilot Cmd Heading"
+	case 338:
+		return "MOB Dr Position"
+	case 339:
+		return "MOB Dr Range"
+	case 340:
+		return "MOB Dr Bearing"
+	case 341:
+		return "Bow Position"
+	case 342:
+		return "Start Line Bearing"
+	case 343:
+		return "Start Line Bias"
+	case 344:
+		return "Distance To Start Line"
+	case 345:
+		return "Distance To Start Line Port End"
+	case 346:
+		return "Distance To Start Line Stbd End"
+	case 347:
+		return "Start Line Port Position"
+	case 348:
+		return "Start Line Stbd Position"
+	case 349:
+		return "Start Line Boat Length Advantage"
+	case 350:
+		return "Distance To Start Line Boat Lengths"
+	case 351:
+		return "Backstay"
+	case 352:
+		return "Boom Angle"
+	case 353:
+		return "Boom Vang"
+	case 354:
+		return "Chain Length"
+	case 355:
+		return "Cunningham"
+	case 356:
+		return "Inner Forestay Load"
+	case 357:
+		return "Inner Forestay Halyard Load"
+	case 358:
+		return "Jib Furl"
+	case 359:
+		return "Jib Halyard Load"
+	case 360:
+		return "Optimum Wind Angle"
+	case 361:
+		return "Outhaul Load"
+	case 362:
+		return "Pitch Rate"
+	case 363:
+		return "Plow Angle"
+	case 364:
+		return "Roll Rate"
+	case 365:
+		return "VMG Performance"
+	case 366:
+		return "B And G Linear 5"
+	case 367:
+		return "B And G Linear 6"
+	case 368:
+		return "B And G Linear 7"
+	case 369:
+		return "B And G Linear 8"
+	case 370:
+		return "B And G Linear 9"
+	case 371:
+		return "B And G Linear 10"
+	case 372:
+		return "B And G Linear 11"
+	case 373:
+		return "B And G Linear 12"
+	case 374:
+		return "B And G Linear 13"
+	case 375:
+		return "B And G Linear 14"
+	case 376:
+		return "B And G Linear 15"
+	case 377:
+		return "B And G Linear 16"
+	case 378:
+		return "Keel Draught"
+	case 379:
+		return "Pool Temperature"
+	case 380:
+		return "Jacuzzi Temperature"
+	case 381:
+		return "Trip Dr Bearing"
+	case 382:
+		return "Trip Dr Distance"
+	case 383:
+		return "Code Zero Load"
+	case 384:
+		return "B And G MOB Position"
+	case 385:
+		return "Distance Behind Start Line"
+	case 386:
+		return "Distance Behind Start Line Boat Lengths"
+	case 387:
+		return "Bias Advantage"
+	case 388:
+		return "Opposite Tack COG"
+	case 389:
+		return "Opposite Tack Target Heading"
+	case 390:
+		return "Mast Rake"
+	case 391:
+		return "Next Leg Bearing"
+	case 392:
+		return "Next Leg Target Speed"
+	case 393:
+		return "Ground Wind Direction"
+	case 394:
+		return "Ground Wind Speed"
+	case 395:
+		return "Mast Cant Angle"
+	case 396:
+		return "Rudder Toe In"
+	case 397:
+		return "Daggerboard Port"
+	case 398:
+		return "Daggerboard Starboard"
+	case 399:
+		return "B And G Remote 0"
+	case 400:
+		return "B And G Remote 1"
+	case 401:
+		return "B And G Remote 2"
+	case 402:
+		return "B And G Remote 3"
+	case 403:
+		return "B And G Remote 4"
+	case 404:
+		return "B And G Remote 5"
+	case 405:
+		return "B And G Remote 6"
+	case 406:
+		return "B And G Remote 7"
+	case 407:
+		return "B And G Remote 8"
+	case 408:
+		return "B And G Remote 9"
+	case 409:
+		return "Forward Depth"
+	case 410:
+		return "Critical Range"
+	case 411:
+		return "Caution Range"
+	case 412:
+		return "Max Range"
+	case 413:
+		return "Generator Alternator Voltage"
+	case 414:
+		return "Trolling Prop Rate"
+	case 415:
+		return "Trolling Cruise Control Speed"
+	case 416:
+		return "Vessel Fuel Used"
+	case 417:
+		return "Suzuki Engine Baro Pressure"
+	case 418:
+		return "Suzuki Cylinder Temperature"
+	case 419:
+		return "Suzuki Intake Air Temperature"
+	case 420:
+		return "Suzuki Ignition Timing"
+	case 421:
+		return "Suzuki Fuel Injector Pulse Width"
+	case 422:
+		return "Was Suzuki Injected Fuel Amount"
+	case 423:
+		return "Suzuki Iac Valve Duty"
+	case 424:
+		return "Suzuki Discrete Status 1"
+	case 425:
+		return "Suzuki Discrete Status 2"
+	case 426:
+		return "Suzuki Discrete Status 3"
+	case 427:
+		return "Suzuki Discrete Status 4"
+	case 428:
+		return "Fuel Economy Pit"
+	case 429:
+		return "Vessel Fuel Economy Pit"
+	case 430:
+		return "Vessel Fuel Range Pit"
+	case 431:
+		return "Waypoint"
+	case 432:
+		return "Average Wind Direction"
+	case 433:
+		return "Wind Phase"
+	case 434:
+		return "Wind Lift"
+	case 435:
+		return "Fuel Range Seasonal Average"
+	case 436:
+		return "Fuel Range Instantaneous"
+	case 437:
+		return "Vessel Fuel Economy"
+	case 438:
+		return "Average Fuel Economy Seasonal"
+	case 439:
+		return "Average Fuel Economy Trip"
+	case 440:
+		return "Best Fuel Economy Seasonal"
+	case 441:
+		return "Best Fuel Economy Trip"
+	case 442:
+		return "Vessel Fuel Level"
+	case 443:
+		return "Vessel Fuel Used Trip"
+	case 444:
+		return "B And G Linear 17"
+	case 445:
+		return "B And G Linear 18"
+	case 446:
+		return "B And G Linear 19"
+	case 447:
+		return "B And G Linear 20"
+	case 448:
+		return "B And G Linear 21"
+	case 449:
+		return "B And G Linear 22"
+	case 450:
+		return "B And G Linear 23"
+	case 451:
+		return "B And G Linear 24"
+	case 452:
+		return "B And G Linear 25"
+	case 453:
+		return "B And G Linear 26"
+	case 454:
+		return "B And G Linear 27"
+	case 455:
+		return "B And G Linear 28"
+	case 456:
+		return "B And G Linear 29"
+	case 457:
+		return "B And G Linear 30"
+	case 458:
+		return "B And G Linear 31"
+	case 459:
+		return "B And G Linear 32"
+	case 460:
+		return "Origin Way Point Number"
+	case 461:
+		return "Dest Way Point Number"
+	case 462:
+		return "Arrival Notification"
+	case 463:
+		return "Arrival Circle Notification"
+	case 464:
+		return "Was Nav Terminated"
+	case 465:
+		return "Bobstay"
+	case 466:
+		return "J1"
+	case 467:
+		return "J2"
+	case 468:
+		return "J3"
+	case 469:
+		return "Mast Base"
+	case 470:
+		return "Mainsheet"
+	case 471:
+		return "D0 Port"
+	case 472:
+		return "D0 Starboard"
+	case 473:
+		return "Runner Port"
+	case 474:
+		return "Runner Starboard"
+	case 475:
+		return "Foil Port"
+	case 476:
+		return "Foil Starboard"
+	case 477:
+		return "Sailtack Port"
+	case 478:
+		return "Sailtack Starboard"
+	case 479:
+		return "Deflect Port"
+	case 480:
+		return "Deflect Starboard"
+	case 481:
+		return "Rudder Load Port"
+	case 482:
+		return "Rudder Load Starboard"
+	case 483:
+		return "D1 Port"
+	case 484:
+		return "D1 Starboard"
+	case 485:
+		return "V0 Port"
+	case 486:
+		return "V0 Starboard"
+	case 487:
+		return "V1 Port"
+	case 488:
+		return "V1 Starboard"
+	case 489:
+		return "Gnss System"
+	case 490:
+		return "Sv Count"
+	case 491:
+		return "Gnss Op Mode"
+	case 492:
+		return "Dgnss Mode"
+	case 493:
+		return "Suzuki Fuel Pump Duty"
+	case 494:
+		return "Speed Log Water Longitudinal"
+	case 495:
+		return "Speed Log Water Transverse"
+	case 496:
+		return "Speed Log Water Resultant"
+	case 497:
+		return "Speed Log Water Angle"
+	case 498:
+		return "Speed Log Ground Longitudinal"
+	case 499:
+		return "Speed Log Ground Transverse"
+	case 500:
+		return "Speed Log Ground Resultant"
+	case 501:
+		return "Speed Log Ground Angle"
+	case 502:
+		return "Speed Log Stern Water Transverse"
+	case 503:
+		return "Speed Log Stern Ground Transverse"
+	case 504:
+		return "Position Datum"
+	case 505:
+		return "Speed Boat"
+	case 506:
+		return "Was Engine Fuel Used Mercury"
+	case 507:
+		return "Heave"
+	case 508:
+		return "Speed Trip Max RPM"
+	case 509:
+		return "Honda Engine Status Params"
+	case 510:
+		return "Pilot Features"
+	case 511:
+		return "Pilot Setpoint Heading"
+	case 512:
+		return "Idle Speed Control Mode"
+	case 513:
+		return "Idle Speed Control Value"
+	case 514:
+		return "Trolling Mode"
+	case 515:
+		return "Immobilizer Lock Status"
+	case 516:
+		return "Engine Discrete Params 1"
+	case 517:
+		return "Engine Discrete Params 2"
+	case 518:
+		return "Engine Discrete Params 3"
+	case 519:
+		return "Engine Discrete Params 4"
+	case 520:
+		return "Engine Discrete Params 5"
+	case 521:
+		return "Engine Discrete Params 6"
+	case 522:
+		return "Idle Speed Limit Low"
+	case 523:
+		return "Idle Speed Limit High"
+	case 524:
+		return "Was Trolling Variable RPM Info"
+	case 525:
+		return "Idle Speed Control Target Rev"
+	case 526:
+		return "Idle Control"
+	case 527:
+		return "Idle Feedback"
+	case 528:
+		return "Immediately After Starting Control"
+	case 529:
+		return "Gateway Params"
+	case 530:
+		return "Gateway Protocol"
+	case 531:
+		return "Engine Wall Temp"
+	case 532:
+		return "Substitute Battery Voltage"
+	case 533:
+		return "Yamaha Engine M6 Diag Code"
+	case 534:
+		return "Wireless Sensor Battery Status"
+	case 535:
+		return "Wireless Sensor Battery Charge Status"
+	case 536:
+		return "Wireless Sensor Battery Status Voltage"
+	case 537:
+		return "Wireless Sensor Battery Charge Status Current"
+	case 538:
+		return "Fluid Type Mode"
+	case 539:
+		return "Datetime"
+	case 540:
+		return "Reacher Load"
+	case 541:
+		return "Blade Load"
+	case 542:
+		return "Staysail Load"
+	case 543:
+		return "Tack Load"
+	case 544:
+		return "J4 Load"
+	case 545:
+		return "Solent Load"
+	case 546:
+		return "Tack Port Load"
+	case 547:
+		return "Tack Starboard Load"
+	case 548:
+		return "Deflect Upper Load"
+	case 549:
+		return "Deflect Lower Load"
+	case 550:
+		return "Winch Port Load"
+	case 551:
+		return "Winch Starboard Load"
+	case 552:
+		return "Spin Halyard Port Load"
+	case 553:
+		return "Spin Halyard Starboard Load"
+	case 554:
+		return "Main Halyward"
+	case 555:
+		return "Load 1 Load"
+	case 556:
+		return "Load 2 Load"
+	case 557:
+		return "Mast Base 2 Load"
+	case 558:
+		return "Pilot Active Perf Mode"
+	case 559:
+		return "Pilot Gust"
+	case 560:
+		return "Pilot Tws Response"
+	case 561:
+		return "Pilot Heel Comp"
+	case 562:
+		return "Pilot Net Course"
+	case 563:
+		return "Pilot Target Wind Angle"
+	case 564:
+		return "Pilot Weather Helm"
+	case 565:
+		return "Pilot Mean Heel"
+	case 566:
+		return "Propeller Shaft Pitch Angle"
+	case 567:
+		return "Propeller Shaft Pitch Percent"
+	case 568:
+		return "Propeller Shaft RPM"
+	case 569:
+		return "Thruster Pitch Angle"
+	case 570:
+		return "Thruster Pitch Percent"
+	case 571:
+		return "Ground Wind Angle"
+	case 572:
+		return "Fuel Flow Offset"
+	case 573:
+		return "Fluid Level Gasoline"
+	case 574:
+		return "Fluid Volume Gasoline"
+	case 575:
+		return "Tank Capacity Gasoline"
+	case 576:
+		return "Cmd Xte Offset"
+	case 577:
+		return "Engine 4Stroke Oil"
+	case 578:
+		return "Wireless Sensor Signal Strength"
+	case 579:
+		return "Wireless Sensor Software Update Progress"
+	case 580:
+		return "Trolling Status"
+	case 581:
+		return "Mercury Exhaust Valve"
+	case 582:
+		return "Mercury Exhaust Status"
+	case 583:
+		return "Yanmar Engine Ecu Alarms"
+	case 584:
+		return "Yanmar Helm Ecu Alarms"
+	case 585:
+		return "Yanmar Drive Ecu Alarms"
+	case 586:
+		return "Dgps Correction Data"
+	case 587:
+		return "Dgps Reference Station Id"
+	case 588:
+		return "Dgps Reference Station Health"
+	case 589:
+		return "Dgps Signal Snr"
+	case 590:
+		return "Dgps Signal Frequency"
+	case 591:
+		return "Dgps Signal Strength"
+	case 592:
+		return "Engine Fuel Temp"
+	case 593:
+		return "Depth Quality"
+	case 594:
+		return "Number Of Active Dtc"
+	case 595:
+		return "Yanmar Fuel Level Tank1 Port"
+	case 596:
+		return "Yanmar Fuel Level Tank2 Port"
+	case 597:
+		return "Yanmar Fuel Level Tank1 Stbd"
+	case 598:
+		return "Yanmar Fuel Level Tank2 Stbd"
+	case 599:
+		return "Yanmar Fuel Level Tank1 Center"
+	case 600:
+		return "Yanmar Fuel Level Tank2 Center"
+	case 601:
+		return "Yanmar Fresh Water Level Tank1 Port"
+	case 602:
+		return "Yanmar Fresh Water Level Tank2 Port"
+	case 603:
+		return "Yanmar Fresh Water Level Tank1 Stbd"
+	case 604:
+		return "Yanmar Fresh Water Level Tank2 Stbd"
+	case 605:
+		return "Yanmar Fresh Water Level Tank1 Center"
+	case 606:
+		return "Yanmar Fresh Water Level Tank2 Center"
+	case 607:
+		return "Yanmar Gray Water Level Tank1 Port"
+	case 608:
+		return "Yanmar Gray Water Level Tank2 Port"
+	case 609:
+		return "Yanmar Gray Water Level Tank1 Stbd"
+	case 610:
+		return "Yanmar Gray Water Level Tank2 Stbd"
+	case 611:
+		return "Yanmar Gray Water Level Tank1 Center"
+	case 612:
+		return "Yanmar Gray Water Level Tank2 Center"
+	case 613:
+		return "Rudder Angle Percentage"
+	case 614:
+		return "Troll Active Helm"
+	case 615:
+		return "Tides Graphic"
+	case 616:
+		return "Anchor Distance"
+	case 617:
+		return "Anchor Size"
+	case 618:
+		return "Anchor Depth"
+	case 619:
+		return "Anchor Bearing"
+	case 620:
+		return "Honda Engine Warning Params"
+	case 621:
+		return "Honda Engine Discrete Params 1"
+	case 622:
+		return "Honda Engine Discrete Params 2"
+	case 623:
+		return "Honda Engine Discrete Params 3"
+	case 624:
+		return "Honda Engine Discrete Params 4"
+	case 625:
+		return "Mainsail Head Load"
+	case 626:
+		return "Mainsail Clew Load"
+	case 627:
+		return "Mainsail Tack Load"
+	case 628:
+		return "J1 Head Load"
+	case 629:
+		return "J1 Clew Load"
+	case 630:
+		return "J1 Tack Load"
+	case 631:
+		return "J2 Head Load"
+	case 632:
+		return "J2 Clew Load"
+	case 633:
+		return "J2 Tack Load"
+	case 634:
+		return "J3 Head Load"
+	case 635:
+		return "J3 Clew Load"
+	case 636:
+		return "J3 Tack Load"
+	case 637:
+		return "Code Zero Head Load"
+	case 638:
+		return "Code Zero Clew Load"
+	case 639:
+		return "Code Zero Tack Load"
+	case 640:
+		return "Suzuki Engine Alert I"
+	case 641:
+		return "Engine Oil Life"
+	case 642:
+		return "Engine Oil Level Status"
+	case 643:
+		return "Trans Fluid Status"
+	case 644:
+		return "Honda Eco Status All Engines"
+	case 645:
+		return "Output RPM"
+	case 646:
+		return "Suzuki Engine Alert A"
+	case 647:
+		return "Suzuki Engine Alert B"
+	case 648:
+		return "Suzuki Engine Alert C"
+	case 649:
+		return "Suzuki Engine Alert D"
+	case 650:
+		return "Suzuki Engine Alert E"
+	case 651:
+		return "Suzuki Engine Alert F"
+	case 652:
+		return "Suzuki Engine Alert G"
+	case 653:
+		return "Suzuki Engine Alert H"
+	case 654:
+		return "Suzuki Engine Alert J"
+	case 655:
+		return "Suzuki Bcm Fault"
+	case 656:
+		return "Suzuki Bcm Mode"
+	case 657:
+		return "Suzuki Engine Kls Status"
+	case 658:
+		return "Suzuki Switch Fault"
+	case 659:
+		return "Suzuki Shift Position Status"
+	case 660:
+		return "Vessel Fuel Used Seasonal"
+	case 661:
+		return "Vessel Fuel Capacity"
+	case 662:
+		return "Suzuki Engine Auto Trim Status"
+	case 663:
+		return "Trolling Mode Active"
+	case 664:
+		return "Trolling Mode Active Master"
+	case 665:
+		return "Keyless Communication State"
+	case 666:
+		return "Linear Actuator Position"
+	case 667:
+		return "Engine Exhaust Temp"
+	case 668:
+		return "Engine Guardian Power Limit"
+	case 669:
+		return "Engine State"
+	case 670:
+		return "Sailing Time To Burn"
+	case 671:
+		return "Mast Twist"
+	case 672:
+		return "VHF Channel"
+	case 673:
+		return "Trolling Lower Unit Direction"
+	case 674:
+		return "Propulsion Battery Status"
+	case 675:
+		return "Propulsion Battery Isolation Status"
+	case 676:
+		return "Propulsion Battery Error"
+	case 677:
+		return "Propulsion Battery Voltage"
+	case 678:
+		return "Propulsion Battery Current"
+	case 679:
+		return "Propulsion Battery State Of Charge"
+	case 680:
+		return "Propulsion Battery Time Remaining"
+	case 681:
+		return "Propulsion Battery Highest Cell Temperature"
+	case 682:
+		return "Propulsion Battery Lowest Cell Temperature"
+	case 683:
+		return "Propulsion Battery Average Cell Temperature"
+	case 684:
+		return "Propulsion Battery Maximum Discharge Current"
+	case 685:
+		return "Propulsion Battery Maximum Charge Current"
+	case 686:
+		return "Propulsion Battery Cooling System Status"
+	case 687:
+		return "Propulsion Battery Heating System Status"
+	case 688:
+		return "Propulsion Battery Storage Mode"
+	case 689:
+		return "Propulsion Battery Chemistry"
+	case 690:
+		return "Propulsion Battery Maximum Temperature Derating"
+	case 691:
+		return "Propulsion Battery Maximum Temperature Shutoff"
+	case 692:
+		return "Propulsion Battery Minimum Temperature Derating"
+	case 693:
+		return "Propulsion Battery Minimum Temperature Shutoff"
+	case 694:
+		return "Propulsion Battery Usable Energy"
+	case 695:
+		return "Propulsion Battery State Of Health"
+	case 696:
+		return "Propulsion Battery Discharge Cycles Count"
+	case 697:
+		return "Propulsion Battery Full Status"
+	case 698:
+		return "Propulsion Battery Empty Status"
+	case 699:
+		return "Propulsion Battery Maximum Charge Soc"
+	case 700:
+		return "Propulsion Battery Minimum Discharge Soc"
+	case 701:
+		return "Active Motor Mode"
+	case 702:
+		return "Motor Brake Mode"
+	case 703:
+		return "Motor Rotational Shaft Speed"
+	case 704:
+		return "Motor Voltage"
+	case 705:
+		return "Motor Current"
+	case 706:
+		return "Motor Operating Mode"
+	case 707:
+		return "Motor Temperature"
+	case 708:
+		return "Motor Inverter Temperature"
+	case 709:
+		return "Motor Coolant Temperature"
+	case 710:
+		return "Motor Gear Temperature"
+	case 711:
+		return "Motor Shaft Torque Percent"
+	case 712:
+		return "Motor Voltage Type"
+	case 713:
+		return "Motor Voltage Rating"
+	case 714:
+		return "Motor Max Continuous Power"
+	case 715:
+		return "Motor Max Boost Power"
+	case 716:
+		return "Motor Max Temperature Rating"
+	case 717:
+		return "Motor Rated Speed"
+	case 718:
+		return "Motor Max Controller Temperature Rating"
+	case 719:
+		return "Motor Shaft Torque Rating"
+	case 720:
+		return "Motor DC Voltage Derating Threshold"
+	case 721:
+		return "Motor DC Voltage Cutoff Threshold"
+	case 722:
+		return "Motor Runtime"
+	case 723:
+		return "Sailing Ping Time Port"
+	case 724:
+		return "Sailing Ping Time Stbd"
+	case 725:
+		return "Heading Source"
+	case 726:
+		return "Invalid"
+	default:
 		return fmt.Sprintf("NavicoDataTypeConst(%d)", uint16(e))
 	}
 }
+
 type SimnetCommandConst uint8
+
 const (
-	Text	SimnetCommandConst = 50
+	Text SimnetCommandConst = 50
 )
 
-func (e SimnetCommandConst) GoString() string {return e.String() }
+func (e SimnetCommandConst) GoString() string { return e.String() }
 func (e SimnetCommandConst) String() string {
 	switch e {
-		case 50:
-			return "Text"
-default:
+	case 50:
+		return "Text"
+	default:
 		return fmt.Sprintf("SimnetCommandConst(%d)", uint8(e))
 	}
 }
+
 type SimnetKeyOperationConst uint8
+
 const (
-	Read	SimnetKeyOperationConst = 0
-	Set	SimnetKeyOperationConst = 1
-	Reply	SimnetKeyOperationConst = 2
+	Read  SimnetKeyOperationConst = 0
+	Set   SimnetKeyOperationConst = 1
+	Reply SimnetKeyOperationConst = 2
 )
 
-func (e SimnetKeyOperationConst) GoString() string {return e.String() }
+func (e SimnetKeyOperationConst) GoString() string { return e.String() }
 func (e SimnetKeyOperationConst) String() string {
 	switch e {
-		case 0:
-			return "Read"
-		case 1:
-			return "Set"
-		case 2:
-			return "Reply"
-default:
+	case 0:
+		return "Read"
+	case 1:
+		return "Set"
+	case 2:
+		return "Reply"
+	default:
 		return fmt.Sprintf("SimnetKeyOperationConst(%d)", uint8(e))
 	}
 }
+
 type SimnetNightModeConst uint8
+
 const (
-	Day	SimnetNightModeConst = 2
-	Night	SimnetNightModeConst = 4
+	Day   SimnetNightModeConst = 2
+	Night SimnetNightModeConst = 4
 )
 
-func (e SimnetNightModeConst) GoString() string {return e.String() }
+func (e SimnetNightModeConst) GoString() string { return e.String() }
 func (e SimnetNightModeConst) String() string {
 	switch e {
-		case 2:
-			return "Day"
-		case 4:
-			return "Night"
-default:
+	case 2:
+		return "Day"
+	case 4:
+		return "Night"
+	default:
 		return fmt.Sprintf("SimnetNightModeConst(%d)", uint8(e))
 	}
 }
-type SimnetCompassAutocalModeConst uint8
-const (
-	Off_9	SimnetCompassAutocalModeConst = 0
-	On_3	SimnetCompassAutocalModeConst = 1
-	AutoLocked	SimnetCompassAutocalModeConst = 2
-	Auto_5	SimnetCompassAutocalModeConst = 3
-)
 
-func (e SimnetCompassAutocalModeConst) GoString() string {return e.String() }
-func (e SimnetCompassAutocalModeConst) String() string {
-	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "On"
-		case 2:
-			return "Auto locked"
-		case 3:
-			return "Auto"
-default:
-		return fmt.Sprintf("SimnetCompassAutocalModeConst(%d)", uint8(e))
-	}
-}
 type SimnetNightModeColorConst uint8
+
 const (
-	Red	SimnetNightModeColorConst = 0
-	Green	SimnetNightModeColorConst = 1
-	Blue	SimnetNightModeColorConst = 2
-	White	SimnetNightModeColorConst = 3
-	Magenta	SimnetNightModeColorConst = 4
+	Red     SimnetNightModeColorConst = 0
+	Green   SimnetNightModeColorConst = 1
+	Blue    SimnetNightModeColorConst = 2
+	White   SimnetNightModeColorConst = 3
+	Magenta SimnetNightModeColorConst = 4
 )
 
-func (e SimnetNightModeColorConst) GoString() string {return e.String() }
+func (e SimnetNightModeColorConst) GoString() string { return e.String() }
 func (e SimnetNightModeColorConst) String() string {
 	switch e {
-		case 0:
-			return "Red"
-		case 1:
-			return "Green"
-		case 2:
-			return "Blue"
-		case 3:
-			return "White"
-		case 4:
-			return "Magenta"
-default:
+	case 0:
+		return "Red"
+	case 1:
+		return "Green"
+	case 2:
+		return "Blue"
+	case 3:
+		return "White"
+	case 4:
+		return "Magenta"
+	default:
 		return fmt.Sprintf("SimnetNightModeColorConst(%d)", uint8(e))
 	}
 }
-type SimnetNetworkGroupConst uint8
+
+type SimnetDisplayGroupConst uint8
+
 const (
-	None_4	SimnetNetworkGroupConst = 0
-	Default	SimnetNetworkGroupConst = 1
-	Group1_2	SimnetNetworkGroupConst = 2
-	Group2_2	SimnetNetworkGroupConst = 3
-	Group3_2	SimnetNetworkGroupConst = 4
-	Group4_2	SimnetNetworkGroupConst = 5
-	Group5_2	SimnetNetworkGroupConst = 6
-	Group6	SimnetNetworkGroupConst = 7
+	None_4   SimnetDisplayGroupConst = 0
+	Default  SimnetDisplayGroupConst = 1
+	Group1_2 SimnetDisplayGroupConst = 2
+	Group2_2 SimnetDisplayGroupConst = 3
+	Group3_2 SimnetDisplayGroupConst = 4
+	Group4_2 SimnetDisplayGroupConst = 5
+	Group5_2 SimnetDisplayGroupConst = 6
+	Group6   SimnetDisplayGroupConst = 7
 )
 
-func (e SimnetNetworkGroupConst) GoString() string {return e.String() }
-func (e SimnetNetworkGroupConst) String() string {
+func (e SimnetDisplayGroupConst) GoString() string { return e.String() }
+func (e SimnetDisplayGroupConst) String() string {
 	switch e {
-		case 0:
-			return "None"
-		case 1:
-			return "Default"
-		case 2:
-			return "Group 1"
-		case 3:
-			return "Group 2"
-		case 4:
-			return "Group 3"
-		case 5:
-			return "Group 4"
-		case 6:
-			return "Group 5"
-		case 7:
-			return "Group 6"
-default:
-		return fmt.Sprintf("SimnetNetworkGroupConst(%d)", uint8(e))
+	case 0:
+		return "None"
+	case 1:
+		return "Default"
+	case 2:
+		return "Group 1"
+	case 3:
+		return "Group 2"
+	case 4:
+		return "Group 3"
+	case 5:
+		return "Group 4"
+	case 6:
+		return "Group 5"
+	case 7:
+		return "Group 6"
+	default:
+		return fmt.Sprintf("SimnetDisplayGroupConst(%d)", uint8(e))
 	}
 }
+
 type SimnetHourDisplayConst uint8
+
 const (
-	SimnetHourDisplayConst24Hour	SimnetHourDisplayConst = 0
-	SimnetHourDisplayConst12Hour	SimnetHourDisplayConst = 1
+	SimnetHourDisplayConst24Hour SimnetHourDisplayConst = 0
+	SimnetHourDisplayConst12Hour SimnetHourDisplayConst = 1
 )
 
-func (e SimnetHourDisplayConst) GoString() string {return e.String() }
+func (e SimnetHourDisplayConst) GoString() string { return e.String() }
 func (e SimnetHourDisplayConst) String() string {
 	switch e {
-		case 0:
-			return "24 hour"
-		case 1:
-			return "12 hour"
-default:
+	case 0:
+		return "24 hour"
+	case 1:
+		return "12 hour"
+	default:
 		return fmt.Sprintf("SimnetHourDisplayConst(%d)", uint8(e))
 	}
 }
+
 type SimnetTimeFormatConst uint8
+
 const (
-	MmDdYyyy	SimnetTimeFormatConst = 1
-	DdMmYyyy	SimnetTimeFormatConst = 2
+	MmDdYyyy SimnetTimeFormatConst = 1
+	DdMmYyyy SimnetTimeFormatConst = 2
 )
 
-func (e SimnetTimeFormatConst) GoString() string {return e.String() }
+func (e SimnetTimeFormatConst) GoString() string { return e.String() }
 func (e SimnetTimeFormatConst) String() string {
 	switch e {
-		case 1:
-			return "MM/dd/yyyy"
-		case 2:
-			return "dd/MM/yyyy"
-default:
+	case 1:
+		return "MM/dd/yyyy"
+	case 2:
+		return "dd/MM/yyyy"
+	default:
 		return fmt.Sprintf("SimnetTimeFormatConst(%d)", uint8(e))
 	}
 }
+
 type SimnetBacklightLevelConst uint8
+
 const (
-	SimnetBacklightLevelConst10Min	SimnetBacklightLevelConst = 0
-	DayMode	SimnetBacklightLevelConst = 1
-	NightMode	SimnetBacklightLevelConst = 4
-	SimnetBacklightLevelConst20	SimnetBacklightLevelConst = 11
-	SimnetBacklightLevelConst30	SimnetBacklightLevelConst = 22
-	SimnetBacklightLevelConst40	SimnetBacklightLevelConst = 33
-	SimnetBacklightLevelConst50	SimnetBacklightLevelConst = 44
-	SimnetBacklightLevelConst60	SimnetBacklightLevelConst = 55
-	SimnetBacklightLevelConst70	SimnetBacklightLevelConst = 66
-	SimnetBacklightLevelConst80	SimnetBacklightLevelConst = 77
-	SimnetBacklightLevelConst90	SimnetBacklightLevelConst = 88
-	SimnetBacklightLevelConst100Max	SimnetBacklightLevelConst = 99
+	SimnetBacklightLevelConst10Min  SimnetBacklightLevelConst = 0
+	DayMode                         SimnetBacklightLevelConst = 1
+	NightMode                       SimnetBacklightLevelConst = 4
+	SimnetBacklightLevelConst20     SimnetBacklightLevelConst = 11
+	SimnetBacklightLevelConst30     SimnetBacklightLevelConst = 22
+	SimnetBacklightLevelConst40     SimnetBacklightLevelConst = 33
+	SimnetBacklightLevelConst50     SimnetBacklightLevelConst = 44
+	SimnetBacklightLevelConst60     SimnetBacklightLevelConst = 55
+	SimnetBacklightLevelConst70     SimnetBacklightLevelConst = 66
+	SimnetBacklightLevelConst80     SimnetBacklightLevelConst = 77
+	SimnetBacklightLevelConst90     SimnetBacklightLevelConst = 88
+	SimnetBacklightLevelConst100Max SimnetBacklightLevelConst = 99
 )
 
-func (e SimnetBacklightLevelConst) GoString() string {return e.String() }
+func (e SimnetBacklightLevelConst) GoString() string { return e.String() }
 func (e SimnetBacklightLevelConst) String() string {
 	switch e {
-		case 0:
-			return "10% (Min)"
-		case 1:
-			return "Day mode"
-		case 4:
-			return "Night mode"
-		case 11:
-			return "20%"
-		case 22:
-			return "30%"
-		case 33:
-			return "40%"
-		case 44:
-			return "50%"
-		case 55:
-			return "60%"
-		case 66:
-			return "70%"
-		case 77:
-			return "80%"
-		case 88:
-			return "90%"
-		case 99:
-			return "100% (Max)"
-default:
+	case 0:
+		return "10% (Min)"
+	case 1:
+		return "Day mode"
+	case 4:
+		return "Night mode"
+	case 11:
+		return "20%"
+	case 22:
+		return "30%"
+	case 33:
+		return "40%"
+	case 44:
+		return "50%"
+	case 55:
+		return "60%"
+	case 66:
+		return "70%"
+	case 77:
+		return "80%"
+	case 88:
+		return "90%"
+	case 99:
+		return "100% (Max)"
+	default:
 		return fmt.Sprintf("SimnetBacklightLevelConst(%d)", uint8(e))
 	}
 }
-type SimnetHeadingUnitConst uint8
-const (
-	Magnetic_2	SimnetHeadingUnitConst = 0
-	True_2	SimnetHeadingUnitConst = 1
-)
 
-func (e SimnetHeadingUnitConst) GoString() string {return e.String() }
-func (e SimnetHeadingUnitConst) String() string {
-	switch e {
-		case 0:
-			return "Magnetic"
-		case 1:
-			return "True"
-default:
-		return fmt.Sprintf("SimnetHeadingUnitConst(%d)", uint8(e))
-	}
-}
-type SimnetWindSpeedUnitConst uint8
-const (
-	Knots	SimnetWindSpeedUnitConst = 0
-	MetersPerSecond	SimnetWindSpeedUnitConst = 1
-	MilesPerHour	SimnetWindSpeedUnitConst = 2
-	KilometersPerHour	SimnetWindSpeedUnitConst = 3
-)
-
-func (e SimnetWindSpeedUnitConst) GoString() string {return e.String() }
-func (e SimnetWindSpeedUnitConst) String() string {
-	switch e {
-		case 0:
-			return "Knots"
-		case 1:
-			return "Meters per second"
-		case 2:
-			return "Miles per hour"
-		case 3:
-			return "Kilometers per hour"
-default:
-		return fmt.Sprintf("SimnetWindSpeedUnitConst(%d)", uint8(e))
-	}
-}
-type SimnetSpeedUnitConst uint8
-const (
-	Knots_2	SimnetSpeedUnitConst = 0
-	KilometersPerHour_2	SimnetSpeedUnitConst = 1
-	MilesPerHour_2	SimnetSpeedUnitConst = 2
-)
-
-func (e SimnetSpeedUnitConst) GoString() string {return e.String() }
-func (e SimnetSpeedUnitConst) String() string {
-	switch e {
-		case 0:
-			return "Knots"
-		case 1:
-			return "Kilometers per hour"
-		case 2:
-			return "Miles per hour"
-default:
-		return fmt.Sprintf("SimnetSpeedUnitConst(%d)", uint8(e))
-	}
-}
-type SimnetTemperatureUnitConst uint8
-const (
-	Celsius	SimnetTemperatureUnitConst = 0
-	Fahrenheit	SimnetTemperatureUnitConst = 1
-)
-
-func (e SimnetTemperatureUnitConst) GoString() string {return e.String() }
-func (e SimnetTemperatureUnitConst) String() string {
-	switch e {
-		case 0:
-			return "Celsius"
-		case 1:
-			return "Fahrenheit"
-default:
-		return fmt.Sprintf("SimnetTemperatureUnitConst(%d)", uint8(e))
-	}
-}
-type SimnetDistanceUnitConst uint8
-const (
-	NauticalMiles	SimnetDistanceUnitConst = 0
-	Kilometers	SimnetDistanceUnitConst = 1
-	Miles	SimnetDistanceUnitConst = 2
-)
-
-func (e SimnetDistanceUnitConst) GoString() string {return e.String() }
-func (e SimnetDistanceUnitConst) String() string {
-	switch e {
-		case 0:
-			return "Nautical miles"
-		case 1:
-			return "Kilometers"
-		case 2:
-			return "Miles"
-default:
-		return fmt.Sprintf("SimnetDistanceUnitConst(%d)", uint8(e))
-	}
-}
-type SimnetDistanceSmallUnitConst uint8
-const (
-	Feet	SimnetDistanceSmallUnitConst = 0
-	Meters	SimnetDistanceSmallUnitConst = 1
-	Yards	SimnetDistanceSmallUnitConst = 2
-)
-
-func (e SimnetDistanceSmallUnitConst) GoString() string {return e.String() }
-func (e SimnetDistanceSmallUnitConst) String() string {
-	switch e {
-		case 0:
-			return "Feet"
-		case 1:
-			return "Meters"
-		case 2:
-			return "Yards"
-default:
-		return fmt.Sprintf("SimnetDistanceSmallUnitConst(%d)", uint8(e))
-	}
-}
-type SimnetDepthUnitConst uint8
-const (
-	Meters_2	SimnetDepthUnitConst = 0
-	Feet_2	SimnetDepthUnitConst = 1
-	Fathoms	SimnetDepthUnitConst = 2
-)
-
-func (e SimnetDepthUnitConst) GoString() string {return e.String() }
-func (e SimnetDepthUnitConst) String() string {
-	switch e {
-		case 0:
-			return "Meters"
-		case 1:
-			return "Feet"
-		case 2:
-			return "Fathoms"
-default:
-		return fmt.Sprintf("SimnetDepthUnitConst(%d)", uint8(e))
-	}
-}
-type SimnetVolumeUnitConst uint8
-const (
-	Liters	SimnetVolumeUnitConst = 0
-	Gallons	SimnetVolumeUnitConst = 1
-)
-
-func (e SimnetVolumeUnitConst) GoString() string {return e.String() }
-func (e SimnetVolumeUnitConst) String() string {
-	switch e {
-		case 0:
-			return "Liters"
-		case 1:
-			return "Gallons"
-default:
-		return fmt.Sprintf("SimnetVolumeUnitConst(%d)", uint8(e))
-	}
-}
-type SimnetPressureUnitConst uint8
-const (
-	Psi	SimnetPressureUnitConst = 1
-	Kilopascal	SimnetPressureUnitConst = 3
-	InchesOfMercury	SimnetPressureUnitConst = 5
-	Bar	SimnetPressureUnitConst = 6
-)
-
-func (e SimnetPressureUnitConst) GoString() string {return e.String() }
-func (e SimnetPressureUnitConst) String() string {
-	switch e {
-		case 1:
-			return "PSI"
-		case 3:
-			return "Kilopascal"
-		case 5:
-			return "Inches of mercury"
-		case 6:
-			return "Bar"
-default:
-		return fmt.Sprintf("SimnetPressureUnitConst(%d)", uint8(e))
-	}
-}
-type SimnetBaroPressureUnitConst uint8
-const (
-	Millibar	SimnetBaroPressureUnitConst = 0
-	Hectopascal	SimnetBaroPressureUnitConst = 2
-	InchesOfMercury_2	SimnetBaroPressureUnitConst = 5
-)
-
-func (e SimnetBaroPressureUnitConst) GoString() string {return e.String() }
-func (e SimnetBaroPressureUnitConst) String() string {
-	switch e {
-		case 0:
-			return "Millibar"
-		case 2:
-			return "Hectopascal"
-		case 5:
-			return "Inches of mercury"
-default:
-		return fmt.Sprintf("SimnetBaroPressureUnitConst(%d)", uint8(e))
-	}
-}
 type SimnetApEventsConst uint8
+
 const (
-	FollowNonFollow	SimnetApEventsConst = 2
-	Standby_5	SimnetApEventsConst = 6
-	HeadingMode	SimnetApEventsConst = 9
-	NavMode	SimnetApEventsConst = 10
-	NoDriftMode	SimnetApEventsConst = 12
-	NonFollowUpMode	SimnetApEventsConst = 13
-	FollowUpMode	SimnetApEventsConst = 14
-	WindMode	SimnetApEventsConst = 15
-	Tack	SimnetApEventsConst = 17
-	SquareTurn	SimnetApEventsConst = 18
-	CTurn	SimnetApEventsConst = 19
-	UTurn	SimnetApEventsConst = 20
-	SpiralTurn	SimnetApEventsConst = 21
-	ZigZagTurn	SimnetApEventsConst = 22
-	LazySTurn	SimnetApEventsConst = 23
-	DepthTurn	SimnetApEventsConst = 24
-	ChangeCourse	SimnetApEventsConst = 26
-	TimerSync	SimnetApEventsConst = 61
-	MOBActivated	SimnetApEventsConst = 107
-	MOBDeactivated	SimnetApEventsConst = 108
-	PingPortEnd	SimnetApEventsConst = 112
-	PingStarboardEnd	SimnetApEventsConst = 113
+	FollowNonFollow  SimnetApEventsConst = 2
+	Standby_5        SimnetApEventsConst = 6
+	HeadingMode      SimnetApEventsConst = 9
+	NavMode          SimnetApEventsConst = 10
+	NoDriftMode      SimnetApEventsConst = 12
+	NonFollowUpMode  SimnetApEventsConst = 13
+	FollowUpMode     SimnetApEventsConst = 14
+	WindMode         SimnetApEventsConst = 15
+	Tack             SimnetApEventsConst = 17
+	SquareTurn       SimnetApEventsConst = 18
+	CTurn            SimnetApEventsConst = 19
+	UTurn            SimnetApEventsConst = 20
+	SpiralTurn       SimnetApEventsConst = 21
+	ZigZagTurn       SimnetApEventsConst = 22
+	LazySTurn        SimnetApEventsConst = 23
+	DepthTurn        SimnetApEventsConst = 24
+	ChangeCourse     SimnetApEventsConst = 26
+	TimerSync        SimnetApEventsConst = 61
+	MOBActivated     SimnetApEventsConst = 107
+	MOBDeactivated   SimnetApEventsConst = 108
+	PingPortEnd      SimnetApEventsConst = 112
+	PingStarboardEnd SimnetApEventsConst = 113
 )
 
-func (e SimnetApEventsConst) GoString() string {return e.String() }
+func (e SimnetApEventsConst) GoString() string { return e.String() }
 func (e SimnetApEventsConst) String() string {
 	switch e {
-		case 2:
-			return "Follow/Non Follow"
-		case 6:
-			return "Standby"
-		case 9:
-			return "Heading mode"
-		case 10:
-			return "Nav mode"
-		case 12:
-			return "No Drift mode"
-		case 13:
-			return "Non Follow Up mode"
-		case 14:
-			return "Follow Up mode"
-		case 15:
-			return "Wind mode"
-		case 17:
-			return "Tack"
-		case 18:
-			return "Square (Turn)"
-		case 19:
-			return "C-Turn"
-		case 20:
-			return "U-Turn"
-		case 21:
-			return "Spiral (Turn)"
-		case 22:
-			return "Zig Zag (Turn)"
-		case 23:
-			return "Lazy-S (Turn)"
-		case 24:
-			return "Depth (Turn)"
-		case 26:
-			return "Change course"
-		case 61:
-			return "Timer sync"
-		case 107:
-			return "MOB Activated"
-		case 108:
-			return "MOB Deactivated"
-		case 112:
-			return "Ping port end"
-		case 113:
-			return "Ping starboard end"
-default:
+	case 2:
+		return "Follow/Non Follow"
+	case 6:
+		return "Standby"
+	case 9:
+		return "Heading mode"
+	case 10:
+		return "Nav mode"
+	case 12:
+		return "No Drift mode"
+	case 13:
+		return "Non Follow Up mode"
+	case 14:
+		return "Follow Up mode"
+	case 15:
+		return "Wind mode"
+	case 17:
+		return "Tack"
+	case 18:
+		return "Square (Turn)"
+	case 19:
+		return "C-Turn"
+	case 20:
+		return "U-Turn"
+	case 21:
+		return "Spiral (Turn)"
+	case 22:
+		return "Zig Zag (Turn)"
+	case 23:
+		return "Lazy-S (Turn)"
+	case 24:
+		return "Depth (Turn)"
+	case 26:
+		return "Change course"
+	case 61:
+		return "Timer sync"
+	case 107:
+		return "MOB Activated"
+	case 108:
+		return "MOB Deactivated"
+	case 112:
+		return "Ping port end"
+	case 113:
+		return "Ping starboard end"
+	default:
 		return fmt.Sprintf("SimnetApEventsConst(%d)", uint8(e))
 	}
 }
+
 type SimnetDirectionConst uint8
+
 const (
-	Port	SimnetDirectionConst = 2
-	Starboard	SimnetDirectionConst = 3
-	LeftRudderPort	SimnetDirectionConst = 4
-	RightRudderStarboard	SimnetDirectionConst = 5
+	Port                 SimnetDirectionConst = 2
+	Starboard            SimnetDirectionConst = 3
+	LeftRudderPort       SimnetDirectionConst = 4
+	RightRudderStarboard SimnetDirectionConst = 5
 )
 
-func (e SimnetDirectionConst) GoString() string {return e.String() }
+func (e SimnetDirectionConst) GoString() string { return e.String() }
 func (e SimnetDirectionConst) String() string {
 	switch e {
-		case 2:
-			return "Port"
-		case 3:
-			return "Starboard"
-		case 4:
-			return "Left rudder (port)"
-		case 5:
-			return "Right rudder (starboard)"
-default:
+	case 2:
+		return "Port"
+	case 3:
+		return "Starboard"
+	case 4:
+		return "Left rudder (port)"
+	case 5:
+		return "Right rudder (starboard)"
+	default:
 		return fmt.Sprintf("SimnetDirectionConst(%d)", uint8(e))
 	}
 }
+
 type SimnetAlarmCommandConst uint8
+
 const (
-	Deactivate	SimnetAlarmCommandConst = 56
-	Activate	SimnetAlarmCommandConst = 57
-	Acknowledge_4	SimnetAlarmCommandConst = 58
-	Silence	SimnetAlarmCommandConst = 68
-	TackGybeConfirm	SimnetAlarmCommandConst = 88
-	AlarmHistory	SimnetAlarmCommandConst = 104
-	MOBActivated_2	SimnetAlarmCommandConst = 107
-	MOBCancelled	SimnetAlarmCommandConst = 108
+	Deactivate     SimnetAlarmCommandConst = 56
+	Activate       SimnetAlarmCommandConst = 57
+	Acknowledge_4  SimnetAlarmCommandConst = 58
+	Silence        SimnetAlarmCommandConst = 68
+	AlarmHistory   SimnetAlarmCommandConst = 104
+	MOBActivated_2 SimnetAlarmCommandConst = 107
+	MOBCancelled   SimnetAlarmCommandConst = 108
 )
 
-func (e SimnetAlarmCommandConst) GoString() string {return e.String() }
+func (e SimnetAlarmCommandConst) GoString() string { return e.String() }
 func (e SimnetAlarmCommandConst) String() string {
 	switch e {
-		case 56:
-			return "Deactivate"
-		case 57:
-			return "Activate"
-		case 58:
-			return "Acknowledge"
-		case 68:
-			return "Silence"
-		case 88:
-			return "Tack/Gybe Confirm"
-		case 104:
-			return "Alarm History"
-		case 107:
-			return "MOB Activated"
-		case 108:
-			return "MOB Cancelled"
-default:
+	case 56:
+		return "Deactivate"
+	case 57:
+		return "Activate"
+	case 58:
+		return "Acknowledge"
+	case 68:
+		return "Silence"
+	case 104:
+		return "Alarm History"
+	case 107:
+		return "MOB Activated"
+	case 108:
+		return "MOB Cancelled"
+	default:
 		return fmt.Sprintf("SimnetAlarmCommandConst(%d)", uint8(e))
 	}
 }
+
 type SimnetEventTypeConst uint8
+
 const (
-	FollowUp	SimnetEventTypeConst = 2
-	ApCommand	SimnetEventTypeConst = 10
-	Timer	SimnetEventTypeConst = 23
-	Siren	SimnetEventTypeConst = 31
-	AISVesselSelected	SimnetEventTypeConst = 36
-	Alarm_2	SimnetEventTypeConst = 255
+	FollowUp          SimnetEventTypeConst = 2
+	ApCommand         SimnetEventTypeConst = 10
+	Timer             SimnetEventTypeConst = 23
+	Siren             SimnetEventTypeConst = 31
+	AISVesselSelected SimnetEventTypeConst = 36
+	Alarm_2           SimnetEventTypeConst = 255
 )
 
-func (e SimnetEventTypeConst) GoString() string {return e.String() }
+func (e SimnetEventTypeConst) GoString() string { return e.String() }
 func (e SimnetEventTypeConst) String() string {
 	switch e {
-		case 2:
-			return "Follow Up"
-		case 10:
-			return "AP Command"
-		case 23:
-			return "Timer"
-		case 31:
-			return "Siren"
-		case 36:
-			return "AIS vessel selected"
-		case 255:
-			return "Alarm"
-default:
+	case 2:
+		return "Follow Up"
+	case 10:
+		return "AP Command"
+	case 23:
+		return "Timer"
+	case 31:
+		return "Siren"
+	case 36:
+		return "AIS vessel selected"
+	case 255:
+		return "Alarm"
+	default:
 		return fmt.Sprintf("SimnetEventTypeConst(%d)", uint8(e))
 	}
 }
+
 type SimnetTimerEventConst uint16
+
 const (
-	RaceTimerStart	SimnetTimerEventConst = 61
-	RaceTimerStop	SimnetTimerEventConst = 62
-	RaceTimerSync	SimnetTimerEventConst = 63
-	RaceTimerReset	SimnetTimerEventConst = 64
-	TripTimerResetAll	SimnetTimerEventConst = 65
-	TripTimerEnable	SimnetTimerEventConst = 100
-	TripTimerDisable	SimnetTimerEventConst = 101
+	RaceTimerStart    SimnetTimerEventConst = 61
+	RaceTimerStop     SimnetTimerEventConst = 62
+	RaceTimerSync     SimnetTimerEventConst = 63
+	RaceTimerReset    SimnetTimerEventConst = 64
+	TripTimerResetAll SimnetTimerEventConst = 65
+	TripTimerEnable   SimnetTimerEventConst = 100
+	TripTimerDisable  SimnetTimerEventConst = 101
 )
 
-func (e SimnetTimerEventConst) GoString() string {return e.String() }
+func (e SimnetTimerEventConst) GoString() string { return e.String() }
 func (e SimnetTimerEventConst) String() string {
 	switch e {
-		case 61:
-			return "Race Timer Start"
-		case 62:
-			return "Race Timer Stop"
-		case 63:
-			return "Race Timer Sync"
-		case 64:
-			return "Race Timer Reset"
-		case 65:
-			return "Trip Timer Reset All"
-		case 100:
-			return "Trip Timer Enable"
-		case 101:
-			return "Trip Timer Disable"
-default:
+	case 61:
+		return "Race Timer Start"
+	case 62:
+		return "Race Timer Stop"
+	case 63:
+		return "Race Timer Sync"
+	case 64:
+		return "Race Timer Reset"
+	case 65:
+		return "Trip Timer Reset All"
+	case 100:
+		return "Trip Timer Enable"
+	case 101:
+		return "Trip Timer Disable"
+	default:
 		return fmt.Sprintf("SimnetTimerEventConst(%d)", uint16(e))
 	}
 }
+
 type SimnetAlarmIDConst uint16
+
 const (
-	ShallowWater	SimnetAlarmIDConst = 10
-	DeepWater	SimnetAlarmIDConst = 11
-	AnchorDepth_2	SimnetAlarmIDConst = 12
-	TrueWindShift	SimnetAlarmIDConst = 13
-	TrueWindHigh	SimnetAlarmIDConst = 14
-	TrueWindLow	SimnetAlarmIDConst = 15
-	LowBoatSpeed	SimnetAlarmIDConst = 16
-	HighVoltage	SimnetAlarmIDConst = 17
-	LowVoltage	SimnetAlarmIDConst = 18
-	DepthDataMissing	SimnetAlarmIDConst = 19
-	WindDataMissing	SimnetAlarmIDConst = 20
-	NavDataMissing	SimnetAlarmIDConst = 21
-	HeadingMissing	SimnetAlarmIDConst = 22
-	XTE	SimnetAlarmIDConst = 23
-	RudderDataMissing	SimnetAlarmIDConst = 24
-	RudderControllerFault	SimnetAlarmIDConst = 25
-	NoRudderResponse	SimnetAlarmIDConst = 26
-	RudderDriveOverload	SimnetAlarmIDConst = 27
-	HighInternalTemperature	SimnetAlarmIDConst = 28
-	ApClutchOverload	SimnetAlarmIDConst = 29
-	ApClutchDisengaged	SimnetAlarmIDConst = 30
-	HighDriveSupply	SimnetAlarmIDConst = 31
-	LowDriveSupply	SimnetAlarmIDConst = 32
-	NoActiveAutopilotControlUnit	SimnetAlarmIDConst = 33
-	NoAutopilotComputer	SimnetAlarmIDConst = 34
-	MemoryFail	SimnetAlarmIDConst = 35
-	WaterTempMissing	SimnetAlarmIDConst = 36
-	LowWaterTemp	SimnetAlarmIDConst = 37
-	HighWaterTemp	SimnetAlarmIDConst = 38
-	WaterTempRate	SimnetAlarmIDConst = 39
-	Fish	SimnetAlarmIDConst = 40
-	NoGPSFix	SimnetAlarmIDConst = 41
-	WAASDGPS	SimnetAlarmIDConst = 42
-	Arrival	SimnetAlarmIDConst = 45
-	Anchor	SimnetAlarmIDConst = 46
-	FuelLow	SimnetAlarmIDConst = 47
-	FuelHigh	SimnetAlarmIDConst = 48
-	TankLow	SimnetAlarmIDConst = 49
-	TankHigh	SimnetAlarmIDConst = 50
-	Bep	SimnetAlarmIDConst = 51
-	WaypointRadius	SimnetAlarmIDConst = 52
-	Cpa	SimnetAlarmIDConst = 53
-	AISRangeToVessel	SimnetAlarmIDConst = 54
-	AISVesselLost	SimnetAlarmIDConst = 55
-	VesselMessage	SimnetAlarmIDConst = 56
-	Lightning	SimnetAlarmIDConst = 57
-	SevereWeather	SimnetAlarmIDConst = 58
-	Storm	SimnetAlarmIDConst = 59
-	EngineCheck	SimnetAlarmIDConst = 61
-	EngineOverTemperature	SimnetAlarmIDConst = 62
-	EngineLowOilPressure	SimnetAlarmIDConst = 63
-	EngineLowOilLevel	SimnetAlarmIDConst = 64
-	EngineLowFuelPressure	SimnetAlarmIDConst = 65
-	EngineLowVoltage	SimnetAlarmIDConst = 66
-	EngineLowCoolantLevel	SimnetAlarmIDConst = 67
-	EngineWaterFlow	SimnetAlarmIDConst = 68
-	EngineWaterInFuel	SimnetAlarmIDConst = 69
-	EngineCharge	SimnetAlarmIDConst = 70
-	EnginePreheat	SimnetAlarmIDConst = 71
-	EngineHighBoostPressure	SimnetAlarmIDConst = 72
-	EngineRevLimit	SimnetAlarmIDConst = 73
-	EngineEgrSystem	SimnetAlarmIDConst = 74
-	EngineThrottlePosition	SimnetAlarmIDConst = 75
-	EngineEmergencyStop	SimnetAlarmIDConst = 76
-	EngineWarningLevel1	SimnetAlarmIDConst = 77
-	EngineWarningLevel2	SimnetAlarmIDConst = 78
-	EnginePowerReduction	SimnetAlarmIDConst = 79
-	EngineMaintenance	SimnetAlarmIDConst = 80
-	EngineCommError	SimnetAlarmIDConst = 81
-	EngineThrottle	SimnetAlarmIDConst = 82
-	EngineStartProtect	SimnetAlarmIDConst = 83
-	EngineShuttingDown	SimnetAlarmIDConst = 84
-	TransmissionCheck	SimnetAlarmIDConst = 85
-	TransmissionOverTemperature	SimnetAlarmIDConst = 86
-	TransmissionLowOilPressure	SimnetAlarmIDConst = 87
-	TransmissionLowOilLevel	SimnetAlarmIDConst = 88
-	SailDrive	SimnetAlarmIDConst = 89
-	FreshWaterLow	SimnetAlarmIDConst = 96
-	FreshWaterHigh	SimnetAlarmIDConst = 97
-	GrayWaterLow	SimnetAlarmIDConst = 98
-	GrayWaterHigh	SimnetAlarmIDConst = 99
-	LiveWellLow	SimnetAlarmIDConst = 100
-	LiveWellHigh	SimnetAlarmIDConst = 101
-	OilLow	SimnetAlarmIDConst = 102
-	OilHigh	SimnetAlarmIDConst = 103
-	BlackWaterLow	SimnetAlarmIDConst = 104
-	BlackWaterHigh	SimnetAlarmIDConst = 105
-	WeatherDataMissing	SimnetAlarmIDConst = 106
-	ApPositionDataMissing	SimnetAlarmIDConst = 107
-	ApSpeedDataMissing	SimnetAlarmIDConst = 108
-	ApDepthDataMissing	SimnetAlarmIDConst = 109
-	ApHeadingDataMissing	SimnetAlarmIDConst = 110
-	ApNavDataMissing	SimnetAlarmIDConst = 111
-	ApOffCourse	SimnetAlarmIDConst = 112
-	ApRudderDataMissing	SimnetAlarmIDConst = 113
-	ApWindDataMissing	SimnetAlarmIDConst = 114
-	RadarGuardZone	SimnetAlarmIDConst = 115
-	MarpaTargetLost	SimnetAlarmIDConst = 116
-	MarpaUnavailable	SimnetAlarmIDConst = 117
-	DangerousVessel	SimnetAlarmIDConst = 118
-	RadarError	SimnetAlarmIDConst = 119
-	CzoneCritical	SimnetAlarmIDConst = 120
-	CzoneImportant	SimnetAlarmIDConst = 121
-	CzoneStandard	SimnetAlarmIDConst = 122
-	CzoneWarning	SimnetAlarmIDConst = 123
-	TrueWindShift_2	SimnetAlarmIDConst = 124
-	EvcComError	SimnetAlarmIDConst = 125
-	EvcOverride	SimnetAlarmIDConst = 126
-	HighDriveTemperature	SimnetAlarmIDConst = 127
-	DriveInhibit	SimnetAlarmIDConst = 128
-	CANBusSupplyOverload	SimnetAlarmIDConst = 129
-	DriveRefVoltageMissing	SimnetAlarmIDConst = 130
-	RudderLimit_3	SimnetAlarmIDConst = 131
-	CompassDifference	SimnetAlarmIDConst = 132
-	ApLowBoatSpeed	SimnetAlarmIDConst = 133
-	MonitorCompassMissing	SimnetAlarmIDConst = 134
-	CrossTrackDistanceLimit	SimnetAlarmIDConst = 135
-	EndOfRoute	SimnetAlarmIDConst = 137
-	CompassAlignment	SimnetAlarmIDConst = 138
-	RAIM	SimnetAlarmIDConst = 139
-	OffHeading	SimnetAlarmIDConst = 141
-	SupplyVoltage_2	SimnetAlarmIDConst = 142
-	LowCANBusVoltage	SimnetAlarmIDConst = 143
-	CANBusFailure	SimnetAlarmIDConst = 144
-	DriveReadyMissing	SimnetAlarmIDConst = 145
-	DriveComputerMissing	SimnetAlarmIDConst = 146
-	ExternalModeIllegal	SimnetAlarmIDConst = 147
-	RudderTooSlow	SimnetAlarmIDConst = 148
-	WheelOver	SimnetAlarmIDConst = 149
-	ThrusterInhibited	SimnetAlarmIDConst = 150
-	CheckHeading	SimnetAlarmIDConst = 151
-	TrueWindSpeedHigh	SimnetAlarmIDConst = 152
-	Override	SimnetAlarmIDConst = 153
-	SpeedThroughWaterRationalityFa	SimnetAlarmIDConst = 154
-	NoDrivesAvailable	SimnetAlarmIDConst = 155
-	FuelRemainingLow	SimnetAlarmIDConst = 156
-	FuelRemainingHigh	SimnetAlarmIDConst = 157
-	GeneratorCheck	SimnetAlarmIDConst = 158
-	GeneratorOverTemperature	SimnetAlarmIDConst = 159
-	GeneratorLowOilPressure	SimnetAlarmIDConst = 160
-	GeneratorLowOilLevel	SimnetAlarmIDConst = 161
-	GeneratorLowFuelPressure	SimnetAlarmIDConst = 162
-	GeneratorLowVoltage	SimnetAlarmIDConst = 163
-	GeneratorLowCoolantLevel	SimnetAlarmIDConst = 164
-	GeneratorWaterFlow	SimnetAlarmIDConst = 165
-	GeneratorWaterInFuel	SimnetAlarmIDConst = 166
-	GeneratorCharge	SimnetAlarmIDConst = 167
-	GeneratorPreheat	SimnetAlarmIDConst = 168
-	GeneratorHighBoostPressure	SimnetAlarmIDConst = 169
-	GeneratorRevLimit	SimnetAlarmIDConst = 170
-	GeneratorEgrSystem	SimnetAlarmIDConst = 171
-	GeneratorThrottlePosition	SimnetAlarmIDConst = 172
-	GeneratorEmergencyStop	SimnetAlarmIDConst = 173
-	GeneratorWarningLevel1	SimnetAlarmIDConst = 174
-	GeneratorWarningLevel2	SimnetAlarmIDConst = 175
-	GeneratorPowerReduction	SimnetAlarmIDConst = 176
-	GeneratorMaintenance	SimnetAlarmIDConst = 177
-	GeneratorCommError	SimnetAlarmIDConst = 178
-	GeneratorThrottle	SimnetAlarmIDConst = 179
-	GeneratorStartProtect	SimnetAlarmIDConst = 180
-	GeneratorShuttingDown	SimnetAlarmIDConst = 181
-	ShallowAftDepth	SimnetAlarmIDConst = 182
-	ForwardRange	SimnetAlarmIDConst = 183
-	AlarmSourceMissing	SimnetAlarmIDConst = 245
-	External	SimnetAlarmIDConst = 246
-	EvcComError_2	SimnetAlarmIDConst = 247
-	WindSensorBatteryLow	SimnetAlarmIDConst = 248
-	GasolineLow	SimnetAlarmIDConst = 266
-	GasolineHigh	SimnetAlarmIDConst = 267
-	ChargingSystem	SimnetAlarmIDConst = 268
-	SeawaterFlow	SimnetAlarmIDConst = 269
-	WaterInDriveSeal	SimnetAlarmIDConst = 270
-	Turnover	SimnetAlarmIDConst = 272
-	HelmEcuDetectFailure	SimnetAlarmIDConst = 273
-	JoystickEcuDetectFailure	SimnetAlarmIDConst = 274
-	DriveEcuDetectFailure	SimnetAlarmIDConst = 275
-	HotTransmission	SimnetAlarmIDConst = 276
-	LowGearOilPressure	SimnetAlarmIDConst = 277
-	LowDriveLubOilLevel	SimnetAlarmIDConst = 278
-	CheckThermostat	SimnetAlarmIDConst = 285
-	TrackOffsetActive	SimnetAlarmIDConst = 287
-	NavigationNotSupported	SimnetAlarmIDConst = 385
+	ShallowWater                   SimnetAlarmIDConst = 10
+	DeepWater                      SimnetAlarmIDConst = 11
+	AnchorDepth_2                  SimnetAlarmIDConst = 12
+	TrueWindShift                  SimnetAlarmIDConst = 13
+	TrueWindHigh                   SimnetAlarmIDConst = 14
+	TrueWindLow                    SimnetAlarmIDConst = 15
+	LowBoatSpeed                   SimnetAlarmIDConst = 16
+	HighVoltage                    SimnetAlarmIDConst = 17
+	LowVoltage                     SimnetAlarmIDConst = 18
+	DepthDataMissing               SimnetAlarmIDConst = 19
+	WindDataMissing                SimnetAlarmIDConst = 20
+	NavDataMissing                 SimnetAlarmIDConst = 21
+	HeadingMissing                 SimnetAlarmIDConst = 22
+	XTE                            SimnetAlarmIDConst = 23
+	RudderDataMissing              SimnetAlarmIDConst = 24
+	RudderControllerFault          SimnetAlarmIDConst = 25
+	NoRudderResponse               SimnetAlarmIDConst = 26
+	RudderDriveOverload            SimnetAlarmIDConst = 27
+	HighInternalTemperature        SimnetAlarmIDConst = 28
+	ApClutchOverload               SimnetAlarmIDConst = 29
+	ApClutchDisengaged             SimnetAlarmIDConst = 30
+	HighDriveSupply                SimnetAlarmIDConst = 31
+	LowDriveSupply                 SimnetAlarmIDConst = 32
+	NoActiveAutopilotControlUnit   SimnetAlarmIDConst = 33
+	NoAutopilotComputer            SimnetAlarmIDConst = 34
+	MemoryFail                     SimnetAlarmIDConst = 35
+	WaterTempMissing               SimnetAlarmIDConst = 36
+	LowWaterTemp                   SimnetAlarmIDConst = 37
+	HighWaterTemp                  SimnetAlarmIDConst = 38
+	WaterTempRate                  SimnetAlarmIDConst = 39
+	Fish                           SimnetAlarmIDConst = 40
+	NoGPSFix                       SimnetAlarmIDConst = 41
+	WAASDGPS                       SimnetAlarmIDConst = 42
+	Arrival                        SimnetAlarmIDConst = 45
+	Anchor                         SimnetAlarmIDConst = 46
+	FuelLow                        SimnetAlarmIDConst = 47
+	FuelHigh                       SimnetAlarmIDConst = 48
+	TankLow                        SimnetAlarmIDConst = 49
+	TankHigh                       SimnetAlarmIDConst = 50
+	Bep                            SimnetAlarmIDConst = 51
+	WaypointRadius                 SimnetAlarmIDConst = 52
+	Cpa                            SimnetAlarmIDConst = 53
+	AISRangeToVessel               SimnetAlarmIDConst = 54
+	AISVesselLost                  SimnetAlarmIDConst = 55
+	VesselMessage                  SimnetAlarmIDConst = 56
+	Lightning                      SimnetAlarmIDConst = 57
+	SevereWeather                  SimnetAlarmIDConst = 58
+	Storm                          SimnetAlarmIDConst = 59
+	EngineCheck                    SimnetAlarmIDConst = 61
+	EngineOverTemperature          SimnetAlarmIDConst = 62
+	EngineLowOilPressure           SimnetAlarmIDConst = 63
+	EngineLowOilLevel              SimnetAlarmIDConst = 64
+	EngineLowFuelPressure          SimnetAlarmIDConst = 65
+	EngineLowVoltage               SimnetAlarmIDConst = 66
+	EngineLowCoolantLevel          SimnetAlarmIDConst = 67
+	EngineWaterFlow                SimnetAlarmIDConst = 68
+	EngineWaterInFuel              SimnetAlarmIDConst = 69
+	EngineCharge                   SimnetAlarmIDConst = 70
+	EnginePreheat                  SimnetAlarmIDConst = 71
+	EngineHighBoostPressure        SimnetAlarmIDConst = 72
+	EngineRevLimit                 SimnetAlarmIDConst = 73
+	EngineEgrSystem                SimnetAlarmIDConst = 74
+	EngineThrottlePosition         SimnetAlarmIDConst = 75
+	EngineEmergencyStop            SimnetAlarmIDConst = 76
+	EngineWarningLevel1            SimnetAlarmIDConst = 77
+	EngineWarningLevel2            SimnetAlarmIDConst = 78
+	EnginePowerReduction           SimnetAlarmIDConst = 79
+	EngineMaintenance              SimnetAlarmIDConst = 80
+	EngineCommError                SimnetAlarmIDConst = 81
+	EngineThrottle                 SimnetAlarmIDConst = 82
+	EngineStartProtect             SimnetAlarmIDConst = 83
+	EngineShuttingDown             SimnetAlarmIDConst = 84
+	TransmissionCheck              SimnetAlarmIDConst = 85
+	TransmissionOverTemperature    SimnetAlarmIDConst = 86
+	TransmissionLowOilPressure     SimnetAlarmIDConst = 87
+	TransmissionLowOilLevel        SimnetAlarmIDConst = 88
+	SailDrive                      SimnetAlarmIDConst = 89
+	FreshWaterLow                  SimnetAlarmIDConst = 96
+	FreshWaterHigh                 SimnetAlarmIDConst = 97
+	GrayWaterLow                   SimnetAlarmIDConst = 98
+	GrayWaterHigh                  SimnetAlarmIDConst = 99
+	LiveWellLow                    SimnetAlarmIDConst = 100
+	LiveWellHigh                   SimnetAlarmIDConst = 101
+	OilLow                         SimnetAlarmIDConst = 102
+	OilHigh                        SimnetAlarmIDConst = 103
+	BlackWaterLow                  SimnetAlarmIDConst = 104
+	BlackWaterHigh                 SimnetAlarmIDConst = 105
+	WeatherDataMissing             SimnetAlarmIDConst = 106
+	ApPositionDataMissing          SimnetAlarmIDConst = 107
+	ApSpeedDataMissing             SimnetAlarmIDConst = 108
+	ApDepthDataMissing             SimnetAlarmIDConst = 109
+	ApHeadingDataMissing           SimnetAlarmIDConst = 110
+	ApNavDataMissing               SimnetAlarmIDConst = 111
+	ApOffCourse                    SimnetAlarmIDConst = 112
+	ApRudderDataMissing            SimnetAlarmIDConst = 113
+	ApWindDataMissing              SimnetAlarmIDConst = 114
+	RadarGuardZone                 SimnetAlarmIDConst = 115
+	MarpaTargetLost                SimnetAlarmIDConst = 116
+	MarpaUnavailable               SimnetAlarmIDConst = 117
+	DangerousVessel                SimnetAlarmIDConst = 118
+	RadarError                     SimnetAlarmIDConst = 119
+	CzoneCritical                  SimnetAlarmIDConst = 120
+	CzoneImportant                 SimnetAlarmIDConst = 121
+	CzoneStandard                  SimnetAlarmIDConst = 122
+	CzoneWarning                   SimnetAlarmIDConst = 123
+	TrueWindShift_2                SimnetAlarmIDConst = 124
+	EvcComError                    SimnetAlarmIDConst = 125
+	EvcOverride                    SimnetAlarmIDConst = 126
+	HighDriveTemperature           SimnetAlarmIDConst = 127
+	DriveInhibit                   SimnetAlarmIDConst = 128
+	CANBusSupplyOverload           SimnetAlarmIDConst = 129
+	DriveRefVoltageMissing         SimnetAlarmIDConst = 130
+	RudderLimit_3                  SimnetAlarmIDConst = 131
+	CompassDifference              SimnetAlarmIDConst = 132
+	ApLowBoatSpeed                 SimnetAlarmIDConst = 133
+	MonitorCompassMissing          SimnetAlarmIDConst = 134
+	CrossTrackDistanceLimit        SimnetAlarmIDConst = 135
+	EndOfRoute                     SimnetAlarmIDConst = 137
+	CompassAlignment               SimnetAlarmIDConst = 138
+	RAIM                           SimnetAlarmIDConst = 139
+	OffHeading                     SimnetAlarmIDConst = 141
+	SupplyVoltage_2                SimnetAlarmIDConst = 142
+	LowCANBusVoltage               SimnetAlarmIDConst = 143
+	CANBusFailure                  SimnetAlarmIDConst = 144
+	DriveReadyMissing              SimnetAlarmIDConst = 145
+	DriveComputerMissing           SimnetAlarmIDConst = 146
+	ExternalModeIllegal            SimnetAlarmIDConst = 147
+	RudderTooSlow                  SimnetAlarmIDConst = 148
+	WheelOver                      SimnetAlarmIDConst = 149
+	ThrusterInhibited              SimnetAlarmIDConst = 150
+	CheckHeading                   SimnetAlarmIDConst = 151
+	TrueWindSpeedHigh              SimnetAlarmIDConst = 152
+	Override                       SimnetAlarmIDConst = 153
+	SpeedThroughWaterRationalityFa SimnetAlarmIDConst = 154
+	NoDrivesAvailable              SimnetAlarmIDConst = 155
+	FuelRemainingLow               SimnetAlarmIDConst = 156
+	FuelRemainingHigh              SimnetAlarmIDConst = 157
+	GeneratorCheck                 SimnetAlarmIDConst = 158
+	GeneratorOverTemperature       SimnetAlarmIDConst = 159
+	GeneratorLowOilPressure        SimnetAlarmIDConst = 160
+	GeneratorLowOilLevel           SimnetAlarmIDConst = 161
+	GeneratorLowFuelPressure       SimnetAlarmIDConst = 162
+	GeneratorLowVoltage            SimnetAlarmIDConst = 163
+	GeneratorLowCoolantLevel       SimnetAlarmIDConst = 164
+	GeneratorWaterFlow             SimnetAlarmIDConst = 165
+	GeneratorWaterInFuel           SimnetAlarmIDConst = 166
+	GeneratorCharge                SimnetAlarmIDConst = 167
+	GeneratorPreheat               SimnetAlarmIDConst = 168
+	GeneratorHighBoostPressure     SimnetAlarmIDConst = 169
+	GeneratorRevLimit              SimnetAlarmIDConst = 170
+	GeneratorEgrSystem             SimnetAlarmIDConst = 171
+	GeneratorThrottlePosition      SimnetAlarmIDConst = 172
+	GeneratorEmergencyStop         SimnetAlarmIDConst = 173
+	GeneratorWarningLevel1         SimnetAlarmIDConst = 174
+	GeneratorWarningLevel2         SimnetAlarmIDConst = 175
+	GeneratorPowerReduction        SimnetAlarmIDConst = 176
+	GeneratorMaintenance           SimnetAlarmIDConst = 177
+	GeneratorCommError             SimnetAlarmIDConst = 178
+	GeneratorThrottle              SimnetAlarmIDConst = 179
+	GeneratorStartProtect          SimnetAlarmIDConst = 180
+	GeneratorShuttingDown          SimnetAlarmIDConst = 181
+	ShallowAftDepth                SimnetAlarmIDConst = 182
+	ForwardRange                   SimnetAlarmIDConst = 183
+	AlarmSourceMissing             SimnetAlarmIDConst = 245
+	External                       SimnetAlarmIDConst = 246
+	EvcComError_2                  SimnetAlarmIDConst = 247
+	WindSensorBatteryLow           SimnetAlarmIDConst = 248
+	GasolineLow                    SimnetAlarmIDConst = 266
+	GasolineHigh                   SimnetAlarmIDConst = 267
+	ChargingSystem                 SimnetAlarmIDConst = 268
+	SeawaterFlow                   SimnetAlarmIDConst = 269
+	WaterInDriveSeal               SimnetAlarmIDConst = 270
+	Turnover                       SimnetAlarmIDConst = 272
+	HelmEcuDetectFailure           SimnetAlarmIDConst = 273
+	JoystickEcuDetectFailure       SimnetAlarmIDConst = 274
+	DriveEcuDetectFailure          SimnetAlarmIDConst = 275
+	HotTransmission                SimnetAlarmIDConst = 276
+	LowGearOilPressure             SimnetAlarmIDConst = 277
+	LowDriveLubOilLevel            SimnetAlarmIDConst = 278
+	CheckThermostat                SimnetAlarmIDConst = 285
+	TrackOffsetActive              SimnetAlarmIDConst = 287
+	NavigationNotSupported         SimnetAlarmIDConst = 385
 )
 
-func (e SimnetAlarmIDConst) GoString() string {return e.String() }
+func (e SimnetAlarmIDConst) GoString() string { return e.String() }
 func (e SimnetAlarmIDConst) String() string {
 	switch e {
-		case 10:
-			return "Shallow water"
-		case 11:
-			return "Deep water"
-		case 12:
-			return "Anchor depth"
-		case 13:
-			return "True wind shift"
-		case 14:
-			return "True wind high"
-		case 15:
-			return "True wind low"
-		case 16:
-			return "Low boat speed"
-		case 17:
-			return "High voltage"
-		case 18:
-			return "Low voltage"
-		case 19:
-			return "Depth data missing"
-		case 20:
-			return "Wind data missing"
-		case 21:
-			return "Nav data missing"
-		case 22:
-			return "Heading missing"
-		case 23:
-			return "XTE"
-		case 24:
-			return "Rudder data missing"
-		case 25:
-			return "Rudder controller fault"
-		case 26:
-			return "No rudder response"
-		case 27:
-			return "Rudder drive overload"
-		case 28:
-			return "High internal temperature"
-		case 29:
-			return "AP clutch overload"
-		case 30:
-			return "AP clutch disengaged"
-		case 31:
-			return "High drive supply"
-		case 32:
-			return "Low drive supply"
-		case 33:
-			return "No active autopilot control unit"
-		case 34:
-			return "No autopilot computer"
-		case 35:
-			return "Memory fail"
-		case 36:
-			return "Water temp missing"
-		case 37:
-			return "Low water temp"
-		case 38:
-			return "High water temp"
-		case 39:
-			return "Water temp rate"
-		case 40:
-			return "Fish"
-		case 41:
-			return "No GPS fix"
-		case 42:
-			return "WAAS/DGPS"
-		case 45:
-			return "Arrival"
-		case 46:
-			return "Anchor"
-		case 47:
-			return "Fuel low"
-		case 48:
-			return "Fuel high"
-		case 49:
-			return "Tank low"
-		case 50:
-			return "Tank high"
-		case 51:
-			return "BEP"
-		case 52:
-			return "Waypoint radius"
-		case 53:
-			return "CPA"
-		case 54:
-			return "AIS range to vessel"
-		case 55:
-			return "AIS vessel lost"
-		case 56:
-			return "Vessel message"
-		case 57:
-			return "Lightning"
-		case 58:
-			return "Severe weather"
-		case 59:
-			return "Storm"
-		case 61:
-			return "Engine Check"
-		case 62:
-			return "Engine over temperature"
-		case 63:
-			return "Engine low oil pressure"
-		case 64:
-			return "Engine low oil level"
-		case 65:
-			return "Engine low fuel pressure"
-		case 66:
-			return "Engine low voltage"
-		case 67:
-			return "Engine low coolant level"
-		case 68:
-			return "Engine water flow"
-		case 69:
-			return "Engine water in fuel"
-		case 70:
-			return "Engine charge"
-		case 71:
-			return "Engine preheat"
-		case 72:
-			return "Engine high boost pressure"
-		case 73:
-			return "Engine rev limit"
-		case 74:
-			return "Engine EGR system"
-		case 75:
-			return "Engine throttle position"
-		case 76:
-			return "Engine emergency stop"
-		case 77:
-			return "Engine warning level 1"
-		case 78:
-			return "Engine warning level 2"
-		case 79:
-			return "Engine power reduction"
-		case 80:
-			return "Engine maintenance"
-		case 81:
-			return "Engine comm error"
-		case 82:
-			return "Engine throttle"
-		case 83:
-			return "Engine start protect"
-		case 84:
-			return "Engine shutting down"
-		case 85:
-			return "Transmission Check"
-		case 86:
-			return "Transmission over temperature"
-		case 87:
-			return "Transmission low oil pressure"
-		case 88:
-			return "Transmission low oil level"
-		case 89:
-			return "Sail drive"
-		case 96:
-			return "Fresh water low"
-		case 97:
-			return "Fresh water high"
-		case 98:
-			return "Gray water low"
-		case 99:
-			return "Gray water high"
-		case 100:
-			return "Live well low"
-		case 101:
-			return "Live well high"
-		case 102:
-			return "Oil low"
-		case 103:
-			return "Oil high"
-		case 104:
-			return "Black water low"
-		case 105:
-			return "Black water high"
-		case 106:
-			return "Weather data missing"
-		case 107:
-			return "AP Position data missing"
-		case 108:
-			return "AP Speed data missing"
-		case 109:
-			return "AP Depth data missing"
-		case 110:
-			return "AP Heading data missing"
-		case 111:
-			return "AP Nav data missing"
-		case 112:
-			return "AP Off course"
-		case 113:
-			return "AP Rudder data missing"
-		case 114:
-			return "AP Wind data missing"
-		case 115:
-			return "Radar guard zone"
-		case 116:
-			return "MARPA target lost"
-		case 117:
-			return "MARPA unavailable"
-		case 118:
-			return "Dangerous vessel"
-		case 119:
-			return "Radar error"
-		case 120:
-			return "CZone critical"
-		case 121:
-			return "CZone important"
-		case 122:
-			return "CZone standard"
-		case 123:
-			return "CZone warning"
-		case 124:
-			return "True wind shift"
-		case 125:
-			return "EVC Com Error"
-		case 126:
-			return "EVC override"
-		case 127:
-			return "High drive temperature"
-		case 128:
-			return "Drive inhibit"
-		case 129:
-			return "CAN bus supply overload"
-		case 130:
-			return "Drive ref voltage missing"
-		case 131:
-			return "Rudder limit"
-		case 132:
-			return "Compass difference"
-		case 133:
-			return "AP Low boat speed"
-		case 134:
-			return "Monitor compass missing"
-		case 135:
-			return "Cross track distance limit"
-		case 137:
-			return "End of route"
-		case 138:
-			return "Compass alignment"
-		case 139:
-			return "R.A.I.M"
-		case 141:
-			return "Off heading"
-		case 142:
-			return "Supply voltage"
-		case 143:
-			return "Low CAN bus voltage"
-		case 144:
-			return "CAN bus failure"
-		case 145:
-			return "Drive ready missing"
-		case 146:
-			return "Drive computer missing"
-		case 147:
-			return "External mode illegal"
-		case 148:
-			return "Rudder too slow"
-		case 149:
-			return "Wheel over"
-		case 150:
-			return "Thruster inhibited"
-		case 151:
-			return "Check heading"
-		case 152:
-			return "True wind speed high"
-		case 153:
-			return "Override"
-		case 154:
-			return "Speed through water rationality fault"
-		case 155:
-			return "No drives available"
-		case 156:
-			return "Fuel remaining low"
-		case 157:
-			return "Fuel remaining high"
-		case 158:
-			return "Generator Check"
-		case 159:
-			return "Generator over temperature"
-		case 160:
-			return "Generator low oil pressure"
-		case 161:
-			return "Generator low oil level"
-		case 162:
-			return "Generator low fuel pressure"
-		case 163:
-			return "Generator low voltage"
-		case 164:
-			return "Generator low coolant level"
-		case 165:
-			return "Generator water flow"
-		case 166:
-			return "Generator water in fuel"
-		case 167:
-			return "Generator charge"
-		case 168:
-			return "Generator preheat"
-		case 169:
-			return "Generator high boost pressure"
-		case 170:
-			return "Generator rev limit"
-		case 171:
-			return "Generator EGR system"
-		case 172:
-			return "Generator throttle position"
-		case 173:
-			return "Generator emergency stop"
-		case 174:
-			return "Generator warning level 1"
-		case 175:
-			return "Generator warning level 2"
-		case 176:
-			return "Generator power reduction"
-		case 177:
-			return "Generator maintenance"
-		case 178:
-			return "Generator comm error"
-		case 179:
-			return "Generator throttle"
-		case 180:
-			return "Generator start protect"
-		case 181:
-			return "Generator shutting down"
-		case 182:
-			return "Shallow aft depth"
-		case 183:
-			return "Forward range"
-		case 245:
-			return "Alarm source missing"
-		case 246:
-			return "External"
-		case 247:
-			return "EVC Com Error"
-		case 248:
-			return "Wind sensor battery low"
-		case 266:
-			return "Gasoline low"
-		case 267:
-			return "Gasoline high"
-		case 268:
-			return "Charging System"
-		case 269:
-			return "Seawater Flow"
-		case 270:
-			return "Water in Drive Seal"
-		case 272:
-			return "Turnover"
-		case 273:
-			return "Helm ECU Detect Failure"
-		case 274:
-			return "Joystick ECU Detect Failure"
-		case 275:
-			return "Drive ECU Detect Failure"
-		case 276:
-			return "Hot Transmission"
-		case 277:
-			return "Low Gear Oil Pressure"
-		case 278:
-			return "Low Drive Lub Oil Level"
-		case 285:
-			return "Check Thermostat"
-		case 287:
-			return "Track offset active"
-		case 385:
-			return "Navigation Not Supported"
-default:
+	case 10:
+		return "Shallow water"
+	case 11:
+		return "Deep water"
+	case 12:
+		return "Anchor depth"
+	case 13:
+		return "True wind shift"
+	case 14:
+		return "True wind high"
+	case 15:
+		return "True wind low"
+	case 16:
+		return "Low boat speed"
+	case 17:
+		return "High voltage"
+	case 18:
+		return "Low voltage"
+	case 19:
+		return "Depth data missing"
+	case 20:
+		return "Wind data missing"
+	case 21:
+		return "Nav data missing"
+	case 22:
+		return "Heading missing"
+	case 23:
+		return "XTE"
+	case 24:
+		return "Rudder data missing"
+	case 25:
+		return "Rudder controller fault"
+	case 26:
+		return "No rudder response"
+	case 27:
+		return "Rudder drive overload"
+	case 28:
+		return "High internal temperature"
+	case 29:
+		return "AP clutch overload"
+	case 30:
+		return "AP clutch disengaged"
+	case 31:
+		return "High drive supply"
+	case 32:
+		return "Low drive supply"
+	case 33:
+		return "No active autopilot control unit"
+	case 34:
+		return "No autopilot computer"
+	case 35:
+		return "Memory fail"
+	case 36:
+		return "Water temp missing"
+	case 37:
+		return "Low water temp"
+	case 38:
+		return "High water temp"
+	case 39:
+		return "Water temp rate"
+	case 40:
+		return "Fish"
+	case 41:
+		return "No GPS fix"
+	case 42:
+		return "WAAS/DGPS"
+	case 45:
+		return "Arrival"
+	case 46:
+		return "Anchor"
+	case 47:
+		return "Fuel low"
+	case 48:
+		return "Fuel high"
+	case 49:
+		return "Tank low"
+	case 50:
+		return "Tank high"
+	case 51:
+		return "BEP"
+	case 52:
+		return "Waypoint radius"
+	case 53:
+		return "CPA"
+	case 54:
+		return "AIS range to vessel"
+	case 55:
+		return "AIS vessel lost"
+	case 56:
+		return "Vessel message"
+	case 57:
+		return "Lightning"
+	case 58:
+		return "Severe weather"
+	case 59:
+		return "Storm"
+	case 61:
+		return "Engine Check"
+	case 62:
+		return "Engine over temperature"
+	case 63:
+		return "Engine low oil pressure"
+	case 64:
+		return "Engine low oil level"
+	case 65:
+		return "Engine low fuel pressure"
+	case 66:
+		return "Engine low voltage"
+	case 67:
+		return "Engine low coolant level"
+	case 68:
+		return "Engine water flow"
+	case 69:
+		return "Engine water in fuel"
+	case 70:
+		return "Engine charge"
+	case 71:
+		return "Engine preheat"
+	case 72:
+		return "Engine high boost pressure"
+	case 73:
+		return "Engine rev limit"
+	case 74:
+		return "Engine EGR system"
+	case 75:
+		return "Engine throttle position"
+	case 76:
+		return "Engine emergency stop"
+	case 77:
+		return "Engine warning level 1"
+	case 78:
+		return "Engine warning level 2"
+	case 79:
+		return "Engine power reduction"
+	case 80:
+		return "Engine maintenance"
+	case 81:
+		return "Engine comm error"
+	case 82:
+		return "Engine throttle"
+	case 83:
+		return "Engine start protect"
+	case 84:
+		return "Engine shutting down"
+	case 85:
+		return "Transmission Check"
+	case 86:
+		return "Transmission over temperature"
+	case 87:
+		return "Transmission low oil pressure"
+	case 88:
+		return "Transmission low oil level"
+	case 89:
+		return "Sail drive"
+	case 96:
+		return "Fresh water low"
+	case 97:
+		return "Fresh water high"
+	case 98:
+		return "Gray water low"
+	case 99:
+		return "Gray water high"
+	case 100:
+		return "Live well low"
+	case 101:
+		return "Live well high"
+	case 102:
+		return "Oil low"
+	case 103:
+		return "Oil high"
+	case 104:
+		return "Black water low"
+	case 105:
+		return "Black water high"
+	case 106:
+		return "Weather data missing"
+	case 107:
+		return "AP Position data missing"
+	case 108:
+		return "AP Speed data missing"
+	case 109:
+		return "AP Depth data missing"
+	case 110:
+		return "AP Heading data missing"
+	case 111:
+		return "AP Nav data missing"
+	case 112:
+		return "AP Off course"
+	case 113:
+		return "AP Rudder data missing"
+	case 114:
+		return "AP Wind data missing"
+	case 115:
+		return "Radar guard zone"
+	case 116:
+		return "MARPA target lost"
+	case 117:
+		return "MARPA unavailable"
+	case 118:
+		return "Dangerous vessel"
+	case 119:
+		return "Radar error"
+	case 120:
+		return "CZone critical"
+	case 121:
+		return "CZone important"
+	case 122:
+		return "CZone standard"
+	case 123:
+		return "CZone warning"
+	case 124:
+		return "True wind shift"
+	case 125:
+		return "EVC Com Error"
+	case 126:
+		return "EVC override"
+	case 127:
+		return "High drive temperature"
+	case 128:
+		return "Drive inhibit"
+	case 129:
+		return "CAN bus supply overload"
+	case 130:
+		return "Drive ref voltage missing"
+	case 131:
+		return "Rudder limit"
+	case 132:
+		return "Compass difference"
+	case 133:
+		return "AP Low boat speed"
+	case 134:
+		return "Monitor compass missing"
+	case 135:
+		return "Cross track distance limit"
+	case 137:
+		return "End of route"
+	case 138:
+		return "Compass alignment"
+	case 139:
+		return "R.A.I.M"
+	case 141:
+		return "Off heading"
+	case 142:
+		return "Supply voltage"
+	case 143:
+		return "Low CAN bus voltage"
+	case 144:
+		return "CAN bus failure"
+	case 145:
+		return "Drive ready missing"
+	case 146:
+		return "Drive computer missing"
+	case 147:
+		return "External mode illegal"
+	case 148:
+		return "Rudder too slow"
+	case 149:
+		return "Wheel over"
+	case 150:
+		return "Thruster inhibited"
+	case 151:
+		return "Check heading"
+	case 152:
+		return "True wind speed high"
+	case 153:
+		return "Override"
+	case 154:
+		return "Speed through water rationality fault"
+	case 155:
+		return "No drives available"
+	case 156:
+		return "Fuel remaining low"
+	case 157:
+		return "Fuel remaining high"
+	case 158:
+		return "Generator Check"
+	case 159:
+		return "Generator over temperature"
+	case 160:
+		return "Generator low oil pressure"
+	case 161:
+		return "Generator low oil level"
+	case 162:
+		return "Generator low fuel pressure"
+	case 163:
+		return "Generator low voltage"
+	case 164:
+		return "Generator low coolant level"
+	case 165:
+		return "Generator water flow"
+	case 166:
+		return "Generator water in fuel"
+	case 167:
+		return "Generator charge"
+	case 168:
+		return "Generator preheat"
+	case 169:
+		return "Generator high boost pressure"
+	case 170:
+		return "Generator rev limit"
+	case 171:
+		return "Generator EGR system"
+	case 172:
+		return "Generator throttle position"
+	case 173:
+		return "Generator emergency stop"
+	case 174:
+		return "Generator warning level 1"
+	case 175:
+		return "Generator warning level 2"
+	case 176:
+		return "Generator power reduction"
+	case 177:
+		return "Generator maintenance"
+	case 178:
+		return "Generator comm error"
+	case 179:
+		return "Generator throttle"
+	case 180:
+		return "Generator start protect"
+	case 181:
+		return "Generator shutting down"
+	case 182:
+		return "Shallow aft depth"
+	case 183:
+		return "Forward range"
+	case 245:
+		return "Alarm source missing"
+	case 246:
+		return "External"
+	case 247:
+		return "EVC Com Error"
+	case 248:
+		return "Wind sensor battery low"
+	case 266:
+		return "Gasoline low"
+	case 267:
+		return "Gasoline high"
+	case 268:
+		return "Charging System"
+	case 269:
+		return "Seawater Flow"
+	case 270:
+		return "Water in Drive Seal"
+	case 272:
+		return "Turnover"
+	case 273:
+		return "Helm ECU Detect Failure"
+	case 274:
+		return "Joystick ECU Detect Failure"
+	case 275:
+		return "Drive ECU Detect Failure"
+	case 276:
+		return "Hot Transmission"
+	case 277:
+		return "Low Gear Oil Pressure"
+	case 278:
+		return "Low Drive Lub Oil Level"
+	case 285:
+		return "Check Thermostat"
+	case 287:
+		return "Track offset active"
+	case 385:
+		return "Navigation Not Supported"
+	default:
 		return fmt.Sprintf("SimnetAlarmIDConst(%d)", uint16(e))
 	}
 }
+
 type FusionMessageIDConst uint16
+
 const (
-	RequestStatus	FusionMessageIDConst = 1
-	SetSource	FusionMessageIDConst = 2
-	MediaCommand	FusionMessageIDConst = 3
-	TunerCommand	FusionMessageIDConst = 5
-	MarineTunerCommand	FusionMessageIDConst = 6
-	SetMarineTunerSquelch	FusionMessageIDConst = 7
-	SetMarineTunerScanMode	FusionMessageIDConst = 8
-	MenuAction	FusionMessageIDConst = 9
-	RequestMenuCount	FusionMessageIDConst = 10
-	RequestMenuItem	FusionMessageIDConst = 11
-	RequestMenuLockID	FusionMessageIDConst = 12
-	SetAuxGain	FusionMessageIDConst = 13
-	SetSettings	FusionMessageIDConst = 15
-	DabUpdtateCommand	FusionMessageIDConst = 16
-	SetMute	FusionMessageIDConst = 17
-	SetBalance	FusionMessageIDConst = 18
-	SetLowPassFiler	FusionMessageIDConst = 19
-	SetSublevel	FusionMessageIDConst = 20
-	SetEqualizer	FusionMessageIDConst = 22
-	SetVolumeLimit	FusionMessageIDConst = 23
-	SetZoneVolume	FusionMessageIDConst = 24
-	SetAllVolumes	FusionMessageIDConst = 25
-	SetLineLevelControl	FusionMessageIDConst = 27
-	Power_2	FusionMessageIDConst = 28
-	SetDeviceName	FusionMessageIDConst = 29
-	SendSiriusCommand	FusionMessageIDConst = 30
-	SetSiriusParental	FusionMessageIDConst = 31
-	SendFactoryResetCommand	FusionMessageIDConst = 33
-	SetZoneName	FusionMessageIDConst = 34
-	SendDvdCommand	FusionMessageIDConst = 35
-	DvdPressIrKey	FusionMessageIDConst = 36
-	SendSelectSiriusTeam	FusionMessageIDConst = 39
-	SendSelectSiriusArtist	FusionMessageIDConst = 40
-	SendSiriusSportAlertUserAction	FusionMessageIDConst = 41
-	SendSiriusArtistSongUserAction	FusionMessageIDConst = 45
-	SendMultiroomCommand	FusionMessageIDConst = 50
-	GetMultiroomDeviceRecord	FusionMessageIDConst = 51
-	ScanMultirooomDevices	FusionMessageIDConst = 52
-	SendFileTransfer	FusionMessageIDConst = 53
-	SetLoud	FusionMessageIDConst = 54
-	FapiSetSourceMultiroomEnabled	FusionMessageIDConst = 56
-	RequestHeadUnitDspSettings	FusionMessageIDConst = 57
-	SendTransferStatus	FusionMessageIDConst = 64
-	FapiGetServerInfo	FusionMessageIDConst = 65
-	FapiSetSourceEnabled	FusionMessageIDConst = 69
-	FapiSetSourceName	FusionMessageIDConst = 70
-	SendExternalAmpGain	FusionMessageIDConst = 73
-	SendInternalAmpGain	FusionMessageIDConst = 74
-	SendMono	FusionMessageIDConst = 75
+	RequestStatus                  FusionMessageIDConst = 1
+	SetSource                      FusionMessageIDConst = 2
+	MediaCommand                   FusionMessageIDConst = 3
+	TunerCommand                   FusionMessageIDConst = 5
+	MarineTunerCommand             FusionMessageIDConst = 6
+	SetMarineTunerSquelch          FusionMessageIDConst = 7
+	SetMarineTunerScanMode         FusionMessageIDConst = 8
+	MenuAction                     FusionMessageIDConst = 9
+	RequestMenuCount               FusionMessageIDConst = 10
+	RequestMenuItem                FusionMessageIDConst = 11
+	RequestMenuLockID              FusionMessageIDConst = 12
+	SetAuxGain                     FusionMessageIDConst = 13
+	SetSettings                    FusionMessageIDConst = 15
+	DabUpdtateCommand              FusionMessageIDConst = 16
+	SetMute                        FusionMessageIDConst = 17
+	SetBalance                     FusionMessageIDConst = 18
+	SetLowPassFiler                FusionMessageIDConst = 19
+	SetSublevel                    FusionMessageIDConst = 20
+	SetEqualizer                   FusionMessageIDConst = 22
+	SetVolumeLimit                 FusionMessageIDConst = 23
+	SetZoneVolume                  FusionMessageIDConst = 24
+	SetAllVolumes                  FusionMessageIDConst = 25
+	SetLineLevelControl            FusionMessageIDConst = 27
+	Power_2                        FusionMessageIDConst = 28
+	SetDeviceName                  FusionMessageIDConst = 29
+	SendSiriusCommand              FusionMessageIDConst = 30
+	SetSiriusParental              FusionMessageIDConst = 31
+	SendFactoryResetCommand        FusionMessageIDConst = 33
+	SetZoneName                    FusionMessageIDConst = 34
+	SendDvdCommand                 FusionMessageIDConst = 35
+	DvdPressIrKey                  FusionMessageIDConst = 36
+	SendSelectSiriusTeam           FusionMessageIDConst = 39
+	SendSelectSiriusArtist         FusionMessageIDConst = 40
+	SendSiriusSportAlertUserAction FusionMessageIDConst = 41
+	SendSiriusArtistSongUserAction FusionMessageIDConst = 45
+	SendMultiroomCommand           FusionMessageIDConst = 50
+	GetMultiroomDeviceRecord       FusionMessageIDConst = 51
+	ScanMultirooomDevices          FusionMessageIDConst = 52
+	SendFileTransfer               FusionMessageIDConst = 53
+	SetLoud                        FusionMessageIDConst = 54
+	FapiSetSourceMultiroomEnabled  FusionMessageIDConst = 56
+	RequestHeadUnitDspSettings     FusionMessageIDConst = 57
+	SendTransferStatus             FusionMessageIDConst = 64
+	FapiGetServerInfo              FusionMessageIDConst = 65
+	FapiSetSourceEnabled           FusionMessageIDConst = 69
+	FapiSetSourceName              FusionMessageIDConst = 70
+	SendExternalAmpGain            FusionMessageIDConst = 73
+	SendInternalAmpGain            FusionMessageIDConst = 74
+	SendMono                       FusionMessageIDConst = 75
 )
 
-func (e FusionMessageIDConst) GoString() string {return e.String() }
+func (e FusionMessageIDConst) GoString() string { return e.String() }
 func (e FusionMessageIDConst) String() string {
 	switch e {
-		case 1:
-			return "Request Status"
-		case 2:
-			return "Set Source"
-		case 3:
-			return "Media Command"
-		case 5:
-			return "Tuner Command"
-		case 6:
-			return "Marine Tuner Command"
-		case 7:
-			return "Set Marine Tuner Squelch"
-		case 8:
-			return "Set Marine Tuner Scan Mode"
-		case 9:
-			return "Menu Action"
-		case 10:
-			return "Request Menu Count"
-		case 11:
-			return "Request Menu Item"
-		case 12:
-			return "Request Menu Lock ID"
-		case 13:
-			return "Set Aux Gain"
-		case 15:
-			return "Set Settings"
-		case 16:
-			return "DAB Updtate Command"
-		case 17:
-			return "Set Mute"
-		case 18:
-			return "Set Balance"
-		case 19:
-			return "Set Low Pass Filer"
-		case 20:
-			return "Set Sublevel"
-		case 22:
-			return "Set Equalizer"
-		case 23:
-			return "Set Volume Limit"
-		case 24:
-			return "Set Zone Volume"
-		case 25:
-			return "Set All Volumes"
-		case 27:
-			return "Set Line Level Control"
-		case 28:
-			return "Power"
-		case 29:
-			return "Set Device Name"
-		case 30:
-			return "Send Sirius Command"
-		case 31:
-			return "Set Sirius Parental"
-		case 33:
-			return "Send Factory Reset Command"
-		case 34:
-			return "Set Zone Name"
-		case 35:
-			return "Send Dvd Command"
-		case 36:
-			return "Dvd Press Ir Key"
-		case 39:
-			return "Send Select Sirius Team"
-		case 40:
-			return "Send Select Sirius Artist"
-		case 41:
-			return "Send Sirius Sport Alert User Action"
-		case 45:
-			return "Send Sirius Artist Song User Action"
-		case 50:
-			return "Send Multiroom Command"
-		case 51:
-			return "Get Multiroom Device Record"
-		case 52:
-			return "Scan Multirooom Devices"
-		case 53:
-			return "Send File Transfer"
-		case 54:
-			return "Set Loud"
-		case 56:
-			return "Fapi Set Source Multiroom Enabled"
-		case 57:
-			return "Request Head Unit Dsp Settings"
-		case 64:
-			return "Send Transfer Status"
-		case 65:
-			return "Fapi Get Server Info"
-		case 69:
-			return "Fapi Set Source Enabled"
-		case 70:
-			return "Fapi Set Source Name"
-		case 73:
-			return "Send External Amp Gain"
-		case 74:
-			return "Send Internal Amp Gain"
-		case 75:
-			return "Send Mono"
-default:
+	case 1:
+		return "Request Status"
+	case 2:
+		return "Set Source"
+	case 3:
+		return "Media Command"
+	case 5:
+		return "Tuner Command"
+	case 6:
+		return "Marine Tuner Command"
+	case 7:
+		return "Set Marine Tuner Squelch"
+	case 8:
+		return "Set Marine Tuner Scan Mode"
+	case 9:
+		return "Menu Action"
+	case 10:
+		return "Request Menu Count"
+	case 11:
+		return "Request Menu Item"
+	case 12:
+		return "Request Menu Lock ID"
+	case 13:
+		return "Set Aux Gain"
+	case 15:
+		return "Set Settings"
+	case 16:
+		return "DAB Updtate Command"
+	case 17:
+		return "Set Mute"
+	case 18:
+		return "Set Balance"
+	case 19:
+		return "Set Low Pass Filer"
+	case 20:
+		return "Set Sublevel"
+	case 22:
+		return "Set Equalizer"
+	case 23:
+		return "Set Volume Limit"
+	case 24:
+		return "Set Zone Volume"
+	case 25:
+		return "Set All Volumes"
+	case 27:
+		return "Set Line Level Control"
+	case 28:
+		return "Power"
+	case 29:
+		return "Set Device Name"
+	case 30:
+		return "Send Sirius Command"
+	case 31:
+		return "Set Sirius Parental"
+	case 33:
+		return "Send Factory Reset Command"
+	case 34:
+		return "Set Zone Name"
+	case 35:
+		return "Send Dvd Command"
+	case 36:
+		return "Dvd Press Ir Key"
+	case 39:
+		return "Send Select Sirius Team"
+	case 40:
+		return "Send Select Sirius Artist"
+	case 41:
+		return "Send Sirius Sport Alert User Action"
+	case 45:
+		return "Send Sirius Artist Song User Action"
+	case 50:
+		return "Send Multiroom Command"
+	case 51:
+		return "Get Multiroom Device Record"
+	case 52:
+		return "Scan Multirooom Devices"
+	case 53:
+		return "Send File Transfer"
+	case 54:
+		return "Set Loud"
+	case 56:
+		return "Fapi Set Source Multiroom Enabled"
+	case 57:
+		return "Request Head Unit Dsp Settings"
+	case 64:
+		return "Send Transfer Status"
+	case 65:
+		return "Fapi Get Server Info"
+	case 69:
+		return "Fapi Set Source Enabled"
+	case 70:
+		return "Fapi Set Source Name"
+	case 73:
+		return "Send External Amp Gain"
+	case 74:
+		return "Send Internal Amp Gain"
+	case 75:
+		return "Send Mono"
+	default:
 		return fmt.Sprintf("FusionMessageIDConst(%d)", uint16(e))
 	}
 }
+
 type FusionPlayStatusConst uint16
+
 const (
-	Invalid_2	FusionPlayStatusConst = 0
-	Playing	FusionPlayStatusConst = 1
-	Paused	FusionPlayStatusConst = 2
-	Stopped_2	FusionPlayStatusConst = 3
-	SkipForward	FusionPlayStatusConst = 4
-	SkipRewind	FusionPlayStatusConst = 5
+	Invalid_2   FusionPlayStatusConst = 0
+	Playing     FusionPlayStatusConst = 1
+	Paused      FusionPlayStatusConst = 2
+	Stopped_2   FusionPlayStatusConst = 3
+	SkipForward FusionPlayStatusConst = 4
+	SkipRewind  FusionPlayStatusConst = 5
 )
 
-func (e FusionPlayStatusConst) GoString() string {return e.String() }
+func (e FusionPlayStatusConst) GoString() string { return e.String() }
 func (e FusionPlayStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Invalid"
-		case 1:
-			return "Playing"
-		case 2:
-			return "Paused"
-		case 3:
-			return "Stopped"
-		case 4:
-			return "Skip Forward"
-		case 5:
-			return "Skip Rewind"
-default:
+	case 0:
+		return "Invalid"
+	case 1:
+		return "Playing"
+	case 2:
+		return "Paused"
+	case 3:
+		return "Stopped"
+	case 4:
+		return "Skip Forward"
+	case 5:
+		return "Skip Rewind"
+	default:
 		return fmt.Sprintf("FusionPlayStatusConst(%d)", uint16(e))
 	}
 }
+
 type FusionSourceTypeConst uint8
+
 const (
-	Am_2	FusionSourceTypeConst = 0
-	Fm_2	FusionSourceTypeConst = 1
-	Aux_2	FusionSourceTypeConst = 2
-	Sirius	FusionSourceTypeConst = 3
-	Ipod	FusionSourceTypeConst = 4
-	USB_2	FusionSourceTypeConst = 5
-	Dvd	FusionSourceTypeConst = 6
-	VHF	FusionSourceTypeConst = 7
-	Invalid_3	FusionSourceTypeConst = 8
-	Mtp	FusionSourceTypeConst = 9
-	Bluetooth_2	FusionSourceTypeConst = 10
-	Arc	FusionSourceTypeConst = 11
-	Android_2	FusionSourceTypeConst = 12
-	Pandora_2	FusionSourceTypeConst = 13
-	Dab_2	FusionSourceTypeConst = 14
-	Airplay	FusionSourceTypeConst = 15
-	Upnp	FusionSourceTypeConst = 16
-	Unknown	FusionSourceTypeConst = 17
+	Am_2        FusionSourceTypeConst = 0
+	Fm_2        FusionSourceTypeConst = 1
+	Aux_2       FusionSourceTypeConst = 2
+	Sirius      FusionSourceTypeConst = 3
+	Ipod        FusionSourceTypeConst = 4
+	USB_2       FusionSourceTypeConst = 5
+	Dvd         FusionSourceTypeConst = 6
+	VHF         FusionSourceTypeConst = 7
+	Invalid_3   FusionSourceTypeConst = 8
+	Mtp         FusionSourceTypeConst = 9
+	Bluetooth_2 FusionSourceTypeConst = 10
+	Arc         FusionSourceTypeConst = 11
+	Android_2   FusionSourceTypeConst = 12
+	Pandora_2   FusionSourceTypeConst = 13
+	Dab_2       FusionSourceTypeConst = 14
+	Airplay     FusionSourceTypeConst = 15
+	Upnp        FusionSourceTypeConst = 16
+	Unknown     FusionSourceTypeConst = 17
 )
 
-func (e FusionSourceTypeConst) GoString() string {return e.String() }
+func (e FusionSourceTypeConst) GoString() string { return e.String() }
 func (e FusionSourceTypeConst) String() string {
 	switch e {
-		case 0:
-			return "AM"
-		case 1:
-			return "FM"
-		case 2:
-			return "Aux"
-		case 3:
-			return "Sirius"
-		case 4:
-			return "Ipod"
-		case 5:
-			return "USB"
-		case 6:
-			return "DVD"
-		case 7:
-			return "VHF"
-		case 8:
-			return "Invalid"
-		case 9:
-			return "MTP"
-		case 10:
-			return "Bluetooth"
-		case 11:
-			return "ARC"
-		case 12:
-			return "Android"
-		case 13:
-			return "Pandora"
-		case 14:
-			return "DAB"
-		case 15:
-			return "AirPlay"
-		case 16:
-			return "UPNP"
-		case 17:
-			return "Unknown"
-default:
+	case 0:
+		return "AM"
+	case 1:
+		return "FM"
+	case 2:
+		return "Aux"
+	case 3:
+		return "Sirius"
+	case 4:
+		return "Ipod"
+	case 5:
+		return "USB"
+	case 6:
+		return "DVD"
+	case 7:
+		return "VHF"
+	case 8:
+		return "Invalid"
+	case 9:
+		return "MTP"
+	case 10:
+		return "Bluetooth"
+	case 11:
+		return "ARC"
+	case 12:
+		return "Android"
+	case 13:
+		return "Pandora"
+	case 14:
+		return "DAB"
+	case 15:
+		return "AirPlay"
+	case 16:
+		return "UPNP"
+	case 17:
+		return "Unknown"
+	default:
 		return fmt.Sprintf("FusionSourceTypeConst(%d)", uint8(e))
 	}
 }
+
 type FusionSiriusComStateConst uint8
+
 const (
-	Unknown_2	FusionSiriusComStateConst = 255
-	Off_10	FusionSiriusComStateConst = 1
-	Initialising	FusionSiriusComStateConst = 2
-	On_4	FusionSiriusComStateConst = 3
+	Unknown_2    FusionSiriusComStateConst = 255
+	Off_9        FusionSiriusComStateConst = 1
+	Initialising FusionSiriusComStateConst = 2
+	On_3         FusionSiriusComStateConst = 3
 )
 
-func (e FusionSiriusComStateConst) GoString() string {return e.String() }
+func (e FusionSiriusComStateConst) GoString() string { return e.String() }
 func (e FusionSiriusComStateConst) String() string {
 	switch e {
-		case 255:
-			return "Unknown"
-		case 1:
-			return "Off"
-		case 2:
-			return "Initialising"
-		case 3:
-			return "On"
-default:
+	case 255:
+		return "Unknown"
+	case 1:
+		return "Off"
+	case 2:
+		return "Initialising"
+	case 3:
+		return "On"
+	default:
 		return fmt.Sprintf("FusionSiriusComStateConst(%d)", uint8(e))
 	}
 }
-type FusionSiriusTuningModeConst uint8
+
+type FusionSiriusAlertConst uint8
+
 const (
-	Normal_3	FusionSiriusTuningModeConst = 1
-	Category	FusionSiriusTuningModeConst = 2
-	Preset	FusionSiriusTuningModeConst = 3
+	Unknown_3          FusionSiriusAlertConst = 255
+	None_5             FusionSiriusAlertConst = 1
+	Antenna            FusionSiriusAlertConst = 2
+	Nosignal           FusionSiriusAlertConst = 3
+	SubscriptionUpdate FusionSiriusAlertConst = 4
 )
 
-func (e FusionSiriusTuningModeConst) GoString() string {return e.String() }
+func (e FusionSiriusAlertConst) GoString() string { return e.String() }
+func (e FusionSiriusAlertConst) String() string {
+	switch e {
+	case 255:
+		return "Unknown"
+	case 1:
+		return "None"
+	case 2:
+		return "Antenna"
+	case 3:
+		return "NoSignal"
+	case 4:
+		return "Subscription Update"
+	default:
+		return fmt.Sprintf("FusionSiriusAlertConst(%d)", uint8(e))
+	}
+}
+
+type FusionSiriusTuningModeConst uint8
+
+const (
+	Normal_3 FusionSiriusTuningModeConst = 1
+	Category FusionSiriusTuningModeConst = 2
+	Preset   FusionSiriusTuningModeConst = 3
+)
+
+func (e FusionSiriusTuningModeConst) GoString() string { return e.String() }
 func (e FusionSiriusTuningModeConst) String() string {
 	switch e {
-		case 1:
-			return "Normal"
-		case 2:
-			return "Category"
-		case 3:
-			return "Preset"
-default:
+	case 1:
+		return "Normal"
+	case 2:
+		return "Category"
+	case 3:
+		return "Preset"
+	default:
 		return fmt.Sprintf("FusionSiriusTuningModeConst(%d)", uint8(e))
 	}
 }
+
 type FusionStatusMessageIDConst uint16
+
 const (
-	Unknown_3	FusionStatusMessageIDConst = 0
-	ApiVersion	FusionStatusMessageIDConst = 32769
-	Source_2	FusionStatusMessageIDConst = 32770
-	SourceCount	FusionStatusMessageIDConst = 32771
-	TrackInfo	FusionStatusMessageIDConst = 32772
-	TrackTitle	FusionStatusMessageIDConst = 32773
-	TrackArtist	FusionStatusMessageIDConst = 32774
-	TrackAlbum	FusionStatusMessageIDConst = 32775
-	CoverArt	FusionStatusMessageIDConst = 32776
-	TrackProgress	FusionStatusMessageIDConst = 32777
-	TunerAlign	FusionStatusMessageIDConst = 32778
-	Tuner	FusionStatusMessageIDConst = 32779
-	MarineTuner	FusionStatusMessageIDConst = 32780
-	MarineSquelch	FusionStatusMessageIDConst = 32781
-	MarineScanMode	FusionStatusMessageIDConst = 32782
-	MenuAction_2	FusionStatusMessageIDConst = 32783
-	MenuCount	FusionStatusMessageIDConst = 32784
-	MenuItem_2	FusionStatusMessageIDConst = 32785
-	MenuLockID	FusionStatusMessageIDConst = 32786
-	AuxGain	FusionStatusMessageIDConst = 32787
-	Setting	FusionStatusMessageIDConst = 32788
-	Settings_2	FusionStatusMessageIDConst = 32789
-	UpdateFirmwareResult	FusionStatusMessageIDConst = 32790
-	Mute	FusionStatusMessageIDConst = 32791
-	Balance	FusionStatusMessageIDConst = 32792
-	LowPassFilter	FusionStatusMessageIDConst = 32793
-	Sublevels	FusionStatusMessageIDConst = 32794
-	Tone	FusionStatusMessageIDConst = 32795
-	VolumeLimits	FusionStatusMessageIDConst = 32796
-	Volume_2	FusionStatusMessageIDConst = 32797
-	Capabilities	FusionStatusMessageIDConst = 32798
-	LineLevelControl	FusionStatusMessageIDConst = 32799
-	Power_3	FusionStatusMessageIDConst = 32800
-	UnitName	FusionStatusMessageIDConst = 32801
-	Sirius_2	FusionStatusMessageIDConst = 32802
-	SiriusxmPresetEvent	FusionStatusMessageIDConst = 32803
-	SiriusxmChannel	FusionStatusMessageIDConst = 32804
-	SiriusxmTitle	FusionStatusMessageIDConst = 32805
-	SiriusxmArtist	FusionStatusMessageIDConst = 32806
-	SiriusxmGenre	FusionStatusMessageIDConst = 32807
-	SiriusxmCategory	FusionStatusMessageIDConst = 32808
-	SiriusxmSignal	FusionStatusMessageIDConst = 32809
-	SiriusxmParentalRequest	FusionStatusMessageIDConst = 32810
-	SiriusxmDiagnostics	FusionStatusMessageIDConst = 32811
-	SiriusxmPresets	FusionStatusMessageIDConst = 32812
-	ZoneName	FusionStatusMessageIDConst = 32813
-	IpSetting	FusionStatusMessageIDConst = 32819
-	Multiroom	FusionStatusMessageIDConst = 32824
-	MultiroomStatus	FusionStatusMessageIDConst = 32825
-	SystemCapabilities	FusionStatusMessageIDConst = 32829
-	PartNumber	FusionStatusMessageIDConst = 32830
-	ProcessingBypass	FusionStatusMessageIDConst = 32832
-	ServerInfo	FusionStatusMessageIDConst = 32846
-	RDSData	FusionStatusMessageIDConst = 32850
-	IgnitionSwitchState	FusionStatusMessageIDConst = 32859
-	Mono	FusionStatusMessageIDConst = 32862
-	SpeedVolumeCurrentSpeed	FusionStatusMessageIDConst = 32863
-	ZoneCapabilitiesExtended	FusionStatusMessageIDConst = 32865
+	Unknown_4                FusionStatusMessageIDConst = 0
+	ApiVersion               FusionStatusMessageIDConst = 32769
+	Source_2                 FusionStatusMessageIDConst = 32770
+	SourceCount              FusionStatusMessageIDConst = 32771
+	TrackInfo                FusionStatusMessageIDConst = 32772
+	TrackTitle               FusionStatusMessageIDConst = 32773
+	TrackArtist              FusionStatusMessageIDConst = 32774
+	TrackAlbum               FusionStatusMessageIDConst = 32775
+	CoverArt                 FusionStatusMessageIDConst = 32776
+	TrackProgress            FusionStatusMessageIDConst = 32777
+	TunerAlign               FusionStatusMessageIDConst = 32778
+	Tuner                    FusionStatusMessageIDConst = 32779
+	MarineTuner              FusionStatusMessageIDConst = 32780
+	MarineSquelch            FusionStatusMessageIDConst = 32781
+	MarineScanMode           FusionStatusMessageIDConst = 32782
+	MenuAction_2             FusionStatusMessageIDConst = 32783
+	MenuCount                FusionStatusMessageIDConst = 32784
+	MenuItem_2               FusionStatusMessageIDConst = 32785
+	MenuLockID               FusionStatusMessageIDConst = 32786
+	AuxGain                  FusionStatusMessageIDConst = 32787
+	Setting                  FusionStatusMessageIDConst = 32788
+	Settings_2               FusionStatusMessageIDConst = 32789
+	UpdateFirmwareResult     FusionStatusMessageIDConst = 32790
+	Mute                     FusionStatusMessageIDConst = 32791
+	Balance                  FusionStatusMessageIDConst = 32792
+	LowPassFilter            FusionStatusMessageIDConst = 32793
+	Sublevels                FusionStatusMessageIDConst = 32794
+	Tone                     FusionStatusMessageIDConst = 32795
+	VolumeLimits             FusionStatusMessageIDConst = 32796
+	Volume_2                 FusionStatusMessageIDConst = 32797
+	Capabilities             FusionStatusMessageIDConst = 32798
+	LineLevelControl         FusionStatusMessageIDConst = 32799
+	Power_3                  FusionStatusMessageIDConst = 32800
+	UnitName                 FusionStatusMessageIDConst = 32801
+	Sirius_2                 FusionStatusMessageIDConst = 32802
+	SiriusxmPresetEvent      FusionStatusMessageIDConst = 32803
+	SiriusxmChannel          FusionStatusMessageIDConst = 32804
+	SiriusxmTitle            FusionStatusMessageIDConst = 32805
+	SiriusxmArtist           FusionStatusMessageIDConst = 32806
+	SiriusxmGenre            FusionStatusMessageIDConst = 32807
+	SiriusxmCategory         FusionStatusMessageIDConst = 32808
+	SiriusxmSignal           FusionStatusMessageIDConst = 32809
+	SiriusxmParentalRequest  FusionStatusMessageIDConst = 32810
+	SiriusxmDiagnostics      FusionStatusMessageIDConst = 32811
+	SiriusxmPresets          FusionStatusMessageIDConst = 32812
+	ZoneName                 FusionStatusMessageIDConst = 32813
+	IpSetting                FusionStatusMessageIDConst = 32819
+	Multiroom                FusionStatusMessageIDConst = 32824
+	MultiroomStatus          FusionStatusMessageIDConst = 32825
+	SystemCapabilities       FusionStatusMessageIDConst = 32829
+	PartNumber               FusionStatusMessageIDConst = 32830
+	ProcessingBypass         FusionStatusMessageIDConst = 32832
+	ServerInfo               FusionStatusMessageIDConst = 32846
+	RDSData                  FusionStatusMessageIDConst = 32850
+	IgnitionSwitchState      FusionStatusMessageIDConst = 32859
+	Mono                     FusionStatusMessageIDConst = 32862
+	SpeedVolumeCurrentSpeed  FusionStatusMessageIDConst = 32863
+	ZoneCapabilitiesExtended FusionStatusMessageIDConst = 32865
 )
 
-func (e FusionStatusMessageIDConst) GoString() string {return e.String() }
+func (e FusionStatusMessageIDConst) GoString() string { return e.String() }
 func (e FusionStatusMessageIDConst) String() string {
 	switch e {
-		case 0:
-			return "Unknown"
-		case 32769:
-			return "API Version"
-		case 32770:
-			return "Source"
-		case 32771:
-			return "Source Count"
-		case 32772:
-			return "Track Info"
-		case 32773:
-			return "Track Title"
-		case 32774:
-			return "Track Artist"
-		case 32775:
-			return "Track Album"
-		case 32776:
-			return "Cover Art"
-		case 32777:
-			return "Track Progress"
-		case 32778:
-			return "Tuner Align"
-		case 32779:
-			return "Tuner"
-		case 32780:
-			return "Marine Tuner"
-		case 32781:
-			return "Marine Squelch"
-		case 32782:
-			return "Marine Scan Mode"
-		case 32783:
-			return "Menu Action"
-		case 32784:
-			return "Menu Count"
-		case 32785:
-			return "Menu Item"
-		case 32786:
-			return "Menu Lock ID"
-		case 32787:
-			return "Aux Gain"
-		case 32788:
-			return "Setting"
-		case 32789:
-			return "Settings"
-		case 32790:
-			return "Update Firmware Result"
-		case 32791:
-			return "Mute"
-		case 32792:
-			return "Balance"
-		case 32793:
-			return "Low Pass Filter"
-		case 32794:
-			return "Sublevels"
-		case 32795:
-			return "Tone"
-		case 32796:
-			return "Volume Limits"
-		case 32797:
-			return "Volume"
-		case 32798:
-			return "Capabilities"
-		case 32799:
-			return "Line Level Control"
-		case 32800:
-			return "Power"
-		case 32801:
-			return "Unit Name"
-		case 32802:
-			return "Sirius"
-		case 32803:
-			return "SiriusXM Preset Event"
-		case 32804:
-			return "SiriusXM Channel"
-		case 32805:
-			return "SiriusXM Title"
-		case 32806:
-			return "SiriusXM Artist"
-		case 32807:
-			return "SiriusXM Genre"
-		case 32808:
-			return "SiriusXM Category"
-		case 32809:
-			return "SiriusXm Signal"
-		case 32810:
-			return "SiriusXM Parental Request"
-		case 32811:
-			return "SiriusXM Diagnostics"
-		case 32812:
-			return "SiriusXM Presets"
-		case 32813:
-			return "Zone Name"
-		case 32819:
-			return "IP Setting"
-		case 32824:
-			return "Multiroom"
-		case 32825:
-			return "Multiroom Status"
-		case 32829:
-			return "System Capabilities"
-		case 32830:
-			return "Part Number"
-		case 32832:
-			return "Processing Bypass"
-		case 32846:
-			return "Server Info"
-		case 32850:
-			return "RDS Data"
-		case 32859:
-			return "Ignition Switch State"
-		case 32862:
-			return "Mono"
-		case 32863:
-			return "Speed Volume Current Speed"
-		case 32865:
-			return "Zone Capabilities Extended"
-default:
+	case 0:
+		return "Unknown"
+	case 32769:
+		return "API Version"
+	case 32770:
+		return "Source"
+	case 32771:
+		return "Source Count"
+	case 32772:
+		return "Track Info"
+	case 32773:
+		return "Track Title"
+	case 32774:
+		return "Track Artist"
+	case 32775:
+		return "Track Album"
+	case 32776:
+		return "Cover Art"
+	case 32777:
+		return "Track Progress"
+	case 32778:
+		return "Tuner Align"
+	case 32779:
+		return "Tuner"
+	case 32780:
+		return "Marine Tuner"
+	case 32781:
+		return "Marine Squelch"
+	case 32782:
+		return "Marine Scan Mode"
+	case 32783:
+		return "Menu Action"
+	case 32784:
+		return "Menu Count"
+	case 32785:
+		return "Menu Item"
+	case 32786:
+		return "Menu Lock ID"
+	case 32787:
+		return "Aux Gain"
+	case 32788:
+		return "Setting"
+	case 32789:
+		return "Settings"
+	case 32790:
+		return "Update Firmware Result"
+	case 32791:
+		return "Mute"
+	case 32792:
+		return "Balance"
+	case 32793:
+		return "Low Pass Filter"
+	case 32794:
+		return "Sublevels"
+	case 32795:
+		return "Tone"
+	case 32796:
+		return "Volume Limits"
+	case 32797:
+		return "Volume"
+	case 32798:
+		return "Capabilities"
+	case 32799:
+		return "Line Level Control"
+	case 32800:
+		return "Power"
+	case 32801:
+		return "Unit Name"
+	case 32802:
+		return "Sirius"
+	case 32803:
+		return "SiriusXM Preset Event"
+	case 32804:
+		return "SiriusXM Channel"
+	case 32805:
+		return "SiriusXM Title"
+	case 32806:
+		return "SiriusXM Artist"
+	case 32807:
+		return "SiriusXM Genre"
+	case 32808:
+		return "SiriusXM Category"
+	case 32809:
+		return "SiriusXm Signal"
+	case 32810:
+		return "SiriusXM Parental Request"
+	case 32811:
+		return "SiriusXM Diagnostics"
+	case 32812:
+		return "SiriusXM Presets"
+	case 32813:
+		return "Zone Name"
+	case 32819:
+		return "IP Setting"
+	case 32824:
+		return "Multiroom"
+	case 32825:
+		return "Multiroom Status"
+	case 32829:
+		return "System Capabilities"
+	case 32830:
+		return "Part Number"
+	case 32832:
+		return "Processing Bypass"
+	case 32846:
+		return "Server Info"
+	case 32850:
+		return "RDS Data"
+	case 32859:
+		return "Ignition Switch State"
+	case 32862:
+		return "Mono"
+	case 32863:
+		return "Speed Volume Current Speed"
+	case 32865:
+		return "Zone Capabilities Extended"
+	default:
 		return fmt.Sprintf("FusionStatusMessageIDConst(%d)", uint16(e))
 	}
 }
+
 type SonichubControlConst uint8
+
 const (
-	Set_2	SonichubControlConst = 0
-	Ack	SonichubControlConst = 128
+	Set_2 SonichubControlConst = 0
+	Ack   SonichubControlConst = 128
 )
 
-func (e SonichubControlConst) GoString() string {return e.String() }
+func (e SonichubControlConst) GoString() string { return e.String() }
 func (e SonichubControlConst) String() string {
 	switch e {
-		case 0:
-			return "Set"
-		case 128:
-			return "Ack"
-default:
+	case 0:
+		return "Set"
+	case 128:
+		return "Ack"
+	default:
 		return fmt.Sprintf("SonichubControlConst(%d)", uint8(e))
 	}
 }
+
 type SonichubSourceConst uint8
+
 const (
-	Am_3	SonichubSourceConst = 0
-	Fm_3	SonichubSourceConst = 1
-	Ipod_2	SonichubSourceConst = 2
-	USB_3	SonichubSourceConst = 3
-	Aux_3	SonichubSourceConst = 4
-	Aux2	SonichubSourceConst = 5
-	Mic	SonichubSourceConst = 6
+	Am_3   SonichubSourceConst = 0
+	Fm_3   SonichubSourceConst = 1
+	Ipod_2 SonichubSourceConst = 2
+	USB_3  SonichubSourceConst = 3
+	Aux_3  SonichubSourceConst = 4
+	Aux2   SonichubSourceConst = 5
+	Mic    SonichubSourceConst = 6
 )
 
-func (e SonichubSourceConst) GoString() string {return e.String() }
+func (e SonichubSourceConst) GoString() string { return e.String() }
 func (e SonichubSourceConst) String() string {
 	switch e {
-		case 0:
-			return "AM"
-		case 1:
-			return "FM"
-		case 2:
-			return "iPod"
-		case 3:
-			return "USB"
-		case 4:
-			return "AUX"
-		case 5:
-			return "AUX 2"
-		case 6:
-			return "Mic"
-default:
+	case 0:
+		return "AM"
+	case 1:
+		return "FM"
+	case 2:
+		return "iPod"
+	case 3:
+		return "USB"
+	case 4:
+		return "AUX"
+	case 5:
+		return "AUX 2"
+	case 6:
+		return "Mic"
+	default:
 		return fmt.Sprintf("SonichubSourceConst(%d)", uint8(e))
 	}
 }
+
 type ISOControlConst uint8
+
 const (
-	Ack_2	ISOControlConst = 0
-	Nak	ISOControlConst = 1
-	AccessDenied_3	ISOControlConst = 2
-	AddressBusy	ISOControlConst = 3
+	Ack_2          ISOControlConst = 0
+	Nak            ISOControlConst = 1
+	AccessDenied_3 ISOControlConst = 2
+	AddressBusy    ISOControlConst = 3
 )
 
-func (e ISOControlConst) GoString() string {return e.String() }
+func (e ISOControlConst) GoString() string { return e.String() }
 func (e ISOControlConst) String() string {
 	switch e {
-		case 0:
-			return "ACK"
-		case 1:
-			return "NAK"
-		case 2:
-			return "Access Denied"
-		case 3:
-			return "Address Busy"
-default:
+	case 0:
+		return "ACK"
+	case 1:
+		return "NAK"
+	case 2:
+		return "Access Denied"
+	case 3:
+		return "Address Busy"
+	default:
 		return fmt.Sprintf("ISOControlConst(%d)", uint8(e))
 	}
 }
+
 type ISOCommandConst uint8
+
 const (
-	Ack_3	ISOCommandConst = 0
-	Rts	ISOCommandConst = 16
-	Cts	ISOCommandConst = 17
-	Eom	ISOCommandConst = 19
-	Bam	ISOCommandConst = 32
-	Abort	ISOCommandConst = 255
+	Ack_3 ISOCommandConst = 0
+	Rts   ISOCommandConst = 16
+	Cts   ISOCommandConst = 17
+	Eom   ISOCommandConst = 19
+	Bam   ISOCommandConst = 32
+	Abort ISOCommandConst = 255
 )
 
-func (e ISOCommandConst) GoString() string {return e.String() }
+func (e ISOCommandConst) GoString() string { return e.String() }
 func (e ISOCommandConst) String() string {
 	switch e {
-		case 0:
-			return "ACK"
-		case 16:
-			return "RTS"
-		case 17:
-			return "CTS"
-		case 19:
-			return "EOM"
-		case 32:
-			return "BAM"
-		case 255:
-			return "Abort"
-default:
+	case 0:
+		return "ACK"
+	case 16:
+		return "RTS"
+	case 17:
+		return "CTS"
+	case 19:
+		return "EOM"
+	case 32:
+		return "BAM"
+	case 255:
+		return "Abort"
+	default:
 		return fmt.Sprintf("ISOCommandConst(%d)", uint8(e))
 	}
 }
+
 type GroupFunctionConst uint8
+
 const (
-	Request	GroupFunctionConst = 0
-	Command	GroupFunctionConst = 1
-	Acknowledge_5	GroupFunctionConst = 2
-	ReadFields	GroupFunctionConst = 3
-	ReadFieldsReply	GroupFunctionConst = 4
-	WriteFields	GroupFunctionConst = 5
-	WriteFieldsReply	GroupFunctionConst = 6
+	Request          GroupFunctionConst = 0
+	Command          GroupFunctionConst = 1
+	Acknowledge_5    GroupFunctionConst = 2
+	ReadFields       GroupFunctionConst = 3
+	ReadFieldsReply  GroupFunctionConst = 4
+	WriteFields      GroupFunctionConst = 5
+	WriteFieldsReply GroupFunctionConst = 6
 )
 
-func (e GroupFunctionConst) GoString() string {return e.String() }
+func (e GroupFunctionConst) GoString() string { return e.String() }
 func (e GroupFunctionConst) String() string {
 	switch e {
-		case 0:
-			return "Request"
-		case 1:
-			return "Command"
-		case 2:
-			return "Acknowledge"
-		case 3:
-			return "Read Fields"
-		case 4:
-			return "Read Fields Reply"
-		case 5:
-			return "Write Fields"
-		case 6:
-			return "Write Fields Reply"
-default:
+	case 0:
+		return "Request"
+	case 1:
+		return "Command"
+	case 2:
+		return "Acknowledge"
+	case 3:
+		return "Read Fields"
+	case 4:
+		return "Read Fields Reply"
+	case 5:
+		return "Write Fields"
+	case 6:
+		return "Write Fields Reply"
+	default:
 		return fmt.Sprintf("GroupFunctionConst(%d)", uint8(e))
 	}
 }
+
 type AirmarCommandConst uint8
+
 const (
-	AttitudeOffsets	AirmarCommandConst = 32
-	CalibrateCompass	AirmarCommandConst = 33
-	TrueWindOptions	AirmarCommandConst = 34
-	SimulateMode_2	AirmarCommandConst = 35
-	CalibrateDepth	AirmarCommandConst = 40
-	CalibrateSpeed	AirmarCommandConst = 41
-	CalibrateTemperature	AirmarCommandConst = 42
-	SpeedFilter	AirmarCommandConst = 43
-	TemperatureFilter	AirmarCommandConst = 44
-	NMEA2000Options	AirmarCommandConst = 46
+	AttitudeOffsets      AirmarCommandConst = 32
+	CalibrateCompass     AirmarCommandConst = 33
+	TrueWindOptions      AirmarCommandConst = 34
+	SimulateMode_2       AirmarCommandConst = 35
+	CalibrateDepth       AirmarCommandConst = 40
+	CalibrateSpeed       AirmarCommandConst = 41
+	CalibrateTemperature AirmarCommandConst = 42
+	SpeedFilter          AirmarCommandConst = 43
+	TemperatureFilter    AirmarCommandConst = 44
+	NMEA2000Options      AirmarCommandConst = 46
 )
 
-func (e AirmarCommandConst) GoString() string {return e.String() }
+func (e AirmarCommandConst) GoString() string { return e.String() }
 func (e AirmarCommandConst) String() string {
 	switch e {
-		case 32:
-			return "Attitude Offsets"
-		case 33:
-			return "Calibrate Compass"
-		case 34:
-			return "True Wind Options"
-		case 35:
-			return "Simulate Mode"
-		case 40:
-			return "Calibrate Depth"
-		case 41:
-			return "Calibrate Speed"
-		case 42:
-			return "Calibrate Temperature"
-		case 43:
-			return "Speed Filter"
-		case 44:
-			return "Temperature Filter"
-		case 46:
-			return "NMEA 2000 options"
-default:
+	case 32:
+		return "Attitude Offsets"
+	case 33:
+		return "Calibrate Compass"
+	case 34:
+		return "True Wind Options"
+	case 35:
+		return "Simulate Mode"
+	case 40:
+		return "Calibrate Depth"
+	case 41:
+		return "Calibrate Speed"
+	case 42:
+		return "Calibrate Temperature"
+	case 43:
+		return "Speed Filter"
+	case 44:
+		return "Temperature Filter"
+	case 46:
+		return "NMEA 2000 options"
+	default:
 		return fmt.Sprintf("AirmarCommandConst(%d)", uint8(e))
 	}
 }
+
 type AirmarDepthQualityFactorConst uint8
+
 const (
-	DepthUnlocked	AirmarDepthQualityFactorConst = 0
-	Quality10	AirmarDepthQualityFactorConst = 1
-	Quality20	AirmarDepthQualityFactorConst = 2
-	Quality30	AirmarDepthQualityFactorConst = 3
-	Quality40	AirmarDepthQualityFactorConst = 4
-	Quality50	AirmarDepthQualityFactorConst = 5
-	Quality60	AirmarDepthQualityFactorConst = 6
-	Quality70	AirmarDepthQualityFactorConst = 7
-	Quality80	AirmarDepthQualityFactorConst = 8
-	Quality90	AirmarDepthQualityFactorConst = 9
-	Quality100	AirmarDepthQualityFactorConst = 10
+	DepthUnlocked AirmarDepthQualityFactorConst = 0
+	Quality10     AirmarDepthQualityFactorConst = 1
+	Quality20     AirmarDepthQualityFactorConst = 2
+	Quality30     AirmarDepthQualityFactorConst = 3
+	Quality40     AirmarDepthQualityFactorConst = 4
+	Quality50     AirmarDepthQualityFactorConst = 5
+	Quality60     AirmarDepthQualityFactorConst = 6
+	Quality70     AirmarDepthQualityFactorConst = 7
+	Quality80     AirmarDepthQualityFactorConst = 8
+	Quality90     AirmarDepthQualityFactorConst = 9
+	Quality100    AirmarDepthQualityFactorConst = 10
 )
 
-func (e AirmarDepthQualityFactorConst) GoString() string {return e.String() }
+func (e AirmarDepthQualityFactorConst) GoString() string { return e.String() }
 func (e AirmarDepthQualityFactorConst) String() string {
 	switch e {
-		case 0:
-			return "Depth unlocked"
-		case 1:
-			return "Quality 10%"
-		case 2:
-			return "Quality 20%"
-		case 3:
-			return "Quality 30%"
-		case 4:
-			return "Quality 40%"
-		case 5:
-			return "Quality 50%"
-		case 6:
-			return "Quality 60%"
-		case 7:
-			return "Quality 70%"
-		case 8:
-			return "Quality 80%"
-		case 9:
-			return "Quality 90%"
-		case 10:
-			return "Quality 100%"
-default:
+	case 0:
+		return "Depth unlocked"
+	case 1:
+		return "Quality 10%"
+	case 2:
+		return "Quality 20%"
+	case 3:
+		return "Quality 30%"
+	case 4:
+		return "Quality 40%"
+	case 5:
+		return "Quality 50%"
+	case 6:
+		return "Quality 60%"
+	case 7:
+		return "Quality 70%"
+	case 8:
+		return "Quality 80%"
+	case 9:
+		return "Quality 90%"
+	case 10:
+		return "Quality 100%"
+	default:
 		return fmt.Sprintf("AirmarDepthQualityFactorConst(%d)", uint8(e))
 	}
 }
+
 type PGNErrorCodeConst uint8
+
 const (
-	Acknowledge_6	PGNErrorCodeConst = 0
-	PGNNotSupported	PGNErrorCodeConst = 1
-	PGNNotAvailable	PGNErrorCodeConst = 2
-	AccessDenied_4	PGNErrorCodeConst = 3
-	NotSupported_3	PGNErrorCodeConst = 4
-	TagNotSupported	PGNErrorCodeConst = 5
-	ReadOrWriteNotSupported_2	PGNErrorCodeConst = 6
+	Acknowledge_6             PGNErrorCodeConst = 0
+	PGNNotSupported           PGNErrorCodeConst = 1
+	PGNNotAvailable           PGNErrorCodeConst = 2
+	AccessDenied_4            PGNErrorCodeConst = 3
+	NotSupported_3            PGNErrorCodeConst = 4
+	TagNotSupported           PGNErrorCodeConst = 5
+	ReadOrWriteNotSupported_2 PGNErrorCodeConst = 6
 )
 
-func (e PGNErrorCodeConst) GoString() string {return e.String() }
+func (e PGNErrorCodeConst) GoString() string { return e.String() }
 func (e PGNErrorCodeConst) String() string {
 	switch e {
-		case 0:
-			return "Acknowledge"
-		case 1:
-			return "PGN not supported"
-		case 2:
-			return "PGN not available"
-		case 3:
-			return "Access denied"
-		case 4:
-			return "Not supported"
-		case 5:
-			return "Tag not supported"
-		case 6:
-			return "Read or Write not supported"
-default:
+	case 0:
+		return "Acknowledge"
+	case 1:
+		return "PGN not supported"
+	case 2:
+		return "PGN not available"
+	case 3:
+		return "Access denied"
+	case 4:
+		return "Not supported"
+	case 5:
+		return "Tag not supported"
+	case 6:
+		return "Read or Write not supported"
+	default:
 		return fmt.Sprintf("PGNErrorCodeConst(%d)", uint8(e))
 	}
 }
+
 type AirmarTransmissionIntervalConst uint8
+
 const (
-	MeasureInterval	AirmarTransmissionIntervalConst = 0
-	RequestedByUser	AirmarTransmissionIntervalConst = 1
+	MeasureInterval AirmarTransmissionIntervalConst = 0
+	RequestedByUser AirmarTransmissionIntervalConst = 1
 )
 
-func (e AirmarTransmissionIntervalConst) GoString() string {return e.String() }
+func (e AirmarTransmissionIntervalConst) GoString() string { return e.String() }
 func (e AirmarTransmissionIntervalConst) String() string {
 	switch e {
-		case 0:
-			return "Measure interval"
-		case 1:
-			return "Requested by user"
-default:
+	case 0:
+		return "Measure interval"
+	case 1:
+		return "Requested by user"
+	default:
 		return fmt.Sprintf("AirmarTransmissionIntervalConst(%d)", uint8(e))
 	}
 }
+
 type MOBPositionSourceConst uint8
+
 const (
-	PositionEstimatedByTheVessel	MOBPositionSourceConst = 0
-	PositionReportedByMOBEmitter	MOBPositionSourceConst = 1
+	PositionEstimatedByTheVessel MOBPositionSourceConst = 0
+	PositionReportedByMOBEmitter MOBPositionSourceConst = 1
 )
 
-func (e MOBPositionSourceConst) GoString() string {return e.String() }
+func (e MOBPositionSourceConst) GoString() string { return e.String() }
 func (e MOBPositionSourceConst) String() string {
 	switch e {
-		case 0:
-			return "Position estimated by the vessel"
-		case 1:
-			return "Position reported by MOB emitter"
-default:
+	case 0:
+		return "Position estimated by the vessel"
+	case 1:
+		return "Position reported by MOB emitter"
+	default:
 		return fmt.Sprintf("MOBPositionSourceConst(%d)", uint8(e))
 	}
 }
+
 type SteeringModeConst uint8
+
 const (
-	MainSteering	SteeringModeConst = 0
-	NonFollowUpDevice	SteeringModeConst = 1
-	FollowUpDevice	SteeringModeConst = 2
-	HeadingControlStandalone	SteeringModeConst = 3
-	HeadingControl	SteeringModeConst = 4
-	TrackControl	SteeringModeConst = 5
+	MainSteering             SteeringModeConst = 0
+	NonFollowUpDevice        SteeringModeConst = 1
+	FollowUpDevice           SteeringModeConst = 2
+	HeadingControlStandalone SteeringModeConst = 3
+	HeadingControl           SteeringModeConst = 4
+	TrackControl             SteeringModeConst = 5
 )
 
-func (e SteeringModeConst) GoString() string {return e.String() }
+func (e SteeringModeConst) GoString() string { return e.String() }
 func (e SteeringModeConst) String() string {
 	switch e {
-		case 0:
-			return "Main Steering"
-		case 1:
-			return "Non-Follow-Up Device"
-		case 2:
-			return "Follow-Up Device"
-		case 3:
-			return "Heading Control Standalone"
-		case 4:
-			return "Heading Control"
-		case 5:
-			return "Track Control"
-default:
+	case 0:
+		return "Main Steering"
+	case 1:
+		return "Non-Follow-Up Device"
+	case 2:
+		return "Follow-Up Device"
+	case 3:
+		return "Heading Control Standalone"
+	case 4:
+		return "Heading Control"
+	case 5:
+		return "Track Control"
+	default:
 		return fmt.Sprintf("SteeringModeConst(%d)", uint8(e))
 	}
 }
+
 type FusionRadioSourceConst uint8
+
 const (
-	Am_4	FusionRadioSourceConst = 0
-	Fm_4	FusionRadioSourceConst = 1
+	Am_4 FusionRadioSourceConst = 0
+	Fm_4 FusionRadioSourceConst = 1
 )
 
-func (e FusionRadioSourceConst) GoString() string {return e.String() }
+func (e FusionRadioSourceConst) GoString() string { return e.String() }
 func (e FusionRadioSourceConst) String() string {
 	switch e {
-		case 0:
-			return "AM"
-		case 1:
-			return "FM"
-default:
+	case 0:
+		return "AM"
+	case 1:
+		return "FM"
+	default:
 		return fmt.Sprintf("FusionRadioSourceConst(%d)", uint8(e))
 	}
 }
+
 type FusionSettingConst uint32
+
 const (
-	AlphaSearchThreshold	FusionSettingConst = 0
-	IpodSubtitles	FusionSettingConst = 1
-	Zone2Linked	FusionSettingConst = 2
-	Zone2Enabled	FusionSettingConst = 3
-	Zone3Enabled	FusionSettingConst = 4
-	Zone4Enabled	FusionSettingConst = 5
-	Telemute	FusionSettingConst = 6
-	TunerRegion	FusionSettingConst = 7
-	MarineZone	FusionSettingConst = 8
-	USBRepeat	FusionSettingConst = 9
-	USBShuffle	FusionSettingConst = 10
-	IpodAlbumArtwork	FusionSettingConst = 11
-	IpodRepeat	FusionSettingConst = 12
-	IpodShuffle	FusionSettingConst = 13
-	AmPreset0	FusionSettingConst = 14
-	AmPreset1	FusionSettingConst = 15
-	AmPreset2	FusionSettingConst = 16
-	AmPreset3	FusionSettingConst = 17
-	AmPreset4	FusionSettingConst = 18
-	AmPreset5	FusionSettingConst = 19
-	AmPreset6	FusionSettingConst = 20
-	AmPreset7	FusionSettingConst = 21
-	AmPreset8	FusionSettingConst = 22
-	AmPreset9	FusionSettingConst = 23
-	AmPreset10	FusionSettingConst = 24
-	AmPreset11	FusionSettingConst = 25
-	AmPreset12	FusionSettingConst = 26
-	AmPreset13	FusionSettingConst = 27
-	AmPreset14	FusionSettingConst = 28
-	FmPreset0	FusionSettingConst = 29
-	FmPreset1	FusionSettingConst = 30
-	FmPreset2	FusionSettingConst = 31
-	FmPreset3	FusionSettingConst = 32
-	FmPreset4	FusionSettingConst = 33
-	FmPreset5	FusionSettingConst = 34
-	FmPreset6	FusionSettingConst = 35
-	FmPreset7	FusionSettingConst = 36
-	FmPreset8	FusionSettingConst = 37
-	FmPreset9	FusionSettingConst = 38
-	FmPreset10	FusionSettingConst = 39
-	FmPreset11	FusionSettingConst = 40
-	FmPreset12	FusionSettingConst = 41
-	FmPreset13	FusionSettingConst = 42
-	FmPreset14	FusionSettingConst = 43
-	VHFPreset0	FusionSettingConst = 44
-	VHFPreset1	FusionSettingConst = 45
-	VHFPreset2	FusionSettingConst = 46
-	VHFPreset3	FusionSettingConst = 47
-	VHFPreset4	FusionSettingConst = 48
-	VHFPreset5	FusionSettingConst = 49
-	VHFPreset6	FusionSettingConst = 50
-	VHFPreset7	FusionSettingConst = 51
-	VHFPreset8	FusionSettingConst = 52
-	VHFPreset9	FusionSettingConst = 53
-	VHFPreset10	FusionSettingConst = 54
-	VHFPreset11	FusionSettingConst = 55
-	VHFPreset12	FusionSettingConst = 56
-	VHFPreset13	FusionSettingConst = 57
-	VHFPreset14	FusionSettingConst = 58
-	ClockTime	FusionSettingConst = 59
-	ClockAlarm	FusionSettingConst = 60
-	IpodVideoSignal	FusionSettingConst = 61
-	IpodMonitorAspect	FusionSettingConst = 62
-	AuxNameIndex	FusionSettingConst = 63
-	AmEnabled	FusionSettingConst = 64
-	VHFEnabled	FusionSettingConst = 65
-	Language	FusionSettingConst = 66
-	InternalAmpsOn	FusionSettingConst = 67
-	MtpRepeat	FusionSettingConst = 68
-	MtpShuffle	FusionSettingConst = 69
-	IDAccessorySource	FusionSettingConst = 70
-	NMEAPower	FusionSettingConst = 71
-	LowPowerMode_2	FusionSettingConst = 72
-	DvdRegion	FusionSettingConst = 73
-	VolumeZoneSync	FusionSettingConst = 74
-	MaxVolumeStart	FusionSettingConst = 75
-	BtAutoConnect	FusionSettingConst = 76
-	NullSetting	FusionSettingConst = 77
+	AlphaSearchThreshold FusionSettingConst = 0
+	IpodSubtitles        FusionSettingConst = 1
+	Zone2Linked          FusionSettingConst = 2
+	Zone2Enabled         FusionSettingConst = 3
+	Zone3Enabled         FusionSettingConst = 4
+	Zone4Enabled         FusionSettingConst = 5
+	Telemute             FusionSettingConst = 6
+	TunerRegion          FusionSettingConst = 7
+	MarineZone           FusionSettingConst = 8
+	USBRepeat            FusionSettingConst = 9
+	USBShuffle           FusionSettingConst = 10
+	IpodAlbumArtwork     FusionSettingConst = 11
+	IpodRepeat           FusionSettingConst = 12
+	IpodShuffle          FusionSettingConst = 13
+	AmPreset0            FusionSettingConst = 14
+	AmPreset1            FusionSettingConst = 15
+	AmPreset2            FusionSettingConst = 16
+	AmPreset3            FusionSettingConst = 17
+	AmPreset4            FusionSettingConst = 18
+	AmPreset5            FusionSettingConst = 19
+	AmPreset6            FusionSettingConst = 20
+	AmPreset7            FusionSettingConst = 21
+	AmPreset8            FusionSettingConst = 22
+	AmPreset9            FusionSettingConst = 23
+	AmPreset10           FusionSettingConst = 24
+	AmPreset11           FusionSettingConst = 25
+	AmPreset12           FusionSettingConst = 26
+	AmPreset13           FusionSettingConst = 27
+	AmPreset14           FusionSettingConst = 28
+	FmPreset0            FusionSettingConst = 29
+	FmPreset1            FusionSettingConst = 30
+	FmPreset2            FusionSettingConst = 31
+	FmPreset3            FusionSettingConst = 32
+	FmPreset4            FusionSettingConst = 33
+	FmPreset5            FusionSettingConst = 34
+	FmPreset6            FusionSettingConst = 35
+	FmPreset7            FusionSettingConst = 36
+	FmPreset8            FusionSettingConst = 37
+	FmPreset9            FusionSettingConst = 38
+	FmPreset10           FusionSettingConst = 39
+	FmPreset11           FusionSettingConst = 40
+	FmPreset12           FusionSettingConst = 41
+	FmPreset13           FusionSettingConst = 42
+	FmPreset14           FusionSettingConst = 43
+	VHFPreset0           FusionSettingConst = 44
+	VHFPreset1           FusionSettingConst = 45
+	VHFPreset2           FusionSettingConst = 46
+	VHFPreset3           FusionSettingConst = 47
+	VHFPreset4           FusionSettingConst = 48
+	VHFPreset5           FusionSettingConst = 49
+	VHFPreset6           FusionSettingConst = 50
+	VHFPreset7           FusionSettingConst = 51
+	VHFPreset8           FusionSettingConst = 52
+	VHFPreset9           FusionSettingConst = 53
+	VHFPreset10          FusionSettingConst = 54
+	VHFPreset11          FusionSettingConst = 55
+	VHFPreset12          FusionSettingConst = 56
+	VHFPreset13          FusionSettingConst = 57
+	VHFPreset14          FusionSettingConst = 58
+	ClockTime            FusionSettingConst = 59
+	ClockAlarm           FusionSettingConst = 60
+	IpodVideoSignal      FusionSettingConst = 61
+	IpodMonitorAspect    FusionSettingConst = 62
+	AuxNameIndex         FusionSettingConst = 63
+	AmEnabled            FusionSettingConst = 64
+	VHFEnabled           FusionSettingConst = 65
+	Language             FusionSettingConst = 66
+	InternalAmpsOn       FusionSettingConst = 67
+	MtpRepeat            FusionSettingConst = 68
+	MtpShuffle           FusionSettingConst = 69
+	IDAccessorySource    FusionSettingConst = 70
+	NMEAPower            FusionSettingConst = 71
+	LowPowerMode_2       FusionSettingConst = 72
+	DvdRegion            FusionSettingConst = 73
+	VolumeZoneSync       FusionSettingConst = 74
+	MaxVolumeStart       FusionSettingConst = 75
+	BtAutoConnect        FusionSettingConst = 76
+	NullSetting          FusionSettingConst = 77
 )
 
-func (e FusionSettingConst) GoString() string {return e.String() }
+func (e FusionSettingConst) GoString() string { return e.String() }
 func (e FusionSettingConst) String() string {
 	switch e {
-		case 0:
-			return "Alpha Search Threshold"
-		case 1:
-			return "iPod Subtitles"
-		case 2:
-			return "Zone 2 Linked"
-		case 3:
-			return "Zone 2 Enabled"
-		case 4:
-			return "Zone 3 Enabled"
-		case 5:
-			return "Zone 4 Enabled"
-		case 6:
-			return "Telemute"
-		case 7:
-			return "Tuner Region"
-		case 8:
-			return "Marine Zone"
-		case 9:
-			return "USB repeat"
-		case 10:
-			return "USB shuffle"
-		case 11:
-			return "iPod Album Artwork"
-		case 12:
-			return "iPod repeat"
-		case 13:
-			return "iPod shuffle"
-		case 14:
-			return "AM Preset 0"
-		case 15:
-			return "AM Preset 1"
-		case 16:
-			return "AM Preset 2"
-		case 17:
-			return "AM Preset 3"
-		case 18:
-			return "AM Preset 4"
-		case 19:
-			return "AM Preset 5"
-		case 20:
-			return "AM Preset 6"
-		case 21:
-			return "AM Preset 7"
-		case 22:
-			return "AM Preset 8"
-		case 23:
-			return "AM Preset 9"
-		case 24:
-			return "AM Preset 10"
-		case 25:
-			return "AM Preset 11"
-		case 26:
-			return "AM Preset 12"
-		case 27:
-			return "AM Preset 13"
-		case 28:
-			return "AM Preset 14"
-		case 29:
-			return "FM Preset 0"
-		case 30:
-			return "FM Preset 1"
-		case 31:
-			return "FM Preset 2"
-		case 32:
-			return "FM Preset 3"
-		case 33:
-			return "FM Preset 4"
-		case 34:
-			return "FM Preset 5"
-		case 35:
-			return "FM Preset 6"
-		case 36:
-			return "FM Preset 7"
-		case 37:
-			return "FM Preset 8"
-		case 38:
-			return "FM Preset 9"
-		case 39:
-			return "FM Preset 10"
-		case 40:
-			return "FM Preset 11"
-		case 41:
-			return "FM Preset 12"
-		case 42:
-			return "FM Preset 13"
-		case 43:
-			return "FM Preset 14"
-		case 44:
-			return "VHF Preset 0"
-		case 45:
-			return "VHF Preset 1"
-		case 46:
-			return "VHF Preset 2"
-		case 47:
-			return "VHF Preset 3"
-		case 48:
-			return "VHF Preset 4"
-		case 49:
-			return "VHF Preset 5"
-		case 50:
-			return "VHF Preset 6"
-		case 51:
-			return "VHF Preset 7"
-		case 52:
-			return "VHF Preset 8"
-		case 53:
-			return "VHF Preset 9"
-		case 54:
-			return "VHF Preset 10"
-		case 55:
-			return "VHF Preset 11"
-		case 56:
-			return "VHF Preset 12"
-		case 57:
-			return "VHF Preset 13"
-		case 58:
-			return "VHF Preset 14"
-		case 59:
-			return "Clock Time"
-		case 60:
-			return "Clock Alarm"
-		case 61:
-			return "iPod Video Signal"
-		case 62:
-			return "iPod Monitor Aspect"
-		case 63:
-			return "Aux Name Index"
-		case 64:
-			return "AM Enabled"
-		case 65:
-			return "VHF Enabled"
-		case 66:
-			return "Language"
-		case 67:
-			return "Internal Amps On"
-		case 68:
-			return "MTP Repeat"
-		case 69:
-			return "MTP Shuffle"
-		case 70:
-			return "Id Accessory Source"
-		case 71:
-			return "NMEA Power"
-		case 72:
-			return "Low Power Mode"
-		case 73:
-			return "DVD region"
-		case 74:
-			return "Volume Zone Sync"
-		case 75:
-			return "Max Volume Start"
-		case 76:
-			return "BT Auto Connect"
-		case 77:
-			return "Null Setting"
-default:
+	case 0:
+		return "Alpha Search Threshold"
+	case 1:
+		return "iPod Subtitles"
+	case 2:
+		return "Zone 2 Linked"
+	case 3:
+		return "Zone 2 Enabled"
+	case 4:
+		return "Zone 3 Enabled"
+	case 5:
+		return "Zone 4 Enabled"
+	case 6:
+		return "Telemute"
+	case 7:
+		return "Tuner Region"
+	case 8:
+		return "Marine Zone"
+	case 9:
+		return "USB repeat"
+	case 10:
+		return "USB shuffle"
+	case 11:
+		return "iPod Album Artwork"
+	case 12:
+		return "iPod repeat"
+	case 13:
+		return "iPod shuffle"
+	case 14:
+		return "AM Preset 0"
+	case 15:
+		return "AM Preset 1"
+	case 16:
+		return "AM Preset 2"
+	case 17:
+		return "AM Preset 3"
+	case 18:
+		return "AM Preset 4"
+	case 19:
+		return "AM Preset 5"
+	case 20:
+		return "AM Preset 6"
+	case 21:
+		return "AM Preset 7"
+	case 22:
+		return "AM Preset 8"
+	case 23:
+		return "AM Preset 9"
+	case 24:
+		return "AM Preset 10"
+	case 25:
+		return "AM Preset 11"
+	case 26:
+		return "AM Preset 12"
+	case 27:
+		return "AM Preset 13"
+	case 28:
+		return "AM Preset 14"
+	case 29:
+		return "FM Preset 0"
+	case 30:
+		return "FM Preset 1"
+	case 31:
+		return "FM Preset 2"
+	case 32:
+		return "FM Preset 3"
+	case 33:
+		return "FM Preset 4"
+	case 34:
+		return "FM Preset 5"
+	case 35:
+		return "FM Preset 6"
+	case 36:
+		return "FM Preset 7"
+	case 37:
+		return "FM Preset 8"
+	case 38:
+		return "FM Preset 9"
+	case 39:
+		return "FM Preset 10"
+	case 40:
+		return "FM Preset 11"
+	case 41:
+		return "FM Preset 12"
+	case 42:
+		return "FM Preset 13"
+	case 43:
+		return "FM Preset 14"
+	case 44:
+		return "VHF Preset 0"
+	case 45:
+		return "VHF Preset 1"
+	case 46:
+		return "VHF Preset 2"
+	case 47:
+		return "VHF Preset 3"
+	case 48:
+		return "VHF Preset 4"
+	case 49:
+		return "VHF Preset 5"
+	case 50:
+		return "VHF Preset 6"
+	case 51:
+		return "VHF Preset 7"
+	case 52:
+		return "VHF Preset 8"
+	case 53:
+		return "VHF Preset 9"
+	case 54:
+		return "VHF Preset 10"
+	case 55:
+		return "VHF Preset 11"
+	case 56:
+		return "VHF Preset 12"
+	case 57:
+		return "VHF Preset 13"
+	case 58:
+		return "VHF Preset 14"
+	case 59:
+		return "Clock Time"
+	case 60:
+		return "Clock Alarm"
+	case 61:
+		return "iPod Video Signal"
+	case 62:
+		return "iPod Monitor Aspect"
+	case 63:
+		return "Aux Name Index"
+	case 64:
+		return "AM Enabled"
+	case 65:
+		return "VHF Enabled"
+	case 66:
+		return "Language"
+	case 67:
+		return "Internal Amps On"
+	case 68:
+		return "MTP Repeat"
+	case 69:
+		return "MTP Shuffle"
+	case 70:
+		return "Id Accessory Source"
+	case 71:
+		return "NMEA Power"
+	case 72:
+		return "Low Power Mode"
+	case 73:
+		return "DVD region"
+	case 74:
+		return "Volume Zone Sync"
+	case 75:
+		return "Max Volume Start"
+	case 76:
+		return "BT Auto Connect"
+	case 77:
+		return "Null Setting"
+	default:
 		return fmt.Sprintf("FusionSettingConst(%d)", uint32(e))
 	}
 }
+
 type FusionRepeatStatusConst uint32
+
 const (
-	Off_11	FusionRepeatStatusConst = 0
-	OneTrack	FusionRepeatStatusConst = 1
-	AllAlbum	FusionRepeatStatusConst = 2
+	Off_10   FusionRepeatStatusConst = 0
+	OneTrack FusionRepeatStatusConst = 1
+	AllAlbum FusionRepeatStatusConst = 2
 )
 
-func (e FusionRepeatStatusConst) GoString() string {return e.String() }
+func (e FusionRepeatStatusConst) GoString() string { return e.String() }
 func (e FusionRepeatStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "One/track"
-		case 2:
-			return "All/album"
-default:
+	case 0:
+		return "Off"
+	case 1:
+		return "One/track"
+	case 2:
+		return "All/album"
+	default:
 		return fmt.Sprintf("FusionRepeatStatusConst(%d)", uint32(e))
 	}
 }
+
 type AirmarPostControlConst uint8
+
 const (
-	ReportPreviousValues	AirmarPostControlConst = 0
-	GenerateNewValues	AirmarPostControlConst = 1
+	ReportPreviousValues AirmarPostControlConst = 0
+	GenerateNewValues    AirmarPostControlConst = 1
 )
 
-func (e AirmarPostControlConst) GoString() string {return e.String() }
+func (e AirmarPostControlConst) GoString() string { return e.String() }
 func (e AirmarPostControlConst) String() string {
 	switch e {
-		case 0:
-			return "Report previous values"
-		case 1:
-			return "Generate new values"
-default:
+	case 0:
+		return "Report previous values"
+	case 1:
+		return "Generate new values"
+	default:
 		return fmt.Sprintf("AirmarPostControlConst(%d)", uint8(e))
 	}
 }
+
 type AirmarPostIDConst uint8
+
 const (
-	FormatCode	AirmarPostIDConst = 1
-	FactoryEeprom	AirmarPostIDConst = 2
-	UserEeprom	AirmarPostIDConst = 3
-	WaterTemperatureSensor	AirmarPostIDConst = 4
-	SonarTransceiver	AirmarPostIDConst = 5
-	SpeedSensor	AirmarPostIDConst = 6
-	InternalTemperatureSensor	AirmarPostIDConst = 7
-	BatteryVoltageSensor	AirmarPostIDConst = 8
+	FormatCode                AirmarPostIDConst = 1
+	FactoryEeprom             AirmarPostIDConst = 2
+	UserEeprom                AirmarPostIDConst = 3
+	WaterTemperatureSensor    AirmarPostIDConst = 4
+	SonarTransceiver          AirmarPostIDConst = 5
+	SpeedSensor               AirmarPostIDConst = 6
+	InternalTemperatureSensor AirmarPostIDConst = 7
+	BatteryVoltageSensor      AirmarPostIDConst = 8
 )
 
-func (e AirmarPostIDConst) GoString() string {return e.String() }
+func (e AirmarPostIDConst) GoString() string { return e.String() }
 func (e AirmarPostIDConst) String() string {
 	switch e {
-		case 1:
-			return "Format Code"
-		case 2:
-			return "Factory EEPROM"
-		case 3:
-			return "User EEPROM"
-		case 4:
-			return "Water Temperature Sensor"
-		case 5:
-			return "Sonar Transceiver"
-		case 6:
-			return "Speed sensor"
-		case 7:
-			return "Internal temperature sensor"
-		case 8:
-			return "Battery voltage sensor"
-default:
+	case 1:
+		return "Format Code"
+	case 2:
+		return "Factory EEPROM"
+	case 3:
+		return "User EEPROM"
+	case 4:
+		return "Water Temperature Sensor"
+	case 5:
+		return "Sonar Transceiver"
+	case 6:
+		return "Speed sensor"
+	case 7:
+		return "Internal temperature sensor"
+	case 8:
+		return "Battery voltage sensor"
+	default:
 		return fmt.Sprintf("AirmarPostIDConst(%d)", uint8(e))
 	}
 }
+
 type SonichubTuningConst uint8
+
 const (
-	SeekingUp	SonichubTuningConst = 1
-	Tuned	SonichubTuningConst = 2
-	SeekingDown	SonichubTuningConst = 3
+	SeekingUp   SonichubTuningConst = 1
+	Tuned       SonichubTuningConst = 2
+	SeekingDown SonichubTuningConst = 3
 )
 
-func (e SonichubTuningConst) GoString() string {return e.String() }
+func (e SonichubTuningConst) GoString() string { return e.String() }
 func (e SonichubTuningConst) String() string {
 	switch e {
-		case 1:
-			return "Seeking up"
-		case 2:
-			return "Tuned"
-		case 3:
-			return "Seeking down"
-default:
+	case 1:
+		return "Seeking up"
+	case 2:
+		return "Tuned"
+	case 3:
+		return "Seeking down"
+	default:
 		return fmt.Sprintf("SonichubTuningConst(%d)", uint8(e))
 	}
 }
+
 type SonichubPlaylistConst uint8
+
 const (
-	Report	SonichubPlaylistConst = 1
-	NextSong	SonichubPlaylistConst = 4
-	PreviousSong	SonichubPlaylistConst = 6
+	Report       SonichubPlaylistConst = 1
+	NextSong     SonichubPlaylistConst = 4
+	PreviousSong SonichubPlaylistConst = 6
 )
 
-func (e SonichubPlaylistConst) GoString() string {return e.String() }
+func (e SonichubPlaylistConst) GoString() string { return e.String() }
 func (e SonichubPlaylistConst) String() string {
 	switch e {
-		case 1:
-			return "Report"
-		case 4:
-			return "Next song"
-		case 6:
-			return "Previous song"
-default:
+	case 1:
+		return "Report"
+	case 4:
+		return "Next song"
+	case 6:
+		return "Previous song"
+	default:
 		return fmt.Sprintf("SonichubPlaylistConst(%d)", uint8(e))
 	}
 }
+
 type FusionPowerStateConst uint8
+
 const (
-	On_5	FusionPowerStateConst = 1
-	Off_12	FusionPowerStateConst = 2
+	On_4   FusionPowerStateConst = 1
+	Off_11 FusionPowerStateConst = 2
 )
 
-func (e FusionPowerStateConst) GoString() string {return e.String() }
+func (e FusionPowerStateConst) GoString() string { return e.String() }
 func (e FusionPowerStateConst) String() string {
 	switch e {
-		case 1:
-			return "On"
-		case 2:
-			return "Off"
-default:
+	case 1:
+		return "On"
+	case 2:
+		return "Off"
+	default:
 		return fmt.Sprintf("FusionPowerStateConst(%d)", uint8(e))
 	}
 }
+
 type PriorityConst uint8
+
 const (
-	Zero	PriorityConst = 0
-	One_2	PriorityConst = 1
-	Two	PriorityConst = 2
-	Three	PriorityConst = 3
-	Four	PriorityConst = 4
-	Five	PriorityConst = 5
-	Six	PriorityConst = 6
-	Seven	PriorityConst = 7
-	LeaveUnchanged	PriorityConst = 8
-	ResetToDefault	PriorityConst = 9
+	Zero           PriorityConst = 0
+	One_2          PriorityConst = 1
+	Two            PriorityConst = 2
+	Three          PriorityConst = 3
+	Four           PriorityConst = 4
+	Five           PriorityConst = 5
+	Six            PriorityConst = 6
+	Seven          PriorityConst = 7
+	LeaveUnchanged PriorityConst = 8
+	ResetToDefault PriorityConst = 9
 )
 
-func (e PriorityConst) GoString() string {return e.String() }
+func (e PriorityConst) GoString() string { return e.String() }
 func (e PriorityConst) String() string {
 	switch e {
-		case 0:
-			return "0"
-		case 1:
-			return "1"
-		case 2:
-			return "2"
-		case 3:
-			return "3"
-		case 4:
-			return "4"
-		case 5:
-			return "5"
-		case 6:
-			return "6"
-		case 7:
-			return "7"
-		case 8:
-			return "Leave unchanged"
-		case 9:
-			return "Reset to default"
-default:
+	case 0:
+		return "0"
+	case 1:
+		return "1"
+	case 2:
+		return "2"
+	case 3:
+		return "3"
+	case 4:
+		return "4"
+	case 5:
+		return "5"
+	case 6:
+		return "6"
+	case 7:
+		return "7"
+	case 8:
+		return "Leave unchanged"
+	case 9:
+		return "Reset to default"
+	default:
 		return fmt.Sprintf("PriorityConst(%d)", uint8(e))
 	}
 }
+
 type DeviceTempStateConst uint8
+
 const (
-	Cold	DeviceTempStateConst = 0
-	Warm	DeviceTempStateConst = 1
-	Hot	DeviceTempStateConst = 2
+	Cold DeviceTempStateConst = 0
+	Warm DeviceTempStateConst = 1
+	Hot  DeviceTempStateConst = 2
 )
 
-func (e DeviceTempStateConst) GoString() string {return e.String() }
+func (e DeviceTempStateConst) GoString() string { return e.String() }
 func (e DeviceTempStateConst) String() string {
 	switch e {
-		case 0:
-			return "Cold"
-		case 1:
-			return "Warm"
-		case 2:
-			return "Hot"
-default:
+	case 0:
+		return "Cold"
+	case 1:
+		return "Warm"
+	case 2:
+		return "Hot"
+	default:
 		return fmt.Sprintf("DeviceTempStateConst(%d)", uint8(e))
 	}
 }
+
 type BandgDecimalsConst uint8
+
 const (
-	Zero_2	BandgDecimalsConst = 0
-	One_3	BandgDecimalsConst = 1
-	Two_2	BandgDecimalsConst = 2
-	Three_2	BandgDecimalsConst = 3
-	Four_2	BandgDecimalsConst = 4
-	Auto_6	BandgDecimalsConst = 254
+	Zero_2  BandgDecimalsConst = 0
+	One_3   BandgDecimalsConst = 1
+	Two_2   BandgDecimalsConst = 2
+	Three_2 BandgDecimalsConst = 3
+	Four_2  BandgDecimalsConst = 4
+	Auto_5  BandgDecimalsConst = 254
 )
 
-func (e BandgDecimalsConst) GoString() string {return e.String() }
+func (e BandgDecimalsConst) GoString() string { return e.String() }
 func (e BandgDecimalsConst) String() string {
 	switch e {
-		case 0:
-			return "0"
-		case 1:
-			return "1"
-		case 2:
-			return "2"
-		case 3:
-			return "3"
-		case 4:
-			return "4"
-		case 254:
-			return "Auto"
-default:
+	case 0:
+		return "0"
+	case 1:
+		return "1"
+	case 2:
+		return "2"
+	case 3:
+		return "3"
+	case 4:
+		return "4"
+	case 254:
+		return "Auto"
+	default:
 		return fmt.Sprintf("BandgDecimalsConst(%d)", uint8(e))
 	}
 }
+
 type GarminColorModeConst uint8
+
 const (
-	Day_2	GarminColorModeConst = 0
-	Night_2	GarminColorModeConst = 1
-	Color	GarminColorModeConst = 13
+	Day_2   GarminColorModeConst = 0
+	Night_2 GarminColorModeConst = 1
+	Color   GarminColorModeConst = 13
 )
 
-func (e GarminColorModeConst) GoString() string {return e.String() }
+func (e GarminColorModeConst) GoString() string { return e.String() }
 func (e GarminColorModeConst) String() string {
 	switch e {
-		case 0:
-			return "Day"
-		case 1:
-			return "Night"
-		case 13:
-			return "Color"
-default:
+	case 0:
+		return "Day"
+	case 1:
+		return "Night"
+	case 13:
+		return "Color"
+	default:
 		return fmt.Sprintf("GarminColorModeConst(%d)", uint8(e))
 	}
 }
+
 type GarminColorConst uint8
+
 const (
-	DayFullColor	GarminColorConst = 0
-	DayHighContrast	GarminColorConst = 1
-	NightFullColor	GarminColorConst = 2
-	NightRedBlack	GarminColorConst = 3
-	NightGreenBlack	GarminColorConst = 4
+	DayFullColor    GarminColorConst = 0
+	DayHighContrast GarminColorConst = 1
+	NightFullColor  GarminColorConst = 2
+	NightRedBlack   GarminColorConst = 3
+	NightGreenBlack GarminColorConst = 4
 )
 
-func (e GarminColorConst) GoString() string {return e.String() }
+func (e GarminColorConst) GoString() string { return e.String() }
 func (e GarminColorConst) String() string {
 	switch e {
-		case 0:
-			return "Day full color"
-		case 1:
-			return "Day high contrast"
-		case 2:
-			return "Night full color"
-		case 3:
-			return "Night red/black"
-		case 4:
-			return "Night green/black"
-default:
+	case 0:
+		return "Day full color"
+	case 1:
+		return "Day high contrast"
+	case 2:
+		return "Night full color"
+	case 3:
+		return "Night red/black"
+	case 4:
+		return "Night green/black"
+	default:
 		return fmt.Sprintf("GarminColorConst(%d)", uint8(e))
 	}
 }
-type GarminAutopilotModeStateConst uint8
-const (
-	Standby_6	GarminAutopilotModeStateConst = 2
-	ShadowDrive	GarminAutopilotModeStateConst = 3
-	Engaged_2	GarminAutopilotModeStateConst = 5
-)
 
-func (e GarminAutopilotModeStateConst) GoString() string {return e.String() }
-func (e GarminAutopilotModeStateConst) String() string {
-	switch e {
-		case 2:
-			return "Standby"
-		case 3:
-			return "Shadow Drive"
-		case 5:
-			return "Engaged"
-default:
-		return fmt.Sprintf("GarminAutopilotModeStateConst(%d)", uint8(e))
-	}
-}
-type GarminMessageIDConst uint16
-const (
-	AhrsAttTransport	GarminMessageIDConst = 1900
-	AutopilotTransport	GarminMessageIDConst = 5904
-)
-
-func (e GarminMessageIDConst) GoString() string {return e.String() }
-func (e GarminMessageIDConst) String() string {
-	switch e {
-		case 1900:
-			return "AHRS ATT transport"
-		case 5904:
-			return "Autopilot transport"
-default:
-		return fmt.Sprintf("GarminMessageIDConst(%d)", uint16(e))
-	}
-}
-type GarminAutopilotFieldConst uint8
-const (
-	GarminAutopilotFieldConstHeartbeat	GarminAutopilotFieldConst = 3
-	ModeState	GarminAutopilotFieldConst = 10
-	HeadingToSteer	GarminAutopilotFieldConst = 11
-	ResponseSetting	GarminAutopilotFieldConst = 62
-	GarminAutopilotFieldConstRateOfTurn	GarminAutopilotFieldConst = 114
-	RateOfTurnOrder_2	GarminAutopilotFieldConst = 115
-	TurnAngleOrder	GarminAutopilotFieldConst = 116
-	SystemVoltage	GarminAutopilotFieldConst = 158
-	TurnAngleMeasured	GarminAutopilotFieldConst = 161
-	EngineRPMB	GarminAutopilotFieldConst = 239
-	EngineRPMA	GarminAutopilotFieldConst = 240
-	GarminAutopilotFieldConstSpeed	GarminAutopilotFieldConst = 246
-)
-
-func (e GarminAutopilotFieldConst) GoString() string {return e.String() }
-func (e GarminAutopilotFieldConst) String() string {
-	switch e {
-		case 3:
-			return "Heartbeat"
-		case 10:
-			return "Mode State"
-		case 11:
-			return "Heading to Steer"
-		case 62:
-			return "Response Setting"
-		case 114:
-			return "Rate of Turn"
-		case 115:
-			return "Rate of Turn Order"
-		case 116:
-			return "Turn Angle Order"
-		case 158:
-			return "System Voltage"
-		case 161:
-			return "Turn Angle Measured"
-		case 239:
-			return "Engine RPM B"
-		case 240:
-			return "Engine RPM A"
-		case 246:
-			return "Speed"
-default:
-		return fmt.Sprintf("GarminAutopilotFieldConst(%d)", uint8(e))
-	}
-}
-type GarminAttMessageIDConst uint16
-const (
-	CalibrationMatrixPresent	GarminAttMessageIDConst = 40
-	SetNorthState	GarminAttMessageIDConst = 52
-	DeviceFlags	GarminAttMessageIDConst = 65
-	COGSourceValidFlag	GarminAttMessageIDConst = 67
-)
-
-func (e GarminAttMessageIDConst) GoString() string {return e.String() }
-func (e GarminAttMessageIDConst) String() string {
-	switch e {
-		case 40:
-			return "Calibration Matrix Present"
-		case 52:
-			return "Set North State"
-		case 65:
-			return "Device Flags"
-		case 67:
-			return "COG Source Valid Flag"
-default:
-		return fmt.Sprintf("GarminAttMessageIDConst(%d)", uint16(e))
-	}
-}
 type GarminBacklightLevelConst uint8
+
 const (
-	GarminBacklightLevelConst0	GarminBacklightLevelConst = 0
-	GarminBacklightLevelConst5	GarminBacklightLevelConst = 1
-	GarminBacklightLevelConst10	GarminBacklightLevelConst = 2
-	GarminBacklightLevelConst15	GarminBacklightLevelConst = 3
-	GarminBacklightLevelConst20	GarminBacklightLevelConst = 4
-	GarminBacklightLevelConst25	GarminBacklightLevelConst = 5
-	GarminBacklightLevelConst30	GarminBacklightLevelConst = 6
-	GarminBacklightLevelConst35	GarminBacklightLevelConst = 7
-	GarminBacklightLevelConst40	GarminBacklightLevelConst = 8
-	GarminBacklightLevelConst45	GarminBacklightLevelConst = 9
-	GarminBacklightLevelConst50	GarminBacklightLevelConst = 10
-	GarminBacklightLevelConst55	GarminBacklightLevelConst = 11
-	GarminBacklightLevelConst60	GarminBacklightLevelConst = 12
-	GarminBacklightLevelConst65	GarminBacklightLevelConst = 13
-	GarminBacklightLevelConst70	GarminBacklightLevelConst = 14
-	GarminBacklightLevelConst75	GarminBacklightLevelConst = 15
-	GarminBacklightLevelConst80	GarminBacklightLevelConst = 16
-	GarminBacklightLevelConst85	GarminBacklightLevelConst = 17
-	GarminBacklightLevelConst90	GarminBacklightLevelConst = 18
-	GarminBacklightLevelConst95	GarminBacklightLevelConst = 19
-	GarminBacklightLevelConst100	GarminBacklightLevelConst = 20
+	GarminBacklightLevelConst0   GarminBacklightLevelConst = 0
+	GarminBacklightLevelConst5   GarminBacklightLevelConst = 1
+	GarminBacklightLevelConst10  GarminBacklightLevelConst = 2
+	GarminBacklightLevelConst15  GarminBacklightLevelConst = 3
+	GarminBacklightLevelConst20  GarminBacklightLevelConst = 4
+	GarminBacklightLevelConst25  GarminBacklightLevelConst = 5
+	GarminBacklightLevelConst30  GarminBacklightLevelConst = 6
+	GarminBacklightLevelConst35  GarminBacklightLevelConst = 7
+	GarminBacklightLevelConst40  GarminBacklightLevelConst = 8
+	GarminBacklightLevelConst45  GarminBacklightLevelConst = 9
+	GarminBacklightLevelConst50  GarminBacklightLevelConst = 10
+	GarminBacklightLevelConst55  GarminBacklightLevelConst = 11
+	GarminBacklightLevelConst60  GarminBacklightLevelConst = 12
+	GarminBacklightLevelConst65  GarminBacklightLevelConst = 13
+	GarminBacklightLevelConst70  GarminBacklightLevelConst = 14
+	GarminBacklightLevelConst75  GarminBacklightLevelConst = 15
+	GarminBacklightLevelConst80  GarminBacklightLevelConst = 16
+	GarminBacklightLevelConst85  GarminBacklightLevelConst = 17
+	GarminBacklightLevelConst90  GarminBacklightLevelConst = 18
+	GarminBacklightLevelConst95  GarminBacklightLevelConst = 19
+	GarminBacklightLevelConst100 GarminBacklightLevelConst = 20
 )
 
-func (e GarminBacklightLevelConst) GoString() string {return e.String() }
+func (e GarminBacklightLevelConst) GoString() string { return e.String() }
 func (e GarminBacklightLevelConst) String() string {
 	switch e {
-		case 0:
-			return "0%"
-		case 1:
-			return "5%"
-		case 2:
-			return "10%"
-		case 3:
-			return "15%"
-		case 4:
-			return "20%"
-		case 5:
-			return "25%"
-		case 6:
-			return "30%"
-		case 7:
-			return "35%"
-		case 8:
-			return "40%"
-		case 9:
-			return "45%"
-		case 10:
-			return "50%"
-		case 11:
-			return "55%"
-		case 12:
-			return "60%"
-		case 13:
-			return "65%"
-		case 14:
-			return "70%"
-		case 15:
-			return "75%"
-		case 16:
-			return "80%"
-		case 17:
-			return "85%"
-		case 18:
-			return "90%"
-		case 19:
-			return "95%"
-		case 20:
-			return "100%"
-default:
+	case 0:
+		return "0%"
+	case 1:
+		return "5%"
+	case 2:
+		return "10%"
+	case 3:
+		return "15%"
+	case 4:
+		return "20%"
+	case 5:
+		return "25%"
+	case 6:
+		return "30%"
+	case 7:
+		return "35%"
+	case 8:
+		return "40%"
+	case 9:
+		return "45%"
+	case 10:
+		return "50%"
+	case 11:
+		return "55%"
+	case 12:
+		return "60%"
+	case 13:
+		return "65%"
+	case 14:
+		return "70%"
+	case 15:
+		return "75%"
+	case 16:
+		return "80%"
+	case 17:
+		return "85%"
+	case 18:
+		return "90%"
+	case 19:
+		return "95%"
+	case 20:
+		return "100%"
+	default:
 		return fmt.Sprintf("GarminBacklightLevelConst(%d)", uint8(e))
 	}
 }
+
 type SeatalkPilotMode16Const uint16
+
 const (
-	Standby_7	SeatalkPilotMode16Const = 0
-	AutoCompassCommanded	SeatalkPilotMode16Const = 64
-	VaneWindMode	SeatalkPilotMode16Const = 256
-	TrackMode	SeatalkPilotMode16Const = 384
-	NoDriftCOGReferencedInTrackCou	SeatalkPilotMode16Const = 385
+	Standby_6                      SeatalkPilotMode16Const = 0
+	AutoCompassCommanded           SeatalkPilotMode16Const = 64
+	VaneWindMode                   SeatalkPilotMode16Const = 256
+	TrackMode                      SeatalkPilotMode16Const = 384
+	NoDriftCOGReferencedInTrackCou SeatalkPilotMode16Const = 385
 )
 
-func (e SeatalkPilotMode16Const) GoString() string {return e.String() }
+func (e SeatalkPilotMode16Const) GoString() string { return e.String() }
 func (e SeatalkPilotMode16Const) String() string {
 	switch e {
-		case 0:
-			return "Standby"
-		case 64:
-			return "Auto, compass commanded"
-		case 256:
-			return "Vane, Wind Mode"
-		case 384:
-			return "Track Mode"
-		case 385:
-			return "No Drift, COG referenced (In track, course changes)"
-default:
+	case 0:
+		return "Standby"
+	case 64:
+		return "Auto, compass commanded"
+	case 256:
+		return "Vane, Wind Mode"
+	case 384:
+		return "Track Mode"
+	case 385:
+		return "No Drift, COG referenced (In track, course changes)"
+	default:
 		return fmt.Sprintf("SeatalkPilotMode16Const(%d)", uint16(e))
 	}
 }
+
 type StationHealthConst uint8
+
 const (
-	NotWorking	StationHealthConst = 0
-	Unmonitored	StationHealthConst = 1
-	HealthyOperational	StationHealthConst = 2
-	HealthyTestMode	StationHealthConst = 3
-	TestMode_2	StationHealthConst = 4
+	NotWorking         StationHealthConst = 0
+	Unmonitored        StationHealthConst = 1
+	HealthyOperational StationHealthConst = 2
+	HealthyTestMode    StationHealthConst = 3
+	TestMode_2         StationHealthConst = 4
 )
 
-func (e StationHealthConst) GoString() string {return e.String() }
+func (e StationHealthConst) GoString() string { return e.String() }
 func (e StationHealthConst) String() string {
 	switch e {
-		case 0:
-			return "Not Working"
-		case 1:
-			return "Unmonitored"
-		case 2:
-			return "Healthy Operational"
-		case 3:
-			return "Healthy Test Mode"
-		case 4:
-			return "Test Mode"
-default:
+	case 0:
+		return "Not Working"
+	case 1:
+		return "Unmonitored"
+	case 2:
+		return "Healthy Operational"
+	case 3:
+		return "Healthy Test Mode"
+	case 4:
+		return "Test Mode"
+	default:
 		return fmt.Sprintf("StationHealthConst(%d)", uint8(e))
 	}
 }
+
 type SerialBitRateConst uint8
+
 const (
-	SerialBitRateConst25	SerialBitRateConst = 0
-	SerialBitRateConst50	SerialBitRateConst = 1
-	SerialBitRateConst100	SerialBitRateConst = 2
-	SerialBitRateConst200	SerialBitRateConst = 3
-	SerialBitRateConst300	SerialBitRateConst = 4
-	SerialBitRateConst600	SerialBitRateConst = 5
-	SerialBitRateConst1200	SerialBitRateConst = 6
-	SerialBitRateConst2400	SerialBitRateConst = 7
-	SerialBitRateConst4800	SerialBitRateConst = 8
-	SerialBitRateConst9600	SerialBitRateConst = 9
-	SerialBitRateConst19200	SerialBitRateConst = 10
-	SerialBitRateConst38400	SerialBitRateConst = 11
-	SerialBitRateConst57600	SerialBitRateConst = 12
+	SerialBitRateConst25    SerialBitRateConst = 0
+	SerialBitRateConst50    SerialBitRateConst = 1
+	SerialBitRateConst100   SerialBitRateConst = 2
+	SerialBitRateConst200   SerialBitRateConst = 3
+	SerialBitRateConst300   SerialBitRateConst = 4
+	SerialBitRateConst600   SerialBitRateConst = 5
+	SerialBitRateConst1200  SerialBitRateConst = 6
+	SerialBitRateConst2400  SerialBitRateConst = 7
+	SerialBitRateConst4800  SerialBitRateConst = 8
+	SerialBitRateConst9600  SerialBitRateConst = 9
+	SerialBitRateConst19200 SerialBitRateConst = 10
+	SerialBitRateConst38400 SerialBitRateConst = 11
+	SerialBitRateConst57600 SerialBitRateConst = 12
 )
 
-func (e SerialBitRateConst) GoString() string {return e.String() }
+func (e SerialBitRateConst) GoString() string { return e.String() }
 func (e SerialBitRateConst) String() string {
 	switch e {
-		case 0:
-			return "25"
-		case 1:
-			return "50"
-		case 2:
-			return "100"
-		case 3:
-			return "200"
-		case 4:
-			return "300"
-		case 5:
-			return "600"
-		case 6:
-			return "1200"
-		case 7:
-			return "2400"
-		case 8:
-			return "4800"
-		case 9:
-			return "9600"
-		case 10:
-			return "19200"
-		case 11:
-			return "38400"
-		case 12:
-			return "57600"
-default:
+	case 0:
+		return "25"
+	case 1:
+		return "50"
+	case 2:
+		return "100"
+	case 3:
+		return "200"
+	case 4:
+		return "300"
+	case 5:
+		return "600"
+	case 6:
+		return "1200"
+	case 7:
+		return "2400"
+	case 8:
+		return "4800"
+	case 9:
+		return "9600"
+	case 10:
+		return "19200"
+	case 11:
+		return "38400"
+	case 12:
+		return "57600"
+	default:
 		return fmt.Sprintf("SerialBitRateConst(%d)", uint8(e))
 	}
 }
+
 type SerialDetectionModeConst uint8
+
 const (
-	AutoBitRate	SerialDetectionModeConst = 0
-	ManualBitRate	SerialDetectionModeConst = 1
+	AutoBitRate   SerialDetectionModeConst = 0
+	ManualBitRate SerialDetectionModeConst = 1
 )
 
-func (e SerialDetectionModeConst) GoString() string {return e.String() }
+func (e SerialDetectionModeConst) GoString() string { return e.String() }
 func (e SerialDetectionModeConst) String() string {
 	switch e {
-		case 0:
-			return "Auto bit rate"
-		case 1:
-			return "Manual bit rate"
-default:
+	case 0:
+		return "Auto bit rate"
+	case 1:
+		return "Manual bit rate"
+	default:
 		return fmt.Sprintf("SerialDetectionModeConst(%d)", uint8(e))
 	}
 }
+
 type DifferentialSourceConst uint8
+
 const (
-	Auto_7	DifferentialSourceConst = 0
-	Loran	DifferentialSourceConst = 1
-	MskBeacon	DifferentialSourceConst = 2
-	FmSubcarrier	DifferentialSourceConst = 3
-	AIS_2	DifferentialSourceConst = 4
-	GroundBasedRadio	DifferentialSourceConst = 5
-	SBAS_2	DifferentialSourceConst = 6
-	Satellite	DifferentialSourceConst = 7
+	Auto_6           DifferentialSourceConst = 0
+	Loran            DifferentialSourceConst = 1
+	MskBeacon        DifferentialSourceConst = 2
+	FmSubcarrier     DifferentialSourceConst = 3
+	AIS_2            DifferentialSourceConst = 4
+	GroundBasedRadio DifferentialSourceConst = 5
+	SBAS_2           DifferentialSourceConst = 6
+	Satellite        DifferentialSourceConst = 7
 )
 
-func (e DifferentialSourceConst) GoString() string {return e.String() }
+func (e DifferentialSourceConst) GoString() string { return e.String() }
 func (e DifferentialSourceConst) String() string {
 	switch e {
-		case 0:
-			return "Auto"
-		case 1:
-			return "Loran"
-		case 2:
-			return "MSK Beacon"
-		case 3:
-			return "FM Subcarrier"
-		case 4:
-			return "AIS"
-		case 5:
-			return "Ground based radio"
-		case 6:
-			return "SBAS"
-		case 7:
-			return "Satellite"
-default:
+	case 0:
+		return "Auto"
+	case 1:
+		return "Loran"
+	case 2:
+		return "MSK Beacon"
+	case 3:
+		return "FM Subcarrier"
+	case 4:
+		return "AIS"
+	case 5:
+		return "Ground based radio"
+	case 6:
+		return "SBAS"
+	case 7:
+		return "Satellite"
+	default:
 		return fmt.Sprintf("DifferentialSourceConst(%d)", uint8(e))
 	}
 }
+
 type DifferentialModeConst uint8
+
 const (
-	Manual_7	DifferentialModeConst = 0
-	AutoPower	DifferentialModeConst = 1
-	AutoRange	DifferentialModeConst = 2
+	Manual_7  DifferentialModeConst = 0
+	AutoPower DifferentialModeConst = 1
+	AutoRange DifferentialModeConst = 2
 )
 
-func (e DifferentialModeConst) GoString() string {return e.String() }
+func (e DifferentialModeConst) GoString() string { return e.String() }
 func (e DifferentialModeConst) String() string {
 	switch e {
-		case 0:
-			return "Manual"
-		case 1:
-			return "Auto Power"
-		case 2:
-			return "Auto Range"
-default:
+	case 0:
+		return "Manual"
+	case 1:
+		return "Auto Power"
+	case 2:
+		return "Auto Range"
+	default:
 		return fmt.Sprintf("DifferentialModeConst(%d)", uint8(e))
 	}
 }
+
 type WPPositionResolutionConst uint8
+
 const (
-	MoreThan01Min	WPPositionResolutionConst = 0
-	WPPositionResolutionConst00101Min	WPPositionResolutionConst = 1
-	WPPositionResolutionConst0001001Min	WPPositionResolutionConst = 2
-	WPPositionResolutionConst000010001Min	WPPositionResolutionConst = 3
-	WPPositionResolutionConst000001Min	WPPositionResolutionConst = 4
+	MoreThan01Min                         WPPositionResolutionConst = 0
+	WPPositionResolutionConst00101Min     WPPositionResolutionConst = 1
+	WPPositionResolutionConst0001001Min   WPPositionResolutionConst = 2
+	WPPositionResolutionConst000010001Min WPPositionResolutionConst = 3
+	WPPositionResolutionConst000001Min    WPPositionResolutionConst = 4
 )
 
-func (e WPPositionResolutionConst) GoString() string {return e.String() }
+func (e WPPositionResolutionConst) GoString() string { return e.String() }
 func (e WPPositionResolutionConst) String() string {
 	switch e {
-		case 0:
-			return "more than 0.1 min"
-		case 1:
-			return "<0.01 .. 0.1] min"
-		case 2:
-			return "<0.001 .. 0.01] min"
-		case 3:
-			return "<0.0001 .. 0.001] min"
-		case 4:
-			return "<0 .. 0.0001] min"
-default:
+	case 0:
+		return "more than 0.1 min"
+	case 1:
+		return "<0.01 .. 0.1] min"
+	case 2:
+		return "<0.001 .. 0.01] min"
+	case 3:
+		return "<0.0001 .. 0.001] min"
+	case 4:
+		return "<0 .. 0.0001] min"
+	default:
 		return fmt.Sprintf("WPPositionResolutionConst(%d)", uint8(e))
 	}
 }
+
 type WPIdentificationMethodConst uint8
+
 const (
-	WaypointsInWPList	WPIdentificationMethodConst = 0
-	WaypointsEmbeddedInRoute	WPIdentificationMethodConst = 1
+	WaypointsInWPList        WPIdentificationMethodConst = 0
+	WaypointsEmbeddedInRoute WPIdentificationMethodConst = 1
 )
 
-func (e WPIdentificationMethodConst) GoString() string {return e.String() }
+func (e WPIdentificationMethodConst) GoString() string { return e.String() }
 func (e WPIdentificationMethodConst) String() string {
 	switch e {
-		case 0:
-			return "Waypoints in WP list"
-		case 1:
-			return "Waypoints embedded in route"
-default:
+	case 0:
+		return "Waypoints in WP list"
+	case 1:
+		return "Waypoints embedded in route"
+	default:
 		return fmt.Sprintf("WPIdentificationMethodConst(%d)", uint8(e))
 	}
 }
+
 type WPRouteStatusConst uint8
+
 const (
-	Active_2	WPRouteStatusConst = 0
-	Inactive	WPRouteStatusConst = 1
-	Deleted	WPRouteStatusConst = 2
+	Active_2 WPRouteStatusConst = 0
+	Inactive WPRouteStatusConst = 1
+	Deleted  WPRouteStatusConst = 2
 )
 
-func (e WPRouteStatusConst) GoString() string {return e.String() }
+func (e WPRouteStatusConst) GoString() string { return e.String() }
 func (e WPRouteStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Active"
-		case 1:
-			return "Inactive"
-		case 2:
-			return "Deleted"
-default:
+	case 0:
+		return "Active"
+	case 1:
+		return "Inactive"
+	case 2:
+		return "Deleted"
+	default:
 		return fmt.Sprintf("WPRouteStatusConst(%d)", uint8(e))
 	}
 }
+
 type WPNavigationMethodConst uint8
+
 const (
-	GreatCircle_2	WPNavigationMethodConst = 0
-	RhumbLine	WPNavigationMethodConst = 1
+	GreatCircle_2 WPNavigationMethodConst = 0
+	RhumbLine     WPNavigationMethodConst = 1
 )
 
-func (e WPNavigationMethodConst) GoString() string {return e.String() }
+func (e WPNavigationMethodConst) GoString() string { return e.String() }
 func (e WPNavigationMethodConst) String() string {
 	switch e {
-		case 0:
-			return "Great Circle"
-		case 1:
-			return "Rhumb Line"
-default:
+	case 0:
+		return "Great Circle"
+	case 1:
+		return "Rhumb Line"
+	default:
 		return fmt.Sprintf("WPNavigationMethodConst(%d)", uint8(e))
 	}
 }
+
 type InverterModeConst uint8
+
 const (
-	Standalone_2	InverterModeConst = 0
-	SeriesMaster	InverterModeConst = 1
-	SeriesSlave	InverterModeConst = 2
-	ParallelMaster	InverterModeConst = 3
-	ParallelSlave	InverterModeConst = 4
+	Standalone_2   InverterModeConst = 0
+	SeriesMaster   InverterModeConst = 1
+	SeriesSlave    InverterModeConst = 2
+	ParallelMaster InverterModeConst = 3
+	ParallelSlave  InverterModeConst = 4
 )
 
-func (e InverterModeConst) GoString() string {return e.String() }
+func (e InverterModeConst) GoString() string { return e.String() }
 func (e InverterModeConst) String() string {
 	switch e {
-		case 0:
-			return "Standalone"
-		case 1:
-			return "Series Master"
-		case 2:
-			return "Series Slave"
-		case 3:
-			return "Parallel Master"
-		case 4:
-			return "Parallel Slave"
-default:
+	case 0:
+		return "Standalone"
+	case 1:
+		return "Series Master"
+	case 2:
+		return "Series Slave"
+	case 3:
+		return "Parallel Master"
+	case 4:
+		return "Parallel Slave"
+	default:
 		return fmt.Sprintf("InverterModeConst(%d)", uint8(e))
 	}
 }
+
 type CertificationLevelConst uint8
+
 const (
-	LevelA	CertificationLevelConst = 0
-	LevelB	CertificationLevelConst = 1
+	LevelA CertificationLevelConst = 0
+	LevelB CertificationLevelConst = 1
 )
 
-func (e CertificationLevelConst) GoString() string {return e.String() }
+func (e CertificationLevelConst) GoString() string { return e.String() }
 func (e CertificationLevelConst) String() string {
 	switch e {
-		case 0:
-			return "Level A"
-		case 1:
-			return "Level B"
-default:
+	case 0:
+		return "Level A"
+	case 1:
+		return "Level B"
+	default:
 		return fmt.Sprintf("CertificationLevelConst(%d)", uint8(e))
 	}
 }
+
 type AgsModeConst uint8
+
 const (
-	Off_13	AgsModeConst = 0
-	On_6	AgsModeConst = 1
-	Automatic_3	AgsModeConst = 2
+	Off_12      AgsModeConst = 0
+	On_5        AgsModeConst = 1
+	Automatic_3 AgsModeConst = 2
 )
 
-func (e AgsModeConst) GoString() string {return e.String() }
+func (e AgsModeConst) GoString() string { return e.String() }
 func (e AgsModeConst) String() string {
 	switch e {
-		case 0:
-			return "Off"
-		case 1:
-			return "On"
-		case 2:
-			return "Automatic"
-default:
+	case 0:
+		return "Off"
+	case 1:
+		return "On"
+	case 2:
+		return "Automatic"
+	default:
 		return fmt.Sprintf("AgsModeConst(%d)", uint8(e))
 	}
 }
+
 type AgsOperatingStateConst uint8
+
 const (
-	QuietTime	AgsOperatingStateConst = 0
-	AutoOn	AgsOperatingStateConst = 1
-	AutoOff	AgsOperatingStateConst = 2
-	ManualOn	AgsOperatingStateConst = 3
-	ManualOff	AgsOperatingStateConst = 4
-	GeneratorShutdown	AgsOperatingStateConst = 5
-	ExternalShutdown	AgsOperatingStateConst = 6
-	Fault_5	AgsOperatingStateConst = 7
-	Suspend	AgsOperatingStateConst = 8
-	NotOperating	AgsOperatingStateConst = 9
+	QuietTime         AgsOperatingStateConst = 0
+	AutoOn            AgsOperatingStateConst = 1
+	AutoOff           AgsOperatingStateConst = 2
+	ManualOn          AgsOperatingStateConst = 3
+	ManualOff         AgsOperatingStateConst = 4
+	GeneratorShutdown AgsOperatingStateConst = 5
+	ExternalShutdown  AgsOperatingStateConst = 6
+	Fault_5           AgsOperatingStateConst = 7
+	Suspend           AgsOperatingStateConst = 8
+	NotOperating      AgsOperatingStateConst = 9
 )
 
-func (e AgsOperatingStateConst) GoString() string {return e.String() }
+func (e AgsOperatingStateConst) GoString() string { return e.String() }
 func (e AgsOperatingStateConst) String() string {
 	switch e {
-		case 0:
-			return "Quiet time"
-		case 1:
-			return "Auto on"
-		case 2:
-			return "Auto off"
-		case 3:
-			return "Manual On"
-		case 4:
-			return "Manual Off"
-		case 5:
-			return "Generator shutdown"
-		case 6:
-			return "External shutdown"
-		case 7:
-			return "Fault"
-		case 8:
-			return "Suspend"
-		case 9:
-			return "Not operating"
-default:
+	case 0:
+		return "Quiet time"
+	case 1:
+		return "Auto on"
+	case 2:
+		return "Auto off"
+	case 3:
+		return "Manual On"
+	case 4:
+		return "Manual Off"
+	case 5:
+		return "Generator shutdown"
+	case 6:
+		return "External shutdown"
+	case 7:
+		return "Fault"
+	case 8:
+		return "Suspend"
+	case 9:
+		return "Not operating"
+	default:
 		return fmt.Sprintf("AgsOperatingStateConst(%d)", uint8(e))
 	}
 }
+
 type AgsGeneratingStateConst uint8
+
 const (
-	Preheating	AgsGeneratingStateConst = 0
-	StartDelay	AgsGeneratingStateConst = 1
-	Cranking	AgsGeneratingStateConst = 2
-	StarterCooling	AgsGeneratingStateConst = 3
-	WarmingUp	AgsGeneratingStateConst = 4
-	CoolingDown	AgsGeneratingStateConst = 5
-	SpinningUp	AgsGeneratingStateConst = 6
-	ShutdownBypass	AgsGeneratingStateConst = 7
-	Stopping_2	AgsGeneratingStateConst = 8
-	Running_2	AgsGeneratingStateConst = 9
-	Stopped_3	AgsGeneratingStateConst = 10
-	CrankDelaty	AgsGeneratingStateConst = 11
+	Preheating     AgsGeneratingStateConst = 0
+	StartDelay     AgsGeneratingStateConst = 1
+	Cranking       AgsGeneratingStateConst = 2
+	StarterCooling AgsGeneratingStateConst = 3
+	WarmingUp      AgsGeneratingStateConst = 4
+	CoolingDown    AgsGeneratingStateConst = 5
+	SpinningUp     AgsGeneratingStateConst = 6
+	ShutdownBypass AgsGeneratingStateConst = 7
+	Stopping_2     AgsGeneratingStateConst = 8
+	Running_2      AgsGeneratingStateConst = 9
+	Stopped_3      AgsGeneratingStateConst = 10
+	CrankDelaty    AgsGeneratingStateConst = 11
 )
 
-func (e AgsGeneratingStateConst) GoString() string {return e.String() }
+func (e AgsGeneratingStateConst) GoString() string { return e.String() }
 func (e AgsGeneratingStateConst) String() string {
 	switch e {
-		case 0:
-			return "Preheating"
-		case 1:
-			return "Start delay"
-		case 2:
-			return "Cranking"
-		case 3:
-			return "Starter cooling"
-		case 4:
-			return "Warming up"
-		case 5:
-			return "Cooling down"
-		case 6:
-			return "Spinning up"
-		case 7:
-			return "Shutdown bypass"
-		case 8:
-			return "Stopping"
-		case 9:
-			return "Running"
-		case 10:
-			return "Stopped"
-		case 11:
-			return "Crank delaty"
-default:
+	case 0:
+		return "Preheating"
+	case 1:
+		return "Start delay"
+	case 2:
+		return "Cranking"
+	case 3:
+		return "Starter cooling"
+	case 4:
+		return "Warming up"
+	case 5:
+		return "Cooling down"
+	case 6:
+		return "Spinning up"
+	case 7:
+		return "Shutdown bypass"
+	case 8:
+		return "Stopping"
+	case 9:
+		return "Running"
+	case 10:
+		return "Stopped"
+	case 11:
+		return "Crank delaty"
+	default:
 		return fmt.Sprintf("AgsGeneratingStateConst(%d)", uint8(e))
 	}
 }
+
 type AgsOnReasonConst uint8
+
 const (
-	NotOn	AgsOnReasonConst = 0
-	DCVoltageLow	AgsOnReasonConst = 1
-	BatteryStateOfChargeLow	AgsOnReasonConst = 2
-	ACCurrentHigh	AgsOnReasonConst = 3
-	ContactClosed	AgsOnReasonConst = 4
-	ManualOn_2	AgsOnReasonConst = 5
-	Exercise	AgsOnReasonConst = 6
-	NonQuietTime	AgsOnReasonConst = 7
-	ExternalOnViaAgs	AgsOnReasonConst = 8
-	ExternalOnViaGenerator	AgsOnReasonConst = 9
-	UnableToStop	AgsOnReasonConst = 10
+	NotOn                   AgsOnReasonConst = 0
+	DCVoltageLow            AgsOnReasonConst = 1
+	BatteryStateOfChargeLow AgsOnReasonConst = 2
+	ACCurrentHigh           AgsOnReasonConst = 3
+	ContactClosed           AgsOnReasonConst = 4
+	ManualOn_2              AgsOnReasonConst = 5
+	Exercise                AgsOnReasonConst = 6
+	NonQuietTime            AgsOnReasonConst = 7
+	ExternalOnViaAgs        AgsOnReasonConst = 8
+	ExternalOnViaGenerator  AgsOnReasonConst = 9
+	UnableToStop            AgsOnReasonConst = 10
 )
 
-func (e AgsOnReasonConst) GoString() string {return e.String() }
+func (e AgsOnReasonConst) GoString() string { return e.String() }
 func (e AgsOnReasonConst) String() string {
 	switch e {
-		case 0:
-			return "Not on"
-		case 1:
-			return "DC voltage low"
-		case 2:
-			return "Battery state of charge low"
-		case 3:
-			return "AC current high"
-		case 4:
-			return "Contact closed"
-		case 5:
-			return "Manual on"
-		case 6:
-			return "Exercise"
-		case 7:
-			return "Non Quiet time"
-		case 8:
-			return "External on via AGS"
-		case 9:
-			return "External on via generator"
-		case 10:
-			return "Unable to stop"
-default:
+	case 0:
+		return "Not on"
+	case 1:
+		return "DC voltage low"
+	case 2:
+		return "Battery state of charge low"
+	case 3:
+		return "AC current high"
+	case 4:
+		return "Contact closed"
+	case 5:
+		return "Manual on"
+	case 6:
+		return "Exercise"
+	case 7:
+		return "Non Quiet time"
+	case 8:
+		return "External on via AGS"
+	case 9:
+		return "External on via generator"
+	case 10:
+		return "Unable to stop"
+	default:
 		return fmt.Sprintf("AgsOnReasonConst(%d)", uint8(e))
 	}
 }
+
 type AgsOffReasonConst uint8
+
 const (
-	NotOff	AgsOffReasonConst = 0
-	DCVoltageHigh	AgsOffReasonConst = 1
-	BatteryStateOfChargeHigh	AgsOffReasonConst = 2
-	ACCurrentLow	AgsOffReasonConst = 3
-	ContactOpened	AgsOffReasonConst = 4
-	ReachedAbsorption	AgsOffReasonConst = 5
-	ReachedFloat	AgsOffReasonConst = 6
-	ManualOff_2	AgsOffReasonConst = 7
-	MaxRunTime	AgsOffReasonConst = 8
-	MaxAutoCycle	AgsOffReasonConst = 9
-	ExerciseDone	AgsOffReasonConst = 10
-	QuietTime_2	AgsOffReasonConst = 11
-	ExternalOffViaAgs	AgsOffReasonConst = 12
-	SafeMode	AgsOffReasonConst = 13
-	ExternalOffViaGenerator	AgsOffReasonConst = 14
-	ExternalShutdown_2	AgsOffReasonConst = 15
-	AutoOff_2	AgsOffReasonConst = 16
-	Fault_6	AgsOffReasonConst = 17
-	UnableToStart	AgsOffReasonConst = 18
+	NotOff                   AgsOffReasonConst = 0
+	DCVoltageHigh            AgsOffReasonConst = 1
+	BatteryStateOfChargeHigh AgsOffReasonConst = 2
+	ACCurrentLow             AgsOffReasonConst = 3
+	ContactOpened            AgsOffReasonConst = 4
+	ReachedAbsorption        AgsOffReasonConst = 5
+	ReachedFloat             AgsOffReasonConst = 6
+	ManualOff_2              AgsOffReasonConst = 7
+	MaxRunTime               AgsOffReasonConst = 8
+	MaxAutoCycle             AgsOffReasonConst = 9
+	ExerciseDone             AgsOffReasonConst = 10
+	QuietTime_2              AgsOffReasonConst = 11
+	ExternalOffViaAgs        AgsOffReasonConst = 12
+	SafeMode                 AgsOffReasonConst = 13
+	ExternalOffViaGenerator  AgsOffReasonConst = 14
+	ExternalShutdown_2       AgsOffReasonConst = 15
+	AutoOff_2                AgsOffReasonConst = 16
+	Fault_6                  AgsOffReasonConst = 17
+	UnableToStart            AgsOffReasonConst = 18
 )
 
-func (e AgsOffReasonConst) GoString() string {return e.String() }
+func (e AgsOffReasonConst) GoString() string { return e.String() }
 func (e AgsOffReasonConst) String() string {
 	switch e {
-		case 0:
-			return "Not off"
-		case 1:
-			return "DC voltage high"
-		case 2:
-			return "Battery state of charge high"
-		case 3:
-			return "AC current low"
-		case 4:
-			return "Contact opened"
-		case 5:
-			return "Reached absorption"
-		case 6:
-			return "Reached float"
-		case 7:
-			return "Manual off"
-		case 8:
-			return "Max run time"
-		case 9:
-			return "Max auto cycle"
-		case 10:
-			return "Exercise done"
-		case 11:
-			return "Quiet time"
-		case 12:
-			return "External off via AGS"
-		case 13:
-			return "Safe mode"
-		case 14:
-			return "External off via generator"
-		case 15:
-			return "External shutdown"
-		case 16:
-			return "Auto off"
-		case 17:
-			return "Fault"
-		case 18:
-			return "Unable to start"
-default:
+	case 0:
+		return "Not off"
+	case 1:
+		return "DC voltage high"
+	case 2:
+		return "Battery state of charge high"
+	case 3:
+		return "AC current low"
+	case 4:
+		return "Contact opened"
+	case 5:
+		return "Reached absorption"
+	case 6:
+		return "Reached float"
+	case 7:
+		return "Manual off"
+	case 8:
+		return "Max run time"
+	case 9:
+		return "Max auto cycle"
+	case 10:
+		return "Exercise done"
+	case 11:
+		return "Quiet time"
+	case 12:
+		return "External off via AGS"
+	case 13:
+		return "Safe mode"
+	case 14:
+		return "External off via generator"
+	case 15:
+		return "External shutdown"
+	case 16:
+		return "Auto off"
+	case 17:
+		return "Fault"
+	case 18:
+		return "Unable to start"
+	default:
 		return fmt.Sprintf("AgsOffReasonConst(%d)", uint8(e))
 	}
 }
+
 type TelephoneModeConst uint8
+
 const (
-	F3eG3eSimplexTelephone	TelephoneModeConst = 0
-	F3eG3eDuplexTelephone	TelephoneModeConst = 1
-	J3eTelephone	TelephoneModeConst = 2
-	H3eTelephone	TelephoneModeConst = 3
-	F1bJ2bFecNbdpTelexTeleprinter	TelephoneModeConst = 4
-	F1bJ2bArqNbdpTelexTeleprinter	TelephoneModeConst = 5
-	F1bJ2bReceiveOnlyTeleprinterDS	TelephoneModeConst = 6
-	F1bJ2bTeleprinterDSC	TelephoneModeConst = 7
-	A1aMorseTapeRecorder	TelephoneModeConst = 8
-	A1aMorseMorseKeyHeadSet	TelephoneModeConst = 9
-	F1cF2cF3cFaxMachine	TelephoneModeConst = 10
+	F3eG3eSimplexTelephone         TelephoneModeConst = 0
+	F3eG3eDuplexTelephone          TelephoneModeConst = 1
+	J3eTelephone                   TelephoneModeConst = 2
+	H3eTelephone                   TelephoneModeConst = 3
+	F1bJ2bFecNbdpTelexTeleprinter  TelephoneModeConst = 4
+	F1bJ2bArqNbdpTelexTeleprinter  TelephoneModeConst = 5
+	F1bJ2bReceiveOnlyTeleprinterDS TelephoneModeConst = 6
+	F1bJ2bTeleprinterDSC           TelephoneModeConst = 7
+	A1aMorseTapeRecorder           TelephoneModeConst = 8
+	A1aMorseMorseKeyHeadSet        TelephoneModeConst = 9
+	F1cF2cF3cFaxMachine            TelephoneModeConst = 10
 )
 
-func (e TelephoneModeConst) GoString() string {return e.String() }
+func (e TelephoneModeConst) GoString() string { return e.String() }
 func (e TelephoneModeConst) String() string {
 	switch e {
-		case 0:
-			return "F3E/G3E simplex, telephone"
-		case 1:
-			return "F3E/G3E duplex, telephone"
-		case 2:
-			return "J3E, telephone"
-		case 3:
-			return "H3E, telephone"
-		case 4:
-			return "F1B/J2B FEC NBDP, telex/teleprinter"
-		case 5:
-			return "F1B/J2B ARQ NBDP, telex/teleprinter"
-		case 6:
-			return "F1B/J2B receive only, teleprinter/DSC"
-		case 7:
-			return "F1B/J2B, teleprinter/DSC"
-		case 8:
-			return "A1A Morse, tape recorder"
-		case 9:
-			return "A1A Morse, Morse key/head set"
-		case 10:
-			return "F1C/F2C/F3C, FAX machine"
-default:
+	case 0:
+		return "F3E/G3E simplex, telephone"
+	case 1:
+		return "F3E/G3E duplex, telephone"
+	case 2:
+		return "J3E, telephone"
+	case 3:
+		return "H3E, telephone"
+	case 4:
+		return "F1B/J2B FEC NBDP, telex/teleprinter"
+	case 5:
+		return "F1B/J2B ARQ NBDP, telex/teleprinter"
+	case 6:
+		return "F1B/J2B receive only, teleprinter/DSC"
+	case 7:
+		return "F1B/J2B, teleprinter/DSC"
+	case 8:
+		return "A1A Morse, tape recorder"
+	case 9:
+		return "A1A Morse, Morse key/head set"
+	case 10:
+		return "F1C/F2C/F3C, FAX machine"
+	default:
 		return fmt.Sprintf("TelephoneModeConst(%d)", uint8(e))
 	}
 }
+
 type PowerModeConst uint8
+
 const (
-	High_2	PowerModeConst = 0
-	Low_3	PowerModeConst = 1
+	High_2 PowerModeConst = 0
+	Low_3  PowerModeConst = 1
 )
 
-func (e PowerModeConst) GoString() string {return e.String() }
+func (e PowerModeConst) GoString() string { return e.String() }
 func (e PowerModeConst) String() string {
 	switch e {
-		case 0:
-			return "High"
-		case 1:
-			return "Low"
-default:
+	case 0:
+		return "High"
+	case 1:
+		return "Low"
+	default:
 		return fmt.Sprintf("PowerModeConst(%d)", uint8(e))
 	}
 }
+
 type BroadcastIndicatorConst uint8
+
 const (
-	BroadcastGeoAreaMessage	BroadcastIndicatorConst = 0
-	AddressedMessage	BroadcastIndicatorConst = 1
+	BroadcastGeoAreaMessage BroadcastIndicatorConst = 0
+	AddressedMessage        BroadcastIndicatorConst = 1
 )
 
-func (e BroadcastIndicatorConst) GoString() string {return e.String() }
+func (e BroadcastIndicatorConst) GoString() string { return e.String() }
 func (e BroadcastIndicatorConst) String() string {
 	switch e {
-		case 0:
-			return "Broadcast geo area message"
-		case 1:
-			return "Addressed message"
-default:
+	case 0:
+		return "Broadcast geo area message"
+	case 1:
+		return "Addressed message"
+	default:
 		return fmt.Sprintf("BroadcastIndicatorConst(%d)", uint8(e))
 	}
 }
+
 type BandwidthConst uint8
+
 const (
-	Default_2	BandwidthConst = 0
-	BandwidthConst125Khz	BandwidthConst = 1
+	Default_2            BandwidthConst = 0
+	BandwidthConst125Khz BandwidthConst = 1
 )
 
-func (e BandwidthConst) GoString() string {return e.String() }
+func (e BandwidthConst) GoString() string { return e.String() }
 func (e BandwidthConst) String() string {
 	switch e {
-		case 0:
-			return "Default"
-		case 1:
-			return "12.5 kHz"
-default:
+	case 0:
+		return "Default"
+	case 1:
+		return "12.5 kHz"
+	default:
 		return fmt.Sprintf("BandwidthConst(%d)", uint8(e))
 	}
 }
+
 type FloodStateConst uint8
+
 const (
-	Flood	FloodStateConst = 0
-	Slack	FloodStateConst = 1
-	Ebb	FloodStateConst = 2
+	Flood FloodStateConst = 0
+	Slack FloodStateConst = 1
+	Ebb   FloodStateConst = 2
 )
 
-func (e FloodStateConst) GoString() string {return e.String() }
+func (e FloodStateConst) GoString() string { return e.String() }
 func (e FloodStateConst) String() string {
 	switch e {
-		case 0:
-			return "Flood"
-		case 1:
-			return "Slack"
-		case 2:
-			return "Ebb"
-default:
+	case 0:
+		return "Flood"
+	case 1:
+		return "Slack"
+	case 2:
+		return "Ebb"
+	default:
 		return fmt.Sprintf("FloodStateConst(%d)", uint8(e))
 	}
 }
+
 type ACLineConst uint8
+
 const (
-	Line1_2	ACLineConst = 0
-	Line2_2	ACLineConst = 1
-	Line3_2	ACLineConst = 2
+	Line1_2 ACLineConst = 0
+	Line2_2 ACLineConst = 1
+	Line3_2 ACLineConst = 2
 )
 
-func (e ACLineConst) GoString() string {return e.String() }
+func (e ACLineConst) GoString() string { return e.String() }
 func (e ACLineConst) String() string {
 	switch e {
-		case 0:
-			return "Line 1"
-		case 1:
-			return "Line 2"
-		case 2:
-			return "Line 3"
-default:
+	case 0:
+		return "Line 1"
+	case 1:
+		return "Line 2"
+	case 2:
+		return "Line 3"
+	default:
 		return fmt.Sprintf("ACLineConst(%d)", uint8(e))
 	}
 }
+
 type ZoneSizeConst uint8
+
 const (
-	OneNm	ZoneSizeConst = 0
-	TwoNm	ZoneSizeConst = 1
-	ThreeNm	ZoneSizeConst = 2
-	FourNm	ZoneSizeConst = 3
-	FiveNm	ZoneSizeConst = 4
-	SixNm	ZoneSizeConst = 5
+	OneNm   ZoneSizeConst = 0
+	TwoNm   ZoneSizeConst = 1
+	ThreeNm ZoneSizeConst = 2
+	FourNm  ZoneSizeConst = 3
+	FiveNm  ZoneSizeConst = 4
+	SixNm   ZoneSizeConst = 5
 )
 
-func (e ZoneSizeConst) GoString() string {return e.String() }
+func (e ZoneSizeConst) GoString() string { return e.String() }
 func (e ZoneSizeConst) String() string {
 	switch e {
-		case 0:
-			return "1 nm"
-		case 1:
-			return "2 nm"
-		case 2:
-			return "3 nm"
-		case 3:
-			return "4 nm"
-		case 4:
-			return "5 nm"
-		case 5:
-			return "6 nm"
-default:
+	case 0:
+		return "1 nm"
+	case 1:
+		return "2 nm"
+	case 2:
+		return "3 nm"
+	case 3:
+		return "4 nm"
+	case 4:
+		return "5 nm"
+	case 5:
+		return "6 nm"
+	default:
 		return fmt.Sprintf("ZoneSizeConst(%d)", uint8(e))
 	}
 }
+
 type MaretronProductCodeConst uint16
+
 const (
-	Ssc200	MaretronProductCodeConst = 434
-	Sms100	MaretronProductCodeConst = 1047
-	Mbb200c	MaretronProductCodeConst = 1151
-	Dst110	MaretronProductCodeConst = 1534
-	Gps100	MaretronProductCodeConst = 1776
-	Clm100	MaretronProductCodeConst = 2606
-	Ssc300	MaretronProductCodeConst = 2686
-	Tla100	MaretronProductCodeConst = 2781
-	Gps200	MaretronProductCodeConst = 3373
-	Dst100	MaretronProductCodeConst = 3563
-	Ffm100	MaretronProductCodeConst = 3637
-	Nbe100	MaretronProductCodeConst = 3979
-	Raa100	MaretronProductCodeConst = 4018
-	Rim100	MaretronProductCodeConst = 4078
-	J2k100	MaretronProductCodeConst = 4319
-	Alm100	MaretronProductCodeConst = 8165
-	Ipg100	MaretronProductCodeConst = 9339
-	Dcm100	MaretronProductCodeConst = 9375
-	Ems100	MaretronProductCodeConst = 9845
-	Clmd16	MaretronProductCodeConst = 12337
-	Dsm250	MaretronProductCodeConst = 16434
-	Tmp100	MaretronProductCodeConst = 20067
-	Dsm150	MaretronProductCodeConst = 20298
-	Fpm100	MaretronProductCodeConst = 21703
-	Dcr100	MaretronProductCodeConst = 22585
-	Sim100	MaretronProductCodeConst = 23603
-	Acm100	MaretronProductCodeConst = 26493
-	Mbb300c	MaretronProductCodeConst = 27244
-	Mconnect	MaretronProductCodeConst = 28077
+	Ssc200   MaretronProductCodeConst = 434
+	Sms100   MaretronProductCodeConst = 1047
+	Mbb200c  MaretronProductCodeConst = 1151
+	Dst110   MaretronProductCodeConst = 1534
+	Gps100   MaretronProductCodeConst = 1776
+	Clm100   MaretronProductCodeConst = 2606
+	Ssc300   MaretronProductCodeConst = 2686
+	Tla100   MaretronProductCodeConst = 2781
+	Gps200   MaretronProductCodeConst = 3373
+	Dst100   MaretronProductCodeConst = 3563
+	Ffm100   MaretronProductCodeConst = 3637
+	Nbe100   MaretronProductCodeConst = 3979
+	Raa100   MaretronProductCodeConst = 4018
+	Rim100   MaretronProductCodeConst = 4078
+	J2k100   MaretronProductCodeConst = 4319
+	Alm100   MaretronProductCodeConst = 8165
+	Ipg100   MaretronProductCodeConst = 9339
+	Dcm100   MaretronProductCodeConst = 9375
+	Ems100   MaretronProductCodeConst = 9845
+	Clmd16   MaretronProductCodeConst = 12337
+	Dsm250   MaretronProductCodeConst = 16434
+	Tmp100   MaretronProductCodeConst = 20067
+	Dsm150   MaretronProductCodeConst = 20298
+	Fpm100   MaretronProductCodeConst = 21703
+	Dcr100   MaretronProductCodeConst = 22585
+	Sim100   MaretronProductCodeConst = 23603
+	Acm100   MaretronProductCodeConst = 26493
+	Mbb300c  MaretronProductCodeConst = 27244
+	Mconnect MaretronProductCodeConst = 28077
 )
 
-func (e MaretronProductCodeConst) GoString() string {return e.String() }
+func (e MaretronProductCodeConst) GoString() string { return e.String() }
 func (e MaretronProductCodeConst) String() string {
 	switch e {
-		case 434:
-			return "SSC200"
-		case 1047:
-			return "SMS100"
-		case 1151:
-			return "MBB200C"
-		case 1534:
-			return "DST110"
-		case 1776:
-			return "GPS100"
-		case 2606:
-			return "CLM100"
-		case 2686:
-			return "SSC300"
-		case 2781:
-			return "TLA100"
-		case 3373:
-			return "GPS200"
-		case 3563:
-			return "DST100"
-		case 3637:
-			return "FFM100"
-		case 3979:
-			return "NBE100"
-		case 4018:
-			return "RAA100"
-		case 4078:
-			return "RIM100"
-		case 4319:
-			return "J2K100"
-		case 8165:
-			return "ALM100"
-		case 9339:
-			return "IPG100"
-		case 9375:
-			return "DCM100"
-		case 9845:
-			return "EMS100"
-		case 12337:
-			return "CLMD16"
-		case 16434:
-			return "DSM250"
-		case 20067:
-			return "TMP100"
-		case 20298:
-			return "DSM150"
-		case 21703:
-			return "FPM100"
-		case 22585:
-			return "DCR100"
-		case 23603:
-			return "SIM100"
-		case 26493:
-			return "ACM100"
-		case 27244:
-			return "MBB300C"
-		case 28077:
-			return "MConnect"
-default:
+	case 434:
+		return "SSC200"
+	case 1047:
+		return "SMS100"
+	case 1151:
+		return "MBB200C"
+	case 1534:
+		return "DST110"
+	case 1776:
+		return "GPS100"
+	case 2606:
+		return "CLM100"
+	case 2686:
+		return "SSC300"
+	case 2781:
+		return "TLA100"
+	case 3373:
+		return "GPS200"
+	case 3563:
+		return "DST100"
+	case 3637:
+		return "FFM100"
+	case 3979:
+		return "NBE100"
+	case 4018:
+		return "RAA100"
+	case 4078:
+		return "RIM100"
+	case 4319:
+		return "J2K100"
+	case 8165:
+		return "ALM100"
+	case 9339:
+		return "IPG100"
+	case 9375:
+		return "DCM100"
+	case 9845:
+		return "EMS100"
+	case 12337:
+		return "CLMD16"
+	case 16434:
+		return "DSM250"
+	case 20067:
+		return "TMP100"
+	case 20298:
+		return "DSM150"
+	case 21703:
+		return "FPM100"
+	case 22585:
+		return "DCR100"
+	case 23603:
+		return "SIM100"
+	case 26493:
+		return "ACM100"
+	case 27244:
+		return "MBB300C"
+	case 28077:
+		return "MConnect"
+	default:
 		return fmt.Sprintf("MaretronProductCodeConst(%d)", uint16(e))
 	}
 }
+
 type MaretronOpcodeConst uint8
+
 const (
-	ReadAll	MaretronOpcodeConst = 0
-	WriteRegister	MaretronOpcodeConst = 1
-	ReadConfig	MaretronOpcodeConst = 2
-	WriteConfig	MaretronOpcodeConst = 3
-	Calibrate	MaretronOpcodeConst = 4
-	ClearCalibration	MaretronOpcodeConst = 5
-	Status_2	MaretronOpcodeConst = 6
-	ClearStatus	MaretronOpcodeConst = 7
-	ResetFactoryDefault	MaretronOpcodeConst = 8
-	Debug	MaretronOpcodeConst = 9
-	WriteInstance	MaretronOpcodeConst = 16
-	ReadInstance	MaretronOpcodeConst = 17
-	WriteLabel	MaretronOpcodeConst = 32
-	ReadLabel	MaretronOpcodeConst = 33
-	WriteSwitchConfig	MaretronOpcodeConst = 48
-	ReadSwitchConfig	MaretronOpcodeConst = 49
-	WriteAlertConfig	MaretronOpcodeConst = 64
-	ReadAlertConfig	MaretronOpcodeConst = 65
-	WriteChannelConfig	MaretronOpcodeConst = 80
-	ReadChannelConfig	MaretronOpcodeConst = 81
-	ReadChannelConfigExtended	MaretronOpcodeConst = 86
-	WriteChannelConfigExtended	MaretronOpcodeConst = 87
+	ReadAll                    MaretronOpcodeConst = 0
+	WriteRegister              MaretronOpcodeConst = 1
+	ReadConfig                 MaretronOpcodeConst = 2
+	WriteConfig                MaretronOpcodeConst = 3
+	Calibrate                  MaretronOpcodeConst = 4
+	ClearCalibration           MaretronOpcodeConst = 5
+	Status_2                   MaretronOpcodeConst = 6
+	ClearStatus                MaretronOpcodeConst = 7
+	ResetFactoryDefault        MaretronOpcodeConst = 8
+	Debug                      MaretronOpcodeConst = 9
+	WriteInstance              MaretronOpcodeConst = 16
+	ReadInstance               MaretronOpcodeConst = 17
+	WriteLabel                 MaretronOpcodeConst = 32
+	ReadLabel                  MaretronOpcodeConst = 33
+	WriteSwitchConfig          MaretronOpcodeConst = 48
+	ReadSwitchConfig           MaretronOpcodeConst = 49
+	WriteAlertConfig           MaretronOpcodeConst = 64
+	ReadAlertConfig            MaretronOpcodeConst = 65
+	WriteChannelConfig         MaretronOpcodeConst = 80
+	ReadChannelConfig          MaretronOpcodeConst = 81
+	ReadChannelConfigExtended  MaretronOpcodeConst = 86
+	WriteChannelConfigExtended MaretronOpcodeConst = 87
 )
 
-func (e MaretronOpcodeConst) GoString() string {return e.String() }
+func (e MaretronOpcodeConst) GoString() string { return e.String() }
 func (e MaretronOpcodeConst) String() string {
 	switch e {
-		case 0:
-			return "Read All"
-		case 1:
-			return "Write Register"
-		case 2:
-			return "Read Config"
-		case 3:
-			return "Write Config"
-		case 4:
-			return "Calibrate"
-		case 5:
-			return "Clear Calibration"
-		case 6:
-			return "Status"
-		case 7:
-			return "Clear Status"
-		case 8:
-			return "Reset Factory Default"
-		case 9:
-			return "Debug"
-		case 16:
-			return "Write Instance"
-		case 17:
-			return "Read Instance"
-		case 32:
-			return "Write Label"
-		case 33:
-			return "Read Label"
-		case 48:
-			return "Write Switch Config"
-		case 49:
-			return "Read Switch Config"
-		case 64:
-			return "Write Alert Config"
-		case 65:
-			return "Read Alert Config"
-		case 80:
-			return "Write Channel Config"
-		case 81:
-			return "Read Channel Config"
-		case 86:
-			return "Read Channel Config Extended"
-		case 87:
-			return "Write Channel Config Extended"
-default:
+	case 0:
+		return "Read All"
+	case 1:
+		return "Write Register"
+	case 2:
+		return "Read Config"
+	case 3:
+		return "Write Config"
+	case 4:
+		return "Calibrate"
+	case 5:
+		return "Clear Calibration"
+	case 6:
+		return "Status"
+	case 7:
+		return "Clear Status"
+	case 8:
+		return "Reset Factory Default"
+	case 9:
+		return "Debug"
+	case 16:
+		return "Write Instance"
+	case 17:
+		return "Read Instance"
+	case 32:
+		return "Write Label"
+	case 33:
+		return "Read Label"
+	case 48:
+		return "Write Switch Config"
+	case 49:
+		return "Read Switch Config"
+	case 64:
+		return "Write Alert Config"
+	case 65:
+		return "Read Alert Config"
+	case 80:
+		return "Write Channel Config"
+	case 81:
+		return "Read Channel Config"
+	case 86:
+		return "Read Channel Config Extended"
+	case 87:
+		return "Write Channel Config Extended"
+	default:
 		return fmt.Sprintf("MaretronOpcodeConst(%d)", uint8(e))
 	}
 }
+
 type MaretronSoftwareCodeConst uint16
+
 const (
-	Version1	MaretronSoftwareCodeConst = 1
+	Version1 MaretronSoftwareCodeConst = 1
 )
 
-func (e MaretronSoftwareCodeConst) GoString() string {return e.String() }
+func (e MaretronSoftwareCodeConst) GoString() string { return e.String() }
 func (e MaretronSoftwareCodeConst) String() string {
 	switch e {
-		case 1:
-			return "Version 1"
-default:
+	case 1:
+		return "Version 1"
+	default:
 		return fmt.Sprintf("MaretronSoftwareCodeConst(%d)", uint16(e))
 	}
 }
+
 type MaretronCommandConst uint8
+
 const (
-	DeviationCalibration	MaretronCommandConst = 80
+	DeviationCalibration MaretronCommandConst = 80
 )
 
-func (e MaretronCommandConst) GoString() string {return e.String() }
+func (e MaretronCommandConst) GoString() string { return e.String() }
 func (e MaretronCommandConst) String() string {
 	switch e {
-		case 80:
-			return "Deviation calibration"
-default:
+	case 80:
+		return "Deviation calibration"
+	default:
 		return fmt.Sprintf("MaretronCommandConst(%d)", uint8(e))
 	}
 }
+
 type MaretronStatusDeviationConst uint8
+
 const (
-	Started	MaretronStatusDeviationConst = 1
-	CompletedSuccessfully	MaretronStatusDeviationConst = 2
-	FailedToComplete	MaretronStatusDeviationConst = 3
-	TurningTooFast	MaretronStatusDeviationConst = 4
-	TurningTooSlow	MaretronStatusDeviationConst = 5
-	InvalidMovement	MaretronStatusDeviationConst = 6
+	Started               MaretronStatusDeviationConst = 1
+	CompletedSuccessfully MaretronStatusDeviationConst = 2
+	FailedToComplete      MaretronStatusDeviationConst = 3
+	TurningTooFast        MaretronStatusDeviationConst = 4
+	TurningTooSlow        MaretronStatusDeviationConst = 5
+	InvalidMovement       MaretronStatusDeviationConst = 6
 )
 
-func (e MaretronStatusDeviationConst) GoString() string {return e.String() }
+func (e MaretronStatusDeviationConst) GoString() string { return e.String() }
 func (e MaretronStatusDeviationConst) String() string {
 	switch e {
-		case 1:
-			return "Started"
-		case 2:
-			return "Completed successfully"
-		case 3:
-			return "Failed to complete"
-		case 4:
-			return "Turning too fast"
-		case 5:
-			return "Turning too slow"
-		case 6:
-			return "Invalid movement"
-default:
+	case 1:
+		return "Started"
+	case 2:
+		return "Completed successfully"
+	case 3:
+		return "Failed to complete"
+	case 4:
+		return "Turning too fast"
+	case 5:
+		return "Turning too slow"
+	case 6:
+		return "Invalid movement"
+	default:
 		return fmt.Sprintf("MaretronStatusDeviationConst(%d)", uint8(e))
 	}
 }
+
 type AutomaticManualConst uint8
+
 const (
-	Automatic_4	AutomaticManualConst = 0
-	Manual_8	AutomaticManualConst = 1
+	Automatic_4 AutomaticManualConst = 0
+	Manual_8    AutomaticManualConst = 1
 )
 
-func (e AutomaticManualConst) GoString() string {return e.String() }
+func (e AutomaticManualConst) GoString() string { return e.String() }
 func (e AutomaticManualConst) String() string {
 	switch e {
-		case 0:
-			return "Automatic"
-		case 1:
-			return "Manual"
-default:
+	case 0:
+		return "Automatic"
+	case 1:
+		return "Manual"
+	default:
 		return fmt.Sprintf("AutomaticManualConst(%d)", uint8(e))
 	}
 }
+
 type SBASSvConst uint8
+
 const (
-	SBASSvConst120	SBASSvConst = 0
-	SBASSvConst121	SBASSvConst = 1
-	SBASSvConst122	SBASSvConst = 2
-	SBASSvConst123	SBASSvConst = 3
-	SBASSvConst124	SBASSvConst = 4
-	SBASSvConst125	SBASSvConst = 5
-	SBASSvConst126	SBASSvConst = 6
-	SBASSvConst127	SBASSvConst = 7
-	SBASSvConst128	SBASSvConst = 8
-	SBASSvConst129	SBASSvConst = 9
-	SBASSvConst130	SBASSvConst = 10
-	SBASSvConst131	SBASSvConst = 11
-	SBASSvConst132	SBASSvConst = 12
-	SBASSvConst133	SBASSvConst = 13
-	SBASSvConst134	SBASSvConst = 14
-	SBASSvConst135	SBASSvConst = 15
-	SBASSvConst136	SBASSvConst = 16
-	SBASSvConst137	SBASSvConst = 17
-	SBASSvConst138	SBASSvConst = 18
+	SBASSvConst120 SBASSvConst = 0
+	SBASSvConst121 SBASSvConst = 1
+	SBASSvConst122 SBASSvConst = 2
+	SBASSvConst123 SBASSvConst = 3
+	SBASSvConst124 SBASSvConst = 4
+	SBASSvConst125 SBASSvConst = 5
+	SBASSvConst126 SBASSvConst = 6
+	SBASSvConst127 SBASSvConst = 7
+	SBASSvConst128 SBASSvConst = 8
+	SBASSvConst129 SBASSvConst = 9
+	SBASSvConst130 SBASSvConst = 10
+	SBASSvConst131 SBASSvConst = 11
+	SBASSvConst132 SBASSvConst = 12
+	SBASSvConst133 SBASSvConst = 13
+	SBASSvConst134 SBASSvConst = 14
+	SBASSvConst135 SBASSvConst = 15
+	SBASSvConst136 SBASSvConst = 16
+	SBASSvConst137 SBASSvConst = 17
+	SBASSvConst138 SBASSvConst = 18
 )
 
-func (e SBASSvConst) GoString() string {return e.String() }
+func (e SBASSvConst) GoString() string { return e.String() }
 func (e SBASSvConst) String() string {
 	switch e {
-		case 0:
-			return "120"
-		case 1:
-			return "121"
-		case 2:
-			return "122"
-		case 3:
-			return "123"
-		case 4:
-			return "124"
-		case 5:
-			return "125"
-		case 6:
-			return "126"
-		case 7:
-			return "127"
-		case 8:
-			return "128"
-		case 9:
-			return "129"
-		case 10:
-			return "130"
-		case 11:
-			return "131"
-		case 12:
-			return "132"
-		case 13:
-			return "133"
-		case 14:
-			return "134"
-		case 15:
-			return "135"
-		case 16:
-			return "136"
-		case 17:
-			return "137"
-		case 18:
-			return "138"
-default:
+	case 0:
+		return "120"
+	case 1:
+		return "121"
+	case 2:
+		return "122"
+	case 3:
+		return "123"
+	case 4:
+		return "124"
+	case 5:
+		return "125"
+	case 6:
+		return "126"
+	case 7:
+		return "127"
+	case 8:
+		return "128"
+	case 9:
+		return "129"
+	case 10:
+		return "130"
+	case 11:
+		return "131"
+	case 12:
+		return "132"
+	case 13:
+		return "133"
+	case 14:
+		return "134"
+	case 15:
+		return "135"
+	case 16:
+		return "136"
+	case 17:
+		return "137"
+	case 18:
+		return "138"
+	default:
 		return fmt.Sprintf("SBASSvConst(%d)", uint8(e))
 	}
 }
+
 type MercuryCommandOpcodeConst uint8
+
 const (
-	HornControl	MercuryCommandOpcodeConst = 0
-	MaintenanceResetCommand	MercuryCommandOpcodeConst = 1
-	MaintenanceResetResponse	MercuryCommandOpcodeConst = 2
-	CruiseControl	MercuryCommandOpcodeConst = 4
-	GlobalBrightness	MercuryCommandOpcodeConst = 5
-	ActiveTrimCommand	MercuryCommandOpcodeConst = 6
-	ActiveTrimStatus	MercuryCommandOpcodeConst = 7
-	AutopilotCommand	MercuryCommandOpcodeConst = 8
-	ActiveExhaust	MercuryCommandOpcodeConst = 9
-	OilLevelCheckCommand	MercuryCommandOpcodeConst = 12
-	OilLevelResetResponse	MercuryCommandOpcodeConst = 13
+	HornControl              MercuryCommandOpcodeConst = 0
+	MaintenanceResetCommand  MercuryCommandOpcodeConst = 1
+	MaintenanceResetResponse MercuryCommandOpcodeConst = 2
+	CruiseControl            MercuryCommandOpcodeConst = 4
+	GlobalBrightness         MercuryCommandOpcodeConst = 5
+	ActiveTrimCommand        MercuryCommandOpcodeConst = 6
+	ActiveTrimStatus         MercuryCommandOpcodeConst = 7
+	AutopilotCommand         MercuryCommandOpcodeConst = 8
+	ActiveExhaust            MercuryCommandOpcodeConst = 9
+	OilLevelCheckCommand     MercuryCommandOpcodeConst = 12
+	OilLevelResetResponse    MercuryCommandOpcodeConst = 13
 )
 
-func (e MercuryCommandOpcodeConst) GoString() string {return e.String() }
+func (e MercuryCommandOpcodeConst) GoString() string { return e.String() }
 func (e MercuryCommandOpcodeConst) String() string {
 	switch e {
-		case 0:
-			return "Horn Control"
-		case 1:
-			return "Maintenance Reset Command"
-		case 2:
-			return "Maintenance Reset Response"
-		case 4:
-			return "Cruise Control"
-		case 5:
-			return "Global Brightness"
-		case 6:
-			return "Active Trim Command"
-		case 7:
-			return "Active Trim Status"
-		case 8:
-			return "Autopilot Command"
-		case 9:
-			return "Active Exhaust"
-		case 12:
-			return "Oil Level Check Command"
-		case 13:
-			return "Oil Level Reset Response"
-default:
+	case 0:
+		return "Horn Control"
+	case 1:
+		return "Maintenance Reset Command"
+	case 2:
+		return "Maintenance Reset Response"
+	case 4:
+		return "Cruise Control"
+	case 5:
+		return "Global Brightness"
+	case 6:
+		return "Active Trim Command"
+	case 7:
+		return "Active Trim Status"
+	case 8:
+		return "Autopilot Command"
+	case 9:
+		return "Active Exhaust"
+	case 12:
+		return "Oil Level Check Command"
+	case 13:
+		return "Oil Level Reset Response"
+	default:
 		return fmt.Sprintf("MercuryCommandOpcodeConst(%d)", uint8(e))
 	}
 }
+
 type DeviceFunctionConst uint16
+
 var DeviceFunctionConstMap = map[int]map[int]string{10: {130: "Diagnostic",
 	140: "Bus Traffic Logger",
-	 },
-20: {110: "Alarm Enunciator",
-	130: "Emergency Position Indicating Radio Beacon (EPIRB)",
-	135: "Man Overboard",
-	140: "Voyage Data Recorder",
-	150: "Camera",
-	 },
-25: {130: "PC Gateway",
-	131: "NMEA 2000 to Analog Gateway",
-	132: "Analog to NMEA 2000 Gateway",
-	133: "NMEA 2000 to Serial Gateway",
-	135: "NMEA 0183 Gateway",
-	136: "NMEA Network Gateway",
-	137: "NMEA 2000 Wireless Gateway",
-	140: "Router",
-	150: "Bridge",
-	160: "Repeater",
-	 },
-30: {130: "Binary Event Monitor",
-	140: "Load Controller",
-	141: "AC/DC Input",
-	150: "Function Controller",
-	 },
-35: {140: "Engine",
-	141: "DC Generator/Alternator",
-	142: "Solar Panel (Solar Array)",
-	143: "Wind Generator (DC)",
-	144: "Fuel Cell",
-	145: "Network Power Supply",
-	151: "AC Generator",
-	152: "AC Bus",
-	153: "AC Mains (Utility/Shore)",
-	154: "AC Output",
-	160: "Power Converter - Battery Charger",
-	161: "Power Converter - Battery Charger+Inverter",
-	162: "Power Converter - Inverter",
-	163: "Power Converter - DC",
-	170: "Battery",
-	180: "Engine Gateway",
-	 },
-40: {130: "Follow-up Controller",
-	140: "Mode Controller",
-	150: "Autopilot",
-	155: "Rudder",
-	160: "Heading Sensors",
-	170: "Trim (Tabs)/Interceptors",
-	180: "Attitude (Pitch, Roll, Yaw) Control",
-	 },
-50: {130: "Engineroom Monitoring",
-	140: "Engine",
-	141: "DC Generator/Alternator",
-	150: "Engine Controller",
-	151: "AC Generator",
-	155: "Motor",
-	160: "Engine Gateway",
-	165: "Transmission",
-	170: "Throttle/Shift Control",
-	180: "Actuator",
-	190: "Gauge Interface",
-	200: "Gauge Large",
-	210: "Gauge Small",
-	 },
-60: {130: "Bottom Depth",
-	135: "Bottom Depth/Speed",
-	136: "Bottom Depth/Speed/Temperature",
-	140: "Ownship Attitude",
-	145: "Ownship Position (GNSS)",
-	150: "Ownship Position (Loran C)",
-	155: "Speed",
-	160: "Turn Rate Indicator",
-	170: "Integrated Navigation",
-	175: "Integrated Navigation System",
-	190: "Navigation Management",
-	195: "Automatic Identification System (AIS)",
-	200: "Radar",
-	201: "Infrared Imaging",
-	205: "ECDIS",
-	210: "ECS",
-	220: "Direction Finder",
-	230: "Voyage Status",
-	 },
-70: {130: "EPIRB",
-	140: "AIS",
-	150: "DSC",
-	160: "Data Receiver/Transceiver",
-	170: "Satellite",
-	180: "Radio-telephone (MF/HF)",
-	190: "Radiotelephone",
-	 },
-75: {130: "Temperature",
-	140: "Pressure",
-	150: "Fluid Level",
-	160: "Flow",
-	170: "Humidity",
-	 },
-80: {130: "Time/Date Systems",
-	140: "VDR",
-	150: "Integrated Instrumentation",
-	160: "General Purpose Displays",
-	170: "General Sensor Box",
-	180: "Weather Instruments",
-	190: "Transducer/General",
-	200: "NMEA 0183 Converter",
-	 },
-85: {130: "Atmospheric",
-	160: "Aquatic",
-	 },
-90: {130: "HVAC",
-	 },
-100: {130: "Scale (Catch)",
-	 },
-110: {130: "Button Interface",
-	135: "Switch Interface",
-	140: "Analog Interface",
-	 },
-120: {130: "Display",
-	140: "Alarm Enunciator",
-	 },
-125: {130: "Multimedia Player",
-	140: "Multimedia Controller",
-	 },
-
+},
+	20: {110: "Alarm Enunciator",
+		130: "Emergency Position Indicating Radio Beacon (EPIRB)",
+		135: "Man Overboard",
+		140: "Voyage Data Recorder",
+		150: "Camera",
+	},
+	25: {130: "PC Gateway",
+		131: "NMEA 2000 to Analog Gateway",
+		132: "Analog to NMEA 2000 Gateway",
+		133: "NMEA 2000 to Serial Gateway",
+		135: "NMEA 0183 Gateway",
+		136: "NMEA Network Gateway",
+		137: "NMEA 2000 Wireless Gateway",
+		140: "Router",
+		150: "Bridge",
+		160: "Repeater",
+	},
+	30: {130: "Binary Event Monitor",
+		140: "Load Controller",
+		141: "AC/DC Input",
+		150: "Function Controller",
+	},
+	35: {140: "Engine",
+		141: "DC Generator/Alternator",
+		142: "Solar Panel (Solar Array)",
+		143: "Wind Generator (DC)",
+		144: "Fuel Cell",
+		145: "Network Power Supply",
+		151: "AC Generator",
+		152: "AC Bus",
+		153: "AC Mains (Utility/Shore)",
+		154: "AC Output",
+		160: "Power Converter - Battery Charger",
+		161: "Power Converter - Battery Charger+Inverter",
+		162: "Power Converter - Inverter",
+		163: "Power Converter - DC",
+		170: "Battery",
+		180: "Engine Gateway",
+	},
+	40: {130: "Follow-up Controller",
+		140: "Mode Controller",
+		150: "Autopilot",
+		155: "Rudder",
+		160: "Heading Sensors",
+		170: "Trim (Tabs)/Interceptors",
+		180: "Attitude (Pitch, Roll, Yaw) Control",
+	},
+	50: {130: "Engineroom Monitoring",
+		140: "Engine",
+		141: "DC Generator/Alternator",
+		150: "Engine Controller",
+		151: "AC Generator",
+		155: "Motor",
+		160: "Engine Gateway",
+		165: "Transmission",
+		170: "Throttle/Shift Control",
+		180: "Actuator",
+		190: "Gauge Interface",
+		200: "Gauge Large",
+		210: "Gauge Small",
+	},
+	60: {130: "Bottom Depth",
+		135: "Bottom Depth/Speed",
+		136: "Bottom Depth/Speed/Temperature",
+		140: "Ownship Attitude",
+		145: "Ownship Position (GNSS)",
+		150: "Ownship Position (Loran C)",
+		155: "Speed",
+		160: "Turn Rate Indicator",
+		170: "Integrated Navigation",
+		175: "Integrated Navigation System",
+		190: "Navigation Management",
+		195: "Automatic Identification System (AIS)",
+		200: "Radar",
+		201: "Infrared Imaging",
+		205: "ECDIS",
+		210: "ECS",
+		220: "Direction Finder",
+		230: "Voyage Status",
+	},
+	70: {130: "EPIRB",
+		140: "AIS",
+		150: "DSC",
+		160: "Data Receiver/Transceiver",
+		170: "Satellite",
+		180: "Radio-telephone (MF/HF)",
+		190: "Radiotelephone",
+	},
+	75: {130: "Temperature",
+		140: "Pressure",
+		150: "Fluid Level",
+		160: "Flow",
+		170: "Humidity",
+	},
+	80: {130: "Time/Date Systems",
+		140: "VDR",
+		150: "Integrated Instrumentation",
+		160: "General Purpose Displays",
+		170: "General Sensor Box",
+		180: "Weather Instruments",
+		190: "Transducer/General",
+		200: "NMEA 0183 Converter",
+	},
+	85: {130: "Atmospheric",
+		160: "Aquatic",
+	},
+	90:  {130: "HVAC"},
+	100: {130: "Scale (Catch)"},
+	110: {130: "Button Interface",
+		135: "Switch Interface",
+		140: "Analog Interface",
+	},
+	120: {130: "Display",
+		140: "Alarm Enunciator",
+	},
+	125: {130: "Multimedia Player",
+		140: "Multimedia Controller",
+	},
 }
 
-
 type StationStatusConst uint16
+
 const (
-	StationInUse	StationStatusConst = 0
-	LowSnr	StationStatusConst = 1
-	CycleError	StationStatusConst = 2
-	Blink	StationStatusConst = 3
+	StationInUse StationStatusConst = 0
+	LowSnr       StationStatusConst = 1
+	CycleError   StationStatusConst = 2
+	Blink        StationStatusConst = 3
 )
 
-func (e StationStatusConst) GoString() string {return e.String() }
+func (e StationStatusConst) GoString() string { return e.String() }
 func (e StationStatusConst) String() string {
 	switch e {
-		case 0:
-			return "Station in use"
-		case 1:
-			return "Low SNR"
-		case 2:
-			return "Cycle Error"
-		case 3:
-			return "Blink"
+	case 0:
+		return "Station in use"
+	case 1:
+		return "Low SNR"
+	case 2:
+		return "Cycle Error"
+	case 3:
+		return "Blink"
 	default:
 		return fmt.Sprintf("%s(%d)", "StationStatusConst", uint16(e))
 	}
 }
+
 type EngineStatus1Const uint16
+
 const (
-	CheckEngine	EngineStatus1Const = 0
-	OverTemperature	EngineStatus1Const = 1
-	LowOilPressure	EngineStatus1Const = 2
-	LowOilLevel	EngineStatus1Const = 3
-	LowFuelPressure	EngineStatus1Const = 4
-	LowSystemVoltage	EngineStatus1Const = 5
-	LowCoolantLevel	EngineStatus1Const = 6
-	WaterFlow	EngineStatus1Const = 7
-	WaterInFuel	EngineStatus1Const = 8
-	ChargeIndicator	EngineStatus1Const = 9
-	PreheatIndicator	EngineStatus1Const = 10
-	HighBoostPressure	EngineStatus1Const = 11
-	RevLimitExceeded	EngineStatus1Const = 12
-	EgrSystem	EngineStatus1Const = 13
-	ThrottlePositionSensor	EngineStatus1Const = 14
-	EmergencyStop	EngineStatus1Const = 15
+	CheckEngine            EngineStatus1Const = 0
+	OverTemperature        EngineStatus1Const = 1
+	LowOilPressure         EngineStatus1Const = 2
+	LowOilLevel            EngineStatus1Const = 3
+	LowFuelPressure        EngineStatus1Const = 4
+	LowSystemVoltage       EngineStatus1Const = 5
+	LowCoolantLevel        EngineStatus1Const = 6
+	WaterFlow              EngineStatus1Const = 7
+	WaterInFuel            EngineStatus1Const = 8
+	ChargeIndicator        EngineStatus1Const = 9
+	PreheatIndicator       EngineStatus1Const = 10
+	HighBoostPressure      EngineStatus1Const = 11
+	RevLimitExceeded       EngineStatus1Const = 12
+	EgrSystem              EngineStatus1Const = 13
+	ThrottlePositionSensor EngineStatus1Const = 14
+	EmergencyStop          EngineStatus1Const = 15
 )
 
-func (e EngineStatus1Const) GoString() string {return e.String() }
+func (e EngineStatus1Const) GoString() string { return e.String() }
 func (e EngineStatus1Const) String() string {
 	switch e {
-		case 0:
-			return "Check Engine"
-		case 1:
-			return "Over Temperature"
-		case 2:
-			return "Low Oil Pressure"
-		case 3:
-			return "Low Oil Level"
-		case 4:
-			return "Low Fuel Pressure"
-		case 5:
-			return "Low System Voltage"
-		case 6:
-			return "Low Coolant Level"
-		case 7:
-			return "Water Flow"
-		case 8:
-			return "Water In Fuel"
-		case 9:
-			return "Charge Indicator"
-		case 10:
-			return "Preheat Indicator"
-		case 11:
-			return "High Boost Pressure"
-		case 12:
-			return "Rev Limit Exceeded"
-		case 13:
-			return "EGR System"
-		case 14:
-			return "Throttle Position Sensor"
-		case 15:
-			return "Emergency Stop"
+	case 0:
+		return "Check Engine"
+	case 1:
+		return "Over Temperature"
+	case 2:
+		return "Low Oil Pressure"
+	case 3:
+		return "Low Oil Level"
+	case 4:
+		return "Low Fuel Pressure"
+	case 5:
+		return "Low System Voltage"
+	case 6:
+		return "Low Coolant Level"
+	case 7:
+		return "Water Flow"
+	case 8:
+		return "Water In Fuel"
+	case 9:
+		return "Charge Indicator"
+	case 10:
+		return "Preheat Indicator"
+	case 11:
+		return "High Boost Pressure"
+	case 12:
+		return "Rev Limit Exceeded"
+	case 13:
+		return "EGR System"
+	case 14:
+		return "Throttle Position Sensor"
+	case 15:
+		return "Emergency Stop"
 	default:
 		return fmt.Sprintf("%s(%d)", "EngineStatus1Const", uint16(e))
 	}
 }
+
 type EngineStatus2Const uint16
+
 const (
-	WarningLevel1	EngineStatus2Const = 0
-	WarningLevel2	EngineStatus2Const = 1
-	PowerReduction	EngineStatus2Const = 2
-	MaintenanceNeeded	EngineStatus2Const = 3
-	EngineCommError_2	EngineStatus2Const = 4
-	SubOrSecondaryThrottle	EngineStatus2Const = 5
-	NeutralStartProtect	EngineStatus2Const = 6
-	EngineShuttingDown_2	EngineStatus2Const = 7
+	WarningLevel1          EngineStatus2Const = 0
+	WarningLevel2          EngineStatus2Const = 1
+	PowerReduction         EngineStatus2Const = 2
+	MaintenanceNeeded      EngineStatus2Const = 3
+	EngineCommError_2      EngineStatus2Const = 4
+	SubOrSecondaryThrottle EngineStatus2Const = 5
+	NeutralStartProtect    EngineStatus2Const = 6
+	EngineShuttingDown_2   EngineStatus2Const = 7
 )
 
-func (e EngineStatus2Const) GoString() string {return e.String() }
+func (e EngineStatus2Const) GoString() string { return e.String() }
 func (e EngineStatus2Const) String() string {
 	switch e {
-		case 0:
-			return "Warning Level 1"
-		case 1:
-			return "Warning Level 2"
-		case 2:
-			return "Power Reduction"
-		case 3:
-			return "Maintenance Needed"
-		case 4:
-			return "Engine Comm Error"
-		case 5:
-			return "Sub or Secondary Throttle"
-		case 6:
-			return "Neutral Start Protect"
-		case 7:
-			return "Engine Shutting Down"
+	case 0:
+		return "Warning Level 1"
+	case 1:
+		return "Warning Level 2"
+	case 2:
+		return "Power Reduction"
+	case 3:
+		return "Maintenance Needed"
+	case 4:
+		return "Engine Comm Error"
+	case 5:
+		return "Sub or Secondary Throttle"
+	case 6:
+		return "Neutral Start Protect"
+	case 7:
+		return "Engine Shutting Down"
 	default:
 		return fmt.Sprintf("%s(%d)", "EngineStatus2Const", uint16(e))
 	}
 }
+
 type TransmissionStatus1Const uint16
+
 const (
-	CheckTransmission	TransmissionStatus1Const = 0
-	OverTemperature_2	TransmissionStatus1Const = 1
-	LowOilPressure_2	TransmissionStatus1Const = 2
-	LowOilLevel_2	TransmissionStatus1Const = 3
-	SailDrive_2	TransmissionStatus1Const = 4
+	CheckTransmission TransmissionStatus1Const = 0
+	OverTemperature_2 TransmissionStatus1Const = 1
+	LowOilPressure_2  TransmissionStatus1Const = 2
+	LowOilLevel_2     TransmissionStatus1Const = 3
+	SailDrive_2       TransmissionStatus1Const = 4
 )
 
-func (e TransmissionStatus1Const) GoString() string {return e.String() }
+func (e TransmissionStatus1Const) GoString() string { return e.String() }
 func (e TransmissionStatus1Const) String() string {
 	switch e {
-		case 0:
-			return "Check Transmission"
-		case 1:
-			return "Over Temperature"
-		case 2:
-			return "Low Oil Pressure"
-		case 3:
-			return "Low Oil Level"
-		case 4:
-			return "Sail Drive"
+	case 0:
+		return "Check Transmission"
+	case 1:
+		return "Over Temperature"
+	case 2:
+		return "Low Oil Pressure"
+	case 3:
+		return "Low Oil Level"
+	case 4:
+		return "Sail Drive"
 	default:
 		return fmt.Sprintf("%s(%d)", "TransmissionStatus1Const", uint16(e))
 	}
 }
+
 type EntertainmentPlayStatusBitfieldConst uint32
+
 const (
-	Play_3	EntertainmentPlayStatusBitfieldConst = 0
-	Pause_3	EntertainmentPlayStatusBitfieldConst = 1
-	Stop_2	EntertainmentPlayStatusBitfieldConst = 2
-	Ff1X_2	EntertainmentPlayStatusBitfieldConst = 3
-	Ff2X_2	EntertainmentPlayStatusBitfieldConst = 4
-	Ff3X_2	EntertainmentPlayStatusBitfieldConst = 5
-	Ff4X_2	EntertainmentPlayStatusBitfieldConst = 6
-	Rw1X_2	EntertainmentPlayStatusBitfieldConst = 7
-	Rw2X_2	EntertainmentPlayStatusBitfieldConst = 8
-	Rw3X_2	EntertainmentPlayStatusBitfieldConst = 9
-	Rw4X_2	EntertainmentPlayStatusBitfieldConst = 10
-	SkipAhead_2	EntertainmentPlayStatusBitfieldConst = 11
-	SkipBack_2	EntertainmentPlayStatusBitfieldConst = 12
-	JogAhead_2	EntertainmentPlayStatusBitfieldConst = 13
-	JogBack_2	EntertainmentPlayStatusBitfieldConst = 14
-	SeekUp_2	EntertainmentPlayStatusBitfieldConst = 15
-	SeekDown_2	EntertainmentPlayStatusBitfieldConst = 16
-	ScanUp_2	EntertainmentPlayStatusBitfieldConst = 17
-	ScanDown_2	EntertainmentPlayStatusBitfieldConst = 18
-	TuneUp_2	EntertainmentPlayStatusBitfieldConst = 19
-	TuneDown_2	EntertainmentPlayStatusBitfieldConst = 20
-	SlowMotion75X_2	EntertainmentPlayStatusBitfieldConst = 21
-	SlowMotion5X_2	EntertainmentPlayStatusBitfieldConst = 22
-	SlowMotion25X_2	EntertainmentPlayStatusBitfieldConst = 23
-	SlowMotion125X_2	EntertainmentPlayStatusBitfieldConst = 24
-	SourceRenaming	EntertainmentPlayStatusBitfieldConst = 25
+	Play_3           EntertainmentPlayStatusBitfieldConst = 0
+	Pause_3          EntertainmentPlayStatusBitfieldConst = 1
+	Stop_2           EntertainmentPlayStatusBitfieldConst = 2
+	Ff1X_2           EntertainmentPlayStatusBitfieldConst = 3
+	Ff2X_2           EntertainmentPlayStatusBitfieldConst = 4
+	Ff3X_2           EntertainmentPlayStatusBitfieldConst = 5
+	Ff4X_2           EntertainmentPlayStatusBitfieldConst = 6
+	Rw1X_2           EntertainmentPlayStatusBitfieldConst = 7
+	Rw2X_2           EntertainmentPlayStatusBitfieldConst = 8
+	Rw3X_2           EntertainmentPlayStatusBitfieldConst = 9
+	Rw4X_2           EntertainmentPlayStatusBitfieldConst = 10
+	SkipAhead_2      EntertainmentPlayStatusBitfieldConst = 11
+	SkipBack_2       EntertainmentPlayStatusBitfieldConst = 12
+	JogAhead_2       EntertainmentPlayStatusBitfieldConst = 13
+	JogBack_2        EntertainmentPlayStatusBitfieldConst = 14
+	SeekUp_2         EntertainmentPlayStatusBitfieldConst = 15
+	SeekDown_2       EntertainmentPlayStatusBitfieldConst = 16
+	ScanUp_2         EntertainmentPlayStatusBitfieldConst = 17
+	ScanDown_2       EntertainmentPlayStatusBitfieldConst = 18
+	TuneUp_2         EntertainmentPlayStatusBitfieldConst = 19
+	TuneDown_2       EntertainmentPlayStatusBitfieldConst = 20
+	SlowMotion75X_2  EntertainmentPlayStatusBitfieldConst = 21
+	SlowMotion5X_2   EntertainmentPlayStatusBitfieldConst = 22
+	SlowMotion25X_2  EntertainmentPlayStatusBitfieldConst = 23
+	SlowMotion125X_2 EntertainmentPlayStatusBitfieldConst = 24
+	SourceRenaming   EntertainmentPlayStatusBitfieldConst = 25
 )
 
-func (e EntertainmentPlayStatusBitfieldConst) GoString() string {return e.String() }
+func (e EntertainmentPlayStatusBitfieldConst) GoString() string { return e.String() }
 func (e EntertainmentPlayStatusBitfieldConst) String() string {
 	switch e {
-		case 0:
-			return "Play"
-		case 1:
-			return "Pause"
-		case 2:
-			return "Stop"
-		case 3:
-			return "FF 1x"
-		case 4:
-			return "FF 2x"
-		case 5:
-			return "FF 3x"
-		case 6:
-			return "FF 4x"
-		case 7:
-			return "RW 1x"
-		case 8:
-			return "RW 2x"
-		case 9:
-			return "RW 3x"
-		case 10:
-			return "RW 4x"
-		case 11:
-			return "Skip ahead"
-		case 12:
-			return "Skip back"
-		case 13:
-			return "Jog ahead"
-		case 14:
-			return "Jog back"
-		case 15:
-			return "Seek up"
-		case 16:
-			return "Seek down"
-		case 17:
-			return "Scan up"
-		case 18:
-			return "Scan down"
-		case 19:
-			return "Tune up"
-		case 20:
-			return "Tune down"
-		case 21:
-			return "Slow motion .75x"
-		case 22:
-			return "Slow motion .5x"
-		case 23:
-			return "Slow motion .25x"
-		case 24:
-			return "Slow motion .125x"
-		case 25:
-			return "Source renaming"
+	case 0:
+		return "Play"
+	case 1:
+		return "Pause"
+	case 2:
+		return "Stop"
+	case 3:
+		return "FF 1x"
+	case 4:
+		return "FF 2x"
+	case 5:
+		return "FF 3x"
+	case 6:
+		return "FF 4x"
+	case 7:
+		return "RW 1x"
+	case 8:
+		return "RW 2x"
+	case 9:
+		return "RW 3x"
+	case 10:
+		return "RW 4x"
+	case 11:
+		return "Skip ahead"
+	case 12:
+		return "Skip back"
+	case 13:
+		return "Jog ahead"
+	case 14:
+		return "Jog back"
+	case 15:
+		return "Seek up"
+	case 16:
+		return "Seek down"
+	case 17:
+		return "Scan up"
+	case 18:
+		return "Scan down"
+	case 19:
+		return "Tune up"
+	case 20:
+		return "Tune down"
+	case 21:
+		return "Slow motion .75x"
+	case 22:
+		return "Slow motion .5x"
+	case 23:
+		return "Slow motion .25x"
+	case 24:
+		return "Slow motion .125x"
+	case 25:
+		return "Source renaming"
 	default:
 		return fmt.Sprintf("%s(%d)", "EntertainmentPlayStatusBitfieldConst", uint32(e))
 	}
 }
+
 type EntertainmentGroupBitfieldConst uint16
+
 const (
-	File_4	EntertainmentGroupBitfieldConst = 0
-	PlaylistName_3	EntertainmentGroupBitfieldConst = 1
-	GenreName_3	EntertainmentGroupBitfieldConst = 2
-	AlbumName_3	EntertainmentGroupBitfieldConst = 3
-	ArtistName_3	EntertainmentGroupBitfieldConst = 4
-	TrackName_3	EntertainmentGroupBitfieldConst = 5
-	StationName_3	EntertainmentGroupBitfieldConst = 6
-	StationNumber_3	EntertainmentGroupBitfieldConst = 7
-	FavouriteNumber_3	EntertainmentGroupBitfieldConst = 8
-	PlayQueue_4	EntertainmentGroupBitfieldConst = 9
-	ContentInfo_3	EntertainmentGroupBitfieldConst = 10
+	File_4            EntertainmentGroupBitfieldConst = 0
+	PlaylistName_3    EntertainmentGroupBitfieldConst = 1
+	GenreName_3       EntertainmentGroupBitfieldConst = 2
+	AlbumName_3       EntertainmentGroupBitfieldConst = 3
+	ArtistName_3      EntertainmentGroupBitfieldConst = 4
+	TrackName_3       EntertainmentGroupBitfieldConst = 5
+	StationName_3     EntertainmentGroupBitfieldConst = 6
+	StationNumber_3   EntertainmentGroupBitfieldConst = 7
+	FavouriteNumber_3 EntertainmentGroupBitfieldConst = 8
+	PlayQueue_4       EntertainmentGroupBitfieldConst = 9
+	ContentInfo_3     EntertainmentGroupBitfieldConst = 10
 )
 
-func (e EntertainmentGroupBitfieldConst) GoString() string {return e.String() }
+func (e EntertainmentGroupBitfieldConst) GoString() string { return e.String() }
 func (e EntertainmentGroupBitfieldConst) String() string {
 	switch e {
-		case 0:
-			return "File"
-		case 1:
-			return "Playlist Name"
-		case 2:
-			return "Genre Name"
-		case 3:
-			return "Album Name"
-		case 4:
-			return "Artist Name"
-		case 5:
-			return "Track Name"
-		case 6:
-			return "Station Name"
-		case 7:
-			return "Station Number"
-		case 8:
-			return "Favourite Number"
-		case 9:
-			return "Play Queue"
-		case 10:
-			return "Content Info"
+	case 0:
+		return "File"
+	case 1:
+		return "Playlist Name"
+	case 2:
+		return "Genre Name"
+	case 3:
+		return "Album Name"
+	case 4:
+		return "Artist Name"
+	case 5:
+		return "Track Name"
+	case 6:
+		return "Station Name"
+	case 7:
+		return "Station Number"
+	case 8:
+		return "Favourite Number"
+	case 9:
+		return "Play Queue"
+	case 10:
+		return "Content Info"
 	default:
 		return fmt.Sprintf("%s(%d)", "EntertainmentGroupBitfieldConst", uint16(e))
 	}
 }
+
 type ThrusterControlEventsConst uint16
+
 const (
-	AnotherDeviceControllingThrust	ThrusterControlEventsConst = 0
-	BoatSpeedTooFastToSafelyUseThr	ThrusterControlEventsConst = 1
+	AnotherDeviceControllingThrust ThrusterControlEventsConst = 0
+	BoatSpeedTooFastToSafelyUseThr ThrusterControlEventsConst = 1
 )
 
-func (e ThrusterControlEventsConst) GoString() string {return e.String() }
+func (e ThrusterControlEventsConst) GoString() string { return e.String() }
 func (e ThrusterControlEventsConst) String() string {
 	switch e {
-		case 0:
-			return "Another device controlling thruster"
-		case 1:
-			return "Boat speed too fast to safely use thruster"
+	case 0:
+		return "Another device controlling thruster"
+	case 1:
+		return "Boat speed too fast to safely use thruster"
 	default:
 		return fmt.Sprintf("%s(%d)", "ThrusterControlEventsConst", uint16(e))
 	}
 }
+
 type ThrusterMotorEventsConst uint16
+
 const (
-	MotorOverTemperatureCutout	ThrusterMotorEventsConst = 0
-	MotorOverCurrentCutout	ThrusterMotorEventsConst = 1
-	LowOilLevelWarning	ThrusterMotorEventsConst = 2
-	OilOverTemperatureWarning	ThrusterMotorEventsConst = 3
-	ControllerUnderVoltageCutout	ThrusterMotorEventsConst = 4
-	ManufacturerDefined	ThrusterMotorEventsConst = 5
+	MotorOverTemperatureCutout   ThrusterMotorEventsConst = 0
+	MotorOverCurrentCutout       ThrusterMotorEventsConst = 1
+	LowOilLevelWarning           ThrusterMotorEventsConst = 2
+	OilOverTemperatureWarning    ThrusterMotorEventsConst = 3
+	ControllerUnderVoltageCutout ThrusterMotorEventsConst = 4
+	ManufacturerDefined          ThrusterMotorEventsConst = 5
 )
 
-func (e ThrusterMotorEventsConst) GoString() string {return e.String() }
+func (e ThrusterMotorEventsConst) GoString() string { return e.String() }
 func (e ThrusterMotorEventsConst) String() string {
 	switch e {
-		case 0:
-			return "Motor over temperature cutout"
-		case 1:
-			return "Motor over current cutout"
-		case 2:
-			return "Low oil level warning"
-		case 3:
-			return "Oil over temperature warning"
-		case 4:
-			return "Controller under voltage cutout"
-		case 5:
-			return "Manufacturer defined"
+	case 0:
+		return "Motor over temperature cutout"
+	case 1:
+		return "Motor over current cutout"
+	case 2:
+		return "Low oil level warning"
+	case 3:
+		return "Oil over temperature warning"
+	case 4:
+		return "Controller under voltage cutout"
+	case 5:
+		return "Manufacturer defined"
 	default:
 		return fmt.Sprintf("%s(%d)", "ThrusterMotorEventsConst", uint16(e))
 	}
 }
+
 type WindlassControlConst uint16
+
 const (
-	AnotherDeviceControllingWindla	WindlassControlConst = 0
+	AnotherDeviceControllingWindla WindlassControlConst = 0
 )
 
-func (e WindlassControlConst) GoString() string {return e.String() }
+func (e WindlassControlConst) GoString() string { return e.String() }
 func (e WindlassControlConst) String() string {
 	switch e {
-		case 0:
-			return "Another device controlling windlass"
+	case 0:
+		return "Another device controlling windlass"
 	default:
 		return fmt.Sprintf("%s(%d)", "WindlassControlConst", uint16(e))
 	}
 }
+
 type WindlassOperationConst uint16
+
 const (
-	SystemError	WindlassOperationConst = 0
-	SensorError	WindlassOperationConst = 1
-	NoWindlassMotionDetected	WindlassOperationConst = 2
-	RetrievalDockingDistanceReache	WindlassOperationConst = 3
-	EndOfRodeReached	WindlassOperationConst = 4
+	SystemError                    WindlassOperationConst = 0
+	SensorError                    WindlassOperationConst = 1
+	NoWindlassMotionDetected       WindlassOperationConst = 2
+	RetrievalDockingDistanceReache WindlassOperationConst = 3
+	EndOfRodeReached               WindlassOperationConst = 4
 )
 
-func (e WindlassOperationConst) GoString() string {return e.String() }
+func (e WindlassOperationConst) GoString() string { return e.String() }
 func (e WindlassOperationConst) String() string {
 	switch e {
-		case 0:
-			return "System error"
-		case 1:
-			return "Sensor error"
-		case 2:
-			return "No windlass motion detected"
-		case 3:
-			return "Retrieval docking distance reached"
-		case 4:
-			return "End of rode reached"
+	case 0:
+		return "System error"
+	case 1:
+		return "Sensor error"
+	case 2:
+		return "No windlass motion detected"
+	case 3:
+		return "Retrieval docking distance reached"
+	case 4:
+		return "End of rode reached"
 	default:
 		return fmt.Sprintf("%s(%d)", "WindlassOperationConst", uint16(e))
 	}
 }
+
 type WindlassMonitoringConst uint16
+
 const (
-	ControllerUnderVoltageCutOut	WindlassMonitoringConst = 0
-	ControllerOverCurrentCutOut	WindlassMonitoringConst = 1
-	ControllerOverTemperatureCutOu	WindlassMonitoringConst = 2
-	ManufacturerDefined_2	WindlassMonitoringConst = 3
+	ControllerUnderVoltageCutOut   WindlassMonitoringConst = 0
+	ControllerOverCurrentCutOut    WindlassMonitoringConst = 1
+	ControllerOverTemperatureCutOu WindlassMonitoringConst = 2
+	ManufacturerDefined_2          WindlassMonitoringConst = 3
 )
 
-func (e WindlassMonitoringConst) GoString() string {return e.String() }
+func (e WindlassMonitoringConst) GoString() string { return e.String() }
 func (e WindlassMonitoringConst) String() string {
 	switch e {
-		case 0:
-			return "Controller under voltage cut-out"
-		case 1:
-			return "Controller over current cut-out"
-		case 2:
-			return "Controller over temperature cut-out"
-		case 3:
-			return "Manufacturer defined"
+	case 0:
+		return "Controller under voltage cut-out"
+	case 1:
+		return "Controller over current cut-out"
+	case 2:
+		return "Controller over temperature cut-out"
+	case 3:
+		return "Manufacturer defined"
 	default:
 		return fmt.Sprintf("%s(%d)", "WindlassMonitoringConst", uint16(e))
 	}
 }
-type FurunoBaselineStatusConst uint16
-const (
-	BaselineAntenna12	FurunoBaselineStatusConst = 0
-	BaselineAntenna23	FurunoBaselineStatusConst = 1
-	BaselineAntenna34	FurunoBaselineStatusConst = 2
-	BaselineAntenna41	FurunoBaselineStatusConst = 3
-	BaselineAntenna13	FurunoBaselineStatusConst = 4
-	BaselineAntenna24	FurunoBaselineStatusConst = 5
-)
 
-func (e FurunoBaselineStatusConst) GoString() string {return e.String() }
-func (e FurunoBaselineStatusConst) String() string {
-	switch e {
-		case 0:
-			return "Baseline Antenna 1-2"
-		case 1:
-			return "Baseline Antenna 2-3"
-		case 2:
-			return "Baseline Antenna 3-4"
-		case 3:
-			return "Baseline Antenna 4-1"
-		case 4:
-			return "Baseline Antenna 1-3"
-		case 5:
-			return "Baseline Antenna 2-4"
-	default:
-		return fmt.Sprintf("%s(%d)", "FurunoBaselineStatusConst", uint16(e))
-	}
-}
 type SimnetApModeBitfieldConst uint16
+
 const (
-	Standby_8	SimnetApModeBitfieldConst = 3
-	Heading_5	SimnetApModeBitfieldConst = 4
-	Nav_2	SimnetApModeBitfieldConst = 6
-	NoDrift_2	SimnetApModeBitfieldConst = 8
-	Wind_5	SimnetApModeBitfieldConst = 10
+	Standby_7 SimnetApModeBitfieldConst = 3
+	Heading_5 SimnetApModeBitfieldConst = 4
+	Nav_2     SimnetApModeBitfieldConst = 6
+	NoDrift_2 SimnetApModeBitfieldConst = 8
+	Wind_5    SimnetApModeBitfieldConst = 10
 )
 
-func (e SimnetApModeBitfieldConst) GoString() string {return e.String() }
+func (e SimnetApModeBitfieldConst) GoString() string { return e.String() }
 func (e SimnetApModeBitfieldConst) String() string {
 	switch e {
-		case 3:
-			return "Standby"
-		case 4:
-			return "Heading"
-		case 6:
-			return "Nav"
-		case 8:
-			return "No Drift"
-		case 10:
-			return "Wind"
+	case 3:
+		return "Standby"
+	case 4:
+		return "Heading"
+	case 6:
+		return "Nav"
+	case 8:
+		return "No Drift"
+	case 10:
+		return "Wind"
 	default:
 		return fmt.Sprintf("%s(%d)", "SimnetApModeBitfieldConst", uint16(e))
 	}
 }
+
 type SimnetAlertBitfieldConst uint64
+
 const (
-	NoGPSFix_2	SimnetAlertBitfieldConst = 0
-	NoActiveAutopilotControlUnit_2	SimnetAlertBitfieldConst = 2
-	NoAutopilotComputer_2	SimnetAlertBitfieldConst = 4
-	ApClutchOverload_2	SimnetAlertBitfieldConst = 6
-	ApClutchDisengaged_2	SimnetAlertBitfieldConst = 8
-	RudderControllerFault_2	SimnetAlertBitfieldConst = 10
-	NoRudderResponse_2	SimnetAlertBitfieldConst = 12
-	RudderDriveOverload_2	SimnetAlertBitfieldConst = 14
-	HighDriveSupply_2	SimnetAlertBitfieldConst = 16
-	LowDriveSupply_2	SimnetAlertBitfieldConst = 18
-	MemoryFail_2	SimnetAlertBitfieldConst = 20
-	ApPositionDataMissing_2	SimnetAlertBitfieldConst = 22
-	ApSpeedDataMissing_2	SimnetAlertBitfieldConst = 24
-	ApDepthDataMissing_2	SimnetAlertBitfieldConst = 26
-	ApHeadingDataMissing_2	SimnetAlertBitfieldConst = 28
-	ApNavDataMissing_2	SimnetAlertBitfieldConst = 30
-	ApRudderDataMissing_2	SimnetAlertBitfieldConst = 32
-	ApWindDataMissing_2	SimnetAlertBitfieldConst = 34
-	ApOffCourse_2	SimnetAlertBitfieldConst = 36
-	HighDriveTemperature_2	SimnetAlertBitfieldConst = 38
-	DriveInhibit_2	SimnetAlertBitfieldConst = 40
-	RudderLimit_4	SimnetAlertBitfieldConst = 42
-	DriveComputerMissing_2	SimnetAlertBitfieldConst = 44
-	DriveReadyMissing_2	SimnetAlertBitfieldConst = 46
-	EvcComError_3	SimnetAlertBitfieldConst = 48
-	EvcOverride_2	SimnetAlertBitfieldConst = 50
-	LowCANBusVoltage_2	SimnetAlertBitfieldConst = 52
-	CANBusSupplyOverload_2	SimnetAlertBitfieldConst = 54
-	WindSensorBatteryLow_2	SimnetAlertBitfieldConst = 56
+	NoGPSFix_2                     SimnetAlertBitfieldConst = 0
+	NoActiveAutopilotControlUnit_2 SimnetAlertBitfieldConst = 2
+	NoAutopilotComputer_2          SimnetAlertBitfieldConst = 4
+	ApClutchOverload_2             SimnetAlertBitfieldConst = 6
+	ApClutchDisengaged_2           SimnetAlertBitfieldConst = 8
+	RudderControllerFault_2        SimnetAlertBitfieldConst = 10
+	NoRudderResponse_2             SimnetAlertBitfieldConst = 12
+	RudderDriveOverload_2          SimnetAlertBitfieldConst = 14
+	HighDriveSupply_2              SimnetAlertBitfieldConst = 16
+	LowDriveSupply_2               SimnetAlertBitfieldConst = 18
+	MemoryFail_2                   SimnetAlertBitfieldConst = 20
+	ApPositionDataMissing_2        SimnetAlertBitfieldConst = 22
+	ApSpeedDataMissing_2           SimnetAlertBitfieldConst = 24
+	ApDepthDataMissing_2           SimnetAlertBitfieldConst = 26
+	ApHeadingDataMissing_2         SimnetAlertBitfieldConst = 28
+	ApNavDataMissing_2             SimnetAlertBitfieldConst = 30
+	ApRudderDataMissing_2          SimnetAlertBitfieldConst = 32
+	ApWindDataMissing_2            SimnetAlertBitfieldConst = 34
+	ApOffCourse_2                  SimnetAlertBitfieldConst = 36
+	HighDriveTemperature_2         SimnetAlertBitfieldConst = 38
+	DriveInhibit_2                 SimnetAlertBitfieldConst = 40
+	RudderLimit_4                  SimnetAlertBitfieldConst = 42
+	DriveComputerMissing_2         SimnetAlertBitfieldConst = 44
+	DriveReadyMissing_2            SimnetAlertBitfieldConst = 46
+	EvcComError_3                  SimnetAlertBitfieldConst = 48
+	EvcOverride_2                  SimnetAlertBitfieldConst = 50
+	LowCANBusVoltage_2             SimnetAlertBitfieldConst = 52
+	CANBusSupplyOverload_2         SimnetAlertBitfieldConst = 54
+	WindSensorBatteryLow_2         SimnetAlertBitfieldConst = 56
 )
 
-func (e SimnetAlertBitfieldConst) GoString() string {return e.String() }
+func (e SimnetAlertBitfieldConst) GoString() string { return e.String() }
 func (e SimnetAlertBitfieldConst) String() string {
 	switch e {
-		case 0:
-			return "No GPS fix"
-		case 2:
-			return "No active autopilot control unit"
-		case 4:
-			return "No autopilot computer"
-		case 6:
-			return "AP clutch overload"
-		case 8:
-			return "AP clutch disengaged"
-		case 10:
-			return "Rudder controller fault"
-		case 12:
-			return "No rudder response"
-		case 14:
-			return "Rudder drive overload"
-		case 16:
-			return "High drive supply"
-		case 18:
-			return "Low drive supply"
-		case 20:
-			return "Memory fail"
-		case 22:
-			return "AP position data missing"
-		case 24:
-			return "AP speed data missing"
-		case 26:
-			return "AP depth data missing"
-		case 28:
-			return "AP heading data missing"
-		case 30:
-			return "AP nav data missing"
-		case 32:
-			return "AP rudder data missing"
-		case 34:
-			return "AP wind data missing"
-		case 36:
-			return "AP off course"
-		case 38:
-			return "High drive temperature"
-		case 40:
-			return "Drive inhibit"
-		case 42:
-			return "Rudder limit"
-		case 44:
-			return "Drive computer missing"
-		case 46:
-			return "Drive ready missing"
-		case 48:
-			return "EVC com error"
-		case 50:
-			return "EVC override"
-		case 52:
-			return "Low CAN bus voltage"
-		case 54:
-			return "CAN bus supply overload"
-		case 56:
-			return "Wind sensor battery low"
+	case 0:
+		return "No GPS fix"
+	case 2:
+		return "No active autopilot control unit"
+	case 4:
+		return "No autopilot computer"
+	case 6:
+		return "AP clutch overload"
+	case 8:
+		return "AP clutch disengaged"
+	case 10:
+		return "Rudder controller fault"
+	case 12:
+		return "No rudder response"
+	case 14:
+		return "Rudder drive overload"
+	case 16:
+		return "High drive supply"
+	case 18:
+		return "Low drive supply"
+	case 20:
+		return "Memory fail"
+	case 22:
+		return "AP position data missing"
+	case 24:
+		return "AP speed data missing"
+	case 26:
+		return "AP depth data missing"
+	case 28:
+		return "AP heading data missing"
+	case 30:
+		return "AP nav data missing"
+	case 32:
+		return "AP rudder data missing"
+	case 34:
+		return "AP wind data missing"
+	case 36:
+		return "AP off course"
+	case 38:
+		return "High drive temperature"
+	case 40:
+		return "Drive inhibit"
+	case 42:
+		return "Rudder limit"
+	case 44:
+		return "Drive computer missing"
+	case 46:
+		return "Drive ready missing"
+	case 48:
+		return "EVC com error"
+	case 50:
+		return "EVC override"
+	case 52:
+		return "Low CAN bus voltage"
+	case 54:
+		return "CAN bus supply overload"
+	case 56:
+		return "Wind sensor battery low"
 	default:
 		return fmt.Sprintf("%s(%d)", "SimnetAlertBitfieldConst", uint64(e))
 	}
 }
+
 type EntertainmentRepeatBitfieldConst uint16
+
 const (
-	Song	EntertainmentRepeatBitfieldConst = 0
-	PlayQueue_5	EntertainmentRepeatBitfieldConst = 1
+	Song        EntertainmentRepeatBitfieldConst = 0
+	PlayQueue_5 EntertainmentRepeatBitfieldConst = 1
 )
 
-func (e EntertainmentRepeatBitfieldConst) GoString() string {return e.String() }
+func (e EntertainmentRepeatBitfieldConst) GoString() string { return e.String() }
 func (e EntertainmentRepeatBitfieldConst) String() string {
 	switch e {
-		case 0:
-			return "Song"
-		case 1:
-			return "Play queue"
+	case 0:
+		return "Song"
+	case 1:
+		return "Play queue"
 	default:
 		return fmt.Sprintf("%s(%d)", "EntertainmentRepeatBitfieldConst", uint16(e))
 	}
 }
+
 type EntertainmentShuffleBitfieldConst uint16
+
 const (
-	PlayQueue_6	EntertainmentShuffleBitfieldConst = 0
-	All_3	EntertainmentShuffleBitfieldConst = 1
+	PlayQueue_6 EntertainmentShuffleBitfieldConst = 0
+	All_3       EntertainmentShuffleBitfieldConst = 1
 )
 
-func (e EntertainmentShuffleBitfieldConst) GoString() string {return e.String() }
+func (e EntertainmentShuffleBitfieldConst) GoString() string { return e.String() }
 func (e EntertainmentShuffleBitfieldConst) String() string {
 	switch e {
-		case 0:
-			return "Play queue"
-		case 1:
-			return "All"
+	case 0:
+		return "Play queue"
+	case 1:
+		return "All"
 	default:
 		return fmt.Sprintf("%s(%d)", "EntertainmentShuffleBitfieldConst", uint16(e))
 	}
 }
+
 type WPChangeConst uint16
+
 const (
-	ChangeInMainDataPositionName	WPChangeConst = 0
-	ChangeInSupplementaryParameter	WPChangeConst = 1
-	ChangedNumberOfWPsInRouteWPLis	WPChangeConst = 2
-	RouteChangeSupplementaryParame	WPChangeConst = 3
-	OtherNotSpecifiedChanged	WPChangeConst = 6
+	ChangeInMainDataPositionName   WPChangeConst = 0
+	ChangeInSupplementaryParameter WPChangeConst = 1
+	ChangedNumberOfWPsInRouteWPLis WPChangeConst = 2
+	RouteChangeSupplementaryParame WPChangeConst = 3
+	OtherNotSpecifiedChanged       WPChangeConst = 6
 )
 
-func (e WPChangeConst) GoString() string {return e.String() }
+func (e WPChangeConst) GoString() string { return e.String() }
 func (e WPChangeConst) String() string {
 	switch e {
-		case 0:
-			return "Change in main data (Position, Name)"
-		case 1:
-			return "Change in supplementary parameters (or new added)"
-		case 2:
-			return "Changed number of WPs in Route/WP-List, and/or name changed/added"
-		case 3:
-			return "Route: Change supplementary parameters (or new added)"
-		case 6:
-			return "Other not specified changed"
+	case 0:
+		return "Change in main data (Position, Name)"
+	case 1:
+		return "Change in supplementary parameters (or new added)"
+	case 2:
+		return "Changed number of WPs in Route/WP-List, and/or name changed/added"
+	case 3:
+		return "Route: Change supplementary parameters (or new added)"
+	case 6:
+		return "Other not specified changed"
 	default:
 		return fmt.Sprintf("%s(%d)", "WPChangeConst", uint16(e))
 	}
 }
+
 type WPCriticalParametersConst uint16
+
 const (
-	NavigationMethod	WPCriticalParametersConst = 0
-	XTELimit	WPCriticalParametersConst = 1
+	NavigationMethod WPCriticalParametersConst = 0
+	XTELimit         WPCriticalParametersConst = 1
 )
 
-func (e WPCriticalParametersConst) GoString() string {return e.String() }
+func (e WPCriticalParametersConst) GoString() string { return e.String() }
 func (e WPCriticalParametersConst) String() string {
 	switch e {
-		case 0:
-			return "Navigation Method"
-		case 1:
-			return "XTE Limit"
+	case 0:
+		return "Navigation Method"
+	case 1:
+		return "XTE Limit"
 	default:
 		return fmt.Sprintf("%s(%d)", "WPCriticalParametersConst", uint16(e))
 	}
 }
+
 type DisabledSatellitesConst uint64
+
 const (
-	DisableSv1	DisabledSatellitesConst = 0
-	DisableSv2	DisabledSatellitesConst = 1
-	DisableSv3	DisabledSatellitesConst = 2
-	DisableSv4	DisabledSatellitesConst = 3
-	DisableSv5	DisabledSatellitesConst = 4
-	DisableSv6	DisabledSatellitesConst = 5
-	DisableSv7	DisabledSatellitesConst = 6
-	DisableSv8	DisabledSatellitesConst = 7
-	DisableSv9	DisabledSatellitesConst = 8
-	DisableSv10	DisabledSatellitesConst = 9
-	DisableSv11	DisabledSatellitesConst = 10
-	DisableSv12	DisabledSatellitesConst = 11
-	DisableSv13	DisabledSatellitesConst = 12
-	DisableSv14	DisabledSatellitesConst = 13
-	DisableSv15	DisabledSatellitesConst = 14
-	DisableSv16	DisabledSatellitesConst = 15
-	DisableSv17	DisabledSatellitesConst = 16
-	DisableSv18	DisabledSatellitesConst = 17
-	DisableSv19	DisabledSatellitesConst = 18
-	DisableSv20	DisabledSatellitesConst = 19
-	DisableSv21	DisabledSatellitesConst = 20
-	DisableSv22	DisabledSatellitesConst = 21
-	DisableSv23	DisabledSatellitesConst = 22
-	DisableSv24	DisabledSatellitesConst = 23
-	DisableSv25	DisabledSatellitesConst = 24
-	DisableSv26	DisabledSatellitesConst = 25
-	DisableSv27	DisabledSatellitesConst = 26
-	DisableSv28	DisabledSatellitesConst = 27
-	DisableSv29	DisabledSatellitesConst = 28
-	DisableSv30	DisabledSatellitesConst = 29
-	DisableSv31	DisabledSatellitesConst = 30
-	DisableSv32	DisabledSatellitesConst = 31
-	DisableSv33	DisabledSatellitesConst = 32
-	DisableSv34	DisabledSatellitesConst = 33
-	DisableSv35	DisabledSatellitesConst = 34
-	DisableSv36	DisabledSatellitesConst = 35
-	DisableSv37	DisabledSatellitesConst = 36
-	DisableSv38	DisabledSatellitesConst = 37
-	DisableSv39	DisabledSatellitesConst = 38
-	DisableSv40	DisabledSatellitesConst = 39
+	DisableSv1  DisabledSatellitesConst = 0
+	DisableSv2  DisabledSatellitesConst = 1
+	DisableSv3  DisabledSatellitesConst = 2
+	DisableSv4  DisabledSatellitesConst = 3
+	DisableSv5  DisabledSatellitesConst = 4
+	DisableSv6  DisabledSatellitesConst = 5
+	DisableSv7  DisabledSatellitesConst = 6
+	DisableSv8  DisabledSatellitesConst = 7
+	DisableSv9  DisabledSatellitesConst = 8
+	DisableSv10 DisabledSatellitesConst = 9
+	DisableSv11 DisabledSatellitesConst = 10
+	DisableSv12 DisabledSatellitesConst = 11
+	DisableSv13 DisabledSatellitesConst = 12
+	DisableSv14 DisabledSatellitesConst = 13
+	DisableSv15 DisabledSatellitesConst = 14
+	DisableSv16 DisabledSatellitesConst = 15
+	DisableSv17 DisabledSatellitesConst = 16
+	DisableSv18 DisabledSatellitesConst = 17
+	DisableSv19 DisabledSatellitesConst = 18
+	DisableSv20 DisabledSatellitesConst = 19
+	DisableSv21 DisabledSatellitesConst = 20
+	DisableSv22 DisabledSatellitesConst = 21
+	DisableSv23 DisabledSatellitesConst = 22
+	DisableSv24 DisabledSatellitesConst = 23
+	DisableSv25 DisabledSatellitesConst = 24
+	DisableSv26 DisabledSatellitesConst = 25
+	DisableSv27 DisabledSatellitesConst = 26
+	DisableSv28 DisabledSatellitesConst = 27
+	DisableSv29 DisabledSatellitesConst = 28
+	DisableSv30 DisabledSatellitesConst = 29
+	DisableSv31 DisabledSatellitesConst = 30
+	DisableSv32 DisabledSatellitesConst = 31
+	DisableSv33 DisabledSatellitesConst = 32
+	DisableSv34 DisabledSatellitesConst = 33
+	DisableSv35 DisabledSatellitesConst = 34
+	DisableSv36 DisabledSatellitesConst = 35
+	DisableSv37 DisabledSatellitesConst = 36
+	DisableSv38 DisabledSatellitesConst = 37
+	DisableSv39 DisabledSatellitesConst = 38
+	DisableSv40 DisabledSatellitesConst = 39
 )
 
-func (e DisabledSatellitesConst) GoString() string {return e.String() }
+func (e DisabledSatellitesConst) GoString() string { return e.String() }
 func (e DisabledSatellitesConst) String() string {
 	switch e {
-		case 0:
-			return "Disable SV #1"
-		case 1:
-			return "Disable SV #2"
-		case 2:
-			return "Disable SV #3"
-		case 3:
-			return "Disable SV #4"
-		case 4:
-			return "Disable SV #5"
-		case 5:
-			return "Disable SV #6"
-		case 6:
-			return "Disable SV #7"
-		case 7:
-			return "Disable SV #8"
-		case 8:
-			return "Disable SV #9"
-		case 9:
-			return "Disable SV #10"
-		case 10:
-			return "Disable SV #11"
-		case 11:
-			return "Disable SV #12"
-		case 12:
-			return "Disable SV #13"
-		case 13:
-			return "Disable SV #14"
-		case 14:
-			return "Disable SV #15"
-		case 15:
-			return "Disable SV #16"
-		case 16:
-			return "Disable SV #17"
-		case 17:
-			return "Disable SV #18"
-		case 18:
-			return "Disable SV #19"
-		case 19:
-			return "Disable SV #20"
-		case 20:
-			return "Disable SV #21"
-		case 21:
-			return "Disable SV #22"
-		case 22:
-			return "Disable SV #23"
-		case 23:
-			return "Disable SV #24"
-		case 24:
-			return "Disable SV #25"
-		case 25:
-			return "Disable SV #26"
-		case 26:
-			return "Disable SV #27"
-		case 27:
-			return "Disable SV #28"
-		case 28:
-			return "Disable SV #29"
-		case 29:
-			return "Disable SV #30"
-		case 30:
-			return "Disable SV #31"
-		case 31:
-			return "Disable SV #32"
-		case 32:
-			return "Disable SV #33"
-		case 33:
-			return "Disable SV #34"
-		case 34:
-			return "Disable SV #35"
-		case 35:
-			return "Disable SV #36"
-		case 36:
-			return "Disable SV #37"
-		case 37:
-			return "Disable SV #38"
-		case 38:
-			return "Disable SV #39"
-		case 39:
-			return "Disable SV #40"
+	case 0:
+		return "Disable SV #1"
+	case 1:
+		return "Disable SV #2"
+	case 2:
+		return "Disable SV #3"
+	case 3:
+		return "Disable SV #4"
+	case 4:
+		return "Disable SV #5"
+	case 5:
+		return "Disable SV #6"
+	case 6:
+		return "Disable SV #7"
+	case 7:
+		return "Disable SV #8"
+	case 8:
+		return "Disable SV #9"
+	case 9:
+		return "Disable SV #10"
+	case 10:
+		return "Disable SV #11"
+	case 11:
+		return "Disable SV #12"
+	case 12:
+		return "Disable SV #13"
+	case 13:
+		return "Disable SV #14"
+	case 14:
+		return "Disable SV #15"
+	case 15:
+		return "Disable SV #16"
+	case 16:
+		return "Disable SV #17"
+	case 17:
+		return "Disable SV #18"
+	case 18:
+		return "Disable SV #19"
+	case 19:
+		return "Disable SV #20"
+	case 20:
+		return "Disable SV #21"
+	case 21:
+		return "Disable SV #22"
+	case 22:
+		return "Disable SV #23"
+	case 23:
+		return "Disable SV #24"
+	case 24:
+		return "Disable SV #25"
+	case 25:
+		return "Disable SV #26"
+	case 26:
+		return "Disable SV #27"
+	case 27:
+		return "Disable SV #28"
+	case 28:
+		return "Disable SV #29"
+	case 29:
+		return "Disable SV #30"
+	case 30:
+		return "Disable SV #31"
+	case 31:
+		return "Disable SV #32"
+	case 32:
+		return "Disable SV #33"
+	case 33:
+		return "Disable SV #34"
+	case 34:
+		return "Disable SV #35"
+	case 35:
+		return "Disable SV #36"
+	case 36:
+		return "Disable SV #37"
+	case 37:
+		return "Disable SV #38"
+	case 38:
+		return "Disable SV #39"
+	case 39:
+		return "Disable SV #40"
 	default:
 		return fmt.Sprintf("%s(%d)", "DisabledSatellitesConst", uint64(e))
 	}

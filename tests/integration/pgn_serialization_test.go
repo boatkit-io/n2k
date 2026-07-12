@@ -28,6 +28,8 @@ type pgnCount struct {
 }
 
 func TestPGNSerializationFromN2K(t *testing.T) {
+	skipReplayIntegrationInShortMode(t)
+
 	// Get path to test data file
 	testFile := requireReplayFile(t)
 
@@ -149,6 +151,8 @@ func TestPGNSerializationFromN2K(t *testing.T) {
 }
 
 func TestComprehensivePerformanceProfiling(t *testing.T) {
+	skipReplayIntegrationInShortMode(t)
+
 	// Get all test files from integration directory
 	files := requireReplayFiles(t)
 

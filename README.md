@@ -188,6 +188,8 @@ This repository uses [mise](https://mise.jdx.dev/) tasks.
 mise run codegen
 mise run build
 mise run test
+mise run test-integration
+mise run test-release
 mise run lint
 mise run fmt
 ```
@@ -195,7 +197,18 @@ mise run fmt
 `mise run build` runs code generation when generated files are stale, then
 builds all commands under `./cmd/...`.
 
-Run the Go test suite directly with:
+`mise run test` is the fast development suite and skips replay-heavy integration
+tests. `mise run test-integration` runs the replay corpus explicitly. Before a
+release, run `mise run test-release`; it checks the pinned CANboat input, runs
+lint, the full replay suite, race tests, build/codegen, and verifies generated
+files are up to date.
+
+PGN generation is locked to a specific CANboat release for reproducibility. Use
+`mise run check-canboat` to report whether a newer stable CANboat release exists.
+A newer upstream release is reported as a warning so bugfix releases can still
+ship against the pinned input.
+
+Run the full Go test suite directly with:
 
 ```sh
 go test ./...
