@@ -1,6 +1,6 @@
 module github.com/boatkit-io/n2k
 
-go 1.26.3
+go 1.26.5
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
@@ -11,8 +11,8 @@ require (
 	github.com/schollz/progressbar/v3 v3.19.1
 	github.com/sirupsen/logrus v1.9.4
 	github.com/stretchr/testify v1.11.1
-	golang.org/x/exp v0.0.0-20260611194520-c48552f49976
-	golang.org/x/text v0.38.0
+	golang.org/x/exp v0.0.0-20260709172345-9ea1abe57597
+	golang.org/x/text v0.40.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
@@ -36,7 +36,7 @@ require (
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/spf13/cast v1.10.0 // indirect
 	go.bug.st/serial v1.7.1 // indirect
-	golang.org/x/crypto v0.52.0 // indirect
-	golang.org/x/sys v0.46.0 // indirect
-	golang.org/x/term v0.44.0 // indirect
+	golang.org/x/crypto v0.54.0 // indirect
+	golang.org/x/sys v0.47.0 // indirect
+	golang.org/x/term v0.45.0 // indirect
 )
