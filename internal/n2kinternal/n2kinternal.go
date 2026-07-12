@@ -575,6 +575,15 @@ func (s *N2kService) MessageQueueMaxAge() time.Duration {
 	return s.messageQueueMaxAge
 }
 
+// OutboundQueueLag returns recent outbound endpoint queue/send latency.
+func (s *N2kService) OutboundQueueLag() time.Duration {
+	reporter, ok := s.endpoint.(endpoint.OutboundLagReporter)
+	if !ok {
+		return 0
+	}
+	return reporter.OutboundQueueLag()
+}
+
 type messageQueueSnapshot struct {
 	depth         int
 	oldestAge     time.Duration

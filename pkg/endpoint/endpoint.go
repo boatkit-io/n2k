@@ -11,6 +11,7 @@ package endpoint
 
 import (
 	"context"
+	"time"
 
 	"github.com/brutella/can"
 )
@@ -26,6 +27,12 @@ type Endpoint interface {
 	Close() error
 	SetOutput(MessageHandler)
 	WriteFrame(can.Frame)
+}
+
+// OutboundLagReporter is implemented by endpoints that can report outbound
+// queue/send latency.
+type OutboundLagReporter interface {
+	OutboundQueueLag() time.Duration
 }
 
 // MessageHandler is an interface for the handler of an Endpoint that takes a finished Message object

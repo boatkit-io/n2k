@@ -21,6 +21,13 @@ func (queueTestEndpoint) Close() error                      { return nil }
 func (queueTestEndpoint) SetOutput(endpoint.MessageHandler) {}
 func (queueTestEndpoint) WriteFrame(can.Frame)              {}
 
+type lagTestEndpoint struct {
+	queueTestEndpoint
+	lag time.Duration
+}
+
+func (e lagTestEndpoint) OutboundQueueLag() time.Duration { return e.lag }
+
 func TestHandleMessageLogsWhenHandlerQueueLagDrops(t *testing.T) {
 	var buf bytes.Buffer
 	log := logrus.New()
@@ -74,4 +81,10 @@ func TestMessageQueueLagIncludesProcessingMessage(t *testing.T) {
 
 	assert.GreaterOrEqual(t, service.MessageQueueLag(), 250*time.Millisecond)
 	assert.Equal(t, time.Second, service.MessageQueueMaxAge())
+}
+
+func TestOutboundQueueLagDelegatesToEndpointReporter(t *testing.T) {
+	service := NewN2kService(lagTestEndpoint{lag: 1500 * time.Millisecond}, logrus.New())
+
+	assert.Equal(t, 1500*time.Millisecond, service.OutboundQueueLag())
 }

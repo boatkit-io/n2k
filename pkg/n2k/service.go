@@ -106,6 +106,11 @@ func (s *N2kService) MessageQueueLag() time.Duration {
 	return s.impl.MessageQueueLag()
 }
 
+// OutboundQueueLag returns recent outbound endpoint queue/send latency.
+func (s *N2kService) OutboundQueueLag() time.Duration {
+	return s.impl.OutboundQueueLag()
+}
+
 // MessageQueueMaxAge returns the configured maximum tolerated live CAN message queue lag.
 func (s *N2kService) MessageQueueMaxAge() time.Duration {
 	return s.impl.MessageQueueMaxAge()
