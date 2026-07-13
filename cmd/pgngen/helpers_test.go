@@ -1,7 +1,13 @@
 package main
 
 import (
+	"bytes"
+	"io"
+	"net/http"
+	"strings"
 	"testing"
+
+	"github.com/sirupsen/logrus"
 )
 
 // Test data for helper function validation
@@ -61,6 +67,78 @@ func TestGetReservedValueCount(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestLatestCanboatRelease(t *testing.T) {
+	client := &http.Client{Transport: roundTripFunc(func(r *http.Request) (*http.Response, error) {
+		if r.Header.Get("Accept") != "application/vnd.github+json" {
+			t.Fatalf("unexpected Accept header: %q", r.Header.Get("Accept"))
+		}
+		return &http.Response{
+			StatusCode: http.StatusOK,
+			Status:     "200 OK",
+			Body:       io.NopCloser(strings.NewReader(`{"tag_name":"v7.1.0","html_url":"https://github.com/canboat/canboat/releases/tag/v7.1.0"}`)),
+			Header:     make(http.Header),
+		}, nil
+	})}
+
+	release, err := latestCanboatReleaseWithClient(client, "https://example.test/releases/latest")
+	if err != nil {
+		t.Fatalf("latestCanboatRelease returned error: %v", err)
+	}
+	if release.TagName != "v7.1.0" {
+		t.Fatalf("tag mismatch: got %q", release.TagName)
+	}
+}
+
+func TestLatestCanboatReleaseRejectsHTTPError(t *testing.T) {
+	client := &http.Client{Transport: roundTripFunc(func(_ *http.Request) (*http.Response, error) {
+		return &http.Response{
+			StatusCode: http.StatusForbidden,
+			Status:     "403 Forbidden",
+			Body:       io.NopCloser(strings.NewReader("rate limited")),
+			Header:     make(http.Header),
+		}, nil
+	})}
+
+	_, err := latestCanboatReleaseWithClient(client, "https://example.test/releases/latest")
+	if err == nil {
+		t.Fatal("expected error for non-2xx response")
+	}
+}
+
+func TestReportCanboatReleaseStatusWarnsButDoesNotFail(t *testing.T) {
+	var buf bytes.Buffer
+	previousOutput := log.Out
+	previousLevel := log.GetLevel()
+	previousFormatter := log.Formatter
+	log.SetOutput(&buf)
+	log.SetLevel(logrus.InfoLevel)
+	log.SetFormatter(&logrus.TextFormatter{DisableTimestamp: true})
+	defer func() {
+		log.SetOutput(previousOutput)
+		log.SetLevel(previousLevel)
+		log.SetFormatter(previousFormatter)
+	}()
+
+	reportCanboatReleaseStatus("v7.1.0", githubRelease{
+		TagName: "v7.2.0",
+		HTMLURL: "https://github.com/canboat/canboat/releases/tag/v7.2.0",
+	})
+
+	output := buf.String()
+	if !strings.Contains(output, "newer Canboat release available") {
+		t.Fatalf("expected newer-release warning, got %q", output)
+	}
+	if !strings.Contains(output, "locked=v7.1.0") || !strings.Contains(output, "latest=v7.2.0") {
+		t.Fatalf("expected locked/latest versions in warning, got %q", output)
+	}
+}
+
+type roundTripFunc func(*http.Request) (*http.Response, error)
+
+func (fn roundTripFunc) RoundTrip(req *http.Request) (*http.Response, error) {
+	return fn(req)
 }
 
 func TestCalcMaxRawValue(t *testing.T) {

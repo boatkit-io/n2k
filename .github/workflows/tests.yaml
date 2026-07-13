@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          lfs: true
       - uses: jdx/mise-action@v4
         with: {}
       - name: Get Go directories
@@ -35,12 +37,39 @@ jobs:
           key: ${{ runner.os }}-go-mod-cache-${{ hashFiles('go.sum') }}
       - name: Download dependencies
         run: go mod download
-      - name: Run go test
+      - name: Run fast tests
         env: {}
         ## <<Stencil::Block(gotestEnvVars)>>
 
         ## <</Stencil::Block>>
-        run: gotestsum -- -coverprofile=cover.out ./...
+        run: mise run test
+
+  replay-integration:
+    name: replay integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: true
+      - uses: jdx/mise-action@v4
+        with: {}
+      - name: Get Go directories
+        id: go
+        run: |
+          echo "cache_dir=$(go env GOCACHE)" >> "$GITHUB_OUTPUT"
+          echo "mod_cache_dir=$(go env GOMODCACHE)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v6
+        with:
+          path: ${{ steps.go.outputs.cache_dir }}
+          key: ${{ runner.os }}-go-build-cache-${{ hashFiles('**/go.sum') }}
+      - uses: actions/cache@v6
+        with:
+          path: ${{ steps.go.outputs.mod_cache_dir }}
+          key: ${{ runner.os }}-go-mod-cache-${{ hashFiles('go.sum') }}
+      - name: Download dependencies
+        run: go mod download
+      - name: Run replay integration tests
+        run: mise run test-integration
 
   golangci-lint:
     name: golangci-lint

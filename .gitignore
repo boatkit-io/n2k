@@ -26,6 +26,10 @@ TAGS
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
+# Generated local pgngen inputs/diagnostics
+canboatjson*.cache
+range_min_max_discrepancies.csv
+
 # Log files
 *.log
 

@@ -4,3 +4,4 @@ stencil.lock linguist-generated
 ## <<Stencil::Block(custom)>>
 
 ## <</Stencil::Block>>
+n2kreplays/integration/*.n2k filter=lfs diff=lfs merge=lfs -text
