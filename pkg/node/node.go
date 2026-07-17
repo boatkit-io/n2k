@@ -794,6 +794,7 @@ func (n *Node) processNmeaWriteFieldsGroupFunction(req *pgn.NMEAWriteFieldsGroup
 	readOnly := n.readOnly
 	n.mutex.RUnlock()
 	if readOnly || !addressClaimed || provider == nil || req.Info.TargetId != networkAddress || len(req.Repeating1) != 0 {
+		n.logger.Infof("rejecting configuration write: readOnly=%t claimed=%t provider=%t target=0x%02x node=0x%02x selections=%d", readOnly, addressClaimed, provider != nil, req.Info.TargetId, networkAddress, len(req.Repeating1))
 		return nil
 	}
 
@@ -807,6 +808,7 @@ func (n *Node) processNmeaWriteFieldsGroupFunction(req *pgn.NMEAWriteFieldsGroup
 		}
 		value, decodeErr := decodeGroupFunctionLAU(field.Value)
 		if decodeErr != nil {
+			n.logger.Infof("invalid configuration value for parameter %d: bytes=%v error=%v", *field.Parameter, field.Value, decodeErr)
 			return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.InvalidParameterField)
 		}
 		switch *field.Parameter {
