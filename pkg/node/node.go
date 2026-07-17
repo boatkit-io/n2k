@@ -892,7 +892,7 @@ func encodeGroupFunctionLAU(value string) []byte {
 }
 
 func decodeGroupFunctionLAU(value []byte) (string, error) {
-	if len(value) < 2 || int(value[0]) != len(value) || value[1] != 1 {
+	if len(value) < 2 || (int(value[0]) != len(value) && int(value[0])+1 != len(value)) || value[1] != 1 {
 		return "", fmt.Errorf("invalid ASCII LAU value")
 	}
 	if len(value) == 2 {
