@@ -232,6 +232,11 @@ func (n *Node) handleNmeaWriteFieldsGroupFunction(p pgn.NMEAWriteFieldsGroupFunc
 	n.enqueuePgn(p)
 }
 
+//nolint:gocritic // Subscriber callbacks must accept value PGNs.
+func (n *Node) handleNmeaReadFieldsGroupFunction(p pgn.NMEAReadFieldsGroupFunction) {
+	n.enqueuePgn(p)
+}
+
 func (n *Node) handleProductInformation(p pgn.ProductInformation) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 	n.enqueuePgn(p)
 }
@@ -292,6 +297,12 @@ func (n *Node) Start() error {
 	sub, err = n.subscriber.SubscribeToStruct(pgn.NMEAWriteFieldsGroupFunction{}, n.handleNmeaWriteFieldsGroupFunction)
 	if err != nil {
 		return fmt.Errorf("failed to subscribe to NMEAWriteFieldsGroupFunction: %w", err)
+	}
+	n.subscriptions = append(n.subscriptions, sub)
+
+	sub, err = n.subscriber.SubscribeToStruct(pgn.NMEAReadFieldsGroupFunction{}, n.handleNmeaReadFieldsGroupFunction)
+	if err != nil {
+		return fmt.Errorf("failed to subscribe to NMEAReadFieldsGroupFunction: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
@@ -800,6 +811,46 @@ func (n *Node) processNmeaWriteFieldsGroupFunction(req *pgn.NMEAWriteFieldsGroup
 	return []toSend{{pgn: reply, dest: req.Info.SourceId}}
 }
 
+func (n *Node) processNmeaReadFieldsGroupFunction(req *pgn.NMEAReadFieldsGroupFunction) []toSend {
+	if req.PGN == nil || *req.PGN != pgn.ConfigurationInformationPGN {
+		return nil
+	}
+	n.mutex.RLock()
+	provider, addressClaimed, networkAddress, readOnly := n.configProvider, n.addressClaimed, n.networkAddress, n.readOnly
+	n.mutex.RUnlock()
+	if readOnly || !addressClaimed || provider == nil || req.Info.TargetId != networkAddress || len(req.Repeating1) != 0 {
+		return nil
+	}
+	info, err := provider.GetConfigurationInfo()
+	if err != nil {
+		return nil
+	}
+	values := map[uint8]string{1: info.InstallationDescription1, 2: info.InstallationDescription2, 3: info.ManufacturerInformation}
+	reply := &pgn.NMEAReadFieldsReplyGroupFunction{
+		Info:         pgn.MessageInfo{PGN: pgn.NMEAReadFieldsReplyGroupFunctionPGN, SourceId: networkAddress, TargetId: req.Info.SourceId, Priority: req.Info.Priority},
+		FunctionCode: pgn.ReadFieldsReply, PGN: req.PGN, ManufacturerCode: req.ManufacturerCode, IndustryCode: req.IndustryCode,
+		UniqueID: req.UniqueID, NumberOfSelectionPairs: req.NumberOfSelectionPairs, NumberOfParameters: req.NumberOfParameters,
+	}
+	for _, field := range req.Repeating2 {
+		if field.Parameter == nil {
+			continue
+		}
+		value, ok := values[*field.Parameter]
+		if !ok {
+			return nil
+		}
+		parameter := *field.Parameter
+		reply.Repeating2 = append(reply.Repeating2, pgn.NMEAReadFieldsReplyGroupFunctionRepeating2{Parameter: &parameter, Value: encodeGroupFunctionLAU(value)})
+	}
+	return []toSend{{pgn: reply, dest: req.Info.SourceId}}
+}
+
+func encodeGroupFunctionLAU(value string) []byte {
+	encoded := []byte{uint8(len(value) + 3), 1}
+	encoded = append(encoded, value...)
+	return append(encoded, 0)
+}
+
 func decodeGroupFunctionLAU(value []byte) (string, error) {
 	if len(value) < 2 || int(value[0]) != len(value) || value[1] != 1 {
 		return "", fmt.Errorf("invalid ASCII LAU value")
@@ -1301,6 +1352,8 @@ func (n *Node) processPGN(p any) []toSend {
 		return n.processNmeaCommandGroupFunction(&v)
 	case pgn.NMEAWriteFieldsGroupFunction:
 		return n.processNmeaWriteFieldsGroupFunction(&v)
+	case pgn.NMEAReadFieldsGroupFunction:
+		return n.processNmeaReadFieldsGroupFunction(&v)
 	case pgn.ISOAcknowledgement:
 		n.logger.Debugf("received ISO acknowledgement for PGN %v", v.PGN)
 	case pgn.ISOAddressClaim:

@@ -360,7 +360,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 	err := n.Start()
 	assert.NoError(t, err)
 	assert.True(t, n.started)
-	assert.Len(t, sub.subscriptions, 10, "should have 10 subscriptions after start")
+	assert.Len(t, sub.subscriptions, 11, "should have 11 subscriptions after start")
 
 	err = n.Stop()
 	assert.NoError(t, err)
