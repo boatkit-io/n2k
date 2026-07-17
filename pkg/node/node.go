@@ -785,6 +785,10 @@ func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NMEACommandGroupFunction
 			Info:         pgn.MessageInfo{PGN: pgn.NMEAAcknowledgeGroupFunctionPGN, SourceId: source, TargetId: cmd.Info.SourceId, Priority: 3},
 			FunctionCode: pgn.Acknowledge_5, PGN: cmd.PGN, PGNErrorCode: pgn.Acknowledge_6, TransmissionIntervalPriorityErrorCode: pgn.Acknowledge_2,
 			NumberOfParameters: cmd.NumberOfParameters,
+			Repeating1: []pgn.NMEAAcknowledgeGroupFunctionRepeating1{
+				{Parameter: pgn.Acknowledge_3},
+				{Parameter: pgn.Acknowledge_3},
+			},
 		}
 		return []toSend{{pgn: ack, dest: cmd.Info.SourceId}}
 	}
