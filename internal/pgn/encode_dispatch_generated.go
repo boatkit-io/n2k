@@ -598,56 +598,56 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeNMEARequestGroupFunction(p, stream)
 	case publicpgn.NMEARequestGroupFunction:
 		return EncodeNMEARequestGroupFunction(&p, stream)
-	case *publicpgn.NMEARequestGroupFunctionPartial:
-		return EncodeNMEARequestGroupFunctionPartial(p, stream)
+		case *publicpgn.NMEARequestGroupFunctionPartial:
+			return EncodeNMEARequestGroupFunctionPartial(p, stream)
 	case publicpgn.NMEARequestGroupFunctionPartial:
 		return EncodeNMEARequestGroupFunctionPartial(&p, stream)
 	case *publicpgn.NMEACommandGroupFunction:
 		return EncodeNMEACommandGroupFunction(p, stream)
 	case publicpgn.NMEACommandGroupFunction:
 		return EncodeNMEACommandGroupFunction(&p, stream)
-	case *publicpgn.NMEACommandGroupFunctionPartial:
-		return EncodeNMEACommandGroupFunctionPartial(p, stream)
+		case *publicpgn.NMEACommandGroupFunctionPartial:
+			return EncodeNMEACommandGroupFunctionPartial(p, stream)
 	case publicpgn.NMEACommandGroupFunctionPartial:
 		return EncodeNMEACommandGroupFunctionPartial(&p, stream)
 	case *publicpgn.NMEAAcknowledgeGroupFunction:
 		return EncodeNMEAAcknowledgeGroupFunction(p, stream)
 	case publicpgn.NMEAAcknowledgeGroupFunction:
 		return EncodeNMEAAcknowledgeGroupFunction(&p, stream)
-	case *publicpgn.NMEAAcknowledgeGroupFunctionPartial:
-		return EncodeNMEAAcknowledgeGroupFunctionPartial(p, stream)
+		case *publicpgn.NMEAAcknowledgeGroupFunctionPartial:
+			return EncodeNMEAAcknowledgeGroupFunctionPartial(p, stream)
 	case publicpgn.NMEAAcknowledgeGroupFunctionPartial:
 		return EncodeNMEAAcknowledgeGroupFunctionPartial(&p, stream)
 	case *publicpgn.NMEAReadFieldsGroupFunction:
 		return EncodeNMEAReadFieldsGroupFunction(p, stream)
 	case publicpgn.NMEAReadFieldsGroupFunction:
 		return EncodeNMEAReadFieldsGroupFunction(&p, stream)
-	case *publicpgn.NMEAReadFieldsGroupFunctionPartial:
-		return EncodeNMEAReadFieldsGroupFunctionPartial(p, stream)
+		case *publicpgn.NMEAReadFieldsGroupFunctionPartial:
+			return EncodeNMEAReadFieldsGroupFunctionPartial(p, stream)
 	case publicpgn.NMEAReadFieldsGroupFunctionPartial:
 		return EncodeNMEAReadFieldsGroupFunctionPartial(&p, stream)
 	case *publicpgn.NMEAReadFieldsReplyGroupFunction:
 		return EncodeNMEAReadFieldsReplyGroupFunction(p, stream)
 	case publicpgn.NMEAReadFieldsReplyGroupFunction:
 		return EncodeNMEAReadFieldsReplyGroupFunction(&p, stream)
-	case *publicpgn.NMEAReadFieldsReplyGroupFunctionPartial:
-		return EncodeNMEAReadFieldsReplyGroupFunctionPartial(p, stream)
+		case *publicpgn.NMEAReadFieldsReplyGroupFunctionPartial:
+			return EncodeNMEAReadFieldsReplyGroupFunctionPartial(p, stream)
 	case publicpgn.NMEAReadFieldsReplyGroupFunctionPartial:
 		return EncodeNMEAReadFieldsReplyGroupFunctionPartial(&p, stream)
 	case *publicpgn.NMEAWriteFieldsGroupFunction:
 		return EncodeNMEAWriteFieldsGroupFunction(p, stream)
 	case publicpgn.NMEAWriteFieldsGroupFunction:
 		return EncodeNMEAWriteFieldsGroupFunction(&p, stream)
-	case *publicpgn.NMEAWriteFieldsGroupFunctionPartial:
-		return EncodeNMEAWriteFieldsGroupFunctionPartial(p, stream)
+		case *publicpgn.NMEAWriteFieldsGroupFunctionPartial:
+			return EncodeNMEAWriteFieldsGroupFunctionPartial(p, stream)
 	case publicpgn.NMEAWriteFieldsGroupFunctionPartial:
 		return EncodeNMEAWriteFieldsGroupFunctionPartial(&p, stream)
 	case *publicpgn.NMEAWriteFieldsReplyGroupFunction:
 		return EncodeNMEAWriteFieldsReplyGroupFunction(p, stream)
 	case publicpgn.NMEAWriteFieldsReplyGroupFunction:
 		return EncodeNMEAWriteFieldsReplyGroupFunction(&p, stream)
-	case *publicpgn.NMEAWriteFieldsReplyGroupFunctionPartial:
-		return EncodeNMEAWriteFieldsReplyGroupFunctionPartial(p, stream)
+		case *publicpgn.NMEAWriteFieldsReplyGroupFunctionPartial:
+			return EncodeNMEAWriteFieldsReplyGroupFunctionPartial(p, stream)
 	case publicpgn.NMEAWriteFieldsReplyGroupFunctionPartial:
 		return EncodeNMEAWriteFieldsReplyGroupFunctionPartial(&p, stream)
 	case *publicpgn.PGNListTransmitAndReceive:

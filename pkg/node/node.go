@@ -227,6 +227,11 @@ func (n *Node) handleNmeaCommandGroupFunction(p pgn.NMEACommandGroupFunction) {
 	n.enqueuePgn(p)
 }
 
+//nolint:gocritic // Subscriber callbacks must accept value PGNs.
+func (n *Node) handleNmeaWriteFieldsGroupFunction(p pgn.NMEAWriteFieldsGroupFunction) {
+	n.enqueuePgn(p)
+}
+
 func (n *Node) handleProductInformation(p pgn.ProductInformation) { //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 	n.enqueuePgn(p)
 }
@@ -281,6 +286,12 @@ func (n *Node) Start() error {
 	sub, err = n.subscriber.SubscribeToStruct(pgn.NMEACommandGroupFunction{}, n.handleNmeaCommandGroupFunction)
 	if err != nil {
 		return fmt.Errorf("failed to subscribe to NMEACommandGroupFunction: %w", err)
+	}
+	n.subscriptions = append(n.subscriptions, sub)
+
+	sub, err = n.subscriber.SubscribeToStruct(pgn.NMEAWriteFieldsGroupFunction{}, n.handleNmeaWriteFieldsGroupFunction)
+	if err != nil {
+		return fmt.Errorf("failed to subscribe to NMEAWriteFieldsGroupFunction: %w", err)
 	}
 	n.subscriptions = append(n.subscriptions, sub)
 
@@ -536,6 +547,13 @@ func (n *Node) EnableHeartbeat(enable bool) {
 }
 
 func (n *Node) enqueuePgn(p any) {
+	// Some callers (including lightweight test subscribers) can deliver a
+	// callback before Start has initialized the node context. Keep that event
+	// queued; the processing loop will consume it once started.
+	if n.ctx == nil {
+		n.pgnIn <- p
+		return
+	}
 	select {
 	case n.pgnIn <- p:
 	case <-n.ctx.Done():
@@ -726,6 +744,73 @@ func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NMEACommandGroupFunction
 		return nil
 	}
 	return n.processUnsupportedGroupFunction(cmd.Info, *cmd.PGN, pgn.ReadOrWriteNotSupported)
+}
+
+func (n *Node) processNmeaWriteFieldsGroupFunction(req *pgn.NMEAWriteFieldsGroupFunction) []toSend {
+	if req.PGN == nil || *req.PGN != pgn.ConfigurationInformationPGN {
+		if req.PGN == nil {
+			return nil
+		}
+		return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.ReadOrWriteNotSupported)
+	}
+
+	n.mutex.RLock()
+	provider := n.configProvider
+	addressClaimed := n.addressClaimed
+	networkAddress := n.networkAddress
+	readOnly := n.readOnly
+	n.mutex.RUnlock()
+	if readOnly || !addressClaimed || provider == nil || req.Info.TargetId != networkAddress || len(req.Repeating1) != 0 {
+		return nil
+	}
+
+	info, err := provider.GetConfigurationInfo()
+	if err != nil {
+		return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.AccessDenied_2)
+	}
+	for _, field := range req.Repeating2 {
+		if field.Parameter == nil {
+			continue
+		}
+		value, decodeErr := decodeGroupFunctionLAU(field.Value)
+		if decodeErr != nil {
+			return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.InvalidParameterField)
+		}
+		switch *field.Parameter {
+		case 1:
+			info.InstallationDescription1 = value
+		case 2:
+			info.InstallationDescription2 = value
+		case 3:
+			info.ManufacturerInformation = value
+		default:
+			return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.InvalidParameterField)
+		}
+	}
+	if err := provider.SetConfigurationInfo(info); err != nil {
+		return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.AccessDenied_2)
+	}
+
+	reply := &pgn.NMEAWriteFieldsReplyGroupFunction{
+		Info:         pgn.MessageInfo{PGN: pgn.NMEAWriteFieldsReplyGroupFunctionPGN, SourceId: networkAddress, TargetId: req.Info.SourceId, Priority: req.Info.Priority},
+		FunctionCode: pgn.WriteFieldsReply, PGN: req.PGN, ManufacturerCode: req.ManufacturerCode,
+		IndustryCode: req.IndustryCode, UniqueID: req.UniqueID, NumberOfSelectionPairs: req.NumberOfSelectionPairs,
+		NumberOfParameters: req.NumberOfParameters,
+	}
+	return []toSend{{pgn: reply, dest: req.Info.SourceId}}
+}
+
+func decodeGroupFunctionLAU(value []byte) (string, error) {
+	if len(value) < 2 || int(value[0]) != len(value) || value[1] != 1 {
+		return "", fmt.Errorf("invalid ASCII LAU value")
+	}
+	if len(value) == 2 {
+		return "", nil
+	}
+	if value[len(value)-1] != 0 {
+		return "", fmt.Errorf("unterminated ASCII LAU value")
+	}
+	return string(value[2 : len(value)-1]), nil
 }
 
 func (n *Node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPgn uint32, parameterError pgn.ParameterFieldConst) []toSend {
@@ -1214,6 +1299,8 @@ func (n *Node) processPGN(p any) []toSend {
 		return n.processNmeaRequestGroupFunction(&v)
 	case pgn.NMEACommandGroupFunction:
 		return n.processNmeaCommandGroupFunction(&v)
+	case pgn.NMEAWriteFieldsGroupFunction:
+		return n.processNmeaWriteFieldsGroupFunction(&v)
 	case pgn.ISOAcknowledgement:
 		n.logger.Debugf("received ISO acknowledgement for PGN %v", v.PGN)
 	case pgn.ISOAddressClaim:

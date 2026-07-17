@@ -85,6 +85,44 @@ func TestSetters(t *testing.T) {
 	assert.True(t, n.heartbeatEnabled)
 }
 
+func TestWriteFieldsUpdatesConfigurationInformation(t *testing.T) {
+	provider := &mockConfigurationProvider{info: ConfigurationInfo{
+		InstallationDescription1: "old helm",
+		InstallationDescription2: "old port",
+		ManufacturerInformation:  "boatkit",
+	}}
+	n := NewNode(nil, nil, nil)
+	n.configProvider = provider
+	n.networkAddress = 44
+	n.addressClaimed = true
+	n.readOnly = false
+	parameter := uint8(1)
+	parameterCount := uint8(1)
+	selectionCount := uint8(0)
+	targetPGN := uint32(pgn.ConfigurationInformationPGN)
+	value := append([]byte{uint8(len("new helm") + 3), 1}, []byte("new helm")...)
+	value = append(value, 0)
+
+	responses := n.processNmeaWriteFieldsGroupFunction(&pgn.NMEAWriteFieldsGroupFunction{
+		Info:                   pgn.MessageInfo{SourceId: 33, TargetId: 44},
+		FunctionCode:           pgn.WriteFields,
+		PGN:                    &targetPGN,
+		NumberOfSelectionPairs: &selectionCount,
+		NumberOfParameters:     &parameterCount,
+		Repeating2: []pgn.NMEAWriteFieldsGroupFunctionRepeating2{{
+			Parameter: &parameter,
+			Value:     value,
+		}},
+	})
+
+	assert.Len(t, provider.set, 1)
+	assert.Equal(t, "new helm", provider.set[0].InstallationDescription1)
+	assert.Equal(t, "old port", provider.set[0].InstallationDescription2)
+	assert.Len(t, responses, 1)
+	_, ok := responses[0].pgn.(*pgn.NMEAWriteFieldsReplyGroupFunction)
+	assert.True(t, ok)
+}
+
 func TestComputeName(t *testing.T) {
 	validInfo := DeviceInfo{
 		UniqueNumber:            1,
@@ -322,7 +360,7 @@ func TestLifecycleAndResponses(t *testing.T) {
 	err := n.Start()
 	assert.NoError(t, err)
 	assert.True(t, n.started)
-	assert.Len(t, sub.subscriptions, 9, "should have 9 subscriptions after start")
+	assert.Len(t, sub.subscriptions, 10, "should have 10 subscriptions after start")
 
 	err = n.Stop()
 	assert.NoError(t, err)
