@@ -61,14 +61,12 @@ func run(iface string, source, target uint8, description1, description2 string) 
 		if value == "" {
 			continue
 		}
-		targetPGN, selections, parameters := uint32(pgn.ConfigurationInformationPGN), uint8(0), uint8(1)
+		targetPGN, parameters := uint32(pgn.ConfigurationInformationPGN), uint8(1)
 		parameterValue := parameter
-		uniqueID := uint8(0)
-		write := &pgn.NMEAWriteFieldsGroupFunction{
-			Info:         pgn.MessageInfo{PGN: pgn.NMEAWriteFieldsGroupFunctionPGN, SourceId: source, TargetId: target, Priority: 3},
-			FunctionCode: pgn.WriteFields, PGN: &targetPGN, ManufacturerCode: pgn.Maretron, IndustryCode: pgn.MarineIndustry, UniqueID: &uniqueID,
-			NumberOfSelectionPairs: &selections, NumberOfParameters: &parameters,
-			Repeating2: []pgn.NMEAWriteFieldsGroupFunctionRepeating2{{Parameter: &parameterValue, Value: encodeLAU(value)}},
+		write := &pgn.NMEACommandGroupFunction{
+			Info:         pgn.MessageInfo{PGN: pgn.NMEACommandGroupFunctionPGN, SourceId: source, TargetId: target, Priority: 3},
+			FunctionCode: pgn.Command, PGN: &targetPGN, Priority: pgn.PriorityConst(3), NumberOfParameters: &parameters,
+			Repeating1: []pgn.NMEACommandGroupFunctionRepeating1{{Parameter: &parameterValue, Value: encodeLAU(value)}},
 		}
 		if err := n.WriteTo(write, target); err != nil {
 			return fmt.Errorf("write installation description %d: %w", parameter, err)
@@ -81,6 +79,5 @@ func run(iface string, source, target uint8, description1, description2 string) 
 
 func encodeLAU(value string) []byte {
 	encoded := []byte{uint8(len(value) + 3), 1}
-	encoded = append(encoded, value...)
-	return append(encoded, 0)
+	return append(encoded, value...)
 }
