@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
 
 	"github.com/boatkit-io/n2k/pkg/endpoint/socketcanendpoint"
@@ -18,6 +19,25 @@ import (
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/sirupsen/logrus"
 )
+
+type configurationProvider struct {
+	mutex sync.Mutex
+	info  node.ConfigurationInfo
+}
+
+func (p *configurationProvider) GetConfigurationInfo() (node.ConfigurationInfo, error) {
+	p.mutex.Lock()
+	defer p.mutex.Unlock()
+	return p.info, nil
+}
+
+func (p *configurationProvider) SetConfigurationInfo(info node.ConfigurationInfo) error {
+	p.mutex.Lock()
+	p.info = info
+	p.mutex.Unlock()
+	logrus.Infof("configuration updated: description1=%q description2=%q manufacturer=%q", info.InstallationDescription1, info.InstallationDescription2, info.ManufacturerInformation)
+	return nil
+}
 
 func main() {
 	iface := flag.String("iface", "can0", "SocketCAN interface")
@@ -42,6 +62,21 @@ func run(iface string, address uint8) error {
 	defer service.Stop() //nolint:errcheck // Best-effort shutdown.
 
 	n := node.NewFromService(service)
+	n.SetProductInfo(node.ProductInfo{
+		NMEA2000Version:     1,
+		ProductCode:         1001,
+		ModelID:             "n2k keepalive",
+		SoftwareVersionCode: "dev",
+		ModelVersion:        "dev",
+		ModelSerialCode:     "keepalive",
+		CertificationLevel:  1,
+		LoadEquivalency:     1,
+	})
+	n.SetConfigurationProvider(&configurationProvider{info: node.ConfigurationInfo{
+		InstallationDescription1: "keepalive installation 1",
+		InstallationDescription2: "keepalive installation 2",
+		ManufacturerInformation:  "boatkit n2k keepalive",
+	}})
 	if err := n.SetDeviceInfo(node.DeviceInfo{
 		UniqueNumber:            1001,
 		ManufacturerCode:        pgn.Garmin,
