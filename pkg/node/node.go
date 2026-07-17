@@ -224,16 +224,19 @@ func (n *Node) handleNmeaRequestGroupFunction(p pgn.NMEARequestGroupFunction) {
 
 //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 func (n *Node) handleNmeaCommandGroupFunction(p pgn.NMEACommandGroupFunction) {
+	n.logger.Infof("received NMEA Command Group Function: source=0x%02x target=0x%02x pgn=%v parameters=%d", p.Info.SourceId, p.Info.TargetId, p.PGN, len(p.Repeating1))
 	n.enqueuePgn(p)
 }
 
 //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 func (n *Node) handleNmeaWriteFieldsGroupFunction(p pgn.NMEAWriteFieldsGroupFunction) {
+	n.logger.Infof("received NMEA Write Fields: source=0x%02x target=0x%02x pgn=%v parameters=%d", p.Info.SourceId, p.Info.TargetId, p.PGN, len(p.Repeating2))
 	n.enqueuePgn(p)
 }
 
 //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 func (n *Node) handleNmeaReadFieldsGroupFunction(p pgn.NMEAReadFieldsGroupFunction) {
+	n.logger.Infof("received NMEA Read Fields: source=0x%02x target=0x%02x pgn=%v parameters=%d", p.Info.SourceId, p.Info.TargetId, p.PGN, len(p.Repeating2))
 	n.enqueuePgn(p)
 }
 
