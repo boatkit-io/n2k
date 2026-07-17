@@ -4757,14 +4757,7 @@ func DecodeNMEARequestGroupFunction(Info publicpgn.MessageInfo, stream *DataStre
 			} else {
 				rep.Parameter = v
 			}
-			valueSpec := &fieldSpec_NMEARequestGroupFunction_Value
-			parameter := rep.Parameter
-			if val.PGN != nil && parameter != nil {
-				if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
-					valueSpec = spec
-				}
-			}
-			if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+			if v, err := stream.readGroupFunctionFieldValue(val.PGN, rep.Parameter); err != nil {
 				return nil, fmt.Errorf("parse failed for NMEARequestGroupFunction-Value: %w", err)
 			} else {
 				rep.Value = v
@@ -4836,8 +4829,7 @@ func DecodeNMEACommandGroupFunction(Info publicpgn.MessageInfo, stream *DataStre
 			} else {
 				rep.Parameter = v
 			}
-			valueSpec := &fieldSpec_NMEACommandGroupFunction_Value
-			if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+			if v, err := stream.readGroupFunctionFieldValue(val.PGN, rep.Parameter); err != nil {
 				return nil, fmt.Errorf("parse failed for NMEACommandGroupFunction-Value: %w", err)
 			} else {
 				rep.Value = v

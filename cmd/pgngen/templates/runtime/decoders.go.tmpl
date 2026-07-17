@@ -125,7 +125,11 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
         {{- else }}
         {{- $funcs := getFieldDeserializer $pgn . }}
         {{- if and (eq $pgn.PGN 126208) (eq .Id "Value") }}
+        {{- if or (eq $pgn.Id "NMEARequestGroupFunction") (eq $pgn.Id "NMEACommandGroupFunction") }}
+        if v, err := stream.readGroupFunctionFieldValue(val.PGN, rep.Parameter); err != nil {
+        {{- else }}
         if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+        {{- end }}
         {{- else if and (eq $pgn.PGN 126208) (eq .Id "SelectionValue") }}
         if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
         {{- else }}
@@ -147,7 +151,9 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
 	        }
         {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NMEARequestGroupFunction") (eq $pgn.Id "NMEACommandGroupFunction")) (eq .Id "Parameter") }}
         {{- if eq .Id "Parameter" }}
+        {{- if and (ne $pgn.Id "NMEARequestGroupFunction") (ne $pgn.Id "NMEACommandGroupFunction") }}
         valueSpec := &fieldSpec_{{ $pgn.Id }}_Value
+        {{- end }}
         {{- end }}
         {{- if eq $pgn.Id "NMEARequestGroupFunction" }}
         parameter := rep.Parameter
