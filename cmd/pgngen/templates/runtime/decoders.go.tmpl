@@ -148,13 +148,17 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
         {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NMEARequestGroupFunction") (eq $pgn.Id "NMEACommandGroupFunction")) (eq .Id "Parameter") }}
         {{- if eq .Id "Parameter" }}
         valueSpec := &fieldSpec_{{ $pgn.Id }}_Value
-        parameter := rep.Parameter
         {{- end }}
+        {{- if eq $pgn.Id "NMEARequestGroupFunction" }}
+        parameter := rep.Parameter
         if val.PGN != nil && parameter != nil {
             if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
                 valueSpec = spec
             }
         }
+        {{- end }}
+        // Command group-function values use the group-function variable-data
+        // encoding, even when the referenced PGN has a field specification.
         {{- end }}
         {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NMEAReadFieldsGroupFunction") (eq $pgn.Id "NMEAReadFieldsReplyGroupFunction") (eq $pgn.Id "NMEAWriteFieldsGroupFunction") (eq $pgn.Id "NMEAWriteFieldsReplyGroupFunction")) (eq .Id "SelectionParameter") }}
         valueSpec := &fieldSpec_{{ $pgn.Id }}_SelectionValue
