@@ -882,10 +882,11 @@ func decodeGroupFunctionLAU(value []byte) (string, error) {
 	if len(value) == 2 {
 		return "", nil
 	}
-	if value[len(value)-1] != 0 {
-		return "", fmt.Errorf("unterminated ASCII LAU value")
+	end := len(value)
+	if value[len(value)-1] == 0 {
+		end--
 	}
-	return string(value[2 : len(value)-1]), nil
+	return string(value[2:end]), nil
 }
 
 func (n *Node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPgn uint32, parameterError pgn.ParameterFieldConst) []toSend {
