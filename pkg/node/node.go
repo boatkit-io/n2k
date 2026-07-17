@@ -754,6 +754,19 @@ func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NMEACommandGroupFunction
 	if cmd.PGN == nil {
 		return nil
 	}
+	if *cmd.PGN == pgn.ConfigurationInformationPGN && len(cmd.Repeating1) > 0 {
+		parameters := make([]pgn.NMEAWriteFieldsGroupFunctionRepeating2, 0, len(cmd.Repeating1))
+		for _, field := range cmd.Repeating1 {
+			parameters = append(parameters, pgn.NMEAWriteFieldsGroupFunctionRepeating2{Parameter: field.Parameter, Value: field.Value})
+		}
+		count := uint8(len(parameters))
+		zero := uint8(0)
+		write := pgn.NMEAWriteFieldsGroupFunction{
+			Info: cmd.Info, FunctionCode: pgn.WriteFields, PGN: cmd.PGN,
+			NumberOfSelectionPairs: &zero, NumberOfParameters: &count, Repeating2: parameters,
+		}
+		return n.processNmeaWriteFieldsGroupFunction(&write)
+	}
 	return n.processUnsupportedGroupFunction(cmd.Info, *cmd.PGN, pgn.ReadOrWriteNotSupported)
 }
 
