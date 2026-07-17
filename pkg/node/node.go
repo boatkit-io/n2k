@@ -774,7 +774,19 @@ func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NMEACommandGroupFunction
 			Info: cmd.Info, FunctionCode: pgn.WriteFields, PGN: cmd.PGN,
 			NumberOfSelectionPairs: &zero, NumberOfParameters: &count, Repeating2: parameters,
 		}
-		return n.processNmeaWriteFieldsGroupFunction(&write)
+		responses := n.processNmeaWriteFieldsGroupFunction(&write)
+		if len(responses) == 0 {
+			return nil
+		}
+		n.mutex.RLock()
+		source := n.networkAddress
+		n.mutex.RUnlock()
+		ack := &pgn.NMEAAcknowledgeGroupFunction{
+			Info:         pgn.MessageInfo{PGN: pgn.NMEAAcknowledgeGroupFunctionPGN, SourceId: source, TargetId: cmd.Info.SourceId, Priority: cmd.Info.Priority},
+			FunctionCode: pgn.Acknowledge_5, PGN: cmd.PGN, PGNErrorCode: pgn.Acknowledge_6, TransmissionIntervalPriorityErrorCode: pgn.Acknowledge_2,
+			NumberOfParameters: cmd.NumberOfParameters,
+		}
+		return []toSend{{pgn: ack, dest: cmd.Info.SourceId}}
 	}
 	return n.processUnsupportedGroupFunction(cmd.Info, *cmd.PGN, pgn.ReadOrWriteNotSupported)
 }
