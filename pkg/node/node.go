@@ -224,7 +224,11 @@ func (n *Node) handleNmeaRequestGroupFunction(p pgn.NMEARequestGroupFunction) {
 
 //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 func (n *Node) handleNmeaCommandGroupFunction(p pgn.NMEACommandGroupFunction) {
-	n.logger.Infof("received NMEA Command Group Function: source=0x%02x target=0x%02x pgn=%v parameters=%d", p.Info.SourceId, p.Info.TargetId, p.PGN, len(p.Repeating1))
+	requestedPGN := uint32(0)
+	if p.PGN != nil {
+		requestedPGN = *p.PGN
+	}
+	n.logger.Infof("received NMEA Command Group Function: source=0x%02x target=0x%02x pgn=%d parameters=%d", p.Info.SourceId, p.Info.TargetId, requestedPGN, len(p.Repeating1))
 	n.enqueuePgn(p)
 }
 
@@ -755,8 +759,10 @@ func (n *Node) processNmeaRequestGroupFunction(req *pgn.NMEARequestGroupFunction
 
 func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NMEACommandGroupFunction) []toSend {
 	if cmd.PGN == nil {
+		n.logger.Warn("ignoring NMEA Command Group Function without PGN")
 		return nil
 	}
+	n.logger.Infof("processing NMEA command for PGN %d with %d parameters", *cmd.PGN, len(cmd.Repeating1))
 	if *cmd.PGN == pgn.ConfigurationInformationPGN && len(cmd.Repeating1) > 0 {
 		parameters := make([]pgn.NMEAWriteFieldsGroupFunctionRepeating2, 0, len(cmd.Repeating1))
 		for _, field := range cmd.Repeating1 {
