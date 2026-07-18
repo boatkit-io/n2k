@@ -229,19 +229,28 @@ func (n *Node) handleNmeaCommandGroupFunction(p pgn.NMEACommandGroupFunction) {
 	if p.PGN != nil {
 		requestedPGN = *p.PGN
 	}
-	n.logger.Infof("received NMEA Command Group Function: source=0x%02x target=0x%02x pgn=%d parameters=%d", p.Info.SourceId, p.Info.TargetId, requestedPGN, len(p.Repeating1))
+	n.logger.Infof(
+		"received NMEA Command Group Function: source=0x%02x target=0x%02x pgn=%d parameters=%d",
+		p.Info.SourceId, p.Info.TargetId, requestedPGN, len(p.Repeating1),
+	)
 	n.enqueuePgn(p)
 }
 
 //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 func (n *Node) handleNmeaWriteFieldsGroupFunction(p pgn.NMEAWriteFieldsGroupFunction) {
-	n.logger.Infof("received NMEA Write Fields: source=0x%02x target=0x%02x pgn=%v parameters=%d", p.Info.SourceId, p.Info.TargetId, p.PGN, len(p.Repeating2))
+	n.logger.Infof(
+		"received NMEA Write Fields: source=0x%02x target=0x%02x pgn=%v parameters=%d",
+		p.Info.SourceId, p.Info.TargetId, p.PGN, len(p.Repeating2),
+	)
 	n.enqueuePgn(p)
 }
 
 //nolint:gocritic // Subscriber callbacks must accept value PGNs.
 func (n *Node) handleNmeaReadFieldsGroupFunction(p pgn.NMEAReadFieldsGroupFunction) {
-	n.logger.Infof("received NMEA Read Fields: source=0x%02x target=0x%02x pgn=%v parameters=%d", p.Info.SourceId, p.Info.TargetId, p.PGN, len(p.Repeating2))
+	n.logger.Infof(
+		"received NMEA Read Fields: source=0x%02x target=0x%02x pgn=%v parameters=%d",
+		p.Info.SourceId, p.Info.TargetId, p.PGN, len(p.Repeating2),
+	)
 	n.enqueuePgn(p)
 }
 
@@ -765,11 +774,14 @@ func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NMEACommandGroupFunction
 	}
 	n.logger.Infof("processing NMEA command for PGN %d with %d parameters", *cmd.PGN, len(cmd.Repeating1))
 	if *cmd.PGN == pgn.ConfigurationInformationPGN && len(cmd.Repeating1) > 0 {
+		if len(cmd.Repeating1) > 255 {
+			return n.processUnsupportedGroupFunction(cmd.Info, *cmd.PGN, pgn.InvalidParameterField)
+		}
 		parameters := make([]pgn.NMEAWriteFieldsGroupFunctionRepeating2, 0, len(cmd.Repeating1))
 		for _, field := range cmd.Repeating1 {
-			parameters = append(parameters, pgn.NMEAWriteFieldsGroupFunctionRepeating2{Parameter: field.Parameter, Value: field.Value})
+			parameters = append(parameters, pgn.NMEAWriteFieldsGroupFunctionRepeating2(field))
 		}
-		count := uint8(len(parameters))
+		count := uint8(len(parameters)) //nolint:gosec // Parameter count is bounded above.
 		zero := uint8(0)
 		write := pgn.NMEAWriteFieldsGroupFunction{
 			Info: cmd.Info, FunctionCode: pgn.WriteFields, PGN: cmd.PGN,
@@ -811,7 +823,10 @@ func (n *Node) processNmeaWriteFieldsGroupFunction(req *pgn.NMEAWriteFieldsGroup
 	readOnly := n.readOnly
 	n.mutex.RUnlock()
 	if readOnly || !addressClaimed || provider == nil || req.Info.TargetId != networkAddress || len(req.Repeating1) != 0 {
-		n.logger.Infof("rejecting configuration write: readOnly=%t claimed=%t provider=%t target=0x%02x node=0x%02x selections=%d", readOnly, addressClaimed, provider != nil, req.Info.TargetId, networkAddress, len(req.Repeating1))
+		n.logger.Infof(
+			"rejecting configuration write: readOnly=%t claimed=%t provider=%t target=0x%02x node=0x%02x selections=%d",
+			readOnly, addressClaimed, provider != nil, req.Info.TargetId, networkAddress, len(req.Repeating1),
+		)
 		return nil
 	}
 
@@ -847,7 +862,10 @@ func (n *Node) processNmeaWriteFieldsGroupFunction(req *pgn.NMEAWriteFieldsGroup
 	}
 
 	reply := &pgn.NMEAWriteFieldsReplyGroupFunction{
-		Info:         pgn.MessageInfo{PGN: pgn.NMEAWriteFieldsReplyGroupFunctionPGN, SourceId: networkAddress, TargetId: req.Info.SourceId, Priority: req.Info.Priority},
+		Info: pgn.MessageInfo{
+			PGN:      pgn.NMEAWriteFieldsReplyGroupFunctionPGN,
+			SourceId: networkAddress, TargetId: req.Info.SourceId, Priority: req.Info.Priority,
+		},
 		FunctionCode: pgn.WriteFieldsReply, PGN: req.PGN, ManufacturerCode: req.ManufacturerCode,
 		IndustryCode: req.IndustryCode, UniqueID: req.UniqueID, NumberOfSelectionPairs: req.NumberOfSelectionPairs,
 		NumberOfParameters: req.NumberOfParameters,
@@ -872,7 +890,10 @@ func (n *Node) processNmeaReadFieldsGroupFunction(req *pgn.NMEAReadFieldsGroupFu
 	}
 	values := map[uint8]string{1: info.InstallationDescription1, 2: info.InstallationDescription2, 3: info.ManufacturerInformation}
 	reply := &pgn.NMEAReadFieldsReplyGroupFunction{
-		Info:         pgn.MessageInfo{PGN: pgn.NMEAReadFieldsReplyGroupFunctionPGN, SourceId: networkAddress, TargetId: req.Info.SourceId, Priority: req.Info.Priority},
+		Info: pgn.MessageInfo{
+			PGN:      pgn.NMEAReadFieldsReplyGroupFunctionPGN,
+			SourceId: networkAddress, TargetId: req.Info.SourceId, Priority: req.Info.Priority,
+		},
 		FunctionCode: pgn.ReadFieldsReply, PGN: req.PGN, ManufacturerCode: req.ManufacturerCode, IndustryCode: req.IndustryCode,
 		UniqueID: req.UniqueID, NumberOfSelectionPairs: req.NumberOfSelectionPairs, NumberOfParameters: req.NumberOfParameters,
 	}
@@ -885,14 +906,24 @@ func (n *Node) processNmeaReadFieldsGroupFunction(req *pgn.NMEAReadFieldsGroupFu
 			return nil
 		}
 		parameter := *field.Parameter
-		reply.Repeating2 = append(reply.Repeating2, pgn.NMEAReadFieldsReplyGroupFunctionRepeating2{Parameter: &parameter, Value: encodeGroupFunctionLAU(value)})
+		encoded, encodeErr := encodeGroupFunctionLAU(value)
+		if encodeErr != nil {
+			return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.InvalidParameterField)
+		}
+		reply.Repeating2 = append(reply.Repeating2, pgn.NMEAReadFieldsReplyGroupFunctionRepeating2{
+			Parameter: &parameter,
+			Value:     encoded,
+		})
 	}
 	return []toSend{{pgn: reply, dest: req.Info.SourceId}}
 }
 
-func encodeGroupFunctionLAU(value string) []byte {
-	encoded := []byte{uint8(len(value) + 2), 1}
-	return append(encoded, value...)
+func encodeGroupFunctionLAU(value string) ([]byte, error) {
+	if len(value) > 253 {
+		return nil, fmt.Errorf("LAU value is too long: %d bytes", len(value))
+	}
+	encoded := []byte{uint8(len(value) + 2), 1} //nolint:gosec // Length is bounded above.
+	return append(encoded, value...), nil
 }
 
 func decodeGroupFunctionLAU(value []byte) (string, error) {

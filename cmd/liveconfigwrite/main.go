@@ -31,7 +31,7 @@ func main() {
 	if *description1 == "" && *description2 == "" {
 		logrus.Fatal("provide -description1 and/or -description2")
 	}
-	if err := run(*iface, uint8(*source), uint8(*target), *description1, *description2); err != nil {
+	if err := run(*iface, uint8(*source), uint8(*target), *description1, *description2); err != nil { //nolint:gosec // Bounds checked above.
 		logrus.Fatal(err)
 	}
 }
@@ -46,7 +46,14 @@ func run(iface string, source, target uint8, description1, description2 string) 
 	}
 	defer service.Stop() //nolint:errcheck // Best-effort cleanup.
 	n := node.NewFromService(service)
-	if err := n.SetDeviceInfo(node.DeviceInfo{UniqueNumber: 1001, ManufacturerCode: pgn.Garmin, DeviceFunction: 140, DeviceClass: pgn.Navigation, IndustryGroup: pgn.MarineIndustry, ArbitraryAddressCapable: true}); err != nil {
+	if err := n.SetDeviceInfo(node.DeviceInfo{
+		UniqueNumber:            1001,
+		ManufacturerCode:        pgn.Garmin,
+		DeviceFunction:          140,
+		DeviceClass:             pgn.Navigation,
+		IndustryGroup:           pgn.MarineIndustry,
+		ArbitraryAddressCapable: true,
+	}); err != nil {
 		return err
 	}
 	if err := n.Start(); err != nil {
@@ -63,10 +70,14 @@ func run(iface string, source, target uint8, description1, description2 string) 
 		}
 		targetPGN, parameters := uint32(pgn.ConfigurationInformationPGN), uint8(1)
 		parameterValue := parameter
+		encodedValue, err := encodeLAU(value)
+		if err != nil {
+			return fmt.Errorf("encode installation description %d: %w", parameter, err)
+		}
 		write := &pgn.NMEACommandGroupFunction{
 			Info:         pgn.MessageInfo{PGN: pgn.NMEACommandGroupFunctionPGN, SourceId: source, TargetId: target, Priority: 3},
 			FunctionCode: pgn.Command, PGN: &targetPGN, Priority: pgn.PriorityConst(3), NumberOfParameters: &parameters,
-			Repeating1: []pgn.NMEACommandGroupFunctionRepeating1{{Parameter: &parameterValue, Value: encodeLAU(value)}},
+			Repeating1: []pgn.NMEACommandGroupFunctionRepeating1{{Parameter: &parameterValue, Value: encodedValue}},
 		}
 		if err := n.WriteTo(write, target); err != nil {
 			return fmt.Errorf("write installation description %d: %w", parameter, err)
@@ -77,7 +88,10 @@ func run(iface string, source, target uint8, description1, description2 string) 
 	return nil
 }
 
-func encodeLAU(value string) []byte {
-	encoded := []byte{uint8(len(value) + 2), 1}
-	return append(encoded, value...)
+func encodeLAU(value string) ([]byte, error) {
+	if len(value) > 253 {
+		return nil, fmt.Errorf("LAU value is too long: %d bytes", len(value))
+	}
+	encoded := []byte{uint8(len(value) + 2), 1} //nolint:gosec // Length is bounded above.
+	return append(encoded, value...), nil
 }

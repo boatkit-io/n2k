@@ -55,12 +55,14 @@ func run(iface string) error {
 
 	senderService := n2k.NewN2kService(socketcanendpoint.NewSocketCANEndpoint(log, iface), log)
 	receiverService := n2k.NewN2kService(socketcanendpoint.NewSocketCANEndpoint(log, iface), log)
-	for _, service := range []*n2k.N2kService{senderService, receiverService} {
-		if err := service.Start(ctx); err != nil {
-			return err
-		}
-		defer service.Stop() //nolint:errcheck // Best-effort integration cleanup.
+	if err := senderService.Start(ctx); err != nil {
+		return err
 	}
+	defer senderService.Stop() //nolint:errcheck // Best-effort integration cleanup.
+	if err := receiverService.Start(ctx); err != nil {
+		return err
+	}
+	defer receiverService.Stop() //nolint:errcheck // Best-effort integration cleanup.
 
 	sender := node.NewFromService(senderService)
 	receiver := node.NewFromService(receiverService)
@@ -75,12 +77,14 @@ func run(iface string) error {
 	if err := receiver.SetDeviceInfo(deviceInfo(1002)); err != nil {
 		return err
 	}
-	for _, n := range []*node.Node{sender, receiver} {
-		if err := n.Start(); err != nil {
-			return err
-		}
-		defer n.Stop() //nolint:errcheck // Best-effort integration cleanup.
+	if err := sender.Start(); err != nil {
+		return err
 	}
+	defer sender.Stop() //nolint:errcheck // Best-effort integration cleanup.
+	if err := receiver.Start(); err != nil {
+		return err
+	}
+	defer receiver.Stop() //nolint:errcheck // Best-effort integration cleanup.
 	if err := sender.ClaimAddress(40); err != nil {
 		return err
 	}
@@ -91,11 +95,15 @@ func run(iface string) error {
 
 	targetPGN := uint32(pgn.ConfigurationInformationPGN)
 	selectionCount, parameterCount, parameter := uint8(0), uint8(1), uint8(1)
+	value, err := encodeLAU("written over vcan")
+	if err != nil {
+		return err
+	}
 	write := &pgn.NMEAWriteFieldsGroupFunction{
 		Info:         pgn.MessageInfo{PGN: pgn.NMEAWriteFieldsGroupFunctionPGN, SourceId: 40, TargetId: 41, Priority: 3},
 		FunctionCode: pgn.WriteFields, PGN: &targetPGN,
 		NumberOfSelectionPairs: &selectionCount, NumberOfParameters: &parameterCount,
-		Repeating2: []pgn.NMEAWriteFieldsGroupFunctionRepeating2{{Parameter: &parameter, Value: encodeLAU("written over vcan")}},
+		Repeating2: []pgn.NMEAWriteFieldsGroupFunctionRepeating2{{Parameter: &parameter, Value: value}},
 	}
 	if err := sender.WriteTo(write, 41); err != nil {
 		return fmt.Errorf("send configuration write: %w", err)
@@ -106,7 +114,10 @@ func run(iface string) error {
 		if updated.InstallationDescription1 != "written over vcan" {
 			return fmt.Errorf("unexpected configuration value %q", updated.InstallationDescription1)
 		}
-		fmt.Printf("PASS: node 40 changed node 41 InstallationDescription1 from %q to %q via %s\n", "before", updated.InstallationDescription1, iface)
+		fmt.Printf(
+			"PASS: node 40 changed node 41 InstallationDescription1 from %q to %q via %s\n",
+			"before", updated.InstallationDescription1, iface,
+		)
 		return nil
 	case <-time.After(5 * time.Second):
 		return fmt.Errorf("timed out waiting for configuration update")
@@ -114,11 +125,20 @@ func run(iface string) error {
 }
 
 func deviceInfo(unique uint32) node.DeviceInfo {
-	return node.DeviceInfo{UniqueNumber: unique, ManufacturerCode: pgn.Garmin, DeviceFunction: 140, DeviceClass: pgn.Navigation, IndustryGroup: pgn.MarineIndustry, ArbitraryAddressCapable: true}
+	return node.DeviceInfo{
+		UniqueNumber:            unique,
+		ManufacturerCode:        pgn.Garmin,
+		DeviceFunction:          140,
+		DeviceClass:             pgn.Navigation,
+		IndustryGroup:           pgn.MarineIndustry,
+		ArbitraryAddressCapable: true,
+	}
 }
 
-func encodeLAU(value string) []byte {
-	encoded := []byte{uint8(len(value) + 3), 1}
-	encoded = append(encoded, value...)
-	return append(encoded, 0)
+func encodeLAU(value string) ([]byte, error) {
+	if len(value) > 253 {
+		return nil, fmt.Errorf("LAU value is too long: %d bytes", len(value))
+	}
+	encoded := []byte{uint8(len(value) + 2), 1} //nolint:gosec // Length is bounded above.
+	return append(encoded, value...), nil
 }

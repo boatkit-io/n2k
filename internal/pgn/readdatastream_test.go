@@ -183,6 +183,55 @@ func TestDecodeConfigurationInformationNoTerminatorLAUStrings(t *testing.T) {
 	assert.Equal(t, "", configInfo.ManufacturerInformation)
 }
 
+func TestDecodeNMEACommandGroupFunctionUsesReferencedFieldEncoding(t *testing.T) {
+	raw, err := DecodeNMEACommandGroupFunction(publicpgn.MessageInfo{}, NewDataStream([]uint8{
+		0x01, 0x16, 0xf0, 0x01, 0xf8, 0x02,
+		0x01, 0x05, 0x01, 'o', 'n', 'e',
+		0x02, 0x05, 0x01, 't', 'w', 'o',
+	}))
+
+	if !assert.NoError(t, err) {
+		return
+	}
+	command := raw.(publicpgn.NMEACommandGroupFunction)
+	if assert.Len(t, command.Repeating1, 2) {
+		assert.Equal(t, []byte{0x05, 0x01, 'o', 'n', 'e'}, command.Repeating1[0].Value)
+		assert.Equal(t, []byte{0x05, 0x01, 't', 'w', 'o'}, command.Repeating1[1].Value)
+	}
+}
+
+func TestDecodeNMEAWriteFieldsReplyRepeatingParameters(t *testing.T) {
+	targetPGN := uint32(publicpgn.ConfigurationInformationPGN)
+	uniqueID, selectionCount, parameterCount := uint8(0), uint8(0), uint8(2)
+	parameter1, parameter2 := uint8(1), uint8(2)
+	expected := &publicpgn.NMEAWriteFieldsReplyGroupFunction{
+		FunctionCode:           publicpgn.WriteFieldsReply,
+		PGN:                    &targetPGN,
+		UniqueID:               &uniqueID,
+		NumberOfSelectionPairs: &selectionCount,
+		NumberOfParameters:     &parameterCount,
+		Repeating2: []publicpgn.NMEAWriteFieldsReplyGroupFunctionRepeating2{
+			{Parameter: &parameter1, Value: []byte{0x05, 0x01, 'o', 'n', 'e'}},
+			{Parameter: &parameter2, Value: []byte{0x05, 0x01, 't', 'w', 'o'}},
+		},
+	}
+	encoded := NewDataStream(make([]byte, MaxPGNLength))
+	_, err := EncodeNMEAWriteFieldsReplyGroupFunction(expected, encoded)
+	if !assert.NoError(t, err) {
+		return
+	}
+
+	raw, err := DecodeNMEAWriteFieldsReplyGroupFunction(publicpgn.MessageInfo{}, NewDataStream(encoded.GetData()))
+	if !assert.NoError(t, err) {
+		return
+	}
+	reply := raw.(publicpgn.NMEAWriteFieldsReplyGroupFunction)
+	if assert.Len(t, reply.Repeating2, 2) {
+		assert.Equal(t, expected.Repeating2[0].Value, reply.Repeating2[0].Value)
+		assert.Equal(t, expected.Repeating2[1].Value, reply.Repeating2[1].Value)
+	}
+}
+
 func TestDecodeUtilityPhaseAACPower(t *testing.T) {
 	acPowerRaw, err := DecodeUtilityPhaseAACPower(MessageInfo{}, NewDataStream([]uint8{
 		0x4d, 0x94, 0x35, 0x77, 0x66, 0x94, 0x35, 0x77,

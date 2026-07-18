@@ -35,7 +35,10 @@ func (p *configurationProvider) SetConfigurationInfo(info node.ConfigurationInfo
 	p.mutex.Lock()
 	p.info = info
 	p.mutex.Unlock()
-	logrus.Infof("configuration updated: description1=%q description2=%q manufacturer=%q", info.InstallationDescription1, info.InstallationDescription2, info.ManufacturerInformation)
+	logrus.Infof(
+		"configuration updated: description1=%q description2=%q manufacturer=%q",
+		info.InstallationDescription1, info.InstallationDescription2, info.ManufacturerInformation,
+	)
 	return nil
 }
 
@@ -46,7 +49,7 @@ func main() {
 	if *address > 253 && *address != uint(node.ReadOnlyAddress) {
 		logrus.Fatalf("invalid address %d: use 0-253 or 255", *address)
 	}
-	if err := run(*iface, uint8(*address)); err != nil {
+	if err := run(*iface, uint8(*address)); err != nil { //nolint:gosec // Bounds checked above.
 		logrus.Fatal(err)
 	}
 }

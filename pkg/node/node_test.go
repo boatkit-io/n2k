@@ -119,8 +119,44 @@ func TestWriteFieldsUpdatesConfigurationInformation(t *testing.T) {
 	assert.Equal(t, "new helm", provider.set[0].InstallationDescription1)
 	assert.Equal(t, "old port", provider.set[0].InstallationDescription2)
 	assert.Len(t, responses, 1)
-	_, ok := responses[0].pgn.(*pgn.NMEAWriteFieldsReplyGroupFunction)
-	assert.True(t, ok)
+	reply, ok := responses[0].pgn.(*pgn.NMEAWriteFieldsReplyGroupFunction)
+	if !assert.True(t, ok) {
+		return
+	}
+	assert.Equal(t, &parameterCount, reply.NumberOfParameters)
+	if assert.Len(t, reply.Repeating2, 1) {
+		assert.Equal(t, &parameter, reply.Repeating2[0].Parameter)
+		assert.Equal(t, value, reply.Repeating2[0].Value)
+	}
+}
+
+func TestWriteFieldsDecodesUTF16ConfigurationInformation(t *testing.T) {
+	provider := &mockConfigurationProvider{info: ConfigurationInfo{InstallationDescription1: "old"}}
+	n := NewNode(nil, nil, nil)
+	n.configProvider = provider
+	n.networkAddress = 44
+	n.addressClaimed = true
+	n.readOnly = false
+	parameter, parameterCount, selectionCount := uint8(1), uint8(1), uint8(0)
+	targetPGN := uint32(pgn.ConfigurationInformationPGN)
+	value := []byte{6, 0, 0x4f, 0x60, 0x59, 0x7d}
+
+	responses := n.processNmeaWriteFieldsGroupFunction(&pgn.NMEAWriteFieldsGroupFunction{
+		Info:                   pgn.MessageInfo{SourceId: 33, TargetId: 44},
+		FunctionCode:           pgn.WriteFields,
+		PGN:                    &targetPGN,
+		NumberOfSelectionPairs: &selectionCount,
+		NumberOfParameters:     &parameterCount,
+		Repeating2: []pgn.NMEAWriteFieldsGroupFunctionRepeating2{{
+			Parameter: &parameter,
+			Value:     value,
+		}},
+	})
+
+	if assert.Len(t, provider.set, 1) {
+		assert.Equal(t, "你好", provider.set[0].InstallationDescription1)
+	}
+	assert.Len(t, responses, 1)
 }
 
 func TestComputeName(t *testing.T) {
