@@ -856,8 +856,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_UtilityPhaseCACPower_ApparentPower = FieldSpec{
@@ -869,8 +869,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_UtilityPhaseCBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
@@ -960,8 +960,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_UtilityPhaseBACPower_ApparentPower = FieldSpec{
@@ -973,8 +973,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_UtilityPhaseBBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
@@ -1038,8 +1038,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_UtilityPhaseAACReactivePower_PowerFactor = FieldSpec{
@@ -1064,8 +1064,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_UtilityPhaseAACPower_ApparentPower = FieldSpec{
@@ -1077,8 +1077,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_UtilityPhaseABasicACQuantities_LineLineACRMSVoltage = FieldSpec{
@@ -1142,8 +1142,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_UtilityTotalACReactivePower_PowerFactor = FieldSpec{
@@ -1168,8 +1168,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_UtilityTotalACPower_ApparentPower = FieldSpec{
@@ -1181,8 +1181,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_UtilityAverageBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
@@ -1272,8 +1272,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorPhaseCACReactivePower_PowerFactor = FieldSpec{
@@ -1298,8 +1298,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorPhaseCACPower_ApparentPower = FieldSpec{
@@ -1311,8 +1311,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorPhaseCBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
@@ -1376,8 +1376,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorPhaseBACReactivePower_PowerFactor = FieldSpec{
@@ -1402,8 +1402,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorPhaseBACPower_ApparentPower = FieldSpec{
@@ -1415,8 +1415,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorPhaseBBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
@@ -1480,8 +1480,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorPhaseAACReactivePower_PowerFactor = FieldSpec{
@@ -1506,8 +1506,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorPhaseAACPower_ApparentPower = FieldSpec{
@@ -1519,8 +1519,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorPhaseABasicACQuantities_LineLineACRMSVoltage = FieldSpec{
@@ -1584,8 +1584,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorTotalACReactivePower_PowerFactor = FieldSpec{
@@ -1610,8 +1610,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorTotalACPower_ApparentPower = FieldSpec{
@@ -1623,8 +1623,8 @@ var (
 		Offset:            -2000000000,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GeneratorAverageBasicACQuantities_LineLineACRMSVoltage = FieldSpec{
@@ -1766,7 +1766,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -2442,8 +2442,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_HondaEngineAlerts_ManufacturerCode = FieldSpec{
@@ -5159,8 +5159,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_SimnetMagneticField_B = FieldSpec{
@@ -5185,8 +5185,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_SimnetMagneticField_D = FieldSpec{
@@ -5198,8 +5198,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_SeatalkPilotHeading_ManufacturerCode = FieldSpec{
@@ -8032,8 +8032,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AirmarAttitudeOffset_PitchOffset = FieldSpec{
@@ -8045,8 +8045,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AirmarAttitudeOffset_RollOffset = FieldSpec{
@@ -8058,8 +8058,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AirmarCalibrateCompass_ManufacturerCode = FieldSpec{
@@ -8201,8 +8201,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AirmarCalibrateCompass_PitchAndRollDamping = FieldSpec{
@@ -10541,8 +10541,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_HeadingTrackControl_HeadingToSteerCourse = FieldSpec{
@@ -10606,7 +10606,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -10619,7 +10619,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
+		DomainMin:         &[]float64{-1.02396875}[0],
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -10632,7 +10632,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -10671,8 +10671,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_Rudder_Position = FieldSpec{
@@ -10684,8 +10684,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_VesselHeading_SID = FieldSpec{
@@ -10723,8 +10723,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_VesselHeading_Variation = FieldSpec{
@@ -10736,8 +10736,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_RateOfTurn_SID = FieldSpec{
@@ -10762,7 +10762,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
+		DomainMin:         &[]float64{-1.02396875}[0],
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -10788,7 +10788,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -10814,8 +10814,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_Attitude_Pitch = FieldSpec{
@@ -10827,8 +10827,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_Attitude_Roll = FieldSpec{
@@ -10840,8 +10840,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_MagneticVariation_SID = FieldSpec{
@@ -10879,8 +10879,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_EngineParametersRapidUpdate_Speed = FieldSpec{
@@ -11230,8 +11230,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_ElectricEnergyStorageStatusDynamic_MaxChargeCurrent = FieldSpec{
@@ -11243,8 +11243,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_ElectricEnergyStorageStatusDynamic_CoolingSystemStatus = FieldSpec{
@@ -12322,8 +12322,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_BatteryStatus_Temperature = FieldSpec{
@@ -12673,8 +12673,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_ACPowerCurrentPhaseB_SID = FieldSpec{
@@ -12725,8 +12725,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_ACPowerCurrentPhaseC_SID = FieldSpec{
@@ -12777,8 +12777,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{4.294967292e+09}[0],
+		DomainMin:         &[]float64{-2e+09}[0],
+		DomainMax:         &[]float64{2.294967292e+09}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_ACVoltageFrequencyPhaseA_SID = FieldSpec{
@@ -13050,8 +13050,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_LeewayAngle_SID = FieldSpec{
@@ -13076,8 +13076,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_VesselAcceleration_SID = FieldSpec{
@@ -13206,8 +13206,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_ElectricEnergyStorageStatusRapidUpdate_EnergyStorageIdentifier = FieldSpec{
@@ -13284,8 +13284,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{65532}[0],
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_ThrusterControlStatus_SID = FieldSpec{
@@ -13557,7 +13557,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -13674,7 +13674,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -13713,7 +13713,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -14636,7 +14636,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -14714,7 +14714,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -14766,7 +14766,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -14935,7 +14935,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
+		DomainMin:         &[]float64{-1.02396875}[0],
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -15260,8 +15260,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_Datum_DeltaLongitude = FieldSpec{
@@ -15273,8 +15273,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_Datum_DeltaAltitude = FieldSpec{
@@ -15286,7 +15286,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -15299,7 +15299,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -15312,7 +15312,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -15325,7 +15325,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -15338,7 +15338,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -15364,7 +15364,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -15481,8 +15481,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_NavigationData_DestinationLongitude = FieldSpec{
@@ -15494,8 +15494,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_NavigationData_WaypointClosingVelocity = FieldSpec{
@@ -15585,8 +15585,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_NavigationRouteWPInformation_WPLongitude = FieldSpec{
@@ -15598,8 +15598,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_SetDriftRapidUpdate_SID = FieldSpec{
@@ -15754,8 +15754,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GNSSControlStatus_PdopMask = FieldSpec{
@@ -15819,7 +15819,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -15923,8 +15923,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_GNSSSatsInView_Azimuth = FieldSpec{
@@ -15962,7 +15962,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -16248,7 +16248,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -16261,7 +16261,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -16274,7 +16274,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -16300,7 +16300,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -16313,7 +16313,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -16326,7 +16326,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -16547,7 +16547,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -17327,7 +17327,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -17756,8 +17756,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AISChannelManagement_NorthEastLatitudeCorner1 = FieldSpec{
@@ -17769,8 +17769,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AISChannelManagement_SouthWestLongitudeCorner2 = FieldSpec{
@@ -17782,8 +17782,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AISChannelManagement_SouthWestLatitudeCorner2 = FieldSpec{
@@ -17795,8 +17795,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AISClassBGroupAssignment_SourceID = FieldSpec{
@@ -17821,8 +17821,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AISClassBGroupAssignment_NorthEastLatitudeCorner1 = FieldSpec{
@@ -17834,8 +17834,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AISClassBGroupAssignment_SouthWestLongitudeCorner2 = FieldSpec{
@@ -17847,8 +17847,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AISClassBGroupAssignment_SouthWestLatitudeCorner2 = FieldSpec{
@@ -17860,8 +17860,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_AISClassBGroupAssignment_QuietTime = FieldSpec{
@@ -17899,8 +17899,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_DSCDistressCallInformation_LongitudeOfVesselReported = FieldSpec{
@@ -17912,8 +17912,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_DSCDistressCallInformation_TimeOfPosition = FieldSpec{
@@ -17990,8 +17990,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_DSCCallInformation_LongitudeOfVesselReported = FieldSpec{
@@ -18003,8 +18003,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_DSCCallInformation_TimeOfPosition = FieldSpec{
@@ -19329,7 +19329,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -19420,8 +19420,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_RouteAndWPServiceRouteWPNamePosition_WPLongitude = FieldSpec{
@@ -19433,8 +19433,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_RouteAndWPServiceRouteWPName_StartRps = FieldSpec{
@@ -19602,7 +19602,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -19888,7 +19888,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -19966,8 +19966,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_RouteAndWPServiceWPListWPNamePosition_WPLongitude = FieldSpec{
@@ -19979,8 +19979,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_WindData_SID = FieldSpec{
@@ -20395,8 +20395,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_TideStationData_StationLongitude = FieldSpec{
@@ -20408,8 +20408,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_TideStationData_TideLevel = FieldSpec{
@@ -20421,7 +20421,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -20473,8 +20473,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_SalinityStationData_StationLongitude = FieldSpec{
@@ -20486,8 +20486,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_SalinityStationData_WaterTemperature = FieldSpec{
@@ -20538,8 +20538,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_CurrentStationData_StationLongitude = FieldSpec{
@@ -20551,8 +20551,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_CurrentStationData_MeasurementDepth = FieldSpec{
@@ -20642,8 +20642,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_MeteorologicalStationData_StationLongitude = FieldSpec{
@@ -20655,8 +20655,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_MeteorologicalStationData_WindSpeed = FieldSpec{
@@ -20759,8 +20759,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-90}[0],
+		DomainMax:         &[]float64{90}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_MooredBuoyStationData_StationLongitude = FieldSpec{
@@ -20772,8 +20772,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-180}[0],
+		DomainMax:         &[]float64{180}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_MooredBuoyStationData_WindSpeed = FieldSpec{
@@ -25140,8 +25140,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_FurunoSensorSetup_PitchOffset = FieldSpec{
@@ -25153,8 +25153,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_FurunoSensorSetup_RollOffset = FieldSpec{
@@ -25166,8 +25166,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         nil,
-		DomainMax:         nil,
+		DomainMin:         &[]float64{-3276.7}[0],
+		DomainMax:         &[]float64{3276.4}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_FurunoSensorSetup_F8 = FieldSpec{
@@ -32368,7 +32368,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
@@ -33850,8 +33850,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_FurunoHeelAngleRollInformation_Field4 = FieldSpec{
@@ -33863,8 +33863,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_FurunoHeelAngleRollInformation_Field6 = FieldSpec{
@@ -33876,8 +33876,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_FurunoHeelAngleRollInformation_Field8 = FieldSpec{
@@ -33889,8 +33889,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_SimnetSonarStatusFrequencyAndDspVoltage_ManufacturerCode = FieldSpec{
@@ -34097,8 +34097,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_FurunoMultiSatsInViewExtended_Azimuth = FieldSpec{
@@ -34110,8 +34110,8 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
-		DomainMax:         &[]float64{6.2831852}[0],
+		DomainMin:         &[]float64{-3.1415926}[0],
+		DomainMax:         &[]float64{3.1415926}[0],
 		BitLengthVariable: false,
 	}
     fieldSpec_FurunoMultiSatsInViewExtended_Snr = FieldSpec{
@@ -34136,7 +34136,7 @@ var (
 		Offset:            0,
 		IsSigned:          true,
 		ReservedCount:     2,
-		DomainMin:         &[]float64{0}[0],
+		DomainMin:         nil,
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}

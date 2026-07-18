@@ -179,7 +179,11 @@ func (conv *canboatConverter) fixDomainLimits(field *PGNField) {
 		applyDomainRange(field, override)
 	}
 
-	if rng, ok := conv.domainRanges[domainKey{PhysicalQuantity: field.PhysicalQuantity, Unit: field.Unit}]; ok {
+	if rng, ok := conv.domainRanges[domainKey{
+		PhysicalQuantity: field.PhysicalQuantity,
+		Unit:             field.Unit,
+		Signed:           field.Signed,
+	}]; ok {
 		applyDomainRange(field, rng)
 	}
 

@@ -22,6 +22,19 @@ func TestOffset(t *testing.T) {
 	assert.Equal(t, uint32(25), s.getBitOffset())
 }
 
+func TestDecodeRudderPreservesNegativePosition(t *testing.T) {
+	// -0.25 radians at 0.0001 rad resolution is the signed raw value -2500 (0xf63c).
+	stream := NewDataStream([]byte{0x00, 0xff, 0xff, 0x7f, 0x3c, 0xf6, 0xff, 0xff})
+	decoded, err := DecodeRudder(publicpgn.MessageInfo{}, stream)
+	assert.NoError(t, err)
+
+	rudder, ok := decoded.(publicpgn.Rudder)
+	assert.True(t, ok)
+	if assert.NotNil(t, rudder.Position) {
+		assert.InDelta(t, -0.25, *rudder.Position, 0.00001)
+	}
+}
+
 func TestNumerics(t *testing.T) {
 	// test a variety of uint64 basics
 	uintTests := []struct {

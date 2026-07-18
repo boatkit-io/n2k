@@ -362,6 +362,14 @@ func TestFixDomainLimitsUsesMappingAndFallbacks(t *testing.T) {
 				Min: float64Ptr(0),
 				Max: float64Ptr(10),
 			},
+			{PhysicalQuantity: "ANGLE", Unit: "rad", Signed: false}: {
+				Min: float64Ptr(0),
+				Max: float64Ptr(6.28),
+			},
+			{PhysicalQuantity: "ANGLE", Unit: "rad", Signed: true}: {
+				Min: float64Ptr(-3.14),
+				Max: float64Ptr(3.14),
+			},
 		},
 	}
 
@@ -369,6 +377,13 @@ func TestFixDomainLimitsUsesMappingAndFallbacks(t *testing.T) {
 	conv.fixDomainLimits(&field)
 	if field.DomainMin == nil || *field.DomainMin != 0 || field.DomainMax == nil || *field.DomainMax != 10 {
 		t.Fatalf("expected mapping applied to Time field, got min=%v max=%v", field.DomainMin, field.DomainMax)
+	}
+
+	signedAngle := PGNField{PhysicalQuantity: "ANGLE", Unit: "rad", Signed: true}
+	conv.fixDomainLimits(&signedAngle)
+	if signedAngle.DomainMin == nil || *signedAngle.DomainMin != -3.14 ||
+		signedAngle.DomainMax == nil || *signedAngle.DomainMax != 3.14 {
+		t.Fatalf("expected signed angle mapping, got min=%v max=%v", signedAngle.DomainMin, signedAngle.DomainMax)
 	}
 
 	lat := PGNField{Id: "Latitude"}
