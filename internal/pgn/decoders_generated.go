@@ -4749,32 +4749,24 @@ func DecodeNMEARequestGroupFunction(Info publicpgn.MessageInfo, stream *DataStre
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.NMEARequestGroupFunctionRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.NMEARequestGroupFunctionRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEARequestGroupFunction_Parameter); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEARequestGroupFunction-Parameter: %w", err)
-		} else {
-			rep.Parameter = v
-		}
-		valueSpec := &fieldSpec_NMEARequestGroupFunction_Value
-		parameter := rep.Parameter
-		if val.PGN != nil && parameter != nil {
-			if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
-				valueSpec = spec
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.NMEARequestGroupFunctionRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEARequestGroupFunction_Parameter); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEARequestGroupFunction-Parameter: %w", err)
+			} else {
+				rep.Parameter = v
 			}
-		}
-		if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEARequestGroupFunction-Value: %w", err)
-		} else {
-			rep.Value = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+			if v, err := stream.readGroupFunctionFieldValue(val.PGN, rep.Parameter); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEARequestGroupFunction-Value: %w", err)
+			} else {
+				rep.Value = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -4829,32 +4821,24 @@ func DecodeNMEACommandGroupFunction(Info publicpgn.MessageInfo, stream *DataStre
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.NMEACommandGroupFunctionRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.NMEACommandGroupFunctionRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEACommandGroupFunction_Parameter); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEACommandGroupFunction-Parameter: %w", err)
-		} else {
-			rep.Parameter = v
-		}
-		valueSpec := &fieldSpec_NMEACommandGroupFunction_Value
-		parameter := rep.Parameter
-		if val.PGN != nil && parameter != nil {
-			if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
-				valueSpec = spec
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.NMEACommandGroupFunctionRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEACommandGroupFunction_Parameter); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEACommandGroupFunction-Parameter: %w", err)
+			} else {
+				rep.Parameter = v
 			}
-		}
-		if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEACommandGroupFunction-Value: %w", err)
-		} else {
-			rep.Value = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+			if v, err := stream.readGroupFunctionFieldValue(val.PGN, rep.Parameter); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEACommandGroupFunction-Value: %w", err)
+			} else {
+				rep.Value = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -4914,20 +4898,19 @@ func DecodeNMEAAcknowledgeGroupFunction(Info publicpgn.MessageInfo, stream *Data
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.NMEAAcknowledgeGroupFunctionRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.NMEAAcknowledgeGroupFunctionRepeating1
-		if v, err := stream.readLookupField(4); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEAAcknowledgeGroupFunction-Parameter: %w", err)
-		} else {
-			rep.Parameter = publicpgn.ParameterFieldConst(v)
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.NMEAAcknowledgeGroupFunctionRepeating1
+			if v, err := stream.readLookupField(4); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEAAcknowledgeGroupFunction-Parameter: %w", err)
+			} else {
+				rep.Parameter = publicpgn.ParameterFieldConst(v)
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -4980,6 +4963,9 @@ func DecodeNMEAReadFieldsGroupFunction(Info publicpgn.MessageInfo, stream *DataS
 		return nil, fmt.Errorf("parse failed for NMEAReadFieldsGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
+		if v != nil {
+			repeat2Count = uint16(*v)
+		}
 	}
 	if val.PGN != nil && (IsProprietaryPGN(*val.PGN) || !HasDecoder(*val.PGN)) {
 		partial := publicpgn.NMEAReadFieldsGroupFunctionPartial{
@@ -5001,37 +4987,49 @@ func DecodeNMEAReadFieldsGroupFunction(Info publicpgn.MessageInfo, stream *DataS
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.NMEAReadFieldsGroupFunctionRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.NMEAReadFieldsGroupFunctionRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAReadFieldsGroupFunction_SelectionParameter); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEAReadFieldsGroupFunction-SelectionParameter: %w", err)
-		} else {
-			rep.SelectionParameter = v
-		}
-		valueSpec := &fieldSpec_NMEAReadFieldsGroupFunction_SelectionValue
-		parameter := rep.SelectionParameter
-		if val.PGN != nil && parameter != nil {
-			if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
-				valueSpec = spec
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.NMEAReadFieldsGroupFunctionRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAReadFieldsGroupFunction_SelectionParameter); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEAReadFieldsGroupFunction-SelectionParameter: %w", err)
+			} else {
+				rep.SelectionParameter = v
 			}
-		}
-		if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEAReadFieldsGroupFunction-SelectionValue: %w", err)
-		} else {
-			rep.SelectionValue = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+			valueSpec := &fieldSpec_NMEAReadFieldsGroupFunction_SelectionValue
+			parameter := rep.SelectionParameter
+			if val.PGN != nil && parameter != nil {
+				if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
+					valueSpec = spec
+				}
+			}
+			if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEAReadFieldsGroupFunction-SelectionValue: %w", err)
+			} else {
+				rep.SelectionValue = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 	val.Repeating2 = make([]publicpgn.NMEAReadFieldsGroupFunctionRepeating2, 0)
 	if repeat2Count == 0 {
 		return val, nil
+	}
+	for {
+		var rep publicpgn.NMEAReadFieldsGroupFunctionRepeating2
+		if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAReadFieldsGroupFunction_Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for NMEAReadFieldsGroupFunction-Parameter: %w", err)
+		} else {
+			rep.Parameter = v
+		}
+		val.Repeating2 = append(val.Repeating2, rep)
+		repeat2Count--
+		if repeat2Count == 0 {
+			break
+		}
 	}
 
 	return val, nil
@@ -5083,6 +5081,9 @@ func DecodeNMEAReadFieldsReplyGroupFunction(Info publicpgn.MessageInfo, stream *
 		return nil, fmt.Errorf("parse failed for NMEAReadFieldsReplyGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
+		if v != nil {
+			repeat2Count = uint16(*v)
+		}
 	}
 	if val.PGN != nil && (IsProprietaryPGN(*val.PGN) || !HasDecoder(*val.PGN)) {
 		partial := publicpgn.NMEAReadFieldsReplyGroupFunctionPartial{
@@ -5104,37 +5105,54 @@ func DecodeNMEAReadFieldsReplyGroupFunction(Info publicpgn.MessageInfo, stream *
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.NMEAReadFieldsReplyGroupFunctionRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.NMEAReadFieldsReplyGroupFunctionRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAReadFieldsReplyGroupFunction_SelectionParameter); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEAReadFieldsReplyGroupFunction-SelectionParameter: %w", err)
-		} else {
-			rep.SelectionParameter = v
-		}
-		valueSpec := &fieldSpec_NMEAReadFieldsReplyGroupFunction_SelectionValue
-		parameter := rep.SelectionParameter
-		if val.PGN != nil && parameter != nil {
-			if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
-				valueSpec = spec
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.NMEAReadFieldsReplyGroupFunctionRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAReadFieldsReplyGroupFunction_SelectionParameter); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEAReadFieldsReplyGroupFunction-SelectionParameter: %w", err)
+			} else {
+				rep.SelectionParameter = v
 			}
-		}
-		if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEAReadFieldsReplyGroupFunction-SelectionValue: %w", err)
-		} else {
-			rep.SelectionValue = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+			valueSpec := &fieldSpec_NMEAReadFieldsReplyGroupFunction_SelectionValue
+			parameter := rep.SelectionParameter
+			if val.PGN != nil && parameter != nil {
+				if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
+					valueSpec = spec
+				}
+			}
+			if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEAReadFieldsReplyGroupFunction-SelectionValue: %w", err)
+			} else {
+				rep.SelectionValue = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 	val.Repeating2 = make([]publicpgn.NMEAReadFieldsReplyGroupFunctionRepeating2, 0)
 	if repeat2Count == 0 {
 		return val, nil
+	}
+	for {
+		var rep publicpgn.NMEAReadFieldsReplyGroupFunctionRepeating2
+		if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAReadFieldsReplyGroupFunction_Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for NMEAReadFieldsReplyGroupFunction-Parameter: %w", err)
+		} else {
+			rep.Parameter = v
+		}
+		if v, err := stream.readGroupFunctionFieldValue(val.PGN, rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for NMEAReadFieldsReplyGroupFunction-Value: %w", err)
+		} else {
+			rep.Value = v
+		}
+		val.Repeating2 = append(val.Repeating2, rep)
+		repeat2Count--
+		if repeat2Count == 0 {
+			break
+		}
 	}
 
 	return val, nil
@@ -5186,6 +5204,9 @@ func DecodeNMEAWriteFieldsGroupFunction(Info publicpgn.MessageInfo, stream *Data
 		return nil, fmt.Errorf("parse failed for NMEAWriteFieldsGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
+		if v != nil {
+			repeat2Count = uint16(*v)
+		}
 	}
 	if val.PGN != nil && (IsProprietaryPGN(*val.PGN) || !HasDecoder(*val.PGN)) {
 		partial := publicpgn.NMEAWriteFieldsGroupFunctionPartial{
@@ -5207,37 +5228,54 @@ func DecodeNMEAWriteFieldsGroupFunction(Info publicpgn.MessageInfo, stream *Data
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.NMEAWriteFieldsGroupFunctionRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.NMEAWriteFieldsGroupFunctionRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAWriteFieldsGroupFunction_SelectionParameter); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEAWriteFieldsGroupFunction-SelectionParameter: %w", err)
-		} else {
-			rep.SelectionParameter = v
-		}
-		valueSpec := &fieldSpec_NMEAWriteFieldsGroupFunction_SelectionValue
-		parameter := rep.SelectionParameter
-		if val.PGN != nil && parameter != nil {
-			if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
-				valueSpec = spec
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.NMEAWriteFieldsGroupFunctionRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAWriteFieldsGroupFunction_SelectionParameter); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEAWriteFieldsGroupFunction-SelectionParameter: %w", err)
+			} else {
+				rep.SelectionParameter = v
 			}
-		}
-		if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEAWriteFieldsGroupFunction-SelectionValue: %w", err)
-		} else {
-			rep.SelectionValue = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+			valueSpec := &fieldSpec_NMEAWriteFieldsGroupFunction_SelectionValue
+			parameter := rep.SelectionParameter
+			if val.PGN != nil && parameter != nil {
+				if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
+					valueSpec = spec
+				}
+			}
+			if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEAWriteFieldsGroupFunction-SelectionValue: %w", err)
+			} else {
+				rep.SelectionValue = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 	val.Repeating2 = make([]publicpgn.NMEAWriteFieldsGroupFunctionRepeating2, 0)
 	if repeat2Count == 0 {
 		return val, nil
+	}
+	for {
+		var rep publicpgn.NMEAWriteFieldsGroupFunctionRepeating2
+		if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAWriteFieldsGroupFunction_Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for NMEAWriteFieldsGroupFunction-Parameter: %w", err)
+		} else {
+			rep.Parameter = v
+		}
+		if v, err := stream.readGroupFunctionFieldValue(val.PGN, rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for NMEAWriteFieldsGroupFunction-Value: %w", err)
+		} else {
+			rep.Value = v
+		}
+		val.Repeating2 = append(val.Repeating2, rep)
+		repeat2Count--
+		if repeat2Count == 0 {
+			break
+		}
 	}
 
 	return val, nil
@@ -5289,6 +5327,9 @@ func DecodeNMEAWriteFieldsReplyGroupFunction(Info publicpgn.MessageInfo, stream 
 		return nil, fmt.Errorf("parse failed for NMEAWriteFieldsReplyGroupFunction-NumberOfParameters: %w", err)
 	} else {
 		val.NumberOfParameters = v
+		if v != nil {
+			repeat2Count = uint16(*v)
+		}
 	}
 	if val.PGN != nil && (IsProprietaryPGN(*val.PGN) || !HasDecoder(*val.PGN)) {
 		partial := publicpgn.NMEAWriteFieldsReplyGroupFunctionPartial{
@@ -5310,37 +5351,54 @@ func DecodeNMEAWriteFieldsReplyGroupFunction(Info publicpgn.MessageInfo, stream 
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.NMEAWriteFieldsReplyGroupFunctionRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.NMEAWriteFieldsReplyGroupFunctionRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAWriteFieldsReplyGroupFunction_SelectionParameter); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEAWriteFieldsReplyGroupFunction-SelectionParameter: %w", err)
-		} else {
-			rep.SelectionParameter = v
-		}
-		valueSpec := &fieldSpec_NMEAWriteFieldsReplyGroupFunction_SelectionValue
-		parameter := rep.SelectionParameter
-		if val.PGN != nil && parameter != nil {
-			if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
-				valueSpec = spec
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.NMEAWriteFieldsReplyGroupFunctionRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAWriteFieldsReplyGroupFunction_SelectionParameter); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEAWriteFieldsReplyGroupFunction-SelectionParameter: %w", err)
+			} else {
+				rep.SelectionParameter = v
 			}
-		}
-		if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
-			return nil, fmt.Errorf("parse failed for NMEAWriteFieldsReplyGroupFunction-SelectionValue: %w", err)
-		} else {
-			rep.SelectionValue = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+			valueSpec := &fieldSpec_NMEAWriteFieldsReplyGroupFunction_SelectionValue
+			parameter := rep.SelectionParameter
+			if val.PGN != nil && parameter != nil {
+				if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
+					valueSpec = spec
+				}
+			}
+			if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+				return nil, fmt.Errorf("parse failed for NMEAWriteFieldsReplyGroupFunction-SelectionValue: %w", err)
+			} else {
+				rep.SelectionValue = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 	val.Repeating2 = make([]publicpgn.NMEAWriteFieldsReplyGroupFunctionRepeating2, 0)
 	if repeat2Count == 0 {
 		return val, nil
+	}
+	for {
+		var rep publicpgn.NMEAWriteFieldsReplyGroupFunctionRepeating2
+		if v, err := ReadRaw[uint8](stream, &fieldSpec_NMEAWriteFieldsReplyGroupFunction_Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for NMEAWriteFieldsReplyGroupFunction-Parameter: %w", err)
+		} else {
+			rep.Parameter = v
+		}
+		if v, err := stream.readGroupFunctionFieldValue(val.PGN, rep.Parameter); err != nil {
+			return nil, fmt.Errorf("parse failed for NMEAWriteFieldsReplyGroupFunction-Value: %w", err)
+		} else {
+			rep.Value = v
+		}
+		val.Repeating2 = append(val.Repeating2, rep)
+		repeat2Count--
+		if repeat2Count == 0 {
+			break
+		}
 	}
 
 	return val, nil
@@ -6706,25 +6764,24 @@ func DecodeAirmarCalibrateSpeed(Info publicpgn.MessageInfo, stream *DataStream) 
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.AirmarCalibrateSpeedRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.AirmarCalibrateSpeedRepeating1
-		if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarCalibrateSpeed_InputFrequency); err != nil {
-			return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-InputFrequency: %w", err)
-		} else {
-			rep.InputFrequency = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarCalibrateSpeed_OutputSpeed); err != nil {
-			return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-OutputSpeed: %w", err)
-		} else {
-			rep.OutputSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.AirmarCalibrateSpeedRepeating1
+			if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarCalibrateSpeed_InputFrequency); err != nil {
+				return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-InputFrequency: %w", err)
+			} else {
+				rep.InputFrequency = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_AirmarCalibrateSpeed_OutputSpeed); err != nil {
+				return nil, fmt.Errorf("parse failed for AirmarCalibrateSpeed-OutputSpeed: %w", err)
+			} else {
+				rep.OutputSpeed = nullableUnit(units.MetersPerSecond, v, units.NewVelocity)
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -7897,35 +7954,34 @@ func DecodeAlertThreshold(Info publicpgn.MessageInfo, stream *DataStream) (any, 
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.AlertThresholdRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.AlertThresholdRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertThreshold_ParameterNumber); err != nil {
-			return nil, fmt.Errorf("parse failed for AlertThreshold-ParameterNumber: %w", err)
-		} else {
-			rep.ParameterNumber = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertThreshold_TriggerMethod); err != nil {
-			return nil, fmt.Errorf("parse failed for AlertThreshold-TriggerMethod: %w", err)
-		} else {
-			rep.TriggerMethod = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertThreshold_ThresholdDataFormat); err != nil {
-			return nil, fmt.Errorf("parse failed for AlertThreshold-ThresholdDataFormat: %w", err)
-		} else {
-			rep.ThresholdDataFormat = v
-		}
-		if v, err := ReadRaw[uint64](stream, &fieldSpec_AlertThreshold_ThresholdLevel); err != nil {
-			return nil, fmt.Errorf("parse failed for AlertThreshold-ThresholdLevel: %w", err)
-		} else {
-			rep.ThresholdLevel = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.AlertThresholdRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertThreshold_ParameterNumber); err != nil {
+				return nil, fmt.Errorf("parse failed for AlertThreshold-ParameterNumber: %w", err)
+			} else {
+				rep.ParameterNumber = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertThreshold_TriggerMethod); err != nil {
+				return nil, fmt.Errorf("parse failed for AlertThreshold-TriggerMethod: %w", err)
+			} else {
+				rep.TriggerMethod = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertThreshold_ThresholdDataFormat); err != nil {
+				return nil, fmt.Errorf("parse failed for AlertThreshold-ThresholdDataFormat: %w", err)
+			} else {
+				rep.ThresholdDataFormat = v
+			}
+			if v, err := ReadRaw[uint64](stream, &fieldSpec_AlertThreshold_ThresholdLevel); err != nil {
+				return nil, fmt.Errorf("parse failed for AlertThreshold-ThresholdLevel: %w", err)
+			} else {
+				rep.ThresholdLevel = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -7991,30 +8047,29 @@ func DecodeAlertValue(Info publicpgn.MessageInfo, stream *DataStream) (any, erro
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.AlertValueRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.AlertValueRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertValue_ValueParameterNumber); err != nil {
-			return nil, fmt.Errorf("parse failed for AlertValue-ValueParameterNumber: %w", err)
-		} else {
-			rep.ValueParameterNumber = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertValue_ValueDataFormat); err != nil {
-			return nil, fmt.Errorf("parse failed for AlertValue-ValueDataFormat: %w", err)
-		} else {
-			rep.ValueDataFormat = v
-		}
-		if v, err := ReadRaw[uint64](stream, &fieldSpec_AlertValue_ValueData); err != nil {
-			return nil, fmt.Errorf("parse failed for AlertValue-ValueData: %w", err)
-		} else {
-			rep.ValueData = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.AlertValueRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertValue_ValueParameterNumber); err != nil {
+				return nil, fmt.Errorf("parse failed for AlertValue-ValueParameterNumber: %w", err)
+			} else {
+				rep.ValueParameterNumber = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_AlertValue_ValueDataFormat); err != nil {
+				return nil, fmt.Errorf("parse failed for AlertValue-ValueDataFormat: %w", err)
+			} else {
+				rep.ValueDataFormat = v
+			}
+			if v, err := ReadRaw[uint64](stream, &fieldSpec_AlertValue_ValueData); err != nil {
+				return nil, fmt.Errorf("parse failed for AlertValue-ValueData: %w", err)
+			} else {
+				rep.ValueData = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -9318,61 +9373,60 @@ func DecodeACInputStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, e
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.ACInputStatusRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.ACInputStatusRepeating1
-		if v, err := stream.readLookupField(2); err != nil {
-			return nil, fmt.Errorf("parse failed for ACInputStatus-Line: %w", err)
-		} else {
-			rep.Line = publicpgn.ACLineConst(v)
-		}
-		if v, err := stream.readLookupField(2); err != nil {
-			return nil, fmt.Errorf("parse failed for ACInputStatus-Acceptability: %w", err)
-		} else {
-			rep.Acceptability = publicpgn.AcceptabilityConst(v)
-		}
-		stream.skipBits(4)
-		if v, err := ReadScaled[float32](stream, &fieldSpec_ACInputStatus_Voltage); err != nil {
-			return nil, fmt.Errorf("parse failed for ACInputStatus-Voltage: %w", err)
-		} else {
-			rep.Voltage = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_ACInputStatus_Current); err != nil {
-			return nil, fmt.Errorf("parse failed for ACInputStatus-Current: %w", err)
-		} else {
-			rep.Current = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_ACInputStatus_Frequency); err != nil {
-			return nil, fmt.Errorf("parse failed for ACInputStatus-Frequency: %w", err)
-		} else {
-			rep.Frequency = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_ACInputStatus_BreakerSize); err != nil {
-			return nil, fmt.Errorf("parse failed for ACInputStatus-BreakerSize: %w", err)
-		} else {
-			rep.BreakerSize = v
-		}
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_ACInputStatus_RealPower); err != nil {
-			return nil, fmt.Errorf("parse failed for ACInputStatus-RealPower: %w", err)
-		} else {
-			rep.RealPower = v
-		}
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_ACInputStatus_ReactivePower); err != nil {
-			return nil, fmt.Errorf("parse failed for ACInputStatus-ReactivePower: %w", err)
-		} else {
-			rep.ReactivePower = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_ACInputStatus_PowerFactor); err != nil {
-			return nil, fmt.Errorf("parse failed for ACInputStatus-PowerFactor: %w", err)
-		} else {
-			rep.PowerFactor = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.ACInputStatusRepeating1
+			if v, err := stream.readLookupField(2); err != nil {
+				return nil, fmt.Errorf("parse failed for ACInputStatus-Line: %w", err)
+			} else {
+				rep.Line = publicpgn.ACLineConst(v)
+			}
+			if v, err := stream.readLookupField(2); err != nil {
+				return nil, fmt.Errorf("parse failed for ACInputStatus-Acceptability: %w", err)
+			} else {
+				rep.Acceptability = publicpgn.AcceptabilityConst(v)
+			}
+			stream.skipBits(4)
+			if v, err := ReadScaled[float32](stream, &fieldSpec_ACInputStatus_Voltage); err != nil {
+				return nil, fmt.Errorf("parse failed for ACInputStatus-Voltage: %w", err)
+			} else {
+				rep.Voltage = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_ACInputStatus_Current); err != nil {
+				return nil, fmt.Errorf("parse failed for ACInputStatus-Current: %w", err)
+			} else {
+				rep.Current = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_ACInputStatus_Frequency); err != nil {
+				return nil, fmt.Errorf("parse failed for ACInputStatus-Frequency: %w", err)
+			} else {
+				rep.Frequency = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_ACInputStatus_BreakerSize); err != nil {
+				return nil, fmt.Errorf("parse failed for ACInputStatus-BreakerSize: %w", err)
+			} else {
+				rep.BreakerSize = v
+			}
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_ACInputStatus_RealPower); err != nil {
+				return nil, fmt.Errorf("parse failed for ACInputStatus-RealPower: %w", err)
+			} else {
+				rep.RealPower = v
+			}
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_ACInputStatus_ReactivePower); err != nil {
+				return nil, fmt.Errorf("parse failed for ACInputStatus-ReactivePower: %w", err)
+			} else {
+				rep.ReactivePower = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_ACInputStatus_PowerFactor); err != nil {
+				return nil, fmt.Errorf("parse failed for ACInputStatus-PowerFactor: %w", err)
+			} else {
+				rep.PowerFactor = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -9398,61 +9452,60 @@ func DecodeACOutputStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, 
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.ACOutputStatusRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.ACOutputStatusRepeating1
-		if v, err := stream.readLookupField(2); err != nil {
-			return nil, fmt.Errorf("parse failed for ACOutputStatus-Line: %w", err)
-		} else {
-			rep.Line = publicpgn.LineConst(v)
-		}
-		if v, err := stream.readLookupField(3); err != nil {
-			return nil, fmt.Errorf("parse failed for ACOutputStatus-Waveform: %w", err)
-		} else {
-			rep.Waveform = publicpgn.WaveformConst(v)
-		}
-		stream.skipBits(3)
-		if v, err := ReadScaled[float32](stream, &fieldSpec_ACOutputStatus_Voltage); err != nil {
-			return nil, fmt.Errorf("parse failed for ACOutputStatus-Voltage: %w", err)
-		} else {
-			rep.Voltage = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_ACOutputStatus_Current); err != nil {
-			return nil, fmt.Errorf("parse failed for ACOutputStatus-Current: %w", err)
-		} else {
-			rep.Current = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_ACOutputStatus_Frequency); err != nil {
-			return nil, fmt.Errorf("parse failed for ACOutputStatus-Frequency: %w", err)
-		} else {
-			rep.Frequency = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_ACOutputStatus_BreakerSize); err != nil {
-			return nil, fmt.Errorf("parse failed for ACOutputStatus-BreakerSize: %w", err)
-		} else {
-			rep.BreakerSize = v
-		}
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_ACOutputStatus_RealPower); err != nil {
-			return nil, fmt.Errorf("parse failed for ACOutputStatus-RealPower: %w", err)
-		} else {
-			rep.RealPower = v
-		}
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_ACOutputStatus_ReactivePower); err != nil {
-			return nil, fmt.Errorf("parse failed for ACOutputStatus-ReactivePower: %w", err)
-		} else {
-			rep.ReactivePower = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_ACOutputStatus_PowerFactor); err != nil {
-			return nil, fmt.Errorf("parse failed for ACOutputStatus-PowerFactor: %w", err)
-		} else {
-			rep.PowerFactor = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.ACOutputStatusRepeating1
+			if v, err := stream.readLookupField(2); err != nil {
+				return nil, fmt.Errorf("parse failed for ACOutputStatus-Line: %w", err)
+			} else {
+				rep.Line = publicpgn.LineConst(v)
+			}
+			if v, err := stream.readLookupField(3); err != nil {
+				return nil, fmt.Errorf("parse failed for ACOutputStatus-Waveform: %w", err)
+			} else {
+				rep.Waveform = publicpgn.WaveformConst(v)
+			}
+			stream.skipBits(3)
+			if v, err := ReadScaled[float32](stream, &fieldSpec_ACOutputStatus_Voltage); err != nil {
+				return nil, fmt.Errorf("parse failed for ACOutputStatus-Voltage: %w", err)
+			} else {
+				rep.Voltage = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_ACOutputStatus_Current); err != nil {
+				return nil, fmt.Errorf("parse failed for ACOutputStatus-Current: %w", err)
+			} else {
+				rep.Current = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_ACOutputStatus_Frequency); err != nil {
+				return nil, fmt.Errorf("parse failed for ACOutputStatus-Frequency: %w", err)
+			} else {
+				rep.Frequency = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_ACOutputStatus_BreakerSize); err != nil {
+				return nil, fmt.Errorf("parse failed for ACOutputStatus-BreakerSize: %w", err)
+			} else {
+				rep.BreakerSize = v
+			}
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_ACOutputStatus_RealPower); err != nil {
+				return nil, fmt.Errorf("parse failed for ACOutputStatus-RealPower: %w", err)
+			} else {
+				rep.RealPower = v
+			}
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_ACOutputStatus_ReactivePower); err != nil {
+				return nil, fmt.Errorf("parse failed for ACOutputStatus-ReactivePower: %w", err)
+			} else {
+				rep.ReactivePower = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_ACOutputStatus_PowerFactor); err != nil {
+				return nil, fmt.Errorf("parse failed for ACOutputStatus-PowerFactor: %w", err)
+			} else {
+				rep.PowerFactor = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -11128,30 +11181,29 @@ func DecodeGNSSPositionData(Info publicpgn.MessageInfo, stream *DataStream) (any
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.GNSSPositionDataRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.GNSSPositionDataRepeating1
-		if v, err := stream.readLookupField(4); err != nil {
-			return nil, fmt.Errorf("parse failed for GNSSPositionData-ReferenceStationType: %w", err)
-		} else {
-			rep.ReferenceStationType = publicpgn.GNSConst(v)
-		}
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_GNSSPositionData_ReferenceStationID); err != nil {
-			return nil, fmt.Errorf("parse failed for GNSSPositionData-ReferenceStationID: %w", err)
-		} else {
-			rep.ReferenceStationID = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_GNSSPositionData_AgeOfDGNSSCorrections); err != nil {
-			return nil, fmt.Errorf("parse failed for GNSSPositionData-AgeOfDGNSSCorrections: %w", err)
-		} else {
-			rep.AgeOfDGNSSCorrections = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.GNSSPositionDataRepeating1
+			if v, err := stream.readLookupField(4); err != nil {
+				return nil, fmt.Errorf("parse failed for GNSSPositionData-ReferenceStationType: %w", err)
+			} else {
+				rep.ReferenceStationType = publicpgn.GNSConst(v)
+			}
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_GNSSPositionData_ReferenceStationID); err != nil {
+				return nil, fmt.Errorf("parse failed for GNSSPositionData-ReferenceStationID: %w", err)
+			} else {
+				rep.ReferenceStationID = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_GNSSPositionData_AgeOfDGNSSCorrections); err != nil {
+				return nil, fmt.Errorf("parse failed for GNSSPositionData-AgeOfDGNSSCorrections: %w", err)
+			} else {
+				rep.AgeOfDGNSSCorrections = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -11859,35 +11911,34 @@ func DecodeNavigationRouteWPInformation(Info publicpgn.MessageInfo, stream *Data
 	stream.skipBits(8)
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.NavigationRouteWPInformationRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.NavigationRouteWPInformationRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_NavigationRouteWPInformation_WPID); err != nil {
-			return nil, fmt.Errorf("parse failed for NavigationRouteWPInformation-WPID: %w", err)
-		} else {
-			rep.WPID = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for NavigationRouteWPInformation-WPName: %w", err)
-		} else {
-			rep.WPName = v
-		}
-		if v, err := ReadScaled[float64](stream, &fieldSpec_NavigationRouteWPInformation_WPLatitude); err != nil {
-			return nil, fmt.Errorf("parse failed for NavigationRouteWPInformation-WPLatitude: %w", err)
-		} else {
-			rep.WPLatitude = v
-		}
-		if v, err := ReadScaled[float64](stream, &fieldSpec_NavigationRouteWPInformation_WPLongitude); err != nil {
-			return nil, fmt.Errorf("parse failed for NavigationRouteWPInformation-WPLongitude: %w", err)
-		} else {
-			rep.WPLongitude = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.NavigationRouteWPInformationRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_NavigationRouteWPInformation_WPID); err != nil {
+				return nil, fmt.Errorf("parse failed for NavigationRouteWPInformation-WPID: %w", err)
+			} else {
+				rep.WPID = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for NavigationRouteWPInformation-WPName: %w", err)
+			} else {
+				rep.WPName = v
+			}
+			if v, err := ReadScaled[float64](stream, &fieldSpec_NavigationRouteWPInformation_WPLatitude); err != nil {
+				return nil, fmt.Errorf("parse failed for NavigationRouteWPInformation-WPLatitude: %w", err)
+			} else {
+				rep.WPLatitude = v
+			}
+			if v, err := ReadScaled[float64](stream, &fieldSpec_NavigationRouteWPInformation_WPLongitude); err != nil {
+				return nil, fmt.Errorf("parse failed for NavigationRouteWPInformation-WPLongitude: %w", err)
+			} else {
+				rep.WPLongitude = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -12125,46 +12176,45 @@ func DecodeGNSSSatsInView(Info publicpgn.MessageInfo, stream *DataStream) (any, 
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.GNSSSatsInViewRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.GNSSSatsInViewRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_GNSSSatsInView_Prn); err != nil {
-			return nil, fmt.Errorf("parse failed for GNSSSatsInView-Prn: %w", err)
-		} else {
-			rep.Prn = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_GNSSSatsInView_Elevation); err != nil {
-			return nil, fmt.Errorf("parse failed for GNSSSatsInView-Elevation: %w", err)
-		} else {
-			rep.Elevation = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_GNSSSatsInView_Azimuth); err != nil {
-			return nil, fmt.Errorf("parse failed for GNSSSatsInView-Azimuth: %w", err)
-		} else {
-			rep.Azimuth = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_GNSSSatsInView_Snr); err != nil {
-			return nil, fmt.Errorf("parse failed for GNSSSatsInView-Snr: %w", err)
-		} else {
-			rep.Snr = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_GNSSSatsInView_RangeResiduals); err != nil {
-			return nil, fmt.Errorf("parse failed for GNSSSatsInView-RangeResiduals: %w", err)
-		} else {
-			rep.RangeResiduals = nullableUnit(units.Meter, v, units.NewDistance)
-		}
-		if v, err := stream.readLookupField(4); err != nil {
-			return nil, fmt.Errorf("parse failed for GNSSSatsInView-Status: %w", err)
-		} else {
-			rep.Status = publicpgn.SatelliteStatusConst(v)
-		}
-		stream.skipBits(4)
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.GNSSSatsInViewRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_GNSSSatsInView_Prn); err != nil {
+				return nil, fmt.Errorf("parse failed for GNSSSatsInView-Prn: %w", err)
+			} else {
+				rep.Prn = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_GNSSSatsInView_Elevation); err != nil {
+				return nil, fmt.Errorf("parse failed for GNSSSatsInView-Elevation: %w", err)
+			} else {
+				rep.Elevation = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_GNSSSatsInView_Azimuth); err != nil {
+				return nil, fmt.Errorf("parse failed for GNSSSatsInView-Azimuth: %w", err)
+			} else {
+				rep.Azimuth = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_GNSSSatsInView_Snr); err != nil {
+				return nil, fmt.Errorf("parse failed for GNSSSatsInView-Snr: %w", err)
+			} else {
+				rep.Snr = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_GNSSSatsInView_RangeResiduals); err != nil {
+				return nil, fmt.Errorf("parse failed for GNSSSatsInView-RangeResiduals: %w", err)
+			} else {
+				rep.RangeResiduals = nullableUnit(units.Meter, v, units.NewDistance)
+			}
+			if v, err := stream.readLookupField(4); err != nil {
+				return nil, fmt.Errorf("parse failed for GNSSSatsInView-Status: %w", err)
+			} else {
+				rep.Status = publicpgn.SatelliteStatusConst(v)
+			}
+			stream.skipBits(4)
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -14426,26 +14476,25 @@ func DecodeAISAcknowledgeBinary(Info publicpgn.MessageInfo, stream *DataStream) 
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.AISAcknowledgeBinaryRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.AISAcknowledgeBinaryRepeating1
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_AISAcknowledgeBinary_DestinationID); err != nil {
-			return nil, fmt.Errorf("parse failed for AISAcknowledgeBinary-DestinationID: %w", err)
-		} else {
-			rep.DestinationID = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_AISAcknowledgeBinary_SequenceNumber); err != nil {
-			return nil, fmt.Errorf("parse failed for AISAcknowledgeBinary-SequenceNumber: %w", err)
-		} else {
-			rep.SequenceNumber = v
-		}
-		stream.skipBits(6)
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.AISAcknowledgeBinaryRepeating1
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_AISAcknowledgeBinary_DestinationID); err != nil {
+				return nil, fmt.Errorf("parse failed for AISAcknowledgeBinary-DestinationID: %w", err)
+			} else {
+				rep.DestinationID = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_AISAcknowledgeBinary_SequenceNumber); err != nil {
+				return nil, fmt.Errorf("parse failed for AISAcknowledgeBinary-SequenceNumber: %w", err)
+			} else {
+				rep.SequenceNumber = v
+			}
+			stream.skipBits(6)
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -14769,56 +14818,55 @@ func DecodeRouteAndWPServiceDatabaseList(Info publicpgn.MessageInfo, stream *Dat
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.RouteAndWPServiceDatabaseListRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.RouteAndWPServiceDatabaseListRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceDatabaseList_DatabaseID); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-DatabaseID: %w", err)
-		} else {
-			rep.DatabaseID = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-DatabaseName: %w", err)
-		} else {
-			rep.DatabaseName = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_RouteAndWPServiceDatabaseList_DatabaseTimestamp); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-DatabaseTimestamp: %w", err)
-		} else {
-			rep.DatabaseTimestamp = v
-		}
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceDatabaseList_DatabaseDatestamp); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-DatabaseDatestamp: %w", err)
-		} else {
-			rep.DatabaseDatestamp = v
-		}
-		if v, err := stream.readLookupField(4); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-WPPositionResolution: %w", err)
-		} else {
-			rep.WPPositionResolution = publicpgn.WPPositionResolutionConst(v)
-		}
-		stream.skipBits(4)
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceDatabaseList_NumberOfRoutesInDatabase); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-NumberOfRoutesInDatabase: %w", err)
-		} else {
-			rep.NumberOfRoutesInDatabase = v
-		}
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_RouteAndWPServiceDatabaseList_NumberOfWPsInDatabase); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-NumberOfWPsInDatabase: %w", err)
-		} else {
-			rep.NumberOfWPsInDatabase = v
-		}
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_RouteAndWPServiceDatabaseList_NumberOfBytesInDatabase); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-NumberOfBytesInDatabase: %w", err)
-		} else {
-			rep.NumberOfBytesInDatabase = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.RouteAndWPServiceDatabaseListRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceDatabaseList_DatabaseID); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-DatabaseID: %w", err)
+			} else {
+				rep.DatabaseID = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-DatabaseName: %w", err)
+			} else {
+				rep.DatabaseName = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_RouteAndWPServiceDatabaseList_DatabaseTimestamp); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-DatabaseTimestamp: %w", err)
+			} else {
+				rep.DatabaseTimestamp = v
+			}
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceDatabaseList_DatabaseDatestamp); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-DatabaseDatestamp: %w", err)
+			} else {
+				rep.DatabaseDatestamp = v
+			}
+			if v, err := stream.readLookupField(4); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-WPPositionResolution: %w", err)
+			} else {
+				rep.WPPositionResolution = publicpgn.WPPositionResolutionConst(v)
+			}
+			stream.skipBits(4)
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceDatabaseList_NumberOfRoutesInDatabase); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-NumberOfRoutesInDatabase: %w", err)
+			} else {
+				rep.NumberOfRoutesInDatabase = v
+			}
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_RouteAndWPServiceDatabaseList_NumberOfWPsInDatabase); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-NumberOfWPsInDatabase: %w", err)
+			} else {
+				rep.NumberOfWPsInDatabase = v
+			}
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_RouteAndWPServiceDatabaseList_NumberOfBytesInDatabase); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseList-NumberOfBytesInDatabase: %w", err)
+			} else {
+				rep.NumberOfBytesInDatabase = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -14854,36 +14902,35 @@ func DecodeRouteAndWPServiceRouteList(Info publicpgn.MessageInfo, stream *DataSt
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.RouteAndWPServiceRouteListRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.RouteAndWPServiceRouteListRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceRouteList_RouteID); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteList-RouteID: %w", err)
-		} else {
-			rep.RouteID = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteList-RouteName: %w", err)
-		} else {
-			rep.RouteName = v
-		}
-		stream.skipBits(2)
-		if v, err := stream.readLookupField(2); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteList-WPIdentificationMethod: %w", err)
-		} else {
-			rep.WPIdentificationMethod = publicpgn.WPIdentificationMethodConst(v)
-		}
-		if v, err := stream.readLookupField(4); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteList-RouteStatus: %w", err)
-		} else {
-			rep.RouteStatus = publicpgn.WPRouteStatusConst(v)
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.RouteAndWPServiceRouteListRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceRouteList_RouteID); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteList-RouteID: %w", err)
+			} else {
+				rep.RouteID = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteList-RouteName: %w", err)
+			} else {
+				rep.RouteName = v
+			}
+			stream.skipBits(2)
+			if v, err := stream.readLookupField(2); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteList-WPIdentificationMethod: %w", err)
+			} else {
+				rep.WPIdentificationMethod = publicpgn.WPIdentificationMethodConst(v)
+			}
+			if v, err := stream.readLookupField(4); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteList-RouteStatus: %w", err)
+			} else {
+				rep.RouteStatus = publicpgn.WPRouteStatusConst(v)
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -14991,35 +15038,34 @@ func DecodeRouteAndWPServiceRouteWPNamePosition(Info publicpgn.MessageInfo, stre
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.RouteAndWPServiceRouteWPNamePositionRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.RouteAndWPServiceRouteWPNamePositionRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceRouteWPNamePosition_WPID); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPNamePosition-WPID: %w", err)
-		} else {
-			rep.WPID = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPNamePosition-WPName: %w", err)
-		} else {
-			rep.WPName = v
-		}
-		if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWPServiceRouteWPNamePosition_WPLatitude); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPNamePosition-WPLatitude: %w", err)
-		} else {
-			rep.WPLatitude = v
-		}
-		if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWPServiceRouteWPNamePosition_WPLongitude); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPNamePosition-WPLongitude: %w", err)
-		} else {
-			rep.WPLongitude = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.RouteAndWPServiceRouteWPNamePositionRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceRouteWPNamePosition_WPID); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPNamePosition-WPID: %w", err)
+			} else {
+				rep.WPID = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPNamePosition-WPName: %w", err)
+			} else {
+				rep.WPName = v
+			}
+			if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWPServiceRouteWPNamePosition_WPLatitude); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPNamePosition-WPLatitude: %w", err)
+			} else {
+				rep.WPLatitude = v
+			}
+			if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWPServiceRouteWPNamePosition_WPLongitude); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPNamePosition-WPLongitude: %w", err)
+			} else {
+				rep.WPLongitude = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -15060,25 +15106,24 @@ func DecodeRouteAndWPServiceRouteWPName(Info publicpgn.MessageInfo, stream *Data
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.RouteAndWPServiceRouteWPNameRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.RouteAndWPServiceRouteWPNameRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceRouteWPName_WPID); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPName-WPID: %w", err)
-		} else {
-			rep.WPID = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPName-WPName: %w", err)
-		} else {
-			rep.WPName = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.RouteAndWPServiceRouteWPNameRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceRouteWPName_WPID); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPName-WPID: %w", err)
+			} else {
+				rep.WPID = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteWPName-WPName: %w", err)
+			} else {
+				rep.WPName = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -15109,41 +15154,40 @@ func DecodeRouteAndWPServiceXTELimitNavigationMethod(Info publicpgn.MessageInfo,
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.RouteAndWPServiceXTELimitNavigationMethodRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.RouteAndWPServiceXTELimitNavigationMethodRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_DatabaseID); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceXTELimitNavigationMethod-DatabaseID: %w", err)
-		} else {
-			rep.DatabaseID = v
-		}
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_RouteID); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceXTELimitNavigationMethod-RouteID: %w", err)
-		} else {
-			rep.RouteID = v
-		}
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_Rps); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceXTELimitNavigationMethod-Rps: %w", err)
-		} else {
-			rep.Rps = v
-		}
-		if v, err := ReadRaw[int16](stream, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_XTELimitInTheLegAfterWP); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceXTELimitNavigationMethod-XTELimitInTheLegAfterWP: %w", err)
-		} else {
-			rep.XTELimitInTheLegAfterWP = nullableUnit(units.Meter, v, units.NewDistance)
-		}
-		if v, err := stream.readLookupField(2); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceXTELimitNavigationMethod-NavMethodInTheLegAfterWP: %w", err)
-		} else {
-			rep.NavMethodInTheLegAfterWP = publicpgn.WPNavigationMethodConst(v)
-		}
-		stream.skipBits(6)
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.RouteAndWPServiceXTELimitNavigationMethodRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_DatabaseID); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceXTELimitNavigationMethod-DatabaseID: %w", err)
+			} else {
+				rep.DatabaseID = v
+			}
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_RouteID); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceXTELimitNavigationMethod-RouteID: %w", err)
+			} else {
+				rep.RouteID = v
+			}
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_Rps); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceXTELimitNavigationMethod-Rps: %w", err)
+			} else {
+				rep.Rps = v
+			}
+			if v, err := ReadRaw[int16](stream, &fieldSpec_RouteAndWPServiceXTELimitNavigationMethod_XTELimitInTheLegAfterWP); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceXTELimitNavigationMethod-XTELimitInTheLegAfterWP: %w", err)
+			} else {
+				rep.XTELimitInTheLegAfterWP = nullableUnit(units.Meter, v, units.NewDistance)
+			}
+			if v, err := stream.readLookupField(2); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceXTELimitNavigationMethod-NavMethodInTheLegAfterWP: %w", err)
+			} else {
+				rep.NavMethodInTheLegAfterWP = publicpgn.WPNavigationMethodConst(v)
+			}
+			stream.skipBits(6)
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -15184,25 +15228,24 @@ func DecodeRouteAndWPServiceWPComment(Info publicpgn.MessageInfo, stream *DataSt
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.RouteAndWPServiceWPCommentRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.RouteAndWPServiceWPCommentRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceWPComment_WPIDRps); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPComment-WPIDRps: %w", err)
-		} else {
-			rep.WPIDRps = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPComment-Comment: %w", err)
-		} else {
-			rep.Comment = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.RouteAndWPServiceWPCommentRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceWPComment_WPIDRps); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPComment-WPIDRps: %w", err)
+			} else {
+				rep.WPIDRps = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPComment-Comment: %w", err)
+			} else {
+				rep.Comment = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -15238,25 +15281,24 @@ func DecodeRouteAndWPServiceRouteComment(Info publicpgn.MessageInfo, stream *Dat
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.RouteAndWPServiceRouteCommentRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.RouteAndWPServiceRouteCommentRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceRouteComment_RouteID); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteComment-RouteID: %w", err)
-		} else {
-			rep.RouteID = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteComment-Comment: %w", err)
-		} else {
-			rep.Comment = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.RouteAndWPServiceRouteCommentRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceRouteComment_RouteID); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteComment-RouteID: %w", err)
+			} else {
+				rep.RouteID = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRouteComment-Comment: %w", err)
+			} else {
+				rep.Comment = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -15287,25 +15329,24 @@ func DecodeRouteAndWPServiceDatabaseComment(Info publicpgn.MessageInfo, stream *
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.RouteAndWPServiceDatabaseCommentRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.RouteAndWPServiceDatabaseCommentRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceDatabaseComment_DatabaseID); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseComment-DatabaseID: %w", err)
-		} else {
-			rep.DatabaseID = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseComment-Comment: %w", err)
-		} else {
-			rep.Comment = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.RouteAndWPServiceDatabaseCommentRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceDatabaseComment_DatabaseID); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseComment-DatabaseID: %w", err)
+			} else {
+				rep.DatabaseID = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceDatabaseComment-Comment: %w", err)
+			} else {
+				rep.Comment = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -15346,25 +15387,24 @@ func DecodeRouteAndWPServiceRadiusOfTurn(Info publicpgn.MessageInfo, stream *Dat
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.RouteAndWPServiceRadiusOfTurnRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.RouteAndWPServiceRadiusOfTurnRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceRadiusOfTurn_Rps); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRadiusOfTurn-Rps: %w", err)
-		} else {
-			rep.Rps = v
-		}
-		if v, err := ReadRaw[int16](stream, &fieldSpec_RouteAndWPServiceRadiusOfTurn_RadiusOfTurn); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceRadiusOfTurn-RadiusOfTurn: %w", err)
-		} else {
-			rep.RadiusOfTurn = nullableUnit(units.Meter, v, units.NewDistance)
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.RouteAndWPServiceRadiusOfTurnRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceRadiusOfTurn_Rps); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRadiusOfTurn-Rps: %w", err)
+			} else {
+				rep.Rps = v
+			}
+			if v, err := ReadRaw[int16](stream, &fieldSpec_RouteAndWPServiceRadiusOfTurn_RadiusOfTurn); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceRadiusOfTurn-RadiusOfTurn: %w", err)
+			} else {
+				rep.RadiusOfTurn = nullableUnit(units.Meter, v, units.NewDistance)
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -15401,35 +15441,34 @@ func DecodeRouteAndWPServiceWPListWPNamePosition(Info publicpgn.MessageInfo, str
 	stream.skipBits(16)
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.RouteAndWPServiceWPListWPNamePositionRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.RouteAndWPServiceWPListWPNamePositionRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceWPListWPNamePosition_WPID); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPListWPNamePosition-WPID: %w", err)
-		} else {
-			rep.WPID = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPListWPNamePosition-WPName: %w", err)
-		} else {
-			rep.WPName = v
-		}
-		if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWPServiceWPListWPNamePosition_WPLatitude); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPListWPNamePosition-WPLatitude: %w", err)
-		} else {
-			rep.WPLatitude = v
-		}
-		if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWPServiceWPListWPNamePosition_WPLongitude); err != nil {
-			return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPListWPNamePosition-WPLongitude: %w", err)
-		} else {
-			rep.WPLongitude = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.RouteAndWPServiceWPListWPNamePositionRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_RouteAndWPServiceWPListWPNamePosition_WPID); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPListWPNamePosition-WPID: %w", err)
+			} else {
+				rep.WPID = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPListWPNamePosition-WPName: %w", err)
+			} else {
+				rep.WPName = v
+			}
+			if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWPServiceWPListWPNamePosition_WPLatitude); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPListWPNamePosition-WPLatitude: %w", err)
+			} else {
+				rep.WPLatitude = v
+			}
+			if v, err := ReadScaled[float64](stream, &fieldSpec_RouteAndWPServiceWPListWPNamePosition_WPLongitude); err != nil {
+				return nil, fmt.Errorf("parse failed for RouteAndWPServiceWPListWPNamePosition-WPLongitude: %w", err)
+			} else {
+				rep.WPLongitude = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -16356,55 +16395,54 @@ func DecodeLightingScene(Info publicpgn.MessageInfo, stream *DataStream) (any, e
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.LightingSceneRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.LightingSceneRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ConfigurationIndex); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingScene-ConfigurationIndex: %w", err)
-		} else {
-			rep.ConfigurationIndex = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ZoneIndex); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingScene-ZoneIndex: %w", err)
-		} else {
-			rep.ZoneIndex = v
-		}
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_LightingScene_DevicesID); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingScene-DevicesID: %w", err)
-		} else {
-			rep.DevicesID = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ProgramIndex); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingScene-ProgramIndex: %w", err)
-		} else {
-			rep.ProgramIndex = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ProgramColorSequenceIndex); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingScene-ProgramColorSequenceIndex: %w", err)
-		} else {
-			rep.ProgramColorSequenceIndex = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ProgramIntensity); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingScene-ProgramIntensity: %w", err)
-		} else {
-			rep.ProgramIntensity = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ProgramRate); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingScene-ProgramRate: %w", err)
-		} else {
-			rep.ProgramRate = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ProgramColorSequenceRate); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingScene-ProgramColorSequenceRate: %w", err)
-		} else {
-			rep.ProgramColorSequenceRate = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.LightingSceneRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ConfigurationIndex); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingScene-ConfigurationIndex: %w", err)
+			} else {
+				rep.ConfigurationIndex = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ZoneIndex); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingScene-ZoneIndex: %w", err)
+			} else {
+				rep.ZoneIndex = v
+			}
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_LightingScene_DevicesID); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingScene-DevicesID: %w", err)
+			} else {
+				rep.DevicesID = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ProgramIndex); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingScene-ProgramIndex: %w", err)
+			} else {
+				rep.ProgramIndex = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ProgramColorSequenceIndex); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingScene-ProgramColorSequenceIndex: %w", err)
+			} else {
+				rep.ProgramColorSequenceIndex = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ProgramIntensity); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingScene-ProgramIntensity: %w", err)
+			} else {
+				rep.ProgramIntensity = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ProgramRate); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingScene-ProgramRate: %w", err)
+			} else {
+				rep.ProgramRate = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingScene_ProgramColorSequenceRate); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingScene-ProgramColorSequenceRate: %w", err)
+			} else {
+				rep.ProgramColorSequenceRate = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -16528,25 +16566,24 @@ func DecodeLightingDeviceEnumeration(Info publicpgn.MessageInfo, stream *DataStr
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.LightingDeviceEnumerationRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.LightingDeviceEnumerationRepeating1
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_LightingDeviceEnumeration_DeviceID); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-DeviceID: %w", err)
-		} else {
-			rep.DeviceID = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingDeviceEnumeration_Status); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-Status: %w", err)
-		} else {
-			rep.Status = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.LightingDeviceEnumerationRepeating1
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_LightingDeviceEnumeration_DeviceID); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-DeviceID: %w", err)
+			} else {
+				rep.DeviceID = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingDeviceEnumeration_Status); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingDeviceEnumeration-Status: %w", err)
+			} else {
+				rep.Status = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -16572,45 +16609,44 @@ func DecodeLightingColorSequence(Info publicpgn.MessageInfo, stream *DataStream)
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.LightingColorSequenceRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.LightingColorSequenceRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingColorSequence_ColorIndex); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingColorSequence-ColorIndex: %w", err)
-		} else {
-			rep.ColorIndex = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingColorSequence_RedComponent); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingColorSequence-RedComponent: %w", err)
-		} else {
-			rep.RedComponent = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingColorSequence_GreenComponent); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingColorSequence-GreenComponent: %w", err)
-		} else {
-			rep.GreenComponent = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingColorSequence_BlueComponent); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingColorSequence-BlueComponent: %w", err)
-		} else {
-			rep.BlueComponent = v
-		}
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_LightingColorSequence_ColorTemperature); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingColorSequence-ColorTemperature: %w", err)
-		} else {
-			rep.ColorTemperature = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingColorSequence_Intensity); err != nil {
-			return nil, fmt.Errorf("parse failed for LightingColorSequence-Intensity: %w", err)
-		} else {
-			rep.Intensity = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.LightingColorSequenceRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingColorSequence_ColorIndex); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingColorSequence-ColorIndex: %w", err)
+			} else {
+				rep.ColorIndex = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingColorSequence_RedComponent); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingColorSequence-RedComponent: %w", err)
+			} else {
+				rep.RedComponent = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingColorSequence_GreenComponent); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingColorSequence-GreenComponent: %w", err)
+			} else {
+				rep.GreenComponent = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingColorSequence_BlueComponent); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingColorSequence-BlueComponent: %w", err)
+			} else {
+				rep.BlueComponent = v
+			}
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_LightingColorSequence_ColorTemperature); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingColorSequence-ColorTemperature: %w", err)
+			} else {
+				rep.ColorTemperature = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_LightingColorSequence_Intensity); err != nil {
+				return nil, fmt.Errorf("parse failed for LightingColorSequence-Intensity: %w", err)
+			} else {
+				rep.Intensity = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -17020,30 +17056,29 @@ func DecodeLibraryDataGroup(Info publicpgn.MessageInfo, stream *DataStream) (any
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.LibraryDataGroupRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.LibraryDataGroupRepeating1
-		if v, err := stream.readLookupField(8); err != nil {
-			return nil, fmt.Errorf("parse failed for LibraryDataGroup-IDType: %w", err)
-		} else {
-			rep.IDType = publicpgn.EntertainmentIDTypeConst(v)
-		}
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_LibraryDataGroup_ID); err != nil {
-			return nil, fmt.Errorf("parse failed for LibraryDataGroup-ID: %w", err)
-		} else {
-			rep.ID = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for LibraryDataGroup-Name: %w", err)
-		} else {
-			rep.Name = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.LibraryDataGroupRepeating1
+			if v, err := stream.readLookupField(8); err != nil {
+				return nil, fmt.Errorf("parse failed for LibraryDataGroup-IDType: %w", err)
+			} else {
+				rep.IDType = publicpgn.EntertainmentIDTypeConst(v)
+			}
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_LibraryDataGroup_ID); err != nil {
+				return nil, fmt.Errorf("parse failed for LibraryDataGroup-ID: %w", err)
+			} else {
+				rep.ID = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for LibraryDataGroup-Name: %w", err)
+			} else {
+				rep.Name = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -17126,65 +17161,64 @@ func DecodeSupportedSourceData(Info publicpgn.MessageInfo, stream *DataStream) (
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.SupportedSourceDataRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.SupportedSourceDataRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_SupportedSourceData_ID); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedSourceData-ID: %w", err)
-		} else {
-			rep.ID = v
-		}
-		if v, err := stream.readLookupField(8); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedSourceData-Source: %w", err)
-		} else {
-			rep.Source = publicpgn.EntertainmentSourceConst(v)
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_SupportedSourceData_Number); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedSourceData-Number: %w", err)
-		} else {
-			rep.Number = v
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedSourceData-Name: %w", err)
-		} else {
-			rep.Name = v
-		}
-		if v, err := stream.readLookupField(32); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedSourceData-PlaySupport: %w", err)
-		} else {
-			rep.PlaySupport = publicpgn.EntertainmentPlayStatusBitfieldConst(v)
-		}
-		if v, err := stream.readLookupField(16); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedSourceData-BrowseSupport: %w", err)
-		} else {
-			rep.BrowseSupport = publicpgn.EntertainmentGroupBitfieldConst(v)
-		}
-		if v, err := stream.readLookupField(2); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedSourceData-ThumbsSupport: %w", err)
-		} else {
-			rep.ThumbsSupport = publicpgn.YesNoConst(v)
-		}
-		if v, err := stream.readLookupField(2); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedSourceData-Connected: %w", err)
-		} else {
-			rep.Connected = publicpgn.YesNoConst(v)
-		}
-		if v, err := stream.readLookupField(2); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedSourceData-RepeatSupport: %w", err)
-		} else {
-			rep.RepeatSupport = publicpgn.EntertainmentRepeatBitfieldConst(v)
-		}
-		if v, err := stream.readLookupField(2); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedSourceData-ShuffleSupport: %w", err)
-		} else {
-			rep.ShuffleSupport = publicpgn.EntertainmentShuffleBitfieldConst(v)
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.SupportedSourceDataRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_SupportedSourceData_ID); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedSourceData-ID: %w", err)
+			} else {
+				rep.ID = v
+			}
+			if v, err := stream.readLookupField(8); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedSourceData-Source: %w", err)
+			} else {
+				rep.Source = publicpgn.EntertainmentSourceConst(v)
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_SupportedSourceData_Number); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedSourceData-Number: %w", err)
+			} else {
+				rep.Number = v
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedSourceData-Name: %w", err)
+			} else {
+				rep.Name = v
+			}
+			if v, err := stream.readLookupField(32); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedSourceData-PlaySupport: %w", err)
+			} else {
+				rep.PlaySupport = publicpgn.EntertainmentPlayStatusBitfieldConst(v)
+			}
+			if v, err := stream.readLookupField(16); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedSourceData-BrowseSupport: %w", err)
+			} else {
+				rep.BrowseSupport = publicpgn.EntertainmentGroupBitfieldConst(v)
+			}
+			if v, err := stream.readLookupField(2); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedSourceData-ThumbsSupport: %w", err)
+			} else {
+				rep.ThumbsSupport = publicpgn.YesNoConst(v)
+			}
+			if v, err := stream.readLookupField(2); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedSourceData-Connected: %w", err)
+			} else {
+				rep.Connected = publicpgn.YesNoConst(v)
+			}
+			if v, err := stream.readLookupField(2); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedSourceData-RepeatSupport: %w", err)
+			} else {
+				rep.RepeatSupport = publicpgn.EntertainmentRepeatBitfieldConst(v)
+			}
+			if v, err := stream.readLookupField(2); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedSourceData-ShuffleSupport: %w", err)
+			} else {
+				rep.ShuffleSupport = publicpgn.EntertainmentShuffleBitfieldConst(v)
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -17215,25 +17249,24 @@ func DecodeSupportedZoneData(Info publicpgn.MessageInfo, stream *DataStream) (an
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.SupportedZoneDataRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.SupportedZoneDataRepeating1
-		if v, err := stream.readLookupField(8); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedZoneData-ZoneID: %w", err)
-		} else {
-			rep.ZoneID = publicpgn.EntertainmentZoneConst(v)
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for SupportedZoneData-Name: %w", err)
-		} else {
-			rep.Name = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.SupportedZoneDataRepeating1
+			if v, err := stream.readLookupField(8); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedZoneData-ZoneID: %w", err)
+			} else {
+				rep.ZoneID = publicpgn.EntertainmentZoneConst(v)
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for SupportedZoneData-Name: %w", err)
+			} else {
+				rep.Name = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -17475,25 +17508,24 @@ func DecodeZoneConfigurationDeprecated(Info publicpgn.MessageInfo, stream *DataS
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.ZoneConfigurationDeprecatedRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.ZoneConfigurationDeprecatedRepeating1
-		if v, err := stream.readLookupField(8); err != nil {
-			return nil, fmt.Errorf("parse failed for ZoneConfigurationDeprecated-ZoneID: %w", err)
-		} else {
-			rep.ZoneID = publicpgn.EntertainmentZoneConst(v)
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for ZoneConfigurationDeprecated-ZoneName: %w", err)
-		} else {
-			rep.ZoneName = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.ZoneConfigurationDeprecatedRepeating1
+			if v, err := stream.readLookupField(8); err != nil {
+				return nil, fmt.Errorf("parse failed for ZoneConfigurationDeprecated-ZoneID: %w", err)
+			} else {
+				rep.ZoneID = publicpgn.EntertainmentZoneConst(v)
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for ZoneConfigurationDeprecated-ZoneName: %w", err)
+			} else {
+				rep.ZoneName = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -17558,25 +17590,24 @@ func DecodeAvailableAudioEQPresets(Info publicpgn.MessageInfo, stream *DataStrea
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.AvailableAudioEQPresetsRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.AvailableAudioEQPresetsRepeating1
-		if v, err := stream.readLookupField(8); err != nil {
-			return nil, fmt.Errorf("parse failed for AvailableAudioEQPresets-PresetType: %w", err)
-		} else {
-			rep.PresetType = publicpgn.EntertainmentEQConst(v)
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for AvailableAudioEQPresets-PresetName: %w", err)
-		} else {
-			rep.PresetName = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.AvailableAudioEQPresetsRepeating1
+			if v, err := stream.readLookupField(8); err != nil {
+				return nil, fmt.Errorf("parse failed for AvailableAudioEQPresets-PresetType: %w", err)
+			} else {
+				rep.PresetType = publicpgn.EntertainmentEQConst(v)
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for AvailableAudioEQPresets-PresetName: %w", err)
+			} else {
+				rep.PresetName = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -17607,35 +17638,34 @@ func DecodeAvailableBluetoothAddresses(Info publicpgn.MessageInfo, stream *DataS
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.AvailableBluetoothAddressesRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.AvailableBluetoothAddressesRepeating1
-		if v, err := stream.readBinaryData(48); err != nil {
-			return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-BluetoothAddress: %w", err)
-		} else {
-			rep.BluetoothAddress = v
-		}
-		if v, err := stream.readLookupField(8); err != nil {
-			return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-Status: %w", err)
-		} else {
-			rep.Status = publicpgn.BluetoothStatusConst(v)
-		}
-		if v, err := stream.readStringWithLengthAndControl(); err != nil {
-			return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-DeviceName: %w", err)
-		} else {
-			rep.DeviceName = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_AvailableBluetoothAddresses_SignalStrength); err != nil {
-			return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-SignalStrength: %w", err)
-		} else {
-			rep.SignalStrength = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.AvailableBluetoothAddressesRepeating1
+			if v, err := stream.readBinaryData(48); err != nil {
+				return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-BluetoothAddress: %w", err)
+			} else {
+				rep.BluetoothAddress = v
+			}
+			if v, err := stream.readLookupField(8); err != nil {
+				return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-Status: %w", err)
+			} else {
+				rep.Status = publicpgn.BluetoothStatusConst(v)
+			}
+			if v, err := stream.readStringWithLengthAndControl(); err != nil {
+				return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-DeviceName: %w", err)
+			} else {
+				rep.DeviceName = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_AvailableBluetoothAddresses_SignalStrength); err != nil {
+				return nil, fmt.Errorf("parse failed for AvailableBluetoothAddresses-SignalStrength: %w", err)
+			} else {
+				rep.SignalStrength = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -19147,20 +19177,19 @@ func DecodeMaretronAnnunciatorCapabilities(Info publicpgn.MessageInfo, stream *D
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.MaretronAnnunciatorCapabilitiesRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.MaretronAnnunciatorCapabilitiesRepeating1
-		if v, err := ReadRaw[uint16](stream, &fieldSpec_MaretronAnnunciatorCapabilities_Tone); err != nil {
-			return nil, fmt.Errorf("parse failed for MaretronAnnunciatorCapabilities-Tone: %w", err)
-		} else {
-			rep.Tone = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.MaretronAnnunciatorCapabilitiesRepeating1
+			if v, err := ReadRaw[uint16](stream, &fieldSpec_MaretronAnnunciatorCapabilities_Tone); err != nil {
+				return nil, fmt.Errorf("parse failed for MaretronAnnunciatorCapabilities-Tone: %w", err)
+			} else {
+				rep.Tone = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -21116,25 +21145,24 @@ func DecodeFusionSettings(Info publicpgn.MessageInfo, stream *DataStream) (any, 
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.FusionSettingsRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.FusionSettingsRepeating1
-		if v, err := stream.readLookupField(32); err != nil {
-			return nil, fmt.Errorf("parse failed for FusionSettings-ID: %w", err)
-		} else {
-			rep.ID = publicpgn.FusionSettingConst(v)
-		}
-		if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionSettings_Value); err != nil {
-			return nil, fmt.Errorf("parse failed for FusionSettings-Value: %w", err)
-		} else {
-			rep.Value = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.FusionSettingsRepeating1
+			if v, err := stream.readLookupField(32); err != nil {
+				return nil, fmt.Errorf("parse failed for FusionSettings-ID: %w", err)
+			} else {
+				rep.ID = publicpgn.FusionSettingConst(v)
+			}
+			if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionSettings_Value); err != nil {
+				return nil, fmt.Errorf("parse failed for FusionSettings-Value: %w", err)
+			} else {
+				rep.Value = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -23481,20 +23509,19 @@ func DecodeMaretronSwitchIndicatorStatus(Info publicpgn.MessageInfo, stream *Dat
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.MaretronSwitchIndicatorStatusRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.MaretronSwitchIndicatorStatusRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSwitchIndicatorStatus_IndicatorStatus); err != nil {
-			return nil, fmt.Errorf("parse failed for MaretronSwitchIndicatorStatus-IndicatorStatus: %w", err)
-		} else {
-			rep.IndicatorStatus = v
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.MaretronSwitchIndicatorStatusRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronSwitchIndicatorStatus_IndicatorStatus); err != nil {
+				return nil, fmt.Errorf("parse failed for MaretronSwitchIndicatorStatus-IndicatorStatus: %w", err)
+			} else {
+				rep.IndicatorStatus = v
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 
@@ -25305,45 +25332,44 @@ func DecodeFurunoMultiSatsInViewExtended(Info publicpgn.MessageInfo, stream *Dat
 	}
 	// decode repeating fields
 	val.Repeating1 = make([]publicpgn.FurunoMultiSatsInViewExtendedRepeating1, 0)
-	if repeat1Count == 0 {
-		return val, nil
-	}
-	for {
-		var rep publicpgn.FurunoMultiSatsInViewExtendedRepeating1
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_FurunoMultiSatsInViewExtended_Status); err != nil {
-			return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-Status: %w", err)
-		} else {
-			rep.Status = v
-		}
-		if v, err := ReadRaw[uint8](stream, &fieldSpec_FurunoMultiSatsInViewExtended_Prn); err != nil {
-			return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-Prn: %w", err)
-		} else {
-			rep.Prn = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoMultiSatsInViewExtended_Elevation); err != nil {
-			return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-Elevation: %w", err)
-		} else {
-			rep.Elevation = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoMultiSatsInViewExtended_Azimuth); err != nil {
-			return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-Azimuth: %w", err)
-		} else {
-			rep.Azimuth = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoMultiSatsInViewExtended_Snr); err != nil {
-			return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-Snr: %w", err)
-		} else {
-			rep.Snr = v
-		}
-		if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoMultiSatsInViewExtended_RangeResidual); err != nil {
-			return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-RangeResidual: %w", err)
-		} else {
-			rep.RangeResidual = nullableUnit(units.Meter, v, units.NewDistance)
-		}
-		val.Repeating1 = append(val.Repeating1, rep)
-		repeat1Count--
-		if int(repeat1Count) == 0 {
-			break
+	if repeat1Count > 0 {
+		for {
+			var rep publicpgn.FurunoMultiSatsInViewExtendedRepeating1
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_FurunoMultiSatsInViewExtended_Status); err != nil {
+				return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-Status: %w", err)
+			} else {
+				rep.Status = v
+			}
+			if v, err := ReadRaw[uint8](stream, &fieldSpec_FurunoMultiSatsInViewExtended_Prn); err != nil {
+				return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-Prn: %w", err)
+			} else {
+				rep.Prn = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoMultiSatsInViewExtended_Elevation); err != nil {
+				return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-Elevation: %w", err)
+			} else {
+				rep.Elevation = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoMultiSatsInViewExtended_Azimuth); err != nil {
+				return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-Azimuth: %w", err)
+			} else {
+				rep.Azimuth = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoMultiSatsInViewExtended_Snr); err != nil {
+				return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-Snr: %w", err)
+			} else {
+				rep.Snr = v
+			}
+			if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoMultiSatsInViewExtended_RangeResidual); err != nil {
+				return nil, fmt.Errorf("parse failed for FurunoMultiSatsInViewExtended-RangeResidual: %w", err)
+			} else {
+				rep.RangeResidual = nullableUnit(units.Meter, v, units.NewDistance)
+			}
+			val.Repeating1 = append(val.Repeating1, rep)
+			repeat1Count--
+			if int(repeat1Count) == 0 {
+				break
+			}
 		}
 	}
 

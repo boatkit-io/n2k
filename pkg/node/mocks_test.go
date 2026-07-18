@@ -41,6 +41,10 @@ func (m *mockSubscriber) SubscribeToStruct(t, callback any) (SubscriptionID, err
 		structName = "NMEARequestGroupFunction"
 	case pgn.NMEACommandGroupFunction:
 		structName = "NMEACommandGroupFunction"
+	case pgn.NMEAWriteFieldsGroupFunction:
+		structName = "NMEAWriteFieldsGroupFunction"
+	case pgn.NMEAReadFieldsGroupFunction:
+		structName = "NMEAReadFieldsGroupFunction"
 	case pgn.ProductInformation:
 		structName = "ProductInformation"
 	case pgn.ConfigurationInformation:
@@ -81,6 +85,10 @@ func (m *mockSubscriber) simulatePGN(pgnStruct any) {
 		structName = "NMEARequestGroupFunction"
 	case pgn.NMEACommandGroupFunction, *pgn.NMEACommandGroupFunction:
 		structName = "NMEACommandGroupFunction"
+	case pgn.NMEAWriteFieldsGroupFunction, *pgn.NMEAWriteFieldsGroupFunction:
+		structName = "NMEAWriteFieldsGroupFunction"
+	case pgn.NMEAReadFieldsGroupFunction, *pgn.NMEAReadFieldsGroupFunction:
+		structName = "NMEAReadFieldsGroupFunction"
 	case pgn.ProductInformation, *pgn.ProductInformation:
 		structName = "ProductInformation"
 	case pgn.ConfigurationInformation, *pgn.ConfigurationInformation:

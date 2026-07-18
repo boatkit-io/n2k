@@ -34,10 +34,9 @@ func (s *DataStream) writeStringLau(value string, bitOffset uint16) error {
 		out = []uint8{0x2, 0x1} // we'll encode as UTF8
 	} else {
 		out = []uint8{
-			uint8(len(value) + 3),
+			uint8(len(value) + 2),
 			0x1} // we'll encode as UTF8
 		out = append(out, value...)
-		out = append(out, 0x0)
 	}
 	length := uint16(len(out) * 8)
 	return s.writeBinary(out, length, bitOffset)

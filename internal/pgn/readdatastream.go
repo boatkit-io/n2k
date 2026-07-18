@@ -13,6 +13,7 @@ import (
 	"strings"
 	"unicode/utf16"
 
+	publicpgn "github.com/boatkit-io/n2k/pkg/pgn"
 	"golang.org/x/exp/constraints"
 )
 
@@ -160,6 +161,12 @@ func (s *DataStream) readStringWithLengthAndControl() (string, error) {
 	}
 	arr = trimASCIILAUTerminator(arr)
 	return string(arr), nil
+}
+
+// DecodeStringLAU decodes a complete STRING_LAU field. The input begins with
+// its length and character-set control bytes.
+func DecodeStringLAU(data []byte) (string, error) {
+	return NewDataStream(data).readStringWithLengthAndControl()
 }
 
 func trimASCIILAUTerminator(arr []uint8) []uint8 {
@@ -356,6 +363,33 @@ func (s *DataStream) readVariableDataWithSpec(spec *FieldSpec) ([]uint8, error) 
 
 	byteLen := (spec.BitLength + 7) &^ 0x7
 	return s.readBinaryData(byteLen)
+}
+
+// readGroupFunctionFieldValue returns the referenced field's wire representation.
+// STRING_LAU is self-delimiting; fixed-width fields continue to use FieldSpec.
+func (s *DataStream) readGroupFunctionFieldValue(referencedPGN *uint32, parameter *uint8) ([]uint8, error) {
+	if referencedPGN == nil || parameter == nil {
+		return nil, fmt.Errorf("missing referenced PGN or parameter")
+	}
+	if *referencedPGN == publicpgn.ConfigurationInformationPGN && *parameter >= 1 && *parameter <= 3 {
+		header, err := s.readBinaryData(16)
+		if err != nil {
+			return nil, err
+		}
+		if len(header) != 2 || header[0] < 2 {
+			return nil, fmt.Errorf("invalid STRING_LAU header")
+		}
+		rest, err := s.readBinaryData(uint16(header[0]-2) * 8)
+		if err != nil {
+			return nil, err
+		}
+		return append(header, rest...), nil
+	}
+	spec, ok := FindFieldSpec(*referencedPGN, *parameter)
+	if !ok {
+		return nil, fmt.Errorf("field %d not found in PGN %d", *parameter, *referencedPGN)
+	}
+	return s.readVariableDataWithSpec(spec)
 }
 
 func signExtendInt64(rawValue uint64, bitLength uint16) int64 {

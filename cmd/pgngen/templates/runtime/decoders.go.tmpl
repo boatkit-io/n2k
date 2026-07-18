@@ -50,6 +50,11 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
             repeat1Count = uint16(*v)
         }
         {{- end }}
+        {{- if and $config.Repeat2 (eq $field.Order $config.Repeat2CountField) }}
+        if v != nil {
+            repeat2Count = uint16(*v)
+        }
+        {{- end }}
         {{- if and $config.BitLengthField (eq $config.BitLengthField $field.Order) }}
         if v != nil {
             binaryLength = uint16(*v)
@@ -99,9 +104,7 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
     // decode repeating fields
      val.Repeating1 = make([]publicpgn.{{ .Id }}Repeating1, 0)
      {{- if gt $config.Repeat1CountField 0 }}
-     if repeat1Count == 0 {
-        return val, nil
-     }
+     if repeat1Count > 0 {
      {{- else }}
      if stream.isEOF() {
         return val, nil
@@ -122,7 +125,11 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
         {{- else }}
         {{- $funcs := getFieldDeserializer $pgn . }}
         {{- if and (eq $pgn.PGN 126208) (eq .Id "Value") }}
+        {{- if or (eq $pgn.Id "NMEARequestGroupFunction") (eq $pgn.Id "NMEACommandGroupFunction") }}
+        if v, err := stream.readGroupFunctionFieldValue(val.PGN, rep.Parameter); err != nil {
+        {{- else }}
         if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
+        {{- end }}
         {{- else if and (eq $pgn.PGN 126208) (eq .Id "SelectionValue") }}
         if v, err := stream.readVariableDataWithSpec(valueSpec); err != nil {
         {{- else }}
@@ -142,17 +149,6 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
 	            }
 	            {{- end }}
 	        }
-        {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NMEARequestGroupFunction") (eq $pgn.Id "NMEACommandGroupFunction")) (eq .Id "Parameter") }}
-        {{- if eq .Id "Parameter" }}
-        valueSpec := &fieldSpec_{{ $pgn.Id }}_Value
-        parameter := rep.Parameter
-        {{- end }}
-        if val.PGN != nil && parameter != nil {
-            if spec, ok := FindFieldSpec(*val.PGN, *parameter); ok {
-                valueSpec = spec
-            }
-        }
-        {{- end }}
         {{- if and (eq $pgn.PGN 126208) (or (eq $pgn.Id "NMEAReadFieldsGroupFunction") (eq $pgn.Id "NMEAReadFieldsReplyGroupFunction") (eq $pgn.Id "NMEAWriteFieldsGroupFunction") (eq $pgn.Id "NMEAWriteFieldsReplyGroupFunction")) (eq .Id "SelectionParameter") }}
         valueSpec := &fieldSpec_{{ $pgn.Id }}_SelectionValue
         parameter := rep.SelectionParameter
@@ -177,6 +173,9 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
         }
  {{- end }}
    }
+     {{- if gt $config.Repeat1CountField 0 }}
+     }
+     {{- end }}
     {{- end }}
     {{- if $config.Repeat2 }}
     val.Repeating2 = make([]publicpgn.{{ .Id }}Repeating2, 0)
@@ -189,6 +188,38 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
         return val, nil
      }
      {{- end }}
+    for {
+        var rep publicpgn.{{ .Id }}Repeating2
+        {{- range $pgn.FieldsRepeating2 }}
+        {{- if eq .FieldType "RESERVED" }}
+        stream.skipBits({{ .BitLength }})
+        {{- else if and (eq $pgn.PGN 126208) (eq .Id "Value") }}
+        if v, err := stream.readGroupFunctionFieldValue(val.PGN, rep.Parameter); err != nil {
+            return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
+        } else {
+            rep.{{ .Id }} = v
+        }
+        {{- else }}
+        {{- $funcs := getFieldDeserializer $pgn . }}
+        if v, err := {{ index $funcs 0 }}; err != nil {
+            return nil, fmt.Errorf("parse failed for {{ $pgn.Id }}-{{ .Id }}: %w", err)
+        } else {
+            rep.{{ .Id }} = {{ if ne (index $funcs 1) "" }}{{ index $funcs 1 }}{{ else }}v{{ end }}
+        }
+        {{- end }}
+        {{- end }}
+        val.Repeating2 = append(val.Repeating2, rep)
+        {{- if $config.Repeat2CountField }}
+        repeat2Count--
+        if repeat2Count == 0 {
+            break
+        }
+        {{- else }}
+        if stream.isEOF() {
+            break
+        }
+        {{- end }}
+    }
     {{- end }}
 
     return val, nil
