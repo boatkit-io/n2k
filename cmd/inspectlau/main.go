@@ -40,7 +40,7 @@ type canboatField struct {
 
 func main() {
 	rawDir := flag.String("raw-dir", "n2kreplays/raw", "directory containing .raw replay files")
-	catalog := flag.String("catalog", "canboatjson-v7.1.0.cache", "Canboat JSON catalog")
+	catalog := flag.String("catalog", "canboatjson-v7.2.0.cache", "Canboat JSON catalog")
 	flag.Parse()
 	fields, err := loadLAUFields(*catalog)
 	if err != nil {

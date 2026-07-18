@@ -1343,7 +1343,7 @@ func buildAddressClaim(deviceInfo DeviceInfo, networkAddress uint8) *pgn.ISOAddr
 		DeviceClass:             deviceInfo.DeviceClass,
 		SystemInstance:          &deviceInfo.SystemInstance,
 		IndustryGroup:           deviceInfo.IndustryGroup,
-		ArbitraryAddressCapable: pgn.YesNoConst(arbitraryBit),
+		ArbitraryAddressCapable: pgn.YesNo1BitConst(arbitraryBit),
 	}
 }
 
@@ -1619,7 +1619,7 @@ func computeNameFromClaim(claim *pgn.ISOAddressClaim) uint64 {
 	if claim.IndustryGroup != 0 {
 		name |= uint64(claim.IndustryGroup) << 60
 	}
-	if claim.ArbitraryAddressCapable == pgn.Yes {
+	if claim.ArbitraryAddressCapable == pgn.Yes_2 {
 		name |= 1 << 63
 	}
 	return name

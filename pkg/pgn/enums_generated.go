@@ -2184,6 +2184,23 @@ default:
 		return fmt.Sprintf("YesNoConst(%d)", uint8(e))
 	}
 }
+type YesNo1BitConst uint8
+const (
+	No_2	YesNo1BitConst = 0
+	Yes_2	YesNo1BitConst = 1
+)
+
+func (e YesNo1BitConst) GoString() string {return e.String() }
+func (e YesNo1BitConst) String() string {
+	switch e {
+		case 0:
+			return "No"
+		case 1:
+			return "Yes"
+default:
+		return fmt.Sprintf("YesNo1BitConst(%d)", uint8(e))
+	}
+}
 type OkWarningConst uint8
 const (
 	Ok	OkWarningConst = 0
@@ -3008,20 +3025,6 @@ default:
 		return fmt.Sprintf("Seatalk1CommandConst(%d)", uint8(e))
 	}
 }
-type Seatalk1AttConst uint8
-const (
-	DepthBelowTransducer_2	Seatalk1AttConst = 0
-)
-
-func (e Seatalk1AttConst) GoString() string {return e.String() }
-func (e Seatalk1AttConst) String() string {
-	switch e {
-		case 0:
-			return "Depth Below Transducer"
-default:
-		return fmt.Sprintf("Seatalk1AttConst(%d)", uint8(e))
-	}
-}
 type SeatalkAlarmStatusConst uint8
 const (
 	AlarmConditionNotMet	SeatalkAlarmStatusConst = 0
@@ -3150,6 +3153,12 @@ const (
 	AISSafetyRelatedMessageUsedToS	SeatalkAlarmIDConst = 106
 	AISConnectionLost	SeatalkAlarmIDConst = 107
 	NoFix	SeatalkAlarmIDConst = 108
+	PilotCompassCalibrationComplet	SeatalkAlarmIDConst = 112
+	AISTransmitterDisabledMMSIRequ	SeatalkAlarmIDConst = 113
+	BluetoothDeviceLowBattery	SeatalkAlarmIDConst = 122
+	BluetoothDeviceSleepMode	SeatalkAlarmIDConst = 123
+	BluetoothDeviceHighBatteryTemp	SeatalkAlarmIDConst = 124
+	BluetoothDeviceLostCommunicati	SeatalkAlarmIDConst = 125
 )
 
 func (e SeatalkAlarmIDConst) GoString() string {return e.String() }
@@ -3367,6 +3376,18 @@ func (e SeatalkAlarmIDConst) String() string {
 			return "AIS Connection Lost"
 		case 108:
 			return "No Fix"
+		case 112:
+			return "Pilot Compass Calibration Complete"
+		case 113:
+			return "AIS Transmitter Disabled - MMSI Required"
+		case 122:
+			return "Bluetooth Device Low Battery"
+		case 123:
+			return "Bluetooth Device Sleep Mode"
+		case 124:
+			return "Bluetooth Device High Battery Temperature"
+		case 125:
+			return "Bluetooth Device Lost Communications"
 default:
 		return fmt.Sprintf("SeatalkAlarmIDConst(%d)", uint8(e))
 	}
@@ -3378,6 +3399,7 @@ const (
 	Radar	SeatalkAlarmGroupConst = 2
 	ChartPlotter	SeatalkAlarmGroupConst = 3
 	AIS	SeatalkAlarmGroupConst = 4
+	BluetoothAccessory	SeatalkAlarmGroupConst = 5
 )
 
 func (e SeatalkAlarmGroupConst) GoString() string {return e.String() }
@@ -3393,6 +3415,8 @@ func (e SeatalkAlarmGroupConst) String() string {
 			return "Chart Plotter"
 		case 4:
 			return "AIS"
+		case 5:
+			return "Bluetooth Accessory"
 default:
 		return fmt.Sprintf("SeatalkAlarmGroupConst(%d)", uint8(e))
 	}
@@ -3578,7 +3602,7 @@ default:
 		return fmt.Sprintf("EntertainmentSourceConst(%d)", uint8(e))
 	}
 }
-type EntertainmentPlayStatusConst uint16
+type EntertainmentPlayStatusConst uint8
 const (
 	Play	EntertainmentPlayStatusConst = 0
 	Pause	EntertainmentPlayStatusConst = 1
@@ -3661,7 +3685,7 @@ func (e EntertainmentPlayStatusConst) String() string {
 		case 24:
 			return "Slow motion .125x"
 default:
-		return fmt.Sprintf("EntertainmentPlayStatusConst(%d)", uint16(e))
+		return fmt.Sprintf("EntertainmentPlayStatusConst(%d)", uint8(e))
 	}
 }
 type EntertainmentRepeatStatusConst uint8
@@ -4633,23 +4657,6 @@ func (e AirmarTemperatureInstanceConst) String() string {
 			return "Optional Water Sensor"
 default:
 		return fmt.Sprintf("AirmarTemperatureInstanceConst(%d)", uint8(e))
-	}
-}
-type AirmarFilterConst uint8
-const (
-	NoFilter	AirmarFilterConst = 0
-	BasicIIRFilter	AirmarFilterConst = 1
-)
-
-func (e AirmarFilterConst) GoString() string {return e.String() }
-func (e AirmarFilterConst) String() string {
-	switch e {
-		case 0:
-			return "No filter"
-		case 1:
-			return "Basic IIR filter"
-default:
-		return fmt.Sprintf("AirmarFilterConst(%d)", uint8(e))
 	}
 }
 type ControllerStateConst uint8
@@ -5855,32 +5862,89 @@ default:
 }
 type SimnetDataSourceConst uint8
 const (
-	RudderFeedback	SimnetDataSourceConst = 17
-	Position_2	SimnetDataSourceConst = 19
-	Heading_3	SimnetDataSourceConst = 27
-	Depth	SimnetDataSourceConst = 35
-	BoatSpeed	SimnetDataSourceConst = 36
-	ApparentWind	SimnetDataSourceConst = 42
-	BarometricPressure	SimnetDataSourceConst = 43
+	Heading_3	SimnetDataSourceConst = 0
+	Navigation_3	SimnetDataSourceConst = 1
+	Position_2	SimnetDataSourceConst = 2
+	ApparentWind	SimnetDataSourceConst = 3
+	TrueWind	SimnetDataSourceConst = 4
+	SpeedThroughWater_2	SimnetDataSourceConst = 5
+	SeaTemperature_2	SimnetDataSourceConst = 6
+	SimnetDataSourceConstDistanceLog	SimnetDataSourceConst = 7
+	Depth	SimnetDataSourceConst = 8
+	RudderFeedback	SimnetDataSourceConst = 9
+	MonitorCompass	SimnetDataSourceConst = 19
+	PositionBackup	SimnetDataSourceConst = 20
+	BoatSpeedBackup	SimnetDataSourceConst = 21
+	AirTemperature	SimnetDataSourceConst = 22
+	BarometricPressure	SimnetDataSourceConst = 28
+	HeelAngle	SimnetDataSourceConst = 30
+	SailingNavigation	SimnetDataSourceConst = 34
+	TrimAngle	SimnetDataSourceConst = 35
+	Sailing_2	SimnetDataSourceConst = 36
+	AftDepth	SimnetDataSourceConst = 37
+	SpeedLog	SimnetDataSourceConst = 38
+	RtcmSignal	SimnetDataSourceConst = 39
+	RtcmCorrections	SimnetDataSourceConst = 40
+	Autopilot_2	SimnetDataSourceConst = 54
+	AutopilotFunctionBackup	SimnetDataSourceConst = 59
+	AutopilotControl	SimnetDataSourceConst = 104
 )
 
 func (e SimnetDataSourceConst) GoString() string {return e.String() }
 func (e SimnetDataSourceConst) String() string {
 	switch e {
-		case 17:
+		case 0:
+			return "Heading"
+		case 1:
+			return "Navigation"
+		case 2:
+			return "Position"
+		case 3:
+			return "Apparent Wind"
+		case 4:
+			return "True Wind"
+		case 5:
+			return "Speed Through Water"
+		case 6:
+			return "Sea Temperature"
+		case 7:
+			return "Distance Log"
+		case 8:
+			return "Depth"
+		case 9:
 			return "Rudder Feedback"
 		case 19:
-			return "Position"
-		case 27:
-			return "Heading"
-		case 35:
-			return "Depth"
-		case 36:
-			return "Boat Speed"
-		case 42:
-			return "Apparent Wind"
-		case 43:
+			return "Monitor Compass"
+		case 20:
+			return "Position Backup"
+		case 21:
+			return "Boat Speed Backup"
+		case 22:
+			return "Air Temperature"
+		case 28:
 			return "Barometric Pressure"
+		case 30:
+			return "Heel Angle"
+		case 34:
+			return "Sailing Navigation"
+		case 35:
+			return "Trim Angle"
+		case 36:
+			return "Sailing"
+		case 37:
+			return "Aft Depth"
+		case 38:
+			return "Speed Log"
+		case 39:
+			return "RTCM Signal"
+		case 40:
+			return "RTCM Corrections"
+		case 54:
+			return "Autopilot"
+		case 59:
+			return "Autopilot Function Backup"
+		case 104:
+			return "Autopilot Control"
 default:
 		return fmt.Sprintf("SimnetDataSourceConst(%d)", uint8(e))
 	}
@@ -6124,7 +6188,7 @@ const (
 	VmgToWind	NavicoDataTypeConst = 234
 	TimeToLaylines	NavicoDataTypeConst = 235
 	DistanceToLaylines	NavicoDataTypeConst = 236
-	AftDepth	NavicoDataTypeConst = 237
+	AftDepth_2	NavicoDataTypeConst = 237
 	Forestay	NavicoDataTypeConst = 238
 	PolarSpeed	NavicoDataTypeConst = 239
 	PolarPerformance	NavicoDataTypeConst = 240
@@ -8128,6 +8192,29 @@ default:
 		return fmt.Sprintf("SimnetNightModeConst(%d)", uint8(e))
 	}
 }
+type SimnetCompassAutocalModeConst uint8
+const (
+	Off_9	SimnetCompassAutocalModeConst = 0
+	On_3	SimnetCompassAutocalModeConst = 1
+	AutoLocked	SimnetCompassAutocalModeConst = 2
+	Auto_5	SimnetCompassAutocalModeConst = 3
+)
+
+func (e SimnetCompassAutocalModeConst) GoString() string {return e.String() }
+func (e SimnetCompassAutocalModeConst) String() string {
+	switch e {
+		case 0:
+			return "Off"
+		case 1:
+			return "On"
+		case 2:
+			return "Auto locked"
+		case 3:
+			return "Auto"
+default:
+		return fmt.Sprintf("SimnetCompassAutocalModeConst(%d)", uint8(e))
+	}
+}
 type SimnetNightModeColorConst uint8
 const (
 	Red	SimnetNightModeColorConst = 0
@@ -8154,20 +8241,20 @@ default:
 		return fmt.Sprintf("SimnetNightModeColorConst(%d)", uint8(e))
 	}
 }
-type SimnetDisplayGroupConst uint8
+type SimnetNetworkGroupConst uint8
 const (
-	None_4	SimnetDisplayGroupConst = 0
-	Default	SimnetDisplayGroupConst = 1
-	Group1_2	SimnetDisplayGroupConst = 2
-	Group2_2	SimnetDisplayGroupConst = 3
-	Group3_2	SimnetDisplayGroupConst = 4
-	Group4_2	SimnetDisplayGroupConst = 5
-	Group5_2	SimnetDisplayGroupConst = 6
-	Group6	SimnetDisplayGroupConst = 7
+	None_4	SimnetNetworkGroupConst = 0
+	Default	SimnetNetworkGroupConst = 1
+	Group1_2	SimnetNetworkGroupConst = 2
+	Group2_2	SimnetNetworkGroupConst = 3
+	Group3_2	SimnetNetworkGroupConst = 4
+	Group4_2	SimnetNetworkGroupConst = 5
+	Group5_2	SimnetNetworkGroupConst = 6
+	Group6	SimnetNetworkGroupConst = 7
 )
 
-func (e SimnetDisplayGroupConst) GoString() string {return e.String() }
-func (e SimnetDisplayGroupConst) String() string {
+func (e SimnetNetworkGroupConst) GoString() string {return e.String() }
+func (e SimnetNetworkGroupConst) String() string {
 	switch e {
 		case 0:
 			return "None"
@@ -8186,7 +8273,7 @@ func (e SimnetDisplayGroupConst) String() string {
 		case 7:
 			return "Group 6"
 default:
-		return fmt.Sprintf("SimnetDisplayGroupConst(%d)", uint8(e))
+		return fmt.Sprintf("SimnetNetworkGroupConst(%d)", uint8(e))
 	}
 }
 type SimnetHourDisplayConst uint8
@@ -8268,6 +8355,203 @@ func (e SimnetBacklightLevelConst) String() string {
 			return "100% (Max)"
 default:
 		return fmt.Sprintf("SimnetBacklightLevelConst(%d)", uint8(e))
+	}
+}
+type SimnetHeadingUnitConst uint8
+const (
+	Magnetic_2	SimnetHeadingUnitConst = 0
+	True_2	SimnetHeadingUnitConst = 1
+)
+
+func (e SimnetHeadingUnitConst) GoString() string {return e.String() }
+func (e SimnetHeadingUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Magnetic"
+		case 1:
+			return "True"
+default:
+		return fmt.Sprintf("SimnetHeadingUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetWindSpeedUnitConst uint8
+const (
+	Knots	SimnetWindSpeedUnitConst = 0
+	MetersPerSecond	SimnetWindSpeedUnitConst = 1
+	MilesPerHour	SimnetWindSpeedUnitConst = 2
+	KilometersPerHour	SimnetWindSpeedUnitConst = 3
+)
+
+func (e SimnetWindSpeedUnitConst) GoString() string {return e.String() }
+func (e SimnetWindSpeedUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Knots"
+		case 1:
+			return "Meters per second"
+		case 2:
+			return "Miles per hour"
+		case 3:
+			return "Kilometers per hour"
+default:
+		return fmt.Sprintf("SimnetWindSpeedUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetSpeedUnitConst uint8
+const (
+	Knots_2	SimnetSpeedUnitConst = 0
+	KilometersPerHour_2	SimnetSpeedUnitConst = 1
+	MilesPerHour_2	SimnetSpeedUnitConst = 2
+)
+
+func (e SimnetSpeedUnitConst) GoString() string {return e.String() }
+func (e SimnetSpeedUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Knots"
+		case 1:
+			return "Kilometers per hour"
+		case 2:
+			return "Miles per hour"
+default:
+		return fmt.Sprintf("SimnetSpeedUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetTemperatureUnitConst uint8
+const (
+	Celsius	SimnetTemperatureUnitConst = 0
+	Fahrenheit	SimnetTemperatureUnitConst = 1
+)
+
+func (e SimnetTemperatureUnitConst) GoString() string {return e.String() }
+func (e SimnetTemperatureUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Celsius"
+		case 1:
+			return "Fahrenheit"
+default:
+		return fmt.Sprintf("SimnetTemperatureUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetDistanceUnitConst uint8
+const (
+	NauticalMiles	SimnetDistanceUnitConst = 0
+	Kilometers	SimnetDistanceUnitConst = 1
+	Miles	SimnetDistanceUnitConst = 2
+)
+
+func (e SimnetDistanceUnitConst) GoString() string {return e.String() }
+func (e SimnetDistanceUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Nautical miles"
+		case 1:
+			return "Kilometers"
+		case 2:
+			return "Miles"
+default:
+		return fmt.Sprintf("SimnetDistanceUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetDistanceSmallUnitConst uint8
+const (
+	Feet	SimnetDistanceSmallUnitConst = 0
+	Meters	SimnetDistanceSmallUnitConst = 1
+	Yards	SimnetDistanceSmallUnitConst = 2
+)
+
+func (e SimnetDistanceSmallUnitConst) GoString() string {return e.String() }
+func (e SimnetDistanceSmallUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Feet"
+		case 1:
+			return "Meters"
+		case 2:
+			return "Yards"
+default:
+		return fmt.Sprintf("SimnetDistanceSmallUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetDepthUnitConst uint8
+const (
+	Meters_2	SimnetDepthUnitConst = 0
+	Feet_2	SimnetDepthUnitConst = 1
+	Fathoms	SimnetDepthUnitConst = 2
+)
+
+func (e SimnetDepthUnitConst) GoString() string {return e.String() }
+func (e SimnetDepthUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Meters"
+		case 1:
+			return "Feet"
+		case 2:
+			return "Fathoms"
+default:
+		return fmt.Sprintf("SimnetDepthUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetVolumeUnitConst uint8
+const (
+	Liters	SimnetVolumeUnitConst = 0
+	Gallons	SimnetVolumeUnitConst = 1
+)
+
+func (e SimnetVolumeUnitConst) GoString() string {return e.String() }
+func (e SimnetVolumeUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Liters"
+		case 1:
+			return "Gallons"
+default:
+		return fmt.Sprintf("SimnetVolumeUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetPressureUnitConst uint8
+const (
+	Psi	SimnetPressureUnitConst = 1
+	Kilopascal	SimnetPressureUnitConst = 3
+	InchesOfMercury	SimnetPressureUnitConst = 5
+	Bar	SimnetPressureUnitConst = 6
+)
+
+func (e SimnetPressureUnitConst) GoString() string {return e.String() }
+func (e SimnetPressureUnitConst) String() string {
+	switch e {
+		case 1:
+			return "PSI"
+		case 3:
+			return "Kilopascal"
+		case 5:
+			return "Inches of mercury"
+		case 6:
+			return "Bar"
+default:
+		return fmt.Sprintf("SimnetPressureUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetBaroPressureUnitConst uint8
+const (
+	Millibar	SimnetBaroPressureUnitConst = 0
+	Hectopascal	SimnetBaroPressureUnitConst = 2
+	InchesOfMercury_2	SimnetBaroPressureUnitConst = 5
+)
+
+func (e SimnetBaroPressureUnitConst) GoString() string {return e.String() }
+func (e SimnetBaroPressureUnitConst) String() string {
+	switch e {
+		case 0:
+			return "Millibar"
+		case 2:
+			return "Hectopascal"
+		case 5:
+			return "Inches of mercury"
+default:
+		return fmt.Sprintf("SimnetBaroPressureUnitConst(%d)", uint8(e))
 	}
 }
 type SimnetApEventsConst uint8
@@ -8376,6 +8660,7 @@ const (
 	Activate	SimnetAlarmCommandConst = 57
 	Acknowledge_4	SimnetAlarmCommandConst = 58
 	Silence	SimnetAlarmCommandConst = 68
+	TackGybeConfirm	SimnetAlarmCommandConst = 88
 	AlarmHistory	SimnetAlarmCommandConst = 104
 	MOBActivated_2	SimnetAlarmCommandConst = 107
 	MOBCancelled	SimnetAlarmCommandConst = 108
@@ -8392,6 +8677,8 @@ func (e SimnetAlarmCommandConst) String() string {
 			return "Acknowledge"
 		case 68:
 			return "Silence"
+		case 88:
+			return "Tack/Gybe Confirm"
 		case 104:
 			return "Alarm History"
 		case 107:
@@ -9275,9 +9562,9 @@ default:
 type FusionSiriusComStateConst uint8
 const (
 	Unknown_2	FusionSiriusComStateConst = 255
-	Off_9	FusionSiriusComStateConst = 1
+	Off_10	FusionSiriusComStateConst = 1
 	Initialising	FusionSiriusComStateConst = 2
-	On_3	FusionSiriusComStateConst = 3
+	On_4	FusionSiriusComStateConst = 3
 )
 
 func (e FusionSiriusComStateConst) GoString() string {return e.String() }
@@ -9293,32 +9580,6 @@ func (e FusionSiriusComStateConst) String() string {
 			return "On"
 default:
 		return fmt.Sprintf("FusionSiriusComStateConst(%d)", uint8(e))
-	}
-}
-type FusionSiriusAlertConst uint8
-const (
-	Unknown_3	FusionSiriusAlertConst = 255
-	None_5	FusionSiriusAlertConst = 1
-	Antenna	FusionSiriusAlertConst = 2
-	Nosignal	FusionSiriusAlertConst = 3
-	SubscriptionUpdate	FusionSiriusAlertConst = 4
-)
-
-func (e FusionSiriusAlertConst) GoString() string {return e.String() }
-func (e FusionSiriusAlertConst) String() string {
-	switch e {
-		case 255:
-			return "Unknown"
-		case 1:
-			return "None"
-		case 2:
-			return "Antenna"
-		case 3:
-			return "NoSignal"
-		case 4:
-			return "Subscription Update"
-default:
-		return fmt.Sprintf("FusionSiriusAlertConst(%d)", uint8(e))
 	}
 }
 type FusionSiriusTuningModeConst uint8
@@ -9343,7 +9604,7 @@ default:
 }
 type FusionStatusMessageIDConst uint16
 const (
-	Unknown_4	FusionStatusMessageIDConst = 0
+	Unknown_3	FusionStatusMessageIDConst = 0
 	ApiVersion	FusionStatusMessageIDConst = 32769
 	Source_2	FusionStatusMessageIDConst = 32770
 	SourceCount	FusionStatusMessageIDConst = 32771
@@ -10103,7 +10364,7 @@ default:
 }
 type FusionRepeatStatusConst uint32
 const (
-	Off_10	FusionRepeatStatusConst = 0
+	Off_11	FusionRepeatStatusConst = 0
 	OneTrack	FusionRepeatStatusConst = 1
 	AllAlbum	FusionRepeatStatusConst = 2
 )
@@ -10215,8 +10476,8 @@ default:
 }
 type FusionPowerStateConst uint8
 const (
-	On_4	FusionPowerStateConst = 1
-	Off_11	FusionPowerStateConst = 2
+	On_5	FusionPowerStateConst = 1
+	Off_12	FusionPowerStateConst = 2
 )
 
 func (e FusionPowerStateConst) GoString() string {return e.String() }
@@ -10298,7 +10559,7 @@ const (
 	Two_2	BandgDecimalsConst = 2
 	Three_2	BandgDecimalsConst = 3
 	Four_2	BandgDecimalsConst = 4
-	Auto_5	BandgDecimalsConst = 254
+	Auto_6	BandgDecimalsConst = 254
 )
 
 func (e BandgDecimalsConst) GoString() string {return e.String() }
@@ -10364,6 +10625,113 @@ func (e GarminColorConst) String() string {
 			return "Night green/black"
 default:
 		return fmt.Sprintf("GarminColorConst(%d)", uint8(e))
+	}
+}
+type GarminAutopilotModeStateConst uint8
+const (
+	Standby_6	GarminAutopilotModeStateConst = 2
+	ShadowDrive	GarminAutopilotModeStateConst = 3
+	Engaged_2	GarminAutopilotModeStateConst = 5
+)
+
+func (e GarminAutopilotModeStateConst) GoString() string {return e.String() }
+func (e GarminAutopilotModeStateConst) String() string {
+	switch e {
+		case 2:
+			return "Standby"
+		case 3:
+			return "Shadow Drive"
+		case 5:
+			return "Engaged"
+default:
+		return fmt.Sprintf("GarminAutopilotModeStateConst(%d)", uint8(e))
+	}
+}
+type GarminMessageIDConst uint16
+const (
+	AhrsAttTransport	GarminMessageIDConst = 1900
+	AutopilotTransport	GarminMessageIDConst = 5904
+)
+
+func (e GarminMessageIDConst) GoString() string {return e.String() }
+func (e GarminMessageIDConst) String() string {
+	switch e {
+		case 1900:
+			return "AHRS ATT transport"
+		case 5904:
+			return "Autopilot transport"
+default:
+		return fmt.Sprintf("GarminMessageIDConst(%d)", uint16(e))
+	}
+}
+type GarminAutopilotFieldConst uint8
+const (
+	GarminAutopilotFieldConstHeartbeat	GarminAutopilotFieldConst = 3
+	ModeState	GarminAutopilotFieldConst = 10
+	HeadingToSteer	GarminAutopilotFieldConst = 11
+	ResponseSetting	GarminAutopilotFieldConst = 62
+	GarminAutopilotFieldConstRateOfTurn	GarminAutopilotFieldConst = 114
+	RateOfTurnOrder_2	GarminAutopilotFieldConst = 115
+	TurnAngleOrder	GarminAutopilotFieldConst = 116
+	SystemVoltage	GarminAutopilotFieldConst = 158
+	TurnAngleMeasured	GarminAutopilotFieldConst = 161
+	EngineRPMB	GarminAutopilotFieldConst = 239
+	EngineRPMA	GarminAutopilotFieldConst = 240
+	GarminAutopilotFieldConstSpeed	GarminAutopilotFieldConst = 246
+)
+
+func (e GarminAutopilotFieldConst) GoString() string {return e.String() }
+func (e GarminAutopilotFieldConst) String() string {
+	switch e {
+		case 3:
+			return "Heartbeat"
+		case 10:
+			return "Mode State"
+		case 11:
+			return "Heading to Steer"
+		case 62:
+			return "Response Setting"
+		case 114:
+			return "Rate of Turn"
+		case 115:
+			return "Rate of Turn Order"
+		case 116:
+			return "Turn Angle Order"
+		case 158:
+			return "System Voltage"
+		case 161:
+			return "Turn Angle Measured"
+		case 239:
+			return "Engine RPM B"
+		case 240:
+			return "Engine RPM A"
+		case 246:
+			return "Speed"
+default:
+		return fmt.Sprintf("GarminAutopilotFieldConst(%d)", uint8(e))
+	}
+}
+type GarminAttMessageIDConst uint16
+const (
+	CalibrationMatrixPresent	GarminAttMessageIDConst = 40
+	SetNorthState	GarminAttMessageIDConst = 52
+	DeviceFlags	GarminAttMessageIDConst = 65
+	COGSourceValidFlag	GarminAttMessageIDConst = 67
+)
+
+func (e GarminAttMessageIDConst) GoString() string {return e.String() }
+func (e GarminAttMessageIDConst) String() string {
+	switch e {
+		case 40:
+			return "Calibration Matrix Present"
+		case 52:
+			return "Set North State"
+		case 65:
+			return "Device Flags"
+		case 67:
+			return "COG Source Valid Flag"
+default:
+		return fmt.Sprintf("GarminAttMessageIDConst(%d)", uint16(e))
 	}
 }
 type GarminBacklightLevelConst uint8
@@ -10442,7 +10810,7 @@ default:
 }
 type SeatalkPilotMode16Const uint16
 const (
-	Standby_6	SeatalkPilotMode16Const = 0
+	Standby_7	SeatalkPilotMode16Const = 0
 	AutoCompassCommanded	SeatalkPilotMode16Const = 64
 	VaneWindMode	SeatalkPilotMode16Const = 256
 	TrackMode	SeatalkPilotMode16Const = 384
@@ -10561,7 +10929,7 @@ default:
 }
 type DifferentialSourceConst uint8
 const (
-	Auto_6	DifferentialSourceConst = 0
+	Auto_7	DifferentialSourceConst = 0
 	Loran	DifferentialSourceConst = 1
 	MskBeacon	DifferentialSourceConst = 2
 	FmSubcarrier	DifferentialSourceConst = 3
@@ -10739,8 +11107,8 @@ default:
 }
 type AgsModeConst uint8
 const (
-	Off_12	AgsModeConst = 0
-	On_5	AgsModeConst = 1
+	Off_13	AgsModeConst = 0
+	On_6	AgsModeConst = 1
 	Automatic_3	AgsModeConst = 2
 )
 
@@ -11995,9 +12363,38 @@ func (e WindlassMonitoringConst) String() string {
 		return fmt.Sprintf("%s(%d)", "WindlassMonitoringConst", uint16(e))
 	}
 }
+type FurunoBaselineStatusConst uint16
+const (
+	BaselineAntenna12	FurunoBaselineStatusConst = 0
+	BaselineAntenna23	FurunoBaselineStatusConst = 1
+	BaselineAntenna34	FurunoBaselineStatusConst = 2
+	BaselineAntenna41	FurunoBaselineStatusConst = 3
+	BaselineAntenna13	FurunoBaselineStatusConst = 4
+	BaselineAntenna24	FurunoBaselineStatusConst = 5
+)
+
+func (e FurunoBaselineStatusConst) GoString() string {return e.String() }
+func (e FurunoBaselineStatusConst) String() string {
+	switch e {
+		case 0:
+			return "Baseline Antenna 1-2"
+		case 1:
+			return "Baseline Antenna 2-3"
+		case 2:
+			return "Baseline Antenna 3-4"
+		case 3:
+			return "Baseline Antenna 4-1"
+		case 4:
+			return "Baseline Antenna 1-3"
+		case 5:
+			return "Baseline Antenna 2-4"
+	default:
+		return fmt.Sprintf("%s(%d)", "FurunoBaselineStatusConst", uint16(e))
+	}
+}
 type SimnetApModeBitfieldConst uint16
 const (
-	Standby_7	SimnetApModeBitfieldConst = 3
+	Standby_8	SimnetApModeBitfieldConst = 3
 	Heading_5	SimnetApModeBitfieldConst = 4
 	Nav_2	SimnetApModeBitfieldConst = 6
 	NoDrift_2	SimnetApModeBitfieldConst = 8

@@ -109,13 +109,13 @@ func FindDecoder(stream *DataStream, pgn uint32) (func(MessageInfo, *DataStream)
 	if !exists {
 		return nil, fmt.Errorf("no decoder found for PGN %d", pgn)
 	}
-	
+
 	for _, discriminator := range discriminators {
 		if matchesVariant(stream, discriminator.MatchSpecs) {
 			return discriminator.Decoder, nil
 		}
 	}
-	
+
 	return nil, fmt.Errorf("no matching variant found for PGN %d", pgn)
 }
 
@@ -124,11 +124,11 @@ func matchesVariant(stream *DataStream, matchSpecs []MatchFieldSpec) bool {
 	// Save current position
 	originalPos := stream.Position()
 	defer stream.SetPosition(originalPos)
-	
+
 	for _, matchSpec := range matchSpecs {
 		// Set position to the field's bit offset
 		stream.SetPosition(matchSpec.FieldSpec.BitOffset)
-		
+
 		// Use ReadRaw since match values are raw (unscaled)
 		if value, err := ReadRaw[uint64](stream, matchSpec.FieldSpec); err != nil {
 			return false

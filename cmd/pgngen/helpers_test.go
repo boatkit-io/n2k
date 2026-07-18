@@ -108,6 +108,35 @@ func TestLatestCanboatReleaseRejectsHTTPError(t *testing.T) {
 }
 
 func TestReportCanboatReleaseStatusWarnsButDoesNotFail(t *testing.T) {
+	output := captureCanboatReleaseStatus(t, "v7.1.0", githubRelease{
+		TagName: "v7.2.0",
+		HTMLURL: "https://github.com/canboat/canboat/releases/tag/v7.2.0",
+	})
+
+	if !strings.Contains(output, "newer Canboat release available") {
+		t.Fatalf("expected newer-release warning, got %q", output)
+	}
+	if !strings.Contains(output, "locked=v7.1.0") || !strings.Contains(output, "latest=v7.2.0") {
+		t.Fatalf("expected locked/latest versions in warning, got %q", output)
+	}
+}
+
+func TestReportCanboatReleaseStatusHandlesLockedVersionAheadOfLatestStable(t *testing.T) {
+	output := captureCanboatReleaseStatus(t, "v7.2.0", githubRelease{
+		TagName: "v7.1.0",
+		HTMLURL: "https://github.com/canboat/canboat/releases/tag/v7.1.0",
+	})
+
+	if strings.Contains(output, "newer Canboat release available") {
+		t.Fatalf("did not expect newer-release warning, got %q", output)
+	}
+	if !strings.Contains(output, "ahead of latest stable release") {
+		t.Fatalf("expected ahead-of-stable status, got %q", output)
+	}
+}
+
+func captureCanboatReleaseStatus(t *testing.T, locked string, latest githubRelease) string {
+	t.Helper()
 	var buf bytes.Buffer
 	previousOutput := log.Out
 	previousLevel := log.GetLevel()
@@ -121,18 +150,8 @@ func TestReportCanboatReleaseStatusWarnsButDoesNotFail(t *testing.T) {
 		log.SetFormatter(previousFormatter)
 	}()
 
-	reportCanboatReleaseStatus("v7.1.0", githubRelease{
-		TagName: "v7.2.0",
-		HTMLURL: "https://github.com/canboat/canboat/releases/tag/v7.2.0",
-	})
-
-	output := buf.String()
-	if !strings.Contains(output, "newer Canboat release available") {
-		t.Fatalf("expected newer-release warning, got %q", output)
-	}
-	if !strings.Contains(output, "locked=v7.1.0") || !strings.Contains(output, "latest=v7.2.0") {
-		t.Fatalf("expected locked/latest versions in warning, got %q", output)
-	}
+	reportCanboatReleaseStatus(locked, latest)
+	return buf.String()
 }
 
 type roundTripFunc func(*http.Request) (*http.Response, error)

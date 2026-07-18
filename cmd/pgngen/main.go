@@ -41,9 +41,14 @@ const resolution64BitCutoff = 0.0000001
 // MaxPGNLength is the maximum length of a PGN in bytes
 const MaxPGNLength = 223 // 31*7 + 6
 
-const canboatRelease = "v7.1.0"
+const canboatRelease = "v7.2.0"
+
+// canboatRevision is the immutable commit for the Canboat 7.2.0 release.
+// Use the commit rather than the moving release branch so generation remains reproducible.
+const canboatRevision = "12d58dd15f0af26c9caaf73232024dc31628bbd9"
+
 const canboatCacheName = "canboatjson-" + canboatRelease
-const canboatJSONURL = "https://raw.githubusercontent.com/canboat/canboat/" + canboatRelease + "/docs/canboat.json"
+const canboatJSONURL = "https://raw.githubusercontent.com/canboat/canboat/" + canboatRevision + "/docs/canboat.json"
 const canboatLatestReleaseURL = "https://api.github.com/repos/canboat/canboat/releases/latest"
 
 // log provides standard logging capability to the program.
@@ -1757,9 +1762,52 @@ func latestCanboatReleaseWithClient(client *http.Client, url string) (githubRele
 func reportCanboatReleaseStatus(locked string, latest githubRelease) {
 	log.Infof("Latest stable Canboat release is %s", latest.TagName)
 
-	if latest.TagName != locked {
-		log.Warnf("newer Canboat release available: locked=%s latest=%s url=%s", locked, latest.TagName, latest.HTMLURL)
+	comparison, err := compareCanboatReleases(latest.TagName, locked)
+	if err != nil {
+		log.Warnf("Canboat release differs but versions could not be compared: locked=%s latest=%s error=%v", locked, latest.TagName, err)
+		return
 	}
+	if comparison > 0 {
+		log.Warnf("newer Canboat release available: locked=%s latest=%s url=%s", locked, latest.TagName, latest.HTMLURL)
+	} else if comparison < 0 {
+		log.Infof("Canboat input %s is ahead of latest stable release %s", locked, latest.TagName)
+	}
+}
+
+func compareCanboatReleases(left, right string) (int, error) {
+	parse := func(tag string) ([3]uint64, error) {
+		var version [3]uint64
+		parts := strings.Split(strings.TrimPrefix(tag, "v"), ".")
+		if len(parts) != len(version) {
+			return version, fmt.Errorf("expected major.minor.patch version, got %q", tag)
+		}
+		for i, part := range parts {
+			value, err := strconv.ParseUint(part, 10, 64)
+			if err != nil {
+				return version, fmt.Errorf("parse Canboat version %q: %w", tag, err)
+			}
+			version[i] = value
+		}
+		return version, nil
+	}
+
+	leftVersion, err := parse(left)
+	if err != nil {
+		return 0, err
+	}
+	rightVersion, err := parse(right)
+	if err != nil {
+		return 0, err
+	}
+	for i := range leftVersion {
+		if leftVersion[i] > rightVersion[i] {
+			return 1, nil
+		}
+		if leftVersion[i] < rightVersion[i] {
+			return -1, nil
+		}
+	}
+	return 0, nil
 }
 
 // getManId returns the required Manufacturer Code ID for the defined PGN.

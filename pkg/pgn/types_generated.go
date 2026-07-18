@@ -90,7 +90,7 @@ type ISOAddressClaim struct {
 	DeviceClass DeviceClassConst
 	SystemInstance *uint8
 	IndustryGroup IndustryCodeConst
-	ArbitraryAddressCapable YesNoConst
+	ArbitraryAddressCapable YesNo1BitConst
 }
 type ZeroXef00ManufacturerProprietarySingleFrameAddressed struct {
 	Info MessageInfo
@@ -132,6 +132,14 @@ type CarlingBreakerCommand struct {
 	BreakerMapping3 *uint8
 	BreakerCommand *uint8
 	DimValue *uint8
+}
+type SimnetKeepAlive struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Command *uint16
+	Reply *uint8
+	Value []uint8
 }
 type ZeroXf0000XfeffStandardizedSingleFrameNonAddressed struct {
 	Info MessageInfo
@@ -365,6 +373,13 @@ type MercuryEngineData struct {
 	IndustryCode IndustryCodeConst
 	Data []uint8
 }
+type NavicoDeviceStatus struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ReportType *uint8
+	Data []uint8
+}
 type BepMarineCzoneCircuitControl struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -589,6 +604,20 @@ type SimnetLgc2000Configuration struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
+type LowranceGPSConfiguration struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	A *uint8
+	B *uint8
+	C *uint8
+	D *uint8
+	E *uint8
+	F *uint8
+	G *uint8
+	H *uint8
+	I *uint8
+}
 type DiverseYachtServicesLoadCell struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -686,6 +715,14 @@ type SuzukiEngineDataD struct {
 	IndustryCode IndustryCodeConst
 	Data []uint8
 }
+type LowranceVesselSetupEngineAndTankConfiguration struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	NumberOfEngines *uint8
+	NumberOfFuelTanks *uint8
+	TotalFuelCapacity *units.Volume
+}
 type SuzukiEngineDataE struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -697,6 +734,14 @@ type BepMarineProprietaryPGN65304 struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Data []uint8
+}
+type LowranceVesselSetupEngineAndTankConfigurationBroadcast struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	NumberOfEngines *uint8
+	NumberOfFuelTanks *uint8
+	TotalFuelCapacity *units.Volume
 }
 type SimnetDeviceStatus struct {
 	Info MessageInfo
@@ -755,6 +800,7 @@ type NavicoWirelessBatteryStatus struct {
 	Status *uint8
 	BatteryStatus *uint8
 	BatteryChargeStatus *uint8
+	A *int16
 }
 type BepMarineProprietaryPGN65310 struct {
 	Info MessageInfo
@@ -774,6 +820,7 @@ type NavicoWirelessSignalStatus struct {
 	IndustryCode IndustryCodeConst
 	Unknown *uint8
 	SignalStrength *uint8
+	A *int8
 }
 type NavicoDepthQuality struct {
 	Info MessageInfo
@@ -792,7 +839,7 @@ type YamahaGearStatus struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Neutral YesNoConst
+	Neutral YesNo1BitConst
 }
 type SuzukiTrollModeControl struct {
 	Info MessageInfo
@@ -812,12 +859,12 @@ type NavicoProprietary2 struct {
 	IndustryCode IndustryCodeConst
 	Data []uint8
 }
-type SimnetApUnknown5 struct {
+type SimnetDataSourceSelectionRequest struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	A *uint8
-	B *uint8
+	DataType SimnetDataSourceConst
+	SourceClass *uint8
 }
 type SimnetAnalogTelemetry struct {
 	Info MessageInfo
@@ -901,10 +948,10 @@ type YanmarEngineDataF struct {
 }
 type SimnetMagneticField struct {
 	Info MessageInfo
-	A *float32
-	B *uint8
-	C *float32
-	D *float32
+	FieldX *float32
+	FieldY *float32
+	FieldZ *float32
+	Marker *uint8
 }
 type SeatalkPilotHeading struct {
 	Info MessageInfo
@@ -1156,51 +1203,194 @@ type PGNListTransmitAndReceive struct {
 type PGNListTransmitAndReceiveRepeating1 struct {
 	PGN *uint32
 }
+type ZeroX1Ef00ManufacturerProprietaryFastPacketAddressed struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Data []uint8
+}
 type GarminAhrsAttCOGSourceValidFlag struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	SubProtocolID *uint16
+	SubProtocolID GarminMessageIDConst
 	WrapperByte1 *uint8
 	WrapperByte2 *uint8
-	AttMessageID *uint16
+	AttMessageID GarminAttMessageIDConst
 	COGSourceFlags *uint32
 }
 type GarminAhrsAttDeviceFlags struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	SubProtocolID *uint16
+	SubProtocolID GarminMessageIDConst
 	WrapperByte1 *uint8
 	WrapperByte2 *uint8
-	AttMessageID *uint16
+	AttMessageID GarminAttMessageIDConst
 	DeviceFlags *uint32
 }
 type GarminAhrsAttNonDefaultCalibrationMatrixPresent struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	SubProtocolID *uint16
+	SubProtocolID GarminMessageIDConst
 	WrapperByte1 *uint8
 	WrapperByte2 *uint8
-	AttMessageID *uint16
+	AttMessageID GarminAttMessageIDConst
 	CalibrationMatrixPresent *uint8
 }
 type GarminAhrsAttSetNorthState struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	SubProtocolID *uint16
+	SubProtocolID GarminMessageIDConst
 	WrapperByte1 *uint8
 	WrapperByte2 *uint8
-	AttMessageID *uint16
+	AttMessageID GarminAttMessageIDConst
 	SetNorthState *uint8
 }
-type ZeroX1Ef00ManufacturerProprietaryFastPacketAddressed struct {
+type GarminAutopilotHeadingToSteer struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Data []uint8
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	HeadingToSteer *float32
+}
+type GarminAutopilotRateOfTurn struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	RateOfTurn *float32
+}
+type GarminAutopilotRateOfTurnOrder struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	RateOfTurnOrder *float32
+}
+type GarminAutopilotSpeed struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	Speed *float32
+}
+type GarminAutopilotSystemVoltage struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	SystemVoltage *float32
+}
+type GarminAutopilotTurnAngleOrder struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	TurnAngleOrder *float32
+}
+type GarminAutopilotTurnAngleMeasured struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	TurnAngleMeasured *float32
+}
+type GarminAutopilotEngineRPMA struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	EngineSpeed *uint16
+}
+type GarminAutopilotEngineRPMB struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	EngineSpeed *uint16
+}
+type GarminAutopilotResponseSetting struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	ResponseSetting *int8
+}
+type GarminAutopilotModeState struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	ModeState GarminAutopilotModeStateConst
+}
+type GarminAutopilotHeartbeat struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	Field GarminAutopilotFieldConst
+	HeartbeatData []uint8
+}
+type GarminAutopilotManeuver struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	SubProtocolID GarminMessageIDConst
+	WrapperByte1 *uint8
+	WrapperByte2 *uint8
+	FieldGroup *uint8
+	ManeuverCode *uint8
+	Value *uint8
 }
 type Seatalk1PilotMode struct {
 	Info MessageInfo
@@ -1467,15 +1657,6 @@ type MaretronDeviationCalibrationResponse struct {
 	Command MaretronCommandConst
 	Status MaretronStatusDeviationConst
 }
-type MaretronSlaveResponse struct {
-	Info MessageInfo
-	ManufacturerCode ManufacturerCodeConst
-	IndustryCode IndustryCodeConst
-	ProductCode *uint16
-	SoftwareCode *uint16
-	Command *uint8
-	Status *uint8
-}
 type MaretronProprietaryConfiguration struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -1558,12 +1739,12 @@ type Alert struct {
 	DataSourceInstance *uint8
 	DataSourceIndexSource *uint8
 	AlertOccurrenceNumber *uint8
-	TemporarySilenceStatus YesNoConst
-	AcknowledgeStatus YesNoConst
-	EscalationStatus YesNoConst
-	TemporarySilenceSupport YesNoConst
-	AcknowledgeSupport YesNoConst
-	EscalationSupport YesNoConst
+	TemporarySilenceStatus YesNo1BitConst
+	AcknowledgeStatus YesNo1BitConst
+	EscalationStatus YesNo1BitConst
+	TemporarySilenceSupport YesNo1BitConst
+	AcknowledgeSupport YesNo1BitConst
+	EscalationSupport YesNo1BitConst
 	AcknowledgeSourceNetworkIDName *uint64
 	TriggerCondition AlertTriggerConditionConst
 	ThresholdStatus AlertThresholdStatusConst
@@ -2223,7 +2404,7 @@ type TrackedTargetData struct {
 	SID *uint8
 	TargetID *uint16
 	TrackStatus TrackingConst
-	ReportedTarget YesNoConst
+	ReportedTarget YesNo1BitConst
 	TargetAcquisition TargetAcquisitionConst
 	BearingReference DirectionReferenceConst
 	Bearing *float32
@@ -2421,10 +2602,10 @@ type AISClassBPositionReport struct {
 	AISTransceiverInformation AISTransceiverConst
 	Heading *float32
 	UnitType AISTypeConst
-	IntegratedDisplay YesNoConst
-	DSC YesNoConst
+	IntegratedDisplay YesNo1BitConst
+	DSC YesNo1BitConst
 	Band AISBandConst
-	CANHandleMsg22 YesNoConst
+	CANHandleMsg22 YesNo1BitConst
 	AISMode AISModeConst
 	AISCommunicationState AISCommunicationStateConst
 }
@@ -2467,8 +2648,8 @@ type AISAidsToNavigationATONReport struct {
 	PositionReferenceFromStarboardEdge *units.Distance
 	PositionReferenceFromTrueNorthFacingEdge *units.Distance
 	ATONType ATONTypeConst
-	OffPositionIndicator YesNoConst
-	VirtualATONFlag YesNoConst
+	OffPositionIndicator YesNo1BitConst
+	VirtualATONFlag YesNo1BitConst
 	AssignedModeFlag AISAssignedModeConst
 	PositionFixingDeviceType PositionFixDeviceConst
 	ATONStatus []uint8
@@ -2768,7 +2949,7 @@ type AISAddressedBinaryMessage struct {
 	AISTransceiverInformation AISTransceiverConst
 	SequenceNumber *uint8
 	DestinationID *uint32
-	RetransmitFlag YesNoConst
+	RetransmitFlag YesNo1BitConst
 	NumberOfBitsInBinaryDataField *uint16
 	BinaryData []uint8
 }
@@ -2836,7 +3017,7 @@ type AISAddressedSafetyRelatedMessage struct {
 	AISTransceiverInformation AISTransceiverConst
 	SequenceNumber *uint8
 	DestinationID *uint32
-	RetransmitFlag YesNoConst
+	RetransmitFlag YesNo1BitConst
 	SafetyRelatedText string
 }
 type AISSafetyRelatedBroadcastMessage struct {
@@ -4056,15 +4237,13 @@ type SeaRecoveryWatermakerStatus struct {
 	FilterStatus *uint8
 	SystemStatus *uint8
 }
-type NavicoUnknown struct {
+type NavicoFeatureUnlock struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	A *uint8
-	B *uint8
-	C *uint8
-	D *uint8
-	E *uint8
+	FeatureID *uint16
+	RecordCount *uint8
+	Data *uint16
 }
 type LowranceProductInformation struct {
 	Info MessageInfo
@@ -4667,12 +4846,6 @@ type MaretronAlertResponse struct {
 	AcknowledgeSourceNetworkIDName *uint64
 	ResponseCommand AlertResponseCommandConst
 }
-type BepMarineProprietaryPGN130820 struct {
-	Info MessageInfo
-	ManufacturerCode ManufacturerCodeConst
-	IndustryCode IndustryCodeConst
-	Data []uint8
-}
 type NavicoAsciiData struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -4754,7 +4927,7 @@ type NavicoUdbDatabaseBulkReport2 struct {
 	Item *uint8
 	Data []uint8
 }
-type NavicoUdbDatabaseBulkReport3 struct {
+type NavicoConfigurationSet struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
@@ -4763,7 +4936,10 @@ type NavicoUdbDatabaseBulkReport3 struct {
 	Address *uint8
 	Section *uint8
 	Item *uint8
-	Data []uint8
+	SourceSettingID *uint8
+	Token *uint16
+	Length *uint16
+	Value []uint8
 }
 type NavicoUdbDatabaseBulkReport4 struct {
 	Info MessageInfo
@@ -4859,6 +5035,42 @@ type MaretronProprietaryTemperatureHighRange struct {
 	Source TemperatureSourceConst
 	ActualTemperature *units.Temperature
 	SetTemperature *units.Temperature
+}
+type NavicoDataTypeSourceDirectory struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ReportType *uint8
+	Part *uint8
+	Repeating1 []NavicoDataTypeSourceDirectoryRepeating1
+}
+type NavicoDataTypeSourceDirectoryRepeating1 struct {
+	Length *uint8
+	Type *uint8
+	DataType NavicoDataTypeConst
+	Value []uint8
+}
+type NavicoDataTypeSourceDirectoryFullReport struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ReportType *uint8
+	Part *uint8
+	Repeating1 []NavicoDataTypeSourceDirectoryFullReportRepeating1
+}
+type NavicoDataTypeSourceDirectoryFullReportRepeating1 struct {
+	Length *uint8
+	Type *uint8
+	DataType NavicoDataTypeConst
+	Value []uint8
+}
+type NavicoBoatSpeedPolarTable struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ReportType *uint8
+	Part *uint8
+	Data []uint8
 }
 type BGKeyValueData struct {
 	Info MessageInfo
@@ -4975,6 +5187,18 @@ type LowranceUnknown struct {
 	D *uint8
 	E *uint16
 	F *uint16
+}
+type FurunoNavpilotStatus struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID *uint8
+	RudderAngle *float32
+	A *int16
+	B *uint8
+	CommandedCourse *float32
+	C *uint8
+	D *uint16
 }
 type SimnetSetSerialNumber struct {
 	Info MessageInfo
@@ -5199,10 +5423,10 @@ type SimnetDataSourceSelection struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Sequence *uint8
-	B *uint8
 	DataType SimnetDataSourceConst
-	C *uint8
+	SourceClass *uint8
+	SourceAddress *uint8
+	ChangeCounter *uint8
 	Source *uint64
 }
 type MaretronCANFrameForwarding struct {
@@ -5272,6 +5496,15 @@ type SimnetAISClassBStaticDataMsg24PartB struct {
 	PositionReferenceFromBow *units.Distance
 	MothershipUserID *uint32
 }
+type SimnetAISSilentMode struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID *uint8
+	Operation SimnetKeyOperationConst
+	D *uint8
+	E *uint8
+}
 type MaretronWindlassControlCommand struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -5312,16 +5545,17 @@ type FurunoMultiSatsInViewExtended struct {
 	Antenna *uint8
 	PageType *uint8
 	Page *uint8
+	SatsInUse *uint8
 	SatsInView *uint8
 	Repeating1 []FurunoMultiSatsInViewExtendedRepeating1
 }
 type FurunoMultiSatsInViewExtendedRepeating1 struct {
-	Status *uint8
 	Prn *uint8
 	Elevation *float32
 	Azimuth *float32
 	Snr *float32
 	RangeResidual *units.Distance
+	BaselineStatus FurunoBaselineStatusConst
 }
 type SimnetKeyValue struct {
 	Info MessageInfo
@@ -5329,7 +5563,7 @@ type SimnetKeyValue struct {
 	IndustryCode IndustryCodeConst
 	Address *uint8
 	Instance *uint8
-	DisplayGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	Source *uint8
 	Key *uint32
 	Operation SimnetKeyOperationConst
@@ -5341,7 +5575,7 @@ type SimnetParameterSet struct {
 	IndustryCode IndustryCodeConst
 	Address *uint8
 	Instance *uint8
-	DisplayGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	Source *uint8
 	Key *uint32
 	Operation SimnetKeyOperationConst
@@ -5398,7 +5632,7 @@ type SimnetCommandApStandby struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 }
@@ -5407,7 +5641,7 @@ type SimnetCommandApNodrift struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 }
@@ -5416,7 +5650,7 @@ type SimnetCommandApWind struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 }
@@ -5425,7 +5659,7 @@ type SimnetCommandApNav struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 }
@@ -5434,7 +5668,7 @@ type SimnetCommandApHeading struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 }
@@ -5443,7 +5677,7 @@ type SimnetCommandApTack struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 	UnknownA *uint8
@@ -5454,7 +5688,7 @@ type SimnetCommandApFollowUp struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 }
@@ -5463,7 +5697,7 @@ type SimnetCommandApChangeCourse struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 	Direction SimnetDirectionConst
@@ -5474,7 +5708,7 @@ type SimnetEventCommandTimer struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	EventType SimnetEventTypeConst
 	Event SimnetTimerEventConst
 	Parameter1 *uint8
@@ -5486,7 +5720,7 @@ type SimnetAlarm struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	EventType SimnetEventTypeConst
 	Command SimnetAlarmCommandConst
 	AlarmID SimnetAlarmIDConst
@@ -5498,7 +5732,7 @@ type SimnetApCommand struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 }
@@ -5507,14 +5741,14 @@ type SimnetEvent struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 }
 type SimnetApCommandReplyChangeCourse struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 	Direction SimnetDirectionConst
@@ -5525,16 +5759,23 @@ type SimnetApCommandReply struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Address *uint8
-	NetworkGroup SimnetDisplayGroupConst
+	NetworkGroup SimnetNetworkGroupConst
 	CommandType SimnetEventTypeConst
 	Event SimnetApEventsConst
 	D *uint8
 	Value *uint16
 }
-type NavicoProprietary2Fp struct {
+type NavicoDiagnosticData struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
+	Instance *uint8
+	Repeating1 []NavicoDiagnosticDataRepeating1
+}
+type NavicoDiagnosticDataRepeating1 struct {
+	FieldID *uint8
+	Length *uint8
+	Value []uint8
 }
 type SimnetAlarmMessage struct {
 	Info MessageInfo
@@ -5555,11 +5796,6 @@ type SimnetApUnknown4 struct {
 	D *uint32
 	E *int32
 	F *uint32
-}
-type SimradEngineData struct {
-	Info MessageInfo
-	ManufacturerCode ManufacturerCodeConst
-	IndustryCode IndustryCodeConst
 }
 type AirmarAdditionalWeatherData struct {
 	Info MessageInfo

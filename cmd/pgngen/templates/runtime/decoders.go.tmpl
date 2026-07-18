@@ -21,7 +21,7 @@ func nullableUnit[T any, U any, V float32|uint16|int16|uint32](u U, v *V, newer 
 
 {{- $funcName := concat "Decode" .Id }}
 func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-    {{ $config := getDecoderConfig  $pgn }}
+{{ $config := getDecoderConfig  $pgn }}
     {{- if $config.Repeat1CountField }}
     var repeat1Count uint16 = 0
     {{- end }}
@@ -64,7 +64,7 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
             if v != nil {
                 valueLength = uint16(*v) * 8
             }
-        {{ end }}
+{{ end }}
 
         {{- if not (isNil .Match) }}
         {{- if isPointerFieldType $field }}
@@ -99,7 +99,7 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
         return partial, nil
     }
     {{- end }}
-    
+
     {{- if $config.Repeat1 }}
     // decode repeating fields
      val.Repeating1 = make([]publicpgn.{{ .Id }}Repeating1, 0)
@@ -169,7 +169,7 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
         }
     {{- else }}
         if stream.isEOF() {
-          break    
+          break
         }
  {{- end }}
    }

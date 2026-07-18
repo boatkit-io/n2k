@@ -70,6 +70,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeCarlingBreakerCommand(p, stream)
 	case publicpgn.CarlingBreakerCommand:
 		return EncodeCarlingBreakerCommand(&p, stream)
+	case *publicpgn.SimnetKeepAlive:
+		return EncodeSimnetKeepAlive(p, stream)
+	case publicpgn.SimnetKeepAlive:
+		return EncodeSimnetKeepAlive(&p, stream)
 	case *publicpgn.ZeroXf0000XfeffStandardizedSingleFrameNonAddressed:
 		return EncodeZeroXf0000XfeffStandardizedSingleFrameNonAddressed(p, stream)
 	case publicpgn.ZeroXf0000XfeffStandardizedSingleFrameNonAddressed:
@@ -222,6 +226,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMercuryEngineData(p, stream)
 	case publicpgn.MercuryEngineData:
 		return EncodeMercuryEngineData(&p, stream)
+	case *publicpgn.NavicoDeviceStatus:
+		return EncodeNavicoDeviceStatus(p, stream)
+	case publicpgn.NavicoDeviceStatus:
+		return EncodeNavicoDeviceStatus(&p, stream)
 	case *publicpgn.BepMarineCzoneCircuitControl:
 		return EncodeBepMarineCzoneCircuitControl(p, stream)
 	case publicpgn.BepMarineCzoneCircuitControl:
@@ -338,6 +346,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSimnetLgc2000Configuration(p, stream)
 	case publicpgn.SimnetLgc2000Configuration:
 		return EncodeSimnetLgc2000Configuration(&p, stream)
+	case *publicpgn.LowranceGPSConfiguration:
+		return EncodeLowranceGPSConfiguration(p, stream)
+	case publicpgn.LowranceGPSConfiguration:
+		return EncodeLowranceGPSConfiguration(&p, stream)
 	case *publicpgn.DiverseYachtServicesLoadCell:
 		return EncodeDiverseYachtServicesLoadCell(p, stream)
 	case publicpgn.DiverseYachtServicesLoadCell:
@@ -394,6 +406,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSuzukiEngineDataD(p, stream)
 	case publicpgn.SuzukiEngineDataD:
 		return EncodeSuzukiEngineDataD(&p, stream)
+	case *publicpgn.LowranceVesselSetupEngineAndTankConfiguration:
+		return EncodeLowranceVesselSetupEngineAndTankConfiguration(p, stream)
+	case publicpgn.LowranceVesselSetupEngineAndTankConfiguration:
+		return EncodeLowranceVesselSetupEngineAndTankConfiguration(&p, stream)
 	case *publicpgn.SuzukiEngineDataE:
 		return EncodeSuzukiEngineDataE(p, stream)
 	case publicpgn.SuzukiEngineDataE:
@@ -402,6 +418,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeBepMarineProprietaryPGN65304(p, stream)
 	case publicpgn.BepMarineProprietaryPGN65304:
 		return EncodeBepMarineProprietaryPGN65304(&p, stream)
+	case *publicpgn.LowranceVesselSetupEngineAndTankConfigurationBroadcast:
+		return EncodeLowranceVesselSetupEngineAndTankConfigurationBroadcast(p, stream)
+	case publicpgn.LowranceVesselSetupEngineAndTankConfigurationBroadcast:
+		return EncodeLowranceVesselSetupEngineAndTankConfigurationBroadcast(&p, stream)
 	case *publicpgn.SimnetDeviceStatus:
 		return EncodeSimnetDeviceStatus(p, stream)
 	case publicpgn.SimnetDeviceStatus:
@@ -470,10 +490,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeNavicoProprietary2(p, stream)
 	case publicpgn.NavicoProprietary2:
 		return EncodeNavicoProprietary2(&p, stream)
-	case *publicpgn.SimnetApUnknown5:
-		return EncodeSimnetApUnknown5(p, stream)
-	case publicpgn.SimnetApUnknown5:
-		return EncodeSimnetApUnknown5(&p, stream)
+	case *publicpgn.SimnetDataSourceSelectionRequest:
+		return EncodeSimnetDataSourceSelectionRequest(p, stream)
+	case publicpgn.SimnetDataSourceSelectionRequest:
+		return EncodeSimnetDataSourceSelectionRequest(&p, stream)
 	case *publicpgn.SimnetAnalogTelemetry:
 		return EncodeSimnetAnalogTelemetry(p, stream)
 	case publicpgn.SimnetAnalogTelemetry:
@@ -654,6 +674,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodePGNListTransmitAndReceive(p, stream)
 	case publicpgn.PGNListTransmitAndReceive:
 		return EncodePGNListTransmitAndReceive(&p, stream)
+	case *publicpgn.ZeroX1Ef00ManufacturerProprietaryFastPacketAddressed:
+		return EncodeZeroX1Ef00ManufacturerProprietaryFastPacketAddressed(p, stream)
+	case publicpgn.ZeroX1Ef00ManufacturerProprietaryFastPacketAddressed:
+		return EncodeZeroX1Ef00ManufacturerProprietaryFastPacketAddressed(&p, stream)
 	case *publicpgn.GarminAhrsAttCOGSourceValidFlag:
 		return EncodeGarminAhrsAttCOGSourceValidFlag(p, stream)
 	case publicpgn.GarminAhrsAttCOGSourceValidFlag:
@@ -670,10 +694,58 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeGarminAhrsAttSetNorthState(p, stream)
 	case publicpgn.GarminAhrsAttSetNorthState:
 		return EncodeGarminAhrsAttSetNorthState(&p, stream)
-	case *publicpgn.ZeroX1Ef00ManufacturerProprietaryFastPacketAddressed:
-		return EncodeZeroX1Ef00ManufacturerProprietaryFastPacketAddressed(p, stream)
-	case publicpgn.ZeroX1Ef00ManufacturerProprietaryFastPacketAddressed:
-		return EncodeZeroX1Ef00ManufacturerProprietaryFastPacketAddressed(&p, stream)
+	case *publicpgn.GarminAutopilotHeadingToSteer:
+		return EncodeGarminAutopilotHeadingToSteer(p, stream)
+	case publicpgn.GarminAutopilotHeadingToSteer:
+		return EncodeGarminAutopilotHeadingToSteer(&p, stream)
+	case *publicpgn.GarminAutopilotRateOfTurn:
+		return EncodeGarminAutopilotRateOfTurn(p, stream)
+	case publicpgn.GarminAutopilotRateOfTurn:
+		return EncodeGarminAutopilotRateOfTurn(&p, stream)
+	case *publicpgn.GarminAutopilotRateOfTurnOrder:
+		return EncodeGarminAutopilotRateOfTurnOrder(p, stream)
+	case publicpgn.GarminAutopilotRateOfTurnOrder:
+		return EncodeGarminAutopilotRateOfTurnOrder(&p, stream)
+	case *publicpgn.GarminAutopilotSpeed:
+		return EncodeGarminAutopilotSpeed(p, stream)
+	case publicpgn.GarminAutopilotSpeed:
+		return EncodeGarminAutopilotSpeed(&p, stream)
+	case *publicpgn.GarminAutopilotSystemVoltage:
+		return EncodeGarminAutopilotSystemVoltage(p, stream)
+	case publicpgn.GarminAutopilotSystemVoltage:
+		return EncodeGarminAutopilotSystemVoltage(&p, stream)
+	case *publicpgn.GarminAutopilotTurnAngleOrder:
+		return EncodeGarminAutopilotTurnAngleOrder(p, stream)
+	case publicpgn.GarminAutopilotTurnAngleOrder:
+		return EncodeGarminAutopilotTurnAngleOrder(&p, stream)
+	case *publicpgn.GarminAutopilotTurnAngleMeasured:
+		return EncodeGarminAutopilotTurnAngleMeasured(p, stream)
+	case publicpgn.GarminAutopilotTurnAngleMeasured:
+		return EncodeGarminAutopilotTurnAngleMeasured(&p, stream)
+	case *publicpgn.GarminAutopilotEngineRPMA:
+		return EncodeGarminAutopilotEngineRPMA(p, stream)
+	case publicpgn.GarminAutopilotEngineRPMA:
+		return EncodeGarminAutopilotEngineRPMA(&p, stream)
+	case *publicpgn.GarminAutopilotEngineRPMB:
+		return EncodeGarminAutopilotEngineRPMB(p, stream)
+	case publicpgn.GarminAutopilotEngineRPMB:
+		return EncodeGarminAutopilotEngineRPMB(&p, stream)
+	case *publicpgn.GarminAutopilotResponseSetting:
+		return EncodeGarminAutopilotResponseSetting(p, stream)
+	case publicpgn.GarminAutopilotResponseSetting:
+		return EncodeGarminAutopilotResponseSetting(&p, stream)
+	case *publicpgn.GarminAutopilotModeState:
+		return EncodeGarminAutopilotModeState(p, stream)
+	case publicpgn.GarminAutopilotModeState:
+		return EncodeGarminAutopilotModeState(&p, stream)
+	case *publicpgn.GarminAutopilotHeartbeat:
+		return EncodeGarminAutopilotHeartbeat(p, stream)
+	case publicpgn.GarminAutopilotHeartbeat:
+		return EncodeGarminAutopilotHeartbeat(&p, stream)
+	case *publicpgn.GarminAutopilotManeuver:
+		return EncodeGarminAutopilotManeuver(p, stream)
+	case publicpgn.GarminAutopilotManeuver:
+		return EncodeGarminAutopilotManeuver(&p, stream)
 	case *publicpgn.Seatalk1PilotMode:
 		return EncodeSeatalk1PilotMode(p, stream)
 	case publicpgn.Seatalk1PilotMode:
@@ -790,10 +862,6 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMaretronDeviationCalibrationResponse(p, stream)
 	case publicpgn.MaretronDeviationCalibrationResponse:
 		return EncodeMaretronDeviationCalibrationResponse(&p, stream)
-	case *publicpgn.MaretronSlaveResponse:
-		return EncodeMaretronSlaveResponse(p, stream)
-	case publicpgn.MaretronSlaveResponse:
-		return EncodeMaretronSlaveResponse(&p, stream)
 	case *publicpgn.MaretronProprietaryConfiguration:
 		return EncodeMaretronProprietaryConfiguration(p, stream)
 	case publicpgn.MaretronProprietaryConfiguration:
@@ -1650,10 +1718,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSeaRecoveryWatermakerStatus(p, stream)
 	case publicpgn.SeaRecoveryWatermakerStatus:
 		return EncodeSeaRecoveryWatermakerStatus(&p, stream)
-	case *publicpgn.NavicoUnknown:
-		return EncodeNavicoUnknown(p, stream)
-	case publicpgn.NavicoUnknown:
-		return EncodeNavicoUnknown(&p, stream)
+	case *publicpgn.NavicoFeatureUnlock:
+		return EncodeNavicoFeatureUnlock(p, stream)
+	case publicpgn.NavicoFeatureUnlock:
+		return EncodeNavicoFeatureUnlock(&p, stream)
 	case *publicpgn.LowranceProductInformation:
 		return EncodeLowranceProductInformation(p, stream)
 	case publicpgn.LowranceProductInformation:
@@ -1906,10 +1974,6 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMaretronAlertResponse(p, stream)
 	case publicpgn.MaretronAlertResponse:
 		return EncodeMaretronAlertResponse(&p, stream)
-	case *publicpgn.BepMarineProprietaryPGN130820:
-		return EncodeBepMarineProprietaryPGN130820(p, stream)
-	case publicpgn.BepMarineProprietaryPGN130820:
-		return EncodeBepMarineProprietaryPGN130820(&p, stream)
 	case *publicpgn.NavicoAsciiData:
 		return EncodeNavicoAsciiData(p, stream)
 	case publicpgn.NavicoAsciiData:
@@ -1938,10 +2002,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeNavicoUdbDatabaseBulkReport2(p, stream)
 	case publicpgn.NavicoUdbDatabaseBulkReport2:
 		return EncodeNavicoUdbDatabaseBulkReport2(&p, stream)
-	case *publicpgn.NavicoUdbDatabaseBulkReport3:
-		return EncodeNavicoUdbDatabaseBulkReport3(p, stream)
-	case publicpgn.NavicoUdbDatabaseBulkReport3:
-		return EncodeNavicoUdbDatabaseBulkReport3(&p, stream)
+	case *publicpgn.NavicoConfigurationSet:
+		return EncodeNavicoConfigurationSet(p, stream)
+	case publicpgn.NavicoConfigurationSet:
+		return EncodeNavicoConfigurationSet(&p, stream)
 	case *publicpgn.NavicoUdbDatabaseBulkReport4:
 		return EncodeNavicoUdbDatabaseBulkReport4(p, stream)
 	case publicpgn.NavicoUdbDatabaseBulkReport4:
@@ -1974,6 +2038,18 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMaretronProprietaryTemperatureHighRange(p, stream)
 	case publicpgn.MaretronProprietaryTemperatureHighRange:
 		return EncodeMaretronProprietaryTemperatureHighRange(&p, stream)
+	case *publicpgn.NavicoDataTypeSourceDirectory:
+		return EncodeNavicoDataTypeSourceDirectory(p, stream)
+	case publicpgn.NavicoDataTypeSourceDirectory:
+		return EncodeNavicoDataTypeSourceDirectory(&p, stream)
+	case *publicpgn.NavicoDataTypeSourceDirectoryFullReport:
+		return EncodeNavicoDataTypeSourceDirectoryFullReport(p, stream)
+	case publicpgn.NavicoDataTypeSourceDirectoryFullReport:
+		return EncodeNavicoDataTypeSourceDirectoryFullReport(&p, stream)
+	case *publicpgn.NavicoBoatSpeedPolarTable:
+		return EncodeNavicoBoatSpeedPolarTable(p, stream)
+	case publicpgn.NavicoBoatSpeedPolarTable:
+		return EncodeNavicoBoatSpeedPolarTable(&p, stream)
 	case *publicpgn.BGKeyValueData:
 		return EncodeBGKeyValueData(p, stream)
 	case publicpgn.BGKeyValueData:
@@ -2022,6 +2098,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeLowranceUnknown(p, stream)
 	case publicpgn.LowranceUnknown:
 		return EncodeLowranceUnknown(&p, stream)
+	case *publicpgn.FurunoNavpilotStatus:
+		return EncodeFurunoNavpilotStatus(p, stream)
+	case publicpgn.FurunoNavpilotStatus:
+		return EncodeFurunoNavpilotStatus(&p, stream)
 	case *publicpgn.SimnetSetSerialNumber:
 		return EncodeSimnetSetSerialNumber(p, stream)
 	case publicpgn.SimnetSetSerialNumber:
@@ -2154,6 +2234,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSimnetAISClassBStaticDataMsg24PartB(p, stream)
 	case publicpgn.SimnetAISClassBStaticDataMsg24PartB:
 		return EncodeSimnetAISClassBStaticDataMsg24PartB(&p, stream)
+	case *publicpgn.SimnetAISSilentMode:
+		return EncodeSimnetAISSilentMode(p, stream)
+	case publicpgn.SimnetAISSilentMode:
+		return EncodeSimnetAISSilentMode(&p, stream)
 	case *publicpgn.MaretronWindlassControlCommand:
 		return EncodeMaretronWindlassControlCommand(p, stream)
 	case publicpgn.MaretronWindlassControlCommand:
@@ -2266,10 +2350,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSimnetApCommandReply(p, stream)
 	case publicpgn.SimnetApCommandReply:
 		return EncodeSimnetApCommandReply(&p, stream)
-	case *publicpgn.NavicoProprietary2Fp:
-		return EncodeNavicoProprietary2Fp(p, stream)
-	case publicpgn.NavicoProprietary2Fp:
-		return EncodeNavicoProprietary2Fp(&p, stream)
+	case *publicpgn.NavicoDiagnosticData:
+		return EncodeNavicoDiagnosticData(p, stream)
+	case publicpgn.NavicoDiagnosticData:
+		return EncodeNavicoDiagnosticData(&p, stream)
 	case *publicpgn.SimnetAlarmMessage:
 		return EncodeSimnetAlarmMessage(p, stream)
 	case publicpgn.SimnetAlarmMessage:
@@ -2278,10 +2362,6 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSimnetApUnknown4(p, stream)
 	case publicpgn.SimnetApUnknown4:
 		return EncodeSimnetApUnknown4(&p, stream)
-	case *publicpgn.SimradEngineData:
-		return EncodeSimradEngineData(p, stream)
-	case publicpgn.SimradEngineData:
-		return EncodeSimradEngineData(&p, stream)
 	case *publicpgn.AirmarAdditionalWeatherData:
 		return EncodeAirmarAdditionalWeatherData(p, stream)
 	case publicpgn.AirmarAdditionalWeatherData:

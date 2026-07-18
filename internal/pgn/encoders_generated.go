@@ -477,6 +477,45 @@ func EncodeCarlingBreakerCommand(p *publicpgn.CarlingBreakerCommand, stream *Dat
     return &p.Info, err
 }
 
+// EncodeSimnetKeepAlive encodes a SimnetKeepAlive struct to NMEA 2000 wire format
+func EncodeSimnetKeepAlive(p *publicpgn.SimnetKeepAlive, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Command, &fieldSpec_SimnetKeepAlive_Command)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(1, 30)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Reply, &fieldSpec_SimnetKeepAlive_Reply)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeBinary(p.Value, 32, 32 )
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 61184
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
 // EncodeZeroXf0000XfeffStandardizedSingleFrameNonAddressed encodes a ZeroXf0000XfeffStandardizedSingleFrameNonAddressed struct to NMEA 2000 wire format
 func EncodeZeroXf0000XfeffStandardizedSingleFrameNonAddressed(p *publicpgn.ZeroXf0000XfeffStandardizedSingleFrameNonAddressed, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
@@ -1444,6 +1483,37 @@ func EncodeMercuryEngineData(p *publicpgn.MercuryEngineData, stream *DataStream)
         return nil, err
     }
     err = stream.writeBinary(p.Data, 48, 16 )
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65280
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeNavicoDeviceStatus encodes a NavicoDeviceStatus struct to NMEA 2000 wire format
+func EncodeNavicoDeviceStatus(p *publicpgn.NavicoDeviceStatus, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ReportType, &fieldSpec_NavicoDeviceStatus_ReportType)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeBinary(p.Data, 40, 24 )
     if err != nil {
         return nil, err
     }
@@ -2522,6 +2592,73 @@ func EncodeSimnetLgc2000Configuration(p *publicpgn.SimnetLgc2000Configuration, s
     return &p.Info, err
 }
 
+// EncodeLowranceGPSConfiguration encodes a LowranceGPSConfiguration struct to NMEA 2000 wire format
+func EncodeLowranceGPSConfiguration(p *publicpgn.LowranceGPSConfiguration, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.A, &fieldSpec_LowranceGPSConfiguration_A)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.B, &fieldSpec_LowranceGPSConfiguration_B)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.C, &fieldSpec_LowranceGPSConfiguration_C)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.D, &fieldSpec_LowranceGPSConfiguration_D)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 38)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.E, &fieldSpec_LowranceGPSConfiguration_E)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.F, &fieldSpec_LowranceGPSConfiguration_F)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.G, &fieldSpec_LowranceGPSConfiguration_G)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(3, 53)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.H, &fieldSpec_LowranceGPSConfiguration_H)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.I, &fieldSpec_LowranceGPSConfiguration_I)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65293
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
 // EncodeDiverseYachtServicesLoadCell encodes a DiverseYachtServicesLoadCell struct to NMEA 2000 wire format
 func EncodeDiverseYachtServicesLoadCell(p *publicpgn.DiverseYachtServicesLoadCell, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
@@ -2968,6 +3105,45 @@ func EncodeSuzukiEngineDataD(p *publicpgn.SuzukiEngineDataD, stream *DataStream)
     return &p.Info, err
 }
 
+// EncodeLowranceVesselSetupEngineAndTankConfiguration encodes a LowranceVesselSetupEngineAndTankConfiguration struct to NMEA 2000 wire format
+func EncodeLowranceVesselSetupEngineAndTankConfiguration(p *publicpgn.LowranceVesselSetupEngineAndTankConfiguration, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.NumberOfEngines, &fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_NumberOfEngines)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.NumberOfFuelTanks, &fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_NumberOfFuelTanks)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeUnit(p.TotalFuelCapacity, &fieldSpec_LowranceVesselSetupEngineAndTankConfiguration_TotalFuelCapacity)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(24, 40)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65303
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
 // EncodeSuzukiEngineDataE encodes a SuzukiEngineDataE struct to NMEA 2000 wire format
 func EncodeSuzukiEngineDataE(p *publicpgn.SuzukiEngineDataE, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
@@ -3011,6 +3187,45 @@ func EncodeBepMarineProprietaryPGN65304(p *publicpgn.BepMarineProprietaryPGN6530
         return nil, err
     }
     err = stream.writeBinary(p.Data, 48, 16 )
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65304
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeLowranceVesselSetupEngineAndTankConfigurationBroadcast encodes a LowranceVesselSetupEngineAndTankConfigurationBroadcast struct to NMEA 2000 wire format
+func EncodeLowranceVesselSetupEngineAndTankConfigurationBroadcast(p *publicpgn.LowranceVesselSetupEngineAndTankConfigurationBroadcast, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.NumberOfEngines, &fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_NumberOfEngines)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.NumberOfFuelTanks, &fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_NumberOfFuelTanks)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeUnit(p.TotalFuelCapacity, &fieldSpec_LowranceVesselSetupEngineAndTankConfigurationBroadcast_TotalFuelCapacity)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(24, 40)
     if err != nil {
         return nil, err
     }
@@ -3286,7 +3501,11 @@ func EncodeNavicoWirelessBatteryStatus(p *publicpgn.NavicoWirelessBatteryStatus,
     if err != nil {
         return nil, err
     }
-    err = stream.writeReserved(24, 40)
+    err = stream.writeReserved(8, 40)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.A, &fieldSpec_NavicoWirelessBatteryStatus_A)
     if err != nil {
         return nil, err
     }
@@ -3375,7 +3594,11 @@ func EncodeNavicoWirelessSignalStatus(p *publicpgn.NavicoWirelessSignalStatus, s
     if err != nil {
         return nil, err
     }
-    err = stream.writeReserved(32, 32)
+    err = WriteRaw(stream, p.A, &fieldSpec_NavicoWirelessSignalStatus_A)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(24, 40)
     if err != nil {
         return nil, err
     }
@@ -3573,8 +3796,8 @@ func EncodeNavicoProprietary2(p *publicpgn.NavicoProprietary2, stream *DataStrea
     return &p.Info, err
 }
 
-// EncodeSimnetApUnknown5 encodes a SimnetApUnknown5 struct to NMEA 2000 wire format
-func EncodeSimnetApUnknown5(p *publicpgn.SimnetApUnknown5, stream *DataStream) (*publicpgn.MessageInfo, error) {
+// EncodeSimnetDataSourceSelectionRequest encodes a SimnetDataSourceSelectionRequest struct to NMEA 2000 wire format
+func EncodeSimnetDataSourceSelectionRequest(p *publicpgn.SimnetDataSourceSelectionRequest, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -3592,11 +3815,11 @@ func EncodeSimnetApUnknown5(p *publicpgn.SimnetApUnknown5, stream *DataStream) (
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.A, &fieldSpec_SimnetApUnknown5_A)
+    err = stream.putNumberRaw(uint64(p.DataType), 8, 24)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.B, &fieldSpec_SimnetApUnknown5_B)
+    err = WriteRaw(stream, p.SourceClass, &fieldSpec_SimnetDataSourceSelectionRequest_SourceClass)
     if err != nil {
         return nil, err
     }
@@ -3987,19 +4210,19 @@ func EncodeYanmarEngineDataF(p *publicpgn.YanmarEngineDataF, stream *DataStream)
 // EncodeSimnetMagneticField encodes a SimnetMagneticField struct to NMEA 2000 wire format
 func EncodeSimnetMagneticField(p *publicpgn.SimnetMagneticField, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
-    err = WriteScaled(stream, p.A, &fieldSpec_SimnetMagneticField_A)
+    err = WriteScaled(stream, p.FieldX, &fieldSpec_SimnetMagneticField_FieldX)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.B, &fieldSpec_SimnetMagneticField_B)
+    err = WriteScaled(stream, p.FieldY, &fieldSpec_SimnetMagneticField_FieldY)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.C, &fieldSpec_SimnetMagneticField_C)
+    err = WriteScaled(stream, p.FieldZ, &fieldSpec_SimnetMagneticField_FieldZ)
     if err != nil {
         return nil, err
     }
-    err = WriteScaled(stream, p.D, &fieldSpec_SimnetMagneticField_D)
+    err = WriteRaw(stream, p.Marker, &fieldSpec_SimnetMagneticField_Marker)
     if err != nil {
         return nil, err
     }
@@ -5159,6 +5382,33 @@ func encodePGNListTransmitAndReceiveRepeating1(p *publicpgn.PGNListTransmitAndRe
     return nil
 }
 
+// EncodeZeroX1Ef00ManufacturerProprietaryFastPacketAddressed encodes a ZeroX1Ef00ManufacturerProprietaryFastPacketAddressed struct to NMEA 2000 wire format
+func EncodeZeroX1Ef00ManufacturerProprietaryFastPacketAddressed(p *publicpgn.ZeroX1Ef00ManufacturerProprietaryFastPacketAddressed, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeBinary(p.Data, 1768, 16 )
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
 // EncodeGarminAhrsAttCOGSourceValidFlag encodes a GarminAhrsAttCOGSourceValidFlag struct to NMEA 2000 wire format
 func EncodeGarminAhrsAttCOGSourceValidFlag(p *publicpgn.GarminAhrsAttCOGSourceValidFlag, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
@@ -5174,7 +5424,7 @@ func EncodeGarminAhrsAttCOGSourceValidFlag(p *publicpgn.GarminAhrsAttCOGSourceVa
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.SubProtocolID, &fieldSpec_GarminAhrsAttCOGSourceValidFlag_SubProtocolID)
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
     if err != nil {
         return nil, err
     }
@@ -5186,7 +5436,7 @@ func EncodeGarminAhrsAttCOGSourceValidFlag(p *publicpgn.GarminAhrsAttCOGSourceVa
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.AttMessageID, &fieldSpec_GarminAhrsAttCOGSourceValidFlag_AttMessageID)
+    err = stream.putNumberRaw(uint64(p.AttMessageID), 16, 48)
     if err != nil {
         return nil, err
     }
@@ -5217,7 +5467,7 @@ func EncodeGarminAhrsAttDeviceFlags(p *publicpgn.GarminAhrsAttDeviceFlags, strea
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.SubProtocolID, &fieldSpec_GarminAhrsAttDeviceFlags_SubProtocolID)
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
     if err != nil {
         return nil, err
     }
@@ -5229,7 +5479,7 @@ func EncodeGarminAhrsAttDeviceFlags(p *publicpgn.GarminAhrsAttDeviceFlags, strea
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.AttMessageID, &fieldSpec_GarminAhrsAttDeviceFlags_AttMessageID)
+    err = stream.putNumberRaw(uint64(p.AttMessageID), 16, 48)
     if err != nil {
         return nil, err
     }
@@ -5260,7 +5510,7 @@ func EncodeGarminAhrsAttNonDefaultCalibrationMatrixPresent(p *publicpgn.GarminAh
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.SubProtocolID, &fieldSpec_GarminAhrsAttNonDefaultCalibrationMatrixPresent_SubProtocolID)
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
     if err != nil {
         return nil, err
     }
@@ -5272,7 +5522,7 @@ func EncodeGarminAhrsAttNonDefaultCalibrationMatrixPresent(p *publicpgn.GarminAh
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.AttMessageID, &fieldSpec_GarminAhrsAttNonDefaultCalibrationMatrixPresent_AttMessageID)
+    err = stream.putNumberRaw(uint64(p.AttMessageID), 16, 48)
     if err != nil {
         return nil, err
     }
@@ -5303,7 +5553,7 @@ func EncodeGarminAhrsAttSetNorthState(p *publicpgn.GarminAhrsAttSetNorthState, s
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.SubProtocolID, &fieldSpec_GarminAhrsAttSetNorthState_SubProtocolID)
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
     if err != nil {
         return nil, err
     }
@@ -5315,7 +5565,7 @@ func EncodeGarminAhrsAttSetNorthState(p *publicpgn.GarminAhrsAttSetNorthState, s
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.AttMessageID, &fieldSpec_GarminAhrsAttSetNorthState_AttMessageID)
+    err = stream.putNumberRaw(uint64(p.AttMessageID), 16, 48)
     if err != nil {
         return nil, err
     }
@@ -5331,8 +5581,8 @@ func EncodeGarminAhrsAttSetNorthState(p *publicpgn.GarminAhrsAttSetNorthState, s
     return &p.Info, err
 }
 
-// EncodeZeroX1Ef00ManufacturerProprietaryFastPacketAddressed encodes a ZeroX1Ef00ManufacturerProprietaryFastPacketAddressed struct to NMEA 2000 wire format
-func EncodeZeroX1Ef00ManufacturerProprietaryFastPacketAddressed(p *publicpgn.ZeroX1Ef00ManufacturerProprietaryFastPacketAddressed, stream *DataStream) (*publicpgn.MessageInfo, error) {
+// EncodeGarminAutopilotHeadingToSteer encodes a GarminAutopilotHeadingToSteer struct to NMEA 2000 wire format
+func EncodeGarminAutopilotHeadingToSteer(p *publicpgn.GarminAutopilotHeadingToSteer, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -5346,7 +5596,639 @@ func EncodeZeroX1Ef00ManufacturerProprietaryFastPacketAddressed(p *publicpgn.Zer
     if err != nil {
         return nil, err
     }
-    err = stream.writeBinary(p.Data, 1768, 16 )
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotHeadingToSteer_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotHeadingToSteer_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotHeadingToSteer_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeFloat32(p.HeadingToSteer, 32, 72, 0)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotRateOfTurn encodes a GarminAutopilotRateOfTurn struct to NMEA 2000 wire format
+func EncodeGarminAutopilotRateOfTurn(p *publicpgn.GarminAutopilotRateOfTurn, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotRateOfTurn_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotRateOfTurn_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotRateOfTurn_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeFloat32(p.RateOfTurn, 32, 72, 0)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotRateOfTurnOrder encodes a GarminAutopilotRateOfTurnOrder struct to NMEA 2000 wire format
+func EncodeGarminAutopilotRateOfTurnOrder(p *publicpgn.GarminAutopilotRateOfTurnOrder, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotRateOfTurnOrder_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotRateOfTurnOrder_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotRateOfTurnOrder_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeFloat32(p.RateOfTurnOrder, 32, 72, 0)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotSpeed encodes a GarminAutopilotSpeed struct to NMEA 2000 wire format
+func EncodeGarminAutopilotSpeed(p *publicpgn.GarminAutopilotSpeed, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotSpeed_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotSpeed_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotSpeed_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeFloat32(p.Speed, 32, 72, 0)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotSystemVoltage encodes a GarminAutopilotSystemVoltage struct to NMEA 2000 wire format
+func EncodeGarminAutopilotSystemVoltage(p *publicpgn.GarminAutopilotSystemVoltage, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotSystemVoltage_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotSystemVoltage_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotSystemVoltage_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.SystemVoltage, &fieldSpec_GarminAutopilotSystemVoltage_SystemVoltage)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotTurnAngleOrder encodes a GarminAutopilotTurnAngleOrder struct to NMEA 2000 wire format
+func EncodeGarminAutopilotTurnAngleOrder(p *publicpgn.GarminAutopilotTurnAngleOrder, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotTurnAngleOrder_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotTurnAngleOrder_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotTurnAngleOrder_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.TurnAngleOrder, &fieldSpec_GarminAutopilotTurnAngleOrder_TurnAngleOrder)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotTurnAngleMeasured encodes a GarminAutopilotTurnAngleMeasured struct to NMEA 2000 wire format
+func EncodeGarminAutopilotTurnAngleMeasured(p *publicpgn.GarminAutopilotTurnAngleMeasured, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotTurnAngleMeasured_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotTurnAngleMeasured_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotTurnAngleMeasured_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.TurnAngleMeasured, &fieldSpec_GarminAutopilotTurnAngleMeasured_TurnAngleMeasured)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotEngineRPMA encodes a GarminAutopilotEngineRPMA struct to NMEA 2000 wire format
+func EncodeGarminAutopilotEngineRPMA(p *publicpgn.GarminAutopilotEngineRPMA, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotEngineRPMA_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotEngineRPMA_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotEngineRPMA_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.EngineSpeed, &fieldSpec_GarminAutopilotEngineRPMA_EngineSpeed)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotEngineRPMB encodes a GarminAutopilotEngineRPMB struct to NMEA 2000 wire format
+func EncodeGarminAutopilotEngineRPMB(p *publicpgn.GarminAutopilotEngineRPMB, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotEngineRPMB_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotEngineRPMB_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotEngineRPMB_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.EngineSpeed, &fieldSpec_GarminAutopilotEngineRPMB_EngineSpeed)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotResponseSetting encodes a GarminAutopilotResponseSetting struct to NMEA 2000 wire format
+func EncodeGarminAutopilotResponseSetting(p *publicpgn.GarminAutopilotResponseSetting, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotResponseSetting_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotResponseSetting_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotResponseSetting_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ResponseSetting, &fieldSpec_GarminAutopilotResponseSetting_ResponseSetting)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotModeState encodes a GarminAutopilotModeState struct to NMEA 2000 wire format
+func EncodeGarminAutopilotModeState(p *publicpgn.GarminAutopilotModeState, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotModeState_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotModeState_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotModeState_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.ModeState), 8, 72)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotHeartbeat encodes a GarminAutopilotHeartbeat struct to NMEA 2000 wire format
+func EncodeGarminAutopilotHeartbeat(p *publicpgn.GarminAutopilotHeartbeat, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotHeartbeat_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotHeartbeat_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotHeartbeat_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Field), 8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeBinary(p.HeartbeatData, 32, 64 )
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeGarminAutopilotManeuver encodes a GarminAutopilotManeuver struct to NMEA 2000 wire format
+func EncodeGarminAutopilotManeuver(p *publicpgn.GarminAutopilotManeuver, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.SubProtocolID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte1, &fieldSpec_GarminAutopilotManeuver_WrapperByte1)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.WrapperByte2, &fieldSpec_GarminAutopilotManeuver_WrapperByte2)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.FieldGroup, &fieldSpec_GarminAutopilotManeuver_FieldGroup)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ManeuverCode, &fieldSpec_GarminAutopilotManeuver_ManeuverCode)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 64)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Value, &fieldSpec_GarminAutopilotManeuver_Value)
     if err != nil {
         return nil, err
     }
@@ -6535,45 +7417,6 @@ func EncodeMaretronDeviationCalibrationResponse(p *publicpgn.MaretronDeviationCa
         return nil, err
     }
     err = stream.putNumberRaw(uint64(p.Status), 8, 56)
-    if err != nil {
-        return nil, err
-    }
-    if p.Info.PGN == 0 {
-        p.Info.PGN = 126720
-    }
-    p.Info.Timestamp = time.Now()
-
-    return &p.Info, err
-}
-
-// EncodeMaretronSlaveResponse encodes a MaretronSlaveResponse struct to NMEA 2000 wire format
-func EncodeMaretronSlaveResponse(p *publicpgn.MaretronSlaveResponse, stream *DataStream) (*publicpgn.MessageInfo, error) {
-	var err error
-    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.writeReserved(2, 11)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.ProductCode, &fieldSpec_MaretronSlaveResponse_ProductCode)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.SoftwareCode, &fieldSpec_MaretronSlaveResponse_SoftwareCode)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.Command, &fieldSpec_MaretronSlaveResponse_Command)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.Status, &fieldSpec_MaretronSlaveResponse_Status)
     if err != nil {
         return nil, err
     }
@@ -17803,8 +18646,8 @@ func EncodeSeaRecoveryWatermakerStatus(p *publicpgn.SeaRecoveryWatermakerStatus,
     return &p.Info, err
 }
 
-// EncodeNavicoUnknown encodes a NavicoUnknown struct to NMEA 2000 wire format
-func EncodeNavicoUnknown(p *publicpgn.NavicoUnknown, stream *DataStream) (*publicpgn.MessageInfo, error) {
+// EncodeNavicoFeatureUnlock encodes a NavicoFeatureUnlock struct to NMEA 2000 wire format
+func EncodeNavicoFeatureUnlock(p *publicpgn.NavicoFeatureUnlock, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -17818,23 +18661,15 @@ func EncodeNavicoUnknown(p *publicpgn.NavicoUnknown, stream *DataStream) (*publi
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.A, &fieldSpec_NavicoUnknown_A)
+    err = WriteRaw(stream, p.FeatureID, &fieldSpec_NavicoFeatureUnlock_FeatureID)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.B, &fieldSpec_NavicoUnknown_B)
+    err = WriteRaw(stream, p.RecordCount, &fieldSpec_NavicoFeatureUnlock_RecordCount)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.C, &fieldSpec_NavicoUnknown_C)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.D, &fieldSpec_NavicoUnknown_D)
-    if err != nil {
-        return nil, err
-    }
-    err = WriteRaw(stream, p.E, &fieldSpec_NavicoUnknown_E)
+    err = WriteRaw(stream, p.Data, &fieldSpec_NavicoFeatureUnlock_Data)
     if err != nil {
         return nil, err
     }
@@ -20465,33 +21300,6 @@ func EncodeMaretronAlertResponse(p *publicpgn.MaretronAlertResponse, stream *Dat
     return &p.Info, err
 }
 
-// EncodeBepMarineProprietaryPGN130820 encodes a BepMarineProprietaryPGN130820 struct to NMEA 2000 wire format
-func EncodeBepMarineProprietaryPGN130820(p *publicpgn.BepMarineProprietaryPGN130820, stream *DataStream) (*publicpgn.MessageInfo, error) {
-	var err error
-    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.writeReserved(2, 11)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.writeBinary(p.Data, 1768, 16 )
-    if err != nil {
-        return nil, err
-    }
-    if p.Info.PGN == 0 {
-        p.Info.PGN = 130820
-    }
-    p.Info.Timestamp = time.Now()
-
-    return &p.Info, err
-}
-
 // EncodeNavicoAsciiData encodes a NavicoAsciiData struct to NMEA 2000 wire format
 func EncodeNavicoAsciiData(p *publicpgn.NavicoAsciiData, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
@@ -20825,7 +21633,7 @@ func EncodeNavicoUdbDatabaseBulkReport2(p *publicpgn.NavicoUdbDatabaseBulkReport
     if err != nil {
         return nil, err
     }
-    err = stream.writeReserved(2, 30)
+    err = stream.writeSpare(2, 30)
     if err != nil {
         return nil, err
     }
@@ -20853,9 +21661,10 @@ func EncodeNavicoUdbDatabaseBulkReport2(p *publicpgn.NavicoUdbDatabaseBulkReport
     return &p.Info, err
 }
 
-// EncodeNavicoUdbDatabaseBulkReport3 encodes a NavicoUdbDatabaseBulkReport3 struct to NMEA 2000 wire format
-func EncodeNavicoUdbDatabaseBulkReport3(p *publicpgn.NavicoUdbDatabaseBulkReport3, stream *DataStream) (*publicpgn.MessageInfo, error) {
+// EncodeNavicoConfigurationSet encodes a NavicoConfigurationSet struct to NMEA 2000 wire format
+func EncodeNavicoConfigurationSet(p *publicpgn.NavicoConfigurationSet, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
+	var valueLength uint16
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
         return nil, err
@@ -20868,31 +21677,54 @@ func EncodeNavicoUdbDatabaseBulkReport3(p *publicpgn.NavicoUdbDatabaseBulkReport
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.Marker, &fieldSpec_NavicoUdbDatabaseBulkReport3_Marker)
+    err = WriteRaw(stream, p.Marker, &fieldSpec_NavicoConfigurationSet_Marker)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.Command, &fieldSpec_NavicoUdbDatabaseBulkReport3_Command)
+    err = WriteRaw(stream, p.Command, &fieldSpec_NavicoConfigurationSet_Command)
     if err != nil {
         return nil, err
     }
-    err = stream.writeReserved(2, 30)
+    err = stream.writeSpare(2, 30)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.Address, &fieldSpec_NavicoUdbDatabaseBulkReport3_Address)
+    err = WriteRaw(stream, p.Address, &fieldSpec_NavicoConfigurationSet_Address)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.Section, &fieldSpec_NavicoUdbDatabaseBulkReport3_Section)
+    err = WriteRaw(stream, p.Section, &fieldSpec_NavicoConfigurationSet_Section)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.Item, &fieldSpec_NavicoUdbDatabaseBulkReport3_Item)
+    err = WriteRaw(stream, p.Item, &fieldSpec_NavicoConfigurationSet_Item)
     if err != nil {
         return nil, err
     }
-    err = stream.writeBinary(p.Data, 1728, 56 )
+    err = stream.writeSpare(8, 56)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.SourceSettingID, &fieldSpec_NavicoConfigurationSet_SourceSettingID)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(24, 72)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Token, &fieldSpec_NavicoConfigurationSet_Token)
+    if err != nil {
+        return nil, err
+    }
+    if p.Length != nil {
+        valueLength = uint16(*p.Length) * 8
+    }
+    err = WriteRaw(stream, p.Length, &fieldSpec_NavicoConfigurationSet_Length)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeBinary(p.Value, valueLength, 0)
     if err != nil {
         return nil, err
     }
@@ -21318,6 +22150,205 @@ func EncodeMaretronProprietaryTemperatureHighRange(p *publicpgn.MaretronPropriet
         return nil, err
     }
     err = stream.writeUnit(p.SetTemperature, &fieldSpec_MaretronProprietaryTemperatureHighRange_SetTemperature)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130823
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeNavicoDataTypeSourceDirectory encodes a NavicoDataTypeSourceDirectory struct to NMEA 2000 wire format
+func EncodeNavicoDataTypeSourceDirectory(p *publicpgn.NavicoDataTypeSourceDirectory, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(8, 24)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ReportType, &fieldSpec_NavicoDataTypeSourceDirectory_ReportType)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Part, &fieldSpec_NavicoDataTypeSourceDirectory_Part)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(8, 48)
+    if err != nil {
+        return nil, err
+    }
+    err = encodeNavicoDataTypeSourceDirectoryRepeating1(p, stream)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130823
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+func encodeNavicoDataTypeSourceDirectoryRepeating1(p *publicpgn.NavicoDataTypeSourceDirectory, stream *DataStream) error {
+     var err error
+	if len(p.Repeating1) == 0 {
+		return nil
+	}
+    for index, _ := range p.Repeating1 {
+		var valueLength uint16
+		if p.Repeating1[index].Length != nil {
+			valueLength = uint16(*p.Repeating1[index].Length) * 8
+		}
+        err = WriteRaw(stream, p.Repeating1[index].Length, &fieldSpec_NavicoDataTypeSourceDirectory_Length)
+        if err != nil {
+            return err
+        }
+        err = WriteRaw(stream, p.Repeating1[index].Type, &fieldSpec_NavicoDataTypeSourceDirectory_Type)
+        if err != nil {
+            return err
+        }
+        err = stream.putNumberRaw(uint64(p.Repeating1[index].DataType), 16, 0)
+        if err != nil {
+            return err
+        }
+        err = stream.writeBinary(p.Repeating1[index].Value, valueLength, 0)
+        if err != nil {
+            return err
+        }
+    }
+    return nil
+}
+
+// EncodeNavicoDataTypeSourceDirectoryFullReport encodes a NavicoDataTypeSourceDirectoryFullReport struct to NMEA 2000 wire format
+func EncodeNavicoDataTypeSourceDirectoryFullReport(p *publicpgn.NavicoDataTypeSourceDirectoryFullReport, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(8, 24)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ReportType, &fieldSpec_NavicoDataTypeSourceDirectoryFullReport_ReportType)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Part, &fieldSpec_NavicoDataTypeSourceDirectoryFullReport_Part)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(8, 48)
+    if err != nil {
+        return nil, err
+    }
+    err = encodeNavicoDataTypeSourceDirectoryFullReportRepeating1(p, stream)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130823
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+func encodeNavicoDataTypeSourceDirectoryFullReportRepeating1(p *publicpgn.NavicoDataTypeSourceDirectoryFullReport, stream *DataStream) error {
+     var err error
+	if len(p.Repeating1) == 0 {
+		return nil
+	}
+    for index, _ := range p.Repeating1 {
+		var valueLength uint16
+		if p.Repeating1[index].Length != nil {
+			valueLength = uint16(*p.Repeating1[index].Length) * 8
+		}
+        err = WriteRaw(stream, p.Repeating1[index].Length, &fieldSpec_NavicoDataTypeSourceDirectoryFullReport_Length)
+        if err != nil {
+            return err
+        }
+        err = WriteRaw(stream, p.Repeating1[index].Type, &fieldSpec_NavicoDataTypeSourceDirectoryFullReport_Type)
+        if err != nil {
+            return err
+        }
+        err = stream.putNumberRaw(uint64(p.Repeating1[index].DataType), 16, 0)
+        if err != nil {
+            return err
+        }
+        err = stream.writeBinary(p.Repeating1[index].Value, valueLength, 0)
+        if err != nil {
+            return err
+        }
+    }
+    return nil
+}
+
+// EncodeNavicoBoatSpeedPolarTable encodes a NavicoBoatSpeedPolarTable struct to NMEA 2000 wire format
+func EncodeNavicoBoatSpeedPolarTable(p *publicpgn.NavicoBoatSpeedPolarTable, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(8, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(8, 24)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ReportType, &fieldSpec_NavicoBoatSpeedPolarTable_ReportType)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Part, &fieldSpec_NavicoBoatSpeedPolarTable_Part)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(8, 48)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeBinary(p.Data, 1784, 56 )
     if err != nil {
         return nil, err
     }
@@ -21841,6 +22872,57 @@ func EncodeLowranceUnknown(p *publicpgn.LowranceUnknown, stream *DataStream) (*p
         return nil, err
     }
     err = WriteRaw(stream, p.F, &fieldSpec_LowranceUnknown_F)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130827
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeFurunoNavpilotStatus encodes a FurunoNavpilotStatus struct to NMEA 2000 wire format
+func EncodeFurunoNavpilotStatus(p *publicpgn.FurunoNavpilotStatus, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.MessageID, &fieldSpec_FurunoNavpilotStatus_MessageID)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.RudderAngle, &fieldSpec_FurunoNavpilotStatus_RudderAngle)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.A, &fieldSpec_FurunoNavpilotStatus_A)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.B, &fieldSpec_FurunoNavpilotStatus_B)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.CommandedCourse, &fieldSpec_FurunoNavpilotStatus_CommandedCourse)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.C, &fieldSpec_FurunoNavpilotStatus_C)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.D, &fieldSpec_FurunoNavpilotStatus_D)
     if err != nil {
         return nil, err
     }
@@ -22852,15 +23934,15 @@ func EncodeSimnetDataSourceSelection(p *publicpgn.SimnetDataSourceSelection, str
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.Sequence, &fieldSpec_SimnetDataSourceSelection_Sequence)
+    err = stream.putNumberRaw(uint64(p.DataType), 8, 24)
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.B, &fieldSpec_SimnetDataSourceSelection_B)
+    err = WriteRaw(stream, p.SourceClass, &fieldSpec_SimnetDataSourceSelection_SourceClass)
     if err != nil {
         return nil, err
     }
-    err = stream.putNumberRaw(uint64(p.DataType), 8, 40)
+    err = WriteRaw(stream, p.SourceAddress, &fieldSpec_SimnetDataSourceSelection_SourceAddress)
     if err != nil {
         return nil, err
     }
@@ -22868,7 +23950,7 @@ func EncodeSimnetDataSourceSelection(p *publicpgn.SimnetDataSourceSelection, str
     if err != nil {
         return nil, err
     }
-    err = WriteRaw(stream, p.C, &fieldSpec_SimnetDataSourceSelection_C)
+    err = WriteRaw(stream, p.ChangeCounter, &fieldSpec_SimnetDataSourceSelection_ChangeCounter)
     if err != nil {
         return nil, err
     }
@@ -23179,6 +24261,45 @@ func EncodeSimnetAISClassBStaticDataMsg24PartB(p *publicpgn.SimnetAISClassBStati
     return &p.Info, err
 }
 
+// EncodeSimnetAISSilentMode encodes a SimnetAISSilentMode struct to NMEA 2000 wire format
+func EncodeSimnetAISSilentMode(p *publicpgn.SimnetAISSilentMode, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.MessageID, &fieldSpec_SimnetAISSilentMode_MessageID)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.Operation), 2, 22)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.D, &fieldSpec_SimnetAISSilentMode_D)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.E, &fieldSpec_SimnetAISSilentMode_E)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130842
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
 // EncodeMaretronWindlassControlCommand encodes a MaretronWindlassControlCommand struct to NMEA 2000 wire format
 func EncodeMaretronWindlassControlCommand(p *publicpgn.MaretronWindlassControlCommand, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
@@ -23357,6 +24478,10 @@ func EncodeFurunoMultiSatsInViewExtended(p *publicpgn.FurunoMultiSatsInViewExten
     if err != nil {
         return nil, err
     }
+    err = WriteRaw(stream, p.SatsInUse, &fieldSpec_FurunoMultiSatsInViewExtended_SatsInUse)
+    if err != nil {
+        return nil, err
+    }
     err = WriteRaw(stream, p.SatsInView, &fieldSpec_FurunoMultiSatsInViewExtended_SatsInView)
     if err != nil {
         return nil, err
@@ -23378,10 +24503,6 @@ func encodeFurunoMultiSatsInViewExtendedRepeating1(p *publicpgn.FurunoMultiSatsI
 		return nil
 	}
     for index, _ := range p.Repeating1 {
-        err = WriteRaw(stream, p.Repeating1[index].Status, &fieldSpec_FurunoMultiSatsInViewExtended_Status)
-        if err != nil {
-            return err
-        }
         err = WriteRaw(stream, p.Repeating1[index].Prn, &fieldSpec_FurunoMultiSatsInViewExtended_Prn)
         if err != nil {
             return err
@@ -23399,6 +24520,10 @@ func encodeFurunoMultiSatsInViewExtendedRepeating1(p *publicpgn.FurunoMultiSatsI
             return err
         }
         err = stream.writeUnit(p.Repeating1[index].RangeResidual, &fieldSpec_FurunoMultiSatsInViewExtended_RangeResidual)
+        if err != nil {
+            return err
+        }
+        err = stream.putNumberRaw(uint64(p.Repeating1[index].BaselineStatus), 8, 0)
         if err != nil {
             return err
         }
@@ -23429,7 +24554,7 @@ func EncodeSimnetKeyValue(p *publicpgn.SimnetKeyValue, stream *DataStream) (*pub
     if err != nil {
         return nil, err
     }
-    err = stream.putNumberRaw(uint64(p.DisplayGroup), 8, 32)
+    err = stream.putNumberRaw(uint64(p.NetworkGroup), 8, 32)
     if err != nil {
         return nil, err
     }
@@ -23481,7 +24606,7 @@ func EncodeSimnetParameterSet(p *publicpgn.SimnetParameterSet, stream *DataStrea
     if err != nil {
         return nil, err
     }
-    err = stream.putNumberRaw(uint64(p.DisplayGroup), 8, 32)
+    err = stream.putNumberRaw(uint64(p.NetworkGroup), 8, 32)
     if err != nil {
         return nil, err
     }
@@ -24500,8 +25625,8 @@ func EncodeSimnetApCommandReply(p *publicpgn.SimnetApCommandReply, stream *DataS
     return &p.Info, err
 }
 
-// EncodeNavicoProprietary2Fp encodes a NavicoProprietary2Fp struct to NMEA 2000 wire format
-func EncodeNavicoProprietary2Fp(p *publicpgn.NavicoProprietary2Fp, stream *DataStream) (*publicpgn.MessageInfo, error) {
+// EncodeNavicoDiagnosticData encodes a NavicoDiagnosticData struct to NMEA 2000 wire format
+func EncodeNavicoDiagnosticData(p *publicpgn.NavicoDiagnosticData, stream *DataStream) (*publicpgn.MessageInfo, error) {
 	var err error
     err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
     if err != nil {
@@ -24515,12 +25640,45 @@ func EncodeNavicoProprietary2Fp(p *publicpgn.NavicoProprietary2Fp, stream *DataS
     if err != nil {
         return nil, err
     }
+    err = WriteRaw(stream, p.Instance, &fieldSpec_NavicoDiagnosticData_Instance)
+    if err != nil {
+        return nil, err
+    }
+    err = encodeNavicoDiagnosticDataRepeating1(p, stream)
+    if err != nil {
+        return nil, err
+    }
     if p.Info.PGN == 0 {
         p.Info.PGN = 130852
     }
     p.Info.Timestamp = time.Now()
 
     return &p.Info, err
+}
+func encodeNavicoDiagnosticDataRepeating1(p *publicpgn.NavicoDiagnosticData, stream *DataStream) error {
+     var err error
+	if len(p.Repeating1) == 0 {
+		return nil
+	}
+    for index, _ := range p.Repeating1 {
+		var valueLength uint16
+        err = WriteRaw(stream, p.Repeating1[index].FieldID, &fieldSpec_NavicoDiagnosticData_FieldID)
+        if err != nil {
+            return err
+        }
+		if p.Repeating1[index].Length != nil {
+			valueLength = uint16(*p.Repeating1[index].Length) * 8
+		}
+        err = WriteRaw(stream, p.Repeating1[index].Length, &fieldSpec_NavicoDiagnosticData_Length)
+        if err != nil {
+            return err
+        }
+        err = stream.writeBinary(p.Repeating1[index].Value, valueLength, 0)
+        if err != nil {
+            return err
+        }
+    }
+    return nil
 }
 
 // EncodeSimnetAlarmMessage encodes a SimnetAlarmMessage struct to NMEA 2000 wire format
@@ -24603,29 +25761,6 @@ func EncodeSimnetApUnknown4(p *publicpgn.SimnetApUnknown4, stream *DataStream) (
     }
     if p.Info.PGN == 0 {
         p.Info.PGN = 130860
-    }
-    p.Info.Timestamp = time.Now()
-
-    return &p.Info, err
-}
-
-// EncodeSimradEngineData encodes a SimradEngineData struct to NMEA 2000 wire format
-func EncodeSimradEngineData(p *publicpgn.SimradEngineData, stream *DataStream) (*publicpgn.MessageInfo, error) {
-	var err error
-    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.writeReserved(2, 11)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
-    if err != nil {
-        return nil, err
-    }
-    if p.Info.PGN == 0 {
-        p.Info.PGN = 130861
     }
     p.Info.Timestamp = time.Now()
 
