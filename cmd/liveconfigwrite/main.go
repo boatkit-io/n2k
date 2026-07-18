@@ -78,7 +78,6 @@ func run(iface string, source, target uint8, description1, description2 string) 
 }
 
 func encodeLAU(value string) []byte {
-	encoded := []byte{uint8(len(value) + 3), 1}
-	encoded = append(encoded, value...)
-	return append(encoded, 0)
+	encoded := []byte{uint8(len(value) + 2), 1}
+	return append(encoded, value...)
 }
