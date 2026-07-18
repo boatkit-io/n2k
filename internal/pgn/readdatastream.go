@@ -163,6 +163,12 @@ func (s *DataStream) readStringWithLengthAndControl() (string, error) {
 	return string(arr), nil
 }
 
+// DecodeStringLAU decodes a complete STRING_LAU field. The input begins with
+// its length and character-set control bytes.
+func DecodeStringLAU(data []byte) (string, error) {
+	return NewDataStream(data).readStringWithLengthAndControl()
+}
+
 func trimASCIILAUTerminator(arr []uint8) []uint8 {
 	if len(arr) > 0 && arr[len(arr)-1] == 0 {
 		return arr[:len(arr)-1]

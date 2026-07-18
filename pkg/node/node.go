@@ -16,6 +16,7 @@ import (
 	"sync"
 	"time"
 
+	internalpgn "github.com/boatkit-io/n2k/internal/pgn"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/sirupsen/logrus"
 )
@@ -818,6 +819,7 @@ func (n *Node) processNmeaWriteFieldsGroupFunction(req *pgn.NMEAWriteFieldsGroup
 	if err != nil {
 		return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.AccessDenied_2)
 	}
+	replyFields := make([]pgn.NMEAWriteFieldsReplyGroupFunctionRepeating2, 0, len(req.Repeating2))
 	for _, field := range req.Repeating2 {
 		if field.Parameter == nil {
 			continue
@@ -837,6 +839,8 @@ func (n *Node) processNmeaWriteFieldsGroupFunction(req *pgn.NMEAWriteFieldsGroup
 		default:
 			return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.InvalidParameterField)
 		}
+		parameter := *field.Parameter
+		replyFields = append(replyFields, pgn.NMEAWriteFieldsReplyGroupFunctionRepeating2{Parameter: &parameter, Value: field.Value})
 	}
 	if err := provider.SetConfigurationInfo(info); err != nil {
 		return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.AccessDenied_2)
@@ -847,6 +851,7 @@ func (n *Node) processNmeaWriteFieldsGroupFunction(req *pgn.NMEAWriteFieldsGroup
 		FunctionCode: pgn.WriteFieldsReply, PGN: req.PGN, ManufacturerCode: req.ManufacturerCode,
 		IndustryCode: req.IndustryCode, UniqueID: req.UniqueID, NumberOfSelectionPairs: req.NumberOfSelectionPairs,
 		NumberOfParameters: req.NumberOfParameters,
+		Repeating2:         replyFields,
 	}
 	return []toSend{{pgn: reply, dest: req.Info.SourceId}}
 }
@@ -886,23 +891,12 @@ func (n *Node) processNmeaReadFieldsGroupFunction(req *pgn.NMEAReadFieldsGroupFu
 }
 
 func encodeGroupFunctionLAU(value string) []byte {
-	encoded := []byte{uint8(len(value) + 3), 1}
-	encoded = append(encoded, value...)
-	return append(encoded, 0)
+	encoded := []byte{uint8(len(value) + 2), 1}
+	return append(encoded, value...)
 }
 
 func decodeGroupFunctionLAU(value []byte) (string, error) {
-	if len(value) < 2 || (int(value[0]) != len(value) && int(value[0])+1 != len(value)) || value[1] != 1 {
-		return "", fmt.Errorf("invalid ASCII LAU value")
-	}
-	if len(value) == 2 {
-		return "", nil
-	}
-	end := len(value)
-	if value[len(value)-1] == 0 {
-		end--
-	}
-	return string(value[2:end]), nil
+	return internalpgn.DecodeStringLAU(value)
 }
 
 func (n *Node) processUnsupportedGroupFunction(info pgn.MessageInfo, requestedPgn uint32, parameterError pgn.ParameterFieldConst) []toSend {
