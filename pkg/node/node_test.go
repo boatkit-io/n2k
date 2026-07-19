@@ -9,6 +9,7 @@ import (
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func uint32Ptr(v uint32) *uint32 {
@@ -157,6 +158,57 @@ func TestWriteFieldsDecodesUTF16ConfigurationInformation(t *testing.T) {
 		assert.Equal(t, "你好", provider.set[0].InstallationDescription1)
 	}
 	assert.Len(t, responses, 1)
+}
+
+func TestCommandUpdatesConfigurationInformationAndAcknowledgesEachParameter(t *testing.T) {
+	provider := &mockConfigurationProvider{info: ConfigurationInfo{
+		InstallationDescription1: "old helm",
+		InstallationDescription2: "old port",
+		ManufacturerInformation:  "boatkit",
+	}}
+	n := NewNode(nil, nil, nil)
+	n.configProvider = provider
+	n.networkAddress = 44
+	n.addressClaimed = true
+	n.readOnly = false
+	targetPGN := uint32(pgn.ConfigurationInformationPGN)
+	parameterCount := uint8(2)
+	parameter1, parameter2 := uint8(1), uint8(2)
+	value1, err := pgn.EncodeStringLAU("new helm")
+	require.NoError(t, err)
+	value2, err := pgn.EncodeStringLAU("new port")
+	require.NoError(t, err)
+
+	responses := n.processNmeaCommandGroupFunction(&pgn.NMEACommandGroupFunction{
+		Info:               pgn.MessageInfo{SourceId: 33, TargetId: 44},
+		FunctionCode:       pgn.Command,
+		PGN:                &targetPGN,
+		Priority:           pgn.LeaveUnchanged,
+		NumberOfParameters: &parameterCount,
+		Repeating1: []pgn.NMEACommandGroupFunctionRepeating1{
+			{Parameter: &parameter1, Value: value1},
+			{Parameter: &parameter2, Value: value2},
+		},
+	})
+
+	if assert.Len(t, provider.set, 1) {
+		assert.Equal(t, "new helm", provider.set[0].InstallationDescription1)
+		assert.Equal(t, "new port", provider.set[0].InstallationDescription2)
+	}
+	if !assert.Len(t, responses, 1) {
+		return
+	}
+	ack, ok := responses[0].pgn.(*pgn.NMEAAcknowledgeGroupFunction)
+	if !assert.True(t, ok) {
+		return
+	}
+	if assert.NotNil(t, ack.NumberOfParameters) {
+		assert.Equal(t, parameterCount, *ack.NumberOfParameters)
+	}
+	if assert.Len(t, ack.Repeating1, int(parameterCount)) {
+		assert.Equal(t, pgn.Acknowledge_3, ack.Repeating1[0].Parameter)
+		assert.Equal(t, pgn.Acknowledge_3, ack.Repeating1[1].Parameter)
+	}
 }
 
 func TestComputeName(t *testing.T) {

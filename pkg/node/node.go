@@ -794,14 +794,15 @@ func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NMEACommandGroupFunction
 		n.mutex.RLock()
 		source := n.networkAddress
 		n.mutex.RUnlock()
+		ackParameters := make([]pgn.NMEAAcknowledgeGroupFunctionRepeating1, len(parameters))
+		for i := range ackParameters {
+			ackParameters[i].Parameter = pgn.Acknowledge_3
+		}
 		ack := &pgn.NMEAAcknowledgeGroupFunction{
 			Info:         pgn.MessageInfo{PGN: pgn.NMEAAcknowledgeGroupFunctionPGN, SourceId: source, TargetId: cmd.Info.SourceId, Priority: 3},
 			FunctionCode: pgn.Acknowledge_5, PGN: cmd.PGN, PGNErrorCode: pgn.Acknowledge_6, TransmissionIntervalPriorityErrorCode: pgn.Acknowledge_2,
-			NumberOfParameters: cmd.NumberOfParameters,
-			Repeating1: []pgn.NMEAAcknowledgeGroupFunctionRepeating1{
-				{Parameter: pgn.Acknowledge_3},
-				{Parameter: pgn.Acknowledge_3},
-			},
+			NumberOfParameters: &count,
+			Repeating1:         ackParameters,
 		}
 		return []toSend{{pgn: ack, dest: cmd.Info.SourceId}}
 	}
@@ -906,7 +907,7 @@ func (n *Node) processNmeaReadFieldsGroupFunction(req *pgn.NMEAReadFieldsGroupFu
 			return nil
 		}
 		parameter := *field.Parameter
-		encoded, encodeErr := encodeGroupFunctionLAU(value)
+		encoded, encodeErr := pgn.EncodeStringLAU(value)
 		if encodeErr != nil {
 			return n.processUnsupportedGroupFunction(req.Info, *req.PGN, pgn.InvalidParameterField)
 		}
@@ -916,14 +917,6 @@ func (n *Node) processNmeaReadFieldsGroupFunction(req *pgn.NMEAReadFieldsGroupFu
 		})
 	}
 	return []toSend{{pgn: reply, dest: req.Info.SourceId}}
-}
-
-func encodeGroupFunctionLAU(value string) ([]byte, error) {
-	if len(value) > 253 {
-		return nil, fmt.Errorf("LAU value is too long: %d bytes", len(value))
-	}
-	encoded := []byte{uint8(len(value) + 2), 1} //nolint:gosec // Length is bounded above.
-	return append(encoded, value...), nil
 }
 
 func decodeGroupFunctionLAU(value []byte) (string, error) {

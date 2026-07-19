@@ -111,3 +111,64 @@ func TestDecodeNmeaRequestGroupFunctionUnknownTargetReturnsPartial(t *testing.T)
 		t.Fatalf("decoded raw data = % X, want % X", partial.RawData, rawData)
 	}
 }
+
+func TestEncodeNmeaCommandGroupFunctionMatchesActisenseConfigurationWrite(t *testing.T) {
+	targetPGN := uint32(publicpgn.ConfigurationInformationPGN)
+	parameterCount := uint8(1)
+	parameter := uint8(1)
+	value, err := publicpgn.EncodeStringLAU("Port engine fuel test")
+	if err != nil {
+		t.Fatalf("EncodeStringLAU() error = %v", err)
+	}
+	command := &publicpgn.NMEACommandGroupFunction{
+		Info: publicpgn.MessageInfo{
+			PGN:      publicpgn.NMEACommandGroupFunctionPGN,
+			Priority: 3,
+			TargetId: 32,
+		},
+		FunctionCode:       publicpgn.Command,
+		PGN:                &targetPGN,
+		Priority:           publicpgn.LeaveUnchanged,
+		NumberOfParameters: &parameterCount,
+		Repeating1: []publicpgn.NMEACommandGroupFunctionRepeating1{
+			{Parameter: &parameter, Value: value},
+		},
+	}
+
+	stream := NewDataStream(make([]byte, MaxPGNLength))
+	_, err = EncodeNMEACommandGroupFunction(command, stream)
+	if err != nil {
+		t.Fatalf("EncodeNMEACommandGroupFunction() error = %v", err)
+	}
+	assertBytes := []byte{
+		0x01, 0x16, 0xf0, 0x01, 0xf8, 0x01, 0x01,
+		0x17, 0x01, 'P', 'o', 'r', 't', ' ', 'e', 'n', 'g', 'i', 'n', 'e',
+		' ', 'f', 'u', 'e', 'l', ' ', 't', 'e', 's', 't',
+	}
+	if !bytes.Equal(stream.GetData(), assertBytes) {
+		t.Fatalf("encoded payload = % X, want % X", stream.GetData(), assertBytes)
+	}
+}
+
+func TestDecodeNmeaAcknowledgeGroupFunctionMatchesActisenseConfigurationReply(t *testing.T) {
+	decoded := decodeGroupFunctionPayload(t, []byte{
+		0x02, 0x16, 0xf0, 0x01, 0x00, 0x01, 0xf0,
+	})
+
+	ack, ok := decoded.(publicpgn.NMEAAcknowledgeGroupFunction)
+	if !ok {
+		t.Fatalf("decoded type = %T, want %T", decoded, publicpgn.NMEAAcknowledgeGroupFunction{})
+	}
+	if ack.PGN == nil || *ack.PGN != publicpgn.ConfigurationInformationPGN {
+		t.Fatalf("acknowledged PGN = %v, want %d", ack.PGN, publicpgn.ConfigurationInformationPGN)
+	}
+	if ack.PGNErrorCode != publicpgn.Acknowledge_6 {
+		t.Fatalf("PGN error = %v, want acknowledge", ack.PGNErrorCode)
+	}
+	if ack.TransmissionIntervalPriorityErrorCode != publicpgn.Acknowledge_2 {
+		t.Fatalf("transmission/priority error = %v, want acknowledge", ack.TransmissionIntervalPriorityErrorCode)
+	}
+	if len(ack.Repeating1) != 1 || ack.Repeating1[0].Parameter != publicpgn.Acknowledge_3 {
+		t.Fatalf("parameter acknowledgements = %#v, want one acknowledgement", ack.Repeating1)
+	}
+}

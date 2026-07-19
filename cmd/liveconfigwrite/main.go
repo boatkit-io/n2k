@@ -70,13 +70,13 @@ func run(iface string, source, target uint8, description1, description2 string) 
 		}
 		targetPGN, parameters := uint32(pgn.ConfigurationInformationPGN), uint8(1)
 		parameterValue := parameter
-		encodedValue, err := encodeLAU(value)
+		encodedValue, err := pgn.EncodeStringLAU(value)
 		if err != nil {
 			return fmt.Errorf("encode installation description %d: %w", parameter, err)
 		}
 		write := &pgn.NMEACommandGroupFunction{
 			Info:         pgn.MessageInfo{PGN: pgn.NMEACommandGroupFunctionPGN, SourceId: source, TargetId: target, Priority: 3},
-			FunctionCode: pgn.Command, PGN: &targetPGN, Priority: pgn.PriorityConst(3), NumberOfParameters: &parameters,
+			FunctionCode: pgn.Command, PGN: &targetPGN, Priority: pgn.LeaveUnchanged, NumberOfParameters: &parameters,
 			Repeating1: []pgn.NMEACommandGroupFunctionRepeating1{{Parameter: &parameterValue, Value: encodedValue}},
 		}
 		if err := n.WriteTo(write, target); err != nil {
@@ -86,12 +86,4 @@ func run(iface string, source, target uint8, description1, description2 string) 
 	}
 	fmt.Printf("sent configuration write(s) from 0x%02x to 0x%02x on %s\n", source, target, iface)
 	return nil
-}
-
-func encodeLAU(value string) ([]byte, error) {
-	if len(value) > 253 {
-		return nil, fmt.Errorf("LAU value is too long: %d bytes", len(value))
-	}
-	encoded := []byte{uint8(len(value) + 2), 1} //nolint:gosec // Length is bounded above.
-	return append(encoded, value...), nil
 }
