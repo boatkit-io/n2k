@@ -14,6 +14,7 @@ import (
 	"reflect"
 	"sort"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	internalpgn "github.com/boatkit-io/n2k/internal/pgn"
@@ -123,6 +124,9 @@ const (
 // but never writes to the bus or responds to requests.
 const ReadOnlyAddress uint8 = 255
 
+// nodePGNQueueSize accommodates discovery responses from a full 254-address NMEA 2000 network.
+const nodePGNQueueSize = 2048
+
 // Node represents a generic NMEA 2000 device, handling standard behaviors
 // required for any device on the network.
 type Node struct {
@@ -155,6 +159,7 @@ type Node struct {
 	wg                             sync.WaitGroup
 	subscriptions                  []SubscriptionID
 	pgnIn                          chan any
+	pgnQueueDropped                atomic.Uint64
 	mutex                          sync.RWMutex
 	wakeUp                         chan struct{}
 	logger                         *logrus.Logger
@@ -188,7 +193,7 @@ func NewNode(subscriber Subscriber, publisher Publisher, clock Clock) *Node {
 		heartbeatInterval:              60 * time.Second,
 		started:                        false,
 		subscriptions:                  make([]SubscriptionID, 0),
-		pgnIn:                          make(chan any, 10),
+		pgnIn:                          make(chan any, nodePGNQueueSize),
 		mutex:                          sync.RWMutex{},
 		wakeUp:                         make(chan struct{}, 1),
 		logger:                         logrus.New(),
@@ -575,17 +580,26 @@ func (n *Node) EnableHeartbeat(enable bool) {
 }
 
 func (n *Node) enqueuePgn(p any) {
-	// Some callers (including lightweight test subscribers) can deliver a
-	// callback before Start has initialized the node context. Keep that event
-	// queued; the processing loop will consume it once started.
-	if n.ctx == nil {
-		n.pgnIn <- p
-		return
+	if n.ctx != nil {
+		select {
+		case <-n.ctx.Done():
+			n.logger.Debugf("node context done, dropping PGN %T", p)
+			return
+		default:
+		}
 	}
 	select {
 	case n.pgnIn <- p:
-	case <-n.ctx.Done():
-		n.logger.Debugf("node context done, dropping PGN %T", p)
+	default:
+		dropped := n.pgnQueueDropped.Add(1)
+		if dropped == 1 || dropped%100 == 0 {
+			n.logger.WithFields(logrus.Fields{
+				"capacity":     cap(n.pgnIn),
+				"depth":        len(n.pgnIn),
+				"droppedTotal": dropped,
+				"pgnType":      fmt.Sprintf("%T", p),
+			}).Warn("dropping N2K node-management PGN because its queue is full")
+		}
 	}
 }
 

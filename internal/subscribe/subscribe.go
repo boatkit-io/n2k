@@ -36,6 +36,8 @@ type SubscribeManager struct {
 
 // CallbackObserver receives aggregate callback timing observations from the synchronous subscriber path.
 type CallbackObserver interface {
+	CallbackStarted(structName, callbackName string)
+	CallbackFinished()
 	ObserveCallback(structName, callbackName string, duration time.Duration)
 }
 
@@ -232,7 +234,15 @@ func (s *SubscribeManager) HandleStruct(p any) {
 		}
 
 		start := time.Now()
-		t.Call(callWith)
+		if callbackObserver != nil {
+			callbackObserver.CallbackStarted(sn, call.name)
+		}
+		func() {
+			if callbackObserver != nil {
+				defer callbackObserver.CallbackFinished()
+			}
+			t.Call(callWith)
+		}()
 		if callbackObserver != nil {
 			callbackObserver.ObserveCallback(sn, call.name, time.Since(start))
 		}

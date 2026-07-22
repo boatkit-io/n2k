@@ -348,6 +348,16 @@ func (s *N2kService) ObserveCallback(structName, callbackName string, duration t
 	s.processingMetrics.observeCallback(structName, callbackName, duration)
 }
 
+// CallbackStarted records which synchronous callback currently owns the serial handler.
+func (s *N2kService) CallbackStarted(structName, callbackName string) {
+	s.processingMetrics.callbackStarted(structName, callbackName, time.Now())
+}
+
+// CallbackFinished clears the current synchronous callback diagnostic.
+func (s *N2kService) CallbackFinished() {
+	s.processingMetrics.callbackFinished()
+}
+
 // HandleReplayCANFrame feeds a captured CAN frame through a dedicated adapter into the
 // shared decode pipeline so existing subscribers receive replay traffic alongside live data.
 func (s *N2kService) HandleReplayCANFrame(frame *can.Frame) error {

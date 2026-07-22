@@ -88,3 +88,21 @@ func TestOutboundQueueLagDelegatesToEndpointReporter(t *testing.T) {
 
 	assert.Equal(t, 1500*time.Millisecond, service.OutboundQueueLag())
 }
+
+func TestProcessingMetricsReportsInFlightSubscriberCallback(t *testing.T) {
+	metrics := newProcessingMetrics()
+	started := time.Unix(100, 0)
+	metrics.callbackStarted("ISORequest", "node.handleIsoRequest", started)
+
+	fields := logrus.Fields{}
+	snapshot := metrics.snapshot(started.Add(2 * time.Second))
+	snapshot.addFields(fields)
+	assert.Equal(t, "ISORequest/node.handleIsoRequest", fields["subscriberCallbackInFlight"])
+	assert.Equal(t, "2s", fields["subscriberCallbackInFlightAge"])
+
+	metrics.callbackFinished()
+	fields = logrus.Fields{}
+	snapshot = metrics.snapshot(started.Add(3 * time.Second))
+	snapshot.addFields(fields)
+	assert.NotContains(t, fields, "subscriberCallbackInFlight")
+}

@@ -54,6 +54,26 @@ func TestNewNode(t *testing.T) {
 	assert.False(t, n.heartbeatEnabled)
 	assert.Equal(t, 60*time.Second, n.heartbeatInterval)
 	assert.False(t, n.started)
+	assert.Equal(t, nodePGNQueueSize, cap(n.pgnIn))
+}
+
+func TestNodeManagementQueueNeverBlocksSubscriberCallback(t *testing.T) {
+	n := NewNode(nil, nil, nil)
+	for i := 0; i < cap(n.pgnIn); i++ {
+		n.enqueuePgn(pgn.ISORequest{})
+	}
+
+	done := make(chan struct{})
+	go func() {
+		n.enqueuePgn(pgn.ISORequest{})
+		close(done)
+	}()
+	select {
+	case <-done:
+	case <-time.After(100 * time.Millisecond):
+		t.Fatal("enqueuePgn blocked with a full node-management queue")
+	}
+	assert.Equal(t, uint64(1), n.pgnQueueDropped.Load())
 }
 
 func TestSetters(t *testing.T) {

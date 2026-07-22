@@ -37,6 +37,9 @@ type processingMetrics struct {
 
 	pgns      map[uint32]uint64
 	callbacks map[string]*durationStats
+
+	inFlightCallback      string
+	inFlightCallbackStart time.Time
 }
 
 type durationStats struct {
@@ -54,8 +57,10 @@ type processingMetricsSnapshot struct {
 	callbackStats   durationStats
 	queueWaitStats  durationStats
 
-	topPGNs      string
-	topCallbacks string
+	topPGNs             string
+	topCallbacks        string
+	inFlightCallback    string
+	inFlightCallbackAge time.Duration
 }
 
 func newProcessingMetrics() *processingMetrics {
@@ -112,6 +117,26 @@ func (m *processingMetrics) observeCallback(structName, callbackName string, dur
 	stats.observe(duration)
 }
 
+func (m *processingMetrics) callbackStarted(structName, callbackName string, now time.Time) {
+	if m == nil {
+		return
+	}
+	m.mu.Lock()
+	m.inFlightCallback = structName + "/" + callbackName
+	m.inFlightCallbackStart = now
+	m.mu.Unlock()
+}
+
+func (m *processingMetrics) callbackFinished() {
+	if m == nil {
+		return
+	}
+	m.mu.Lock()
+	m.inFlightCallback = ""
+	m.inFlightCallbackStart = time.Time{}
+	m.mu.Unlock()
+}
+
 func (m *processingMetrics) observeQueueWait(duration time.Duration) {
 	if m == nil {
 		return
@@ -129,14 +154,18 @@ func (m *processingMetrics) snapshot(now time.Time) processingMetricsSnapshot {
 	defer m.mu.Unlock()
 
 	snapshot := processingMetricsSnapshot{
-		interval:        now.Sub(m.windowStart),
-		frameStats:      m.frameStats,
-		packetStats:     m.packetStats,
-		subscriberStats: m.subscriberStats,
-		callbackStats:   m.callbackStats,
-		queueWaitStats:  m.queueWaitStats,
-		topPGNs:         formatTopPGNs(m.pgns, processingMetricsTopCount),
-		topCallbacks:    formatTopCallbacks(m.callbacks, processingMetricsTopCount),
+		interval:         now.Sub(m.windowStart),
+		frameStats:       m.frameStats,
+		packetStats:      m.packetStats,
+		subscriberStats:  m.subscriberStats,
+		callbackStats:    m.callbackStats,
+		queueWaitStats:   m.queueWaitStats,
+		topPGNs:          formatTopPGNs(m.pgns, processingMetricsTopCount),
+		topCallbacks:     formatTopCallbacks(m.callbacks, processingMetricsTopCount),
+		inFlightCallback: m.inFlightCallback,
+	}
+	if !m.inFlightCallbackStart.IsZero() {
+		snapshot.inFlightCallbackAge = now.Sub(m.inFlightCallbackStart)
 	}
 
 	m.windowStart = now
@@ -175,6 +204,10 @@ func (s *processingMetricsSnapshot) addFields(fields logrus.Fields) {
 	}
 	if s.topCallbacks != "" {
 		fields["topSubscriberCallbacks"] = s.topCallbacks
+	}
+	if s.inFlightCallback != "" {
+		fields["subscriberCallbackInFlight"] = s.inFlightCallback
+		fields["subscriberCallbackInFlightAge"] = s.inFlightCallbackAge.String()
 	}
 }
 
