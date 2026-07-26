@@ -600,6 +600,8 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 3, FieldSpec: &fieldSpec_HondaEngineData_IndustryCode},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_YanmarEngineDataA_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_YanmarEngineDataA_IndustryCode},
+		{FieldOrder: 8, FieldSpec: &fieldSpec_YanmarEngineDataA_ThrottlePosition},
+		{FieldOrder: 11, FieldSpec: &fieldSpec_YanmarEngineDataA_EngineSpeed},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_MaretronKeelPosition_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_MaretronKeelPosition_IndustryCode},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_MercuryEngineData_ManufacturerCode},
@@ -665,6 +667,10 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 3, FieldSpec: &fieldSpec_BepMarineCzoneCircuitStatus_IndustryCode},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_BepMarineCzoneCircuitStatus_Dipswitch},
 		{FieldOrder: 5, FieldSpec: &fieldSpec_BepMarineCzoneCircuitStatus_Type},
+		{FieldOrder: 1, FieldSpec: &fieldSpec_YanmarThrottleControl_ManufacturerCode},
+		{FieldOrder: 3, FieldSpec: &fieldSpec_YanmarThrottleControl_IndustryCode},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_YanmarThrottleControl_UnknownControlFlag},
+		{FieldOrder: 11, FieldSpec: &fieldSpec_YanmarThrottleControl_ThrottlePosition},
 	},
 	65285: {
 		{FieldOrder: 1, FieldSpec: &fieldSpec_AirmarBootStateAcknowledgment_ManufacturerCode},
@@ -5031,6 +5037,39 @@ var PgnDiscriminatorMap = map[uint32][]PgnDiscriminator{
 						BitLengthVariable: false,
 					},
 					MatchValue: 295,
+				},
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 3,
+						BitOffset: 13,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 4,
+				},
+			},
+		},
+		{
+			Decoder: DecodeYanmarThrottleControl,
+			MatchSpecs: []MatchFieldSpec{
+				{
+					FieldSpec: &FieldSpec{
+						BitLength: 11,
+						BitOffset: 0,
+						MaxRawValue: 0,
+						MissingValue: 0,
+						Resolution: 1,
+						Offset: 0,
+						IsSigned: false,
+						ReservedCount: 0,
+						BitLengthVariable: false,
+					},
+					MatchValue: 172,
 				},
 				{
 					FieldSpec: &FieldSpec{

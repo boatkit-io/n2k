@@ -1370,10 +1370,38 @@ func DecodeYanmarEngineDataA(Info publicpgn.MessageInfo, stream *DataStream) (an
             return nil, fmt.Errorf("match failed for YanmarEngineDataA-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := stream.readBinaryData(48); err != nil {
-        return nil, fmt.Errorf("parse failed for YanmarEngineDataA-Data: %w", err)
+    if v, err := stream.readLookupField(1); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarEngineDataA-UnknownSelectorFlag: %w", err)
     } else {
-        val.Data = v
+        val.UnknownSelectorFlag = publicpgn.YesNo1BitConst(v)
+    }
+    stream.skipBits(4)
+    if v, err := stream.readLookupField(1); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarEngineDataA-EngineInstance: %w", err)
+    } else {
+        val.EngineInstance = publicpgn.EngineInstanceConst(v)
+    }
+    stream.skipBits(2)
+    if v, err := ReadScaled[float32](stream, &fieldSpec_YanmarEngineDataA_ThrottlePosition); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarEngineDataA-ThrottlePosition: %w", err)
+    } else {
+        val.ThrottlePosition = v
+    }
+    stream.skipBits(4)
+    if v, err := stream.readLookupField(2); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarEngineDataA-TransmissionGear: %w", err)
+    } else {
+        val.TransmissionGear = publicpgn.GearStatusConst(v)
+    }
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_YanmarEngineDataA_EngineSpeed); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarEngineDataA-EngineSpeed: %w", err)
+    } else {
+        val.EngineSpeed = v
+    }
+    if v, err := stream.readBinaryData(8); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarEngineDataA-UnknownData: %w", err)
+    } else {
+        val.UnknownData = v
     }
 
     return val, nil
@@ -28907,6 +28935,64 @@ func DecodeYamahaEngineData7(Info publicpgn.MessageInfo, stream *DataStream) (an
         if v != 4 {
             return nil, fmt.Errorf("match failed for YamahaEngineData7-IndustryCode: Expected %d != %d", 4, v)
         }
+    }
+
+    return val, nil
+}
+func DecodeYanmarThrottleControl(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.YanmarThrottleControl
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 172 {
+            return nil, fmt.Errorf("match failed for YanmarThrottleControl-ManufacturerCode: Expected %d != %d", 172, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for YanmarThrottleControl-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(1); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-UnknownSelectorFlag: %w", err)
+    } else {
+        val.UnknownSelectorFlag = publicpgn.YesNo1BitConst(v)
+    }
+    stream.skipBits(4)
+    if v, err := stream.readLookupField(1); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-EngineInstance: %w", err)
+    } else {
+        val.EngineInstance = publicpgn.EngineInstanceConst(v)
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(2); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-TransmissionGear: %w", err)
+    } else {
+        val.TransmissionGear = publicpgn.GearStatusConst(v)
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_YanmarThrottleControl_UnknownControlFlag); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-UnknownControlFlag: %w", err)
+    } else {
+        val.UnknownControlFlag = v
+    }
+    stream.skipBits(5)
+    if v, err := ReadScaled[float32](stream, &fieldSpec_YanmarThrottleControl_ThrottlePosition); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-ThrottlePosition: %w", err)
+    } else {
+        val.ThrottlePosition = v
+    }
+    stream.skipBits(6)
+    if v, err := stream.readBinaryData(16); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-UnknownData: %w", err)
+    } else {
+        val.UnknownData = v
     }
 
     return val, nil

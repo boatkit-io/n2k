@@ -180,6 +180,13 @@ testing decoder behavior.
 Generates PGN runtime and public types from CANboat PGN data. Generated output
 is written under `internal/pgn`, `pkg/pgn`, and `cmd/filterraw`.
 
+Local definitions in `cmd/pgngen/pgn_overrides.json` are applied to the pinned
+CANboat catalog before generation. An entry with the same `Id` replaces the
+upstream definition; an entry with a new `Id` is added. Overrides are rejected
+when they duplicate an upstream definition or collide with another variant's
+PGN discriminator, making it clear when an upstream Canboat update has made a
+local definition redundant.
+
 ## Development
 
 This repository uses [mise](https://mise.jdx.dev/) tasks.

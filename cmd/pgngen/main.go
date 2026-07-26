@@ -255,6 +255,9 @@ func (conv *canboatConverter) init() {
 	if err := json.Unmarshal(raw, conv); err != nil {
 		log.Info(err)
 	}
+	if err := conv.applyPGNOverrides(); err != nil {
+		log.Fatal(err)
+	}
 	log.Infof("Using Canboat release: %s", canboatRelease)
 	log.Infof("Initially Parsed Lookup enums: %d", len(conv.Enums))
 	log.Infof("Initially Parsed IndirectLookup enums: %d", len(conv.IndirectEnums))

@@ -1428,7 +1428,39 @@ func EncodeYanmarEngineDataA(p *publicpgn.YanmarEngineDataA, stream *DataStream)
     if err != nil {
         return nil, err
     }
-    err = stream.writeBinary(p.Data, 48, 16 )
+    err = stream.putNumberRaw(uint64(p.UnknownSelectorFlag), 1, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(4, 17)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.EngineInstance), 1, 21)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(2, 22)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.ThrottlePosition, &fieldSpec_YanmarEngineDataA_ThrottlePosition)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(4, 34)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.TransmissionGear), 2, 38)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.EngineSpeed, &fieldSpec_YanmarEngineDataA_EngineSpeed)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeBinary(p.UnknownData, 8, 56 )
     if err != nil {
         return nil, err
     }
@@ -26523,6 +26555,69 @@ func EncodeYamahaEngineData7(p *publicpgn.YamahaEngineData7, stream *DataStream)
     }
     if p.Info.PGN == 0 {
         p.Info.PGN = 131012
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeYanmarThrottleControl encodes a YanmarThrottleControl struct to NMEA 2000 wire format
+func EncodeYanmarThrottleControl(p *publicpgn.YanmarThrottleControl, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.UnknownSelectorFlag), 1, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(4, 17)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.EngineInstance), 1, 21)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(2, 22)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.TransmissionGear), 2, 24)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.UnknownControlFlag, &fieldSpec_YanmarThrottleControl_UnknownControlFlag)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(5, 27)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteScaled(stream, p.ThrottlePosition, &fieldSpec_YanmarThrottleControl_ThrottlePosition)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(6, 42)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeBinary(p.UnknownData, 16, 48 )
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 65284
     }
     p.Info.Timestamp = time.Now()
 

@@ -34,6 +34,7 @@ sources = [
 	"bin/pgngen",
 	"cmd/pgngen/**/*.go",
 	"cmd/pgngen/templates/**/*.tmpl",
+	"cmd/pgngen/pgn_overrides.json",
 	"cmd/pgngen/domain_ranges.yaml",
 	"cmd/pgngen/domain_ranges.generated.yaml",
 ]

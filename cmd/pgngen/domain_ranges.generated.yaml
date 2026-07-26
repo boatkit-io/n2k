@@ -62,7 +62,7 @@
   unit: '%'
   signed: false
   min: null
-  max: null
+  max: 102.1
 - physicalQuantity: DIMENSIONLESS_RATIO
   unit: '%'
   signed: true

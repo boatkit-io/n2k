@@ -1874,6 +1874,32 @@ var (
 		DomainMax:         nil,
 		BitLengthVariable: false,
 	}
+    fieldSpec_YanmarEngineDataA_ThrottlePosition = FieldSpec{
+		BitLength:         10,
+		BitOffset:         24,
+		MaxRawValue:       0x3FD,
+		MissingValue:      0x3FF,
+		Resolution:        0.10000000149011612,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         &[]float64{0}[0],
+		DomainMax:         &[]float64{100}[0],
+		BitLengthVariable: false,
+	}
+    fieldSpec_YanmarEngineDataA_EngineSpeed = FieldSpec{
+		BitLength:         16,
+		BitOffset:         40,
+		MaxRawValue:       0xFFFD,
+		MissingValue:      0xFFFF,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
     fieldSpec_MaretronKeelPosition_ManufacturerCode = FieldSpec{
 		BitLength:         11,
 		BitOffset:         0,
@@ -39221,6 +39247,58 @@ var (
 		ReservedCount:     0,
 		DomainMin:         nil,
 		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_YanmarThrottleControl_ManufacturerCode = FieldSpec{
+		BitLength:         11,
+		BitOffset:         0,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_YanmarThrottleControl_IndustryCode = FieldSpec{
+		BitLength:         3,
+		BitOffset:         13,
+		MaxRawValue:       0x0,
+		MissingValue:      0x0,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     0,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_YanmarThrottleControl_UnknownControlFlag = FieldSpec{
+		BitLength:         1,
+		BitOffset:         26,
+		MaxRawValue:       0x0,
+		MissingValue:      0x1,
+		Resolution:        1,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     1,
+		DomainMin:         nil,
+		DomainMax:         nil,
+		BitLengthVariable: false,
+	}
+    fieldSpec_YanmarThrottleControl_ThrottlePosition = FieldSpec{
+		BitLength:         10,
+		BitOffset:         32,
+		MaxRawValue:       0x3FD,
+		MissingValue:      0x3FF,
+		Resolution:        0.10000000149011612,
+		Offset:            0,
+		IsSigned:          false,
+		ReservedCount:     2,
+		DomainMin:         &[]float64{0}[0],
+		DomainMax:         &[]float64{100}[0],
 		BitLengthVariable: false,
 	}
 )

@@ -2434,6 +2434,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeYamahaEngineData7(p, stream)
 	case publicpgn.YamahaEngineData7:
 		return EncodeYamahaEngineData7(&p, stream)
+	case *publicpgn.YanmarThrottleControl:
+		return EncodeYanmarThrottleControl(p, stream)
+	case publicpgn.YanmarThrottleControl:
+		return EncodeYanmarThrottleControl(&p, stream)
 	default:
 		return nil, fmt.Errorf("trying to encode a struct that isn't a PGN: %T", s)
 	}

@@ -601,3 +601,4 @@ const YamahaEngineData4PGN = 130951
 const YamahaEngineData5PGN = 131008
 const YamahaEngineData6PGN = 131011
 const YamahaEngineData7PGN = 131012
+const YanmarThrottleControlPGN = 65284

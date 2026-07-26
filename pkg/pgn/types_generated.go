@@ -359,7 +359,12 @@ type YanmarEngineDataA struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Data []uint8
+	UnknownSelectorFlag YesNo1BitConst
+	EngineInstance EngineInstanceConst
+	ThrottlePosition *float32
+	TransmissionGear GearStatusConst
+	EngineSpeed *uint16
+	UnknownData []uint8
 }
 type MaretronKeelPosition struct {
 	Info MessageInfo
@@ -5969,6 +5974,17 @@ type YamahaEngineData7 struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
+}
+type YanmarThrottleControl struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	UnknownSelectorFlag YesNo1BitConst
+	EngineInstance EngineInstanceConst
+	TransmissionGear GearStatusConst
+	UnknownControlFlag *uint8
+	ThrottlePosition *float32
+	UnknownData []uint8
 }
 // Partial type for NMEARequestGroupFunction when PGN is proprietary or unknown
 type NMEARequestGroupFunctionPartial struct {
