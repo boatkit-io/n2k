@@ -16,6 +16,7 @@ import (
 	"math"
 	"os"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/boatkit-io/n2k/pkg/endpoint"
@@ -29,6 +30,10 @@ type N2kFileEndpoint struct {
 	log        *logrus.Logger
 	inFilePath string
 
+	mu      sync.Mutex
+	inFile  *os.File
+	running bool
+	closed  bool
 	handler endpoint.MessageHandler
 }
 
@@ -45,15 +50,52 @@ func (n *N2kFileEndpoint) SetOutput(mh endpoint.MessageHandler) {
 	n.handler = mh
 }
 
-// Run method opens the specified log file and kicks off a goroutine that sends frames to the handler
-func (n *N2kFileEndpoint) Run(ctx context.Context) error {
+// Start synchronously verifies that the input log can be opened.
+func (n *N2kFileEndpoint) Start(_ context.Context) error {
+	n.mu.Lock()
+	defer n.mu.Unlock()
+	if n.closed {
+		return errors.New("n2k file endpoint is closed")
+	}
+	if n.inFile != nil {
+		return nil
+	}
 	file, err := os.Open(n.inFilePath)
 	if err != nil {
 		return err
 	}
+	n.inFile = file
+	return nil
+}
+
+// Run replays frames from the opened input log until playback or the context ends.
+func (n *N2kFileEndpoint) Run(ctx context.Context) error {
+	if err := n.Start(ctx); err != nil {
+		return err
+	}
+	n.mu.Lock()
+	if n.closed {
+		n.mu.Unlock()
+		return errors.New("n2k file endpoint is closed")
+	}
+	if n.running {
+		n.mu.Unlock()
+		return errors.New("n2k file endpoint is already running")
+	}
+	file := n.inFile
+	n.running = true
+	n.mu.Unlock()
+	if file == nil {
+		n.mu.Lock()
+		n.running = false
+		n.mu.Unlock()
+		return errors.New("n2k input file is not open")
+	}
 	defer func() {
-		if err := file.Close(); err != nil {
-			n.log.WithError(err).Warnf("failed to close n2k file %s", n.inFilePath)
+		if n.finishRun(file) {
+			if err := file.Close(); err != nil {
+				n.log.WithError(err).Warnf("failed to close n2k file %s", n.inFilePath)
+			}
 		}
 	}()
 
@@ -61,16 +103,12 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 
 	n.log.Info("starting n2k file playback")
 
-	canceled := false
-	go func() {
-		<-ctx.Done()
-		canceled = true
-	}()
-
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		if canceled {
-			break
+		select {
+		case <-ctx.Done():
+			return nil
+		default:
 		}
 
 		// Sample line:
@@ -99,18 +137,23 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 			}
 		}
 		// Pause until the timeDelta has expired, so this all replays in "real-time" (relative to start, obvs)
-		for !canceled {
+		for {
 			curDelta := time.Since(startTime).Seconds()
 			nextTime := timeDelta - float32(curDelta)
-			// Make sure we wait at most 0.5 seconds to gracefully quit as needed
-			time.Sleep(time.Duration(math.Min(500, float64(nextTime)*1000.0)) * time.Millisecond)
+			wait := time.Duration(math.Min(500, float64(nextTime)*1000.0)) * time.Millisecond
+			if wait > 0 {
+				timer := time.NewTimer(wait)
+				select {
+				case <-timer.C:
+				case <-ctx.Done():
+					timer.Stop()
+					return nil
+				}
+			}
 
 			if time.Since(startTime) > time.Duration(timeDelta) {
 				break
 			}
-		}
-		if canceled {
-			break
 		}
 
 		n.frameReady(&frame)
@@ -127,8 +170,15 @@ func (n *N2kFileEndpoint) Run(ctx context.Context) error {
 
 // Close closes the endpoint
 func (n *N2kFileEndpoint) Close() error {
-	// For file endpoints, there's nothing to close
-	return nil
+	n.mu.Lock()
+	n.closed = true
+	file := n.inFile
+	n.inFile = nil
+	n.mu.Unlock()
+	if file == nil {
+		return nil
+	}
+	return file.Close()
 }
 
 // WriteFrame writes a CAN frame to the endpoint
@@ -142,4 +192,15 @@ func (n *N2kFileEndpoint) frameReady(frame endpoint.Message) {
 	if n.handler != nil {
 		n.handler.HandleMessage(frame)
 	}
+}
+
+func (n *N2kFileEndpoint) finishRun(file *os.File) bool {
+	n.mu.Lock()
+	defer n.mu.Unlock()
+	n.running = false
+	if n.inFile == file {
+		n.inFile = nil
+		return true
+	}
+	return false
 }

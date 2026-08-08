@@ -3,6 +3,7 @@ package socketcanendpoint
 import (
 	"context"
 	"io"
+	"sync"
 	"sync/atomic"
 	"syscall"
 	"testing"
@@ -20,8 +21,9 @@ type retryTestChannel struct {
 	writes   atomic.Int32
 }
 
-func (c *retryTestChannel) Run(context.Context) error { return nil }
-func (c *retryTestChannel) Close() error              { return nil }
+func (c *retryTestChannel) Start(context.Context) error { return nil }
+func (c *retryTestChannel) Run(context.Context) error   { return nil }
+func (c *retryTestChannel) Close() error                { return nil }
 func (c *retryTestChannel) WriteFrame(can.Frame) error {
 	writes := c.writes.Add(1)
 	if writes <= c.failures {
@@ -35,8 +37,31 @@ type requeueTestChannel struct {
 	writes    chan uint32
 }
 
-func (c *requeueTestChannel) Run(context.Context) error { return nil }
-func (c *requeueTestChannel) Close() error              { return nil }
+type blockingTestChannel struct {
+	runEntered chan struct{}
+	closed     chan struct{}
+	closeOnce  sync.Once
+	startCalls atomic.Int32
+}
+
+func (c *blockingTestChannel) Start(context.Context) error {
+	c.startCalls.Add(1)
+	return nil
+}
+func (c *blockingTestChannel) Run(context.Context) error {
+	close(c.runEntered)
+	<-c.closed
+	return nil
+}
+func (c *blockingTestChannel) Close() error {
+	c.closeOnce.Do(func() { close(c.closed) })
+	return nil
+}
+func (*blockingTestChannel) WriteFrame(can.Frame) error { return nil }
+
+func (c *requeueTestChannel) Start(context.Context) error { return nil }
+func (c *requeueTestChannel) Run(context.Context) error   { return nil }
+func (c *requeueTestChannel) Close() error                { return nil }
 func (c *requeueTestChannel) WriteFrame(frame can.Frame) error {
 	c.writes <- converter.DecodeCanID(frame.ID).PGN
 	if isLowPrioritySocketCANFrame(frame) && !c.failedLow.Swap(true) {
@@ -61,6 +86,55 @@ func TestWriteFrameRetriesSocketCANBufferFull(t *testing.T) {
 	assert.Eventually(t, func() bool {
 		return channel.writes.Load() == 3
 	}, time.Second, time.Millisecond)
+}
+
+func TestRunRejectsConcurrentSocketCANReadersAndCloseIsTerminal(t *testing.T) {
+	channel := &blockingTestChannel{runEntered: make(chan struct{}), closed: make(chan struct{})}
+	ep := &SocketCANEndpoint{log: discardLogger(), channel: channel}
+	runDone := make(chan error, 1)
+	go func() {
+		runDone <- ep.Run(context.Background())
+	}()
+	select {
+	case <-channel.runEntered:
+	case <-time.After(time.Second):
+		t.Fatal("SocketCAN Run did not start")
+	}
+
+	assert.ErrorContains(t, ep.Run(context.Background()), "already running")
+	assert.Equal(t, int32(1), channel.startCalls.Load())
+	assert.NoError(t, ep.Close())
+	assert.NoError(t, <-runDone)
+	assert.ErrorContains(t, ep.Start(context.Background()), "closed")
+}
+
+func TestCloseReleasesWriterBlockedByFullOutboundQueue(t *testing.T) {
+	ep := &SocketCANEndpoint{
+		log:     discardLogger(),
+		channel: &retryTestChannel{},
+	}
+	assert.NoError(t, ep.Start(context.Background()))
+	for range socketCANOutboundQueueSize {
+		ep.WriteFrame(can.Frame{})
+	}
+
+	writeDone := make(chan struct{})
+	go func() {
+		ep.WriteFrame(can.Frame{})
+		close(writeDone)
+	}()
+	select {
+	case <-writeDone:
+		t.Fatal("WriteFrame returned before queue space or shutdown was available")
+	case <-time.After(20 * time.Millisecond):
+	}
+
+	assert.NoError(t, ep.Close())
+	select {
+	case <-writeDone:
+	case <-time.After(time.Second):
+		t.Fatal("Close did not release blocked SocketCAN writer")
+	}
 }
 
 func TestLowPriorityBackoffDoesNotBlockHighPriorityFrames(t *testing.T) {

@@ -48,8 +48,9 @@ type captureEndpoint struct {
 	frames []can.Frame
 }
 
-func (c *captureEndpoint) Run(context.Context) error { return nil }
-func (c *captureEndpoint) Close() error              { return nil }
+func (c *captureEndpoint) Start(context.Context) error { return nil }
+func (c *captureEndpoint) Run(context.Context) error   { return nil }
+func (c *captureEndpoint) Close() error                { return nil }
 func (c *captureEndpoint) SetOutput(_ endpoint.MessageHandler) {
 }
 func (c *captureEndpoint) WriteFrame(frame can.Frame) {

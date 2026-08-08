@@ -23,6 +23,9 @@ type Message interface {
 
 // Endpoint declares the interface for endpoints.
 type Endpoint interface {
+	// Start synchronously prepares the endpoint for reads and writes. It returns
+	// once startup has either completed successfully or failed.
+	Start(ctx context.Context) error
 	Run(ctx context.Context) error
 	Close() error
 	SetOutput(MessageHandler)

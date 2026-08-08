@@ -93,6 +93,9 @@ func TestN2kServiceIntegration(t *testing.T) {
 	go func() {
 		startTime = time.Now()
 		err := service.Start(ctx)
+		if err == nil {
+			err = service.Wait(ctx)
+		}
 		errChan <- err
 	}()
 
@@ -142,6 +145,9 @@ func TestN2kServiceWithSubscription(t *testing.T) {
 	errChan := make(chan error, 1)
 	go func() {
 		err := service.Start(ctx)
+		if err == nil {
+			err = service.Wait(ctx)
+		}
 		errChan <- err
 	}()
 
@@ -213,6 +219,9 @@ func TestN2kServiceUpdateEndpoint(t *testing.T) {
 	errChan := make(chan error, 1)
 	go func() {
 		startErr := service.Start(ctx)
+		if startErr == nil {
+			startErr = service.Wait(ctx)
+		}
 		errChan <- startErr
 	}()
 
@@ -246,12 +255,7 @@ func TestN2kServiceUpdateEndpointWhileRunning(t *testing.T) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	// Start processing in a goroutine
-	errChan := make(chan error, 1)
-	go func() {
-		err := service.Start(ctx)
-		errChan <- err
-	}()
+	require.NoError(t, service.Start(ctx))
 
 	// Give the service a moment to start
 	time.Sleep(100 * time.Millisecond)
@@ -260,14 +264,6 @@ func TestN2kServiceUpdateEndpointWhileRunning(t *testing.T) {
 	ep2 := n2kfileendpoint.NewN2kFileEndpoint(testFile, log)
 	err := service.UpdateEndpoint(ep2)
 	assert.NoError(t, err, "UpdateEndpoint should work even while running")
-
-	// Wait for completion or timeout
-	select {
-	case startErr := <-errChan:
-		require.NoError(t, startErr, "Service should complete without error")
-	case <-ctx.Done():
-		// This is expected since we have a timeout
-	}
 
 	// Stop the service
 	stopErr := service.Stop()
@@ -313,7 +309,11 @@ func TestN2kServiceReceivedCANFrameHook(t *testing.T) {
 
 	errChan := make(chan error, 1)
 	go func() {
-		errChan <- service.Start(ctx)
+		err := service.Start(ctx)
+		if err == nil {
+			err = service.Wait(ctx)
+		}
+		errChan <- err
 	}()
 
 	select {

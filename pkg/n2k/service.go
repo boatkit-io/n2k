@@ -10,6 +10,7 @@ package n2k
 
 import (
 	"context"
+	"errors"
 	"time"
 
 	"github.com/boatkit-io/n2k/internal/n2kinternal"
@@ -44,6 +45,12 @@ type N2kService struct {
 	impl *n2kinternal.N2kService
 }
 
+// RunHandle identifies one endpoint generation and remains valid after the
+// service is updated to use a later endpoint.
+type RunHandle struct {
+	impl *n2kinternal.RunHandle
+}
+
 // NewN2kService creates a new N2K service with the specified endpoint
 func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger, opts ...ServiceOption) *N2kService {
 	options := serviceOptions{}
@@ -68,6 +75,28 @@ func (s *N2kService) Write(pgnStruct any) error {
 // Start begins processing messages from the endpoint
 func (s *N2kService) Start(ctx context.Context) error {
 	return s.impl.Start(ctx)
+}
+
+// CurrentRun returns a handle for the most recently started endpoint generation.
+func (s *N2kService) CurrentRun() (*RunHandle, error) {
+	run, err := s.impl.CurrentRun()
+	if err != nil {
+		return nil, err
+	}
+	return &RunHandle{impl: run}, nil
+}
+
+// Wait waits for this endpoint generation to finish.
+func (h *RunHandle) Wait(ctx context.Context) error {
+	if h == nil || h.impl == nil {
+		return errors.New("N2K endpoint run handle is nil")
+	}
+	return h.impl.Wait(ctx)
+}
+
+// Wait waits for the most recently started endpoint generation to finish.
+func (s *N2kService) Wait(ctx context.Context) error {
+	return s.impl.Wait(ctx)
 }
 
 // Stop stops processing messages

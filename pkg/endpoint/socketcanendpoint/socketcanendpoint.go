@@ -38,7 +38,12 @@ type SocketCANEndpoint struct {
 
 	channel canbus.Interface
 
-	handler endpoint.MessageHandler
+	handler  endpoint.MessageHandler
+	closed   atomic.Bool
+	runMu    sync.Mutex
+	running  bool
+	done     chan struct{}
+	doneOnce sync.Once
 
 	outboundOnce sync.Once
 	outboundHigh chan outboundSocketCANFrame
@@ -67,7 +72,8 @@ type socketCANRetryPolicy struct {
 // NewSocketCANEndpoint builds a new SocketCANEndpoint for the given CAN interface name
 func NewSocketCANEndpoint(log *logrus.Logger, canInterfaceName string) endpoint.Endpoint {
 	c := SocketCANEndpoint{
-		log: log,
+		log:  log,
+		done: make(chan struct{}),
 	}
 
 	// vcan interfaces are now supported with the modified tugboat package
@@ -84,10 +90,43 @@ func NewSocketCANEndpoint(log *logrus.Logger, canInterfaceName string) endpoint.
 	return &c
 }
 
-// Run should, in theory, run the endpoint and block until completion/error, but the canbus implementation doesn't work like that
-// right now unfortunately, so it just spawns in the background and keeps running until Shutdown kills it...
-func (c *SocketCANEndpoint) Run(ctx context.Context) error {
+// Start synchronously opens the SocketCAN channel.
+func (c *SocketCANEndpoint) Start(ctx context.Context) error {
+	if c.closed.Load() {
+		return stderrors.New("SocketCAN endpoint is closed")
+	}
 	c.initOutboundQueues()
+	if err := c.channel.Start(ctx); err != nil {
+		return err
+	}
+	if c.closed.Load() {
+		_ = c.channel.Close()
+		return stderrors.New("SocketCAN endpoint is closed")
+	}
+	return nil
+}
+
+// Run processes SocketCAN frames until completion or error.
+func (c *SocketCANEndpoint) Run(ctx context.Context) error {
+	c.runMu.Lock()
+	if c.running {
+		c.runMu.Unlock()
+		return stderrors.New("SocketCAN endpoint is already running")
+	}
+	if c.closed.Load() {
+		c.runMu.Unlock()
+		return stderrors.New("SocketCAN endpoint is closed")
+	}
+	c.running = true
+	c.runMu.Unlock()
+	defer func() {
+		c.runMu.Lock()
+		c.running = false
+		c.runMu.Unlock()
+	}()
+	if err := c.Start(ctx); err != nil {
+		return err
+	}
 	writerCtx, cancelWriter := context.WithCancel(ctx)
 	writerDone := make(chan struct{})
 	c.outboundWriterMutex.Lock()
@@ -112,9 +151,7 @@ func (c *SocketCANEndpoint) Run(ctx context.Context) error {
 	}()
 
 	err := c.channel.Run(ctx)
-	if err != nil {
-		c.stopOutboundWriter()
-	}
+	c.stopOutboundWriter()
 	return err
 }
 
@@ -125,6 +162,11 @@ func (c *SocketCANEndpoint) SetOutput(mh endpoint.MessageHandler) {
 
 // Close will stop the endpoint from processing further frames
 func (c *SocketCANEndpoint) Close() error {
+	c.closed.Store(true)
+	c.initOutboundQueues()
+	c.doneOnce.Do(func() {
+		close(c.done)
+	})
 	if c.channel != nil {
 		var errs []error
 
@@ -160,10 +202,11 @@ func (c *SocketCANEndpoint) stopOutboundWriter() {
 
 // WriteFrame sends a CAN frame to the SocketCAN interface
 func (c *SocketCANEndpoint) WriteFrame(frame can.Frame) {
-	if c.channel == nil {
+	if c.channel == nil || c.closed.Load() {
 		return
 	}
 	c.initOutboundQueues()
+	done := c.done
 	item := outboundSocketCANFrame{
 		frame:      frame,
 		enqueuedAt: time.Now(),
@@ -172,6 +215,7 @@ func (c *SocketCANEndpoint) WriteFrame(frame can.Frame) {
 	if isLowPrioritySocketCANFrame(frame) {
 		select {
 		case c.outboundLow <- item:
+		case <-done:
 		default:
 			c.log.Warn("dropping low-priority SocketCAN frame because the outbound queue is full")
 		}
@@ -180,9 +224,13 @@ func (c *SocketCANEndpoint) WriteFrame(frame can.Frame) {
 
 	select {
 	case c.outboundHigh <- item:
+	case <-done:
 	default:
 		c.log.Warn("SocketCAN outbound queue is full; applying backpressure")
-		c.outboundHigh <- item
+		select {
+		case c.outboundHigh <- item:
+		case <-done:
+		}
 	}
 }
 
@@ -190,12 +238,23 @@ func (c *SocketCANEndpoint) initOutboundQueues() {
 	c.outboundOnce.Do(func() {
 		c.outboundHigh = make(chan outboundSocketCANFrame, socketCANOutboundQueueSize)
 		c.outboundLow = make(chan outboundSocketCANFrame, socketCANOutboundQueueSize)
+		if c.done == nil {
+			c.done = make(chan struct{})
+		}
 	})
 }
 
 func (c *SocketCANEndpoint) runOutboundWriter(ctx context.Context) {
 	c.initOutboundQueues()
 	for {
+		select {
+		case <-ctx.Done():
+			return
+		case <-c.done:
+			return
+		default:
+		}
+
 		select {
 		case item := <-c.outboundHigh:
 			c.writeQueuedFrame(ctx, item)
@@ -209,6 +268,8 @@ func (c *SocketCANEndpoint) runOutboundWriter(ctx context.Context) {
 		case item := <-c.outboundLow:
 			c.writeQueuedFrame(ctx, item)
 		case <-ctx.Done():
+			return
+		case <-c.done:
 			return
 		}
 	}

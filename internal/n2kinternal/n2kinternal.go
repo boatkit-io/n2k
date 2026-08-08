@@ -10,6 +10,7 @@ package n2kinternal
 
 import (
 	"context"
+	"errors"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -25,13 +26,19 @@ import (
 
 // N2kService provides the internal implementation of N2K operations
 type N2kService struct {
-	endpoint      endpoint.Endpoint
-	adapter       *canadapter.CANAdapter
-	replayAdapter *canadapter.CANAdapter
-	packetStruct  *pkt.PacketStruct
-	subscriber    *subscribe.SubscribeManager
-	publisher     *pgn.Publisher
-	log           *logrus.Logger
+	endpoint       endpoint.Endpoint
+	endpointOutput *serviceEndpointOutput
+	adapter        *canadapter.CANAdapter
+	replayAdapter  *canadapter.CANAdapter
+	packetStruct   *pkt.PacketStruct
+	subscriber     *subscribe.SubscribeManager
+	publisher      *pgn.Publisher
+	log            *logrus.Logger
+
+	lifecycleOpMu sync.Mutex
+	lifecycleMu   sync.Mutex
+	endpointRun   *serviceEndpointRun
+	lastRun       *serviceEndpointRun
 
 	receivedCANFrameHook func(*can.Frame)
 
@@ -53,6 +60,52 @@ type N2kService struct {
 	queueLastDroppedLog        uint64
 	queueLastBacklogDroppedLog uint64
 	queueLastStaleDroppedLog   uint64
+}
+
+type serviceEndpointRun struct {
+	ep        endpoint.Endpoint
+	output    *serviceEndpointOutput
+	ctx       context.Context
+	cancel    context.CancelFunc
+	done      chan struct{}
+	doneOnce  sync.Once
+	closeOnce sync.Once
+	closeErr  error
+	stopping  bool
+	result    error
+}
+
+// RunHandle identifies one endpoint generation and can be retained while a
+// later generation is installed or started.
+type RunHandle struct {
+	run *serviceEndpointRun
+}
+
+type serviceEndpointOutput struct {
+	mu      sync.RWMutex
+	service *N2kService
+	active  bool
+}
+
+func (o *serviceEndpointOutput) HandleMessage(message endpoint.Message) {
+	o.mu.RLock()
+	defer o.mu.RUnlock()
+	if !o.active {
+		return
+	}
+	o.service.HandleMessage(message)
+}
+
+func (o *serviceEndpointOutput) activate() {
+	o.mu.Lock()
+	o.active = true
+	o.mu.Unlock()
+}
+
+func (o *serviceEndpointOutput) deactivate() {
+	o.mu.Lock()
+	o.active = false
+	o.mu.Unlock()
 }
 
 const (
@@ -106,12 +159,14 @@ func NewN2kService(ep endpoint.Endpoint, log *logrus.Logger, opts ...ServiceOpti
 		messageQueueMaxAge: options.messageQueueMaxAge,
 		processingMetrics:  newProcessingMetrics(),
 	}
+	endpointOutput := &serviceEndpointOutput{service: s}
+	s.endpointOutput = endpointOutput
 
 	ps.SetOutput(s)
 	adapter.SetOutput(s)
 	subscriber.SetCallbackObserver(s)
 
-	ep.SetOutput(s)
+	ep.SetOutput(endpointOutput)
 	adapter.SetWriter(ep)
 
 	return s
@@ -376,55 +431,235 @@ func (s *N2kService) Write(pgnStruct any) error {
 
 // Start begins processing messages from the endpoint
 func (s *N2kService) Start(ctx context.Context) error {
-	s.startMessageProcessor(ctx)
-
-	// Start the endpoint in a goroutine
-	errChan := make(chan error, 1)
-	go func() {
-		errChan <- s.endpoint.Run(ctx)
-	}()
-
-	// Wait a moment for the endpoint to initialize
-	// This ensures the CAN bus is connected before we start writing frames
-	select {
-	case err := <-errChan:
-		if waitErr := s.waitForMessageQueueDrain(ctx); waitErr != nil && err == nil {
-			err = waitErr
-		}
-		s.stopMessageProcessor()
-		// Endpoint failed to start
+	if err := ctx.Err(); err != nil {
 		return err
-	case <-time.After(500 * time.Millisecond):
-		// Endpoint should be ready now
+	}
+
+	s.lifecycleOpMu.Lock()
+	defer s.lifecycleOpMu.Unlock()
+
+	s.lifecycleMu.Lock()
+	if s.endpointRun != nil {
+		stopping := s.endpointRun.stopping || s.endpointRun.ctx.Err() != nil
+		s.lifecycleMu.Unlock()
+		if stopping {
+			return errors.New("N2K service is stopping")
+		}
 		return nil
 	}
+	ep := s.endpoint
+	output := s.endpointOutput
+	runCtx, cancel := context.WithCancel(ctx)
+	run := &serviceEndpointRun{
+		ep:     ep,
+		output: output,
+		ctx:    runCtx,
+		cancel: cancel,
+		done:   make(chan struct{}),
+	}
+	s.endpointRun = run
+	s.lastRun = run
+	s.lifecycleMu.Unlock()
+
+	if err := ep.Start(runCtx); err != nil {
+		closeErr := run.closeEndpoint()
+		result := errors.Join(err, closeErr)
+		s.finishEndpointRun(run, result)
+		return result
+	}
+
+	s.lifecycleMu.Lock()
+	stopping := run.stopping || runCtx.Err() != nil || s.endpointRun != run
+	if !stopping {
+		output.activate()
+		s.startMessageProcessor(runCtx)
+		go s.closeEndpointOnContext(run)
+		go s.runEndpoint(run)
+	}
+	s.lifecycleMu.Unlock()
+	if stopping {
+		closeErr := run.closeEndpoint()
+		result := errors.Join(runCtx.Err(), closeErr)
+		s.finishEndpointRun(run, result)
+		return result
+	}
+
+	return nil
+}
+
+func (s *N2kService) runEndpoint(run *serviceEndpointRun) {
+	err := run.ep.Run(run.ctx)
+	s.lifecycleMu.Lock()
+	run.stopping = true
+	s.lifecycleMu.Unlock()
+	run.output.deactivate()
+	expectedStop := run.ctx.Err() != nil
+	var drainErr error
+	if !expectedStop {
+		drainErr = s.waitForMessageQueueDrain(run.ctx)
+	}
+	closeErr := run.closeEndpoint()
+	s.stopMessageProcessor()
+	expectedStop = run.ctx.Err() != nil
+	result := errors.Join(err, drainErr, closeErr)
+	if expectedStop {
+		result = closeErr
+	}
+	s.finishEndpointRun(run, result)
+
+	if err != nil && !expectedStop {
+		s.log.WithError(err).Error("N2K endpoint stopped unexpectedly")
+	}
+	if closeErr != nil && !expectedStop {
+		s.log.WithError(closeErr).Warn("Failed to close stopped N2K endpoint")
+	}
+}
+
+func (s *N2kService) closeEndpointOnContext(run *serviceEndpointRun) {
+	select {
+	case <-run.ctx.Done():
+		s.lifecycleMu.Lock()
+		run.stopping = true
+		s.lifecycleMu.Unlock()
+		run.output.deactivate()
+		if err := run.closeEndpoint(); err != nil {
+			s.log.WithError(err).Warn("Failed to close canceled N2K endpoint")
+		}
+	case <-run.done:
+	}
+}
+
+func (run *serviceEndpointRun) closeEndpoint() error {
+	run.closeOnce.Do(func() {
+		run.closeErr = run.ep.Close()
+	})
+	return run.closeErr
+}
+
+// CurrentRun returns a handle for the most recently started endpoint
+// generation. The handle remains bound to that generation after replacement.
+func (s *N2kService) CurrentRun() (*RunHandle, error) {
+	s.lifecycleMu.Lock()
+	run := s.lastRun
+	s.lifecycleMu.Unlock()
+	if run == nil {
+		return nil, errors.New("N2K service has not been started")
+	}
+	return &RunHandle{run: run}, nil
+}
+
+// Wait waits for this endpoint generation to finish.
+func (h *RunHandle) Wait(ctx context.Context) error {
+	if h == nil || h.run == nil {
+		return errors.New("N2K endpoint run handle is nil")
+	}
+	select {
+	case <-h.run.done:
+		return h.run.result
+	case <-ctx.Done():
+		return ctx.Err()
+	}
+}
+
+// Wait waits for the most recently started endpoint generation to finish.
+func (s *N2kService) Wait(ctx context.Context) error {
+	handle, err := s.CurrentRun()
+	if err != nil {
+		return err
+	}
+	return handle.Wait(ctx)
 }
 
 // Stop stops processing messages
 func (s *N2kService) Stop() error {
-	err := s.endpoint.Close()
-	s.stopMessageProcessor()
-	return err
+	s.cancelCurrentEndpointRun()
+	s.lifecycleOpMu.Lock()
+	defer s.lifecycleOpMu.Unlock()
+	return s.stopCurrentEndpoint()
 }
 
 // UpdateEndpoint updates the endpoint used by the service
 func (s *N2kService) UpdateEndpoint(ep endpoint.Endpoint) error {
-	// Close the current endpoint if it's running
-	if err := s.endpoint.Close(); err != nil {
-		return err
+	if ep == nil {
+		return errors.New("N2K endpoint is nil")
 	}
-	s.stopMessageProcessor()
 
-	// Set the new endpoint
+	s.cancelCurrentEndpointRun()
+	s.lifecycleOpMu.Lock()
+	defer s.lifecycleOpMu.Unlock()
+	closeErr := s.stopCurrentEndpoint()
+
+	output := &serviceEndpointOutput{service: s}
+	ep.SetOutput(output)
+
+	s.lifecycleMu.Lock()
 	s.endpoint = ep
-
-	// Connect the new endpoint to this service
-	s.endpoint.SetOutput(s)
-
-	// Connect the adapter to the new endpoint for writing frames
-	s.adapter.SetWriter(s.endpoint)
+	s.endpointOutput = output
+	s.lastRun = nil
+	s.lifecycleMu.Unlock()
+	s.adapter.SetWriter(ep)
+	if closeErr != nil {
+		s.log.WithError(closeErr).Warn("Replaced N2K endpoint after its close returned an error")
+	}
 
 	return nil
+}
+
+func (s *N2kService) cancelCurrentEndpointRun() {
+	s.lifecycleMu.Lock()
+	run := s.endpointRun
+	if run != nil {
+		run.stopping = true
+		run.cancel()
+	}
+	s.lifecycleMu.Unlock()
+	if run != nil {
+		run.output.deactivate()
+	}
+}
+
+func (s *N2kService) stopCurrentEndpoint() error {
+	s.lifecycleMu.Lock()
+	run := s.endpointRun
+	if run == nil {
+		// A naturally completed or failed generation has already closed its
+		// endpoint. Keep using that generation's closeOnce so a later Stop or
+		// UpdateEndpoint does not close the same transport a second time.
+		run = s.lastRun
+	}
+	ep := s.endpoint
+	output := s.endpointOutput
+	if run != nil {
+		run.stopping = true
+		run.cancel()
+	}
+	s.lifecycleMu.Unlock()
+
+	output.deactivate()
+	var err error
+	if run != nil {
+		err = run.closeEndpoint()
+	} else {
+		err = ep.Close()
+	}
+	if run != nil {
+		<-run.done
+	}
+	s.stopMessageProcessor()
+	return err
+}
+
+func (s *N2kService) finishEndpointRun(run *serviceEndpointRun, result error) {
+	run.cancel()
+	s.lifecycleMu.Lock()
+	run.result = result
+	if s.endpointRun == run {
+		s.endpointRun = nil
+	}
+	run.doneOnce.Do(func() {
+		close(run.done)
+	})
+	s.lifecycleMu.Unlock()
 }
 
 func (s *N2kService) startMessageProcessor(ctx context.Context) {
@@ -587,7 +822,10 @@ func (s *N2kService) MessageQueueMaxAge() time.Duration {
 
 // OutboundQueueLag returns recent outbound endpoint queue/send latency.
 func (s *N2kService) OutboundQueueLag() time.Duration {
-	reporter, ok := s.endpoint.(endpoint.OutboundLagReporter)
+	s.lifecycleMu.Lock()
+	ep := s.endpoint
+	s.lifecycleMu.Unlock()
+	reporter, ok := ep.(endpoint.OutboundLagReporter)
 	if !ok {
 		return 0
 	}

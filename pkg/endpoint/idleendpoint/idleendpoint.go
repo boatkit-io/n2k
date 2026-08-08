@@ -10,6 +10,7 @@ package idleendpoint
 
 import (
 	"context"
+	"errors"
 	"sync"
 
 	"github.com/boatkit-io/n2k/pkg/endpoint"
@@ -29,8 +30,21 @@ func New() *IdleEndpoint {
 	return &IdleEndpoint{done: make(chan struct{})}
 }
 
+// Start synchronously prepares the idle endpoint.
+func (e *IdleEndpoint) Start(_ context.Context) error {
+	select {
+	case <-e.done:
+		return errors.New("idle endpoint is closed")
+	default:
+	}
+	return nil
+}
+
 // Run waits until ctx is canceled or the endpoint is closed.
 func (e *IdleEndpoint) Run(ctx context.Context) error {
+	if err := e.Start(ctx); err != nil {
+		return nil
+	}
 	select {
 	case <-ctx.Done():
 		return ctx.Err()

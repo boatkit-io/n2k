@@ -83,13 +83,6 @@ func main() {
 	// Create n2k service
 	bus := n2k.NewN2kService(ep, log)
 
-	// Start the service to set up the processing pipeline
-	if err := bus.Start(ctx); err != nil {
-		log.Errorf("n2k service exited with error: %v", err)
-		exitCode = 1
-		return
-	}
-
 	// Set up subscriptions and message processing tracking
 	var messageCount int64
 	var lastMessageTime time.Time
@@ -130,9 +123,15 @@ func main() {
 		}
 	}
 
-	// Run the endpoint directly to process the file
-	if err := ep.Run(ctx); err != nil {
-		log.Errorf("endpoint run error: %v", err)
+	// Start playback once through the service, then await EOF from that endpoint
+	// generation so all subscriptions are installed before the first frame.
+	if err := bus.Start(ctx); err != nil {
+		log.Errorf("n2k service startup error: %v", err)
+		exitCode = 1
+		return
+	}
+	if err := bus.Wait(ctx); err != nil {
+		log.Errorf("n2k service playback error: %v", err)
 		exitCode = 1
 		return
 	}

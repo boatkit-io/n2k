@@ -10,6 +10,7 @@ package canadapter
 
 import (
 	"fmt"
+	"sync"
 
 	"github.com/brutella/can"
 	"github.com/sirupsen/logrus"
@@ -26,9 +27,10 @@ type CANAdapter struct {
 	multi *MultiBuilder // combines multiple frames into a complete Packet.
 	log   *logrus.Logger
 
-	handler     PacketHandler
-	frameWriter endpoint.Endpoint
-	seqIDMap    map[uint8]map[uint32]uint8 //sourceID:PGN:last used sequenceID
+	handler       PacketHandler
+	frameWriterMu sync.RWMutex
+	frameWriter   endpoint.Endpoint
+	seqIDMap      map[uint8]map[uint32]uint8 //sourceID:PGN:last used sequenceID
 }
 
 // PacketHandler is an interface for the output handler for a CANAdapter
@@ -52,7 +54,15 @@ func NewCANAdapter(log *logrus.Logger) *CANAdapter {
 
 // SetWriter assigns the argument to the frameWriter field
 func (c *CANAdapter) SetWriter(writer endpoint.Endpoint) {
+	c.frameWriterMu.Lock()
+	defer c.frameWriterMu.Unlock()
 	c.frameWriter = writer
+}
+
+func (c *CANAdapter) writer() endpoint.Endpoint {
+	c.frameWriterMu.RLock()
+	defer c.frameWriterMu.RUnlock()
+	return c.frameWriter
 }
 
 // SetOutput assigns a handler for any ready packets
@@ -166,9 +176,9 @@ func (c *CANAdapter) sendFast(sourceID uint8, pgnNum, canID uint32, data []uint8
 					Data:   buffer,
 				}
 				// invoke endpoint handler
-				if c.frameWriter != nil {
+				if writer := c.writer(); writer != nil {
 					c.log.Debugf("Writing CAN frame: ID=0x%X, Length=%d, Data=%02X", frame.ID, frame.Length, frame.Data[:frame.Length])
-					c.frameWriter.WriteFrame(frame)
+					writer.WriteFrame(frame)
 				} else {
 					c.log.Warn("frameWriter is nil, cannot write frame")
 				}
@@ -203,8 +213,8 @@ func (c *CANAdapter) sendSingle(canID uint32, data []uint8) error {
 		i++
 	}
 	// invoke endpoint handler
-	if c.frameWriter != nil {
-		c.frameWriter.WriteFrame(frame)
+	if writer := c.writer(); writer != nil {
+		writer.WriteFrame(frame)
 	}
 	return nil
 }
