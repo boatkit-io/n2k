@@ -4,7 +4,7 @@ go 1.26.5
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
-	github.com/boatkit-io/tugboat v0.9.1
+	github.com/boatkit-io/tugboat v0.10.0
 	github.com/brutella/can v0.0.2
 	github.com/google/go-cmp v0.7.0
 	github.com/pkg/errors v0.9.1
@@ -35,7 +35,7 @@ require (
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/spf13/cast v1.10.0 // indirect
-	go.bug.st/serial v1.7.1 // indirect
+	go.bug.st/serial v1.8.0 // indirect
 	golang.org/x/crypto v0.54.0 // indirect
 	golang.org/x/sys v0.47.0 // indirect
 	golang.org/x/term v0.45.0 // indirect
