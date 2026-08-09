@@ -2438,6 +2438,26 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeYanmarThrottleControl(p, stream)
 	case publicpgn.YanmarThrottleControl:
 		return EncodeYanmarThrottleControl(&p, stream)
+	case *publicpgn.FusionMenuActionCommand:
+		return EncodeFusionMenuActionCommand(p, stream)
+	case publicpgn.FusionMenuActionCommand:
+		return EncodeFusionMenuActionCommand(&p, stream)
+	case *publicpgn.FusionRequestMenuCount:
+		return EncodeFusionRequestMenuCount(p, stream)
+	case publicpgn.FusionRequestMenuCount:
+		return EncodeFusionRequestMenuCount(&p, stream)
+	case *publicpgn.FusionRequestMenuItems:
+		return EncodeFusionRequestMenuItems(p, stream)
+	case publicpgn.FusionRequestMenuItems:
+		return EncodeFusionRequestMenuItems(&p, stream)
+	case *publicpgn.FusionMenuActionStatus:
+		return EncodeFusionMenuActionStatus(p, stream)
+	case publicpgn.FusionMenuActionStatus:
+		return EncodeFusionMenuActionStatus(&p, stream)
+	case *publicpgn.FusionMenuCount:
+		return EncodeFusionMenuCount(p, stream)
+	case publicpgn.FusionMenuCount:
+		return EncodeFusionMenuCount(&p, stream)
 	default:
 		return nil, fmt.Errorf("trying to encode a struct that isn't a PGN: %T", s)
 	}

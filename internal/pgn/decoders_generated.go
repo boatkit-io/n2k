@@ -28997,3 +28997,248 @@ func DecodeYanmarThrottleControl(Info publicpgn.MessageInfo, stream *DataStream)
 
     return val, nil
 }
+func DecodeFusionMenuActionCommand(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.FusionMenuActionCommand
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 419 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionCommand-ManufacturerCode: Expected %d != %d", 419, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionCommand-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(16); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-ProprietaryID: %w", err)
+    } else {
+        val.ProprietaryID = publicpgn.FusionMessageIDConst(v)
+        if v != 9 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionCommand-ProprietaryID: Expected %d != %d", 9, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionCommand_SourceID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-SourceID: %w", err)
+    } else {
+        val.SourceID = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMenuActionCommand_ItemIndex); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-ItemIndex: %w", err)
+    } else {
+        val.ItemIndex = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionCommand_Action); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-Action: %w", err)
+    } else {
+        val.Action = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionCommand_LockID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-LockID: %w", err)
+    } else {
+        val.LockID = v
+    }
+
+    return val, nil
+}
+func DecodeFusionRequestMenuCount(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.FusionRequestMenuCount
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 419 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuCount-ManufacturerCode: Expected %d != %d", 419, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuCount-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(16); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-ProprietaryID: %w", err)
+    } else {
+        val.ProprietaryID = publicpgn.FusionMessageIDConst(v)
+        if v != 10 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuCount-ProprietaryID: Expected %d != %d", 10, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuCount_SourceID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-SourceID: %w", err)
+    } else {
+        val.SourceID = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuCount_LockID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-LockID: %w", err)
+    } else {
+        val.LockID = v
+    }
+
+    return val, nil
+}
+func DecodeFusionRequestMenuItems(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.FusionRequestMenuItems
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 419 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuItems-ManufacturerCode: Expected %d != %d", 419, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuItems-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(16); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-ProprietaryID: %w", err)
+    } else {
+        val.ProprietaryID = publicpgn.FusionMessageIDConst(v)
+        if v != 11 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuItems-ProprietaryID: Expected %d != %d", 11, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuItems_SourceID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-SourceID: %w", err)
+    } else {
+        val.SourceID = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionRequestMenuItems_StartIndex); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-StartIndex: %w", err)
+    } else {
+        val.StartIndex = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionRequestMenuItems_Count); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-Count: %w", err)
+    } else {
+        val.Count = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuItems_LockID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-LockID: %w", err)
+    } else {
+        val.LockID = v
+    }
+
+    return val, nil
+}
+func DecodeFusionMenuActionStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.FusionMenuActionStatus
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 419 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionStatus-ManufacturerCode: Expected %d != %d", 419, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionStatus-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(16); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-MessageID: %w", err)
+    } else {
+        val.MessageID = publicpgn.FusionStatusMessageIDConst(v)
+        if v != 32783 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionStatus-MessageID: Expected %d != %d", 32783, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionStatus_SourceID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-SourceID: %w", err)
+    } else {
+        val.SourceID = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMenuActionStatus_ItemIndex); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-ItemIndex: %w", err)
+    } else {
+        val.ItemIndex = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionStatus_Action); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-Action: %w", err)
+    } else {
+        val.Action = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionStatus_LockID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-LockID: %w", err)
+    } else {
+        val.LockID = v
+    }
+
+    return val, nil
+}
+func DecodeFusionMenuCount(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.FusionMenuCount
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 419 {
+            return nil, fmt.Errorf("match failed for FusionMenuCount-ManufacturerCode: Expected %d != %d", 419, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for FusionMenuCount-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(16); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-MessageID: %w", err)
+    } else {
+        val.MessageID = publicpgn.FusionStatusMessageIDConst(v)
+        if v != 32784 {
+            return nil, fmt.Errorf("match failed for FusionMenuCount-MessageID: Expected %d != %d", 32784, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuCount_SourceID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-SourceID: %w", err)
+    } else {
+        val.SourceID = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMenuCount_Count); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-Count: %w", err)
+    } else {
+        val.Count = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuCount_LockID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-LockID: %w", err)
+    } else {
+        val.LockID = v
+    }
+
+    return val, nil
+}

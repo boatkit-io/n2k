@@ -26623,3 +26623,206 @@ func EncodeYanmarThrottleControl(p *publicpgn.YanmarThrottleControl, stream *Dat
 
     return &p.Info, err
 }
+
+// EncodeFusionMenuActionCommand encodes a FusionMenuActionCommand struct to NMEA 2000 wire format
+func EncodeFusionMenuActionCommand(p *publicpgn.FusionMenuActionCommand, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.ProprietaryID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.SourceID, &fieldSpec_FusionMenuActionCommand_SourceID)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ItemIndex, &fieldSpec_FusionMenuActionCommand_ItemIndex)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Action, &fieldSpec_FusionMenuActionCommand_Action)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.LockID, &fieldSpec_FusionMenuActionCommand_LockID)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeFusionRequestMenuCount encodes a FusionRequestMenuCount struct to NMEA 2000 wire format
+func EncodeFusionRequestMenuCount(p *publicpgn.FusionRequestMenuCount, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.ProprietaryID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.SourceID, &fieldSpec_FusionRequestMenuCount_SourceID)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.LockID, &fieldSpec_FusionRequestMenuCount_LockID)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeFusionRequestMenuItems encodes a FusionRequestMenuItems struct to NMEA 2000 wire format
+func EncodeFusionRequestMenuItems(p *publicpgn.FusionRequestMenuItems, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.ProprietaryID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.SourceID, &fieldSpec_FusionRequestMenuItems_SourceID)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.StartIndex, &fieldSpec_FusionRequestMenuItems_StartIndex)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Count, &fieldSpec_FusionRequestMenuItems_Count)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.LockID, &fieldSpec_FusionRequestMenuItems_LockID)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 126720
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeFusionMenuActionStatus encodes a FusionMenuActionStatus struct to NMEA 2000 wire format
+func EncodeFusionMenuActionStatus(p *publicpgn.FusionMenuActionStatus, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.MessageID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.SourceID, &fieldSpec_FusionMenuActionStatus_SourceID)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.ItemIndex, &fieldSpec_FusionMenuActionStatus_ItemIndex)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Action, &fieldSpec_FusionMenuActionStatus_Action)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.LockID, &fieldSpec_FusionMenuActionStatus_LockID)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}
+
+// EncodeFusionMenuCount encodes a FusionMenuCount struct to NMEA 2000 wire format
+func EncodeFusionMenuCount(p *publicpgn.FusionMenuCount, stream *DataStream) (*publicpgn.MessageInfo, error) {
+	var err error
+    err = stream.putNumberRaw(uint64(p.ManufacturerCode), 11, 0)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeReserved(2, 11)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.IndustryCode), 3, 13)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.putNumberRaw(uint64(p.MessageID), 16, 16)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.SourceID, &fieldSpec_FusionMenuCount_SourceID)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.Count, &fieldSpec_FusionMenuCount_Count)
+    if err != nil {
+        return nil, err
+    }
+    err = WriteRaw(stream, p.LockID, &fieldSpec_FusionMenuCount_LockID)
+    if err != nil {
+        return nil, err
+    }
+    if p.Info.PGN == 0 {
+        p.Info.PGN = 130820
+    }
+    p.Info.Timestamp = time.Now()
+
+    return &p.Info, err
+}

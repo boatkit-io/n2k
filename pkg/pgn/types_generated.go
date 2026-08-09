@@ -5986,6 +5986,53 @@ type YanmarThrottleControl struct {
 	ThrottlePosition *float32
 	UnknownData []uint8
 }
+type FusionMenuActionCommand struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	SourceID *uint8
+	ItemIndex *uint32
+	Action *uint8
+	LockID *uint8
+}
+type FusionRequestMenuCount struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	SourceID *uint8
+	LockID *uint8
+}
+type FusionRequestMenuItems struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	SourceID *uint8
+	StartIndex *uint32
+	Count *uint32
+	LockID *uint8
+}
+type FusionMenuActionStatus struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIDConst
+	SourceID *uint8
+	ItemIndex *uint32
+	Action *uint8
+	LockID *uint8
+}
+type FusionMenuCount struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIDConst
+	SourceID *uint8
+	Count *uint32
+	LockID *uint8
+}
 // Partial type for NMEARequestGroupFunction when PGN is proprietary or unknown
 type NMEARequestGroupFunctionPartial struct {
 	Info MessageInfo
