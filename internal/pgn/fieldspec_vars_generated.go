@@ -8727,7 +8727,7 @@ var (
 	}
     fieldSpec_GarminAutopilotManeuver_Value = FieldSpec{
 		BitLength:         8,
-		BitOffset:         72,
+		BitOffset:         64,
 		MaxRawValue:       0xFD,
 		MissingValue:      0xFF,
 		Resolution:        1,

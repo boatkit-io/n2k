@@ -246,3 +246,87 @@ func TestGarminAutopilotTypesAreFullyExportedAndRoutable(t *testing.T) {
 		t.Fatalf("exported Garmin autopilot mode states = %d, want 3", len(modeStates))
 	}
 }
+
+func TestGarminAutopilotControlPacketsMatchCapturedBytes(t *testing.T) {
+	wrapperByte := uint8(4)
+	modeGroup := uint8(5)
+	maneuverGroup := uint8(38)
+	zero := uint8(0)
+
+	tests := []struct {
+		name    string
+		message any
+		want    []byte
+	}{
+		{
+			name: "engage",
+			message: &publicpgn.GarminAutopilotModeState{
+				ManufacturerCode: publicpgn.Garmin,
+				IndustryCode:     publicpgn.MarineIndustry,
+				SubProtocolID:    publicpgn.AutopilotTransport,
+				WrapperByte1:     &wrapperByte,
+				WrapperByte2:     &wrapperByte,
+				FieldGroup:       &modeGroup,
+				Field:            publicpgn.ModeState,
+				ModeState:        publicpgn.Engaged_2,
+			},
+			want: []byte{0xe5, 0x98, 0x10, 0x17, 0x04, 0x04, 0x05, 0x0a, 0x00, 0x05, 0x00},
+		},
+		{
+			name: "standby",
+			message: &publicpgn.GarminAutopilotModeState{
+				ManufacturerCode: publicpgn.Garmin,
+				IndustryCode:     publicpgn.MarineIndustry,
+				SubProtocolID:    publicpgn.AutopilotTransport,
+				WrapperByte1:     &wrapperByte,
+				WrapperByte2:     &wrapperByte,
+				FieldGroup:       &modeGroup,
+				Field:            publicpgn.ModeState,
+				ModeState:        publicpgn.Standby_6,
+			},
+			want: []byte{0xe5, 0x98, 0x10, 0x17, 0x04, 0x04, 0x05, 0x0a, 0x00, 0x02, 0x00},
+		},
+	}
+
+	for _, maneuver := range []struct {
+		name string
+		code uint8
+	}{
+		{name: "minus 1", code: 0},
+		{name: "minus 10", code: 1},
+		{name: "plus 1", code: 2},
+		{name: "plus 10", code: 3},
+	} {
+		code := maneuver.code
+		tests = append(tests, struct {
+			name    string
+			message any
+			want    []byte
+		}{
+			name: maneuver.name,
+			message: &publicpgn.GarminAutopilotManeuver{
+				ManufacturerCode: publicpgn.Garmin,
+				IndustryCode:     publicpgn.MarineIndustry,
+				SubProtocolID:    publicpgn.AutopilotTransport,
+				WrapperByte1:     &wrapperByte,
+				WrapperByte2:     &wrapperByte,
+				FieldGroup:       &maneuverGroup,
+				ManeuverCode:     &code,
+				Value:            &zero,
+			},
+			want: []byte{0xe5, 0x98, 0x10, 0x17, 0x04, 0x04, 0x26, code, 0x00},
+		})
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			out := NewDataStream(make([]uint8, MaxPGNLength))
+			if _, err := EncodeStruct(test.message, out); err != nil {
+				t.Fatalf("EncodeStruct() error = %v", err)
+			}
+			if got := out.GetData(); !reflect.DeepEqual(got, test.want) {
+				t.Fatalf("encoded bytes = %x, want %x", got, test.want)
+			}
+		})
+	}
+}

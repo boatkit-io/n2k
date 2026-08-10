@@ -1249,7 +1249,7 @@ var PgnFieldSpecMap = map[uint32][]PgnFieldSpec{
 		{FieldOrder: 6, FieldSpec: &fieldSpec_GarminAutopilotManeuver_WrapperByte2},
 		{FieldOrder: 7, FieldSpec: &fieldSpec_GarminAutopilotManeuver_FieldGroup},
 		{FieldOrder: 8, FieldSpec: &fieldSpec_GarminAutopilotManeuver_ManeuverCode},
-		{FieldOrder: 10, FieldSpec: &fieldSpec_GarminAutopilotManeuver_Value},
+		{FieldOrder: 9, FieldSpec: &fieldSpec_GarminAutopilotManeuver_Value},
 		{FieldOrder: 1, FieldSpec: &fieldSpec_Seatalk1PilotMode_ManufacturerCode},
 		{FieldOrder: 3, FieldSpec: &fieldSpec_Seatalk1PilotMode_IndustryCode},
 		{FieldOrder: 4, FieldSpec: &fieldSpec_Seatalk1PilotMode_ProprietaryID},

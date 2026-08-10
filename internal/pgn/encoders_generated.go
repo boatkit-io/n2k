@@ -6158,11 +6158,15 @@ func EncodeGarminAutopilotModeState(p *publicpgn.GarminAutopilotModeState, strea
     if err != nil {
         return nil, err
     }
-    err = stream.writeReserved(8, 64)
+    err = stream.writeSpare(8, 64)
     if err != nil {
         return nil, err
     }
     err = stream.putNumberRaw(uint64(p.ModeState), 8, 72)
+    if err != nil {
+        return nil, err
+    }
+    err = stream.writeSpare(8, 80)
     if err != nil {
         return nil, err
     }
@@ -6253,10 +6257,6 @@ func EncodeGarminAutopilotManeuver(p *publicpgn.GarminAutopilotManeuver, stream 
         return nil, err
     }
     err = WriteRaw(stream, p.ManeuverCode, &fieldSpec_GarminAutopilotManeuver_ManeuverCode)
-    if err != nil {
-        return nil, err
-    }
-    err = stream.writeReserved(8, 64)
     if err != nil {
         return nil, err
     }

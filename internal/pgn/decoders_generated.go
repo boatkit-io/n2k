@@ -6729,6 +6729,7 @@ func DecodeGarminAutopilotModeState(Info publicpgn.MessageInfo, stream *DataStre
     } else {
         val.ModeState = publicpgn.GarminAutopilotModeStateConst(v)
     }
+    stream.skipBits(8)
 
     return val, nil
 }
@@ -6859,7 +6860,6 @@ func DecodeGarminAutopilotManeuver(Info publicpgn.MessageInfo, stream *DataStrea
     } else {
         val.ManeuverCode = v
     }
-    stream.skipBits(8)
     if v, err := ReadRaw[uint8](stream, &fieldSpec_GarminAutopilotManeuver_Value); err != nil {
         return nil, fmt.Errorf("parse failed for GarminAutopilotManeuver-Value: %w", err)
     } else {
