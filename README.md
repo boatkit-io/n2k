@@ -185,7 +185,9 @@ CANboat catalog before generation. An entry with the same `Id` replaces the
 upstream definition; an entry with a new `Id` is added. Overrides are rejected
 when they duplicate an upstream definition or collide with another variant's
 PGN discriminator, making it clear when an upstream Canboat update has made a
-local definition redundant.
+local definition redundant. `MinLengths` entries retain the upstream field
+definition while allowing devices to omit trailing fields at the specified byte
+boundary.
 
 ## Development
 

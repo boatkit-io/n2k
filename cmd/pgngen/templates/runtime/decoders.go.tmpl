@@ -38,6 +38,11 @@ func {{ $funcName }}(Info publicpgn.MessageInfo, stream *DataStream) (any, error
     val.Info = Info
 
     {{- range $idx, $field := $pgn.Fields }}
+    {{- if isOptionalPGNField $pgn $field }}
+    if stream.isEOF() {
+        return val, nil
+    }
+    {{- end }}
     {{- if or (eq $field.FieldType "RESERVED") (eq $field.FieldType "SPARE") }}
     stream.skipBits({{ $field.BitLength }})
     {{- else }}

@@ -71,6 +71,54 @@ func TestMergePGNOverridesRejectsRedundantOverride(t *testing.T) {
 	}
 }
 
+func TestApplyPGNMinLengthOverrides(t *testing.T) {
+	converter := &canboatConverter{
+		PGNs: []*PGN{
+			{
+				PGN:       129809,
+				Id:        "aisClassBStaticDataMsg24PartA",
+				Length:    27,
+				MinLength: 0,
+				Fields: []PGNField{
+					{Id: "name", BitOffset: 40},
+					{Id: "aisTransceiverInformation", BitOffset: 200},
+				},
+			},
+		},
+	}
+
+	applied, err := converter.applyPGNMinLengthOverrides(map[string]uint32{
+		"aisClassBStaticDataMsg24PartA": 25,
+	})
+	if err != nil {
+		t.Fatalf("applyPGNMinLengthOverrides() error = %v", err)
+	}
+	if applied != 1 {
+		t.Fatalf("applyPGNMinLengthOverrides() applied = %d, want 1", applied)
+	}
+	if got := converter.PGNs[0].MinLength; got != 25 {
+		t.Fatalf("MinLength = %d, want 25", got)
+	}
+}
+
+func TestApplyPGNMinLengthOverridesRejectsNonBoundary(t *testing.T) {
+	converter := &canboatConverter{
+		PGNs: []*PGN{{
+			PGN:    129809,
+			Id:     "aisClassBStaticDataMsg24PartA",
+			Length: 27,
+			Fields: []PGNField{{Id: "aisTransceiverInformation", BitOffset: 200}},
+		}},
+	}
+
+	_, err := converter.applyPGNMinLengthOverrides(map[string]uint32{
+		"aisClassBStaticDataMsg24PartA": 24,
+	})
+	if err == nil || !strings.Contains(err.Error(), "does not end on a field boundary") {
+		t.Fatalf("applyPGNMinLengthOverrides() error = %v, want field-boundary error", err)
+	}
+}
+
 func testPGNDefinition(id string, number uint32, manufacturer int, description string) *PGN {
 	resolution := float32(1)
 	return &PGN{

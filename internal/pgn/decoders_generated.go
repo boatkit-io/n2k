@@ -422,6 +422,9 @@ func DecodeVictronVeCANRegister(Info publicpgn.MessageInfo, stream *DataStream) 
     } else {
         val.RegisterID = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readBinaryData(stream.remainingLength()); err != nil {
         return nil, fmt.Errorf("parse failed for VictronVeCANRegister-Value: %w", err)
     } else {
@@ -8928,6 +8931,9 @@ func DecodeAlertText(Info publicpgn.MessageInfo, stream *DataStream) (any, error
     } else {
         val.LanguageID = publicpgn.AlertLanguageIDConst(v)
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for AlertText-AlertTextDescription: %w", err)
     } else {
@@ -10113,6 +10119,9 @@ func DecodeEngineParametersStatic(Info publicpgn.MessageInfo, stream *DataStream
         return nil, fmt.Errorf("parse failed for EngineParametersStatic-RatedEngineSpeed: %w", err)
     } else {
         val.RatedEngineSpeed = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for EngineParametersStatic-Vin: %w", err)
@@ -12443,6 +12452,9 @@ func DecodeAISClassAPositionReport(Info publicpgn.MessageInfo, stream *DataStrea
     stream.skipBits(2)
     stream.skipBits(3)
     stream.skipBits(5)
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := ReadRaw[uint8](stream, &fieldSpec_AISClassAPositionReport_SequenceID); err != nil {
         return nil, fmt.Errorf("parse failed for AISClassAPositionReport-SequenceID: %w", err)
     } else {
@@ -12781,6 +12793,9 @@ func DecodeAISAidsToNavigationATONReport(Info publicpgn.MessageInfo, stream *Dat
         val.AISTransceiverInformation = publicpgn.AISTransceiverConst(v)
     }
     stream.skipBits(3)
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for AISAidsToNavigationATONReport-ATONName: %w", err)
     } else {
@@ -13882,6 +13897,9 @@ func DecodeAISDGNSSBroadcastBinaryMessage(Info publicpgn.MessageInfo, stream *Da
             binaryLength = uint16(*v)
         }
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readBinaryData(binaryLength); err != nil {
         return nil, fmt.Errorf("parse failed for AISDGNSSBroadcastBinaryMessage-BinaryData: %w", err)
     } else {
@@ -14114,6 +14132,9 @@ func DecodeAISAddressedBinaryMessage(Info publicpgn.MessageInfo, stream *DataStr
             binaryLength = uint16(*v)
         }
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readBinaryData(binaryLength); err != nil {
         return nil, fmt.Errorf("parse failed for AISAddressedBinaryMessage-BinaryData: %w", err)
     } else {
@@ -14208,6 +14229,9 @@ func DecodeAISBinaryBroadcastMessage(Info publicpgn.MessageInfo, stream *DataStr
         if v != nil {
             binaryLength = uint16(*v)
         }
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readBinaryData(binaryLength); err != nil {
         return nil, fmt.Errorf("parse failed for AISBinaryBroadcastMessage-BinaryData: %w", err)
@@ -14414,6 +14438,9 @@ func DecodeAISAddressedSafetyRelatedMessage(Info publicpgn.MessageInfo, stream *
         val.RetransmitFlag = publicpgn.YesNo1BitConst(v)
     }
     stream.skipBits(1)
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for AISAddressedSafetyRelatedMessage-SafetyRelatedText: %w", err)
     } else {
@@ -14448,6 +14475,9 @@ func DecodeAISSafetyRelatedBroadcastMessage(Info publicpgn.MessageInfo, stream *
         val.AISTransceiverInformation = publicpgn.AISTransceiverConst(v)
     }
     stream.skipBits(2)
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for AISSafetyRelatedBroadcastMessage-SafetyRelatedText: %w", err)
     } else {
@@ -15104,12 +15134,21 @@ func DecodeAISClassBStaticDataMsg24PartA(Info publicpgn.MessageInfo, stream *Dat
     } else {
         val.Name = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AISClassBStaticDataMsg24PartA-AISTransceiverInformation: %w", err)
     } else {
         val.AISTransceiverInformation = publicpgn.AISTransceiverConst(v)
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     stream.skipBits(3)
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := ReadRaw[uint8](stream, &fieldSpec_AISClassBStaticDataMsg24PartA_SequenceID); err != nil {
         return nil, fmt.Errorf("parse failed for AISClassBStaticDataMsg24PartA-SequenceID: %w", err)
     } else {
@@ -15184,12 +15223,21 @@ func DecodeAISClassBStaticDataMsg24PartB(Info publicpgn.MessageInfo, stream *Dat
     } else {
         val.GNSSType = publicpgn.PositionFixDeviceConst(v)
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readLookupField(5); err != nil {
         return nil, fmt.Errorf("parse failed for AISClassBStaticDataMsg24PartB-AISTransceiverInformation: %w", err)
     } else {
         val.AISTransceiverInformation = publicpgn.AISTransceiverConst(v)
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     stream.skipBits(3)
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := ReadRaw[uint8](stream, &fieldSpec_AISClassBStaticDataMsg24PartB_SequenceID); err != nil {
         return nil, fmt.Errorf("parse failed for AISClassBStaticDataMsg24PartB-SequenceID: %w", err)
     } else {
@@ -15251,6 +15299,9 @@ func DecodeAISSingleSlotBinaryMessageDeprecated(Info publicpgn.MessageInfo, stre
         if v != nil {
             binaryLength = uint16(*v)
         }
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readBinaryData(binaryLength); err != nil {
         return nil, fmt.Errorf("parse failed for AISSingleSlotBinaryMessageDeprecated-BinaryData: %w", err)
@@ -15476,6 +15527,9 @@ func DecodeAISSingleSlotBinaryMessage(Info publicpgn.MessageInfo, stream *DataSt
             binaryLength = uint16(*v)
         }
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readBinaryData(binaryLength); err != nil {
         return nil, fmt.Errorf("parse failed for AISSingleSlotBinaryMessage-BinaryData: %w", err)
     } else {
@@ -15550,6 +15604,9 @@ func DecodeAISMultiSlotBinaryMessage(Info publicpgn.MessageInfo, stream *DataStr
         if v != nil {
             binaryLength = uint16(*v)
         }
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readBinaryData(binaryLength); err != nil {
         return nil, fmt.Errorf("parse failed for AISMultiSlotBinaryMessage-BinaryData: %w", err)
@@ -15851,6 +15908,9 @@ func DecodeLabel(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
         return nil, fmt.Errorf("parse failed for Label-ParameterFieldNumber: %w", err)
     } else {
         val.ParameterFieldNumber = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for Label-Label: %w", err)
@@ -16891,6 +16951,9 @@ func DecodeTideStationData(Info publicpgn.MessageInfo, stream *DataStream) (any,
     } else {
         val.TideLevelStandardDeviation = nullableUnit(units.Meter, v, units.NewDistance)
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for TideStationData-StationID: %w", err)
     } else {
@@ -16943,6 +17006,9 @@ func DecodeSalinityStationData(Info publicpgn.MessageInfo, stream *DataStream) (
         return nil, fmt.Errorf("parse failed for SalinityStationData-WaterTemperature: %w", err)
     } else {
         val.WaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for SalinityStationData-StationID: %w", err)
@@ -17011,6 +17077,9 @@ func DecodeCurrentStationData(Info publicpgn.MessageInfo, stream *DataStream) (a
         return nil, fmt.Errorf("parse failed for CurrentStationData-WaterTemperature: %w", err)
     } else {
         val.WaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for CurrentStationData-StationID: %w", err)
@@ -17085,6 +17154,9 @@ func DecodeMeteorologicalStationData(Info publicpgn.MessageInfo, stream *DataStr
         return nil, fmt.Errorf("parse failed for MeteorologicalStationData-AmbientTemperature: %w", err)
     } else {
         val.AmbientTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for MeteorologicalStationData-StationID: %w", err)
@@ -17179,6 +17251,9 @@ func DecodeMooredBuoyStationData(Info publicpgn.MessageInfo, stream *DataStream)
         return nil, fmt.Errorf("parse failed for MooredBuoyStationData-WaterTemperature: %w", err)
     } else {
         val.WaterTemperature = nullableUnit(units.Kelvin, v, units.NewTemperature)
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for MooredBuoyStationData-StationID: %w", err)
@@ -17943,6 +18018,9 @@ func DecodeEntertainmentDiagnosticStatus(Info publicpgn.MessageInfo, stream *Dat
         val.DiagnosticMode = v
     }
     stream.skipBits(8)
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for EntertainmentDiagnosticStatus-DiagnosticData: %w", err)
     } else {
@@ -18426,6 +18504,9 @@ func DecodeEntertainmentParentalControlStatus(Info publicpgn.MessageInfo, stream
         return nil, fmt.Errorf("parse failed for EntertainmentParentalControlStatus-FileStationID: %w", err)
     } else {
         val.FileStationID = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for EntertainmentParentalControlStatus-CurrentPincode: %w", err)
@@ -19858,6 +19939,9 @@ func DecodeFurunoStatusAndVersionReport(Info publicpgn.MessageInfo, stream *Data
     } else {
         val.A = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for FurunoStatusAndVersionReport-Status: %w", err)
     } else {
@@ -21121,6 +21205,9 @@ func DecodeFusionSource(Info publicpgn.MessageInfo, stream *DataStream) (any, er
     } else {
         val.Flags = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSource-Source: %w", err)
     } else {
@@ -21267,6 +21354,9 @@ func DecodeFusionTrackName(Info publicpgn.MessageInfo, stream *DataStream) (any,
     } else {
         val.Index = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTrackName-Track: %w", err)
     } else {
@@ -21313,6 +21403,9 @@ func DecodeFusionArtistName(Info publicpgn.MessageInfo, stream *DataStream) (any
         return nil, fmt.Errorf("parse failed for FusionArtistName-Index: %w", err)
     } else {
         val.Index = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionArtistName-Artist: %w", err)
@@ -21361,6 +21454,9 @@ func DecodeFusionAlbumName(Info publicpgn.MessageInfo, stream *DataStream) (any,
     } else {
         val.Index = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionAlbumName-Album: %w", err)
     } else {
@@ -21397,6 +21493,9 @@ func DecodeFusionDeviceName(Info publicpgn.MessageInfo, stream *DataStream) (any
         if v != 32801 {
             return nil, fmt.Errorf("match failed for FusionDeviceName-MessageID: Expected %d != %d", 32801, v)
         }
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionDeviceName-Name: %w", err)
@@ -21439,6 +21538,9 @@ func DecodeFusionZoneName(Info publicpgn.MessageInfo, stream *DataStream) (any, 
         return nil, fmt.Errorf("parse failed for FusionZoneName-Number: %w", err)
     } else {
         val.Number = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionZoneName-Name: %w", err)
@@ -21890,6 +21992,9 @@ func DecodeFusionTuner(Info publicpgn.MessageInfo, stream *DataStream) (any, err
     } else {
         val.SignalStrength = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionTuner-Track: %w", err)
     } else {
@@ -21941,6 +22046,9 @@ func DecodeFusionMarineTuner(Info publicpgn.MessageInfo, stream *DataStream) (an
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-SignalStrength: %w", err)
     } else {
         val.SignalStrength = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMarineTuner-Name: %w", err)
@@ -22082,6 +22190,9 @@ func DecodeFusionMenuItem(Info publicpgn.MessageInfo, stream *DataStream) (any, 
         return nil, fmt.Errorf("parse failed for FusionMenuItem-LockID: %w", err)
     } else {
         val.LockID = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionMenuItem-Text: %w", err)
@@ -22844,6 +22955,9 @@ func DecodeFusionSiriusxmChannel(Info publicpgn.MessageInfo, stream *DataStream)
     } else {
         val.ChannelNumber = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmChannel-Channel: %w", err)
     } else {
@@ -22890,6 +23004,9 @@ func DecodeFusionSiriusxmTitle(Info publicpgn.MessageInfo, stream *DataStream) (
         return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-Channel: %w", err)
     } else {
         val.Channel = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmTitle-Title: %w", err)
@@ -22938,6 +23055,9 @@ func DecodeFusionSiriusxmArtist(Info publicpgn.MessageInfo, stream *DataStream) 
     } else {
         val.Channel = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmArtist-Artist: %w", err)
     } else {
@@ -22985,6 +23105,9 @@ func DecodeFusionSiriusxmContentInfo(Info publicpgn.MessageInfo, stream *DataStr
     } else {
         val.Channel = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmContentInfo-Genre: %w", err)
     } else {
@@ -23031,6 +23154,9 @@ func DecodeFusionSiriusxmCategory(Info publicpgn.MessageInfo, stream *DataStream
         return nil, fmt.Errorf("parse failed for FusionSiriusxmCategory-Channel: %w", err)
     } else {
         val.Channel = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmCategory-Name: %w", err)
@@ -23124,6 +23250,9 @@ func DecodeFusionSiriusxmPresets(Info publicpgn.MessageInfo, stream *DataStream)
         if v != nil {
             binaryLength = uint16(*v)
         }
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readBinaryData(binaryLength); err != nil {
         return nil, fmt.Errorf("parse failed for FusionSiriusxmPresets-Values: %w", err)
@@ -23391,6 +23520,9 @@ func DecodeMaretronAlertText(Info publicpgn.MessageInfo, stream *DataStream) (an
         return nil, fmt.Errorf("parse failed for MaretronAlertText-LanguageID: %w", err)
     } else {
         val.LanguageID = publicpgn.AlertLanguageIDConst(v)
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronAlertText-AlertTextDescription: %w", err)
@@ -23695,6 +23827,9 @@ func DecodeNavicoConfigurationSet(Info publicpgn.MessageInfo, stream *DataStream
                 valueLength = uint16(*v) * 8
             }
 
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readBinaryData(valueLength); err != nil {
         return nil, fmt.Errorf("parse failed for NavicoConfigurationSet-Value: %w", err)
@@ -25576,6 +25711,9 @@ func DecodeMaretronSmsStatus(Info publicpgn.MessageInfo, stream *DataStream) (an
     } else {
         val.BitErrorRate = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSmsStatus-SimCardPhoneNumber: %w", err)
     } else {
@@ -25678,6 +25816,9 @@ func DecodeMaretronSmsTextMessage(Info publicpgn.MessageInfo, stream *DataStream
         return nil, fmt.Errorf("parse failed for MaretronSmsTextMessage-MessageType: %w", err)
     } else {
         val.MessageType = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLengthAndControl(); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronSmsTextMessage-PhoneNumber: %w", err)
@@ -26843,6 +26984,9 @@ func DecodeSimnetKeyValue(Info publicpgn.MessageInfo, stream *DataStream) (any, 
     } else {
         val.Operation = publicpgn.SimnetKeyOperationConst(v)
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readBinaryData(stream.remainingLength()); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetKeyValue-Value: %w", err)
     } else {
@@ -26911,6 +27055,9 @@ func DecodeSimnetParameterSet(Info publicpgn.MessageInfo, stream *DataStream) (a
                 valueLength = uint16(*v) * 8
             }
 
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readBinaryData(valueLength); err != nil {
         return nil, fmt.Errorf("parse failed for SimnetParameterSet-Value: %w", err)
@@ -27003,6 +27150,9 @@ func DecodeNavicoAsciiIdentifier(Info publicpgn.MessageInfo, stream *DataStream)
         if v != 4 {
             return nil, fmt.Errorf("match failed for NavicoAsciiIdentifier-IndustryCode: Expected %d != %d", 4, v)
         }
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := stream.readStringWithLength(0); err != nil {
         return nil, fmt.Errorf("parse failed for NavicoAsciiIdentifier-Identifier: %w", err)

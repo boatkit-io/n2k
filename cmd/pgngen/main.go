@@ -368,6 +368,9 @@ func (conv *canboatConverter) write() {
 		"contains":         strings.Contains,
 		"getDecoderConfig": getDecoderConfig,
 		"groupByPGN":       groupByPGN,
+		"isOptionalPGNField": func(pgn *PGN, field PGNField) bool {
+			return pgn.MinLength > 0 && uint32(field.BitOffset) >= pgn.MinLength*8
+		},
 		"needsFieldSpec": func(field PGNField) bool {
 			if reservedNumericType(field.FieldType) {
 				return true

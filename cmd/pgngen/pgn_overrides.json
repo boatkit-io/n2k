@@ -1,4 +1,9 @@
 {
+	"MinLengths": {
+		"aisClassAPositionReport": 27,
+		"aisClassBStaticDataMsg24PartA": 25,
+		"aisClassBStaticDataMsg24PartB": 33
+	},
 	"PGNs": [
 		{
 			"PGN": 65280,

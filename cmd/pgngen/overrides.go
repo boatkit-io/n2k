@@ -19,7 +19,8 @@ import (
 const pgnOverridesPath = "cmd/pgngen/pgn_overrides.json"
 
 type pgnOverrides struct {
-	PGNs []*PGN
+	PGNs       []*PGN
+	MinLengths map[string]uint32
 }
 
 func (conv *canboatConverter) applyPGNOverrides() error {
@@ -37,8 +38,54 @@ func (conv *canboatConverter) applyPGNOverrides() error {
 	if err != nil {
 		return err
 	}
-	log.Infof("Applied local PGN overrides: %d replaced, %d added", replaced, added)
+	minLengths, err := conv.applyPGNMinLengthOverrides(overrides.MinLengths)
+	if err != nil {
+		return err
+	}
+	log.Infof("Applied local PGN overrides: %d replaced, %d added, %d minimum lengths", replaced, added, minLengths)
 	return nil
+}
+
+func (conv *canboatConverter) applyPGNMinLengthOverrides(overrides map[string]uint32) (int, error) {
+	baseByID := make(map[string]*PGN, len(conv.PGNs))
+	for _, definition := range conv.PGNs {
+		baseByID[definition.Id] = definition
+	}
+
+	for id, minLength := range overrides {
+		definition, exists := baseByID[id]
+		if !exists {
+			return 0, fmt.Errorf("minimum length override references unknown PGN ID %q", id)
+		}
+		if minLength == 0 {
+			return 0, fmt.Errorf("minimum length override for %q must be greater than zero", id)
+		}
+		if definition.MinLength != 0 {
+			if definition.MinLength == minLength {
+				return 0, fmt.Errorf("minimum length override for %q is identical to the upstream definition; remove the local override", id)
+			}
+			return 0, fmt.Errorf("minimum length override for %q conflicts with upstream minimum length %d", id, definition.MinLength)
+		}
+		if definition.Length == 0 || minLength >= definition.Length {
+			return 0, fmt.Errorf("minimum length override for %q must be shorter than its fixed length %d", id, definition.Length)
+		}
+
+		minimumBits := minLength * 8
+		hasOptionalFieldBoundary := false
+		for fieldIndex := range definition.Fields {
+			if uint32(definition.Fields[fieldIndex].BitOffset) == minimumBits {
+				hasOptionalFieldBoundary = true
+				break
+			}
+		}
+		if !hasOptionalFieldBoundary {
+			return 0, fmt.Errorf("minimum length override for %q (%d bytes) does not end on a field boundary", id, minLength)
+		}
+
+		definition.MinLength = minLength
+	}
+
+	return len(overrides), nil
 }
 
 func (conv *canboatConverter) mergePGNOverrides(overrides []*PGN) (replaced, added int, err error) {
