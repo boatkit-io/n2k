@@ -48,6 +48,29 @@ type captureEndpoint struct {
 	frames []can.Frame
 }
 
+type capturePGNEndpoint struct {
+	captureEndpoint
+	messages     []endpoint.PGNMessage
+	completePGNs *bool
+}
+
+func (c *capturePGNEndpoint) WritePGN(message endpoint.PGNMessage) error {
+	c.messages = append(c.messages, message)
+	return nil
+}
+
+func (c *capturePGNEndpoint) SupportsPGNWrites() bool {
+	return c.completePGNs == nil || *c.completePGNs
+}
+
+type capturePacketHandler struct {
+	packets []pkt.Packet
+}
+
+func (c *capturePacketHandler) HandlePacket(packet pkt.Packet) {
+	c.packets = append(c.packets, packet)
+}
+
 func (c *captureEndpoint) Start(context.Context) error { return nil }
 func (c *captureEndpoint) Run(context.Context) error   { return nil }
 func (c *captureEndpoint) Close() error                { return nil }
@@ -90,6 +113,50 @@ func TestSendFastShortPayloadWritesOneFrame(t *testing.T) {
 	assert.Equal(t, uint8(0), frame.Data[0])
 	assert.Equal(t, uint8(len(data)), frame.Data[1])
 	assert.Equal(t, data, frame.Data[2:8])
+}
+
+func TestCompletePGNEndpointBypassesCANFragmentation(t *testing.T) {
+	writer := &capturePGNEndpoint{}
+	adapter := NewCANAdapter(logrus.New())
+	adapter.SetWriter(writer)
+	info := pgn.MessageInfo{Priority: 3, PGN: publicpgn.ProductInformationPGN, SourceId: 22, TargetId: 255}
+	data := make([]byte, 134)
+	data[0] = 0x10
+
+	require.NoError(t, adapter.WritePgn(info, data))
+	require.Empty(t, writer.frames)
+	require.Len(t, writer.messages, 1)
+	assert.Equal(t, uint32(publicpgn.ProductInformationPGN), writer.messages[0].PGN)
+	assert.Equal(t, uint8(22), writer.messages[0].Source)
+	assert.Equal(t, data, writer.messages[0].Data)
+}
+
+func TestConditionalPGNEndpointFallsBackToCANFrames(t *testing.T) {
+	enabled := false
+	writer := &capturePGNEndpoint{completePGNs: &enabled}
+	adapter := NewCANAdapter(logrus.New())
+	adapter.SetWriter(writer)
+	info := pgn.MessageInfo{Priority: 3, PGN: publicpgn.BinarySwitchBankStatusPGN, SourceId: 22, TargetId: 255}
+
+	require.NoError(t, adapter.WritePgn(info, []byte{1, 2}))
+	require.Empty(t, writer.messages)
+	require.Len(t, writer.frames, 1)
+}
+
+func TestCompletePGNMessageIsDeliveredWithoutFastPacketHeaders(t *testing.T) {
+	handler := &capturePacketHandler{}
+	adapter := NewCANAdapter(logrus.New())
+	adapter.SetOutput(handler)
+	data := []byte{0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99}
+
+	adapter.HandleMessage(&endpoint.PGNMessage{
+		Priority: 2, PGN: publicpgn.ProductInformationPGN, Source: 41, Destination: 255, Data: data,
+	})
+
+	require.Len(t, handler.packets, 1)
+	assert.True(t, handler.packets[0].Complete)
+	assert.Equal(t, data, handler.packets[0].Data)
+	assert.Equal(t, uint8(41), handler.packets[0].Info.SourceId)
 }
 
 // TestRawToDataStream was removed as redundant to more comprehensive testing in tests/integration/pgn_serialization_test.go

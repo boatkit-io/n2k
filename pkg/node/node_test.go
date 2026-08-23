@@ -6,6 +6,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
@@ -327,6 +328,28 @@ func TestClaimAddressReadOnly(t *testing.T) {
 		return len(devices) == 1 && devices[0].Address == 23
 	}, time.Second, time.Millisecond)
 	assert.Empty(t, pub.written)
+}
+
+func TestExternalAddressAllowsExplicitWritesWithoutNodeManagement(t *testing.T) {
+	pub := newMockPublisher()
+	n := NewNode(newMockSubscriber(), pub, newMockClock())
+	require.NoError(t, n.UseExternalAddress(endpoint.ExternalAddressState{Address: 37, Claimed: true}))
+	require.True(t, n.IsAddressClaimed())
+	require.Equal(t, uint8(37), n.GetNetworkAddress())
+
+	requested := uint32(pgn.ProductInformationPGN)
+	pub.wg.Add(1)
+	require.NoError(t, n.Write(&pgn.ISORequest{PGN: &requested}))
+	written, ok := pub.lastWritten().(*pgn.ISORequest)
+	require.True(t, ok)
+	require.Equal(t, uint8(37), written.Info.SourceId)
+
+	responses := n.processIsoRequest(pgn.ISORequest{
+		Info: pgn.MessageInfo{SourceId: 10, TargetId: 37},
+		PGN:  &requested,
+	})
+	require.Empty(t, responses)
+	require.Error(t, n.UseExternalAddress(endpoint.ExternalAddressState{Address: 252, Claimed: true}))
 }
 
 func TestDefaultReadOnlyIgnoresCommandedAddress(t *testing.T) {

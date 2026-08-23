@@ -92,9 +92,21 @@ func (c *CANAdapter) HandleMessage(message endpoint.Message) {
 		if p.Complete {
 			c.packetReady(p)
 		}
-	} else {
-		c.log.Warnf("CanAdapter expected *can.Frame, received: %T", message)
+		return
 	}
+	if message, ok := message.(*endpoint.PGNMessage); ok {
+		packet := pkt.NewPacket(pgn.MessageInfo{
+			Timestamp: message.Timestamp,
+			Priority:  message.Priority,
+			PGN:       message.PGN,
+			SourceId:  message.Source,
+			TargetId:  message.Destination,
+		}, append([]byte(nil), message.Data...))
+		packet.Complete = true
+		c.packetReady(packet)
+		return
+	}
+	c.log.Warnf("CanAdapter expected *can.Frame or *endpoint.PGNMessage, received: %T", message)
 }
 
 // packetReady is a helper for fanning out completed packets to the handler
@@ -106,6 +118,20 @@ func (c *CANAdapter) packetReady(p *pkt.Packet) {
 
 // WritePgn generates one or more frames from its input and writes them to its configured endpoint.
 func (c *CANAdapter) WritePgn(info pgn.MessageInfo, data []uint8) error {
+	frameWriter := c.writer()
+	if writer, ok := frameWriter.(endpoint.PGNWriter); ok {
+		capability, hasCapability := frameWriter.(endpoint.PGNWriterCapability)
+		if !hasCapability || capability.SupportsPGNWrites() {
+			return writer.WritePGN(endpoint.PGNMessage{
+				Timestamp:   info.Timestamp,
+				Priority:    info.Priority,
+				PGN:         info.PGN,
+				Source:      info.SourceId,
+				Destination: info.TargetId,
+				Data:        append([]byte(nil), data...),
+			})
+		}
+	}
 	var err error
 	canIDData := converter.CanIDData{
 		PGN:         info.PGN,

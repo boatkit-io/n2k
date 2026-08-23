@@ -18,6 +18,7 @@ import (
 	"time"
 
 	internalpgn "github.com/boatkit-io/n2k/internal/pgn"
+	"github.com/boatkit-io/n2k/pkg/endpoint"
 	"github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/sirupsen/logrus"
 )
@@ -143,6 +144,7 @@ type Node struct {
 	addressClaimed                 bool
 	addressState                   addressState
 	readOnly                       bool
+	externallyManagedAddress       bool
 	transmitPGNs                   []uint32
 	receivePGNs                    []uint32
 	knownDevices                   map[uint64]KnownDevice
@@ -383,6 +385,7 @@ func (n *Node) Stop() error {
 	n.addressClaimed = false
 	n.networkAddress = 255
 	n.readOnly = true
+	n.externallyManagedAddress = false
 	// Reset the context so the node can be restarted.
 	n.ctx = nil
 	n.cancel = nil
@@ -395,6 +398,7 @@ func (n *Node) Stop() error {
 func (n *Node) ClaimAddress(preferredAddress uint8) error {
 	n.mutex.Lock()
 	defer n.mutex.Unlock()
+	n.externallyManagedAddress = false
 	if preferredAddress == ReadOnlyAddress {
 		n.logger.Infof("N2K address claim disabled; entering passive mode")
 		n.preferredAddress = preferredAddress
@@ -418,6 +422,31 @@ func (n *Node) ClaimAddress(preferredAddress uint8) error {
 	n.preferredAddress = preferredAddress
 	n.readOnly = false
 	n.addressState = stateClaiming
+	select {
+	case n.wakeUp <- struct{}{}:
+	default:
+	}
+	return nil
+}
+
+// UseExternalAddress adopts a source address claimed by the active gateway.
+// The node remains passive for address claims, heartbeats, and management
+// responses, while ordinary explicit writes use the gateway-owned address.
+func (n *Node) UseExternalAddress(state endpoint.ExternalAddressState) error {
+	if state.Claimed && state.Address > 251 {
+		return fmt.Errorf("externally managed N2K address %d is not claimable", state.Address)
+	}
+	n.mutex.Lock()
+	n.externallyManagedAddress = true
+	n.readOnly = true
+	n.addressState = stateUnclaimed
+	n.addressClaimed = state.Claimed
+	if state.Claimed {
+		n.networkAddress = state.Address
+	} else {
+		n.networkAddress = ReadOnlyAddress
+	}
+	n.mutex.Unlock()
 	select {
 	case n.wakeUp <- struct{}{}:
 	default:
@@ -505,9 +534,10 @@ func (n *Node) write(pgnStruct any, destination uint8) error {
 	networkAddress := n.networkAddress
 	publisher := n.publisher
 	readOnly := n.readOnly
+	externallyManagedAddress := n.externallyManagedAddress
 	n.mutex.RUnlock()
 
-	if readOnly {
+	if readOnly && !externallyManagedAddress {
 		return fmt.Errorf("cannot write PGN, node is read-only")
 	}
 	if !addressClaimed {
@@ -1493,7 +1523,7 @@ func (n *Node) process() {
 			claimTicker = nil
 		}
 
-		if n.heartbeatEnabled && n.addressClaimed {
+		if n.heartbeatEnabled && n.addressClaimed && !n.readOnly {
 			if heartbeatTicker == nil {
 				heartbeatTicker = n.clock.NewTicker(n.heartbeatInterval)
 				initialHeartbeat = true
