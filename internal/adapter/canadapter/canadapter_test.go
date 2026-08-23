@@ -67,7 +67,7 @@ type capturePacketHandler struct {
 	packets []pkt.Packet
 }
 
-func (c *capturePacketHandler) HandlePacket(packet pkt.Packet) {
+func (c *capturePacketHandler) HandlePacket(packet pkt.Packet) { //nolint:gocritic // PacketHandler requires a value.
 	c.packets = append(c.packets, packet)
 }
 

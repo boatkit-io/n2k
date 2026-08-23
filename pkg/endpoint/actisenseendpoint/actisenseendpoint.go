@@ -85,7 +85,7 @@ func (e *Endpoint) Start(context.Context) error {
 	e.startMu.Lock()
 	defer e.startMu.Unlock()
 	if e.closed.Load() {
-		return errors.New("Actisense endpoint is closed")
+		return errors.New("actisense endpoint is closed")
 	}
 	if e.currentPort() != nil {
 		return nil
@@ -281,7 +281,7 @@ func (e *Endpoint) WritePGN(message endpoint.PGNMessage) error {
 	}
 	state := e.ExternalAddressState()
 	if !state.Claimed {
-		return errors.New("Actisense NGT-1 has not claimed an NMEA 2000 address")
+		return errors.New("actisense NGT-1 has not claimed an NMEA 2000 address")
 	}
 	e.txMu.Lock()
 	defer e.txMu.Unlock()
@@ -309,11 +309,11 @@ func enableTransmitPGNCommand(pgn uint32) []byte {
 func bst94Payload(message endpoint.PGNMessage) []byte {
 	payload := make([]byte, 6+len(message.Data))
 	payload[0] = message.Priority
-	payload[1] = byte(message.PGN)
-	payload[2] = byte(message.PGN >> 8)
-	payload[3] = byte(message.PGN >> 16)
+	pgnBytes := make([]byte, 4)
+	binary.LittleEndian.PutUint32(pgnBytes, message.PGN)
+	copy(payload[1:4], pgnBytes[:3])
 	payload[4] = message.Destination
-	payload[5] = byte(len(message.Data))
+	payload[5] = byte(len(message.Data)) //nolint:gosec // WritePGN limits data to 223 bytes.
 	copy(payload[6:], message.Data)
 	return payload
 }
@@ -333,7 +333,7 @@ func (e *Endpoint) writeBST(messageID byte, payload []byte) error {
 	defer e.writeMu.Unlock()
 	port := e.currentPort()
 	if port == nil || e.closed.Load() {
-		return errors.New("Actisense NGT-1 serial port is not open")
+		return errors.New("actisense NGT-1 serial port is not open")
 	}
 	for len(frame) > 0 {
 		written, writeErr := port.Write(frame)
@@ -371,16 +371,16 @@ func (e *Endpoint) handleFrame(frame []byte) bool {
 
 func encodeBDTP(messageID byte, payload []byte) ([]byte, error) {
 	if len(payload) > 255 {
-		return nil, fmt.Errorf("Actisense BST payload is too long: %d", len(payload))
+		return nil, fmt.Errorf("actisense BST payload is too long: %d", len(payload))
 	}
 	body := make([]byte, 0, len(payload)+3)
-	body = append(body, messageID, byte(len(payload)))
+	body = append(body, messageID, byte(len(payload))) //nolint:gosec // The payload length is checked above.
 	body = append(body, payload...)
 	var checksum byte
 	for _, value := range body {
 		checksum += value
 	}
-	body = append(body, byte(0-checksum))
+	body = append(body, 0-checksum)
 
 	frame := []byte{dle, stx}
 	for _, value := range body {
@@ -399,17 +399,17 @@ func decodeBST93(frame []byte, timestamp time.Time) (*endpoint.PGNMessage, error
 
 func decodeBST(frame []byte, timestamp time.Time) (*endpoint.PGNMessage, *endpoint.ExternalAddressState, error) {
 	if len(frame) < 3 {
-		return nil, nil, errors.New("Actisense BST frame is too short")
+		return nil, nil, errors.New("actisense BST frame is too short")
 	}
 	var checksum byte
 	for _, value := range frame {
 		checksum += value
 	}
 	if checksum != 0 {
-		return nil, nil, fmt.Errorf("Actisense BST checksum failed: 0x%02x", checksum)
+		return nil, nil, fmt.Errorf("actisense BST checksum failed: 0x%02x", checksum)
 	}
 	if int(frame[1]) != len(frame)-3 {
-		return nil, nil, fmt.Errorf("Actisense BST length is %d, expected %d", frame[1], len(frame)-3)
+		return nil, nil, fmt.Errorf("actisense BST length is %d, expected %d", frame[1], len(frame)-3)
 	}
 	if frame[0] == bstNGTReceive {
 		state, err := decodeCANConfigResponse(frame[2 : len(frame)-1])
@@ -420,11 +420,11 @@ func decodeBST(frame []byte, timestamp time.Time) (*endpoint.PGNMessage, *endpoi
 	}
 	payload := frame[2 : len(frame)-1]
 	if len(payload) < 11 {
-		return nil, nil, fmt.Errorf("Actisense BST-93 payload is too short: %d", len(payload))
+		return nil, nil, fmt.Errorf("actisense BST-93 payload is too short: %d", len(payload))
 	}
 	dataLength := int(payload[10])
 	if len(payload) != 11+dataLength {
-		return nil, nil, fmt.Errorf("Actisense BST-93 data length is %d, payload contains %d", dataLength, len(payload)-11)
+		return nil, nil, fmt.Errorf("actisense BST-93 data length is %d, payload contains %d", dataLength, len(payload)-11)
 	}
 	return &endpoint.PGNMessage{
 		Timestamp:   timestamp,
@@ -443,10 +443,10 @@ func decodeCANConfigResponse(payload []byte) (*endpoint.ExternalAddressState, er
 	// BEM responses contain the command ID followed by sequence/model/serial
 	// metadata and a four-byte error code. Command data begins at offset 12.
 	if len(payload) < 21 {
-		return nil, fmt.Errorf("Actisense CAN config response is too short: %d", len(payload))
+		return nil, fmt.Errorf("actisense CAN config response is too short: %d", len(payload))
 	}
 	if errorCode := binary.LittleEndian.Uint32(payload[8:12]); errorCode != 0 {
-		return nil, fmt.Errorf("Actisense CAN config query failed: 0x%08x", errorCode)
+		return nil, fmt.Errorf("actisense CAN config query failed: 0x%08x", errorCode)
 	}
 	data := payload[12:]
 	state := endpoint.ExternalAddressState{Address: 255}

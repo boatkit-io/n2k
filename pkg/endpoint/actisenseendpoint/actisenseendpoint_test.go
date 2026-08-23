@@ -20,7 +20,7 @@ func TestBDTPRoundTripEscapesDLE(t *testing.T) {
 	parser.consume(encoded[:3], func(frame []byte) { decoded = append(decoded, frame) })
 	parser.consume(encoded[3:], func(frame []byte) { decoded = append(decoded, frame) })
 	require.Len(t, decoded, 1)
-	require.Equal(t, byte(bstN2KSend), decoded[0][0])
+	require.Equal(t, bstN2KSend, decoded[0][0])
 	require.Equal(t, byte(8), decoded[0][1])
 	var checksum byte
 	for _, value := range decoded[0] {
