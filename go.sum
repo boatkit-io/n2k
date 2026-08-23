@@ -6,8 +6,8 @@ github.com/Masterminds/semver/v3 v3.5.0 h1:kQceYJfbupGfZOKZQg0kou0DgAKhzDg2NZPAw
 github.com/Masterminds/semver/v3 v3.5.0/go.mod h1:4V+yj/TJE1HU9XfppCwVMZq3I84lprf4nC11bSS5beM=
 github.com/Masterminds/sprig/v3 v3.3.0 h1:mQh0Yrg1XPo6vjYXgtf5OtijNAKJRNcTdOOGZe3tPhs=
 github.com/Masterminds/sprig/v3 v3.3.0/go.mod h1:Zy1iXRYNqNLUolqCpL4uhk6SHUMAOSCzdgBfDb35Lz0=
-github.com/boatkit-io/tugboat v0.10.1 h1:R2AMfgKkoBVwjMgK1lh+mkMao8+x5X/4hJv/Jc6BjNM=
-github.com/boatkit-io/tugboat v0.10.1/go.mod h1:d35WEbJiTd72v7MYvsE3ww+9zcvzJmjJFcerASI60Ks=
+github.com/boatkit-io/tugboat v0.10.2 h1:nzdZI8ryr4hn1z6uu8yU+m++1Ptc+F0gKueqgfXuhdM=
+github.com/boatkit-io/tugboat v0.10.2/go.mod h1:uXHwKZ0hhGtw6SuyuUuOy7BZjsjZWhnbrRGtbsk8D1s=
 github.com/brutella/can v0.0.2 h1:8TyjZrBZSwQwSr5x3U9KtKzGW8HNE/NpUgsNcYDAVIM=
 github.com/brutella/can v0.0.2/go.mod h1:NYDxbQito3w4+4DcjWs/fpQ3xyaFdpXw/KYqtZFU98k=
 github.com/chengxilo/virtualterm v1.0.4 h1:Z6IpERbRVlfB8WkOmtbHiDbBANU7cimRIof7mk9/PwM=

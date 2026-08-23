@@ -28,8 +28,9 @@ import (
 )
 
 const (
-	socketCANOutboundQueueSize = 2048
-	socketCANOutboundLagTTL    = 5 * time.Second
+	socketCANOutboundQueueSize   = 2048
+	socketCANOutboundLagTTL      = 5 * time.Second
+	socketCANRestartMilliseconds = 1000
 )
 
 // SocketCANEndpoint is an endpoint backed by a live SocketCAN interface, pulling down CAN frames
@@ -78,16 +79,21 @@ func NewSocketCANEndpoint(log *logrus.Logger, canInterfaceName string) endpoint.
 
 	// vcan interfaces are now supported with the modified tugboat package
 
-	channelOpts := canbus.SocketCANChannelOptions{
-		InterfaceName:  canInterfaceName,
-		BitRate:        250000,
-		MessageHandler: c.frameReady,
-	}
+	channelOpts := socketCANChannelOptions(canInterfaceName, c.frameReady)
 
 	c.channel = canbus.NewSocketCANChannel(log, channelOpts)
 	c.initOutboundQueues()
 
 	return &c
+}
+
+func socketCANChannelOptions(canInterfaceName string, handler can.HandlerFunc) canbus.SocketCANChannelOptions {
+	return canbus.SocketCANChannelOptions{
+		InterfaceName:       canInterfaceName,
+		BitRate:             250000,
+		RestartMilliseconds: socketCANRestartMilliseconds,
+		MessageHandler:      handler,
+	}
 }
 
 // Start synchronously opens the SocketCAN channel.

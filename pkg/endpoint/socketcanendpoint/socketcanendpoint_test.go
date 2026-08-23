@@ -88,6 +88,14 @@ func TestWriteFrameRetriesSocketCANBufferFull(t *testing.T) {
 	}, time.Second, time.Millisecond)
 }
 
+func TestSocketCANEndpointRequestsAutomaticBusOffRecovery(t *testing.T) {
+	options := socketCANChannelOptions("can0", func(can.Frame) {})
+
+	assert.Equal(t, "can0", options.InterfaceName)
+	assert.Equal(t, 250000, options.BitRate)
+	assert.Equal(t, uint32(socketCANRestartMilliseconds), options.RestartMilliseconds)
+}
+
 func TestRunRejectsConcurrentSocketCANReadersAndCloseIsTerminal(t *testing.T) {
 	channel := &blockingTestChannel{runEntered: make(chan struct{}), closed: make(chan struct{})}
 	ep := &SocketCANEndpoint{log: discardLogger(), channel: channel}
