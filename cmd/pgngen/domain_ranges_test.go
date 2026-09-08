@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -99,8 +100,9 @@ func TestWriteAndReadDomainRangesYAML(t *testing.T) {
 	dir := t.TempDir()
 	path := filepath.Join(dir, "domain_ranges.generated.yaml")
 	table := map[domainKey]domainRange{
-		{"TIME", "s", false}:     {Min: float64Ptr(0), Max: float64Ptr(86401)},
-		{"DISTANCE", "m", false}: {Min: float64Ptr(0), Max: nil},
+		{"TIME", "s", false}:                {Min: float64Ptr(0), Max: float64Ptr(86401)},
+		{"DISTANCE", "m", false}:            {Min: float64Ptr(0), Max: nil},
+		{"DIMENSIONLESS_RATIO", "%", false}: {},
 	}
 
 	if err := writeDomainRangesYAML(path, table); err != nil {
@@ -108,6 +110,13 @@ func TestWriteAndReadDomainRangesYAML(t *testing.T) {
 	}
 	if _, err := os.Stat(path); err != nil {
 		t.Fatalf("expected file to exist: %v", err)
+	}
+	content, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatalf("read generated YAML: %v", err)
+	}
+	if !strings.Contains(string(content), "  unit: \"%\"\n") {
+		t.Fatalf("expected percent unit to use formatter-stable double quotes:\n%s", content)
 	}
 
 	readTable, err := readDomainRangesYAML(path)
