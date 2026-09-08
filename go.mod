@@ -4,16 +4,16 @@ go 1.27.0
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
-	github.com/boatkit-io/tugboat v0.10.2
+	github.com/boatkit-io/tugboat v0.10.3
 	github.com/brutella/can v0.0.2
 	github.com/google/go-cmp v0.7.0
 	github.com/pkg/errors v0.9.1
 	github.com/schollz/progressbar/v3 v3.19.1
-	github.com/sirupsen/logrus v1.10.1
+	github.com/sirupsen/logrus v1.10.2
 	github.com/stretchr/testify v1.12.1
 	go.bug.st/serial v1.8.0
-	golang.org/x/exp v0.0.0-20260820142414-ca536658362e
-	golang.org/x/text v0.41.0
+	golang.org/x/exp v0.0.0-20260824195058-e88cd73687aa
+	golang.org/x/text v0.42.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
