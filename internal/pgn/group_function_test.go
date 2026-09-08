@@ -162,10 +162,10 @@ func TestDecodeNmeaAcknowledgeGroupFunctionMatchesActisenseConfigurationReply(t 
 	if ack.PGN == nil || *ack.PGN != publicpgn.ConfigurationInformationPGN {
 		t.Fatalf("acknowledged PGN = %v, want %d", ack.PGN, publicpgn.ConfigurationInformationPGN)
 	}
-	if ack.PGNErrorCode != publicpgn.Acknowledge_6 {
+	if ack.PGNErrorCode != publicpgn.Acknowledge_4 {
 		t.Fatalf("PGN error = %v, want acknowledge", ack.PGNErrorCode)
 	}
-	if ack.TransmissionIntervalPriorityErrorCode != publicpgn.Acknowledge_2 {
+	if ack.TransmissionIntervalPriorityErrorCode != publicpgn.Acknowledge_6 {
 		t.Fatalf("transmission/priority error = %v, want acknowledge", ack.TransmissionIntervalPriorityErrorCode)
 	}
 	if len(ack.Repeating1) != 1 || ack.Repeating1[0].Parameter != publicpgn.Acknowledge_3 {

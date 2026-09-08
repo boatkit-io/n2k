@@ -381,7 +381,6 @@ var UnseenPGNs = map[uint32]bool{
 	65472: true,
 	127512: true,
 	127514: true,
-	127751: true,
 	128001: true,
 	128520: true,
 	128538: true,

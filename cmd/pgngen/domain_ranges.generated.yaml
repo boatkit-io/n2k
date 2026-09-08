@@ -7,12 +7,12 @@
   unit: rad
   signed: false
   min: null
-  max: 6.2831852
+  max: 6.28318530717959
 - physicalQuantity: ANGLE
   unit: rad
   signed: true
-  min: -3.1415926
-  max: 3.1415926
+  min: -3.14159265358979
+  max: 3.14159265358979
 - physicalQuantity: ANGLE
   unit: semi-circle
   signed: true
@@ -59,12 +59,12 @@
   min: null
   max: null
 - physicalQuantity: DIMENSIONLESS_RATIO
-  unit: '%'
+  unit: "%"
   signed: false
   min: null
-  max: 102.1
+  max: null
 - physicalQuantity: DIMENSIONLESS_RATIO
-  unit: '%'
+  unit: "%"
   signed: true
   min: -127
   max: null
@@ -267,7 +267,7 @@
   unit: sqrt(m)
   signed: false
   min: null
-  max: 8191.998046875
+  max: null
 - physicalQuantity: TEMPERATURE
   unit: K
   signed: false

@@ -424,7 +424,7 @@ func sendActiveRequests(log *logrus.Logger, svc *n2k.N2kService, sourceAddress u
 	nmeaCommandConfigInfo := &pgn.NMEACommandGroupFunction{
 		FunctionCode:       pgn.Command,
 		PGN:                ptrUint32(pgn.ConfigurationInformationPGN),
-		Priority:           pgn.Three,
+		Priority:           pgn.Three_2,
 		NumberOfParameters: &zeroParameters,
 		Info: pgn.MessageInfo{
 			PGN:      pgn.NMEACommandGroupFunctionPGN,

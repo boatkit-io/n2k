@@ -19,8 +19,9 @@ import (
 const pgnOverridesPath = "cmd/pgngen/pgn_overrides.json"
 
 type pgnOverrides struct {
-	PGNs       []*PGN
-	MinLengths map[string]uint32
+	PGNs           []*PGN
+	MinLengths     map[string]uint32
+	ReservedCounts map[string]map[string]uint8
 }
 
 func (conv *canboatConverter) applyPGNOverrides() error {
@@ -42,8 +43,65 @@ func (conv *canboatConverter) applyPGNOverrides() error {
 	if err != nil {
 		return err
 	}
-	log.Infof("Applied local PGN overrides: %d replaced, %d added, %d minimum lengths", replaced, added, minLengths)
+	reservedCounts, err := conv.applyPGNReservedCountOverrides(overrides.ReservedCounts)
+	if err != nil {
+		return err
+	}
+	log.Infof(
+		"Applied local PGN overrides: %d replaced, %d added, %d minimum lengths, %d reserved counts",
+		replaced, added, minLengths, reservedCounts,
+	)
 	return nil
+}
+
+func (conv *canboatConverter) applyPGNReservedCountOverrides(
+	overrides map[string]map[string]uint8,
+) (int, error) {
+	baseByID := make(map[string]*PGN, len(conv.PGNs))
+	for _, definition := range conv.PGNs {
+		baseByID[definition.Id] = definition
+	}
+
+	applied := 0
+	for pgnID, fieldOverrides := range overrides {
+		definition, exists := baseByID[pgnID]
+		if !exists {
+			return 0, fmt.Errorf("reserved-count override references unknown PGN ID %q", pgnID)
+		}
+		for fieldID, reservedCount := range fieldOverrides {
+			if reservedCount > 2 {
+				return 0, fmt.Errorf(
+					"reserved-count override for %q.%q must be between 0 and 2",
+					pgnID, fieldID,
+				)
+			}
+			found := false
+			for index := range definition.Fields {
+				field := &definition.Fields[index]
+				if field.Id != fieldID {
+					continue
+				}
+				if getReservedValueCount(field) == reservedCount {
+					return 0, fmt.Errorf(
+						"reserved-count override for %q.%q is identical to the default; remove it",
+						pgnID, fieldID,
+					)
+				}
+				value := reservedCount
+				field.reservedCountOverride = &value
+				found = true
+				applied++
+				break
+			}
+			if !found {
+				return 0, fmt.Errorf(
+					"reserved-count override references unknown field %q.%q",
+					pgnID, fieldID,
+				)
+			}
+		}
+	}
+	return applied, nil
 }
 
 func (conv *canboatConverter) applyPGNMinLengthOverrides(overrides map[string]uint32) (int, error) {

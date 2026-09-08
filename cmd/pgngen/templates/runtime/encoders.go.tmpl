@@ -33,6 +33,15 @@ func Encode{{ $pgn.Id }}(p *publicpgn.{{ $pgn.Id }}, stream *DataStream) (*publi
 	var valueLength uint16
 	{{- end }}
     {{- range $idx, $field := .Fields }}
+	{{- if isOptionalPointerField $pgn $field }}
+	if p.{{ .Id }} == nil {
+		if p.Info.PGN == 0 {
+			p.Info.PGN = {{ $pgn.PGN }}
+		}
+		p.Info.Timestamp = time.Now()
+		return &p.Info, nil
+	}
+	{{- end }}
     {{- if eq .FieldType "DYNAMIC_FIELD_LENGTH" }}
     if p.{{ .Id }} != nil {
         valueLength = uint16(*p.{{ .Id }}) * 8

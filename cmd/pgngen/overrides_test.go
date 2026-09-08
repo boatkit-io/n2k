@@ -119,6 +119,43 @@ func TestApplyPGNMinLengthOverridesRejectsNonBoundary(t *testing.T) {
 	}
 }
 
+func TestApplyPGNReservedCountOverrides(t *testing.T) {
+	converter := &canboatConverter{
+		PGNs: []*PGN{{
+			Id: "seatalk1Keystroke",
+			Fields: []PGNField{{
+				Id:        "keyinverted",
+				BitLength: 8,
+				FieldType: "NUMBER",
+			}},
+		}},
+	}
+
+	applied, err := converter.applyPGNReservedCountOverrides(map[string]map[string]uint8{
+		"seatalk1Keystroke": {"keyinverted": 0},
+	})
+	if err != nil {
+		t.Fatalf("applyPGNReservedCountOverrides() error = %v", err)
+	}
+	if applied != 1 {
+		t.Fatalf("applyPGNReservedCountOverrides() applied = %d, want 1", applied)
+	}
+	if got := getReservedValueCount(&converter.PGNs[0].Fields[0]); got != 0 {
+		t.Fatalf("reserved count = %d, want 0", got)
+	}
+}
+
+func TestApplyPGNReservedCountOverridesRejectsUnknownField(t *testing.T) {
+	converter := &canboatConverter{PGNs: []*PGN{{Id: "seatalk1Keystroke"}}}
+
+	_, err := converter.applyPGNReservedCountOverrides(map[string]map[string]uint8{
+		"seatalk1Keystroke": {"missing": 0},
+	})
+	if err == nil || !strings.Contains(err.Error(), "unknown field") {
+		t.Fatalf("applyPGNReservedCountOverrides() error = %v, want unknown-field error", err)
+	}
+}
+
 func testPGNDefinition(id string, number uint32, manufacturer int, description string) *PGN {
 	resolution := float32(1)
 	return &PGN{

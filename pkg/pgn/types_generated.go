@@ -359,7 +359,7 @@ type YanmarEngineDataA struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	UnknownSelectorFlag YesNo1BitConst
+	UnknownSelector *uint8
 	EngineInstance EngineInstanceConst
 	ThrottlePosition *float32
 	TransmissionGear GearStatusConst
@@ -399,6 +399,16 @@ type BepMarineCzoneCircuitControl struct {
 	UnknownD *uint8
 	UnknownE *uint8
 	UnknownF *uint8
+}
+type SleipnerThrusterCommand struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ThrusterInstance *uint8
+	Direction SleipnerThrusterDirectionConst
+	DeviceAction SleipnerThrusterActionConst
+	Thrust *float32
+	Reserved10 []uint8
 }
 type YanmarEngineDataB struct {
 	Info MessageInfo
@@ -465,6 +475,17 @@ type BepMarineCzoneCircuitStatus struct {
 	Dipswitch *uint8
 	Type *uint8
 	Bitmap []uint8
+}
+type YanmarThrottleControl struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	UnknownSelector *uint8
+	EngineInstance EngineInstanceConst
+	TransmissionGear GearStatusConst
+	UnknownControlFlag *uint8
+	ThrottlePosition *float32
+	UnknownData []uint8
 }
 type AirmarBootStateAcknowledgment struct {
 	Info MessageInfo
@@ -747,6 +768,16 @@ type LowranceVesselSetupEngineAndTankConfigurationBroadcast struct {
 	NumberOfEngines *uint8
 	NumberOfFuelTanks *uint8
 	TotalFuelCapacity *units.Volume
+}
+type SleipnerDeviceStatus struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	DeviceType *uint8
+	DeviceIndex *uint8
+	A *uint8
+	UniqueNumber *uint32
+	B *uint8
 }
 type SimnetDeviceStatus struct {
 	Info MessageInfo
@@ -1394,7 +1425,7 @@ type GarminAutopilotManeuver struct {
 	WrapperByte1 *uint8
 	WrapperByte2 *uint8
 	FieldGroup *uint8
-	ManeuverCode *uint8
+	ManeuverCode GarminAutopilotManeuverCodeConst
 	Value *uint8
 }
 type Seatalk1PilotMode struct {
@@ -1728,6 +1759,34 @@ type GarminColorMode struct {
 	UnknownID4 *uint8
 	Mode GarminColorModeConst
 	Color GarminColorConst
+}
+type FusionMenuActionCommand struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	SourceID *uint8
+	ItemIndex *uint32
+	Action FusionMenuActionConst
+	LockID *uint8
+}
+type FusionRequestMenuCount struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	SourceID *uint8
+	LockID *uint8
+}
+type FusionRequestMenuItems struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	SourceID *uint8
+	StartIndex *uint32
+	Count *uint32
+	LockID *uint8
 }
 type ZeroX1F0000X1FeffStandardizedMixedSingleFastPacketNonAddressed struct {
 	Info MessageInfo
@@ -2613,6 +2672,7 @@ type AISClassBPositionReport struct {
 	CANHandleMsg22 YesNo1BitConst
 	AISMode AISModeConst
 	AISCommunicationState AISCommunicationStateConst
+	SequenceID *uint8
 }
 type AISClassBExtendedPositionReport struct {
 	Info MessageInfo
@@ -2786,6 +2846,7 @@ type GNSSSatsInViewRepeating1 struct {
 	Snr *float32
 	RangeResiduals *units.Distance
 	Status SatelliteStatusConst
+	GNSSSystem GNSSSystemConst
 }
 type GPSAlmanacData struct {
 	Info MessageInfo
@@ -2923,6 +2984,7 @@ type AISUTCAndDateReport struct {
 	AISTransceiverInformation AISTransceiverConst
 	PositionDate *uint16
 	GNSSType PositionFixDeviceConst
+	SequenceID *uint8
 }
 type AISClassAStaticAndVoyageRelatedData struct {
 	Info MessageInfo
@@ -2945,6 +3007,7 @@ type AISClassAStaticAndVoyageRelatedData struct {
 	GNSSType PositionFixDeviceConst
 	Dte AvailableConst
 	AISTransceiverInformation AISTransceiverConst
+	SequenceID *uint8
 }
 type AISAddressedBinaryMessage struct {
 	Info MessageInfo
@@ -4296,6 +4359,38 @@ type BepMarineCzoneStatusExtended struct {
 	Dipswitch *uint8
 	Records []uint8
 }
+type SleipnerThrusterStatusPpc820 struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	DeviceType *uint8
+	A *uint8
+	Status []uint8
+	MotorTemperature *uint8
+	PowerTemperature *uint8
+	B *uint8
+	MotorVoltage *float32
+	C []uint8
+	MotorCurrent *float32
+	OutputThrust *int8
+	D *uint8
+}
+type SleipnerThrusterStatusPpc520 struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	DeviceType *uint8
+	A *uint8
+	Status []uint8
+	MotorTemperature *uint8
+	PowerTemperature *uint8
+	B *uint8
+	MotorVoltage *float32
+	C []uint8
+	MotorCurrent *float32
+	OutputThrust *int8
+	D *uint8
+}
 type SimnetReprogramData struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -4851,6 +4946,25 @@ type MaretronAlertResponse struct {
 	AcknowledgeSourceNetworkIDName *uint64
 	ResponseCommand AlertResponseCommandConst
 }
+type FusionMenuActionStatus struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIDConst
+	SourceID *uint8
+	ItemIndex *uint32
+	Action FusionMenuActionConst
+	LockID *uint8
+}
+type FusionMenuCount struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIDConst
+	SourceID *uint8
+	Count *uint32
+	LockID *uint8
+}
 type NavicoAsciiData struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -5092,11 +5206,11 @@ type MaretronAnnunciator struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Field4 *uint8
-	Field5 *uint8
-	Field6 *uint16
+	AnnunciatorInstance *uint8
+	AnnunciatorState *uint8
+	Pattern *uint16
 	Field7 *uint8
-	Field8 *uint16
+	AlertID *uint16
 }
 type MercuryEngineKeyValueData struct {
 	Info MessageInfo
@@ -5205,6 +5319,21 @@ type FurunoNavpilotStatus struct {
 	C *uint8
 	D *uint16
 }
+type SleipnerThrusterStatus struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ControllerType *uint8
+	ThrusterID *uint8
+	State SleipnerThrusterStateConst
+	UniqueNumber *uint32
+	A *uint8
+	B *uint8
+	C *uint8
+	D *uint8
+	Thrust *int8
+	E *uint8
+}
 type SimnetSetSerialNumber struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -5223,6 +5352,16 @@ type MaretronDometicHvacControlStatus struct {
 	OutdoorTemperature *uint8
 	FaultStatus *uint8
 	AdditionalSensorTemperature *uint8
+}
+type SleipnerDeviceStatusFast struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	DeviceType *uint8
+	DeviceIndex *uint8
+	State SleipnerThrusterStateConst
+	UniqueNumber *uint32
+	A *uint8
 }
 type MercuryEngineStatus struct {
 	Info MessageInfo
@@ -5477,10 +5616,9 @@ type FurunoSixDegreesOfFreedomMovement struct {
 	B *int32
 	C *int32
 	D *int8
-	E *int32
-	F *int32
-	G *int16
-	H *int16
+	RollRate *float32
+	PitchRate *float32
+	YawRate *float32
 	I *int16
 }
 type SimnetAISClassBStaticDataMsg24PartB struct {
@@ -5974,64 +6112,6 @@ type YamahaEngineData7 struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-}
-type YanmarThrottleControl struct {
-	Info MessageInfo
-	ManufacturerCode ManufacturerCodeConst
-	IndustryCode IndustryCodeConst
-	UnknownSelectorFlag YesNo1BitConst
-	EngineInstance EngineInstanceConst
-	TransmissionGear GearStatusConst
-	UnknownControlFlag *uint8
-	ThrottlePosition *float32
-	UnknownData []uint8
-}
-type FusionMenuActionCommand struct {
-	Info MessageInfo
-	ManufacturerCode ManufacturerCodeConst
-	IndustryCode IndustryCodeConst
-	ProprietaryID FusionMessageIDConst
-	SourceID *uint8
-	ItemIndex *uint32
-	Action *uint8
-	LockID *uint8
-}
-type FusionRequestMenuCount struct {
-	Info MessageInfo
-	ManufacturerCode ManufacturerCodeConst
-	IndustryCode IndustryCodeConst
-	ProprietaryID FusionMessageIDConst
-	SourceID *uint8
-	LockID *uint8
-}
-type FusionRequestMenuItems struct {
-	Info MessageInfo
-	ManufacturerCode ManufacturerCodeConst
-	IndustryCode IndustryCodeConst
-	ProprietaryID FusionMessageIDConst
-	SourceID *uint8
-	StartIndex *uint32
-	Count *uint32
-	LockID *uint8
-}
-type FusionMenuActionStatus struct {
-	Info MessageInfo
-	ManufacturerCode ManufacturerCodeConst
-	IndustryCode IndustryCodeConst
-	MessageID FusionStatusMessageIDConst
-	SourceID *uint8
-	ItemIndex *uint32
-	Action *uint8
-	LockID *uint8
-}
-type FusionMenuCount struct {
-	Info MessageInfo
-	ManufacturerCode ManufacturerCodeConst
-	IndustryCode IndustryCodeConst
-	MessageID FusionStatusMessageIDConst
-	SourceID *uint8
-	Count *uint32
-	LockID *uint8
 }
 // Partial type for NMEARequestGroupFunction when PGN is proprietary or unknown
 type NMEARequestGroupFunctionPartial struct {

@@ -41,11 +41,11 @@ const resolution64BitCutoff = 0.0000001
 // MaxPGNLength is the maximum length of a PGN in bytes
 const MaxPGNLength = 223 // 31*7 + 6
 
-const canboatRelease = "v7.2.0"
+const canboatRelease = "v8.1.0"
 
-// canboatRevision is the immutable commit for the Canboat 7.2.0 release.
+// canboatRevision is the immutable commit for the Canboat 8.1.0 release.
 // Use the commit rather than the moving release branch so generation remains reproducible.
-const canboatRevision = "12d58dd15f0af26c9caaf73232024dc31628bbd9"
+const canboatRevision = "4cc490f50d85aaaf4372705edc2d224cff1cce8e"
 
 const canboatCacheName = "canboatjson-" + canboatRelease
 const canboatJSONURL = "https://raw.githubusercontent.com/canboat/canboat/" + canboatRevision + "/docs/canboat.json"
@@ -216,6 +216,7 @@ type PGNField struct {
 	IndirectLookupName       string `json:"LookupIndirectEnumeration"`
 	IndirectLookupFieldOrder uint8  `json:"LookupIndirectEnumerationFieldOrder"`
 	FieldTypeLookupName      string `json:"LookupFieldTypeEnumeration"`
+	reservedCountOverride    *uint8
 }
 
 type canboatFieldDescription string
@@ -370,6 +371,15 @@ func (conv *canboatConverter) write() {
 		"groupByPGN":       groupByPGN,
 		"isOptionalPGNField": func(pgn *PGN, field PGNField) bool {
 			return pgn.MinLength > 0 && uint32(field.BitOffset) >= pgn.MinLength*8
+		},
+		"isOptionalPointerField": func(pgn *PGN, field *PGNField) bool {
+			if pgn.MinLength == 0 || uint32(field.BitOffset) < pgn.MinLength*8 {
+				return false
+			}
+			if field.FieldType == "RESERVED" || field.FieldType == "SPARE" {
+				return false
+			}
+			return isPointerFieldType(field)
 		},
 		"needsFieldSpec": func(field PGNField) bool {
 			if reservedNumericType(field.FieldType) {
@@ -587,6 +597,9 @@ func fieldSpecRef(pgnID, fieldID string) string {
 // This is based purely on NMEA 2000 protocol standards, not domain constraints.
 // Used by template.
 func getReservedValueCount(field *PGNField) uint8 {
+	if field.reservedCountOverride != nil {
+		return *field.reservedCountOverride
+	}
 	if !reservedNumericType(field.FieldType) {
 		return 0
 	}

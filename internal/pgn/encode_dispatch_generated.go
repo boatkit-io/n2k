@@ -234,6 +234,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeBepMarineCzoneCircuitControl(p, stream)
 	case publicpgn.BepMarineCzoneCircuitControl:
 		return EncodeBepMarineCzoneCircuitControl(&p, stream)
+	case *publicpgn.SleipnerThrusterCommand:
+		return EncodeSleipnerThrusterCommand(p, stream)
+	case publicpgn.SleipnerThrusterCommand:
+		return EncodeSleipnerThrusterCommand(&p, stream)
 	case *publicpgn.YanmarEngineDataB:
 		return EncodeYanmarEngineDataB(p, stream)
 	case publicpgn.YanmarEngineDataB:
@@ -266,6 +270,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeBepMarineCzoneCircuitStatus(p, stream)
 	case publicpgn.BepMarineCzoneCircuitStatus:
 		return EncodeBepMarineCzoneCircuitStatus(&p, stream)
+	case *publicpgn.YanmarThrottleControl:
+		return EncodeYanmarThrottleControl(p, stream)
+	case publicpgn.YanmarThrottleControl:
+		return EncodeYanmarThrottleControl(&p, stream)
 	case *publicpgn.AirmarBootStateAcknowledgment:
 		return EncodeAirmarBootStateAcknowledgment(p, stream)
 	case publicpgn.AirmarBootStateAcknowledgment:
@@ -422,6 +430,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeLowranceVesselSetupEngineAndTankConfigurationBroadcast(p, stream)
 	case publicpgn.LowranceVesselSetupEngineAndTankConfigurationBroadcast:
 		return EncodeLowranceVesselSetupEngineAndTankConfigurationBroadcast(&p, stream)
+	case *publicpgn.SleipnerDeviceStatus:
+		return EncodeSleipnerDeviceStatus(p, stream)
+	case publicpgn.SleipnerDeviceStatus:
+		return EncodeSleipnerDeviceStatus(&p, stream)
 	case *publicpgn.SimnetDeviceStatus:
 		return EncodeSimnetDeviceStatus(p, stream)
 	case publicpgn.SimnetDeviceStatus:
@@ -886,6 +898,18 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeGarminColorMode(p, stream)
 	case publicpgn.GarminColorMode:
 		return EncodeGarminColorMode(&p, stream)
+	case *publicpgn.FusionMenuActionCommand:
+		return EncodeFusionMenuActionCommand(p, stream)
+	case publicpgn.FusionMenuActionCommand:
+		return EncodeFusionMenuActionCommand(&p, stream)
+	case *publicpgn.FusionRequestMenuCount:
+		return EncodeFusionRequestMenuCount(p, stream)
+	case publicpgn.FusionRequestMenuCount:
+		return EncodeFusionRequestMenuCount(&p, stream)
+	case *publicpgn.FusionRequestMenuItems:
+		return EncodeFusionRequestMenuItems(p, stream)
+	case publicpgn.FusionRequestMenuItems:
+		return EncodeFusionRequestMenuItems(&p, stream)
 	case *publicpgn.ZeroX1F0000X1FeffStandardizedMixedSingleFastPacketNonAddressed:
 		return EncodeZeroX1F0000X1FeffStandardizedMixedSingleFastPacketNonAddressed(p, stream)
 	case publicpgn.ZeroX1F0000X1FeffStandardizedMixedSingleFastPacketNonAddressed:
@@ -1738,6 +1762,14 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeBepMarineCzoneStatusExtended(p, stream)
 	case publicpgn.BepMarineCzoneStatusExtended:
 		return EncodeBepMarineCzoneStatusExtended(&p, stream)
+	case *publicpgn.SleipnerThrusterStatusPpc820:
+		return EncodeSleipnerThrusterStatusPpc820(p, stream)
+	case publicpgn.SleipnerThrusterStatusPpc820:
+		return EncodeSleipnerThrusterStatusPpc820(&p, stream)
+	case *publicpgn.SleipnerThrusterStatusPpc520:
+		return EncodeSleipnerThrusterStatusPpc520(p, stream)
+	case publicpgn.SleipnerThrusterStatusPpc520:
+		return EncodeSleipnerThrusterStatusPpc520(&p, stream)
 	case *publicpgn.SimnetReprogramData:
 		return EncodeSimnetReprogramData(p, stream)
 	case publicpgn.SimnetReprogramData:
@@ -1974,6 +2006,14 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMaretronAlertResponse(p, stream)
 	case publicpgn.MaretronAlertResponse:
 		return EncodeMaretronAlertResponse(&p, stream)
+	case *publicpgn.FusionMenuActionStatus:
+		return EncodeFusionMenuActionStatus(p, stream)
+	case publicpgn.FusionMenuActionStatus:
+		return EncodeFusionMenuActionStatus(&p, stream)
+	case *publicpgn.FusionMenuCount:
+		return EncodeFusionMenuCount(p, stream)
+	case publicpgn.FusionMenuCount:
+		return EncodeFusionMenuCount(&p, stream)
 	case *publicpgn.NavicoAsciiData:
 		return EncodeNavicoAsciiData(p, stream)
 	case publicpgn.NavicoAsciiData:
@@ -2102,6 +2142,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeFurunoNavpilotStatus(p, stream)
 	case publicpgn.FurunoNavpilotStatus:
 		return EncodeFurunoNavpilotStatus(&p, stream)
+	case *publicpgn.SleipnerThrusterStatus:
+		return EncodeSleipnerThrusterStatus(p, stream)
+	case publicpgn.SleipnerThrusterStatus:
+		return EncodeSleipnerThrusterStatus(&p, stream)
 	case *publicpgn.SimnetSetSerialNumber:
 		return EncodeSimnetSetSerialNumber(p, stream)
 	case publicpgn.SimnetSetSerialNumber:
@@ -2110,6 +2154,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMaretronDometicHvacControlStatus(p, stream)
 	case publicpgn.MaretronDometicHvacControlStatus:
 		return EncodeMaretronDometicHvacControlStatus(&p, stream)
+	case *publicpgn.SleipnerDeviceStatusFast:
+		return EncodeSleipnerDeviceStatusFast(p, stream)
+	case publicpgn.SleipnerDeviceStatusFast:
+		return EncodeSleipnerDeviceStatusFast(&p, stream)
 	case *publicpgn.MercuryEngineStatus:
 		return EncodeMercuryEngineStatus(p, stream)
 	case publicpgn.MercuryEngineStatus:
@@ -2434,30 +2482,6 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeYamahaEngineData7(p, stream)
 	case publicpgn.YamahaEngineData7:
 		return EncodeYamahaEngineData7(&p, stream)
-	case *publicpgn.YanmarThrottleControl:
-		return EncodeYanmarThrottleControl(p, stream)
-	case publicpgn.YanmarThrottleControl:
-		return EncodeYanmarThrottleControl(&p, stream)
-	case *publicpgn.FusionMenuActionCommand:
-		return EncodeFusionMenuActionCommand(p, stream)
-	case publicpgn.FusionMenuActionCommand:
-		return EncodeFusionMenuActionCommand(&p, stream)
-	case *publicpgn.FusionRequestMenuCount:
-		return EncodeFusionRequestMenuCount(p, stream)
-	case publicpgn.FusionRequestMenuCount:
-		return EncodeFusionRequestMenuCount(&p, stream)
-	case *publicpgn.FusionRequestMenuItems:
-		return EncodeFusionRequestMenuItems(p, stream)
-	case publicpgn.FusionRequestMenuItems:
-		return EncodeFusionRequestMenuItems(&p, stream)
-	case *publicpgn.FusionMenuActionStatus:
-		return EncodeFusionMenuActionStatus(p, stream)
-	case publicpgn.FusionMenuActionStatus:
-		return EncodeFusionMenuActionStatus(&p, stream)
-	case *publicpgn.FusionMenuCount:
-		return EncodeFusionMenuCount(p, stream)
-	case publicpgn.FusionMenuCount:
-		return EncodeFusionMenuCount(&p, stream)
 	default:
 		return nil, fmt.Errorf("trying to encode a struct that isn't a PGN: %T", s)
 	}

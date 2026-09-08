@@ -60,7 +60,7 @@ func TestGarminAutopilotTypesAreFullyExportedAndRoutable(t *testing.T) {
 				WrapperByte1:     wrapperByte,
 				WrapperByte2:     wrapperByte,
 				FieldGroup:       fieldGroup0,
-				Field:            publicpgn.RateOfTurnOrder_2,
+				Field:            publicpgn.RateOfTurnOrder,
 				RateOfTurnOrder:  ptrTo(float32(-0.5)),
 			},
 			pgn: publicpgn.GarminAutopilotRateOfTurnOrderPGN,
@@ -200,7 +200,7 @@ func TestGarminAutopilotTypesAreFullyExportedAndRoutable(t *testing.T) {
 				WrapperByte1:     wrapperByte,
 				WrapperByte2:     wrapperByte,
 				FieldGroup:       ptrTo(uint8(38)),
-				ManeuverCode:     ptrTo(uint8(1)),
+				ManeuverCode:     publicpgn.DecreaseHeading10Degrees,
 				Value:            ptrTo(uint8(2)),
 			},
 			pgn: publicpgn.GarminAutopilotManeuverPGN,
@@ -238,9 +238,9 @@ func TestGarminAutopilotTypesAreFullyExportedAndRoutable(t *testing.T) {
 	}
 
 	modeStates := []publicpgn.GarminAutopilotModeStateConst{
-		publicpgn.Standby_6,
+		publicpgn.Standby,
 		publicpgn.ShadowDrive,
-		publicpgn.Engaged_2,
+		publicpgn.Engaged,
 	}
 	if len(modeStates) != 3 {
 		t.Fatalf("exported Garmin autopilot mode states = %d, want 3", len(modeStates))
@@ -251,7 +251,6 @@ func TestGarminAutopilotControlPacketsMatchCapturedBytes(t *testing.T) {
 	wrapperByte := uint8(4)
 	modeGroup := uint8(5)
 	maneuverGroup := uint8(38)
-	zero := uint8(0)
 
 	tests := []struct {
 		name    string
@@ -268,7 +267,7 @@ func TestGarminAutopilotControlPacketsMatchCapturedBytes(t *testing.T) {
 				WrapperByte2:     &wrapperByte,
 				FieldGroup:       &modeGroup,
 				Field:            publicpgn.ModeState,
-				ModeState:        publicpgn.Engaged_2,
+				ModeState:        publicpgn.Engaged,
 			},
 			want: []byte{0xe5, 0x98, 0x10, 0x17, 0x04, 0x04, 0x05, 0x0a, 0x00, 0x05, 0x00},
 		},
@@ -282,7 +281,7 @@ func TestGarminAutopilotControlPacketsMatchCapturedBytes(t *testing.T) {
 				WrapperByte2:     &wrapperByte,
 				FieldGroup:       &modeGroup,
 				Field:            publicpgn.ModeState,
-				ModeState:        publicpgn.Standby_6,
+				ModeState:        publicpgn.Standby,
 			},
 			want: []byte{0xe5, 0x98, 0x10, 0x17, 0x04, 0x04, 0x05, 0x0a, 0x00, 0x02, 0x00},
 		},
@@ -290,7 +289,7 @@ func TestGarminAutopilotControlPacketsMatchCapturedBytes(t *testing.T) {
 
 	for _, maneuver := range []struct {
 		name string
-		code uint8
+		code publicpgn.GarminAutopilotManeuverCodeConst
 	}{
 		{name: "minus 1", code: 0},
 		{name: "minus 10", code: 1},
@@ -311,10 +310,9 @@ func TestGarminAutopilotControlPacketsMatchCapturedBytes(t *testing.T) {
 				WrapperByte1:     &wrapperByte,
 				WrapperByte2:     &wrapperByte,
 				FieldGroup:       &maneuverGroup,
-				ManeuverCode:     &code,
-				Value:            &zero,
+				ManeuverCode:     code,
 			},
-			want: []byte{0xe5, 0x98, 0x10, 0x17, 0x04, 0x04, 0x26, code, 0x00},
+			want: []byte{0xe5, 0x98, 0x10, 0x17, 0x04, 0x04, 0x26, uint8(code), 0x00},
 		})
 	}
 

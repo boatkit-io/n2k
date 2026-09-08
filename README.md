@@ -187,7 +187,9 @@ when they duplicate an upstream definition or collide with another variant's
 PGN discriminator, making it clear when an upstream Canboat update has made a
 local definition redundant. `MinLengths` entries retain the upstream field
 definition while allowing devices to omit trailing fields at the specified byte
-boundary.
+boundary; generated encoders stop at an omitted optional pointer field.
+`ReservedCounts` entries adjust the generated reserved-value band for individual
+numeric fields when observed wire values use codes that CANboat reserves.
 
 ## Development
 

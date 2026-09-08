@@ -1331,8 +1331,8 @@ func DecodeHondaEngineData(Info publicpgn.MessageInfo, stream *DataStream) (any,
         return nil, fmt.Errorf("parse failed for HondaEngineData-ManufacturerCode: %w", err)
     } else {
         val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
-        if v != 175 {
-            return nil, fmt.Errorf("match failed for HondaEngineData-ManufacturerCode: Expected %d != %d", 175, v)
+        if v != 257 {
+            return nil, fmt.Errorf("match failed for HondaEngineData-ManufacturerCode: Expected %d != %d", 257, v)
         }
     }
     stream.skipBits(2)
@@ -1373,18 +1373,16 @@ func DecodeYanmarEngineDataA(Info publicpgn.MessageInfo, stream *DataStream) (an
             return nil, fmt.Errorf("match failed for YanmarEngineDataA-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := stream.readLookupField(1); err != nil {
-        return nil, fmt.Errorf("parse failed for YanmarEngineDataA-UnknownSelectorFlag: %w", err)
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_YanmarEngineDataA_UnknownSelector); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarEngineDataA-UnknownSelector: %w", err)
     } else {
-        val.UnknownSelectorFlag = publicpgn.YesNo1BitConst(v)
+        val.UnknownSelector = v
     }
-    stream.skipBits(4)
-    if v, err := stream.readLookupField(1); err != nil {
+    if v, err := stream.readLookupField(3); err != nil {
         return nil, fmt.Errorf("parse failed for YanmarEngineDataA-EngineInstance: %w", err)
     } else {
         val.EngineInstance = publicpgn.EngineInstanceConst(v)
     }
-    stream.skipBits(2)
     if v, err := ReadScaled[float32](stream, &fieldSpec_YanmarEngineDataA_ThrottlePosition); err != nil {
         return nil, fmt.Errorf("parse failed for YanmarEngineDataA-ThrottlePosition: %w", err)
     } else {
@@ -1573,6 +1571,55 @@ func DecodeBepMarineCzoneCircuitControl(Info publicpgn.MessageInfo, stream *Data
         val.UnknownF = v
     }
     stream.skipBits(3)
+
+    return val, nil
+}
+func DecodeSleipnerThrusterCommand(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.SleipnerThrusterCommand
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterCommand-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 306 {
+            return nil, fmt.Errorf("match failed for SleipnerThrusterCommand-ManufacturerCode: Expected %d != %d", 306, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterCommand-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for SleipnerThrusterCommand-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterCommand_ThrusterInstance); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterCommand-ThrusterInstance: %w", err)
+    } else {
+        val.ThrusterInstance = v
+    }
+    if v, err := stream.readLookupField(2); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterCommand-Direction: %w", err)
+    } else {
+        val.Direction = publicpgn.SleipnerThrusterDirectionConst(v)
+    }
+    if v, err := stream.readLookupField(2); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterCommand-DeviceAction: %w", err)
+    } else {
+        val.DeviceAction = publicpgn.SleipnerThrusterActionConst(v)
+    }
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SleipnerThrusterCommand_Thrust); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterCommand-Thrust: %w", err)
+    } else {
+        val.Thrust = v
+    }
+    if v, err := stream.readBinaryData(30); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterCommand-Reserved10: %w", err)
+    } else {
+        val.Reserved10 = v
+    }
 
     return val, nil
 }
@@ -1843,8 +1890,8 @@ func DecodeHondaEngineAlerts(Info publicpgn.MessageInfo, stream *DataStream) (an
         return nil, fmt.Errorf("parse failed for HondaEngineAlerts-ManufacturerCode: %w", err)
     } else {
         val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
-        if v != 175 {
-            return nil, fmt.Errorf("match failed for HondaEngineAlerts-ManufacturerCode: Expected %d != %d", 175, v)
+        if v != 257 {
+            return nil, fmt.Errorf("match failed for HondaEngineAlerts-ManufacturerCode: Expected %d != %d", 257, v)
         }
     }
     stream.skipBits(2)
@@ -1899,6 +1946,62 @@ func DecodeBepMarineCzoneCircuitStatus(Info publicpgn.MessageInfo, stream *DataS
         return nil, fmt.Errorf("parse failed for BepMarineCzoneCircuitStatus-Bitmap: %w", err)
     } else {
         val.Bitmap = v
+    }
+
+    return val, nil
+}
+func DecodeYanmarThrottleControl(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.YanmarThrottleControl
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 172 {
+            return nil, fmt.Errorf("match failed for YanmarThrottleControl-ManufacturerCode: Expected %d != %d", 172, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for YanmarThrottleControl-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_YanmarThrottleControl_UnknownSelector); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-UnknownSelector: %w", err)
+    } else {
+        val.UnknownSelector = v
+    }
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-EngineInstance: %w", err)
+    } else {
+        val.EngineInstance = publicpgn.EngineInstanceConst(v)
+    }
+    if v, err := stream.readLookupField(2); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-TransmissionGear: %w", err)
+    } else {
+        val.TransmissionGear = publicpgn.GearStatusConst(v)
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_YanmarThrottleControl_UnknownControlFlag); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-UnknownControlFlag: %w", err)
+    } else {
+        val.UnknownControlFlag = v
+    }
+    stream.skipBits(5)
+    if v, err := ReadScaled[float32](stream, &fieldSpec_YanmarThrottleControl_ThrottlePosition); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-ThrottlePosition: %w", err)
+    } else {
+        val.ThrottlePosition = v
+    }
+    stream.skipBits(6)
+    if v, err := stream.readBinaryData(16); err != nil {
+        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-UnknownData: %w", err)
+    } else {
+        val.UnknownData = v
     }
 
     return val, nil
@@ -3294,6 +3397,55 @@ func DecodeLowranceVesselSetupEngineAndTankConfigurationBroadcast(Info publicpgn
         val.TotalFuelCapacity = nullableUnit(units.Liter, v, units.NewVolume)
     }
     stream.skipBits(24)
+
+    return val, nil
+}
+func DecodeSleipnerDeviceStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.SleipnerDeviceStatus
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatus-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 306 {
+            return nil, fmt.Errorf("match failed for SleipnerDeviceStatus-ManufacturerCode: Expected %d != %d", 306, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatus-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for SleipnerDeviceStatus-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerDeviceStatus_DeviceType); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatus-DeviceType: %w", err)
+    } else {
+        val.DeviceType = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerDeviceStatus_DeviceIndex); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatus-DeviceIndex: %w", err)
+    } else {
+        val.DeviceIndex = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerDeviceStatus_A); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatus-A: %w", err)
+    } else {
+        val.A = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_SleipnerDeviceStatus_UniqueNumber); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatus-UniqueNumber: %w", err)
+    } else {
+        val.UniqueNumber = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerDeviceStatus_B); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatus-B: %w", err)
+    } else {
+        val.B = v
+    }
 
     return val, nil
 }
@@ -6858,10 +7010,14 @@ func DecodeGarminAutopilotManeuver(Info publicpgn.MessageInfo, stream *DataStrea
             return nil, fmt.Errorf("match failed for GarminAutopilotManeuver-FieldGroup: Expected %d != %d", 38, *v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_GarminAutopilotManeuver_ManeuverCode); err != nil {
+    if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for GarminAutopilotManeuver-ManeuverCode: %w", err)
     } else {
-        val.ManeuverCode = v
+        val.ManeuverCode = publicpgn.GarminAutopilotManeuverCodeConst(v)
+    }
+    stream.skipBits(8)
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := ReadRaw[uint8](stream, &fieldSpec_GarminAutopilotManeuver_Value); err != nil {
         return nil, fmt.Errorf("parse failed for GarminAutopilotManeuver-Value: %w", err)
@@ -8694,6 +8850,152 @@ func DecodeGarminColorMode(Info publicpgn.MessageInfo, stream *DataStream) (any,
 
     return val, nil
 }
+func DecodeFusionMenuActionCommand(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.FusionMenuActionCommand
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 419 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionCommand-ManufacturerCode: Expected %d != %d", 419, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionCommand-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(16); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-ProprietaryID: %w", err)
+    } else {
+        val.ProprietaryID = publicpgn.FusionMessageIDConst(v)
+        if v != 9 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionCommand-ProprietaryID: Expected %d != %d", 9, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionCommand_SourceID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-SourceID: %w", err)
+    } else {
+        val.SourceID = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMenuActionCommand_ItemIndex); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-ItemIndex: %w", err)
+    } else {
+        val.ItemIndex = v
+    }
+    if v, err := stream.readLookupField(8); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-Action: %w", err)
+    } else {
+        val.Action = publicpgn.FusionMenuActionConst(v)
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionCommand_LockID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-LockID: %w", err)
+    } else {
+        val.LockID = v
+    }
+
+    return val, nil
+}
+func DecodeFusionRequestMenuCount(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.FusionRequestMenuCount
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 419 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuCount-ManufacturerCode: Expected %d != %d", 419, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuCount-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(16); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-ProprietaryID: %w", err)
+    } else {
+        val.ProprietaryID = publicpgn.FusionMessageIDConst(v)
+        if v != 10 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuCount-ProprietaryID: Expected %d != %d", 10, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuCount_SourceID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-SourceID: %w", err)
+    } else {
+        val.SourceID = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuCount_LockID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-LockID: %w", err)
+    } else {
+        val.LockID = v
+    }
+
+    return val, nil
+}
+func DecodeFusionRequestMenuItems(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.FusionRequestMenuItems
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 419 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuItems-ManufacturerCode: Expected %d != %d", 419, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuItems-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(16); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-ProprietaryID: %w", err)
+    } else {
+        val.ProprietaryID = publicpgn.FusionMessageIDConst(v)
+        if v != 11 {
+            return nil, fmt.Errorf("match failed for FusionRequestMenuItems-ProprietaryID: Expected %d != %d", 11, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuItems_SourceID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-SourceID: %w", err)
+    } else {
+        val.SourceID = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionRequestMenuItems_StartIndex); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-StartIndex: %w", err)
+    } else {
+        val.StartIndex = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionRequestMenuItems_Count); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-Count: %w", err)
+    } else {
+        val.Count = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuItems_LockID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-LockID: %w", err)
+    } else {
+        val.LockID = v
+    }
+
+    return val, nil
+}
 func DecodeZeroX1F0000X1FeffStandardizedMixedSingleFastPacketNonAddressed(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
 
     var val publicpgn.ZeroX1F0000X1FeffStandardizedMixedSingleFastPacketNonAddressed
@@ -9301,10 +9603,16 @@ func DecodeProductInformation(Info publicpgn.MessageInfo, stream *DataStream) (a
     } else {
         val.ModelSerialCode = v
     }
+    if stream.isEOF() {
+        return val, nil
+    }
     if v, err := stream.readLookupField(8); err != nil {
         return nil, fmt.Errorf("parse failed for ProductInformation-CertificationLevel: %w", err)
     } else {
         val.CertificationLevel = publicpgn.CertificationLevelConst(v)
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := ReadRaw[uint8](stream, &fieldSpec_ProductInformation_LoadEquivalency); err != nil {
         return nil, fmt.Errorf("parse failed for ProductInformation-LoadEquivalency: %w", err)
@@ -9660,6 +9968,9 @@ func DecodeMagneticVariation(Info publicpgn.MessageInfo, stream *DataStream) (an
         return nil, fmt.Errorf("parse failed for MagneticVariation-Variation: %w", err)
     } else {
         val.Variation = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     stream.skipBits(16)
 
@@ -10711,6 +11022,9 @@ func DecodeDCDetailedStatus(Info publicpgn.MessageInfo, stream *DataStream) (any
         return nil, fmt.Errorf("parse failed for DCDetailedStatus-RippleVoltage: %w", err)
     } else {
         val.RippleVoltage = v
+    }
+    if stream.isEOF() {
+        return val, nil
     }
     if v, err := ReadRaw[uint16](stream, &fieldSpec_DCDetailedStatus_RemainingCapacity); err != nil {
         return nil, fmt.Errorf("parse failed for DCDetailedStatus-RemainingCapacity: %w", err)
@@ -12569,7 +12883,15 @@ func DecodeAISClassBPositionReport(Info publicpgn.MessageInfo, stream *DataStrea
     } else {
         val.AISCommunicationState = publicpgn.AISCommunicationStateConst(v)
     }
-    stream.skipBits(15)
+    stream.skipBits(7)
+    if stream.isEOF() {
+        return val, nil
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AISClassBPositionReport_SequenceID); err != nil {
+        return nil, fmt.Errorf("parse failed for AISClassBPositionReport-SequenceID: %w", err)
+    } else {
+        val.SequenceID = v
+    }
 
     return val, nil
 }
@@ -13349,7 +13671,11 @@ func DecodeGNSSSatsInView(Info publicpgn.MessageInfo, stream *DataStream) (any, 
         } else {
             rep.Status = publicpgn.SatelliteStatusConst(v)
 	        }
-        stream.skipBits(4)
+        if v, err := stream.readLookupField(4); err != nil {
+            return nil, fmt.Errorf("parse failed for GNSSSatsInView-GNSSSystem: %w", err)
+        } else {
+            rep.GNSSSystem = publicpgn.GNSSSystemConst(v)
+	        }
         val.Repeating1 = append(val.Repeating1, rep)
         repeat1Count--
         if int(repeat1Count) == 0 {
@@ -13974,6 +14300,16 @@ func DecodeAISUTCAndDateReport(Info publicpgn.MessageInfo, stream *DataStream) (
     } else {
         val.GNSSType = publicpgn.PositionFixDeviceConst(v)
     }
+    stream.skipBits(10)
+    stream.skipBits(6)
+    if stream.isEOF() {
+        return val, nil
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AISUTCAndDateReport_SequenceID); err != nil {
+        return nil, fmt.Errorf("parse failed for AISUTCAndDateReport-SequenceID: %w", err)
+    } else {
+        val.SequenceID = v
+    }
 
     return val, nil
 }
@@ -14078,6 +14414,14 @@ func DecodeAISClassAStaticAndVoyageRelatedData(Info publicpgn.MessageInfo, strea
         val.AISTransceiverInformation = publicpgn.AISTransceiverConst(v)
     }
     stream.skipBits(3)
+    if stream.isEOF() {
+        return val, nil
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_AISClassAStaticAndVoyageRelatedData_SequenceID); err != nil {
+        return nil, fmt.Errorf("parse failed for AISClassAStaticAndVoyageRelatedData-SequenceID: %w", err)
+    } else {
+        val.SequenceID = v
+    }
 
     return val, nil
 }
@@ -20061,8 +20405,8 @@ func DecodeHondaEngineStatus(Info publicpgn.MessageInfo, stream *DataStream) (an
         return nil, fmt.Errorf("parse failed for HondaEngineStatus-ManufacturerCode: %w", err)
     } else {
         val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
-        if v != 175 {
-            return nil, fmt.Errorf("match failed for HondaEngineStatus-ManufacturerCode: Expected %d != %d", 175, v)
+        if v != 257 {
+            return nil, fmt.Errorf("match failed for HondaEngineStatus-ManufacturerCode: Expected %d != %d", 257, v)
         }
     }
     stream.skipBits(2)
@@ -20429,6 +20773,170 @@ func DecodeBepMarineCzoneStatusExtended(Info publicpgn.MessageInfo, stream *Data
         return nil, fmt.Errorf("parse failed for BepMarineCzoneStatusExtended-Records: %w", err)
     } else {
         val.Records = v
+    }
+
+    return val, nil
+}
+func DecodeSleipnerThrusterStatusPpc820(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.SleipnerThrusterStatusPpc820
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 306 {
+            return nil, fmt.Errorf("match failed for SleipnerThrusterStatusPpc820-ManufacturerCode: Expected %d != %d", 306, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for SleipnerThrusterStatusPpc820-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc820_DeviceType); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-DeviceType: %w", err)
+    } else {
+        val.DeviceType = v
+        if v != nil && *v != 25 {
+            return nil, fmt.Errorf("match failed for SleipnerThrusterStatusPpc820-DeviceType: Expected %d != %d", 25, *v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc820_A); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-A: %w", err)
+    } else {
+        val.A = v
+    }
+    if v, err := stream.readBinaryData(16); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-Status: %w", err)
+    } else {
+        val.Status = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc820_MotorTemperature); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-MotorTemperature: %w", err)
+    } else {
+        val.MotorTemperature = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc820_PowerTemperature); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-PowerTemperature: %w", err)
+    } else {
+        val.PowerTemperature = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc820_B); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-B: %w", err)
+    } else {
+        val.B = v
+    }
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SleipnerThrusterStatusPpc820_MotorVoltage); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-MotorVoltage: %w", err)
+    } else {
+        val.MotorVoltage = v
+    }
+    if v, err := stream.readBinaryData(16); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-C: %w", err)
+    } else {
+        val.C = v
+    }
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SleipnerThrusterStatusPpc820_MotorCurrent); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-MotorCurrent: %w", err)
+    } else {
+        val.MotorCurrent = v
+    }
+    if v, err := ReadRaw[int8](stream, &fieldSpec_SleipnerThrusterStatusPpc820_OutputThrust); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-OutputThrust: %w", err)
+    } else {
+        val.OutputThrust = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc820_D); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc820-D: %w", err)
+    } else {
+        val.D = v
+    }
+
+    return val, nil
+}
+func DecodeSleipnerThrusterStatusPpc520(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.SleipnerThrusterStatusPpc520
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 306 {
+            return nil, fmt.Errorf("match failed for SleipnerThrusterStatusPpc520-ManufacturerCode: Expected %d != %d", 306, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for SleipnerThrusterStatusPpc520-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc520_DeviceType); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-DeviceType: %w", err)
+    } else {
+        val.DeviceType = v
+        if v != nil && *v != 24 {
+            return nil, fmt.Errorf("match failed for SleipnerThrusterStatusPpc520-DeviceType: Expected %d != %d", 24, *v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc520_A); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-A: %w", err)
+    } else {
+        val.A = v
+    }
+    if v, err := stream.readBinaryData(16); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-Status: %w", err)
+    } else {
+        val.Status = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc520_MotorTemperature); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-MotorTemperature: %w", err)
+    } else {
+        val.MotorTemperature = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc520_PowerTemperature); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-PowerTemperature: %w", err)
+    } else {
+        val.PowerTemperature = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc520_B); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-B: %w", err)
+    } else {
+        val.B = v
+    }
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SleipnerThrusterStatusPpc520_MotorVoltage); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-MotorVoltage: %w", err)
+    } else {
+        val.MotorVoltage = v
+    }
+    if v, err := stream.readBinaryData(16); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-C: %w", err)
+    } else {
+        val.C = v
+    }
+    if v, err := ReadScaled[float32](stream, &fieldSpec_SleipnerThrusterStatusPpc520_MotorCurrent); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-MotorCurrent: %w", err)
+    } else {
+        val.MotorCurrent = v
+    }
+    if v, err := ReadRaw[int8](stream, &fieldSpec_SleipnerThrusterStatusPpc520_OutputThrust); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-OutputThrust: %w", err)
+    } else {
+        val.OutputThrust = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatusPpc520_D); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatusPpc520-D: %w", err)
+    } else {
+        val.D = v
     }
 
     return val, nil
@@ -23342,6 +23850,105 @@ func DecodeMaretronAlertResponse(Info publicpgn.MessageInfo, stream *DataStream)
 
     return val, nil
 }
+func DecodeFusionMenuActionStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.FusionMenuActionStatus
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 419 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionStatus-ManufacturerCode: Expected %d != %d", 419, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionStatus-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(16); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-MessageID: %w", err)
+    } else {
+        val.MessageID = publicpgn.FusionStatusMessageIDConst(v)
+        if v != 32783 {
+            return nil, fmt.Errorf("match failed for FusionMenuActionStatus-MessageID: Expected %d != %d", 32783, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionStatus_SourceID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-SourceID: %w", err)
+    } else {
+        val.SourceID = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMenuActionStatus_ItemIndex); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-ItemIndex: %w", err)
+    } else {
+        val.ItemIndex = v
+    }
+    if v, err := stream.readLookupField(8); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-Action: %w", err)
+    } else {
+        val.Action = publicpgn.FusionMenuActionConst(v)
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionStatus_LockID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-LockID: %w", err)
+    } else {
+        val.LockID = v
+    }
+
+    return val, nil
+}
+func DecodeFusionMenuCount(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.FusionMenuCount
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 419 {
+            return nil, fmt.Errorf("match failed for FusionMenuCount-ManufacturerCode: Expected %d != %d", 419, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for FusionMenuCount-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := stream.readLookupField(16); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-MessageID: %w", err)
+    } else {
+        val.MessageID = publicpgn.FusionStatusMessageIDConst(v)
+        if v != 32784 {
+            return nil, fmt.Errorf("match failed for FusionMenuCount-MessageID: Expected %d != %d", 32784, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuCount_SourceID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-SourceID: %w", err)
+    } else {
+        val.SourceID = v
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMenuCount_Count); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-Count: %w", err)
+    } else {
+        val.Count = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuCount_LockID); err != nil {
+        return nil, fmt.Errorf("parse failed for FusionMenuCount-LockID: %w", err)
+    } else {
+        val.LockID = v
+    }
+
+    return val, nil
+}
 func DecodeNavicoAsciiData(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
 
     var val publicpgn.NavicoAsciiData
@@ -24600,30 +25207,30 @@ func DecodeMaretronAnnunciator(Info publicpgn.MessageInfo, stream *DataStream) (
             return nil, fmt.Errorf("match failed for MaretronAnnunciator-IndustryCode: Expected %d != %d", 4, v)
         }
     }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronAnnunciator_Field4); err != nil {
-        return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Field4: %w", err)
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronAnnunciator_AnnunciatorInstance); err != nil {
+        return nil, fmt.Errorf("parse failed for MaretronAnnunciator-AnnunciatorInstance: %w", err)
     } else {
-        val.Field4 = v
+        val.AnnunciatorInstance = v
     }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronAnnunciator_Field5); err != nil {
-        return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Field5: %w", err)
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronAnnunciator_AnnunciatorState); err != nil {
+        return nil, fmt.Errorf("parse failed for MaretronAnnunciator-AnnunciatorState: %w", err)
     } else {
-        val.Field5 = v
+        val.AnnunciatorState = v
     }
-    if v, err := ReadRaw[uint16](stream, &fieldSpec_MaretronAnnunciator_Field6); err != nil {
-        return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Field6: %w", err)
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_MaretronAnnunciator_Pattern); err != nil {
+        return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Pattern: %w", err)
     } else {
-        val.Field6 = v
+        val.Pattern = v
     }
     if v, err := ReadRaw[uint8](stream, &fieldSpec_MaretronAnnunciator_Field7); err != nil {
         return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Field7: %w", err)
     } else {
         val.Field7 = v
     }
-    if v, err := ReadRaw[uint16](stream, &fieldSpec_MaretronAnnunciator_Field8); err != nil {
-        return nil, fmt.Errorf("parse failed for MaretronAnnunciator-Field8: %w", err)
+    if v, err := ReadRaw[uint16](stream, &fieldSpec_MaretronAnnunciator_AlertID); err != nil {
+        return nil, fmt.Errorf("parse failed for MaretronAnnunciator-AlertID: %w", err)
     } else {
-        val.Field8 = v
+        val.AlertID = v
     }
 
     return val, nil
@@ -25164,6 +25771,80 @@ func DecodeFurunoNavpilotStatus(Info publicpgn.MessageInfo, stream *DataStream) 
 
     return val, nil
 }
+func DecodeSleipnerThrusterStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.SleipnerThrusterStatus
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 306 {
+            return nil, fmt.Errorf("match failed for SleipnerThrusterStatus-ManufacturerCode: Expected %d != %d", 306, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for SleipnerThrusterStatus-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatus_ControllerType); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-ControllerType: %w", err)
+    } else {
+        val.ControllerType = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatus_ThrusterID); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-ThrusterID: %w", err)
+    } else {
+        val.ThrusterID = v
+    }
+    if v, err := stream.readLookupField(4); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-State: %w", err)
+    } else {
+        val.State = publicpgn.SleipnerThrusterStateConst(v)
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_SleipnerThrusterStatus_UniqueNumber); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-UniqueNumber: %w", err)
+    } else {
+        val.UniqueNumber = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatus_A); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-A: %w", err)
+    } else {
+        val.A = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatus_B); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-B: %w", err)
+    } else {
+        val.B = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatus_C); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-C: %w", err)
+    } else {
+        val.C = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatus_D); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-D: %w", err)
+    } else {
+        val.D = v
+    }
+    if v, err := ReadRaw[int8](stream, &fieldSpec_SleipnerThrusterStatus_Thrust); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-Thrust: %w", err)
+    } else {
+        val.Thrust = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerThrusterStatus_E); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerThrusterStatus-E: %w", err)
+    } else {
+        val.E = v
+    }
+
+    return val, nil
+}
 func DecodeSimnetSetSerialNumber(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
 
     var val publicpgn.SimnetSetSerialNumber
@@ -25253,6 +25934,55 @@ func DecodeMaretronDometicHvacControlStatus(Info publicpgn.MessageInfo, stream *
         return nil, fmt.Errorf("parse failed for MaretronDometicHvacControlStatus-AdditionalSensorTemperature: %w", err)
     } else {
         val.AdditionalSensorTemperature = v
+    }
+
+    return val, nil
+}
+func DecodeSleipnerDeviceStatusFast(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
+
+    var val publicpgn.SleipnerDeviceStatusFast
+    val.Info = Info
+    if v, err := stream.readLookupField(11); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatusFast-ManufacturerCode: %w", err)
+    } else {
+        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
+        if v != 306 {
+            return nil, fmt.Errorf("match failed for SleipnerDeviceStatusFast-ManufacturerCode: Expected %d != %d", 306, v)
+        }
+    }
+    stream.skipBits(2)
+    if v, err := stream.readLookupField(3); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatusFast-IndustryCode: %w", err)
+    } else {
+        val.IndustryCode = publicpgn.IndustryCodeConst(v)
+        if v != 4 {
+            return nil, fmt.Errorf("match failed for SleipnerDeviceStatusFast-IndustryCode: Expected %d != %d", 4, v)
+        }
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerDeviceStatusFast_DeviceType); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatusFast-DeviceType: %w", err)
+    } else {
+        val.DeviceType = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerDeviceStatusFast_DeviceIndex); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatusFast-DeviceIndex: %w", err)
+    } else {
+        val.DeviceIndex = v
+    }
+    if v, err := stream.readLookupField(4); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatusFast-State: %w", err)
+    } else {
+        val.State = publicpgn.SleipnerThrusterStateConst(v)
+    }
+    if v, err := ReadRaw[uint32](stream, &fieldSpec_SleipnerDeviceStatusFast_UniqueNumber); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatusFast-UniqueNumber: %w", err)
+    } else {
+        val.UniqueNumber = v
+    }
+    if v, err := ReadRaw[uint8](stream, &fieldSpec_SleipnerDeviceStatusFast_A); err != nil {
+        return nil, fmt.Errorf("parse failed for SleipnerDeviceStatusFast-A: %w", err)
+    } else {
+        val.A = v
     }
 
     return val, nil
@@ -26512,25 +27242,20 @@ func DecodeFurunoSixDegreesOfFreedomMovement(Info publicpgn.MessageInfo, stream 
     } else {
         val.D = v
     }
-    if v, err := ReadRaw[int32](stream, &fieldSpec_FurunoSixDegreesOfFreedomMovement_E); err != nil {
-        return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-E: %w", err)
+    if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoSixDegreesOfFreedomMovement_RollRate); err != nil {
+        return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-RollRate: %w", err)
     } else {
-        val.E = v
+        val.RollRate = v
     }
-    if v, err := ReadRaw[int32](stream, &fieldSpec_FurunoSixDegreesOfFreedomMovement_F); err != nil {
-        return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-F: %w", err)
+    if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoSixDegreesOfFreedomMovement_PitchRate); err != nil {
+        return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-PitchRate: %w", err)
     } else {
-        val.F = v
+        val.PitchRate = v
     }
-    if v, err := ReadRaw[int16](stream, &fieldSpec_FurunoSixDegreesOfFreedomMovement_G); err != nil {
-        return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-G: %w", err)
+    if v, err := ReadScaled[float32](stream, &fieldSpec_FurunoSixDegreesOfFreedomMovement_YawRate); err != nil {
+        return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-YawRate: %w", err)
     } else {
-        val.G = v
-    }
-    if v, err := ReadRaw[int16](stream, &fieldSpec_FurunoSixDegreesOfFreedomMovement_H); err != nil {
-        return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-H: %w", err)
-    } else {
-        val.H = v
+        val.YawRate = v
     }
     if v, err := ReadRaw[int16](stream, &fieldSpec_FurunoSixDegreesOfFreedomMovement_I); err != nil {
         return nil, fmt.Errorf("parse failed for FurunoSixDegreesOfFreedomMovement-I: %w", err)
@@ -27338,7 +28063,7 @@ func DecodeSimnetCommandApStandby(Info publicpgn.MessageInfo, stream *DataStream
         }
     }
     stream.skipBits(8)
-    stream.skipBits(24)
+    stream.skipBits(32)
 
     return val, nil
 }
@@ -27391,7 +28116,7 @@ func DecodeSimnetCommandApNodrift(Info publicpgn.MessageInfo, stream *DataStream
         }
     }
     stream.skipBits(8)
-    stream.skipBits(24)
+    stream.skipBits(32)
 
     return val, nil
 }
@@ -27444,7 +28169,7 @@ func DecodeSimnetCommandApWind(Info publicpgn.MessageInfo, stream *DataStream) (
         }
     }
     stream.skipBits(8)
-    stream.skipBits(24)
+    stream.skipBits(32)
 
     return val, nil
 }
@@ -27497,7 +28222,7 @@ func DecodeSimnetCommandApNav(Info publicpgn.MessageInfo, stream *DataStream) (a
         }
     }
     stream.skipBits(8)
-    stream.skipBits(24)
+    stream.skipBits(32)
 
     return val, nil
 }
@@ -27550,7 +28275,7 @@ func DecodeSimnetCommandApHeading(Info publicpgn.MessageInfo, stream *DataStream
         }
     }
     stream.skipBits(8)
-    stream.skipBits(24)
+    stream.skipBits(32)
 
     return val, nil
 }
@@ -27904,8 +28629,6 @@ func DecodeSimnetApCommand(Info publicpgn.MessageInfo, stream *DataStream) (any,
     } else {
         val.Event = publicpgn.SimnetApEventsConst(v)
     }
-    stream.skipBits(8)
-    stream.skipBits(8)
     stream.skipBits(8)
     stream.skipBits(8)
     stream.skipBits(8)
@@ -29085,309 +29808,6 @@ func DecodeYamahaEngineData7(Info publicpgn.MessageInfo, stream *DataStream) (an
         if v != 4 {
             return nil, fmt.Errorf("match failed for YamahaEngineData7-IndustryCode: Expected %d != %d", 4, v)
         }
-    }
-
-    return val, nil
-}
-func DecodeYanmarThrottleControl(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-
-    var val publicpgn.YanmarThrottleControl
-    val.Info = Info
-    if v, err := stream.readLookupField(11); err != nil {
-        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-ManufacturerCode: %w", err)
-    } else {
-        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
-        if v != 172 {
-            return nil, fmt.Errorf("match failed for YanmarThrottleControl-ManufacturerCode: Expected %d != %d", 172, v)
-        }
-    }
-    stream.skipBits(2)
-    if v, err := stream.readLookupField(3); err != nil {
-        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-IndustryCode: %w", err)
-    } else {
-        val.IndustryCode = publicpgn.IndustryCodeConst(v)
-        if v != 4 {
-            return nil, fmt.Errorf("match failed for YanmarThrottleControl-IndustryCode: Expected %d != %d", 4, v)
-        }
-    }
-    if v, err := stream.readLookupField(1); err != nil {
-        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-UnknownSelectorFlag: %w", err)
-    } else {
-        val.UnknownSelectorFlag = publicpgn.YesNo1BitConst(v)
-    }
-    stream.skipBits(4)
-    if v, err := stream.readLookupField(1); err != nil {
-        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-EngineInstance: %w", err)
-    } else {
-        val.EngineInstance = publicpgn.EngineInstanceConst(v)
-    }
-    stream.skipBits(2)
-    if v, err := stream.readLookupField(2); err != nil {
-        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-TransmissionGear: %w", err)
-    } else {
-        val.TransmissionGear = publicpgn.GearStatusConst(v)
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_YanmarThrottleControl_UnknownControlFlag); err != nil {
-        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-UnknownControlFlag: %w", err)
-    } else {
-        val.UnknownControlFlag = v
-    }
-    stream.skipBits(5)
-    if v, err := ReadScaled[float32](stream, &fieldSpec_YanmarThrottleControl_ThrottlePosition); err != nil {
-        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-ThrottlePosition: %w", err)
-    } else {
-        val.ThrottlePosition = v
-    }
-    stream.skipBits(6)
-    if v, err := stream.readBinaryData(16); err != nil {
-        return nil, fmt.Errorf("parse failed for YanmarThrottleControl-UnknownData: %w", err)
-    } else {
-        val.UnknownData = v
-    }
-
-    return val, nil
-}
-func DecodeFusionMenuActionCommand(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-
-    var val publicpgn.FusionMenuActionCommand
-    val.Info = Info
-    if v, err := stream.readLookupField(11); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-ManufacturerCode: %w", err)
-    } else {
-        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
-        if v != 419 {
-            return nil, fmt.Errorf("match failed for FusionMenuActionCommand-ManufacturerCode: Expected %d != %d", 419, v)
-        }
-    }
-    stream.skipBits(2)
-    if v, err := stream.readLookupField(3); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-IndustryCode: %w", err)
-    } else {
-        val.IndustryCode = publicpgn.IndustryCodeConst(v)
-        if v != 4 {
-            return nil, fmt.Errorf("match failed for FusionMenuActionCommand-IndustryCode: Expected %d != %d", 4, v)
-        }
-    }
-    if v, err := stream.readLookupField(16); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-ProprietaryID: %w", err)
-    } else {
-        val.ProprietaryID = publicpgn.FusionMessageIDConst(v)
-        if v != 9 {
-            return nil, fmt.Errorf("match failed for FusionMenuActionCommand-ProprietaryID: Expected %d != %d", 9, v)
-        }
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionCommand_SourceID); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-SourceID: %w", err)
-    } else {
-        val.SourceID = v
-    }
-    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMenuActionCommand_ItemIndex); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-ItemIndex: %w", err)
-    } else {
-        val.ItemIndex = v
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionCommand_Action); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-Action: %w", err)
-    } else {
-        val.Action = v
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionCommand_LockID); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionCommand-LockID: %w", err)
-    } else {
-        val.LockID = v
-    }
-
-    return val, nil
-}
-func DecodeFusionRequestMenuCount(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-
-    var val publicpgn.FusionRequestMenuCount
-    val.Info = Info
-    if v, err := stream.readLookupField(11); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-ManufacturerCode: %w", err)
-    } else {
-        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
-        if v != 419 {
-            return nil, fmt.Errorf("match failed for FusionRequestMenuCount-ManufacturerCode: Expected %d != %d", 419, v)
-        }
-    }
-    stream.skipBits(2)
-    if v, err := stream.readLookupField(3); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-IndustryCode: %w", err)
-    } else {
-        val.IndustryCode = publicpgn.IndustryCodeConst(v)
-        if v != 4 {
-            return nil, fmt.Errorf("match failed for FusionRequestMenuCount-IndustryCode: Expected %d != %d", 4, v)
-        }
-    }
-    if v, err := stream.readLookupField(16); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-ProprietaryID: %w", err)
-    } else {
-        val.ProprietaryID = publicpgn.FusionMessageIDConst(v)
-        if v != 10 {
-            return nil, fmt.Errorf("match failed for FusionRequestMenuCount-ProprietaryID: Expected %d != %d", 10, v)
-        }
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuCount_SourceID); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-SourceID: %w", err)
-    } else {
-        val.SourceID = v
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuCount_LockID); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuCount-LockID: %w", err)
-    } else {
-        val.LockID = v
-    }
-
-    return val, nil
-}
-func DecodeFusionRequestMenuItems(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-
-    var val publicpgn.FusionRequestMenuItems
-    val.Info = Info
-    if v, err := stream.readLookupField(11); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-ManufacturerCode: %w", err)
-    } else {
-        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
-        if v != 419 {
-            return nil, fmt.Errorf("match failed for FusionRequestMenuItems-ManufacturerCode: Expected %d != %d", 419, v)
-        }
-    }
-    stream.skipBits(2)
-    if v, err := stream.readLookupField(3); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-IndustryCode: %w", err)
-    } else {
-        val.IndustryCode = publicpgn.IndustryCodeConst(v)
-        if v != 4 {
-            return nil, fmt.Errorf("match failed for FusionRequestMenuItems-IndustryCode: Expected %d != %d", 4, v)
-        }
-    }
-    if v, err := stream.readLookupField(16); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-ProprietaryID: %w", err)
-    } else {
-        val.ProprietaryID = publicpgn.FusionMessageIDConst(v)
-        if v != 11 {
-            return nil, fmt.Errorf("match failed for FusionRequestMenuItems-ProprietaryID: Expected %d != %d", 11, v)
-        }
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuItems_SourceID); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-SourceID: %w", err)
-    } else {
-        val.SourceID = v
-    }
-    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionRequestMenuItems_StartIndex); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-StartIndex: %w", err)
-    } else {
-        val.StartIndex = v
-    }
-    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionRequestMenuItems_Count); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-Count: %w", err)
-    } else {
-        val.Count = v
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionRequestMenuItems_LockID); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionRequestMenuItems-LockID: %w", err)
-    } else {
-        val.LockID = v
-    }
-
-    return val, nil
-}
-func DecodeFusionMenuActionStatus(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-
-    var val publicpgn.FusionMenuActionStatus
-    val.Info = Info
-    if v, err := stream.readLookupField(11); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-ManufacturerCode: %w", err)
-    } else {
-        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
-        if v != 419 {
-            return nil, fmt.Errorf("match failed for FusionMenuActionStatus-ManufacturerCode: Expected %d != %d", 419, v)
-        }
-    }
-    stream.skipBits(2)
-    if v, err := stream.readLookupField(3); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-IndustryCode: %w", err)
-    } else {
-        val.IndustryCode = publicpgn.IndustryCodeConst(v)
-        if v != 4 {
-            return nil, fmt.Errorf("match failed for FusionMenuActionStatus-IndustryCode: Expected %d != %d", 4, v)
-        }
-    }
-    if v, err := stream.readLookupField(16); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-MessageID: %w", err)
-    } else {
-        val.MessageID = publicpgn.FusionStatusMessageIDConst(v)
-        if v != 32783 {
-            return nil, fmt.Errorf("match failed for FusionMenuActionStatus-MessageID: Expected %d != %d", 32783, v)
-        }
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionStatus_SourceID); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-SourceID: %w", err)
-    } else {
-        val.SourceID = v
-    }
-    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMenuActionStatus_ItemIndex); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-ItemIndex: %w", err)
-    } else {
-        val.ItemIndex = v
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionStatus_Action); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-Action: %w", err)
-    } else {
-        val.Action = v
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuActionStatus_LockID); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuActionStatus-LockID: %w", err)
-    } else {
-        val.LockID = v
-    }
-
-    return val, nil
-}
-func DecodeFusionMenuCount(Info publicpgn.MessageInfo, stream *DataStream) (any, error) {
-
-    var val publicpgn.FusionMenuCount
-    val.Info = Info
-    if v, err := stream.readLookupField(11); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuCount-ManufacturerCode: %w", err)
-    } else {
-        val.ManufacturerCode = publicpgn.ManufacturerCodeConst(v)
-        if v != 419 {
-            return nil, fmt.Errorf("match failed for FusionMenuCount-ManufacturerCode: Expected %d != %d", 419, v)
-        }
-    }
-    stream.skipBits(2)
-    if v, err := stream.readLookupField(3); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuCount-IndustryCode: %w", err)
-    } else {
-        val.IndustryCode = publicpgn.IndustryCodeConst(v)
-        if v != 4 {
-            return nil, fmt.Errorf("match failed for FusionMenuCount-IndustryCode: Expected %d != %d", 4, v)
-        }
-    }
-    if v, err := stream.readLookupField(16); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuCount-MessageID: %w", err)
-    } else {
-        val.MessageID = publicpgn.FusionStatusMessageIDConst(v)
-        if v != 32784 {
-            return nil, fmt.Errorf("match failed for FusionMenuCount-MessageID: Expected %d != %d", 32784, v)
-        }
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuCount_SourceID); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuCount-SourceID: %w", err)
-    } else {
-        val.SourceID = v
-    }
-    if v, err := ReadRaw[uint32](stream, &fieldSpec_FusionMenuCount_Count); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuCount-Count: %w", err)
-    } else {
-        val.Count = v
-    }
-    if v, err := ReadRaw[uint8](stream, &fieldSpec_FusionMenuCount_LockID); err != nil {
-        return nil, fmt.Errorf("parse failed for FusionMenuCount-LockID: %w", err)
-    } else {
-        val.LockID = v
     }
 
     return val, nil

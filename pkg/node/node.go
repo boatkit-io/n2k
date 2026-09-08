@@ -844,7 +844,7 @@ func (n *Node) processNmeaCommandGroupFunction(cmd *pgn.NMEACommandGroupFunction
 		}
 		ack := &pgn.NMEAAcknowledgeGroupFunction{
 			Info:         pgn.MessageInfo{PGN: pgn.NMEAAcknowledgeGroupFunctionPGN, SourceId: source, TargetId: cmd.Info.SourceId, Priority: 3},
-			FunctionCode: pgn.Acknowledge_5, PGN: cmd.PGN, PGNErrorCode: pgn.Acknowledge_6, TransmissionIntervalPriorityErrorCode: pgn.Acknowledge_2,
+			FunctionCode: pgn.Acknowledge_2, PGN: cmd.PGN, PGNErrorCode: pgn.Acknowledge_4, TransmissionIntervalPriorityErrorCode: pgn.Acknowledge_6,
 			NumberOfParameters: &count,
 			Repeating1:         ackParameters,
 		}
@@ -1409,10 +1409,10 @@ func buildNmeaGroupNak(
 			TargetId: destination,
 			Priority: 3,
 		},
-		FunctionCode:                          pgn.Acknowledge_5,
+		FunctionCode:                          pgn.Acknowledge_2,
 		PGN:                                   &requestedPgn,
 		PGNErrorCode:                          pgn.PGNNotSupported,
-		TransmissionIntervalPriorityErrorCode: pgn.NotSupported,
+		TransmissionIntervalPriorityErrorCode: pgn.NotSupported_3,
 		Repeating1: []pgn.NMEAAcknowledgeGroupFunctionRepeating1{
 			{Parameter: parameterError},
 		},
