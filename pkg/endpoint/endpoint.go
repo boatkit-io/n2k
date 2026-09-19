@@ -59,6 +59,8 @@ type ExternalAddressState struct {
 // NGT-1 that own NMEA 2000 address claiming for their host software.
 type ExternalAddressProvider interface {
 	ExternalAddressState() ExternalAddressState
+	// SetExternalAddressHandler installs the address-state consumer. Passing nil
+	// detaches the current consumer before endpoint shutdown or replacement.
 	SetExternalAddressHandler(func(ExternalAddressState))
 }
 

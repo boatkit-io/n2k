@@ -2,13 +2,115 @@ package actisenseendpoint
 
 import (
 	"bytes"
+	"context"
 	"encoding/binary"
 	"testing"
 	"time"
 
 	"github.com/boatkit-io/n2k/pkg/endpoint"
+	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/require"
+	"go.bug.st/serial"
 )
+
+type startupTestSerialPort struct {
+	reads   [][]byte
+	writes  [][]byte
+	closed  bool
+	reset   bool
+	timeout time.Duration
+}
+
+func (p *startupTestSerialPort) Read(buffer []byte) (int, error) {
+	if len(p.reads) == 0 {
+		time.Sleep(100 * time.Microsecond)
+		return 0, nil
+	}
+	read := p.reads[0]
+	p.reads = p.reads[1:]
+	return copy(buffer, read), nil
+}
+
+func (p *startupTestSerialPort) Write(data []byte) (int, error) {
+	p.writes = append(p.writes, append([]byte(nil), data...))
+	return len(data), nil
+}
+
+func (p *startupTestSerialPort) ResetInputBuffer() error {
+	p.reset = true
+	return nil
+}
+
+func (p *startupTestSerialPort) SetReadTimeout(timeout time.Duration) error {
+	p.timeout = timeout
+	return nil
+}
+
+func (p *startupTestSerialPort) Close() error {
+	p.closed = true
+	return nil
+}
+
+func commandResponse(t *testing.T, command byte, data []byte) []byte {
+	t.Helper()
+	payload := make([]byte, 12+len(data))
+	payload[0] = command
+	copy(payload[12:], data)
+	encoded, err := encodeBDTP(bstNGTReceive, payload)
+	require.NoError(t, err)
+	return encoded
+}
+
+func startupResponses(t *testing.T, operatingMode uint16, address byte) []byte {
+	t.Helper()
+	modeData := make([]byte, 2)
+	binary.LittleEndian.PutUint16(modeData, operatingMode)
+	canData := make([]byte, 9)
+	canData[8] = address
+	return append(
+		commandResponse(t, ngtOperatingMode, modeData),
+		commandResponse(t, ngtCANConfig, canData)...,
+	)
+}
+
+func TestStartConfirmsReceiveAllModeBeforeOpening(t *testing.T) {
+	staleMalformedFrame := []byte{dle, stx, bstNGTReceive, 2, 0, 0x5e, dle, etx}
+	responses := append([]byte(nil), staleMalformedFrame...)
+	responses = append(responses, startupResponses(t, ngtReceiveAll, 37)...)
+	port := &startupTestSerialPort{reads: [][]byte{responses}}
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.openPort = func(_ string, mode *serial.Mode) (serialPort, error) {
+		require.Equal(t, defaultBaudRate, mode.BaudRate)
+		return port, nil
+	}
+
+	require.NoError(t, ep.Start(context.Background()))
+	require.True(t, port.reset)
+	require.Equal(t, readTimeout, port.timeout)
+	require.Len(t, port.writes, 3)
+	require.Equal(t, endpoint.ExternalAddressState{Address: 37, Claimed: true}, ep.ExternalAddressState())
+}
+
+func TestStartRejectsFilteredOperatingMode(t *testing.T) {
+	allPorts := []*startupTestSerialPort{
+		{reads: [][]byte{startupResponses(t, 0, 37)}},
+		{reads: [][]byte{startupResponses(t, 0, 37)}},
+	}
+	ports := append([]*startupTestSerialPort(nil), allPorts...)
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.startupResponseTimeout = 2 * time.Millisecond
+	ep.openPort = func(_ string, _ *serial.Mode) (serialPort, error) {
+		port := ports[0]
+		ports = ports[1:]
+		return port, nil
+	}
+
+	err := ep.Start(context.Background())
+	require.ErrorContains(t, err, "gateway remained in filtered operating mode 0")
+	for _, port := range allPorts {
+		require.True(t, port.closed)
+	}
+}
 
 func TestBDTPRoundTripEscapesDLE(t *testing.T) {
 	encoded, err := encodeBDTP(bstN2KSend, []byte{2, 0x01, 0xF8, 0x01, 0xFF, 2, dle, 0x44})

@@ -26,7 +26,7 @@ import (
 const (
 	defaultBaudRate     = 115200
 	alternateBaudRate   = 230400
-	baudProbeInterval   = 1500 * time.Millisecond
+	startupTimeout      = 2 * time.Second
 	addressPollInterval = 5 * time.Second
 	readTimeout         = 250 * time.Millisecond
 
@@ -48,15 +48,27 @@ const (
 	maxBSTFrameLength = 258
 )
 
+type serialPort interface {
+	Read([]byte) (int, error)
+	Write([]byte) (int, error)
+	ResetInputBuffer() error
+	SetReadTimeout(time.Duration) error
+	Close() error
+}
+
+type serialPortOpener func(string, *serial.Mode) (serialPort, error)
+
 // Endpoint is an Actisense NGT-1 serial endpoint.
 type Endpoint struct {
 	log        *logrus.Logger
 	serialPort string
 
-	startMu sync.Mutex
-	writeMu sync.Mutex
-	portMu  sync.RWMutex
-	port    serial.Port
+	startMu                sync.Mutex
+	writeMu                sync.Mutex
+	portMu                 sync.RWMutex
+	port                   serialPort
+	openPort               serialPortOpener
+	startupResponseTimeout time.Duration
 
 	handlerMu sync.RWMutex
 	handler   endpoint.MessageHandler
@@ -66,22 +78,25 @@ type Endpoint struct {
 	txMu      sync.Mutex
 	txPGNs    map[uint32]struct{}
 	parser    bdtpParser
-	baudIndex int
 	closed    atomic.Bool
 }
 
-// New constructs an NGT-1 endpoint for serialPort.
-func New(log *logrus.Logger, serialPort string) *Endpoint {
+// New constructs an NGT-1 endpoint for serialPortName.
+func New(log *logrus.Logger, serialPortName string) *Endpoint {
 	return &Endpoint{
 		log:        log,
-		serialPort: serialPort,
+		serialPort: serialPortName,
 		address:    endpoint.ExternalAddressState{Address: 255},
 		txPGNs:     make(map[uint32]struct{}),
+		openPort: func(name string, mode *serial.Mode) (serialPort, error) {
+			return serial.Open(name, mode)
+		},
+		startupResponseTimeout: startupTimeout,
 	}
 }
 
 // Start opens the serial port and places the NGT-1 in receive-all mode.
-func (e *Endpoint) Start(context.Context) error {
+func (e *Endpoint) Start(ctx context.Context) error {
 	e.startMu.Lock()
 	defer e.startMu.Unlock()
 	if e.closed.Load() {
@@ -90,12 +105,22 @@ func (e *Endpoint) Start(context.Context) error {
 	if e.currentPort() != nil {
 		return nil
 	}
-	e.baudIndex = 0
-	return e.openAtBaudLocked(actisenseBaudRates[e.baudIndex])
+	var startupErrors []error
+	for _, baudRate := range actisenseBaudRates {
+		err := e.openAtBaudLocked(ctx, baudRate)
+		if err == nil {
+			return nil
+		}
+		startupErrors = append(startupErrors, err)
+		if err := ctx.Err(); err != nil {
+			return errors.Join(err, errors.Join(startupErrors...))
+		}
+	}
+	return fmt.Errorf("start Actisense NGT-1: %w", errors.Join(startupErrors...))
 }
 
-func (e *Endpoint) openAtBaudLocked(baudRate int) error {
-	port, err := serial.Open(e.serialPort, &serial.Mode{
+func (e *Endpoint) openAtBaudLocked(ctx context.Context, baudRate int) error {
+	port, err := e.openPort(e.serialPort, &serial.Mode{
 		BaudRate: baudRate,
 		DataBits: 8,
 		Parity:   serial.NoParity,
@@ -108,27 +133,123 @@ func (e *Endpoint) openAtBaudLocked(baudRate int) error {
 		_ = port.Close()
 		return fmt.Errorf("set Actisense NGT-1 read timeout: %w", err)
 	}
+	if err := port.ResetInputBuffer(); err != nil {
+		_ = port.Close()
+		return fmt.Errorf("clear stale Actisense NGT-1 serial input: %w", err)
+	}
 	e.portMu.Lock()
 	e.port = port
 	e.portMu.Unlock()
+	e.parser = bdtpParser{}
 
 	command := []byte{ngtOperatingMode, byte(ngtReceiveAll), byte(ngtReceiveAll >> 8)}
 	if err := e.writeBST(bstNGTSend, command); err != nil {
-		e.portMu.Lock()
-		e.port = nil
-		e.portMu.Unlock()
-		_ = port.Close()
+		e.closePort(port)
 		return fmt.Errorf("configure Actisense NGT-1 receive-all mode: %w", err)
 	}
+	if err := e.writeBST(bstNGTSend, []byte{ngtOperatingMode}); err != nil {
+		e.closePort(port)
+		return fmt.Errorf("query Actisense NGT-1 operating mode: %w", err)
+	}
 	if err := e.writeBST(bstNGTSend, []byte{ngtCANConfig}); err != nil {
-		e.portMu.Lock()
-		e.port = nil
-		e.portMu.Unlock()
-		_ = port.Close()
+		e.closePort(port)
 		return fmt.Errorf("query Actisense NGT-1 CAN address: %w", err)
+	}
+	if err := e.confirmStartup(ctx, port); err != nil {
+		e.closePort(port)
+		return fmt.Errorf("confirm Actisense NGT-1 startup at %d baud: %w", baudRate, err)
 	}
 	e.log.Infof("Actisense NGT-1 serial link opened at %d baud", baudRate)
 	return nil
+}
+
+func (e *Endpoint) closePort(port serialPort) {
+	e.portMu.Lock()
+	e.port = nil
+	e.portMu.Unlock()
+	_ = port.Close()
+	e.storeExternalAddress(endpoint.ExternalAddressState{Address: 255})
+	e.txMu.Lock()
+	clear(e.txPGNs)
+	e.txMu.Unlock()
+}
+
+func (e *Endpoint) confirmStartup(ctx context.Context, port serialPort) error {
+	timeout := e.startupResponseTimeout
+	if timeout <= 0 {
+		timeout = startupTimeout
+	}
+	deadline := time.Now().Add(timeout)
+	buffer := make([]byte, 1024)
+	var operatingMode *uint16
+	var operatingModeErr error
+	var canConfigErr error
+	canConfigReceived := false
+	for time.Now().Before(deadline) {
+		if err := ctx.Err(); err != nil {
+			return err
+		}
+		read, err := port.Read(buffer)
+		if read > 0 {
+			e.parser.consume(buffer[:read], func(frame []byte) {
+				messageID, payload, frameErr := decodeBSTEnvelope(frame)
+				if frameErr != nil {
+					e.log.WithError(frameErr).Warn("Discarding invalid Actisense NGT-1 startup message")
+					return
+				}
+				if messageID != bstNGTReceive {
+					return
+				}
+				if mode, matched, modeErr := decodeOperatingModeResponse(payload); matched {
+					if modeErr != nil {
+						operatingModeErr = modeErr
+						return
+					}
+					operatingMode = &mode
+					operatingModeErr = nil
+					return
+				}
+				if len(payload) == 0 || payload[0] != ngtCANConfig {
+					return
+				}
+				state, stateErr := decodeCANConfigResponse(payload)
+				if stateErr != nil {
+					canConfigErr = stateErr
+					return
+				}
+				if state != nil {
+					e.storeExternalAddress(*state)
+					canConfigReceived = true
+					canConfigErr = nil
+				}
+			})
+		}
+		if err != nil {
+			if ctxErr := ctx.Err(); ctxErr != nil {
+				return ctxErr
+			}
+			if e.closed.Load() {
+				return errors.New("actisense endpoint closed during startup")
+			}
+			return fmt.Errorf("read Actisense NGT-1 startup response: %w", err)
+		}
+		if operatingMode != nil && *operatingMode == ngtReceiveAll && canConfigReceived {
+			return nil
+		}
+	}
+	if operatingModeErr != nil {
+		return operatingModeErr
+	}
+	if operatingMode == nil {
+		return errors.New("receive-all operating mode was not acknowledged")
+	}
+	if *operatingMode != ngtReceiveAll {
+		return fmt.Errorf("gateway remained in filtered operating mode %d", *operatingMode)
+	}
+	if canConfigErr != nil {
+		return canConfigErr
+	}
+	return errors.New("CAN address response was not received")
 }
 
 // Run reads and decodes NGT-1 messages until cancellation or closure.
@@ -137,9 +258,8 @@ func (e *Endpoint) Run(ctx context.Context) error {
 		return err
 	}
 	buffer := make([]byte, 1024)
-	probeStarted := time.Now()
 	nextAddressPoll := time.Now().Add(addressPollInterval)
-	baudConfirmed := false
+	e.notifyExternalAddress()
 	for {
 		if err := ctx.Err(); err != nil {
 			return err
@@ -151,9 +271,7 @@ func (e *Endpoint) Run(ctx context.Context) error {
 		read, err := port.Read(buffer)
 		if read > 0 {
 			e.parser.consume(buffer[:read], func(frame []byte) {
-				if e.handleFrame(frame) {
-					baudConfirmed = true
-				}
+				e.handleFrame(frame)
 			})
 		}
 		if err != nil {
@@ -162,47 +280,13 @@ func (e *Endpoint) Run(ctx context.Context) error {
 			}
 			return fmt.Errorf("read Actisense NGT-1 serial data: %w", err)
 		}
-		if !baudConfirmed && time.Since(probeStarted) >= baudProbeInterval {
-			if switchErr := e.switchBaud(); switchErr != nil {
-				return switchErr
-			}
-			probeStarted = time.Now()
-			nextAddressPoll = time.Now().Add(addressPollInterval)
-		}
-		if baudConfirmed && !time.Now().Before(nextAddressPoll) {
+		if !time.Now().Before(nextAddressPoll) {
 			if err := e.writeBST(bstNGTSend, []byte{ngtCANConfig}); err != nil {
 				return fmt.Errorf("refresh Actisense NGT-1 CAN address: %w", err)
 			}
 			nextAddressPoll = time.Now().Add(addressPollInterval)
 		}
 	}
-}
-
-func (e *Endpoint) switchBaud() error {
-	e.startMu.Lock()
-	defer e.startMu.Unlock()
-	if e.closed.Load() {
-		return nil
-	}
-	e.writeMu.Lock()
-	e.portMu.Lock()
-	port := e.port
-	e.port = nil
-	e.portMu.Unlock()
-	if port != nil {
-		_ = port.Close()
-	}
-	e.writeMu.Unlock()
-	e.parser = bdtpParser{}
-	e.publishExternalAddress(endpoint.ExternalAddressState{Address: 255})
-	e.txMu.Lock()
-	clear(e.txPGNs)
-	e.txMu.Unlock()
-	e.baudIndex = (e.baudIndex + 1) % len(actisenseBaudRates)
-	if err := e.openAtBaudLocked(actisenseBaudRates[e.baudIndex]); err != nil {
-		return fmt.Errorf("probe alternate Actisense NGT-1 baud rate: %w", err)
-	}
-	return nil
 }
 
 // Close stops serial I/O.
@@ -256,6 +340,22 @@ func (e *Endpoint) publishExternalAddress(state endpoint.ExternalAddressState) {
 	e.address = state
 	handler := e.addressFn
 	e.addressMu.Unlock()
+	if handler != nil {
+		handler(state)
+	}
+}
+
+func (e *Endpoint) storeExternalAddress(state endpoint.ExternalAddressState) {
+	e.addressMu.Lock()
+	e.address = state
+	e.addressMu.Unlock()
+}
+
+func (e *Endpoint) notifyExternalAddress() {
+	e.addressMu.RLock()
+	state := e.address
+	handler := e.addressFn
+	e.addressMu.RUnlock()
 	if handler != nil {
 		handler(state)
 	}
@@ -318,7 +418,7 @@ func bst94Payload(message endpoint.PGNMessage) []byte {
 	return payload
 }
 
-func (e *Endpoint) currentPort() serial.Port {
+func (e *Endpoint) currentPort() serialPort {
 	e.portMu.RLock()
 	defer e.portMu.RUnlock()
 	return e.port
@@ -398,27 +498,17 @@ func decodeBST93(frame []byte, timestamp time.Time) (*endpoint.PGNMessage, error
 }
 
 func decodeBST(frame []byte, timestamp time.Time) (*endpoint.PGNMessage, *endpoint.ExternalAddressState, error) {
-	if len(frame) < 3 {
-		return nil, nil, errors.New("actisense BST frame is too short")
+	messageID, payload, err := decodeBSTEnvelope(frame)
+	if err != nil {
+		return nil, nil, err
 	}
-	var checksum byte
-	for _, value := range frame {
-		checksum += value
-	}
-	if checksum != 0 {
-		return nil, nil, fmt.Errorf("actisense BST checksum failed: 0x%02x", checksum)
-	}
-	if int(frame[1]) != len(frame)-3 {
-		return nil, nil, fmt.Errorf("actisense BST length is %d, expected %d", frame[1], len(frame)-3)
-	}
-	if frame[0] == bstNGTReceive {
-		state, err := decodeCANConfigResponse(frame[2 : len(frame)-1])
+	if messageID == bstNGTReceive {
+		state, err := decodeCANConfigResponse(payload)
 		return nil, state, err
 	}
-	if frame[0] != bstN2KReceive {
-		return nil, nil, fmt.Errorf("unsupported Actisense BST message 0x%02x", frame[0])
+	if messageID != bstN2KReceive {
+		return nil, nil, fmt.Errorf("unsupported Actisense BST message 0x%02x", messageID)
 	}
-	payload := frame[2 : len(frame)-1]
 	if len(payload) < 11 {
 		return nil, nil, fmt.Errorf("actisense BST-93 payload is too short: %d", len(payload))
 	}
@@ -436,22 +526,37 @@ func decodeBST(frame []byte, timestamp time.Time) (*endpoint.PGNMessage, *endpoi
 	}, nil, nil
 }
 
+func decodeBSTEnvelope(frame []byte) (messageID byte, payload []byte, err error) {
+	if len(frame) < 3 {
+		return 0, nil, errors.New("actisense BST frame is too short")
+	}
+	var checksum byte
+	for _, value := range frame {
+		checksum += value
+	}
+	if checksum != 0 {
+		return 0, nil, fmt.Errorf("actisense BST checksum failed: 0x%02x", checksum)
+	}
+	if int(frame[1]) != len(frame)-3 {
+		return 0, nil, fmt.Errorf("actisense BST length is %d, expected %d", frame[1], len(frame)-3)
+	}
+	return frame[0], frame[2 : len(frame)-1], nil
+}
+
 func decodeCANConfigResponse(payload []byte) (*endpoint.ExternalAddressState, error) {
-	if len(payload) == 0 || payload[0] != ngtCANConfig {
-		return nil, nil
+	data, matched, err := decodeCommandResponse(payload, ngtCANConfig)
+	if err != nil {
+		return nil, fmt.Errorf("actisense CAN config query failed: %w", err)
 	}
-	// BEM responses contain the command ID followed by sequence/model/serial
-	// metadata and a four-byte error code. Command data begins at offset 12.
-	if len(payload) < 21 {
-		return nil, fmt.Errorf("actisense CAN config response is too short: %d", len(payload))
+	if !matched {
+		return nil, err
 	}
-	if errorCode := binary.LittleEndian.Uint32(payload[8:12]); errorCode != 0 {
-		return nil, fmt.Errorf("actisense CAN config query failed: 0x%08x", errorCode)
-	}
-	data := payload[12:]
 	state := endpoint.ExternalAddressState{Address: 255}
 	// Current SDKs return NAME[8] + current source. Older NGT firmware may
 	// append preferred/previous/current/claim fields; accept both shapes.
+	if len(data) < 9 {
+		return nil, fmt.Errorf("actisense CAN config response is too short: %d", len(payload))
+	}
 	if len(data) >= 12 && data[11] <= 1 && data[10] <= 252 {
 		state.Address = data[10]
 		state.Claimed = data[11] == 1 && state.Address <= 251
@@ -460,6 +565,32 @@ func decodeCANConfigResponse(payload []byte) (*endpoint.ExternalAddressState, er
 		state.Claimed = state.Address <= 251
 	}
 	return &state, nil
+}
+
+func decodeOperatingModeResponse(payload []byte) (mode uint16, matched bool, err error) {
+	data, matched, err := decodeCommandResponse(payload, ngtOperatingMode)
+	if err != nil || !matched {
+		return 0, matched, err
+	}
+	if len(data) < 2 {
+		return 0, true, fmt.Errorf("actisense operating mode response is too short: %d", len(payload))
+	}
+	return binary.LittleEndian.Uint16(data[:2]), true, nil
+}
+
+func decodeCommandResponse(payload []byte, expectedCommand byte) (data []byte, matched bool, err error) {
+	if len(payload) == 0 || payload[0] != expectedCommand {
+		return nil, false, nil
+	}
+	// BEM responses contain the command ID followed by sequence/model/serial
+	// metadata and a four-byte error code. Command data begins at offset 12.
+	if len(payload) < 12 {
+		return nil, true, fmt.Errorf("actisense command 0x%02x response is too short: %d", expectedCommand, len(payload))
+	}
+	if errorCode := binary.LittleEndian.Uint32(payload[8:12]); errorCode != 0 {
+		return nil, true, fmt.Errorf("actisense command 0x%02x failed: 0x%08x", expectedCommand, errorCode)
+	}
+	return payload[12:], true, nil
 }
 
 type bdtpParser struct {
