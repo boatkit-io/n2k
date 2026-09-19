@@ -74,22 +74,21 @@ func startupResponses(t *testing.T, operatingMode uint16, address byte) []byte {
 }
 
 // ngtStartupResponsesWithBEMTrailer contains synthetic literal NGT-1 wire
-// responses for OperatingMode and CANConfig. Each BEM frame has one
-// checksum-covered trailing byte beyond its declared payload, matching the
-// response shape observed from physical NGT-1 hardware. Keep these bytes
-// independent from encodeBDTP so the test covers compatibility with the device
-// rather than our own encoder.
+// responses for OperatingMode and CANConfig. Each BEM frame has one trailing
+// transport byte after the checksum, matching the response shape observed from
+// physical NGT-1 hardware. Keep these bytes independent from encodeBDTP so the
+// test covers compatibility with the device rather than our own encoder.
 var ngtStartupResponsesWithBEMTrailer = []byte{
 	dle, stx,
 	bstNGTReceive, 0x0e,
 	ngtOperatingMode, 0x01, 0x0e, 0x00, 0xda, 0x58, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00,
-	0x00, 0xfb,
+	0xfb, 0x00,
 	dle, etx,
 	dle, stx,
 	bstNGTReceive, 0x19,
 	ngtCANConfig, 0x01, 0x0e, 0x00, 0xda, 0x58, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x18, 0x17, 0x16, 0x15, 0x14, 0x13, 0x12, 0x11, 0x00, 0x00, 0x25, 0x01, 0x00,
-	0x00, 0xf7,
+	0xf7, 0x00,
 	dle, etx,
 }
 
@@ -123,9 +122,46 @@ func TestStartAcceptsBEMResponseTrailerFromNGT1(t *testing.T) {
 	require.Equal(t, endpoint.ExternalAddressState{Address: 37, Claimed: true}, ep.ExternalAddressState())
 }
 
-func TestDecodeBSTEnvelopeKeepsN2KLengthStrict(t *testing.T) {
-	_, _, err := decodeBSTEnvelope([]byte{bstN2KReceive, 0x00, 0x00, 0x6d})
-	require.ErrorContains(t, err, "actisense BST length is 0, expected 1")
+func TestStartAcceptsValidN2KTrafficWithoutBEMAcknowledgements(t *testing.T) {
+	payload := []byte{
+		3,
+		0x11, 0xF8, 0x01,
+		0xFF,
+		0x22,
+		0x78, 0x56, 0x34, 0x12,
+		3,
+		0x10, 0x20, 0x30,
+	}
+	traffic, err := encodeBDTP(bstN2KReceive, payload)
+	require.NoError(t, err)
+	port := &startupTestSerialPort{reads: [][]byte{traffic}}
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.startupResponseTimeout = 2 * time.Millisecond
+	ep.openPort = func(_ string, mode *serial.Mode) (serialPort, error) {
+		require.Equal(t, defaultBaudRate, mode.BaudRate)
+		return port, nil
+	}
+
+	require.NoError(t, ep.Start(context.Background()))
+	require.False(t, port.closed)
+	require.Equal(t, endpoint.ExternalAddressState{Address: 255}, ep.ExternalAddressState())
+}
+
+func TestDecodeBSTEnvelopeAcceptsN2KTransportTrailer(t *testing.T) {
+	messageID, payload, err := decodeBSTEnvelope([]byte{bstN2KReceive, 0x00, 0x6d, 0x00})
+	require.NoError(t, err)
+	require.Equal(t, bstN2KReceive, messageID)
+	require.Empty(t, payload)
+}
+
+func TestDecodeBSTEnvelopeRejectsIncompleteFrame(t *testing.T) {
+	_, _, err := decodeBSTEnvelope([]byte{bstN2KReceive, 0x01, 0x00})
+	require.ErrorContains(t, err, "actisense BST length is 1, frame contains 0")
+}
+
+func TestDecodeBSTEnvelopeRejectsChecksumFailureBeforeTrailer(t *testing.T) {
+	_, _, err := decodeBSTEnvelope([]byte{bstN2KReceive, 0x00, 0x6c, 0x01})
+	require.ErrorContains(t, err, "actisense BST checksum failed")
 }
 
 func TestStartRejectsFilteredOperatingMode(t *testing.T) {

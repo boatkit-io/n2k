@@ -45,7 +45,7 @@ const (
 	ngtEnableTxPGN    = byte(0x47)
 	ngtActivatePGNs   = byte(0x4B)
 	maxPGNDataLength  = 223
-	maxBSTFrameLength = 259 // Command, length, 255-byte payload, BEM trailer, checksum.
+	maxBSTFrameLength = 259 // Command, length, 255-byte payload, checksum, transport trailer.
 )
 
 type serialPort interface {
@@ -174,6 +174,53 @@ func (e *Endpoint) closePort(port serialPort) {
 	e.txMu.Unlock()
 }
 
+type startupConfirmation struct {
+	operatingMode      *uint16
+	operatingModeErr   error
+	canConfigErr       error
+	canConfigReceived  bool
+	n2kTrafficReceived bool
+}
+
+func (e *Endpoint) observeStartupFrame(frame []byte, confirmation *startupConfirmation) {
+	messageID, payload, err := decodeBSTEnvelope(frame)
+	if err != nil {
+		e.log.WithError(err).Warn("Discarding invalid Actisense NGT-1 startup message")
+		return
+	}
+	if messageID == bstN2KReceive {
+		if message, _, messageErr := decodeBST(frame, time.Now()); messageErr == nil && message != nil {
+			confirmation.n2kTrafficReceived = true
+		}
+		return
+	}
+	if messageID != bstNGTReceive {
+		return
+	}
+	if mode, matched, modeErr := decodeOperatingModeResponse(payload); matched {
+		if modeErr != nil {
+			confirmation.operatingModeErr = modeErr
+			return
+		}
+		confirmation.operatingMode = &mode
+		confirmation.operatingModeErr = nil
+		return
+	}
+	if len(payload) == 0 || payload[0] != ngtCANConfig {
+		return
+	}
+	state, stateErr := decodeCANConfigResponse(payload)
+	if stateErr != nil {
+		confirmation.canConfigErr = stateErr
+		return
+	}
+	if state != nil {
+		e.storeExternalAddress(*state)
+		confirmation.canConfigReceived = true
+		confirmation.canConfigErr = nil
+	}
+}
+
 func (e *Endpoint) confirmStartup(ctx context.Context, port serialPort) error {
 	timeout := e.startupResponseTimeout
 	if timeout <= 0 {
@@ -181,10 +228,7 @@ func (e *Endpoint) confirmStartup(ctx context.Context, port serialPort) error {
 	}
 	deadline := time.Now().Add(timeout)
 	buffer := make([]byte, 1024)
-	var operatingMode *uint16
-	var operatingModeErr error
-	var canConfigErr error
-	canConfigReceived := false
+	confirmation := startupConfirmation{}
 	for time.Now().Before(deadline) {
 		if err := ctx.Err(); err != nil {
 			return err
@@ -192,36 +236,7 @@ func (e *Endpoint) confirmStartup(ctx context.Context, port serialPort) error {
 		read, err := port.Read(buffer)
 		if read > 0 {
 			e.parser.consume(buffer[:read], func(frame []byte) {
-				messageID, payload, frameErr := decodeBSTEnvelope(frame)
-				if frameErr != nil {
-					e.log.WithError(frameErr).Warn("Discarding invalid Actisense NGT-1 startup message")
-					return
-				}
-				if messageID != bstNGTReceive {
-					return
-				}
-				if mode, matched, modeErr := decodeOperatingModeResponse(payload); matched {
-					if modeErr != nil {
-						operatingModeErr = modeErr
-						return
-					}
-					operatingMode = &mode
-					operatingModeErr = nil
-					return
-				}
-				if len(payload) == 0 || payload[0] != ngtCANConfig {
-					return
-				}
-				state, stateErr := decodeCANConfigResponse(payload)
-				if stateErr != nil {
-					canConfigErr = stateErr
-					return
-				}
-				if state != nil {
-					e.storeExternalAddress(*state)
-					canConfigReceived = true
-					canConfigErr = nil
-				}
+				e.observeStartupFrame(frame, &confirmation)
 			})
 		}
 		if err != nil {
@@ -233,21 +248,25 @@ func (e *Endpoint) confirmStartup(ctx context.Context, port serialPort) error {
 			}
 			return fmt.Errorf("read Actisense NGT-1 startup response: %w", err)
 		}
-		if operatingMode != nil && *operatingMode == ngtReceiveAll && canConfigReceived {
+		if confirmation.operatingMode != nil && *confirmation.operatingMode == ngtReceiveAll && confirmation.canConfigReceived {
 			return nil
 		}
 	}
-	if operatingModeErr != nil {
-		return operatingModeErr
+	if confirmation.operatingModeErr != nil {
+		return confirmation.operatingModeErr
 	}
-	if operatingMode == nil {
+	if confirmation.operatingMode != nil && *confirmation.operatingMode != ngtReceiveAll {
+		return fmt.Errorf("gateway remained in filtered operating mode %d", *confirmation.operatingMode)
+	}
+	if confirmation.canConfigErr != nil {
+		return confirmation.canConfigErr
+	}
+	if confirmation.n2kTrafficReceived {
+		e.log.Warn("Actisense NGT-1 did not acknowledge startup queries; continuing after receiving valid NMEA 2000 traffic")
+		return nil
+	}
+	if confirmation.operatingMode == nil {
 		return errors.New("receive-all operating mode was not acknowledged")
-	}
-	if *operatingMode != ngtReceiveAll {
-		return fmt.Errorf("gateway remained in filtered operating mode %d", *operatingMode)
-	}
-	if canConfigErr != nil {
-		return canConfigErr
 	}
 	return errors.New("CAN address response was not received")
 }
@@ -530,26 +549,22 @@ func decodeBSTEnvelope(frame []byte) (messageID byte, payload []byte, err error)
 	if len(frame) < 3 {
 		return 0, nil, errors.New("actisense BST frame is too short")
 	}
+	declaredPayloadLength := int(frame[1])
+	messageLength := declaredPayloadLength + 3 // Command, length, payload, checksum.
+	if len(frame) < messageLength {
+		return 0, nil, fmt.Errorf("actisense BST length is %d, frame contains %d", frame[1], len(frame)-3)
+	}
 	var checksum byte
-	for _, value := range frame {
+	for _, value := range frame[:messageLength] {
 		checksum += value
 	}
 	if checksum != 0 {
 		return 0, nil, fmt.Errorf("actisense BST checksum failed: 0x%02x", checksum)
 	}
-	declaredPayloadLength := int(frame[1])
-	actualPayloadLength := len(frame) - 3
-	if declaredPayloadLength != actualPayloadLength {
-		// NGT-1 firmware can append one checksum-covered byte to BEM receive
-		// frames without including it in the declared payload length. Treat the
-		// declared BEM payload as authoritative, as Actisense-compatible readers
-		// do, while retaining exact length validation for NMEA 2000 traffic.
-		if frame[0] == bstNGTReceive && actualPayloadLength == declaredPayloadLength+1 {
-			return frame[0], frame[2 : 2+declaredPayloadLength], nil
-		}
-		return 0, nil, fmt.Errorf("actisense BST length is %d, expected %d", frame[1], len(frame)-3)
-	}
-	return frame[0], frame[2 : len(frame)-1], nil
+	// Some NGT-1 firmware appends transport bytes after the checksum. The BST
+	// store length identifies the checksum boundary; Actisense's SDK validates
+	// that declared message and ignores any remaining bytes in the BDTP frame.
+	return frame[0], frame[2 : messageLength-1], nil
 }
 
 func decodeCANConfigResponse(payload []byte) (*endpoint.ExternalAddressState, error) {
