@@ -28,6 +28,8 @@ const (
 	alternateBaudRate   = 230400
 	startupTimeout      = 2 * time.Second
 	addressPollInterval = 5 * time.Second
+	modeRefreshInterval = 30 * time.Second
+	modeRepairCooldown  = time.Second
 	readTimeout         = 250 * time.Millisecond
 
 	dle = byte(0x10)
@@ -70,15 +72,17 @@ type Endpoint struct {
 	openPort               serialPortOpener
 	startupResponseTimeout time.Duration
 
-	handlerMu sync.RWMutex
-	handler   endpoint.MessageHandler
-	addressMu sync.RWMutex
-	address   endpoint.ExternalAddressState
-	addressFn func(endpoint.ExternalAddressState)
-	txMu      sync.Mutex
-	txPGNs    map[uint32]struct{}
-	parser    bdtpParser
-	closed    atomic.Bool
+	handlerMu     sync.RWMutex
+	handler       endpoint.MessageHandler
+	addressMu     sync.RWMutex
+	address       endpoint.ExternalAddressState
+	addressFn     func(endpoint.ExternalAddressState)
+	modeMu        sync.Mutex
+	lastModeWrite time.Time
+	txMu          sync.Mutex
+	txPGNs        map[uint32]struct{}
+	parser        bdtpParser
+	closed        atomic.Bool
 }
 
 // New constructs an NGT-1 endpoint for serialPortName.
@@ -142,8 +146,7 @@ func (e *Endpoint) openAtBaudLocked(ctx context.Context, baudRate int) error {
 	e.portMu.Unlock()
 	e.parser = bdtpParser{}
 
-	command := []byte{ngtOperatingMode, byte(ngtReceiveAll), byte(ngtReceiveAll >> 8)}
-	if err := e.writeBST(bstNGTSend, command); err != nil {
+	if err := e.setReceiveAllMode(true); err != nil {
 		e.closePort(port)
 		return fmt.Errorf("configure Actisense NGT-1 receive-all mode: %w", err)
 	}
@@ -278,6 +281,7 @@ func (e *Endpoint) Run(ctx context.Context) error {
 	}
 	buffer := make([]byte, 1024)
 	nextAddressPoll := time.Now().Add(addressPollInterval)
+	nextModeRefresh := time.Now().Add(modeRefreshInterval)
 	e.notifyExternalAddress()
 	for {
 		if err := ctx.Err(); err != nil {
@@ -288,10 +292,16 @@ func (e *Endpoint) Run(ctx context.Context) error {
 			return nil
 		}
 		read, err := port.Read(buffer)
+		var frameErr error
 		if read > 0 {
 			e.parser.consume(buffer[:read], func(frame []byte) {
-				e.handleFrame(frame)
+				if frameErr == nil {
+					frameErr = e.handleFrame(frame)
+				}
 			})
+		}
+		if frameErr != nil {
+			return frameErr
 		}
 		if err != nil {
 			if e.closed.Load() || ctx.Err() != nil {
@@ -299,13 +309,43 @@ func (e *Endpoint) Run(ctx context.Context) error {
 			}
 			return fmt.Errorf("read Actisense NGT-1 serial data: %w", err)
 		}
-		if !time.Now().Before(nextAddressPoll) {
+		now := time.Now()
+		if !now.Before(nextModeRefresh) {
+			if err := e.refreshReceiveAllMode(); err != nil {
+				return fmt.Errorf("refresh Actisense NGT-1 receive-all mode: %w", err)
+			}
+			nextModeRefresh = now.Add(modeRefreshInterval)
+		}
+		if !now.Before(nextAddressPoll) {
 			if err := e.writeBST(bstNGTSend, []byte{ngtCANConfig}); err != nil {
 				return fmt.Errorf("refresh Actisense NGT-1 CAN address: %w", err)
 			}
-			nextAddressPoll = time.Now().Add(addressPollInterval)
+			nextAddressPoll = now.Add(addressPollInterval)
 		}
 	}
+}
+
+func (e *Endpoint) setReceiveAllMode(force bool) error {
+	now := time.Now()
+	e.modeMu.Lock()
+	if !force && !e.lastModeWrite.IsZero() {
+		elapsed := now.Sub(e.lastModeWrite)
+		if elapsed >= 0 && elapsed < modeRepairCooldown {
+			e.modeMu.Unlock()
+			return nil
+		}
+	}
+	e.lastModeWrite = now
+	e.modeMu.Unlock()
+	command := []byte{ngtOperatingMode, byte(ngtReceiveAll), byte(ngtReceiveAll >> 8)}
+	return e.writeBST(bstNGTSend, command)
+}
+
+func (e *Endpoint) refreshReceiveAllMode() error {
+	if err := e.setReceiveAllMode(true); err != nil {
+		return err
+	}
+	return e.writeBST(bstNGTSend, []byte{ngtOperatingMode})
 }
 
 // Close stops serial I/O.
@@ -467,17 +507,38 @@ func (e *Endpoint) writeBST(messageID byte, payload []byte) error {
 	return nil
 }
 
-func (e *Endpoint) handleFrame(frame []byte) bool {
+func (e *Endpoint) handleFrame(frame []byte) error {
+	messageID, payload, envelopeErr := decodeBSTEnvelope(frame)
+	if envelopeErr != nil {
+		e.log.WithError(envelopeErr).Warn("Discarding invalid Actisense NGT-1 message")
+		return nil
+	}
+	if messageID == bstNGTReceive {
+		if mode, matched, modeErr := decodeOperatingModeResponse(payload); matched {
+			if modeErr != nil {
+				e.log.WithError(modeErr).Warn("Discarding invalid Actisense NGT-1 operating mode response")
+				return nil
+			}
+			if mode != ngtReceiveAll {
+				e.log.WithField("operating_mode", mode).
+					Warn("Actisense NGT-1 left receive-all mode; restoring receive-all mode")
+				if err := e.setReceiveAllMode(false); err != nil {
+					return fmt.Errorf("restore Actisense NGT-1 receive-all mode: %w", err)
+				}
+			}
+			return nil
+		}
+	}
 	message, address, err := decodeBST(frame, time.Now())
 	if err != nil {
 		e.log.WithError(err).Warn("Discarding invalid Actisense NGT-1 message")
-		return false
+		return nil
 	}
 	if address != nil {
 		e.publishExternalAddress(*address)
 	}
 	if message == nil {
-		return true
+		return nil
 	}
 	e.handlerMu.RLock()
 	handler := e.handler
@@ -485,7 +546,7 @@ func (e *Endpoint) handleFrame(frame []byte) bool {
 	if handler != nil {
 		handler.HandleMessage(message)
 	}
-	return true
+	return nil
 }
 
 func encodeBDTP(messageID byte, payload []byte) ([]byte, error) {

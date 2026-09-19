@@ -61,6 +61,25 @@ func commandResponse(t *testing.T, command byte, data []byte) []byte {
 	return encoded
 }
 
+func decodedBDTPFrame(t *testing.T, encoded []byte) []byte {
+	t.Helper()
+	var frames [][]byte
+	parser := bdtpParser{}
+	parser.consume(encoded, func(frame []byte) {
+		frames = append(frames, append([]byte(nil), frame...))
+	})
+	require.Len(t, frames, 1)
+	return frames[0]
+}
+
+func requireBSTMessage(t *testing.T, encoded []byte, expectedID byte, expectedPayload []byte) {
+	t.Helper()
+	messageID, payload, err := decodeBSTEnvelope(decodedBDTPFrame(t, encoded))
+	require.NoError(t, err)
+	require.Equal(t, expectedID, messageID)
+	require.Equal(t, expectedPayload, payload)
+}
+
 func startupResponses(t *testing.T, operatingMode uint16, address byte) []byte {
 	t.Helper()
 	modeData := make([]byte, 2)
@@ -183,6 +202,57 @@ func TestStartRejectsFilteredOperatingMode(t *testing.T) {
 	for _, port := range allPorts {
 		require.True(t, port.closed)
 	}
+}
+
+func TestRefreshReceiveAllModeWritesSetAndQuery(t *testing.T) {
+	port := &startupTestSerialPort{}
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.port = port
+
+	require.NoError(t, ep.refreshReceiveAllMode())
+	require.Len(t, port.writes, 2)
+	requireBSTMessage(t, port.writes[0], bstNGTSend,
+		[]byte{ngtOperatingMode, byte(ngtReceiveAll), byte(ngtReceiveAll >> 8)})
+	requireBSTMessage(t, port.writes[1], bstNGTSend, []byte{ngtOperatingMode})
+}
+
+func TestHandleFrameRestoresReceiveAllModeWhenGatewayReportsFiltered(t *testing.T) {
+	port := &startupTestSerialPort{}
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.port = port
+	modeData := make([]byte, 2)
+	binary.LittleEndian.PutUint16(modeData, 0)
+
+	require.NoError(t, ep.handleFrame(decodedBDTPFrame(t,
+		commandResponse(t, ngtOperatingMode, modeData))))
+	require.Len(t, port.writes, 1)
+	requireBSTMessage(t, port.writes[0], bstNGTSend,
+		[]byte{ngtOperatingMode, byte(ngtReceiveAll), byte(ngtReceiveAll >> 8)})
+}
+
+func TestHandleFrameDoesNotLoopOnImmediateFilteredResponse(t *testing.T) {
+	port := &startupTestSerialPort{}
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.port = port
+	require.NoError(t, ep.refreshReceiveAllMode())
+	modeData := make([]byte, 2)
+	binary.LittleEndian.PutUint16(modeData, 0)
+
+	require.NoError(t, ep.handleFrame(decodedBDTPFrame(t,
+		commandResponse(t, ngtOperatingMode, modeData))))
+	require.Len(t, port.writes, 2)
+}
+
+func TestHandleFrameLeavesReceiveAllModeAlone(t *testing.T) {
+	port := &startupTestSerialPort{}
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.port = port
+	modeData := make([]byte, 2)
+	binary.LittleEndian.PutUint16(modeData, ngtReceiveAll)
+
+	require.NoError(t, ep.handleFrame(decodedBDTPFrame(t,
+		commandResponse(t, ngtOperatingMode, modeData))))
+	require.Empty(t, port.writes)
 }
 
 func TestBDTPRoundTripEscapesDLE(t *testing.T) {
