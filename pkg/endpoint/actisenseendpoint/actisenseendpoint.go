@@ -45,7 +45,7 @@ const (
 	ngtEnableTxPGN    = byte(0x47)
 	ngtActivatePGNs   = byte(0x4B)
 	maxPGNDataLength  = 223
-	maxBSTFrameLength = 258
+	maxBSTFrameLength = 259 // Command, length, 255-byte payload, BEM trailer, checksum.
 )
 
 type serialPort interface {
@@ -537,7 +537,16 @@ func decodeBSTEnvelope(frame []byte) (messageID byte, payload []byte, err error)
 	if checksum != 0 {
 		return 0, nil, fmt.Errorf("actisense BST checksum failed: 0x%02x", checksum)
 	}
-	if int(frame[1]) != len(frame)-3 {
+	declaredPayloadLength := int(frame[1])
+	actualPayloadLength := len(frame) - 3
+	if declaredPayloadLength != actualPayloadLength {
+		// NGT-1 firmware can append one checksum-covered byte to BEM receive
+		// frames without including it in the declared payload length. Treat the
+		// declared BEM payload as authoritative, as Actisense-compatible readers
+		// do, while retaining exact length validation for NMEA 2000 traffic.
+		if frame[0] == bstNGTReceive && actualPayloadLength == declaredPayloadLength+1 {
+			return frame[0], frame[2 : 2+declaredPayloadLength], nil
+		}
 		return 0, nil, fmt.Errorf("actisense BST length is %d, expected %d", frame[1], len(frame)-3)
 	}
 	return frame[0], frame[2 : len(frame)-1], nil

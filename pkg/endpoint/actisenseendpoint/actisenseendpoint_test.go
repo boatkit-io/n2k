@@ -73,6 +73,26 @@ func startupResponses(t *testing.T, operatingMode uint16, address byte) []byte {
 	)
 }
 
+// ngtStartupResponsesWithBEMTrailer contains synthetic literal NGT-1 wire
+// responses for OperatingMode and CANConfig. Each BEM frame has one
+// checksum-covered trailing byte beyond its declared payload, matching the
+// response shape observed from physical NGT-1 hardware. Keep these bytes
+// independent from encodeBDTP so the test covers compatibility with the device
+// rather than our own encoder.
+var ngtStartupResponsesWithBEMTrailer = []byte{
+	dle, stx,
+	bstNGTReceive, 0x0e,
+	ngtOperatingMode, 0x01, 0x0e, 0x00, 0xda, 0x58, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00,
+	0x00, 0xfb,
+	dle, etx,
+	dle, stx,
+	bstNGTReceive, 0x19,
+	ngtCANConfig, 0x01, 0x0e, 0x00, 0xda, 0x58, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x18, 0x17, 0x16, 0x15, 0x14, 0x13, 0x12, 0x11, 0x00, 0x00, 0x25, 0x01, 0x00,
+	0x00, 0xf7,
+	dle, etx,
+}
+
 func TestStartConfirmsReceiveAllModeBeforeOpening(t *testing.T) {
 	staleMalformedFrame := []byte{dle, stx, bstNGTReceive, 2, 0, 0x5e, dle, etx}
 	responses := append([]byte(nil), staleMalformedFrame...)
@@ -89,6 +109,23 @@ func TestStartConfirmsReceiveAllModeBeforeOpening(t *testing.T) {
 	require.Equal(t, readTimeout, port.timeout)
 	require.Len(t, port.writes, 3)
 	require.Equal(t, endpoint.ExternalAddressState{Address: 37, Claimed: true}, ep.ExternalAddressState())
+}
+
+func TestStartAcceptsBEMResponseTrailerFromNGT1(t *testing.T) {
+	port := &startupTestSerialPort{reads: [][]byte{ngtStartupResponsesWithBEMTrailer}}
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.openPort = func(_ string, mode *serial.Mode) (serialPort, error) {
+		require.Equal(t, defaultBaudRate, mode.BaudRate)
+		return port, nil
+	}
+
+	require.NoError(t, ep.Start(context.Background()))
+	require.Equal(t, endpoint.ExternalAddressState{Address: 37, Claimed: true}, ep.ExternalAddressState())
+}
+
+func TestDecodeBSTEnvelopeKeepsN2KLengthStrict(t *testing.T) {
+	_, _, err := decodeBSTEnvelope([]byte{bstN2KReceive, 0x00, 0x00, 0x6d})
+	require.ErrorContains(t, err, "actisense BST length is 0, expected 1")
 }
 
 func TestStartRejectsFilteredOperatingMode(t *testing.T) {
