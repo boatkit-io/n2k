@@ -27,6 +27,7 @@ const (
 	defaultBaudRate     = 115200
 	alternateBaudRate   = 230400
 	startupTimeout      = 2 * time.Second
+	commandTimeout      = 2 * time.Second
 	addressPollInterval = 5 * time.Second
 	modeRefreshInterval = 30 * time.Second
 	modeRepairCooldown  = time.Second
@@ -60,6 +61,16 @@ type serialPort interface {
 
 type serialPortOpener func(string, *serial.Mode) (serialPort, error)
 
+type commandResult struct {
+	data []byte
+	err  error
+}
+
+type pendingCommand struct {
+	command  byte
+	response chan commandResult
+}
+
 // Endpoint is an Actisense NGT-1 serial endpoint.
 type Endpoint struct {
 	log        *logrus.Logger
@@ -79,6 +90,10 @@ type Endpoint struct {
 	addressFn     func(endpoint.ExternalAddressState)
 	modeMu        sync.Mutex
 	lastModeWrite time.Time
+	commandMu     sync.Mutex
+	pendingMu     sync.Mutex
+	pending       *pendingCommand
+	commandWait   time.Duration
 	txMu          sync.Mutex
 	txPGNs        map[uint32]struct{}
 	parser        bdtpParser
@@ -96,6 +111,7 @@ func New(log *logrus.Logger, serialPortName string) *Endpoint {
 			return serial.Open(name, mode)
 		},
 		startupResponseTimeout: startupTimeout,
+		commandWait:            commandTimeout,
 	}
 }
 
@@ -326,6 +342,16 @@ func (e *Endpoint) Run(ctx context.Context) error {
 }
 
 func (e *Endpoint) setReceiveAllMode(force bool) error {
+	if force {
+		e.commandMu.Lock()
+	} else if !e.commandMu.TryLock() {
+		return nil
+	}
+	defer e.commandMu.Unlock()
+	return e.setReceiveAllModeLocked(force)
+}
+
+func (e *Endpoint) setReceiveAllModeLocked(force bool) error {
 	now := time.Now()
 	e.modeMu.Lock()
 	if !force && !e.lastModeWrite.IsZero() {
@@ -342,7 +368,11 @@ func (e *Endpoint) setReceiveAllMode(force bool) error {
 }
 
 func (e *Endpoint) refreshReceiveAllMode() error {
-	if err := e.setReceiveAllMode(true); err != nil {
+	if !e.commandMu.TryLock() {
+		return nil
+	}
+	defer e.commandMu.Unlock()
+	if err := e.setReceiveAllModeLocked(true); err != nil {
 		return err
 	}
 	return e.writeBST(bstNGTSend, []byte{ngtOperatingMode})
@@ -351,6 +381,7 @@ func (e *Endpoint) refreshReceiveAllMode() error {
 // Close stops serial I/O.
 func (e *Endpoint) Close() error {
 	e.closed.Store(true)
+	e.failPendingCommand(errors.New("actisense endpoint is closed"))
 	e.startMu.Lock()
 	defer e.startMu.Unlock()
 	e.writeMu.Lock()
@@ -440,29 +471,75 @@ func (e *Endpoint) WritePGN(message endpoint.PGNMessage) error {
 	}
 	state := e.ExternalAddressState()
 	if !state.Claimed {
+		e.log.WithFields(logrus.Fields{
+			"pgn":            message.PGN,
+			"source_address": state.Address,
+		}).Warn("Actisense NGT-1 transmit blocked because the gateway has no claimed address")
 		return errors.New("actisense NGT-1 has not claimed an NMEA 2000 address")
 	}
+	txLog := e.log.WithFields(logrus.Fields{
+		"pgn":            message.PGN,
+		"priority":       message.Priority,
+		"destination":    message.Destination,
+		"data_length":    len(message.Data),
+		"source_address": state.Address,
+	})
+	txLog.WithField("payload_hex", fmt.Sprintf("%x", message.Data)).
+		Debug("Actisense NGT-1 transmit requested")
 	e.txMu.Lock()
 	defer e.txMu.Unlock()
 	if _, enabled := e.txPGNs[message.PGN]; !enabled {
-		command := enableTransmitPGNCommand(message.PGN)
-		if err := e.writeBST(bstNGTSend, command); err != nil {
+		txLog.Info("Enabling Actisense NGT-1 transmit PGN")
+		e.commandMu.Lock()
+		defer e.commandMu.Unlock()
+		data, err := e.requestCommandLocked(ngtEnableTxPGN, enableTransmitPGNData(message.PGN))
+		if err != nil {
+			txLog.WithError(err).Warn("Actisense NGT-1 transmit PGN enable failed")
 			return fmt.Errorf("enable Actisense NGT-1 transmit PGN %d: %w", message.PGN, err)
 		}
-		if err := e.writeBST(bstNGTSend, []byte{ngtActivatePGNs}); err != nil {
+		if err := confirmTransmitPGN(message.PGN, data); err != nil {
+			txLog.WithError(err).
+				WithField("response_data_hex", fmt.Sprintf("%x", data)).
+				Warn("Actisense NGT-1 transmit PGN enable response did not match")
+			return fmt.Errorf("enable Actisense NGT-1 transmit PGN %d: %w", message.PGN, err)
+		}
+		txLog.Debug("Actisense NGT-1 transmit PGN enable confirmed")
+		if _, err := e.requestCommandLocked(ngtActivatePGNs, nil); err != nil {
+			txLog.WithError(err).Warn("Actisense NGT-1 transmit PGN activation failed")
 			return fmt.Errorf("activate Actisense NGT-1 transmit PGN %d: %w", message.PGN, err)
 		}
 		e.txPGNs[message.PGN] = struct{}{}
+		txLog.Info("Actisense NGT-1 transmit PGN activated")
 	}
-	return e.writeBST(bstN2KSend, bst94Payload(message))
+	if err := e.writeBST(bstN2KSend, bst94Payload(message)); err != nil {
+		txLog.WithError(err).Warn("Actisense NGT-1 transmit payload write failed")
+		return err
+	}
+	txLog.WithField("payload_hex", fmt.Sprintf("%x", message.Data)).
+		Debug("Actisense NGT-1 transmit payload written")
+	return nil
 }
 
 func enableTransmitPGNCommand(pgn uint32) []byte {
-	command := make([]byte, 6)
-	command[0] = ngtEnableTxPGN
-	binary.LittleEndian.PutUint32(command[1:5], pgn)
-	command[5] = 1
-	return command
+	return append([]byte{ngtEnableTxPGN}, enableTransmitPGNData(pgn)...)
+}
+
+func enableTransmitPGNData(pgn uint32) []byte {
+	data := make([]byte, 5)
+	binary.LittleEndian.PutUint32(data[:4], pgn)
+	data[4] = 1
+	return data
+}
+
+func confirmTransmitPGN(pgn uint32, data []byte) error {
+	if len(data) < 5 {
+		return fmt.Errorf("transmit PGN response is too short: %d", len(data))
+	}
+	confirmedPGN := binary.LittleEndian.Uint32(data[:4])
+	if confirmedPGN != pgn || data[4] != 1 {
+		return fmt.Errorf("gateway acknowledged PGN %d state %d", confirmedPGN, data[4])
+	}
+	return nil
 }
 
 func bst94Payload(message endpoint.PGNMessage) []byte {
@@ -507,6 +584,94 @@ func (e *Endpoint) writeBST(messageID byte, payload []byte) error {
 	return nil
 }
 
+func (e *Endpoint) requestCommandLocked(command byte, data []byte) ([]byte, error) {
+	commandLog := e.log.WithFields(logrus.Fields{
+		"command":             fmt.Sprintf("0x%02x", command),
+		"request_data_length": len(data),
+	})
+	pending := &pendingCommand{
+		command:  command,
+		response: make(chan commandResult, 1),
+	}
+	e.pendingMu.Lock()
+	if e.pending != nil {
+		e.pendingMu.Unlock()
+		return nil, errors.New("another Actisense NGT-1 command is pending")
+	}
+	e.pending = pending
+	e.pendingMu.Unlock()
+	defer func() {
+		e.pendingMu.Lock()
+		if e.pending == pending {
+			e.pending = nil
+		}
+		e.pendingMu.Unlock()
+	}()
+
+	payload := append([]byte{command}, data...)
+	started := time.Now()
+	commandLog.Debug("Sending Actisense NGT-1 command")
+	if err := e.writeBST(bstNGTSend, payload); err != nil {
+		commandLog.WithError(err).Warn("Actisense NGT-1 command write failed")
+		return nil, err
+	}
+	timeout := e.commandWait
+	if timeout <= 0 {
+		timeout = commandTimeout
+	}
+	timer := time.NewTimer(timeout)
+	defer timer.Stop()
+	select {
+	case result := <-pending.response:
+		responseLog := commandLog.WithFields(logrus.Fields{
+			"elapsed":              time.Since(started),
+			"response_data_length": len(result.data),
+		})
+		if result.err != nil {
+			responseLog.WithError(result.err).Warn("Actisense NGT-1 command rejected")
+		} else {
+			responseLog.Debug("Actisense NGT-1 command acknowledged")
+		}
+		return result.data, result.err
+	case <-timer.C:
+		err := fmt.Errorf("command 0x%02x response timed out", command)
+		commandLog.WithError(err).
+			WithField("elapsed", time.Since(started)).
+			Warn("Actisense NGT-1 command response timed out")
+		return nil, err
+	}
+}
+
+func (e *Endpoint) deliverCommandResponse(payload []byte) bool {
+	e.pendingMu.Lock()
+	pending := e.pending
+	if pending == nil || len(payload) == 0 || payload[0] != pending.command {
+		e.pendingMu.Unlock()
+		if pending != nil && len(payload) > 0 {
+			e.log.WithFields(logrus.Fields{
+				"expected_command": fmt.Sprintf("0x%02x", pending.command),
+				"received_command": fmt.Sprintf("0x%02x", payload[0]),
+			}).Debug("Received unrelated Actisense NGT-1 response while waiting for command")
+		}
+		return false
+	}
+	e.pending = nil
+	e.pendingMu.Unlock()
+	data, _, err := decodeCommandResponse(payload, pending.command)
+	pending.response <- commandResult{data: append([]byte(nil), data...), err: err}
+	return true
+}
+
+func (e *Endpoint) failPendingCommand(err error) {
+	e.pendingMu.Lock()
+	pending := e.pending
+	e.pending = nil
+	e.pendingMu.Unlock()
+	if pending != nil {
+		pending.response <- commandResult{err: err}
+	}
+}
+
 func (e *Endpoint) handleFrame(frame []byte) error {
 	messageID, payload, envelopeErr := decodeBSTEnvelope(frame)
 	if envelopeErr != nil {
@@ -514,6 +679,9 @@ func (e *Endpoint) handleFrame(frame []byte) error {
 		return nil
 	}
 	if messageID == bstNGTReceive {
+		if e.deliverCommandResponse(payload) {
+			return nil
+		}
 		if mode, matched, modeErr := decodeOperatingModeResponse(payload); matched {
 			if modeErr != nil {
 				e.log.WithError(modeErr).Warn("Discarding invalid Actisense NGT-1 operating mode response")

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/binary"
+	"sync"
 	"testing"
 	"time"
 
@@ -14,6 +15,7 @@ import (
 )
 
 type startupTestSerialPort struct {
+	mu      sync.Mutex
 	reads   [][]byte
 	writes  [][]byte
 	closed  bool
@@ -32,8 +34,20 @@ func (p *startupTestSerialPort) Read(buffer []byte) (int, error) {
 }
 
 func (p *startupTestSerialPort) Write(data []byte) (int, error) {
+	p.mu.Lock()
+	defer p.mu.Unlock()
 	p.writes = append(p.writes, append([]byte(nil), data...))
 	return len(data), nil
+}
+
+func (p *startupTestSerialPort) writeSnapshot() [][]byte {
+	p.mu.Lock()
+	defer p.mu.Unlock()
+	writes := make([][]byte, len(p.writes))
+	for index := range p.writes {
+		writes[index] = append([]byte(nil), p.writes[index]...)
+	}
+	return writes
 }
 
 func (p *startupTestSerialPort) ResetInputBuffer() error {
@@ -56,6 +70,16 @@ func commandResponse(t *testing.T, command byte, data []byte) []byte {
 	payload := make([]byte, 12+len(data))
 	payload[0] = command
 	copy(payload[12:], data)
+	encoded, err := encodeBDTP(bstNGTReceive, payload)
+	require.NoError(t, err)
+	return encoded
+}
+
+func commandErrorResponse(t *testing.T, command byte, errorCode uint32) []byte {
+	t.Helper()
+	payload := make([]byte, 12)
+	payload[0] = command
+	binary.LittleEndian.PutUint32(payload[8:12], errorCode)
 	encoded, err := encodeBDTP(bstNGTReceive, payload)
 	require.NoError(t, err)
 	return encoded
@@ -351,6 +375,110 @@ func TestBST94PayloadOmitsSourceAndCarriesDestination(t *testing.T) {
 	}
 	require.Equal(t, []byte{3, 0x12, 0xF1, 0x01, 42, 2, 1, 2}, bst94Payload(message))
 	require.Equal(t, []byte{ngtEnableTxPGN, 0x12, 0xF1, 0x01, 0, 1}, enableTransmitPGNCommand(message.PGN))
+}
+
+func TestWritePGNWaitsForTransmitConfigurationAcknowledgements(t *testing.T) {
+	port := &startupTestSerialPort{}
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.port = port
+	ep.storeExternalAddress(endpoint.ExternalAddressState{Address: 37, Claimed: true})
+	message := endpoint.PGNMessage{
+		Priority:    3,
+		PGN:         127502,
+		Destination: 255,
+		Data:        []byte{1, 2, 3},
+	}
+	result := make(chan error, 1)
+	go func() {
+		result <- ep.WritePGN(message)
+	}()
+
+	require.Eventually(t, func() bool { return len(port.writeSnapshot()) == 1 }, time.Second, time.Millisecond)
+	writes := port.writeSnapshot()
+	requireBSTMessage(t, writes[0], bstNGTSend, enableTransmitPGNCommand(message.PGN))
+	select {
+	case err := <-result:
+		require.Failf(t, "WritePGN returned before the enable acknowledgement", "error: %v", err)
+	default:
+	}
+
+	responseData := make([]byte, 14)
+	binary.LittleEndian.PutUint32(responseData[:4], message.PGN)
+	responseData[4] = 1
+	require.NoError(t, ep.handleFrame(decodedBDTPFrame(t,
+		commandResponse(t, ngtEnableTxPGN, responseData))))
+	require.Eventually(t, func() bool { return len(port.writeSnapshot()) == 2 }, time.Second, time.Millisecond)
+	writes = port.writeSnapshot()
+	requireBSTMessage(t, writes[1], bstNGTSend, []byte{ngtActivatePGNs})
+	select {
+	case err := <-result:
+		require.Failf(t, "WritePGN returned before the activation acknowledgement", "error: %v", err)
+	default:
+	}
+
+	require.NoError(t, ep.handleFrame(decodedBDTPFrame(t,
+		commandResponse(t, ngtActivatePGNs, nil))))
+	require.NoError(t, <-result)
+	writes = port.writeSnapshot()
+	require.Len(t, writes, 3)
+	requireBSTMessage(t, writes[2], bstN2KSend, bst94Payload(message))
+
+	require.NoError(t, ep.WritePGN(message))
+	writes = port.writeSnapshot()
+	require.Len(t, writes, 4)
+	requireBSTMessage(t, writes[3], bstN2KSend, bst94Payload(message))
+}
+
+func TestWritePGNReportsTransmitEnableRejection(t *testing.T) {
+	port := &startupTestSerialPort{}
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.port = port
+	ep.storeExternalAddress(endpoint.ExternalAddressState{Address: 37, Claimed: true})
+	message := endpoint.PGNMessage{
+		Priority:    3,
+		PGN:         127502,
+		Destination: 255,
+		Data:        []byte{1, 2, 3},
+	}
+	result := make(chan error, 1)
+	go func() {
+		result <- ep.WritePGN(message)
+	}()
+
+	require.Eventually(t, func() bool { return len(port.writeSnapshot()) == 1 }, time.Second, time.Millisecond)
+	require.NoError(t, ep.handleFrame(decodedBDTPFrame(t,
+		commandErrorResponse(t, ngtEnableTxPGN, 0xfffffb7a))))
+	err := <-result
+	require.ErrorContains(t, err, "enable Actisense NGT-1 transmit PGN 127502")
+	require.ErrorContains(t, err, "0xfffffb7a")
+	require.Len(t, port.writeSnapshot(), 1)
+}
+
+func TestWritePGNRejectsMismatchedTransmitEnableAcknowledgement(t *testing.T) {
+	port := &startupTestSerialPort{}
+	ep := New(logrus.New(), "/dev/test-ngt")
+	ep.port = port
+	ep.storeExternalAddress(endpoint.ExternalAddressState{Address: 37, Claimed: true})
+	message := endpoint.PGNMessage{
+		Priority:    3,
+		PGN:         127502,
+		Destination: 255,
+		Data:        []byte{1, 2, 3},
+	}
+	result := make(chan error, 1)
+	go func() {
+		result <- ep.WritePGN(message)
+	}()
+
+	require.Eventually(t, func() bool { return len(port.writeSnapshot()) == 1 }, time.Second, time.Millisecond)
+	responseData := make([]byte, 14)
+	binary.LittleEndian.PutUint32(responseData[:4], 127501)
+	responseData[4] = 1
+	require.NoError(t, ep.handleFrame(decodedBDTPFrame(t,
+		commandResponse(t, ngtEnableTxPGN, responseData))))
+	err := <-result
+	require.ErrorContains(t, err, "gateway acknowledged PGN 127501 state 1")
+	require.Len(t, port.writeSnapshot(), 1)
 }
 
 func TestDecodeCANConfigResponseRejectsDeviceError(t *testing.T) {
