@@ -39,7 +39,7 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
           lfs: true
-      - uses: jdx/mise-action@v4
+      - uses: jdx/mise-action@v5
         with: {}
       - name: Get Go directories
         id: go
