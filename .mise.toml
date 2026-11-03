@@ -8,7 +8,7 @@ golang = "1.27.1"
 golangci-lint = "2.13.2"
 goreleaser = "latest"
 gotestsum = "1.13.0"
-"github:caarlos0/svu" = "3.4.1"
+"github:caarlos0/svu" = "3.4.4"
 shfmt = "latest"
 
 # --- Codegen pipeline (mise sources/outputs) ------------------------------------
