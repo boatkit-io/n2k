@@ -17,7 +17,7 @@ import (
 	"sort"
 	"strings"
 
-	"gopkg.in/yaml.v3"
+	"go.yaml.in/yaml/v4"
 )
 
 // Domain ranges YAML file paths used by pgngen.
@@ -304,7 +304,7 @@ func writeDomainRangesYAML(path string, table map[domainKey]domainRange) error {
 		return err
 	}
 	// Match the repository YAML formatter so code generation remains clean after
-	// `mise run fmt`. yaml.v3 otherwise single-quotes the percent unit.
+	// `mise run fmt`. yaml.Marshal otherwise single-quotes the percent unit.
 	data = bytes.ReplaceAll(data, []byte("  unit: '%'\n"), []byte("  unit: \"%\"\n"))
 
 	// Avoid rewriting identical content.

@@ -1,0 +1,13 @@
+# Project-owned workflow, build, release, and formatter configuration.
+/.github/workflows/release.yaml
+/.github/workflows/tests.yaml
+/.mise.toml
+/.golangci.yml
+/.goreleaser.yaml
+/.dprint.json
+
+# Project-specific editor settings, license, and Renovate configuration.
+/.vscode/common.code-snippets
+/.vscode/settings.json
+/LICENSE
+/renovate.json

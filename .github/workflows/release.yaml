@@ -39,8 +39,7 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
           lfs: true
-      - uses: jdx/mise-action@v4
-        with: {}
+      - uses: jdx/mise-action@v5
       - name: Get Go directories
         id: go
         run: |
@@ -84,7 +83,6 @@ jobs:
         run: |-
           git tag -a "${{ steps.next_version.outputs.version }}" -m "Release ${{ steps.next_version.outputs.version }}"
       - name: Generate CHANGELOG
-        env: {}
         run: |-
           mise run changelog-release
       - name: Create release artifacts and Github Release

@@ -1,7 +1,3 @@
-bin
-bincover
-n2kreplays
-
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -26,10 +22,6 @@ TAGS
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-# Generated local pgngen inputs/diagnostics
-canboatjson*.cache
-range_min_max_discrepancies.csv
-
 # Log files
 *.log
 
@@ -37,7 +29,6 @@ range_min_max_discrepancies.csv
 bin/
 dist/
 .dist/
-CHANGELOG.md
 
 # Don't. Commit. Vendor. Or other package manager dep directories
 node_modules
@@ -52,6 +43,15 @@ vendor
 # VSCode debugger launch configs
 launch.json
 
-## <<Stencil::Block(custom)>>
+# Currently a build artifact
+CHANGELOG.md
 
+## <<Stencil::Block(custom)>>
+bin
+bincover
+n2kreplays
+
+# Generated local pgngen inputs/diagnostics
+canboatjson*.cache
+range_min_max_discrepancies.csv
 ## <</Stencil::Block>>

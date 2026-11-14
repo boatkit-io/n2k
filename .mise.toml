@@ -4,11 +4,11 @@ dprint = "github:dprint/dprint"
 # Default versions of tools, to update these, set [tools.override]
 [tools]
 dprint = "latest"
-golang = "1.27.1"
-golangci-lint = "2.13.2"
+golang = "1.27.4"
+golangci-lint = "2.15.0"
 goreleaser = "latest"
 gotestsum = "1.13.0"
-"github:caarlos0/svu" = "3.4.1"
+"github:caarlos0/svu" = "3.4.4"
 shfmt = "latest"
 
 # --- Codegen pipeline (mise sources/outputs) ------------------------------------

@@ -1,65 +1,99 @@
-version: 2.16.0
+version: 3.0.3
 modules:
     - name: go.rgst.io/rgst-io/stencil-golang
       url: https://git.rgst.io/rgst-io/stencil-golang
       version:
-        commit: 27e0381d35cf78ca91b6890e6db09426c1edebbc
-        tag: v4.0.2
+        commit: 58c3e8bf3b4a0a6df45ddabb4dcc9fb527bb4aee
+        tag: v4.6.0
 files:
     - name: .cliff.toml
       template: .cliff.toml.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: managed
     - name: .dprint.json
-      template: .dprint.json
+      template: .dprint.json.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: ignored
     - name: .editorconfig
       template: .editorconfig
       module: go.rgst.io/rgst-io/stencil-golang
+      status: managed
     - name: .gitattributes
       template: .gitattributes.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: managed
     - name: .github/scripts/get-next-version.sh
       template: .github/scripts/get-next-version.sh
       module: go.rgst.io/rgst-io/stencil-golang
+      status: managed
+    - name: .github/scripts/link-release-assets.sh
+      template: .github/scripts/link-release-assets.sh.tpl
+      module: go.rgst.io/rgst-io/stencil-golang
+      status: unmanaged
+      status_reason: forgejo_release_asset_link_url is not set
     - name: .github/settings.yml
       template: .github/settings.yml.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: managed
     - name: .github/workflows/release.yaml
       template: .github/workflows/release.yaml.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: ignored
     - name: .github/workflows/tests.yaml
       template: .github/workflows/tests.yaml.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: ignored
     - name: .gitignore
       template: .gitignore.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: managed
     - name: .golangci.yml
       template: .golangci.yml.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: ignored
     - name: .goreleaser.yaml
       template: .goreleaser.yaml.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: ignored
     - name: .mise.toml
       template: .mise.toml.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: ignored
     - name: .mise/tasks/changelog-release
       template: .mise/tasks/changelog-release
       module: go.rgst.io/rgst-io/stencil-golang
+      status: managed
     - name: .vscode/common.code-snippets
       template: .vscode/common.code-snippets.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: ignored
     - name: .vscode/extensions.json
       template: .vscode/extensions.json
       module: go.rgst.io/rgst-io/stencil-golang
+      status: managed
     - name: .vscode/settings.json
       template: .vscode/settings.json
       module: go.rgst.io/rgst-io/stencil-golang
+      status: ignored
     - name: CONTRIBUTING.md
       template: CONTRIBUTING.md.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: managed
     - name: LICENSE
       template: LICENSE.tpl
       module: go.rgst.io/rgst-io/stencil-golang
-    - name: renovate.json
-      template: renovate.json
+      status: ignored
+    - name: cmd/$name/name.go
+      template: cmd/$name/name.go.tpl
       module: go.rgst.io/rgst-io/stencil-golang
+      status: unmanaged
+      status_reason: Generates command files
+    - name: go.mod
+      template: go.mod.tpl
+      module: go.rgst.io/rgst-io/stencil-golang
+      status: unmanaged
+      status_reason: Template called file.Static and output already existed
+    - name: renovate.json
+      template: renovate.json.tpl
+      module: go.rgst.io/rgst-io/stencil-golang
+      status: ignored
