@@ -41,11 +41,11 @@ const resolution64BitCutoff = 0.0000001
 // MaxPGNLength is the maximum length of a PGN in bytes
 const MaxPGNLength = 223 // 31*7 + 6
 
-const canboatRelease = "v8.1.0"
+const canboatRelease = "v9.2.0"
 
-// canboatRevision is the immutable commit for the Canboat 8.1.0 release.
+// canboatRevision is the immutable commit for the Canboat 9.2.0 release.
 // Use the commit rather than the moving release branch so generation remains reproducible.
-const canboatRevision = "4cc490f50d85aaaf4372705edc2d224cff1cce8e"
+const canboatRevision = "5add9cefe5711d3d3ab600ea4b37caa95a17f2f6"
 
 const canboatCacheName = "canboatjson-" + canboatRelease
 const canboatJSONURL = "https://raw.githubusercontent.com/canboat/canboat/" + canboatRevision + "/docs/canboat.json"
@@ -388,7 +388,7 @@ func (conv *canboatConverter) write() {
 			if field.FieldType == "MMSI" {
 				return true
 			}
-			if field.FieldType == "FIELD_INDEX" || field.FieldType == "VARIABLE" {
+			if field.FieldType == "ADDRESS" || field.FieldType == "FIELD_INDEX" || field.FieldType == "VARIABLE" {
 				return true
 			}
 			return field.Match != nil
@@ -1367,7 +1367,7 @@ func convertFieldType(field *PGNField) string {
 		return field.IndirectLookupName
 	case "FIELDTYPE_LOOKUP":
 		return field.FieldTypeLookupName
-	case "FIELD_INDEX":
+	case "ADDRESS", "FIELD_INDEX":
 		return "*uint8"
 	case "NUMBER", "DATE", "TIME", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":
 		// If it has a unit, use that
@@ -1440,7 +1440,8 @@ func getFieldSerializer(pgn PGN, field *PGNField, substruct string) string {
 		outstr = fmt.Sprintf("err = stream.writeSpare(%d, %d)", field.BitLength, field.BitOffset)
 	case "LOOKUP", "BITLOOKUP", "INDIRECT_LOOKUP", "FIELDTYPE_LOOKUP":
 		outstr = fmt.Sprintf("err = stream.putNumberRaw(uint64(p."+substruct+"%s), %d, %d)", field.Id, field.BitLength, field.BitOffset)
-	case "NUMBER", "TIME", "DATE", "MMSI", "FIELD_INDEX", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH", "DURATION", "PGN", "ISO_NAME":
+	case "NUMBER", "TIME", "DATE", "MMSI", "ADDRESS", "FIELD_INDEX", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH",
+		"DURATION", "PGN", "ISO_NAME":
 		if needsScaling(field) || isUnit {
 			// Use WriteScaled for fields that need fractional resolution processing
 			// floatType := "float32"
@@ -1528,7 +1529,7 @@ func getFieldDeserializer(pgn PGN, field *PGNField) [2]string {
 			panic("No deserializer for FIELDTYPE_LOOKUP with bitlength > 64")
 		}
 		return [2]string{fmt.Sprintf("stream.readLookupField(%d)", field.BitLength), field.FieldTypeLookupName + "(v)"}
-	case "FIELD_INDEX":
+	case "ADDRESS", "FIELD_INDEX":
 		specRef := fieldSpecRef(pgn.Id, field.Id)
 		return [2]string{fmt.Sprintf("ReadRaw[uint8](stream, %s)", specRef), ""}
 	case "NUMBER", "TIME", "DATE", "MMSI", "PGN", "ISO_NAME", "DURATION", "DYNAMIC_FIELD_KEY", "DYNAMIC_FIELD_LENGTH":

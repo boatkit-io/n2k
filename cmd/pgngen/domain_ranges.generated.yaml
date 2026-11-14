@@ -1,7 +1,7 @@
 - physicalQuantity: ANGLE
   unit: deg
   signed: true
-  min: -3276.7
+  min: -3276.8
   max: null
 - physicalQuantity: ANGLE
   unit: rad
@@ -16,7 +16,7 @@
 - physicalQuantity: ANGLE
   unit: semi-circle
   signed: true
-  min: -0.0624980926513672
+  min: -0.0625
   max: null
 - physicalQuantity: ANGULAR_VELOCITY
   unit: rad/s
@@ -36,7 +36,7 @@
 - physicalQuantity: ANGULAR_VELOCITY
   unit: semi-circle/s
   signed: true
-  min: -1.19205651571974e-07
+  min: -1.19209289550781e-07
   max: null
 - physicalQuantity: CONCENTRATION
   unit: ppm
@@ -66,7 +66,7 @@
 - physicalQuantity: DIMENSIONLESS_RATIO
   unit: "%"
   signed: true
-  min: -127
+  min: -128
   max: null
 - physicalQuantity: DIMENSIONLESS_RATIO
   unit: m/m
@@ -81,7 +81,7 @@
 - physicalQuantity: DIMENSIONLESS_RATIO
   unit: s/s
   signed: true
-  min: -3.72165231965482e-09
+  min: -3.72529029846191e-09
   max: null
 - physicalQuantity: DISTANCE
   unit: m
@@ -91,7 +91,7 @@
 - physicalQuantity: DISTANCE
   unit: m
   signed: true
-  min: -2.147483647e+06
+  min: -2.147483648e+06
   max: 2.147483644e+06
 - physicalQuantity: DURATION
   unit: s
@@ -101,7 +101,7 @@
 - physicalQuantity: DURATION
   unit: s
   signed: true
-  min: -1638.35
+  min: -1638.4
   max: null
 - physicalQuantity: ELECTRICAL_APPARENT_POWER
   unit: VA
@@ -131,7 +131,7 @@
 - physicalQuantity: ELECTRICAL_CURRENT
   unit: A
   signed: true
-  min: -3276.7
+  min: -3276.8
   max: null
 - physicalQuantity: ELECTRICAL_ENERGY
   unit: kWh
@@ -196,7 +196,7 @@
 - physicalQuantity: MAGNETIC_FIELD
   unit: T
   signed: true
-  min: -327.67
+  min: -327.68
   max: null
 - physicalQuantity: POTENTIAL_DIFFERENCE
   unit: V
@@ -206,12 +206,12 @@
 - physicalQuantity: POTENTIAL_DIFFERENCE
   unit: V
   signed: true
-  min: -327.67
+  min: -327.68
   max: null
 - physicalQuantity: POWER_FACTOR
   unit: Cos Phi
   signed: false
-  min: null
+  min: -1
   max: null
 - physicalQuantity: PRESSURE
   unit: Pa
@@ -221,7 +221,7 @@
 - physicalQuantity: PRESSURE
   unit: Pa
   signed: true
-  min: -2.147483647e+08
+  min: -2.147483648e+08
   max: 2.147483644e+08
 - physicalQuantity: PRESSURE_RATE
   unit: Pa/hr
@@ -231,7 +231,7 @@
 - physicalQuantity: PRESSURE_RATE
   unit: Pa/hr
   signed: true
-  min: -327670
+  min: -327680
   max: null
 - physicalQuantity: SIGNAL_STRENGTH
   unit: dB
@@ -241,7 +241,7 @@
 - physicalQuantity: SIGNAL_STRENGTH
   unit: dB
   signed: true
-  min: -2.147483647e+07
+  min: -2.147483648e+07
   max: 2.147483644e+07
 - physicalQuantity: SIGNAL_TO_NOISE_RATIO
   unit: dB
@@ -251,7 +251,7 @@
 - physicalQuantity: SIGNAL_TO_NOISE_RATIO
   unit: dB
   signed: true
-  min: -327.67
+  min: -327.68
   max: null
 - physicalQuantity: SPEED
   unit: m/s
@@ -291,5 +291,5 @@
 - physicalQuantity: VOLUMETRIC_FLOW
   unit: L/h
   signed: true
-  min: -3276.7
+  min: -3276.8
   max: null

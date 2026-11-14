@@ -7,7 +7,24 @@ import (
 	publicpgn "github.com/boatkit-io/n2k/pkg/pgn"
 	"github.com/boatkit-io/tugboat/pkg/units"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
+
+func TestCommandedAddressRoundTrip(t *testing.T) {
+	for _, address := range []uint8{0, 253, 254, 255} {
+		payload := make([]byte, 9)
+		stream := NewDataStream(payload)
+		info, err := EncodeISOCommandedAddress(&publicpgn.ISOCommandedAddress{
+			NewSourceAddress: &address,
+		}, stream)
+		require.NoError(t, err)
+		require.Equal(t, address, payload[8])
+
+		decoded, err := DecodeISOCommandedAddress(*info, NewDataStream(payload))
+		require.NoError(t, err)
+		require.Equal(t, &address, decoded.(publicpgn.ISOCommandedAddress).NewSourceAddress)
+	}
+}
 
 func TestWriteNumerics(t *testing.T) {
 	// test a variety of uint64 basics

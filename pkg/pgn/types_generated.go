@@ -141,6 +141,36 @@ type SimnetKeepAlive struct {
 	Reply *uint8
 	Value []uint8
 }
+type FurunoCommand struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID *uint8
+	Command *uint8
+}
+type FurunoRemoteKeyboardReport struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID *uint8
+	Key1 *uint8
+	Key2 *uint8
+	Key3 *uint8
+	Key4 *uint8
+	Key5 *uint8
+}
+type FurunoRemotePointerReport struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID *uint8
+	Dx *int8
+	Dy *int8
+	Wheel *int8
+	A *uint8
+	Button YesNo1BitConst
+	KeypadMode YesNo1BitConst
+}
 type ZeroXf0000XfeffStandardizedSingleFrameNonAddressed struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -178,7 +208,7 @@ type UtilityTotalACEnergy struct {
 }
 type UtilityPhaseCACReactivePower struct {
 	Info MessageInfo
-	ReactivePower *uint16
+	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
@@ -196,7 +226,7 @@ type UtilityPhaseCBasicACQuantities struct {
 }
 type UtilityPhaseBACReactivePower struct {
 	Info MessageInfo
-	ReactivePower *uint16
+	ReactivePower *int32
 	PowerFactor *float32
 	PowerFactorLagging PowerFactorConst
 }
@@ -553,6 +583,13 @@ type MaretronTripVolume struct {
 	FluidType TankTypeConst
 	TripVolume *float32
 }
+type FurunoRemoteAnnounce struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Host YesNo1BitConst
+	Device YesNo1BitConst
+}
 type SeatalkAlarm struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -570,6 +607,15 @@ type Maretron420Ma struct {
 	SID *uint8
 	DataInstance *uint8
 	FourTwoZeroMaData *uint16
+}
+type FurunoRemoteBacklight struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	A *uint8
+	B *uint8
+	Preset *uint8
+	Brightness *uint8
 }
 type SimnetTrimTabSensorCalibration struct {
 	Info MessageInfo
@@ -655,6 +701,7 @@ type BepMarineProprietaryPGN65294 struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
+	Brightness *uint8
 	Data []uint8
 }
 type BepMarineCzoneAlarm struct {
@@ -927,6 +974,26 @@ type BGProprietary struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	Data []uint8
+}
+type SimnetZcKey struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Address *uint8
+	Function SimnetZcFunctionConst
+	Parameter *uint16
+	KeyEvent SimnetZcKeyEventConst
+	Key SimnetZcKeyConst
+}
+type SimnetZcKnob struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Address *uint8
+	Function SimnetZcFunctionConst
+	Parameter *uint16
+	Ticks *int8
+	Unknown *uint8
 }
 type YanmarEngineDataC struct {
 	Info MessageInfo
@@ -1671,12 +1738,25 @@ type AirmarTemperatureFilterIIR struct {
 	SampleInterval *float32
 	FilterDuration *float32
 }
+type AirmarMasterReset struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID AirmarCommandConst
+}
 type AirmarNMEA2000Options struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	ProprietaryID AirmarCommandConst
 	TransmissionInterval AirmarTransmissionIntervalConst
+}
+type AirmarResetEeprom struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID AirmarCommandConst
+	Options AirmarResetEepromOptionsConst
 }
 type AirmarAddressableMultiFrame struct {
 	Info MessageInfo
@@ -1787,6 +1867,105 @@ type FusionRequestMenuItems struct {
 	StartIndex *uint32
 	Count *uint32
 	LockID *uint8
+}
+type FusionRequestMenuLockID struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	RequestToken *uint32
+}
+type FusionSetSetting struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	ID FusionSettingConst
+	Value FusionSettingValueConst
+}
+type FusionTunerCommand struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	TunerSource FusionRadioSourceConst
+	Command FusionTunerCommandConst
+	Frequency *uint32
+}
+type FusionSetAuxGain struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	SourceID *uint8
+	Gain *int8
+}
+type FusionSetBalance struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	Zone *uint8
+	Value *int8
+}
+type FusionSetLowPassFilter struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	Zone *uint8
+	Filter FusionLowPassFilterConst
+}
+type FusionSetSublevel struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	Zone *uint8
+	Level *uint8
+}
+type FusionSetVolumeLimit struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	Zone *uint8
+	Limit *uint8
+}
+type FusionSetZoneName struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	Zone *uint8
+	Name string
+}
+type FusionSetEqualizer struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	Zone *uint8
+	Bass *int8
+	Mid *int8
+	Treble *int8
+}
+type FusionSetAllSublevels struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	Zone1 *uint8
+	Zone2 *uint8
+	Zone3 *uint8
+	Zone4 *uint8
+}
+type FusionSetDeviceName struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID FusionMessageIDConst
+	Name string
 }
 type ZeroX1F0000X1FeffStandardizedMixedSingleFastPacketNonAddressed struct {
 	Info MessageInfo
@@ -1993,6 +2172,8 @@ type Heave struct {
 	Info MessageInfo
 	SID *uint8
 	Heave *units.Distance
+	Delay *float32
+	DelaySource DelaySourceConst
 }
 type Attitude struct {
 	Info MessageInfo
@@ -3200,6 +3381,33 @@ type DSCDistressCallInformationRepeating1 struct {
 	DSCExpansionFieldSymbol DSCExpansionDataConst
 	DSCExpansionFieldData string
 }
+type DSCDistressAcknowledgementOrRelay struct {
+	Info MessageInfo
+	DSCFormatSymbol DSCFormatConst
+	DSCCategorySymbol DSCCategoryConst
+	DSCMessageAddress []uint8
+	FirstTelecommand DSCFirstTelecommandConst
+	NatureOfDistress DSCNatureConst
+	ProposedRxFrequencyChannel string
+	ProposedTxFrequencyChannel string
+	TelephoneNumber string
+	LatitudeOfVesselReported *float64
+	LongitudeOfVesselReported *float64
+	TimeOfPosition *float32
+	MMSIOfShipInDistress []uint8
+	DSCEosSymbol *uint8
+	ExpansionEnabled YesNoConst
+	CallingRxFrequencyChannel string
+	CallingTxFrequencyChannel string
+	TimeOfReceipt *float32
+	DateOfReceipt *uint16
+	DSCEquipmentAssignedMessageID *uint16
+	Repeating1 []DSCDistressAcknowledgementOrRelayRepeating1
+}
+type DSCDistressAcknowledgementOrRelayRepeating1 struct {
+	DSCExpansionFieldSymbol DSCExpansionDataConst
+	DSCExpansionFieldData string
+}
 type DSCCallInformation struct {
 	Info MessageInfo
 	DSCFormatSymbol DSCFormatConst
@@ -4305,6 +4513,14 @@ type SeaRecoveryWatermakerStatus struct {
 	FilterStatus *uint8
 	SystemStatus *uint8
 }
+type FurunoRemoteInfo struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	ProprietaryID *uint8
+	A *uint8
+	B *uint8
+}
 type NavicoFeatureUnlock struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -4357,7 +4573,30 @@ type BepMarineCzoneStatusExtended struct {
 	IndustryCode IndustryCodeConst
 	Page *uint8
 	Dipswitch *uint8
-	Records []uint8
+	OutputCurrent0 *float32
+	OutputLevel0 *float32
+	OutputUnknownFlags0 []uint8
+	OutputCurrent1 *float32
+	OutputLevel1 *float32
+	OutputUnknownFlags1 []uint8
+	OutputCurrent2 *float32
+	OutputLevel2 *float32
+	OutputUnknownFlags2 []uint8
+	OutputCurrent3 *float32
+	OutputLevel3 *float32
+	OutputUnknownFlags3 []uint8
+	OutputCurrent4 *float32
+	OutputLevel4 *float32
+	OutputUnknownFlags4 []uint8
+	OutputCurrent5 *float32
+	OutputLevel5 *float32
+	OutputUnknownFlags5 []uint8
+	OutputCurrent6 *float32
+	OutputLevel6 *float32
+	OutputUnknownFlags6 []uint8
+	OutputCurrent7 *float32
+	OutputLevel7 *float32
+	OutputUnknownFlags7 []uint8
 }
 type SleipnerThrusterStatusPpc820 struct {
 	Info MessageInfo
@@ -4606,7 +4845,7 @@ type FusionZoneName struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	MessageID FusionStatusMessageIDConst
-	Number *uint8
+	Zone *uint8
 	Name string
 }
 type FusionSpeedVolumeCurrentSpeed struct {
@@ -4630,8 +4869,8 @@ type FusionMenuLockID struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	MessageID FusionStatusMessageIDConst
-	LockID *uint32
-	Flags *uint8
+	RequestToken *uint32
+	LockID *uint8
 }
 type FusionRDSData struct {
 	Info MessageInfo
@@ -4728,7 +4967,7 @@ type FusionMenuItem struct {
 	MessageID FusionStatusMessageIDConst
 	SourceID *uint8
 	ItemIndex *uint32
-	Flags *uint8
+	Flags FusionMenuItemFlagsConst
 	LockID *uint8
 	Text string
 }
@@ -4738,7 +4977,7 @@ type FusionAuxGain struct {
 	IndustryCode IndustryCodeConst
 	MessageID FusionStatusMessageIDConst
 	SourceID *uint8
-	Gain *uint8
+	Gain *int8
 }
 type FusionUSBRepeatStatus struct {
 	Info MessageInfo
@@ -4754,7 +4993,7 @@ type FusionSetting struct {
 	IndustryCode IndustryCodeConst
 	MessageID FusionStatusMessageIDConst
 	ID FusionSettingConst
-	Value *uint32
+	Value FusionSettingValueConst
 }
 type FusionSettings struct {
 	Info MessageInfo
@@ -4766,7 +5005,7 @@ type FusionSettings struct {
 }
 type FusionSettingsRepeating1 struct {
 	ID FusionSettingConst
-	Value *uint32
+	Value FusionSettingValueConst
 }
 type FusionMute struct {
 	Info MessageInfo
@@ -4781,7 +5020,7 @@ type FusionBalance struct {
 	IndustryCode IndustryCodeConst
 	MessageID FusionStatusMessageIDConst
 	Zone *uint8
-	Value *uint8
+	Value *int8
 }
 type FusionLowPassFilter struct {
 	Info MessageInfo
@@ -4789,7 +5028,7 @@ type FusionLowPassFilter struct {
 	IndustryCode IndustryCodeConst
 	MessageID FusionStatusMessageIDConst
 	Zone *uint8
-	Filter *uint8
+	Filter FusionLowPassFilterConst
 }
 type FusionSublevels struct {
 	Info MessageInfo
@@ -4836,11 +5075,11 @@ type FusionCapabilities struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 	MessageID FusionStatusMessageIDConst
-	Zone1 *uint16
-	Zone2 *uint16
-	Zone3 *uint16
-	Zone4 *uint16
-	Global *uint16
+	Zone1 FusionCapabilityBitfieldConst
+	Zone2 FusionCapabilityBitfieldConst
+	Zone3 FusionCapabilityBitfieldConst
+	Zone4 FusionCapabilityBitfieldConst
+	Global FusionCapabilityBitfieldConst
 }
 type FusionLineLevelControl struct {
 	Info MessageInfo
@@ -4953,7 +5192,7 @@ type FusionMenuActionStatus struct {
 	MessageID FusionStatusMessageIDConst
 	SourceID *uint8
 	ItemIndex *uint32
-	Action FusionMenuActionConst
+	Action FusionMenuStatusConst
 	LockID *uint8
 }
 type FusionMenuCount struct {
@@ -4964,6 +5203,53 @@ type FusionMenuCount struct {
 	SourceID *uint8
 	Count *uint32
 	LockID *uint8
+}
+type FusionLoudness struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIDConst
+	Zone *uint8
+	Enabled YesNoConst
+}
+type FusionZoneCapabilitiesExtended struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIDConst
+	Zone1Capabilities FusionCapabilityBitfieldConst
+	Zone1Extra []uint8
+	Zone2Capabilities FusionCapabilityBitfieldConst
+	Zone2Extra []uint8
+	Zone3Capabilities FusionCapabilityBitfieldConst
+	Zone3Extra []uint8
+	Zone4Capabilities FusionCapabilityBitfieldConst
+	Zone4Extra []uint8
+	GlobalCapabilities FusionCapabilityBitfieldConst
+	GlobalExtra []uint8
+}
+type FusionExternalAmpGain struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIDConst
+	Zone *uint8
+	Gain *int8
+}
+type FusionInternalAmpGain struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIDConst
+	Zone *uint8
+	Gain *int8
+}
+type FusionSystemCapabilities struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	MessageID FusionStatusMessageIDConst
+	Capabilities FusionSystemCapabilityBitfieldConst
 }
 type NavicoAsciiData struct {
 	Info MessageInfo
@@ -5128,11 +5414,36 @@ type MaretronAlertControl struct {
 	AlertOccurrenceNumber *uint8
 	MaretronExtension []uint8
 }
-type BepMarineProprietaryPGN130822 struct {
+type BepMarineProprietaryPgn130822 struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Data []uint8
+	ModuleID *uint8
+	Page *uint8
+	OutputCurrent0 *float32
+	OutputLevel0 *float32
+	OutputUnknownFlags0 []uint8
+	OutputCurrent1 *float32
+	OutputLevel1 *float32
+	OutputUnknownFlags1 []uint8
+	OutputCurrent2 *float32
+	OutputLevel2 *float32
+	OutputUnknownFlags2 []uint8
+	OutputCurrent3 *float32
+	OutputLevel3 *float32
+	OutputUnknownFlags3 []uint8
+	OutputCurrent4 *float32
+	OutputLevel4 *float32
+	OutputUnknownFlags4 []uint8
+	OutputCurrent5 *float32
+	OutputLevel5 *float32
+	OutputUnknownFlags5 []uint8
+	OutputCurrent6 *float32
+	OutputLevel6 *float32
+	OutputUnknownFlags6 []uint8
+	OutputCurrent7 *float32
+	OutputLevel7 *float32
+	OutputUnknownFlags7 []uint8
 }
 type MercuryEngineTelemetryLowSpeed struct {
 	Info MessageInfo
@@ -5246,11 +5557,29 @@ type NavicoAlarm struct {
 	AlarmSeverity AlertTypeConst
 	Value *uint16
 }
-type BepMarineProprietaryPGN130825 struct {
+type BepMarineProprietaryPgn130825 struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
-	Data []uint8
+	ModuleID *uint8
+	Page *uint8
+	UnknownHeaderByte []uint8
+	OutputCurrentRaw0 *uint16
+	OutputLevelRaw0 *uint16
+	OutputCurrentRaw1 *uint16
+	OutputLevelRaw1 *uint16
+	OutputCurrentRaw2 *uint16
+	OutputLevelRaw2 *uint16
+	OutputCurrentRaw3 *uint16
+	OutputLevelRaw3 *uint16
+	OutputCurrentRaw4 *uint16
+	OutputLevelRaw4 *uint16
+	OutputCurrentRaw5 *uint16
+	OutputLevelRaw5 *uint16
+	OutputCurrentRaw6 *uint16
+	OutputLevelRaw6 *uint16
+	OutputCurrentRaw7 *uint16
+	OutputLevelRaw7 *uint16
 }
 type MercuryCruiseControlData struct {
 	Info MessageInfo
@@ -5770,6 +6099,12 @@ type NavicoProprietaryFp struct {
 	ManufacturerCode ManufacturerCodeConst
 	IndustryCode IndustryCodeConst
 }
+type FurunoRemoteHost struct {
+	Info MessageInfo
+	ManufacturerCode ManufacturerCodeConst
+	IndustryCode IndustryCodeConst
+	Host *uint64
+}
 type SimnetCommandApStandby struct {
 	Info MessageInfo
 	ManufacturerCode ManufacturerCodeConst
@@ -5885,6 +6220,8 @@ type SimnetEvent struct {
 	IndustryCode IndustryCodeConst
 	Address *uint8
 	NetworkGroup SimnetNetworkGroupConst
+	CommandType SimnetEventTypeConst
+	Event *uint8
 }
 type SimnetApCommandReplyChangeCourse struct {
 	Info MessageInfo
@@ -6075,6 +6412,9 @@ type AirmarPost struct {
 	IndustryCode IndustryCodeConst
 	Control AirmarPostControlConst
 	NumberOfIDTestResultPairsToFollow *uint8
+	Repeating1 []AirmarPostRepeating1
+}
+type AirmarPostRepeating1 struct {
 	TestID AirmarPostIDConst
 	TestResult *uint8
 }

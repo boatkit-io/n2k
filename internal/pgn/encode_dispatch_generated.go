@@ -74,6 +74,18 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSimnetKeepAlive(p, stream)
 	case publicpgn.SimnetKeepAlive:
 		return EncodeSimnetKeepAlive(&p, stream)
+	case *publicpgn.FurunoCommand:
+		return EncodeFurunoCommand(p, stream)
+	case publicpgn.FurunoCommand:
+		return EncodeFurunoCommand(&p, stream)
+	case *publicpgn.FurunoRemoteKeyboardReport:
+		return EncodeFurunoRemoteKeyboardReport(p, stream)
+	case publicpgn.FurunoRemoteKeyboardReport:
+		return EncodeFurunoRemoteKeyboardReport(&p, stream)
+	case *publicpgn.FurunoRemotePointerReport:
+		return EncodeFurunoRemotePointerReport(p, stream)
+	case publicpgn.FurunoRemotePointerReport:
+		return EncodeFurunoRemotePointerReport(&p, stream)
 	case *publicpgn.ZeroXf0000XfeffStandardizedSingleFrameNonAddressed:
 		return EncodeZeroXf0000XfeffStandardizedSingleFrameNonAddressed(p, stream)
 	case publicpgn.ZeroXf0000XfeffStandardizedSingleFrameNonAddressed:
@@ -310,6 +322,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMaretronTripVolume(p, stream)
 	case publicpgn.MaretronTripVolume:
 		return EncodeMaretronTripVolume(&p, stream)
+	case *publicpgn.FurunoRemoteAnnounce:
+		return EncodeFurunoRemoteAnnounce(p, stream)
+	case publicpgn.FurunoRemoteAnnounce:
+		return EncodeFurunoRemoteAnnounce(&p, stream)
 	case *publicpgn.SeatalkAlarm:
 		return EncodeSeatalkAlarm(p, stream)
 	case publicpgn.SeatalkAlarm:
@@ -318,6 +334,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMaretron420Ma(p, stream)
 	case publicpgn.Maretron420Ma:
 		return EncodeMaretron420Ma(&p, stream)
+	case *publicpgn.FurunoRemoteBacklight:
+		return EncodeFurunoRemoteBacklight(p, stream)
+	case publicpgn.FurunoRemoteBacklight:
+		return EncodeFurunoRemoteBacklight(&p, stream)
 	case *publicpgn.SimnetTrimTabSensorCalibration:
 		return EncodeSimnetTrimTabSensorCalibration(p, stream)
 	case publicpgn.SimnetTrimTabSensorCalibration:
@@ -522,6 +542,14 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeBGProprietary(p, stream)
 	case publicpgn.BGProprietary:
 		return EncodeBGProprietary(&p, stream)
+	case *publicpgn.SimnetZcKey:
+		return EncodeSimnetZcKey(p, stream)
+	case publicpgn.SimnetZcKey:
+		return EncodeSimnetZcKey(&p, stream)
+	case *publicpgn.SimnetZcKnob:
+		return EncodeSimnetZcKnob(p, stream)
+	case publicpgn.SimnetZcKnob:
+		return EncodeSimnetZcKnob(&p, stream)
 	case *publicpgn.YanmarEngineDataC:
 		return EncodeYanmarEngineDataC(p, stream)
 	case publicpgn.YanmarEngineDataC:
@@ -862,10 +890,18 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeAirmarTemperatureFilterIIR(p, stream)
 	case publicpgn.AirmarTemperatureFilterIIR:
 		return EncodeAirmarTemperatureFilterIIR(&p, stream)
+	case *publicpgn.AirmarMasterReset:
+		return EncodeAirmarMasterReset(p, stream)
+	case publicpgn.AirmarMasterReset:
+		return EncodeAirmarMasterReset(&p, stream)
 	case *publicpgn.AirmarNMEA2000Options:
 		return EncodeAirmarNMEA2000Options(p, stream)
 	case publicpgn.AirmarNMEA2000Options:
 		return EncodeAirmarNMEA2000Options(&p, stream)
+	case *publicpgn.AirmarResetEeprom:
+		return EncodeAirmarResetEeprom(p, stream)
+	case publicpgn.AirmarResetEeprom:
+		return EncodeAirmarResetEeprom(&p, stream)
 	case *publicpgn.AirmarAddressableMultiFrame:
 		return EncodeAirmarAddressableMultiFrame(p, stream)
 	case publicpgn.AirmarAddressableMultiFrame:
@@ -910,6 +946,54 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeFusionRequestMenuItems(p, stream)
 	case publicpgn.FusionRequestMenuItems:
 		return EncodeFusionRequestMenuItems(&p, stream)
+	case *publicpgn.FusionRequestMenuLockID:
+		return EncodeFusionRequestMenuLockID(p, stream)
+	case publicpgn.FusionRequestMenuLockID:
+		return EncodeFusionRequestMenuLockID(&p, stream)
+	case *publicpgn.FusionSetSetting:
+		return EncodeFusionSetSetting(p, stream)
+	case publicpgn.FusionSetSetting:
+		return EncodeFusionSetSetting(&p, stream)
+	case *publicpgn.FusionTunerCommand:
+		return EncodeFusionTunerCommand(p, stream)
+	case publicpgn.FusionTunerCommand:
+		return EncodeFusionTunerCommand(&p, stream)
+	case *publicpgn.FusionSetAuxGain:
+		return EncodeFusionSetAuxGain(p, stream)
+	case publicpgn.FusionSetAuxGain:
+		return EncodeFusionSetAuxGain(&p, stream)
+	case *publicpgn.FusionSetBalance:
+		return EncodeFusionSetBalance(p, stream)
+	case publicpgn.FusionSetBalance:
+		return EncodeFusionSetBalance(&p, stream)
+	case *publicpgn.FusionSetLowPassFilter:
+		return EncodeFusionSetLowPassFilter(p, stream)
+	case publicpgn.FusionSetLowPassFilter:
+		return EncodeFusionSetLowPassFilter(&p, stream)
+	case *publicpgn.FusionSetSublevel:
+		return EncodeFusionSetSublevel(p, stream)
+	case publicpgn.FusionSetSublevel:
+		return EncodeFusionSetSublevel(&p, stream)
+	case *publicpgn.FusionSetVolumeLimit:
+		return EncodeFusionSetVolumeLimit(p, stream)
+	case publicpgn.FusionSetVolumeLimit:
+		return EncodeFusionSetVolumeLimit(&p, stream)
+	case *publicpgn.FusionSetZoneName:
+		return EncodeFusionSetZoneName(p, stream)
+	case publicpgn.FusionSetZoneName:
+		return EncodeFusionSetZoneName(&p, stream)
+	case *publicpgn.FusionSetEqualizer:
+		return EncodeFusionSetEqualizer(p, stream)
+	case publicpgn.FusionSetEqualizer:
+		return EncodeFusionSetEqualizer(&p, stream)
+	case *publicpgn.FusionSetAllSublevels:
+		return EncodeFusionSetAllSublevels(p, stream)
+	case publicpgn.FusionSetAllSublevels:
+		return EncodeFusionSetAllSublevels(&p, stream)
+	case *publicpgn.FusionSetDeviceName:
+		return EncodeFusionSetDeviceName(p, stream)
+	case publicpgn.FusionSetDeviceName:
+		return EncodeFusionSetDeviceName(&p, stream)
 	case *publicpgn.ZeroX1F0000X1FeffStandardizedMixedSingleFastPacketNonAddressed:
 		return EncodeZeroX1F0000X1FeffStandardizedMixedSingleFastPacketNonAddressed(p, stream)
 	case publicpgn.ZeroX1F0000X1FeffStandardizedMixedSingleFastPacketNonAddressed:
@@ -1378,6 +1462,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeDSCDistressCallInformation(p, stream)
 	case publicpgn.DSCDistressCallInformation:
 		return EncodeDSCDistressCallInformation(&p, stream)
+	case *publicpgn.DSCDistressAcknowledgementOrRelay:
+		return EncodeDSCDistressAcknowledgementOrRelay(p, stream)
+	case publicpgn.DSCDistressAcknowledgementOrRelay:
+		return EncodeDSCDistressAcknowledgementOrRelay(&p, stream)
 	case *publicpgn.DSCCallInformation:
 		return EncodeDSCCallInformation(p, stream)
 	case publicpgn.DSCCallInformation:
@@ -1742,6 +1830,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeSeaRecoveryWatermakerStatus(p, stream)
 	case publicpgn.SeaRecoveryWatermakerStatus:
 		return EncodeSeaRecoveryWatermakerStatus(&p, stream)
+	case *publicpgn.FurunoRemoteInfo:
+		return EncodeFurunoRemoteInfo(p, stream)
+	case publicpgn.FurunoRemoteInfo:
+		return EncodeFurunoRemoteInfo(&p, stream)
 	case *publicpgn.NavicoFeatureUnlock:
 		return EncodeNavicoFeatureUnlock(p, stream)
 	case publicpgn.NavicoFeatureUnlock:
@@ -2014,6 +2106,26 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeFusionMenuCount(p, stream)
 	case publicpgn.FusionMenuCount:
 		return EncodeFusionMenuCount(&p, stream)
+	case *publicpgn.FusionLoudness:
+		return EncodeFusionLoudness(p, stream)
+	case publicpgn.FusionLoudness:
+		return EncodeFusionLoudness(&p, stream)
+	case *publicpgn.FusionZoneCapabilitiesExtended:
+		return EncodeFusionZoneCapabilitiesExtended(p, stream)
+	case publicpgn.FusionZoneCapabilitiesExtended:
+		return EncodeFusionZoneCapabilitiesExtended(&p, stream)
+	case *publicpgn.FusionExternalAmpGain:
+		return EncodeFusionExternalAmpGain(p, stream)
+	case publicpgn.FusionExternalAmpGain:
+		return EncodeFusionExternalAmpGain(&p, stream)
+	case *publicpgn.FusionInternalAmpGain:
+		return EncodeFusionInternalAmpGain(p, stream)
+	case publicpgn.FusionInternalAmpGain:
+		return EncodeFusionInternalAmpGain(&p, stream)
+	case *publicpgn.FusionSystemCapabilities:
+		return EncodeFusionSystemCapabilities(p, stream)
+	case publicpgn.FusionSystemCapabilities:
+		return EncodeFusionSystemCapabilities(&p, stream)
 	case *publicpgn.NavicoAsciiData:
 		return EncodeNavicoAsciiData(p, stream)
 	case publicpgn.NavicoAsciiData:
@@ -2066,10 +2178,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeMaretronAlertControl(p, stream)
 	case publicpgn.MaretronAlertControl:
 		return EncodeMaretronAlertControl(&p, stream)
-	case *publicpgn.BepMarineProprietaryPGN130822:
-		return EncodeBepMarineProprietaryPGN130822(p, stream)
-	case publicpgn.BepMarineProprietaryPGN130822:
-		return EncodeBepMarineProprietaryPGN130822(&p, stream)
+	case *publicpgn.BepMarineProprietaryPgn130822:
+		return EncodeBepMarineProprietaryPgn130822(p, stream)
+	case publicpgn.BepMarineProprietaryPgn130822:
+		return EncodeBepMarineProprietaryPgn130822(&p, stream)
 	case *publicpgn.MercuryEngineTelemetryLowSpeed:
 		return EncodeMercuryEngineTelemetryLowSpeed(p, stream)
 	case publicpgn.MercuryEngineTelemetryLowSpeed:
@@ -2110,10 +2222,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeNavicoAlarm(p, stream)
 	case publicpgn.NavicoAlarm:
 		return EncodeNavicoAlarm(&p, stream)
-	case *publicpgn.BepMarineProprietaryPGN130825:
-		return EncodeBepMarineProprietaryPGN130825(p, stream)
-	case publicpgn.BepMarineProprietaryPGN130825:
-		return EncodeBepMarineProprietaryPGN130825(&p, stream)
+	case *publicpgn.BepMarineProprietaryPgn130825:
+		return EncodeBepMarineProprietaryPgn130825(p, stream)
+	case publicpgn.BepMarineProprietaryPgn130825:
+		return EncodeBepMarineProprietaryPgn130825(&p, stream)
 	case *publicpgn.MercuryCruiseControlData:
 		return EncodeMercuryCruiseControlData(p, stream)
 	case publicpgn.MercuryCruiseControlData:
@@ -2342,6 +2454,10 @@ func EncodeStruct(s any, stream *DataStream) (*publicpgn.MessageInfo, error) {
 		return EncodeNavicoProprietaryFp(p, stream)
 	case publicpgn.NavicoProprietaryFp:
 		return EncodeNavicoProprietaryFp(&p, stream)
+	case *publicpgn.FurunoRemoteHost:
+		return EncodeFurunoRemoteHost(p, stream)
+	case publicpgn.FurunoRemoteHost:
+		return EncodeFurunoRemoteHost(&p, stream)
 	case *publicpgn.SimnetCommandApStandby:
 		return EncodeSimnetCommandApStandby(p, stream)
 	case publicpgn.SimnetCommandApStandby:

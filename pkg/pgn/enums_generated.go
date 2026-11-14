@@ -47,6 +47,77 @@ default:
 		return fmt.Sprintf("AccessLevelConst(%d)", uint8(e))
 	}
 }
+type ActisenseOperatingModeConst uint16
+const (
+	Undefined	ActisenseOperatingModeConst = 0
+	NgtTransferNormalMode	ActisenseOperatingModeConst = 1
+	NgtTransferRxAllMode	ActisenseOperatingModeConst = 2
+	NgtTransferRawMode	ActisenseOperatingModeConst = 3
+	NgwConvertNormalMode	ActisenseOperatingModeConst = 4
+	CANPacketMode	ActisenseOperatingModeConst = 5
+	CANPacketAsciiMode	ActisenseOperatingModeConst = 6
+	BufferMode1	ActisenseOperatingModeConst = 16
+	BufferMode2	ActisenseOperatingModeConst = 17
+	BufferMode3	ActisenseOperatingModeConst = 18
+	AutoswitchDirectMode	ActisenseOperatingModeConst = 19
+	AutoswitchSmartMode	ActisenseOperatingModeConst = 20
+	CombineSlowMode	ActisenseOperatingModeConst = 21
+	CombineFastMode	ActisenseOperatingModeConst = 22
+	TestMode1	ActisenseOperatingModeConst = 23
+	NsiMode1	ActisenseOperatingModeConst = 24
+	Iec61162450Mode1	ActisenseOperatingModeConst = 25
+	Normal	ActisenseOperatingModeConst = 512
+	PredefinedMode1	ActisenseOperatingModeConst = 40000
+	PredefinedMode2	ActisenseOperatingModeConst = 40001
+)
+
+func (e ActisenseOperatingModeConst) GoString() string {return e.String() }
+func (e ActisenseOperatingModeConst) String() string {
+	switch e {
+		case 0:
+			return "Undefined"
+		case 1:
+			return "NGT Transfer Normal Mode"
+		case 2:
+			return "NGT Transfer Rx All Mode"
+		case 3:
+			return "NGT Transfer Raw Mode"
+		case 4:
+			return "NGW Convert Normal Mode"
+		case 5:
+			return "CAN Packet Mode"
+		case 6:
+			return "CAN Packet ASCII Mode"
+		case 16:
+			return "Buffer Mode 1"
+		case 17:
+			return "Buffer Mode 2"
+		case 18:
+			return "Buffer Mode 3"
+		case 19:
+			return "Autoswitch Direct Mode"
+		case 20:
+			return "Autoswitch Smart Mode"
+		case 21:
+			return "Combine Slow Mode"
+		case 22:
+			return "Combine Fast Mode"
+		case 23:
+			return "Test Mode 1"
+		case 24:
+			return "NSI Mode 1"
+		case 25:
+			return "IEC 61162-450 Mode 1"
+		case 512:
+			return "Normal"
+		case 40000:
+			return "Predefined Mode 1"
+		case 40001:
+			return "Predefined Mode 2"
+default:
+		return fmt.Sprintf("ActisenseOperatingModeConst(%d)", uint16(e))
+	}
+}
 type ACLineConst uint8
 const (
 	Line1	ACLineConst = 0
@@ -347,6 +418,7 @@ default:
 }
 type AirmarCommandConst uint8
 const (
+	MasterReset	AirmarCommandConst = 1
 	AttitudeOffsets	AirmarCommandConst = 32
 	CalibrateCompass	AirmarCommandConst = 33
 	TrueWindOptions	AirmarCommandConst = 34
@@ -357,11 +429,14 @@ const (
 	SpeedFilter	AirmarCommandConst = 43
 	TemperatureFilter	AirmarCommandConst = 44
 	NMEA2000Options	AirmarCommandConst = 46
+	ResetEeprom	AirmarCommandConst = 130
 )
 
 func (e AirmarCommandConst) GoString() string {return e.String() }
 func (e AirmarCommandConst) String() string {
 	switch e {
+		case 1:
+			return "Master Reset"
 		case 32:
 			return "Attitude Offsets"
 		case 33:
@@ -382,6 +457,8 @@ func (e AirmarCommandConst) String() string {
 			return "Temperature Filter"
 		case 46:
 			return "NMEA 2000 options"
+		case 130:
+			return "Reset EEPROM"
 default:
 		return fmt.Sprintf("AirmarCommandConst(%d)", uint8(e))
 	}
@@ -480,6 +557,32 @@ func (e AirmarPostIDConst) String() string {
 			return "Battery voltage sensor"
 default:
 		return fmt.Sprintf("AirmarPostIDConst(%d)", uint8(e))
+	}
+}
+type AirmarResetEepromOptionsConst uint8
+const (
+	RestoreEntireUserEepromExceptU	AirmarResetEepromOptionsConst = 0
+	RestoreAllMessagePriorities	AirmarResetEepromOptionsConst = 1
+	RestoreAllMessageUpdateRates	AirmarResetEepromOptionsConst = 2
+	RestoreAllMessagePrioritiesAnd	AirmarResetEepromOptionsConst = 3
+	RestoreUserUniqueNumber	AirmarResetEepromOptionsConst = 4
+)
+
+func (e AirmarResetEepromOptionsConst) GoString() string {return e.String() }
+func (e AirmarResetEepromOptionsConst) String() string {
+	switch e {
+		case 0:
+			return "Restore entire user EEPROM except Unique Number"
+		case 1:
+			return "Restore all message priorities"
+		case 2:
+			return "Restore all message update rates"
+		case 3:
+			return "Restore all message priorities and update rates"
+		case 4:
+			return "Restore user Unique Number"
+default:
+		return fmt.Sprintf("AirmarResetEepromOptionsConst(%d)", uint8(e))
 	}
 }
 type AirmarTemperatureInstanceConst uint8
@@ -885,7 +988,7 @@ default:
 type AlertStateConst uint8
 const (
 	Disabled	AlertStateConst = 0
-	Normal	AlertStateConst = 1
+	Normal_2	AlertStateConst = 1
 	Active	AlertStateConst = 2
 	Silenced	AlertStateConst = 3
 	Acknowledged	AlertStateConst = 4
@@ -913,7 +1016,7 @@ default:
 }
 type AlertThresholdStatusConst uint8
 const (
-	Normal_2	AlertThresholdStatusConst = 0
+	Normal_3	AlertThresholdStatusConst = 0
 	ThresholdExceeded	AlertThresholdStatusConst = 1
 	ExtremeThresholdExceeded	AlertThresholdStatusConst = 2
 	LowThresholdExceeded	AlertThresholdStatusConst = 3
@@ -1731,6 +1834,29 @@ func (e DCSourceConst) String() string {
 			return "Wind generator"
 default:
 		return fmt.Sprintf("DCSourceConst(%d)", uint8(e))
+	}
+}
+type DelaySourceConst uint8
+const (
+	UserDefined	DelaySourceConst = 0
+	MinimumDefined	DelaySourceConst = 1
+	FactoryDefault	DelaySourceConst = 2
+	MaximumSupported	DelaySourceConst = 3
+)
+
+func (e DelaySourceConst) GoString() string {return e.String() }
+func (e DelaySourceConst) String() string {
+	switch e {
+		case 0:
+			return "User defined"
+		case 1:
+			return "Minimum defined"
+		case 2:
+			return "Factory default"
+		case 3:
+			return "Maximum supported"
+default:
+		return fmt.Sprintf("DelaySourceConst(%d)", uint8(e))
 	}
 }
 type DeviceClassConst uint8
@@ -2848,11 +2974,36 @@ default:
 		return fmt.Sprintf("FusionCommandConst(%d)", uint8(e))
 	}
 }
+type FusionLowPassFilterConst uint8
+const (
+	FusionLowPassFilterConst50Hz	FusionLowPassFilterConst = 1
+	FusionLowPassFilterConst80Hz	FusionLowPassFilterConst = 2
+	FusionLowPassFilterConst120Hz	FusionLowPassFilterConst = 3
+	FusionLowPassFilterConst160Hz	FusionLowPassFilterConst = 4
+)
+
+func (e FusionLowPassFilterConst) GoString() string {return e.String() }
+func (e FusionLowPassFilterConst) String() string {
+	switch e {
+		case 1:
+			return "50 Hz"
+		case 2:
+			return "80 Hz"
+		case 3:
+			return "120 Hz"
+		case 4:
+			return "160 Hz"
+default:
+		return fmt.Sprintf("FusionLowPassFilterConst(%d)", uint8(e))
+	}
+}
 type FusionMenuActionConst uint8
 const (
 	Open	FusionMenuActionConst = 1
 	Select	FusionMenuActionConst = 2
+	StepBack	FusionMenuActionConst = 3
 	Close	FusionMenuActionConst = 4
+	Exit	FusionMenuActionConst = 5
 )
 
 func (e FusionMenuActionConst) GoString() string {return e.String() }
@@ -2862,10 +3013,40 @@ func (e FusionMenuActionConst) String() string {
 			return "Open"
 		case 2:
 			return "Select"
+		case 3:
+			return "Step Back"
 		case 4:
 			return "Close"
+		case 5:
+			return "Exit"
 default:
 		return fmt.Sprintf("FusionMenuActionConst(%d)", uint8(e))
+	}
+}
+type FusionMenuStatusConst uint8
+const (
+	OpenedAtRoot	FusionMenuStatusConst = 1
+	Opened	FusionMenuStatusConst = 2
+	ItemUpdated	FusionMenuStatusConst = 3
+	Closed	FusionMenuStatusConst = 4
+	Locked_2	FusionMenuStatusConst = 5
+)
+
+func (e FusionMenuStatusConst) GoString() string {return e.String() }
+func (e FusionMenuStatusConst) String() string {
+	switch e {
+		case 1:
+			return "Opened At Root"
+		case 2:
+			return "Opened"
+		case 3:
+			return "Item Updated"
+		case 4:
+			return "Closed"
+		case 5:
+			return "Locked"
+default:
+		return fmt.Sprintf("FusionMenuStatusConst(%d)", uint8(e))
 	}
 }
 type FusionMessageIDConst uint16
@@ -2883,11 +3064,12 @@ const (
 	RequestMenuLockID	FusionMessageIDConst = 12
 	SetAuxGain	FusionMessageIDConst = 13
 	SetSettings	FusionMessageIDConst = 15
-	DabUpdtateCommand	FusionMessageIDConst = 16
+	DabUpdateCommand	FusionMessageIDConst = 16
 	SetMute	FusionMessageIDConst = 17
 	SetBalance	FusionMessageIDConst = 18
-	SetLowPassFiler	FusionMessageIDConst = 19
+	SetLowPassFilter	FusionMessageIDConst = 19
 	SetSublevel	FusionMessageIDConst = 20
+	SetAllSublevels	FusionMessageIDConst = 21
 	SetEqualizer	FusionMessageIDConst = 22
 	SetVolumeLimit	FusionMessageIDConst = 23
 	SetZoneVolume	FusionMessageIDConst = 24
@@ -2907,15 +3089,15 @@ const (
 	SendSiriusArtistSongUserAction	FusionMessageIDConst = 45
 	SendMultiroomCommand	FusionMessageIDConst = 50
 	GetMultiroomDeviceRecord	FusionMessageIDConst = 51
-	ScanMultirooomDevices	FusionMessageIDConst = 52
+	ScanMultiroomDevices	FusionMessageIDConst = 52
 	SendFileTransfer	FusionMessageIDConst = 53
 	SetLoud	FusionMessageIDConst = 54
-	FapiSetSourceMultiroomEnabled	FusionMessageIDConst = 56
+	SetSourceMultiroomEnabled	FusionMessageIDConst = 56
 	RequestHeadUnitDspSettings	FusionMessageIDConst = 57
 	SendTransferStatus	FusionMessageIDConst = 64
-	FapiGetServerInfo	FusionMessageIDConst = 65
-	FapiSetSourceEnabled	FusionMessageIDConst = 69
-	FapiSetSourceName	FusionMessageIDConst = 70
+	GetServerInfo	FusionMessageIDConst = 65
+	SetSourceEnabled	FusionMessageIDConst = 69
+	SetSourceName	FusionMessageIDConst = 70
 	SendExternalAmpGain	FusionMessageIDConst = 73
 	SendInternalAmpGain	FusionMessageIDConst = 74
 	SendMono	FusionMessageIDConst = 75
@@ -2951,15 +3133,17 @@ func (e FusionMessageIDConst) String() string {
 		case 15:
 			return "Set Settings"
 		case 16:
-			return "DAB Updtate Command"
+			return "DAB Update Command"
 		case 17:
 			return "Set Mute"
 		case 18:
 			return "Set Balance"
 		case 19:
-			return "Set Low Pass Filer"
+			return "Set Low Pass Filter"
 		case 20:
 			return "Set Sublevel"
+		case 21:
+			return "Set All Sublevels"
 		case 22:
 			return "Set Equalizer"
 		case 23:
@@ -2983,9 +3167,9 @@ func (e FusionMessageIDConst) String() string {
 		case 34:
 			return "Set Zone Name"
 		case 35:
-			return "Send Dvd Command"
+			return "Send DVD Command"
 		case 36:
-			return "Dvd Press Ir Key"
+			return "DVD Press IR Key"
 		case 39:
 			return "Send Select Sirius Team"
 		case 40:
@@ -2999,23 +3183,23 @@ func (e FusionMessageIDConst) String() string {
 		case 51:
 			return "Get Multiroom Device Record"
 		case 52:
-			return "Scan Multirooom Devices"
+			return "Scan Multiroom Devices"
 		case 53:
 			return "Send File Transfer"
 		case 54:
 			return "Set Loud"
 		case 56:
-			return "Fapi Set Source Multiroom Enabled"
+			return "Set Source Multiroom Enabled"
 		case 57:
-			return "Request Head Unit Dsp Settings"
+			return "Request Head Unit DSP Settings"
 		case 64:
 			return "Send Transfer Status"
 		case 65:
-			return "Fapi Get Server Info"
+			return "Get Server Info"
 		case 69:
-			return "Fapi Set Source Enabled"
+			return "Set Source Enabled"
 		case 70:
-			return "Fapi Set Source Name"
+			return "Set Source Name"
 		case 73:
 			return "Send External Amp Gain"
 		case 74:
@@ -3119,9 +3303,9 @@ func (e FusionRepeatStatusConst) String() string {
 		case 0:
 			return "Off"
 		case 1:
-			return "One/track"
+			return "One/Track"
 		case 2:
-			return "All/album"
+			return "All/Album"
 default:
 		return fmt.Sprintf("FusionRepeatStatusConst(%d)", uint32(e))
 	}
@@ -3203,9 +3387,17 @@ const (
 	LowPowerMode_2	FusionSettingConst = 72
 	DvdRegion	FusionSettingConst = 73
 	VolumeZoneSync	FusionSettingConst = 74
-	MaxVolumeStart	FusionSettingConst = 75
-	BtAutoConnect	FusionSettingConst = 76
-	NullSetting	FusionSettingConst = 77
+	MaxVolumeStart	FusionSettingConst = 76
+	BtAutoConnect	FusionSettingConst = 77
+	TunerAntennasPowerStatus	FusionSettingConst = 79
+	FmAntennaIndex	FusionSettingConst = 80
+	DabAntennaIndex	FusionSettingConst = 81
+	DabServiceFollowing	FusionSettingConst = 82
+	FmFrequencyFollowing	FusionSettingConst = 83
+	DabFmServiceFollowing	FusionSettingConst = 115
+	HdmiVolumeZoneSync	FusionSettingConst = 125
+	ArcInputAudioDelay	FusionSettingConst = 126
+	NullSetting	FusionSettingConst = 1000
 )
 
 func (e FusionSettingConst) GoString() string {return e.String() }
@@ -3230,15 +3422,15 @@ func (e FusionSettingConst) String() string {
 		case 8:
 			return "Marine Zone"
 		case 9:
-			return "USB repeat"
+			return "USB Repeat"
 		case 10:
-			return "USB shuffle"
+			return "USB Shuffle"
 		case 11:
 			return "iPod Album Artwork"
 		case 12:
-			return "iPod repeat"
+			return "iPod Repeat"
 		case 13:
-			return "iPod shuffle"
+			return "iPod Shuffle"
 		case 14:
 			return "AM Preset 0"
 		case 15:
@@ -3352,20 +3544,36 @@ func (e FusionSettingConst) String() string {
 		case 69:
 			return "MTP Shuffle"
 		case 70:
-			return "Id Accessory Source"
+			return "ID Accessory Source"
 		case 71:
 			return "NMEA Power"
 		case 72:
 			return "Low Power Mode"
 		case 73:
-			return "DVD region"
+			return "DVD Region"
 		case 74:
 			return "Volume Zone Sync"
-		case 75:
-			return "Max Volume Start"
 		case 76:
-			return "BT Auto Connect"
+			return "Max Volume Start"
 		case 77:
+			return "BT Auto Connect"
+		case 79:
+			return "Tuner Antennas Power Status"
+		case 80:
+			return "FM Antenna Index"
+		case 81:
+			return "DAB Antenna Index"
+		case 82:
+			return "DAB Service Following"
+		case 83:
+			return "FM Frequency Following"
+		case 115:
+			return "DAB FM Service Following"
+		case 125:
+			return "HDMI Volume Zone Sync"
+		case 126:
+			return "ARC Input Audio Delay"
+		case 1000:
 			return "Null Setting"
 default:
 		return fmt.Sprintf("FusionSettingConst(%d)", uint32(e))
@@ -3413,7 +3621,7 @@ default:
 }
 type FusionSiriusTuningModeConst uint8
 const (
-	Normal_3	FusionSiriusTuningModeConst = 1
+	Normal_4	FusionSiriusTuningModeConst = 1
 	Category	FusionSiriusTuningModeConst = 2
 	Preset	FusionSiriusTuningModeConst = 3
 )
@@ -3465,7 +3673,7 @@ func (e FusionSourceTypeConst) String() string {
 		case 3:
 			return "Sirius"
 		case 4:
-			return "Ipod"
+			return "iPod"
 		case 5:
 			return "USB"
 		case 6:
@@ -3544,18 +3752,47 @@ const (
 	SiriusxmDiagnostics	FusionStatusMessageIDConst = 32811
 	SiriusxmPresets	FusionStatusMessageIDConst = 32812
 	ZoneName	FusionStatusMessageIDConst = 32813
+	DvdState	FusionStatusMessageIDConst = 32814
+	DvdTrack	FusionStatusMessageIDConst = 32815
+	DvdTrackPosition	FusionStatusMessageIDConst = 32816
+	DvdTrackName	FusionStatusMessageIDConst = 32817
+	DvdArtistName	FusionStatusMessageIDConst = 32818
 	IpSetting	FusionStatusMessageIDConst = 32819
+	MediaLoadingProgress	FusionStatusMessageIDConst = 32820
+	MediaUserNotification	FusionStatusMessageIDConst = 32821
+	SystemAlert	FusionStatusMessageIDConst = 32822
 	Multiroom	FusionStatusMessageIDConst = 32824
 	MultiroomStatus	FusionStatusMessageIDConst = 32825
+	MultiroomDeviceCount	FusionStatusMessageIDConst = 32826
+	MultiroomDeviceRecord	FusionStatusMessageIDConst = 32827
 	SystemCapabilities	FusionStatusMessageIDConst = 32829
 	PartNumber	FusionStatusMessageIDConst = 32830
+	Loudness	FusionStatusMessageIDConst = 32831
 	ProcessingBypass	FusionStatusMessageIDConst = 32832
+	ReceivedFileCount	FusionStatusMessageIDConst = 32833
+	ReceivedFileTransfer	FusionStatusMessageIDConst = 32834
+	SiriusxmReplayIndicator	FusionStatusMessageIDConst = 32835
+	SiriusxmTeamInfo	FusionStatusMessageIDConst = 32837
+	SiriusxmTeamEvent	FusionStatusMessageIDConst = 32838
+	SiriusxmArtistSongInfo	FusionStatusMessageIDConst = 32839
+	SiriusxmArtistSongEvent	FusionStatusMessageIDConst = 32840
+	SiriusxmSportAlert	FusionStatusMessageIDConst = 32841
+	SiriusxmArtistSongAlert	FusionStatusMessageIDConst = 32842
+	SiriusxmTunemixChanged	FusionStatusMessageIDConst = 32843
+	SiriusxmTunemix	FusionStatusMessageIDConst = 32844
 	ServerInfo	FusionStatusMessageIDConst = 32846
 	RDSData	FusionStatusMessageIDConst = 32850
+	SourceName	FusionStatusMessageIDConst = 32854
+	RemoteUpgradeStatus	FusionStatusMessageIDConst = 32855
+	BtPairingPopup	FusionStatusMessageIDConst = 32856
+	FileTransferConfiguration	FusionStatusMessageIDConst = 32858
 	IgnitionSwitchState	FusionStatusMessageIDConst = 32859
+	ExternalAmpGain	FusionStatusMessageIDConst = 32860
+	InternalAmpGain	FusionStatusMessageIDConst = 32861
 	Mono	FusionStatusMessageIDConst = 32862
 	SpeedVolumeCurrentSpeed	FusionStatusMessageIDConst = 32863
 	ZoneCapabilitiesExtended	FusionStatusMessageIDConst = 32865
+	BtPairingRequestDone	FusionStatusMessageIDConst = 32877
 )
 
 func (e FusionStatusMessageIDConst) GoString() string {return e.String() }
@@ -3644,7 +3881,7 @@ func (e FusionStatusMessageIDConst) String() string {
 		case 32808:
 			return "SiriusXM Category"
 		case 32809:
-			return "SiriusXm Signal"
+			return "SiriusXM Signal"
 		case 32810:
 			return "SiriusXM Parental Request"
 		case 32811:
@@ -3653,32 +3890,116 @@ func (e FusionStatusMessageIDConst) String() string {
 			return "SiriusXM Presets"
 		case 32813:
 			return "Zone Name"
+		case 32814:
+			return "DVD State"
+		case 32815:
+			return "DVD Track"
+		case 32816:
+			return "DVD Track Position"
+		case 32817:
+			return "DVD Track Name"
+		case 32818:
+			return "DVD Artist Name"
 		case 32819:
 			return "IP Setting"
+		case 32820:
+			return "Media Loading Progress"
+		case 32821:
+			return "Media User Notification"
+		case 32822:
+			return "System Alert"
 		case 32824:
 			return "Multiroom"
 		case 32825:
 			return "Multiroom Status"
+		case 32826:
+			return "Multiroom Device Count"
+		case 32827:
+			return "Multiroom Device Record"
 		case 32829:
 			return "System Capabilities"
 		case 32830:
 			return "Part Number"
+		case 32831:
+			return "Loudness"
 		case 32832:
 			return "Processing Bypass"
+		case 32833:
+			return "Received File Count"
+		case 32834:
+			return "Received File Transfer"
+		case 32835:
+			return "SiriusXM Replay Indicator"
+		case 32837:
+			return "SiriusXM Team Info"
+		case 32838:
+			return "SiriusXM Team Event"
+		case 32839:
+			return "SiriusXM Artist Song Info"
+		case 32840:
+			return "SiriusXM Artist Song Event"
+		case 32841:
+			return "SiriusXM Sport Alert"
+		case 32842:
+			return "SiriusXM Artist Song Alert"
+		case 32843:
+			return "SiriusXM Tunemix Changed"
+		case 32844:
+			return "SiriusXM Tunemix"
 		case 32846:
 			return "Server Info"
 		case 32850:
 			return "RDS Data"
+		case 32854:
+			return "Source Name"
+		case 32855:
+			return "Remote Upgrade Status"
+		case 32856:
+			return "BT Pairing Popup"
+		case 32858:
+			return "File Transfer Configuration"
 		case 32859:
 			return "Ignition Switch State"
+		case 32860:
+			return "External Amp Gain"
+		case 32861:
+			return "Internal Amp Gain"
 		case 32862:
 			return "Mono"
 		case 32863:
 			return "Speed Volume Current Speed"
 		case 32865:
 			return "Zone Capabilities Extended"
+		case 32877:
+			return "BT Pairing Request Done"
 default:
 		return fmt.Sprintf("FusionStatusMessageIDConst(%d)", uint16(e))
+	}
+}
+type FusionTunerCommandConst uint8
+const (
+	SeekUp_2	FusionTunerCommandConst = 1
+	TuneUp_2	FusionTunerCommandConst = 2
+	SeekDown_2	FusionTunerCommandConst = 3
+	TuneDown_2	FusionTunerCommandConst = 4
+	TuneDirect	FusionTunerCommandConst = 5
+)
+
+func (e FusionTunerCommandConst) GoString() string {return e.String() }
+func (e FusionTunerCommandConst) String() string {
+	switch e {
+		case 1:
+			return "Seek Up"
+		case 2:
+			return "Tune Up"
+		case 3:
+			return "Seek Down"
+		case 4:
+			return "Tune Down"
+		case 5:
+			return "Tune Direct"
+default:
+		return fmt.Sprintf("FusionTunerCommandConst(%d)", uint8(e))
 	}
 }
 type GarminAttMessageIDConst uint16
@@ -10319,8 +10640,6 @@ default:
 type SimnetBacklightLevelConst uint8
 const (
 	SimnetBacklightLevelConst10Min	SimnetBacklightLevelConst = 0
-	DayMode	SimnetBacklightLevelConst = 1
-	NightMode	SimnetBacklightLevelConst = 4
 	SimnetBacklightLevelConst20	SimnetBacklightLevelConst = 11
 	SimnetBacklightLevelConst30	SimnetBacklightLevelConst = 22
 	SimnetBacklightLevelConst40	SimnetBacklightLevelConst = 33
@@ -10337,10 +10656,6 @@ func (e SimnetBacklightLevelConst) String() string {
 	switch e {
 		case 0:
 			return "10% (Min)"
-		case 1:
-			return "Day mode"
-		case 4:
-			return "Night mode"
 		case 11:
 			return "20%"
 		case 22:
@@ -10946,6 +11261,150 @@ func (e SimnetWindSpeedUnitConst) String() string {
 			return "Kilometers per hour"
 default:
 		return fmt.Sprintf("SimnetWindSpeedUnitConst(%d)", uint8(e))
+	}
+}
+type SimnetZcFunctionConst uint8
+const (
+	Key	SimnetZcFunctionConst = 132
+	Knob	SimnetZcFunctionConst = 133
+)
+
+func (e SimnetZcFunctionConst) GoString() string {return e.String() }
+func (e SimnetZcFunctionConst) String() string {
+	switch e {
+		case 132:
+			return "Key"
+		case 133:
+			return "Knob"
+default:
+		return fmt.Sprintf("SimnetZcFunctionConst(%d)", uint8(e))
+	}
+}
+type SimnetZcKeyConst uint8
+const (
+	StandbyAuto	SimnetZcKeyConst = 4
+	Win	SimnetZcKeyConst = 6
+	Display_3	SimnetZcKeyConst = 7
+	Goto	SimnetZcKeyConst = 10
+	Pages	SimnetZcKeyConst = 13
+	Menu	SimnetZcKeyConst = 16
+	Power_4	SimnetZcKeyConst = 20
+	Echo_2	SimnetZcKeyConst = 21
+	Nav_2	SimnetZcKeyConst = 23
+	Chart	SimnetZcKeyConst = 26
+	Plot	SimnetZcKeyConst = 27
+	Info	SimnetZcKeyConst = 28
+	MOB_2	SimnetZcKeyConst = 29
+	One_4	SimnetZcKeyConst = 30
+	Two_3	SimnetZcKeyConst = 31
+	Three_3	SimnetZcKeyConst = 32
+	Four_3	SimnetZcKeyConst = 33
+	Five_2	SimnetZcKeyConst = 34
+	Six_2	SimnetZcKeyConst = 35
+	Seven_2	SimnetZcKeyConst = 36
+	Eight	SimnetZcKeyConst = 37
+	Nine	SimnetZcKeyConst = 38
+	Zero_3	SimnetZcKeyConst = 39
+	Check	SimnetZcKeyConst = 40
+	Cancel	SimnetZcKeyConst = 41
+	Right	SimnetZcKeyConst = 79
+	Left	SimnetZcKeyConst = 80
+	Down_2	SimnetZcKeyConst = 81
+	Up_2	SimnetZcKeyConst = 82
+	ZoomOut	SimnetZcKeyConst = 86
+	ZoomIn	SimnetZcKeyConst = 87
+	KnobPush	SimnetZcKeyConst = 88
+)
+
+func (e SimnetZcKeyConst) GoString() string {return e.String() }
+func (e SimnetZcKeyConst) String() string {
+	switch e {
+		case 4:
+			return "Standby Auto"
+		case 6:
+			return "Win"
+		case 7:
+			return "Display"
+		case 10:
+			return "Goto"
+		case 13:
+			return "Pages"
+		case 16:
+			return "Menu"
+		case 20:
+			return "Power"
+		case 21:
+			return "Echo"
+		case 23:
+			return "Nav"
+		case 26:
+			return "Chart"
+		case 27:
+			return "Plot"
+		case 28:
+			return "Info"
+		case 29:
+			return "MOB"
+		case 30:
+			return "1"
+		case 31:
+			return "2"
+		case 32:
+			return "3"
+		case 33:
+			return "4"
+		case 34:
+			return "5"
+		case 35:
+			return "6"
+		case 36:
+			return "7"
+		case 37:
+			return "8"
+		case 38:
+			return "9"
+		case 39:
+			return "0"
+		case 40:
+			return "Check"
+		case 41:
+			return "Cancel"
+		case 79:
+			return "Right"
+		case 80:
+			return "Left"
+		case 81:
+			return "Down"
+		case 82:
+			return "Up"
+		case 86:
+			return "Zoom out"
+		case 87:
+			return "Zoom in"
+		case 88:
+			return "Knob push"
+default:
+		return fmt.Sprintf("SimnetZcKeyConst(%d)", uint8(e))
+	}
+}
+type SimnetZcKeyEventConst uint8
+const (
+	Release	SimnetZcKeyEventConst = 51
+	LongPress	SimnetZcKeyEventConst = 128
+	Press	SimnetZcKeyEventConst = 179
+)
+
+func (e SimnetZcKeyEventConst) GoString() string {return e.String() }
+func (e SimnetZcKeyEventConst) String() string {
+	switch e {
+		case 51:
+			return "Release"
+		case 128:
+			return "Long press"
+		case 179:
+			return "Press"
+default:
+		return fmt.Sprintf("SimnetZcKeyEventConst(%d)", uint8(e))
 	}
 }
 type SleipnerThrusterActionConst uint8
@@ -11749,8 +12208,8 @@ default:
 type WindlassDirectionConst uint8
 const (
 	Off_14	WindlassDirectionConst = 0
-	Down_2	WindlassDirectionConst = 1
-	Up_2	WindlassDirectionConst = 2
+	Down_3	WindlassDirectionConst = 1
+	Up_3	WindlassDirectionConst = 2
 )
 
 func (e WindlassDirectionConst) GoString() string {return e.String() }
@@ -12083,6 +12542,16 @@ var DeviceFunctionConstMap = map[int]map[int]string{10: {130: "Diagnostic",
 }
 
 
+type FusionSettingValueConst uint16
+var FusionSettingValueConstMap = map[int]map[int]string{7: {0: "USA",
+	1: "Europe",
+	2: "Japan",
+	3: "Australasia",
+	 },
+
+}
+
+
 type DisabledSatellitesConst uint64
 const (
 	DisableSv1	DisabledSatellitesConst = 0
@@ -12369,12 +12838,12 @@ const (
 	SkipBack_2	EntertainmentPlayStatusBitfieldConst = 12
 	JogAhead_2	EntertainmentPlayStatusBitfieldConst = 13
 	JogBack_2	EntertainmentPlayStatusBitfieldConst = 14
-	SeekUp_2	EntertainmentPlayStatusBitfieldConst = 15
-	SeekDown_2	EntertainmentPlayStatusBitfieldConst = 16
+	SeekUp_3	EntertainmentPlayStatusBitfieldConst = 15
+	SeekDown_3	EntertainmentPlayStatusBitfieldConst = 16
 	ScanUp_2	EntertainmentPlayStatusBitfieldConst = 17
 	ScanDown_2	EntertainmentPlayStatusBitfieldConst = 18
-	TuneUp_2	EntertainmentPlayStatusBitfieldConst = 19
-	TuneDown_2	EntertainmentPlayStatusBitfieldConst = 20
+	TuneUp_3	EntertainmentPlayStatusBitfieldConst = 19
+	TuneDown_3	EntertainmentPlayStatusBitfieldConst = 20
 	SlowMotion75X_2	EntertainmentPlayStatusBitfieldConst = 21
 	SlowMotion5X_2	EntertainmentPlayStatusBitfieldConst = 22
 	SlowMotion25X_2	EntertainmentPlayStatusBitfieldConst = 23
@@ -12504,6 +12973,219 @@ func (e FurunoBaselineStatusConst) String() string {
 		return fmt.Sprintf("%s(%d)", "FurunoBaselineStatusConst", uint16(e))
 	}
 }
+type FusionCapabilityBitfieldConst uint16
+const (
+	Volume_3	FusionCapabilityBitfieldConst = 0
+	VolumeLimit	FusionCapabilityBitfieldConst = 1
+	Balance_2	FusionCapabilityBitfieldConst = 2
+	Subwoofer_2	FusionCapabilityBitfieldConst = 3
+	LowPassFilter_2	FusionCapabilityBitfieldConst = 4
+	HighPassFilter	FusionCapabilityBitfieldConst = 5
+	EQBass	FusionCapabilityBitfieldConst = 6
+	EQMid	FusionCapabilityBitfieldConst = 7
+	EQTreble	FusionCapabilityBitfieldConst = 8
+	LineOut	FusionCapabilityBitfieldConst = 9
+	Dsp	FusionCapabilityBitfieldConst = 10
+	InternalAmp	FusionCapabilityBitfieldConst = 11
+	Loudness_2	FusionCapabilityBitfieldConst = 12
+	Tweeter	FusionCapabilityBitfieldConst = 13
+	SubwooferOnAmp	FusionCapabilityBitfieldConst = 14
+	Mono_2	FusionCapabilityBitfieldConst = 15
+)
+
+func (e FusionCapabilityBitfieldConst) GoString() string {return e.String() }
+func (e FusionCapabilityBitfieldConst) String() string {
+	switch e {
+		case 0:
+			return "Volume"
+		case 1:
+			return "Volume Limit"
+		case 2:
+			return "Balance"
+		case 3:
+			return "Subwoofer"
+		case 4:
+			return "Low Pass Filter"
+		case 5:
+			return "High Pass Filter"
+		case 6:
+			return "EQ Bass"
+		case 7:
+			return "EQ Mid"
+		case 8:
+			return "EQ Treble"
+		case 9:
+			return "Line Out"
+		case 10:
+			return "DSP"
+		case 11:
+			return "Internal Amp"
+		case 12:
+			return "Loudness"
+		case 13:
+			return "Tweeter"
+		case 14:
+			return "Subwoofer On Amp"
+		case 15:
+			return "Mono"
+	default:
+		return fmt.Sprintf("%s(%d)", "FusionCapabilityBitfieldConst", uint16(e))
+	}
+}
+type FusionMenuItemFlagsConst uint16
+const (
+	Selected	FusionMenuItemFlagsConst = 1
+)
+
+func (e FusionMenuItemFlagsConst) GoString() string {return e.String() }
+func (e FusionMenuItemFlagsConst) String() string {
+	switch e {
+		case 1:
+			return "Selected"
+	default:
+		return fmt.Sprintf("%s(%d)", "FusionMenuItemFlagsConst", uint16(e))
+	}
+}
+type FusionSystemCapabilityBitfieldConst uint64
+const (
+	Ant	FusionSystemCapabilityBitfieldConst = 0
+	Bluetooth_3	FusionSystemCapabilityBitfieldConst = 1
+	WiFi	FusionSystemCapabilityBitfieldConst = 2
+	Ethernet_2	FusionSystemCapabilityBitfieldConst = 3
+	NMEA2000	FusionSystemCapabilityBitfieldConst = 4
+	RvVisPort	FusionSystemCapabilityBitfieldConst = 5
+	Lcd	FusionSystemCapabilityBitfieldConst = 6
+	PowerButton	FusionSystemCapabilityBitfieldConst = 7
+	ButtonMatrix	FusionSystemCapabilityBitfieldConst = 8
+	TouchPanel	FusionSystemCapabilityBitfieldConst = 9
+	USBConnector	FusionSystemCapabilityBitfieldConst = 10
+	USBConnector2	FusionSystemCapabilityBitfieldConst = 11
+	Dsp_2	FusionSystemCapabilityBitfieldConst = 12
+	AmFmAntenna	FusionSystemCapabilityBitfieldConst = 13
+	DabAntenna	FusionSystemCapabilityBitfieldConst = 14
+	SiriusxmConnector	FusionSystemCapabilityBitfieldConst = 15
+	SPdif	FusionSystemCapabilityBitfieldConst = 16
+	HdmiArc	FusionSystemCapabilityBitfieldConst = 17
+	Hdmi_2	FusionSystemCapabilityBitfieldConst = 18
+	TelephoneMute	FusionSystemCapabilityBitfieldConst = 19
+	DimmerWire	FusionSystemCapabilityBitfieldConst = 20
+	IgnitionWire	FusionSystemCapabilityBitfieldConst = 21
+	NMEA2000Power	FusionSystemCapabilityBitfieldConst = 22
+	Stm32Coprocessor	FusionSystemCapabilityBitfieldConst = 23
+	Standby_9	FusionSystemCapabilityBitfieldConst = 24
+	MultiroomSource	FusionSystemCapabilityBitfieldConst = 25
+	MultiroomRenderer	FusionSystemCapabilityBitfieldConst = 26
+	AmplifierAndLineOutIndependent	FusionSystemCapabilityBitfieldConst = 33
+	WakeOnLan	FusionSystemCapabilityBitfieldConst = 34
+	SiriusxmInstantReplay	FusionSystemCapabilityBitfieldConst = 35
+	SiriusxmTunemix_2	FusionSystemCapabilityBitfieldConst = 36
+	ArtistAndSongAlert	FusionSystemCapabilityBitfieldConst = 37
+	GameAlert	FusionSystemCapabilityBitfieldConst = 38
+	SportsFlash	FusionSystemCapabilityBitfieldConst = 39
+	Zone1Amplifier2OhmStable	FusionSystemCapabilityBitfieldConst = 41
+	Zone1Amplifier4OhmStable	FusionSystemCapabilityBitfieldConst = 42
+	Zone2Amplifier2OhmStable	FusionSystemCapabilityBitfieldConst = 43
+	Zone2Amplifier4OhmStable	FusionSystemCapabilityBitfieldConst = 44
+	AppleAirplay	FusionSystemCapabilityBitfieldConst = 45
+	VolumeSyncZone	FusionSystemCapabilityBitfieldConst = 46
+	SourceDisable	FusionSystemCapabilityBitfieldConst = 47
+	SourceRename	FusionSystemCapabilityBitfieldConst = 48
+	InternalDabModule	FusionSystemCapabilityBitfieldConst = 50
+)
+
+func (e FusionSystemCapabilityBitfieldConst) GoString() string {return e.String() }
+func (e FusionSystemCapabilityBitfieldConst) String() string {
+	switch e {
+		case 0:
+			return "ANT"
+		case 1:
+			return "Bluetooth"
+		case 2:
+			return "Wi-Fi"
+		case 3:
+			return "Ethernet"
+		case 4:
+			return "NMEA 2000"
+		case 5:
+			return "RV VIS Port"
+		case 6:
+			return "LCD"
+		case 7:
+			return "Power Button"
+		case 8:
+			return "Button Matrix"
+		case 9:
+			return "Touch Panel"
+		case 10:
+			return "USB Connector"
+		case 11:
+			return "USB Connector 2"
+		case 12:
+			return "DSP"
+		case 13:
+			return "AM/FM Antenna"
+		case 14:
+			return "DAB Antenna"
+		case 15:
+			return "SiriusXM Connector"
+		case 16:
+			return "S/PDIF"
+		case 17:
+			return "HDMI ARC"
+		case 18:
+			return "HDMI"
+		case 19:
+			return "Telephone Mute"
+		case 20:
+			return "Dimmer Wire"
+		case 21:
+			return "Ignition Wire"
+		case 22:
+			return "NMEA 2000 Power"
+		case 23:
+			return "STM32 Coprocessor"
+		case 24:
+			return "Standby"
+		case 25:
+			return "Multiroom Source"
+		case 26:
+			return "Multiroom Renderer"
+		case 33:
+			return "Amplifier and Line Out Independent"
+		case 34:
+			return "Wake on LAN"
+		case 35:
+			return "SiriusXM Instant Replay"
+		case 36:
+			return "SiriusXM TuneMix"
+		case 37:
+			return "Artist and Song Alert"
+		case 38:
+			return "Game Alert"
+		case 39:
+			return "Sports Flash"
+		case 41:
+			return "Zone 1 Amplifier 2 Ohm Stable"
+		case 42:
+			return "Zone 1 Amplifier 4 Ohm Stable"
+		case 43:
+			return "Zone 2 Amplifier 2 Ohm Stable"
+		case 44:
+			return "Zone 2 Amplifier 4 Ohm Stable"
+		case 45:
+			return "Apple AirPlay"
+		case 46:
+			return "Volume Sync Zone"
+		case 47:
+			return "Source Disable"
+		case 48:
+			return "Source Rename"
+		case 50:
+			return "Internal DAB Module"
+	default:
+		return fmt.Sprintf("%s(%d)", "FusionSystemCapabilityBitfieldConst", uint64(e))
+	}
+}
 type SimnetAlertBitfieldConst uint64
 const (
 	NoGPSFix_2	SimnetAlertBitfieldConst = 0
@@ -12604,9 +13286,9 @@ func (e SimnetAlertBitfieldConst) String() string {
 }
 type SimnetApModeBitfieldConst uint16
 const (
-	Standby_9	SimnetApModeBitfieldConst = 3
+	Standby_10	SimnetApModeBitfieldConst = 3
 	Heading_5	SimnetApModeBitfieldConst = 4
-	Nav_2	SimnetApModeBitfieldConst = 6
+	Nav_3	SimnetApModeBitfieldConst = 6
 	NoDrift_2	SimnetApModeBitfieldConst = 8
 	Wind_5	SimnetApModeBitfieldConst = 10
 )
