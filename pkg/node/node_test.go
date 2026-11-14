@@ -377,6 +377,29 @@ func TestDefaultReadOnlyIgnoresCommandedAddress(t *testing.T) {
 	assert.Empty(t, pub.written)
 }
 
+func TestCommandedAddressOnlyAcceptsClaimableSourceAddresses(t *testing.T) {
+	n := NewNode(newMockSubscriber(), newMockPublisher(), newMockClock())
+	require.NoError(t, n.SetDeviceInfo(DeviceInfo{UniqueNumber: 1}))
+	require.NoError(t, n.ClaimAddress(50))
+	n.networkAddress = 50
+	n.addressState = stateClaimed
+	n.addressClaimed = true
+
+	command := pgn.ISOCommandedAddress{UniqueNumber: []byte{1, 0, 0}}
+	for _, address := range []uint8{254, 255} {
+		command.NewSourceAddress = &address
+		n.processIsoCommandedAddress(&command)
+		require.Equal(t, uint8(50), n.preferredAddress)
+		require.True(t, n.IsAddressClaimed())
+	}
+
+	command.NewSourceAddress = ptrUint8(253)
+	n.processIsoCommandedAddress(&command)
+	require.Equal(t, uint8(253), n.preferredAddress)
+	require.Equal(t, stateClaiming, n.addressState)
+	require.False(t, n.IsAddressClaimed())
+}
+
 func TestClaimAddressZeroRemainsClaimable(t *testing.T) {
 	sub := newMockSubscriber()
 	pub := newMockPublisher()
@@ -955,6 +978,24 @@ func testKnownDeviceClaim(sourceID uint8) pgn.ISOAddressClaim {
 		IndustryGroup:           pgn.MarineIndustry,
 		ArbitraryAddressCapable: pgn.Yes_2,
 	}
+}
+
+func TestReservedSourceAddressesAreNotRecordedAsClaims(t *testing.T) {
+	n := NewNode(newMockSubscriber(), newMockPublisher(), newMockClock())
+	claim := testKnownDeviceClaim(40)
+	n.processIsoAddressClaim(&claim)
+	require.Len(t, n.KnownDevices(), 1)
+
+	claim.Info.SourceId = 255
+	n.processIsoAddressClaim(&claim)
+	require.Len(t, n.KnownDevices(), 1)
+	require.NotContains(t, n.knownDeviceNamesByAddress, uint8(255))
+
+	claim.Info.SourceId = 254
+	n.processIsoAddressClaim(&claim)
+	require.Empty(t, n.KnownDevices())
+	require.Empty(t, n.knownDeviceNamesByAddress)
+	require.Equal(t, uint8(254), n.knownDevices[computeNameFromClaim(&claim)].Address)
 }
 
 func TestAddressClaimRetriesNextKnownFreeAddress(t *testing.T) {

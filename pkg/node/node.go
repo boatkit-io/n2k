@@ -125,6 +125,8 @@ const (
 // but never writes to the bus or responds to requests.
 const ReadOnlyAddress uint8 = 255
 
+const maxClaimableAddress = 253
+
 // nodePGNQueueSize accommodates discovery responses from a full 254-address NMEA 2000 network.
 const nodePGNQueueSize = 2048
 
@@ -415,8 +417,8 @@ func (n *Node) ClaimAddress(preferredAddress uint8) error {
 	if !n.deviceInfoSet {
 		return fmt.Errorf("cannot claim address, device info has not been set")
 	}
-	if preferredAddress > 253 {
-		return fmt.Errorf("preferred address %d is out of range (0-253)", preferredAddress)
+	if preferredAddress > maxClaimableAddress {
+		return fmt.Errorf("preferred address %d is out of range (0-%d)", preferredAddress, maxClaimableAddress)
 	}
 	n.logger.Infof("starting N2K address claim for preferred address %d", preferredAddress)
 	n.preferredAddress = preferredAddress
@@ -475,7 +477,7 @@ func (n *Node) KnownDevices() []KnownDevice {
 
 	devices := make([]KnownDevice, 0, len(n.knownDevices))
 	for _, device := range n.knownDevices {
-		if device.Address > 253 {
+		if device.Address > maxClaimableAddress {
 			continue
 		}
 		devices = append(devices, cloneKnownDevice(&device))
@@ -1010,7 +1012,7 @@ func (n *Node) processIsoCommandedAddress(cmd *pgn.ISOCommandedAddress) {
 		return
 	}
 
-	if cmd.NewSourceAddress == nil {
+	if cmd.NewSourceAddress == nil || *cmd.NewSourceAddress > maxClaimableAddress {
 		return
 	}
 
@@ -1024,8 +1026,14 @@ func (n *Node) processIsoCommandedAddress(cmd *pgn.ISOCommandedAddress) {
 }
 
 func (n *Node) processIsoAddressClaim(claim *pgn.ISOAddressClaim) {
+	if claim.Info.SourceId == 255 {
+		return
+	}
 	incomingName := computeNameFromClaim(claim)
 	n.updateKnownDeviceFromClaim(claim, incomingName)
+	if claim.Info.SourceId > maxClaimableAddress {
+		return
+	}
 
 	n.mutex.RLock()
 	currentState := n.addressState
@@ -1091,14 +1099,17 @@ func (n *Node) updateKnownDeviceFromClaim(claim *pgn.ISOAddressClaim, name uint6
 		previousDevice.Address = 255
 		n.knownDevices[previousName] = previousDevice
 	}
-	if knownName && oldAddress <= 253 && oldAddress != address {
+	if knownName && oldAddress <= maxClaimableAddress && oldAddress != address {
 		delete(n.knownDeviceNamesByAddress, oldAddress)
 	}
 	device.Address = address
 	device.Name = name
 	device.LastSeen = now
 	n.knownDevices[name] = device
-	n.knownDeviceNamesByAddress[address] = name
+	// A claim from the null address reports that the device could not claim one.
+	if address <= maxClaimableAddress {
+		n.knownDeviceNamesByAddress[address] = name
+	}
 	if !knownName {
 		changes = append(changes, DeviceChange{
 			Kind:   DeviceChangeObserved,
@@ -1226,19 +1237,19 @@ func (n *Node) updateKnownDeviceFromPgnList(info *pgn.PGNListTransmitAndReceive)
 func (n *Node) nextAvailableAddressLocked(after uint8) (uint8, bool) {
 	claimed := make(map[uint8]struct{}, len(n.knownDeviceNamesByAddress)+len(n.unknownKnownDevicesByAddress)+1)
 	for address := range n.knownDeviceNamesByAddress {
-		if address <= 253 {
+		if address <= maxClaimableAddress {
 			claimed[address] = struct{}{}
 		}
 	}
 	for address := range n.unknownKnownDevicesByAddress {
-		if address <= 253 {
+		if address <= maxClaimableAddress {
 			claimed[address] = struct{}{}
 		}
 	}
 	claimed[after] = struct{}{}
 
-	for i := 1; i <= 254; i++ {
-		candidate := uint8((uint16(after) + uint16(i)) % 254)
+	for i := uint16(1); i <= maxClaimableAddress+1; i++ {
+		candidate := uint8((uint16(after) + i) % (maxClaimableAddress + 1))
 		if _, exists := claimed[candidate]; !exists {
 			return candidate, true
 		}
